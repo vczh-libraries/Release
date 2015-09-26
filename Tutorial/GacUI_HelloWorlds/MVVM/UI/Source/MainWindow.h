@@ -24,6 +24,7 @@ namespace helloworld
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
 		MainWindow(Ptr<vm::IViewModel> ViewModel);
+		~MainWindow();
 	};
 }
 

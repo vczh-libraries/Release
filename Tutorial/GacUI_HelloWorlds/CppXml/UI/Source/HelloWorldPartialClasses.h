@@ -65,6 +65,7 @@ namespace helloworld
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
 		MainWindow();
+		~MainWindow();
 	};
 }
 

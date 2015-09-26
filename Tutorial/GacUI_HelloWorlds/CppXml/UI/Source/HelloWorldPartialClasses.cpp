@@ -20,6 +20,11 @@ namespace helloworld
 	{
 		InitializeComponents();
 	}
+
+	MainWindow::~MainWindow()
+	{
+		ClearSubscriptions();
+	}
 }
 
 

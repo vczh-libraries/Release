@@ -82,7 +82,9 @@ void GuiMain()
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
 		GetInstanceLoaderManager()->SetResource(L"Resource", resource);
 	}
-	helloworld::MainWindow window(new ViewModel);
-	window.MoveToScreenCenter();
-	GetApplication()->Run(&window);
+	auto viewModel = MakePtr<ViewModel>();
+	auto window = new helloworld::MainWindow(viewModel);
+	window->MoveToScreenCenter();
+	GetApplication()->Run(window);
+	delete window;
 }

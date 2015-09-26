@@ -27,4 +27,9 @@ namespace helloworld
 	{
 		InitializeComponents(ViewModel);
 	}
+
+	MainWindow::~MainWindow()
+	{
+		ClearSubscriptions();
+	}
 }
