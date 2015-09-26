@@ -91,7 +91,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="UI\MainWindow.xml" />
     <Xml Include="UI\Resource.xml" />
+    <Xml Include="UI\ViewModel.xml" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI\Source\HelloWorld.h" />

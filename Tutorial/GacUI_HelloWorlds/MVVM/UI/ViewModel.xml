@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Workflow-ViewModel>
+  <![CDATA[
+    module viewmodel;
+          
+    namespace vm
+    {
+      interface IViewModel
+      {
+        func GetUserName() : string;
+        func SetUserName(value : string) : void;
+        prop UserName : string {GetUserName, SetUserName}
+            
+        func GetPassword() : string;
+        func SetPassword(value : string) : void;
+        prop Password : string {GetPassword, SetPassword}
+            
+        func GetUserNameError() : string;
+        event UserNameErrorChanged();
+        prop UserNameError : string {GetUserNameError : UserNameErrorChanged}
+            
+        func GetPasswordError() : string;
+        event PasswordErrorChanged();
+        prop PasswordError : string {GetPasswordError : PasswordErrorChanged}
+            
+        func SignUp() : bool;
+      }
+    }
+  ]]>
+</Workflow-ViewModel>

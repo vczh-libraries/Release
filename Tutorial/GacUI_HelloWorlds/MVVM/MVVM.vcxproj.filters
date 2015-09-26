@@ -35,6 +35,12 @@
     <Xml Include="UI\Resource.xml">
       <Filter>Resource Files</Filter>
     </Xml>
+    <Xml Include="UI\ViewModel.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="UI\MainWindow.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI\Source\HelloWorld.h">

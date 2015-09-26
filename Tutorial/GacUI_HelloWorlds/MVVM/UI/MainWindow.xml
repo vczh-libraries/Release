@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Instance ref.CodeBehind="true" ref.Class="helloworld::MainWindow">
+  <ref.Parameter Name="ViewModel" Class="vm::IViewModel"/>
+  <ref.Property Name="HasLoggedIn" Type="bool" Value="false"/>
+  <Window ref.Name="self" Text="Let's Sign Up!" ClientSize="x:320 y:280">
+    <att.BoundsComposition-set PreferredMinSize="x:320 y:280"/>
+    <att.ViewModel-set UserName-bind="textBoxUserName.Text" Password-bind="textBoxPassword.Text"/>
+    <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0">
+      <att.Rows>
+        <CellOption>composeType:Absolute absolute:90</CellOption>
+        <CellOption>composeType:MinSize</CellOption>
+        <CellOption>composeType:MinSize</CellOption>
+        <CellOption>composeType:MinSize</CellOption>
+        <CellOption>composeType:MinSize</CellOption>
+        <CellOption>composeType:Absolute absolute:12</CellOption>
+        <CellOption>composeType:Percentage percentage:1.0</CellOption>
+        <CellOption>composeType:MinSize</CellOption>
+      </att.Rows>
+      <att.Columns>
+        <CellOption>composeType:MinSize</CellOption>
+        <CellOption>composeType:Percentage percentage:1.0</CellOption>
+      </att.Columns>
+      <Cell Site="row:0 column:0 columnSpan:2">
+        <SolidLabel Text="www.gaclib.net" HorizontalAlignment="Center" VerticalAlignment="Center">
+          <att.Font>fontFamily:{Segoe UI} size:40 antialias:true</att.Font>
+        </SolidLabel>
+      </Cell>
+      <Cell Site="row:1 column:0">
+        <SolidLabel Text="Username: " VerticalAlignment="Center">
+          <att.Font>fontFamily:{Segoe UI} size:12 antialias:true</att.Font>
+        </SolidLabel>
+      </Cell>
+      <Cell Site="row:1 column:1">
+        <SinglelineTextBox ref.Name="textBoxUserName">
+          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:0 y:24"/>
+        </SinglelineTextBox>
+      </Cell>
+      <Cell Site="row:2 column:1">
+        <SolidLabel Color="#FF0000" WrapLine="true" WrapLineHeightCalculation="true" Text-bind="ViewModel.UserNameError">
+          <att.Font>fontFamily:{Segoe UI} size:12 antialias:true</att.Font>
+        </SolidLabel>
+      </Cell>
+      <Cell Site="row:3 column:0">
+        <SolidLabel Text="Password: " VerticalAlignment="Center">
+          <att.Font>fontFamily:{Segoe UI} size:12 antialias:true</att.Font>
+        </SolidLabel>
+      </Cell>
+      <Cell Site="row:3 column:1">
+        <SinglelineTextBox ref.Name="textBoxPassword" PasswordChar="*">
+          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:0 y:24"/>
+        </SinglelineTextBox>
+      </Cell>
+      <Cell Site="row:4 column:1">
+        <SolidLabel Color="#FF0000" WrapLine="true" WrapLineHeightCalculation="true" Text-bind="ViewModel.PasswordError">
+          <att.Font>fontFamily:{Segoe UI} size:12 antialias:true</att.Font>
+        </SolidLabel>
+      </Cell>
+      <Cell Site="row:7 column:0 columnSpan:2">
+        <Button ref.Name="buttonSignUp" Text="Sign Up!" ev.Clicked="buttonSignUp_Clicked">
+          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:-1 bottom:0" PreferredMinSize="x:100 y:24"/>
+          <att.Enabled-bind>
+            (not self.HasLoggedIn) and ViewModel.UserNameError == "" and ViewModel.PasswordError == ""
+          </att.Enabled-bind>
+        </Button>
+        <Button ref.Name="buttonCancel" Text="Close">
+          <att.BoundsComposition-set AlignmentToParent="left:-1 top:0 right:0 bottom:0" PreferredMinSize="x:100 y:24"/>
+          <ev.Clicked-eval>
+            self.Close();
+          </ev.Clicked-eval>
+        </Button>
+      </Cell>
+    </Table>
+  </Window>
+</Instance>
