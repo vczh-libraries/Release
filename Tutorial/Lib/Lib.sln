@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vlpp", "Vlpp\Vlpp.vcxproj", "{F081AD61-FE91-4044-B667-F83586D7CC5B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Workflow", "Workflow\Workflow.vcxproj", "{0EE1EA52-8ABA-40F3-B431-B7BCF8D6D520}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUILite", "GacUILite\GacUILite.vcxproj", "{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUI", "GacUI\GacUI.vcxproj", "{8018D622-66BA-4E65-9D03-BDAC37EA9A54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F081AD61-FE91-4044-B667-F83586D7CC5B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F081AD61-FE91-4044-B667-F83586D7CC5B}.Debug|Win32.Build.0 = Debug|Win32
+		{F081AD61-FE91-4044-B667-F83586D7CC5B}.Release|Win32.ActiveCfg = Release|Win32
+		{F081AD61-FE91-4044-B667-F83586D7CC5B}.Release|Win32.Build.0 = Release|Win32
+		{0EE1EA52-8ABA-40F3-B431-B7BCF8D6D520}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0EE1EA52-8ABA-40F3-B431-B7BCF8D6D520}.Debug|Win32.Build.0 = Debug|Win32
+		{0EE1EA52-8ABA-40F3-B431-B7BCF8D6D520}.Release|Win32.ActiveCfg = Release|Win32
+		{0EE1EA52-8ABA-40F3-B431-B7BCF8D6D520}.Release|Win32.Build.0 = Release|Win32
+		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}.Debug|Win32.Build.0 = Debug|Win32
+		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}.Release|Win32.ActiveCfg = Release|Win32
+		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}.Release|Win32.Build.0 = Release|Win32
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Debug|Win32.Build.0 = Debug|Win32
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Release|Win32.ActiveCfg = Release|Win32
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
