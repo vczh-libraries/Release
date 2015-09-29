@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="Output">Source</Text>
+      <Text name="Include">GacUIReflection.h</Text>
+      <Text name="Name">Demo</Text>
+      <Text name="Prefix"></Text>
+    </Folder>
+    <Folder name="Res">
+      <Text name="Output">..\..\UIRes</Text>
+      <Text name="PrecompiledBinary">Table.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
+        <Window Text="Table" ClientSize="x:480 y:320">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
