@@ -23,11 +23,21 @@ namespace demo
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
+		vl::presentation::compositions::GuiFlowComposition* flowLayout;
+		vl::presentation::controls::GuiSelectableButton::MutexGroupController* groupAlignment;
+		vl::presentation::controls::GuiSelectableButton::MutexGroupController* groupAxis;
+		vl::presentation::controls::GuiControl* groupBoxAlignment;
+		vl::presentation::controls::GuiControl* groupBoxAxis;
 
 		void InitializeComponents()
 		{
 			if (InitializeFromResource())
 			{
+				GUI_INSTANCE_REFERENCE(flowLayout);
+				GUI_INSTANCE_REFERENCE(groupAlignment);
+				GUI_INSTANCE_REFERENCE(groupAxis);
+				GUI_INSTANCE_REFERENCE(groupBoxAlignment);
+				GUI_INSTANCE_REFERENCE(groupBoxAxis);
 			}
 			else
 			{
@@ -37,6 +47,11 @@ namespace demo
 		MainWindow_()
 			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
 			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,flowLayout(0)
+			,groupAlignment(0)
+			,groupAxis(0)
+			,groupBoxAlignment(0)
+			,groupBoxAxis(0)
 		{
 		}
 	};
