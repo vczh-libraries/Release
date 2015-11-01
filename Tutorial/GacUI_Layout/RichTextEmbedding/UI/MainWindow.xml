@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
+  <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
   <Window Text="RichTextEmbedding" ClientSize="x:480 y:320">
     <att.BoundsComposition-set PreferredMinSize="x:480 y:640"/>
     <att.ContainerComposition-set MinSizeLimitation="LimitToElementAndChildren"/>
 
-    <DocumentViewer EditMode="Selectable" Document-uri="res://EmbeddedDocument/Document">
+    <DocumentViewer ref.Name="documentViewer" EditMode="ViewOnly" Document-uri="res://EmbeddedDocument/Document">
       <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
+      <ev.ActiveHyperlinkExecuted-eval>
+        ViewModel.OpenUrl(documentViewer.ActiveHyperlinkReference);
+      </ev.ActiveHyperlinkExecuted-eval>
       <DocumentItem Name="Button">
         <Button Text="Button"/>
       </DocumentItem>

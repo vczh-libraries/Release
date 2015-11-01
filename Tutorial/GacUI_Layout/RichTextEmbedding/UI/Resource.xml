@@ -17,6 +17,21 @@
     <Doc content="File" name="Document">Document.xml</Doc>
   </Folder>
   <Folder name="MainWindow">
+    <Script name="ViewModelResource">
+      <Workflow-ViewModel>
+        <![CDATA[
+          module viewmodel;
+          
+          namespace demo
+          {
+            interface IViewModel
+            {
+              func OpenUrl(url : string) : void;
+            }
+          }
+        ]]>
+      </Workflow-ViewModel>
+    </Script>
     <Instance content="File" name="MainWindowResource">MainWindow.xml</Instance>
   </Folder>
 </Resource>

@@ -9,6 +9,15 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	return SetupWindowsDirect2DRenderer();
 }
 
+class ViewModel : public Object, public virtual demo::IViewModel
+{
+public:
+	void OpenUrl(WString url)override
+	{
+		ShellExecute(NULL, L"OPEN", url.Buffer(), NULL, NULL, SW_MAXIMIZE);
+	}
+};
+
 void GuiMain()
 {
 	{
@@ -17,7 +26,7 @@ void GuiMain()
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
 		GetInstanceLoaderManager()->SetResource(L"Resource", resource);
 	}
-	demo::MainWindow window;
+	demo::MainWindow window(new ViewModel);
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }
