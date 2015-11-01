@@ -628,6 +628,41 @@ Windows Platform Native Controller
 #endif
 
 /***********************************************************************
+NATIVEWINDOW\WINDOWS\DIRECT2D\WINDIRECT2DAPPLICATION.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Native Window::Direct2D Provider for Windows Implementation
+
+Interfaces:
+***********************************************************************/
+#ifndef VCZH_PRESENTATION_WINDOWS_GDI_WINDIRECT2DAPPLICATION
+#define VCZH_PRESENTATION_WINDOWS_GDI_WINDIRECT2DAPPLICATION
+
+#include <d2d1_1.h>
+#include <dwrite_1.h>
+
+namespace vl
+{
+	namespace presentation
+	{
+		namespace windows
+		{
+			extern ID2D1RenderTarget*					GetNativeWindowDirect2DRenderTarget(INativeWindow* window);
+			extern void									RecreateNativeWindowDirect2DRenderTarget(INativeWindow* window);
+			extern bool									PresentNativeWindowDirect2DRenderTarget(INativeWindow* window);
+			extern ID2D1Factory*						GetDirect2DFactory();
+			extern IDWriteFactory*						GetDirectWriteFactory();
+		}
+	}
+}
+
+extern int WinMainDirect2D(HINSTANCE hInstance, void(*RendererMain)());
+
+#endif
+
+/***********************************************************************
 NATIVEWINDOW\WINDOWS\SERVICESIMPL\WINDOWSRESOURCESERVICE.H
 ***********************************************************************/
 /***********************************************************************
@@ -1001,40 +1036,6 @@ namespace vl
 #endif
 
 /***********************************************************************
-NATIVEWINDOW\WINDOWS\DIRECT2D\WINDIRECT2DAPPLICATION.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-GacUI::Native Window::Direct2D Provider for Windows Implementation
-
-Interfaces:
-***********************************************************************/
-#ifndef VCZH_PRESENTATION_WINDOWS_GDI_WINDIRECT2DAPPLICATION
-#define VCZH_PRESENTATION_WINDOWS_GDI_WINDIRECT2DAPPLICATION
-
-#include <D2D1.h>
-#include <DWrite.h>
-
-namespace vl
-{
-	namespace presentation
-	{
-		namespace windows
-		{
-			extern ID2D1RenderTarget*					GetNativeWindowDirect2DRenderTarget(INativeWindow* window);
-			extern void									RecreateNativeWindowDirect2DRenderTarget(INativeWindow* window);
-			extern ID2D1Factory*						GetDirect2DFactory();
-			extern IDWriteFactory*						GetDirectWriteFactory();
-		}
-	}
-}
-
-extern int WinMainDirect2D(HINSTANCE hInstance, void(*RendererMain)());
-
-#endif
-
-/***********************************************************************
 NATIVEWINDOW\WINDOWS\GDI\WINGDIAPPLICATION.H
 ***********************************************************************/
 /***********************************************************************
@@ -1208,7 +1209,7 @@ namespace vl
 			class WindowsGDILayoutProvider : public Object, public elements::IGuiGraphicsLayoutProvider
 			{
 			public:
-				 Ptr<elements::IGuiGraphicsParagraph>		CreateParagraph(const WString& text, elements::IGuiGraphicsRenderTarget* renderTarget)override;
+				 Ptr<elements::IGuiGraphicsParagraph>		CreateParagraph(const WString& text, elements::IGuiGraphicsRenderTarget* renderTarget, elements::IGuiGraphicsParagraphCallback* callback)override;
 			};
 		}
 	}
@@ -1293,6 +1294,8 @@ UniscribeColor
 		namespace elements_windows_gdi
 		{
 
+			typedef Nullable<IGuiGraphicsParagraph::InlineObjectProperties>	InlineObject;
+
 /***********************************************************************
 UniscribeFragment
 ***********************************************************************/
@@ -1307,8 +1310,7 @@ UniscribeFragment
 				const WString									text;
 				Ptr<WinFont>									fontObject;
 				//***************************** Document Data (Element)
-				Ptr<IGuiGraphicsElement>						element;
-				IGuiGraphicsParagraph::InlineObjectProperties	inlineObjectProperties;
+				InlineObject									inlineObjectProperties;
 				List<Ptr<UniscribeFragment>>					cachedTextFragment;
 
 				UniscribeFragment(const WString& _text);
@@ -1378,6 +1380,14 @@ UniscribeRun
 					vint						length;
 					Rect						bounds;
 				};
+
+				class IRendererCallback : public Interface
+				{
+				public:
+					virtual WinDC*									GetWinDC() = 0;
+					virtual Point									GetParagraphOffset() = 0;
+					virtual IGuiGraphicsParagraphCallback*			GetParagraphCallback() = 0;
+				};
 				
 				//***************************** Document Data
 				UniscribeFragment*				documentFragment;
@@ -1396,8 +1406,9 @@ UniscribeRun
 				virtual bool					BuildUniscribeData(WinDC* dc, List<vint>& breakings)=0;
 				virtual vint					SumWidth(vint charStart, vint charLength)=0;
 				virtual vint					SumHeight()=0;
+				virtual vint					SumTextHeight()=0;
 				virtual void					SearchForLineBreak(vint tempStart, vint maxWidth, bool firstRun, vint& charLength, vint& charAdvances)=0;
-				virtual void					Render(WinDC* dc, vint fragmentBoundsIndex, vint offsetX, vint offsetY, bool renderBackground)=0;
+				virtual void					Render(IRendererCallback* callback, vint fragmentBoundsIndex, vint offsetX, vint offsetY, bool renderBackground)=0;
 			};
 
 /***********************************************************************
@@ -1423,29 +1434,30 @@ UniscribeTextRun
 				bool							BuildUniscribeData(WinDC* dc, List<vint>& breakings)override;
 				vint							SumWidth(vint charStart, vint charLength)override;
 				vint							SumHeight()override;
+				vint							SumTextHeight()override;
 				void							SearchForLineBreak(vint tempStart, vint maxWidth, bool firstRun, vint& charLength, vint& charAdvances)override;
-				void							Render(WinDC* dc, vint fragmentBoundsIndex, vint offsetX, vint offsetY, bool renderBackground)override;
+				void							Render(IRendererCallback* callback, vint fragmentBoundsIndex, vint offsetX, vint offsetY, bool renderBackground)override;
 			};
 
 /***********************************************************************
 UniscribeElementRun
 ***********************************************************************/
 
-			class UniscribeElementRun : public UniscribeRun
+			class UniscribeEmbeddedObjectRun : public UniscribeRun
 			{
 			public:
 				//***************************** Document Data
-				Ptr<IGuiGraphicsElement>						element;
 				IGuiGraphicsParagraph::InlineObjectProperties	properties;
 
-				UniscribeElementRun();
-				~UniscribeElementRun();
+				UniscribeEmbeddedObjectRun();
+				~UniscribeEmbeddedObjectRun();
 
 				bool							BuildUniscribeData(WinDC* dc, List<vint>& breakings)override;
 				vint							SumWidth(vint charStart, vint charLength)override;
 				vint							SumHeight()override;
+				vint							SumTextHeight()override;
 				void							SearchForLineBreak(vint tempStart, vint maxWidth, bool firstRun, vint& charLength, vint& charAdvances)override;
-				void							Render(WinDC* dc, vint fragmentBoundsIndex, vint offsetX, vint offsetY, bool renderBackground)override;
+				void							Render(IRendererCallback* callback, vint fragmentBoundsIndex, vint offsetX, vint offsetY, bool renderBackground)override;
 			};
 
 /***********************************************************************
@@ -1492,7 +1504,7 @@ UniscribeLine
 				void							ClearUniscribeData();
 				bool							BuildUniscribeData(WinDC* dc);
 				void							Layout(vint availableWidth, Alignment alignment, vint top, vint& totalHeight);
-				void							Render(WinDC* dc, vint offsetX, vint offsetY, bool renderBackground);
+				void							Render(UniscribeRun::IRendererCallback* callback, vint offsetX, vint offsetY, bool renderBackground);
 			};
 
 /***********************************************************************
@@ -1519,7 +1531,7 @@ UniscribeParagraph
 				void							ClearUniscribeData();
 				bool							BuildUniscribeData(WinDC* dc);
 				void							Layout(vint availableWidth, Alignment alignment);
-				void							Render(WinDC* dc, vint offsetX, vint offsetY, bool renderBackground);
+				void							Render(UniscribeRun::IRendererCallback* callback, bool renderBackground);
 
 				void							SearchFragment(vint start, vint length, vint& fs, vint& ss, vint& fe, vint& se);
 				bool							CutFragment(vint fs, vint ss, vint fe, vint se, vint& f1, vint& f2);
@@ -1530,8 +1542,8 @@ UniscribeParagraph
 				bool							SetStyle(vint start, vint length, bool bold, bool italic, bool underline, bool strikeline);
 				bool							SetColor(vint start, vint length, Color value);
 				bool							SetBackgroundColor(vint start, vint length, Color value);
-				bool							SetInlineObject(vint start, vint length, const IGuiGraphicsParagraph::InlineObjectProperties& properties, Ptr<IGuiGraphicsElement> value);
-				Ptr<IGuiGraphicsElement>		ResetInlineObject(vint start, vint length);
+				bool							SetInlineObject(vint start, vint length, const IGuiGraphicsParagraph::InlineObjectProperties& properties);
+				InlineObject					ResetInlineObject(vint start, vint length);
 
 				void							GetLineIndexFromTextPos(vint textPos, vint& frontLine, vint& backLine);
 				void							GetVirtualLineIndexFromTextPos(vint textPos, vint lineIndex, vint& frontLine, vint& backLine);
@@ -1539,7 +1551,7 @@ UniscribeParagraph
 				Rect							GetCaretBoundsWithLine(vint caret, vint lineIndex, vint virtualLineIndex, bool frontSide);
 				vint							GetCaretFromXWithTextRunBounds(vint x, vint lineIndex, vint runIndex, vint runBoundsIndex);
 				vint							GetCaretFromXWithLine(vint x, vint lineIndex, vint virtualLineIndex);
-				Ptr<IGuiGraphicsElement>		GetInlineObjectFromXWithLine(vint x, vint lineIndex, vint virtualLineIndex, vint& start, vint& length);
+				InlineObject					GetInlineObjectFromXWithLine(vint x, vint lineIndex, vint virtualLineIndex, vint& start, vint& length);
 				vint							GetLineY(vint lineIndex);
 				vint							GetVirtualLineY(vint lineIndex, vint virtualLineIndex);
 				vint							GetLineIndexFromY(vint y);
@@ -1548,7 +1560,7 @@ UniscribeParagraph
 				vint							GetCaret(vint comparingCaret, IGuiGraphicsParagraph::CaretRelativePosition position, bool& preferFrontSide);
 				Rect							GetCaretBounds(vint caret, bool frontSide);
 				vint							GetCaretFromPoint(Point point);
-				Ptr<IGuiGraphicsElement>		GetInlineObjectFromPoint(Point point, vint& start, vint& length);
+				InlineObject					GetInlineObjectFromPoint(Point point, vint& start, vint& length);
 				vint							GetNearestCaretFromTextPos(vint textPos, bool frontSide);
 				bool							IsValidCaret(vint caret);
 				bool							IsValidTextPos(vint textPos);
@@ -1926,6 +1938,7 @@ OS Supporting
 			{
 			public:
 				virtual void								RecreateRenderTarget(INativeWindow* window)=0;
+				virtual bool								PresentRenderTarget(INativeWindow* window)=0;
 				virtual ID2D1RenderTarget*					GetNativeWindowDirect2DRenderTarget(INativeWindow* window)=0;
 				virtual ID2D1Factory*						GetDirect2DFactory()=0;
 				virtual IDWriteFactory*						GetDirectWriteFactory()=0;
@@ -1969,7 +1982,7 @@ namespace vl
 			class WindowsDirect2DLayoutProvider : public Object, public elements::IGuiGraphicsLayoutProvider
 			{
 			public:
-				 Ptr<elements::IGuiGraphicsParagraph>		CreateParagraph(const WString& text, elements::IGuiGraphicsRenderTarget* renderTarget)override;
+				 Ptr<elements::IGuiGraphicsParagraph>		CreateParagraph(const WString& text, elements::IGuiGraphicsRenderTarget* renderTarget, elements::IGuiGraphicsParagraphCallback* callback)override;
 			};
 		}
 	}
