@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
+  <Window Text="RichTextEmbedding" ClientSize="x:480 y:320">
+    <att.BoundsComposition-set PreferredMinSize="x:480 y:640"/>
+    <att.ContainerComposition-set MinSizeLimitation="LimitToElementAndChildren"/>
+
+    <DocumentViewer EditMode="Selectable" Document-uri="res://EmbeddedDocument/Document">
+      <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
+      <DocumentItem Name="Button">
+        <Button Text="Button"/>
+      </DocumentItem>
+      <DocumentItem Name="TreeView">
+        <TreeView HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+          <att.BoundsComposition-set PreferredMinSize="x:200 y:100"/>
+          <att.Nodes>
+            <TreeNode Text="GacUI Renderers" Expanding="true">
+              <TreeNode Text="Direct2D"/>
+              <TreeNode Text="GDI"/>
+            </TreeNode>
+          </att.Nodes>
+        </TreeView>
+      </DocumentItem>
+      <DocumentItem Name="Menu">
+        <ToolstripMenuBar>
+          <MenuBarButton Text="File" Alt="F">
+            <att.SubMenu-set>
+              <MenuItemButton Text="New" Alt="N"/>
+              <MenuItemButton Text="Open" Alt="O"/>
+              <MenuItemButton Text="Save" Alt="S"/>
+              <MenuItemButton Text="Save As ..." Alt="A"/>
+              <MenuSplitter/>
+              <MenuItemButton Text="Exit" Alt="X"/>
+            </att.SubMenu-set>
+          </MenuBarButton>
+          <MenuBarButton Text="Edit" Alt="E">
+            <att.SubMenu-set>
+              <MenuItemButton Text="Undo" Alt="U"/>
+              <MenuItemButton Text="Redo" Alt="R"/>
+              <MenuSplitter/>
+              <MenuItemButton Text="Cut" Alt="T"/>
+              <MenuItemButton Text="Copy" Alt="C"/>
+              <MenuItemButton Text="Paste" Alt="P"/>
+              <MenuSplitter/>
+              <MenuItemButton Text="Select All" Alt="A"/>
+            </att.SubMenu-set>
+          </MenuBarButton>
+        </ToolstripMenuBar>
+      </DocumentItem>
+      <DocumentItem Name="Table">
+        <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
+          <SolidBorder Color="#000000"/>
+          <att.Rows>
+            <CellOption>composeType:MinSize</CellOption>
+            <CellOption>composeType:MinSize</CellOption>
+            <CellOption>composeType:MinSize</CellOption>
+          </att.Rows>
+          <att.Columns>
+            <CellOption>composeType:MinSize</CellOption>
+            <CellOption>composeType:MinSize</CellOption>
+            <CellOption>composeType:MinSize</CellOption>
+          </att.Columns>
+
+          <Cell Site="row:0 column:0">
+            <Label Text="XOR"/>
+          </Cell>
+          <Cell Site="row:0 column:1">
+            <Label Text="false"/>
+          </Cell>
+          <Cell Site="row:0 column:2">
+            <Label Text="true"/>
+          </Cell>
+          <Cell Site="row:1 column:0">
+            <Label Text="false"/>
+          </Cell>
+          <Cell Site="row:1 column:1">
+            <Label Text="false"/>
+          </Cell>
+          <Cell Site="row:1 column:2">
+            <Label Text="true"/>
+          </Cell>
+          <Cell Site="row:2 column:0">
+            <Label Text="true"/>
+          </Cell>
+          <Cell Site="row:2 column:1">
+            <Label Text="true"/>
+          </Cell>
+          <Cell Site="row:2 column:2">
+            <Label Text="false"/>
+          </Cell>
+        </Table>
+      </DocumentItem>
+    </DocumentViewer>
+  </Window>
+</Instance>

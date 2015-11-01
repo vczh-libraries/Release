@@ -12,13 +12,11 @@
       <Text name="PrecompiledBinary">RichTextEmbedding.bin</Text>
     </Folder>
   </Folder>
+  <Folder name="EmbeddedDocument">
+    <Image content="File" name="Gaclib">Gaclib.png</Image>
+    <Doc content="File" name="Document">Document.xml</Doc>
+  </Folder>
   <Folder name="MainWindow">
-    <Instance name="MainWindowResource">
-      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
-        <Window Text="RichTextEmbedding" ClientSize="x:480 y:320">
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
-        </Window>
-      </Instance>
-    </Instance>
+    <Instance content="File" name="MainWindowResource">MainWindow.xml</Instance>
   </Folder>
 </Resource>
