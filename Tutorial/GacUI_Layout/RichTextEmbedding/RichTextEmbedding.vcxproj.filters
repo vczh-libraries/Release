@@ -29,6 +29,12 @@
     <Xml Include="UI\Resource.xml">
       <Filter>Resource Files</Filter>
     </Xml>
+    <Xml Include="UI\MainWindow.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="UI\Document.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI\Source\Demo.h">
@@ -37,5 +43,10 @@
     <ClInclude Include="UI\Source\DemoPartialClasses.h">
       <Filter>UI</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="UI\Gaclib.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
