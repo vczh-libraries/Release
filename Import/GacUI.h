@@ -3249,10 +3249,6 @@ Global String Key
 			static GlobalStringKey					_Format;
 			static GlobalStringKey					_Eval;
 			static GlobalStringKey					_Uri;
-			static GlobalStringKey					_Workflow_Assembly_Cache;
-			static GlobalStringKey					_Workflow_Global_Context;
-			static GlobalStringKey					_Shared_Workflow_Assembly_Cache;
-			static GlobalStringKey					_Shared_Workflow_Global_Context;
 			static GlobalStringKey					_ControlTemplate;
 			static GlobalStringKey					_ItemTemplate;
 
@@ -3341,7 +3337,7 @@ Resource Structure
 		protected:
 			GuiResourceFolder*						parent;
 			WString									name;
-			WString									path;
+			WString									fileContentPath;
 			
 		public:
 			GuiResourceNodeBase();
@@ -3353,16 +3349,20 @@ Resource Structure
 			/// <summary>Get the name of this resource node.</summary>
 			/// <returns>The name of this resource node .</returns>
 			const WString&							GetName();
-			/// <summary>Get the path of this resource node. When saving the resource, if the path is not empty, the path will be serialized instead of the content.</summary>
-			/// <returns>The path of this resource node .</returns>
-			const WString&							GetPath();
-			/// <summary>Set the path of this resource node.</summary>
-			/// <param name="value">The path of this resource node .</param>
-			void									SetPath(const WString& value);
+			/// <summary>Get the resource path of this resource node. When saving the resource, if the path is not empty, the path will be serialized instead of the content.</summary>
+			/// <returns>The resource path of this resource node .</returns>
+			WString									GetResourcePath();
+			/// <summary>Get the file content path of this resource node. When saving the resource, if the path is not empty, the path will be serialized instead of the content.</summary>
+			/// <returns>The file content path of this resource node .</returns>
+			const WString&							GetFileContentPath();
+			/// <summary>Set the file content path of this resource node.</summary>
+			/// <param name="value">The file content path of this resource node .</param>
+			void									SetFileContentPath(const WString& value);
 		};
 
 		class DocumentModel;
 		class GuiResourcePathResolver;
+		struct GuiResourcePrecompileContext;
 		
 		/// <summary>Resource item.</summary>
 		class GuiResourceItem : public GuiResourceNodeBase, public Description<GuiResourceItem>
@@ -3425,11 +3425,12 @@ Resource Structure
 			FolderMap								folders;
 
 			void									LoadResourceFolderFromXml(DelayLoadingList& delayLoadings, const WString& containingFolder, Ptr<parsing::xml::XmlElement> folderXml, collections::List<WString>& errors);
-			void									SaveResourceFolderToXml(Ptr<parsing::xml::XmlElement> xmlParent, bool serializePrecompiledResource);
+			void									SaveResourceFolderToXml(Ptr<parsing::xml::XmlElement> xmlParent);
 			void									CollectTypeNames(collections::List<WString>& typeNames);
 			void									LoadResourceFolderFromBinary(DelayLoadingList& delayLoadings, stream::internal::Reader& reader, collections::List<WString>& typeNames, collections::List<WString>& errors);
 			void									SaveResourceFolderToBinary(stream::internal::Writer& writer, collections::List<WString>& typeNames);
-			void									PrecompileResourceFolder(Ptr<GuiResourcePathResolver> resolver, GuiResource* rootResource, vint passIndex, collections::List<WString>& errors);
+			void									PrecompileResourceFolder(GuiResourcePrecompileContext& context, collections::List<WString>& errors);
+			void									InitializeResourceFolder(GuiResourcePrecompileContext& context);
 		public:
 			/// <summary>Create a resource folder.</summary>
 			GuiResourceFolder();
@@ -3481,29 +3482,12 @@ Resource Structure
 			/// <returns>The resource folder.</returns>
 			/// <param name="path">The path.</param>
 			Ptr<GuiResourceFolder>					GetFolderByPath(const WString& path);
-		};
-
-/***********************************************************************
-Resource Cache
-***********************************************************************/
-
-		class IGuiResourceCache : public IDescriptable, public Description<IGuiResourceCache>
-		{
-		public:
-			virtual GlobalStringKey					GetCacheTypeName() = 0;
-
-			static void								LoadFromXml(Ptr<parsing::xml::XmlElement> xml, collections::Dictionary<GlobalStringKey, Ptr<IGuiResourceCache>>& caches);
-			static void								SaveToXml(Ptr<parsing::xml::XmlElement> xml, collections::Dictionary<GlobalStringKey, Ptr<IGuiResourceCache>>& caches);
-			static void								LoadFromBinary(stream::internal::Reader& reader, collections::Dictionary<GlobalStringKey, Ptr<IGuiResourceCache>>& caches, collections::List<GlobalStringKey>& sortedKeys = *(collections::List<GlobalStringKey>*)nullptr);
-			static void								SaveToBinary(stream::internal::Writer& writer, collections::Dictionary<GlobalStringKey, Ptr<IGuiResourceCache>>& caches, collections::SortedList<GlobalStringKey>& sortedKeys = *(collections::SortedList<GlobalStringKey>*)nullptr);
-		};
-
-		class IGuiResourceCacheResolver : public IDescriptable, public Description<IGuiResourceCacheResolver>
-		{
-		public:
-			virtual GlobalStringKey					GetCacheTypeName() = 0;
-			virtual bool							Serialize(Ptr<IGuiResourceCache> cache, stream::IStream& stream) = 0;
-			virtual Ptr<IGuiResourceCache>			Deserialize(stream::IStream& stream) = 0;
+			/// <summary>Create a contained resource object using a path like "Packages\Application\Name".</summary>
+			/// <returns>Returns true if this operation succeeded.</returns>
+			/// <param name="path">The path.</param>
+			/// <param name="typeName">The type name of this contained object.</param>
+			/// <param name="value">The contained object.</param>
+			bool									CreateValueByPath(const WString& path, const WString& typeName, Ptr<DescriptableObject> value);
 		};
 
 /***********************************************************************
@@ -3513,14 +3497,11 @@ Resource
 		/// <summary>Resource. A resource is a root resource folder that does not have a name.</summary>
 		class GuiResource : public GuiResourceFolder, public Description<GuiResource>
 		{
-			typedef collections::Dictionary<GlobalStringKey, Ptr<IGuiResourceCache>>	CacheMap;
 		protected:
 			WString									workingDirectory;
 
 			static void								ProcessDelayLoading(Ptr<GuiResource> resource, DelayLoadingList& delayLoadings, collections::List<WString>& errors);
 		public:
-			CacheMap								precompiledCaches;
-
 			/// <summary>Create a resource.</summary>
 			GuiResource();
 			~GuiResource();
@@ -3544,8 +3525,7 @@ Resource
 
 			/// <summary>Save the resource to xml.</summary>
 			/// <returns>The xml.</returns>
-			/// <param name="serializePrecompiledResource">Set to true to serialize all resources (including image, compiled script, etc) in the xml.</param>
-			Ptr<parsing::xml::XmlDocument>			SaveToXml(bool serializePrecompiledResource);
+			Ptr<parsing::xml::XmlDocument>			SaveToXml();
 			
 			/// <summary>Load a precompiled resource from a stream.</summary>
 			/// <returns>The loaded resource.</returns>
@@ -3560,6 +3540,9 @@ Resource
 			/// <summary>Precompile this resource to improve performance.</summary>
 			/// <param name="errors">All collected errors during precompiling a resource.</param>
 			void									Precompile(collections::List<WString>& errors);
+
+			/// <summary>Initialize a precompiled resource.</summary>
+			void									Initialize();
 			
 			/// <summary>Get a contained document model using a path like "Packages\Application\Name". If the path does not exists or the type does not match, an exception will be thrown.</summary>
 			/// <returns>The containd resource object.</returns>
@@ -3636,6 +3619,7 @@ Resource Type Resolver
 ***********************************************************************/
 
 		class IGuiResourceTypeResolver_Precompile;
+		class IGuiResourceTypeResolver_Initialize;
 		class IGuiResourceTypeResolver_DirectLoadXml;
 		class IGuiResourceTypeResolver_DirectLoadStream;
 		class IGuiResourceTypeResolver_IndirectLoad;
@@ -3647,10 +3631,19 @@ Resource Type Resolver
 			/// <summary>Get the type of the resource that load by this resolver.</summary>
 			/// <returns>The type.</returns>
 			virtual WString										GetType() = 0;
+			/// <summary>Test is this resource able to serialize in an XML resource or not.</summary>
+			/// <returns>Returns true if this resource is able to serialize in an XML resource.</returns>
+			virtual bool										XmlSerializable() = 0;
+			/// <summary>Test is this resource able to serialize in a precompiled binary resource or not.</summary>
+			/// <returns>Returns true if this resource is able to serialize in a precompiled binary resource.</returns>
+			virtual bool										StreamSerializable() = 0;
 			
 			/// <summary>Get the precompiler for the type resolver.</summary>
 			/// <returns>Returns null if the type resolve does not support precompiling.</returns>
 			virtual IGuiResourceTypeResolver_Precompile*		Precompile(){ return 0; }
+			/// <summary>Get the initializer for the type resolver.</summary>
+			/// <returns>Returns null if the type resolve does not support initializing.</returns>
+			virtual IGuiResourceTypeResolver_Initialize*		Initialize(){ return 0; }
 			/// <summary>Get the object for convert the resource between xml and object.</summary>
 			/// <returns>Returns null if the type resolver does not have this ability.</returns>
 			virtual IGuiResourceTypeResolver_DirectLoadXml*		DirectLoadXml(){ return 0; }
@@ -3662,12 +3655,26 @@ Resource Type Resolver
 			virtual IGuiResourceTypeResolver_IndirectLoad*		IndirectLoad(){ return 0; }
 		};
 
+		/// <summary>Provide a context for resource precompiling</summary>
+		struct GuiResourcePrecompileContext
+		{
+			/// <summary>The folder to contain compiled objects.</summary>
+			Ptr<GuiResourceFolder>								targetFolder;
+			/// <summary>The root resource object.</summary>
+			GuiResource*										rootResource;
+			/// <summary>Indicate the pass index of this precompiling pass.</summary>
+			vint												passIndex;
+			/// <summary>The path resolver. This is only for delay load resource.</summary>
+			Ptr<GuiResourcePathResolver>						resolver;
+		};
+
 		/// <summary>
 		///		Represents a precompiler for resources of a specified type.
 		///		Current resources that needs precompiling:
 		///			Pass 0: Script		(collect workflow scripts)
-		///			Pass 1: Script		(compile collected workflow scripts)
-		///			Pass 2: Instance
+		///			Pass 1: Script		(compile view model scripts)
+		///			Pass 2: Script		(compile shared scripts)
+		///			Pass 3: Instance
 		/// </summary>
 		class IGuiResourceTypeResolver_Precompile : public virtual IDescriptable, public Description<IGuiResourceTypeResolver_Precompile>
 		{
@@ -3676,11 +3683,30 @@ Resource Type Resolver
 			/// <returns>Returns the maximum pass index. The precompiler doesn't not need to response to every pass.</returns>
 			virtual vint										GetMaxPassIndex() = 0;
 			/// <summary>Precompile the resource item.</summary>
-			/// <param name="resource">The resource.</param>
-			/// <param name="pass">Indicate the pass index of this precompiling pass.</param>
-			/// <param name="resolver">The path resolver. This is only for delay load resource.</param>
+			/// <param name="resource">The resource to precompile.</param>
+			/// <param name="context">The context for precompiling.</param>
 			/// <param name="errors">All collected errors during loading a resource.</param>
-			virtual void										Precompile(Ptr<DescriptableObject> resource, GuiResource* rootResource, vint passIndex, Ptr<GuiResourcePathResolver> resolver, collections::List<WString>& errors) = 0;
+			virtual void										Precompile(Ptr<GuiResourceItem> resource, GuiResourcePrecompileContext& context, collections::List<WString>& errors) = 0;
+		};
+
+		/// <summary>
+		///		Represents a precompiler for resources of a specified type.
+		///		Current resources that needs precompiling:
+		///			Pass 0: Script		(initialize view model scripts)
+		///			Pass 1: Script		(initialize shared scripts)
+		///			Pass 3: Script		(initialize instance scripts)
+		/// </summary>
+		class IGuiResourceTypeResolver_Initialize : public virtual IDescriptable, public Description<IGuiResourceTypeResolver_Precompile>
+		{
+		public:
+			/// <summary>Get the maximum pass index that the initializer needs.</summary>
+			/// <returns>Returns the maximum pass index. The initializer doesn't not need to response to every pass.</returns>
+			virtual vint										GetMaxPassIndex() = 0;
+			/// <summary>Initialize the resource item.</summary>
+			/// <param name="resource">The resource to initializer.</param>
+			/// <param name="context">The context for initializing.</param>
+			/// <param name="errors">All collected errors during loading a resource.</param>
+			virtual void										Initialize(Ptr<GuiResourceItem> resource, GuiResourcePrecompileContext& context) = 0;
 		};
 
 		/// <summary>Represents a symbol type for loading a resource without a preload type.</summary>
@@ -3690,8 +3716,7 @@ Resource Type Resolver
 			/// <summary>Serialize a resource to an xml element. This function is called if this type resolver does not have a preload type.</summary>
 			/// <returns>The serialized xml element.</returns>
 			/// <param name="resource">The resource.</param>
-			/// <param name="serializePrecompiledResource">Set to true to serialize the precompiled version of the resource.</param>
-			virtual Ptr<parsing::xml::XmlElement>				Serialize(Ptr<DescriptableObject> resource, bool serializePrecompiledResource) = 0;
+			virtual Ptr<parsing::xml::XmlElement>				Serialize(Ptr<DescriptableObject> resource) = 0;
 
 			/// <summary>Load a resource for a type inside an xml element.</summary>
 			/// <returns>The resource.</returns>
@@ -3736,8 +3761,7 @@ Resource Type Resolver
 			/// <summary>Serialize a resource to a resource in preload type.</summary>
 			/// <returns>The serialized resource.</returns>
 			/// <param name="resource">The resource.</param>
-			/// <param name="serializePrecompiledResource">Set to true to serialize the precompiled version of the resource.</param>
-			virtual Ptr<DescriptableObject>						Serialize(Ptr<DescriptableObject> resource, bool serializePrecompiledResource) = 0;
+			virtual Ptr<DescriptableObject>						Serialize(Ptr<DescriptableObject> resource) = 0;
 
 			/// <summary>Load a resource for a type from a resource loaded by the preload type resolver.</summary>
 			/// <returns>The resource.</returns>
@@ -3774,14 +3798,9 @@ Resource Resolver Manager
 			/// <summary>Get the maximum precompiling pass index.</summary>
 			/// <returns>The maximum precompiling pass index.</returns>
 			virtual vint										GetMaxPrecompilePassIndex() = 0;
-			/// <summary>Get the <see cref="IGuiResourceCacheResolver"/> for a cache type.</summary>
-			/// <returns>The resolver.</returns>
-			/// <param name="type">The cache type.</param>
-			virtual IGuiResourceCacheResolver*					GetCacheResolver(GlobalStringKey cacheTypeName) = 0;
-			/// <summary>Set the <see cref="IGuiResourceCacheResolver"/> for a cache type.</summary>
-			/// <returns>Returns true if this operation succeeded.</returns>
-			/// <param name="resolver">The resolver.</param>
-			virtual bool										SetCacheResolver(Ptr<IGuiResourceCacheResolver> cacheResolver) = 0;
+			/// <summary>Get the maximum initializing pass index.</summary>
+			/// <returns>The maximum initializing pass index.</returns>
+			virtual vint										GetMaxInitializePassIndex() = 0;
 		};
 		
 		extern IGuiResourceResolverManager*						GetResourceResolverManager();
@@ -8150,6 +8169,11 @@ Basic Construction
 				/// <returns>Returns true if this operation succeeded.</returns>
 				/// <param name="component">The component to add.</param>
 				bool											AddComponent(GuiComponent* component);
+
+				/// <summary>Add a control host as a component. When this control host is disposing, all attached components will be deleted.</summary>
+				/// <returns>Returns true if this operation succeeded.</returns>
+				/// <param name="component">The controlHost to add.</param>
+				bool											AddControlHostComponent(GuiControlHost* controlHost);
 				/// <summary>Remove a component.</summary>
 				/// <returns>Returns true if this operation succeeded.</returns>
 				/// <param name="component">The component to remove.</param>
@@ -13045,7 +13069,8 @@ ComboBox Base
 
 				Ptr<CommandExecutor>						commandExecutor;
 				IStyleController*							styleController;
-
+				
+				bool										IsAltAvailable()override;
 				IGuiMenuService::Direction					GetSubMenuDirection()override;
 				virtual void								SelectItem();
 				void										OnBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
@@ -17149,6 +17174,10 @@ Toolstrip Component
 				/// <summary>Get the toolstrip sub menu. If the sub menu is not created, it returns null.</summary>
 				/// <returns>The toolstrip sub menu.</returns>
 				GuiToolstripMenu*								GetToolstripSubMenu();
+
+				/// <summary>Get the toolstrip sub menu. If the sub menu is not created, it returns null.</summary>
+				/// <returns>The toolstrip sub menu.</returns>
+				GuiToolstripMenu*								EnsureToolstripSubMenu();
 				/// <summary>Create the toolstrip sub menu if necessary. The created toolstrip sub menu is owned by this menu button.</summary>
 				/// <param name="subMenuStyleController">The style controller for the toolstrip sub menu. If this argument is null, it will call <see cref="IStyleController::CreateSubMenuStyleController"/> for a style controller.</param>
 				void											CreateToolstripSubMenu(GuiToolstripMenu::IStyleController* subMenuStyleController=0);
@@ -21283,55 +21312,6 @@ Interfaces:
 #endif
 
 /***********************************************************************
-GACUI.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-GacUI Header Files and Common Namespaces
-
-Global Objects:
-	vl::reflection::description::					GetGlobalTypeManager
-	vl::presentation::								GetParserManager
-	vl::presentation::								GetResourceResolverManager
-	vl::presentation::								GetCurrentController
-	vl::presentation::								GetInstanceLoaderManager
-	vl::presentation::elements::					GetGuiGraphicsResourceManager
-	vl::presentation::controls::					GetApplication
-	vl::presentation::controls::					GetPluginManager
-	vl::presentation::theme::						GetCurrentTheme
-
-	vl::presentation::windows::						GetDirect2DFactory
-	vl::presentation::windows::						GetDirectWriteFactory
-	vl::presentation::elements_windows_gdi::		GetWindowsGDIResourceManager
-	vl::presentation::elements_windows_gdi::		GetWindowsGDIObjectProvider
-	vl::presentation::elements_windows_d2d::		GetWindowsDirect2DResourceManager
-	vl::presentation::elements_windows_d2d::		GetWindowsDirect2DObjectProvider
-***********************************************************************/
-
-#ifndef VCZH_PRESENTATION_GACUI
-#define VCZH_PRESENTATION_GACUI
-
-
-#if !defined(__APPLE__) && !defined(__APPLE_CC__) && !defined(GAC_HEADER_USE_NAMESPACE)
- 
-using namespace vl;
-using namespace vl::presentation;
-using namespace vl::presentation::elements;
-using namespace vl::presentation::compositions;
-using namespace vl::presentation::controls;
-using namespace vl::presentation::theme;
-using namespace vl::presentation::templates;
-
-#endif
-
-extern int SetupWindowsGDIRenderer();
-extern int SetupWindowsDirect2DRenderer();
-extern int SetupOSXCoreGraphicsRenderer();
-
-#endif
-
-/***********************************************************************
 CONTROLS\TEXTEDITORPACKAGE\LANGUAGESERVICE\GUILANGUAGECOLORIZER.H
 ***********************************************************************/
 /***********************************************************************
@@ -22474,5 +22454,54 @@ Parser Manager
 		}
 	}
 }
+
+#endif
+
+/***********************************************************************
+GACUI.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI Header Files and Common Namespaces
+
+Global Objects:
+	vl::reflection::description::					GetGlobalTypeManager
+	vl::presentation::								GetParserManager
+	vl::presentation::								GetResourceResolverManager
+	vl::presentation::								GetCurrentController
+	vl::presentation::								GetInstanceLoaderManager
+	vl::presentation::elements::					GetGuiGraphicsResourceManager
+	vl::presentation::controls::					GetApplication
+	vl::presentation::controls::					GetPluginManager
+	vl::presentation::theme::						GetCurrentTheme
+
+	vl::presentation::windows::						GetDirect2DFactory
+	vl::presentation::windows::						GetDirectWriteFactory
+	vl::presentation::elements_windows_gdi::		GetWindowsGDIResourceManager
+	vl::presentation::elements_windows_gdi::		GetWindowsGDIObjectProvider
+	vl::presentation::elements_windows_d2d::		GetWindowsDirect2DResourceManager
+	vl::presentation::elements_windows_d2d::		GetWindowsDirect2DObjectProvider
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_GACUI
+#define VCZH_PRESENTATION_GACUI
+
+
+#if !defined(__APPLE__) && !defined(__APPLE_CC__) && !defined(GAC_HEADER_USE_NAMESPACE)
+
+using namespace vl;
+using namespace vl::presentation;
+using namespace vl::presentation::elements;
+using namespace vl::presentation::compositions;
+using namespace vl::presentation::controls;
+using namespace vl::presentation::theme;
+using namespace vl::presentation::templates;
+
+#endif
+
+extern int SetupWindowsGDIRenderer();
+extern int SetupWindowsDirect2DRenderer();
+extern int SetupOSXCoreGraphicsRenderer();
 
 #endif
