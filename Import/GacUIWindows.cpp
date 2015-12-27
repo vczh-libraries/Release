@@ -1723,7 +1723,6 @@ NATIVEWINDOW\WINDOWS\DIRECT2D\WINDIRECT2DAPPLICATION.CPP
 #pragma comment(lib, "dwrite.lib")
 #pragma comment(lib, "d3d11.lib")
 
-#include <d3d11_1.h>
 
 namespace vl
 {
@@ -2173,6 +2172,11 @@ ControllerListener
 			IDWriteFactory* GetDirectWriteFactory()
 			{
 				return direct2DListener->dwrite.Obj();
+			}
+
+			ID3D11Device* GetD3D11Device()
+			{
+				return direct2DListener->d3d11Device.Obj();
 			}
 		}
 
