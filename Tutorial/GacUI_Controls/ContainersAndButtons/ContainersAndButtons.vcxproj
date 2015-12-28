@@ -87,9 +87,6 @@
     <Xml Include="UI\Resource.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="UI\Codegen.bat" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="UI\Source\Demo.h" />
     <ClInclude Include="UI\Source\DemoPartialClasses.h" />
   </ItemGroup>

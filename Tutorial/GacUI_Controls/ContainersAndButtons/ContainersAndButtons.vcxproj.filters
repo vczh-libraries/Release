@@ -31,11 +31,6 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <None Include="UI\Codegen.bat">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="UI\Source\DemoPartialClasses.h">
       <Filter>UI</Filter>
     </ClInclude>

@@ -23,3 +23,8 @@ pushd RichTextEmbedding\UI
 call Codegen.bat
 popd
 popd
+pushd GacUI_Controls
+pushd ContainersAndButtons\UI
+call Codegen.bat
+popd
+popd

@@ -14,9 +14,166 @@
   </Folder>
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
-      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
+      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow" xmlns:x="presentation::controls::GuiSelectableButton::*">
         <Window Text="ContainersAndButtons" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <x:MutexGroupController ref.Name="radioGroup"/>
+
+          <Tab>
+            <att.BoundsComposition-set AlignmentToParent="left:3 top:3 right:3 bottom:3"/>
+
+            <TabPage Text="GroupBox">
+              <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
+                <att.Rows>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                </att.Rows>
+                <att.Columns>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                </att.Columns>
+
+                <Cell Site="row:0 column:0">
+                  <GroupBox Text="Button">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+
+                    <Stack AlignmentToParent="left:5 top:5 right:5 bottom:5" Padding="5" Direction="Vertical">
+                      <StackItem>
+                        <Button Text="Button 1">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </Button>
+                      </StackItem>
+                      <StackItem>
+                        <Button Text="Button 2">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </Button>
+                      </StackItem>
+                      <StackItem>
+                        <Button Text="Button 3">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </Button>
+                      </StackItem>
+                    </Stack>
+                  </GroupBox>
+                </Cell>
+
+                <Cell Site="row:0 column:1">
+                  <GroupBox Text="CheckBox">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+
+                    <Stack AlignmentToParent="left:5 top:5 right:5 bottom:5" Padding="5" Direction="Vertical">
+                      <StackItem>
+                        <CheckBox Text="Button 1">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </CheckBox>
+                      </StackItem>
+                      <StackItem>
+                        <CheckBox Text="Button 2">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </CheckBox>
+                      </StackItem>
+                      <StackItem>
+                        <CheckBox Text="Button 3">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </CheckBox>
+                      </StackItem>
+                    </Stack>
+                  </GroupBox>
+                </Cell>
+
+                <Cell Site="row:0 column:2">
+                  <GroupBox Text="RadioButton">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+
+                    <Stack AlignmentToParent="left:5 top:5 right:5 bottom:5" Padding="5" Direction="Vertical">
+                      <StackItem>
+                        <RadioButton Text="Button 1" GroupController-ref="radioGroup" Selected="true">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </RadioButton>
+                      </StackItem>
+                      <StackItem>
+                        <RadioButton Text="Button 2" GroupController-ref="radioGroup">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </RadioButton>
+                      </StackItem>
+                      <StackItem>
+                        <RadioButton Text="Button 3" GroupController-ref="radioGroup">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </RadioButton>
+                      </StackItem>
+                    </Stack>
+                  </GroupBox>
+                </Cell>
+              </Table>
+            </TabPage>
+
+            <TabPage Text="ScrollContainer">
+              <ScrollContainer HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
+
+                <Table CellPadding="10">
+                  <att.Rows>
+                    <CellOption>composeType:MinSize</CellOption>
+                    <CellOption>composeType:MinSize</CellOption>
+                    <CellOption>composeType:MinSize</CellOption>
+                  </att.Rows>
+                  <att.Columns>
+                    <CellOption>composeType:MinSize</CellOption>
+                    <CellOption>composeType:MinSize</CellOption>
+                    <CellOption>composeType:MinSize</CellOption>
+                  </att.Columns>
+
+                  <Cell Site="row:0 column:0">
+                    <Button Text="(0, 0)">
+                      <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
+                    </Button>
+                  </Cell>
+                  <Cell Site="row:0 column:1">
+                    <Button Text="(0, 1)">
+                      <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
+                    </Button>
+                  </Cell>
+                  <Cell Site="row:0 column:2">
+                    <Button Text="(0, 0)">
+                      <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
+                    </Button>
+                  </Cell>
+
+                  <Cell Site="row:1 column:0">
+                    <Button Text="(1, 0)">
+                      <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
+                    </Button>
+                  </Cell>
+                  <Cell Site="row:1 column:1">
+                    <Button Text="(1, 1)">
+                      <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
+                    </Button>
+                  </Cell>
+                  <Cell Site="row:1 column:2">
+                    <Button Text="(1, 0)">
+                      <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
+                    </Button>
+                  </Cell>
+
+                  <Cell Site="row:2 column:0">
+                    <Button Text="(2, 0)">
+                      <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
+                    </Button>
+                  </Cell>
+                  <Cell Site="row:2 column:1">
+                    <Button Text="(2, 1)">
+                      <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
+                    </Button>
+                  </Cell>
+                  <Cell Site="row:2 column:2">
+                    <Button Text="(2, 0)">
+                      <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
+                    </Button>
+                  </Cell>
+                </Table>
+              </ScrollContainer>
+            </TabPage>
+          </Tab>
         </Window>
       </Instance>
     </Instance>

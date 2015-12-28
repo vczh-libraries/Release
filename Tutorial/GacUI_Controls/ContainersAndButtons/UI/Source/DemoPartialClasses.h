@@ -23,11 +23,13 @@ namespace demo
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
+		vl::presentation::controls::GuiSelectableButton::MutexGroupController* radioGroup;
 
 		void InitializeComponents()
 		{
 			if (InitializeFromResource())
 			{
+				GUI_INSTANCE_REFERENCE(radioGroup);
 			}
 			else
 			{
@@ -37,6 +39,7 @@ namespace demo
 		MainWindow_()
 			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
 			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,radioGroup(0)
 		{
 		}
 	};
