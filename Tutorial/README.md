@@ -16,28 +16,19 @@ GacUI tutorials and the plan
     * **RichTextEmbedding**: Document layout, that placing controls in a rich text document.
 * GacUI_Controls
     * **ContainersAndButtons**: Using container controls and button controls.
-    * **Toolstrip**:
-    * **TextList**:
-    * **ListView**:
-    * **TreeView**:
-    * **DataGrid**:
-    * **TextEditor**:
-    * **RichTextEditor**:
-    * **Misc**:
-* GacUI_DataBinding
-    * **Calculator**:
-    * **TextList**:
-    * **ListView**:
-    * **TreeView**:
-    * **DataGrid**:
-* GacUI_ItemTemplate
-    * **TextList**:
-    * **ListView**:
-    * **TreeView**:
-    * **DataGrid**:
+    * **Toolstrip**: Using menus, context menus and toolbars. (developing)
+    * **TextList**: Using text list control with direct assign, data binding and item template. (developing)
+    * **ListView**: Using list view control with direct assign, data binding and item template. (developing)
+    * **TreeView**: Using tree view control with direct assign, data binding and item template. (developing)
+    * **DataGrid**: Using data grid control with direct assign, data binding and item template. (developing)
+    * **TextEditor**: Implementing a text editor that handle plain text, XML and JSON. (developing)
+    * **RichTextEditor**: Implementing a rich text editor. (developing)
+    * **Misc**: Using other controls. (developing)
 * GacUI_ControlTemplate
     * **BlackSkin**:
 * GacUI_XmlResource
+    * **MultipleWindow**
+    * **CustomControl**
     * **Event**:
     * **ViewModel**:
     * **Bindings**:
