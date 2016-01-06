@@ -1535,6 +1535,13 @@ GuiDialogBase
 							return dynamic_cast<GuiWindow*>(host);
 						}
 					}
+					else if (auto composition = dynamic_cast<GuiGraphicsComposition*>(rootObject))
+					{
+						if (auto host = composition->GetRelatedControlHost())
+						{
+							return dynamic_cast<GuiWindow*>(host);
+						}
+					}
 				}
 				return nullptr;
 			}
@@ -4409,7 +4416,6 @@ GuiPopup
 				INativeWindow* window=GetNativeWindow();
 				if(window)
 				{
-					Size size=window->GetBounds().GetSize();
 					Rect bounds(Point(0, 0), control->GetBoundsComposition()->GetBounds().GetSize());
 					ShowPopup(control, bounds, preferredTopBottomSide);
 				}
@@ -33665,6 +33671,12 @@ GuiFlowComposition
 				alignment = value;
 				needUpdate = true;
 			}
+
+			void GuiFlowComposition::ForceCalculateSizeImmediately()
+			{
+				GuiBoundsComposition::ForceCalculateSizeImmediately();
+				UpdateFlowItemBounds(true);
+			}
 			
 			Size GuiFlowComposition::GetMinPreferredClientSize()
 			{
@@ -34178,6 +34190,12 @@ GuiStackComposition
 			{
 				padding = value;
 				EnsureStackItemVisible();
+			}
+
+			void GuiStackComposition::ForceCalculateSizeImmediately()
+			{
+				GuiBoundsComposition::ForceCalculateSizeImmediately();
+				UpdateStackItemBounds();
 			}
 			
 			Size GuiStackComposition::GetMinPreferredClientSize()
