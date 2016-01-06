@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="UI\Source\DemoPartialClasses.cpp" />
+    <ClCompile Include="UI\Source\MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Lib\GacUI\GacUI.vcxproj">
@@ -95,6 +96,7 @@
   <ItemGroup>
     <ClInclude Include="UI\Source\Demo.h" />
     <ClInclude Include="UI\Source\DemoPartialClasses.h" />
+    <ClInclude Include="UI\Source\MainWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="UI\Images\EditCopy.png" />

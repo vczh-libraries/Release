@@ -23,6 +23,7 @@ namespace demo
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
+		vl::presentation::controls::GuiToolstripCommand* commandAbout;
 		vl::presentation::controls::GuiToolstripCommand* commandEditCopy;
 		vl::presentation::controls::GuiToolstripCommand* commandEditCut;
 		vl::presentation::controls::GuiToolstripCommand* commandEditDelete;
@@ -44,6 +45,7 @@ namespace demo
 		{
 			if (InitializeFromResource())
 			{
+				GUI_INSTANCE_REFERENCE(commandAbout);
 				GUI_INSTANCE_REFERENCE(commandEditCopy);
 				GUI_INSTANCE_REFERENCE(commandEditCut);
 				GUI_INSTANCE_REFERENCE(commandEditDelete);
@@ -69,6 +71,7 @@ namespace demo
 		MainWindow_()
 			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
 			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,commandAbout(0)
 			,commandEditCopy(0)
 			,commandEditCut(0)
 			,commandEditDelete(0)
@@ -101,37 +104,5 @@ namespace vl
 		}
 	}
 }
-namespace demo
-{
-	class MainWindow : public demo::MainWindow_<demo::MainWindow>
-	{
-		friend class demo::MainWindow_<demo::MainWindow>;
-		friend struct vl::reflection::description::CustomTypeDescriptorSelector<demo::MainWindow>;
-	protected:
-
-		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
-		void commandEditCopy_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditCut_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditDelete_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditFind_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditPaste_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditRedo_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditSelect_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditUndo_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileExit_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileNewText_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileNewXml_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileOpenText_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileOpenXml_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileOpen_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileSave_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
-	public:
-		MainWindow();
-		~MainWindow();
-	};
-}
-
-
 
 #endif

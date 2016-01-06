@@ -10,84 +10,6 @@ DO NOT MODIFY
 
 #include "Demo.h"
 
-namespace demo
-{
-	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
-
-	void MainWindow::commandEditCopy_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandEditCut_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandEditDelete_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandEditFind_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandEditPaste_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandEditRedo_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandEditSelect_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandEditUndo_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandFileExit_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandFileNewText_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandFileNewXml_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandFileOpenText_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandFileOpenXml_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandFileOpen_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandFileSave_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
-
-	MainWindow::MainWindow()
-	{
-		InitializeComponents();
-	}
-
-	MainWindow::~MainWindow()
-	{
-		ClearSubscriptions();
-	}
-}
-
-
 namespace vl
 {
 	namespace reflection
@@ -101,6 +23,7 @@ namespace vl
 				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(), NO_PARAMETER)
 
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandAbout_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandEditCopy_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandEditCut_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandEditDelete_Executed, vl::presentation::compositions::GuiEventArgs)
