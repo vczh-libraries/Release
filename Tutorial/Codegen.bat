@@ -27,4 +27,7 @@ pushd GacUI_Controls
 pushd ContainersAndButtons\UI
 call Codegen.bat
 popd
+pushd TextEditor\UI
+call Codegen.bat
+popd
 popd
