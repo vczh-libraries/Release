@@ -16,6 +16,9 @@
     <Filter Include="UI">
       <UniqueIdentifier>{da083a3e-40d5-4084-9b00-ea95886358e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Images">
+      <UniqueIdentifier>{08c7de64-704d-4f99-8f25-512fdc4620ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -29,6 +32,9 @@
     <Xml Include="UI\Resource.xml">
       <Filter>Resource Files</Filter>
     </Xml>
+    <Xml Include="UI\Images\Folder.xml">
+      <Filter>Resource Files\Images</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI\Source\DemoPartialClasses.h">
@@ -37,5 +43,43 @@
     <ClInclude Include="UI\Source\Demo.h">
       <Filter>UI</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="UI\Images\EditCopy.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\EditCut.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\EditDelete.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\EditFind.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\EditPaste.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\EditRedo.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\EditUndo.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\New.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\NewText.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\NewXml.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\Open.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="UI\Images\Save.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
   </ItemGroup>
 </Project>
