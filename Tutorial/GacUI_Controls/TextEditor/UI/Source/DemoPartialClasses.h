@@ -39,6 +39,11 @@ namespace demo
 		vl::presentation::controls::GuiToolstripCommand* commandFileOpenText;
 		vl::presentation::controls::GuiToolstripCommand* commandFileOpenXml;
 		vl::presentation::controls::GuiToolstripCommand* commandFileSave;
+		vl::presentation::controls::GuiToolstripCommand* commandFileSaveAs;
+		vl::presentation::controls::GuiOpenFileDialog* dialogOpen;
+		vl::presentation::controls::GuiMessageDialog* dialogQueryClose;
+		vl::presentation::controls::GuiSaveFileDialog* dialogSave;
+		vl::presentation::controls::GuiWindow* self;
 		vl::presentation::controls::GuiMultilineTextBox* textBox;
 
 		void InitializeComponents()
@@ -61,6 +66,11 @@ namespace demo
 				GUI_INSTANCE_REFERENCE(commandFileOpenText);
 				GUI_INSTANCE_REFERENCE(commandFileOpenXml);
 				GUI_INSTANCE_REFERENCE(commandFileSave);
+				GUI_INSTANCE_REFERENCE(commandFileSaveAs);
+				GUI_INSTANCE_REFERENCE(dialogOpen);
+				GUI_INSTANCE_REFERENCE(dialogQueryClose);
+				GUI_INSTANCE_REFERENCE(dialogSave);
+				GUI_INSTANCE_REFERENCE(self);
 				GUI_INSTANCE_REFERENCE(textBox);
 			}
 			else
@@ -87,6 +97,11 @@ namespace demo
 			,commandFileOpenText(0)
 			,commandFileOpenXml(0)
 			,commandFileSave(0)
+			,commandFileSaveAs(0)
+			,dialogOpen(0)
+			,dialogQueryClose(0)
+			,dialogSave(0)
+			,self(0)
 			,textBox(0)
 		{
 		}

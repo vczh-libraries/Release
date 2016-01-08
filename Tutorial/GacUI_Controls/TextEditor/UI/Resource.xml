@@ -16,7 +16,7 @@
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
-        <Window Text="TextEditor" ClientSize="x:480 y:320">
+        <Window ref.Name="self" Text="TextEditor" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
 
           <ToolstripCommand ref.Name="commandFileNewText" Text="Text File" Image-uri="res://Images/NewText.png">
@@ -34,8 +34,11 @@
           <ToolstripCommand ref.Name="commandFileOpenXml" Text="Xml File ..." Image-uri="res://Images/NewXml.png">
             <ev.Executed>commandFileOpenXml_Executed</ev.Executed>
           </ToolstripCommand>
-          <ToolstripCommand ref.Name="commandFileSave" Text="Save ..." Image-uri="res://Images/Save.png" ShortcutBuilder="Ctrl+S">
+          <ToolstripCommand ref.Name="commandFileSave" Text="Save" Image-uri="res://Images/Save.png" ShortcutBuilder="Ctrl+S">
             <ev.Executed>commandFileSave_Executed</ev.Executed>
+          </ToolstripCommand>
+          <ToolstripCommand ref.Name="commandFileSaveAs" Text="Save As ..." Image-uri="res://Images/SaveAs.png">
+            <ev.Executed>commandFileSaveAs_Executed</ev.Executed>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandFileExit" Text="Exit">
             <ev.Executed>commandFileExit_Executed</ev.Executed>
@@ -69,6 +72,27 @@
           <ToolstripCommand ref.Name="commandAbout" Text="About TextEditor ...">
             <ev.Executed>commandAbout_Executed</ev.Executed>
           </ToolstripCommand>
+          
+          <MessageDialog ref.Name="dialogQueryClose"
+                         Input="DisplayYesNoCancel"
+                         Icon="IconQuestion"
+                         Title-eval="self.Text"
+                         Text="Do you want to save the file before closing this application?"
+          />
+          
+          <OpenFileDialog ref.Name="dialogOpen"
+                          Filter="Text Files (*.txt)|*.txt|XML Files (*.xml)|*.xml|All Files (*.*)|*.*"
+                          Title-eval="self.Text"
+                          DefaultExtension="txt"
+                          Options="FileDialogFileMustExist|FileDialogDereferenceLinks"
+          />
+          
+          <SaveFileDialog ref.Name="dialogSave"
+                          Filter="Text Files (*.txt)|*.txt|XML Files (*.xml)|*.xml|All Files (*.*)|*.*"
+                          Title-eval="self.Text"
+                          DefaultExtension="txt"
+                          Options="FileDialogPromptCreateFile|FileDialogPromptOverwriteFile|FileDialogDirectoryMustExist|FileDialogAddToRecent"
+          />
 
           <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
@@ -93,6 +117,7 @@
                     </MenuItemButton>
                     <MenuItemButton Command-ref="commandFileOpen" Alt="O"/>
                     <MenuItemButton Command-ref="commandFileSave" Alt="S"/>
+                    <MenuItemButton Command-ref="commandFileSaveAs" Alt="A"/>
                     <MenuSplitter/>
                     <MenuItemButton Command-ref="commandFileExit" Alt="X"/>
                   </att.SubMenu-set>
@@ -136,6 +161,7 @@
                   </att.SubMenu-set>
                 </ToolstripSplitButton>
                 <ToolstripButton Command-ref="commandFileSave" Alt="S"/>
+                <ToolstripButton Command-ref="commandFileSaveAs" Alt="A"/>
                 <ToolstripSplitter/>
                 <ToolstripButton Command-ref="commandEditUndo" Alt="U"/>
                 <ToolstripButton Command-ref="commandEditRedo" Alt="R"/>

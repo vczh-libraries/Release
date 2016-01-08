@@ -87,5 +87,8 @@
     <Image Include="UI\Images\Save.png">
       <Filter>Resource Files\Images</Filter>
     </Image>
+    <Image Include="UI\Images\SaveAs.png">
+      <Filter>Resource Files\Images</Filter>
+    </Image>
   </ItemGroup>
 </Project>

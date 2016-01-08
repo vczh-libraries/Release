@@ -111,6 +111,7 @@
     <Image Include="UI\Images\NewXml.png" />
     <Image Include="UI\Images\Open.png" />
     <Image Include="UI\Images\Save.png" />
+    <Image Include="UI\Images\SaveAs.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

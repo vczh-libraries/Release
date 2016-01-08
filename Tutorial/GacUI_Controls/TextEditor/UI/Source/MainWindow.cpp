@@ -72,6 +72,10 @@ namespace demo
 	{
 	}
 
+	void MainWindow::commandFileSaveAs_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
 	void MainWindow::commandFileSave_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 	}
@@ -88,4 +92,3 @@ namespace demo
 		ClearSubscriptions();
 	}
 }
-

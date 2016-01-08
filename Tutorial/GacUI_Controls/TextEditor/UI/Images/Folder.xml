@@ -5,6 +5,7 @@
   <Image content="File">NewXml.png</Image>
   <Image content="File">Open.png</Image>
   <Image content="File">Save.png</Image>
+  <Image content="File">SaveAs.png</Image>
   <Image content="File">EditCopy.png</Image>
   <Image content="File">EditCut.png</Image>
   <Image content="File">EditDelete.png</Image>

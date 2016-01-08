@@ -38,6 +38,7 @@ namespace vl
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandFileOpenText_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandFileOpenXml_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandFileOpen_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandFileSaveAs_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandFileSave_Executed, vl::presentation::compositions::GuiEventArgs)
 			END_CLASS_MEMBER(demo::MainWindow)
 
