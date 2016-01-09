@@ -12,6 +12,78 @@ using namespace vl::stream;
 
 namespace demo
 {
+	class XmlColorizer : public GuiTextBoxRegexColorizer
+	{
+	public:
+		XmlColorizer()
+		{
+			text::ColorEntry entry=GetCurrentTheme()->GetDefaultTextBoxColorEntry();
+			SetDefaultColor(entry);
+
+			entry.normal.text=Color(0, 128, 0);
+			AddToken(L"/<!--([^/-]|-[^/-]|--[^>])*--/>", entry);
+
+			entry.normal.text=Color(128, 0, 255);
+			AddToken(L"/<!/[CDATA/[([^/]]|/][^/]]|/]/][^>])*/]/]/>", entry);
+
+			entry.normal.text=Color(0, 0, 0);
+			AddToken(L"\"[^\"]*\"", entry);
+
+			entry.normal.text=Color(0, 0, 255);
+			AddToken(L"[<>=]", entry);
+
+			entry.normal.text=Color(255, 0, 0);
+			AddToken(L"[a-zA-Z0-9_/-:]+", entry);
+
+			entry.normal.text=Color(163, 21, 21);
+			AddExtraToken(entry);
+
+			Setup();
+		}
+
+		void ColorizeTokenContextSensitive(int lineIndex, const wchar_t* text, vint start, vint length, vint& token, int& contextState)override
+		{
+			// 0 < 1 name 2 att > 0
+			switch(token)
+			{
+			case 3:
+				if(length==1)
+				{
+					switch(text[start])
+					{
+					case '<':
+						contextState=1;
+						break;
+					case '>':
+						contextState=0;
+						break;
+					}
+				}
+				break;
+			case 4:
+				switch(contextState)
+				{
+				case 0:
+					token=-1;
+					break;
+				case 1:
+					token=5;
+					contextState=2;
+					break;
+				}
+				break;
+			}
+		}
+
+		vint GetContextStartState()override
+		{
+			return 0;
+		}
+	};
+}
+
+namespace demo
+{
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
 	void MainWindow::commandAbout_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
@@ -134,7 +206,9 @@ namespace demo
 					textBox->Select(TextPos(), TextPos());
 					textBox->SetFocus();
 					textBox->ClearUndoRedo();
-					if (dialogOpen->GetFilterIndex() == 1)
+
+					fileName = dialogOpen->GetFileName();
+					if (INVLOC.EndsWith(fileName, L".xml", Locale::IgnoreCase))
 					{
 						SetupXmlConfig();
 					}
@@ -142,7 +216,6 @@ namespace demo
 					{
 						SetupTextConfig();
 					}
-					fileName = dialogOpen->GetFileName();
 				}
 				else
 				{
@@ -154,12 +227,13 @@ namespace demo
 
 	void MainWindow::SaveFile(bool saveAs)
 	{
-		if (saveAs || fileName == L"")
+		WString targetFileName = fileName;
+		if (saveAs || targetFileName == L"")
 		{
 			dialogSave->SetFilterIndex(isXml ? 1 : 0);
 			if (dialogSave->ShowDialog())
 			{
-				fileName = dialogSave->GetFileName();
+				targetFileName = dialogSave->GetFileName();
 			}
 			else
 			{
@@ -167,7 +241,7 @@ namespace demo
 			}
 		}
 
-		FileStream fileStream(fileName, FileStream::WriteOnly);
+		FileStream fileStream(targetFileName, FileStream::WriteOnly);
 		if (fileStream.IsAvailable())
 		{
 			BomEncoder encoder(BomEncoder::Utf16);
@@ -176,6 +250,15 @@ namespace demo
 			writer.WriteString(textBox->GetText());
 			textBox->NotifyModificationSaved();
 
+			fileName = targetFileName;
+			if (INVLOC.EndsWith(fileName, L".xml", Locale::IgnoreCase))
+			{
+				SetupXmlConfig();
+			}
+			else
+			{
+				SetupTextConfig();
+			}
 		}
 		else
 		{
@@ -185,12 +268,20 @@ namespace demo
 
 	void MainWindow::SetupTextConfig()
 	{
-		isXml = false;
+		if (isXml == true)
+		{
+			isXml = false;
+			textBox->SetColorizer(nullptr);
+		}
 	}
 
 	void MainWindow::SetupXmlConfig()
 	{
-		isXml = true;
+		if (isXml == false)
+		{
+			isXml = true;
+			textBox->SetColorizer(new XmlColorizer);
+		}
 	}
 
 	MainWindow::MainWindow()

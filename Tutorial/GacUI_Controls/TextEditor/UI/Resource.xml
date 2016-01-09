@@ -45,21 +45,27 @@
           </ToolstripCommand>
 
           <ToolstripCommand ref.Name="commandEditUndo" Text="Undo" Image-uri="res://Images/EditUndo.png" ShortcutBuilder="Ctrl+Z">
+            <att.Enabled-bind>textBox.observe as _(_.CanUndo() on _.SelectionChanged)</att.Enabled-bind>
             <ev.Executed>commandEditUndo_Executed</ev.Executed>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandEditRedo" Text="Redo" Image-uri="res://Images/EditRedo.png" ShortcutBuilder="Ctrl+Y">
+            <att.Enabled-bind>textBox.observe as _(_.CanRedo() on _.SelectionChanged)</att.Enabled-bind>
             <ev.Executed>commandEditRedo_Executed</ev.Executed>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandEditCut" Text="Cut" Image-uri="res://Images/EditCut.png" ShortcutBuilder="Ctrl+X">
+            <att.Enabled-bind>textBox.observe as _(_.CanCut() on _.SelectionChanged)</att.Enabled-bind>
             <ev.Executed>commandEditCut_Executed</ev.Executed>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandEditCopy" Text="Copy" Image-uri="res://Images/EditCopy.png" ShortcutBuilder="Ctrl+C">
+            <att.Enabled-bind>textBox.observe as _(_.CanCopy() on _.SelectionChanged)</att.Enabled-bind>
             <ev.Executed>commandEditCopy_Executed</ev.Executed>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandEditPaste" Text="Paste" Image-uri="res://Images/EditPaste.png" ShortcutBuilder="Ctrl+V">
+            <att.Enabled-bind>textBox.observe as _(_.CanPaste() on self.ClipboardUpdated)</att.Enabled-bind>
             <ev.Executed>commandEditPaste_Executed</ev.Executed>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandEditDelete" Text="Delete" Image-uri="res://Images/EditDelete.png">
+            <att.Enabled-bind>textBox.SelectionText != ''</att.Enabled-bind>
             <ev.Executed>commandEditDelete_Executed</ev.Executed>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandEditSelect" Text="Select All" ShortcutBuilder="Ctrl+A">
