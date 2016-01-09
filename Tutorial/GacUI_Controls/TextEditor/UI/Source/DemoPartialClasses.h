@@ -40,6 +40,8 @@ namespace demo
 		vl::presentation::controls::GuiToolstripCommand* commandFileOpenXml;
 		vl::presentation::controls::GuiToolstripCommand* commandFileSave;
 		vl::presentation::controls::GuiToolstripCommand* commandFileSaveAs;
+		vl::presentation::controls::GuiMessageDialog* dialogCannotOpen;
+		vl::presentation::controls::GuiMessageDialog* dialogCannotSave;
 		vl::presentation::controls::GuiOpenFileDialog* dialogOpen;
 		vl::presentation::controls::GuiMessageDialog* dialogQueryClose;
 		vl::presentation::controls::GuiSaveFileDialog* dialogSave;
@@ -67,6 +69,8 @@ namespace demo
 				GUI_INSTANCE_REFERENCE(commandFileOpenXml);
 				GUI_INSTANCE_REFERENCE(commandFileSave);
 				GUI_INSTANCE_REFERENCE(commandFileSaveAs);
+				GUI_INSTANCE_REFERENCE(dialogCannotOpen);
+				GUI_INSTANCE_REFERENCE(dialogCannotSave);
 				GUI_INSTANCE_REFERENCE(dialogOpen);
 				GUI_INSTANCE_REFERENCE(dialogQueryClose);
 				GUI_INSTANCE_REFERENCE(dialogSave);
@@ -98,6 +102,8 @@ namespace demo
 			,commandFileOpenXml(0)
 			,commandFileSave(0)
 			,commandFileSaveAs(0)
+			,dialogCannotOpen(0)
+			,dialogCannotSave(0)
 			,dialogOpen(0)
 			,dialogQueryClose(0)
 			,dialogSave(0)

@@ -77,7 +77,21 @@
                          Input="DisplayYesNoCancel"
                          Icon="IconQuestion"
                          Title-eval="self.Text"
-                         Text="Do you want to save the file before closing this application?"
+                         Text="Do you want to save this file?"
+          />
+          
+          <MessageDialog ref.Name="dialogCannotOpen"
+                         Input="DisplayOK"
+                         Icon="IconError"
+                         Title-eval="self.Text"
+                         Text="Cannot open the selected file."
+          />
+          
+          <MessageDialog ref.Name="dialogCannotSave"
+                         Input="DisplayOK"
+                         Icon="IconError"
+                         Title-eval="self.Text"
+                         Text="Cannot save the selected file."
           />
           
           <OpenFileDialog ref.Name="dialogOpen"

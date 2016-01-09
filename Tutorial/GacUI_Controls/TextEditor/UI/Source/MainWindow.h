@@ -38,6 +38,16 @@ namespace demo
 		void commandFileSaveAs_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
 		void commandFileSave_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
+
+	private:
+		WString					fileName;
+		bool					isXml = false;
+
+		bool					CanCloseFile();
+		void					OpenFile(vint filterIndex);
+		void					SaveFile(bool saveAs);
+		void					SetupTextConfig();
+		void					SetupXmlConfig();
 	public:
 		MainWindow();
 		~MainWindow();
