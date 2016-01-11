@@ -40,6 +40,7 @@ namespace vl
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandFileOpen_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandFileSaveAs_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandFileSave_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(window_Closing, vl::presentation::compositions::GuiRequestEventArgs)
 			END_CLASS_MEMBER(demo::MainWindow)
 
 			#undef _

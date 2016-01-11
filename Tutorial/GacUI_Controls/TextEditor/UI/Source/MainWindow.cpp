@@ -131,10 +131,7 @@ namespace demo
 
 	void MainWindow::commandFileExit_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
-		if (CanCloseFile())
-		{
-			Close();
-		}
+		Close();
 	}
 
 	void MainWindow::commandFileNewText_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
@@ -182,14 +179,34 @@ namespace demo
 		SaveFile(false);
 	}
 
+	void MainWindow::window_Closing(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiRequestEventArgs& arguments)
+	{
+		arguments.cancel = !CanCloseFile();
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	bool MainWindow::CanCloseFile()
 	{
-		return true;
+		if (textBox->GetModified())
+		{
+			switch (dialogQueryClose->ShowDialog())
+			{
+			case INativeDialogService::MessageBoxButtonsOutput::SelectYes:
+				return SaveFile(false);
+			case INativeDialogService::MessageBoxButtonsOutput::SelectNo:
+				return true;
+			default:
+				return false;
+			}
+		}
+		else
+		{
+			return true;
+		}
 	}
 
-	void MainWindow::OpenFile(vint filterIndex)
+	bool MainWindow::OpenFile(vint filterIndex)
 	{
 		if (CanCloseFile())
 		{
@@ -216,6 +233,7 @@ namespace demo
 					{
 						SetupTextConfig();
 					}
+					return true;
 				}
 				else
 				{
@@ -223,9 +241,10 @@ namespace demo
 				}
 			}
 		}
+		return false;
 	}
 
-	void MainWindow::SaveFile(bool saveAs)
+	bool MainWindow::SaveFile(bool saveAs)
 	{
 		WString targetFileName = fileName;
 		if (saveAs || targetFileName == L"")
@@ -237,7 +256,7 @@ namespace demo
 			}
 			else
 			{
-				return;
+				return false;
 			}
 		}
 
@@ -259,11 +278,13 @@ namespace demo
 			{
 				SetupTextConfig();
 			}
+			return true;
 		}
 		else
 		{
 			dialogCannotSave->ShowDialog();
 		}
+		return false;
 	}
 
 	void MainWindow::SetupTextConfig()

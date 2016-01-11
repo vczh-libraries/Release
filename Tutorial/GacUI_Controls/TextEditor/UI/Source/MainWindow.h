@@ -37,6 +37,7 @@ namespace demo
 		void commandFileOpen_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
 		void commandFileSaveAs_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
 		void commandFileSave_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
+		void window_Closing(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiRequestEventArgs& arguments);
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	private:
@@ -44,8 +45,8 @@ namespace demo
 		bool					isXml = false;
 
 		bool					CanCloseFile();
-		void					OpenFile(vint filterIndex);
-		void					SaveFile(bool saveAs);
+		bool					OpenFile(vint filterIndex);
+		bool					SaveFile(bool saveAs);
 		void					SetupTextConfig();
 		void					SetupXmlConfig();
 	public:

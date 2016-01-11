@@ -16,7 +16,7 @@
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
-        <Window ref.Name="self" Text="TextEditor" ClientSize="x:480 y:320">
+        <Window ref.Name="self" Text="TextEditor" ClientSize="x:480 y:320" ev.WindowClosing="window_Closing">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
 
           <ToolstripCommand ref.Name="commandFileNewText" Text="Text File" Image-uri="res://Images/NewText.png">
