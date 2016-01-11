@@ -88,6 +88,9 @@ namespace demo
 
 	void MainWindow::commandAbout_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
+		auto window = new AboutWindow;
+		window->MoveToScreenCenter();
+		window->ShowModalAndDelete(this, [](){});
 	}
 
 	void MainWindow::commandEditCopy_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)

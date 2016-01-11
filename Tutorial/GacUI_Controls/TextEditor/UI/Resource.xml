@@ -13,6 +13,80 @@
     </Folder>
   </Folder>
   <Folder name="Images" content="Link">Images\Folder.xml</Folder>
+  <Folder name="AboutWindow">
+    <Image content="File">..\..\..\GacUI_Layout\RichTextEmbedding\UI\Gaclib.png</Image>
+    <Doc name="Description">
+      <Doc>
+        <Content>
+          <p align="Center">
+            <div style="Title">
+              <b>TextEditor by GacUI</b>
+            </div>
+          </p>
+          <p>
+            <div style="Body">
+              <nop>Welcome to the demo!</nop>
+            </div>
+          </p>
+          <p>
+            <div style="Body">
+              <b>Author: </b>Zihan Chen (vczh)<br/>
+              <b>Website: </b><a href="http://www.gaclib.net">http://www.gaclib.net</a><br/>
+              <b>Github: </b><a href="https://github.com/vczh-libraries/Release">https://github.com/vczh-libraries/Release</a><br/>
+            </div>
+          </p>
+        </Content>
+        <Styles>
+          <Style name="Content">
+            <face>Segoe UI</face>
+          </Style>
+          <Style name="Title" parent="Content">
+            <size>24</size>
+            <b>true</b>
+          </Style>
+          <Style name="Body" parent="Content">
+            <size>14</size>
+          </Style>
+        </Styles>
+      </Doc>
+    </Doc>
+    <Instance name="AboutWindowResource">
+      <Instance ref.CodeBehind="true" ref.Class="demo::AboutWindow">
+        <Window ref.Name="self" Text="About TextEditor" ClientSize="x:480 y:320" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
+
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:1" PreferredMinSize="x:320 y:128">
+              <ImageFrameElement Stretch="true" Image-uri="res://AboutWindow/Gaclib.png"/>
+            </Cell>
+
+            <Cell Site="row:1 column:1">
+              <DocumentLabel ref.Name="documentLabel" Document-uri="res://AboutWindow/Description">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <ev.ActiveHyperlinkExecuted>documentLabel_ActiveHyperlinkExecuted</ev.ActiveHyperlinkExecuted>
+              </DocumentLabel>
+            </Cell>
+
+            <Cell Site="row:2 column:0 columnSpan:3">
+              <Button Text="Close" ev.Clicked-eval="self.Close();">
+                <att.BoundsComposition-set AlignmentToParent="left:-1 top:0 right:0 bottom:0" PreferredMinSize="x:100 y:30"/>
+              </Button>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
@@ -74,39 +148,39 @@
           <ToolstripCommand ref.Name="commandEditFind" Text="Find ..." Image-uri="res://Images/EditFind.png" ShortcutBuilder="Ctrl+F">
             <ev.Executed>commandEditFind_Executed</ev.Executed>
           </ToolstripCommand>
-          
+
           <ToolstripCommand ref.Name="commandAbout" Text="About TextEditor ...">
             <ev.Executed>commandAbout_Executed</ev.Executed>
           </ToolstripCommand>
-          
+
           <MessageDialog ref.Name="dialogQueryClose"
                          Input="DisplayYesNoCancel"
                          Icon="IconQuestion"
                          Title-eval="self.Text"
                          Text="Do you want to save this file?"
           />
-          
+
           <MessageDialog ref.Name="dialogCannotOpen"
                          Input="DisplayOK"
                          Icon="IconError"
                          Title-eval="self.Text"
                          Text="Cannot open the selected file."
           />
-          
+
           <MessageDialog ref.Name="dialogCannotSave"
                          Input="DisplayOK"
                          Icon="IconError"
                          Title-eval="self.Text"
                          Text="Cannot save the selected file."
           />
-          
+
           <OpenFileDialog ref.Name="dialogOpen"
                           Filter="Text Files (*.txt)|*.txt|XML Files (*.xml)|*.xml|All Files (*.*)|*.*"
                           Title-eval="self.Text"
                           DefaultExtension="txt"
                           Options="FileDialogFileMustExist|FileDialogDereferenceLinks"
           />
-          
+
           <SaveFileDialog ref.Name="dialogSave"
                           Filter="Text Files (*.txt)|*.txt|XML Files (*.xml)|*.xml|All Files (*.*)|*.*"
                           Title-eval="self.Text"

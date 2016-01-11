@@ -12,6 +12,7 @@ DO NOT MODIFY
 #define VCZH_GACUI_RESOURCE_CODE_GENERATOR_Demo
 
 #include "DemoPartialClasses.h"
+#include "AboutWindow.h"
 #include "MainWindow.h"
 
 #endif

@@ -15,7 +15,38 @@ DO NOT MODIFY
 
 namespace demo
 {
+	class AboutWindow;
 	class MainWindow;
+
+	template<typename TImpl>
+	class AboutWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	{
+		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
+	private:
+	protected:
+		vl::presentation::controls::GuiDocumentLabel* documentLabel;
+		vl::presentation::controls::GuiWindow* self;
+
+		void InitializeComponents()
+		{
+			if (InitializeFromResource())
+			{
+				GUI_INSTANCE_REFERENCE(documentLabel);
+				GUI_INSTANCE_REFERENCE(self);
+			}
+			else
+			{
+			}
+		}
+	public:
+		AboutWindow_()
+			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::AboutWindow")
+			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,documentLabel(0)
+			,self(0)
+		{
+		}
+	};
 
 	template<typename TImpl>
 	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
@@ -120,6 +151,7 @@ namespace vl
 	{
 		namespace description
 		{
+			DECL_TYPE_INFO(demo::AboutWindow)
 			DECL_TYPE_INFO(demo::MainWindow)
 
 		}
