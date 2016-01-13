@@ -33,6 +33,9 @@
     <ClCompile Include="UI\Source\AboutWindow.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="UI\Source\FindWindow.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\Resource.xml">
@@ -40,6 +43,15 @@
     </Xml>
     <Xml Include="UI\Images\Folder.xml">
       <Filter>Resource Files\Images</Filter>
+    </Xml>
+    <Xml Include="UI\AboutWindow.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="UI\MainWindow.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="UI\FindWindow.xml">
+      <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +65,9 @@
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="UI\Source\AboutWindow.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\FindWindow.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>

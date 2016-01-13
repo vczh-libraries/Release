@@ -16,7 +16,6 @@ GacUI tutorials and the plan
     * **RichTextEmbedding**: Document layout, that placing controls in a rich text document.
 * GacUI_Controls
     * **ContainersAndButtons**: Using container controls and button controls.
-    * **Toolstrip**: Using menus, context menus and toolbars. (developing)
     * **TextList**: Using text list control with direct assign, data binding and item template. (developing)
     * **ListView**: Using list view control with direct assign, data binding and item template. (developing)
     * **TreeView**: Using tree view control with direct assign, data binding and item template. (developing)
@@ -26,6 +25,8 @@ GacUI tutorials and the plan
     * **Misc**: Using other controls. (developing)
 * GacUI_ControlTemplate
     * **BlackSkin**:
+    * **Windows7Skin**:
+    * **Windows8Skin**:
 * GacUI_XmlResource
     * **MultipleWindow**
     * **CustomControl**

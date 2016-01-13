@@ -18,6 +18,7 @@ namespace vl
 		{
 			#define _ ,
 			IMPL_CPP_TYPE_INFO(demo::AboutWindow)
+			IMPL_CPP_TYPE_INFO(demo::FindWindow)
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(demo::AboutWindow)
@@ -26,6 +27,11 @@ namespace vl
 
 				CLASS_MEMBER_GUIEVENT_HANDLER(documentLabel_ActiveHyperlinkExecuted, vl::presentation::compositions::GuiEventArgs)
 			END_CLASS_MEMBER(demo::AboutWindow)
+
+			BEGIN_CLASS_MEMBER(demo::FindWindow)
+				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_CONSTRUCTOR(demo::FindWindow*(), NO_PARAMETER)
+			END_CLASS_MEMBER(demo::FindWindow)
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
 				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
@@ -59,6 +65,7 @@ namespace vl
 				void Load(ITypeManager* manager)
 				{
 					ADD_TYPE_INFO(demo::AboutWindow)
+					ADD_TYPE_INFO(demo::FindWindow)
 					ADD_TYPE_INFO(demo::MainWindow)
 				}
 

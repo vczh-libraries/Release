@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Instance ref.CodeBehind="true" ref.Class="demo::FindWindow">
+  <Window ref.Name="self" Text="Find" ClientSize="x:240 y:100" MinimizedBox="false" MaximizedBox="false">
+    <att.BoundsComposition-set PreferredMinSize="x:240 y:100"/>
+  </Window>
+</Instance>

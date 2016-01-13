@@ -16,6 +16,7 @@ DO NOT MODIFY
 namespace demo
 {
 	class AboutWindow;
+	class FindWindow;
 	class MainWindow;
 
 	template<typename TImpl>
@@ -43,6 +44,33 @@ namespace demo
 			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::AboutWindow")
 			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,documentLabel(0)
+			,self(0)
+		{
+		}
+	};
+
+	template<typename TImpl>
+	class FindWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	{
+		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
+	private:
+	protected:
+		vl::presentation::controls::GuiWindow* self;
+
+		void InitializeComponents()
+		{
+			if (InitializeFromResource())
+			{
+				GUI_INSTANCE_REFERENCE(self);
+			}
+			else
+			{
+			}
+		}
+	public:
+		FindWindow_()
+			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::FindWindow")
+			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,self(0)
 		{
 		}
@@ -152,6 +180,7 @@ namespace vl
 		namespace description
 		{
 			DECL_TYPE_INFO(demo::AboutWindow)
+			DECL_TYPE_INFO(demo::FindWindow)
 			DECL_TYPE_INFO(demo::MainWindow)
 
 		}
