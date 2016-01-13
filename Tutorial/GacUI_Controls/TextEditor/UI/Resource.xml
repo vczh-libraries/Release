@@ -14,6 +14,6 @@
   </Folder>
   <Folder name="Images" content="Link">Images\Folder.xml</Folder>
   <Folder name="AboutWindow" content="Link">AboutWindow.xml</Folder>
-  <Instance name="FindWindowResource" content="File">FindWindow.xml</Instance>
+  <Folder name="FindWindow" content="Link">FindWindow.xml</Folder>
   <Instance name="MainWindowResource" content="File">MainWindow.xml</Instance>
 </Resource>

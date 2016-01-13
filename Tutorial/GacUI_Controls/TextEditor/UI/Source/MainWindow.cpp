@@ -110,6 +110,7 @@ namespace demo
 
 	void MainWindow::commandEditFind_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
+		findWindow->Show();
 	}
 
 	void MainWindow::commandEditPaste_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
@@ -311,10 +312,23 @@ namespace demo
 	MainWindow::MainWindow()
 	{
 		InitializeComponents();
+		findWindow = MakePtr<FindWindow>(MakePtr<FindWindowViewModel>(textBox));
+		findWindow->MoveToScreenCenter();
+		findWindow->GetNativeWindow()->SetParent(GetNativeWindow());
 	}
 
 	MainWindow::~MainWindow()
 	{
 		ClearSubscriptions();
+	}
+
+	MainWindow::FindWindowViewModel::FindWindowViewModel(GuiMultilineTextBox* _textBox)
+		:textBox(_textBox)
+	{
+	}
+
+	bool MainWindow::FindWindowViewModel::FindNext(vl::WString toFind, bool caseSensitive, bool down)
+	{
+		return false;
 	}
 }

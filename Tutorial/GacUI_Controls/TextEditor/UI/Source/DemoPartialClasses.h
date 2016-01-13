@@ -13,12 +13,28 @@ DO NOT MODIFY
 
 #include "GacUIReflection.h"
 
+namespace vm
+{
+	class IFindWindowViewModel;
+}
 namespace demo
 {
 	class AboutWindow;
 	class FindWindow;
 	class MainWindow;
 
+}
+namespace vm
+{
+	class IFindWindowViewModel : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IFindWindowViewModel>
+	{
+	public:
+		virtual bool FindNext(vl::WString toFind, bool caseSensitive, bool down) = 0;
+	};
+
+}
+namespace demo
+{
 	template<typename TImpl>
 	class AboutWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
@@ -54,25 +70,51 @@ namespace demo
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
+		Ptr<vm::IFindWindowViewModel> ViewModel_;
 	protected:
+		vl::presentation::controls::GuiSelectableButton* checkCase;
+		vl::presentation::controls::GuiMessageDialog* dialogContentNotFound;
+		vl::presentation::controls::GuiSelectableButton::MutexGroupController* groupDirection;
+		vl::presentation::controls::GuiSelectableButton* radioDown;
+		vl::presentation::controls::GuiSelectableButton* radioUp;
 		vl::presentation::controls::GuiWindow* self;
+		vl::presentation::controls::GuiSinglelineTextBox* textFind;
 
-		void InitializeComponents()
+		void InitializeComponents(Ptr<vm::IFindWindowViewModel> ViewModel)
 		{
+			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
 			{
+				GUI_INSTANCE_REFERENCE(checkCase);
+				GUI_INSTANCE_REFERENCE(dialogContentNotFound);
+				GUI_INSTANCE_REFERENCE(groupDirection);
+				GUI_INSTANCE_REFERENCE(radioDown);
+				GUI_INSTANCE_REFERENCE(radioUp);
 				GUI_INSTANCE_REFERENCE(self);
+				GUI_INSTANCE_REFERENCE(textFind);
 			}
 			else
 			{
+				ViewModel_ = 0;
 			}
 		}
 	public:
 		FindWindow_()
 			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::FindWindow")
 			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,checkCase(0)
+			,dialogContentNotFound(0)
+			,groupDirection(0)
+			,radioDown(0)
+			,radioUp(0)
 			,self(0)
+			,textFind(0)
 		{
+		}
+
+		Ptr<vm::IFindWindowViewModel> GetViewModel()
+		{
+			return ViewModel_;
 		}
 	};
 
@@ -179,6 +221,7 @@ namespace vl
 	{
 		namespace description
 		{
+			DECL_TYPE_INFO(vm::IFindWindowViewModel)
 			DECL_TYPE_INFO(demo::AboutWindow)
 			DECL_TYPE_INFO(demo::FindWindow)
 			DECL_TYPE_INFO(demo::MainWindow)
@@ -186,5 +229,22 @@ namespace vl
 		}
 	}
 }
+namespace demo
+{
+	class FindWindow : public demo::FindWindow_<demo::FindWindow>
+	{
+		friend class demo::FindWindow_<demo::FindWindow>;
+		friend struct vl::reflection::description::CustomTypeDescriptorSelector<demo::FindWindow>;
+	protected:
+
+		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
+	public:
+		FindWindow(Ptr<vm::IFindWindowViewModel> ViewModel);
+		~FindWindow();
+	};
+}
+
+
 
 #endif

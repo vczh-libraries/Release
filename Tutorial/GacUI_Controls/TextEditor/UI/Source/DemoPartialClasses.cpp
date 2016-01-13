@@ -10,6 +10,24 @@ DO NOT MODIFY
 
 #include "Demo.h"
 
+namespace demo
+{
+	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
+
+	FindWindow::FindWindow(Ptr<vm::IFindWindowViewModel> ViewModel)
+	{
+		InitializeComponents(ViewModel);
+	}
+
+	FindWindow::~FindWindow()
+	{
+		ClearSubscriptions();
+	}
+}
+
+
 namespace vl
 {
 	namespace reflection
@@ -17,9 +35,15 @@ namespace vl
 		namespace description
 		{
 			#define _ ,
+			IMPL_CPP_TYPE_INFO(vm::IFindWindowViewModel)
 			IMPL_CPP_TYPE_INFO(demo::AboutWindow)
 			IMPL_CPP_TYPE_INFO(demo::FindWindow)
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
+
+			BEGIN_CLASS_MEMBER(vm::IFindWindowViewModel)
+				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_METHOD(FindNext, { L"toFind" _ L"caseSensitive" _ L"down" });
+			END_CLASS_MEMBER(vm::IFindWindowViewModel)
 
 			BEGIN_CLASS_MEMBER(demo::AboutWindow)
 				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
@@ -30,7 +54,9 @@ namespace vl
 
 			BEGIN_CLASS_MEMBER(demo::FindWindow)
 				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
-				CLASS_MEMBER_CONSTRUCTOR(demo::FindWindow*(), NO_PARAMETER)
+				CLASS_MEMBER_CONSTRUCTOR(demo::FindWindow*(Ptr<vm::IFindWindowViewModel>), { L"ViewModel" })
+
+				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 			END_CLASS_MEMBER(demo::FindWindow)
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
@@ -64,6 +90,7 @@ namespace vl
 			public:
 				void Load(ITypeManager* manager)
 				{
+					ADD_TYPE_INFO(vm::IFindWindowViewModel)
 					ADD_TYPE_INFO(demo::AboutWindow)
 					ADD_TYPE_INFO(demo::FindWindow)
 					ADD_TYPE_INFO(demo::MainWindow)

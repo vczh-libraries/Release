@@ -39,16 +39,29 @@ namespace demo
 		void commandFileSave_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
 		void window_Closing(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiRequestEventArgs& arguments);
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
+	private:
+
+		class FindWindowViewModel : public Object, public virtual vm::IFindWindowViewModel
+		{
+		private:
+			GuiMultilineTextBox*	textBox;
+
+		public:
+			FindWindowViewModel(GuiMultilineTextBox* _textBox);
+
+			bool					FindNext(vl::WString toFind, bool caseSensitive, bool down)override;
+		};
 
 	private:
-		WString					fileName;
-		bool					isXml = false;
+		WString						fileName;
+		bool						isXml = false;
+		Ptr<FindWindow>				findWindow;
 
-		bool					CanCloseFile();
-		bool					OpenFile(vint filterIndex);
-		bool					SaveFile(bool saveAs);
-		void					SetupTextConfig();
-		void					SetupXmlConfig();
+		bool						CanCloseFile();
+		bool						OpenFile(vint filterIndex);
+		bool						SaveFile(bool saveAs);
+		void						SetupTextConfig();
+		void						SetupXmlConfig();
 	public:
 		MainWindow();
 		~MainWindow();

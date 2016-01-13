@@ -13,7 +13,6 @@ DO NOT MODIFY
 
 #include "DemoPartialClasses.h"
 #include "AboutWindow.h"
-#include "FindWindow.h"
 #include "MainWindow.h"
 
 #endif
