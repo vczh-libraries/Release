@@ -3940,7 +3940,7 @@ GuiVrtualTypeInstanceLoader
 						auto funcCreateTemplate = MakePtr<WfFunctionDeclaration>();
 						funcCreateTemplate->anonymity = WfFunctionAnonymity::Named;
 						funcCreateTemplate->name.value = L"CreateTemplate";
-						funcCreateTemplate->returnType = GetTypeFromTypeInfo(templateType.Obj());
+						funcCreateTemplate->returnType = GetTypeFromTypeInfo(TypeInfoRetriver<GuiTemplate*>::CreateTypeInfo().Obj());
 
 						auto argViewModel = MakePtr<WfFunctionArgument>();
 						argViewModel->type = GetTypeFromTypeInfo(TypeInfoRetriver<Value>::CreateTypeInfo().Obj());
@@ -4078,7 +4078,7 @@ GuiVrtualTypeInstanceLoader
 					}
 
 					auto controlTemplateName = controlTemplateNameExpr->value.value;
-					if (wcschr(controlTemplateName.Buffer(), L';') == nullptr)
+					if (wcschr(controlTemplateName.Buffer(), L';') != nullptr)
 					{
 						errors.Add(L"Precompile: \"" + controlTemplateNameExpr->value.value + L"\", which is assigned to contructor parameter \"" + GlobalStringKey::_ControlTemplate.ToString() + L" of type \"" + controlTypeInfo.typeName.ToString() + L"\", is illegal because control template should not have multiple choices.");
 						return nullptr;
