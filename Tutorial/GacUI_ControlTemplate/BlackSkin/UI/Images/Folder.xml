@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Folder name="Images">
+  <Image content="File">OfficeWord.ico</Image>
+  <Image content="File">OfficeExcel.ico</Image>
+  <Image content="File">OfficePowerPoint.ico</Image>
+  <Image content="File">OfficeOutlook.ico</Image>
+  <Image content="File">OfficeOneNote.ico</Image>
+  <Image content="File">_New.png</Image>
+  <Image content="File">_Open.png</Image>
+  <Image content="File">_Save.png</Image>
+  <Image content="File">_SaveAs.png</Image>
+  <Image content="File">_Print.png</Image>
+  <Image content="File">_Redo.png</Image>
+  <Image content="File">_Undo.png</Image>
+  <Image content="File">_Cut.png</Image>
+  <Image content="File">_Copy.png</Image>
+  <Image content="File">_Paste.png</Image>
+  <Image content="File">_Delete.png</Image>
+</Folder>

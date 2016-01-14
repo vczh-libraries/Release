@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="Output">Source</Text>
+      <Text name="Include">GacUIReflection.h</Text>
+      <Text name="Name">Demo</Text>
+      <Text name="Prefix"></Text>
+    </Folder>
+    <Folder name="Res">
+      <Text name="Output">..\..\UIRes</Text>
+      <Text name="PrecompiledBinary">BlackSkin.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="Images" content="Link">Images\Folder.xml</Folder>
+  <Folder name="Documents">
+    <Doc name="Simple">
+      <Doc>
+        <Content>
+          <p>
+            <font color="#FFFFFF">
+              <nop>This is a </nop>
+              <b><font color="#00FFFF">rich</font></b>
+              <nop> document.</nop>
+            </font>
+          </p>
+        </Content>
+      </Doc>
+    </Doc>
+    <Doc content="File">XmlDocDemo.xml</Doc>
+  </Folder>
+  <Folder name="DarkSkin" content="Link">Skin.xml</Folder>
+  <Folder name="MainWindow" content="Link">MainWindow.xml</Instance>
+</Resource>
