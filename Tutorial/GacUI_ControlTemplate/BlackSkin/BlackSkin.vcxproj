@@ -87,6 +87,31 @@
       <Project>{8018d622-66ba-4e65-9d03-bdac37ea9a54}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="UI\Images\Folder.xml" />
+    <Xml Include="UI\MainWindow.xml" />
+    <Xml Include="UI\Resource.xml" />
+    <Xml Include="UI\Skin.xml" />
+    <Xml Include="UI\XmlDocDemo.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="UI\Images\OfficeExcel.ico" />
+    <Image Include="UI\Images\OfficeOneNote.ico" />
+    <Image Include="UI\Images\OfficeOutlook.ico" />
+    <Image Include="UI\Images\OfficePowerPoint.ico" />
+    <Image Include="UI\Images\OfficeWord.ico" />
+    <Image Include="UI\Images\_Copy.png" />
+    <Image Include="UI\Images\_Cut.png" />
+    <Image Include="UI\Images\_Delete.png" />
+    <Image Include="UI\Images\_New.png" />
+    <Image Include="UI\Images\_Open.png" />
+    <Image Include="UI\Images\_Paste.png" />
+    <Image Include="UI\Images\_Print.png" />
+    <Image Include="UI\Images\_Redo.png" />
+    <Image Include="UI\Images\_Save.png" />
+    <Image Include="UI\Images\_SaveAs.png" />
+    <Image Include="UI\Images\_Undo.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
