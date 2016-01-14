@@ -77,16 +77,18 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppWorkflow.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Import\GacUIReflection.h" />
+    <ClInclude Include="..\..\..\Import\VlppWorkflow.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GacUILite\GacUILite.vcxproj">
       <Project>{96c559ca-9718-4bec-a053-28a0ab6a8ca2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Workflow\Workflow.vcxproj">
-      <Project>{0ee1ea52-8aba-40f3-b431-b7bcf8d6d520}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

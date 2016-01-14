@@ -18,9 +18,15 @@
     <ClCompile Include="..\..\..\Import\GacUIReflection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppWorkflow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Import\GacUIReflection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppWorkflow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

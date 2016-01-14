@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ContainersAndButtons", "ContainersAndButtons\ContainersAndButtons.vcxproj", "{0C211930-C5DA-4567-A752-1D847CADEC1C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlackSkin", "BlackSkin\BlackSkin.vcxproj", "{DCAB59C4-4394-4F79-8BE1-835B1313651B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{739DADD1-5B91-464A-B477-7581D6323E2B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{A7FA6C2B-37E0-4C2B-AC76-6E577A987492}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUI", "..\Lib\GacUI\GacUI.vcxproj", "{8018D622-66BA-4E65-9D03-BDAC37EA9A54}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUILite", "..\Lib\GacUILite\GacUILite.vcxproj", "{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextEditor", "TextEditor\TextEditor.vcxproj", "{66069A5E-F697-42E2-8D9E-7D6E82019838}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0C211930-C5DA-4567-A752-1D847CADEC1C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0C211930-C5DA-4567-A752-1D847CADEC1C}.Debug|Win32.Build.0 = Debug|Win32
-		{0C211930-C5DA-4567-A752-1D847CADEC1C}.Release|Win32.ActiveCfg = Release|Win32
-		{0C211930-C5DA-4567-A752-1D847CADEC1C}.Release|Win32.Build.0 = Release|Win32
+		{DCAB59C4-4394-4F79-8BE1-835B1313651B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DCAB59C4-4394-4F79-8BE1-835B1313651B}.Debug|Win32.Build.0 = Debug|Win32
+		{DCAB59C4-4394-4F79-8BE1-835B1313651B}.Release|Win32.ActiveCfg = Release|Win32
+		{DCAB59C4-4394-4F79-8BE1-835B1313651B}.Release|Win32.Build.0 = Release|Win32
 		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Debug|Win32.ActiveCfg = Debug|Win32
 		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Debug|Win32.Build.0 = Debug|Win32
 		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Release|Win32.ActiveCfg = Release|Win32
@@ -31,16 +29,12 @@ Global
 		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}.Debug|Win32.Build.0 = Debug|Win32
 		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}.Release|Win32.ActiveCfg = Release|Win32
 		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}.Release|Win32.Build.0 = Release|Win32
-		{66069A5E-F697-42E2-8D9E-7D6E82019838}.Debug|Win32.ActiveCfg = Debug|Win32
-		{66069A5E-F697-42E2-8D9E-7D6E82019838}.Debug|Win32.Build.0 = Debug|Win32
-		{66069A5E-F697-42E2-8D9E-7D6E82019838}.Release|Win32.ActiveCfg = Release|Win32
-		{66069A5E-F697-42E2-8D9E-7D6E82019838}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8018D622-66BA-4E65-9D03-BDAC37EA9A54} = {739DADD1-5B91-464A-B477-7581D6323E2B}
-		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2} = {739DADD1-5B91-464A-B477-7581D6323E2B}
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54} = {A7FA6C2B-37E0-4C2B-AC76-6E577A987492}
+		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2} = {A7FA6C2B-37E0-4C2B-AC76-6E577A987492}
 	EndGlobalSection
 EndGlobal
