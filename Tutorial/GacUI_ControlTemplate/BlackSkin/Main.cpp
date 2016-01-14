@@ -15,7 +15,7 @@ void GuiMain()
 {
 	{
 		List<WString> errors;
-		FileStream fileStream(L"../UIRes/TextEditor.bin", FileStream::ReadOnly);
+		FileStream fileStream(L"../UIRes/BlackSkin.bin", FileStream::ReadOnly);
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
 		GetInstanceLoaderManager()->SetResource(L"Resource", resource);
 	}

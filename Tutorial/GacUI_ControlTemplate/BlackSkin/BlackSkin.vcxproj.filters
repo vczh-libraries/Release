@@ -24,6 +24,9 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UI\Source\DemoPartialClasses.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\MainWindow.xml">
@@ -91,5 +94,13 @@
     <Image Include="UI\Images\OfficeWord.ico">
       <Filter>Resource Files\Images</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UI\Source\Demo.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\DemoPartialClasses.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

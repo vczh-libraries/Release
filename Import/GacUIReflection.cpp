@@ -1067,8 +1067,13 @@ GuiResourceInstanceBinder (uri)
 			{
 				return false;
 			}
+
+			bool RequirePropertyExist()override
+			{
+				return false;
+			}
 			
-			Ptr<workflow::WfStatement> GenerateInstallStatement(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, const WString& code, collections::List<WString>& errors)override
+			Ptr<workflow::WfStatement> GenerateInstallStatement(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, IGuiInstanceLoader* loader, const IGuiInstanceLoader::PropertyInfo& prop, Ptr<GuiInstancePropertyInfo> propInfo, const WString& code, collections::List<WString>& errors)override
 			{
 				WString protocol, path;
 				if (!IsResourceUrl(code, protocol, path))
@@ -1078,7 +1083,7 @@ GuiResourceInstanceBinder (uri)
 				}
 				else
 				{
-					return Workflow_InstallUriProperty(variableName, propertyInfo, protocol, path);
+					return Workflow_InstallUriProperty(variableName, loader, prop, propInfo, protocol, path, errors);
 				}
 			}
 		};
@@ -1099,12 +1104,17 @@ GuiReferenceInstanceBinder (ref)
 			{
 				return false;
 			}
+
+			bool RequirePropertyExist()override
+			{
+				return false;
+			}
 			
-			Ptr<workflow::WfStatement> GenerateInstallStatement(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, const WString& code, collections::List<WString>& errors)override
+			Ptr<workflow::WfStatement> GenerateInstallStatement(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, IGuiInstanceLoader* loader, const IGuiInstanceLoader::PropertyInfo& prop, Ptr<GuiInstancePropertyInfo> propInfo, const WString& code, collections::List<WString>& errors)override
 			{
 				auto expression = MakePtr<WfReferenceExpression>();
 				expression->name.value = code;
-				return Workflow_InstallEvalProperty(variableName, propertyInfo, expression);
+				return Workflow_InstallEvalProperty(variableName, loader, prop, propInfo, expression, errors);
 			}
 		};
 
@@ -1124,12 +1134,17 @@ GuiEvalInstanceBinder (eval)
 			{
 				return true;
 			}
+
+			bool RequirePropertyExist()override
+			{
+				return false;
+			}
 			
-			Ptr<workflow::WfStatement> GenerateInstallStatement(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, const WString& code, collections::List<WString>& errors)override
+			Ptr<workflow::WfStatement> GenerateInstallStatement(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, IGuiInstanceLoader* loader, const IGuiInstanceLoader::PropertyInfo& prop, Ptr<GuiInstancePropertyInfo> propInfo, const WString& code, collections::List<WString>& errors)override
 			{
 				if (auto expression = Workflow_ParseExpression(code, errors))
 				{
-					return Workflow_InstallEvalProperty(variableName, propertyInfo, expression);
+					return Workflow_InstallEvalProperty(variableName, loader, prop, propInfo, expression, errors);
 				}
 				return 0;
 			}
@@ -1151,8 +1166,13 @@ GuiBindInstanceBinder (bind)
 			{
 				return false;
 			}
+
+			bool RequirePropertyExist()override
+			{
+				return true;
+			}
 			
-			Ptr<workflow::WfStatement> GenerateInstallStatement(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, const WString& code, collections::List<WString>& errors)override
+			Ptr<workflow::WfStatement> GenerateInstallStatement(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, IGuiInstanceLoader* loader, const IGuiInstanceLoader::PropertyInfo& prop, Ptr<GuiInstancePropertyInfo> propInfo, const WString& code, collections::List<WString>& errors)override
 			{
 				if (auto expression = Workflow_ParseExpression(L"bind(" + code + L")", errors))
 				{
@@ -1178,8 +1198,13 @@ GuiFormatInstanceBinder (format)
 			{
 				return false;
 			}
+
+			bool RequirePropertyExist()override
+			{
+				return true;
+			}
 			
-			Ptr<workflow::WfStatement> GenerateInstallStatement(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, const WString& code, collections::List<WString>& errors)override
+			Ptr<workflow::WfStatement> GenerateInstallStatement(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, IGuiInstanceLoader* loader, const IGuiInstanceLoader::PropertyInfo& prop, Ptr<GuiInstancePropertyInfo> propInfo, const WString& code, collections::List<WString>& errors)override
 			{
 				if (auto expression = Workflow_ParseExpression(L"bind($\"" + code + L"\")", errors))
 				{
@@ -2654,10 +2679,11 @@ GuiInstanceSharedScript
 			if (binaryToLoad)
 			{
 				assembly = new WfAssembly(*binaryToLoad.Obj());
+				context = nullptr;
 				binaryToLoad = nullptr;
 			}
 
-			if (initializeContext)
+			if (initializeContext && !context)
 			{
 				context = new WfRuntimeGlobalContext(assembly);
 				LoadFunction<void()>(context, L"<initialize>")();
@@ -3809,12 +3835,12 @@ GuiTreeViewInstanceLoader
 						auto refControl = MakePtr<WfReferenceExpression>();
 						refControl->name.value = variableName.ToString();
 
-						auto refChangeItemStyle = MakePtr<WfMemberExpression>();
-						refChangeItemStyle->parent = refControl;
-						refChangeItemStyle->name.value = L"ChangeItemStyle";
+						auto refSetNodeStyleProvider = MakePtr<WfMemberExpression>();
+						refSetNodeStyleProvider->parent = refControl;
+						refSetNodeStyleProvider->name.value = L"SetNodeStyleProvider";
 
 						auto call = MakePtr<WfCallExpression>();
-						call->function = refChangeItemStyle;
+						call->function = refSetNodeStyleProvider;
 						call->arguments.Add(createStyle);
 
 						auto stat = MakePtr<WfExpressionStatement>();
@@ -7590,6 +7616,7 @@ Type Declaration
 				CLASS_MEMBER_STATIC_EXTERNALMETHOD(CreateWin8Theme, NO_PARAMETER, Ptr<ITheme>(*)(), &CreateWin8Theme)
 
 				CLASS_MEMBER_METHOD(CreateWindowStyle, NO_PARAMETER)
+				CLASS_MEMBER_METHOD(CreateCustomControlStyle, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(CreateTooltipStyle, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(CreateLabelStyle, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(CreateShortcutKeyStyle, NO_PARAMETER)
@@ -7620,6 +7647,7 @@ Type Declaration
 				CLASS_MEMBER_METHOD(CreateButtonStyle, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(CreateCheckBoxStyle, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(CreateRadioButtonStyle, NO_PARAMETER)
+				CLASS_MEMBER_METHOD(CreateDatePickerStyle, NO_PARAMETER)
 
 				CLASS_MEMBER_METHOD(CreateHScrollStyle, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(CreateVScrollStyle, NO_PARAMETER)
@@ -8513,7 +8541,7 @@ Type Declaration
 				CLASS_MEMBER_BASE(GuiListControl::IItemStyleController)
 				INTERFACE_EXTERNALCTOR(tree, INodeItemStyleController)
 
-				CLASS_MEMBER_METHOD(GetNodeStyleProvider, NO_PARAMETER)
+				CLASS_MEMBER_PROPERTY_READONLY_FAST(NodeStyleProvider)
 			END_CLASS_MEMBER(INodeItemStyleController)
 
 			BEGIN_CLASS_MEMBER(INodeItemStyleProvider)
@@ -11019,18 +11047,21 @@ WorkflowGenerateBindingVisitor
 						auto propertyName = repr->setters.Keys()[index];
 						if (setter->binding != GlobalStringKey::Empty && setter->binding != GlobalStringKey::_Set)
 						{
-							auto propertyInfo = resolvingResult.propertyResolvings[setter->values[0].Obj()].info;
-							if (propertyInfo->scope != GuiInstancePropertyInfo::Constructor)
+							if (auto binder = GetInstanceLoaderManager()->GetInstanceBinder(setter->binding))
 							{
-								WString expressionCode = setter->values[0].Cast<GuiTextRepr>()->text;
-
-								auto binder = GetInstanceLoaderManager()->GetInstanceBinder(setter->binding);
-								if (binder)
+								auto propertyResolving = resolvingResult.propertyResolvings[setter->values[0].Obj()];
+								if (propertyResolving.info->scope == GuiInstancePropertyInfo::Constructor)
 								{
+									errors.Add(L"Precompile: Binding to constructor arguments will be implemented in the future.");
+								}
+								else
+								{
+									WString expressionCode = setter->values[0].Cast<GuiTextRepr>()->text;
 									auto instancePropertyInfo = reprTypeInfo.typeDescriptor->GetPropertyByName(propertyName.ToString(), true);
-									if (instancePropertyInfo)
+
+									if (instancePropertyInfo || !binder->RequirePropertyExist())
 									{
-										if (auto statement = binder->GenerateInstallStatement(repr->instanceName, instancePropertyInfo, expressionCode, errors))
+										if (auto statement = binder->GenerateInstallStatement(repr->instanceName, instancePropertyInfo, propertyResolving.loader, propertyResolving.propertyInfo, propertyResolving.info, expressionCode, errors))
 										{
 											if (Workflow_ValidateStatement(context, resolvingResult, rootTypeDescriptor, errors, expressionCode, statement))
 											{
@@ -11043,10 +11074,10 @@ WorkflowGenerateBindingVisitor
 										errors.Add(L"Precompile: Binder \"" + setter->binding.ToString() + L"\" requires property \"" + propertyName.ToString() + L"\" to physically appear in type \"" + reprTypeInfo.typeName.ToString() + L"\".");
 									}
 								}
-								else
-								{
-									errors.Add(L"The appropriate IGuiInstanceBinder of binding \"-" + setter->binding.ToString() + L"\" cannot be found.");
-								}
+							}
+							else
+							{
+								errors.Add(L"Precompile: The appropriate IGuiInstanceBinder of binding \"-" + setter->binding.ToString() + L"\" cannot be found.");
 							}
 						}
 						else
@@ -11463,7 +11494,7 @@ namespace vl
 Workflow_InstallBindProperty
 ***********************************************************************/
 
-		Ptr<workflow::WfStatement> Workflow_InstallUriProperty(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, const WString& protocol, const WString& path)
+		Ptr<workflow::WfStatement> Workflow_InstallUriProperty(GlobalStringKey variableName, IGuiInstanceLoader* loader, const IGuiInstanceLoader::PropertyInfo& prop, Ptr<GuiInstancePropertyInfo> propInfo, const WString& protocol, const WString& path, collections::List<WString>& errors)
 		{
 			auto subBlock = MakePtr<WfBlockStatement>();
 			{
@@ -11516,7 +11547,7 @@ Workflow_InstallBindProperty
 				subBlock->statements.Add(ifStat);
 			}
 
-			auto td = propertyInfo->GetReturn()->GetTypeDescriptor();
+			auto td = propInfo->acceptableTypes[0];
 			Ptr<ITypeInfo> convertedType;
 			if (td->GetValueSerializer())
 			{
@@ -11528,7 +11559,12 @@ Workflow_InstallBindProperty
 			}
 			else
 			{
-				convertedType = CopyTypeInfo(propertyInfo->GetReturn());
+				auto elementType = MakePtr<TypeInfoImpl>(ITypeInfo::TypeDescriptor);
+				elementType->SetTypeDescriptor(td);
+
+				auto pointerType = MakePtr<TypeInfoImpl>(ITypeInfo::SharedPtr);
+				pointerType->SetElementType(elementType);
+				convertedType = pointerType;
 			}
 
 			{
@@ -11581,9 +11617,12 @@ Workflow_InstallBindProperty
 				member->parent = refResourceValue;
 				member->name.value = L"Text";
 
+				auto elementType = MakePtr<TypeInfoImpl>(ITypeInfo::TypeDescriptor);
+				elementType->SetTypeDescriptor(td);
+
 				auto cast = MakePtr<WfTypeCastingExpression>();
 				cast->expression = member;
-				cast->type = GetTypeFromTypeInfo(propertyInfo->GetReturn());
+				cast->type = GetTypeFromTypeInfo(elementType.Obj());
 				cast->strategy = WfTypeCastingStrategy::Strong;
 
 				evalExpression = cast;
@@ -11608,21 +11647,18 @@ Workflow_InstallBindProperty
 			}
 
 			{
-				auto refSubscribee = MakePtr<WfReferenceExpression>();
-				refSubscribee->name.value = variableName.ToString();
+				IGuiInstanceLoader::ArgumentMap arguments;
+				{
+					IGuiInstanceLoader::ArgumentInfo argumentInfo;
+					argumentInfo.type = td;
+					argumentInfo.expression = evalExpression;
+					arguments.Add(prop.propertyName, argumentInfo);
+				}
 
-				auto member = MakePtr<WfMemberExpression>();
-				member->parent = refSubscribee;
-				member->name.value = propertyInfo->GetName();
-
-				auto assign = MakePtr<WfBinaryExpression>();
-				assign->op = WfBinaryOperator::Assign;
-				assign->first = member;
-				assign->second = evalExpression;
-
-				auto stat = MakePtr<WfExpressionStatement>();
-				stat->expression = assign;
-				subBlock->statements.Add(stat);
+				if (auto stat = loader->AssignParameters(prop.typeInfo, variableName, arguments, errors))
+				{
+					subBlock->statements.Add(stat);
+				}
 			}
 			return subBlock;
 		}
@@ -11789,24 +11825,17 @@ Workflow_InstallBindProperty
 Workflow_InstallEvalProperty
 ***********************************************************************/
 
-		Ptr<workflow::WfStatement> Workflow_InstallEvalProperty(GlobalStringKey variableName, description::IPropertyInfo* propertyInfo, Ptr<workflow::WfExpression> evalExpression)
+		Ptr<workflow::WfStatement> Workflow_InstallEvalProperty(GlobalStringKey variableName, IGuiInstanceLoader* loader, const IGuiInstanceLoader::PropertyInfo& prop, Ptr<GuiInstancePropertyInfo> propInfo, Ptr<workflow::WfExpression> evalExpression, collections::List<WString>& errors)
 		{
-			auto refSubscribee = MakePtr<WfReferenceExpression>();
-			refSubscribee->name.value = variableName.ToString();
+			IGuiInstanceLoader::ArgumentMap arguments;
+			{
+				IGuiInstanceLoader::ArgumentInfo argumentInfo;
+				argumentInfo.type = propInfo->acceptableTypes[0];
+				argumentInfo.expression = evalExpression;
+				arguments.Add(prop.propertyName, argumentInfo);
+			}
 
-			auto member = MakePtr<WfMemberExpression>();
-			member->parent = refSubscribee;
-			member->name.value = propertyInfo->GetName();
-
-			auto assign = MakePtr<WfBinaryExpression>();
-			assign->op = WfBinaryOperator::Assign;
-			assign->first = member;
-			assign->second = evalExpression;
-
-			auto stat = MakePtr<WfExpressionStatement>();
-			stat->expression = assign;
-			
-			return stat;
+			return loader->AssignParameters(prop.typeInfo, variableName, arguments, errors);
 		}
 
 /***********************************************************************

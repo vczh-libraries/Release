@@ -81,6 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="UI\Source\DemoPartialClasses.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Lib\GacUI\GacUI.vcxproj">
@@ -111,6 +112,10 @@
     <Image Include="UI\Images\_Save.png" />
     <Image Include="UI\Images\_SaveAs.png" />
     <Image Include="UI\Images\_Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UI\Source\Demo.h" />
+    <ClInclude Include="UI\Source\DemoPartialClasses.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
