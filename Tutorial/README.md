@@ -10,17 +10,17 @@ GacUI tutorials and the plan
     * **PureCppXml**:
 * GacUI_Layout
     * **Alignment**: Simple layout.
-    * **Stack**: Stack layout.
+    * **Stack**: Stack layout with configurable axis directions.
+    * **Flow**: Flow layout with configurable axis directions.
     * **Table**: Table layout.
-    * **Flow**: Flow layout.
-    * **RichTextEmbedding**: Document layout, that placing controls in a rich text document.
+    * **RichTextEmbedding**: Embed controls in a rich text document.
 * GacUI_Controls
     * **ContainersAndButtons**: Using container controls and button controls.
     * **TextList**: Using text list control with direct assign, data binding and item template. (developing)
     * **ListView**: Using list view control with direct assign, data binding and item template. (developing)
     * **TreeView**: Using tree view control with direct assign, data binding and item template. (developing)
     * **DataGrid**: Using data grid control with direct assign, data binding and item template. (developing)
-    * **TextEditor**: Implementing a text editor that handle plain text, XML and JSON. (developing)
+    * **TextEditor**: Implementing a text editor that handle plain text and XML.
     * **RichTextEditor**: Implementing a rich text editor. (developing)
     * **Misc**: Using other controls. (developing)
 * GacUI_ControlTemplate
