@@ -24,7 +24,7 @@ GacUI tutorials and the plan
     * **RichTextEditor**: Implementing a rich text editor. (developing)
     * **Misc**: Using other controls. (developing)
 * GacUI_ControlTemplate
-    * **BlackSkin**:
+    * **BlackSkin**: Create a set of control templates which look like Visual Studio's dark theme.
     * **Windows7Skin**:
     * **Windows8Skin**:
 * GacUI_XmlResource
