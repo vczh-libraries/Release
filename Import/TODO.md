@@ -1,7 +1,6 @@
 # TODO
 
 * Workflow
-    * Interface: static method, event
     * Class: base type, event, field, constructor, destructor
     * Enum
     * Struct
