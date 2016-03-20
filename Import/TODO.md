@@ -1,10 +1,10 @@
 # TODO
 
 * Workflow
-    * Class: base type, event, field, constructor, destructor
+    * Class: constructor, destructor
     * Enum
     * Struct
-    * Expression: new T{x}, Enum.Item, this, raise event
+    * Expression: new T{x}, Enum.Item
     * async, delay, yield (provider written in C++)
     * Workflow to C++ code generation with hint
 * GacUI Resource
