@@ -83,8 +83,8 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Lib\GacUI\GacUI.vcxproj">
-      <Project>{8018d622-66ba-4e65-9d03-bdac37ea9a54}</Project>
+    <ProjectReference Include="..\..\Lib\GacUIComplete\GacUIComplete.vcxproj">
+      <Project>{3aec5e1a-482f-41b1-8598-c02321621a64}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

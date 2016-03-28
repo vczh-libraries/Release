@@ -16,7 +16,4 @@
     * Abstract Graphics API
     * Controls: Chart, Ribbon, Dock Container
     * New template (generated pure C++ code), remove old ones
-* Release
-    * Workflow -> WorkflowCompiler, Workflow, WorkflowCppGen
-    * GacUIReflection -> GacUIReflection, GacUICompiler
 * GacStudio
