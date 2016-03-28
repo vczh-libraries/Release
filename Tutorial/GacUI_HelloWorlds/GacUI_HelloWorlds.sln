@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppXml", "CppXml\CppXml.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MVVM", "MVVM\MVVM.vcxproj", "{3EC7E343-4D10-4E6B-B5EE-485B38AFAD85}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUIComplete", "..\Lib\GacUIComplete\GacUIComplete.vcxproj", "{3AEC5E1A-482F-41B1-8598-C02321621A64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -47,6 +49,10 @@ Global
 		{3EC7E343-4D10-4E6B-B5EE-485B38AFAD85}.Debug|Win32.Build.0 = Debug|Win32
 		{3EC7E343-4D10-4E6B-B5EE-485B38AFAD85}.Release|Win32.ActiveCfg = Release|Win32
 		{3EC7E343-4D10-4E6B-B5EE-485B38AFAD85}.Release|Win32.Build.0 = Release|Win32
+		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Debug|Win32.Build.0 = Debug|Win32
+		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Release|Win32.ActiveCfg = Release|Win32
+		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +60,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8018D622-66BA-4E65-9D03-BDAC37EA9A54} = {A01236E9-92C5-424F-B564-DBF1A9F94E7F}
 		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2} = {A01236E9-92C5-424F-B564-DBF1A9F94E7F}
+		{3AEC5E1A-482F-41B1-8598-C02321621A64} = {A01236E9-92C5-424F-B564-DBF1A9F94E7F}
 	EndGlobalSection
 EndGlobal

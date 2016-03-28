@@ -1,4 +1,4 @@
-#include <GacUIReflection.h>
+#include <GacUICompiler.h>
 #include <Windows.h>
 
 using namespace vl::parsing;

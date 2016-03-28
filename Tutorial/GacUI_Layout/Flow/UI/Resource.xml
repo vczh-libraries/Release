@@ -47,14 +47,14 @@
           <ev.Clicked-eval>
             <![CDATA[
             {
-              for (item in flowLayout.FlowItems)
+              for (flowItem in flowLayout.FlowItems)
               {
-                item.ExtraMargin = cast Margin "";
+                flowItem.ExtraMargin = cast Margin "";
               }
             
-              var item = cast (FlowItem*) sender.Parent;
-              item.ExtraMargin = cast Margin "left:10 top:10 right:10 bottom:10";
-              flowLayout.MoveChild(item, flowLayout.FlowItems.Count - 1);
+              var selectedItem = cast (FlowItem*) sender.Parent;
+              selectedItem.ExtraMargin = cast Margin "left:10 top:10 right:10 bottom:10";
+              flowLayout.MoveChild(selectedItem, flowLayout.FlowItems.Count - 1);
             }
           ]]>
           </ev.Clicked-eval>

@@ -32,14 +32,14 @@
           <ev.Clicked-eval>
             <![CDATA[
             {
-              for (item in stackLayout.StackItems)
+              for (stackItem in stackLayout.StackItems)
               {
-                item.ExtraMargin = cast Margin "";
+                stackItem.ExtraMargin = cast Margin "";
               }
             
-              var item = cast (StackItem*) sender.Parent;
-              item.ExtraMargin = cast Margin "left:10 top:10 right:10 bottom:10";
-              stackLayout.MoveChild(item, stackLayout.StackItems.Count - 1);
+              var selectedItem = cast (StackItem*) sender.Parent;
+              selectedItem.ExtraMargin = cast Margin "left:10 top:10 right:10 bottom:10";
+              stackLayout.MoveChild(selectedItem, stackLayout.StackItems.Count - 1);
             }
           ]]>
           </ev.Clicked-eval>

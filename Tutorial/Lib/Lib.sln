@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUILite", "GacUILite\GacU
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUI", "GacUI\GacUI.vcxproj", "{8018D622-66BA-4E65-9D03-BDAC37EA9A54}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUIComplete", "GacUIComplete\GacUIComplete.vcxproj", "{3AEC5E1A-482F-41B1-8598-C02321621A64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,10 @@ Global
 		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Debug|Win32.Build.0 = Debug|Win32
 		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Release|Win32.ActiveCfg = Release|Win32
 		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Release|Win32.Build.0 = Release|Win32
+		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Debug|Win32.Build.0 = Debug|Win32
+		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Release|Win32.ActiveCfg = Release|Win32
+		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

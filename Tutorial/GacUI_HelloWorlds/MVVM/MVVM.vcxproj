@@ -86,11 +86,6 @@
     <ClCompile Include="UI\Source\MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Lib\GacUI\GacUI.vcxproj">
-      <Project>{8018d622-66ba-4e65-9d03-bdac37ea9a54}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Xml Include="UI\MainWindow.xml" />
     <Xml Include="UI\Resource.xml" />
     <Xml Include="UI\ViewModel.xml" />
@@ -99,6 +94,11 @@
     <ClInclude Include="UI\Source\HelloWorld.h" />
     <ClInclude Include="UI\Source\HelloWorldPartialClasses.h" />
     <ClInclude Include="UI\Source\MainWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Lib\GacUI\GacUI.vcxproj">
+      <Project>{8018d622-66ba-4e65-9d03-bdac37ea9a54}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

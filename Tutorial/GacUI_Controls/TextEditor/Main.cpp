@@ -17,7 +17,7 @@ void GuiMain()
 		List<WString> errors;
 		FileStream fileStream(L"../UIRes/TextEditor.bin", FileStream::ReadOnly);
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
-		GetInstanceLoaderManager()->SetResource(L"Resource", resource);
+		GetInstanceResourceManager()->SetResource(L"Resource", resource);
 	}
 	demo::MainWindow window;
 	window.MoveToScreenCenter();
