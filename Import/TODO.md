@@ -1,7 +1,6 @@
 # TODO
 
 * Workflow
-    * Class: destructor
     * Enum
     * Struct
     * Expression: new T{x}, Enum.Item
