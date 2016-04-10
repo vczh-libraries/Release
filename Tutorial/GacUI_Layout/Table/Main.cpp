@@ -15,7 +15,7 @@ void GuiMain()
 		List<WString> errors;
 		FileStream fileStream(L"../UIRes/Table.bin", FileStream::ReadOnly);
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
-		GetInstanceResourceManager()->SetResource(L"Resource", resource);
+		GetResourceManager()->SetResource(L"Resource", resource);
 	}
 	demo::MainWindow window;
 	window.MoveToScreenCenter();

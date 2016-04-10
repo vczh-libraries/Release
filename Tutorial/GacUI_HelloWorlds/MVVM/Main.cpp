@@ -80,7 +80,7 @@ void GuiMain()
 		List<WString> errors;
 		FileStream fileStream(L"../UIRes/MVVM.bin", FileStream::ReadOnly);
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
-		GetInstanceResourceManager()->SetResource(L"Resource", resource);
+		GetResourceManager()->SetResource(L"Resource", resource);
 	}
 	auto viewModel = MakePtr<ViewModel>();
 	auto window = new helloworld::MainWindow(viewModel);

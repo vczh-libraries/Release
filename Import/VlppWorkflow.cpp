@@ -1586,11 +1586,13 @@ Serialization (TypeImpl)
 
 				static void IOClass(WfReader& reader, WfClass* td)
 				{
+					reader << td->destructorFunctionIndex;
 					IOCustomType(reader, td, true);
 				}
 
 				static void IOClass(WfWriter& writer, WfClass* td)
 				{
+					writer << td->destructorFunctionIndex;
 					IOCustomType(writer, td, true);
 				}
 
@@ -3405,15 +3407,14 @@ WfRuntimeThreadContext
 						if (OPERATOR_OpConvertToType(result, converted, ins))
 						{
 							PushValue(converted);
-							return WfRuntimeExecutionAction::ExecuteInstruction;
 						}
 						else
 						{
 							WString from = result.IsNull() ? L"<null>" : L"<" + result.GetText() + L"> of " + result.GetTypeDescriptor()->GetTypeName();
 							WString to = ins.typeDescriptorParameter->GetTypeName();
 							RaiseException(L"Failed to convert from \"" + from + L"\" to \"" + to + L"\".", false);
-							return WfRuntimeExecutionAction::Nop;
 						}
+						return WfRuntimeExecutionAction::ExecuteInstruction;
 					}
 				case WfInsCode::TryConvertToType:
 					{
@@ -4459,37 +4460,40 @@ WfInterfaceConstructor
 					for (vint i = 0; i < baseTypes.Count(); i++)
 					{
 						auto td = baseTypes[i];
-						if (auto group = td->GetConstructorGroup())
+						if (td != description::GetTypeDescriptor<IDescriptable>())
 						{
-							vint count = group->GetMethodCount();
-							IMethodInfo* selectedCtor = nullptr;
-
-							for (vint j = 0; j < count; j++)
+							if (auto group = td->GetConstructorGroup())
 							{
-								auto ctor = group->GetMethod(j);
-								if (ctor->GetParameterCount() == 1)
+								vint count = group->GetMethodCount();
+								IMethodInfo* selectedCtor = nullptr;
+
+								for (vint j = 0; j < count; j++)
 								{
-									auto type = ctor->GetParameter(0)->GetType();
-									if (type->GetDecorator() == ITypeInfo::SharedPtr && type->GetTypeDescriptor() == description::GetTypeDescriptor<IValueInterfaceProxy>())
+									auto ctor = group->GetMethod(j);
+									if (ctor->GetParameterCount() == 1)
 									{
-										selectedCtor = ctor;
-										break;
+										auto type = ctor->GetParameter(0)->GetType();
+										if (type->GetDecorator() == ITypeInfo::SharedPtr && type->GetTypeDescriptor() == description::GetTypeDescriptor<IValueInterfaceProxy>())
+										{
+											selectedCtor = ctor;
+											break;
+										}
 									}
 								}
-							}
 
-							if (selectedCtor)
-							{
-								baseCtors.Add(selectedCtor);
+								if (selectedCtor)
+								{
+									baseCtors.Add(selectedCtor);
+								}
+								else
+								{
+									throw ArgumentCountMismtatchException(group);
+								}
 							}
 							else
 							{
-								throw ArgumentCountMismtatchException(group);
+								throw ConstructorNotExistsException(td);
 							}
-						}
-						else
-						{
-							throw ConstructorNotExistsException(td);
 						}
 					}
 				}
@@ -4831,12 +4835,21 @@ WfClassInstance
 			WfClassInstance::WfClassInstance(ITypeDescriptor* _typeDescriptor)
 				:Description<WfClassInstance>(_typeDescriptor)
 			{
-				classType = dynamic_cast<WfCustomType*>(_typeDescriptor);
+				classType = dynamic_cast<WfClass*>(_typeDescriptor);
 				InitializeAggregation(classType->GetExpandedBaseTypes().Count());
 			}
 
 			WfClassInstance::~WfClassInstance()
 			{
+				if (classType->destructorFunctionIndex != -1)
+				{
+					auto capturedVariables = MakePtr<WfRuntimeVariableContext>();
+					capturedVariables->variables.Resize(1);
+					capturedVariables->variables[0] = Value::From(this);
+
+					auto argumentArray = IValueList::Create();
+					WfRuntimeLambda::Invoke(classType->GetGlobalContext(), capturedVariables, classType->destructorFunctionIndex, argumentArray);
+				}
 			}
 
 			void WfClassInstance::InstallBaseObject(ITypeDescriptor* td, Value& value)
