@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MVVM", "MVVM\MVVM.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUIComplete", "..\Lib\GacUIComplete\GacUIComplete.vcxproj", "{3AEC5E1A-482F-41B1-8598-C02321621A64}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Xml", "Xml\Xml.vcxproj", "{4C3F091C-1A77-401A-B773-E755A2E6E0F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -53,6 +55,10 @@ Global
 		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Debug|Win32.Build.0 = Debug|Win32
 		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Release|Win32.ActiveCfg = Release|Win32
 		{3AEC5E1A-482F-41B1-8598-C02321621A64}.Release|Win32.Build.0 = Release|Win32
+		{4C3F091C-1A77-401A-B773-E755A2E6E0F5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4C3F091C-1A77-401A-B773-E755A2E6E0F5}.Debug|Win32.Build.0 = Debug|Win32
+		{4C3F091C-1A77-401A-B773-E755A2E6E0F5}.Release|Win32.ActiveCfg = Release|Win32
+		{4C3F091C-1A77-401A-B773-E755A2E6E0F5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

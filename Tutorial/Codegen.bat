@@ -1,4 +1,7 @@
 pushd GacUI_HelloWorlds
+pushd Xml\UI
+call Codegen.bat
+popd
 pushd CppXml\UI
 call Codegen.bat
 popd

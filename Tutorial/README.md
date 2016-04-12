@@ -3,11 +3,12 @@
 GacUI tutorials and the plan
 
 * GacUI_HelloWorlds
-    * **Cpp**: Using C++ to write a GacUI project.
-    * **WorkflowScript**: Using Workflow script to write a GacUI project.
-    * **CppXml**: Using Xml Resource with generated Workflow script and C++ code to write a GacUI project.
+    * **Cpp**: Using C++ from stratch.
+    * **WorkflowScript**: Using Workflow script from stratch.
+    * **CppXml**: Using C++ and GacUI Xml Resource, with generated C++ code for loading UI from the precompiled binary GacUI Xml Resource.
+    * **Xml**: Loading the precompiled binary GacUI Xml Resource dynamically at runtime.
     * **MVVM**: A MVVM pattern demo using Xml Resource.
-    * **PureCppXml**:
+    * **PureCppXml**: Using C++ and GacUI Xml Resource, but all UI in the resource is completely compiled to C++. (developing)
 * GacUI_Layout
     * **Alignment**: Simple layout.
     * **Stack**: Stack layout with configurable axis directions.
@@ -30,6 +31,7 @@ GacUI tutorials and the plan
 * GacUI_XmlResource
     * **MultipleWindow**
     * **CustomControl**
+    * **InheritableCustomControl**
     * **Event**:
     * **ViewModel**:
     * **Bindings**:
