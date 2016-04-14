@@ -46,4 +46,7 @@ popd
 pushd Instance_MultipleWindows\UI
 call Codegen.bat
 popd
+pushd Instance_Control\UI
+call Codegen.bat
+popd
 popd
