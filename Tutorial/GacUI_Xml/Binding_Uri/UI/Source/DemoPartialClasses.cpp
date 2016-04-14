@@ -14,6 +14,10 @@ namespace demo
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
+	void MainWindow::documentLabel_ActiveHyperlinkExecuted(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	MainWindow::MainWindow()
@@ -40,6 +44,8 @@ namespace vl
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
 				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(), NO_PARAMETER)
+
+				CLASS_MEMBER_GUIEVENT_HANDLER(documentLabel_ActiveHyperlinkExecuted, vl::presentation::compositions::GuiEventArgs)
 			END_CLASS_MEMBER(demo::MainWindow)
 
 			#undef _

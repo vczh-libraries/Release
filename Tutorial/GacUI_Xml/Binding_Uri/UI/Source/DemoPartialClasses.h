@@ -23,11 +23,13 @@ namespace demo
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
+		vl::presentation::controls::GuiDocumentLabel* documentLabel;
 
 		void InitializeComponents()
 		{
 			if (InitializeFromResource())
 			{
+				GUI_INSTANCE_REFERENCE(documentLabel);
 			}
 			else
 			{
@@ -37,6 +39,7 @@ namespace demo
 		MainWindow_()
 			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
 			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,documentLabel(0)
 		{
 		}
 	};
@@ -62,6 +65,7 @@ namespace demo
 	protected:
 
 		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+		void documentLabel_ActiveHyperlinkExecuted(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
 		MainWindow();
