@@ -32,11 +32,11 @@ GacUI tutorials and the plan
 	* **Instance_Window**: Create a window.
 	* **Instance_MultipleWindows**: Create multiple windows.
 	* **Instance_Control**: Create a control.
-	* **Binding_Uri**: Using -uri binding. (developing)
-	* **Binding_Eval**: Using -eval binding. (developing)
-	* **Binding_Bind**: Using -bind binding. (developing)
-	* **Binding_Format**: Using -format binding. (developing)
-	* **Binding_ViewModel**: Binding to view model. (developing)
+	* **Binding_Uri**: Using -uri binding.
+	* **Binding_Eval**: Using -eval binding.
+	* **Binding_Bind**: Using -bind binding.
+	* **Binding_Format**: Using -format binding.
+	* **Binding_ViewModel**: Binding to view model.
     * **Event_Cpp**:Handling event in C++. (developing)
 	* **Event_Script**:Handling event in Workflow script. (developing)
 	* **Event_ViewModel**:Handling event in view model. (developing)

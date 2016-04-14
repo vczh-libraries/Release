@@ -9,6 +9,15 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	return SetupWindowsDirect2DRenderer();
 }
 
+class ViewModelImpl : public Object, public virtual demo::IViewModel
+{
+public:
+	WString GetMessageFromName(WString name)override
+	{
+		return L"Hi, " + name + L"! How are you?";
+	}
+};
+
 void GuiMain()
 {
 	{
@@ -17,7 +26,7 @@ void GuiMain()
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
 		GetResourceManager()->SetResource(L"Resource", resource);
 	}
-	demo::MainWindow window;
+	demo::MainWindow window(new ViewModelImpl);
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }

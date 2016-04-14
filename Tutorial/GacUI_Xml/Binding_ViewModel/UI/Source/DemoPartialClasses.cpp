@@ -16,9 +16,9 @@ namespace demo
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
-	MainWindow::MainWindow()
+	MainWindow::MainWindow(Ptr<demo::IViewModel> ViewModel)
 	{
-		InitializeComponents();
+		InitializeComponents(ViewModel);
 	}
 
 	MainWindow::~MainWindow()
@@ -35,11 +35,19 @@ namespace vl
 		namespace description
 		{
 			#define _ ,
+			IMPL_CPP_TYPE_INFO(demo::IViewModel)
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
+
+			BEGIN_CLASS_MEMBER(demo::IViewModel)
+				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_METHOD(GetMessageFromName, { L"name" });
+			END_CLASS_MEMBER(demo::IViewModel)
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
 				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
-				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(), NO_PARAMETER)
+				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(Ptr<demo::IViewModel>), { L"ViewModel" })
+
+				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 			END_CLASS_MEMBER(demo::MainWindow)
 
 			#undef _
@@ -49,6 +57,7 @@ namespace vl
 			public:
 				void Load(ITypeManager* manager)
 				{
+					ADD_TYPE_INFO(demo::IViewModel)
 					ADD_TYPE_INFO(demo::MainWindow)
 				}
 

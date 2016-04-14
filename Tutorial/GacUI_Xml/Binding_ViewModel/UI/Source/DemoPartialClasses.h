@@ -15,29 +15,47 @@ DO NOT MODIFY
 
 namespace demo
 {
+	class IViewModel;
 	class MainWindow;
+
+	class IViewModel : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
+	{
+	public:
+		virtual vl::WString GetMessageFromName(vl::WString name) = 0;
+	};
 
 	template<typename TImpl>
 	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
+		Ptr<demo::IViewModel> ViewModel_;
 	protected:
+		vl::presentation::controls::GuiSinglelineTextBox* textBoxName;
 
-		void InitializeComponents()
+		void InitializeComponents(Ptr<demo::IViewModel> ViewModel)
 		{
+			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
 			{
+				GUI_INSTANCE_REFERENCE(textBoxName);
 			}
 			else
 			{
+				ViewModel_ = 0;
 			}
 		}
 	public:
 		MainWindow_()
 			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
 			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,textBoxName(0)
 		{
+		}
+
+		Ptr<demo::IViewModel> GetViewModel()
+		{
+			return ViewModel_;
 		}
 	};
 
@@ -48,6 +66,7 @@ namespace vl
 	{
 		namespace description
 		{
+			DECL_TYPE_INFO(demo::IViewModel)
 			DECL_TYPE_INFO(demo::MainWindow)
 
 		}
@@ -64,7 +83,7 @@ namespace demo
 		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
-		MainWindow();
+		MainWindow(Ptr<demo::IViewModel> ViewModel);
 		~MainWindow();
 	};
 }
