@@ -23,11 +23,17 @@ namespace demo
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
+		vl::presentation::controls::GuiSinglelineTextBox* textBoxA;
+		vl::presentation::controls::GuiSinglelineTextBox* textBoxB;
+		vl::presentation::controls::GuiSinglelineTextBox* textBoxC;
 
 		void InitializeComponents()
 		{
 			if (InitializeFromResource())
 			{
+				GUI_INSTANCE_REFERENCE(textBoxA);
+				GUI_INSTANCE_REFERENCE(textBoxB);
+				GUI_INSTANCE_REFERENCE(textBoxC);
 			}
 			else
 			{
@@ -37,6 +43,9 @@ namespace demo
 		MainWindow_()
 			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
 			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,textBoxA(0)
+			,textBoxB(0)
+			,textBoxC(0)
 		{
 		}
 	};

@@ -17,9 +17,47 @@
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
         <Window Text="Binding_Bind" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
-          <Label Text="This is a window!">
-            <att.Font>fontFamily:{Segoe UI} size:32 antialias:true</att.Font>
-          </Label>
+          <Table CellPadding="5" MinSizeLimitation="LimitToElementAndChildren" AlignmentToParent="left:0 top:0 right:0 bottom:0">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Absolute absolute:100</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0" InternalMargin="left:0 top:5 right:0 bottom:5">
+              <Label Text="A : "/>
+            </Cell>
+            <Cell Site="row:0 column:1">
+              <SinglelineTextBox ref.Name="textBoxA" Text="1">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+              </SinglelineTextBox>
+            </Cell>
+
+            <Cell Site="row:1 column:0" InternalMargin="left:0 top:5 right:0 bottom:5">
+              <Label Text="B : "/>
+            </Cell>
+            <Cell Site="row:1 column:1">
+              <SinglelineTextBox ref.Name="textBoxB" Text="2">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+              </SinglelineTextBox>
+            </Cell>
+
+            <Cell Site="row:2 column:0" InternalMargin="left:0 top:5 right:0 bottom:5">
+              <Label Text="A + B = : "/>
+            </Cell>
+            <Cell Site="row:2 column:1">
+              <SinglelineTextBox ref.Name="textBoxC" Readonly="true" Text-bind="(cast int textBoxA.Text) + (cast int textBoxB.Text) ?? 'ERROR'">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+              </SinglelineTextBox>
+            </Cell>
+            
+          </Table>
         </Window>
       </Instance>
     </Instance>
