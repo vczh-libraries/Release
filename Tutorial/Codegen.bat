@@ -43,4 +43,7 @@ pushd GacUI_Xml
 pushd Instance_Window\UI
 call Codegen.bat
 popd
+pushd Instance_MultipleWindows\UI
+call Codegen.bat
+popd
 popd
