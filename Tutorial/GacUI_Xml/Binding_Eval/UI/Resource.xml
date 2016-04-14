@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="Output">Source</Text>
+      <Text name="Include">GacUIReflection.h</Text>
+      <Text name="Name">Demo</Text>
+      <Text name="Prefix"></Text>
+    </Folder>
+    <Folder name="Res">
+      <Text name="Output">..\..\UIRes</Text>
+      <Text name="PrecompiledBinary">Binding_Eval.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
+        <Window Text="Binding_Eval" ClientSize="x:480 y:320">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <Label Text="This is a window!">
+            <att.Font>fontFamily:{Segoe UI} size:32 antialias:true</att.Font>
+          </Label>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>

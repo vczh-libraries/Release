@@ -49,4 +49,19 @@ popd
 pushd Instance_Control\UI
 call Codegen.bat
 popd
+pushd Binding_Uri\UI
+call Codegen.bat
+popd
+pushd Binding_Eval\UI
+call Codegen.bat
+popd
+pushd Binding_Bind\UI
+call Codegen.bat
+popd
+pushd Binding_Format\UI
+call Codegen.bat
+popd
+pushd Binding_ViewModel\UI
+call Codegen.bat
+popd
 popd
