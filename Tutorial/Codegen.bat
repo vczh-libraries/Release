@@ -39,3 +39,8 @@ pushd BlackSkin\UI
 call Codegen.bat
 popd
 popd
+pushd GacUI_Xml
+pushd Instance_Window\UI
+call Codegen.bat
+popd
+popd
