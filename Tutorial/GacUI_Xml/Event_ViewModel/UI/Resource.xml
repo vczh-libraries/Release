@@ -9,7 +9,7 @@
     </Folder>
     <Folder name="Res">
       <Text name="Output">..\..\UIRes</Text>
-      <Text name="PrecompiledBinary">Binding_ViewModel.bin</Text>
+      <Text name="PrecompiledBinary">Event_ViewModel.bin</Text>
     </Folder>
   </Folder>
   <Folder name="MainWindow">
@@ -22,7 +22,8 @@
           {
             interface IViewModel
             {
-              func GetMessageFromName(name : string) : string;
+              func Add(a : int, b : int) : int;
+              func Error() : string;
             }
           }
         ]]>
@@ -31,10 +32,11 @@
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
         <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
-        <Window Text="Binding_ViewModel" ClientSize="x:480 y:320">
+        <Window Text="Event_ViewModel" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
           <Table CellPadding="5" MinSizeLimitation="LimitToElementAndChildren" AlignmentToParent="left:0 top:0 right:0 bottom:0">
             <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
               <CellOption>composeType:MinSize</CellOption>
               <CellOption>composeType:MinSize</CellOption>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
@@ -42,22 +44,48 @@
             <att.Columns>
               <CellOption>composeType:MinSize</CellOption>
               <CellOption>composeType:Absolute absolute:100</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
             </att.Columns>
 
             <Cell Site="row:0 column:0" InternalMargin="left:0 top:5 right:0 bottom:5">
-              <Label Text="Type your name : "/>
+              <Label Text="A : "/>
             </Cell>
-            <Cell Site="row:0 column:1">
-              <SinglelineTextBox ref.Name="textBoxName" Text="Jack">
+            <Cell Site="row:0 column:1 columnSpan:2">
+              <SinglelineTextBox ref.Name="textBoxA" Text="1">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
               </SinglelineTextBox>
             </Cell>
 
-            <Cell Site="row:1 column:0 columnSpan:2" InternalMargin="left:0 top:5 right:0 bottom:5">
-              <Label Text-bind="ViewModel.GetMessageFromName(textBoxName.Text)"/>
+            <Cell Site="row:1 column:0" InternalMargin="left:0 top:5 right:0 bottom:5">
+              <Label Text="B : "/>
+            </Cell>
+            <Cell Site="row:1 column:1 columnSpan:2">
+              <SinglelineTextBox ref.Name="textBoxB" Text="2">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+              </SinglelineTextBox>
             </Cell>
 
+            <Cell Site="row:2 column:0" InternalMargin="left:0 top:5 right:0 bottom:5">
+              <Label Text="A + B = : "/>
+            </Cell>
+            <Cell Site="row:2 column:1">
+              <SinglelineTextBox ref.Name="textBoxC" Readonly="true">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+              </SinglelineTextBox>
+            </Cell>
+            <Cell Site="row:2 column:2">
+              <Button Text="Calculate">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <ev.Clicked-eval>
+                  <![CDATA[
+                    {
+                      textBoxC.Text = (ViewModel.Add(cast int textBoxA.Text, cast int textBoxB.Text) ?? ViewModel.Error());
+                    }
+                  ]]>
+                </ev.Clicked-eval>
+              </Button>
+            </Cell>
           </Table>
         </Window>
       </Instance>

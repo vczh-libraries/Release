@@ -64,4 +64,13 @@ popd
 pushd Binding_ViewModel\UI
 call Codegen.bat
 popd
+pushd Event_Cpp\UI
+call Codegen.bat
+popd
+pushd Event_Script\UI
+call Codegen.bat
+popd
+pushd Event_ViewModel\UI
+call Codegen.bat
+popd
 popd
