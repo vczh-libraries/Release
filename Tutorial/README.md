@@ -41,7 +41,7 @@ GacUI tutorials and the plan
     * **Event_Cpp**:Handling event in C++.
     * **Event_Script**:Handling event in Workflow script.
     * **Event_ViewModel**:Handling event in view model.
-    * **Member_ViewModel**:Adding view model to window.
+    * **Member_Parameter**:Adding view model to window.
     * **Member_Property**:Adding property to window.
     * **Member_State**:Adding state to window.
     * **Member_Component**:
