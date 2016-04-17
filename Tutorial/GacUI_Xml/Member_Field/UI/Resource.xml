@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="Output">Source</Text>
+      <Text name="Include">GacUIReflection.h</Text>
+      <Text name="Name">Demo</Text>
+      <Text name="Prefix"></Text>
+    </Folder>
+    <Folder name="Res">
+      <Text name="Output">..\..\UIRes</Text>
+      <Text name="PrecompiledBinary">Member_Field.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
+        <ref.State Name="integerState" Type="int" Value="0"/>
+        <Window ref.Name="self" Text="Member_Field" ClientSize="x:480 y:320">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Absolute absolute:100</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+            
+            <Cell Site="row:0 column:0">
+              <SinglelineTextBox ref.Name="textBoxA" Text="12345">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+              </SinglelineTextBox>
+            </Cell>
+
+            <Cell Site="row:0 column:1">
+              <Button Text="Copy in Script">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.Enabled-bind>(cast int textBoxA.Text) is int ?? false </att.Enabled-bind>
+                <ev.Clicked-eval>
+                  <![CDATA[
+                    {
+                      self.integerState = cast int textBoxA.Text;
+                    }
+                  ]]>
+                </ev.Clicked-eval>
+              </Button>
+            </Cell>
+
+            <Cell Site="row:1 column:0">
+              <SinglelineTextBox ref.Name="textBoxB" Text="">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+              </SinglelineTextBox>
+            </Cell>
+
+            <Cell Site="row:1 column:1">
+              <Button Text="Paste in C++" ev.Clicked="buttonPaste_Clicked">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </Button>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>

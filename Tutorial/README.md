@@ -32,6 +32,7 @@ GacUI tutorials and the plan
     * **Instance_Window**: Create a window.
     * **Instance_MultipleWindows**: Create multiple windows.
     * **Instance_Control**: Create a control.
+    * **Instance_Inheriting**:
     * **Binding_Uri**: Using -uri binding.
     * **Binding_Eval**: Using -eval binding.
     * **Binding_Bind**: Using -bind binding.
@@ -40,10 +41,12 @@ GacUI tutorials and the plan
     * **Event_Cpp**:Handling event in C++.
     * **Event_Script**:Handling event in Workflow script.
     * **Event_ViewModel**:Handling event in view model.
-    * **Member_ViewModel**:Adding view model to window. (developing)
-    * **Member_Property**:Adding property to window. (developing)
-    * **Member_State**:Adding state to window. (developing)
-    * **InheritableCustomControl**
+    * **Member_ViewModel**:Adding view model to window.
+    * **Member_Property**:Adding property to window.
+    * **Member_State**:Adding state to window.
+    * **Member_Component**:
+    * **Style_Path**:
+    * **Style_Template**:
     * **VisualState**:
     * **StateMachine**:
     * **Animation**:

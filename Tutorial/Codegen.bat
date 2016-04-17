@@ -73,4 +73,13 @@ popd
 pushd Event_ViewModel\UI
 call Codegen.bat
 popd
+pushd Member_Field\UI
+call Codegen.bat
+popd
+pushd Member_Property\UI
+call Codegen.bat
+popd
+pushd Member_Parameter\UI
+call Codegen.bat
+popd
 popd
