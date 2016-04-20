@@ -41,7 +41,7 @@ namespace demo
 			Setup();
 		}
 
-		void ColorizeTokenContextSensitive(int lineIndex, const wchar_t* text, vint start, vint length, vint& token, int& contextState)override
+		void ColorizeTokenContextSensitive(vint lineIndex, const wchar_t* text, vint start, vint length, vint& token, vint& contextState)override
 		{
 			// 0 < 1 name 2 att > 0
 			switch(token)
