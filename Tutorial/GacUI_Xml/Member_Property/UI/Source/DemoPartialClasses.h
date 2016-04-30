@@ -73,6 +73,7 @@ namespace demo
 			,optionGroup(0)
 			,self(0)
 		{
+			this->SelectedOption_ = vl::reflection::description::UnboxValue<vl::WString>(vl::reflection::description::Value::From(L"A", reflection::description::GetTypeDescriptor<vl::WString>()));
 		}
 
 		vl::Event<void()> SelectedOptionChanged;
@@ -111,6 +112,8 @@ namespace demo
 	protected:
 
 		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+		void OnCreate();
+		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
 		MainWindow();
@@ -128,6 +131,8 @@ namespace demo
 	protected:
 
 		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+		void OnCreate();
+		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
 		MyControl();
