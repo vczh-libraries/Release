@@ -21,6 +21,8 @@ namespace helloworld
 
 		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 		void buttonSignUp_Clicked(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
+		void OnCreate();
+		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
 		MainWindow(Ptr<vm::IViewModel> ViewModel);

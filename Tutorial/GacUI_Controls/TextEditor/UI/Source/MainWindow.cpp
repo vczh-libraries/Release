@@ -188,6 +188,17 @@ namespace demo
 		arguments.cancel = !CanCloseFile();
 	}
 
+	void MainWindow::OnCreate()
+	{
+		findWindow = MakePtr<FindWindow>(MakePtr<FindWindowViewModel>(textBox));
+		findWindow->MoveToScreenCenter();
+		findWindow->GetNativeWindow()->SetParent(GetNativeWindow());
+	}
+
+	void MainWindow::OnDestroy()
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	bool MainWindow::CanCloseFile()
@@ -312,13 +323,12 @@ namespace demo
 	MainWindow::MainWindow()
 	{
 		InitializeComponents();
-		findWindow = MakePtr<FindWindow>(MakePtr<FindWindowViewModel>(textBox));
-		findWindow->MoveToScreenCenter();
-		findWindow->GetNativeWindow()->SetParent(GetNativeWindow());
+		OnCreate();
 	}
 
 	MainWindow::~MainWindow()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 

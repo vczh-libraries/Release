@@ -14,15 +14,25 @@ namespace demo
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
+	void FindWindow::OnCreate()
+	{
+	}
+
+	void FindWindow::OnDestroy()
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	FindWindow::FindWindow(Ptr<vm::IFindWindowViewModel> ViewModel)
 	{
 		InitializeComponents(ViewModel);
+		OnCreate();
 	}
 
 	FindWindow::~FindWindow()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }

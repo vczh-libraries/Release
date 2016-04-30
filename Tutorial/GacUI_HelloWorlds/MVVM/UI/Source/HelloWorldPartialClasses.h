@@ -81,6 +81,7 @@ namespace helloworld
 			,textBoxPassword(0)
 			,textBoxUserName(0)
 		{
+			this->HasLoggedIn_ = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"false", reflection::description::GetTypeDescriptor<bool>()));
 		}
 
 		Ptr<vm::IViewModel> GetViewModel()

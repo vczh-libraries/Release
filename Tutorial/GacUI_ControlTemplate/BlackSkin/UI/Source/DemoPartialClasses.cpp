@@ -14,15 +14,25 @@ namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
+	void BottomScrollButtonTemplate::OnCreate()
+	{
+	}
+
+	void BottomScrollButtonTemplate::OnDestroy()
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	BottomScrollButtonTemplate::BottomScrollButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	BottomScrollButtonTemplate::~BottomScrollButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -31,16 +41,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ButtonTemplate::OnCreate()
+	{
+	}
+
+	void ButtonTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ButtonTemplate::ButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ButtonTemplate::~ButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -49,16 +69,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void CheckBoxTemplate::OnCreate()
+	{
+	}
+
+	void CheckBoxTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	CheckBoxTemplate::CheckBoxTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	CheckBoxTemplate::~CheckBoxTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -67,16 +97,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void CheckItemBackgroundTemplate::OnCreate()
+	{
+	}
+
+	void CheckItemBackgroundTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	CheckItemBackgroundTemplate::CheckItemBackgroundTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	CheckItemBackgroundTemplate::~CheckItemBackgroundTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -85,16 +125,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void CheckTextListTemplate::OnCreate()
+	{
+	}
+
+	void CheckTextListTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	CheckTextListTemplate::CheckTextListTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	CheckTextListTemplate::~CheckTextListTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -103,16 +153,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ComboBoxTemplate::OnCreate()
+	{
+	}
+
+	void ComboBoxTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ComboBoxTemplate::ComboBoxTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ComboBoxTemplate::~ComboBoxTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -121,16 +181,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void DatePickerTemplate::OnCreate()
+	{
+	}
+
+	void DatePickerTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	DatePickerTemplate::DatePickerTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	DatePickerTemplate::~DatePickerTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -139,16 +209,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void DocumentLabelTemplate::OnCreate()
+	{
+	}
+
+	void DocumentLabelTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	DocumentLabelTemplate::DocumentLabelTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	DocumentLabelTemplate::~DocumentLabelTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -157,16 +237,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void DocumentViewerTemplate::OnCreate()
+	{
+	}
+
+	void DocumentViewerTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	DocumentViewerTemplate::DocumentViewerTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	DocumentViewerTemplate::~DocumentViewerTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -175,16 +265,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ExpandingDecoratorTemplate::OnCreate()
+	{
+	}
+
+	void ExpandingDecoratorTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ExpandingDecoratorTemplate::ExpandingDecoratorTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ExpandingDecoratorTemplate::~ExpandingDecoratorTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -193,16 +293,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void GroupBoxTemplate::OnCreate()
+	{
+	}
+
+	void GroupBoxTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	GroupBoxTemplate::GroupBoxTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	GroupBoxTemplate::~GroupBoxTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -211,16 +321,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void HScrollHandleTemplate::OnCreate()
+	{
+	}
+
+	void HScrollHandleTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	HScrollHandleTemplate::HScrollHandleTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	HScrollHandleTemplate::~HScrollHandleTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -229,16 +349,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void HScrollTemplate::OnCreate()
+	{
+	}
+
+	void HScrollTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	HScrollTemplate::HScrollTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	HScrollTemplate::~HScrollTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -247,16 +377,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void HTrackerTemplate::OnCreate()
+	{
+	}
+
+	void HTrackerTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	HTrackerTemplate::HTrackerTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	HTrackerTemplate::~HTrackerTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -265,16 +405,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ItemBackgroundTemplate::OnCreate()
+	{
+	}
+
+	void ItemBackgroundTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ItemBackgroundTemplate::ItemBackgroundTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ItemBackgroundTemplate::~ItemBackgroundTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -283,16 +433,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void LabelTemplate::OnCreate()
+	{
+	}
+
+	void LabelTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	LabelTemplate::LabelTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	LabelTemplate::~LabelTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -301,16 +461,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void LeftScrollButtonTemplate::OnCreate()
+	{
+	}
+
+	void LeftScrollButtonTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	LeftScrollButtonTemplate::LeftScrollButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	LeftScrollButtonTemplate::~LeftScrollButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -319,16 +489,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ListViewColumnHeaderTemplate::OnCreate()
+	{
+	}
+
+	void ListViewColumnHeaderTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ListViewColumnHeaderTemplate::ListViewColumnHeaderTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ListViewColumnHeaderTemplate::~ListViewColumnHeaderTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -337,16 +517,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ListViewTemplate::OnCreate()
+	{
+	}
+
+	void ListViewTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ListViewTemplate::ListViewTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ListViewTemplate::~ListViewTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -355,16 +545,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void MenuBarButtonTemplate::OnCreate()
+	{
+	}
+
+	void MenuBarButtonTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	MenuBarButtonTemplate::MenuBarButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	MenuBarButtonTemplate::~MenuBarButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -373,16 +573,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void MenuItemButtonTemplate::OnCreate()
+	{
+	}
+
+	void MenuItemButtonTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	MenuItemButtonTemplate::MenuItemButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	MenuItemButtonTemplate::~MenuItemButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -391,16 +601,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void MenuSplitterTemplate::OnCreate()
+	{
+	}
+
+	void MenuSplitterTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	MenuSplitterTemplate::MenuSplitterTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	MenuSplitterTemplate::~MenuSplitterTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -409,16 +629,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void MultilineTextBoxTemplate::OnCreate()
+	{
+	}
+
+	void MultilineTextBoxTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	MultilineTextBoxTemplate::MultilineTextBoxTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	MultilineTextBoxTemplate::~MultilineTextBoxTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -427,16 +657,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ProgressBarTemplate::OnCreate()
+	{
+	}
+
+	void ProgressBarTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ProgressBarTemplate::ProgressBarTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ProgressBarTemplate::~ProgressBarTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -445,16 +685,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void RadioButtonTemplate::OnCreate()
+	{
+	}
+
+	void RadioButtonTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	RadioButtonTemplate::RadioButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	RadioButtonTemplate::~RadioButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -463,16 +713,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void RadioTextListTemplate::OnCreate()
+	{
+	}
+
+	void RadioTextListTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	RadioTextListTemplate::RadioTextListTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	RadioTextListTemplate::~RadioTextListTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -481,16 +741,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void RightScrollButtonTemplate::OnCreate()
+	{
+	}
+
+	void RightScrollButtonTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	RightScrollButtonTemplate::RightScrollButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	RightScrollButtonTemplate::~RightScrollButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -499,16 +769,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ScrollViewTemplate::OnCreate()
+	{
+	}
+
+	void ScrollViewTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ScrollViewTemplate::ScrollViewTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ScrollViewTemplate::~ScrollViewTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -517,16 +797,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void SinglelineTextBoxTemplate::OnCreate()
+	{
+	}
+
+	void SinglelineTextBoxTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	SinglelineTextBoxTemplate::SinglelineTextBoxTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	SinglelineTextBoxTemplate::~SinglelineTextBoxTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -535,16 +825,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void TabDropdownTemplate::OnCreate()
+	{
+	}
+
+	void TabDropdownTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	TabDropdownTemplate::TabDropdownTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	TabDropdownTemplate::~TabDropdownTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -553,16 +853,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void TabHeaderTemplate::OnCreate()
+	{
+	}
+
+	void TabHeaderTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	TabHeaderTemplate::TabHeaderTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	TabHeaderTemplate::~TabHeaderTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -571,16 +881,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void TabTemplate::OnCreate()
+	{
+	}
+
+	void TabTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	TabTemplate::TabTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	TabTemplate::~TabTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -589,16 +909,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void TextListTemplate::OnCreate()
+	{
+	}
+
+	void TextListTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	TextListTemplate::TextListTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	TextListTemplate::~TextListTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -607,16 +937,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ToolstripButtonTemplate::OnCreate()
+	{
+	}
+
+	void ToolstripButtonTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ToolstripButtonTemplate::ToolstripButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ToolstripButtonTemplate::~ToolstripButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -625,16 +965,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ToolstripDropdownButtonTemplate::OnCreate()
+	{
+	}
+
+	void ToolstripDropdownButtonTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ToolstripDropdownButtonTemplate::ToolstripDropdownButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ToolstripDropdownButtonTemplate::~ToolstripDropdownButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -643,16 +993,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ToolstripMenuTemplate::OnCreate()
+	{
+	}
+
+	void ToolstripMenuTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ToolstripMenuTemplate::ToolstripMenuTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ToolstripMenuTemplate::~ToolstripMenuTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -661,16 +1021,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ToolstripSplitArrowTemplate::OnCreate()
+	{
+	}
+
+	void ToolstripSplitArrowTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ToolstripSplitArrowTemplate::ToolstripSplitArrowTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ToolstripSplitArrowTemplate::~ToolstripSplitArrowTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -679,16 +1049,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ToolstripSplitButtonTemplate::OnCreate()
+	{
+	}
+
+	void ToolstripSplitButtonTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ToolstripSplitButtonTemplate::ToolstripSplitButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ToolstripSplitButtonTemplate::~ToolstripSplitButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -697,16 +1077,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ToolstripSplitterTemplate::OnCreate()
+	{
+	}
+
+	void ToolstripSplitterTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ToolstripSplitterTemplate::ToolstripSplitterTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ToolstripSplitterTemplate::~ToolstripSplitterTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -715,16 +1105,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void ToolstripTemplate::OnCreate()
+	{
+	}
+
+	void ToolstripTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	ToolstripTemplate::ToolstripTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	ToolstripTemplate::~ToolstripTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -733,16 +1133,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void TooltipTemplate::OnCreate()
+	{
+	}
+
+	void TooltipTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	TooltipTemplate::TooltipTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	TooltipTemplate::~TooltipTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -751,16 +1161,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void TopScrollButtonTemplate::OnCreate()
+	{
+	}
+
+	void TopScrollButtonTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	TopScrollButtonTemplate::TopScrollButtonTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	TopScrollButtonTemplate::~TopScrollButtonTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -769,16 +1189,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void TreeViewTemplate::OnCreate()
+	{
+	}
+
+	void TreeViewTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	TreeViewTemplate::TreeViewTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	TreeViewTemplate::~TreeViewTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -787,16 +1217,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void VScrollHandleTemplate::OnCreate()
+	{
+	}
+
+	void VScrollHandleTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	VScrollHandleTemplate::VScrollHandleTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	VScrollHandleTemplate::~VScrollHandleTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -805,16 +1245,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void VScrollTemplate::OnCreate()
+	{
+	}
+
+	void VScrollTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	VScrollTemplate::VScrollTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	VScrollTemplate::~VScrollTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -823,16 +1273,26 @@ namespace darkskin
 namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void VTrackerTemplate::OnCreate()
+	{
+	}
+
+	void VTrackerTemplate::OnDestroy()
+	{
+	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	VTrackerTemplate::VTrackerTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	VTrackerTemplate::~VTrackerTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -842,15 +1302,25 @@ namespace darkskin
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
+	void WindowTemplate::OnCreate()
+	{
+	}
+
+	void WindowTemplate::OnDestroy()
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	WindowTemplate::WindowTemplate()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	WindowTemplate::~WindowTemplate()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
@@ -860,15 +1330,25 @@ namespace demo
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
+	void MainWindow::OnCreate()
+	{
+	}
+
+	void MainWindow::OnDestroy()
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	MainWindow::MainWindow()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	MainWindow::~MainWindow()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }

@@ -21,15 +21,25 @@ namespace helloworld
 		}
 	}
 
+	void MainWindow::OnCreate()
+	{
+	}
+
+	void MainWindow::OnDestroy()
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	MainWindow::MainWindow(Ptr<vm::IViewModel> ViewModel)
 	{
 		InitializeComponents(ViewModel);
+		OnCreate();
 	}
 
 	MainWindow::~MainWindow()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }

@@ -25,16 +25,25 @@ namespace demo
 		textBoxC->SetText(c);
 	}
 
+	void MainWindow::OnCreate()
+	{
+	}
+
+	void MainWindow::OnDestroy()
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	MainWindow::MainWindow()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	MainWindow::~MainWindow()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
-

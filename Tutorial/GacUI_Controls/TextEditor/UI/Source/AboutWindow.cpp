@@ -18,15 +18,25 @@ namespace demo
 		ShellExecute(NULL, L"OPEN", documentLabel->GetActiveHyperlinkReference().Buffer(), NULL, NULL, SW_MAXIMIZE);
 	}
 
+	void AboutWindow::OnCreate()
+	{
+	}
+
+	void AboutWindow::OnDestroy()
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	AboutWindow::AboutWindow()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	AboutWindow::~AboutWindow()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }

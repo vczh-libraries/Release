@@ -14,15 +14,25 @@ namespace demo
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
+	void AnotherWindow::OnCreate()
+	{
+	}
+
+	void AnotherWindow::OnDestroy()
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	AnotherWindow::AnotherWindow()
 	{
 		InitializeComponents();
+		OnCreate();
 	}
 
 	AnotherWindow::~AnotherWindow()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }

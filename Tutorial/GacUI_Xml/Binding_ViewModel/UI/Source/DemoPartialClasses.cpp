@@ -14,15 +14,25 @@ namespace demo
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
+	void MainWindow::OnCreate()
+	{
+	}
+
+	void MainWindow::OnDestroy()
+	{
+	}
+
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	MainWindow::MainWindow(Ptr<demo::IViewModel> ViewModel)
 	{
 		InitializeComponents(ViewModel);
+		OnCreate();
 	}
 
 	MainWindow::~MainWindow()
 	{
+		OnDestroy();
 		ClearSubscriptions();
 	}
 }
