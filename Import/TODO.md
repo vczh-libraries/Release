@@ -17,7 +17,6 @@
     * Visual State, State Machine, Animation
     * ev.Event-(eval|async|delayed)
 * Core
-    * DocumentTextBox (for singleline, no scroll bars, no word wrap)
     * Embedded Languages: Colorizer, AutoComplete
     * Abstract Graphics API
     * Controls: Chart, Ribbon, Dock Container
