@@ -50,7 +50,7 @@
             </Cell>
             <Cell Site="row:0 column:1">
               <SinglelineTextBox ref.Name="textBoxName" Text="Jack">
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </SinglelineTextBox>
             </Cell>
 

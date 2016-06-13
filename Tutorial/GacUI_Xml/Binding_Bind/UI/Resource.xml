@@ -35,7 +35,7 @@
             </Cell>
             <Cell Site="row:0 column:1">
               <SinglelineTextBox ref.Name="textBoxA" Text="1">
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </SinglelineTextBox>
             </Cell>
 
@@ -44,7 +44,7 @@
             </Cell>
             <Cell Site="row:1 column:1">
               <SinglelineTextBox ref.Name="textBoxB" Text="2">
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </SinglelineTextBox>
             </Cell>
 
@@ -53,7 +53,7 @@
             </Cell>
             <Cell Site="row:2 column:1">
               <SinglelineTextBox ref.Name="textBoxC" Readonly="true" Text-bind="(cast int textBoxA.Text) + (cast int textBoxB.Text) ?? 'ERROR'">
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:24"/>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </SinglelineTextBox>
             </Cell>
           </Table>
