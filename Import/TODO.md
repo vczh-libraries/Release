@@ -6,15 +6,15 @@
     * Expression: new T{x}, Enum.Item
     * async, delay, yield (provider written in C++)
     * Workflow to C++ code generation with hint
-        * Only Enumerable<T>^ and ObservableList^ are allowed in script
+        * Only `Enumerable<T>^` and `ObservableList^` are allowed in script
         * All native classes report real C++ collection type when using collection objects
-        * Only TypedValueSerializerProvider<T> instances support serialization (e.g. Color)
+        * Only `TypedValueSerializerProvider<T>` instances support serialization (e.g. `Color`)
         * C++ code generator reports errors when any script does not satisfy these rules
 * GacUI Resource
     * InheritableCustomWindow
     * InheritableCustomControl
-    * <ref.Event/>
-    * <ref.Component/> // readonly property with -eval
+    * `<ref.Event/>`
+    * `<ref.Component/>` // readonly property with -eval
     * GuiCustomControl::SetContainerComposition // using a special syntax
     * InstanceStyle:Replace
     * Pure C++ Code Generation
