@@ -33,6 +33,9 @@ popd
 pushd TextEditor\UI
 call Codegen.bat
 popd
+pushd GacUI_Controls\UI
+call Codegen.bat
+popd
 popd
 pushd GacUI_ControlTemplate
 pushd BlackSkin\UI

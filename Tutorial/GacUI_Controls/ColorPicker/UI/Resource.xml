@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="Output">Source</Text>
+      <Text name="Include">GacUIReflection.h</Text>
+      <Text name="Name">Demo</Text>
+      <Text name="Prefix"></Text>
+    </Folder>
+    <Folder name="Res">
+      <Text name="Output">..\..\UIRes</Text>
+      <Text name="PrecompiledBinary">ColorPicker.bin</Text>
+    </Folder>
+  </Folder>
+  
+  <Script>
+    <Workflow-ViewModel>
+      <![CDATA[
+        module viewmodel;
+        
+        using presentation::*;
+        
+        namespace demo
+        {
+          interface IColorItem
+          {
+            func GetItemName() : string;
+            prop ItemName : string {GetItemName}
+            
+            func GetItemColor() : Color;
+            prop ItemColor : Color {GetItemColor}
+          }
+          
+          interface IViewModel
+          {
+            func GetColorItems() : IColorItem^{};
+            prop ColorItems : IColorItem^{} {GetColorItems}
+          }
+        }
+      ]]>
+    </Workflow-ViewModel>
+  </Script>
+  
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
+        <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
+        <Window Text="ContainersAndButtons" ClientSize="x:480 y:320">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <Table CellPadding="10" AlignmentToParent="left:0 top:0 right:0 bottom:0">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <Label Text="ComboBox and BindableTextList using ItemTemplate:"/>
+            </Cell>
+            <Cell Site="row:1 column:0">
+              <ComboBox SelectedIndex="0">
+                <att.ItemTemplate>demo::ColorBomboItemTemplate</att.ItemTemplate>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.ListControl>
+                  <BindableTextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <att.TextProperty>name</att.TextProperty>
+                    <att.ItemSource-eval>ViewModel.ColorItems</att.ItemSource-eval>
+                    <att.ItemTemplate>demo::ColorListItemTemplate</att.ItemTemplate>
+                  </BindableTextList>
+                </att.ListControl>
+              </ComboBox>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+
+    <Instance name="ColorBomboItemTemplateResource">
+      <Instance ref.CodeBehind="false" ref.Class="demo::ColorBomboItemTemplate">
+        <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
+        <ref.Property Name="TextColor" Type="Color"/>
+        <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:Absolute absolute:16</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Absolute absolute:16</CellOption>
+              <CellOption>composeType:Absolute absolute:3</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:1 column:0">
+              <SolidBackground Color-eval="ViewModel.ItemColor"/>
+            </Cell>
+
+            <Cell Site="row:0 column:2 rowSpan:3">
+              <SolidLabel Text-eval="ViewModel.ItemName" Font-bind="self.Font" Color-bind="self.TextColor" Ellipse="true" VerticalAlignment="Center"/>
+            </Cell>
+          </Table>
+        </ControlTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="ColorListItemTemplateResource">
+      <Instance ref.CodeBehind="false" ref.Class="demo::ColorListItemTemplate" xmlns:x="demo::*">
+        <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
+        <TextListItemTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
+          <x:ColorBomboItemTemplate ViewModel-eval="ViewModel" Font-bind="self.Font" TextColor-bind="self.TextColor" AlignmentToParent="left:6 top:6 right:6 bottom:6"/>
+        </TextListItemTemplate>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
