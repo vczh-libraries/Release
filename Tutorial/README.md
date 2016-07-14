@@ -17,11 +17,11 @@ GacUI tutorials and the plan
     * **RichTextEmbedding**: Embed controls in a rich text document.
 * GacUI_Controls
     * **ContainersAndButtons**: Using container controls and button controls.
-    * **TextList**: Using text list control with direct assign, data binding and item template. (developing)
+    * **TextEditor**: Implementing a text editor that handle plain text and XML.
+	* **ColorPicker**: Using ItemTemplate on ComboBox and BindableTextList to build a color picker.
     * **ListView**: Using list view control with direct assign, data binding and item template. (developing)
     * **TreeView**: Using tree view control with direct assign, data binding and item template. (developing)
     * **DataGrid**: Using data grid control with direct assign, data binding and item template. (developing)
-    * **TextEditor**: Implementing a text editor that handle plain text and XML.
     * **RichTextEditor**: Implementing a rich text editor. (developing)
     * **Misc**: Using other controls. (developing)
 * GacUI_ControlTemplate
