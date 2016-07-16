@@ -21,7 +21,6 @@
     * Visual State, State Machine, Animation
     * ev.Event-(eval|async|delayed)
 * Core
-    * Bindable combo box that can customize the selected value representation
     * Embedded Languages: Colorizer, AutoComplete
     * Abstract Graphics API
     * Controls: Chart, Ribbon, Dock Container
