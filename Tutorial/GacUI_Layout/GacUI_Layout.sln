@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Flow", "Flow\Flow.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RichTextEmbedding", "RichTextEmbedding\RichTextEmbedding.vcxproj", "{A586B9AF-3C54-4353-9214-F15182C4BFB8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TableSplitter", "TableSplitter\TableSplitter.vcxproj", "{B286F8B7-04DF-4850-9479-3A5F3D3C2554}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -53,6 +55,10 @@ Global
 		{A586B9AF-3C54-4353-9214-F15182C4BFB8}.Debug|Win32.Build.0 = Debug|Win32
 		{A586B9AF-3C54-4353-9214-F15182C4BFB8}.Release|Win32.ActiveCfg = Release|Win32
 		{A586B9AF-3C54-4353-9214-F15182C4BFB8}.Release|Win32.Build.0 = Release|Win32
+		{B286F8B7-04DF-4850-9479-3A5F3D3C2554}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B286F8B7-04DF-4850-9479-3A5F3D3C2554}.Debug|Win32.Build.0 = Debug|Win32
+		{B286F8B7-04DF-4850-9479-3A5F3D3C2554}.Release|Win32.ActiveCfg = Release|Win32
+		{B286F8B7-04DF-4850-9479-3A5F3D3C2554}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,6 +19,9 @@ popd
 pushd Table\UI
 call Codegen.bat
 popd
+pushd TableSplitter\UI
+call Codegen.bat
+popd
 pushd Flow\UI
 call Codegen.bat
 popd
@@ -33,7 +36,7 @@ popd
 pushd TextEditor\UI
 call Codegen.bat
 popd
-pushd GacUI_Controls\UI
+pushd ColorPicker\UI
 call Codegen.bat
 popd
 popd

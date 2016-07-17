@@ -14,6 +14,7 @@ GacUI tutorials and the plan
     * **Stack**: Stack layout with configurable axis directions.
     * **Flow**: Flow layout with configurable axis directions.
     * **Table**: Table layout.
+    * **TableSplitter**: Table layout with splitters, which can be dragged to change cell sizes.
     * **RichTextEmbedding**: Embed controls in a rich text document.
 * GacUI_Controls
     * **ContainersAndButtons**: Using container controls and button controls.
