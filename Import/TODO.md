@@ -21,6 +21,7 @@
     * Visual State, State Machine, Animation
     * ev.Event-(eval|async|delayed)
 * Core
+    * Make ItemSource from constructor argument to property
     * Embedded Languages: Colorizer, AutoComplete
     * Abstract Graphics API
     * Controls: Chart, Ribbon, Dock Container
