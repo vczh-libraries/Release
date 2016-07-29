@@ -23,11 +23,35 @@ namespace demo
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
+		vl::presentation::controls::GuiToolstripCommand* commandBigIcon;
+		vl::presentation::controls::GuiToolstripCommand* commandDeleteContact;
+		vl::presentation::controls::GuiToolstripCommand* commandDeleteFolder;
+		vl::presentation::controls::GuiToolstripCommand* commandDetail;
+		vl::presentation::controls::GuiToolstripCommand* commandInformation;
+		vl::presentation::controls::GuiToolstripCommand* commandList;
+		vl::presentation::controls::GuiToolstripCommand* commandNewContact;
+		vl::presentation::controls::GuiToolstripCommand* commandNewFolder;
+		vl::presentation::controls::GuiToolstripCommand* commandSmallIcon;
+		vl::presentation::controls::GuiToolstripCommand* commandTile;
+		vl::presentation::controls::GuiListView* listViewContacts;
+		vl::presentation::controls::GuiTreeView* treeViewFolders;
 
 		void InitializeComponents()
 		{
 			if (InitializeFromResource())
 			{
+				GUI_INSTANCE_REFERENCE(commandBigIcon);
+				GUI_INSTANCE_REFERENCE(commandDeleteContact);
+				GUI_INSTANCE_REFERENCE(commandDeleteFolder);
+				GUI_INSTANCE_REFERENCE(commandDetail);
+				GUI_INSTANCE_REFERENCE(commandInformation);
+				GUI_INSTANCE_REFERENCE(commandList);
+				GUI_INSTANCE_REFERENCE(commandNewContact);
+				GUI_INSTANCE_REFERENCE(commandNewFolder);
+				GUI_INSTANCE_REFERENCE(commandSmallIcon);
+				GUI_INSTANCE_REFERENCE(commandTile);
+				GUI_INSTANCE_REFERENCE(listViewContacts);
+				GUI_INSTANCE_REFERENCE(treeViewFolders);
 			}
 			else
 			{
@@ -37,6 +61,18 @@ namespace demo
 		MainWindow_()
 			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
 			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,commandBigIcon(0)
+			,commandDeleteContact(0)
+			,commandDeleteFolder(0)
+			,commandDetail(0)
+			,commandInformation(0)
+			,commandList(0)
+			,commandNewContact(0)
+			,commandNewFolder(0)
+			,commandSmallIcon(0)
+			,commandTile(0)
+			,listViewContacts(0)
+			,treeViewFolders(0)
 		{
 		}
 	};
@@ -53,24 +89,5 @@ namespace vl
 		}
 	}
 }
-namespace demo
-{
-	class MainWindow : public demo::MainWindow_<demo::MainWindow>
-	{
-		friend class demo::MainWindow_<demo::MainWindow>;
-		friend struct vl::reflection::description::CustomTypeDescriptorSelector<demo::MainWindow>;
-	protected:
-
-		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
-		void OnCreate();
-		void OnDestroy();
-		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
-	public:
-		MainWindow();
-		~MainWindow();
-	};
-}
-
-
 
 #endif

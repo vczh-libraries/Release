@@ -10,34 +10,6 @@ DO NOT MODIFY
 
 #include "Demo.h"
 
-namespace demo
-{
-	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
-
-	void MainWindow::OnCreate()
-	{
-	}
-
-	void MainWindow::OnDestroy()
-	{
-	}
-
-	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
-
-	MainWindow::MainWindow()
-	{
-		InitializeComponents();
-		OnCreate();
-	}
-
-	MainWindow::~MainWindow()
-	{
-		OnDestroy();
-		ClearSubscriptions();
-	}
-}
-
-
 namespace vl
 {
 	namespace reflection
@@ -50,6 +22,17 @@ namespace vl
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
 				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(), NO_PARAMETER)
+
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandBigIcon_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandDeleteContact_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandDeleteFolder_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandDetail_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandInformation_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandList_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandNewContact_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandNewFolder_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandSmallIcon_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandTile_Executed, vl::presentation::compositions::GuiEventArgs)
 			END_CLASS_MEMBER(demo::MainWindow)
 
 			#undef _

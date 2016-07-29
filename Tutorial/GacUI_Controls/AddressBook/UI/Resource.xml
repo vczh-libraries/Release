@@ -12,12 +12,141 @@
       <Text name="PrecompiledBinary">AddressBook.bin</Text>
     </Folder>
   </Folder>
+
+  <Folder name="Images">
+    <Image content="File" name="NewContact">NewContact.png</Image>
+    <Image content="File" name="NewFolder">NewFolder.png</Image>
+    <Image content="File" name="Delete">Delete.png</Image>
+
+    <Image content="File" name="Folder">Folder.png</Image>
+    <Image content="File" name="Contact">Contact.png</Image>
+    
+    <Image content="File" name="BigIcon">ListView_Big.png</Image>
+    <Image content="File" name="SmallIcon">ListView_Small.png</Image>
+    <Image content="File" name="List">ListView_List.png</Image>
+    <Image content="File" name="Detail">ListView_Detail.png</Image>
+    <Image content="File" name="Tile">ListView_Tile.png</Image>
+    <Image content="File" name="Information">ListView_Info.png</Image>
+  </Folder>
   
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
-      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
+      <Instance ref.Class="demo::MainWindow">
         <Window Text="AddressBook" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+
+          <ToolstripCommand ref.Name="commandNewFolder" Image-uri="res://Images/NewFolder">
+            <ev.Executed>commandNewFolder_Executed</ev.Executed>
+          </ToolstripCommand>
+          <ToolstripCommand ref.Name="commandDeleteFolder" Image-uri="res://Images/Delete">
+            <ev.Executed>commandDeleteFolder_Executed</ev.Executed>
+          </ToolstripCommand>
+          <ToolstripCommand ref.Name="commandNewContact" Image-uri="res://Images/NewContact">
+            <ev.Executed>commandNewContact_Executed</ev.Executed>
+          </ToolstripCommand>
+          <ToolstripCommand ref.Name="commandDeleteContact" Image-uri="res://Images/Delete">
+            <ev.Executed>commandDeleteContact_Executed</ev.Executed>
+          </ToolstripCommand>
+
+          <ToolstripCommand ref.Name="commandBigIcon" Image-uri="res://Images/BigIcon">
+            <ev.Executed>commandBigIcon_Executed</ev.Executed>
+          </ToolstripCommand>
+          <ToolstripCommand ref.Name="commandSmallIcon" Image-uri="res://Images/SmallIcon">
+            <ev.Executed>commandSmallIcon_Executed</ev.Executed>
+          </ToolstripCommand>
+          <ToolstripCommand ref.Name="commandList" Image-uri="res://Images/List">
+            <ev.Executed>commandList_Executed</ev.Executed>
+          </ToolstripCommand>
+          <ToolstripCommand ref.Name="commandDetail" Image-uri="res://Images/Detail">
+            <ev.Executed>commandDetail_Executed</ev.Executed>
+          </ToolstripCommand>
+          <ToolstripCommand ref.Name="commandTile" Image-uri="res://Images/Tile">
+            <ev.Executed>commandTile_Executed</ev.Executed>
+          </ToolstripCommand>
+          <ToolstripCommand ref.Name="commandInformation" Image-uri="res://Images/Information">
+            <ev.Executed>commandInformation_Executed</ev.Executed>
+          </ToolstripCommand>
+
+          <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Absolute absolute:160</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <ColumnSplitter ColumnsToTheLeft="1"/>
+
+            <Cell Site="row:0 column:0">
+              <GroupBox Text="Categories">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.ContainerComposition-set InternalMargin="left:3 top:3 right:3 bottom:3"/>
+
+                <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:0 top:0 right:0 bottom:0">
+                  <att.Rows>
+                    <CellOption>composeType:MinSize</CellOption>
+                    <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                  </att.Rows>
+                  <att.Columns>
+                    <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                  </att.Columns>
+
+                  <Cell Site="row:0 column:0">
+                    <ToolstripToolBar>
+                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                      <ToolstripButton Command-ref="commandNewFolder"/>
+                      <ToolstripButton Command-ref="commandDeleteFolder"/>
+                    </ToolstripToolBar>
+                  </Cell>
+
+                  <Cell Site="row:1 column:0">
+                    <TreeView ref.Name="treeViewFolders" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                    </TreeView>
+                  </Cell>
+                </Table>
+              </GroupBox>
+            </Cell>
+
+            <Cell Site="row:0 column:1">
+              <GroupBox Text="Contacts">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.ContainerComposition-set InternalMargin="left:3 top:3 right:3 bottom:3"/>
+
+                <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:0 top:0 right:0 bottom:0">
+                  <att.Rows>
+                    <CellOption>composeType:MinSize</CellOption>
+                    <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                  </att.Rows>
+                  <att.Columns>
+                    <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                  </att.Columns>
+
+                  <Cell Site="row:0 column:0">
+                    <ToolstripToolBar>
+                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                      <ToolstripButton Command-ref="commandNewContact"/>
+                      <ToolstripButton Command-ref="commandDeleteContact"/>
+                      <ToolstripSplitter/>
+                      <ToolstripButton Command-ref="commandBigIcon"/>
+                      <ToolstripButton Command-ref="commandSmallIcon"/>
+                      <ToolstripButton Command-ref="commandList"/>
+                      <ToolstripButton Command-ref="commandDetail"/>
+                      <ToolstripButton Command-ref="commandTile"/>
+                      <ToolstripButton Command-ref="commandInformation"/>
+                    </ToolstripToolBar>
+                  </Cell>
+
+                  <Cell Site="row:1 column:0">
+                    <ListView ref.Name="listViewContacts" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                    </ListView>
+                  </Cell>
+                </Table>
+              </GroupBox>
+            </Cell>
+          </Table>
         </Window>
       </Instance>
     </Instance>

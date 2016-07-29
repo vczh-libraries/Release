@@ -24,6 +24,9 @@
     <ClCompile Include="UI\Source\DemoPartialClasses.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="UI\Source\MainWindow.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\Resource.xml">
@@ -35,6 +38,9 @@
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="UI\Source\Demo.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\MainWindow.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
