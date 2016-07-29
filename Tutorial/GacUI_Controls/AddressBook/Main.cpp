@@ -11,16 +11,35 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	return SetupWindowsDirect2DRenderer();
 }
 
+Ptr<GuiImageData> folderImage;
+Ptr<GuiImageData> contactImage;
+
 class Category : public Object, public ICategory
 {
 protected:
+	ICategory*									parent;
 	WString										name;
 	list::ObservableList<Ptr<ICategory>>		folders;
 
 public:
+	Category(ICategory* _parent)
+		:parent(_parent)
+	{
+	}
+
+	ICategory* GetParent()override
+	{
+		return parent;
+	}
+
 	WString GetName()override
 	{
 		return name;
+	}
+
+	Ptr<GuiImageData> GetImage()override
+	{
+		return folderImage;
 	}
 
 	Ptr<IValueObservableList> GetFolders()override
@@ -37,6 +56,11 @@ public:
 class StaticCategory : public Category
 {
 public:
+	StaticCategory()
+		:Category(nullptr)
+	{
+	}
+
 	WString GetName()override
 	{
 		return L"My Address Book";
@@ -54,9 +78,19 @@ public:
 		folders.Add(new StaticCategory);
 	}
 
+	ICategory* GetParent()override
+	{
+		return nullptr;
+	}
+
 	WString GetName()override
 	{
 		return L"";
+	}
+
+	Ptr<GuiImageData> GetImage()override
+	{
+		return nullptr;
 	}
 
 	Ptr<IValueObservableList> GetFolders()override
@@ -74,6 +108,7 @@ class ViewModel : public Object, public IViewModel
 {
 protected:
 	Ptr<RootCategory>							rootCategory;
+	Ptr<ICategory>								selectedCategory;
 
 public:
 	ViewModel()
@@ -85,6 +120,28 @@ public:
 	{
 		return rootCategory;
 	}
+
+	Ptr<ICategory> GetSelectedCategory()override
+	{
+		return selectedCategory;
+	}
+
+	void SetSelectedCategory(Ptr<ICategory> value)override
+	{
+		if (selectedCategory != value)
+		{
+			selectedCategory = value;
+			SelectedCategoryChanged();
+		}
+	}
+
+	void AddCategory(WString name)
+	{
+	}
+
+	void RemoveCategory()
+	{
+	}
 };
 
 void GuiMain()
@@ -94,8 +151,14 @@ void GuiMain()
 		FileStream fileStream(L"../UIRes/AddressBook.bin", FileStream::ReadOnly);
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
 		GetResourceManager()->SetResource(L"Resource", resource);
+
+		folderImage = resource->GetImageByPath(L"Images/Folder");
+		contactImage = resource->GetImageByPath(L"Images/Contact");
 	}
 	MainWindow window(new ViewModel);
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
+
+	folderImage = nullptr;
+	contactImage = nullptr;
 }

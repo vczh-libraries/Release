@@ -23,8 +23,14 @@
       {
         interface ICategory
         {
+          func GetParent() : ICategory*;
+          prop Parent : ICategory* {GetParent}
+        
           func GetName() : string;
           prop Name : string {GetName}
+          
+          func GetImage() : presentation::GuiImageData^;
+          prop Image : presentation::GuiImageData^ {GetImage}
 
           func GetFolders() : ObservableList^;
           prop Folders : ObservableList^ {GetFolders}
@@ -36,6 +42,14 @@
         interface IViewModel
         {
           func GetRootCategory() : ICategory^;
+          
+          func GetSelectedCategory() : ICategory^;
+          func SetSelectedCategory(value : ICategory^) : void;
+          event SelectedCategoryChanged();
+          prop SelectedCategory : ICategory^ {GetSelectedCategory, SetSelectedCategory : SelectedCategoryChanged}
+          
+          func AddCategory(name : string) : void;
+          func RemoveCategory() : void;
         }
       }
     </Workflow-ViewModel>
@@ -48,6 +62,7 @@
 
     <Image content="File" name="Folder">Folder.png</Image>
     <Image content="File" name="Contact">Contact.png</Image>
+    <Image content="File" name="Edit">Edit.png</Image>
     
     <Image content="File" name="BigIcon">ListView_Big.png</Image>
     <Image content="File" name="SmallIcon">ListView_Small.png</Image>
@@ -64,11 +79,17 @@
         <Window Text="AddressBook" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
 
+          <att.ViewModel-set>
+            <att.SelectedCategory-bind>treeViewFolders.SelectedItem as (demo::ICategory^)</att.SelectedCategory-bind>
+          </att.ViewModel-set>
+
           <ToolstripCommand ref.Name="commandNewFolder" Image-uri="res://Images/NewFolder">
-            <ev.Executed>commandNewFolder_Executed</ev.Executed>
+            <att.Enabled-bind>ViewModel.SelectedCategory is not null</att.Enabled-bind>
+            <ev.Executed-eval>{}</ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandDeleteFolder" Image-uri="res://Images/Delete">
-            <ev.Executed>commandDeleteFolder_Executed</ev.Executed>
+            <att.Enabled-bind>ViewModel.SelectedCategory is null ? false : ViewModel.SelectedCategory.Parent is not null</att.Enabled-bind>
+            <ev.Executed-eval>{ ViewModel.RemoveCategory(); }</ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandNewContact" Image-uri="res://Images/NewContact">
             <ev.Executed>commandNewContact_Executed</ev.Executed>
@@ -101,7 +122,7 @@
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
             </att.Rows>
             <att.Columns>
-              <CellOption>composeType:Absolute absolute:160</CellOption>
+              <CellOption>composeType:Absolute absolute:180</CellOption>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
             </att.Columns>
 
@@ -130,7 +151,11 @@
                   </Cell>
 
                   <Cell Site="row:1 column:0">
-                    <BindableTreeView ref.Name="treeViewFolders" ItemSource-eval="ViewModel.GetRootCategory()" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <BindableTreeView ref.Name="treeViewFolders" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                      <att.ItemSource-eval>ViewModel.GetRootCategory()</att.ItemSource-eval>
+                      <att.TextProperty>Name</att.TextProperty>
+                      <att.ImageProperty>Image</att.ImageProperty>
+                      <att.ChildrenProperty>Folders</att.ChildrenProperty>
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                     </BindableTreeView>
                   </Cell>

@@ -20,10 +20,6 @@ namespace demo
 	{
 	}
 
-	void MainWindow::commandDeleteFolder_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
 	void MainWindow::commandDetail_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 	}
@@ -37,10 +33,6 @@ namespace demo
 	}
 
 	void MainWindow::commandNewContact_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandNewFolder_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 	}
 

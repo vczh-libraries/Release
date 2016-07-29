@@ -23,10 +23,14 @@ namespace vl
 
 			BEGIN_CLASS_MEMBER(demo::ICategory)
 				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_METHOD(GetParent, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetName, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(GetImage, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetFolders, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetContacts, NO_PARAMETER);
+				CLASS_MEMBER_PROPERTY_READONLY(Parent, GetParent)
 				CLASS_MEMBER_PROPERTY_READONLY(Name, GetName)
+				CLASS_MEMBER_PROPERTY_READONLY(Image, GetImage)
 				CLASS_MEMBER_PROPERTY_READONLY(Folders, GetFolders)
 				CLASS_MEMBER_PROPERTY_READONLY(Contacts, GetContacts)
 			END_CLASS_MEMBER(demo::ICategory)
@@ -34,6 +38,12 @@ namespace vl
 			BEGIN_CLASS_MEMBER(demo::IViewModel)
 				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetRootCategory, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(GetSelectedCategory, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(SetSelectedCategory, { L"value" });
+				CLASS_MEMBER_EVENT(SelectedCategoryChanged)
+				CLASS_MEMBER_METHOD(AddCategory, { L"name" });
+				CLASS_MEMBER_METHOD(RemoveCategory, NO_PARAMETER);
+				CLASS_MEMBER_PROPERTY_EVENT(SelectedCategory, GetSelectedCategory, SetSelectedCategory, SelectedCategoryChanged)
 			END_CLASS_MEMBER(demo::IViewModel)
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
@@ -42,12 +52,10 @@ namespace vl
 
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandBigIcon_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandDeleteContact_Executed, vl::presentation::compositions::GuiEventArgs)
-				CLASS_MEMBER_GUIEVENT_HANDLER(commandDeleteFolder_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandDetail_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandInformation_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandList_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandNewContact_Executed, vl::presentation::compositions::GuiEventArgs)
-				CLASS_MEMBER_GUIEVENT_HANDLER(commandNewFolder_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandSmallIcon_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandTile_Executed, vl::presentation::compositions::GuiEventArgs)
 

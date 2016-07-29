@@ -22,7 +22,9 @@ namespace demo
 	class ICategory : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<ICategory>
 	{
 	public:
+		virtual demo::ICategory* GetParent() = 0;
 		virtual vl::WString GetName() = 0;
+		virtual vl::Ptr<vl::presentation::GuiImageData> GetImage() = 0;
 		virtual vl::Ptr<vl::reflection::description::IValueObservableList> GetFolders() = 0;
 		virtual vl::Ptr<vl::reflection::description::IValueObservableList> GetContacts() = 0;
 	};
@@ -31,6 +33,11 @@ namespace demo
 	{
 	public:
 		virtual vl::Ptr<demo::ICategory> GetRootCategory() = 0;
+		virtual vl::Ptr<demo::ICategory> GetSelectedCategory() = 0;
+		virtual void SetSelectedCategory(vl::Ptr<demo::ICategory> value) = 0;
+		vl::Event<void()> SelectedCategoryChanged;
+		virtual void AddCategory(vl::WString name) = 0;
+		virtual void RemoveCategory() = 0;
 	};
 
 	template<typename TImpl>
