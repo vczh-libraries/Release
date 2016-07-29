@@ -76,7 +76,7 @@
     <Instance name="MainWindowResource">
       <Instance ref.Class="demo::MainWindow">
         <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
-        <Window Text="AddressBook" ClientSize="x:480 y:320">
+        <Window ref.Name="self" Text="AddressBook" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
 
           <att.ViewModel-set>
@@ -85,7 +85,21 @@
 
           <ToolstripCommand ref.Name="commandNewFolder" Image-uri="res://Images/NewFolder">
             <att.Enabled-bind>ViewModel.SelectedCategory is not null</att.Enabled-bind>
-            <ev.Executed-eval>{}</ev.Executed-eval>
+            <ev.Executed-eval>
+              <![CDATA[
+                {
+                  var window = new demo::NewFolderWindow*();
+                  window.MoveToScreenCenter();
+                  window.ShowModalAndDelete(self, func():void
+                  {
+                    if (window.Ready)
+                    {
+                      ViewModel.AddCategory(window.FolderName);
+                    }
+                  });
+                }
+              ]]>
+            </ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandDeleteFolder" Image-uri="res://Images/Delete">
             <att.Enabled-bind>ViewModel.SelectedCategory is null ? false : ViewModel.SelectedCategory.Parent is not null</att.Enabled-bind>
@@ -199,6 +213,53 @@
                   </Cell>
                 </Table>
               </GroupBox>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+    
+    <Instance name="NewFolderWindowResource">
+      <Instance ref.CodeBehind="false" ref.Class="demo::NewFolderWindow">
+        <ref.Property Name="FolderName" Type="string" Value=""/>
+        <ref.Property Name="Ready" Type="bool" Value="true"/>
+        <Window ref.Name="self" Text="New Folder" ClientSize="x:240 y:120" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
+          <att.FolderName-bind>textBoxName.Text</att.FolderName-bind>
+          
+          <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0" InternalMargin="top:6">
+              <Label Text="Name:"/>
+            </Cell>
+
+            <Cell Site="row:0 column:1 columnSpan:3">
+              <DocumentTextBox ref.Name="textBoxName" EditMode="Editable" Text="New Folder">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </DocumentTextBox>
+            </Cell>
+
+            <Cell Site="row:2 column:2">
+              <Button Text="OK">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
+                <ev.Clicked-eval>{ self.Close(); }</ev.Clicked-eval>
+              </Button>
+            </Cell>
+            <Cell Site="row:2 column:3">
+              <Button Text="Cancel">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
+                <ev.Clicked-eval>{ self.Ready = false; self.Close(); }</ev.Clicked-eval>
+              </Button>
             </Cell>
           </Table>
         </Window>

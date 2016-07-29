@@ -18,6 +18,7 @@ namespace demo
 	class ICategory;
 	class IViewModel;
 	class MainWindow;
+	class NewFolderWindow;
 
 	class ICategory : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<ICategory>
 	{
@@ -58,6 +59,7 @@ namespace demo
 		vl::presentation::controls::GuiToolstripCommand* commandSmallIcon;
 		vl::presentation::controls::GuiToolstripCommand* commandTile;
 		vl::presentation::controls::GuiBindableListView* listViewContacts;
+		vl::presentation::controls::GuiWindow* self;
 		vl::presentation::controls::GuiBindableTreeView* treeViewFolders;
 
 		void InitializeComponents(Ptr<demo::IViewModel> ViewModel)
@@ -76,6 +78,7 @@ namespace demo
 				GUI_INSTANCE_REFERENCE(commandSmallIcon);
 				GUI_INSTANCE_REFERENCE(commandTile);
 				GUI_INSTANCE_REFERENCE(listViewContacts);
+				GUI_INSTANCE_REFERENCE(self);
 				GUI_INSTANCE_REFERENCE(treeViewFolders);
 			}
 			else
@@ -98,6 +101,7 @@ namespace demo
 			,commandSmallIcon(0)
 			,commandTile(0)
 			,listViewContacts(0)
+			,self(0)
 			,treeViewFolders(0)
 		{
 		}
@@ -105,6 +109,66 @@ namespace demo
 		Ptr<demo::IViewModel> GetViewModel()
 		{
 			return ViewModel_;
+		}
+	};
+
+	template<typename TImpl>
+	class NewFolderWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	{
+		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
+	private:
+		vl::WString FolderName_;
+		bool Ready_;
+	protected:
+		vl::presentation::controls::GuiWindow* self;
+		vl::presentation::controls::GuiDocumentLabel* textBoxName;
+
+		void InitializeComponents()
+		{
+			if (InitializeFromResource())
+			{
+				GUI_INSTANCE_REFERENCE(self);
+				GUI_INSTANCE_REFERENCE(textBoxName);
+			}
+			else
+			{
+			}
+		}
+	public:
+		NewFolderWindow_()
+			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::NewFolderWindow")
+			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,self(0)
+			,textBoxName(0)
+		{
+			this->FolderName_ = vl::reflection::description::UnboxValue<vl::WString>(vl::reflection::description::Value::From(L"", reflection::description::GetTypeDescriptor<vl::WString>()));
+			this->Ready_ = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"true", reflection::description::GetTypeDescriptor<bool>()));
+		}
+
+		vl::Event<void()> FolderNameChanged;
+
+		vl::WString GetFolderName()
+		{
+			return FolderName_;
+		}
+
+		void SetFolderName(vl::WString value)
+		{
+			FolderName_ = value;
+			FolderNameChanged();
+		}
+
+		vl::Event<void()> ReadyChanged;
+
+		bool GetReady()
+		{
+			return Ready_;
+		}
+
+		void SetReady(bool value)
+		{
+			Ready_ = value;
+			ReadyChanged();
 		}
 	};
 
@@ -118,9 +182,29 @@ namespace vl
 			DECL_TYPE_INFO(demo::ICategory)
 			DECL_TYPE_INFO(demo::IViewModel)
 			DECL_TYPE_INFO(demo::MainWindow)
+			DECL_TYPE_INFO(demo::NewFolderWindow)
 
 		}
 	}
 }
+namespace demo
+{
+	class NewFolderWindow : public demo::NewFolderWindow_<demo::NewFolderWindow>
+	{
+		friend class demo::NewFolderWindow_<demo::NewFolderWindow>;
+		friend struct vl::reflection::description::CustomTypeDescriptorSelector<demo::NewFolderWindow>;
+	protected:
+
+		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+		void OnCreate();
+		void OnDestroy();
+		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
+	public:
+		NewFolderWindow();
+		~NewFolderWindow();
+	};
+}
+
+
 
 #endif

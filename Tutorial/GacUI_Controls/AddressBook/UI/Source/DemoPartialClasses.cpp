@@ -10,6 +10,34 @@ DO NOT MODIFY
 
 #include "Demo.h"
 
+namespace demo
+{
+	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+
+	void NewFolderWindow::OnCreate()
+	{
+	}
+
+	void NewFolderWindow::OnDestroy()
+	{
+	}
+
+	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
+
+	NewFolderWindow::NewFolderWindow()
+	{
+		InitializeComponents();
+		OnCreate();
+	}
+
+	NewFolderWindow::~NewFolderWindow()
+	{
+		OnDestroy();
+		ClearSubscriptions();
+	}
+}
+
+
 namespace vl
 {
 	namespace reflection
@@ -20,6 +48,7 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(demo::ICategory)
 			IMPL_CPP_TYPE_INFO(demo::IViewModel)
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
+			IMPL_CPP_TYPE_INFO(demo::NewFolderWindow)
 
 			BEGIN_CLASS_MEMBER(demo::ICategory)
 				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
@@ -62,6 +91,16 @@ namespace vl
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 			END_CLASS_MEMBER(demo::MainWindow)
 
+			BEGIN_CLASS_MEMBER(demo::NewFolderWindow)
+				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_CONSTRUCTOR(demo::NewFolderWindow*(), NO_PARAMETER)
+
+				CLASS_MEMBER_EVENT(FolderNameChanged)
+				CLASS_MEMBER_PROPERTY_EVENT_FAST(FolderName, FolderNameChanged)
+				CLASS_MEMBER_EVENT(ReadyChanged)
+				CLASS_MEMBER_PROPERTY_EVENT_FAST(Ready, ReadyChanged)
+			END_CLASS_MEMBER(demo::NewFolderWindow)
+
 			#undef _
 
 			class DemoResourceLoader : public Object, public ITypeLoader
@@ -72,6 +111,7 @@ namespace vl
 					ADD_TYPE_INFO(demo::ICategory)
 					ADD_TYPE_INFO(demo::IViewModel)
 					ADD_TYPE_INFO(demo::MainWindow)
+					ADD_TYPE_INFO(demo::NewFolderWindow)
 				}
 
 				void Unload(ITypeManager* manager)

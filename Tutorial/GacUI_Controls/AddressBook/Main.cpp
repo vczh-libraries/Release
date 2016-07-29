@@ -14,8 +14,11 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 Ptr<GuiImageData> folderImage;
 Ptr<GuiImageData> contactImage;
 
+class ViewModel;
+
 class Category : public Object, public ICategory
 {
+	friend class ViewModel;
 protected:
 	ICategory*									parent;
 	WString										name;
@@ -59,11 +62,7 @@ public:
 	StaticCategory()
 		:Category(nullptr)
 	{
-	}
-
-	WString GetName()override
-	{
-		return L"My Address Book";
+		name = L"My Address Book";
 	}
 };
 
@@ -137,10 +136,21 @@ public:
 
 	void AddCategory(WString name)
 	{
+		if (auto current = dynamic_cast<Category*>(selectedCategory.Obj()))
+		{
+			auto category = new Category(current);
+			category->name = name;
+			current->folders.Add(category);
+		}
 	}
 
 	void RemoveCategory()
 	{
+		if (auto parent = dynamic_cast<Category*>(selectedCategory->GetParent()))
+		{
+			parent->folders.Remove(selectedCategory.Obj());
+			SetSelectedCategory(nullptr);
+		}
 	}
 };
 
