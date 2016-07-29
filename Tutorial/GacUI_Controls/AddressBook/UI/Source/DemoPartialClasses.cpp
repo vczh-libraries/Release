@@ -17,11 +17,28 @@ namespace vl
 		namespace description
 		{
 			#define _ ,
+			IMPL_CPP_TYPE_INFO(demo::ICategory)
+			IMPL_CPP_TYPE_INFO(demo::IViewModel)
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
+
+			BEGIN_CLASS_MEMBER(demo::ICategory)
+				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_METHOD(GetName, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(GetFolders, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(GetContacts, NO_PARAMETER);
+				CLASS_MEMBER_PROPERTY_READONLY(Name, GetName)
+				CLASS_MEMBER_PROPERTY_READONLY(Folders, GetFolders)
+				CLASS_MEMBER_PROPERTY_READONLY(Contacts, GetContacts)
+			END_CLASS_MEMBER(demo::ICategory)
+
+			BEGIN_CLASS_MEMBER(demo::IViewModel)
+				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_METHOD(GetRootCategory, NO_PARAMETER);
+			END_CLASS_MEMBER(demo::IViewModel)
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
 				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
-				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(), NO_PARAMETER)
+				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(Ptr<demo::IViewModel>), { L"ViewModel" })
 
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandBigIcon_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandDeleteContact_Executed, vl::presentation::compositions::GuiEventArgs)
@@ -33,6 +50,8 @@ namespace vl
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandNewFolder_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandSmallIcon_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandTile_Executed, vl::presentation::compositions::GuiEventArgs)
+
+				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 			END_CLASS_MEMBER(demo::MainWindow)
 
 			#undef _
@@ -42,6 +61,8 @@ namespace vl
 			public:
 				void Load(ITypeManager* manager)
 				{
+					ADD_TYPE_INFO(demo::ICategory)
+					ADD_TYPE_INFO(demo::IViewModel)
 					ADD_TYPE_INFO(demo::MainWindow)
 				}
 

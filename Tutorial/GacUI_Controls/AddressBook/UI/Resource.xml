@@ -13,6 +13,34 @@
     </Folder>
   </Folder>
 
+  <Script>
+    <Workflow-ViewModel>
+      module viewmodel;
+
+      using system::*;
+
+      namespace demo
+      {
+        interface ICategory
+        {
+          func GetName() : string;
+          prop Name : string {GetName}
+
+          func GetFolders() : ObservableList^;
+          prop Folders : ObservableList^ {GetFolders}
+
+          func GetContacts() : ObservableList^;
+          prop Contacts : ObservableList^ {GetContacts}
+        }
+        
+        interface IViewModel
+        {
+          func GetRootCategory() : ICategory^;
+        }
+      }
+    </Workflow-ViewModel>
+  </Script>
+
   <Folder name="Images">
     <Image content="File" name="NewContact">NewContact.png</Image>
     <Image content="File" name="NewFolder">NewFolder.png</Image>
@@ -32,6 +60,7 @@
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
       <Instance ref.Class="demo::MainWindow">
+        <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
         <Window Text="AddressBook" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
 
@@ -101,9 +130,9 @@
                   </Cell>
 
                   <Cell Site="row:1 column:0">
-                    <TreeView ref.Name="treeViewFolders" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <BindableTreeView ref.Name="treeViewFolders" ItemSource-eval="ViewModel.GetRootCategory()" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                    </TreeView>
+                    </BindableTreeView>
                   </Cell>
                 </Table>
               </GroupBox>
@@ -139,9 +168,9 @@
                   </Cell>
 
                   <Cell Site="row:1 column:0">
-                    <ListView ref.Name="listViewContacts" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <BindableListView ref.Name="listViewContacts" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                    </ListView>
+                    </BindableListView>
                   </Cell>
                 </Table>
               </GroupBox>

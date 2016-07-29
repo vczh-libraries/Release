@@ -62,9 +62,9 @@ namespace demo
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
-	MainWindow::MainWindow()
+	MainWindow::MainWindow(Ptr<demo::IViewModel> ViewModel)
 	{
-		InitializeComponents();
+		InitializeComponents(ViewModel);
 		OnCreate();
 	}
 

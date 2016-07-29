@@ -15,13 +15,30 @@ DO NOT MODIFY
 
 namespace demo
 {
+	class ICategory;
+	class IViewModel;
 	class MainWindow;
+
+	class ICategory : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<ICategory>
+	{
+	public:
+		virtual vl::WString GetName() = 0;
+		virtual vl::Ptr<vl::reflection::description::IValueObservableList> GetFolders() = 0;
+		virtual vl::Ptr<vl::reflection::description::IValueObservableList> GetContacts() = 0;
+	};
+
+	class IViewModel : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
+	{
+	public:
+		virtual vl::Ptr<demo::ICategory> GetRootCategory() = 0;
+	};
 
 	template<typename TImpl>
 	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
+		Ptr<demo::IViewModel> ViewModel_;
 	protected:
 		vl::presentation::controls::GuiToolstripCommand* commandBigIcon;
 		vl::presentation::controls::GuiToolstripCommand* commandDeleteContact;
@@ -33,11 +50,12 @@ namespace demo
 		vl::presentation::controls::GuiToolstripCommand* commandNewFolder;
 		vl::presentation::controls::GuiToolstripCommand* commandSmallIcon;
 		vl::presentation::controls::GuiToolstripCommand* commandTile;
-		vl::presentation::controls::GuiListView* listViewContacts;
-		vl::presentation::controls::GuiTreeView* treeViewFolders;
+		vl::presentation::controls::GuiBindableListView* listViewContacts;
+		vl::presentation::controls::GuiBindableTreeView* treeViewFolders;
 
-		void InitializeComponents()
+		void InitializeComponents(Ptr<demo::IViewModel> ViewModel)
 		{
+			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
 			{
 				GUI_INSTANCE_REFERENCE(commandBigIcon);
@@ -55,6 +73,7 @@ namespace demo
 			}
 			else
 			{
+				ViewModel_ = 0;
 			}
 		}
 	public:
@@ -75,6 +94,11 @@ namespace demo
 			,treeViewFolders(0)
 		{
 		}
+
+		Ptr<demo::IViewModel> GetViewModel()
+		{
+			return ViewModel_;
+		}
 	};
 
 }
@@ -84,6 +108,8 @@ namespace vl
 	{
 		namespace description
 		{
+			DECL_TYPE_INFO(demo::ICategory)
+			DECL_TYPE_INFO(demo::IViewModel)
 			DECL_TYPE_INFO(demo::MainWindow)
 
 		}

@@ -34,7 +34,7 @@ namespace demo
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
-		MainWindow();
+		MainWindow(Ptr<demo::IViewModel> ViewModel);
 		~MainWindow();
 	};
 }
