@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextEditor", "TextEditor\Te
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ColorPicker", "ColorPicker\ColorPicker.vcxproj", "{FBBBA8BF-96A4-4096-8204-A92571100F0E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddressBook", "AddressBook\AddressBook.vcxproj", "{7F92FCD2-8A1E-4C73-9949-91555BEF3832}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -41,6 +43,10 @@ Global
 		{FBBBA8BF-96A4-4096-8204-A92571100F0E}.Debug|Win32.Build.0 = Debug|Win32
 		{FBBBA8BF-96A4-4096-8204-A92571100F0E}.Release|Win32.ActiveCfg = Release|Win32
 		{FBBBA8BF-96A4-4096-8204-A92571100F0E}.Release|Win32.Build.0 = Release|Win32
+		{7F92FCD2-8A1E-4C73-9949-91555BEF3832}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7F92FCD2-8A1E-4C73-9949-91555BEF3832}.Debug|Win32.Build.0 = Debug|Win32
+		{7F92FCD2-8A1E-4C73-9949-91555BEF3832}.Release|Win32.ActiveCfg = Release|Win32
+		{7F92FCD2-8A1E-4C73-9949-91555BEF3832}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

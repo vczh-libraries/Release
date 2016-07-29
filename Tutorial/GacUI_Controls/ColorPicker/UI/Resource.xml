@@ -45,7 +45,7 @@
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
         <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
-        <Window Text="ContainersAndButtons" ClientSize="x:480 y:320">
+        <Window Text="ColorPicker" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
           <Table CellPadding="10" AlignmentToParent="left:0 top:0 right:0 bottom:0">
             <att.Rows>
@@ -62,7 +62,7 @@
               <Label Text="ComboBox and BindableTextList using ItemTemplate:"/>
             </Cell>
             <Cell Site="row:1 column:0">
-              <ComboBox SelectedIndex="0">
+              <ComboBox SelectedIndex-eval="0">
                 <att.ItemTemplate>demo::ColorBomboItemTemplate</att.ItemTemplate>
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                 <att.ListControl>
