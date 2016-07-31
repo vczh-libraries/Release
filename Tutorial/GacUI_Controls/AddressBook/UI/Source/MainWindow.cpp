@@ -16,10 +16,6 @@ namespace demo
 	{
 	}
 
-	void MainWindow::commandDeleteContact_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
 	void MainWindow::commandDetail_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 	}
@@ -29,10 +25,6 @@ namespace demo
 	}
 
 	void MainWindow::commandList_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandNewContact_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 	}
 

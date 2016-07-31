@@ -12,7 +12,8 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 }
 
 Ptr<GuiImageData> folderImage;
-Ptr<GuiImageData> contactImage;
+Ptr<GuiImageData> contactBigImage;
+Ptr<GuiImageData> contactSmallImage;
 
 class ViewModel;
 
@@ -23,6 +24,7 @@ protected:
 	ICategory*									parent;
 	WString										name;
 	list::ObservableList<Ptr<ICategory>>		folders;
+	list::ObservableList<Ptr<IContact>>			contacts;
 
 public:
 	Category(ICategory* _parent)
@@ -52,7 +54,66 @@ public:
 
 	Ptr<IValueObservableList> GetContacts()override
 	{
-		return nullptr;
+		return contacts.GetWrapper();
+	}
+};
+
+class Contact : public Object, public IContact
+{
+protected:
+	Category*									category;
+	WString										name;
+	DateTime									birthday;
+	WString										phone;
+	WString										address;
+
+public:
+	Contact(Category* _category)
+		:category(_category)
+	{
+	}
+
+	Category* GetCategory()
+	{
+		return category;
+	}
+
+	WString GetName()override
+	{
+		return name;
+	}
+
+	Ptr<GuiImageData> GetBigImage()override
+	{
+		return contactBigImage;
+	}
+
+	Ptr<GuiImageData> GetSmallImage()override
+	{
+		return contactSmallImage;
+	}
+
+	DateTime GetBirthday()override
+	{
+		return birthday;
+	}
+
+	WString GetPhone()override
+	{
+		return phone;
+	}
+
+	WString GetAddress()
+	{
+		return address;
+	}
+
+	void Update(WString _name, DateTime _birthday, WString _phone, WString _address)override
+	{
+		name = _name;
+		birthday = _birthday;
+		phone = _phone;
+		address = _address;
 	}
 };
 
@@ -108,6 +169,7 @@ class ViewModel : public Object, public IViewModel
 protected:
 	Ptr<RootCategory>							rootCategory;
 	Ptr<ICategory>								selectedCategory;
+	Ptr<IContact>								selectedContact;
 
 public:
 	ViewModel()
@@ -134,6 +196,20 @@ public:
 		}
 	}
 
+	Ptr<IContact> GetSelectedContact()override
+	{
+		return selectedContact;
+	}
+
+	void SetSelectedContact(Ptr<IContact> value)override
+	{
+		if (selectedContact != value)
+		{
+			selectedContact = value;
+			SelectedContactChanged();
+		}
+	}
+
 	void AddCategory(WString name)
 	{
 		if (auto current = dynamic_cast<Category*>(selectedCategory.Obj()))
@@ -152,6 +228,28 @@ public:
 			SetSelectedCategory(nullptr);
 		}
 	}
+	
+	Ptr<IContact> CreateContact()override
+	{
+		if (auto parent = dynamic_cast<Category*>(selectedCategory.Obj()))
+		{
+			return new Contact(parent);
+		}
+		return nullptr;
+	}
+
+	void AddContact(vl::Ptr<demo::IContact> contact)override
+	{
+		dynamic_cast<Contact*>(contact.Obj())->GetCategory()->contacts.Add(contact);
+	}
+
+	void RemoveContact()override
+	{
+		if (auto contact = dynamic_cast<Contact*>(selectedContact.Obj()))
+		{
+			contact->GetCategory()->contacts.Remove(selectedContact.Obj());
+		}
+	}
 };
 
 void GuiMain()
@@ -163,12 +261,14 @@ void GuiMain()
 		GetResourceManager()->SetResource(L"Resource", resource);
 
 		folderImage = resource->GetImageByPath(L"Images/Folder");
-		contactImage = resource->GetImageByPath(L"Images/Contact");
+		contactBigImage = resource->GetImageByPath(L"Images/ContactBig");
+		contactSmallImage = resource->GetImageByPath(L"Images/ContactSmall");
 	}
 	MainWindow window(new ViewModel);
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 
 	folderImage = nullptr;
-	contactImage = nullptr;
+	contactBigImage = nullptr;
+	contactSmallImage = nullptr;
 }

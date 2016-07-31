@@ -46,6 +46,7 @@ namespace vl
 		{
 			#define _ ,
 			IMPL_CPP_TYPE_INFO(demo::ICategory)
+			IMPL_CPP_TYPE_INFO(demo::IContact)
 			IMPL_CPP_TYPE_INFO(demo::IViewModel)
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
 			IMPL_CPP_TYPE_INFO(demo::NewFolderWindow)
@@ -64,15 +65,39 @@ namespace vl
 				CLASS_MEMBER_PROPERTY_READONLY(Contacts, GetContacts)
 			END_CLASS_MEMBER(demo::ICategory)
 
+			BEGIN_CLASS_MEMBER(demo::IContact)
+				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_METHOD(GetName, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(GetBigImage, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(GetSmallImage, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(GetBirthday, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(GetPhone, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(GetAddress, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(Update, { L"name" _ L"birthday" _ L"phone" _ L"address" });
+				CLASS_MEMBER_PROPERTY_READONLY(Name, GetName)
+				CLASS_MEMBER_PROPERTY_READONLY(BigImage, GetBigImage)
+				CLASS_MEMBER_PROPERTY_READONLY(SmallImage, GetSmallImage)
+				CLASS_MEMBER_PROPERTY_READONLY(Birthday, GetBirthday)
+				CLASS_MEMBER_PROPERTY_READONLY(Phone, GetPhone)
+				CLASS_MEMBER_PROPERTY_READONLY(Address, GetAddress)
+			END_CLASS_MEMBER(demo::IContact)
+
 			BEGIN_CLASS_MEMBER(demo::IViewModel)
 				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetRootCategory, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetSelectedCategory, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(SetSelectedCategory, { L"value" });
 				CLASS_MEMBER_EVENT(SelectedCategoryChanged)
+				CLASS_MEMBER_METHOD(GetSelectedContact, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(SetSelectedContact, { L"value" });
+				CLASS_MEMBER_EVENT(SelectedContactChanged)
 				CLASS_MEMBER_METHOD(AddCategory, { L"name" });
 				CLASS_MEMBER_METHOD(RemoveCategory, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(CreateContact, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(AddContact, { L"contact" });
+				CLASS_MEMBER_METHOD(RemoveContact, NO_PARAMETER);
 				CLASS_MEMBER_PROPERTY_EVENT(SelectedCategory, GetSelectedCategory, SetSelectedCategory, SelectedCategoryChanged)
+				CLASS_MEMBER_PROPERTY_EVENT(SelectedContact, GetSelectedContact, SetSelectedContact, SelectedContactChanged)
 			END_CLASS_MEMBER(demo::IViewModel)
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
@@ -80,11 +105,9 @@ namespace vl
 				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(Ptr<demo::IViewModel>), { L"ViewModel" })
 
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandBigIcon_Executed, vl::presentation::compositions::GuiEventArgs)
-				CLASS_MEMBER_GUIEVENT_HANDLER(commandDeleteContact_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandDetail_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandInformation_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandList_Executed, vl::presentation::compositions::GuiEventArgs)
-				CLASS_MEMBER_GUIEVENT_HANDLER(commandNewContact_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandSmallIcon_Executed, vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandTile_Executed, vl::presentation::compositions::GuiEventArgs)
 
@@ -109,6 +132,7 @@ namespace vl
 				void Load(ITypeManager* manager)
 				{
 					ADD_TYPE_INFO(demo::ICategory)
+					ADD_TYPE_INFO(demo::IContact)
 					ADD_TYPE_INFO(demo::IViewModel)
 					ADD_TYPE_INFO(demo::MainWindow)
 					ADD_TYPE_INFO(demo::NewFolderWindow)

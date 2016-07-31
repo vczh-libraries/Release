@@ -15,10 +15,23 @@ DO NOT MODIFY
 
 namespace demo
 {
+	class IContact;
 	class ICategory;
 	class IViewModel;
 	class MainWindow;
 	class NewFolderWindow;
+
+	class IContact : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IContact>
+	{
+	public:
+		virtual vl::WString GetName() = 0;
+		virtual vl::Ptr<vl::presentation::GuiImageData> GetBigImage() = 0;
+		virtual vl::Ptr<vl::presentation::GuiImageData> GetSmallImage() = 0;
+		virtual vl::DateTime GetBirthday() = 0;
+		virtual vl::WString GetPhone() = 0;
+		virtual vl::WString GetAddress() = 0;
+		virtual void Update(vl::WString name, vl::DateTime birthday, vl::WString phone, vl::WString address) = 0;
+	};
 
 	class ICategory : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<ICategory>
 	{
@@ -37,8 +50,14 @@ namespace demo
 		virtual vl::Ptr<demo::ICategory> GetSelectedCategory() = 0;
 		virtual void SetSelectedCategory(vl::Ptr<demo::ICategory> value) = 0;
 		vl::Event<void()> SelectedCategoryChanged;
+		virtual vl::Ptr<demo::IContact> GetSelectedContact() = 0;
+		virtual void SetSelectedContact(vl::Ptr<demo::IContact> value) = 0;
+		vl::Event<void()> SelectedContactChanged;
 		virtual void AddCategory(vl::WString name) = 0;
 		virtual void RemoveCategory() = 0;
+		virtual vl::Ptr<demo::IContact> CreateContact() = 0;
+		virtual void AddContact(vl::Ptr<demo::IContact> contact) = 0;
+		virtual void RemoveContact() = 0;
 	};
 
 	template<typename TImpl>
@@ -180,6 +199,7 @@ namespace vl
 		namespace description
 		{
 			DECL_TYPE_INFO(demo::ICategory)
+			DECL_TYPE_INFO(demo::IContact)
 			DECL_TYPE_INFO(demo::IViewModel)
 			DECL_TYPE_INFO(demo::MainWindow)
 			DECL_TYPE_INFO(demo::NewFolderWindow)

@@ -15,43 +15,76 @@
 
   <Script>
     <Workflow-ViewModel>
-      module viewmodel;
+      <![CDATA[
+        module viewmodel;
 
-      using system::*;
+        using system::*;
 
-      namespace demo
-      {
-        interface ICategory
+        namespace demo
         {
-          func GetParent() : ICategory*;
-          prop Parent : ICategory* {GetParent}
+          interface IContact
+          {
+            func GetName() : string;
+            prop Name : string {GetName}
+          
+            func GetBigImage() : presentation::GuiImageData^;
+            prop BigImage : presentation::GuiImageData^ {GetBigImage}
+          
+            func GetSmallImage() : presentation::GuiImageData^;
+            prop SmallImage : presentation::GuiImageData^ {GetSmallImage}
+            
+            func GetBirthday() : DateTime;
+            prop Birthday : DateTime {GetBirthday}
+            
+            func GetPhone() : string;
+            prop Phone : string {GetPhone}
+            
+            func GetAddress() : string;
+            prop Address : string {GetAddress}
+            
+            func Update(name : string, birthday : DateTime, phone : string, address : string) : void;
+          }
+      
+          interface ICategory
+          {
+            func GetParent() : ICategory*;
+            prop Parent : ICategory* {GetParent}
         
-          func GetName() : string;
-          prop Name : string {GetName}
+            func GetName() : string;
+            prop Name : string {GetName}
           
-          func GetImage() : presentation::GuiImageData^;
-          prop Image : presentation::GuiImageData^ {GetImage}
+            func GetImage() : presentation::GuiImageData^;
+            prop Image : presentation::GuiImageData^ {GetImage}
 
-          func GetFolders() : ObservableList^;
-          prop Folders : ObservableList^ {GetFolders}
+            func GetFolders() : ObservableList^;
+            prop Folders : ObservableList^ {GetFolders}
 
-          func GetContacts() : ObservableList^;
-          prop Contacts : ObservableList^ {GetContacts}
-        }
+            func GetContacts() : ObservableList^;
+            prop Contacts : ObservableList^ {GetContacts}
+          }
         
-        interface IViewModel
-        {
-          func GetRootCategory() : ICategory^;
+          interface IViewModel
+          {
+            func GetRootCategory() : ICategory^;
           
-          func GetSelectedCategory() : ICategory^;
-          func SetSelectedCategory(value : ICategory^) : void;
-          event SelectedCategoryChanged();
-          prop SelectedCategory : ICategory^ {GetSelectedCategory, SetSelectedCategory : SelectedCategoryChanged}
+            func GetSelectedCategory() : ICategory^;
+            func SetSelectedCategory(value : ICategory^) : void;
+            event SelectedCategoryChanged();
+            prop SelectedCategory : ICategory^ {GetSelectedCategory, SetSelectedCategory : SelectedCategoryChanged}
+            
+            func GetSelectedContact() : IContact^;
+            func SetSelectedContact(value : IContact^) : void;
+            event SelectedContactChanged();
+            prop SelectedContact : IContact^ {GetSelectedContact, SetSelectedContact : SelectedContactChanged}
           
-          func AddCategory(name : string) : void;
-          func RemoveCategory() : void;
+            func AddCategory(name : string) : void;
+            func RemoveCategory() : void;
+            func CreateContact() : IContact^;
+            func AddContact(contact : IContact^) : void;
+            func RemoveContact() : void;
+          }
         }
-      }
+      ]]>
     </Workflow-ViewModel>
   </Script>
 
@@ -61,7 +94,8 @@
     <Image content="File" name="Delete">Delete.png</Image>
 
     <Image content="File" name="Folder">Folder.png</Image>
-    <Image content="File" name="Contact">Contact.png</Image>
+    <Image content="File" name="ContactBig">ContactBig.png</Image>
+    <Image content="File" name="ContactSmall">ContactSmall.png</Image>
     <Image content="File" name="Edit">Edit.png</Image>
     
     <Image content="File" name="BigIcon">ListView_Big.png</Image>
@@ -102,17 +136,36 @@
             </ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandDeleteFolder" Image-uri="res://Images/Delete">
-            <att.Enabled-bind>ViewModel.SelectedCategory is null ? false : ViewModel.SelectedCategory.Parent is not null</att.Enabled-bind>
-            <ev.Executed-eval>{ ViewModel.RemoveCategory(); }</ev.Executed-eval>
+            <att.Enabled-bind>ViewModel.SelectedCategory.Parent is not null ?? false</att.Enabled-bind>
+            <ev.Executed-eval>
+              <![CDATA[
+                {
+                  ViewModel.RemoveCategory();
+                }
+              ]]>
+            </ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandNewContact" Image-uri="res://Images/NewContact">
-            <ev.Executed>commandNewContact_Executed</ev.Executed>
+            <att.Enabled-bind>ViewModel.SelectedCategory is not null</att.Enabled-bind>
+            <ev.Executed-eval>
+              <![CDATA[
+                {
+                }
+              ]]>
+            </ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandDeleteContact" Image-uri="res://Images/Delete">
-            <ev.Executed>commandDeleteContact_Executed</ev.Executed>
+            <att.Enabled-bind>ViewModel.SelectedContact is not null</att.Enabled-bind>
+            <ev.Executed-eval>
+              <![CDATA[
+                {
+                  ViewModel.RemoveContact();
+                }
+              ]]>
+            </ev.Executed-eval>
           </ToolstripCommand>
 
-          <ToolstripCommand ref.Name="commandBigIcon" Image-uri="res://Images/BigIcon">
+          <ToolstripCommand ref.Name="commandBigIcon" Image-uri="res://Images/BigIcon" Selected="true">
             <ev.Executed>commandBigIcon_Executed</ev.Executed>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandSmallIcon" Image-uri="res://Images/SmallIcon">
