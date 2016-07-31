@@ -115,6 +115,7 @@
 
           <att.ViewModel-set>
             <att.SelectedCategory-bind>treeViewFolders.SelectedItem as (demo::ICategory^)</att.SelectedCategory-bind>
+            <att.SelectedContact-bind>listViewContacts.SelectedItem as (demo::IContact^)</att.SelectedContact-bind>
           </att.ViewModel-set>
 
           <ToolstripCommand ref.Name="commandNewFolder" Image-uri="res://Images/NewFolder">
@@ -157,6 +158,7 @@
                   {
                     if (window.Ready)
                     {
+                      ViewModel.AddContact(contact);
                     }
                   });
                 }
@@ -271,6 +273,16 @@
                   <Cell Site="row:1 column:0">
                     <BindableListView ref.Name="listViewContacts" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                      <att.ItemSource-bind>ViewModel.SelectedCategory.Contacts ?? null</att.ItemSource-bind>
+                      <att.LargeImageProperty>BigImage</att.LargeImageProperty>
+                      <att.SmallImageProperty>SmallImage</att.SmallImageProperty>
+
+                      <att.Columns>
+                        <ListViewColumn Text="Name" TextProperty="Name" Size="120"/>
+                        <ListViewColumn Text="Birthday" TextProperty="Birthday" Size="120"/>
+                        <ListViewColumn Text="Phone" TextProperty="Phone" Size="120"/>
+                        <ListViewColumn Text="Address" TextProperty="Address" Size="120"/>
+                      </att.Columns>
                     </BindableListView>
                   </Cell>
                 </Table>
