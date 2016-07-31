@@ -29,6 +29,8 @@ namespace demo
 		void OnCreate();
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
+
+		void ClearViewSelection();
 	public:
 		MainWindow(Ptr<demo::IViewModel> ViewModel);
 		~MainWindow();

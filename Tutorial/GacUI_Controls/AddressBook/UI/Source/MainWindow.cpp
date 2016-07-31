@@ -14,26 +14,44 @@ namespace demo
 
 	void MainWindow::commandBigIcon_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
+		ClearViewSelection();
+		commandBigIcon->SetSelected(true);
+		listViewContacts->ChangeItemStyle(new list::ListViewBigIconContentProvider);
 	}
 
 	void MainWindow::commandDetail_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
+		ClearViewSelection();
+		commandDetail->SetSelected(true);
+		listViewContacts->ChangeItemStyle(new list::ListViewDetailContentProvider);
 	}
 
 	void MainWindow::commandInformation_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
+		ClearViewSelection();
+		commandInformation->SetSelected(true);
+		listViewContacts->ChangeItemStyle(new list::ListViewInformationContentProvider);
 	}
 
 	void MainWindow::commandList_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
+		ClearViewSelection();
+		commandList->SetSelected(true);
+		listViewContacts->ChangeItemStyle(new list::ListViewListContentProvider);
 	}
 
 	void MainWindow::commandSmallIcon_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
+		ClearViewSelection();
+		commandSmallIcon->SetSelected(true);
+		listViewContacts->ChangeItemStyle(new list::ListViewSmallIconContentProvider);
 	}
 
 	void MainWindow::commandTile_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
+		ClearViewSelection();
+		commandTile->SetSelected(true);
+		listViewContacts->ChangeItemStyle(new list::ListViewTileContentProvider);
 	}
 
 	void MainWindow::OnCreate()
@@ -45,6 +63,16 @@ namespace demo
 	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
+
+	void MainWindow::ClearViewSelection()
+	{
+		commandBigIcon->SetSelected(false);
+		commandSmallIcon->SetSelected(false);
+		commandList->SetSelected(false);
+		commandDetail->SetSelected(false);
+		commandTile->SetSelected(false);
+		commandInformation->SetSelected(false);
+	}
 
 	MainWindow::MainWindow(Ptr<demo::IViewModel> ViewModel)
 	{

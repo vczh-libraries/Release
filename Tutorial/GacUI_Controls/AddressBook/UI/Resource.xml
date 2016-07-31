@@ -176,7 +176,7 @@
             </ev.Executed-eval>
           </ToolstripCommand>
 
-          <ToolstripCommand ref.Name="commandBigIcon" Image-uri="res://Images/BigIcon" Selected="true">
+          <ToolstripCommand ref.Name="commandBigIcon" Image-uri="res://Images/BigIcon">
             <ev.Executed>commandBigIcon_Executed</ev.Executed>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandSmallIcon" Image-uri="res://Images/SmallIcon">
@@ -185,7 +185,7 @@
           <ToolstripCommand ref.Name="commandList" Image-uri="res://Images/List">
             <ev.Executed>commandList_Executed</ev.Executed>
           </ToolstripCommand>
-          <ToolstripCommand ref.Name="commandDetail" Image-uri="res://Images/Detail">
+          <ToolstripCommand ref.Name="commandDetail" Image-uri="res://Images/Detail" Selected="true">
             <ev.Executed>commandDetail_Executed</ev.Executed>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandTile" Image-uri="res://Images/Tile">
@@ -283,6 +283,11 @@
                         <ListViewColumn Text="Phone" TextProperty="Phone" Size="120"/>
                         <ListViewColumn Text="Address" TextProperty="Address" Size="120"/>
                       </att.Columns>
+
+                      <att.DataColumns>
+                        <Int32>1</Int32>
+                        <Int32>2</Int32>
+                      </att.DataColumns>
                     </BindableListView>
                   </Cell>
                 </Table>
