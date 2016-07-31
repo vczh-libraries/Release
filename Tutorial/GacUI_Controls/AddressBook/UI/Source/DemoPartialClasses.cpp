@@ -100,6 +100,7 @@ namespace vl
 				CLASS_MEMBER_METHOD(GetBigImage, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetSmallImage, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetBirthday, NO_PARAMETER);
+				CLASS_MEMBER_METHOD(GetBirthdayText, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetPhone, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetAddress, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(Update, { L"name" _ L"birthday" _ L"phone" _ L"address" });
@@ -107,6 +108,7 @@ namespace vl
 				CLASS_MEMBER_PROPERTY_READONLY(BigImage, GetBigImage)
 				CLASS_MEMBER_PROPERTY_READONLY(SmallImage, GetSmallImage)
 				CLASS_MEMBER_PROPERTY_READONLY(Birthday, GetBirthday)
+				CLASS_MEMBER_PROPERTY_READONLY(BirthdayText, GetBirthdayText)
 				CLASS_MEMBER_PROPERTY_READONLY(Phone, GetPhone)
 				CLASS_MEMBER_PROPERTY_READONLY(Address, GetAddress)
 			END_CLASS_MEMBER(demo::IContact)

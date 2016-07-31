@@ -90,7 +90,9 @@
     <ClCompile Include="UI\Source\MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="UI\Resource.xml" />
+    <Xml Include="UI\Resource.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI\Source\Demo.h" />

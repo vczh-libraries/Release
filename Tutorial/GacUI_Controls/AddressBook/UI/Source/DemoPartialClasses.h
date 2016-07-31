@@ -29,6 +29,7 @@ namespace demo
 		virtual vl::Ptr<vl::presentation::GuiImageData> GetBigImage() = 0;
 		virtual vl::Ptr<vl::presentation::GuiImageData> GetSmallImage() = 0;
 		virtual vl::DateTime GetBirthday() = 0;
+		virtual vl::WString GetBirthdayText() = 0;
 		virtual vl::WString GetPhone() = 0;
 		virtual vl::WString GetAddress() = 0;
 		virtual void Update(vl::WString name, vl::DateTime birthday, vl::WString phone, vl::WString address) = 0;

@@ -36,6 +36,9 @@
             func GetBirthday() : DateTime;
             prop Birthday : DateTime {GetBirthday}
             
+            func GetBirthdayText() : string;
+            prop BirthdayText : string {GetBirthdayText}
+            
             func GetPhone() : string;
             prop Phone : string {GetPhone}
             
@@ -279,7 +282,7 @@
 
                       <att.Columns>
                         <ListViewColumn Text="Name" TextProperty="Name" Size="120"/>
-                        <ListViewColumn Text="Birthday" TextProperty="Birthday" Size="120"/>
+                        <ListViewColumn Text="Birthday" TextProperty="BirthdayText" Size="120"/>
                         <ListViewColumn Text="Phone" TextProperty="Phone" Size="120"/>
                         <ListViewColumn Text="Address" TextProperty="Address" Size="120"/>
                       </att.Columns>

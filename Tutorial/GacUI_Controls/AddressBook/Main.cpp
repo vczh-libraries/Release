@@ -98,6 +98,17 @@ public:
 		return birthday;
 	}
 
+	WString GetBirthdayText()override
+	{
+		List<WString> formats;
+		Locale::UserDefault().GetShortDateFormats(formats);
+		if (formats.Count() > 0)
+		{
+			return Locale::UserDefault().FormatDate(formats[0], birthday);
+		}
+		return L"";
+	}
+
 	WString GetPhone()override
 	{
 		return phone;
