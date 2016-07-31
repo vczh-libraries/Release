@@ -19,6 +19,7 @@ namespace demo
 	class ICategory;
 	class IViewModel;
 	class MainWindow;
+	class NewContactWindow;
 	class NewFolderWindow;
 
 	class IContact : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IContact>
@@ -132,6 +133,68 @@ namespace demo
 	};
 
 	template<typename TImpl>
+	class NewContactWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	{
+		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
+	private:
+		Ptr<demo::IContact> Contact_;
+		bool Ready_;
+	protected:
+		vl::presentation::controls::GuiDatePicker* datePickerBirthday;
+		vl::presentation::controls::GuiWindow* self;
+		vl::presentation::controls::GuiDocumentLabel* textBoxAddress;
+		vl::presentation::controls::GuiDocumentLabel* textBoxName;
+		vl::presentation::controls::GuiDocumentLabel* textBoxPhone;
+
+		void InitializeComponents(Ptr<demo::IContact> Contact)
+		{
+			Contact_ = Contact;
+			if (InitializeFromResource())
+			{
+				GUI_INSTANCE_REFERENCE(datePickerBirthday);
+				GUI_INSTANCE_REFERENCE(self);
+				GUI_INSTANCE_REFERENCE(textBoxAddress);
+				GUI_INSTANCE_REFERENCE(textBoxName);
+				GUI_INSTANCE_REFERENCE(textBoxPhone);
+			}
+			else
+			{
+				Contact_ = 0;
+			}
+		}
+	public:
+		NewContactWindow_()
+			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::NewContactWindow")
+			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			,datePickerBirthday(0)
+			,self(0)
+			,textBoxAddress(0)
+			,textBoxName(0)
+			,textBoxPhone(0)
+		{
+			this->Ready_ = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"true", reflection::description::GetTypeDescriptor<bool>()));
+		}
+
+		Ptr<demo::IContact> GetContact()
+		{
+			return Contact_;
+		}
+
+		vl::Event<void()> ReadyChanged;
+
+		bool GetReady()
+		{
+			return Ready_;
+		}
+
+		void SetReady(bool value)
+		{
+			Ready_ = value;
+			ReadyChanged();
+		}
+	};
+
+	template<typename TImpl>
 	class NewFolderWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
@@ -202,11 +265,31 @@ namespace vl
 			DECL_TYPE_INFO(demo::IContact)
 			DECL_TYPE_INFO(demo::IViewModel)
 			DECL_TYPE_INFO(demo::MainWindow)
+			DECL_TYPE_INFO(demo::NewContactWindow)
 			DECL_TYPE_INFO(demo::NewFolderWindow)
 
 		}
 	}
 }
+namespace demo
+{
+	class NewContactWindow : public demo::NewContactWindow_<demo::NewContactWindow>
+	{
+		friend class demo::NewContactWindow_<demo::NewContactWindow>;
+		friend struct vl::reflection::description::CustomTypeDescriptorSelector<demo::NewContactWindow>;
+	protected:
+
+		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
+		void OnCreate();
+		void OnDestroy();
+		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
+	public:
+		NewContactWindow(Ptr<demo::IContact> Contact);
+		~NewContactWindow();
+	};
+}
+
+
 namespace demo
 {
 	class NewFolderWindow : public demo::NewFolderWindow_<demo::NewFolderWindow>

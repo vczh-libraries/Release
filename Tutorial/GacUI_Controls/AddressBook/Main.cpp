@@ -231,9 +231,11 @@ public:
 	
 	Ptr<IContact> CreateContact()override
 	{
-		if (auto parent = dynamic_cast<Category*>(selectedCategory.Obj()))
+		if (auto category = dynamic_cast<Category*>(selectedCategory.Obj()))
 		{
-			return new Contact(parent);
+			auto contact = new Contact(category);
+			contact->Update(L"Mr. New Contact", DateTime::LocalTime(), L"(123)-456-7890", L"110 st, New York, NY 10118");
+			return contact;
 		}
 		return nullptr;
 	}
