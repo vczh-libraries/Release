@@ -150,6 +150,8 @@ namespace vl
 				CLASS_MEMBER_CONSTRUCTOR(demo::NewContactWindow*(Ptr<demo::IContact>), { L"Contact" })
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(Contact)
+				CLASS_MEMBER_EVENT(ForEditChanged)
+				CLASS_MEMBER_PROPERTY_EVENT_FAST(ForEdit, ForEditChanged)
 				CLASS_MEMBER_EVENT(ReadyChanged)
 				CLASS_MEMBER_PROPERTY_EVENT_FAST(Ready, ReadyChanged)
 			END_CLASS_MEMBER(demo::NewContactWindow)

@@ -15,11 +15,13 @@ Ptr<GuiImageData> folderImage;
 Ptr<GuiImageData> contactBigImage;
 Ptr<GuiImageData> contactSmallImage;
 
+class Contact;
 class ViewModel;
 
 class Category : public Object, public ICategory
 {
 	friend class ViewModel;
+	friend class Contact;
 protected:
 	ICategory*									parent;
 	WString										name;
@@ -125,6 +127,12 @@ public:
 		birthday = _birthday;
 		phone = _phone;
 		address = _address;
+
+		vint index = category->contacts.IndexOf(this);
+		if (index != -1)
+		{
+			category->contacts.NotifyUpdate(index, 1);
+		}
 	}
 };
 

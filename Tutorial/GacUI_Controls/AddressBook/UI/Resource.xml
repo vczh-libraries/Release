@@ -168,6 +168,19 @@
               ]]>
             </ev.Executed-eval>
           </ToolstripCommand>
+          <ToolstripCommand ref.Name="commandEditContact" Image-uri="res://Images/Edit">
+            <att.Enabled-bind>ViewModel.SelectedContact is not null</att.Enabled-bind>
+            <ev.Executed-eval>
+              <![CDATA[
+                {
+                  var window = new demo::NewContactWindow*(ViewModel.SelectedContact);
+                  window.ForEdit = true;
+                  window.MoveToScreenCenter();
+                  window.ShowModalAndDelete(self, func():void{});
+                }
+              ]]>
+            </ev.Executed-eval>
+          </ToolstripCommand>
           <ToolstripCommand ref.Name="commandDeleteContact" Image-uri="res://Images/Delete">
             <att.Enabled-bind>ViewModel.SelectedContact is not null</att.Enabled-bind>
             <ev.Executed-eval>
@@ -262,6 +275,7 @@
                     <ToolstripToolBar>
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                       <ToolstripButton Command-ref="commandNewContact"/>
+                      <ToolstripButton Command-ref="commandEditContact"/>
                       <ToolstripButton Command-ref="commandDeleteContact"/>
                       <ToolstripSplitter/>
                       <ToolstripButton Command-ref="commandBigIcon"/>
@@ -350,9 +364,10 @@
 
     <Instance name="NewContactWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::NewContactWindow">
+        <ref.Property Name="ForEdit" Type="bool" Value="false"/>
         <ref.Property Name="Ready" Type="bool" Value="true"/>
         <ref.Parameter Name="Contact" Class="demo::IContact"/>
-        <Window ref.Name="self" Text="New Contact" ClientSize="x:480 y:360" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
+        <Window ref.Name="self" Text-bind="self.ForEdit ? 'Edit Contact' : 'New Contact'" ClientSize="x:480 y:360" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
 
           <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0">
             <att.Rows>

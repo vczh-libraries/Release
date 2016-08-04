@@ -73,6 +73,7 @@ namespace demo
 		vl::presentation::controls::GuiToolstripCommand* commandDeleteContact;
 		vl::presentation::controls::GuiToolstripCommand* commandDeleteFolder;
 		vl::presentation::controls::GuiToolstripCommand* commandDetail;
+		vl::presentation::controls::GuiToolstripCommand* commandEditContact;
 		vl::presentation::controls::GuiToolstripCommand* commandInformation;
 		vl::presentation::controls::GuiToolstripCommand* commandList;
 		vl::presentation::controls::GuiToolstripCommand* commandNewContact;
@@ -92,6 +93,7 @@ namespace demo
 				GUI_INSTANCE_REFERENCE(commandDeleteContact);
 				GUI_INSTANCE_REFERENCE(commandDeleteFolder);
 				GUI_INSTANCE_REFERENCE(commandDetail);
+				GUI_INSTANCE_REFERENCE(commandEditContact);
 				GUI_INSTANCE_REFERENCE(commandInformation);
 				GUI_INSTANCE_REFERENCE(commandList);
 				GUI_INSTANCE_REFERENCE(commandNewContact);
@@ -115,6 +117,7 @@ namespace demo
 			,commandDeleteContact(0)
 			,commandDeleteFolder(0)
 			,commandDetail(0)
+			,commandEditContact(0)
 			,commandInformation(0)
 			,commandList(0)
 			,commandNewContact(0)
@@ -139,6 +142,7 @@ namespace demo
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 		Ptr<demo::IContact> Contact_;
+		bool ForEdit_;
 		bool Ready_;
 	protected:
 		vl::presentation::controls::GuiDatePicker* datePickerBirthday;
@@ -173,12 +177,26 @@ namespace demo
 			,textBoxName(0)
 			,textBoxPhone(0)
 		{
+			this->ForEdit_ = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"false", reflection::description::GetTypeDescriptor<bool>()));
 			this->Ready_ = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"true", reflection::description::GetTypeDescriptor<bool>()));
 		}
 
 		Ptr<demo::IContact> GetContact()
 		{
 			return Contact_;
+		}
+
+		vl::Event<void()> ForEditChanged;
+
+		bool GetForEdit()
+		{
+			return ForEdit_;
+		}
+
+		void SetForEdit(bool value)
+		{
+			ForEdit_ = value;
+			ForEditChanged();
 		}
 
 		vl::Event<void()> ReadyChanged;
