@@ -19,9 +19,8 @@ GacUI tutorials and the plan
 * GacUI_Controls
     * **ContainersAndButtons**: Using container controls and button controls.
     * **TextEditor**: Implementing a text editor that handle plain text and XML.
-	* **ColorPicker**: Using ItemTemplate on ComboBox and BindableTextList to build a color picker.
-    * **ListView**: Using list view control with direct assign, data binding and item template. (developing)
-    * **TreeView**: Using tree view control with direct assign, data binding and item template. (developing)
+    * **ColorPicker**: Using ItemTemplate on ComboBox and BindableTextList to build a color picker.
+    * **AddressBook**: Using tree view and list view control with data binding to build an address book editor.
     * **DataGrid**: Using data grid control with direct assign, data binding and item template. (developing)
     * **RichTextEditor**: Implementing a rich text editor. (developing)
     * **Misc**: Using other controls. (developing)
