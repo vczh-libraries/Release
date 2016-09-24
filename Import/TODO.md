@@ -2,7 +2,7 @@
 
 * Workflow
     * Enum, `(Item1 | Item2 | Item3)::Enum`, giving a type is not always necessary.
-    * Struct, `{fontFamily:'Segoe UI', size:10}::FontProperties`, giving a type is not always necessary.
+    * Struct, `{fontFamily:'Segoe UI' size:10}::FontProperties`, giving a type is not always necessary.
     * async, delay, yield (provider written in C++). **low priority**
     * Limited serialization
         * Disable serialization for struct and enum.
@@ -24,6 +24,9 @@
     * Special grammar kicks in when assigning a text literal to non-serializable struct or enum types
         * enum: `Item1 | Item2 | Item2`, the same as previous.
         * struct: `fontFamily:'Segoe UI' size:10`, the same as previous, but no more {} escaping.
+        * Remove -format binding, use -bind/-eval instead:
+            * **Before**: `Font-format="fontFamily: $(textBox1.Text) size:$(textBox2.Text)"`
+            * **After**: `Font-bind="{fontFamily: textBox1.Text size: (cast int textBox2.Text)}"`
 * Core
     * Make ItemSource from constructor argument to property
     * Embedded Languages: Colorizer, AutoComplete
