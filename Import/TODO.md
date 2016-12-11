@@ -4,12 +4,9 @@
     * **enum**:
         * Support comparison, `|` and `&` operators for Enum.
         * When there is an determined expression expected enum type, enum item names are legal expressions.
-        * So that `(Item1 | Item2 | Item3)::Enum` is a legal expression.
-    * **struct**:
-        * `{fontFamily:'Segoe UI' size:10}::FontProperties`, giving a type is not always necessary.
+        * So that `(Item1 | Item2 | Item3) of Enum` is a legal expression.
     * **Workflow to C++ code generation with hint**.
         * Only `Enumerable<T>^` and `ObservableList^` in containers are allowed in script.
-        * All native classes report real C++ collection type when using collection objects.
         * C++ code generator reports errors when any script does not satisfy these rules.
     * **Low Priority**:
         * async, delay, yield (provider written in C++).
