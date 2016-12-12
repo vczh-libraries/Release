@@ -1,10 +1,9 @@
 # TODO
 
 * Workflow
-    * **enum**:
-        * Support comparison, `|` and `&` operators for Enum.
-        * When there is an determined expression expected enum type, enum item names are legal expressions.
-        * So that `(Item1 | Item2 | Item3) of Enum` is a legal expression.
+    * **Declarations**:
+        * Define struct
+        * Define enum
     * **Workflow to C++ code generation with hint**.
         * Only `Enumerable<T>^` and `ObservableList^` in containers are allowed in script.
         * C++ code generator reports errors when any script does not satisfy these rules.
