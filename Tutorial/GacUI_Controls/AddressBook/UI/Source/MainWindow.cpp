@@ -63,30 +63,6 @@ namespace demo
 	{
 	}
 
-	void MainWindow::commandBigIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandDetail_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandInformation_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandList_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandSmallIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
-	void MainWindow::commandTile_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-	}
-
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
 	void MainWindow::ClearViewSelection()

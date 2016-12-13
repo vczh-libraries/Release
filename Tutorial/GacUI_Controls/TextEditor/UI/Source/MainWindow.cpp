@@ -186,6 +186,7 @@ namespace demo
 
 	void MainWindow::window_Closing(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiRequestEventArgs& arguments)
 	{
+		arguments.cancel = !CanCloseFile();
 	}
 
 	void MainWindow::OnCreate()
@@ -197,11 +198,6 @@ namespace demo
 
 	void MainWindow::OnDestroy()
 	{
-	}
-
-	void MainWindow::window_Closing(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiRequestEventArgs& arguments)
-	{
-		arguments.cancel = !CanCloseFile();
 	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
