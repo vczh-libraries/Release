@@ -18,13 +18,6 @@
     * InstanceStyle:Replace
     * Pure C++ Code Generation
     * Visual State, State Machine, Animation
-    * Special grammar kicks in when assigning a text literal to non-serializable struct or enum types
-        * **serializable types**: always use ISerializableType.
-        * **enum**: `Item1 | Item2 | Item3`, the same as previous. (<text>)::<type>
-        * **struct**: `fontFamily:'Segoe UI' size:10`, the same as previous, but no more {} escaping. {<text>}::<type>
-        * **Remove -format binding, use -bind/-eval instead**:
-            * **Before**: `Font-format="fontFamily: $(textBox1.Text) size:$(textBox2.Text)"`
-            * **After**: `Font-bind="{fontFamily: textBox1.Text size: (cast int textBox2.Text)}"`
     * **Low Priority**:
         * ev.Event-(eval|async|delayed)
 * Core
