@@ -27,13 +27,13 @@ func CreateMainWindow() : Window*
 
 	var window = new Window*(theme.CreateWindowStyle());
 	window.Text = "Hello, world!";
-	window.ClientSize = cast Size "x:480 y:320";
-	window.BoundsComposition.PreferredMinSize = cast Size "x:480 y:320";
+	window.ClientSize = {x:480 y:320};
+	window.BoundsComposition.PreferredMinSize = {x:480 y:320};
 	window.MoveToScreenCenter();
 
 	var label = new Label*(theme.CreateLabelStyle());
 	label.Text = "Welcom to GacUI Library!";
-	label.Font = cast FontProperties "fontFamily:{Segoe UI} size:32";
+	label.Font = {fontFamily:"Segoe UI" size:32};
 	window.AddChild(label);
 
 	return window;
