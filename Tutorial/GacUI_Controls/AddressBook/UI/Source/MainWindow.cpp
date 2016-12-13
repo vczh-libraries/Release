@@ -13,42 +13,42 @@ namespace demo
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
-	void MainWindow::commandBigIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	void MainWindow::commandBigIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 		ClearViewSelection();
 		commandBigIcon->SetSelected(true);
 		listViewContacts->ChangeItemStyle(new list::ListViewBigIconContentProvider);
 	}
 
-	void MainWindow::commandDetail_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	void MainWindow::commandDetail_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 		ClearViewSelection();
 		commandDetail->SetSelected(true);
 		listViewContacts->ChangeItemStyle(new list::ListViewDetailContentProvider);
 	}
 
-	void MainWindow::commandInformation_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	void MainWindow::commandInformation_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 		ClearViewSelection();
 		commandInformation->SetSelected(true);
 		listViewContacts->ChangeItemStyle(new list::ListViewInformationContentProvider);
 	}
 
-	void MainWindow::commandList_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	void MainWindow::commandList_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 		ClearViewSelection();
 		commandList->SetSelected(true);
 		listViewContacts->ChangeItemStyle(new list::ListViewListContentProvider);
 	}
 
-	void MainWindow::commandSmallIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	void MainWindow::commandSmallIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 		ClearViewSelection();
 		commandSmallIcon->SetSelected(true);
 		listViewContacts->ChangeItemStyle(new list::ListViewSmallIconContentProvider);
 	}
 
-	void MainWindow::commandTile_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	void MainWindow::commandTile_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 		ClearViewSelection();
 		commandTile->SetSelected(true);
@@ -60,6 +60,30 @@ namespace demo
 	}
 
 	void MainWindow::OnDestroy()
+	{
+	}
+
+	void MainWindow::commandBigIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandDetail_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandInformation_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandList_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandSmallIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandTile_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 	}
 

@@ -39,7 +39,7 @@ namespace vl
 
 			BEGIN_CLASS_MEMBER(helloworld::MainWindow)
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
-				CLASS_MEMBER_CONSTRUCTOR(helloworld::MainWindow*(Ptr<vm::IViewModel>), { L"ViewModel" })
+				CLASS_MEMBER_CONSTRUCTOR(helloworld::MainWindow*(vl::Ptr<vm::IViewModel>), { L"ViewModel" })
 
 				CLASS_MEMBER_GUIEVENT_HANDLER(buttonSignUp_Clicked, ::vl::presentation::compositions::GuiEventArgs)
 
