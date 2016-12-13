@@ -22,12 +22,12 @@
       </att.Columns>
       <Cell Site="row:0 column:0 columnSpan:2">
         <SolidLabel Text="www.gaclib.net" HorizontalAlignment="Center" VerticalAlignment="Center">
-          <att.Font>fontFamily:{Segoe UI} size:40 antialias:true</att.Font>
+          <att.Font>fontFamily:"Segoe UI" size:40 antialias:true</att.Font>
         </SolidLabel>
       </Cell>
       <Cell Site="row:1 column:0">
         <SolidLabel Text="Username: " VerticalAlignment="Center">
-          <att.Font>fontFamily:{Segoe UI} size:12 antialias:true</att.Font>
+          <att.Font>fontFamily:"Segoe UI" size:12 antialias:true</att.Font>
         </SolidLabel>
       </Cell>
       <Cell Site="row:1 column:1">
@@ -37,12 +37,12 @@
       </Cell>
       <Cell Site="row:2 column:1">
         <SolidLabel Color="#FF0000" WrapLine="true" WrapLineHeightCalculation="true" Text-bind="ViewModel.UserNameError">
-          <att.Font>fontFamily:{Segoe UI} size:12 antialias:true</att.Font>
+          <att.Font>fontFamily:"Segoe UI" size:12 antialias:true</att.Font>
         </SolidLabel>
       </Cell>
       <Cell Site="row:3 column:0">
         <SolidLabel Text="Password: " VerticalAlignment="Center">
-          <att.Font>fontFamily:{Segoe UI} size:12 antialias:true</att.Font>
+          <att.Font>fontFamily:"Segoe UI" size:12 antialias:true</att.Font>
         </SolidLabel>
       </Cell>
       <Cell Site="row:3 column:1">
@@ -52,7 +52,7 @@
       </Cell>
       <Cell Site="row:4 column:1">
         <SolidLabel Color="#FF0000" WrapLine="true" WrapLineHeightCalculation="true" Text-bind="ViewModel.PasswordError">
-          <att.Font>fontFamily:{Segoe UI} size:12 antialias:true</att.Font>
+          <att.Font>fontFamily:"Segoe UI" size:12 antialias:true</att.Font>
         </SolidLabel>
       </Cell>
       <Cell Site="row:7 column:0 columnSpan:2">

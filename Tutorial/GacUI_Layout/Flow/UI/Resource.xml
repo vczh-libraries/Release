@@ -22,7 +22,15 @@
               var radioButton = cast (SelectableButton*) sender.RelatedControl;
               if (radioButton.Selected)
               {
-                var direction = cast (AxisDirection) radioButton.Text;
+                var direction : AxisDirection =
+                  radioButton.Text == "LeftDown"  ? LeftDown :
+                  radioButton.Text == "LeftUp"    ? LeftUp :
+                  radioButton.Text == "RightDown" ? RightDown :
+                  radioButton.Text == "RightUp"   ? RightUp :
+                  radioButton.Text == "UpRight"   ? UpRight :
+                  radioButton.Text == "UpLeft"    ? UpLeft :
+                  radioButton.Text == "DownLeft"  ? DownLeft :
+                  DownRight;
                 var axis = new Axis^(direction);
                 flowLayout.Axis = axis;
               }
@@ -37,7 +45,10 @@
               var radioButton = cast (SelectableButton*) sender.RelatedControl;
               if (radioButton.Selected)
               {
-                flowLayout.Alignment = cast (FlowAlignment) radioButton.Text;
+                flowLayout.Alignment =
+                  radioButton.Text == "Left"   ? Left :
+                  radioButton.Text == "Center" ? Center :
+                  Extend;
               }
             }
           ]]>
@@ -49,11 +60,11 @@
             {
               for (flowItem in flowLayout.FlowItems)
               {
-                flowItem.ExtraMargin = cast Margin "";
+                flowItem.ExtraMargin = {};
               }
             
               var selectedItem = cast (FlowItem*) sender.Parent;
-              selectedItem.ExtraMargin = cast Margin "left:10 top:10 right:10 bottom:10";
+              selectedItem.ExtraMargin = {left:10 top:10 right:10 bottom:10};
               flowLayout.MoveChild(selectedItem, flowLayout.FlowItems.Count - 1);
             }
           ]]>

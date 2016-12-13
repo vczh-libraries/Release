@@ -22,7 +22,11 @@
               var radioButton = cast (SelectableButton*) sender.RelatedControl;
               if (radioButton.Selected)
               {
-                stackLayout.Direction = cast (Stack::Direction) radioButton.Text;
+                stackLayout.Direction = 
+                  radioButton.Text == "Horizontal" ? Horizontal :
+                  radioButton.Text == "Vertical" ? Vertical :
+                  radioButton.Text == "ReversedHorizontal" ? ReversedHorizontal :
+                  ReversedVertical;
               }
             }
           ]]>
@@ -34,11 +38,11 @@
             {
               for (stackItem in stackLayout.StackItems)
               {
-                stackItem.ExtraMargin = cast Margin "";
+                stackItem.ExtraMargin = {};
               }
             
               var selectedItem = cast (StackItem*) sender.Parent;
-              selectedItem.ExtraMargin = cast Margin "left:10 top:10 right:10 bottom:10";
+              selectedItem.ExtraMargin = {left:10 top:10 right:10 bottom:10};
               stackLayout.MoveChild(selectedItem, stackLayout.StackItems.Count - 1);
             }
           ]]>

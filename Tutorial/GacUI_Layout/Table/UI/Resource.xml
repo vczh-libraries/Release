@@ -33,7 +33,7 @@
             </att.Columns>
 
             <Cell Site="row:0 column:0 columnSpan:3">
-              <SolidLabel Font="fontFamily:{Lucida Calligraphy} size:96" HorizontalAlignment="Center" VerticalAlignment="Center" Text="GacUI"/>
+              <SolidLabel Font="fontFamily:'Lucida Calligraphy' size:96" HorizontalAlignment="Center" VerticalAlignment="Center" Text="GacUI"/>
             </Cell>
 
             <Cell Site="row:2 column:0">

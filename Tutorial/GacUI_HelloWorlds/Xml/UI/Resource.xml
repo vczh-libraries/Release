@@ -12,7 +12,7 @@
         <Window Text="Hello, world!" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
           <Label Text="Welcome to GacUI Library!">
-            <att.Font>fontFamily:{Segoe UI} size:32 antialias:true</att.Font>
+            <att.Font>fontFamily:"Segoe UI" size:32 antialias:true</att.Font>
           </Label>
         </Window>
       </Instance>
