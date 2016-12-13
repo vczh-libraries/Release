@@ -70,7 +70,7 @@ namespace demo
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		Ptr<vm::IFindWindowViewModel> ViewModel_;
+		vl::Ptr<vm::IFindWindowViewModel> ViewModel_;
 	protected:
 		::vl::presentation::controls::GuiSelectableButton* checkCase;
 		::vl::presentation::controls::GuiMessageDialog* dialogContentNotFound;
@@ -80,7 +80,7 @@ namespace demo
 		::vl::presentation::controls::GuiWindow* self;
 		::vl::presentation::controls::GuiSinglelineTextBox* textFind;
 
-		void InitializeComponents(Ptr<vm::IFindWindowViewModel> ViewModel)
+		void InitializeComponents(vl::Ptr<vm::IFindWindowViewModel> ViewModel)
 		{
 			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
@@ -112,7 +112,7 @@ namespace demo
 		{
 		}
 
-		Ptr<vm::IFindWindowViewModel> GetViewModel()
+		vl::Ptr<vm::IFindWindowViewModel> GetViewModel()
 		{
 			return ViewModel_;
 		}
@@ -242,7 +242,7 @@ namespace demo
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
-		FindWindow(Ptr<vm::IFindWindowViewModel> ViewModel);
+		FindWindow(vl::Ptr<vm::IFindWindowViewModel> ViewModel);
 		~FindWindow();
 	};
 }

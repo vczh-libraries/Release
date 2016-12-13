@@ -39,12 +39,12 @@ namespace demo
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		Ptr<demo::IColorItem> ViewModel_;
+		vl::Ptr<demo::IColorItem> ViewModel_;
 		::vl::presentation::Color TextColor_;
 	protected:
 		::vl::presentation::templates::GuiControlTemplate* self;
 
-		void InitializeComponents(Ptr<demo::IColorItem> ViewModel)
+		void InitializeComponents(vl::Ptr<demo::IColorItem> ViewModel)
 		{
 			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
@@ -61,16 +61,16 @@ namespace demo
 			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiControlTemplate>(L"demo::ColorBomboItemTemplate")
 			,self(0)
 		{
-			this->TextColor = vl::reflection::description::UnboxValue<::vl::presentation::Color>(
+			this->TextColor_ = vl::reflection::description::UnboxValue<::vl::presentation::Color>(
 			[]()
 			{
 				vl::reflection::description::Value value;
-				reflection::description::GetTypeDescriptor<::vl::presentation::Color>()->GetSerializableType()->Deserialize(L"", value);
+				vl::reflection::description::GetTypeDescriptor<::vl::presentation::Color>()->GetSerializableType()->Deserialize(L"", value);
 				return value;
 			}());
 		}
 
-		Ptr<demo::IColorItem> GetViewModel()
+		vl::Ptr<demo::IColorItem> GetViewModel()
 		{
 			return ViewModel_;
 		}
@@ -94,11 +94,11 @@ namespace demo
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		Ptr<demo::IColorItem> ViewModel_;
+		vl::Ptr<demo::IColorItem> ViewModel_;
 	protected:
 		::vl::presentation::templates::GuiTextListItemTemplate* self;
 
-		void InitializeComponents(Ptr<demo::IColorItem> ViewModel)
+		void InitializeComponents(vl::Ptr<demo::IColorItem> ViewModel)
 		{
 			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
@@ -117,7 +117,7 @@ namespace demo
 		{
 		}
 
-		Ptr<demo::IColorItem> GetViewModel()
+		vl::Ptr<demo::IColorItem> GetViewModel()
 		{
 			return ViewModel_;
 		}
@@ -128,10 +128,10 @@ namespace demo
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		Ptr<demo::IViewModel> ViewModel_;
+		vl::Ptr<demo::IViewModel> ViewModel_;
 	protected:
 
-		void InitializeComponents(Ptr<demo::IViewModel> ViewModel)
+		void InitializeComponents(vl::Ptr<demo::IViewModel> ViewModel)
 		{
 			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
@@ -149,7 +149,7 @@ namespace demo
 		{
 		}
 
-		Ptr<demo::IViewModel> GetViewModel()
+		vl::Ptr<demo::IViewModel> GetViewModel()
 		{
 			return ViewModel_;
 		}
@@ -184,7 +184,7 @@ namespace demo
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
-		ColorBomboItemTemplate(Ptr<demo::IColorItem> ViewModel);
+		ColorBomboItemTemplate(vl::Ptr<demo::IColorItem> ViewModel);
 		~ColorBomboItemTemplate();
 	};
 }
@@ -203,7 +203,7 @@ namespace demo
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
-		ColorListItemTemplate(Ptr<demo::IColorItem> ViewModel);
+		ColorListItemTemplate(vl::Ptr<demo::IColorItem> ViewModel);
 		~ColorListItemTemplate();
 	};
 }
@@ -222,7 +222,7 @@ namespace demo
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
-		MainWindow(Ptr<demo::IViewModel> ViewModel);
+		MainWindow(vl::Ptr<demo::IViewModel> ViewModel);
 		~MainWindow();
 	};
 }

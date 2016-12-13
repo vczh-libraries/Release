@@ -67,7 +67,7 @@ namespace demo
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		Ptr<demo::IViewModel> ViewModel_;
+		vl::Ptr<demo::IViewModel> ViewModel_;
 	protected:
 		::vl::presentation::controls::GuiToolstripCommand* commandBigIcon;
 		::vl::presentation::controls::GuiToolstripCommand* commandDeleteContact;
@@ -84,7 +84,7 @@ namespace demo
 		::vl::presentation::controls::GuiWindow* self;
 		::vl::presentation::controls::GuiBindableTreeView* treeViewFolders;
 
-		void InitializeComponents(Ptr<demo::IViewModel> ViewModel)
+		void InitializeComponents(vl::Ptr<demo::IViewModel> ViewModel)
 		{
 			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
@@ -130,7 +130,7 @@ namespace demo
 		{
 		}
 
-		Ptr<demo::IViewModel> GetViewModel()
+		vl::Ptr<demo::IViewModel> GetViewModel()
 		{
 			return ViewModel_;
 		}
@@ -141,7 +141,7 @@ namespace demo
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		Ptr<demo::IContact> Contact_;
+		vl::Ptr<demo::IContact> Contact_;
 		bool ForEdit_;
 		bool Ready_;
 	protected:
@@ -151,7 +151,7 @@ namespace demo
 		::vl::presentation::controls::GuiDocumentLabel* textBoxName;
 		::vl::presentation::controls::GuiDocumentLabel* textBoxPhone;
 
-		void InitializeComponents(Ptr<demo::IContact> Contact)
+		void InitializeComponents(vl::Ptr<demo::IContact> Contact)
 		{
 			Contact_ = Contact;
 			if (InitializeFromResource())
@@ -177,23 +177,23 @@ namespace demo
 			,textBoxName(0)
 			,textBoxPhone(0)
 		{
-			this->ForEdit = vl::reflection::description::UnboxValue<bool>(
+			this->ForEdit_ = vl::reflection::description::UnboxValue<bool>(
 			[]()
 			{
 				vl::reflection::description::Value value;
-				reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"false", value);
+				vl::reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"false", value);
 				return value;
 			}());
-			this->Ready = vl::reflection::description::UnboxValue<bool>(
+			this->Ready_ = vl::reflection::description::UnboxValue<bool>(
 			[]()
 			{
 				vl::reflection::description::Value value;
-				reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"true", value);
+				vl::reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"true", value);
 				return value;
 			}());
 		}
 
-		Ptr<demo::IContact> GetContact()
+		vl::Ptr<demo::IContact> GetContact()
 		{
 			return Contact_;
 		}
@@ -254,18 +254,18 @@ namespace demo
 			,self(0)
 			,textBoxName(0)
 		{
-			this->FolderName = vl::reflection::description::UnboxValue<::vl::WString>(
+			this->FolderName_ = vl::reflection::description::UnboxValue<::vl::WString>(
 			[]()
 			{
 				vl::reflection::description::Value value;
-				reflection::description::GetTypeDescriptor<::vl::WString>()->GetSerializableType()->Deserialize(L"", value);
+				vl::reflection::description::GetTypeDescriptor<::vl::WString>()->GetSerializableType()->Deserialize(L"", value);
 				return value;
 			}());
-			this->Ready = vl::reflection::description::UnboxValue<bool>(
+			this->Ready_ = vl::reflection::description::UnboxValue<bool>(
 			[]()
 			{
 				vl::reflection::description::Value value;
-				reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"true", value);
+				vl::reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"true", value);
 				return value;
 			}());
 		}
@@ -327,7 +327,7 @@ namespace demo
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
-		NewContactWindow(Ptr<demo::IContact> Contact);
+		NewContactWindow(vl::Ptr<demo::IContact> Contact);
 		~NewContactWindow();
 	};
 }

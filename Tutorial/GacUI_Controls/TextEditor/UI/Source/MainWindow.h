@@ -20,24 +20,24 @@ namespace demo
 	protected:
 
 		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
-		void commandAbout_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditCopy_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditCut_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditDelete_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditFind_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditPaste_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditRedo_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditSelect_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandEditUndo_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileExit_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileNewText_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileNewXml_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileOpenText_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileOpenXml_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileOpen_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileSaveAs_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandFileSave_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
-		void window_Closing(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiRequestEventArgs& arguments);
+		void commandAbout_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandEditCopy_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandEditCut_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandEditDelete_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandEditFind_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandEditPaste_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandEditRedo_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandEditSelect_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandEditUndo_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandFileExit_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandFileNewText_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandFileNewXml_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandFileOpenText_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandFileOpenXml_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandFileOpen_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandFileSaveAs_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandFileSave_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void window_Closing(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiRequestEventArgs& arguments);
 		void OnCreate();
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
@@ -46,21 +46,21 @@ namespace demo
 		class FindWindowViewModel : public Object, public virtual vm::IFindWindowViewModel
 		{
 		private:
-			GuiMultilineTextBox*	textBox;
+			vl::presentation::controls::GuiMultilineTextBox*	textBox;
 
 		public:
-			FindWindowViewModel(GuiMultilineTextBox* _textBox);
+			FindWindowViewModel(vl::presentation::controls::GuiMultilineTextBox* _textBox);
 
 			bool					FindNext(vl::WString toFind, bool caseSensitive, bool down)override;
 		};
 
 	private:
-		WString						fileName;
+		vl::WString					fileName;
 		bool						isXml = false;
-		Ptr<FindWindow>				findWindow;
+		vl::Ptr<FindWindow>			findWindow;
 
 		bool						CanCloseFile();
-		bool						OpenFile(vint filterIndex);
+		bool						OpenFile(vl::vint filterIndex);
 		bool						SaveFile(bool saveAs);
 		void						SetupTextConfig();
 		void						SetupXmlConfig();

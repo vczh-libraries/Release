@@ -1,3 +1,4 @@
+#define GAC_HEADER_USE_NAMESPACE
 #include "UI/Source/Demo.h"
 #include <Windows.h>
 
@@ -44,17 +45,17 @@ public:
 		return name;
 	}
 
-	Ptr<GuiImageData> GetImage()override
+	vl::Ptr<GuiImageData> GetImage()override
 	{
 		return folderImage;
 	}
 
-	Ptr<IValueObservableList> GetFolders()override
+	vl::Ptr<IValueObservableList> GetFolders()override
 	{
 		return folders.GetWrapper();
 	}
 
-	Ptr<IValueObservableList> GetContacts()override
+	vl::Ptr<IValueObservableList> GetContacts()override
 	{
 		return contacts.GetWrapper();
 	}
@@ -85,12 +86,12 @@ public:
 		return name;
 	}
 
-	Ptr<GuiImageData> GetBigImage()override
+	vl::Ptr<GuiImageData> GetBigImage()override
 	{
 		return contactBigImage;
 	}
 
-	Ptr<GuiImageData> GetSmallImage()override
+	vl::Ptr<GuiImageData> GetSmallImage()override
 	{
 		return contactSmallImage;
 	}
@@ -167,17 +168,17 @@ public:
 		return L"";
 	}
 
-	Ptr<GuiImageData> GetImage()override
+	vl::Ptr<GuiImageData> GetImage()override
 	{
 		return nullptr;
 	}
 
-	Ptr<IValueObservableList> GetFolders()override
+	vl::Ptr<IValueObservableList> GetFolders()override
 	{
 		return folders.GetWrapper();
 	}
 
-	Ptr<IValueObservableList> GetContacts()override
+	vl::Ptr<IValueObservableList> GetContacts()override
 	{
 		return nullptr;
 	}
@@ -186,9 +187,9 @@ public:
 class ViewModel : public Object, public IViewModel
 {
 protected:
-	Ptr<RootCategory>							rootCategory;
-	Ptr<ICategory>								selectedCategory;
-	Ptr<IContact>								selectedContact;
+	vl::Ptr<RootCategory>							rootCategory;
+	vl::Ptr<ICategory>								selectedCategory;
+	vl::Ptr<IContact>								selectedContact;
 
 public:
 	ViewModel()
@@ -196,12 +197,12 @@ public:
 		rootCategory = new RootCategory;
 	}
 
-	Ptr<ICategory> GetRootCategory()override
+	vl::Ptr<ICategory> GetRootCategory()override
 	{
 		return rootCategory;
 	}
 
-	Ptr<ICategory> GetSelectedCategory()override
+	vl::Ptr<ICategory> GetSelectedCategory()override
 	{
 		return selectedCategory;
 	}
@@ -215,7 +216,7 @@ public:
 		}
 	}
 
-	Ptr<IContact> GetSelectedContact()override
+	vl::Ptr<IContact> GetSelectedContact()override
 	{
 		return selectedContact;
 	}
@@ -248,7 +249,7 @@ public:
 		}
 	}
 	
-	Ptr<IContact> CreateContact()override
+	vl::Ptr<IContact> CreateContact()override
 	{
 		if (auto category = dynamic_cast<Category*>(selectedCategory.Obj()))
 		{
@@ -259,7 +260,7 @@ public:
 		return nullptr;
 	}
 
-	void AddContact(vl::Ptr<demo::IContact> contact)override
+	void AddContact(Ptr<demo::IContact> contact)override
 	{
 		dynamic_cast<Contact*>(contact.Obj())->GetCategory()->contacts.Add(contact);
 	}

@@ -13,8 +13,9 @@ namespace demo
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
-	void AboutWindow::documentLabel_ActiveHyperlinkExecuted(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	void AboutWindow::documentLabel_ActiveHyperlinkExecuted(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
 	{
+		ShellExecute(NULL, L"OPEN", documentLabel->GetActiveHyperlinkReference().Buffer(), NULL, NULL, SW_MAXIMIZE);
 	}
 
 	void AboutWindow::OnCreate()
@@ -23,11 +24,6 @@ namespace demo
 
 	void AboutWindow::OnDestroy()
 	{
-	}
-
-	void AboutWindow::documentLabel_ActiveHyperlinkExecuted(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
-	{
-		ShellExecute(NULL, L"OPEN", documentLabel->GetActiveHyperlinkReference().Buffer(), NULL, NULL, SW_MAXIMIZE);
 	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER

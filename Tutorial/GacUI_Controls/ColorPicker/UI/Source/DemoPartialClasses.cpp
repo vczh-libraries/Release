@@ -24,7 +24,7 @@ namespace demo
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
-	ColorBomboItemTemplate::ColorBomboItemTemplate(Ptr<demo::IColorItem> ViewModel)
+	ColorBomboItemTemplate::ColorBomboItemTemplate(vl::Ptr<demo::IColorItem> ViewModel)
 	{
 		InitializeComponents(ViewModel);
 		OnCreate();
@@ -52,7 +52,7 @@ namespace demo
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
-	ColorListItemTemplate::ColorListItemTemplate(Ptr<demo::IColorItem> ViewModel)
+	ColorListItemTemplate::ColorListItemTemplate(vl::Ptr<demo::IColorItem> ViewModel)
 	{
 		InitializeComponents(ViewModel);
 		OnCreate();
@@ -80,7 +80,7 @@ namespace demo
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
-	MainWindow::MainWindow(Ptr<demo::IViewModel> ViewModel)
+	MainWindow::MainWindow(vl::Ptr<demo::IViewModel> ViewModel)
 	{
 		InitializeComponents(ViewModel);
 		OnCreate();
@@ -123,7 +123,7 @@ namespace vl
 
 			BEGIN_CLASS_MEMBER(demo::ColorBomboItemTemplate)
 				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiControlTemplate)
-				CLASS_MEMBER_CONSTRUCTOR(demo::ColorBomboItemTemplate*(Ptr<demo::IColorItem>), { L"ViewModel" })
+				CLASS_MEMBER_CONSTRUCTOR(demo::ColorBomboItemTemplate*(vl::Ptr<demo::IColorItem>), { L"ViewModel" })
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 				CLASS_MEMBER_EVENT(TextColorChanged)
@@ -132,14 +132,14 @@ namespace vl
 
 			BEGIN_CLASS_MEMBER(demo::ColorListItemTemplate)
 				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiTextListItemTemplate)
-				CLASS_MEMBER_CONSTRUCTOR(demo::ColorListItemTemplate*(Ptr<demo::IColorItem>), { L"ViewModel" })
+				CLASS_MEMBER_CONSTRUCTOR(demo::ColorListItemTemplate*(vl::Ptr<demo::IColorItem>), { L"ViewModel" })
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 			END_CLASS_MEMBER(demo::ColorListItemTemplate)
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
-				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(Ptr<demo::IViewModel>), { L"ViewModel" })
+				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(vl::Ptr<demo::IViewModel>), { L"ViewModel" })
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 			END_CLASS_MEMBER(demo::MainWindow)

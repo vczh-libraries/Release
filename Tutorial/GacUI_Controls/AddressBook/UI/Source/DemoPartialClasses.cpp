@@ -24,7 +24,7 @@ namespace demo
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
-	NewContactWindow::NewContactWindow(Ptr<demo::IContact> Contact)
+	NewContactWindow::NewContactWindow(vl::Ptr<demo::IContact> Contact)
 	{
 		InitializeComponents(Contact);
 		OnCreate();
@@ -133,7 +133,7 @@ namespace vl
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
-				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(Ptr<demo::IViewModel>), { L"ViewModel" })
+				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(vl::Ptr<demo::IViewModel>), { L"ViewModel" })
 
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandBigIcon_Executed, ::vl::presentation::compositions::GuiEventArgs)
 				CLASS_MEMBER_GUIEVENT_HANDLER(commandDetail_Executed, ::vl::presentation::compositions::GuiEventArgs)
@@ -147,7 +147,7 @@ namespace vl
 
 			BEGIN_CLASS_MEMBER(demo::NewContactWindow)
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
-				CLASS_MEMBER_CONSTRUCTOR(demo::NewContactWindow*(Ptr<demo::IContact>), { L"Contact" })
+				CLASS_MEMBER_CONSTRUCTOR(demo::NewContactWindow*(vl::Ptr<demo::IContact>), { L"Contact" })
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(Contact)
 				CLASS_MEMBER_EVENT(ForEditChanged)

@@ -24,7 +24,7 @@ namespace demo
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
-	FindWindow::FindWindow(Ptr<vm::IFindWindowViewModel> ViewModel)
+	FindWindow::FindWindow(vl::Ptr<vm::IFindWindowViewModel> ViewModel)
 	{
 		InitializeComponents(ViewModel);
 		OnCreate();
@@ -64,7 +64,7 @@ namespace vl
 
 			BEGIN_CLASS_MEMBER(demo::FindWindow)
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
-				CLASS_MEMBER_CONSTRUCTOR(demo::FindWindow*(Ptr<vm::IFindWindowViewModel>), { L"ViewModel" })
+				CLASS_MEMBER_CONSTRUCTOR(demo::FindWindow*(vl::Ptr<vm::IFindWindowViewModel>), { L"ViewModel" })
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 			END_CLASS_MEMBER(demo::FindWindow)
