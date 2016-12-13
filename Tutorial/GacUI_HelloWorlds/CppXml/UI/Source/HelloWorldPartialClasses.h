@@ -18,7 +18,7 @@ namespace helloworld
 	class MainWindow;
 
 	template<typename TImpl>
-	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class MainWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
@@ -35,8 +35,8 @@ namespace helloworld
 		}
 	public:
 		MainWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"helloworld::MainWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"helloworld::MainWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 		{
 		}
 	};

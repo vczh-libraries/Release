@@ -86,6 +86,89 @@ namespace demo
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
+	void MainWindow::commandAbout_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandEditCopy_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandEditCut_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandEditDelete_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandEditFind_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandEditPaste_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandEditRedo_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandEditSelect_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandEditUndo_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandFileExit_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandFileNewText_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandFileNewXml_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandFileOpenText_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandFileOpenXml_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandFileOpen_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandFileSaveAs_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::commandFileSave_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::window_Closing(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiRequestEventArgs& arguments)
+	{
+	}
+
+	void MainWindow::OnCreate()
+	{
+		findWindow = MakePtr<FindWindow>(MakePtr<FindWindowViewModel>(textBox));
+		findWindow->MoveToScreenCenter();
+		findWindow->GetNativeWindow()->SetParent(GetNativeWindow());
+	}
+
+	void MainWindow::OnDestroy()
+	{
+	}
+
 	void MainWindow::commandAbout_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 		auto window = new AboutWindow;
@@ -186,17 +269,6 @@ namespace demo
 	void MainWindow::window_Closing(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiRequestEventArgs& arguments)
 	{
 		arguments.cancel = !CanCloseFile();
-	}
-
-	void MainWindow::OnCreate()
-	{
-		findWindow = MakePtr<FindWindow>(MakePtr<FindWindowViewModel>(textBox));
-		findWindow->MoveToScreenCenter();
-		findWindow->GetNativeWindow()->SetParent(GetNativeWindow());
-	}
-
-	void MainWindow::OnDestroy()
-	{
 	}
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER

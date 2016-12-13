@@ -21,7 +21,7 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(helloworld::MainWindow)
 
 			BEGIN_CLASS_MEMBER(vm::IViewModel)
-				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetUserName, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(SetUserName, { L"value" });
 				CLASS_MEMBER_METHOD(GetPassword, NO_PARAMETER);
@@ -38,10 +38,10 @@ namespace vl
 			END_CLASS_MEMBER(vm::IViewModel)
 
 			BEGIN_CLASS_MEMBER(helloworld::MainWindow)
-				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_CONSTRUCTOR(helloworld::MainWindow*(Ptr<vm::IViewModel>), { L"ViewModel" })
 
-				CLASS_MEMBER_GUIEVENT_HANDLER(buttonSignUp_Clicked, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(buttonSignUp_Clicked, ::vl::presentation::compositions::GuiEventArgs)
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 				CLASS_MEMBER_EVENT(HasLoggedInChanged)

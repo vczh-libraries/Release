@@ -21,28 +21,28 @@ namespace demo
 	class ColorListItemTemplate;
 	class MainWindow;
 
-	class IColorItem : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IColorItem>
+	class IColorItem : public virtual ::vl::reflection::IDescriptable, public vl::reflection::Description<IColorItem>
 	{
 	public:
-		virtual vl::WString GetItemName() = 0;
-		virtual vl::presentation::Color GetItemColor() = 0;
+		virtual ::vl::WString GetItemName() = 0;
+		virtual ::vl::presentation::Color GetItemColor() = 0;
 	};
 
-	class IViewModel : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
+	class IViewModel : public virtual ::vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
 	{
 	public:
-		virtual vl::collections::LazyList<vl::Ptr<demo::IColorItem>> GetColorItems() = 0;
+		virtual vl::collections::LazyList<vl::Ptr<::demo::IColorItem>> GetColorItems() = 0;
 	};
 
 	template<typename TImpl>
-	class ColorBomboItemTemplate_ : public vl::presentation::templates::GuiControlTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>, public vl::reflection::Description<TImpl>
+	class ColorBomboItemTemplate_ : public ::vl::presentation::templates::GuiControlTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 		Ptr<demo::IColorItem> ViewModel_;
-		vl::presentation::Color TextColor_;
+		::vl::presentation::Color TextColor_;
 	protected:
-		vl::presentation::templates::GuiControlTemplate* self;
+		::vl::presentation::templates::GuiControlTemplate* self;
 
 		void InitializeComponents(Ptr<demo::IColorItem> ViewModel)
 		{
@@ -58,10 +58,16 @@ namespace demo
 		}
 	public:
 		ColorBomboItemTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>(L"demo::ColorBomboItemTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiControlTemplate>(L"demo::ColorBomboItemTemplate")
 			,self(0)
 		{
-			this->TextColor_ = vl::reflection::description::UnboxValue<vl::presentation::Color>(vl::reflection::description::Value::From(L"", reflection::description::GetTypeDescriptor<vl::presentation::Color>()));
+			this->TextColor = vl::reflection::description::UnboxValue<::vl::presentation::Color>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				reflection::description::GetTypeDescriptor<::vl::presentation::Color>()->GetSerializableType()->Deserialize(L"", value);
+				return value;
+			}());
 		}
 
 		Ptr<demo::IColorItem> GetViewModel()
@@ -71,12 +77,12 @@ namespace demo
 
 		vl::Event<void()> TextColorChanged;
 
-		vl::presentation::Color GetTextColor()
+		::vl::presentation::Color GetTextColor()
 		{
 			return TextColor_;
 		}
 
-		void SetTextColor(vl::presentation::Color value)
+		void SetTextColor(::vl::presentation::Color value)
 		{
 			TextColor_ = value;
 			TextColorChanged();
@@ -84,13 +90,13 @@ namespace demo
 	};
 
 	template<typename TImpl>
-	class ColorListItemTemplate_ : public vl::presentation::templates::GuiTextListItemTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListItemTemplate>, public vl::reflection::Description<TImpl>
+	class ColorListItemTemplate_ : public ::vl::presentation::templates::GuiTextListItemTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListItemTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 		Ptr<demo::IColorItem> ViewModel_;
 	protected:
-		vl::presentation::templates::GuiTextListItemTemplate* self;
+		::vl::presentation::templates::GuiTextListItemTemplate* self;
 
 		void InitializeComponents(Ptr<demo::IColorItem> ViewModel)
 		{
@@ -106,7 +112,7 @@ namespace demo
 		}
 	public:
 		ColorListItemTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListItemTemplate>(L"demo::ColorListItemTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiTextListItemTemplate>(L"demo::ColorListItemTemplate")
 			,self(0)
 		{
 		}
@@ -118,7 +124,7 @@ namespace demo
 	};
 
 	template<typename TImpl>
-	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class MainWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
@@ -138,8 +144,8 @@ namespace demo
 		}
 	public:
 		MainWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 		{
 		}
 

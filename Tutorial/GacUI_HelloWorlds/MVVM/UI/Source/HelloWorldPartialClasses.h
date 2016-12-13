@@ -24,16 +24,16 @@ namespace helloworld
 }
 namespace vm
 {
-	class IViewModel : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
+	class IViewModel : public virtual ::vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
 	{
 	public:
-		virtual vl::WString GetUserName() = 0;
-		virtual void SetUserName(vl::WString value) = 0;
-		virtual vl::WString GetPassword() = 0;
-		virtual void SetPassword(vl::WString value) = 0;
-		virtual vl::WString GetUserNameError() = 0;
+		virtual ::vl::WString GetUserName() = 0;
+		virtual void SetUserName(::vl::WString value) = 0;
+		virtual ::vl::WString GetPassword() = 0;
+		virtual void SetPassword(::vl::WString value) = 0;
+		virtual ::vl::WString GetUserNameError() = 0;
 		vl::Event<void()> UserNameErrorChanged;
-		virtual vl::WString GetPasswordError() = 0;
+		virtual ::vl::WString GetPasswordError() = 0;
 		vl::Event<void()> PasswordErrorChanged;
 		virtual bool SignUp() = 0;
 	};
@@ -42,20 +42,20 @@ namespace vm
 namespace helloworld
 {
 	template<typename TImpl>
-	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class MainWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		Ptr<vm::IViewModel> ViewModel_;
+		vl::Ptr<vm::IViewModel> ViewModel_;
 		bool HasLoggedIn_;
 	protected:
-		vl::presentation::controls::GuiButton* buttonCancel;
-		vl::presentation::controls::GuiButton* buttonSignUp;
-		vl::presentation::controls::GuiWindow* self;
-		vl::presentation::controls::GuiSinglelineTextBox* textBoxPassword;
-		vl::presentation::controls::GuiSinglelineTextBox* textBoxUserName;
+		::vl::presentation::controls::GuiButton* buttonCancel;
+		::vl::presentation::controls::GuiButton* buttonSignUp;
+		::vl::presentation::controls::GuiWindow* self;
+		::vl::presentation::controls::GuiSinglelineTextBox* textBoxPassword;
+		::vl::presentation::controls::GuiSinglelineTextBox* textBoxUserName;
 
-		void InitializeComponents(Ptr<vm::IViewModel> ViewModel)
+		void InitializeComponents(vl::Ptr<vm::IViewModel> ViewModel)
 		{
 			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
@@ -73,18 +73,24 @@ namespace helloworld
 		}
 	public:
 		MainWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"helloworld::MainWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"helloworld::MainWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,buttonCancel(0)
 			,buttonSignUp(0)
 			,self(0)
 			,textBoxPassword(0)
 			,textBoxUserName(0)
 		{
-			this->HasLoggedIn_ = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"false", reflection::description::GetTypeDescriptor<bool>()));
+			this->HasLoggedIn_ = vl::reflection::description::UnboxValue<bool>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				vl::reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"false", value);
+				return value;
+			}());
 		}
 
-		Ptr<vm::IViewModel> GetViewModel()
+		vl::Ptr<vm::IViewModel> GetViewModel()
 		{
 			return ViewModel_;
 		}

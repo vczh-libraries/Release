@@ -18,22 +18,22 @@ namespace demo
 	class IViewModel;
 	class MainWindow;
 
-	class IViewModel : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
+	class IViewModel : public virtual ::vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
 	{
 	public:
-		virtual void OpenUrl(vl::WString url) = 0;
+		virtual void OpenUrl(::vl::WString url) = 0;
 	};
 
 	template<typename TImpl>
-	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class MainWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		Ptr<demo::IViewModel> ViewModel_;
+		vl::Ptr<demo::IViewModel> ViewModel_;
 	protected:
-		vl::presentation::controls::GuiDocumentViewer* documentViewer;
+		::vl::presentation::controls::GuiDocumentViewer* documentViewer;
 
-		void InitializeComponents(Ptr<demo::IViewModel> ViewModel)
+		void InitializeComponents(vl::Ptr<demo::IViewModel> ViewModel)
 		{
 			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
@@ -47,13 +47,13 @@ namespace demo
 		}
 	public:
 		MainWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,documentViewer(0)
 		{
 		}
 
-		Ptr<demo::IViewModel> GetViewModel()
+		vl::Ptr<demo::IViewModel> GetViewModel()
 		{
 			return ViewModel_;
 		}
@@ -85,7 +85,7 @@ namespace demo
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
-		MainWindow(Ptr<demo::IViewModel> ViewModel);
+		MainWindow(vl::Ptr<demo::IViewModel> ViewModel);
 		~MainWindow();
 	};
 }

@@ -12,7 +12,7 @@ namespace helloworld
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
-	void MainWindow::buttonSignUp_Clicked(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	void MainWindow::buttonSignUp_Clicked(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 		if (this->GetViewModel()->SignUp())
 		{
@@ -31,7 +31,7 @@ namespace helloworld
 
 	// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 
-	MainWindow::MainWindow(Ptr<vm::IViewModel> ViewModel)
+	MainWindow::MainWindow(vl::Ptr<vm::IViewModel> ViewModel)
 	{
 		InitializeComponents(ViewModel);
 		OnCreate();

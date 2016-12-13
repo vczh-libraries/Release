@@ -1,3 +1,4 @@
+#define GAC_HEADER_USE_NAMESPACE
 #include "UI/Source/HelloWorld.h"
 
 using namespace vl::collections;

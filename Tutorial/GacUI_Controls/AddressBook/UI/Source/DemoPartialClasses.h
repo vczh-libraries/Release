@@ -22,67 +22,67 @@ namespace demo
 	class NewContactWindow;
 	class NewFolderWindow;
 
-	class IContact : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IContact>
+	class IContact : public virtual ::vl::reflection::IDescriptable, public vl::reflection::Description<IContact>
 	{
 	public:
-		virtual vl::WString GetName() = 0;
-		virtual vl::Ptr<vl::presentation::GuiImageData> GetBigImage() = 0;
-		virtual vl::Ptr<vl::presentation::GuiImageData> GetSmallImage() = 0;
-		virtual vl::DateTime GetBirthday() = 0;
-		virtual vl::WString GetBirthdayText() = 0;
-		virtual vl::WString GetPhone() = 0;
-		virtual vl::WString GetAddress() = 0;
-		virtual void Update(vl::WString name, vl::DateTime birthday, vl::WString phone, vl::WString address) = 0;
+		virtual ::vl::WString GetName() = 0;
+		virtual vl::Ptr<::vl::presentation::GuiImageData> GetBigImage() = 0;
+		virtual vl::Ptr<::vl::presentation::GuiImageData> GetSmallImage() = 0;
+		virtual ::vl::DateTime GetBirthday() = 0;
+		virtual ::vl::WString GetBirthdayText() = 0;
+		virtual ::vl::WString GetPhone() = 0;
+		virtual ::vl::WString GetAddress() = 0;
+		virtual void Update(::vl::WString name, ::vl::DateTime birthday, ::vl::WString phone, ::vl::WString address) = 0;
 	};
 
-	class ICategory : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<ICategory>
+	class ICategory : public virtual ::vl::reflection::IDescriptable, public vl::reflection::Description<ICategory>
 	{
 	public:
-		virtual demo::ICategory* GetParent() = 0;
-		virtual vl::WString GetName() = 0;
-		virtual vl::Ptr<vl::presentation::GuiImageData> GetImage() = 0;
-		virtual vl::Ptr<vl::reflection::description::IValueObservableList> GetFolders() = 0;
-		virtual vl::Ptr<vl::reflection::description::IValueObservableList> GetContacts() = 0;
+		virtual ::demo::ICategory* GetParent() = 0;
+		virtual ::vl::WString GetName() = 0;
+		virtual vl::Ptr<::vl::presentation::GuiImageData> GetImage() = 0;
+		virtual vl::Ptr<::vl::reflection::description::IValueObservableList> GetFolders() = 0;
+		virtual vl::Ptr<::vl::reflection::description::IValueObservableList> GetContacts() = 0;
 	};
 
-	class IViewModel : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
+	class IViewModel : public virtual ::vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
 	{
 	public:
-		virtual vl::Ptr<demo::ICategory> GetRootCategory() = 0;
-		virtual vl::Ptr<demo::ICategory> GetSelectedCategory() = 0;
-		virtual void SetSelectedCategory(vl::Ptr<demo::ICategory> value) = 0;
+		virtual vl::Ptr<::demo::ICategory> GetRootCategory() = 0;
+		virtual vl::Ptr<::demo::ICategory> GetSelectedCategory() = 0;
+		virtual void SetSelectedCategory(vl::Ptr<::demo::ICategory> value) = 0;
 		vl::Event<void()> SelectedCategoryChanged;
-		virtual vl::Ptr<demo::IContact> GetSelectedContact() = 0;
-		virtual void SetSelectedContact(vl::Ptr<demo::IContact> value) = 0;
+		virtual vl::Ptr<::demo::IContact> GetSelectedContact() = 0;
+		virtual void SetSelectedContact(vl::Ptr<::demo::IContact> value) = 0;
 		vl::Event<void()> SelectedContactChanged;
-		virtual void AddCategory(vl::WString name) = 0;
+		virtual void AddCategory(::vl::WString name) = 0;
 		virtual void RemoveCategory() = 0;
-		virtual vl::Ptr<demo::IContact> CreateContact() = 0;
-		virtual void AddContact(vl::Ptr<demo::IContact> contact) = 0;
+		virtual vl::Ptr<::demo::IContact> CreateContact() = 0;
+		virtual void AddContact(vl::Ptr<::demo::IContact> contact) = 0;
 		virtual void RemoveContact() = 0;
 	};
 
 	template<typename TImpl>
-	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class MainWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 		Ptr<demo::IViewModel> ViewModel_;
 	protected:
-		vl::presentation::controls::GuiToolstripCommand* commandBigIcon;
-		vl::presentation::controls::GuiToolstripCommand* commandDeleteContact;
-		vl::presentation::controls::GuiToolstripCommand* commandDeleteFolder;
-		vl::presentation::controls::GuiToolstripCommand* commandDetail;
-		vl::presentation::controls::GuiToolstripCommand* commandEditContact;
-		vl::presentation::controls::GuiToolstripCommand* commandInformation;
-		vl::presentation::controls::GuiToolstripCommand* commandList;
-		vl::presentation::controls::GuiToolstripCommand* commandNewContact;
-		vl::presentation::controls::GuiToolstripCommand* commandNewFolder;
-		vl::presentation::controls::GuiToolstripCommand* commandSmallIcon;
-		vl::presentation::controls::GuiToolstripCommand* commandTile;
-		vl::presentation::controls::GuiBindableListView* listViewContacts;
-		vl::presentation::controls::GuiWindow* self;
-		vl::presentation::controls::GuiBindableTreeView* treeViewFolders;
+		::vl::presentation::controls::GuiToolstripCommand* commandBigIcon;
+		::vl::presentation::controls::GuiToolstripCommand* commandDeleteContact;
+		::vl::presentation::controls::GuiToolstripCommand* commandDeleteFolder;
+		::vl::presentation::controls::GuiToolstripCommand* commandDetail;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditContact;
+		::vl::presentation::controls::GuiToolstripCommand* commandInformation;
+		::vl::presentation::controls::GuiToolstripCommand* commandList;
+		::vl::presentation::controls::GuiToolstripCommand* commandNewContact;
+		::vl::presentation::controls::GuiToolstripCommand* commandNewFolder;
+		::vl::presentation::controls::GuiToolstripCommand* commandSmallIcon;
+		::vl::presentation::controls::GuiToolstripCommand* commandTile;
+		::vl::presentation::controls::GuiBindableListView* listViewContacts;
+		::vl::presentation::controls::GuiWindow* self;
+		::vl::presentation::controls::GuiBindableTreeView* treeViewFolders;
 
 		void InitializeComponents(Ptr<demo::IViewModel> ViewModel)
 		{
@@ -111,8 +111,8 @@ namespace demo
 		}
 	public:
 		MainWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,commandBigIcon(0)
 			,commandDeleteContact(0)
 			,commandDeleteFolder(0)
@@ -137,7 +137,7 @@ namespace demo
 	};
 
 	template<typename TImpl>
-	class NewContactWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class NewContactWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
@@ -145,11 +145,11 @@ namespace demo
 		bool ForEdit_;
 		bool Ready_;
 	protected:
-		vl::presentation::controls::GuiDatePicker* datePickerBirthday;
-		vl::presentation::controls::GuiWindow* self;
-		vl::presentation::controls::GuiDocumentLabel* textBoxAddress;
-		vl::presentation::controls::GuiDocumentLabel* textBoxName;
-		vl::presentation::controls::GuiDocumentLabel* textBoxPhone;
+		::vl::presentation::controls::GuiDatePicker* datePickerBirthday;
+		::vl::presentation::controls::GuiWindow* self;
+		::vl::presentation::controls::GuiDocumentLabel* textBoxAddress;
+		::vl::presentation::controls::GuiDocumentLabel* textBoxName;
+		::vl::presentation::controls::GuiDocumentLabel* textBoxPhone;
 
 		void InitializeComponents(Ptr<demo::IContact> Contact)
 		{
@@ -169,16 +169,28 @@ namespace demo
 		}
 	public:
 		NewContactWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::NewContactWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::NewContactWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,datePickerBirthday(0)
 			,self(0)
 			,textBoxAddress(0)
 			,textBoxName(0)
 			,textBoxPhone(0)
 		{
-			this->ForEdit_ = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"false", reflection::description::GetTypeDescriptor<bool>()));
-			this->Ready_ = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"true", reflection::description::GetTypeDescriptor<bool>()));
+			this->ForEdit = vl::reflection::description::UnboxValue<bool>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"false", value);
+				return value;
+			}());
+			this->Ready = vl::reflection::description::UnboxValue<bool>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"true", value);
+				return value;
+			}());
 		}
 
 		Ptr<demo::IContact> GetContact()
@@ -214,15 +226,15 @@ namespace demo
 	};
 
 	template<typename TImpl>
-	class NewFolderWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class NewFolderWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		vl::WString FolderName_;
+		::vl::WString FolderName_;
 		bool Ready_;
 	protected:
-		vl::presentation::controls::GuiWindow* self;
-		vl::presentation::controls::GuiDocumentLabel* textBoxName;
+		::vl::presentation::controls::GuiWindow* self;
+		::vl::presentation::controls::GuiDocumentLabel* textBoxName;
 
 		void InitializeComponents()
 		{
@@ -237,23 +249,35 @@ namespace demo
 		}
 	public:
 		NewFolderWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::NewFolderWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::NewFolderWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,self(0)
 			,textBoxName(0)
 		{
-			this->FolderName_ = vl::reflection::description::UnboxValue<vl::WString>(vl::reflection::description::Value::From(L"", reflection::description::GetTypeDescriptor<vl::WString>()));
-			this->Ready_ = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"true", reflection::description::GetTypeDescriptor<bool>()));
+			this->FolderName = vl::reflection::description::UnboxValue<::vl::WString>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				reflection::description::GetTypeDescriptor<::vl::WString>()->GetSerializableType()->Deserialize(L"", value);
+				return value;
+			}());
+			this->Ready = vl::reflection::description::UnboxValue<bool>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"true", value);
+				return value;
+			}());
 		}
 
 		vl::Event<void()> FolderNameChanged;
 
-		vl::WString GetFolderName()
+		::vl::WString GetFolderName()
 		{
 			return FolderName_;
 		}
 
-		void SetFolderName(vl::WString value)
+		void SetFolderName(::vl::WString value)
 		{
 			FolderName_ = value;
 			FolderNameChanged();

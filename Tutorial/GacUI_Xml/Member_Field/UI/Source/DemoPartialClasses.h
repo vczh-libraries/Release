@@ -18,15 +18,15 @@ namespace demo
 	class MainWindow;
 
 	template<typename TImpl>
-	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class MainWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::vint32_t integerState;
-		vl::presentation::controls::GuiWindow* self;
-		vl::presentation::controls::GuiSinglelineTextBox* textBoxA;
-		vl::presentation::controls::GuiSinglelineTextBox* textBoxB;
+		::vl::vint32_t integerState;
+		::vl::presentation::controls::GuiWindow* self;
+		::vl::presentation::controls::GuiSinglelineTextBox* textBoxA;
+		::vl::presentation::controls::GuiSinglelineTextBox* textBoxB;
 
 		void InitializeComponents()
 		{
@@ -42,13 +42,19 @@ namespace demo
 		}
 	public:
 		MainWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,self(0)
 			,textBoxA(0)
 			,textBoxB(0)
 		{
-			this->integerState = vl::reflection::description::UnboxValue<vl::vint32_t>(vl::reflection::description::Value::From(L"0", reflection::description::GetTypeDescriptor<vl::vint32_t>()));
+			this->integerState = vl::reflection::description::UnboxValue<::vl::vint32_t>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				vl::reflection::description::GetTypeDescriptor<::vl::vint32_t>()->GetSerializableType()->Deserialize(L"0", value);
+				return value;
+			}());
 		}
 	};
 

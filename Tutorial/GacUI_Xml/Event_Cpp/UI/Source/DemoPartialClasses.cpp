@@ -20,10 +20,10 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
-				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(), NO_PARAMETER)
 
-				CLASS_MEMBER_GUIEVENT_HANDLER(buttonCalculate_Clicked, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(buttonCalculate_Clicked, ::vl::presentation::compositions::GuiEventArgs)
 			END_CLASS_MEMBER(demo::MainWindow)
 
 			#undef _

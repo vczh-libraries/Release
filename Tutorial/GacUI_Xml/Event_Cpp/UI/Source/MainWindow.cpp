@@ -12,14 +12,14 @@ namespace demo
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
-	void MainWindow::buttonCalculate_Clicked(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	void MainWindow::buttonCalculate_Clicked(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
 	{
 		bool successA = false;
 		bool successB = false;
-		auto a = wtoi_test(textBoxA->GetText(), successA);
-		auto b = wtoi_test(textBoxB->GetText(), successB);
+		auto a = vl::wtoi_test(textBoxA->GetText(), successA);
+		auto b = vl::wtoi_test(textBoxB->GetText(), successB);
 		auto c = (successA&&successB)
-			? itow(a + b)
+			? vl::itow(a + b)
 			: L"<ERROR>"
 			;
 		textBoxC->SetText(c);

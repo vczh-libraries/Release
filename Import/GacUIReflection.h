@@ -111,63 +111,6 @@ Type List
 			GUIREFLECTIONBASIC_TYPELIST(DECL_TYPE_INFO)
 
 /***********************************************************************
-Serialization (Color)
-***********************************************************************/
-
-			template<>
-			struct TypedValueSerializerProvider<presentation::Color>
-			{
-				static presentation::Color GetDefaultValue();
-				static bool Serialize(const presentation::Color& input, WString& output);
-				static bool Deserialize(const WString& input, presentation::Color& output);
-			};
-
-			template<>
-			struct CustomTypeDescriptorSelector<presentation::Color>
-			{
-			public:
-				typedef SerializableTypeDescriptor<TypedDefaultValueSerializer<presentation::Color>, TypeDescriptorFlags::Primitive> CustomTypeDescriptorImpl;
-			};
-
-/***********************************************************************
-Serialization (DocumentFontSize)
-***********************************************************************/
-
-			template<>
-			struct TypedValueSerializerProvider<presentation::DocumentFontSize>
-			{
-				static presentation::DocumentFontSize GetDefaultValue();
-				static bool Serialize(const presentation::DocumentFontSize& input, WString& output);
-				static bool Deserialize(const WString& input, presentation::DocumentFontSize& output);
-			};
-
-			template<>
-			struct CustomTypeDescriptorSelector<presentation::DocumentFontSize>
-			{
-			public:
-				typedef SerializableTypeDescriptor<TypedDefaultValueSerializer<presentation::DocumentFontSize>, TypeDescriptorFlags::Primitive> CustomTypeDescriptorImpl;
-			};
-
-/***********************************************************************
-Serialization (GlobalStringKey)
-***********************************************************************/
-
-			template<>
-			struct TypedValueSerializerProvider<presentation::GlobalStringKey>
-			{
-				static presentation::GlobalStringKey GetDefaultValue();
-				static bool Serialize(const presentation::GlobalStringKey& input, WString& output);
-				static bool Deserialize(const WString& input, presentation::GlobalStringKey& output);
-			};
-
-			template<>
-			struct CustomTypeDescriptorSelector<presentation::GlobalStringKey>
-			{
-			public:
-				typedef SerializableTypeDescriptor<TypedDefaultValueSerializer<presentation::GlobalStringKey>, TypeDescriptorFlags::Primitive> CustomTypeDescriptorImpl;
-			};
-
-/***********************************************************************
 Interface Proxy
 ***********************************************************************/
 
@@ -2296,6 +2239,11 @@ GuiEventInfoImpl
 				~GuiEventInfoImpl()
 				{
 				}
+
+				ICpp* GetCpp()override
+				{
+					throw 0;
+				}
 			};
 
 			template<typename T>
@@ -2352,14 +2300,15 @@ Macros
 #define GUIEVENT_HANDLER_PARAMETERS {L"sender", L"arguments"}
 
 #define CLASS_MEMBER_GUIEVENT_HANDLER(FUNCTIONNAME, ARGUMENTTYPE)\
-			CLASS_MEMBER_EXTERNALMETHOD(\
+			CLASS_MEMBER_EXTERNALMETHOD_INVOKETEMPLATE(\
 				FUNCTIONNAME,\
 				GUIEVENT_HANDLER_PARAMETERS,\
 				void(ClassType::*)(vl::presentation::compositions::GuiGraphicsComposition*, ARGUMENTTYPE*),\
 				[](ClassType* owner, vl::presentation::compositions::GuiGraphicsComposition* sender, ARGUMENTTYPE* arguments)\
 				{\
 					owner->FUNCTIONNAME(sender, *arguments);\
-				})\
+				},\
+				L"[](auto owner, auto sender, auto arguments){ return owner->$Name(sender, *arguments); }($This, $Arguments)")\
 
 /***********************************************************************
 Type Loader

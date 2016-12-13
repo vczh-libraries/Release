@@ -108,7 +108,7 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(demo::IColorItem)
-				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetItemName, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetItemColor, NO_PARAMETER);
 				CLASS_MEMBER_PROPERTY_READONLY(ItemName, GetItemName)
@@ -116,13 +116,13 @@ namespace vl
 			END_CLASS_MEMBER(demo::IColorItem)
 
 			BEGIN_CLASS_MEMBER(demo::IViewModel)
-				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetColorItems, NO_PARAMETER);
 				CLASS_MEMBER_PROPERTY_READONLY(ColorItems, GetColorItems)
 			END_CLASS_MEMBER(demo::IViewModel)
 
 			BEGIN_CLASS_MEMBER(demo::ColorBomboItemTemplate)
-				CLASS_MEMBER_BASE(vl::presentation::templates::GuiControlTemplate)
+				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiControlTemplate)
 				CLASS_MEMBER_CONSTRUCTOR(demo::ColorBomboItemTemplate*(Ptr<demo::IColorItem>), { L"ViewModel" })
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
@@ -131,14 +131,14 @@ namespace vl
 			END_CLASS_MEMBER(demo::ColorBomboItemTemplate)
 
 			BEGIN_CLASS_MEMBER(demo::ColorListItemTemplate)
-				CLASS_MEMBER_BASE(vl::presentation::templates::GuiTextListItemTemplate)
+				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiTextListItemTemplate)
 				CLASS_MEMBER_CONSTRUCTOR(demo::ColorListItemTemplate*(Ptr<demo::IColorItem>), { L"ViewModel" })
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 			END_CLASS_MEMBER(demo::ColorListItemTemplate)
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
-				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(Ptr<demo::IViewModel>), { L"ViewModel" })
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)

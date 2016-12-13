@@ -20,12 +20,12 @@ namespace demo
 	protected:
 
 		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
-		void commandBigIcon_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandDetail_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandInformation_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandList_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandSmallIcon_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
-		void commandTile_Executed(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandBigIcon_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandDetail_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandInformation_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandList_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandSmallIcon_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
+		void commandTile_Executed(GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
 		void OnCreate();
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER

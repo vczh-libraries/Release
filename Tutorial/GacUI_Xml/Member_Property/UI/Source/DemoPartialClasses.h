@@ -19,7 +19,7 @@ namespace demo
 	class MyControl;
 
 	template<typename TImpl>
-	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class MainWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
@@ -38,22 +38,22 @@ namespace demo
 		}
 	public:
 		MainWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,myControl(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class MyControl_ : public vl::presentation::controls::GuiCustomControl, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiCustomControl>, public vl::reflection::Description<TImpl>
+	class MyControl_ : public ::vl::presentation::controls::GuiCustomControl, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiCustomControl>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		vl::WString SelectedOption_;
+		::vl::WString SelectedOption_;
 	protected:
-		vl::presentation::controls::GuiSelectableButton::MutexGroupController* optionGroup;
-		vl::presentation::controls::GuiCustomControl* self;
+		::vl::presentation::controls::GuiSelectableButton::MutexGroupController* optionGroup;
+		::vl::presentation::controls::GuiCustomControl* self;
 
 		void InitializeComponents()
 		{
@@ -68,22 +68,28 @@ namespace demo
 		}
 	public:
 		MyControl_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiCustomControl>(L"demo::MyControl")
-			,vl::presentation::controls::GuiCustomControl(vl::presentation::theme::GetCurrentTheme()->CreateCustomControlStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiCustomControl>(L"demo::MyControl")
+			,::vl::presentation::controls::GuiCustomControl(vl::presentation::theme::GetCurrentTheme()->CreateCustomControlStyle())
 			,optionGroup(0)
 			,self(0)
 		{
-			this->SelectedOption_ = vl::reflection::description::UnboxValue<vl::WString>(vl::reflection::description::Value::From(L"A", reflection::description::GetTypeDescriptor<vl::WString>()));
+			this->SelectedOption_ = vl::reflection::description::UnboxValue<::vl::WString>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				vl::reflection::description::GetTypeDescriptor<::vl::WString>()->GetSerializableType()->Deserialize(L"A", value);
+				return value;
+			}());
 		}
 
 		vl::Event<void()> SelectedOptionChanged;
 
-		vl::WString GetSelectedOption()
+		::vl::WString GetSelectedOption()
 		{
 			return SelectedOption_;
 		}
 
-		void SetSelectedOption(vl::WString value)
+		void SetSelectedOption(::vl::WString value)
 		{
 			SelectedOption_ = value;
 			SelectedOptionChanged();

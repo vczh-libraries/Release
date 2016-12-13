@@ -26,23 +26,23 @@ namespace demo
 }
 namespace vm
 {
-	class IFindWindowViewModel : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IFindWindowViewModel>
+	class IFindWindowViewModel : public virtual ::vl::reflection::IDescriptable, public vl::reflection::Description<IFindWindowViewModel>
 	{
 	public:
-		virtual bool FindNext(vl::WString toFind, bool caseSensitive, bool down) = 0;
+		virtual bool FindNext(::vl::WString toFind, bool caseSensitive, bool down) = 0;
 	};
 
 }
 namespace demo
 {
 	template<typename TImpl>
-	class AboutWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class AboutWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::controls::GuiDocumentLabel* documentLabel;
-		vl::presentation::controls::GuiWindow* self;
+		::vl::presentation::controls::GuiDocumentLabel* documentLabel;
+		::vl::presentation::controls::GuiWindow* self;
 
 		void InitializeComponents()
 		{
@@ -57,8 +57,8 @@ namespace demo
 		}
 	public:
 		AboutWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::AboutWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::AboutWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,documentLabel(0)
 			,self(0)
 		{
@@ -66,19 +66,19 @@ namespace demo
 	};
 
 	template<typename TImpl>
-	class FindWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class FindWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 		Ptr<vm::IFindWindowViewModel> ViewModel_;
 	protected:
-		vl::presentation::controls::GuiSelectableButton* checkCase;
-		vl::presentation::controls::GuiMessageDialog* dialogContentNotFound;
-		vl::presentation::controls::GuiSelectableButton::MutexGroupController* groupDirection;
-		vl::presentation::controls::GuiSelectableButton* radioDown;
-		vl::presentation::controls::GuiSelectableButton* radioUp;
-		vl::presentation::controls::GuiWindow* self;
-		vl::presentation::controls::GuiSinglelineTextBox* textFind;
+		::vl::presentation::controls::GuiSelectableButton* checkCase;
+		::vl::presentation::controls::GuiMessageDialog* dialogContentNotFound;
+		::vl::presentation::controls::GuiSelectableButton::MutexGroupController* groupDirection;
+		::vl::presentation::controls::GuiSelectableButton* radioDown;
+		::vl::presentation::controls::GuiSelectableButton* radioUp;
+		::vl::presentation::controls::GuiWindow* self;
+		::vl::presentation::controls::GuiSinglelineTextBox* textFind;
 
 		void InitializeComponents(Ptr<vm::IFindWindowViewModel> ViewModel)
 		{
@@ -100,8 +100,8 @@ namespace demo
 		}
 	public:
 		FindWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::FindWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::FindWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,checkCase(0)
 			,dialogContentNotFound(0)
 			,groupDirection(0)
@@ -119,35 +119,35 @@ namespace demo
 	};
 
 	template<typename TImpl>
-	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class MainWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::controls::GuiToolstripCommand* commandAbout;
-		vl::presentation::controls::GuiToolstripCommand* commandEditCopy;
-		vl::presentation::controls::GuiToolstripCommand* commandEditCut;
-		vl::presentation::controls::GuiToolstripCommand* commandEditDelete;
-		vl::presentation::controls::GuiToolstripCommand* commandEditFind;
-		vl::presentation::controls::GuiToolstripCommand* commandEditPaste;
-		vl::presentation::controls::GuiToolstripCommand* commandEditRedo;
-		vl::presentation::controls::GuiToolstripCommand* commandEditSelect;
-		vl::presentation::controls::GuiToolstripCommand* commandEditUndo;
-		vl::presentation::controls::GuiToolstripCommand* commandFileExit;
-		vl::presentation::controls::GuiToolstripCommand* commandFileNewText;
-		vl::presentation::controls::GuiToolstripCommand* commandFileNewXml;
-		vl::presentation::controls::GuiToolstripCommand* commandFileOpen;
-		vl::presentation::controls::GuiToolstripCommand* commandFileOpenText;
-		vl::presentation::controls::GuiToolstripCommand* commandFileOpenXml;
-		vl::presentation::controls::GuiToolstripCommand* commandFileSave;
-		vl::presentation::controls::GuiToolstripCommand* commandFileSaveAs;
-		vl::presentation::controls::GuiMessageDialog* dialogCannotOpen;
-		vl::presentation::controls::GuiMessageDialog* dialogCannotSave;
-		vl::presentation::controls::GuiOpenFileDialog* dialogOpen;
-		vl::presentation::controls::GuiMessageDialog* dialogQueryClose;
-		vl::presentation::controls::GuiSaveFileDialog* dialogSave;
-		vl::presentation::controls::GuiWindow* self;
-		vl::presentation::controls::GuiMultilineTextBox* textBox;
+		::vl::presentation::controls::GuiToolstripCommand* commandAbout;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditCopy;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditCut;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditDelete;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditFind;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditPaste;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditRedo;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditSelect;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditUndo;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileExit;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileNewText;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileNewXml;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileOpen;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileOpenText;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileOpenXml;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileSave;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileSaveAs;
+		::vl::presentation::controls::GuiMessageDialog* dialogCannotOpen;
+		::vl::presentation::controls::GuiMessageDialog* dialogCannotSave;
+		::vl::presentation::controls::GuiOpenFileDialog* dialogOpen;
+		::vl::presentation::controls::GuiMessageDialog* dialogQueryClose;
+		::vl::presentation::controls::GuiSaveFileDialog* dialogSave;
+		::vl::presentation::controls::GuiWindow* self;
+		::vl::presentation::controls::GuiMultilineTextBox* textBox;
 
 		void InitializeComponents()
 		{
@@ -184,8 +184,8 @@ namespace demo
 		}
 	public:
 		MainWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,commandAbout(0)
 			,commandEditCopy(0)
 			,commandEditCut(0)

@@ -48,7 +48,7 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(helloworld::MainWindow)
 
 			BEGIN_CLASS_MEMBER(helloworld::MainWindow)
-				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_CONSTRUCTOR(helloworld::MainWindow*(), NO_PARAMETER)
 			END_CLASS_MEMBER(helloworld::MainWindow)
 

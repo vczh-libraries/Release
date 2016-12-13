@@ -81,7 +81,7 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(demo::NewFolderWindow)
 
 			BEGIN_CLASS_MEMBER(demo::ICategory)
-				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetParent, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetName, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetImage, NO_PARAMETER);
@@ -95,7 +95,7 @@ namespace vl
 			END_CLASS_MEMBER(demo::ICategory)
 
 			BEGIN_CLASS_MEMBER(demo::IContact)
-				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetName, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetBigImage, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetSmallImage, NO_PARAMETER);
@@ -114,7 +114,7 @@ namespace vl
 			END_CLASS_MEMBER(demo::IContact)
 
 			BEGIN_CLASS_MEMBER(demo::IViewModel)
-				CLASS_MEMBER_BASE(vl::reflection::IDescriptable)
+				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetRootCategory, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(GetSelectedCategory, NO_PARAMETER);
 				CLASS_MEMBER_METHOD(SetSelectedCategory, { L"value" });
@@ -132,21 +132,21 @@ namespace vl
 			END_CLASS_MEMBER(demo::IViewModel)
 
 			BEGIN_CLASS_MEMBER(demo::MainWindow)
-				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_CONSTRUCTOR(demo::MainWindow*(Ptr<demo::IViewModel>), { L"ViewModel" })
 
-				CLASS_MEMBER_GUIEVENT_HANDLER(commandBigIcon_Executed, vl::presentation::compositions::GuiEventArgs)
-				CLASS_MEMBER_GUIEVENT_HANDLER(commandDetail_Executed, vl::presentation::compositions::GuiEventArgs)
-				CLASS_MEMBER_GUIEVENT_HANDLER(commandInformation_Executed, vl::presentation::compositions::GuiEventArgs)
-				CLASS_MEMBER_GUIEVENT_HANDLER(commandList_Executed, vl::presentation::compositions::GuiEventArgs)
-				CLASS_MEMBER_GUIEVENT_HANDLER(commandSmallIcon_Executed, vl::presentation::compositions::GuiEventArgs)
-				CLASS_MEMBER_GUIEVENT_HANDLER(commandTile_Executed, vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandBigIcon_Executed, ::vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandDetail_Executed, ::vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandInformation_Executed, ::vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandList_Executed, ::vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandSmallIcon_Executed, ::vl::presentation::compositions::GuiEventArgs)
+				CLASS_MEMBER_GUIEVENT_HANDLER(commandTile_Executed, ::vl::presentation::compositions::GuiEventArgs)
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(ViewModel)
 			END_CLASS_MEMBER(demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(demo::NewContactWindow)
-				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_CONSTRUCTOR(demo::NewContactWindow*(Ptr<demo::IContact>), { L"Contact" })
 
 				CLASS_MEMBER_PROPERTY_READONLY_FAST(Contact)
@@ -157,7 +157,7 @@ namespace vl
 			END_CLASS_MEMBER(demo::NewContactWindow)
 
 			BEGIN_CLASS_MEMBER(demo::NewFolderWindow)
-				CLASS_MEMBER_BASE(vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_CONSTRUCTOR(demo::NewFolderWindow*(), NO_PARAMETER)
 
 				CLASS_MEMBER_EVENT(FolderNameChanged)

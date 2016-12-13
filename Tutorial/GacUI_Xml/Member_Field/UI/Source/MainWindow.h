@@ -20,7 +20,7 @@ namespace demo
 	protected:
 
 		// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
-		void buttonPaste_Clicked(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments);
+		void buttonPaste_Clicked(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments);
 		void OnCreate();
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER

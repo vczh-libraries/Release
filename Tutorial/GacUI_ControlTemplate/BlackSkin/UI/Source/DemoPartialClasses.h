@@ -71,12 +71,12 @@ namespace demo
 namespace darkskin
 {
 	template<typename TImpl>
-	class BottomScrollButtonTemplate_ : public vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
+	class BottomScrollButtonTemplate_ : public ::vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiButtonTemplate* self;
+		::vl::presentation::templates::GuiButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -90,19 +90,19 @@ namespace darkskin
 		}
 	public:
 		BottomScrollButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>(L"darkskin::BottomScrollButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiButtonTemplate>(L"darkskin::BottomScrollButtonTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class ButtonTemplate_ : public vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
+	class ButtonTemplate_ : public ::vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiButtonTemplate* self;
+		::vl::presentation::templates::GuiButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -116,19 +116,19 @@ namespace darkskin
 		}
 	public:
 		ButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>(L"darkskin::ButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiButtonTemplate>(L"darkskin::ButtonTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class CheckBoxTemplate_ : public vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
+	class CheckBoxTemplate_ : public ::vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiSelectableButtonTemplate* self;
+		::vl::presentation::templates::GuiSelectableButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -142,20 +142,20 @@ namespace darkskin
 		}
 	public:
 		CheckBoxTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::CheckBoxTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::CheckBoxTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class CheckItemBackgroundTemplate_ : public vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
+	class CheckItemBackgroundTemplate_ : public ::vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiSelectableButtonTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiSelectableButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -170,7 +170,7 @@ namespace darkskin
 		}
 	public:
 		CheckItemBackgroundTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::CheckItemBackgroundTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::CheckItemBackgroundTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -178,13 +178,13 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class CheckTextListTemplate_ : public vl::presentation::templates::GuiTextListTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListTemplate>, public vl::reflection::Description<TImpl>
+	class CheckTextListTemplate_ : public ::vl::presentation::templates::GuiTextListTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiTextListTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiTextListTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -199,7 +199,7 @@ namespace darkskin
 		}
 	public:
 		CheckTextListTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListTemplate>(L"darkskin::CheckTextListTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiTextListTemplate>(L"darkskin::CheckTextListTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -207,13 +207,13 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class ComboBoxTemplate_ : public vl::presentation::templates::GuiDateComboBoxTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDateComboBoxTemplate>, public vl::reflection::Description<TImpl>
+	class ComboBoxTemplate_ : public ::vl::presentation::templates::GuiDateComboBoxTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDateComboBoxTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiDateComboBoxTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiDateComboBoxTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -228,7 +228,7 @@ namespace darkskin
 		}
 	public:
 		ComboBoxTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDateComboBoxTemplate>(L"darkskin::ComboBoxTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiDateComboBoxTemplate>(L"darkskin::ComboBoxTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -236,12 +236,12 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class DatePickerTemplate_ : public vl::presentation::templates::GuiDatePickerTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDatePickerTemplate>, public vl::reflection::Description<TImpl>
+	class DatePickerTemplate_ : public ::vl::presentation::templates::GuiDatePickerTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDatePickerTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiDatePickerTemplate* self;
+		::vl::presentation::templates::GuiDatePickerTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -255,19 +255,19 @@ namespace darkskin
 		}
 	public:
 		DatePickerTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDatePickerTemplate>(L"darkskin::DatePickerTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiDatePickerTemplate>(L"darkskin::DatePickerTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class DocumentLabelTemplate_ : public vl::presentation::templates::GuiDocumentLabelTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDocumentLabelTemplate>, public vl::reflection::Description<TImpl>
+	class DocumentLabelTemplate_ : public ::vl::presentation::templates::GuiDocumentLabelTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDocumentLabelTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiDocumentLabelTemplate* self;
+		::vl::presentation::templates::GuiDocumentLabelTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -281,20 +281,20 @@ namespace darkskin
 		}
 	public:
 		DocumentLabelTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDocumentLabelTemplate>(L"darkskin::DocumentLabelTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiDocumentLabelTemplate>(L"darkskin::DocumentLabelTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class DocumentViewerTemplate_ : public vl::presentation::templates::GuiDocumentViewerTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDocumentViewerTemplate>, public vl::reflection::Description<TImpl>
+	class DocumentViewerTemplate_ : public ::vl::presentation::templates::GuiDocumentViewerTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDocumentViewerTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiDocumentViewerTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiDocumentViewerTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -309,7 +309,7 @@ namespace darkskin
 		}
 	public:
 		DocumentViewerTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiDocumentViewerTemplate>(L"darkskin::DocumentViewerTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiDocumentViewerTemplate>(L"darkskin::DocumentViewerTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -317,12 +317,12 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class ExpandingDecoratorTemplate_ : public vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
+	class ExpandingDecoratorTemplate_ : public ::vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiSelectableButtonTemplate* self;
+		::vl::presentation::templates::GuiSelectableButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -336,21 +336,21 @@ namespace darkskin
 		}
 	public:
 		ExpandingDecoratorTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::ExpandingDecoratorTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::ExpandingDecoratorTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class GroupBoxTemplate_ : public vl::presentation::templates::GuiControlTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>, public vl::reflection::Description<TImpl>
+	class GroupBoxTemplate_ : public ::vl::presentation::templates::GuiControlTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiControlTemplate* self;
-		vl::presentation::compositions::GuiBoundsComposition* titleBounds;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiControlTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* titleBounds;
 
 		void InitializeComponents()
 		{
@@ -366,7 +366,7 @@ namespace darkskin
 		}
 	public:
 		GroupBoxTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>(L"darkskin::GroupBoxTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiControlTemplate>(L"darkskin::GroupBoxTemplate")
 			,container(0)
 			,self(0)
 			,titleBounds(0)
@@ -375,12 +375,12 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class HScrollHandleTemplate_ : public vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
+	class HScrollHandleTemplate_ : public ::vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiButtonTemplate* self;
+		::vl::presentation::templates::GuiButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -394,23 +394,23 @@ namespace darkskin
 		}
 	public:
 		HScrollHandleTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>(L"darkskin::HScrollHandleTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiButtonTemplate>(L"darkskin::HScrollHandleTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class HScrollTemplate_ : public vl::presentation::templates::GuiScrollTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>, public vl::reflection::Description<TImpl>
+	class HScrollTemplate_ : public ::vl::presentation::templates::GuiScrollTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
 		bool draggingHandle;
-		vl::presentation::Point draggingStartLocation;
-		vl::presentation::compositions::GuiPartialViewComposition* handle;
-		vl::presentation::compositions::GuiBoundsComposition* handleContainer;
-		vl::presentation::templates::GuiScrollTemplate* self;
+		::vl::presentation::Point draggingStartLocation;
+		::vl::presentation::compositions::GuiPartialViewComposition* handle;
+		::vl::presentation::compositions::GuiBoundsComposition* handleContainer;
+		::vl::presentation::templates::GuiScrollTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -426,26 +426,31 @@ namespace darkskin
 		}
 	public:
 		HScrollTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>(L"darkskin::HScrollTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiScrollTemplate>(L"darkskin::HScrollTemplate")
 			,handle(0)
 			,handleContainer(0)
 			,self(0)
 		{
-			this->draggingHandle = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"false", reflection::description::GetTypeDescriptor<bool>()));
-			this->draggingStartLocation = vl::reflection::description::UnboxValue<vl::presentation::Point>(vl::reflection::description::Value::From(L"", reflection::description::GetTypeDescriptor<vl::presentation::Point>()));
+			this->draggingHandle = vl::reflection::description::UnboxValue<bool>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				vl::reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"false", value);
+				return value;
+			}());
 		}
 	};
 
 	template<typename TImpl>
-	class HTrackerTemplate_ : public vl::presentation::templates::GuiScrollTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>, public vl::reflection::Description<TImpl>
+	class HTrackerTemplate_ : public ::vl::presentation::templates::GuiScrollTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
 		bool draggingHandle;
-		vl::presentation::Point draggingStartLocation;
-		vl::presentation::compositions::GuiBoundsComposition* handle;
-		vl::presentation::templates::GuiScrollTemplate* self;
+		::vl::presentation::Point draggingStartLocation;
+		::vl::presentation::compositions::GuiBoundsComposition* handle;
+		::vl::presentation::templates::GuiScrollTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -460,23 +465,28 @@ namespace darkskin
 		}
 	public:
 		HTrackerTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>(L"darkskin::HTrackerTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiScrollTemplate>(L"darkskin::HTrackerTemplate")
 			,handle(0)
 			,self(0)
 		{
-			this->draggingHandle = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"false", reflection::description::GetTypeDescriptor<bool>()));
-			this->draggingStartLocation = vl::reflection::description::UnboxValue<vl::presentation::Point>(vl::reflection::description::Value::From(L"", reflection::description::GetTypeDescriptor<vl::presentation::Point>()));
+			this->draggingHandle = vl::reflection::description::UnboxValue<bool>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				vl::reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"false", value);
+				return value;
+			}());
 		}
 	};
 
 	template<typename TImpl>
-	class ItemBackgroundTemplate_ : public vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
+	class ItemBackgroundTemplate_ : public ::vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiSelectableButtonTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiSelectableButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -491,7 +501,7 @@ namespace darkskin
 		}
 	public:
 		ItemBackgroundTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::ItemBackgroundTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::ItemBackgroundTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -499,12 +509,12 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class LabelTemplate_ : public vl::presentation::templates::GuiLabelTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiLabelTemplate>, public vl::reflection::Description<TImpl>
+	class LabelTemplate_ : public ::vl::presentation::templates::GuiLabelTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiLabelTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiLabelTemplate* self;
+		::vl::presentation::templates::GuiLabelTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -518,19 +528,19 @@ namespace darkskin
 		}
 	public:
 		LabelTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiLabelTemplate>(L"darkskin::LabelTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiLabelTemplate>(L"darkskin::LabelTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class LeftScrollButtonTemplate_ : public vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
+	class LeftScrollButtonTemplate_ : public ::vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiButtonTemplate* self;
+		::vl::presentation::templates::GuiButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -544,20 +554,20 @@ namespace darkskin
 		}
 	public:
 		LeftScrollButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>(L"darkskin::LeftScrollButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiButtonTemplate>(L"darkskin::LeftScrollButtonTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class ListViewColumnHeaderTemplate_ : public vl::presentation::templates::GuiListViewColumnHeaderTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiListViewColumnHeaderTemplate>, public vl::reflection::Description<TImpl>
+	class ListViewColumnHeaderTemplate_ : public ::vl::presentation::templates::GuiListViewColumnHeaderTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiListViewColumnHeaderTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::controls::GuiSelectableButton* buttonArrow;
-		vl::presentation::templates::GuiListViewColumnHeaderTemplate* self;
+		::vl::presentation::controls::GuiSelectableButton* buttonArrow;
+		::vl::presentation::templates::GuiListViewColumnHeaderTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -572,7 +582,7 @@ namespace darkskin
 		}
 	public:
 		ListViewColumnHeaderTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiListViewColumnHeaderTemplate>(L"darkskin::ListViewColumnHeaderTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiListViewColumnHeaderTemplate>(L"darkskin::ListViewColumnHeaderTemplate")
 			,buttonArrow(0)
 			,self(0)
 		{
@@ -580,13 +590,13 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class ListViewTemplate_ : public vl::presentation::templates::GuiListViewTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiListViewTemplate>, public vl::reflection::Description<TImpl>
+	class ListViewTemplate_ : public ::vl::presentation::templates::GuiListViewTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiListViewTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiListViewTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiListViewTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -601,7 +611,7 @@ namespace darkskin
 		}
 	public:
 		ListViewTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiListViewTemplate>(L"darkskin::ListViewTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiListViewTemplate>(L"darkskin::ListViewTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -609,12 +619,12 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class MenuBarButtonTemplate_ : public vl::presentation::templates::GuiToolstripButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>, public vl::reflection::Description<TImpl>
+	class MenuBarButtonTemplate_ : public ::vl::presentation::templates::GuiToolstripButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiToolstripButtonTemplate* self;
+		::vl::presentation::templates::GuiToolstripButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -628,19 +638,19 @@ namespace darkskin
 		}
 	public:
 		MenuBarButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>(L"darkskin::MenuBarButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiToolstripButtonTemplate>(L"darkskin::MenuBarButtonTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class MenuItemButtonTemplate_ : public vl::presentation::templates::GuiToolstripButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>, public vl::reflection::Description<TImpl>
+	class MenuItemButtonTemplate_ : public ::vl::presentation::templates::GuiToolstripButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiToolstripButtonTemplate* self;
+		::vl::presentation::templates::GuiToolstripButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -654,14 +664,14 @@ namespace darkskin
 		}
 	public:
 		MenuItemButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>(L"darkskin::MenuItemButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiToolstripButtonTemplate>(L"darkskin::MenuItemButtonTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class MenuSplitterTemplate_ : public vl::presentation::templates::GuiControlTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>, public vl::reflection::Description<TImpl>
+	class MenuSplitterTemplate_ : public ::vl::presentation::templates::GuiControlTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
@@ -678,19 +688,19 @@ namespace darkskin
 		}
 	public:
 		MenuSplitterTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>(L"darkskin::MenuSplitterTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiControlTemplate>(L"darkskin::MenuSplitterTemplate")
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class MultilineTextBoxTemplate_ : public vl::presentation::templates::GuiMultilineTextBoxTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiMultilineTextBoxTemplate>, public vl::reflection::Description<TImpl>
+	class MultilineTextBoxTemplate_ : public ::vl::presentation::templates::GuiMultilineTextBoxTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiMultilineTextBoxTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiMultilineTextBoxTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiMultilineTextBoxTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -705,7 +715,7 @@ namespace darkskin
 		}
 	public:
 		MultilineTextBoxTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiMultilineTextBoxTemplate>(L"darkskin::MultilineTextBoxTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiMultilineTextBoxTemplate>(L"darkskin::MultilineTextBoxTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -713,13 +723,13 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class ProgressBarTemplate_ : public vl::presentation::templates::GuiScrollTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>, public vl::reflection::Description<TImpl>
+	class ProgressBarTemplate_ : public ::vl::presentation::templates::GuiScrollTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiScrollTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiScrollTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -734,7 +744,7 @@ namespace darkskin
 		}
 	public:
 		ProgressBarTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>(L"darkskin::ProgressBarTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiScrollTemplate>(L"darkskin::ProgressBarTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -742,12 +752,12 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class RadioButtonTemplate_ : public vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
+	class RadioButtonTemplate_ : public ::vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiSelectableButtonTemplate* self;
+		::vl::presentation::templates::GuiSelectableButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -761,20 +771,20 @@ namespace darkskin
 		}
 	public:
 		RadioButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::RadioButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::RadioButtonTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class RadioTextListTemplate_ : public vl::presentation::templates::GuiTextListTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListTemplate>, public vl::reflection::Description<TImpl>
+	class RadioTextListTemplate_ : public ::vl::presentation::templates::GuiTextListTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiTextListTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiTextListTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -789,7 +799,7 @@ namespace darkskin
 		}
 	public:
 		RadioTextListTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListTemplate>(L"darkskin::RadioTextListTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiTextListTemplate>(L"darkskin::RadioTextListTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -797,12 +807,12 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class RightScrollButtonTemplate_ : public vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
+	class RightScrollButtonTemplate_ : public ::vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiButtonTemplate* self;
+		::vl::presentation::templates::GuiButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -816,20 +826,20 @@ namespace darkskin
 		}
 	public:
 		RightScrollButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>(L"darkskin::RightScrollButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiButtonTemplate>(L"darkskin::RightScrollButtonTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class ScrollViewTemplate_ : public vl::presentation::templates::GuiScrollViewTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollViewTemplate>, public vl::reflection::Description<TImpl>
+	class ScrollViewTemplate_ : public ::vl::presentation::templates::GuiScrollViewTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollViewTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiScrollViewTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiScrollViewTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -844,7 +854,7 @@ namespace darkskin
 		}
 	public:
 		ScrollViewTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollViewTemplate>(L"darkskin::ScrollViewTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiScrollViewTemplate>(L"darkskin::ScrollViewTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -852,13 +862,13 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class SinglelineTextBoxTemplate_ : public vl::presentation::templates::GuiSinglelineTextBoxTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSinglelineTextBoxTemplate>, public vl::reflection::Description<TImpl>
+	class SinglelineTextBoxTemplate_ : public ::vl::presentation::templates::GuiSinglelineTextBoxTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSinglelineTextBoxTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiSinglelineTextBoxTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiSinglelineTextBoxTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -873,7 +883,7 @@ namespace darkskin
 		}
 	public:
 		SinglelineTextBoxTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSinglelineTextBoxTemplate>(L"darkskin::SinglelineTextBoxTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiSinglelineTextBoxTemplate>(L"darkskin::SinglelineTextBoxTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -881,12 +891,12 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class TabDropdownTemplate_ : public vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
+	class TabDropdownTemplate_ : public ::vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiButtonTemplate* self;
+		::vl::presentation::templates::GuiButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -900,19 +910,19 @@ namespace darkskin
 		}
 	public:
 		TabDropdownTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>(L"darkskin::TabDropdownTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiButtonTemplate>(L"darkskin::TabDropdownTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class TabHeaderTemplate_ : public vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
+	class TabHeaderTemplate_ : public ::vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiSelectableButtonTemplate* self;
+		::vl::presentation::templates::GuiSelectableButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -926,21 +936,21 @@ namespace darkskin
 		}
 	public:
 		TabHeaderTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::TabHeaderTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::TabHeaderTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class TabTemplate_ : public vl::presentation::templates::GuiTabTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTabTemplate>, public vl::reflection::Description<TImpl>
+	class TabTemplate_ : public ::vl::presentation::templates::GuiTabTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTabTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::compositions::GuiBoundsComposition* header;
-		vl::presentation::templates::GuiTabTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::compositions::GuiBoundsComposition* header;
+		::vl::presentation::templates::GuiTabTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -956,7 +966,7 @@ namespace darkskin
 		}
 	public:
 		TabTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTabTemplate>(L"darkskin::TabTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiTabTemplate>(L"darkskin::TabTemplate")
 			,container(0)
 			,header(0)
 			,self(0)
@@ -965,13 +975,13 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class TextListTemplate_ : public vl::presentation::templates::GuiTextListTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListTemplate>, public vl::reflection::Description<TImpl>
+	class TextListTemplate_ : public ::vl::presentation::templates::GuiTextListTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiTextListTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiTextListTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -986,7 +996,7 @@ namespace darkskin
 		}
 	public:
 		TextListTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTextListTemplate>(L"darkskin::TextListTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiTextListTemplate>(L"darkskin::TextListTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -994,13 +1004,13 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class ToolstripButtonTemplate_ : public vl::presentation::templates::GuiToolstripButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>, public vl::reflection::Description<TImpl>
+	class ToolstripButtonTemplate_ : public ::vl::presentation::templates::GuiToolstripButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiToolstripButtonTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiToolstripButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -1015,7 +1025,7 @@ namespace darkskin
 		}
 	public:
 		ToolstripButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>(L"darkskin::ToolstripButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiToolstripButtonTemplate>(L"darkskin::ToolstripButtonTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -1023,13 +1033,13 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class ToolstripDropdownButtonTemplate_ : public vl::presentation::templates::GuiToolstripButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>, public vl::reflection::Description<TImpl>
+	class ToolstripDropdownButtonTemplate_ : public ::vl::presentation::templates::GuiToolstripButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiToolstripButtonTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiToolstripButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -1044,7 +1054,7 @@ namespace darkskin
 		}
 	public:
 		ToolstripDropdownButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>(L"darkskin::ToolstripDropdownButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiToolstripButtonTemplate>(L"darkskin::ToolstripDropdownButtonTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -1052,12 +1062,12 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class ToolstripMenuTemplate_ : public vl::presentation::templates::GuiMenuTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiMenuTemplate>, public vl::reflection::Description<TImpl>
+	class ToolstripMenuTemplate_ : public ::vl::presentation::templates::GuiMenuTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiMenuTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
 
 		void InitializeComponents()
 		{
@@ -1071,19 +1081,19 @@ namespace darkskin
 		}
 	public:
 		ToolstripMenuTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiMenuTemplate>(L"darkskin::ToolstripMenuTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiMenuTemplate>(L"darkskin::ToolstripMenuTemplate")
 			,container(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class ToolstripSplitArrowTemplate_ : public vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
+	class ToolstripSplitArrowTemplate_ : public ::vl::presentation::templates::GuiSelectableButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiSelectableButtonTemplate* self;
+		::vl::presentation::templates::GuiSelectableButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -1097,21 +1107,21 @@ namespace darkskin
 		}
 	public:
 		ToolstripSplitArrowTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::ToolstripSplitArrowTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiSelectableButtonTemplate>(L"darkskin::ToolstripSplitArrowTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class ToolstripSplitButtonTemplate_ : public vl::presentation::templates::GuiToolstripButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>, public vl::reflection::Description<TImpl>
+	class ToolstripSplitButtonTemplate_ : public ::vl::presentation::templates::GuiToolstripButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::controls::GuiSelectableButton* buttonArrow;
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiToolstripButtonTemplate* self;
+		::vl::presentation::controls::GuiSelectableButton* buttonArrow;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiToolstripButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -1127,7 +1137,7 @@ namespace darkskin
 		}
 	public:
 		ToolstripSplitButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiToolstripButtonTemplate>(L"darkskin::ToolstripSplitButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiToolstripButtonTemplate>(L"darkskin::ToolstripSplitButtonTemplate")
 			,buttonArrow(0)
 			,container(0)
 			,self(0)
@@ -1136,7 +1146,7 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class ToolstripSplitterTemplate_ : public vl::presentation::templates::GuiControlTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>, public vl::reflection::Description<TImpl>
+	class ToolstripSplitterTemplate_ : public ::vl::presentation::templates::GuiControlTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
@@ -1153,13 +1163,13 @@ namespace darkskin
 		}
 	public:
 		ToolstripSplitterTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>(L"darkskin::ToolstripSplitterTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiControlTemplate>(L"darkskin::ToolstripSplitterTemplate")
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class ToolstripTemplate_ : public vl::presentation::templates::GuiControlTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>, public vl::reflection::Description<TImpl>
+	class ToolstripTemplate_ : public ::vl::presentation::templates::GuiControlTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
@@ -1176,18 +1186,18 @@ namespace darkskin
 		}
 	public:
 		ToolstripTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiControlTemplate>(L"darkskin::ToolstripTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiControlTemplate>(L"darkskin::ToolstripTemplate")
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class TooltipTemplate_ : public vl::presentation::templates::GuiWindowTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiWindowTemplate>, public vl::reflection::Description<TImpl>
+	class TooltipTemplate_ : public ::vl::presentation::templates::GuiWindowTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiWindowTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
 
 		void InitializeComponents()
 		{
@@ -1201,19 +1211,19 @@ namespace darkskin
 		}
 	public:
 		TooltipTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiWindowTemplate>(L"darkskin::TooltipTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiWindowTemplate>(L"darkskin::TooltipTemplate")
 			,container(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class TopScrollButtonTemplate_ : public vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
+	class TopScrollButtonTemplate_ : public ::vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiButtonTemplate* self;
+		::vl::presentation::templates::GuiButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -1227,20 +1237,20 @@ namespace darkskin
 		}
 	public:
 		TopScrollButtonTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>(L"darkskin::TopScrollButtonTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiButtonTemplate>(L"darkskin::TopScrollButtonTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class TreeViewTemplate_ : public vl::presentation::templates::GuiTreeViewTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTreeViewTemplate>, public vl::reflection::Description<TImpl>
+	class TreeViewTemplate_ : public ::vl::presentation::templates::GuiTreeViewTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTreeViewTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiTreeViewTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiTreeViewTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -1255,7 +1265,7 @@ namespace darkskin
 		}
 	public:
 		TreeViewTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiTreeViewTemplate>(L"darkskin::TreeViewTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiTreeViewTemplate>(L"darkskin::TreeViewTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -1263,12 +1273,12 @@ namespace darkskin
 	};
 
 	template<typename TImpl>
-	class VScrollHandleTemplate_ : public vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
+	class VScrollHandleTemplate_ : public ::vl::presentation::templates::GuiButtonTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::templates::GuiButtonTemplate* self;
+		::vl::presentation::templates::GuiButtonTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -1282,23 +1292,23 @@ namespace darkskin
 		}
 	public:
 		VScrollHandleTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiButtonTemplate>(L"darkskin::VScrollHandleTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiButtonTemplate>(L"darkskin::VScrollHandleTemplate")
 			,self(0)
 		{
 		}
 	};
 
 	template<typename TImpl>
-	class VScrollTemplate_ : public vl::presentation::templates::GuiScrollTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>, public vl::reflection::Description<TImpl>
+	class VScrollTemplate_ : public ::vl::presentation::templates::GuiScrollTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
 		bool draggingHandle;
-		vl::presentation::Point draggingStartLocation;
-		vl::presentation::compositions::GuiPartialViewComposition* handle;
-		vl::presentation::compositions::GuiBoundsComposition* handleContainer;
-		vl::presentation::templates::GuiScrollTemplate* self;
+		::vl::presentation::Point draggingStartLocation;
+		::vl::presentation::compositions::GuiPartialViewComposition* handle;
+		::vl::presentation::compositions::GuiBoundsComposition* handleContainer;
+		::vl::presentation::templates::GuiScrollTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -1314,26 +1324,31 @@ namespace darkskin
 		}
 	public:
 		VScrollTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>(L"darkskin::VScrollTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiScrollTemplate>(L"darkskin::VScrollTemplate")
 			,handle(0)
 			,handleContainer(0)
 			,self(0)
 		{
-			this->draggingHandle = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"false", reflection::description::GetTypeDescriptor<bool>()));
-			this->draggingStartLocation = vl::reflection::description::UnboxValue<vl::presentation::Point>(vl::reflection::description::Value::From(L"", reflection::description::GetTypeDescriptor<vl::presentation::Point>()));
+			this->draggingHandle = vl::reflection::description::UnboxValue<bool>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				vl::reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"false", value);
+				return value;
+			}());
 		}
 	};
 
 	template<typename TImpl>
-	class VTrackerTemplate_ : public vl::presentation::templates::GuiScrollTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>, public vl::reflection::Description<TImpl>
+	class VTrackerTemplate_ : public ::vl::presentation::templates::GuiScrollTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
 		bool draggingHandle;
-		vl::presentation::Point draggingStartLocation;
-		vl::presentation::compositions::GuiBoundsComposition* handle;
-		vl::presentation::templates::GuiScrollTemplate* self;
+		::vl::presentation::Point draggingStartLocation;
+		::vl::presentation::compositions::GuiBoundsComposition* handle;
+		::vl::presentation::templates::GuiScrollTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -1348,23 +1363,28 @@ namespace darkskin
 		}
 	public:
 		VTrackerTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiScrollTemplate>(L"darkskin::VTrackerTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiScrollTemplate>(L"darkskin::VTrackerTemplate")
 			,handle(0)
 			,self(0)
 		{
-			this->draggingHandle = vl::reflection::description::UnboxValue<bool>(vl::reflection::description::Value::From(L"false", reflection::description::GetTypeDescriptor<bool>()));
-			this->draggingStartLocation = vl::reflection::description::UnboxValue<vl::presentation::Point>(vl::reflection::description::Value::From(L"", reflection::description::GetTypeDescriptor<vl::presentation::Point>()));
+			this->draggingHandle = vl::reflection::description::UnboxValue<bool>(
+			[]()
+			{
+				vl::reflection::description::Value value;
+				vl::reflection::description::GetTypeDescriptor<bool>()->GetSerializableType()->Deserialize(L"false", value);
+				return value;
+			}());
 		}
 	};
 
 	template<typename TImpl>
-	class WindowTemplate_ : public vl::presentation::templates::GuiWindowTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiWindowTemplate>, public vl::reflection::Description<TImpl>
+	class WindowTemplate_ : public ::vl::presentation::templates::GuiWindowTemplate, public vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiWindowTemplate>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::compositions::GuiBoundsComposition* container;
-		vl::presentation::templates::GuiWindowTemplate* self;
+		::vl::presentation::compositions::GuiBoundsComposition* container;
+		::vl::presentation::templates::GuiWindowTemplate* self;
 
 		void InitializeComponents()
 		{
@@ -1379,7 +1399,7 @@ namespace darkskin
 		}
 	public:
 		WindowTemplate_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::templates::GuiWindowTemplate>(L"darkskin::WindowTemplate")
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::templates::GuiWindowTemplate>(L"darkskin::WindowTemplate")
 			,container(0)
 			,self(0)
 		{
@@ -1390,39 +1410,39 @@ namespace darkskin
 namespace demo
 {
 	template<typename TImpl>
-	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class MainWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
 	protected:
-		vl::presentation::controls::GuiButton* buttonAddTab;
-		vl::presentation::controls::GuiButton* buttonEnable;
-		vl::presentation::controls::GuiComboBoxListControl* comboBoxSeasons;
-		vl::presentation::controls::GuiToolstripCommand* commandEditCopy;
-		vl::presentation::controls::GuiToolstripCommand* commandEditCut;
-		vl::presentation::controls::GuiToolstripCommand* commandEditDelete;
-		vl::presentation::controls::GuiToolstripCommand* commandEditPaste;
-		vl::presentation::controls::GuiToolstripCommand* commandEditRedo;
-		vl::presentation::controls::GuiToolstripCommand* commandEditSelect;
-		vl::presentation::controls::GuiToolstripCommand* commandEditUndo;
-		vl::presentation::controls::GuiToolstripCommand* commandFileExit;
-		vl::presentation::controls::GuiToolstripCommand* commandFileNew;
-		vl::presentation::controls::GuiToolstripCommand* commandFileNewRtf;
-		vl::presentation::controls::GuiToolstripCommand* commandFileNewText;
-		vl::presentation::controls::GuiToolstripCommand* commandFileOpen;
-		vl::presentation::controls::GuiToolstripCommand* commandFileOpenRtf;
-		vl::presentation::controls::GuiToolstripCommand* commandFileOpenText;
-		vl::presentation::controls::GuiToolstripCommand* commandFilePrint;
-		vl::presentation::controls::GuiToolstripCommand* commandFileSave;
-		vl::presentation::controls::GuiToolstripCommand* commandFileSaveAs;
-		vl::presentation::controls::GuiToolstripMenu* menuDropDown;
-		vl::presentation::controls::GuiSelectableButton::MutexGroupController* radioGroup;
-		vl::presentation::controls::GuiTab* tabControls;
-		vl::presentation::controls::GuiTabPage* tabPageBasic;
-		vl::presentation::controls::GuiTabPage* tabPageList;
-		vl::presentation::controls::GuiTabPage* tabPageText;
-		vl::presentation::controls::GuiTabPage* tabPageToolstrip;
-		vl::presentation::controls::GuiScroll* tracker;
+		::vl::presentation::controls::GuiButton* buttonAddTab;
+		::vl::presentation::controls::GuiButton* buttonEnable;
+		::vl::presentation::controls::GuiComboBoxListControl* comboBoxSeasons;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditCopy;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditCut;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditDelete;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditPaste;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditRedo;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditSelect;
+		::vl::presentation::controls::GuiToolstripCommand* commandEditUndo;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileExit;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileNew;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileNewRtf;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileNewText;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileOpen;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileOpenRtf;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileOpenText;
+		::vl::presentation::controls::GuiToolstripCommand* commandFilePrint;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileSave;
+		::vl::presentation::controls::GuiToolstripCommand* commandFileSaveAs;
+		::vl::presentation::controls::GuiToolstripMenu* menuDropDown;
+		::vl::presentation::controls::GuiSelectableButton::MutexGroupController* radioGroup;
+		::vl::presentation::controls::GuiTab* tabControls;
+		::vl::presentation::controls::GuiTabPage* tabPageBasic;
+		::vl::presentation::controls::GuiTabPage* tabPageList;
+		::vl::presentation::controls::GuiTabPage* tabPageText;
+		::vl::presentation::controls::GuiTabPage* tabPageToolstrip;
+		::vl::presentation::controls::GuiScroll* tracker;
 
 		void InitializeComponents()
 		{
@@ -1463,8 +1483,8 @@ namespace demo
 		}
 	public:
 		MainWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
-			,vl::presentation::controls::GuiWindow([](){
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
+			,::vl::presentation::controls::GuiWindow([](){
 vl::collections::List<vl::reflection::description::ITypeDescriptor*> types;
 types.Add(vl::reflection::description::GetTypeDescriptor<darkskin::WindowTemplate>());
 auto factory = vl::presentation::templates::GuiTemplate::IFactory::CreateTemplateFactory(types);

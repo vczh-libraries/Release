@@ -18,25 +18,25 @@ namespace demo
 	class IViewModel;
 	class MainWindow;
 
-	class IViewModel : public virtual vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
+	class IViewModel : public virtual ::vl::reflection::IDescriptable, public vl::reflection::Description<IViewModel>
 	{
 	public:
-		virtual vl::vint32_t Add(vl::vint32_t a, vl::vint32_t b) = 0;
-		virtual vl::WString Error() = 0;
+		virtual ::vl::vint32_t Add(::vl::vint32_t a, ::vl::vint32_t b) = 0;
+		virtual ::vl::WString Error() = 0;
 	};
 
 	template<typename TImpl>
-	class MainWindow_ : public vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
+	class MainWindow_ : public ::vl::presentation::controls::GuiWindow, public vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>, public vl::reflection::Description<TImpl>
 	{
 		friend struct vl::reflection::description::CustomTypeDescriptorSelector<TImpl>;
 	private:
-		Ptr<demo::IViewModel> ViewModel_;
+		vl::Ptr<demo::IViewModel> ViewModel_;
 	protected:
-		vl::presentation::controls::GuiSinglelineTextBox* textBoxA;
-		vl::presentation::controls::GuiSinglelineTextBox* textBoxB;
-		vl::presentation::controls::GuiSinglelineTextBox* textBoxC;
+		::vl::presentation::controls::GuiSinglelineTextBox* textBoxA;
+		::vl::presentation::controls::GuiSinglelineTextBox* textBoxB;
+		::vl::presentation::controls::GuiSinglelineTextBox* textBoxC;
 
-		void InitializeComponents(Ptr<demo::IViewModel> ViewModel)
+		void InitializeComponents(vl::Ptr<demo::IViewModel> ViewModel)
 		{
 			ViewModel_ = ViewModel;
 			if (InitializeFromResource())
@@ -52,15 +52,15 @@ namespace demo
 		}
 	public:
 		MainWindow_()
-			:vl::presentation::GuiInstancePartialClass<vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
-			,vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
+			:vl::presentation::GuiInstancePartialClass<::vl::presentation::controls::GuiWindow>(L"demo::MainWindow")
+			,::vl::presentation::controls::GuiWindow(vl::presentation::theme::GetCurrentTheme()->CreateWindowStyle())
 			,textBoxA(0)
 			,textBoxB(0)
 			,textBoxC(0)
 		{
 		}
 
-		Ptr<demo::IViewModel> GetViewModel()
+		vl::Ptr<demo::IViewModel> GetViewModel()
 		{
 			return ViewModel_;
 		}
@@ -92,7 +92,7 @@ namespace demo
 		void OnDestroy();
 		// #endregion CLASS_MEMBER_GUIEVENT_HANDLER
 	public:
-		MainWindow(Ptr<demo::IViewModel> ViewModel);
+		MainWindow(vl::Ptr<demo::IViewModel> ViewModel);
 		~MainWindow();
 	};
 }

@@ -1,3 +1,4 @@
+#define GAC_HEADER_USE_NAMESPACE
 #include <GacUI.h>
 #include <Windows.h>
 

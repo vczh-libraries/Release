@@ -29,7 +29,7 @@
         <Window Text="Another Window" ClientSize="x:320 y:280">
           <att.BoundsComposition-set PreferredMinSize="x:320 y:280"/>
           <Label Text="This is another window!">
-            <att.Font>fontFamily:{Segoe UI} size:32 antialias:true</att.Font>
+            <att.Font>fontFamily:"Segoe UI" size:32 antialias:true</att.Font>
           </Label>
         </Window>
       </Instance>

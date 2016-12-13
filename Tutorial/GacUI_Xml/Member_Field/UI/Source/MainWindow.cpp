@@ -12,9 +12,9 @@ namespace demo
 {
 	// #region CLASS_MEMBER_GUIEVENT_HANDLER (DO NOT PUT OTHER CONTENT IN THIS #region.)
 
-	void MainWindow::buttonPaste_Clicked(GuiGraphicsComposition* sender, vl::presentation::compositions::GuiEventArgs& arguments)
+	void MainWindow::buttonPaste_Clicked(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs& arguments)
 	{
-		textBoxB->SetText(itow(this->integerState));
+		textBoxB->SetText(vl::itow(this->integerState));
 	}
 
 	void MainWindow::OnCreate()
