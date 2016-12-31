@@ -1,22 +1,12 @@
 # TODO
 
+## Working On
 * Workflow
     * **Workflow to C++ code generation with hint**.
         * Only `Enumerable<T>^` and `ObservableList^` in containers are allowed in script.
         * C++ code generator reports errors when any script does not satisfy these rules.
-    * **Low Priority**:
-        * async, delay, yield (provider written in C++).
-* GacUI Resource
-    * InheritableCustomWindow
-    * InheritableCustomControl
-    * `<ref.Event/>`
-    * `<ref.Component/>` // readonly property with -eval
-    * GuiCustomControl::SetContainerComposition // using a special syntax
-    * InstanceStyle:Replace
-    * Pure C++ Code Generation
-    * Visual State, State Machine, Animation
-    * **Low Priority**:
-        * ev.Event-(eval|async|delayed)
+    
+## Comming Soon
 * GacUI C++ Code Generation Supports
     * Strong-typed template checking
     * Don't use string for XXXProperty:
@@ -35,12 +25,28 @@
         * **ListViewTemplate**.(Background|ColumnHeader)Template
         * **TreeViewTemplate**.(Background\ExpandingDecorator)Template
         * **TabTemplate**.(Header|Dropdown|Menu|MenuItem)Template
+* GacGen.exe
+    * Add G4, Remove G3 [(reference)](http://www.gaclib.net/#~/Tutorial)
+    
+## Wait For A Few Releases
+* GacUI Resource
+    * InheritableCustomWindow
+    * InheritableCustomControl
+    * `<ref.Event/>`
+    * `<ref.Component/>` // readonly property with -eval
+
+## Low Property
+* Workflow
+     * async, delay, yield (provider written in C++).
+* GacUI Resource
+    * GuiCustomControl::SetContainerComposition // using a special syntax
+    * InstanceStyle:Replace
+    * Visual State, State Machine, Animation
+    * ev.Event-(eval|async|delayed)
+* GacUI C++ Code Generation Supports
     * Make ItemSource from constructor argument to property
 * Core
     * Embedded Languages: Colorizer, AutoComplete
     * Abstract Graphics API
     * Chart, Ribbon, Dock Container
-    * Add G4, Remove G3 [(reference)](http://www.gaclib.net/#~/Tutorial)
-* GacGen.exe
-    * Hint C++ code generator
-* GacStudio
+* GacStudio.exe
