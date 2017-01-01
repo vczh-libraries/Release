@@ -138,18 +138,16 @@ interface ICountDown : IStateMachine
     stateinput CountDown();
     stateinput DoNotCall();
     
-    event OnRemains(int);
+    prop Remains : int; /* auto declare getter, setter and event */
 }
 ```
 
 ### Sample (Xml)
 ```xml
 <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
-  <ref.Property Name="Remains" Type="int"/>
-  <ref.Property Name="CountDown" Type="ICountDown^"/>
+  <ref.Property Name="CountDown" Type="ICountDown^" Value="self.CreateCountDown()"/>
   <Window ref.Name="self" Text="State Machine" ClientSize="x:480 y:320">
     <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
-    <att.CountDown-set ev.OnRemains-eval="self.Remains = arg1"/>
     <!-- ignore layout settings -->
     <Button Enabled-bind="self.CountDown.BeginCountDownEnabled">
       <ev.Clicked-eval>{self.CountDown.Start(); self.CountDown.BeginCountDown();}</ev.Clicked-eval>
@@ -160,13 +158,8 @@ interface ICountDown : IStateMachine
     <Button Enabled-bind="self.CountDown.IsExecuting">
       <ev.Clicked-eval>self.CountDown.Stop();</ev.Clicked-eval>
     </Button>
-    <Label Text-format="Remains: $(self.Remains)"/>
+    <Label Text-format="Remains: $(self.CountDown.Remains)"/>
   </Window>
-  <ref.CtorBefore>
-    <![CDATA[
-      self.CountDown = CreateCountDown();
-    ]]>
-  </ref.CtorBefore>
   <ref.Members>
     <![CDATA[
         /* Compiled to: func CreateCountDown() : ICountDown^ */
@@ -183,18 +176,16 @@ interface ICountDown : IStateMachine
                 */
             }
 
-            var remains = 10;
+            countDown.Remains = 10;
             while (true)
             {
-                countDown.OnRemains(remains);
-                
-                if (remains > 0)
+                if (countDown.Remains > 0)
                 {
                     stateinput
                     {
                         case CountDown():
                         {
-                            remains = remains - 1;
+                            countDown.Remains = countDown.Remains - 1;
                         }
                         /*
                         Automatically updated before waiting:
