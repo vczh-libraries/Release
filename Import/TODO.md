@@ -148,7 +148,7 @@ interface ICountDown : IStateMachine
 ### Sample (Xml)
 ```xml
 <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
-  <ref.Property Name="CountDown" Type="ICountDown^" Value="self.CreateCountDown()"/>
+  <ref.Component Name="CountDown" Type="ICountDown^" Value="self.CreateCountDown()"/>
   <Window ref.Name="self" Text="State Machine" ClientSize="x:480 y:320">
     <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
     <!-- ignore layout settings -->
