@@ -100,6 +100,11 @@ namespace system
 }
 ```
 
+### Keywords
+* `stateinput`
+* `statefatal`
+* `stateerror`
+
 ### Syntax
 ```
 stateinput <Name>(<Argument>, ...);
@@ -108,11 +113,15 @@ raise stateerror "exception";   /* redo the current stateinput statement with an
 return;                         /* stop the state machine normally */
 
 /* wait until received expected input */
-stateinput
+switch(stateinput <Block-Statement-optional, executed before waiting for input, will not be re-executde when redo>)
 {
     case <Name>(<Argument-Name>, ...):
     {
-        <Statements>
+        ...
+    }
+    case <Event>(<Argument-Name>, ...):
+    {
+        ...
     }
     default:
     {
