@@ -5,8 +5,8 @@
     * Attributes
     * **Workflow to C++ code generation with hint**.
         * Types and other symbols, which are reported not supported in C++, cannot be used.
-        * Generate reflection code, protected by VCZH_DEBUG_NO_REFLECTION.
-    
+        * Generate reflection code, protected by VCZH_DEBUG_NO_REFLECTION.
+
 ## Comming Soon
 * GacUI C++ Code Generation Supports
     * Don't use string for XXXProperty:
