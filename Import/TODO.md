@@ -56,6 +56,7 @@
 ## Low Property
 * Workflow
      * async, delay, yield (provider written in C++).
+     * Auto property
 * GacUI Resource
     * InstanceStyle:Replace
     * Visual State, State Machine, Animation
@@ -138,7 +139,9 @@ interface ICountDown : IStateMachine
     stateinput CountDown();
     stateinput DoNotCall();
     
-    prop Remains : int; /* auto declare getter, setter and event */
+    /* auto declare getter, setter and event */
+    /* implementations are not generated in interface, but this one is implemented in state machine */
+    prop Remains : int;
 }
 ```
 
