@@ -108,12 +108,12 @@ namespace system
 ### Syntax
 ```
 stateinput <Name>(<Argument>, ...);
-raise statefatal "exception";   /* stop the state machine with a fatal error */
-raise stateerror "exception";   /* redo the current stateinput statement with an error, only available in stateinput statement */
-return;                         /* stop the state machine normally */
+statefatal "exception";     /* stop the state machine with a fatal error */
+stateerror "exception";     /* redo the current stateinput statement with an error, only available in stateinput statement */
+return;                     /* stop the state machine normally */
 
 /* wait until received expected input */
-switch(stateinput <Block-Statement-optional, executed before waiting for input, will not be re-executde when redo>)
+switch(stateinput <IStateMachine^ expression, optional, will loop until it done, or fatal if there is a statefatal>)
 {
     case <Name>(<Argument-Name>, ...):
     {
@@ -127,6 +127,15 @@ switch(stateinput <Block-Statement-optional, executed before waiting for input, 
     {
         ...
     }
+}
+
+/* join another stat machine */
+var result : object = null;
+switch(stateinput IStateMachine::Any({m1 m2 m3}))
+{
+    case m1.Result(r):{ result = r; }
+    case m2.Result(r):{ result = r; }
+    case m3.Result(r):{ result = r; }
 }
 ```
 
