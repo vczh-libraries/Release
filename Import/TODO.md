@@ -6,9 +6,6 @@
     * **Workflow to C++ code generation with hint**.
         * Types and other symbols, which are reported not supported in C++, cannot be used.
         * Generate reflection code, protected by VCZH_DEBUG_NO_REFLECTION.
-        * Add Reference as one of the TypeInfoHint (for GacUI's event)
-        * Remove `IEventInfo::ICpp`, add `vl::reflection::cpphelper::EventHelper`
-        * Add helpers for argument accessing, `vl::Func<T>` converting and result accessing
 
 ## Comming Soon
 * GacUI
@@ -28,6 +25,7 @@
         * **ListViewTemplate**.(Background|ColumnHeader)Template
         * **TreeViewTemplate**.(Background\ExpandingDecorator)Template
         * **TabTemplate**.(Header|Dropdown|Menu|MenuItem)Template
+	* IEventInfo::ICpp for composition events
 * GacGen.exe
     * Add G4, Retire G2 [(reference)](http://www.gaclib.net/#~/Tutorial)
     * Regenerate G2 tutorials using G4
