@@ -4,8 +4,10 @@
 * Workflow
     * Attributes
     * **Workflow to C++ code generation with hint**.
-        * Types and other symbols, which are reported not supported in C++, cannot be used.
         * Generate reflection code, protected by VCZH_DEBUG_NO_REFLECTION.
+	* VlppWorkflowCppHelper.h
+	* Multiple file support
+	* Merge user code
 
 ## Comming Soon
 * GacUI
