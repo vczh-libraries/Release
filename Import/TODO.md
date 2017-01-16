@@ -5,7 +5,6 @@
     * Attributes
     * **Workflow to C++ code generation with hint**.
         * Generate reflection code, protected by VCZH_DEBUG_NO_REFLECTION.
-	* VlppWorkflowCppHelper.h
 	* Multiple file support
 	* Merge user code
 
@@ -169,7 +168,7 @@ interface ICountDown : IStateMachine
 ### Sample (Xml)
 ```xml
 <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
-  <ref.Component Name="CountDown" Type="ICountDown^" Value="self.CreateCountDown()"/>
+  <ref.Component Name="CountDown" Type="ICountDown^" Value="new CountDown^()"/>
   <Window ref.Name="self" Text="State Machine" ClientSize="x:480 y:320">
     <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
     <!-- ignore layout settings -->
@@ -186,37 +185,39 @@ interface ICountDown : IStateMachine
   </Window>
   <ref.Members>
     <![CDATA[
-        /* Compiled to: func CreateCountDown() : ICountDown^ */
-        statemachine(ICountDown) CreateCountDown(countDown)
+        class CountDown : ICountDown
         {
-            stateinput
+	        statemachine
             {
-                case BeginCountDown():{} /* If there are arguments, specify names only */
-                /*
-                Automatically updated before waiting:
-                BeginCountDownEnabled = true;
-                CountDownEnabled = false;
-                DoNotCallEnabled = false;
-                */
-            }
-
-            countDown.Remains = 10;
-            while (true)
-            {
-                if (countDown.Remains > 0)
+                stateinput
                 {
-                    stateinput
+                    case BeginCountDown():{} /* If there are arguments, specify names only */
+                    /*
+                    Automatically updated before waiting:
+                    BeginCountDownEnabled = true;
+                    CountDownEnabled = false;
+                    DoNotCallEnabled = false;
+                    */
+                }
+
+                Remains = 10;
+                while (true)
+                {
+                    if (Remains > 0)
                     {
-                        case CountDown():
+                        stateinput
                         {
-                            countDown.Remains = countDown.Remains - 1;
+                            case CountDown():
+                            {
+                                Remains = Remains - 1;
+                            }
+                            /*
+                            Automatically updated before waiting:
+                            BeginCountDownEnabled = false;
+                            CountDownEnabled = true;
+                            DoNotCallEnabled = false;
+                            */
                         }
-                        /*
-                        Automatically updated before waiting:
-                        BeginCountDownEnabled = false;
-                        CountDownEnabled = true;
-                        DoNotCallEnabled = false;
-                        */
                     }
                 }
             }
