@@ -7,6 +7,7 @@
         * Generate reflection code, protected by VCZH_DEBUG_NO_REFLECTION.
 	* Multiple file support
 	* Merge user code
+	* Use ::vl::vint for int in both 32 and 64 configurations
 
 ## Comming Soon
 * GacUI
