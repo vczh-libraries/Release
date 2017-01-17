@@ -4,11 +4,11 @@
 * Workflow
     * Attributes
     * **Workflow to C++ code generation with hint**.
-    	* Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
+        * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
         * Generate reflection code, protected by VCZH_DEBUG_NO_REFLECTION.
-	* Multiple file support
-	* Merge user code
-	* Use ::vl::vint for int in both 32 and 64 configurations
+    * Multiple file support
+    * Merge user code
+    * Use ::vl::vint for int in both 32 and 64 configurations
 
 ## Comming Soon
 * GacUI
@@ -43,12 +43,14 @@
             * Member_(Field|Parameter|Property)
     
 ## Wait For A Few Releases
+* Workflow
+     * Auto property
 * GacUI Resource
+    * Remove `<ref.State>` and `<ref.Property>` (keep `<ref.Parameter>`)
+    * Add `<ref.Ctor>`, `<ref.Dtor>` and `<ref.Members>`
     * InheritableCustomWindow
     * InheritableCustomControl
     * GuiCustomControl::SetContainerComposition // using a special syntax
-    * `<ref.Event/>`
-    * `<ref.Component/>` // readonly property with -eval
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
     * Report errors with XML row/column number
 * GacUI
@@ -58,14 +60,24 @@
     * Enable linking to external symbols
 
 ## Low Property
+* Vlpp
+    Regex supports UTF-16 (instead of UCS-2) on MSVC
+    Redesign vl::parsing
+        * No need to specify allow ambiguity or not
+        * Escaping and Unescaping pairs (instead of only unescaping)
+        * Calculate ambiguous **Parse** cases, pointing out which AST need to support ambiguity
+        * Calculate ambiguous **ToString** cases
+        * Generate **ToString** algorithm
+        * Low overhead AST with reflection
+        * Error message generation
+        * Error recovering
+        * Full CFG power, no limitation
 * Workflow
-     * async, delay, yield (provider written in C++).
-     * Auto property
+    * async, delay, yield (provider written in C++).
 * GacUI Resource
     * InstanceStyle:Replace
     * Visual State, State Machine, Animation
     * ev.Event-(eval|async|delayed)
-    * `<ref.Members>`, `<ref.CtorBefore>`, `<ref.CtorAfter>`, `<ref.Dtor>`
     * Non-standard event handler name: `arg1`, `arg2`, ...
         * Instead of `<argument>1`, `<argument>2`, ...
 * GacUI
