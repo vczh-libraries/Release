@@ -4,6 +4,7 @@
 * Workflow
     * Attributes
     * **Workflow to C++ code generation with hint**.
+    	* Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
         * Generate reflection code, protected by VCZH_DEBUG_NO_REFLECTION.
 	* Multiple file support
 	* Merge user code
