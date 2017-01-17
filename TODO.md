@@ -43,8 +43,20 @@
             * Member_(Field|Parameter|Property)
     
 ## Wait For A Few Releases
+* Vlpp
+    * Regex supports UTF-16 (instead of UCS-2) on MSVC
+    * Redesign vl::parsing
+        * No need to specify allow ambiguity or not
+        * Escaping and Unescaping pairs (instead of only unescaping)
+        * Calculate ambiguous **Parse** cases, pointing out which AST need to support ambiguity
+        * Calculate ambiguous **ToString** cases
+        * Generate **ToString** algorithm
+        * Low overhead AST with reflection
+        * Error message generation
+        * Error recovering
+        * Full CFG power, no limitation
 * Workflow
-     * Auto property
+    * Auto property
 * GacUI Resource
     * Remove `<ref.State>` and `<ref.Property>` (keep `<ref.Parameter>`)
     * Add `<ref.Ctor>`, `<ref.Dtor>` and `<ref.Members>`
