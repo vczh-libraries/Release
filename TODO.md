@@ -60,9 +60,6 @@
     * Enable linking to external symbols
 
 ## Low Property
-* Vlpp
-    Regex supports UTF-16 (instead of UCS-2) on MSVC
-    Redesign vl::parsing
 * Workflow
     * async, delay, yield (provider written in C++).
 * GacUI Resource
@@ -95,7 +92,7 @@ namespace system
         func Start() : void;            /* Call to restart, will raise exception during execution */
         func Stop(ex : string) : void;  /* Call to stop, will raise exception if not started. */
         
-        func GetIsExecuting() : bool;
+        func GetIsExecuting() : bool;   
         event IsExecutingChanged();
         prop IsExecuting : bool {GetIsExecuting : IsExecutingChanged}
         
