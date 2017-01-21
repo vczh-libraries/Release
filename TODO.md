@@ -2,9 +2,10 @@
 
 ## Working On
 * Workflow
+    * Virtual function
+    * Class implements interface
     * **Workflow to C++ code generation with hint**.
         * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
-        * Multiple file support
         * Merge user code
         * Use ::vl::vint for int in both 32 and 64 configurations
 
