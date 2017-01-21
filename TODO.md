@@ -2,8 +2,6 @@
 
 ## Working On
 * Workflow
-    * Virtual function
-    * Class implements interface
     * **Workflow to C++ code generation with hint**.
         * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
         * Merge user code
@@ -44,6 +42,8 @@
 ## Wait For A Few Releases
 * Workflow
     * Auto property
+    * Virtual function
+    * Class implements interface
 * GacUI Resource
     * Remove `<ref.State>` and `<ref.Property>` (keep `<ref.Parameter>`)
     * Add `<ref.Ctor>`, `<ref.Dtor>` and `<ref.Members>`
