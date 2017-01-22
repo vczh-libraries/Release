@@ -44,8 +44,7 @@
     * Virtual function
     * Class implements interface
 * GacUI Resource
-    * Remove `<ref.State>` and `<ref.Property>` (keep `<ref.Parameter>`)
-    * Add `<ref.Ctor>`, `<ref.Dtor>` and `<ref.Members>`
+    * Add `<ref.Ctor>`, `<ref.Dtor>`
     * InheritableCustomWindow
     * InheritableCustomControl
     * GuiCustomControl::SetContainerComposition // using a special syntax
