@@ -5,7 +5,10 @@
     * **Workflow to C++ code generation with hint**.
         * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
         * Use ::vl::vint for int in both 32 and 64 configurations
-
+        * `@cpp:Friend`, take care of closure classes
+* GacUI
+    * Standard GacGen.exe resource representation
+    * C++ Code Generation Configuration
 ## Comming Soon
 * GacUI
     * Don't use string for XXXProperty:
@@ -46,7 +49,7 @@
 * GacUI Resource
     * Add `<ref.Ctor>`, `<ref.Dtor>`
     * InheritableCustomWindow
-    * InheritableCustomControl
+    * InheritableCustomControl  
     * GuiCustomControl::SetContainerComposition // using a special syntax
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
     * Report errors with XML row/column number
