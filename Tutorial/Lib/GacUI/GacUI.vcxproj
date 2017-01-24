@@ -73,7 +73,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Import\GacUI.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\..\Import\GacUIReflection.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\GacUIWindows.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\Vlpp.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -83,13 +95,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Import\GacUI.h" />
     <ClInclude Include="..\..\..\Import\GacUIReflection.h" />
+    <ClInclude Include="..\..\..\Import\GacUIWindows.h" />
+    <ClInclude Include="..\..\..\Import\Vlpp.h" />
     <ClInclude Include="..\..\..\Import\VlppWorkflow.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GacUILite\GacUILite.vcxproj">
-      <Project>{96c559ca-9718-4bec-a053-28a0ab6a8ca2}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

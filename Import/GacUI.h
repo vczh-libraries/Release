@@ -3481,8 +3481,8 @@ Resource
 
 		enum class GuiResourceUsage
 		{
-			DevelopmentTool,
-			Application,
+			DataOnly,
+			InstanceClass,
 		};
 		
 		/// <summary>Resource. A resource is a root resource folder that does not have a name.</summary>
@@ -3529,6 +3529,7 @@ Resource
 			void									SavePrecompiledBinary(stream::IStream& stream);
 
 			/// <summary>Precompile this resource to improve performance.</summary>
+			/// <param name="callback">A callback to receive progress.</param>
 			/// <param name="errors">All collected errors during precompiling a resource.</param>
 			void									Precompile(IGuiResourcePrecompileCallback* callback, collections::List<WString>& errors);
 
@@ -3687,18 +3688,15 @@ Resource Type Resolver
 			enum PassNames
 			{
 				Workflow_Collect					= 0,
-				Workflow_CompileViewModel			= 1,
-				Workflow_CompileShared				= 2,
-				Workflow_Max						= Workflow_CompileShared,
+				Workflow_Compile					= 1,
+				Workflow_Max						= Workflow_Compile,
 
-				Instance_CollectInstanceTypes		= 3,
-				Instance_ValidateDependency			= 4,
-				Instance_GenerateTemporaryClass		= 5,
-				Instance_CompileTemporaryClass		= 6,
-				Instance_GenerateInstanceCtor		= 7,
-				Instance_CompileInstanceCtor		= 8,
-				Instance_GenerateInstanceClass		= 9,
-				Instance_CompileInstanceClass		= 10,
+				Instance_CollectInstanceTypes		= 2,
+				Instance_CompileInstanceTypes		= 3,
+				Instance_CollectEventHandlers		= 4,
+				Instance_CompileEventHandlers		= 5,
+				Instance_GenerateInstanceClass		= 6,
+				Instance_CompileInstanceClass		= 7,
 				Instance_Max						= Instance_CompileInstanceClass,
 			};
 
@@ -3747,7 +3745,7 @@ Resource Type Resolver
 		///			Pass 1: Script		(initialize shared scripts)
 		///			Pass 2: Script		(initialize instance scripts)
 		/// </summary>
-		class IGuiResourceTypeResolver_Initialize : public virtual IDescriptable, public Description<IGuiResourceTypeResolver_Precompile>
+		class IGuiResourceTypeResolver_Initialize : public virtual IDescriptable, public Description<IGuiResourceTypeResolver_Initialize>
 		{
 		public:
 			/// <summary>Get the maximum pass index that the initializer needs.</summary>
@@ -3853,11 +3851,11 @@ Resource Resolver Manager
 			virtual vint										GetMaxInitializePassIndex() = 0;
 			/// <summary>Get names of all per resource resolvers for a pass.</summary>
 			/// <param name="passIndex">The pass index.</param>
-			/// <param name="resolvers">Names of resolvers</param>
+			/// <param name="names">Names of resolvers</param>
 			virtual void										GetPerResourceResolverNames(vint passIndex, collections::List<WString>& names) = 0;
 			/// <summary>Get names of all per pass resolvers for a pass.</summary>
 			/// <param name="passIndex">The pass index.</param>
-			/// <param name="resolvers">Names of resolvers</param>
+			/// <param name="names">Names of resolvers</param>
 			virtual void										GetPerPassResolverNames(vint passIndex, collections::List<WString>& names) = 0;
 		};
 		
@@ -5837,6 +5835,8 @@ Event
 				public:
 					Ptr<IGuiGraphicsEventHandler>	handler;
 				};
+
+				virtual bool IsAttached() = 0;
 			};
 
 			template<typename T>
@@ -5849,12 +5849,18 @@ Event
 				
 				class FunctionHandler : public Object, public IGuiGraphicsEventHandler
 				{
-				protected:
-					FunctionType			handler;
 				public:
+					bool					isAttached = true;
+					FunctionType			handler;
+
 					FunctionHandler(const FunctionType& _handler)
 						:handler(_handler)
 					{
+					}
+
+					bool IsAttached()override
+					{
+						return isAttached;
 					}
 
 					void Execute(GuiGraphicsComposition* sender, T& argument)
@@ -5953,6 +5959,8 @@ Event
 					{
 						if((*currentHandler)->handler == typedHandler)
 						{
+							(*currentHandler)->handler->isAttached = false;
+
 							auto next=(*currentHandler)->next;
 							(*currentHandler)=next;
 							return true;
@@ -6263,6 +6271,61 @@ Event Receiver
 				GuiNotifyEvent					clipboardNotify;
 			};
 		}
+	}
+
+	/***********************************************************************
+	Workflow to C++ Codegen Helpers
+	***********************************************************************/
+
+	namespace __vwsn
+	{
+		template<typename T>
+		struct EventHelper<presentation::compositions::GuiGraphicsEvent<T>>
+		{
+			using Event = presentation::compositions::GuiGraphicsEvent<T>;
+			using Sender = presentation::compositions::GuiGraphicsComposition;
+			using IGuiGraphicsEventHandler = presentation::compositions::IGuiGraphicsEventHandler;
+			using Handler = Func<void(Sender*, T*)>;
+
+			class EventHandlerImpl : public Object, public reflection::description::IEventHandler
+			{
+			public:
+				Ptr<IGuiGraphicsEventHandler> handler;
+
+				EventHandlerImpl(Ptr<IGuiGraphicsEventHandler> _handler)
+					:handler(_handler)
+				{
+				}
+
+				bool IsAttached()override
+				{
+					return handler->IsAttached();
+				}
+			};
+
+			static Ptr<reflection::description::IEventHandler> Attach(Event& e, Handler handler)
+			{
+				return MakePtr<EventHandlerImpl>(e.AttachLambda([=](Sender* sender, T& args)
+				{
+					handler(sender, &args);
+				}));
+			}
+
+			static bool Detach(Event& e, Ptr<reflection::description::IEventHandler> handler)
+			{
+				auto impl = handler.Cast<EventHandlerImpl>();
+				if (!impl) return false;
+				return e.Detach(impl->handler);
+			}
+
+			static auto Invoke(Event& e)
+			{
+				return [&](Sender* sender, T* args)
+				{
+					e.ExecuteWithNewSender(*args, sender);
+				};
+			}
+		};
 	}
 }
 
@@ -11192,7 +11255,7 @@ TextList Style Provider
 					void										OnStyleCheckedChanged(TextItemStyleController* style);
 				public:
 					/// <summary>Create a item style provider with a specified item style provider callback.</summary>
-					/// <param name="_textItemStyleProvider">The item style provider callback.</param>
+					/// <param name="_bulletFactory">The factory object to create the control styles for bullet before a text item.</param>
 					TextItemStyleProvider(IBulletFactory* _bulletFactory);
 					~TextItemStyleProvider();
 
@@ -11302,7 +11365,7 @@ TextList Control
 			public:
 				/// <summary>Create a Text list control in virtual mode.</summary>
 				/// <param name="_styleProvider">The style provider for this control.</param>
-				/// <param name="_itemStyleProvider">The item style provider callback for this control.</param>
+				/// <param name="_bulletFactory">The factory object to create the control styles for bullet before a text item.</param>
 				/// <param name="_itemProvider">The item provider for this control.</param>
 				GuiVirtualTextList(IStyleProvider* _styleProvider, list::TextItemStyleProvider::IBulletFactory* _bulletFactory, GuiListControl::IItemProvider* _itemProvider);
 				~GuiVirtualTextList();
@@ -11315,7 +11378,7 @@ TextList Control
 				IStyleProvider*											GetTextListStyleProvider();
 				/// <summary>Set the item style provider.</summary>
 				/// <returns>The old item style provider.</returns>
-				/// <param name="itemStyleProvider">The new item style provider.</param>
+				/// <param name="bulletFactory">The factory object to create the control styles for bullet before a text item.</param>
 				Ptr<GuiListControl::IItemStyleProvider>					ChangeItemStyle(list::TextItemStyleProvider::IBulletFactory* bulletFactory);
 			};
 			
@@ -11327,7 +11390,7 @@ TextList Control
 			public:
 				/// <summary>Create a Text list control.</summary>
 				/// <param name="_styleProvider">The style provider for this control.</param>
-				/// <param name="_itemStyleProvider">The item style provider callback for this control.</param>
+				/// <param name="_bulletFactory">The factory object to create the control styles for bullet before a text item.</param>
 				GuiTextList(IStyleProvider* _styleProvider, list::TextItemStyleProvider::IBulletFactory* _bulletFactory);
 				~GuiTextList();
 
@@ -11827,7 +11890,7 @@ ListView ItemStyleProvider
 					class IListViewItemContentProvider : public virtual IDescriptable, public Description<IListViewItemContentProvider>
 					{
 					public:
-						/// <summary>Create a default and preferred <see cref="T:vl.presentation.controls.compositions.IGuiAxis"/> for the related item style provider.</summary>
+						/// <summary>Create a default and preferred <see cref="compositions::IGuiAxis"/> for the related item style provider.</summary>
 						/// <returns>The created item coordinate transformer.</returns>
 						virtual compositions::IGuiAxis*							CreatePreferredAxis()=0;
 						/// <summary>Create a default and preferred <see cref="GuiListControl::IItemArranger"/> for the related item style provider.</summary>
@@ -12411,6 +12474,7 @@ ListView
 					void											NotifyUpdateInternal(vint start, vint count, vint newCount)override;
 				public:
 					/// <summary>Create a container.</summary>
+					/// <param name="_itemProvider">The item provider in the same control to receive notifications.</param>
 					ListViewDataColumns(IListViewItemProvider* _itemProvider);
 					~ListViewDataColumns();
 				};
@@ -12426,6 +12490,7 @@ ListView
 					void											NotifyUpdateInternal(vint start, vint count, vint newCount)override;
 				public:
 					/// <summary>Create a container.</summary>
+					/// <param name="_itemProvider">The item provider in the same control to receive notifications.</param>
 					ListViewColumns(IListViewItemProvider* _itemProvider);
 					~ListViewColumns();
 				};
@@ -13412,6 +13477,7 @@ ComboBox with GuiListControl
 				void										SetSelectedIndex(vint value);
 
 				/// <summary>Get the selected item.</summary>
+				/// <returns>The selected item.</returns>
 				description::Value							GetSelectedItem();
 				/// <summary>Get the item provider in the list control.</summary>
 				/// <returns>The item provider in the list control.</returns>
@@ -16710,8 +16776,7 @@ GuiBindableTextList
 			public:
 				/// <summary>Create a bindable Text list control.</summary>
 				/// <param name="_styleProvider">The style provider for this control.</param>
-				/// <param name="_itemStyleProvider">The item style provider callback for this control.</param>
-				/// <param name="_itemSource">The item source.</param>
+				/// <param name = "_bulletFactory">The factory object to create the control styles for bullet before a text item.</param>
 				GuiBindableTextList(IStyleProvider* _styleProvider, list::TextItemStyleProvider::IBulletFactory* _bulletFactory);
 				~GuiBindableTextList();
 				
@@ -16724,7 +16789,7 @@ GuiBindableTextList
 				/// <returns>The item source.</returns>
 				Ptr<description::IValueEnumerable>					GetItemSource();
 				/// <summary>Set the item source.</summary>
-				/// <param name="itemSource">The item source. Null is acceptable if you want to clear all data.</param>
+				/// <param name="_itemSource">The item source. Null is acceptable if you want to clear all data.</param>
 				void												SetItemSource(Ptr<description::IValueEnumerable> _itemSource);
 				
 				/// <summary>Get the text property name to get the item text from an item.</summary>
@@ -16833,7 +16898,6 @@ GuiBindableListView
 			public:
 				/// <summary>Create a bindable List view control.</summary>
 				/// <param name="_styleProvider">The style provider for this control.</param>
-				/// <param name="_itemSource">The item source.</param>
 				GuiBindableListView(IStyleProvider* _styleProvider);
 				~GuiBindableListView();
 
@@ -16848,7 +16912,7 @@ GuiBindableListView
 				/// <returns>The item source.</returns>
 				Ptr<description::IValueEnumerable>					GetItemSource();
 				/// <summary>Set the item source.</summary>
-				/// <param name="itemSource">The item source. Null is acceptable if you want to clear all data.</param>
+				/// <param name="_itemSource">The item source. Null is acceptable if you want to clear all data.</param>
 				void												SetItemSource(Ptr<description::IValueEnumerable> _itemSource);
 				
 				/// <summary>Large image property name changed event.</summary>
@@ -16972,7 +17036,6 @@ GuiBindableTreeView
 			public:
 				/// <summary>Create a bindable Tree view control.</summary>
 				/// <param name="_styleProvider">The style provider for this control.</param>
-				/// <param name="_itemSource">The item source.</param>
 				GuiBindableTreeView(IStyleProvider* _styleProvider);
 				~GuiBindableTreeView();
 				
@@ -16987,7 +17050,7 @@ GuiBindableTreeView
 				/// <returns>The item source.</returns>
 				description::Value									GetItemSource();
 				/// <summary>Set the item source.</summary>
-				/// <param name="itemSource">The item source. Null is acceptable if you want to clear all data.</param>
+				/// <param name="_itemSource">The item source. Null is acceptable if you want to clear all data.</param>
 				void												SetItemSource(description::Value _itemSource);
 				
 				/// <summary>Get the text property name to get the item text from an item.</summary>
@@ -17100,7 +17163,6 @@ GuiBindableDataGrid
 			public:
 				/// <summary>Create a bindable Data grid control.</summary>
 				/// <param name="_styleProvider">The style provider for this control.</param>
-				/// <param name="_itemSource">The item source.</param>
 				/// <param name="_viewModelContext">The view mode context, which will be passed to every visualizers and editors in this grid.</param>
 				GuiBindableDataGrid(IStyleProvider* _styleProvider, const description::Value& _viewModelContext = description::Value());
 				~GuiBindableDataGrid();
@@ -17109,7 +17171,7 @@ GuiBindableDataGrid
 				/// <returns>The item source.</returns>
 				Ptr<description::IValueEnumerable>					GetItemSource();
 				/// <summary>Set the item source.</summary>
-				/// <param name="itemSource">The item source. Null is acceptable if you want to clear all data.</param>
+				/// <param name="_itemSource">The item source. Null is acceptable if you want to clear all data.</param>
 				void												SetItemSource(Ptr<description::IValueEnumerable> _itemSource);
 				
 				/// <summary>Insert a column.</summary>
@@ -18066,8 +18128,6 @@ namespace vl
 					/// <returns>The created template.</returns>
 					/// <param name="viewModel">The view model for binding.</param>
 					virtual GuiTemplate*				CreateTemplate(const description::Value& viewModel) = 0;
-
-					static Ptr<IFactory>				CreateTemplateFactory(const collections::List<description::ITypeDescriptor*>& types);
 				};
 
 				/// <summary>Create a template.</summary>
@@ -19203,7 +19263,7 @@ IGuiResourceManager
 		class IGuiResourceManager : public IDescriptable, public Description<IGuiResourceManager>
 		{
 		public:
-			virtual bool								SetResource(const WString& name, Ptr<GuiResource> resource, GuiResourceUsage usage = GuiResourceUsage::Application) = 0;
+			virtual bool								SetResource(const WString& name, Ptr<GuiResource> resource, GuiResourceUsage usage = GuiResourceUsage::DataOnly) = 0;
 			virtual Ptr<GuiResource>					GetResource(const WString& name) = 0;
 			virtual Ptr<GuiResource>					GetResourceFromClassName(const WString& classFullName) = 0;
 		};
@@ -19245,7 +19305,7 @@ Serialization
 				static presentation::Color GetDefaultValue();
 				static bool Serialize(const presentation::Color& input, WString& output);
 				static bool Deserialize(const WString& input, presentation::Color& output);
-				static IValueType::CompareResult Compare(const presentation::Color& a, const presentation::Color& b);
+				static IBoxedValue::CompareResult Compare(const presentation::Color& a, const presentation::Color& b);
 			};
 
 			template<>
@@ -19254,7 +19314,7 @@ Serialization
 				static presentation::DocumentFontSize GetDefaultValue();
 				static bool Serialize(const presentation::DocumentFontSize& input, WString& output);
 				static bool Deserialize(const WString& input, presentation::DocumentFontSize& output);
-				static IValueType::CompareResult Compare(const presentation::DocumentFontSize& a, const presentation::DocumentFontSize& b);
+				static IBoxedValue::CompareResult Compare(const presentation::DocumentFontSize& a, const presentation::DocumentFontSize& b);
 			};
 
 			template<>
@@ -19263,7 +19323,7 @@ Serialization
 				static presentation::GlobalStringKey GetDefaultValue();
 				static bool Serialize(const presentation::GlobalStringKey& input, WString& output);
 				static bool Deserialize(const WString& input, presentation::GlobalStringKey& output);
-				static IValueType::CompareResult Compare(const presentation::GlobalStringKey& a, const presentation::GlobalStringKey& b);
+				static IBoxedValue::CompareResult Compare(const presentation::GlobalStringKey& a, const presentation::GlobalStringKey& b);
 			};
 
 /***********************************************************************
