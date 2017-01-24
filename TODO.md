@@ -4,10 +4,10 @@
 * Workflow
     * **Workflow to C++ code generation with hint**.
         * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
-        * Use ::vl::vint for int in both 32 and 64 configurations
+        * Use ::vl::vint for int in both 32 and 64 configurations.
+        * Process nested `{}` in user code.
 * GacUI
     * Standard GacGen.exe resource representation
-    * C++ Code Generation Configuration
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
 
 ## Comming Soon
@@ -30,9 +30,7 @@
         * **TabTemplate**.(Header|Dropdown|Menu|MenuItem)Template
 	* IEventInfo::ICpp for composition events
 * GacGen.exe
-    * Add G4, Retire G2 [(reference)](http://www.gaclib.net/#~/Tutorial)
     * Regenerate G2 tutorials using G4
-        * **HelloWorlds**: CppXml, MVVM
         * **Layout**: Alignment, Flow, Stack, Table, TableSplitter, RichTextEmbedding
         * **Controls**: ContainersAndButtons, TextEditor, ColorPicker, AddressBook
         * **ControlTemplates**: BlackSkin
