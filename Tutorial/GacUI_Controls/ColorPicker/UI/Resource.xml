@@ -2,19 +2,15 @@
 <Resource>
   <Folder name="GacGenConfig">
     <Folder name="Cpp">
-      <Text name="Output">Source</Text>
-      <Text name="Include">GacUIReflection.h</Text>
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\ColorPicker.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
       <Text name="Name">Demo</Text>
-      <Text name="Prefix"></Text>
-    </Folder>
-    <Folder name="Res">
-      <Text name="Output">..\..\UIRes</Text>
-      <Text name="PrecompiledBinary">ColorPicker.bin</Text>
     </Folder>
   </Folder>
   
-  <Script>
-    <Workflow-ViewModel>
+  <Script name="ViewModelResource">
+    <Workflow>
       <![CDATA[
         module viewmodel;
         
@@ -38,7 +34,7 @@
           }
         }
       ]]>
-    </Workflow-ViewModel>
+    </Workflow>
   </Script>
   
   <Folder name="MainWindow">
@@ -82,7 +78,29 @@
     <Instance name="ColorBomboItemTemplateResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::ColorBomboItemTemplate">
         <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
-        <ref.Property Name="TextColor" Type="Color"/>
+        <ref.Members>
+          <![CDATA[
+            @cpp:Protected
+            var textColor : Color = cast Color "#000000";
+            event TextColorChanged();
+            
+            func GetTextColor() : Color
+            {
+              return textColor;
+            }
+            
+            func SetTextColor(value : Color) : void
+            {
+              if (textColor != value)
+              {
+                textColor = value;
+                TextColorChanged();
+              }
+            }
+            
+            prop TextColor : Color {GetTextColor, SetTextColor : TextColorChanged}
+          ]]>
+        </ref.Members>
         <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
           <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>

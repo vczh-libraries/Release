@@ -2,19 +2,15 @@
 <Resource>
   <Folder name="GacGenConfig">
     <Folder name="Cpp">
-      <Text name="Output">Source</Text>
-      <Text name="Include">GacUIReflection.h</Text>
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\AddressBook.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
       <Text name="Name">Demo</Text>
-      <Text name="Prefix"></Text>
-    </Folder>
-    <Folder name="Res">
-      <Text name="Output">..\..\UIRes</Text>
-      <Text name="PrecompiledBinary">AddressBook.bin</Text>
     </Folder>
   </Folder>
 
-  <Script>
-    <Workflow-ViewModel>
+  <Script name="ViewModelResource">
+    <Workflow>
       <![CDATA[
         module viewmodel;
 
@@ -88,7 +84,7 @@
           }
         }
       ]]>
-    </Workflow-ViewModel>
+    </Workflow>
   </Script>
 
   <Folder name="Images">
