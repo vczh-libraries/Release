@@ -12,6 +12,12 @@
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
         <ref.State Name="integerState" Type="int" Value="0"/>
+        <ref.Members>
+          <![CDATA[
+            @cpp:Protected
+            var integerState : int = 0;
+          ]]>
+        </ref.Members>
         <Window ref.Name="self" Text="Member_Field" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
           <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">

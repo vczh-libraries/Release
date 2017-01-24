@@ -22,7 +22,29 @@
 
     <Instance name="MyControlResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MyControl" xmlns:x="presentation::controls::GuiSelectableButton::*">
-        <ref.Property Name="SelectedOption" Type="string" Value="A"/>
+        <ref.Members>
+          <![CDATA[
+            @cpp:Protected
+            var selectedOption : string = "A";
+            event SelectedOptionChanged();
+            
+            func GetSelectedOption() : string
+            {
+              return selectedOption;
+            }
+            
+            func SetSelectedOption(value : string) : void
+            {
+              if (selectedOption != value)
+              {
+                selectedOption = value;
+                SelectedOptionChanged();
+              }
+            }
+            
+            prop SelectedOption : string {GetSelectedOption, SetSelectedOption : SelectedOptionChanged}
+          ]]>
+        </ref.Members>
         <CustomControl ref.Name="self">
           <x:MutexGroupController ref.Name="optionGroup"/>
           <att.ContainerComposition-set MinSizeLimitation="LimitToElementAndChildren"/>

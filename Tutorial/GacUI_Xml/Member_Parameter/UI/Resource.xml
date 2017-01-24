@@ -10,17 +10,19 @@
   </Folder>
   <Folder name="MainWindow">
     <Script>
-      <Workflow-ViewModel>
-        module script;
+      <Workflow>
+        <![CDATA[
+          module script;
         
-        namespace demo
-        {
-          interface IViewModel
+          namespace demo
           {
-            func GetText() : string;
+            interface IViewModel
+            {
+              func GetText() : string;
+            }
           }
-        }
-      </Workflow-ViewModel>
+        ]]>
+      </Workflow>
     </Script>
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
