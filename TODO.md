@@ -31,7 +31,7 @@
 	* IEventInfo::ICpp for composition events
 * GacGen.exe
     * Regenerate G2 tutorials using G4
-        * **Layout**: Alignment, Flow, Stack, Table, TableSplitter, RichTextEmbedding
+        * **Layout**: RichTextEmbedding
         * **Controls**: ContainersAndButtons, TextEditor, ColorPicker, AddressBook
         * **ControlTemplates**: BlackSkin
     
