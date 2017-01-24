@@ -10,6 +10,7 @@ https://github.com/vczh-libraries
 #ifndef VCZH_WORKFLOW_COMPILER_GENERATED_DEMOPARTIALCLASSES
 #define VCZH_WORKFLOW_COMPILER_GENERATED_DEMOPARTIALCLASSES
 
+#include "GacUI.h"
 
 #if defined( _MSC_VER)
 #pragma warning(push)
