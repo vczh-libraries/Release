@@ -17,7 +17,7 @@ void GuiMain()
 		List<WString> errors;
 		FileStream fileStream(L"../UIRes/Xml.bin", FileStream::ReadOnly);
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
-		GetResourceManager()->SetResource(L"Resource", resource, GuiResourceUsage::DevelopmentTool);
+		GetResourceManager()->SetResource(L"Resource", resource, GuiResourceUsage::InstanceClass);
 	}
 
 	auto window = UnboxValue<GuiWindow*>(Value::Create(L"helloworld::MainWindow"));
