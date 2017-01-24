@@ -27,7 +27,7 @@ public:
 		return userName;
 	}
 
-	void SetUserName(WString value)override
+	void SetUserName(const WString& value)override
 	{
 		userName = value;
 		UserNameErrorChanged();
@@ -47,7 +47,7 @@ public:
 		return password;
 	}
 
-	void SetPassword(WString value)override
+	void SetPassword(const WString& value)override
 	{
 		password = value;
 		PasswordErrorChanged();

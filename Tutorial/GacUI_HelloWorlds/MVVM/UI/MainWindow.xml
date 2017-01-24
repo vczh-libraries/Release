@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Instance ref.CodeBehind="true" ref.Class="helloworld::MainWindow">
   <ref.Parameter Name="ViewModel" Class="vm::IViewModel"/>
-  <ref.Property Name="HasLoggedIn" Type="bool" Value="false"/>
+  <ref.Members>
+    @cpp:Protected
+    var hasLoggedIn : bool = false;
+    event HasLoggedInChanged();
+
+    func GetHasLoggedIn() : bool
+    {
+    return hasLoggedIn;
+    }
+
+    func SetHasLoggedIn(value : bool) : void
+    {
+    if (hasLoggedIn != value)
+    {
+    hasLoggedIn = value;
+    HasLoggedInChanged();
+    }
+    }
+
+    prop HasLoggedIn : bool {GetHasLoggedIn, SetHasLoggedIn : HasLoggedInChanged}
+  </ref.Members>
   <Window ref.Name="self" Text="Let's Sign Up!" ClientSize="x:320 y:280">
     <att.BoundsComposition-set PreferredMinSize="x:320 y:280"/>
     <att.ViewModel-set UserName-bind="textBoxUserName.Text" Password-bind="textBoxPassword.Text"/>
