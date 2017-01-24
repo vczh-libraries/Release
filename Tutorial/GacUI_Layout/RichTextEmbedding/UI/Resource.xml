@@ -2,14 +2,10 @@
 <Resource>
   <Folder name="GacGenConfig">
     <Folder name="Cpp">
-      <Text name="Output">Source</Text>
-      <Text name="Include">GacUIReflection.h</Text>
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\RichTextEmbedding.bin</Text>
+      <Text name="Include">GacUI.h</Text>
       <Text name="Name">Demo</Text>
-      <Text name="Prefix"></Text>
-    </Folder>
-    <Folder name="Res">
-      <Text name="Output">..\..\UIRes</Text>
-      <Text name="PrecompiledBinary">RichTextEmbedding.bin</Text>
     </Folder>
   </Folder>
   <Folder name="EmbeddedDocument">
@@ -18,7 +14,7 @@
   </Folder>
   <Folder name="MainWindow">
     <Script name="ViewModelResource">
-      <Workflow-ViewModel>
+      <Workflow>
         <![CDATA[
           module viewmodel;
           
@@ -30,7 +26,7 @@
             }
           }
         ]]>
-      </Workflow-ViewModel>
+      </Workflow>
     </Script>
     <Instance content="File" name="MainWindowResource">MainWindow.xml</Instance>
   </Folder>
