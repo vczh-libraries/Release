@@ -13,7 +13,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 class ViewModelImpl : public Object, public virtual demo::IViewModel
 {
 public:
-	WString GetMessageFromName(WString name)override
+	WString GetMessageFromName(const WString& name)override
 	{
 		return L"Hi, " + name + L"! How are you?";
 	}

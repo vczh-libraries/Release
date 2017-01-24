@@ -10,7 +10,7 @@
   </Folder>
   <Folder name="MainWindow">
     <Script name="ViewModelResource">
-      <Workflow-ViewModel>
+      <Workflow>
         <![CDATA[
           module script;
         
@@ -22,7 +22,7 @@
             }
           }
         ]]>
-      </Workflow-ViewModel>
+      </Workflow>
     </Script>
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
