@@ -13,7 +13,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 class ViewModel : public Object, public virtual demo::IViewModel
 {
 public:
-	void OpenUrl(WString url)override
+	void OpenUrl(const WString& url)override
 	{
 		ShellExecute(NULL, L"OPEN", url.Buffer(), NULL, NULL, SW_MAXIMIZE);
 	}
