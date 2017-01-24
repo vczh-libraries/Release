@@ -34,11 +34,6 @@
         * **Layout**: Alignment, Flow, Stack, Table, TableSplitter, RichTextEmbedding
         * **Controls**: ContainersAndButtons, TextEditor, ColorPicker, AddressBook
         * **ControlTemplates**: BlackSkin
-        * **Xml**:
-            * Binding_(Bind|Eval|Format|Uri|ViewModel)
-            * Event_(Cpp|Script|ViewModel)
-            * Instance_(Control|WIndow|MultipleWindows)
-            * Member_(Field|Parameter|Property)
     
 ## Wait For A Few Releases
 * Workflow
