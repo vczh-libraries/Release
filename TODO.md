@@ -8,6 +8,8 @@
 * GacUI
     * Standard GacGen.exe resource representation
     * C++ Code Generation Configuration
+    * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
+
 ## Comming Soon
 * GacUI
     * Don't use string for XXXProperty:
@@ -51,7 +53,6 @@
     * InheritableCustomControl  
     * GuiCustomControl::SetContainerComposition // using a special syntax
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
-    * Report errors with XML row/column number
 * GacUI
     * New predefined control templates, written in XML generated C++ code.
     * Retire Win7/Win8 control templates, rewrite them in tutorials.
