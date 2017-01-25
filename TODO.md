@@ -7,7 +7,7 @@
         * Use ::vl::vint for int in both 32 and 64 configurations.
         * Process nested `{}` in user code.
 * GacUI
-    * Standard GacGen.exe resource representation
+    * Correct hint for `controls::list::ItemBase<T>`
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
 
 ## Comming Soon
@@ -33,8 +33,8 @@
     * Regenerate G2 tutorials using G4
         * **Layout**: **RichTextEmbedding**
         * **Controls**: TextEditor, **ColorPicker**, **AddressBook**
-        * **ControlTemplates**: BlackSkin
-    
+        * **ControlTemplates**: **BlackSkin**
+
 ## Wait For A Few Releases
 * Workflow
     * Auto property
