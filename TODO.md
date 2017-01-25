@@ -5,7 +5,6 @@
     * **Workflow to C++ code generation with hint**.
         * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
         * Use ::vl::vint for int in both 32 and 64 configurations.
-        * Process nested `{}` in user code.
 * GacUI
     * Correct hint for `controls::list::ItemBase<T>`
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
