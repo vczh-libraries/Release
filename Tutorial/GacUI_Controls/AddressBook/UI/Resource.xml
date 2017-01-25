@@ -4,7 +4,7 @@
     <Folder name="Cpp">
       <Text name="SourceFolder">Source</Text>
       <Text name="Resource">..\..\UIRes\AddressBook.bin</Text>
-      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="NormalInclude">GacUIReflection.h</Text>
       <Text name="Name">Demo</Text>
     </Folder>
   </Folder>
@@ -109,6 +109,19 @@
     <Instance name="MainWindowResource">
       <Instance ref.Class="demo::MainWindow">
         <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
+        <ref.Members>
+          <![CDATA[
+            func ClearViewSelection() : void
+            {
+              commandBigIcon.Selected = false;
+              commandSmallIcon.Selected = false;
+              commandList.Selected = false;
+              commandDetail.Selected = false;
+              commandTile.Selected = false;
+              commandInformation.Selected = false;
+            }
+          ]]>
+        </ref.Members>
         <Window ref.Name="self" Text="AddressBook" ClientSize="x:640 y:480">
           <att.BoundsComposition-set PreferredMinSize="x:640 y:480"/>
 
@@ -313,8 +326,31 @@
     
     <Instance name="NewFolderWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::NewFolderWindow">
-        <ref.Property Name="FolderName" Type="string" Value=""/>
-        <ref.Property Name="Ready" Type="bool" Value="true"/>
+        <ref.Members>
+          <![CDATA[
+            @cpp:Protected
+            var folderName : string = "";
+            event FolderNameChanged();
+            
+            func GetFolderName() : string
+            {
+              return folderName;
+            }
+            
+            func SetFolderName(value : string) : void
+            {
+              if (folderName != value)
+              {
+                folderName = value;
+                FolderNameChanged();
+              }
+            }
+            
+            prop FolderName : string {GetFolderName, SetFolderName : FolderNameChanged}
+            
+            var Ready : bool = true;
+          ]]>
+        </ref.Members>
         <Window ref.Name="self" Text="New Folder" ClientSize="x:240 y:120" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
           <att.FolderName-bind>textBoxName.Text</att.FolderName-bind>
           
@@ -360,9 +396,32 @@
 
     <Instance name="NewContactWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::NewContactWindow">
-        <ref.Property Name="ForEdit" Type="bool" Value="false"/>
-        <ref.Property Name="Ready" Type="bool" Value="true"/>
         <ref.Parameter Name="Contact" Class="demo::IContact"/>
+        <ref.Members>
+          <![CDATA[
+            @cpp:Protected
+            var forEdit : bool = false;
+            event ForEditChanged();
+            
+            func GetForEdit() : bool
+            {
+              return forEdit;
+            }
+            
+            func SetForEdit(value : bool) : void
+            {
+              if (forEdit != value)
+              {
+                forEdit = value;
+                ForEditChanged();
+              }
+            }
+            
+            prop ForEdit : bool {GetForEdit, SetForEdit : ForEditChanged}
+          
+            var Ready : bool = true;
+          ]]>
+        </ref.Members>
         <Window ref.Name="self" Text-bind="self.ForEdit ? 'Edit Contact' : 'New Contact'" ClientSize="x:480 y:360" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
 
           <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0">
