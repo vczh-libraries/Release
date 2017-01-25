@@ -28,8 +28,6 @@
         * **TabTemplate**.(Header|Dropdown|Menu|MenuItem)Template
 	* IEventInfo::ICpp for composition events
 * GacGen.exe
-    * Regenerate G2 tutorials using G4
-        * **Controls**: TextEditor
     * Add VCZH_DEBUG_NO_REFLECTION
         * **ControlTemplates**: BlackSkin `see: GacUI/(1)`
         * **Controls**: ColorPicker, AddressBook `see: GacUI/(2)`
