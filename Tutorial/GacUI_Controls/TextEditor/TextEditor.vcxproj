@@ -83,6 +83,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="UI\Source\AboutWindow.cpp" />
     <ClCompile Include="UI\Source\DemoPartialClasses.cpp" />
+    <ClCompile Include="UI\Source\FindWindow.cpp" />
     <ClCompile Include="UI\Source\MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +97,9 @@
     <ClInclude Include="UI\Source\AboutWindow.h" />
     <ClInclude Include="UI\Source\Demo.h" />
     <ClInclude Include="UI\Source\DemoPartialClasses.h" />
+    <ClInclude Include="UI\Source\FindWindow.h" />
     <ClInclude Include="UI\Source\MainWindow.h" />
+    <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="UI\Images\EditCopy.png" />

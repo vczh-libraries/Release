@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
+  <ref.Members>
+    <![CDATA[
+      @cpp:UserImpl
+      func CanCloseFile() : bool {}
+      
+      @cpp:UserImpl
+      func OpenFile(filterIndex : int) : bool {}
+      
+      @cpp:UserImpl
+      func SaveFile(saveAs : bool) : bool {}
+      
+      @cpp:UserImpl
+      func SetupTextConfig() : void {}
+      
+      @cpp:UserImpl
+      func SetupXmlConfig() : void {}
+      
+      @cpp:Protected
+      var fileName : string = "";
+      
+      @cpp:Protected
+      var isXml : bool = false;
+      
+      @cpp:Protected
+      var findWindow : GuiWindow^ = null;
+    ]]>
+  </ref.Members>
   <Window ref.Name="self" Text="TextEditor" ClientSize="x:480 y:320" ev.WindowClosing="window_Closing">
     <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
 

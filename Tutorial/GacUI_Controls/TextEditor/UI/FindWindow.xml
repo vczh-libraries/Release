@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Folder>
-  <Script name="ViewModelResource">
-    <Workflow-ViewModel>
-      <![CDATA[
-        module viewmodel;
-          
-        namespace vm
-        {
-          interface IFindWindowViewModel
-          {
-            func FindNext(toFind : string, caseSensitive : bool, down : bool) : bool;
-          }
-        }
-      ]]>
-    </Workflow-ViewModel>
-  </Script>
   <Instance name="FindWindowResource">
-    <Instance ref.CodeBehind="false" ref.Class="demo::FindWindow" xmlns:x="presentation::controls::GuiSelectableButton::*">
-      <ref.Parameter Name="ViewModel" Class="vm::IFindWindowViewModel"/>
+    <Instance ref.Class="demo::FindWindow" xmlns:x="presentation::controls::GuiSelectableButton::*">
+      <ref.Members>
+        <![CDATA[
+          @cpp:UserImpl
+          @cpp:Protected
+          func FindNext(toFind : string, caseSensitive : bool, down : bool) : bool {}
+          
+          var textBox : MultilineTextBox* = null;
+        ]]>
+      </ref.Members>
       <Window ref.Name="self" Text="Find" ClientSize="x:360 y:150" MinimizedBox="false" MaximizedBox="false">
         <att.BoundsComposition-set PreferredMinSize="x:360 y:150"/>
         <x:MutexGroupController ref.Name="groupDirection"/>
@@ -83,7 +76,7 @@
               <ev.Clicked-eval>
                 <![CDATA[
                   {
-                    if (not ViewModel.FindNext(textFind.Text, checkCase.Selected, radioDown.Selected))
+                    if (not self.FindNext(textFind.Text, checkCase.Selected, radioDown.Selected))
                     {
                       dialogContentNotFound.ShowDialog();
                     }

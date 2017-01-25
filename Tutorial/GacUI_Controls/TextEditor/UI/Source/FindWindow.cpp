@@ -26,26 +26,79 @@ https://github.com/vczh-libraries
 #define USERIMPL(...)
 
 /***********************************************************************
-Class (::demo::AboutWindow)
+Class (::demo::FindWindow)
 ***********************************************************************/
 
 namespace demo
 {
-	USERIMPL(/* ::demo::AboutWindow */)
-	void AboutWindow::documentLabel_ActiveHyperlinkExecuted(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
+	USERIMPL(/* ::demo::FindWindow */)
+	bool FindWindow::FindNext(const ::vl::WString& toFind, bool caseSensitive, bool down)
 	{
-		OpenUrl(documentLabel->GetActiveHyperlinkReference());
+		auto position = textBox->GetCaretEnd();
+		auto rowCount = textBox->GetRowCount();
+		auto normalization = caseSensitive ? Locale::None : Locale::IgnoreCase;
+
+		for (vint i = position.row; 0 <= i&&i < rowCount; (down ? i++ : i--))
+		{
+			auto rowText = textBox->GetRowText(i);
+			auto fragment = rowText;
+			if (i == position.row)
+			{
+				if (down)
+				{
+					fragment = rowText.Right(rowText.Length() - position.column);
+				}
+				else
+				{
+					fragment = rowText.Left(position.column);
+				}
+			}
+
+			auto pair = down
+				? INVLOC.FindFirst(fragment, toFind, normalization)
+				: INVLOC.FindLast(fragment, toFind, normalization)
+				;
+
+			if (pair.key != -1)
+			{
+				TextPos begin, end;
+				if (i == position.row && down)
+				{
+					begin = TextPos(i, pair.key + position.column);
+				}
+				else
+				{
+					begin = TextPos(i, pair.key);
+				}
+
+				if (down)
+				{
+					end = TextPos(begin.row, begin.column + pair.value);
+				}
+				else
+				{
+					end = TextPos(begin.row, begin.column);
+					begin.column += pair.value;
+				}
+
+				textBox->Select(begin, end);
+				textBox->SetFocus();
+				return true;
+			}
+		}
+
+		return false;
 	}
 
-	AboutWindow::AboutWindow()
+	FindWindow::FindWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateWindowStyle())
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::AboutWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::FindWindow", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->__vwsn_initialize_instance_(this, ::vl::__vwsn::Ensure(static_cast<::vl::presentation::GuiResourcePathResolver*>(__vwsn_resolver_.Obj())));
 	}
 
-	AboutWindow::~AboutWindow()
+	FindWindow::~FindWindow()
 	{
 		::vl::__vwsn::This(this)->ClearSubscriptions();
 	}
