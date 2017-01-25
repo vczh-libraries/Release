@@ -325,6 +325,7 @@ Closure Definitions
 				return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
 			}
 		}
+		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
 	}
 
 	//-------------------------------------------------------------------
@@ -743,6 +744,7 @@ Closure Definitions
 				return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
 			}
 		}
+		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
 	}
 
 /***********************************************************************
@@ -1020,7 +1022,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_1)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->SetItemSource(::vl::__vwsn::Ensure(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(::vl::__vwsn::This(this)->ViewModel.Obj())->GetColorItems())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->SetItemSource(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(::vl::__vwsn::This(this)->ViewModel.Obj())->GetColorItems()));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->SetSelectedIndex(0);
@@ -1079,17 +1081,18 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
-			IMPL_CPP_TYPE_INFO(::demo::ColorBomboItemTemplate)
-			IMPL_CPP_TYPE_INFO(::demo::ColorBomboItemTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::demo::ColorListItemTemplate)
-			IMPL_CPP_TYPE_INFO(::demo::ColorListItemTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::demo::IColorItem)
-			IMPL_CPP_TYPE_INFO(::demo::IViewModel)
-			IMPL_CPP_TYPE_INFO(::demo::MainWindow)
-			IMPL_CPP_TYPE_INFO(::demo::MainWindowConstructor)
+			IMPL_CPP_TYPE_INFO(demo::ColorBomboItemTemplate)
+			IMPL_CPP_TYPE_INFO(demo::ColorBomboItemTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(demo::ColorListItemTemplate)
+			IMPL_CPP_TYPE_INFO(demo::ColorListItemTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(demo::IColorItem)
+			IMPL_CPP_TYPE_INFO(demo::IViewModel)
+			IMPL_CPP_TYPE_INFO(demo::MainWindow)
+			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::ColorBomboItemTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::ColorBomboItemTemplate*(::vl::Ptr<::demo::IColorItem>), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(GetTextColor, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(SetTextColor, { L"value" })
@@ -1101,6 +1104,7 @@ namespace vl
 			END_CLASS_MEMBER(::demo::ColorBomboItemTemplate)
 
 			BEGIN_CLASS_MEMBER(::demo::ColorBomboItemTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::ColorBomboItemTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -1112,12 +1116,14 @@ namespace vl
 			END_CLASS_MEMBER(::demo::ColorBomboItemTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::ColorListItemTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::ColorListItemTemplate*(::vl::Ptr<::demo::IColorItem>), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
 				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
 			END_CLASS_MEMBER(::demo::ColorListItemTemplate)
 
 			BEGIN_CLASS_MEMBER(::demo::ColorListItemTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::ColorListItemTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(ViewModel)
@@ -1137,12 +1143,14 @@ namespace vl
 			END_INTERFACE_MEMBER(::demo::IViewModel)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(::vl::Ptr<::demo::IViewModel>), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
 				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
