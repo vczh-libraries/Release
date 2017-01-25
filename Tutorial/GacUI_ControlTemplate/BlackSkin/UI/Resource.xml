@@ -26,5 +26,5 @@
     <Doc content="File">XmlDocDemo.xml</Doc>
   </Folder>
   <Folder name="DarkSkin" content="Link">Skin.xml</Folder>
-  <Instance name="MainWindow" content="Link">MainWindow.xml</Instance>
+  <Folder name="MainWindow" content="Link">MainWindow.xml</Folder>
 </Resource>

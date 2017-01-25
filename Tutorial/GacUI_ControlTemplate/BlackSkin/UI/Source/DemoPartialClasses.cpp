@@ -22083,7 +22083,7 @@ Class (::darkskin::HScrollTemplateConstructor)
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf36_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->leftButtonDown, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->GetEventReceiver()->leftButtonDown, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc70_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
@@ -22092,7 +22092,7 @@ Class (::darkskin::HScrollTemplateConstructor)
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf38_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_8)->leftButtonDown, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_8)->GetEventReceiver()->leftButtonDown, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc72_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
@@ -22106,15 +22106,15 @@ Class (::darkskin::HScrollTemplateConstructor)
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf41_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->leftButtonDown, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->leftButtonDown, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf42_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->leftButtonUp, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->leftButtonUp, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf43_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->mouseMove, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->mouseMove, __vwsn_event_handler_);
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetContainerComposition(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->self)));
@@ -22237,15 +22237,15 @@ Class (::darkskin::HTrackerTemplateConstructor)
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf45_Demo_darkskin_HTrackerTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->leftButtonDown, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->leftButtonDown, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf46_Demo_darkskin_HTrackerTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->leftButtonUp, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->leftButtonUp, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf47_Demo_darkskin_HTrackerTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->mouseMove, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->mouseMove, __vwsn_event_handler_);
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetContainerComposition(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->self)));
@@ -25139,7 +25139,7 @@ Class (::darkskin::VScrollTemplateConstructor)
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf121_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->leftButtonDown, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->GetEventReceiver()->leftButtonDown, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc226_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
@@ -25148,7 +25148,7 @@ Class (::darkskin::VScrollTemplateConstructor)
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf123_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_8)->leftButtonDown, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_8)->GetEventReceiver()->leftButtonDown, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc228_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
@@ -25162,15 +25162,15 @@ Class (::darkskin::VScrollTemplateConstructor)
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf126_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->leftButtonDown, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->leftButtonDown, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf127_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->leftButtonUp, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->leftButtonUp, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf128_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->mouseMove, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->mouseMove, __vwsn_event_handler_);
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetContainerComposition(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->self)));
@@ -25293,15 +25293,15 @@ Class (::darkskin::VTrackerTemplateConstructor)
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf130_Demo_darkskin_VTrackerTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->leftButtonDown, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->leftButtonDown, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf131_Demo_darkskin_VTrackerTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->leftButtonUp, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->leftButtonUp, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf132_Demo_darkskin_VTrackerTemplateConstructor___vwsn_initialize_instance__(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->mouseMove, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->handle)->GetEventReceiver()->mouseMove, __vwsn_event_handler_);
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetContainerComposition(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->self)));
