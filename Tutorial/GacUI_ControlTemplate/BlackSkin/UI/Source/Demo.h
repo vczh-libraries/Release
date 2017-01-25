@@ -118,6 +118,8 @@ namespace vl
 			DECL_TYPE_INFO(::darkskin::VTrackerTemplateConstructor)
 			DECL_TYPE_INFO(::darkskin::WindowTemplate)
 			DECL_TYPE_INFO(::darkskin::WindowTemplateConstructor)
+			DECL_TYPE_INFO(::demo::MainWindow)
+			DECL_TYPE_INFO(::demo::MainWindowConstructor)
 #endif
 
 			extern bool LoadDemoTypes();

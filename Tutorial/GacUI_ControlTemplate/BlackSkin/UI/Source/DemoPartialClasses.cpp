@@ -383,6 +383,33 @@ Closure Definitions
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
+	struct __vwsnf135_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf135_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf136_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf136_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+	};
+
+	struct __vwsnf137_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf137_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+	};
+
 	struct __vwsnf13_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance__
 	{
 		::darkskin::CheckBoxTemplateConstructor* __vwsnthis_0;
@@ -4123,6 +4150,86 @@ Closure Definitions
 		bool StopListening() override;
 	};
 
+	class __vwsnc242_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc242_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc243_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc243_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc244_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc244_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc245_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc245_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc246_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc246_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc247_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc247_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc248_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc248_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc249_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc249_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
 	class __vwsnc24_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
 	{
 	public:
@@ -4136,6 +4243,106 @@ Closure Definitions
 		::vl::reflection::description::IValueSubscription* GetSubscription() override;
 		bool GetStopped() override;
 		bool StopListening() override;
+	};
+
+	class __vwsnc250_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc250_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc251_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc251_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc252_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc252_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc253_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc253_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc254_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc254_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc255_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc255_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc256_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc256_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc257_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc257_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc258_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc258_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc259_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc259_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
 	};
 
 	class __vwsnc25_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
@@ -4158,6 +4365,106 @@ Closure Definitions
 		bool Close() override;
 	};
 
+	class __vwsnc260_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc260_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc261_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc261_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc262_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc262_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc263_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc263_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc264_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc264_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc265_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc265_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc266_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc266_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc267_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc267_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc268_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc268_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc269_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc269_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
 	class __vwsnc26_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
 	{
 	public:
@@ -4171,6 +4478,106 @@ Closure Definitions
 		::vl::reflection::description::IValueSubscription* GetSubscription() override;
 		bool GetStopped() override;
 		bool StopListening() override;
+	};
+
+	class __vwsnc270_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc270_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc271_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc271_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc272_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc272_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc273_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc273_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc274_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc274_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc275_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc275_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc276_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc276_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc277_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc277_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc278_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc278_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc279_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc279_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
 	};
 
 	class __vwsnc27_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
@@ -4193,6 +4600,106 @@ Closure Definitions
 		bool Close() override;
 	};
 
+	class __vwsnc280_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc280_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc281_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc281_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc282_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc282_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc283_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc283_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc284_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc284_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc285_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc285_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc286_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc286_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc287_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc287_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc288_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc288_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc289_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc289_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
 	class __vwsnc28_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
 	{
 	public:
@@ -4206,6 +4713,106 @@ Closure Definitions
 		::vl::reflection::description::IValueSubscription* GetSubscription() override;
 		bool GetStopped() override;
 		bool StopListening() override;
+	};
+
+	class __vwsnc290_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc290_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc291_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc291_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc292_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc292_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc293_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc293_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc294_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc294_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc295_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc295_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc296_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc296_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc297_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc297_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc298_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc298_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc299_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc299_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
 	};
 
 	class __vwsnc29_Demo_darkskin_CheckItemBackgroundTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
@@ -4249,6 +4856,106 @@ Closure Definitions
 		bool StopListening() override;
 	};
 
+	class __vwsnc300_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc300_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc301_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc301_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc302_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc302_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc303_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc303_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc304_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc304_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc305_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc305_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc306_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc306_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc307_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc307_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc308_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc308_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc309_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc309_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
 	class __vwsnc30_Demo_darkskin_CheckItemBackgroundTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
 	{
 	public:
@@ -4262,6 +4969,106 @@ Closure Definitions
 		::vl::reflection::description::IValueSubscription* GetSubscription() override;
 		bool GetStopped() override;
 		bool StopListening() override;
+	};
+
+	class __vwsnc310_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc310_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc311_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc311_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc312_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc312_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc313_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc313_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc314_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc314_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc315_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc315_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc316_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc316_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc317_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc317_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc318_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc318_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc319_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc319_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
 	};
 
 	class __vwsnc31_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
@@ -4290,6 +5097,106 @@ Closure Definitions
 		bool Close() override;
 	};
 
+	class __vwsnc320_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc320_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc321_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc321_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc322_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc322_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc323_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc323_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc324_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc324_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc325_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc325_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc326_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc326_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc327_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc327_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc328_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc328_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc329_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc329_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
 	class __vwsnc32_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
 	{
 	public:
@@ -4303,6 +5210,106 @@ Closure Definitions
 		::vl::reflection::description::IValueSubscription* GetSubscription() override;
 		bool GetStopped() override;
 		bool StopListening() override;
+	};
+
+	class __vwsnc330_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc330_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc331_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc331_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc332_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc332_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc333_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc333_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc334_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc334_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc335_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc335_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc336_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc336_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc337_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc337_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc338_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc338_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc339_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc339_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
 	};
 
 	class __vwsnc33_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
@@ -4325,6 +5332,106 @@ Closure Definitions
 		bool Close() override;
 	};
 
+	class __vwsnc340_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc340_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc341_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc341_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc342_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc342_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc343_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc343_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc344_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc344_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc345_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc345_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc346_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc346_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc347_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc347_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc348_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc348_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc349_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc349_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
 	class __vwsnc34_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
 	{
 	public:
@@ -4334,6 +5441,121 @@ Closure Definitions
 		::darkskin::ComboBoxTemplateConstructor* __vwsnthis_1;
 
 		__vwsnc34_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::darkskin::ComboBoxTemplateConstructor* __vwsnctorthis_1);
+
+		::vl::reflection::description::IValueSubscription* GetSubscription() override;
+		bool GetStopped() override;
+		bool StopListening() override;
+	};
+
+	class __vwsnc350_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc350_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc351_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc351_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc352_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc352_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc353_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc353_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc354_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc354_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc355_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc355_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc356_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc356_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc357_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc357_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+	};
+
+	class __vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::controls::GuiScroll* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		bool __vwsn_bind_opened_ = false;
+		bool __vwsn_bind_closed_ = false;
+		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
+		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		void __vwsn_bind_initialize_();
+		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
+		bool Update() override;
+		bool Close() override;
+	};
+
+	class __vwsnc359_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
+	{
+	public:
+		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
+		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
+		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
+		::demo::MainWindowConstructor* __vwsnthis_1;
+
+		__vwsnc359_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
 
 		::vl::reflection::description::IValueSubscription* GetSubscription() override;
 		bool GetStopped() override;
@@ -4361,6 +5583,15 @@ Closure Definitions
 		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
 		bool Update() override;
 		bool Close() override;
+	};
+
+	class __vwsnc360_Demo_demo_MainWindow___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	{
+	public:
+
+		__vwsnc360_Demo_demo_MainWindow___vl_presentation_templates_GuiTemplate_IFactory();
+
+		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
 	};
 
 	class __vwsnc36_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
@@ -6320,6 +7551,48 @@ Closure Definitions
 			return;
 		}
 		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_23.Obj())->SetText(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf135_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf135_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf135_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	{
+		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_219)->GetPosition();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::vint32_t>(__vwsn_value_);
+		if ((__vwsn_old_ == __vwsn_new_))
+		{
+			return;
+		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_219)->SetPosition(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf136_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf136_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf136_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->tabControls)->SetEnabled((! ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->tabControls)->GetEnabled()));
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf137_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf137_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf137_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->tabControls)->CreatePage((- 1)))->SetText(::vl::WString(L"This is a new tab page", false));
 	}
 
 	//-------------------------------------------------------------------
@@ -16354,6 +17627,126 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
+	__vwsnc242_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc242_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc242_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiMenuTemplate*>(new ::darkskin::ToolstripMenuTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc243_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc243_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc243_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc244_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc244_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc244_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc245_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc245_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc245_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc246_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc246_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc246_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc247_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc247_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc247_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc248_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc248_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc248_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc249_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc249_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc249_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
 	__vwsnc24_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::__vwsnc24_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::darkskin::CheckBoxTemplateConstructor* __vwsnctorthis_1)
 		:__vwsn_bind_listeners_(__vwsnctor___vwsn_bind_listeners_)
 		, __vwsn_subscription_(__vwsnctor___vwsn_subscription_)
@@ -16380,6 +17773,156 @@ Closure Definitions
 			return true;
 		}
 		return false;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc250_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc250_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc250_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc251_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc251_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc251_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::MenuSplitterTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc252_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc252_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc252_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc253_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc253_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc253_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::MenuSplitterTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc254_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc254_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc254_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc255_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc255_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc255_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTabTemplate*>(new ::darkskin::TabTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc256_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc256_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc256_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc257_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc257_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc257_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiButtonTemplate*>(new ::darkskin::ButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc258_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc258_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc258_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiButtonTemplate*>(new ::darkskin::ButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc259_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc259_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc259_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiButtonTemplate*>(new ::darkskin::ButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
 	}
 
 	//-------------------------------------------------------------------
@@ -16454,6 +17997,156 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
+	__vwsnc260_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc260_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc260_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc261_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc261_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc261_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiSelectableButtonTemplate*>(new ::darkskin::CheckBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc262_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc262_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc262_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiSelectableButtonTemplate*>(new ::darkskin::CheckBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc263_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc263_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc263_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiSelectableButtonTemplate*>(new ::darkskin::CheckBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc264_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc264_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc264_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc265_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc265_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc265_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiSelectableButtonTemplate*>(new ::darkskin::RadioButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc266_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc266_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc266_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiSelectableButtonTemplate*>(new ::darkskin::RadioButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc267_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc267_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc267_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiSelectableButtonTemplate*>(new ::darkskin::RadioButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc268_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc268_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc268_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc269_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc269_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc269_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiSinglelineTextBoxTemplate*>(new ::darkskin::SinglelineTextBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
 	__vwsnc26_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::__vwsnc26_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::darkskin::CheckBoxTemplateConstructor* __vwsnctorthis_1)
 		:__vwsn_bind_listeners_(__vwsnctor___vwsn_bind_listeners_)
 		, __vwsn_subscription_(__vwsnctor___vwsn_subscription_)
@@ -16480,6 +18173,156 @@ Closure Definitions
 			return true;
 		}
 		return false;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc270_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc270_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc270_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc271_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc271_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc271_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTextListTemplate*>(new ::darkskin::TextListTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc272_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc272_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc272_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiComboBoxTemplate*>(new ::darkskin::ComboBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc273_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc273_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc273_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiDocumentLabelTemplate*>(new ::darkskin::DocumentLabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc274_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc274_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc274_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc275_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc275_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc275_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiDatePickerTemplate*>(new ::darkskin::DatePickerTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc276_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc276_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc276_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiDateComboBoxTemplate*>(new ::darkskin::ComboBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc277_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc277_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc277_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc278_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc278_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc278_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTextListTemplate*>(new ::darkskin::TextListTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc279_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc279_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc279_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
 	}
 
 	//-------------------------------------------------------------------
@@ -16554,6 +18397,156 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
+	__vwsnc280_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc280_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc280_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTextListTemplate*>(new ::darkskin::CheckTextListTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc281_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc281_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc281_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc282_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc282_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc282_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTextListTemplate*>(new ::darkskin::RadioTextListTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc283_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc283_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc283_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc284_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc284_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc284_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiListViewTemplate*>(new ::darkskin::ListViewTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc285_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc285_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc285_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc286_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc286_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc286_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTreeViewTemplate*>(new ::darkskin::TreeViewTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc287_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc287_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc287_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc288_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc288_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc288_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiListViewTemplate*>(new ::darkskin::ListViewTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc289_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc289_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc289_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
 	__vwsnc28_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::__vwsnc28_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::darkskin::CheckBoxTemplateConstructor* __vwsnctorthis_1)
 		:__vwsn_bind_listeners_(__vwsnctor___vwsn_bind_listeners_)
 		, __vwsn_subscription_(__vwsnctor___vwsn_subscription_)
@@ -16580,6 +18573,156 @@ Closure Definitions
 			return true;
 		}
 		return false;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc290_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc290_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc290_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiMultilineTextBoxTemplate*>(new ::darkskin::MultilineTextBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc291_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc291_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc291_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::GroupBoxTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc292_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc292_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc292_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiDocumentViewerTemplate*>(new ::darkskin::DocumentViewerTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc293_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc293_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc293_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(new ::darkskin::HScrollTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc294_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc294_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc294_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(new ::darkskin::HTrackerTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc295_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc295_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc295_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(new ::darkskin::ProgressBarTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc296_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc296_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc296_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(new ::darkskin::VScrollTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc297_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc297_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc297_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(new ::darkskin::VTrackerTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc298_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc298_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc298_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::ToolstripTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc299_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc299_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc299_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuBarButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
 	}
 
 	//-------------------------------------------------------------------
@@ -16708,6 +18851,156 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
+	__vwsnc300_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc300_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc300_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc301_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc301_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc301_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc302_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc302_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc302_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc303_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc303_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc303_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc304_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc304_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc304_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc305_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc305_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc305_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc306_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc306_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc306_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc307_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc307_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc307_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc308_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc308_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc308_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::MenuSplitterTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc309_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc309_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc309_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
 	__vwsnc30_Demo_darkskin_CheckItemBackgroundTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::__vwsnc30_Demo_darkskin_CheckItemBackgroundTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::darkskin::CheckItemBackgroundTemplateConstructor* __vwsnctorthis_1)
 		:__vwsn_bind_listeners_(__vwsnctor___vwsn_bind_listeners_)
 		, __vwsn_subscription_(__vwsnctor___vwsn_subscription_)
@@ -16734,6 +19027,156 @@ Closure Definitions
 			return true;
 		}
 		return false;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc310_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc310_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc310_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::MenuSplitterTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc311_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc311_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc311_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc312_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc312_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc312_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuBarButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc313_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc313_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc313_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc314_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc314_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc314_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc315_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc315_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc315_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::MenuSplitterTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc316_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc316_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc316_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc317_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc317_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc317_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc318_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc318_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc318_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc319_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc319_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc319_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::MenuSplitterTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
 	}
 
 	//-------------------------------------------------------------------
@@ -16832,6 +19275,156 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
+	__vwsnc320_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc320_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc320_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc321_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc321_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc321_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc322_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc322_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc322_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::ToolstripTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc323_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc323_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc323_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripDropdownButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc324_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc324_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc324_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc325_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc325_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc325_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc326_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc326_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc326_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc327_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc327_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc327_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc328_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc328_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc328_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc329_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc329_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc329_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripSplitButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
 	__vwsnc32_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::__vwsnc32_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::darkskin::ComboBoxTemplateConstructor* __vwsnctorthis_1)
 		:__vwsn_bind_listeners_(__vwsnctor___vwsn_bind_listeners_)
 		, __vwsn_subscription_(__vwsnctor___vwsn_subscription_)
@@ -16858,6 +19451,156 @@ Closure Definitions
 			return true;
 		}
 		return false;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc330_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc330_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc330_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc331_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc331_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc331_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc332_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc332_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc332_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc333_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc333_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc333_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::MenuItemButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc334_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc334_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc334_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc335_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc335_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc335_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc336_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc336_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc336_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc337_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc337_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc337_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc338_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc338_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc338_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc339_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc339_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc339_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::ToolstripSplitterTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
 	}
 
 	//-------------------------------------------------------------------
@@ -16932,6 +19675,156 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
+	__vwsnc340_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc340_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc340_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc341_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc341_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc341_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc342_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc342_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc342_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::ToolstripSplitterTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc343_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc343_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc343_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc344_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc344_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc344_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc345_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc345_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc345_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc346_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc346_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc346_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc347_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc347_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc347_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::darkskin::ToolstripSplitterTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc348_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc348_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc348_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc349_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc349_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc349_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
 	__vwsnc34_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::__vwsnc34_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::darkskin::ComboBoxTemplateConstructor* __vwsnctorthis_1)
 		:__vwsn_bind_listeners_(__vwsnctor___vwsn_bind_listeners_)
 		, __vwsn_subscription_(__vwsnctor___vwsn_subscription_)
@@ -16951,6 +19844,226 @@ Closure Definitions
 	}
 
 	bool __vwsnc34_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::StopListening()
+	{
+		if (::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_bind_listeners_.Obj())->GetKeys().Obj())->Contains(::vl::__vwsn::Box(this)))
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_bind_listeners_.Obj())->Remove(::vl::__vwsn::Box(this));
+			return true;
+		}
+		return false;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc350_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc350_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc350_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc351_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc351_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc351_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc352_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc352_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc352_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc353_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc353_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc353_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc354_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc354_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc354_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiToolstripButtonTemplate*>(new ::darkskin::ToolstripButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc355_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc355_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc355_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiLabelTemplate*>(new ::darkskin::LabelTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc356_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc356_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc356_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiButtonTemplate*>(new ::darkskin::ButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc357_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc357_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc357_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiButtonTemplate*>(new ::darkskin::ButtonTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+		this->__vwsn_bind_cache_0 = static_cast<::vl::presentation::controls::GuiScroll*>(nullptr);
+		this->__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>();
+		this->__vwsn_bind_opened_ = false;
+		this->__vwsn_bind_closed_ = false;
+		this->__vwsn_bind_listeners_ = ::vl::reflection::description::IValueDictionary::Create();
+	}
+
+	void __vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
+	{
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetPosition();
+		using __vwsnt_0 = ::vl::reflection::description::Value;
+		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
+		{
+			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+		}
+	}
+
+	void __vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
+	{
+		::vl::__vwsn::This(this)->__vwsn_bind_activator_();
+	}
+
+	void __vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_initialize_()
+	{
+		(__vwsn_bind_cache_0 = ::vl::__vwsn::This(__vwsnthis_0)->tracker);
+		(__vwsn_bind_handler_0_0 = ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->PositionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(::vl::__vwsn::This(this), &__vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)));
+	}
+
+	::vl::Ptr<::vl::reflection::description::IValueListener> __vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_)
+	{
+		if ((! __vwsn_bind_opened_))
+		{
+			(__vwsn_bind_opened_ = true);
+			::vl::__vwsn::This(this)->__vwsn_bind_initialize_();
+		}
+		auto __vwsn_subscription_ = this;
+		auto __vwsn_listener_shared_ = ::vl::Ptr<::vl::reflection::description::IValueListener>(new ::vl_workflow_global::__vwsnc359_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(__vwsn_bind_listeners_, __vwsn_subscription_, this, __vwsnthis_0));
+		::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->Set(::vl::__vwsn::Box(__vwsn_listener_shared_), ::vl::__vwsn::Box(__vwsn_bind_callback_));
+		return __vwsn_listener_shared_;
+	}
+
+	bool __vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::Update()
+	{
+		if ((! __vwsn_bind_closed_))
+		{
+			::vl::__vwsn::This(this)->__vwsn_bind_activator_();
+			return true;
+		}
+		return false;
+	}
+
+	bool __vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::Close()
+	{
+		if ((! __vwsn_bind_closed_))
+		{
+			(__vwsn_bind_closed_ = true);
+			::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->PositionChanged, __vwsn_bind_handler_0_0);
+			(__vwsn_bind_cache_0 = static_cast<::vl::presentation::controls::GuiScroll*>(nullptr));
+			(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
+			::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->Clear();
+			return true;
+		}
+		return false;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc359_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::__vwsnc359_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1)
+		:__vwsn_bind_listeners_(__vwsnctor___vwsn_bind_listeners_)
+		, __vwsn_subscription_(__vwsnctor___vwsn_subscription_)
+		, __vwsnthis_0(__vwsnctorthis_0)
+		, __vwsnthis_1(__vwsnctorthis_1)
+	{
+	}
+
+	::vl::reflection::description::IValueSubscription* __vwsnc359_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::GetSubscription()
+	{
+		return ::vl::__vwsn::This(this)->__vwsn_subscription_;
+	}
+
+	bool __vwsnc359_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::GetStopped()
+	{
+		return (! ::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_bind_listeners_.Obj())->GetKeys().Obj())->Contains(::vl::__vwsn::Box(this)));
+	}
+
+	bool __vwsnc359_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener::StopListening()
 	{
 		if (::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_bind_listeners_.Obj())->GetKeys().Obj())->Contains(::vl::__vwsn::Box(this)))
 		{
@@ -17040,6 +20153,20 @@ Closure Definitions
 			return true;
 		}
 		return false;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc360_Demo_demo_MainWindow___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc360_Demo_demo_MainWindow___vl_presentation_templates_GuiTemplate_IFactory()
+	{
+	}
+
+	::vl::presentation::templates::GuiTemplate* __vwsnc360_Demo_demo_MainWindow___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	{
+		{
+			auto __vwsn_template_ = ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiWindowTemplate*>(new ::darkskin::WindowTemplate()));
+			return ::vl::__vwsn::Ensure(static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_));
+		}
 	}
 
 	//-------------------------------------------------------------------
@@ -25653,6 +28780,3071 @@ Class (::darkskin::WindowTemplate)
 	}
 
 /***********************************************************************
+Class (::demo::MainWindowConstructor)
+***********************************************************************/
+
+}
+namespace demo
+{
+	void MainWindowConstructor::__vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_, ::vl::presentation::GuiResourcePathResolver* __vwsn_resolver_)
+	{
+		(::vl::__vwsn::This(this)->__vwsn_precompile_0 = __vwsn_this_);
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 800; __vwsn_temp__.y = 600; return __vwsn_temp__; }());
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_299 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_299)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 800; __vwsn_temp__.y = 600; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetText(::vl::WString(L"Control Templates", false));
+		}
+		(::vl::__vwsn::This(this)->radioGroup = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->radioGroup)));
+		}
+		(::vl::__vwsn::This(this)->commandFileNew = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileNew)->SetShortcutBuilder(::vl::WString(L"Ctrl+N", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileNew)->SetText(::vl::WString(L"New", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandFileNew)));
+		}
+		(::vl::__vwsn::This(this)->commandFileNewText = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileNewText)->SetText(::vl::WString(L"New Text File", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandFileNewText)));
+		}
+		(::vl::__vwsn::This(this)->commandFileNewRtf = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileNewRtf)->SetText(::vl::WString(L"New RTF File", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandFileNewRtf)));
+		}
+		(::vl::__vwsn::This(this)->commandFileOpen = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileOpen)->SetShortcutBuilder(::vl::WString(L"Ctrl+O", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileOpen)->SetText(::vl::WString(L"Open...", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandFileOpen)));
+		}
+		(::vl::__vwsn::This(this)->commandFileOpenText = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileOpenText)->SetText(::vl::WString(L"Open Text File...", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandFileOpenText)));
+		}
+		(::vl::__vwsn::This(this)->commandFileOpenRtf = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileOpenRtf)->SetText(::vl::WString(L"Open RTF File...", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandFileOpenRtf)));
+		}
+		(::vl::__vwsn::This(this)->commandFileSave = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileSave)->SetShortcutBuilder(::vl::WString(L"Ctrl+S", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileSave)->SetText(::vl::WString(L"Save", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandFileSave)));
+		}
+		(::vl::__vwsn::This(this)->commandFileSaveAs = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileSaveAs)->SetText(::vl::WString(L"Save As...", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandFileSaveAs)));
+		}
+		(::vl::__vwsn::This(this)->commandFilePrint = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFilePrint)->SetText(::vl::WString(L"Print...", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandFilePrint)));
+		}
+		(::vl::__vwsn::This(this)->commandFileExit = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileExit)->SetText(::vl::WString(L"Exit", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandFileExit)));
+		}
+		(::vl::__vwsn::This(this)->commandEditUndo = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditUndo)->SetText(::vl::WString(L"Undo", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandEditUndo)));
+		}
+		(::vl::__vwsn::This(this)->commandEditRedo = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditRedo)->SetText(::vl::WString(L"Redo", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandEditRedo)));
+		}
+		(::vl::__vwsn::This(this)->commandEditCut = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditCut)->SetText(::vl::WString(L"Cut", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandEditCut)));
+		}
+		(::vl::__vwsn::This(this)->commandEditCopy = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditCopy)->SetText(::vl::WString(L"Copy", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandEditCopy)));
+		}
+		(::vl::__vwsn::This(this)->commandEditPaste = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditPaste)->SetText(::vl::WString(L"Paste", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandEditPaste)));
+		}
+		(::vl::__vwsn::This(this)->commandEditDelete = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditDelete)->SetText(::vl::WString(L"Delete", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandEditDelete)));
+		}
+		(::vl::__vwsn::This(this)->commandEditSelect = new ::vl::presentation::controls::GuiToolstripCommand());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditSelect)->SetText(::vl::WString(L"Select All", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->commandEditSelect)));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiMenuTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc242_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->menuDropDown = new ::vl::presentation::controls::GuiToolstripMenu(__vwsn_controlStyle_, static_cast<::vl::presentation::controls::GuiControl*>(nullptr)));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc243_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_1 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_2 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->EnsureToolstripSubMenu());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc244_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_3 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_2)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_3));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc245_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_4 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_2)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_4));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_1));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc246_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_5 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_6 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->EnsureToolstripSubMenu());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc247_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_7 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_7));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc248_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_8 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_8));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_5));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc249_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_9 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_9));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc250_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_10 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_10));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc251_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_11 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_11));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc252_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_12 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_12));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc253_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_13 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_13));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc254_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_14 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_14));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddControlHostComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControlHost*>(::vl::__vwsn::This(this)->menuDropDown)));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiTabTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc255_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->tabControls = new ::vl::presentation::controls::GuiTab(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_296 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->tabControls)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_296)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 45; return __vwsn_temp__; }());
+		}
+		(::vl::__vwsn::This(this)->tabPageBasic = new ::vl::presentation::controls::GuiTabPage());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->tabPageBasic)->SetText(::vl::WString(L"Basic Controls", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_15 = new ::vl::presentation::compositions::GuiStackComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->SetPadding(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"5", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = (- 1); __vwsn_temp__.bottom = (- 1); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_16 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc256_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_17 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_29 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_29)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_28 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_28)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->SetText(::vl::WString(L"Buttons", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_18 = new ::vl::presentation::compositions::GuiStackComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_18)->SetPadding(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"5", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_18)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Vertical);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_18)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_18)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_19 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc257_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_20 = new ::vl::presentation::controls::GuiButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_21 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_20)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_21)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_21)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_20)->SetText(::vl::WString(L"Button 1", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_19)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_20)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_18)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_19)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_22 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc258_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_23 = new ::vl::presentation::controls::GuiButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_24 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_23)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_24)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_24)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_23)->SetText(::vl::WString(L"Button 2", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_22)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_23)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_18)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_22)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_25 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc259_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_26 = new ::vl::presentation::controls::GuiButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_27 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_26)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_27)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_27)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_26)->SetText(::vl::WString(L"Button 3", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_25)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_26)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_18)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_25)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_18)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_16)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_16)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_30 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc260_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_31 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_43 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_31)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_43)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_42 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_31)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_42)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_31)->SetText(::vl::WString(L"Check Boxes", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_32 = new ::vl::presentation::compositions::GuiStackComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32)->SetPadding(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"5", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Vertical);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_33 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiSelectableButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc261_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_34 = new ::vl::presentation::controls::GuiSelectableButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_35 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_34)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_35)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_35)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_34)->SetText(::vl::WString(L"Check Box 1", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_33)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_34)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_33)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_36 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiSelectableButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc262_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_37 = new ::vl::presentation::controls::GuiSelectableButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_38 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_37)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_38)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_38)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_37)->SetText(::vl::WString(L"Check Box 2", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_36)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_37)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_36)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_39 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiSelectableButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc263_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_40 = new ::vl::presentation::controls::GuiSelectableButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_41 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_40)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_41)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_41)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_40)->SetText(::vl::WString(L"Check Box 3", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_39)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_40)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_39)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_31)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_32)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_30)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_31)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_30)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_44 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc264_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_45 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_57 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_45)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_57)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_56 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_45)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_56)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_45)->SetText(::vl::WString(L"Radio Buttons", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_46 = new ::vl::presentation::compositions::GuiStackComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_46)->SetPadding(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"5", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_46)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Vertical);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_46)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_46)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_47 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiSelectableButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc265_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_48 = new ::vl::presentation::controls::GuiSelectableButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_48)->SetSelected(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_49 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_48)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_49)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_49)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_48)->SetText(::vl::WString(L"Radio Button 1", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_47)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_48)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_46)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_47)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_50 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiSelectableButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc266_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_51 = new ::vl::presentation::controls::GuiSelectableButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_52 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_51)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_52)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_52)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_51)->SetText(::vl::WString(L"Radio Button 2", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_50)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_51)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_46)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_50)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_53 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiSelectableButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc267_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_54 = new ::vl::presentation::controls::GuiSelectableButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_55 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_54)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_55)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_55)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_54)->SetText(::vl::WString(L"Radio Button 3", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_53)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_54)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_46)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_53)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_45)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_46)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_44)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_45)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_44)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_58 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc268_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_59 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_78 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_59)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_78)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_77 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_59)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_77)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_59)->SetText(::vl::WString(L"Text Controls", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_60 = new ::vl::presentation::compositions::GuiStackComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->SetPadding(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"5", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Vertical);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_61 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiSinglelineTextBoxTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc269_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_62 = new ::vl::presentation::controls::GuiSinglelineTextBox(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_63 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_62)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_63)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 0; __vwsn_temp__.y = 24; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_63)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_62)->SetText(::vl::WString(L"This is a text box.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_61)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_62)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_61)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_64 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc270_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_65 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_66 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_65)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_66)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_65)->SetText(::vl::WString(L"This is a wonderful label.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_64)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_65)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_64)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_67 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiTextListTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc271_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_68 = new ::vl::presentation::controls::GuiTextList(__vwsn_controlStyle_, ::vl::__vwsn::This(__vwsn_controlStyle_)->CreateArgument()));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_69 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_69.Obj())->SetText(::vl::WString(L"Spring", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_69));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_70 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_70.Obj())->SetText(::vl::WString(L"Summer", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_70));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_71 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_71.Obj())->SetText(::vl::WString(L"Autumn", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_71));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_72 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_72.Obj())->SetText(::vl::WString(L"Winter", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_72));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiComboBoxTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc272_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->comboBoxSeasons = new ::vl::presentation::controls::GuiComboBoxListControl(__vwsn_controlStyle_, ::vl::__vwsn::This(this)->__vwsn_precompile_68));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->comboBoxSeasons)->SetSelectedIndex(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"0", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_73 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->comboBoxSeasons)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_73)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 0; __vwsn_temp__.y = 24; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_73)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_67)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->comboBoxSeasons)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_67)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_74 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiDocumentLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc273_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_75 = new ::vl::presentation::controls::GuiDocumentLabel(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_76 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_75)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_76)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_74)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_75)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_74)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_59)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_60)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_58)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_59)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_58)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_79 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc274_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_80 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_89 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_80)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_89)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_88 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_80)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_88)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_80)->SetText(::vl::WString(L"Date Controls", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_81 = new ::vl::presentation::compositions::GuiStackComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_81)->SetPadding(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"5", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_81)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Vertical);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_81)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_81)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_82 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiDatePickerTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc275_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_83 = new ::vl::presentation::controls::GuiDatePicker(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_84 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_83)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_84)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_82)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_83)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_81)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_82)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_85 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiDateComboBoxTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc276_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_86 = new ::vl::presentation::controls::GuiDateComboBox(__vwsn_controlStyle_, new ::vl::presentation::controls::GuiDatePicker(::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateDatePickerStyle())));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_87 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_86)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_87)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_85)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_86)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_81)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_85)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_80)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_81)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_79)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_80)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_79)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->tabPageBasic)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_15)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->tabControls)->CreatePage(::vl::__vwsn::This(this)->tabPageBasic, -1);
+		}
+		(::vl::__vwsn::This(this)->tabPageList = new ::vl::presentation::controls::GuiTabPage());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->tabPageList)->SetText(::vl::WString(L"List Controls", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_90 = new ::vl::presentation::compositions::GuiTableComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"5", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->SetRowsAndColumns(2, 3);
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->SetRowOption(0, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = 1.0; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->SetRowOption(1, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = 1.0; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->SetColumnOption(0, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = 1.0; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->SetColumnOption(1, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = 1.0; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->SetColumnOption(2, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = 1.0; return __vwsn_temp__; }());
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_91 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_91)->SetSite(0, 0, 1, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc277_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_92 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_116 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_92)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_116)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_115 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_92)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_115)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_92)->SetText(::vl::WString(L"Text List", false));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiTextListTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc278_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_93 = new ::vl::presentation::controls::GuiTextList(__vwsn_controlStyle_, ::vl::__vwsn::This(__vwsn_controlStyle_)->CreateArgument()));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_95 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_95.Obj())->SetText(::vl::WString(L"Item 1", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_95));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_96 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_96.Obj())->SetText(::vl::WString(L"Item 2", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_96));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_97 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_97.Obj())->SetText(::vl::WString(L"Item 3", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_97));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_98 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_98.Obj())->SetText(::vl::WString(L"Item 4", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_98));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_99 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_99.Obj())->SetText(::vl::WString(L"Item 5", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_99));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_100 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_100.Obj())->SetText(::vl::WString(L"Item 6", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_100));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_101 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_101.Obj())->SetText(::vl::WString(L"Item 7", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_101));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_102 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_102.Obj())->SetText(::vl::WString(L"Item 8", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_102));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_103 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_103.Obj())->SetText(::vl::WString(L"Item 9", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_103));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_104 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_104.Obj())->SetText(::vl::WString(L"Item 10", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_104));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_105 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_105.Obj())->SetText(::vl::WString(L"Item 11", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_105));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_106 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_106.Obj())->SetText(::vl::WString(L"Item 12", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_106));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_107 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_107.Obj())->SetText(::vl::WString(L"Item 13", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_107));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_108 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_108.Obj())->SetText(::vl::WString(L"Item 14", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_108));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_109 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_109.Obj())->SetText(::vl::WString(L"Item 15", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_109));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_110 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_110.Obj())->SetText(::vl::WString(L"Item 16", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_110));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_111 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_111.Obj())->SetText(::vl::WString(L"Item 17", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_111));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_112 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_112.Obj())->SetText(::vl::WString(L"Item 18", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_112));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_113 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_113.Obj())->SetText(::vl::WString(L"Item 19", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_113));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_114 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_114.Obj())->SetText(::vl::WString(L"Item 20", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_114));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_94 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_94)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_92)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_93)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_91)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_92)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_91)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_117 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_117)->SetSite(0, 1, 1, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc279_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_118 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_142 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_118)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_142)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_141 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_118)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_141)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_118)->SetText(::vl::WString(L"Check List", false));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiTextListTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc280_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_119 = new ::vl::presentation::controls::GuiTextList(__vwsn_controlStyle_, ::vl::__vwsn::This(__vwsn_controlStyle_)->CreateArgument()));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_121 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_121.Obj())->SetText(::vl::WString(L"Item 1", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_121));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_122 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_122.Obj())->SetText(::vl::WString(L"Item 2", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_122));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_123 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_123.Obj())->SetText(::vl::WString(L"Item 3", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_123));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_124 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_124.Obj())->SetText(::vl::WString(L"Item 4", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_124));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_125 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_125.Obj())->SetText(::vl::WString(L"Item 5", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_125));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_126 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_126.Obj())->SetText(::vl::WString(L"Item 6", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_126));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_127 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_127.Obj())->SetText(::vl::WString(L"Item 7", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_127));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_128 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_128.Obj())->SetText(::vl::WString(L"Item 8", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_128));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_129 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_129.Obj())->SetText(::vl::WString(L"Item 9", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_129));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_130 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_130.Obj())->SetText(::vl::WString(L"Item 10", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_130));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_131 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_131.Obj())->SetText(::vl::WString(L"Item 11", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_131));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_132 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_132.Obj())->SetText(::vl::WString(L"Item 12", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_132));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_133 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_133.Obj())->SetText(::vl::WString(L"Item 13", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_133));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_134 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_134.Obj())->SetText(::vl::WString(L"Item 14", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_134));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_135 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_135.Obj())->SetText(::vl::WString(L"Item 15", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_135));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_136 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_136.Obj())->SetText(::vl::WString(L"Item 16", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_136));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_137 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_137.Obj())->SetText(::vl::WString(L"Item 17", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_137));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_138 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_138.Obj())->SetText(::vl::WString(L"Item 18", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_138));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_139 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_139.Obj())->SetText(::vl::WString(L"Item 19", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_139));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_140 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_140.Obj())->SetText(::vl::WString(L"Item 20", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_140));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_120 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_120)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_118)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_119)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_117)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_118)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_117)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_143 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_143)->SetSite(0, 2, 1, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc281_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_144 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_168 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_144)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_168)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_167 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_144)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_167)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_144)->SetText(::vl::WString(L"Radio List", false));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiTextListTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc282_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_145 = new ::vl::presentation::controls::GuiTextList(__vwsn_controlStyle_, ::vl::__vwsn::This(__vwsn_controlStyle_)->CreateArgument()));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_147 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_147.Obj())->SetText(::vl::WString(L"Item 1", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_147));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_148 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_148.Obj())->SetText(::vl::WString(L"Item 2", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_148));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_149 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_149.Obj())->SetText(::vl::WString(L"Item 3", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_149));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_150 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_150.Obj())->SetText(::vl::WString(L"Item 4", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_150));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_151 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_151.Obj())->SetText(::vl::WString(L"Item 5", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_151));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_152 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_152.Obj())->SetText(::vl::WString(L"Item 6", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_152));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_153 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_153.Obj())->SetText(::vl::WString(L"Item 7", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_153));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_154 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_154.Obj())->SetText(::vl::WString(L"Item 8", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_154));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_155 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_155.Obj())->SetText(::vl::WString(L"Item 9", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_155));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_156 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_156.Obj())->SetText(::vl::WString(L"Item 10", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_156));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_157 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_157.Obj())->SetText(::vl::WString(L"Item 11", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_157));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_158 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_158.Obj())->SetText(::vl::WString(L"Item 12", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_158));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_159 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_159.Obj())->SetText(::vl::WString(L"Item 13", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_159));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_160 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_160.Obj())->SetText(::vl::WString(L"Item 14", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_160));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_161 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_161.Obj())->SetText(::vl::WString(L"Item 15", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_161));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_162 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_162.Obj())->SetText(::vl::WString(L"Item 16", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_162));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_163 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_163.Obj())->SetText(::vl::WString(L"Item 17", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_163));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_164 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_164.Obj())->SetText(::vl::WString(L"Item 18", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_164));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_165 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_165.Obj())->SetText(::vl::WString(L"Item 19", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_165));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_166 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_166.Obj())->SetText(::vl::WString(L"Item 20", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_166));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_146 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_146)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_144)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_145)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_143)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_144)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_143)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_169 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_169)->SetSite(1, 0, 1, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc283_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_170 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_181 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_170)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_181)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_180 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_170)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_180)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_170)->SetText(::vl::WString(L"List View", false));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiListViewTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc284_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_171 = new ::vl::presentation::controls::GuiListView(__vwsn_controlStyle_));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->ChangeItemStyle(::vl::__vwsn::Ensure(::vl::Ptr<::vl::presentation::controls::list::ListViewItemStyleProvider::IListViewItemContentProvider>(::vl::Ptr<::vl::presentation::controls::list::ListViewDetailContentProvider>(new ::vl::presentation::controls::list::ListViewDetailContentProvider([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 48; __vwsn_temp__.y = 48; return __vwsn_temp__; }(), false)))));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_175 = ::vl::Ptr<::vl::presentation::controls::list::ListViewItem>(new ::vl::presentation::controls::list::ListViewItem()));
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_175.Obj())->GetSubItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::WString(L"5", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_175.Obj())->SetText(::vl::WString(L"Word", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_175));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_176 = ::vl::Ptr<::vl::presentation::controls::list::ListViewItem>(new ::vl::presentation::controls::list::ListViewItem()));
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_176.Obj())->GetSubItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::WString(L"4", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_176.Obj())->SetText(::vl::WString(L"Excel", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_176));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_177 = ::vl::Ptr<::vl::presentation::controls::list::ListViewItem>(new ::vl::presentation::controls::list::ListViewItem()));
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_177.Obj())->GetSubItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::WString(L"3", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_177.Obj())->SetText(::vl::WString(L"PowerPoint", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_177));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_178 = ::vl::Ptr<::vl::presentation::controls::list::ListViewItem>(new ::vl::presentation::controls::list::ListViewItem()));
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_178.Obj())->GetSubItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::WString(L"2", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_178.Obj())->SetText(::vl::WString(L"Outlook", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_178));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_179 = ::vl::Ptr<::vl::presentation::controls::list::ListViewItem>(new ::vl::presentation::controls::list::ListViewItem()));
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_179.Obj())->GetSubItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::WString(L"1", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_179.Obj())->SetText(::vl::WString(L"OneNote", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_179));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_174 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_174)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_172 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_172.Obj())->SetSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"140", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_172.Obj())->SetText(::vl::WString(L"Product", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetColumns();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_172));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_173 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_173.Obj())->SetSortingState(::vl::presentation::controls::GuiListViewColumnHeader::ColumnSortingState::Descending);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_173.Obj())->SetSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"60", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_173.Obj())->SetText(::vl::WString(L"Count", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetColumns();
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_173));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_170)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_171)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_169)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_170)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_169)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_182 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_182)->SetSite(1, 1, 1, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc285_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_183 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_193 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_183)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_193)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_192 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_183)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_192)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_183)->SetText(::vl::WString(L"Tree View", false));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiTreeViewTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc286_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_184 = new ::vl::presentation::controls::GuiTreeView(__vwsn_controlStyle_));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_184)->SetNodeStyleProvider(::vl::__vwsn::Ensure(::vl::Ptr<::vl::presentation::controls::tree::INodeItemStyleProvider>(::vl::Ptr<::vl::presentation::controls::tree::TreeViewNodeItemStyleProvider>(new ::vl::presentation::controls::tree::TreeViewNodeItemStyleProvider([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 48; __vwsn_temp__.y = 48; return __vwsn_temp__; }(), false)))));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_184)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_184)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_191 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_184)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_191)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_185 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem()))));
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->SetExpanding(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+		}
+		{
+			(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->GetData().Obj())).Obj())->text = ::vl::WString(L"Office", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->NotifyDataModified();
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_186 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem()))));
+		{
+			(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_186.Obj())->GetData().Obj())).Obj())->text = ::vl::WString(L"Word", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_186.Obj())->NotifyDataModified();
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_186));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_187 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem()))));
+		{
+			(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_187.Obj())->GetData().Obj())).Obj())->text = ::vl::WString(L"Excel", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_187.Obj())->NotifyDataModified();
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_187));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_188 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem()))));
+		{
+			(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_188.Obj())->GetData().Obj())).Obj())->text = ::vl::WString(L"PowerPoint", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_188.Obj())->NotifyDataModified();
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_188));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_189 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem()))));
+		{
+			(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_189.Obj())->GetData().Obj())).Obj())->text = ::vl::WString(L"Outlook", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_189.Obj())->NotifyDataModified();
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_189));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_190 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem()))));
+		{
+			(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_190.Obj())->GetData().Obj())).Obj())->text = ::vl::WString(L"OneNote", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_190.Obj())->NotifyDataModified();
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_190));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_184)->Nodes().Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_185));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_183)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_184)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_182)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_183)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_182)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_194 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_194)->SetSite(1, 2, 1, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc287_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_195 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_199 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_195)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_199)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_198 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_195)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_198)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_195)->SetText(::vl::WString(L"Data Grid", false));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiListViewTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc288_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_196 = new ::vl::presentation::controls::GuiStringGrid(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_196)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_196)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_197 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_196)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_197)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_195)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_196)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_194)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_195)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_90)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_194)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->tabPageList)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_90)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->tabControls)->CreatePage(::vl::__vwsn::This(this)->tabPageList, -1);
+		}
+		(::vl::__vwsn::This(this)->tabPageText = new ::vl::presentation::controls::GuiTabPage());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->tabPageText)->SetText(::vl::WString(L"Text and Scroll Controls", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_200 = new ::vl::presentation::compositions::GuiTableComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"5", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetRowsAndColumns(4, 4);
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetRowOption(0, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = 1.0; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetRowOption(1, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Absolute; __vwsn_temp__.absolute = 20; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetRowOption(2, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Absolute; __vwsn_temp__.absolute = 20; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetRowOption(3, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Absolute; __vwsn_temp__.absolute = 20; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetColumnOption(0, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = 1.0; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetColumnOption(1, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = 1.0; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetColumnOption(2, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Absolute; __vwsn_temp__.absolute = 20; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->SetColumnOption(3, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Absolute; __vwsn_temp__.absolute = 20; return __vwsn_temp__; }());
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_201 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_201)->SetSite(0, 0, 1, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc289_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_202 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_206 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_202)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_206)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_205 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_202)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_205)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_202)->SetText(::vl::WString(L"Text Box", false));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiMultilineTextBoxTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc290_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_203 = new ::vl::presentation::controls::GuiMultilineTextBox(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_203)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_203)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_204 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_203)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_204)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_203)->SetText(::vl::WString(L"\r\n                        This is the first line of the multilined text.\r\n                        This is the second line of the multilined text.\r\n                        This is the third line of the multilined text.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_202)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_203)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_201)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_202)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_201)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_207 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_207)->SetSite(0, 1, 1, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc291_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_208 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_212 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_208)->GetContainerComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_212)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_211 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_208)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_211)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_208)->SetText(::vl::WString(L"Document Viewer", false));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiDocumentViewerTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc292_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_209 = new ::vl::presentation::controls::GuiDocumentViewer(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_209)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_209)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_209)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_210 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_209)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_210)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_208)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_209)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_207)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_208)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_207)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_213 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_213)->SetSite(1, 0, 1, 2);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiScrollTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc293_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_214 = new ::vl::presentation::controls::GuiScroll(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_214)->SetPageSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"10", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_214)->SetTotalSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"100", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_215 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_214)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_215)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_213)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_214)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_213)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_216 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_216)->SetSite(2, 0, 1, 2);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiScrollTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc294_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->tracker = new ::vl::presentation::controls::GuiScroll(__vwsn_controlStyle_));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->tracker)->SetPageSize(0);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->tracker)->SetTotalSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"10", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_217 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->tracker)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_217)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_216)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->tracker)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_216)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_218 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_218)->SetSite(3, 0, 1, 2);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiScrollTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc295_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_219 = new ::vl::presentation::controls::GuiScroll(__vwsn_controlStyle_));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_219)->SetPageSize(0);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_219)->SetTotalSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"10", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_220 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_219)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_220)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_218)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_219)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_218)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_221 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_221)->SetSite(0, 2, 4, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiScrollTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc296_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_222 = new ::vl::presentation::controls::GuiScroll(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_222)->SetPageSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"10", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_222)->SetTotalSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"100", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_223 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_222)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_223)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_221)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_222)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_221)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_224 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_224)->SetSite(0, 3, 4, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiScrollTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc297_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_225 = new ::vl::presentation::controls::GuiScroll(__vwsn_controlStyle_));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_225)->SetPageSize(0);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_225)->SetTotalSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"10", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_226 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_225)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_226)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_224)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_225)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_200)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_224)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->tabPageText)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_200)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->tabControls)->CreatePage(::vl::__vwsn::This(this)->tabPageText, -1);
+		}
+		(::vl::__vwsn::This(this)->tabPageToolstrip = new ::vl::presentation::controls::GuiTabPage());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->tabPageToolstrip)->SetText(::vl::WString(L"Toolstrip Controls", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_227 = new ::vl::presentation::compositions::GuiStackComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_227)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Vertical);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_227)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_228 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc298_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_229 = new ::vl::presentation::controls::GuiToolstripMenuBar(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_257 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_229)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_257)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc299_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_230 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_230)->SetText(::vl::WString(L"File", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_231 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_230)->EnsureToolstripSubMenu());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc300_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_232 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_233 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_232)->EnsureToolstripSubMenu());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc301_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_234 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_233)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_234));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc302_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_235 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_233)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_235));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_232));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc303_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_236 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_237 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_236)->EnsureToolstripSubMenu());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc304_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_238 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_237)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_238));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc305_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_239 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_237)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_239));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_236));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc306_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_240 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_240));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc307_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_241 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_241));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc308_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_242 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_242));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc309_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_243 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_243));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc310_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_244 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_244));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc311_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_245 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_245));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_229)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_230));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc312_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_246 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_246)->SetText(::vl::WString(L"Edit", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_247 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_246)->EnsureToolstripSubMenu());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc313_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_248 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_248));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc314_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_249 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_249));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc315_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_250 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_250));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc316_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_251 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_251));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc317_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_252 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_252));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc318_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_253 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_253));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc319_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_254 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_254));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc320_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_255 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_255));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc321_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_256 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_256));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_229)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_246));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_228)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_229)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_227)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_228)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_258 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc322_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_259 = new ::vl::presentation::controls::GuiToolstripToolBar(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_295 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_295)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc323_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_260 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc324_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_266 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_266)->SetText(::vl::WString(L"Create a new file.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_260)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_266)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_261 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_260)->EnsureToolstripSubMenu());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc325_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_262 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc326_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_263 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_263)->SetText(::vl::WString(L"Create a new text file.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_262)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_263)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_261)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_262));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc327_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_264 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc328_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_265 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_265)->SetText(::vl::WString(L"Create a new rich text file.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_264)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_265)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_261)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_264));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_260));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc329_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_267 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc330_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_273 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_273)->SetText(::vl::WString(L"Open an existing file.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_267)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_273)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_268 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_267)->EnsureToolstripSubMenu());
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc331_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_269 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc332_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_270 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_270)->SetText(::vl::WString(L"Open an existing text file.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_269)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_270)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_268)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_269));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc333_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_271 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc334_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_272 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_272)->SetText(::vl::WString(L"Open an existing rich text file.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_271)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_272)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_268)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_271));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_267));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc335_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_274 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc336_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_275 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_275)->SetText(::vl::WString(L"Save this file.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_274)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_275)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_274));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc337_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_276 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc338_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_277 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_277)->SetText(::vl::WString(L"Save this file to another location.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_276)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_277)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_276));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc339_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_278 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_278));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc340_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_279 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc341_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_280 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_280)->SetText(::vl::WString(L"Print this file.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_279)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_280)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_279));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc342_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_281 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_281));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc343_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_282 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc344_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_283 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_283)->SetText(::vl::WString(L"Rollback the latest action.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_282)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_283)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_282));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc345_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_284 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc346_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_285 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_285)->SetText(::vl::WString(L"Redo a rollbacked action.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_284)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_285)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_284));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc347_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_286 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_286));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc348_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_287 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc349_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_288 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_288)->SetText(::vl::WString(L"Cut the selected area.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_287)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_288)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_287));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc350_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_289 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc351_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_290 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_290)->SetText(::vl::WString(L"Copy the selected area.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_289)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_290)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_289));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc352_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_291 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc353_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_292 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_292)->SetText(::vl::WString(L"Paste to the selected area.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_291)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_292)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_291));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc354_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_293 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiLabelTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc355_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->__vwsn_precompile_294 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_294)->SetText(::vl::WString(L"Delete the selected area.", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_293)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_294)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_293));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_258)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetBoundsComposition())));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_227)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_258)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->tabPageToolstrip)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_227)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->tabControls)->CreatePage(::vl::__vwsn::This(this)->tabPageToolstrip, -1);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->tabControls)));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc356_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->buttonEnable = new ::vl::presentation::controls::GuiButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_297 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->buttonEnable)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_297)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_297)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = (- 1); __vwsn_temp__.top = (- 1); __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->buttonEnable)->SetText(::vl::WString(L"Enable / Disable", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->buttonEnable)));
+		}
+		{
+			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc357_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
+			(::vl::__vwsn::This(this)->buttonAddTab = new ::vl::presentation::controls::GuiButton(__vwsn_controlStyle_));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_298 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->buttonAddTab)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_298)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 120; __vwsn_temp__.y = 30; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_298)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = (- 1); __vwsn_temp__.right = (- 1); __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->buttonAddTab)->SetText(::vl::WString(L"Add Tab Page", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->buttonAddTab)));
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_New.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileNew)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_New.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileNewText)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_New.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileNewRtf)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Open.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileOpen)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Open.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileOpenText)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Open.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileOpenRtf)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Save.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Save.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Save.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileSave)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_SaveAs.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_SaveAs.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_SaveAs.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileSaveAs)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Print.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Print.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Print.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFilePrint)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Undo.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Undo.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Undo.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditUndo)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Redo.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Redo.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Redo.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditRedo)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Cut.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Cut.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Cut.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditCut)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Copy.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Copy.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Copy.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditCopy)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Paste.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Paste.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Paste.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditPaste)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/_Delete.png", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Delete.png\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Delete.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditDelete)->SetImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->SetCommand(::vl::__vwsn::This(this)->commandFileNewText);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_4)->SetCommand(::vl::__vwsn::This(this)->commandFileNewRtf);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->SetCommand(::vl::__vwsn::This(this)->commandFileNew);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->SetCommand(::vl::__vwsn::This(this)->commandFileOpenText);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_8)->SetCommand(::vl::__vwsn::This(this)->commandFileOpenRtf);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->SetCommand(::vl::__vwsn::This(this)->commandFileOpen);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_9)->SetCommand(::vl::__vwsn::This(this)->commandFileSave);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_10)->SetCommand(::vl::__vwsn::This(this)->commandFileSaveAs);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_12)->SetCommand(::vl::__vwsn::This(this)->commandFilePrint);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_14)->SetCommand(::vl::__vwsn::This(this)->commandFileExit);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_48)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->radioGroup)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_51)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->radioGroup)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_54)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->radioGroup)));
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Documents/Simple", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Documents/Simple\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::DocumentModel>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Documents/Simple\" cannot be read as type \"presentation::DocumentModel\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_75)->SetDocument(__vwsn_resource_value_);
+			}
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_173.Obj())->SetDropdownPopup(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiMenu*>(::vl::__vwsn::This(this)->menuDropDown)));
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficeWord.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_175.Obj())->SetSmallImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficeExcel.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeExcel.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeExcel.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_176.Obj())->SetSmallImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficePowerPoint.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficePowerPoint.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficePowerPoint.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_177.Obj())->SetSmallImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficeOutlook.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOutlook.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOutlook.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_178.Obj())->SetSmallImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficeOneNote.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOneNote.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOneNote.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_179.Obj())->SetSmallImage(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficeWord.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_186.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_186.Obj())->NotifyDataModified();
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficeExcel.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeExcel.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeExcel.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_187.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_187.Obj())->NotifyDataModified();
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficePowerPoint.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficePowerPoint.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficePowerPoint.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_188.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_188.Obj())->NotifyDataModified();
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficeOutlook.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOutlook.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOutlook.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_189.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_189.Obj())->NotifyDataModified();
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficeOneNote.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOneNote.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOneNote.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_190.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_190.Obj())->NotifyDataModified();
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/OfficeWord.ico", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+			}
+			{
+				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->NotifyDataModified();
+			}
+		}
+		{
+			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Documents/XmlDocDemo.xml", false));
+			if ((! static_cast<bool>(__vwsn_resource_item_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Documents/XmlDocDemo.xml\" does not exist.", false));
+			}
+			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::DocumentModel>(__vwsn_resource_item_.Obj());
+			if ((! static_cast<bool>(__vwsn_resource_value_)))
+			{
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Documents/XmlDocDemo.xml\" cannot be read as type \"presentation::DocumentModel\".", false));
+			}
+			{
+				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_209)->SetDocument(__vwsn_resource_value_);
+			}
+		}
+		{
+			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc358_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf135_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_234)->SetCommand(::vl::__vwsn::This(this)->commandFileNewText);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_235)->SetCommand(::vl::__vwsn::This(this)->commandFileNewRtf);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_232)->SetCommand(::vl::__vwsn::This(this)->commandFileNew);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_238)->SetCommand(::vl::__vwsn::This(this)->commandFileOpenText);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_239)->SetCommand(::vl::__vwsn::This(this)->commandFileOpenRtf);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_236)->SetCommand(::vl::__vwsn::This(this)->commandFileOpen);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_240)->SetCommand(::vl::__vwsn::This(this)->commandFileSave);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_241)->SetCommand(::vl::__vwsn::This(this)->commandFileSaveAs);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_243)->SetCommand(::vl::__vwsn::This(this)->commandFilePrint);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_245)->SetCommand(::vl::__vwsn::This(this)->commandFileExit);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_248)->SetCommand(::vl::__vwsn::This(this)->commandEditUndo);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_249)->SetCommand(::vl::__vwsn::This(this)->commandEditRedo);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_251)->SetCommand(::vl::__vwsn::This(this)->commandEditCut);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_252)->SetCommand(::vl::__vwsn::This(this)->commandEditCopy);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_253)->SetCommand(::vl::__vwsn::This(this)->commandEditPaste);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_255)->SetCommand(::vl::__vwsn::This(this)->commandEditDelete);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_256)->SetCommand(::vl::__vwsn::This(this)->commandEditSelect);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_262)->SetCommand(::vl::__vwsn::This(this)->commandFileNewText);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_264)->SetCommand(::vl::__vwsn::This(this)->commandFileNewRtf);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_260)->SetCommand(::vl::__vwsn::This(this)->commandFileNew);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_269)->SetCommand(::vl::__vwsn::This(this)->commandFileOpenText);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_271)->SetCommand(::vl::__vwsn::This(this)->commandFileOpenRtf);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_267)->SetCommand(::vl::__vwsn::This(this)->commandFileOpen);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_274)->SetCommand(::vl::__vwsn::This(this)->commandFileSave);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_276)->SetCommand(::vl::__vwsn::This(this)->commandFileSaveAs);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_279)->SetCommand(::vl::__vwsn::This(this)->commandFilePrint);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_282)->SetCommand(::vl::__vwsn::This(this)->commandEditUndo);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_284)->SetCommand(::vl::__vwsn::This(this)->commandEditRedo);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_287)->SetCommand(::vl::__vwsn::This(this)->commandEditCut);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_289)->SetCommand(::vl::__vwsn::This(this)->commandEditCopy);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_291)->SetCommand(::vl::__vwsn::This(this)->commandEditPaste);
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_293)->SetCommand(::vl::__vwsn::This(this)->commandEditDelete);
+		}
+		{
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf136_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->buttonEnable)->Clicked, __vwsn_event_handler_);
+		}
+		{
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf137_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->buttonAddTab)->Clicked, __vwsn_event_handler_);
+		}
+	}
+
+	MainWindowConstructor::MainWindowConstructor()
+	{
+	}
+
+/***********************************************************************
+Class (::demo::MainWindow)
+***********************************************************************/
+
+	MainWindow::MainWindow()
+		: ::vl::presentation::controls::GuiWindow(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiWindow::IStyleController*>(new ::vl::presentation::templates::GuiWindowTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc360_Demo_demo_MainWindow___vl_presentation_templates_GuiTemplate_IFactory())))))
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->__vwsn_initialize_instance_(this, ::vl::__vwsn::Ensure(static_cast<::vl::presentation::GuiResourcePathResolver*>(__vwsn_resolver_.Obj())));
+	}
+
+	MainWindow::~MainWindow()
+	{
+		::vl::__vwsn::This(this)->ClearSubscriptions();
+	}
+
+/***********************************************************************
 Class (::ScrollTemplateScript)
 ***********************************************************************/
 
@@ -25799,6 +31991,8 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(::darkskin::VTrackerTemplateConstructor)
 			IMPL_CPP_TYPE_INFO(::darkskin::WindowTemplate)
 			IMPL_CPP_TYPE_INFO(::darkskin::WindowTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(::demo::MainWindow)
+			IMPL_CPP_TYPE_INFO(::demo::MainWindowConstructor)
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::ScrollTemplateScript)
@@ -26451,6 +32645,341 @@ namespace vl
 				CLASS_MEMBER_FIELD(self)
 			END_CLASS_MEMBER(::darkskin::WindowTemplateConstructor)
 
+			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+			END_CLASS_MEMBER(::demo::MainWindow)
+
+			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
+				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_100)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_101)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_102)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_103)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_104)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_105)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_106)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_107)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_108)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_109)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_11)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_110)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_111)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_112)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_113)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_114)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_115)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_116)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_117)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_118)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_119)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_12)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_120)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_121)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_122)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_123)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_124)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_125)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_126)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_127)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_128)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_129)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_13)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_130)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_131)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_132)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_133)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_134)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_135)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_136)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_137)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_138)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_139)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_14)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_140)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_141)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_142)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_143)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_144)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_145)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_146)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_147)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_148)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_149)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_15)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_150)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_151)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_152)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_153)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_154)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_155)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_156)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_157)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_158)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_159)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_16)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_160)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_161)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_162)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_163)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_164)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_165)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_166)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_167)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_168)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_169)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_17)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_170)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_171)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_172)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_173)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_174)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_175)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_176)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_177)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_178)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_179)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_18)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_180)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_181)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_182)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_183)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_184)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_185)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_186)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_187)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_188)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_189)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_19)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_190)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_191)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_192)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_193)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_194)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_195)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_196)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_197)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_198)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_199)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_20)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_200)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_201)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_202)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_203)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_204)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_205)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_206)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_207)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_208)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_209)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_21)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_210)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_211)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_212)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_213)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_214)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_215)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_216)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_217)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_218)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_219)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_22)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_220)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_221)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_222)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_223)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_224)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_225)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_226)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_227)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_228)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_229)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_23)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_230)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_231)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_232)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_233)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_234)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_235)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_236)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_237)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_238)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_239)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_24)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_240)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_241)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_242)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_243)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_244)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_245)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_246)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_247)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_248)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_249)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_25)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_250)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_251)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_252)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_253)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_254)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_255)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_256)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_257)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_258)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_259)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_26)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_260)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_261)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_262)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_263)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_264)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_265)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_266)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_267)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_268)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_269)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_27)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_270)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_271)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_272)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_273)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_274)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_275)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_276)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_277)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_278)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_279)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_28)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_280)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_281)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_282)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_283)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_284)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_285)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_286)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_287)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_288)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_289)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_29)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_290)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_291)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_292)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_293)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_294)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_295)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_296)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_297)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_298)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_299)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_30)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_31)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_32)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_33)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_34)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_35)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_36)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_37)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_38)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_39)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_4)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_40)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_41)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_42)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_43)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_44)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_45)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_46)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_47)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_48)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_49)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_5)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_50)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_51)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_52)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_53)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_54)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_55)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_56)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_57)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_58)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_59)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_6)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_60)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_61)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_62)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_63)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_64)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_65)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_66)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_67)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_68)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_69)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_7)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_70)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_71)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_72)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_73)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_74)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_75)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_76)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_77)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_78)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_79)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_8)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_80)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_81)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_82)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_83)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_84)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_85)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_86)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_87)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_88)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_89)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_9)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_90)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_91)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_92)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_93)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_94)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_95)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_96)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_97)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_98)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_99)
+				CLASS_MEMBER_FIELD(buttonAddTab)
+				CLASS_MEMBER_FIELD(buttonEnable)
+				CLASS_MEMBER_FIELD(comboBoxSeasons)
+				CLASS_MEMBER_FIELD(commandEditCopy)
+				CLASS_MEMBER_FIELD(commandEditCut)
+				CLASS_MEMBER_FIELD(commandEditDelete)
+				CLASS_MEMBER_FIELD(commandEditPaste)
+				CLASS_MEMBER_FIELD(commandEditRedo)
+				CLASS_MEMBER_FIELD(commandEditSelect)
+				CLASS_MEMBER_FIELD(commandEditUndo)
+				CLASS_MEMBER_FIELD(commandFileExit)
+				CLASS_MEMBER_FIELD(commandFileNew)
+				CLASS_MEMBER_FIELD(commandFileNewRtf)
+				CLASS_MEMBER_FIELD(commandFileNewText)
+				CLASS_MEMBER_FIELD(commandFileOpen)
+				CLASS_MEMBER_FIELD(commandFileOpenRtf)
+				CLASS_MEMBER_FIELD(commandFileOpenText)
+				CLASS_MEMBER_FIELD(commandFilePrint)
+				CLASS_MEMBER_FIELD(commandFileSave)
+				CLASS_MEMBER_FIELD(commandFileSaveAs)
+				CLASS_MEMBER_FIELD(menuDropDown)
+				CLASS_MEMBER_FIELD(radioGroup)
+				CLASS_MEMBER_FIELD(tabControls)
+				CLASS_MEMBER_FIELD(tabPageBasic)
+				CLASS_MEMBER_FIELD(tabPageList)
+				CLASS_MEMBER_FIELD(tabPageText)
+				CLASS_MEMBER_FIELD(tabPageToolstrip)
+				CLASS_MEMBER_FIELD(tracker)
+			END_CLASS_MEMBER(::demo::MainWindowConstructor)
+
 #undef _
 			class DemoTypeLoader : public Object, public ITypeLoader
 			{
@@ -26552,6 +33081,8 @@ namespace vl
 					ADD_TYPE_INFO(::darkskin::VTrackerTemplateConstructor)
 					ADD_TYPE_INFO(::darkskin::WindowTemplate)
 					ADD_TYPE_INFO(::darkskin::WindowTemplateConstructor)
+					ADD_TYPE_INFO(::demo::MainWindow)
+					ADD_TYPE_INFO(::demo::MainWindowConstructor)
 				}
 
 				void Unload(ITypeManager* manager)
