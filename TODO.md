@@ -10,13 +10,13 @@
 
 ## Comming Soon
 * GacUI
-    * Don't use string for XXXProperty:
+    * Don't use string for XXXProperty: (1)
         * **BindableTextList**.(Text|Checked)Property
         * **BindableListView**.(Large|Small)ImageProperty
         * **ListViewColumn**.TextProperty
         * **BindableTreeView**.(Text|Image|Children)Property
         * **BindableDataColumn**.ValueProperty
-    * Don't use string for XXXTemplate:
+    * Don't use string for XXXTemplate: (2)
         * **WindowTemplate**.(Tooltip|ShortcutKey)Template
         * **ToolstripButtonTemplate**.SubMenuTemplate
         * **DatePickerTemplate**.Date(Button|TextList|ComboBox)Template
@@ -29,9 +29,10 @@
 	* IEventInfo::ICpp for composition events
 * GacGen.exe
     * Regenerate G2 tutorials using G4
-        * **Controls**: TextEditor, **ColorPicker**, **AddressBook**
+        * **Controls**: TextEditor, **AddressBook**
     * Add VCZH_DEBUG_NO_REFLECTION
-        * **ControlTemplates**: BlackSkin (`*Template.*Template` properties should not be string)
+        * **ControlTemplates**: BlackSkin `see: GacUI/(1)`
+        * **Controls**: ColorPicker `see: GacUI/(2)`
 
 ## Wait For A Few Releases
 * Workflow
