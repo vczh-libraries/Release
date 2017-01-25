@@ -4,7 +4,8 @@
     <Folder name="Cpp">
       <Text name="SourceFolder">Source</Text>
       <Text name="Resource">..\..\UIRes\BlackSkin.bin</Text>
-      <Text name="NormalInclude">GacUIReflection.h</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="ReflectionInclude">GacUIReflection.h</Text>
       <Text name="Name">Demo</Text>
     </Folder>
   </Folder>
