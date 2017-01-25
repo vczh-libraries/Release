@@ -5533,15 +5533,10 @@ ExpandBindExpression
 				}
 				{
 					// stable symbol order by sorting them by code
-					Dictionary<WString, WfExpression*> orderedObserves;
+					List<WfExpression*> orderedObserves;
 
-					FOREACH_INDEXER(WfExpression*, observe, observeIndex, dependency.dependencies.Keys())
+					auto printExpression = [](WfExpression* observe)
 					{
-						if (!observe)
-						{
-							continue;
-						}
-
 						stream::MemoryStream stream;
 						{
 							stream::StreamWriter writer(stream);
@@ -5550,11 +5545,28 @@ ExpandBindExpression
 						stream.SeekFromBegin(0);
 						{
 							stream::StreamReader reader(stream);
-							orderedObserves.Add(reader.ReadToEnd(), observe);
+							return reader.ReadToEnd();
 						}
-					}
+					};
 
-					FOREACH_INDEXER(WfExpression*, observe, observeIndex, orderedObserves.Values())
+					CopyFrom(
+						orderedObserves,
+						From(dependency.dependencies.Keys())
+							.Where([](WfExpression* expr)
+							{
+								return expr != nullptr;
+							})
+							.OrderBy([&](WfExpression* a, WfExpression* b)
+							{
+								auto codeA = printExpression(a);
+								auto codeB = printExpression(b);
+								auto compare = WString::Compare(codeA, codeB);
+								if (compare) return compare;
+								return a->codeRange.start.index - b->codeRange.start.index;
+							})
+						);
+
+					FOREACH_INDEXER(WfExpression*, observe, observeIndex, orderedObserves)
 					{
 						List<IEventInfo*> events;
 						WfExpression* parent = 0;
@@ -9623,15 +9635,7 @@ CreateTypeInfoFromType
 					{
 						if (scopeName->typeDescriptor)
 						{
-							auto hint = TypeInfoHint::Normal;
-							if (scopeName->typeDescriptor == description::GetTypeDescriptor<IValueReadonlyList>() ||
-								scopeName->typeDescriptor == description::GetTypeDescriptor<IValueList>() || 
-								scopeName->typeDescriptor == description::GetTypeDescriptor<IValueReadonlyDictionary>() || 
-								scopeName->typeDescriptor == description::GetTypeDescriptor<IValueDictionary>())
-							{
-								hint = TypeInfoHint::Unknown;
-							}
-							result = MakePtr<TypeDescriptorTypeInfo>(scopeName->typeDescriptor, hint);
+							result = MakePtr<TypeDescriptorTypeInfo>(scopeName->typeDescriptor, TypeInfoHint::Normal);
 						}
 						else
 						{
@@ -11937,7 +11941,7 @@ ValidateSemantic(Expression)
 							manager->errors.Add(WfErrors::RangeShouldBeInteger(node, elementType.Obj()));
 						}
 
-						auto enumerableType = MakePtr<TypeDescriptorTypeInfo>(description::GetTypeDescriptor<IValueEnumerable>(), TypeInfoHint::Unknown);
+						auto enumerableType = MakePtr<TypeDescriptorTypeInfo>(description::GetTypeDescriptor<IValueEnumerable>(), TypeInfoHint::Normal);
 						auto genericType = MakePtr<GenericTypeInfo>(enumerableType);
 						genericType->AddGenericArgument(elementType);
 
@@ -12082,7 +12086,7 @@ ValidateSemantic(Expression)
 						{
 							if (keyType && valueType)
 							{
-								auto classType = MakePtr<TypeDescriptorTypeInfo>(description::GetTypeDescriptor<IValueDictionary>(), TypeInfoHint::Unknown);
+								auto classType = MakePtr<TypeDescriptorTypeInfo>(description::GetTypeDescriptor<IValueDictionary>(), TypeInfoHint::Normal);
 								auto genericType = MakePtr<GenericTypeInfo>(classType);
 								genericType->AddGenericArgument(keyType);
 								genericType->AddGenericArgument(valueType);
@@ -12095,7 +12099,7 @@ ValidateSemantic(Expression)
 						{
 							if (keyType)
 							{
-								auto classType = MakePtr<TypeDescriptorTypeInfo>(description::GetTypeDescriptor<IValueList>(), TypeInfoHint::Unknown);
+								auto classType = MakePtr<TypeDescriptorTypeInfo>(description::GetTypeDescriptor<IValueList>(), TypeInfoHint::Normal);
 								auto genericType = MakePtr<GenericTypeInfo>(classType);
 								genericType->AddGenericArgument(keyType);
 
@@ -15716,6 +15720,13 @@ WfCollectClassMemberVisitor
 
 				void Visit(WfConstructorDeclaration* node)override
 				{
+					FOREACH(Ptr<WfBaseConstructorCall>, call, node->baseConstructorCalls)
+					{
+						FOREACH(Ptr<WfExpression>, argument, call->arguments)
+						{
+							CollectExpression(config, argument, memberOfClass);
+						}
+					}
 					CollectStatement(config, node->statement, memberOfClass);
 				}
 
@@ -16484,18 +16495,19 @@ WfGenerateExpressionVisitor
 				template<typename TReturnValue>
 				void WriteReturnValue(ITypeInfo* type, const TReturnValue& returnValueCallback, bool castReturnValue)
 				{
-					if (castReturnValue && IsCppRefGenericType(type))
+					if (castReturnValue)
 					{
-						writer.WriteString(L"[&](){ decltype(auto) __vwsn_temp__ = ");
-						returnValueCallback();
-						writer.WriteString(L"; return ::vl::__vwsn::Unbox<");
-						writer.WriteString(config->ConvertType(type));
-						writer.WriteString(L">(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()");
+						if (IsCppRefGenericType(type) || type->GetHint() == TypeInfoHint::NativeCollectionReference)
+						{
+							writer.WriteString(L"::vl::__vwsn::UnboxCollection<");
+							writer.WriteString(config->ConvertType(type->GetTypeDescriptor()));
+							writer.WriteString(L">(");
+							returnValueCallback();
+							writer.WriteString(L")");
+							return;
+						}
 					}
-					else
-					{
-						returnValueCallback();
-					}
+					returnValueCallback();
 				}
 
 				template<typename TType, typename TInvoke, typename TArgument, typename TInfo>
@@ -16903,6 +16915,10 @@ WfGenerateExpressionVisitor
 
 				void Visit(WfMemberExpression* node)override
 				{
+					if (node->name.value == L"MyList")
+					{
+						int a = 0;
+					}
 					auto result = config->manager->expressionResolvings[node];
 					auto parentResult = config->manager->expressionResolvings[node->parent.Obj()];
 					WriteReferenceTemplate(result,
@@ -17451,12 +17467,16 @@ WfGenerateExpressionVisitor
 
 				void Visit(WfIfExpression* node)override
 				{
+					auto firstResult = config->manager->expressionResolvings[node->trueBranch.Obj()];
+					auto secondResult = config->manager->expressionResolvings[node->falseBranch.Obj()];
+					auto mergedType = GetMergedType(firstResult.type, secondResult.type);
+
 					writer.WriteString(L"(");
 					Call(node->condition);
 					writer.WriteString(L" ? ");
-					Call(node->trueBranch);
+					Call(node->trueBranch, mergedType.Obj());
 					writer.WriteString(L" : ");
-					Call(node->falseBranch);
+					Call(node->falseBranch, mergedType.Obj());
 					writer.WriteString(L")");
 				}
 
@@ -18603,6 +18623,7 @@ MergeCppFile
 			void ProcessCppContent(const WString& code, const TCallback& callback)
 			{
 				vint state = NORMAL;
+				vint counter = 0;
 
 				StringReader reader(code);
 				while (!reader.IsEnd())
@@ -18644,9 +18665,20 @@ MergeCppFile
 							}
 							break;
 						case WAIT_CLOSE:
-							if (content == L"}")
+							if (content == L"{")
 							{
-								state = NORMAL;
+								counter++;
+							}
+							else if (content == L"}")
+							{
+								if (counter == 0)
+								{
+									state = NORMAL;
+								}
+								else
+								{
+									counter--;
+								}
 							}
 							break;
 						}
