@@ -30,7 +30,8 @@
 * GacGen.exe
     * Regenerate G2 tutorials using G4
         * **Controls**: TextEditor, **ColorPicker**, **AddressBook**
-        * **ControlTemplates**: **BlackSkin**
+    * Add VCZH_DEBUG_NO_REFLECTION
+        * **ControlTemplates**: BlackSkin (`*Template.*Template` properties should not be string)
 
 ## Wait For A Few Releases
 * Workflow
