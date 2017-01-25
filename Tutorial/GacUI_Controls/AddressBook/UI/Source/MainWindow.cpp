@@ -58,7 +58,7 @@ namespace demo
 	void MainWindow::commandSmallIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
 		ClearViewSelection();
-		commandBigIcon->SetSelected(true);
+		commandSmallIcon->SetSelected(true);
 		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewSmallIconContentProvider);
 	}
 
@@ -66,7 +66,7 @@ namespace demo
 	void MainWindow::commandList_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
 		ClearViewSelection();
-		commandBigIcon->SetSelected(true);
+		commandList->SetSelected(true);
 		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewListContentProvider);
 	}
 
@@ -74,7 +74,7 @@ namespace demo
 	void MainWindow::commandDetail_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
 		ClearViewSelection();
-		commandBigIcon->SetSelected(true);
+		commandDetail->SetSelected(true);
 		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewDetailContentProvider);
 	}
 
@@ -82,7 +82,7 @@ namespace demo
 	void MainWindow::commandTile_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
 		ClearViewSelection();
-		commandBigIcon->SetSelected(true);
+		commandTile->SetSelected(true);
 		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewTileContentProvider);
 	}
 
@@ -90,7 +90,7 @@ namespace demo
 	void MainWindow::commandInformation_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
 		ClearViewSelection();
-		commandBigIcon->SetSelected(true);
+		commandInformation->SetSelected(true);
 		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewInformationContentProvider);
 	}
 

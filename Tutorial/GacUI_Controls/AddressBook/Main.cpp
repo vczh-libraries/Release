@@ -276,6 +276,7 @@ public:
 
 void GuiMain()
 {
+	LoadDemoTypes();
 	{
 		List<WString> errors;
 		FileStream fileStream(L"../UIRes/AddressBook.bin", FileStream::ReadOnly);
