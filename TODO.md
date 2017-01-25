@@ -29,10 +29,10 @@
 	* IEventInfo::ICpp for composition events
 * GacGen.exe
     * Regenerate G2 tutorials using G4
-        * **Controls**: TextEditor, **AddressBook**
+        * **Controls**: TextEditor
     * Add VCZH_DEBUG_NO_REFLECTION
         * **ControlTemplates**: BlackSkin `see: GacUI/(1)`
-        * **Controls**: ColorPicker `see: GacUI/(2)`
+        * **Controls**: ColorPicker, AddressBook `see: GacUI/(2)`
 
 ## Wait For A Few Releases
 * Workflow
