@@ -122,7 +122,7 @@ public:
 		return address;
 	}
 
-	void Update(WString _name, DateTime _birthday, WString _phone, WString _address)override
+	void Update(const WString& _name, DateTime _birthday, const WString& _phone, const WString& _address)override
 	{
 		name = _name;
 		birthday = _birthday;
@@ -230,7 +230,7 @@ public:
 		}
 	}
 
-	void AddCategory(WString name)
+	void AddCategory(const WString& name)
 	{
 		if (auto current = dynamic_cast<Category*>(selectedCategory.Obj()))
 		{
