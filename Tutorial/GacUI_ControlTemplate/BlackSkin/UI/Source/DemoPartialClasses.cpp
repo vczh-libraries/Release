@@ -28945,17 +28945,17 @@ namespace demo
 			(::vl::__vwsn::This(this)->__vwsn_precompile_3 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_2)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_3));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_2)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_3));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc245_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_4 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_2)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_4));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_2)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_4));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_1));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_1));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc246_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -28967,59 +28967,59 @@ namespace demo
 			(::vl::__vwsn::This(this)->__vwsn_precompile_7 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_7));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_7));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc248_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_8 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_8));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_8));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_5));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_5));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc249_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_9 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_9));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_9));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc250_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_10 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_10));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_10));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc251_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_11 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_11));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_11));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc252_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_12 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_12));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_12));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc253_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_13 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_13));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_13));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc254_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_14 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_14));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->menuDropDown)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_14));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddControlHostComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControlHost*>(::vl::__vwsn::This(this)->menuDropDown)));
@@ -29433,7 +29433,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_69.Obj())->SetText(::vl::WString(L"Spring", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_69));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_70 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29441,7 +29441,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_70.Obj())->SetText(::vl::WString(L"Summer", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_70));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_71 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29449,7 +29449,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_71.Obj())->SetText(::vl::WString(L"Autumn", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_71));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_72 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29457,7 +29457,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_72.Obj())->SetText(::vl::WString(L"Winter", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_72));
 		}
 		{
@@ -29631,7 +29631,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_95.Obj())->SetText(::vl::WString(L"Item 1", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_95));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_96 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29639,7 +29639,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_96.Obj())->SetText(::vl::WString(L"Item 2", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_96));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_97 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29647,7 +29647,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_97.Obj())->SetText(::vl::WString(L"Item 3", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_97));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_98 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29655,7 +29655,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_98.Obj())->SetText(::vl::WString(L"Item 4", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_98));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_99 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29663,7 +29663,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_99.Obj())->SetText(::vl::WString(L"Item 5", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_99));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_100 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29671,7 +29671,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_100.Obj())->SetText(::vl::WString(L"Item 6", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_100));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_101 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29679,7 +29679,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_101.Obj())->SetText(::vl::WString(L"Item 7", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_101));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_102 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29687,7 +29687,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_102.Obj())->SetText(::vl::WString(L"Item 8", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_102));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_103 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29695,7 +29695,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_103.Obj())->SetText(::vl::WString(L"Item 9", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_103));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_104 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29703,7 +29703,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_104.Obj())->SetText(::vl::WString(L"Item 10", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_104));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_105 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29711,7 +29711,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_105.Obj())->SetText(::vl::WString(L"Item 11", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_105));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_106 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29719,7 +29719,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_106.Obj())->SetText(::vl::WString(L"Item 12", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_106));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_107 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29727,7 +29727,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_107.Obj())->SetText(::vl::WString(L"Item 13", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_107));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_108 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29735,7 +29735,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_108.Obj())->SetText(::vl::WString(L"Item 14", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_108));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_109 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29743,7 +29743,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_109.Obj())->SetText(::vl::WString(L"Item 15", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_109));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_110 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29751,7 +29751,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_110.Obj())->SetText(::vl::WString(L"Item 16", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_110));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_111 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29759,7 +29759,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_111.Obj())->SetText(::vl::WString(L"Item 17", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_111));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_112 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29767,7 +29767,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_112.Obj())->SetText(::vl::WString(L"Item 18", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_112));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_113 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29775,7 +29775,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_113.Obj())->SetText(::vl::WString(L"Item 19", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_113));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_114 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29783,7 +29783,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_114.Obj())->SetText(::vl::WString(L"Item 20", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_93)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_114));
 		}
 		{
@@ -29833,7 +29833,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_121.Obj())->SetText(::vl::WString(L"Item 1", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_121));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_122 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29841,7 +29841,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_122.Obj())->SetText(::vl::WString(L"Item 2", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_122));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_123 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29849,7 +29849,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_123.Obj())->SetText(::vl::WString(L"Item 3", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_123));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_124 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29857,7 +29857,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_124.Obj())->SetText(::vl::WString(L"Item 4", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_124));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_125 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29865,7 +29865,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_125.Obj())->SetText(::vl::WString(L"Item 5", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_125));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_126 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29873,7 +29873,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_126.Obj())->SetText(::vl::WString(L"Item 6", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_126));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_127 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29881,7 +29881,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_127.Obj())->SetText(::vl::WString(L"Item 7", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_127));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_128 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29889,7 +29889,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_128.Obj())->SetText(::vl::WString(L"Item 8", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_128));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_129 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29897,7 +29897,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_129.Obj())->SetText(::vl::WString(L"Item 9", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_129));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_130 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29905,7 +29905,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_130.Obj())->SetText(::vl::WString(L"Item 10", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_130));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_131 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29913,7 +29913,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_131.Obj())->SetText(::vl::WString(L"Item 11", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_131));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_132 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29921,7 +29921,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_132.Obj())->SetText(::vl::WString(L"Item 12", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_132));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_133 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29929,7 +29929,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_133.Obj())->SetText(::vl::WString(L"Item 13", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_133));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_134 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29937,7 +29937,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_134.Obj())->SetText(::vl::WString(L"Item 14", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_134));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_135 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29945,7 +29945,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_135.Obj())->SetText(::vl::WString(L"Item 15", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_135));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_136 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29953,7 +29953,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_136.Obj())->SetText(::vl::WString(L"Item 16", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_136));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_137 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29961,7 +29961,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_137.Obj())->SetText(::vl::WString(L"Item 17", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_137));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_138 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29969,7 +29969,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_138.Obj())->SetText(::vl::WString(L"Item 18", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_138));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_139 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29977,7 +29977,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_139.Obj())->SetText(::vl::WString(L"Item 19", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_139));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_140 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -29985,7 +29985,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_140.Obj())->SetText(::vl::WString(L"Item 20", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_119)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_140));
 		}
 		{
@@ -30035,7 +30035,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_147.Obj())->SetText(::vl::WString(L"Item 1", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_147));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_148 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30043,7 +30043,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_148.Obj())->SetText(::vl::WString(L"Item 2", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_148));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_149 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30051,7 +30051,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_149.Obj())->SetText(::vl::WString(L"Item 3", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_149));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_150 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30059,7 +30059,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_150.Obj())->SetText(::vl::WString(L"Item 4", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_150));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_151 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30067,7 +30067,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_151.Obj())->SetText(::vl::WString(L"Item 5", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_151));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_152 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30075,7 +30075,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_152.Obj())->SetText(::vl::WString(L"Item 6", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_152));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_153 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30083,7 +30083,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_153.Obj())->SetText(::vl::WString(L"Item 7", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_153));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_154 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30091,7 +30091,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_154.Obj())->SetText(::vl::WString(L"Item 8", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_154));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_155 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30099,7 +30099,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_155.Obj())->SetText(::vl::WString(L"Item 9", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_155));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_156 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30107,7 +30107,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_156.Obj())->SetText(::vl::WString(L"Item 10", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_156));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_157 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30115,7 +30115,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_157.Obj())->SetText(::vl::WString(L"Item 11", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_157));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_158 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30123,7 +30123,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_158.Obj())->SetText(::vl::WString(L"Item 12", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_158));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_159 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30131,7 +30131,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_159.Obj())->SetText(::vl::WString(L"Item 13", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_159));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_160 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30139,7 +30139,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_160.Obj())->SetText(::vl::WString(L"Item 14", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_160));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_161 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30147,7 +30147,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_161.Obj())->SetText(::vl::WString(L"Item 15", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_161));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_162 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30155,7 +30155,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_162.Obj())->SetText(::vl::WString(L"Item 16", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_162));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_163 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30163,7 +30163,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_163.Obj())->SetText(::vl::WString(L"Item 17", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_163));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_164 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30171,7 +30171,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_164.Obj())->SetText(::vl::WString(L"Item 18", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_164));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_165 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30179,7 +30179,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_165.Obj())->SetText(::vl::WString(L"Item 19", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_165));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_166 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
@@ -30187,7 +30187,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_166.Obj())->SetText(::vl::WString(L"Item 20", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_145)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_166));
 		}
 		{
@@ -30235,62 +30235,62 @@ namespace demo
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_175 = ::vl::Ptr<::vl::presentation::controls::list::ListViewItem>(new ::vl::presentation::controls::list::ListViewItem()));
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_175.Obj())->GetSubItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_175.Obj())->GetSubItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::WString(L"5", false)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_175.Obj())->SetText(::vl::WString(L"Word", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_175));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_176 = ::vl::Ptr<::vl::presentation::controls::list::ListViewItem>(new ::vl::presentation::controls::list::ListViewItem()));
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_176.Obj())->GetSubItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_176.Obj())->GetSubItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::WString(L"4", false)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_176.Obj())->SetText(::vl::WString(L"Excel", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_176));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_177 = ::vl::Ptr<::vl::presentation::controls::list::ListViewItem>(new ::vl::presentation::controls::list::ListViewItem()));
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_177.Obj())->GetSubItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_177.Obj())->GetSubItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::WString(L"3", false)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_177.Obj())->SetText(::vl::WString(L"PowerPoint", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_177));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_178 = ::vl::Ptr<::vl::presentation::controls::list::ListViewItem>(new ::vl::presentation::controls::list::ListViewItem()));
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_178.Obj())->GetSubItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_178.Obj())->GetSubItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::WString(L"2", false)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_178.Obj())->SetText(::vl::WString(L"Outlook", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_178));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_179 = ::vl::Ptr<::vl::presentation::controls::list::ListViewItem>(new ::vl::presentation::controls::list::ListViewItem()));
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_179.Obj())->GetSubItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_179.Obj())->GetSubItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::WString(L"1", false)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_179.Obj())->SetText(::vl::WString(L"OneNote", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_179));
 		}
 		{
@@ -30311,7 +30311,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_172.Obj())->SetText(::vl::WString(L"Product", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetColumns();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetColumns());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_172));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_173 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
@@ -30325,7 +30325,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_173.Obj())->SetText(::vl::WString(L"Count", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetColumns();
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_171)->GetColumns());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_173));
 		}
 		{
@@ -30385,7 +30385,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_186.Obj())->NotifyDataModified();
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_186));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_186));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_187 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem()))));
 		{
@@ -30393,7 +30393,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_187.Obj())->NotifyDataModified();
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_187));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_187));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_188 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem()))));
 		{
@@ -30401,7 +30401,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_188.Obj())->NotifyDataModified();
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_188));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_188));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_189 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem()))));
 		{
@@ -30409,7 +30409,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_189.Obj())->NotifyDataModified();
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_189));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_189));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_190 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem()))));
 		{
@@ -30417,10 +30417,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_190.Obj())->NotifyDataModified();
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_190));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->Children()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_190));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_184)->Nodes().Obj())->Children().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_185));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_184)->Nodes().Obj())->Children()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_185));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_183)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_184)));
@@ -30749,17 +30749,17 @@ namespace demo
 			(::vl::__vwsn::This(this)->__vwsn_precompile_234 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_233)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_234));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_233)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_234));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc302_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_235 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_233)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_235));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_233)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_235));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_232));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_232));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc303_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -30771,62 +30771,62 @@ namespace demo
 			(::vl::__vwsn::This(this)->__vwsn_precompile_238 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_237)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_238));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_237)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_238));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc305_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_239 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_237)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_239));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_237)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_239));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_236));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_236));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc306_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_240 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_240));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_240));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc307_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_241 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_241));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_241));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc308_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_242 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_242));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_242));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc309_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_243 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_243));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_243));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc310_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_244 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_244));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_244));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc311_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_245 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_245));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_231)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_245));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_229)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_230));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_229)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_230));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc312_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -30841,66 +30841,66 @@ namespace demo
 			(::vl::__vwsn::This(this)->__vwsn_precompile_248 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_248));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_248));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc314_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_249 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_249));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_249));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc315_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_250 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_250));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_250));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc316_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_251 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_251));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_251));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc317_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_252 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_252));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_252));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc318_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_253 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_253));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_253));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc319_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_254 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_254));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_254));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc320_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_255 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_255));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_255));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc321_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_256 = new ::vl::presentation::controls::GuiToolstripButton(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_256));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_247)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_256));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_229)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_246));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_229)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_246));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_228)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_229)->GetBoundsComposition())));
@@ -30947,7 +30947,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_262)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_263)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_261)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_262));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_261)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_262));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc327_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -30964,10 +30964,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_264)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_265)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_261)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_264));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_261)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_264));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_260));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_260));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc329_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -30999,7 +30999,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_269)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_270)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_268)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_269));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_268)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_269));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc333_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -31016,10 +31016,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_271)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_272)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_268)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_271));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_268)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_271));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_267));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_267));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc335_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -31036,7 +31036,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_274)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_275)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_274));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_274));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc337_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -31053,14 +31053,14 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_276)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_277)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_276));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_276));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc339_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_278 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_278));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_278));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc340_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -31077,14 +31077,14 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_279)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_280)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_279));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_279));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc342_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_281 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_281));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_281));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc343_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -31101,7 +31101,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_282)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_283)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_282));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_282));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc345_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -31118,14 +31118,14 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_284)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_285)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_284));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_284));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiControlTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc347_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
 			(::vl::__vwsn::This(this)->__vwsn_precompile_286 = new ::vl::presentation::controls::GuiControl(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_286));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_286));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc348_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -31142,7 +31142,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_287)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_288)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_287));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_287));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc350_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -31159,7 +31159,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_289)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_290)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_289));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_289));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc352_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -31176,7 +31176,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_291)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_292)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_291));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_291));
 		}
 		{
 			auto __vwsn_controlStyle_ = new ::vl::presentation::templates::GuiToolstripButtonTemplate_StyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc354_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this)));
@@ -31193,7 +31193,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_293)->SetTooltipControl(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_294)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems().Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_293));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::This(this)->__vwsn_precompile_293));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_258)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_259)->GetBoundsComposition())));
@@ -31896,113 +31896,116 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
-			IMPL_CPP_TYPE_INFO(::ScrollTemplateScript)
-			IMPL_CPP_TYPE_INFO(::darkskin::BottomScrollButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::BottomScrollButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::CheckBoxTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::CheckBoxTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::CheckItemBackgroundTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::CheckItemBackgroundTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::CheckTextListTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::CheckTextListTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ComboBoxTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ComboBoxTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::DatePickerTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::DatePickerTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::DocumentLabelTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::DocumentLabelTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::DocumentViewerTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::DocumentViewerTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ExpandingDecoratorTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ExpandingDecoratorTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::GroupBoxTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::GroupBoxTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::HScrollHandleTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::HScrollHandleTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::HScrollTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::HScrollTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::HTrackerTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::HTrackerTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ItemBackgroundTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ItemBackgroundTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::LabelTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::LabelTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::LeftScrollButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::LeftScrollButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ListViewColumnHeaderTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ListViewColumnHeaderTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ListViewTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ListViewTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::MenuBarButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::MenuBarButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::MenuItemButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::MenuItemButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::MenuSplitterTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::MenuSplitterTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::MultilineTextBoxTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::MultilineTextBoxTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ProgressBarTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ProgressBarTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::RadioButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::RadioButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::RadioTextListTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::RadioTextListTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::RightScrollButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::RightScrollButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ScrollViewTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ScrollViewTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::SinglelineTextBoxTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::SinglelineTextBoxTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::TabDropdownTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::TabDropdownTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::TabHeaderTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::TabHeaderTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::TabTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::TabTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::TextListTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::TextListTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripDropdownButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripDropdownButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripMenuTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripMenuTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripSplitArrowTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripSplitArrowTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripSplitButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripSplitButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripSplitterTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripSplitterTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::ToolstripTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::TooltipTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::TooltipTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::TopScrollButtonTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::TopScrollButtonTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::TreeViewTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::TreeViewTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::VScrollHandleTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::VScrollHandleTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::VScrollTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::VScrollTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::VTrackerTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::VTrackerTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::darkskin::WindowTemplate)
-			IMPL_CPP_TYPE_INFO(::darkskin::WindowTemplateConstructor)
-			IMPL_CPP_TYPE_INFO(::demo::MainWindow)
-			IMPL_CPP_TYPE_INFO(::demo::MainWindowConstructor)
+			IMPL_CPP_TYPE_INFO(ScrollTemplateScript)
+			IMPL_CPP_TYPE_INFO(darkskin::BottomScrollButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::BottomScrollButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::CheckBoxTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::CheckBoxTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::CheckItemBackgroundTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::CheckItemBackgroundTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::CheckTextListTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::CheckTextListTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ComboBoxTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ComboBoxTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::DatePickerTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::DatePickerTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::DocumentLabelTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::DocumentLabelTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::DocumentViewerTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::DocumentViewerTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ExpandingDecoratorTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ExpandingDecoratorTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::GroupBoxTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::GroupBoxTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::HScrollHandleTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::HScrollHandleTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::HScrollTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::HScrollTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::HTrackerTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::HTrackerTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ItemBackgroundTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ItemBackgroundTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::LabelTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::LabelTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::LeftScrollButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::LeftScrollButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ListViewColumnHeaderTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ListViewColumnHeaderTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ListViewTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ListViewTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::MenuBarButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::MenuBarButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::MenuItemButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::MenuItemButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::MenuSplitterTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::MenuSplitterTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::MultilineTextBoxTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::MultilineTextBoxTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ProgressBarTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ProgressBarTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::RadioButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::RadioButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::RadioTextListTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::RadioTextListTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::RightScrollButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::RightScrollButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ScrollViewTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ScrollViewTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::SinglelineTextBoxTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::SinglelineTextBoxTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::TabDropdownTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::TabDropdownTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::TabHeaderTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::TabHeaderTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::TabTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::TabTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::TextListTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::TextListTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripDropdownButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripDropdownButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripMenuTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripMenuTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripSplitArrowTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripSplitArrowTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripSplitButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripSplitButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripSplitterTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripSplitterTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::ToolstripTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::TooltipTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::TooltipTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::TopScrollButtonTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::TopScrollButtonTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::TreeViewTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::TreeViewTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::VScrollHandleTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::VScrollHandleTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::VScrollTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::VScrollTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::VTrackerTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::VTrackerTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(darkskin::WindowTemplate)
+			IMPL_CPP_TYPE_INFO(darkskin::WindowTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(demo::MainWindow)
+			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::ScrollTemplateScript)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::ScrollTemplateScript>(), NO_PARAMETER)
 				CLASS_MEMBER_STATIC_METHOD(SetScroll, { L"totalPixels" _ L"newOffset" _ L"scrollTemplate" })
 			END_CLASS_MEMBER(::ScrollTemplateScript)
 
 			BEGIN_CLASS_MEMBER(::darkskin::BottomScrollButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::BottomScrollButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::BottomScrollButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::BottomScrollButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::BottomScrollButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32011,9 +32014,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::BottomScrollButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32024,9 +32029,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::CheckBoxTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::CheckBoxTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::CheckBoxTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::CheckBoxTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::CheckBoxTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32043,9 +32050,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::CheckBoxTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::CheckItemBackgroundTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::CheckItemBackgroundTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::CheckItemBackgroundTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::CheckItemBackgroundTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::CheckItemBackgroundTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(container)
@@ -32053,9 +32062,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::CheckItemBackgroundTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::CheckTextListTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::CheckTextListTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::CheckTextListTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::CheckTextListTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::CheckTextListTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32064,9 +32075,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::CheckTextListTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ComboBoxTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ComboBoxTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ComboBoxTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ComboBoxTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ComboBoxTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32082,25 +32095,31 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ComboBoxTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::DatePickerTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::DatePickerTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::DatePickerTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::DatePickerTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::DatePickerTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(self)
 			END_CLASS_MEMBER(::darkskin::DatePickerTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::DocumentLabelTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::DocumentLabelTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::DocumentLabelTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::DocumentLabelTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::DocumentLabelTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(self)
 			END_CLASS_MEMBER(::darkskin::DocumentLabelTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::DocumentViewerTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::DocumentViewerTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::DocumentViewerTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::DocumentViewerTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::DocumentViewerTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32109,9 +32128,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::DocumentViewerTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ExpandingDecoratorTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ExpandingDecoratorTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ExpandingDecoratorTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ExpandingDecoratorTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ExpandingDecoratorTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32123,9 +32144,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ExpandingDecoratorTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::GroupBoxTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::GroupBoxTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::GroupBoxTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::GroupBoxTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::GroupBoxTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32139,9 +32162,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::GroupBoxTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::HScrollHandleTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::HScrollHandleTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::HScrollHandleTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::HScrollHandleTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::HScrollHandleTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32149,11 +32174,13 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::HScrollHandleTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::HScrollTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::HScrollTemplate*(), NO_PARAMETER)
 				CLASS_MEMBER_FIELD(draggingHandle)
 				CLASS_MEMBER_FIELD(draggingStartLocation)
 			END_CLASS_MEMBER(::darkskin::HScrollTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::HScrollTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::HScrollTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32172,11 +32199,13 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::HScrollTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::HTrackerTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::HTrackerTemplate*(), NO_PARAMETER)
 				CLASS_MEMBER_FIELD(draggingHandle)
 				CLASS_MEMBER_FIELD(draggingStartLocation)
 			END_CLASS_MEMBER(::darkskin::HTrackerTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::HTrackerTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::HTrackerTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32191,9 +32220,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::HTrackerTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ItemBackgroundTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ItemBackgroundTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ItemBackgroundTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ItemBackgroundTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ItemBackgroundTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(container)
@@ -32201,18 +32232,22 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ItemBackgroundTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::LabelTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::LabelTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::LabelTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::LabelTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::LabelTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(self)
 			END_CLASS_MEMBER(::darkskin::LabelTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::LeftScrollButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::LeftScrollButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::LeftScrollButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::LeftScrollButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::LeftScrollButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32221,9 +32256,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::LeftScrollButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ListViewColumnHeaderTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ListViewColumnHeaderTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ListViewColumnHeaderTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ListViewColumnHeaderTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ListViewColumnHeaderTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32240,9 +32277,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ListViewColumnHeaderTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ListViewTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ListViewTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ListViewTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ListViewTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ListViewTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32251,9 +32290,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ListViewTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::MenuBarButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::MenuBarButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::MenuBarButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::MenuBarButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::MenuBarButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32262,9 +32303,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::MenuBarButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::MenuItemButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::MenuItemButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::MenuItemButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::MenuItemButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::MenuItemButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32282,9 +32325,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::MenuItemButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::MenuSplitterTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::MenuSplitterTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::MenuSplitterTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::MenuSplitterTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::MenuSplitterTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32293,9 +32338,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::MenuSplitterTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::MultilineTextBoxTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::MultilineTextBoxTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::MultilineTextBoxTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::MultilineTextBoxTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::MultilineTextBoxTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32304,9 +32351,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::MultilineTextBoxTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ProgressBarTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ProgressBarTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ProgressBarTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ProgressBarTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ProgressBarTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32318,9 +32367,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ProgressBarTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::RadioButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::RadioButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::RadioButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::RadioButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::RadioButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32337,9 +32388,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::RadioButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::RadioTextListTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::RadioTextListTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::RadioTextListTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::RadioTextListTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::RadioTextListTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32348,9 +32401,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::RadioTextListTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::RightScrollButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::RightScrollButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::RightScrollButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::RightScrollButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::RightScrollButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32359,9 +32414,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::RightScrollButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ScrollViewTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ScrollViewTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ScrollViewTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ScrollViewTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ScrollViewTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32370,9 +32427,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ScrollViewTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::SinglelineTextBoxTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::SinglelineTextBoxTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::SinglelineTextBoxTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::SinglelineTextBoxTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::SinglelineTextBoxTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32381,9 +32440,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::SinglelineTextBoxTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TabDropdownTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::TabDropdownTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::TabDropdownTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TabDropdownTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::TabDropdownTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32393,9 +32454,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::TabDropdownTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TabHeaderTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::TabHeaderTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::TabHeaderTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TabHeaderTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::TabHeaderTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32404,9 +32467,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::TabHeaderTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TabTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::TabTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::TabTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TabTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::TabTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32421,9 +32486,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::TabTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TextListTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::TextListTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::TextListTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TextListTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::TextListTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32432,9 +32499,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::TextListTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ToolstripButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ToolstripButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ToolstripButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32446,9 +32515,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ToolstripButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripDropdownButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ToolstripDropdownButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ToolstripDropdownButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripDropdownButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ToolstripDropdownButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32464,9 +32535,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ToolstripDropdownButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripMenuTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ToolstripMenuTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ToolstripMenuTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripMenuTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ToolstripMenuTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32475,9 +32548,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ToolstripMenuTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripSplitArrowTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ToolstripSplitArrowTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ToolstripSplitArrowTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripSplitArrowTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ToolstripSplitArrowTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32487,9 +32562,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ToolstripSplitArrowTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripSplitButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ToolstripSplitButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ToolstripSplitButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripSplitButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ToolstripSplitButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32506,9 +32583,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ToolstripSplitButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripSplitterTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ToolstripSplitterTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ToolstripSplitterTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripSplitterTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ToolstripSplitterTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32517,18 +32596,22 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::ToolstripSplitterTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::ToolstripTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::ToolstripTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::ToolstripTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::ToolstripTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 			END_CLASS_MEMBER(::darkskin::ToolstripTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TooltipTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::TooltipTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::TooltipTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TooltipTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::TooltipTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32538,9 +32621,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::TooltipTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TopScrollButtonTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::TopScrollButtonTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::TopScrollButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TopScrollButtonTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::TopScrollButtonTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32549,9 +32634,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::TopScrollButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TreeViewTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::TreeViewTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::TreeViewTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::TreeViewTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::TreeViewTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32560,9 +32647,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::TreeViewTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::VScrollHandleTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::VScrollHandleTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::VScrollHandleTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::VScrollHandleTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::VScrollHandleTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32570,11 +32659,13 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::VScrollHandleTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::VScrollTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::VScrollTemplate*(), NO_PARAMETER)
 				CLASS_MEMBER_FIELD(draggingHandle)
 				CLASS_MEMBER_FIELD(draggingStartLocation)
 			END_CLASS_MEMBER(::darkskin::VScrollTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::VScrollTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::VScrollTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32593,11 +32684,13 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::VScrollTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::VTrackerTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::VTrackerTemplate*(), NO_PARAMETER)
 				CLASS_MEMBER_FIELD(draggingHandle)
 				CLASS_MEMBER_FIELD(draggingStartLocation)
 			END_CLASS_MEMBER(::darkskin::VTrackerTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::VTrackerTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::VTrackerTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32612,9 +32705,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::VTrackerTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::darkskin::WindowTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::darkskin::WindowTemplate*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::darkskin::WindowTemplate)
 
 			BEGIN_CLASS_MEMBER(::darkskin::WindowTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::darkskin::WindowTemplateConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
@@ -32646,9 +32741,11 @@ namespace vl
 			END_CLASS_MEMBER(::darkskin::WindowTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
