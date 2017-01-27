@@ -5,6 +5,10 @@
     * **Workflow to C++ code generation with hint**.
         * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
         * Use ::vl::vint for int in both 32 and 64 configurations.
+* GacUI Resource
+    * Use `<Int>` to represent vint, instead of having to use `<Int32>` or `<Int64>`
+    * Allow `-bind` and `-eval` to use `x:1 y:2` for struct, or expression with implicit `WfInferExpression`
+    * Allow assigning list constructor expression to array properties
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
     * Don't use string for XXXProperty: (1)
