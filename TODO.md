@@ -26,7 +26,7 @@
         * **ListViewTemplate**.(Background|ColumnHeader)Template
         * **TreeViewTemplate**.(Background\ExpandingDecorator)Template
         * **TabTemplate**.(Header|Dropdown|Menu|MenuItem)Template
-	* IEventInfo::ICpp for composition events
+	* Remove control style interfaces, controls talk to templates directly
 * GacGen.exe
     * Add VCZH_DEBUG_NO_REFLECTION
         * **ControlTemplates**: BlackSkin `see: GacUI/(1)`
