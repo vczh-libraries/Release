@@ -7,9 +7,6 @@
         * Use ::vl::vint for int in both 32 and 64 configurations.
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
-
-## Comming Soon
-* GacUI
     * Don't use string for XXXProperty: (1)
         * **BindableTextList**.(Text|Checked)Property
         * **BindableListView**.(Large|Small)ImageProperty
@@ -26,7 +23,6 @@
         * **ListViewTemplate**.(Background|ColumnHeader)Template
         * **TreeViewTemplate**.(Background\ExpandingDecorator)Template
         * **TabTemplate**.(Header|Dropdown|Menu|MenuItem)Template
-	* Remove control style interfaces, controls talk to templates directly
 * GacGen.exe
     * Add VCZH_DEBUG_NO_REFLECTION
         * **ControlTemplates**: BlackSkin `see: GacUI/(1)`
@@ -43,9 +39,6 @@
     * InheritableCustomControl  
     * GuiCustomControl::SetContainerComposition // using a special syntax
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
-* GacUI
-    * New predefined control templates, written in XML generated C++ code.
-    * Retire Win7/Win8 control templates, rewrite them in tutorials.
 * GacGen.exe
     * Enable linking to external symbols
 
@@ -70,11 +63,16 @@
     * ev.Event-(eval|async|delayed)
     * Non-standard event handler name: `arg1`, `arg2`, ...
         * Instead of `<argument>1`, `<argument>2`, ...
+        * Or user can specify them
 * GacUI
     * Make ItemSource from constructor argument to property
     * Embedded Languages: Colorizer, AutoComplete
     * Abstract Graphics API
     * Chart, Ribbon, Dock Container
+    * **(after animation is done)**
+        * New predefined control templates, written in XML generated C++ code.
+        * Retire Win7/Win8 control templates, rewrite them in tutorials.
+        * Remove control style interfaces, controls talk to templates directly
 * GacStudio.exe
 
 ## Proposal (Workflow State Machine)
