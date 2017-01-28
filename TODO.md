@@ -17,16 +17,6 @@
         * **ListViewColumn**.TextProperty
         * **BindableTreeView**.(Text|Image|Children)Property
         * **BindableDataColumn**.ValueProperty
-    * Don't use string for XXXTemplate: (2)
-        * **WindowTemplate**.(Tooltip|ShortcutKey)Template
-        * **ToolstripButtonTemplate**.SubMenuTemplate
-        * **DatePickerTemplate**.Date(Button|TextList|ComboBox)Template
-        * **DateComboBoxTemplate**.DatePickerTemplate
-        * **ScrollViewTemplate**.(H|V)ScrollTemplate
-        * **TextListTemplate**.(Background|Bullet)Template
-        * **ListViewTemplate**.(Background|ColumnHeader)Template
-        * **TreeViewTemplate**.(Background\ExpandingDecorator)Template
-        * **TabTemplate**.(Header|Dropdown|Menu|MenuItem)Template
 * GacGen.exe
     * Add VCZH_DEBUG_NO_REFLECTION
         * **ControlTemplates**: BlackSkin `see: GacUI/(1)`
