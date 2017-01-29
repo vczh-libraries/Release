@@ -19,7 +19,7 @@
         * **BindableDataColumn**.ValueProperty
 * GacGen.exe
     * Add VCZH_DEBUG_NO_REFLECTION
-        * **Controls**: ColorPicker, AddressBook `see: GacUI/(1)`
+        * **Controls**: ColorPicker, AddressBook `see: GacUI/(1)`
 
 ## Wait For A Few Releases
 * Workflow
