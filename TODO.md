@@ -11,12 +11,6 @@
     * Context text parameters which can be obtained while processing text values (e.g. env.DataType)
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
-    * Don't use string for XXXProperty: (1)
-        * **BindableTextList**.(Text|Checked)Property
-        * **BindableListView**.(Large|Small)ImageProperty
-        * **ListViewColumn**.TextProperty
-        * **BindableTreeView**.(Text|Image|Children)Property
-        * **BindableDataColumn**.ValueProperty
 * GacGen.exe
     * Add VCZH_DEBUG_NO_REFLECTION
         * **Controls**: ColorPicker, AddressBook `see: GacUI/(1)`
@@ -54,9 +48,6 @@
     * InstanceStyle:Replace
     * Visual State, State Machine, Animation
     * ev.Event-(eval|async|delayed)
-    * Non-standard event handler name: `arg1`, `arg2`, ...
-        * Instead of `<argument>1`, `<argument>2`, ...
-        * Or user can specify them
 * GacUI
     * Make ItemSource from constructor argument to property
     * Embedded Languages: Colorizer, AutoComplete
