@@ -11,6 +11,8 @@
     * Context text parameters which can be obtained while processing text values (e.g. env.DataType)
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
+* DocTools
+    * Support `decltype(auto)` type
 
 ## Wait For A Few Releases
 * Workflow
