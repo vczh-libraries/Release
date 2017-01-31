@@ -11,9 +11,6 @@
     * Context text parameters which can be obtained while processing text values (e.g. env.DataType)
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
-* GacGen.exe
-    * Add VCZH_DEBUG_NO_REFLECTION
-        * **Controls**: ColorPicker, AddressBook `see: GacUI/(1)`
 
 ## Wait For A Few Releases
 * Workflow
