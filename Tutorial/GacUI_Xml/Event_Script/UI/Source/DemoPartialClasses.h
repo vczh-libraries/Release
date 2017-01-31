@@ -91,6 +91,19 @@ namespace vl_workflow_global
 
 		static Demo& Instance();
 	};
+
+/***********************************************************************
+Closures
+***********************************************************************/
+
+	struct __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+	};
 }
 
 #if defined( _MSC_VER)

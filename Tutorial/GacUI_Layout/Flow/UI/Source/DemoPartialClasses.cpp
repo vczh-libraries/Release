@@ -38,215 +38,17 @@ END_GLOBAL_STORAGE_CLASS(vl_workflow_global_Demo)
 namespace vl_workflow_global
 {
 /***********************************************************************
-Closure Definitions
+Global Functions
 ***********************************************************************/
 
-	struct __vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	Demo& Demo::Instance()
 	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
+		return Getvl_workflow_global_Demo().instance;
+	}
+
+/***********************************************************************
+Closures
+***********************************************************************/
 
 	//-------------------------------------------------------------------
 
@@ -295,13 +97,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -316,13 +118,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -337,13 +139,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -358,13 +160,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -379,13 +181,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -400,13 +202,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -421,13 +223,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -442,13 +244,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -467,7 +269,7 @@ Closure Definitions
 			{
 				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
 				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::__vwsn::Ensure(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis)));
+				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 			}
 		}
 	}
@@ -483,13 +285,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -504,13 +306,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -525,13 +327,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -546,13 +348,13 @@ Closure Definitions
 	{
 		{
 			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }()))
+			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
 				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem)), (::vl::__vwsn::This([&](){ decltype(auto) __vwsn_temp__ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems(); return ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueReadonlyList>>(::vl::reflection::description::BoxParameter<decltype(__vwsn_temp__)>(__vwsn_temp__)); }().Obj())->GetCount() - 1));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
 	}
 
@@ -571,7 +373,7 @@ Closure Definitions
 			{
 				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
 				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::__vwsn::Ensure(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis)));
+				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 			}
 		}
 	}
@@ -591,7 +393,7 @@ Closure Definitions
 			{
 				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
 				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::__vwsn::Ensure(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis)));
+				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 			}
 		}
 	}
@@ -611,7 +413,7 @@ Closure Definitions
 			{
 				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
 				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::__vwsn::Ensure(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis)));
+				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 			}
 		}
 	}
@@ -631,7 +433,7 @@ Closure Definitions
 			{
 				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
 				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::__vwsn::Ensure(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis)));
+				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 			}
 		}
 	}
@@ -651,7 +453,7 @@ Closure Definitions
 			{
 				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
 				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::__vwsn::Ensure(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis)));
+				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 			}
 		}
 	}
@@ -671,7 +473,7 @@ Closure Definitions
 			{
 				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
 				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::__vwsn::Ensure(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis)));
+				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 			}
 		}
 	}
@@ -691,7 +493,7 @@ Closure Definitions
 			{
 				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
 				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::__vwsn::Ensure(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis)));
+				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 			}
 		}
 	}
@@ -712,14 +514,6 @@ Closure Definitions
 				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAlignment(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Left", false)) ? ::vl::presentation::compositions::FlowAlignment::Left : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Center", false)) ? ::vl::presentation::compositions::FlowAlignment::Center : ::vl::presentation::compositions::FlowAlignment::Extend)));
 			}
 		}
-	}
-/***********************************************************************
-Global Functions
-***********************************************************************/
-
-	Demo& Demo::Instance()
-	{
-		return Getvl_workflow_global_Demo().instance;
 	}
 }
 
@@ -748,11 +542,11 @@ namespace demo
 		}
 		(::vl::__vwsn::This(this)->groupAxis = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->groupAxis)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->groupAxis));
 		}
 		(::vl::__vwsn::This(this)->groupAlignment = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->groupAlignment)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(::vl::__vwsn::This(this)->groupAlignment));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_1 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
@@ -825,10 +619,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->SetText(::vl::WString(L"RightDown", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_4)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_4)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_4)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_4));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_6 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -842,10 +636,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->SetText(::vl::WString(L"LeftDown", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_6)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_6));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_8 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -859,10 +653,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_9)->SetText(::vl::WString(L"DownRight", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_8)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_9)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_8)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_9)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_8)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_8));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_10 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -876,10 +670,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_11)->SetText(::vl::WString(L"DownLeft", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_10)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_11)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_10)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_11)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_10)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_10));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_12 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -893,10 +687,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_13)->SetText(::vl::WString(L"UpRight", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_12)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_13)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_12)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_13)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_12)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_12));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_14 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -910,10 +704,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->SetText(::vl::WString(L"UpLeft", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_14)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_14)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_14)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_14));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_16 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -927,10 +721,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->SetText(::vl::WString(L"RightUp", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_16)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_16)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_16)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_16));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_18 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -944,19 +738,19 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_19)->SetText(::vl::WString(L"LeftUp", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_18)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_19)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_18)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_19)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_18)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_18));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->groupBoxAxis)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_3)));
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->groupBoxAxis)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_3));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_2)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->groupBoxAxis)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_2)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->groupBoxAxis)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_2)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_2));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_22 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -1006,10 +800,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_25)->SetText(::vl::WString(L"Left", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_24)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_25)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_24)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_25)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_23)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_24)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_23)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_24));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_26 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -1023,10 +817,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_27)->SetText(::vl::WString(L"Center", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_26)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_27)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_26)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_27)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_23)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_26)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_23)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_26));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_28 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -1040,19 +834,19 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_29)->SetText(::vl::WString(L"Extend", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_28)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_29)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_28)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_29)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_23)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_28)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_23)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_28));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->groupBoxAlignment)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_23)));
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->groupBoxAlignment)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_23));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_22)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->groupBoxAlignment)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_22)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->groupBoxAlignment)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_22)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_22));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_32 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -1066,10 +860,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_33)->SetText(::vl::WString(L"Click any button in stack items to enlarge it.", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_33)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_33)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_32)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_32));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_34 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
@@ -1107,10 +901,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_36)->SetText(::vl::WString(L"Large 1", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_35)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_36)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_35)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_36)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_35)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_35));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_38 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1128,10 +922,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_39)->SetText(::vl::WString(L"Medium 1", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_38)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_39)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_38)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_39)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_38)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_38));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_41 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1149,10 +943,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_42)->SetText(::vl::WString(L"Small 1", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_41)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_42)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_41)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_42)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_41)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_41));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_44 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1170,10 +964,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_45)->SetText(::vl::WString(L"Large 2", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_44)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_45)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_44)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_45)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_44)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_44));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_47 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1191,10 +985,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_48)->SetText(::vl::WString(L"Medium 2", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_47)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_48)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_47)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_48)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_47)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_47));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_50 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1212,10 +1006,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_51)->SetText(::vl::WString(L"Small 2", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_50)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_51)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_50)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_51)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_50)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_50));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_53 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1233,10 +1027,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_54)->SetText(::vl::WString(L"Large 3", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_53)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_54)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_53)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_54)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_53)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_53));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_56 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1254,10 +1048,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_57)->SetText(::vl::WString(L"Medium 3", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_56)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_57)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_56)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_57)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_56)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_56));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_59 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1275,10 +1069,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->SetText(::vl::WString(L"Small 3", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_59)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_59)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_60)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_59)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_59));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_62 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1296,10 +1090,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_63)->SetText(::vl::WString(L"Large 4", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_62)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_63)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_62)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_63)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_62)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_62));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_65 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1317,10 +1111,10 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_66)->SetText(::vl::WString(L"Medium 4", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_65)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_66)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_65)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_66)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_65)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_65));
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_68 = new ::vl::presentation::compositions::GuiFlowItemComposition());
 		{
@@ -1338,92 +1132,92 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_69)->SetText(::vl::WString(L"Small 4", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_69)->GetBoundsComposition())));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_68)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_69)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_68)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->flowLayout)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_68));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_34)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->flowLayout)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_34)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->flowLayout));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_34)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_34));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->GetContainerComposition())->AddChild(::vl::__vwsn::Ensure(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_1)));
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_1));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_9)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_9)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_9)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_11)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_11)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_11)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_13)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_13)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_13)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_15)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_17)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_19)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_19)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAxis));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_19)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_25)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAlignment)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_25)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAlignment));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_25)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_27)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAlignment)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_27)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAlignment));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_27)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_29)->SetGroupController(::vl::__vwsn::Ensure(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAlignment)));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_29)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this)->groupAlignment));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
@@ -1517,14 +1311,16 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
-			IMPL_CPP_TYPE_INFO(::demo::MainWindow)
-			IMPL_CPP_TYPE_INFO(::demo::MainWindowConstructor)
+			IMPL_CPP_TYPE_INFO(demo::MainWindow)
+			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
