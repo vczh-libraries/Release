@@ -255,7 +255,7 @@
                   </Cell>
 
                   <Cell Site="row:1 column:0">
-                    <BindableTreeView ref.Name="treeViewFolders" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <BindableTreeView ref.Name="treeViewFolders" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::ICategory^">
                       <att.ItemSource-eval>ViewModel.GetRootCategory()</att.ItemSource-eval>
                       <att.TextProperty>Name</att.TextProperty>
                       <att.ImageProperty>Image</att.ImageProperty>
@@ -298,7 +298,7 @@
                   </Cell>
 
                   <Cell Site="row:1 column:0">
-                    <BindableListView ref.Name="listViewContacts" View="Detail" IconSize="x:16 y:16" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <BindableListView ref.Name="listViewContacts" View="Detail" IconSize="x:16 y:16" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IContact^">
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                       <att.ItemSource-bind>ViewModel.SelectedCategory.Contacts ?? null</att.ItemSource-bind>
                       <att.LargeImageProperty>BigImage</att.LargeImageProperty>

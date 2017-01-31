@@ -38,619 +38,17 @@ END_GLOBAL_STORAGE_CLASS(vl_workflow_global_Demo)
 namespace vl_workflow_global
 {
 /***********************************************************************
-Closure Definitions
+Global Functions
 ***********************************************************************/
 
-	struct __vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	Demo& Demo::Instance()
 	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()() const;
-	};
-
-	struct __vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
-	struct __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
-	struct __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
-	struct __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
-	struct __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
-	struct __vwsnf23_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::NewContactWindowConstructor* __vwsnthis_0;
-
-		__vwsnf23_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf24_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::NewContactWindowConstructor* __vwsnthis_0;
-
-		__vwsnf24_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf25_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::NewContactWindowConstructor* __vwsnthis_0;
-
-		__vwsnf25_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
-	struct __vwsnf26_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::NewFolderWindowConstructor* __vwsnthis_0;
-
-		__vwsnf26_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf27_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::NewFolderWindowConstructor* __vwsnthis_0;
-
-		__vwsnf27_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf28_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::NewFolderWindowConstructor* __vwsnthis_0;
-
-		__vwsnf28_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
-	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___
-	{
-		::demo::NewFolderWindow* window;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::NewFolderWindow* __vwsnctor_window, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()() const;
-	};
-
-	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
-	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
-	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___
-	{
-		::vl::Ptr<::demo::IContact> contact;
-		::demo::NewContactWindow* window;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::vl::Ptr<::demo::IContact> __vwsnctor_contact, ::demo::NewContactWindow* __vwsnctor_window, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()() const;
-	};
-
-	struct __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
-	struct __vwsno14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
-	struct __vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
-	struct __vwsno16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
-	struct __vwsno17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
-	struct __vwsno18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
-	struct __vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
-	class __vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
-	{
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
-		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
-		::demo::MainWindowConstructor* __vwsnthis_1;
-
-		__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
-
-		::vl::reflection::description::IValueSubscription* GetSubscription() override;
-		bool GetStopped() override;
-		bool StopListening() override;
-	};
-
-	class __vwsnc11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnc11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
-		void __vwsn_bind_initialize_();
-		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
-	{
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
-		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
-		::demo::MainWindowConstructor* __vwsnthis_1;
-
-		__vwsnc12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
-
-		::vl::reflection::description::IValueSubscription* GetSubscription() override;
-		bool GetStopped() override;
-		bool StopListening() override;
-	};
-
-	class __vwsnc13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnc13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::controls::GuiBindableTreeView* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
-		void __vwsn_bind_initialize_();
-		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
-	{
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
-		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
-		::demo::MainWindowConstructor* __vwsnthis_1;
-
-		__vwsnc14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
-
-		::vl::reflection::description::IValueSubscription* GetSubscription() override;
-		bool GetStopped() override;
-		bool StopListening() override;
-	};
-
-	class __vwsnc15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnc15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::controls::GuiBindableListView* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
-		void __vwsn_bind_initialize_();
-		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
-	{
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
-		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
-		::demo::MainWindowConstructor* __vwsnthis_1;
-
-		__vwsnc16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
-
-		::vl::reflection::description::IValueSubscription* GetSubscription() override;
-		bool GetStopped() override;
-		bool StopListening() override;
-	};
-
-	class __vwsnc17_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::NewContactWindowConstructor* __vwsnthis_0;
-
-		__vwsnc17_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
-
-		::demo::NewContactWindow* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
-		void __vwsn_bind_initialize_();
-		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc18_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
-	{
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
-		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
-		::demo::NewContactWindowConstructor* __vwsnthis_1;
-
-		__vwsnc18_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::NewContactWindowConstructor* __vwsnctorthis_1);
-
-		::vl::reflection::description::IValueSubscription* GetSubscription() override;
-		bool GetStopped() override;
-		bool StopListening() override;
-	};
-
-	class __vwsnc19_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::NewFolderWindowConstructor* __vwsnthis_0;
-
-		__vwsnc19_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::controls::GuiDocumentLabel* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
-		void __vwsn_bind_initialize_();
-		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
-		void __vwsn_bind_initialize_();
-		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc20_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
-	{
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
-		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
-		::demo::NewFolderWindowConstructor* __vwsnthis_1;
-
-		__vwsnc20_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::NewFolderWindowConstructor* __vwsnctorthis_1);
-
-		::vl::reflection::description::IValueSubscription* GetSubscription() override;
-		bool GetStopped() override;
-		bool StopListening() override;
-	};
-
-	class __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
-	{
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
-		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
-		::demo::MainWindowConstructor* __vwsnthis_1;
-
-		__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
-
-		::vl::reflection::description::IValueSubscription* GetSubscription() override;
-		bool GetStopped() override;
-		bool StopListening() override;
-	};
-
-	class __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
-		void __vwsn_bind_initialize_();
-		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
-	{
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
-		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
-		::demo::MainWindowConstructor* __vwsnthis_1;
-
-		__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
-
-		::vl::reflection::description::IValueSubscription* GetSubscription() override;
-		bool GetStopped() override;
-		bool StopListening() override;
-	};
-
-	class __vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
-		void __vwsn_bind_initialize_();
-		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
-	{
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
-		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
-		::demo::MainWindowConstructor* __vwsnthis_1;
-
-		__vwsnc6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
-
-		::vl::reflection::description::IValueSubscription* GetSubscription() override;
-		bool GetStopped() override;
-		bool StopListening() override;
-	};
-
-	class __vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
-		void __vwsn_bind_initialize_();
-		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener : public ::vl::Object, public virtual ::vl::reflection::description::IValueListener
-	{
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		::vl::reflection::description::IValueSubscription* __vwsn_subscription_;
-		::vl::reflection::description::IValueSubscription* __vwsnthis_0;
-		::demo::MainWindowConstructor* __vwsnthis_1;
-
-		__vwsnc8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener(::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsnctor___vwsn_bind_listeners_, ::vl::reflection::description::IValueSubscription* __vwsnctor___vwsn_subscription_, ::vl::reflection::description::IValueSubscription* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
-
-		::vl::reflection::description::IValueSubscription* GetSubscription() override;
-		bool GetStopped() override;
-		bool StopListening() override;
-	};
-
-	class __vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_bind_listeners_;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
-		void __vwsn_bind_initialize_();
-		::vl::Ptr<::vl::reflection::description::IValueListener> Subscribe(const ::vl::Func<void(const ::vl::reflection::description::Value&)>& __vwsn_bind_callback_) override;
-		bool Update() override;
-		bool Close() override;
-	};
+		return Getvl_workflow_global_Demo().instance;
+	}
+
+/***********************************************************************
+Closures
+***********************************************************************/
 
 	//-------------------------------------------------------------------
 
@@ -659,67 +57,7 @@ Closure Definitions
 	{
 	}
 
-	void __vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
-	{
-		{
-			auto window = new ::demo::NewContactWindow(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->ViewModel.Obj())->GetSelectedContact());
-			::vl::__vwsn::This(window)->SetForEdit(true);
-			::vl::__vwsn::This(window)->MoveToScreenCenter();
-			::vl::__vwsn::This(window)->ShowModalAndDelete(static_cast<::vl::presentation::controls::GuiWindow*>(::vl::__vwsn::This(__vwsnthis_0)->self), LAMBDA(::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(__vwsnthis_0)));
-		}
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::MainWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::operator()() const
-	{
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
-	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->commandDeleteContact)->GetEnabled();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
-		if ((__vwsn_old_ == __vwsn_new_))
-		{
-			return;
-		}
-		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->commandDeleteContact)->SetEnabled(__vwsn_new_);
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
-	{
-		{
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->ViewModel.Obj())->RemoveContact();
-		}
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->commandNewFolder)->GetEnabled();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
@@ -732,178 +70,29 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
-	__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
-	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->listViewContacts)->GetItemSource();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueEnumerable>>(__vwsn_value_);
-		if ((__vwsn_old_.Obj() == __vwsn_new_.Obj()))
-		{
-			return;
-		}
-		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->listViewContacts)->SetItemSource(__vwsn_new_);
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
-	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_38.Obj())->GetSelectedCategory();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::ICategory>>(__vwsn_value_);
-		if ((__vwsn_old_.Obj() == __vwsn_new_.Obj()))
-		{
-			return;
-		}
-		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_38.Obj())->SetSelectedCategory(__vwsn_new_);
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
-	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_38.Obj())->GetSelectedContact();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::IContact>>(__vwsn_value_);
-		if ((__vwsn_old_.Obj() == __vwsn_new_.Obj()))
-		{
-			return;
-		}
-		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_38.Obj())->SetSelectedContact(__vwsn_new_);
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf23_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::__vwsnf23_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf23_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
-	{
-		{
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->Contact.Obj())->Update(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxName)->GetText(), ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->datePickerBirthday)->GetDate(), ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxPhone)->GetText(), ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxAddress)->GetText());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Close();
-		}
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf24_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::__vwsnf24_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf24_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
-	{
-		{
-			(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Ready = false);
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Close();
-		}
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf25_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::__vwsnf25_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf25_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
-	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->GetText();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::WString>(__vwsn_value_);
-		if ((__vwsn_old_ == __vwsn_new_))
-		{
-			return;
-		}
-		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->SetText(__vwsn_new_);
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf26_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::__vwsnf26_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf26_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
-	{
-		{
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Close();
-		}
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf27_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::__vwsnf27_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf27_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
-	{
-		{
-			(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Ready = false);
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Close();
-		}
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf28_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::__vwsnf28_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf28_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
-	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->GetFolderName();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::WString>(__vwsn_value_);
-		if ((__vwsn_old_ == __vwsn_new_))
-		{
-			return;
-		}
-		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->SetFolderName(__vwsn_new_);
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	void __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	void __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
 			auto window = new ::demo::NewFolderWindow();
 			::vl::__vwsn::This(window)->MoveToScreenCenter();
-			::vl::__vwsn::This(window)->ShowModalAndDelete(static_cast<::vl::presentation::controls::GuiWindow*>(::vl::__vwsn::This(__vwsnthis_0)->self), LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(window, __vwsnthis_0)));
+			::vl::__vwsn::This(window)->ShowModalAndDelete(static_cast<::vl::presentation::controls::GuiWindow*>(::vl::__vwsn::This(__vwsnthis_0)->self), LAMBDA(::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(window, __vwsnthis_0)));
 		}
 	}
 
 	//-------------------------------------------------------------------
 
-	__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::NewFolderWindow* __vwsnctor_window, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::NewFolderWindow* __vwsnctor_window, ::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:window(__vwsnctor_window)
 		, __vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::operator()() const
+	void __vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::operator()() const
 	{
 		if (::vl::__vwsn::This(::vl::__vwsn::This(this)->window)->Ready)
 		{
@@ -913,12 +102,12 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
-	__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->commandDeleteFolder)->GetEnabled();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
@@ -931,12 +120,12 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
-	__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	void __vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->ViewModel.Obj())->RemoveCategory();
@@ -945,12 +134,12 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
-	__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->commandNewContact)->GetEnabled();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
@@ -963,31 +152,31 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
-	__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	void __vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
 			auto contact = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->ViewModel.Obj())->CreateContact();
 			auto window = new ::demo::NewContactWindow(contact);
 			::vl::__vwsn::This(window)->MoveToScreenCenter();
-			::vl::__vwsn::This(window)->ShowModalAndDelete(static_cast<::vl::presentation::controls::GuiWindow*>(::vl::__vwsn::This(__vwsnthis_0)->self), LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(contact, window, __vwsnthis_0)));
+			::vl::__vwsn::This(window)->ShowModalAndDelete(static_cast<::vl::presentation::controls::GuiWindow*>(::vl::__vwsn::This(__vwsnthis_0)->self), LAMBDA(::vl_workflow_global::__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(contact, window, __vwsnthis_0)));
 		}
 	}
 
 	//-------------------------------------------------------------------
 
-	__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::vl::Ptr<::demo::IContact> __vwsnctor_contact, ::demo::NewContactWindow* __vwsnctor_window, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::vl::Ptr<::demo::IContact> __vwsnctor_contact, ::demo::NewContactWindow* __vwsnctor_window, ::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:contact(__vwsnctor_contact)
 		, window(__vwsnctor_window)
 		, __vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::operator()() const
+	void __vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::operator()() const
 	{
 		if (::vl::__vwsn::This(::vl::__vwsn::This(this)->window)->Ready)
 		{
@@ -997,12 +186,12 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
-	__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->commandEditContact)->GetEnabled();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
@@ -1015,78 +204,404 @@ Closure Definitions
 
 	//-------------------------------------------------------------------
 
-	__vwsno14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		{
+			auto window = new ::demo::NewContactWindow(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->ViewModel.Obj())->GetSelectedContact());
+			::vl::__vwsn::This(window)->SetForEdit(true);
+			::vl::__vwsn::This(window)->MoveToScreenCenter();
+			::vl::__vwsn::This(window)->ShowModalAndDelete(static_cast<::vl::presentation::controls::GuiWindow*>(::vl::__vwsn::This(__vwsnthis_0)->self), LAMBDA(::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(__vwsnthis_0)));
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::Ptr<::vl::reflection::description::IValueEnumerable> __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	{
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::ICategory>>(__vwsn_item_);
+		return ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(item.Obj())->GetFolders());
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::operator()() const
+	{
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	{
+		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->commandDeleteContact)->GetEnabled();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
+		if ((__vwsn_old_ == __vwsn_new_))
+		{
+			return;
+		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->commandDeleteContact)->SetEnabled(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->ViewModel.Obj())->RemoveContact();
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	{
+		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->listViewContacts)->GetItemSource();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueEnumerable>>(__vwsn_value_);
+		if ((__vwsn_old_.Obj() == __vwsn_new_.Obj()))
+		{
+			return;
+		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->listViewContacts)->SetItemSource(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::Ptr<::vl::presentation::GuiImageData> __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	{
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::ICategory>>(__vwsn_item_);
+		return ::vl::__vwsn::This(item.Obj())->GetImage();
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	{
+		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_38.Obj())->GetSelectedCategory();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::ICategory>>(__vwsn_value_);
+		if ((__vwsn_old_.Obj() == __vwsn_new_.Obj()))
+		{
+			return;
+		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_38.Obj())->SetSelectedCategory(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	{
+		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_38.Obj())->GetSelectedContact();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::IContact>>(__vwsn_value_);
+		if ((__vwsn_old_.Obj() == __vwsn_new_.Obj()))
+		{
+			return;
+		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->__vwsn_precompile_38.Obj())->SetSelectedContact(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->Contact.Obj())->Update(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxName)->GetText(), ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->datePickerBirthday)->GetDate(), ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxPhone)->GetText(), ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxAddress)->GetText());
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Close();
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		{
+			(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Ready = false);
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Close();
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	{
+		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->GetText();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::WString>(__vwsn_value_);
+		if ((__vwsn_old_ == __vwsn_new_))
+		{
+			return;
+		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->SetText(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Close();
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		{
+			(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Ready = false);
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->Close();
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	{
+		auto __vwsn_old_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->GetFolderName();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::WString>(__vwsn_value_);
+		if ((__vwsn_old_ == __vwsn_new_))
+		{
+			return;
+		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->SetFolderName(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::WString __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	{
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::ICategory>>(__vwsn_item_);
+		return ::vl::__vwsn::This(item.Obj())->GetName();
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::Ptr<::vl::presentation::GuiImageData> __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	{
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::IContact>>(__vwsn_item_);
+		return ::vl::__vwsn::This(item.Obj())->GetSmallImage();
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::Ptr<::vl::presentation::GuiImageData> __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	{
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::IContact>>(__vwsn_item_);
+		return ::vl::__vwsn::This(item.Obj())->GetBigImage();
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::WString __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	{
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::IContact>>(__vwsn_item_);
+		return ::vl::__vwsn::This(item.Obj())->GetName();
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::WString __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	{
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::IContact>>(__vwsn_item_);
+		return ::vl::__vwsn::This(item.Obj())->GetBirthdayText();
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::WString __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	{
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::IContact>>(__vwsn_item_);
+		return ::vl::__vwsn::This(item.Obj())->GetPhone();
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::WString __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	{
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::IContact>>(__vwsn_item_);
+		return ::vl::__vwsn::This(item.Obj())->GetAddress();
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsno23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsn_this_(__vwsnctor___vwsn_this_)
 		, __vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsno14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
+	void __vwsno23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
 	{
 		return ::vl::__vwsn::This(__vwsn_this_)->commandBigIcon_Executed(__vwsno_1, __vwsno_2);
 	}
 
 	//-------------------------------------------------------------------
 
-	__vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsno24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsn_this_(__vwsnctor___vwsn_this_)
 		, __vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
+	void __vwsno24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
 	{
 		return ::vl::__vwsn::This(__vwsn_this_)->commandSmallIcon_Executed(__vwsno_1, __vwsno_2);
 	}
 
 	//-------------------------------------------------------------------
 
-	__vwsno16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsno25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsn_this_(__vwsnctor___vwsn_this_)
 		, __vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsno16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
+	void __vwsno25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
 	{
 		return ::vl::__vwsn::This(__vwsn_this_)->commandList_Executed(__vwsno_1, __vwsno_2);
 	}
 
 	//-------------------------------------------------------------------
 
-	__vwsno17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsno26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsn_this_(__vwsnctor___vwsn_this_)
 		, __vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsno17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
+	void __vwsno26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
 	{
 		return ::vl::__vwsn::This(__vwsn_this_)->commandDetail_Executed(__vwsno_1, __vwsno_2);
 	}
 
 	//-------------------------------------------------------------------
 
-	__vwsno18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsno27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsn_this_(__vwsnctor___vwsn_this_)
 		, __vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsno18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
+	void __vwsno27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
 	{
 		return ::vl::__vwsn::This(__vwsn_this_)->commandTile_Executed(__vwsno_1, __vwsno_2);
 	}
 
 	//-------------------------------------------------------------------
 
-	__vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsno28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsno28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsn_this_(__vwsnctor___vwsn_this_)
 		, __vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	void __vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
+	void __vwsno28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const
 	{
 		return ::vl::__vwsn::This(__vwsn_this_)->commandInformation_Executed(__vwsno_1, __vwsno_2);
 	}
@@ -2091,14 +1606,6 @@ Closure Definitions
 		return false;
 	}
 
-/***********************************************************************
-Global Functions
-***********************************************************************/
-
-	Demo& Demo::Instance()
-	{
-		return Getvl_workflow_global_Demo().instance;
-	}
 }
 
 /***********************************************************************
@@ -2268,13 +1775,13 @@ namespace demo
 			(::vl::__vwsn::This(this)->treeViewFolders = new ::vl::presentation::controls::GuiBindableTreeView(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->treeViewFolders)->SetChildrenProperty(::vl::WString(L"Folders", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->treeViewFolders)->SetChildrenProperty(LAMBDA(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->treeViewFolders)->SetImageProperty(::vl::WString(L"Image", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->treeViewFolders)->SetImageProperty(LAMBDA(::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->treeViewFolders)->SetTextProperty(::vl::WString(L"Name", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->treeViewFolders)->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->treeViewFolders)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
@@ -2442,10 +1949,10 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"2", false))));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->listViewContacts)->SetSmallImageProperty(::vl::WString(L"SmallImage", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->listViewContacts)->SetSmallImageProperty(LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->listViewContacts)->SetLargeImageProperty(::vl::WString(L"BigImage", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->listViewContacts)->SetLargeImageProperty(LAMBDA(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->listViewContacts)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
@@ -2462,7 +1969,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_31.Obj())->SetSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"120", false)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_31.Obj())->SetTextProperty(::vl::WString(L"Name", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_31.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_31.Obj())->SetText(::vl::WString(L"Name", false));
@@ -2476,7 +1983,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32.Obj())->SetSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"120", false)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32.Obj())->SetTextProperty(::vl::WString(L"BirthdayText", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_32.Obj())->SetText(::vl::WString(L"Birthday", false));
@@ -2490,7 +1997,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_33.Obj())->SetSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"120", false)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_33.Obj())->SetTextProperty(::vl::WString(L"Phone", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_33.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_33.Obj())->SetText(::vl::WString(L"Phone", false));
@@ -2504,7 +2011,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_34.Obj())->SetSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"120", false)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_34.Obj())->SetTextProperty(::vl::WString(L"Address", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_34.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_34.Obj())->SetText(::vl::WString(L"Address", false));
@@ -2548,11 +2055,11 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
-			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandNewFolder)->Executed, __vwsn_event_handler_);
 		}
 		{
@@ -2572,11 +2079,11 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
-			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandDeleteFolder)->Executed, __vwsn_event_handler_);
 		}
 		{
@@ -2596,11 +2103,11 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
-			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandNewContact)->Executed, __vwsn_event_handler_);
 		}
 		{
@@ -2620,11 +2127,11 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
-			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditContact)->Executed, __vwsn_event_handler_);
 		}
 		{
@@ -2644,11 +2151,11 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
-			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandDeleteContact)->Executed, __vwsn_event_handler_);
 		}
 		{
@@ -2667,7 +2174,7 @@ namespace demo
 			}
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandBigIcon)->Executed, LAMBDA(::vl_workflow_global::__vwsno14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandBigIcon)->Executed, LAMBDA(::vl_workflow_global::__vwsno23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
 		}
 		{
 			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/SmallIcon", false));
@@ -2685,7 +2192,7 @@ namespace demo
 			}
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandSmallIcon)->Executed, LAMBDA(::vl_workflow_global::__vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandSmallIcon)->Executed, LAMBDA(::vl_workflow_global::__vwsno24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
 		}
 		{
 			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/List", false));
@@ -2703,7 +2210,7 @@ namespace demo
 			}
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandList)->Executed, LAMBDA(::vl_workflow_global::__vwsno16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandList)->Executed, LAMBDA(::vl_workflow_global::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
 		}
 		{
 			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Detail", false));
@@ -2721,7 +2228,7 @@ namespace demo
 			}
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandDetail)->Executed, LAMBDA(::vl_workflow_global::__vwsno17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandDetail)->Executed, LAMBDA(::vl_workflow_global::__vwsno26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
 		}
 		{
 			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Tile", false));
@@ -2739,7 +2246,7 @@ namespace demo
 			}
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandTile)->Executed, LAMBDA(::vl_workflow_global::__vwsno18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandTile)->Executed, LAMBDA(::vl_workflow_global::__vwsno27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
 		}
 		{
 			auto __vwsn_resource_item_ = ::vl::__vwsn::This(__vwsn_resolver_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Information", false));
@@ -2757,7 +2264,7 @@ namespace demo
 			}
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandInformation)->Executed, LAMBDA(::vl_workflow_global::__vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->commandInformation)->Executed, LAMBDA(::vl_workflow_global::__vwsno28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->SetCommand(::vl::__vwsn::This(this)->commandNewFolder);
@@ -2797,17 +2304,17 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
-			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
-			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
-			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
 		}
 	}
@@ -3081,16 +2588,16 @@ Class (::demo::NewContactWindowConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->datePickerBirthday)->SetDate(::vl::__vwsn::This(::vl::__vwsn::This(this)->Contact.Obj())->GetBirthday());
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf23_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_18)->Clicked, __vwsn_event_handler_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf24_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_21)->Clicked, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc17_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
-			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf25_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
 		}
 	}
@@ -3271,16 +2778,16 @@ Class (::demo::NewFolderWindowConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_0));
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf26_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->Clicked, __vwsn_event_handler_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf27_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_9)->Clicked, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::__vwsn::This(__vwsn_this_)->AddSubscription(::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc19_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this)));
-			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf28_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Subscribe(LAMBDA(::vl_workflow_global::__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->Update();
 		}
 	}

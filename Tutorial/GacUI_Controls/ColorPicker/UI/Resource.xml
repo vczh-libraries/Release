@@ -63,8 +63,8 @@
                 <att.ItemTemplate>demo::ColorBomboItemTemplate</att.ItemTemplate>
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                 <att.ListControl>
-                  <BindableTextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-                    <att.TextProperty>name</att.TextProperty>
+                  <BindableTextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IColorItem^">
+                    <att.TextProperty>ItemName</att.TextProperty>
                     <att.ItemSource-eval>ViewModel.ColorItems</att.ItemSource-eval>
                     <att.ItemTemplate>demo::ColorListItemTemplate</att.ItemTemplate>
                   </BindableTextList>
