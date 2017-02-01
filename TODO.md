@@ -2,23 +2,20 @@
 
 ## Working On
 * Workflow
-    * **Workflow to C++ code generation with hint**.
-        * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
-        * Use ::vl::vint for int in both 32 and 64 configurations.
 * GacUI Resource
     * Allow `-bind` and `-eval` to use `x:1 y:2` for struct, or expression with implicit `WfInferExpression`
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
-    * Context text parameters which can be obtained while processing text values (e.g. env.DataType)
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
-* DocTools
-    * Support `decltype(auto)` type
 
 ## Wait For A Few Releases
 * Workflow
     * Auto property
-    * Virtual function
-    * Class implements interface
+    * State Machine
+    * Context-Grammar Sensitive Macro
+    * **Workflow to C++ code generation with hint**.
+        * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
+        * Use ::vl::vint for int in both 32 and 64 configurations.
 * GacUI Resource
     * Add `<ref.Ctor>`, `<ref.Dtor>`
     * InheritableCustomWindow
@@ -27,6 +24,8 @@
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
 * GacGen.exe
     * Enable linking to external symbols
+* DocTools
+    * Support `decltype(auto)` type
 
 ## Low Property
 * Vlpp
@@ -43,6 +42,8 @@
         * Full CFG power, no limitation
 * Workflow
     * async, delay, yield (provider written in C++).
+    * Virtual function
+    * Class implements interface
 * GacUI Resource
     * InstanceStyle:Replace
     * Visual State, State Machine, Animation
