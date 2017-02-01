@@ -1,7 +1,6 @@
 # TODO
 
 ## Working On
-* Workflow
 * GacUI Resource
     * Allow `-bind` and `-eval` to use `x:1 y:2` for struct, or expression with implicit `WfInferExpression`
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
