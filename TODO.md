@@ -2,10 +2,10 @@
 
 ## Working On
 * GacUI Resource
-    * Allow `-bind` and `-eval` to use `x:1 y:2` for struct, or expression with implicit `WfInferExpression`
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
+    * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
 
 ## Wait For A Few Releases
 * Workflow
@@ -20,7 +20,7 @@
     * InheritableCustomWindow
     * InheritableCustomControl  
     * GuiCustomControl::SetContainerComposition // using a special syntax
-    * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
+    * Make ItemSource from constructor argument to property
 * GacGen.exe
     * Enable linking to external symbols
 * DocTools
@@ -48,7 +48,6 @@
     * Visual State, State Machine, Animation
     * ev.Event-(eval|async|delayed)
 * GacUI
-    * Make ItemSource from constructor argument to property
     * Embedded Languages: Colorizer, AutoComplete
     * Abstract Graphics API
     * Chart, Ribbon, Dock Container
