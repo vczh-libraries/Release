@@ -11,6 +11,17 @@
 ## Wait For A Few Releases
 * Workflow
     * Auto property
+        * Put `WfClassMember` inside `WfDeclaration`
+        * Add `WfVirtual(Expression|Statement|Declaration)`, to represent an "expandable" AST unit (e.g. bind)
+            * `WfExpression`
+            * `List<WfStatement>`
+            * `List<WfDeclaration>`
+        * For interface: `prop NAME : TYPE [,const][,not observe];`
+            * Expand to Getter / Setter / Event / Property
+        * For class: `prop NAME : TYPE = EXPRESSION [,const][,not observe];`
+            * Expand to [@cpp:Private]Variable / Getter / Setter / Event / Property
+        * For class (override): `override prop NAME : TYPE = EXPRESSION [,const][,not observe];`
+            * Expand to [@cpp:Private]Variable / Getter / Setter
     * State Machine
     * Context-Grammar Sensitive Macro
     * **Workflow to C++ code generation with hint**.
