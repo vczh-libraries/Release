@@ -16,12 +16,18 @@
             * `WfExpression`
             * `List<WfStatement>`
             * `List<WfDeclaration>`
-        * For interface: `prop NAME : TYPE [,const][,not observe];`
+        * CONFIG:
+            * {}
+            * {const}
+            * {not observe}
+            * {const, not observe}
+        * For interface: `prop NAME : TYPE CONFIG;`
             * Expand to Getter / Setter / Event / Property
-        * For class: `prop NAME : TYPE = EXPRESSION [,const][,not observe];`
+        * For class: `prop NAME : TYPE = EXPRESSION CONFIG;`
             * Expand to [@cpp:Private]Variable / Getter / Setter / Event / Property
-        * For class (override): `override prop NAME : TYPE = EXPRESSION [,const][,not observe];`
+        * For class (override): `override prop NAME : TYPE = EXPRESSION CONFIG;`
             * Expand to [@cpp:Private]Variable / Getter / Setter
+    * Macro
     * State Machine
     * Context-Grammar Sensitive Macro
     * **Workflow to C++ code generation with hint**.
@@ -81,27 +87,28 @@ To implement
 ```
 namespace system
 {
-    interface IStateMachine
+    enum StateMachineStatus
+    {
+        Stopped = 0,
+        Executing = 1,
+        Waiting = 2,
+    }
+
+    interface StateMachine
     {
         func Start() : void;            /* Call to restart, will raise exception during execution */
-        func Stop(ex : string) : void;  /* Call to stop, will raise exception if not started. */
-        
-        func GetIsExecuting() : bool;   
-        event IsExecutingChanged();
-        prop IsExecuting : bool {GetIsExecuting : IsExecutingChanged}
-        
-        event OnError(Exception^);      /* The current step goes wrong and continue to wait for more inputs */
-        event OnFatal(Exception^);      /* The whole state machine goes wrong and has to stop */
-        event OnStart();
-        event OnExit();
+        func Stop(ex : string) : void;  /* Call to stop, will raise exception if it is not executing or waiting for stateinput. */
+        prop Status : StateMachineStatus {const}
+        event OnStop(Exception^ /* null if no statefatal */);
     }
 }
 ```
 
 ### Keywords
-* `stateinput`
-* `statefatal`
-* `stateerror`
+* `stateinput`: declaration, statement
+* `statefatal`: statement
+* `stateerror`: statement
+* `statemachine`: declaration
 
 ### Syntax
 ```
@@ -111,7 +118,7 @@ stateerror "exception";     /* redo the current stateinput statement with an err
 return;                     /* stop the state machine normally */
 
 /* wait until received expected input */
-switch(stateinput <IStateMachine^ expression, optional, will loop until it done, or fatal if there is a statefatal>)
+stateinput(<StateMachine^ expression, optional, will loop until it done, or fatal if there is a statefatal>)
 {
     case <Name>(<Argument-Name>, ...):
     {
@@ -123,13 +130,13 @@ switch(stateinput <IStateMachine^ expression, optional, will loop until it done,
     }
     default:
     {
-        ...
+        // if there is no default, stateerror is inserted
     }
 }
 
 /* join another stat machine */
 var result : object = null;
-switch(stateinput IStateMachine::Any({m1 m2 m3}))
+stateinput(StateMachine::Any({m1 m2 m3}))
 {
     case m1.Result(r):{ result = r; }
     case m2.Result(r):{ result = r; }
@@ -143,28 +150,25 @@ module test;
 using system::*;
 using presentation::controls::Gui*;
 
-interface ICountDown : IStateMachine
+interface ICountDown : StateMachine
 {
     stateinput BeginCountDown();
     /* Equivalent to */
     func BeginCountDown() : void;
-    func GetBeginCountDownEnabled() : bool;
-    event BeginCountDownEnabledChanged() : bool;
-    prop BeginCountDownEnabled : bool {GetBeginCountDownEnabled : BeginCountDownEnabledChanged}
+    prop BeginCountDownEnabled : bool {const}
 
     stateinput CountDown();
     stateinput DoNotCall();
-    
-    /* auto declare getter, setter and event */
-    /* implementations are not generated in interface, but this one is implemented in state machine */
-    prop Remains : int;
+    prop Remains : int {const}
 }
 ```
 
 ### Sample (Xml)
 ```xml
 <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
-  <ref.Component Name="CountDown" Type="ICountDown^" Value="new CountDown^()"/>
+  <ref.Members>
+    var CountDOwn : ICountDown^ = new CountDown^();
+  </ref.Members>
   <Window ref.Name="self" Text="State Machine" ClientSize="x:480 y:320">
     <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
     <!-- ignore layout settings -->
@@ -183,9 +187,11 @@ interface ICountDown : IStateMachine
     <![CDATA[
         class CountDown : ICountDown
         {
-	        statemachine
+            override prop Remains : int = 0 {const}
+
+            statemachine
             {
-                stateinput
+                stateinput()
                 {
                     case BeginCountDown():{} /* If there are arguments, specify names only */
                     /*
@@ -201,7 +207,7 @@ interface ICountDown : IStateMachine
                 {
                     if (Remains > 0)
                     {
-                        stateinput
+                        stateinput()
                         {
                             case CountDown():
                             {
