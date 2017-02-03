@@ -1,4 +1,6 @@
 For any project which uses any source codes from this repo, the author(s) should ensure the project to satisfy one of the following conditions:
 1. Don't open source
-2. Open source under a non-GPL family license, and it is possible to redistribute the code of the project under Apache v2.0
+2. Open source under a non-GPL family license, and it is possible to 
+    a) redistribute the code of the project under Apache v2.0
+    b) merge the code of the project back (if there is any change to any source codes from this repo) to https://github.com/vczh-libraries under MS-PL or Apache v2.0
 3. Established an agreement with the author (https://github.com/vczh) of this repo
