@@ -7,6 +7,7 @@
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
+    * Icon
 
 ## Wait For A Few Releases
 * Workflow
