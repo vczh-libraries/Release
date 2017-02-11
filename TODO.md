@@ -40,6 +40,7 @@
     * InheritableCustomControl  
     * GuiCustomControl::SetContainerComposition // using a special syntax
     * Make ItemSource from constructor argument to property
+    * Localizable text template resource
 * GacGen.exe
     * Enable linking to external symbols
 * DocTools
@@ -83,6 +84,10 @@ To implement
 * Async operations
 * Delayed operations
 * State machine (visual state, animation)
+
+### Need to consider
+* Scheduler
+* How to build syntax suger for different kinds of state machines (e.g. Macro)
 
 ### State Machine Interface
 ```
