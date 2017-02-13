@@ -6,6 +6,9 @@
     * Correctly handle spaces when saving `<Doc/>`
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
+        * in XML
+        * in `<InstanceStyle>`
+        * in `<Workflow>`
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
     * Icon
 
