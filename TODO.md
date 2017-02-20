@@ -78,6 +78,9 @@
         * New predefined control templates, written in XML generated C++ code.
         * Retire Win7/Win8 control templates, rewrite them in tutorials.
         * Remove control style interfaces, controls talk to templates directly
+    * Don't force re-rendering at every frame.
+        * GuiGraphicsComposition::Render will detect bounds change
+        * IGuiElement will detect property change
 * GacStudio.exe
 
 ## Proposal (Workflow State Machine)
