@@ -101,19 +101,66 @@ namespace system
 {
     enum StateMachineStatus
     {
-        Stopped = 0,
+        Ready = 0,
         Executing = 1,
         Waiting = 2,
+        Stopped = 3,
     }
 
     interface StateMachine
     {
-        func Start() : void;            /* Call to restart, will raise exception during execution */
-        func Stop(ex : string) : void;  /* Call to stop, will raise exception if it is not executing or waiting for stateinput. */
+        /* Call to start or resume, raise exception if Stopped */
+        func Resume() : void;
+
+        /* Call to stop, will raise exception if it is not executing or waiting for stateinput. */
+        func Stop(ex : string) : void;
+
         prop Status : StateMachineStatus {const}
-        event OnStop(Exception^ /* null if no statefatal */);
+        event OnStatusChanged(Exception^ /* null if the status changed is not caused by an exception */);
     }
 }
+```
+
+### Core Syntax
+
+* `$yield {}`
+* `$return;`
+* `$raise <EXCEPTION>`;
+
+```
+/* Status == Ready */
+func CreateStateMachine() : StateMachine^
+{
+    /* Resume(): Status == Executing */
+    for (i in range [1, 10])
+    {
+        /* Status == Waiting */
+        $yield
+        {
+            /* Execute some code after Status == Waiting and before yielding the state machine */
+        }
+        /* Resume(): Status == Executing */
+    }
+    /* Status == Stopped */
+    $return;
+    /* Status == Stopped with exception */
+    $raise "Something is happened!";
+}
+```
+
+### Extension (IEnumerable)
+
+```
+```
+
+### Extension (Task)
+
+```
+```
+
+### Extension (State Machine Interface)
+
+```
 ```
 
 ### Keywords
