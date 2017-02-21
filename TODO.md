@@ -233,7 +233,8 @@ new Enumerable^
 
 * Code
 ```
-$new Enumerable
+/* Search for EnumerableStateMachine, the ^ sign should match the return type of EnumerableStateMachine */
+$new Enumerable^
 {
     for (i in range [1, 10])
     {
@@ -247,7 +248,7 @@ $new Enumerable
 ```
 EnumerableStateMachine.Create
 (
-    func (impl : IImpl*) : StateMachine^
+    func (impl : EnumerableStateMachine.IImpl*) : StateMachine^
     {
         return new StateMachine^
         {
