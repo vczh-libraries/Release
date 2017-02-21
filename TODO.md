@@ -91,9 +91,13 @@ To implement
 * Delayed operations
 * State machine (visual state, animation)
 
-### Need to consider
-* Scheduler
-* How to build syntax suger for different kinds of state machines (e.g. Macro)
+### Agenda
+* State Machine Interface
+* Core Syntax
+* Extension (State Machine)
+* Extension (Enumerable, $yield, $yieldBreak)
+* Extension (Task)
+* Sample
 
 ### State Machine Interface
 ```
@@ -335,47 +339,9 @@ class EnumerableStateMachine
 ```
 ```
 
-### Keywords
-* `stateinput`: declaration, statement
-* `statefatal`: statement
-* `stateerror`: statement
-* `statemachine`: declaration
+### Sample
 
-### Syntax
-```
-stateinput <Name>(<Argument>, ...);
-statefatal "exception";     /* stop the state machine with a fatal error */
-stateerror "exception";     /* redo the current stateinput statement with an error, only available in stateinput statement */
-return;                     /* stop the state machine normally */
-
-/* wait until received expected input */
-stateinput(<StateMachine^ expression, optional, will loop until it done, or fatal if there is a statefatal>)
-{
-    case <Name>(<Argument-Name>, ...):
-    {
-        ...
-    }
-    case <Event>(<Argument-Name>, ...):
-    {
-        ...
-    }
-    default:
-    {
-        // if there is no default, stateerror is inserted
-    }
-}
-
-/* join another stat machine */
-var result : object = null;
-stateinput(StateMachine::Any({m1 m2 m3}))
-{
-    case m1.Result(r):{ result = r; }
-    case m2.Result(r):{ result = r; }
-    case m3.Result(r):{ result = r; }
-}
-```
-
-### Sample (Workflow Script)
+* Workflow Script
 ```
 module test;
 using system::*;
@@ -394,62 +360,48 @@ interface ICountDown : StateMachine
 }
 ```
 
-### Sample (Xml)
+* XML
 ```xml
 <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
   <ref.Members>
-    var CountDOwn : ICountDown^ = new CountDown^();
+    var CountDown : ICountDown^ = null;
   </ref.Members>
   <Window ref.Name="self" Text="State Machine" ClientSize="x:480 y:320">
     <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
     <!-- ignore layout settings -->
-    <Button Enabled-bind="self.CountDown.BeginCountDownEnabled">
-      <ev.Clicked-eval>{self.CountDown.Start(); self.CountDown.BeginCountDown();}</ev.Clicked-eval>
+    <Button Enabled-bind="self.CountDown is null">
+      <ev.Clicked-eval>{self.CountDown = self.CreateCountDown(); self.CountDown.BeginCountDown();}</ev.Clicked-eval>
     </Button>
-    <Button Enabled-bind="self.CountDown.CountDownEnabled">
+    <Button Enabled-bind="self.CountDown.CountDownEnabled ?? false">
       <ev.Clicked-eval>self.CountDown.CountDown();</ev.Clicked-eval>
     </Button>
-    <Button Enabled-bind="self.CountDown.IsExecuting">
-      <ev.Clicked-eval>self.CountDown.Stop();</ev.Clicked-eval>
+    <Button Enabled-bind="self.CountDown is not null">
+      <ev.Clicked-eval>self.CountDown = self.CreateCountDown();</ev.Clicked-eval>
     </Button>
     <Label Text-format="Remains: $(self.CountDown.Remains)"/>
   </Window>
   <ref.Members>
     <![CDATA[
-        class CountDown : ICountDown
+        func CreateCountDown() : ICountDown^
         {
-            override prop Remains : int = 0 {const}
-
-            statemachine
+            return new ICountDown^
             {
-                stateinput()
-                {
-                    case BeginCountDown():{} /* If there are arguments, specify names only */
-                    /*
-                    Automatically updated before waiting:
-                    BeginCountDownEnabled = true;
-                    CountDownEnabled = false;
-                    DoNotCallEnabled = false;
-                    */
-                }
+                override prop Remains : int = 10 {const}
 
-                Remains = 10;
-                while (true)
                 {
-                    if (Remains > 0)
+                    $switch
                     {
-                        stateinput()
+                        case BeginCountDown():{}
+                    }
+
+                    while (Remains > 0)
+                    {
+                        $switch
                         {
                             case CountDown():
                             {
                                 Remains = Remains - 1;
                             }
-                            /*
-                            Automatically updated before waiting:
-                            BeginCountDownEnabled = false;
-                            CountDownEnabled = true;
-                            DoNotCallEnabled = false;
-                            */
                         }
                     }
                 }
