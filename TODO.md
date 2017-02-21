@@ -265,7 +265,10 @@ EnumerableStateMachine.Create
                         EnumerableStateMachine.yield(impl, i);
                     }
                 }
-                /* EnumerableStateMachine.yieldBreak(impl); $return; */
+                {
+                    EnumerableStateMachine.yieldBreak(impl);
+                    $return;
+                }
             }
         }
     }
