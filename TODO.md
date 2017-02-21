@@ -231,20 +231,22 @@ new Enumerable^
 
 #### Step 2 (Using extension)
 
-* Code
+* This coroutine
 ```
-/* Search for EnumerableStateMachine, the ^ sign should match the return type of EnumerableStateMachine */
+/* Use [Enumerable]StateMachine, the ^ sign should match the return type of EnumerableStateMachine */
 $new Enumerable^
 {
     for (i in range [1, 10])
     {
+        /* Use [Enumerable]StateMachine.[yield] */
         $yield i;
     }
-    /* $yieldBreak; */
+    /* Use [Enumerable]StateMachine.[yieldBreak] */
+    $yieldBreak;
 }
 ```
 
-* Translated to
+* Is translated to
 ```
 EnumerableStateMachine.Create
 (
@@ -267,7 +269,7 @@ EnumerableStateMachine.Create
 );
 ```
 
-* Using provider
+* Using a user-defined provider
 ```
 class EnumerableStateMachine
 {
@@ -276,17 +278,20 @@ class EnumerableStateMachine
         func OnNext(value : object) : void;
     }
     
+    /* The first argument should match the declaration of the Create function */
     @stateMachine:Pause
     static func yield(impl : IImpl*, value : object) : void
     {
         impl.OnNext(value);
     }
-    
+
+    /* The first argument should match the declaration of the Create function */
     @stateMachine:Return
     static func yieldBreak(impl : IImpl*) : void
     {
     }
     
+    /* The argument of the Create function should be a function, which has one argument and returns a StateMachine^ */
     static func Create(creator : func (impl : IImpl*) : StateMachine^) : Enumerable^
     {
         return new Enumerable^
