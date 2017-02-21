@@ -128,7 +128,10 @@ namespace system
 
 * `$pause {}`
 * `$return;`
-* `$raise <EXCEPTION>`;
+* `$raise <EXCEPTION>;`
+* `$input Name(a:Ta, b:Tb);`
+    * `func Name(a:Ta, b:Tb) : void`
+    * `prop NameEnabled : bool {const}`
 
 ```
 /* Status == Waiting */
@@ -238,11 +241,11 @@ $new Enumerable^
 {
     for (i in range [1, 10])
     {
-        /* Use [Enumerable]StateMachine.[yield] */
-        $yield i;
+        /* Use [Enumerable]StateMachine.[yield](Pause|Return) */
+        $yield(i);
     }
-    /* Use [Enumerable]StateMachine.[yieldBreak] */
-    $yieldBreak;
+    /* Use [Enumerable]StateMachine.[yieldBreak](Pause|Return) */
+    $yieldBreak();
 }
 ```
 
@@ -279,15 +282,13 @@ class EnumerableStateMachine
     }
     
     /* The first argument should match the declaration of the Create function */
-    @stateMachine:Pause
-    static func yield(impl : IImpl*, value : object) : void
+    static func yieldPause(impl : IImpl*, value : object) : void
     {
         impl.OnNext(value);
     }
 
     /* The first argument should match the declaration of the Create function */
-    @stateMachine:Return
-    static func yieldBreak(impl : IImpl*) : void
+    static func yieldBreakReturn(impl : IImpl*) : void
     {
     }
     
@@ -355,13 +356,9 @@ using presentation::controls::Gui*;
 
 interface ICountDown : StateMachine
 {
-    stateinput BeginCountDown();
-    /* Equivalent to */
-    func BeginCountDown() : void;
-    prop BeginCountDownEnabled : bool {const}
-
-    stateinput CountDown();
-    stateinput DoNotCall();
+    $input BeginCountDown();
+    $input CountDown();
+    $input DoNotCall();
     prop Remains : int {const}
 }
 ```
