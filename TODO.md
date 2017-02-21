@@ -109,14 +109,17 @@ namespace system
 
     interface StateMachine
     {
-        /* Call (Ready | Waiting -> Executing), raise exception if (Executing | Stopped) */
-        func Resume() : void;
+        /* Call (Ready | Waiting -> Executing | Stopped), raise exception if (Executing | Stopped) */
+        /* If raiseException == true, the function will raise the exception after storing to the Failure property */
+        func Resume(raiseException : bool) : void;
 
         /* Call (Ready | Waiting -> Stopped), raise exception if (Executing | Stopped) */
         func Stop(ex : string) : void;
 
+        /* Stored the $raise result */
+        prop Failure : Exception^ {const}
         prop Status : StateMachineStatus {const}
-        event OnStatusChanged(Exception^ /* null if the status changed is not caused by an exception */);
+        event OnStatusChanged();
     }
 }
 ```
@@ -129,26 +132,32 @@ namespace system
 
 ```
 /* Status == Ready */
-func CreateStateMachine() : StateMachine^
+new StateMachine^
 {
-    /* Resume(): Status == Executing */
-    for (i in range [1, 10])
+    <OTHER-DECLARATIONS>
+
     {
-        /* Status == Waiting */
-        $yield
-        {
-            /* Execute some code after Status == Waiting and before yielding the state machine */
-        }
         /* Resume(): Status == Executing */
+        for (i in range [1, 10])
+        {
+            /* Status == Waiting */
+            $yield
+            {
+                /* Execute some code after Status == Waiting and before yielding the state machine */
+            }
+            /* Resume(): Status == Executing */
+        }
+        /* Status == Stopped */
+        $return;
+        /* Status == Stopped with exception */
+        $raise "Something is happened!";
     }
-    /* Status == Stopped */
-    $return;
-    /* Status == Stopped with exception */
-    $raise "Something is happened!";
 }
 ```
 
 ### Extension (State Machine Interface)
+
+* `$switch { $yield{} case ... }`
 
 ```
 $switch
@@ -160,7 +169,7 @@ $switch
     }
     case Method(arg1 [: type] , ...):
     {
-        /* This method is declared in the returning interface type of the current function */
+        /* This method is declared in the returning interface type */
     }
     case value.Event(arg1 [: type], ...):
     {
@@ -172,13 +181,55 @@ $switch
 
 ### Extension (IEnumerable)
 
+#### Step 1
+
 ```
+new Enumerable^
+{
+    override func CreateEnumerator() : Enumerator^
+    {
+        return new Enumerator^
+        {
+            var current = null;
+            var index = -1;
+        
+            override func GetCurrent() : object
+            {
+                return current;
+            }
+            
+            override func GetIndex() : int
+            {
+                return index;
+            }
+            
+            override func Next() : bool
+            {
+                Resume(true);
+                return Status != Stopped;
+            }
+            
+            {
+                for (i in range [1, 10])
+                {
+                    index = index + 1;
+                    current = i;
+                    $yield {}
+                }
+            }
+        }
+    }
+}
 ```
+
+#### Step 2
+
+#### Step 3
 
 ### Extension (Task)
 
 ```
-`` `
+```
 
 ### Keywords
 * `stateinput`: declaration, statement
