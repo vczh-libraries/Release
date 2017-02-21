@@ -101,20 +101,16 @@ namespace system
 {
     enum StateMachineStatus
     {
-        Ready = 0,
+        Waiting = 0,
         Executing = 1,
-        Waiting = 2,
-        Stopped = 3,
+        Stopped = 2,
     }
 
     interface StateMachine
     {
-        /* Call (Ready | Waiting -> Executing | Stopped), raise exception if (Executing | Stopped) */
+        /* Call (Waiting -> Executing | Stopped), raise exception if (Executing | Stopped) */
         /* If raiseException == true, the function will raise the exception after storing to the Failure property */
         func Resume(raiseException : bool) : void;
-
-        /* Call (Ready | Waiting -> Stopped), raise exception if (Executing | Stopped) */
-        func Stop(ex : string) : void;
 
         /* Stored the $raise result */
         prop Failure : Exception^ {const}
@@ -126,12 +122,12 @@ namespace system
 
 ### Core Syntax
 
-* `$yield {}`
+* `$pause {}`
 * `$return;`
 * `$raise <EXCEPTION>`;
 
 ```
-/* Status == Ready */
+/* Status == Waiting */
 new StateMachine^
 {
     <OTHER-DECLARATIONS>
@@ -141,7 +137,7 @@ new StateMachine^
         for (i in range [1, 10])
         {
             /* Status == Waiting */
-            $yield
+            $pause
             {
                 /* Execute some code after Status == Waiting and before yielding the state machine */
             }
@@ -157,12 +153,12 @@ new StateMachine^
 
 ### Extension (State Machine Interface)
 
-* `$switch { $yield{} case ... }`
+* `$switch { $pause{} case ... }`
 
 ```
 $switch
 {
-    $yield
+    $pause
     {
         /* Executing some code ... */
         /* Set all <Method>Enabled properties, raise all <Method>EnabledChanged events */
@@ -179,9 +175,9 @@ $switch
 }
 ```
 
-### Extension (IEnumerable)
+### Extension (Enumerable, $yield, $yieldBreak)
 
-#### Step 1
+#### Step 1 (Using core syntax)
 
 ```
 new Enumerable^
@@ -192,6 +188,7 @@ new Enumerable^
         {
             var current = null;
             var index = -1;
+            var notStopped = true;
         
             override func GetCurrent() : object
             {
@@ -205,16 +202,22 @@ new Enumerable^
             
             override func Next() : bool
             {
-                Resume(true);
-                return Status != Stopped;
+                if (notStopped)
+                {
+                    Resume(true);
+                    if (notStopped = Status != Stopped)
+                    {
+                        index = index + 1;
+                    }
+                }
+                return notStopped;
             }
             
             {
                 for (i in range [1, 10])
                 {
-                    index = index + 1;
                     current = i;
-                    $yield {}
+                    $pause {}
                 }
             }
         }
@@ -222,9 +225,110 @@ new Enumerable^
 }
 ```
 
-#### Step 2
+#### Step 2 (Using extension)
 
-#### Step 3
+* Code
+```
+$new Enumerable
+{
+    for (i in range [1, 10])
+    {
+        $yield i;
+    }
+    /* $yieldBreak; */
+}
+```
+
+* Translated to
+```
+EnumerableStateMachine.Create
+(
+    func (impl : IImpl*) : StateMachine^
+    {
+        return new StateMachine^
+        {
+            {
+                for (i in range [1, 10])
+                {
+                    $pause
+                    {
+                        EnumerableStateMachine.yield(impl, i);
+                    }
+                }
+                /* EnumerableStateMachine.yieldBreak(impl); $return; */
+            }
+        }
+    }
+);
+```
+
+* Using provider
+```
+class EnumerableStateMachine
+{
+    interface IImpl : Enumerator^
+    {
+        func OnNext(value : object) : void;
+    }
+    
+    @stateMachine:Pause
+    static func yield(impl : IImpl*, value : object) : void
+    {
+        impl.OnNext(value);
+    }
+    
+    @stateMachine:Return
+    static func yieldBreak(impl : IImpl*) : void
+    {
+    }
+    
+    static func Create(creator : func (impl : IImpl*) : StateMachine^) : Enumerable^
+    {
+        return new Enumerable^
+        {
+            override func CreateEnumerator() : Enumerator^
+            {
+                return new IImpl^
+                {
+                    var current = null;
+                    var index = -1;
+                    var stateMachine : StateMachine^ = null;
+                    
+                    override func OnNext(value : object) : void
+                    {
+                        index = index + 1;
+                        current = value;
+                    }
+
+                    override func GetCurrent() : object
+                    {
+                        return current;
+                    }
+
+                    override func GetIndex() : int
+                    {
+                        return index;
+                    }
+
+                    override func Next() : bool
+                    {
+                        if (stateMachine is null)
+                        {
+                            stateMachine = creator(this);
+                        }
+                        
+                        if (stateMachine.Status != Stopped)
+                        {
+                            stateMachine.Resume(true);
+                        }
+                        return stateMachine.Status != Stopped;
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
 ### Extension (Task)
 
