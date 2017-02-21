@@ -40,7 +40,7 @@
 * GacUI Resource
     * Add `<ref.Ctor>`, `<ref.Dtor>`
     * InheritableCustomWindow
-    * InheritableCustomControl  
+    * InheritableCustomControl
     * GuiCustomControl::SetContainerComposition // using a special syntax
     * Make ItemSource from constructor argument to property
     * Localizable text template resource
@@ -109,10 +109,10 @@ namespace system
 
     interface StateMachine
     {
-        /* Call to start or resume, raise exception if Stopped */
+        /* Call (Ready | Waiting -> Executing), raise exception if (Executing | Stopped) */
         func Resume() : void;
 
-        /* Call to stop, will raise exception if it is not executing or waiting for stateinput. */
+        /* Call (Ready | Waiting -> Stopped), raise exception if (Executing | Stopped) */
         func Stop(ex : string) : void;
 
         prop Status : StateMachineStatus {const}
@@ -148,6 +148,28 @@ func CreateStateMachine() : StateMachine^
 }
 ```
 
+### Extension (State Machine Interface)
+
+```
+$switch
+{
+    $yield
+    {
+        /* Executing some code ... */
+        /* Set all <Method>Enabled properties, raise all <Method>EnabledChanged events */
+    }
+    case Method(arg1 [: type] , ...):
+    {
+        /* This method is declared in the returning interface type of the current function */
+    }
+    case value.Event(arg1 [: type], ...):
+    {
+        /* Some event */
+    }
+    /* Unimplemented methods raise exceptions */
+}
+```
+
 ### Extension (IEnumerable)
 
 ```
@@ -156,12 +178,7 @@ func CreateStateMachine() : StateMachine^
 ### Extension (Task)
 
 ```
-```
-
-### Extension (State Machine Interface)
-
-```
-```
+`` `
 
 ### Keywords
 * `stateinput`: declaration, statement
