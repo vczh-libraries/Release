@@ -160,26 +160,21 @@ new StateMachine^
 
 ### Extension (State Machine Interface)
 
-* `$switch { $pause{} case ... }`
-
 ```
-$switch
+$pause
 {
-    $pause
-    {
-        /* Executing some code ... */
-        /* Set all <Method>Enabled properties, raise all <Method>EnabledChanged events */
-    }
-    case Method(arg1 [: type] , ...):
-    {
-        /* This method is declared in the returning interface type */
-    }
-    case value.Event(arg1 [: type], ...):
-    {
-        /* Some event */
-    }
-    /* Unimplemented methods raise exceptions */
+    /* Executing some code ... */
+    /* Set all <Method>Enabled properties, raise all <Method>EnabledChanged events */
 }
+case Method(arg1 [: type] , ...):
+{
+    /* This method is declared in the returning interface type */
+}
+case value.Event(arg1 [: type], ...):
+{
+    /* Some event */
+}
+/* Unimplemented methods raise exceptions */
 ```
 
 ### Extension (Enumerable, $yield, $yieldBreak)
