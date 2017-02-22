@@ -43,7 +43,7 @@
     * InheritableCustomControl
     * GuiCustomControl::SetContainerComposition // using a special syntax
     * Make ItemSource from constructor argument to property
-    * Localizable text template resource
+    * Localizable text template resource, adding str://
 * GacGen.exe
     * Enable linking to external symbols
 * DocTools
