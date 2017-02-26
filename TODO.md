@@ -6,16 +6,16 @@
     * Correctly handle spaces when saving `<Doc/>`
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
-        * in XML
-        * in `<InstanceStyle>`
         * in `<Workflow>`
+            * Create a full map from AST to position. The coordinate in the position will be used when an AST contains no codeRange.
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
-    * Icon
+    * Icon
 
 ## Wait For A Few Releases
 * Workflow
     * Auto property
         * Put `WfClassMember` inside `WfDeclaration`
+            * Use unescaping function to create empty WfClassMember instances if there is no decorator
         * Add `WfVirtual(Expression|Statement|Declaration)`, to represent an "expandable" AST unit (e.g. bind)
             * `WfExpression`
             * `List<WfStatement>`
@@ -62,6 +62,7 @@
         * Error message generation
         * Error recovering
         * Full CFG power, no limitation
+        * Be able to assign to any properties (not just enum) in with statement
 * Workflow
     * async, delay, yield (provider written in C++).
     * Virtual function
