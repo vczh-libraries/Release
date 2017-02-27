@@ -1,6 +1,8 @@
 # TODO
 
 ## Working On
+* Workflow
+    * Keep codeRange when copy AST
 * GacUI Resource
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
     * Correctly handle spaces when saving `<Doc/>`
