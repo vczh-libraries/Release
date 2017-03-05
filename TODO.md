@@ -2,25 +2,11 @@
 
 ## Working On
 * Workflow
-    * Keep codeRange when copy AST
-* GacUI Resource
-    * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
-    * Correctly handle spaces when saving `<Doc/>`
-* GacUI
-    * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
-        * in `<Workflow>`
-            * Create a full map from AST to position. The coordinate in the position will be used when an AST contains no codeRange.
-    * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
-    * Icon
-
-## Wait For A Few Releases
-* Workflow
     * Auto property
         * Put `WfClassMember` inside `WfDeclaration`
             * Use unescaping function to create empty WfClassMember instances if there is no decorator
-        * Add `WfVirtual(Expression|Statement|Declaration)`, to represent an "expandable" AST unit (e.g. bind)
-            * `WfExpression`
-            * `List<WfStatement>`
+        * Add `WfVirtual(Statement|Declaration)`, to represent an "expandable" AST unit (e.g. bind)
+            * `WfStatement`
             * `List<WfDeclaration>`
         * CONFIG:
             * {}
@@ -33,8 +19,20 @@
             * Expand to [@cpp:Private]Variable / Getter / Setter / Event / Property
         * For class (override): `override prop NAME : TYPE = EXPRESSION CONFIG;`
             * Expand to [@cpp:Private]Variable / Getter / Setter
-    * Macro
     * State Machine
+* GacUI Resource
+    * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
+    * Correctly handle spaces when saving `<Doc/>`
+* GacUI
+    * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
+        * in `<Workflow>`
+            * Create a full map from AST to position. The coordinate in the position will be used when an AST contains no codeRange.
+    * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
+    * Icon
+
+## Wait For A Few Releases
+* Workflow
+    * Macro
     * Context-Grammar Sensitive Macro
     * **Workflow to C++ code generation with hint**.
         * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
