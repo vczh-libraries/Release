@@ -15,10 +15,11 @@
             * {const, not observe}
         * For interface: `prop NAME : TYPE CONFIG;`
             * Expand to Getter / Setter / Event / Property
+        * For new interface (override): `override prop NAME : TYPE = EXPRESSION;`
+            * Expand to [@cpp:Private]Variable / Getter / Setter
+            * Read CONFIG through reflection
         * For class: `prop NAME : TYPE = EXPRESSION CONFIG;`
             * Expand to [@cpp:Private]Variable / Getter / Setter / Event / Property
-        * For class (override): `override prop NAME : TYPE = EXPRESSION CONFIG;`
-            * Expand to [@cpp:Private]Variable / Getter / Setter
     * State Machine
 * GacUI Resource
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
@@ -162,20 +163,25 @@ new StateMachine^
 ### Extension (State Machine Interface)
 
 ```
-$pause
+interface ICalculator : StateMachine
 {
-    /* Executing some code ... */
-    /* Set all <Method>Enabled properties, raise all <Method>EnabledChanged events */
+    $input Digit(i : int);
+    $input Add();
+    $input Mul();
+    $input Equal();
+    $input Clear();
+    
+    prop Value : string {const}
 }
-case Method(arg1 [: type] , ...):
+
+var calculator = new ICalculator^
 {
-    /* This method is declared in the returning interface type */
-}
-case value.Event(arg1 [: type], ...):
-{
-    /* Some event */
-}
-/* Unimplemented methods raise exceptions */
+    override prop Value : string = "0";
+
+    {
+        
+    }
+};
 ```
 
 ### Extension (Enumerable, $yield, $yieldBreak)
@@ -343,73 +349,4 @@ class EnumerableStateMachine
 ### Extension (Task)
 
 ```
-```
-
-### Sample
-
-* Workflow Script
-```
-module test;
-using system::*;
-using presentation::controls::Gui*;
-
-interface ICountDown : StateMachine
-{
-    $input BeginCountDown();
-    $input CountDown();
-    $input DoNotCall();
-    prop Remains : int {const}
-}
-```
-
-* XML
-```xml
-<Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
-  <ref.Members>
-    var CountDown : ICountDown^ = null;
-  </ref.Members>
-  <Window ref.Name="self" Text="State Machine" ClientSize="x:480 y:320">
-    <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
-    <!-- ignore layout settings -->
-    <Button Enabled-bind="self.CountDown is null">
-      <ev.Clicked-eval>{self.CountDown = self.CreateCountDown(); self.CountDown.BeginCountDown();}</ev.Clicked-eval>
-    </Button>
-    <Button Enabled-bind="self.CountDown.CountDownEnabled ?? false">
-      <ev.Clicked-eval>self.CountDown.CountDown();</ev.Clicked-eval>
-    </Button>
-    <Button Enabled-bind="self.CountDown is not null">
-      <ev.Clicked-eval>self.CountDown = self.CreateCountDown();</ev.Clicked-eval>
-    </Button>
-    <Label Text-format="Remains: $(self.CountDown.Remains)"/>
-  </Window>
-  <ref.Members>
-    <![CDATA[
-        func CreateCountDown() : ICountDown^
-        {
-            return new ICountDown^
-            {
-                override prop Remains : int = 10 {const}
-
-                {
-                    $switch
-                    {
-                        case BeginCountDown():{}
-                    }
-
-                    while (Remains > 0)
-                    {
-                        $switch
-                        {
-                            case CountDown():
-                            {
-                                Remains = Remains - 1;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    ]]>
-  </ref.Members>
-</Instance>
 ```
