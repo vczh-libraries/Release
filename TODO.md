@@ -242,14 +242,11 @@ var calculator = new ICalculator^
     $state Number()
     {
         $join Integer();
-        while (true)
+        $wait
         {
-            $wait
-            {
-                $case Dot() { Value = Value & "."; }
-            }
-            $join Integer();
+            $case Dot() { Value = Value & "."; }
         }
+        $join Integer();
     }
 
     $state
