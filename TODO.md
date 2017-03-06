@@ -162,10 +162,26 @@ new StateMachine^
 
 ### Extension (State Machine Interface)
 
+* `$wait { $case <$INPUT-DECL>: { ... } ... [$default [ = continue]: { ... }] }`
+    * If there is `$default = continue`
+        * Failed input will not cause a retry
+        * Continue to execute until the next `$wait`, and use the current input as the input
+        * In this case we don't call it **failed input**, until the next `$wait` failed
+* `$try { ... } $wait { ... }`
+    * Failed input will fall into `$wait` directly
+    * If there is no **appropriate** `$try` to catch failed input, the failed input cause a retry immediately
+* `$join <STATE>`
+    * Cannot be directly or indirectly recursive
+    * Which means `$join` and `$state` should not exceed type 3 grammar
+* `$state [<NAME> ( ... )] { ... }`
+    * If there is a name with parameters (optional), than it can be `$join`
+    * If there is no name, than this is the state machine for implementating the current interface
+
 ```
 interface ICalculator : StateMachine
 {
     $input Digit(i : int);
+    $input Dot();
     $input Add();
     $input Mul();
     $input Equal();
@@ -176,10 +192,90 @@ interface ICalculator : StateMachine
 
 var calculator = new ICalculator^
 {
+    var valueFirst : string = "";
+    var op : string = "";
     override prop Value : string = "0";
-
+    
+    func Update(value : string) : void
     {
-        
+        SetValue(value);
+        valueFirst = value;
+    }
+    
+    func Calculate() : void
+    {
+        if (valueFirst == "")
+        {
+            Update(value);
+        }
+        else if (op == "+")
+        {
+            Update((cast double valueFirst) + (cast double Value));
+        }
+        else if (op == "*")
+        {
+            Update((cast double valueFirst) * (cast double Value));
+        }
+        else
+        {
+            throw $"Unrecognized operator: $(op)";
+        }
+    }
+    
+    $state Integer()
+    {
+        $switch
+        {
+            $case Digit(i : int): { Value = i; }
+            $default = continue: {}
+        }
+        while (true)
+        {
+            $switch
+            {
+                $case Digit(i : int): { Value = Value & i; }
+                $default = continue: {}
+            }
+        }
+    }
+    
+    $state Number()
+    {
+        $join Integer();
+        while (true)
+        {
+            $wait
+            {
+                $case Dot() { Value = Value & "."; }
+            }
+            $join Integer();
+        }
+    }
+
+    $state
+    {
+        while (true)
+        {
+            $try
+            {
+                $join Number();
+                $wait
+                {
+                    $case Add(): { Calculate(); op = "+"; }
+                    $case Mul(): { Calculate(); op = "-"; }
+                    $case Equal(): { Calculate(); op = "="; }
+                }
+            }
+            $wait
+            {
+                $case Clear()
+                {
+                    valueFirst = "";
+                    op = "";
+                    Value = "0";
+                }
+            }
+        }
     }
 };
 ```
