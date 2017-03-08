@@ -18,6 +18,8 @@
             * Read CONFIG through reflection
         * For class: `prop NAME : TYPE = EXPRESSION CONFIG;`
             * Expand to [@cpp:Private]Variable / Getter / Setter / Event / Property
+        * When implementing a property, the setter function is always generated
+            * If there is `const`, the setter will not be registered into the property
     * State Machine
 * GacUI Resource
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
@@ -127,11 +129,13 @@ namespace system
 ### Core Syntax
 
 * `$pause {}`
-* `$return;`
-* `$raise <EXCEPTION>;`
 * `$input Name(a:Ta, b:Tb);`
-    * `func Name(a:Ta, b:Tb) : void`
+    * `func Name(a:Ta, b:Tb) : bool`
+        * Returns false if a failed input causes a retry
     * `prop NameEnabled : bool {const}`
+        * `var <prop>NameEnabled : bool = false;`
+        * `func GetNameEnabled() : bool { ... }`
+        * `func SetNameEnabled(<value> : bool) : void { ... }`
 
 ```
 /* Status == Waiting */
@@ -139,6 +143,7 @@ new StateMachine^
 {
     <OTHER-DECLARATIONS>
 
+    $state
     {
         /* Resume(): Status == Executing */
         for (i in range [1, 10])
@@ -151,9 +156,9 @@ new StateMachine^
             /* Resume(): Status == Executing */
         }
         /* Status == Stopped */
-        $return;
+        return;
         /* Status == Stopped with exception */
-        $raise "Something is happened!";
+        raise "Something is happened!";
     }
 }
 ```
@@ -328,17 +333,21 @@ new Enumerable^
 #### Step 2 (Using extension)
 
 * This coroutine
+    * `$pause` and `return` cannot be used inside a coroutine with a provider
+    * An exit operator is called at the end of the coroutine, all parameters are filled with default values.
+        * If there is no exit operator, ignore
+        * If there are multiple exit operators, than call `returnAndExit`, error if not exists.
 ```
 /* Use [Enumerable]StateMachine, the ^ sign should match the return type of EnumerableStateMachine */
 $new Enumerable^
 {
     for (i in range [1, 10])
     {
-        /* Use [Enumerable]StateMachine.[yield](Pause|Return) */
+        /* Use [Enumerable]StateMachine.[yield]And(Pause|Exit) */
         $yield(i);
     }
-    /* Use [Enumerable]StateMachine.[yieldBreak](Pause|Return) */
-    $yieldBreak();
+    /* Use [Enumerable]StateMachine.[return]And(Pause|Exit) */
+    $return();
 }
 ```
 
@@ -378,13 +387,13 @@ class EnumerableStateMachine
     }
     
     /* The first argument should match the declaration of the Create function */
-    static func yieldPause(impl : IImpl*, value : object) : void
+    static func yieldAndPause(impl : IImpl*, value : object) : void
     {
         impl.OnNext(value);
     }
 
     /* The first argument should match the declaration of the Create function */
-    static func yieldBreakReturn(impl : IImpl*) : void
+    static func returnAndExit(impl : IImpl*) : void
     {
     }
     
