@@ -3,8 +3,6 @@
 ## Working On
 * Workflow
     * Auto property
-        * Put `WfClassMember` inside `WfDeclaration`
-            * Use unescaping function to create empty WfClassMember instances if there is no decorator
         * Add `WfVirtual(Statement|Declaration)`, to represent an "expandable" AST unit (e.g. bind)
             * `WfStatement`
             * `List<WfDeclaration>`
