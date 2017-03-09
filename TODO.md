@@ -23,7 +23,10 @@
     * State Machine
 * GacUI Resource
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
-    * Correctly handle spaces when saving `<Doc/>`
+    * Handle resource file encoding if there is no BOM
+        * Windows: Test UTF-8 correctness and local encoding correctness, may need to modify `vl::filesystem::File`
+        * Others: Use local encoding (usually UTF-8)
+    * Output file using local encoding
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
         * in `<Workflow>`
