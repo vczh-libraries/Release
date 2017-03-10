@@ -227,14 +227,9 @@ var calculator = new ICalculator^
         }
     }
     
-    $state Integer()
+    $state Digits()
     {
-        $switch
-        {
-            $case Digit(i : int): { Value = i; }
-            $default = continue: {}
-        }
-        while (true)
+        while (true) // this is wrong, it conflict with $default = continue
         {
             $switch
             {
@@ -244,12 +239,30 @@ var calculator = new ICalculator^
         }
     }
     
+    $state Integer()
+    {
+        $switch
+        {
+            $case Digit(i : int): { Value = i; }
+            $default = continue: {}
+        }
+        $join Digits();
+    }
+    
     $state Number()
     {
         $join Integer();
         $switch
         {
-            $case Dot() { Value = Value & "."; }
+            $case Dot()
+            {
+                Value = Value & ".";
+                $switch
+                {
+                    $case Digit(i : int): { Value = Value & i; }
+                }
+                $join Digits();
+            }
         }
         $join Integer();
     }
