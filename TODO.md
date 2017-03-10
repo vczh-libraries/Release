@@ -134,6 +134,7 @@ namespace system
 * `$coroutine {...}` **expression**
     * Building a StateMachine^
 * `$pause {}` **statement**
+    * `$pause`, `return`, `break`, `continue` are not allowed inside `$pause`
 * `return` **statement**
     * No expression
 
