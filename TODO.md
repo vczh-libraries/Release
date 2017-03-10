@@ -11,12 +11,12 @@
             * {const}
             * {not observe}
             * {const, not observe}
-        * For interface: `prop NAME : TYPE CONFIG;`
+        * For interface: `prop NAME : TYPE CONFIG`
             * Expand to Getter / Setter / Event / Property
-        * For new interface (override): `override prop NAME : TYPE = EXPRESSION;`
+        * For new interface (override): `override prop NAME : TYPE = EXPRESSION CONFIG`
             * Expand to [@cpp:Private]Variable / Getter / Setter
-            * Read CONFIG through reflection
-        * For class: `prop NAME : TYPE = EXPRESSION CONFIG;`
+            * Check CONFIG
+        * For class: `prop NAME : TYPE = EXPRESSION CONFIG`
             * Expand to [@cpp:Private]Variable / Getter / Setter / Event / Property
         * When implementing a property, the setter function is always generated
             * If there is `const`, the setter will not be registered into the property
@@ -131,55 +131,54 @@ namespace system
 
 ### Core Syntax
 
-* `$pause {}`
-* `$input Name(a:Ta, b:Tb);`
+* `$coroutine {...}` **expression**
+    * Building a StateMachine^
+* `$pause {}` **statement**
+* `return` **statement**
+    * No expression
+
+```
+/* Status == Waiting */
+$coroutine
+{
+    /* Resume(): Status == Executing */
+    for (i in range [1, 10])
+    {
+        /* Status == Waiting */
+        $pause
+        {
+            /* Execute some code after Status == Waiting and before yielding the state machine */
+        }
+        /* Resume(): Status == Executing */
+    }
+    /* Status == Stopped */
+    return;
+    /* Status == Stopped with exception */
+    raise "Something is happened!";
+}
+```
+
+### Extension (State Machine Interface)
+
+* `$input Name(a:Ta, b:Tb);` **declaration**
     * `func Name(a:Ta, b:Tb) : bool`
         * Returns false if a failed input causes a retry
     * `prop NameEnabled : bool {const}`
         * `var <prop>NameEnabled : bool = false;`
         * `func GetNameEnabled() : bool { ... }`
         * `func SetNameEnabled(<value> : bool) : void { ... }`
-
-```
-/* Status == Waiting */
-new StateMachine^
-{
-    <OTHER-DECLARATIONS>
-
-    $state
-    {
-        /* Resume(): Status == Executing */
-        for (i in range [1, 10])
-        {
-            /* Status == Waiting */
-            $pause
-            {
-                /* Execute some code after Status == Waiting and before yielding the state machine */
-            }
-            /* Resume(): Status == Executing */
-        }
-        /* Status == Stopped */
-        return;
-        /* Status == Stopped with exception */
-        raise "Something is happened!";
-    }
-}
-```
-
-### Extension (State Machine Interface)
-
-* `$wait { $case <$INPUT-DECL>: { ... } ... [$default [ = continue]: { ... }] }`
+* `$switch { $case <$INPUT-DECL>: { ... } ... [$default [ = continue]: { ... }] }` **statement**
     * If there is `$default = continue`
         * Failed input will not cause a retry
-        * Continue to execute until the next `$wait`, and use the current input as the input
-        * In this case we don't call it **failed input**, until the next `$wait` failed
-* `$try { ... } $wait { ... }`
-    * Failed input will fall into `$wait` directly
-    * If there is no **appropriate** `$try` to catch failed input, the failed input cause a retry immediately
-* `$join <STATE>`
+        * Continue to execute until the next `$switch`, and use the current input as the input
+        * In this case we don't call it **failed input**, until the next `$switch` failed
+* `$watch { ... } $switch { ... }` **statement**
+    * Failed input will fall into `$switch` directly
+    * If there is no **appropriate** `$watch` to catch failed input, the failed input cause a retry immediately
+* `$join <STATE>;` **statement**
     * Cannot be directly or indirectly recursive
     * Which means `$join` and `$state` should not exceed type 3 grammar
-* `$state [<NAME> ( ... )] { ... }`
+* `$state [<NAME> ( ... )] { ... }` **declaration**
     * If there is a name with parameters (optional), than it can be `$join`
     * If there is no name, than this is the state machine for implementating the current interface
 
@@ -248,7 +247,7 @@ var calculator = new ICalculator^
     $state Number()
     {
         $join Integer();
-        $wait
+        $switch
         {
             $case Dot() { Value = Value & "."; }
         }
@@ -259,19 +258,19 @@ var calculator = new ICalculator^
     {
         while (true)
         {
-            $try
+            $watch
             {
                 $join Number();
-                $wait
+                $switch
                 {
                     $case Add(): { Calculate(); op = "+"; }
                     $case Mul(): { Calculate(); op = "-"; }
                     $case Equal(): { Calculate(); op = "="; }
                 }
             }
-            $wait
+            $switch
             {
-                $case Clear()
+                $case Clear():
                 {
                     valueFirst = "";
                     op = "";
@@ -283,7 +282,7 @@ var calculator = new ICalculator^
 };
 ```
 
-### Extension (Enumerable, $yield, $yieldBreak)
+### Extension (Enumerable, $Yield)
 
 #### Step 1 (Using core syntax)
 
@@ -336,21 +335,24 @@ new Enumerable^
 #### Step 2 (Using extension)
 
 * This coroutine
-    * `$pause` and `return` cannot be used inside a coroutine with a provider
+    * `$pause` cannot be used inside a coroutine with a provider
+    * `return` is always mapped to `ReturnAndExit`
+        * If `return` has an expression, than `ReturnAndExit` should also have an expression
     * An exit operator is called at the end of the coroutine, all parameters are filled with default values.
         * If there is no exit operator, ignore
-        * If there are multiple exit operators, than call `returnAndExit`, error if not exists.
+        * If there are multiple exit operators, than call `ReturnAndExit`, error if not exists.
+    * Pause operators and Exit operators cannot overload.
 ```
 /* Use [Enumerable]StateMachine, the ^ sign should match the return type of EnumerableStateMachine */
 $new Enumerable^
 {
     for (i in range [1, 10])
     {
-        /* Use [Enumerable]StateMachine.[yield]And(Pause|Exit) */
-        $yield(i);
+        /* Use [Enumerable]StateMachine.[Yield]And(Pause|Exit) */
+        $Yield(i);
     }
-    /* Use [Enumerable]StateMachine.[return]And(Pause|Exit) */
-    $return();
+    /* Use [Enumerable]StateMachine.ReturnAndExit */
+    return;
 }
 ```
 
@@ -360,22 +362,20 @@ EnumerableStateMachine.Create
 (
     func (impl : EnumerableStateMachine.IImpl*) : StateMachine^
     {
-        return new StateMachine^
+        return $coroutine
         {
+            for (i in range [1, 10])
             {
-                for (i in range [1, 10])
+                $pause
                 {
-                    $pause
-                    {
-                        EnumerableStateMachine.yield(impl, i);
-                    }
-                }
-                {
-                    EnumerableStateMachine.yieldBreak(impl);
-                    $return;
+                    EnumerableStateMachine.YieldAndPause(impl, i);
                 }
             }
-        }
+            {
+                EnumerableStateMachine.ReturnAndExit(impl);
+                return;
+            }
+        };
     }
 );
 ```
@@ -390,13 +390,13 @@ class EnumerableStateMachine
     }
     
     /* The first argument should match the declaration of the Create function */
-    static func yieldAndPause(impl : IImpl*, value : object) : void
+    static func YieldAndPause(impl : IImpl*, value : object) : void
     {
         impl.OnNext(value);
     }
 
     /* The first argument should match the declaration of the Create function */
-    static func returnAndExit(impl : IImpl*) : void
+    static func ReturnAndExit(impl : IImpl*) : void
     {
     }
     
