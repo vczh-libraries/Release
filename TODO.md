@@ -121,7 +121,7 @@ namespace system
         /* If raiseException == true, the function will raise the exception after storing to the Failure property */
         func Resume(raiseException : bool) : void;
 
-        /* Stored the $raise result */
+        /* Stored the $raise/$retry result */
         prop Failure : Exception^ {const}
         prop Status : StateMachineStatus {const}
         event OnStatusChanged();
@@ -131,16 +131,19 @@ namespace system
 
 ### Core Syntax
 
-* `$coroutine {...}` **expression**
+* `$state_machine {...}` **expression**
     * Building a StateMachine^
 * `$pause {}` **statement**
     * `$pause`, `return`, `break`, `continue` are not allowed inside `$pause`
 * `return` **statement**
     * No expression
+    * Stop the state machine
+* `raise <EXPRESSION>` **statement**
+    * Stop the state machine with a failure
 
 ```
 /* Status == Waiting */
-$coroutine
+$state_machine
 {
     /* Resume(): Status == Executing */
     for (i in range [1, 10])
@@ -164,21 +167,33 @@ $coroutine
 * `$input Name(a:Ta, b:Tb);` **declaration**
     * `func Name(a:Ta, b:Tb) : bool`
         * Returns false if a failed input causes a retry
+        * No overloading
     * `prop NameEnabled : bool {const}`
         * `var <prop>NameEnabled : bool = false;`
         * `func GetNameEnabled() : bool { ... }`
         * `func SetNameEnabled(<value> : bool) : void { ... }`
-* `$switch { $case <$INPUT-DECL>: { ... } ... [$default [ = continue]: { ... }] }` **statement**
-    * If there is `$default = continue`
-        * Failed input will not cause a retry
-        * Continue to execute until the next `$switch`, and use the current input as the input
-        * In this case we don't call it **failed input**, until the next `$switch` failed
-* `$watch { ... } $switch { ... }` **statement**
-    * Failed input will fall into `$switch` directly
-    * If there is no **appropriate** `$watch` to catch failed input, the failed input cause a retry immediately
+* `$retry [<EXPRESSION>]` **statement**
+    * Pause a state machine with a failure
+    * Can only appear inside `$input`
+    * Cause the current input fail
+* `[$watch { ... }] ($input | $input_optional) if <INPUT-DECL>(arguments...) { ... } else if ... else ...` **statement**
+    * If there is `$watch`
+        * Cannot be followed by $input_optional
+        * Failed input will go through the following $input
+    * If there is no `$watch`
+        * Pause the state machine with no failure
+    * If there is `$input_optional`
+        * If an input doesn't match the list, it is not considered failed, the state machine continue to run, and the input will be consumed by the next `$input` statement
+    * If there is `$input`
+        * If an input doesn't match the list, it is considered failed.
+    * Failed input will cause a retry
+        * Inside the original input
+            * `$input_optional` doesn't produce failed input, so it is not an original input
+            * `$input` inside a `$watch` is not an original input
+            * Original input is the last `$input` statement that receives the failed input
+        * If a retry is not initiated by `$retry` with an expression, then a default exceptions string is used
 * `$join <STATE>;` **statement**
-    * Cannot be directly or indirectly recursive
-    * Which means `$join` and `$state` should not exceed type 3 grammar
+    * Only accept states that are declared **before** $join
 * `$state [<NAME> ( ... )] { ... }` **declaration**
     * If there is a name with parameters (optional), than it can be `$join`
     * If there is no name, than this is the state machine for implementating the current interface
@@ -212,7 +227,7 @@ var calculator = new ICalculator^
     {
         if (valueFirst == "")
         {
-            Update(value);
+            valueFirst = value;
         }
         else if (op == "+")
         {
@@ -224,72 +239,64 @@ var calculator = new ICalculator^
         }
         else
         {
-            throw $"Unrecognized operator: $(op)";
+            raise $"Unrecognized operator: $(op)";
         }
     }
     
     $state Digits()
     {
-        while (true) // this is wrong, it conflict with $default = continue
+        while (true)
         {
-            $switch
+            $input_optional if Digit(i)
             {
-                $case Digit(i : int): { Value = Value & i; }
-                $default = continue: {}
+                Value = Value & i;
+            }
+            else
+            {
+                break;
             }
         }
     }
     
     $state Integer()
     {
-        $switch
+        $input_optional if Digit(i)
         {
-            $case Digit(i : int): { Value = i; }
-            $default = continue: {}
+            Value = i;
+            $join Digits();
         }
-        $join Digits();
     }
     
     $state Number()
     {
         $join Integer();
-        $switch
+        $input_optional if Dot()
         {
-            $case Dot()
+            Value = Value & ".";
+            $input Digit(i)
             {
-                Value = Value & ".";
-                $switch
-                {
-                    $case Digit(i : int): { Value = Value & i; }
-                }
+                Value = Value & i;
                 $join Digits();
             }
         }
-        $join Integer();
     }
 
     $state
     {
         while (true)
         {
-            $watch
+            $monitor
             {
                 $join Number();
-                $switch
-                {
-                    $case Add(): { Calculate(); op = "+"; }
-                    $case Mul(): { Calculate(); op = "-"; }
-                    $case Equal(): { Calculate(); op = "="; }
-                }
+                $input if   Add()   {Calculate(); op = "+";}
+                else if     Mul()   {Calculate(); op = "-";}
+                else if     Equal() {Calculate(); op = "=";}
             }
-            $switch
+            $input if Clear()
             {
-                $case Clear():
-                {
-                    valueFirst = "";
-                    op = "";
-                    Value = "0";
-                }
+                valueFirst = "";
+                op = "";
+                Value = "0";
             }
         }
     }
@@ -376,7 +383,7 @@ EnumerableStateMachine.Create
 (
     func (impl : EnumerableStateMachine.IImpl*) : StateMachine^
     {
-        return $coroutine
+        return $state_machine
         {
             for (i in range [1, 10])
             {
