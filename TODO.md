@@ -3,23 +3,8 @@
 ## Working On
 * Workflow
     * Auto property
-        * Add `WfVirtual(Statement|Declaration)`, to represent an "expandable" AST unit (e.g. bind)
+        * Add `WfVirtual(Statement)`, to represent an "expandable" AST unit (e.g. bind)
             * `WfStatement`
-            * `List<WfDeclaration>`
-        * CONFIG:
-            * {}
-            * {const}
-            * {not observe}
-            * {const, not observe}
-        * For interface: `prop NAME : TYPE CONFIG`
-            * Expand to Getter / Setter / Event / Property
-        * For new interface (override): `override prop NAME : TYPE = EXPRESSION CONFIG`
-            * Expand to [@cpp:Private]Variable / Getter / Setter
-            * Check CONFIG
-        * For class: `prop NAME : TYPE = EXPRESSION CONFIG`
-            * Expand to [@cpp:Private]Variable / Getter / Setter / Event / Property
-        * When implementing a property, the setter function is always generated
-            * If there is `const`, the setter will not be registered into the property
     * State Machine
 * GacUI Resource
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
