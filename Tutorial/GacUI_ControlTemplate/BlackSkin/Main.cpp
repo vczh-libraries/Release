@@ -19,9 +19,8 @@ void GuiMain()
 {
 	LoadDemoTypes();
 	{
-		List<WString> errors;
 		FileStream fileStream(L"../UIRes/BlackSkin.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
+		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
 		GetResourceManager()->SetResource(L"Resource", resource);
 	}
 	demo::MainWindow window;

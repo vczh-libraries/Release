@@ -24248,7 +24248,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_204)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 5; __vwsn_temp__.top = 5; __vwsn_temp__.right = 5; __vwsn_temp__.bottom = 5; return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_203)->SetText(::vl::WString(L"\r\n                        This is the first line of the multilined text.\r\n                        This is the second line of the multilined text.\r\n                        This is the third line of the multilined text.", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_203)->SetText(::vl::WString(L"This is the first line of the multilined text.\r\nThis is the second line of the multilined text.\r\nThis is the third line of the multilined text.", false));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_202)->AddChild(static_cast<::vl::presentation::controls::GuiControl*>(::vl::__vwsn::This(this)->__vwsn_precompile_203));
