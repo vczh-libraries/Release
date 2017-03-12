@@ -24,25 +24,7 @@
       <Instance ref.CodeBehind="false" ref.Class="demo::MyControl" xmlns:x="presentation::controls::GuiSelectableButton::*">
         <ref.Members>
           <![CDATA[
-            @cpp:Protected
-            var selectedOption : string = "A";
-            event SelectedOptionChanged();
-            
-            func GetSelectedOption() : string
-            {
-              return selectedOption;
-            }
-            
-            func SetSelectedOption(value : string) : void
-            {
-              if (selectedOption != value)
-              {
-                selectedOption = value;
-                SelectedOptionChanged();
-              }
-            }
-            
-            prop SelectedOption : string {GetSelectedOption, SetSelectedOption : SelectedOptionChanged}
+            prop SelectedOption : string = "A" {}
           ]]>
         </ref.Members>
         <CustomControl ref.Name="self">

@@ -111,12 +111,11 @@ namespace demo
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyControl>;
 #endif
-	protected:
-		::vl::WString selectedOption = ::vl::WString(L"A", false);
 	public:
-		::vl::Event<void()> SelectedOptionChanged;
+		::vl::WString __vwsn_prop_SelectedOption = ::vl::WString(L"A", false);
 		::vl::WString GetSelectedOption();
-		void SetSelectedOption(const ::vl::WString& value);
+		void SetSelectedOption(const ::vl::WString& __vwsn_value_);
+		::vl::Event<void()> SelectedOptionChanged;
 		MyControl();
 		~MyControl();
 	};

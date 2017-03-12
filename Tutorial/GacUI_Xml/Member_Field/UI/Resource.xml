@@ -11,7 +11,6 @@
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
-        <ref.State Name="integerState" Type="int" Value="0"/>
         <ref.Members>
           <![CDATA[
             @cpp:Protected

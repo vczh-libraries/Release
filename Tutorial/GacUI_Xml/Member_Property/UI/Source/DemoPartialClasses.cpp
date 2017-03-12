@@ -475,14 +475,13 @@ Class (::demo::MyControl)
 
 	::vl::WString MyControl::GetSelectedOption()
 	{
-		return ::vl::__vwsn::This(this)->selectedOption;
+		return ::vl::__vwsn::This(this)->__vwsn_prop_SelectedOption;
 	}
-
-	void MyControl::SetSelectedOption(const ::vl::WString& value)
+	void MyControl::SetSelectedOption(const ::vl::WString& __vwsn_value_)
 	{
-		if ((::vl::__vwsn::This(this)->selectedOption != value))
+		if ((::vl::__vwsn::This(this)->__vwsn_prop_SelectedOption != __vwsn_value_))
 		{
-			(::vl::__vwsn::This(this)->selectedOption = value);
+			(::vl::__vwsn::This(this)->__vwsn_prop_SelectedOption = __vwsn_value_);
 			::vl::__vwsn::EventInvoke(::vl::__vwsn::This(this)->SelectedOptionChanged)();
 		}
 	}
@@ -539,10 +538,10 @@ namespace vl
 			BEGIN_CLASS_MEMBER(::demo::MyControl)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MyControl*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetSelectedOption, NO_PARAMETER)
-				CLASS_MEMBER_METHOD(SetSelectedOption, { L"value" })
+				CLASS_MEMBER_METHOD(SetSelectedOption, { L"__vwsn_value_" })
 				CLASS_MEMBER_EVENT(SelectedOptionChanged)
+				CLASS_MEMBER_FIELD(__vwsn_prop_SelectedOption)
 				CLASS_MEMBER_PROPERTY_EVENT(SelectedOption, GetSelectedOption, SetSelectedOption, SelectedOptionChanged)
-				CLASS_MEMBER_FIELD(selectedOption)
 			END_CLASS_MEMBER(::demo::MyControl)
 
 			BEGIN_CLASS_MEMBER(::demo::MyControlConstructor)
