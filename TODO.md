@@ -287,64 +287,16 @@ var calculator = new ICalculator^
 
 ### Extension (Enumerable, $Yield)
 
-#### Step 1 (Using core syntax)
+#### Syntax
+* `$pause` cannot be used inside a coroutine with a provider
+* `return` is always mapped to `ReturnAndExit`
+    * If `return` has an expression, than `ReturnAndExit` should also have an expression
+* An exit operator is called at the end of the coroutine, all parameters are filled with default values.
+    * If there is no exit operator, ignore
+    * If there are multiple exit operators, than call `ReturnAndExit`, error if not exists.
+* Pause operators and Exit operators cannot overload.
 
-```
-new Enumerable^
-{
-    override func CreateEnumerator() : Enumerator^
-    {
-        return new Enumerator^
-        {
-            var current = null;
-            var index = -1;
-            var notStopped = true;
-        
-            override func GetCurrent() : object
-            {
-                return current;
-            }
-            
-            override func GetIndex() : int
-            {
-                return index;
-            }
-            
-            override func Next() : bool
-            {
-                if (notStopped)
-                {
-                    Resume(true);
-                    if (notStopped = Status != Stopped)
-                    {
-                        index = index + 1;
-                    }
-                }
-                return notStopped;
-            }
-            
-            {
-                for (i in range [1, 10])
-                {
-                    current = i;
-                    $pause {}
-                }
-            }
-        }
-    }
-}
-```
-
-#### Step 2 (Using extension)
-
-* This coroutine
-    * `$pause` cannot be used inside a coroutine with a provider
-    * `return` is always mapped to `ReturnAndExit`
-        * If `return` has an expression, than `ReturnAndExit` should also have an expression
-    * An exit operator is called at the end of the coroutine, all parameters are filled with default values.
-        * If there is no exit operator, ignore
-        * If there are multiple exit operators, than call `ReturnAndExit`, error if not exists.
-    * Pause operators and Exit operators cannot overload.
+#### Build a coroutine using a provider
 ```
 /* Use [Enumerable]StateMachine, the ^ sign should match the return type of EnumerableStateMachine */
 $new Enumerable^
@@ -359,7 +311,7 @@ $new Enumerable^
 }
 ```
 
-* Is translated to
+#### Generated code
 ```
 EnumerableStateMachine.Create
 (
@@ -383,7 +335,7 @@ EnumerableStateMachine.Create
 );
 ```
 
-* Using a user-defined provider
+#### Building a provider
 ```
 class EnumerableStateMachine
 {
