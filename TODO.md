@@ -159,22 +159,27 @@ $state_machine
     * Pause a state machine with a failure
     * Can only appear inside `$input`
     * Cause the current input fail
-* `[$watch { ... }] ($input | $input_optional) if <INPUT-DECL>(arguments...) { ... } else if ... else ...` **statement**
-    * If there is `$watch`
-        * Cannot be followed by $input_optional
-        * Failed input will go through the following $input
-    * If there is no `$watch`
-        * Pause the state machine with no failure
-    * If there is `$input_optional`
-        * If an input doesn't match the list, it is not considered failed, the state machine continue to run, and the input will be consumed by the next `$input` statement
-    * If there is `$input`
-        * If an input doesn't match the list, it is considered failed.
-    * Failed input will cause a retry
-        * Inside the original input
-            * `$input_optional` doesn't produce failed input, so it is not an original input
-            * `$input` inside a `$watch` is not an original input
-            * Original input is the last `$input` statement that receives the failed input
-        * If a retry is not initiated by `$retry` with an expression, then a default exceptions string is used
+* **INPUT-CASES** ::= `<INPUT-NAME>(arguments...) { ... }` | `{case <INPUT-NAME>(arguments...): { ... } ... }`:
+    * Input matching.
+* `$exit_if_failed { ... }`
+    * Immediately jump out of the statement if any failed input is produced
+    * The failed input is not consumed, and it is not considered failed
+* **INPUT** ::=
+    * Pause the state machine if there is no input to consume
+    * `$input <INPUT-CASES>`
+        * If the input is matched, it is consumed
+        * Otherwise, the input is considered failed if nothing matched
+    * `$input if <INPUT-CASES> [else if <INPUT-CASES> ...] [else { ... }]`
+        * If the input is matched, it is consumed
+        * Otherwise, the input is not consumed and continue execute, and it is not considered failed
+* `$monitor { ... } <INPUT>`:
+    * If a failed input is matched by `<INPUT>`, it is consumed
+    * Even if an input is converted to "not failed", not consumed and successfully reach the end of the `$monitor` statement, if then it matches the `<INPUT>`, it is consumed
+    * Otherwise, it is considered failed
+* Failed Input:
+    * If a failed input is produced
+        * If `$watch` failed to consume the failed input, the input cause a immediate retry
+        * If a failed input is converted to "not failed", it is possible that it finally causes the state machine to stop without failure
 * `$join <STATE>;` **statement**
     * Only accept states that are declared **before** $join
 * `$state [<NAME> ( ... )] { ... }` **declaration**
@@ -228,22 +233,21 @@ var calculator = new ICalculator^
     
     $state Digits()
     {
-        while (true)
+        $exit_if_failed
         {
-            $input_optional if Digit(i)
+            while (true)
             {
-                Value = Value & i;
-            }
-            else
-            {
-                break;
+                $input Digit(i)
+                {
+                    Value = Value & i;
+                }
             }
         }
     }
     
     $state Integer()
     {
-        $input_optional if Digit(i)
+        $input if Digit(i)
         {
             Value = i;
             $join Digits();
@@ -253,14 +257,14 @@ var calculator = new ICalculator^
     $state Number()
     {
         $join Integer();
-        $input_optional if Dot()
+        $input if Dot()
         {
             Value = Value & ".";
             $input Digit(i)
             {
                 Value = Value & i;
-                $join Digits();
             }
+            $join Digits();
         }
     }
 
@@ -271,11 +275,14 @@ var calculator = new ICalculator^
             $monitor
             {
                 $join Number();
-                $input if   Add()   {Calculate(); op = "+";}
-                else if     Mul()   {Calculate(); op = "-";}
-                else if     Equal() {Calculate(); op = "=";}
+                $input
+                {
+                    case Add():     {Calculate(); op = "+";}
+                    case Mul():     {Calculate(); op = "-";}
+                    case Equal():   {Calculate(); op = "=";}
+                }
             }
-            $input if Clear()
+            $input Clear()
             {
                 valueFirst = "";
                 op = "";
