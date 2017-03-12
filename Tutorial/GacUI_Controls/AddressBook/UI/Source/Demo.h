@@ -125,13 +125,13 @@ namespace vl
 				{
 					INVOKE_INTERFACE_PROXY_NOPARAMS(RemoveContact);
 				}
-				void SetSelectedCategory(::vl::Ptr<::demo::ICategory> value) override
+				void SetSelectedCategory(::vl::Ptr<::demo::ICategory> __vwsn_value_) override
 				{
-					INVOKE_INTERFACE_PROXY(SetSelectedCategory, value);
+					INVOKE_INTERFACE_PROXY(SetSelectedCategory, <value>);
 				}
-				void SetSelectedContact(::vl::Ptr<::demo::IContact> value) override
+				void SetSelectedContact(::vl::Ptr<::demo::IContact> __vwsn_value_) override
 				{
-					INVOKE_INTERFACE_PROXY(SetSelectedContact, value);
+					INVOKE_INTERFACE_PROXY(SetSelectedContact, <value>);
 				}
 			END_INTERFACE_PROXY(::demo::IViewModel)
 #endif

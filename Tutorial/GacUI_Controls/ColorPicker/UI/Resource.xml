@@ -21,17 +21,13 @@
         {
           interface IColorItem
           {
-            func GetItemName() : string;
-            prop ItemName : string {GetItemName}
-            
-            func GetItemColor() : Color;
-            prop ItemColor : Color {GetItemColor}
+            prop ItemName : string {const, not observe}
+            prop ItemColor : Color {const, not observe}
           }
           
           interface IViewModel
           {
-            func GetColorItems() : IColorItem^{};
-            prop ColorItems : IColorItem^{} {GetColorItems}
+            prop ColorItems : IColorItem^{} {const, not observe}
           }
         }
       ]]>
@@ -81,25 +77,7 @@
         <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
         <ref.Members>
           <![CDATA[
-            @cpp:Protected
-            var textColor : Color = cast Color "#000000";
-            event TextColorChanged();
-            
-            func GetTextColor() : Color
-            {
-              return textColor;
-            }
-            
-            func SetTextColor(value : Color) : void
-            {
-              if (textColor != value)
-              {
-                textColor = value;
-                TextColorChanged();
-              }
-            }
-            
-            prop TextColor : Color {GetTextColor, SetTextColor : TextColorChanged}
+            prop TextColor : Color = (cast Color "#000000") {}
           ]]>
         </ref.Members>
         <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">

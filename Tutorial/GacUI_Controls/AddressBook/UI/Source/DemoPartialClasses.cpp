@@ -2612,14 +2612,13 @@ Class (::demo::NewContactWindow)
 
 	bool NewContactWindow::GetForEdit()
 	{
-		return ::vl::__vwsn::This(this)->forEdit;
+		return ::vl::__vwsn::This(this)->__vwsn_prop_ForEdit;
 	}
-
-	void NewContactWindow::SetForEdit(bool value)
+	void NewContactWindow::SetForEdit(bool __vwsn_value_)
 	{
-		if ((::vl::__vwsn::This(this)->forEdit != value))
+		if ((::vl::__vwsn::This(this)->__vwsn_prop_ForEdit != __vwsn_value_))
 		{
-			(::vl::__vwsn::This(this)->forEdit = value);
+			(::vl::__vwsn::This(this)->__vwsn_prop_ForEdit = __vwsn_value_);
 			::vl::__vwsn::EventInvoke(::vl::__vwsn::This(this)->ForEditChanged)();
 		}
 	}
@@ -2802,14 +2801,13 @@ Class (::demo::NewFolderWindow)
 
 	::vl::WString NewFolderWindow::GetFolderName()
 	{
-		return ::vl::__vwsn::This(this)->folderName;
+		return ::vl::__vwsn::This(this)->__vwsn_prop_FolderName;
 	}
-
-	void NewFolderWindow::SetFolderName(const ::vl::WString& value)
+	void NewFolderWindow::SetFolderName(const ::vl::WString& __vwsn_value_)
 	{
-		if ((::vl::__vwsn::This(this)->folderName != value))
+		if ((::vl::__vwsn::This(this)->__vwsn_prop_FolderName != __vwsn_value_))
 		{
-			(::vl::__vwsn::This(this)->folderName = value);
+			(::vl::__vwsn::This(this)->__vwsn_prop_FolderName = __vwsn_value_);
 			::vl::__vwsn::EventInvoke(::vl::__vwsn::This(this)->FolderNameChanged)();
 		}
 	}
@@ -2907,8 +2905,8 @@ namespace vl
 				CLASS_MEMBER_METHOD(GetSelectedContact, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(RemoveCategory, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(RemoveContact, NO_PARAMETER)
-				CLASS_MEMBER_METHOD(SetSelectedCategory, { L"value" })
-				CLASS_MEMBER_METHOD(SetSelectedContact, { L"value" })
+				CLASS_MEMBER_METHOD(SetSelectedCategory, { L"__vwsn_value_" })
+				CLASS_MEMBER_METHOD(SetSelectedContact, { L"__vwsn_value_" })
 				CLASS_MEMBER_EVENT(SelectedCategoryChanged)
 				CLASS_MEMBER_EVENT(SelectedContactChanged)
 				CLASS_MEMBER_PROPERTY_EVENT(SelectedCategory, GetSelectedCategory, SetSelectedCategory, SelectedCategoryChanged)
@@ -2993,13 +2991,13 @@ namespace vl
 				CLASS_MEMBER_CONSTRUCTOR(::demo::NewContactWindow*(::vl::Ptr<::demo::IContact>), { L"__vwsn_ctor_parameter_Contact" })
 				CLASS_MEMBER_METHOD(GetContact, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetForEdit, NO_PARAMETER)
-				CLASS_MEMBER_METHOD(SetForEdit, { L"value" })
+				CLASS_MEMBER_METHOD(SetForEdit, { L"__vwsn_value_" })
 				CLASS_MEMBER_EVENT(ForEditChanged)
 				CLASS_MEMBER_FIELD(__vwsn_parameter_Contact)
+				CLASS_MEMBER_FIELD(__vwsn_prop_ForEdit)
 				CLASS_MEMBER_PROPERTY_READONLY(Contact, GetContact)
 				CLASS_MEMBER_PROPERTY_EVENT(ForEdit, GetForEdit, SetForEdit, ForEditChanged)
 				CLASS_MEMBER_FIELD(Ready)
-				CLASS_MEMBER_FIELD(forEdit)
 			END_CLASS_MEMBER(::demo::NewContactWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::NewContactWindowConstructor)
@@ -3039,11 +3037,11 @@ namespace vl
 			BEGIN_CLASS_MEMBER(::demo::NewFolderWindow)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::NewFolderWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetFolderName, NO_PARAMETER)
-				CLASS_MEMBER_METHOD(SetFolderName, { L"value" })
+				CLASS_MEMBER_METHOD(SetFolderName, { L"__vwsn_value_" })
 				CLASS_MEMBER_EVENT(FolderNameChanged)
+				CLASS_MEMBER_FIELD(__vwsn_prop_FolderName)
 				CLASS_MEMBER_PROPERTY_EVENT(FolderName, GetFolderName, SetFolderName, FolderNameChanged)
 				CLASS_MEMBER_FIELD(Ready)
-				CLASS_MEMBER_FIELD(folderName)
 			END_CLASS_MEMBER(::demo::NewFolderWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::NewFolderWindowConstructor)

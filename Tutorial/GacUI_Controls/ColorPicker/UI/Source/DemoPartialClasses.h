@@ -92,12 +92,11 @@ namespace demo
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorBomboItemTemplate>;
 #endif
-	protected:
-		::vl::presentation::Color textColor = ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#000000", false));
 	public:
-		::vl::Event<void()> TextColorChanged;
+		::vl::presentation::Color __vwsn_prop_TextColor = ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#000000", false));
 		::vl::presentation::Color GetTextColor();
-		void SetTextColor(::vl::presentation::Color value);
+		void SetTextColor(::vl::presentation::Color __vwsn_value_);
+		::vl::Event<void()> TextColorChanged;
 		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel = ::vl::Ptr<::demo::IColorItem>();
 		::vl::Ptr<::demo::IColorItem> GetViewModel();
 		ColorBomboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);

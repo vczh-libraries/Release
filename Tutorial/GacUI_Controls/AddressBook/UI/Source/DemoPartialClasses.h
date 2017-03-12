@@ -268,12 +268,11 @@ namespace demo
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewContactWindow>;
 #endif
-	protected:
-		bool forEdit = false;
 	public:
-		::vl::Event<void()> ForEditChanged;
+		bool __vwsn_prop_ForEdit = false;
 		bool GetForEdit();
-		void SetForEdit(bool value);
+		void SetForEdit(bool __vwsn_value_);
+		::vl::Event<void()> ForEditChanged;
 		bool Ready = true;
 		::vl::Ptr<::demo::IContact> __vwsn_parameter_Contact = ::vl::Ptr<::demo::IContact>();
 		::vl::Ptr<::demo::IContact> GetContact();
@@ -321,12 +320,11 @@ namespace demo
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewFolderWindow>;
 #endif
-	protected:
-		::vl::WString folderName = ::vl::WString(L"", false);
 	public:
-		::vl::Event<void()> FolderNameChanged;
+		::vl::WString __vwsn_prop_FolderName = ::vl::WString(L"", false);
 		::vl::WString GetFolderName();
-		void SetFolderName(const ::vl::WString& value);
+		void SetFolderName(const ::vl::WString& __vwsn_value_);
+		::vl::Event<void()> FolderNameChanged;
 		bool Ready = true;
 		NewFolderWindow();
 		~NewFolderWindow();
@@ -369,10 +367,10 @@ namespace demo
 	public:
 		virtual ::vl::Ptr<::demo::ICategory> GetRootCategory() = 0;
 		virtual ::vl::Ptr<::demo::ICategory> GetSelectedCategory() = 0;
-		virtual void SetSelectedCategory(::vl::Ptr<::demo::ICategory> value) = 0;
+		virtual void SetSelectedCategory(::vl::Ptr<::demo::ICategory> __vwsn_value_) = 0;
 		::vl::Event<void()> SelectedCategoryChanged;
 		virtual ::vl::Ptr<::demo::IContact> GetSelectedContact() = 0;
-		virtual void SetSelectedContact(::vl::Ptr<::demo::IContact> value) = 0;
+		virtual void SetSelectedContact(::vl::Ptr<::demo::IContact> __vwsn_value_) = 0;
 		::vl::Event<void()> SelectedContactChanged;
 		virtual void AddCategory(const ::vl::WString& name) = 0;
 		virtual void RemoveCategory() = 0;

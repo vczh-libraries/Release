@@ -15,9 +15,8 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 void GuiMain()
 {
 	{
-		List<WString> errors;
 		FileStream fileStream(L"../UIRes/TextEditor.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
+		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
 		GetResourceManager()->SetResource(L"Resource", resource);
 	}
 	demo::MainWindow window;

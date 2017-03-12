@@ -278,9 +278,8 @@ void GuiMain()
 {
 	LoadDemoTypes();
 	{
-		List<WString> errors;
 		FileStream fileStream(L"../UIRes/AddressBook.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
+		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
 		GetResourceManager()->SetResource(L"Resource", resource);
 
 		folderImage = resource->GetImageByPath(L"Images/Folder");

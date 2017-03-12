@@ -21,61 +21,32 @@
         {
           interface IContact
           {
-            func GetName() : string;
-            prop Name : string {GetName}
-          
-            func GetBigImage() : presentation::GuiImageData^;
-            prop BigImage : presentation::GuiImageData^ {GetBigImage}
-          
-            func GetSmallImage() : presentation::GuiImageData^;
-            prop SmallImage : presentation::GuiImageData^ {GetSmallImage}
-            
-            func GetBirthday() : DateTime;
-            prop Birthday : DateTime {GetBirthday}
-            
-            func GetBirthdayText() : string;
-            prop BirthdayText : string {GetBirthdayText}
-            
-            func GetPhone() : string;
-            prop Phone : string {GetPhone}
-            
-            func GetAddress() : string;
-            prop Address : string {GetAddress}
+            prop Name         : string                      {const, not observe}
+            prop BigImage     : presentation::GuiImageData^ {const, not observe}
+            prop SmallImage   : presentation::GuiImageData^ {const, not observe}
+            prop Birthday     : DateTime                    {const, not observe}
+            prop BirthdayText : string                      {const, not observe}
+            prop Phone        : string                      {const, not observe}
+            prop Address      : string                      {const, not observe}
             
             func Update(name : string, birthday : DateTime, phone : string, address : string) : void;
           }
       
           interface ICategory
           {
-            func GetParent() : ICategory*;
-            prop Parent : ICategory* {GetParent}
-        
-            func GetName() : string;
-            prop Name : string {GetName}
-          
-            func GetImage() : presentation::GuiImageData^;
-            prop Image : presentation::GuiImageData^ {GetImage}
-
-            func GetFolders() : ObservableList^;
-            prop Folders : ObservableList^ {GetFolders}
-
-            func GetContacts() : ObservableList^;
-            prop Contacts : ObservableList^ {GetContacts}
+            prop Parent       : ICategory*                  {const, not observe}
+            prop Name         : string                      {const, not observe}
+            prop Image        : presentation::GuiImageData^ {const, not observe}
+            prop Folders      : ObservableList^             {const, not observe}
+            prop Contacts     : ObservableList^             {const, not observe}
           }
         
           interface IViewModel
           {
             func GetRootCategory() : ICategory^;
           
-            func GetSelectedCategory() : ICategory^;
-            func SetSelectedCategory(value : ICategory^) : void;
-            event SelectedCategoryChanged();
-            prop SelectedCategory : ICategory^ {GetSelectedCategory, SetSelectedCategory : SelectedCategoryChanged}
-            
-            func GetSelectedContact() : IContact^;
-            func SetSelectedContact(value : IContact^) : void;
-            event SelectedContactChanged();
-            prop SelectedContact : IContact^ {GetSelectedContact, SetSelectedContact : SelectedContactChanged}
+            prop SelectedCategory : ICategory^ {}
+            prop SelectedContact : IContact^ {}
           
             func AddCategory(name : string) : void;
             func RemoveCategory() : void;
@@ -329,25 +300,7 @@
       <Instance ref.CodeBehind="false" ref.Class="demo::NewFolderWindow">
         <ref.Members>
           <![CDATA[
-            @cpp:Protected
-            var folderName : string = "";
-            event FolderNameChanged();
-            
-            func GetFolderName() : string
-            {
-              return folderName;
-            }
-            
-            func SetFolderName(value : string) : void
-            {
-              if (folderName != value)
-              {
-                folderName = value;
-                FolderNameChanged();
-              }
-            }
-            
-            prop FolderName : string {GetFolderName, SetFolderName : FolderNameChanged}
+            prop FolderName : string = "" {}
             
             var Ready : bool = true;
           ]]>
@@ -400,25 +353,7 @@
         <ref.Parameter Name="Contact" Class="demo::IContact"/>
         <ref.Members>
           <![CDATA[
-            @cpp:Protected
-            var forEdit : bool = false;
-            event ForEditChanged();
-            
-            func GetForEdit() : bool
-            {
-              return forEdit;
-            }
-            
-            func SetForEdit(value : bool) : void
-            {
-              if (forEdit != value)
-              {
-                forEdit = value;
-                ForEditChanged();
-              }
-            }
-            
-            prop ForEdit : bool {GetForEdit, SetForEdit : ForEditChanged}
+            prop ForEdit : bool = false {}
           
             var Ready : bool = true;
           ]]>

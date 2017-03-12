@@ -663,14 +663,13 @@ Class (::demo::ColorBomboItemTemplate)
 
 	::vl::presentation::Color ColorBomboItemTemplate::GetTextColor()
 	{
-		return ::vl::__vwsn::This(this)->textColor;
+		return ::vl::__vwsn::This(this)->__vwsn_prop_TextColor;
 	}
-
-	void ColorBomboItemTemplate::SetTextColor(::vl::presentation::Color value)
+	void ColorBomboItemTemplate::SetTextColor(::vl::presentation::Color __vwsn_value_)
 	{
-		if ((::vl::__vwsn::This(this)->textColor != value))
+		if ((::vl::__vwsn::This(this)->__vwsn_prop_TextColor != __vwsn_value_))
 		{
-			(::vl::__vwsn::This(this)->textColor = value);
+			(::vl::__vwsn::This(this)->__vwsn_prop_TextColor = __vwsn_value_);
 			::vl::__vwsn::EventInvoke(::vl::__vwsn::This(this)->TextColorChanged)();
 		}
 	}
@@ -913,12 +912,12 @@ namespace vl
 				CLASS_MEMBER_CONSTRUCTOR(::demo::ColorBomboItemTemplate*(::vl::Ptr<::demo::IColorItem>), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(GetTextColor, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
-				CLASS_MEMBER_METHOD(SetTextColor, { L"value" })
+				CLASS_MEMBER_METHOD(SetTextColor, { L"__vwsn_value_" })
 				CLASS_MEMBER_EVENT(TextColorChanged)
 				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
+				CLASS_MEMBER_FIELD(__vwsn_prop_TextColor)
 				CLASS_MEMBER_PROPERTY_EVENT(TextColor, GetTextColor, SetTextColor, TextColorChanged)
 				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
-				CLASS_MEMBER_FIELD(textColor)
 			END_CLASS_MEMBER(::demo::ColorBomboItemTemplate)
 
 			BEGIN_CLASS_MEMBER(::demo::ColorBomboItemTemplateConstructor)
