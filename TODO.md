@@ -2,16 +2,13 @@
 
 ## Working On
 * Workflow
-    * Auto property
-        * Add `WfVirtual(Statement)`, to represent an "expandable" AST unit (e.g. bind)
-            * `WfStatement`
     * State Machine
+        * WfCoroutineStatement: Base class of all coroutine statements, which will be totally removed after the ValidateSemantic pass
 * GacUI Resource
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
     * Handle resource file encoding if there is no BOM
         * Windows: Test UTF-8 correctness and local encoding correctness, may need to modify `vl::filesystem::File`
         * Others: Use local encoding (usually UTF-8)
-    * Output file using local encoding
 * GacUI
     * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
         * in `<Workflow>`
@@ -21,8 +18,7 @@
 
 ## Wait For A Few Releases
 * Workflow
-    * Macro
-    * Context-Grammar Sensitive Macro
+    * async, delay, yield (provider written in C++).
     * **Workflow to C++ code generation with hint**.
         * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
         * Use ::vl::vint for int in both 32 and 64 configurations.
@@ -53,7 +49,8 @@
         * Full CFG power, no limitation
         * Be able to assign to any properties (not just enum) in with statement
 * Workflow
-    * async, delay, yield (provider written in C++).
+    * Macro
+    * Context-Grammar Sensitive Macro
     * Virtual function
     * Class implements interface
 * GacUI Resource
