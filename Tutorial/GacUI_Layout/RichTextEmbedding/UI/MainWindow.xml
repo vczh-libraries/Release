@@ -8,7 +8,9 @@
     <DocumentViewer ref.Name="documentViewer" EditMode="ViewOnly" Document-uri="res://EmbeddedDocument/Document">
       <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
       <ev.ActiveHyperlinkExecuted-eval>
-        ViewModel.OpenUrl(documentViewer.ActiveHyperlinkReference);
+        <![CDATA[
+          ViewModel.OpenUrl(documentViewer.ActiveHyperlinkReference);
+        ]]>
       </ev.ActiveHyperlinkExecuted-eval>
       <DocumentItem Name="Button">
         <Button Text="Button"/>

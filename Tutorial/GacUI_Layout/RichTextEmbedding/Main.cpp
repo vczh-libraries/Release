@@ -22,9 +22,8 @@ public:
 void GuiMain()
 {
 	{
-		List<WString> errors;
 		FileStream fileStream(L"../UIRes/RichTextEmbedding.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream, errors);
+		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
 		GetResourceManager()->SetResource(L"Resource", resource);
 	}
 	demo::MainWindow window(new ViewModel);
