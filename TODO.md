@@ -37,6 +37,7 @@
 ## Low Property
 * Vlpp
     * Regex supports UTF-16 (instead of UCS-2) on MSVC
+        * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**)
     * Redesign vl::parsing
         * No need to specify allow ambiguity or not
         * Escaping and Unescaping pairs (instead of only unescaping)
