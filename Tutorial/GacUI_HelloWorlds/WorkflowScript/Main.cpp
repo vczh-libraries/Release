@@ -5,7 +5,7 @@
 using namespace vl::parsing;
 using namespace vl::collections;
 using namespace vl::workflow;
-using namespace vl::workflow::analyzer;
+using namespace vl::workflow::emitter;
 using namespace vl::workflow::runtime;
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int CmdShow)

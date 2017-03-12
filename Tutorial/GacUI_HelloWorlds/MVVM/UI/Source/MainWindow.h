@@ -48,12 +48,11 @@ namespace helloworld
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
-	protected:
-		bool hasLoggedIn = false;
 	public:
-		::vl::Event<void()> HasLoggedInChanged;
+		bool __vwsn_prop_HasLoggedIn = false;
 		bool GetHasLoggedIn();
-		void SetHasLoggedIn(bool value);
+		void SetHasLoggedIn(bool __vwsn_value_);
+		::vl::Event<void()> HasLoggedInChanged;
 		::vl::Ptr<::vm::IViewModel> __vwsn_parameter_ViewModel = ::vl::Ptr<::vm::IViewModel>();
 		::vl::Ptr<::vm::IViewModel> GetViewModel();
 	protected:

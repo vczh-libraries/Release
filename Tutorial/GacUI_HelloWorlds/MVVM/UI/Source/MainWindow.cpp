@@ -33,14 +33,13 @@ namespace helloworld
 {
 	bool MainWindow::GetHasLoggedIn()
 	{
-		return ::vl::__vwsn::This(this)->hasLoggedIn;
+		return ::vl::__vwsn::This(this)->__vwsn_prop_HasLoggedIn;
 	}
-
-	void MainWindow::SetHasLoggedIn(bool value)
+	void MainWindow::SetHasLoggedIn(bool __vwsn_value_)
 	{
-		if ((::vl::__vwsn::This(this)->hasLoggedIn != value))
+		if ((::vl::__vwsn::This(this)->__vwsn_prop_HasLoggedIn != __vwsn_value_))
 		{
-			(::vl::__vwsn::This(this)->hasLoggedIn = value);
+			(::vl::__vwsn::This(this)->__vwsn_prop_HasLoggedIn = __vwsn_value_);
 			::vl::__vwsn::EventInvoke(::vl::__vwsn::This(this)->HasLoggedInChanged)();
 		}
 	}

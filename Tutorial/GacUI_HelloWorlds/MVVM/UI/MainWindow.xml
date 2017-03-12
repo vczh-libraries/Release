@@ -2,25 +2,9 @@
 <Instance ref.CodeBehind="true" ref.Class="helloworld::MainWindow">
   <ref.Parameter Name="ViewModel" Class="vm::IViewModel"/>
   <ref.Members>
-    @cpp:Protected
-    var hasLoggedIn : bool = false;
-    event HasLoggedInChanged();
-
-    func GetHasLoggedIn() : bool
-    {
-    return hasLoggedIn;
-    }
-
-    func SetHasLoggedIn(value : bool) : void
-    {
-    if (hasLoggedIn != value)
-    {
-    hasLoggedIn = value;
-    HasLoggedInChanged();
-    }
-    }
-
-    prop HasLoggedIn : bool {GetHasLoggedIn, SetHasLoggedIn : HasLoggedInChanged}
+    <![CDATA[
+      prop HasLoggedIn : bool = false {}
+    ]]>
   </ref.Members>
   <Window ref.Name="self" Text="Let's Sign Up!" ClientSize="x:320 y:280">
     <att.BoundsComposition-set PreferredMinSize="x:320 y:280"/>
@@ -85,7 +69,9 @@
         <Button ref.Name="buttonCancel" Text="Close">
           <att.BoundsComposition-set AlignmentToParent="left:-1 top:0 right:0 bottom:0" PreferredMinSize="x:100 y:24"/>
           <ev.Clicked-eval>
-            self.Close();
+            <![CDATA[
+              self.Close();
+            ]]>
           </ev.Clicked-eval>
         </Button>
       </Cell>
