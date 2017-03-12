@@ -127,11 +127,11 @@ namespace vl
 				}
 				void SetSelectedCategory(::vl::Ptr<::demo::ICategory> __vwsn_value_) override
 				{
-					INVOKE_INTERFACE_PROXY(SetSelectedCategory, <value>);
+					INVOKE_INTERFACE_PROXY(SetSelectedCategory, __vwsn_value_);
 				}
 				void SetSelectedContact(::vl::Ptr<::demo::IContact> __vwsn_value_) override
 				{
-					INVOKE_INTERFACE_PROXY(SetSelectedContact, <value>);
+					INVOKE_INTERFACE_PROXY(SetSelectedContact, __vwsn_value_);
 				}
 			END_INTERFACE_PROXY(::demo::IViewModel)
 #endif

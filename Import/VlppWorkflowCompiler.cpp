@@ -4053,10 +4053,17 @@ ExpandObserveExpression
 							referenceReplacement.Remove(key);
 							overrided.Add(key, value);
 						}
+
+						auto newVar = MakePtr<WfLetVariable>();
+						newVar->name.value = key;
+						newVar->value = CreateField(var->value);
+						expr->variables.Add(newVar);
 					}
 
-					result = CreateField(node);
+					expr->expression = CreateField(node->expression);
 					CopyFrom(referenceReplacement, overrided, true);
+
+					result = expr;
 				}
 
 				void Visit(WfObserveExpression* node)override
@@ -16463,7 +16470,7 @@ namespace vl
 										for (vint k = 0; k < parameterCount; k++)
 										{
 											writer.WriteString(L", ");
-											writer.WriteString(methodInfo->GetParameter(k)->GetName());
+											writer.WriteString(ConvertName(methodInfo->GetParameter(k)->GetName()));
 										}
 										writer.WriteLine(L");");
 									}
