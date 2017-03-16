@@ -83,9 +83,8 @@ To implement
 * State Machine Interface
 * Core Syntax
 * Extension (State Machine)
-* Extension (Enumerable, $yield, $yieldBreak)
+* Extension (Enumerable, $Yield)
 * Extension (Task)
-* Sample
 
 ### State Machine Interface
 ```
@@ -147,6 +146,8 @@ $state_machine
 
 ### Extension (State Machine Interface)
 
+#### Declare input methods in interfaces
+
 * `$input Name(a:Ta, b:Tb);` **declaration**
     * `func Name(a:Ta, b:Tb) : bool`
         * Returns false if a failed input causes a retry
@@ -155,36 +156,30 @@ $state_machine
         * `var <prop>NameEnabled : bool = false;`
         * `func GetNameEnabled() : bool { ... }`
         * `func SetNameEnabled(<value> : bool) : void { ... }`
-* `$retry [<EXPRESSION>]` **statement**
-    * Pause a state machine with a failure
-    * Can only appear inside `$input`
-    * Cause the current input fail
-* **INPUT-CASES** ::= `<INPUT-NAME>(arguments...) { ... }` | `{case <INPUT-NAME>(arguments...): { ... } ... }`:
-    * Input matching.
-* `$exit_if_failed { ... }`
-    * Immediately jump out of the statement if any failed input is produced
-    * The failed input is not consumed, and it is not considered failed
-* **INPUT** ::=
-    * Pause the state machine if there is no input to consume
-    * `$input <INPUT-CASES>`
-        * If the input is matched, it is consumed
-        * Otherwise, the input is considered failed if nothing matched
-    * `$input if <INPUT-CASES> [else if <INPUT-CASES> ...] [else { ... }]`
-        * If the input is matched, it is consumed
-        * Otherwise, the input is not consumed and continue execute, and it is not considered failed
-* `$monitor { ... } <INPUT>`:
-    * If a failed input is matched by `<INPUT>`, it is consumed
-    * Even if an input is converted to "not failed", not consumed and successfully reach the end of the `$monitor` statement, if then it matches the `<INPUT>`, it is consumed
-    * Otherwise, it is considered failed
-* Failed Input:
-    * If a failed input is produced
-        * If `$watch` failed to consume the failed input, the input cause a immediate retry
-        * If a failed input is converted to "not failed", it is possible that it finally causes the state machine to stop without failure
-* `$join <STATE>;` **statement**
-    * Only accept states that are declared **before** $join
-* `$state [<NAME> ( ... )] { ... }` **declaration**
-    * If there is a name with parameters (optional), than it can be `$join`
-    * If there is no name, than this is the state machine for implementating the current interface
+
+#### Statements in `$state` declarations
+
+* `$input[_else_exit] { case <INPUT-NAME>(arguments...): { ... } ... }` **statement**
+    * If the input is failed to match
+        * `$input_else_exit`: exit the current state scope
+        * `$input`: retry
+* `$input[_else_exit] <INPUT-NAME>(arguments...) (;|{ ... })` **statement**
+    * Short for `$input[_else_exit] { case <INPUT-NAME>(arguments...): { ... } }`
+* `$join <NAME>;` **statement**
+    * Enter the specified state
+* `$join { ... }` **statement**
+    * Create a state scope, if any `$input_else_exit` failed inside, exit the `$join` statement
+
+#### Declare states inside a new interface expression
+
+* `$state <NAME> { ... }`
+    * Define a sub state machine
+* `$state { ... }`
+    * Define a state machine as the entry
+    * Cannot create dead loop for any failed input
+        * Example: `$state { while (true) { $join { $input_else_exit DoSomething(); } } }`
+
+#### Sample
 
 ```
 interface ICalculator : StateMachine
@@ -233,21 +228,18 @@ var calculator = new ICalculator^
     
     $state Digits()
     {
-        $exit_if_failed
+        while (true)
         {
-            while (true)
+            $input_else_exit Digit(i)
             {
-                $input Digit(i)
-                {
-                    Value = Value & i;
-                }
+                Value = Value & i;
             }
         }
     }
     
     $state Integer()
     {
-        $input if Digit(i)
+        $input_else_exit Digit(i)
         {
             Value = i;
             $join Digits();
@@ -257,36 +249,33 @@ var calculator = new ICalculator^
     $state Number()
     {
         $join Integer();
-        $input if Dot()
+        $input_else_exit Dot()
         {
             Value = Value & ".";
-            $input Digit(i)
-            {
-                Value = Value & i;
-            }
-            $join Digits();
         }
+        $input Digit(i)
+        {
+            Value = Value & i;
+        }
+        $join Digits();
     }
 
     $state
     {
         while (true)
         {
-            $monitor
+            $join Number();
+            $input
             {
-                $join Number();
-                $input
+                case Add():     {Calculate(); op = "+";}
+                case Mul():     {Calculate(); op = "-";}
+                case Equal():   {Calculate(); op = "=";}
+                case Clear():
                 {
-                    case Add():     {Calculate(); op = "+";}
-                    case Mul():     {Calculate(); op = "-";}
-                    case Equal():   {Calculate(); op = "=";}
+                    valueFirst = "";
+                    op = "";
+                    Value = "0";
                 }
-            }
-            $input Clear()
-            {
-                valueFirst = "";
-                op = "";
-                Value = "0";
             }
         }
     }
