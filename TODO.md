@@ -81,10 +81,10 @@ To implement
 
 ### Agenda
 * State Machine Interface
-* Core Syntax
-* Extension (State Machine)
+* Raw state machine
 * Extension (Enumerable, $Yield)
 * Extension (Task)
+* Extension (State Machine)
 
 ### State Machine Interface
 ```
@@ -110,18 +110,22 @@ namespace system
 }
 ```
 
-### Core Syntax
+### Raw state machine
 
+#### Syntax
 * `$state_machine {...}` **expression**
-    * Building a StateMachine^
+    * Create a StateMachine^
 * `$pause {}` **statement**
-    * `$pause`, `return`, `break`, `continue` are not allowed inside `$pause`
+    * `$pause` are not allowed inside another `$pause`
+    * If `return`, `break`, `continue` or any other statements are used to exit the scope
+        * The state machine will not pause
 * `return` **statement**
     * No expression
     * Stop the state machine
-* `raise <EXPRESSION>` **statement**
+* If an exception is raised and there is no `try` to catch it
     * Stop the state machine with a failure
 
+#### Sample
 ```
 /* Status == Waiting */
 $state_machine
@@ -143,153 +147,13 @@ $state_machine
 }
 ```
 
-### Extension (State Machine Interface)
-
-#### Declare input methods in interfaces
-
-* `$input Name(a:Ta, b:Tb);` **declaration**
-    * `func Name(a:Ta, b:Tb) : bool`
-        * Returns false if a failed input causes a retry
-        * No overloading
-    * `prop NameEnabled : bool {const}`
-        * `var <prop>NameEnabled : bool = false;`
-        * `func GetNameEnabled() : bool { ... }`
-        * `func SetNameEnabled(<value> : bool) : void { ... }`
-
-#### Statements in `$state` declarations
-
-* `$input[_else_exit] { case <INPUT-NAME>(arguments...): { ... } ... }` **statement**
-    * If the input is failed to match
-        * `$input_else_exit`: exit the current state scope
-        * `$input`: retry
-* `$input[_else_exit] <INPUT-NAME>(arguments...) (;|{ ... })` **statement**
-    * Short for `$input[_else_exit] { case <INPUT-NAME>(arguments...): { ... } }`
-* `$join <NAME>;` **statement**
-    * Enter the specified state
-* `$join { ... }` **statement**
-    * Create a state scope, if any `$input_else_exit` failed inside, exit the `$join` statement
-
-#### Declare states inside a new interface expression
-
-* `$state <NAME> { ... }`
-    * Define a sub state machine
-* `$state { ... }`
-    * Define a state machine as the entry
-    * Cannot create dead loop for any failed input
-        * Example: `$state { while (true) { $join { $input_else_exit DoSomething(); } } }`
-
-#### Sample
-
-```
-interface ICalculator : StateMachine
-{
-    $input Digit(i : int);
-    $input Dot();
-    $input Add();
-    $input Mul();
-    $input Equal();
-    $input Clear();
-    
-    prop Value : string {const}
-}
-
-var calculator = new ICalculator^
-{
-    var valueFirst : string = "";
-    var op : string = "";
-    override prop Value : string = "0";
-    
-    func Update(value : string) : void
-    {
-        SetValue(value);
-        valueFirst = value;
-    }
-    
-    func Calculate() : void
-    {
-        if (valueFirst == "")
-        {
-            valueFirst = value;
-        }
-        else if (op == "+")
-        {
-            Update((cast double valueFirst) + (cast double Value));
-        }
-        else if (op == "*")
-        {
-            Update((cast double valueFirst) * (cast double Value));
-        }
-        else
-        {
-            raise $"Unrecognized operator: $(op)";
-        }
-    }
-    
-    $state Digits()
-    {
-        while (true)
-        {
-            $input_else_exit Digit(i)
-            {
-                Value = Value & i;
-            }
-        }
-    }
-    
-    $state Integer()
-    {
-        $input_else_exit Digit(i)
-        {
-            Value = i;
-            $join Digits();
-        }
-    }
-    
-    $state Number()
-    {
-        $join Integer();
-        $input_else_exit Dot()
-        {
-            Value = Value & ".";
-        }
-        $input Digit(i)
-        {
-            Value = Value & i;
-        }
-        $join Digits();
-    }
-
-    $state
-    {
-        while (true)
-        {
-            $join Number();
-            $input
-            {
-                case Add():     {Calculate(); op = "+";}
-                case Mul():     {Calculate(); op = "-";}
-                case Equal():   {Calculate(); op = "=";}
-                case Clear():
-                {
-                    valueFirst = "";
-                    op = "";
-                    Value = "0";
-                }
-            }
-        }
-    }
-};
-```
-
 ### Extension (Enumerable, $Yield)
 
 #### Syntax
-* `$pause` cannot be used inside a coroutine with a provider
 * `return` is always mapped to `ReturnAndExit`
-    * If `return` has an expression, than `ReturnAndExit` should also have an expression
-* An exit operator is called at the end of the coroutine, all parameters are filled with default values.
-    * If there is no exit operator, ignore
-    * If there are multiple exit operators, than call `ReturnAndExit`, error if not exists.
+    * If `return` has an expression, than `ReturnAndExit` should also have an argument
+    * `ReturnAndExit` is always required, and is called at the end of the coroutine
+        * All arguments are filled with default values
 * Pause operators and Exit operators cannot overload.
 
 #### Build a coroutine using a provider
@@ -403,4 +267,138 @@ class EnumerableStateMachine
 ### Extension (Task)
 
 ```
+```
+
+### Extension (State Machine Interface)
+
+#### Declare input methods in interfaces
+* `$input Name(a:Ta, b:Tb);` **declaration**
+    * `func Name(a:Ta, b:Tb) : bool`
+        * Returns false if a failed input causes a retry
+        * No overloading
+    * `prop NameEnabled : bool {const}`
+        * `var <prop>NameEnabled : bool = false;`
+        * `func GetNameEnabled() : bool { ... }`
+        * `func SetNameEnabled(<value> : bool) : void { ... }`
+
+#### Statements in `$state` declarations
+* `$input[_else_exit] { case <INPUT-NAME>(arguments...): { ... } ... }` **statement**
+    * If the input is failed to match
+        * `$input_else_exit`: exit the current state scope
+        * `$input`: retry
+* `$input[_else_exit] <INPUT-NAME>(arguments...) (;|{ ... })` **statement**
+    * Short for `$input[_else_exit] { case <INPUT-NAME>(arguments...): { ... } }`
+* `$join <NAME>;` **statement**
+    * Enter the specified state
+* `$join { ... }` **statement**
+    * Create a state scope, if any `$input_else_exit` failed inside, exit the `$join` statement
+
+#### Declare states inside a new interface expression
+* `$state <NAME> { ... }`
+    * Define a sub state machine
+* `$state { ... }`
+    * Define a state machine as the entry
+    * Cannot create dead loop for any failed input
+        * Example: `$state { while (true) { $join { $input_else_exit DoSomething(); } } }`
+
+#### Sample
+```
+interface ICalculator : StateMachine
+{
+    $input Digit(i : int);
+    $input Dot();
+    $input Add();
+    $input Mul();
+    $input Equal();
+    $input Clear();
+    
+    prop Value : string {const}
+}
+
+var calculator = new ICalculator^
+{
+    var valueFirst : string = "";
+    var op : string = "";
+    override prop Value : string = "0";
+    
+    func Update(value : string) : void
+    {
+        SetValue(value);
+        valueFirst = value;
+    }
+    
+    func Calculate() : void
+    {
+        if (valueFirst == "")
+        {
+            valueFirst = value;
+        }
+        else if (op == "+")
+        {
+            Update((cast double valueFirst) + (cast double Value));
+        }
+        else if (op == "*")
+        {
+            Update((cast double valueFirst) * (cast double Value));
+        }
+        else
+        {
+            raise $"Unrecognized operator: $(op)";
+        }
+    }
+    
+    $state Digits()
+    {
+        while (true)
+        {
+            $input_else_exit Digit(i)
+            {
+                Value = Value & i;
+            }
+        }
+    }
+    
+    $state Integer()
+    {
+        $input_else_exit Digit(i)
+        {
+            Value = i;
+            $join Digits();
+        }
+    }
+    
+    $state Number()
+    {
+        $join Integer();
+        $input_else_exit Dot()
+        {
+            Value = Value & ".";
+        }
+        $input Digit(i)
+        {
+            Value = Value & i;
+        }
+        $join Digits();
+    }
+
+    $state
+    {
+        while (true)
+        {
+            $join Number();
+            $input
+            {
+                case Add():     {Calculate(); op = "+";}
+                case Mul():     {Calculate(); op = "-";}
+                case Equal():   {Calculate(); op = "=";}
+                case Clear():
+                {
+                    valueFirst = "";
+                    op = "";
+                    Value = "0";
+                }
+            }
+        }
+    }
+};
 ```
