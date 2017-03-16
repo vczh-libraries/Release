@@ -104,9 +104,8 @@ namespace system
         func Resume(raiseException : bool) : void;
 
         /* Stored the $raise/$retry result */
-        prop Failure : Exception^ {const}
-        prop Status : StateMachineStatus {const}
-        event OnStatusChanged();
+        prop Failure : Exception^ {const, not observe}
+        prop Status : StateMachineStatus {const, not observe}
     }
 }
 ```
