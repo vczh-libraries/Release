@@ -90,14 +90,14 @@ To implement
 ```
 namespace system
 {
-    enum StateMachineStatus
+    enum CoroutineStatus
     {
         Waiting = 0,
         Executing = 1,
         Stopped = 2,
     }
 
-    interface StateMachine
+    interface Coroutine
     {
         /* Call (Waiting -> Executing | Stopped), raise exception if (Executing | Stopped) */
         /* If raiseException == true, the function will raise the exception after storing to the Failure property */
@@ -105,7 +105,7 @@ namespace system
 
         /* Stored the $raise/$retry result */
         prop Failure : Exception^ {const, not observe}
-        prop Status : StateMachineStatus {const, not observe}
+        prop Status : CoroutineStatus {const, not observe}
     }
 }
 ```
@@ -113,8 +113,8 @@ namespace system
 ### Raw state machine
 
 #### Syntax
-* `$state_machine {...}` **expression**
-    * Create a StateMachine^
+* `$coroutine {...}` **expression**
+    * Create a Coroutine^
 * `$pause {}` **statement**
     * `$pause` are not allowed inside another `$pause`
     * If `return`, `break`, `continue` or any other statements are used to exit the scope
@@ -128,7 +128,7 @@ namespace system
 #### Sample
 ```
 /* Status == Waiting */
-$state_machine
+$coroutine
 {
     /* Resume(): Status == Executing */
     for (i in range [1, 10])
@@ -158,36 +158,36 @@ $state_machine
 
 #### Build a coroutine using a provider
 ```
-/* Use [Enumerable]StateMachine, the ^ sign should match the return type of EnumerableStateMachine */
+/* Use [Enumerable]Coroutine, the ^ sign should match the return type of EnumerableCoroutine */
 $new Enumerable^
 {
     for (i in range [1, 10])
     {
-        /* Use [Enumerable]StateMachine.[Yield]And(Pause|Exit) */
+        /* Use [Enumerable]Coroutine.[Yield]And(Pause|Exit) */
         $Yield(i);
     }
-    /* Use [Enumerable]StateMachine.ReturnAndExit */
+    /* Use [Enumerable]Coroutine.ReturnAndExit */
     return;
 }
 ```
 
 #### Generated code
 ```
-EnumerableStateMachine.Create
+EnumerableCoroutine.Create
 (
-    func (impl : EnumerableStateMachine.IImpl*) : StateMachine^
+    func (impl : EnumerableCoroutine.IImpl*) : Coroutine^
     {
-        return $state_machine
+        return $coroutine
         {
             for (i in range [1, 10])
             {
                 $pause
                 {
-                    EnumerableStateMachine.YieldAndPause(impl, i);
+                    EnumerableCoroutine.YieldAndPause(impl, i);
                 }
             }
             {
-                EnumerableStateMachine.ReturnAndExit(impl);
+                EnumerableCoroutine.ReturnAndExit(impl);
                 return;
             }
         };
@@ -197,7 +197,7 @@ EnumerableStateMachine.Create
 
 #### Building a provider
 ```
-class EnumerableStateMachine
+class EnumerableCoroutine
 {
     interface IImpl : Enumerator^
     {
@@ -215,8 +215,8 @@ class EnumerableStateMachine
     {
     }
     
-    /* The argument of the Create function should be a function, which has one argument and returns a StateMachine^ */
-    static func Create(creator : func (impl : IImpl*) : StateMachine^) : Enumerable^
+    /* The argument of the Create function should be a function, which has one argument and returns a Coroutine^ */
+    static func Create(creator : func (impl : IImpl*) : Coroutine^) : Enumerable^
     {
         return new Enumerable^
         {
@@ -226,7 +226,7 @@ class EnumerableStateMachine
                 {
                     var current = null;
                     var index = -1;
-                    var stateMachine : StateMachine^ = null;
+                    var stateMachine : Coroutine^ = null;
                     
                     override func OnNext(value : object) : void
                     {
@@ -303,7 +303,7 @@ class EnumerableStateMachine
 
 #### Sample
 ```
-interface ICalculator : StateMachine
+interface ICalculator : Coroutine
 {
     $input Digit(i : int);
     $input Dot();
