@@ -270,15 +270,28 @@ class EnumerableCoroutine
 
 interface ITask
 {
-    ...
+    prop AsyncResult : IAsyncResult^ {const, not observe}
+    func Execute(callback : func():void) : void;
 }
 
-interface IAsync
+interface IAsyncResult
 {
-    prop Task : ITask^ {const, not observe}
+    prop Task : ITask^ {not observe}
+    
+    static func StartExecute(asyncResult : IAsyncResult^, callback : func():void) : void
+    {
+        if (asyncResult.Task is null)
+        {
+            raise "Wrong!";
+        }
+        var task = asyncResult.Task;
+        task.AsyncResult = asyncResult;
+        asyncResult.Task = null;
+        task.Execute(callback);
+    }
 }
 
-interface IDownloadAsync : IAsync
+interface IDownloadAsync : IAsyncResult
 {
     prop CoroutineResult : int[] {const, not observe}
 }
@@ -287,8 +300,8 @@ func DownloadAsync(string[] urls) : IDownloadAsync^
 {
     return new IDownloadAsync^
     {
-        prop CoroutineResult : int[] = null {const, not observe}
-        prop Task : ITask^ = $new Async
+        override prop CoroutineResult : int[] = null {const, not observe}
+        override prop Task : ITask^ = $new Async
         {
             var result : int[] = {};
             for(url in urls)
@@ -308,54 +321,49 @@ class AsyncCoroutine
 {
     interface IImpl : ITask
     {
-        ...
+        func OnContinue() : void;
     }
 
-    static func AwaitAndRead(impl : IImpl*, value : IAsync^) : void
+    static func AwaitAndRead(impl : IImpl*, value : IAsyncResult^) : void
     {
         // The same to AwaitAndPause, but it supports
-        // var NAME = $Await(COROUTINE)
+        // var NAME = $Await(ASYNC-RESULT);
         // expanding to:
-        //      var <COROUTINE>NAME = COROUTINE;
-        //      $pause { AwaitAndRead_Result(impl, <COROUTINE>NAME); }
-        //      var NAME = <COROUTINE>NAME.CoroutineResult;
-        impl.OnAwait(value);
-    }
-
-    static func ReturnAndExit(impl : IImpl*) : void
-    {
+        //      var <ASYNC-RESULT>NAME = ASYNC-RESULT;
+        //      $pause { AwaitAndRead(impl, <ASYNC-RESULT>NAME); }
+        //      var NAME = <ASYNC-RESULT>NAME.CoroutineResult;
+        IAsyncResult::StartExecute(value, impl.OnContinue);
     }
     
     static func Create(creator : func (impl : IImpl*) : Coroutine^) : ITask^
     {
         var impl = new IImpl^
         {
-            var task : ITask^ = null;
             var coroutine : ICoroutine^ = null;
+            var callback : func():void;
+            override prop AsyncResult : IAsyncResult^ {not observe}
             
-            func OnAwait(value : ITask^) : void
+            func OnContinue() : void
             {
-                task = value;
-            }
-            
-            func Run() : void
-            {
-                coroutine.Resume(true);
-                if (coroutine.Status != Stopped)
+                ITask::ScheduleToACorrectThread(func():void
                 {
-                    task.Start(Run);
-                    task = null;
-                }
+                    coroutine.Resume(true);
+                    if (coroutine.Status == Stopped and callback is not null)
+                    {
+                        callback();
+                    }
+                });
             }
             
-            override func Start(callback : func():void) : void
+            override func Execute(_callback : func():void) : void
             {
                 if (coroutine is not null)
                 {
                     raise "Wrong!";
                 }
                 coroutine = creator(this);
-                Run();
+                callback = _callback;
+                OnContinue();
             }
         };
     }
