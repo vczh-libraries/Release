@@ -154,7 +154,6 @@ $coroutine
     * If `return` has an expression, than `ReturnAndExit` should also have an argument
     * `ReturnAndExit` is always required, and is called at the end of the coroutine
         * All arguments are filled with default values
-* Pause operators and Exit operators cannot overload.
 
 #### Build a coroutine using a provider
 ```
@@ -226,7 +225,7 @@ class EnumerableCoroutine
                 {
                     var current = null;
                     var index = -1;
-                    var stateMachine : Coroutine^ = null;
+                    var coroutine : Coroutine^ = null;
                     
                     override func OnNext(value : object) : void
                     {
@@ -246,16 +245,16 @@ class EnumerableCoroutine
 
                     override func Next() : bool
                     {
-                        if (stateMachine is null)
+                        if (coroutine is null)
                         {
-                            stateMachine = creator(this);
+                            coroutine = creator(this);
                         }
                         
-                        if (stateMachine.Status != Stopped)
+                        if (coroutine.Status != Stopped)
                         {
-                            stateMachine.Resume(true);
+                            coroutine.Resume(true);
                         }
-                        return stateMachine.Status != Stopped;
+                        return coroutine.Status != Stopped;
                     }
                 }
             }
@@ -266,7 +265,100 @@ class EnumerableCoroutine
 
 ### Extension (Task)
 
+#### Build a coroutine using a provider
 ```
+
+interface ITask
+{
+    ...
+}
+
+interface IAsync
+{
+    prop Task : ITask^ {const, not observe}
+}
+
+interface IDownloadAsync : IAsync
+{
+    prop CoroutineResult : int[] {const, not observe}
+}
+
+func DownloadAsync(string[] urls) : IDownloadAsync^
+{
+    return new IDownloadAsync^
+    {
+        prop CoroutineResult : int[] = null {const, not observe}
+        prop Task : ITask^ = $new Async
+        {
+            var result : int[] = {};
+            for(url in urls)
+            {
+                var text = $Await(DownloadSingleAsync(url));
+                result.Add(text);
+            }
+            SetCoroutineResult(result);
+        } {const, not observe}
+    };
+}
+```
+
+#### Building a provider
+```
+class AsyncCoroutine
+{
+    interface IImpl : ITask
+    {
+        ...
+    }
+
+    static func AwaitAndRead(impl : IImpl^, value : IAsync^) : void
+    {
+        // The same to AwaitAndPause, but it supports
+        // var NAME = $Await(COROUTINE)
+        // expanding to:
+        //      var <COROUTINE>NAME = COROUTINE;
+        //      $pause { AwaitAndRead_Result(impl, <COROUTINE>NAME); }
+        //      var NAME = <COROUTINE>NAME.CoroutineResult;
+        impl.OnAwait(value);
+    }
+
+    static func ReturnAndExit(impl : IImpl^ impl) : void
+    {
+    }
+    
+    static func Create(creator : func (impl : IImpl^) : Coroutine^) : ITask^
+    {
+        var impl = new IImpl^
+        {
+            var task : ITask^;
+            var coroutine : ICoroutine^
+            
+            func OnAwait(value : ITask^) : void
+            {
+                task = value;
+            }
+            
+            func Run() : void
+            {
+                coroutine.Resume(true);
+                if (coroutine.Status != Stopped)
+                {
+                    task.Start(Run);
+                    task = null;
+                }
+            }
+            
+            override func Start(callback : func():void) : void
+            {
+                if (coroutine is not null)
+                {
+                    raise "Wrong!";
+                }
+                coroutine = creator(cast IImpl^ this);
+            }
+        };
+    }
+}
 ```
 
 ### Extension (State Machine Interface)
