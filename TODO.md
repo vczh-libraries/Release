@@ -324,7 +324,7 @@ class AsyncCoroutine
         func OnContinue() : void;
     }
 
-    static func AwaitAndRead(impl : IImpl*, value : IAsyncResult^) : void
+    static func AwaitAndRead(impl : IImpl^, value : IAsyncResult^) : void
     {
         // The same to AwaitAndPause, but it supports
         // var NAME = $Await(ASYNC-RESULT);
@@ -335,7 +335,18 @@ class AsyncCoroutine
         IAsyncResult::StartExecute(value, impl.OnContinue);
     }
     
-    static func Create(creator : func (impl : IImpl*) : Coroutine^) : ITask^
+    /*
+    var <ASYNC-RESULT>NAME = ASYNC-RESULT;
+        ICoroutine ---> IAsyncResult ---> ITask
+    $pause { AwaitAndRead(impl, <ASYNC-RESULT>NAME); }
+        ICoroutine +--> IAsyncResult <--+
+                   |                    |
+                   +--> ITask -> ICoroutine +--> IAsyncResult <--+
+                                            |                    |
+                                            +--> ITask -> ICoroutine ---> IAsyncResult ---> ITask
+    Impl^ in creator doesn't cause cycle referencing
+    */
+    static func Create(creator : func (impl : IImpl^) : Coroutine^) : ITask^
     {
         var impl = new IImpl^
         {
@@ -361,7 +372,7 @@ class AsyncCoroutine
                 {
                     raise "Wrong!";
                 }
-                coroutine = creator(this);
+                coroutine = creator(cast IImpl^ this);
                 callback = _callback;
                 OnContinue();
             }
