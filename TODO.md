@@ -311,7 +311,7 @@ class AsyncCoroutine
         ...
     }
 
-    static func AwaitAndRead(impl : IImpl^, value : IAsync^) : void
+    static func AwaitAndRead(impl : IImpl*, value : IAsync^) : void
     {
         // The same to AwaitAndPause, but it supports
         // var NAME = $Await(COROUTINE)
@@ -322,16 +322,16 @@ class AsyncCoroutine
         impl.OnAwait(value);
     }
 
-    static func ReturnAndExit(impl : IImpl^ impl) : void
+    static func ReturnAndExit(impl : IImpl*) : void
     {
     }
     
-    static func Create(creator : func (impl : IImpl^) : Coroutine^) : ITask^
+    static func Create(creator : func (impl : IImpl*) : Coroutine^) : ITask^
     {
         var impl = new IImpl^
         {
-            var task : ITask^;
-            var coroutine : ICoroutine^
+            var task : ITask^ = null;
+            var coroutine : ICoroutine^ = null;
             
             func OnAwait(value : ITask^) : void
             {
@@ -354,7 +354,8 @@ class AsyncCoroutine
                 {
                     raise "Wrong!";
                 }
-                coroutine = creator(cast IImpl^ this);
+                coroutine = creator(this);
+                Run();
             }
         };
     }
