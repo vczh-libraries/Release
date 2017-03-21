@@ -83,7 +83,7 @@ To implement
 * State Machine Interface
 * Raw state machine
 * Extension (Enumerable, $Yield)
-* Extension (Task)
+* Extension (Task, $Await, return)
 * Extension (State Machine)
 
 ### State Machine Interface
@@ -263,54 +263,38 @@ class EnumerableCoroutine
 }
 ```
 
-### Extension (Task)
+### Extension (Task, $Await, return)
 
 #### Build a coroutine using a provider
 ```
-
-interface ITask
+enum AsyncStatus
 {
-    prop AsyncResult : IAsyncResult^ {const, not observe}
-    func Execute(callback : func():void) : void;
+    Ready,
+    Executing,
+    Stopped,
 }
 
-interface IAsyncResult
+interface Async
 {
-    prop Task : ITask^ {not observe}
+    prop Result : object {const, not observe}
+    prop Status : TaskStatus {const, not observe}
+    prop Failure : Exception^ {const, not observe}
+    func Execute(callback : func():void) : void;
     
-    static func StartExecute(asyncResult : IAsyncResult^, callback : func():void) : void
+    static func ScheduleCallback(callback : func():void) : void;
+}
+
+func DownloadAsync(string[] urls) : Async^
+{
+    return $new Async
     {
-        if (asyncResult.Task is null)
+        var result : int[] = {};
+        for(url in urls)
         {
-            raise "Wrong!";
+            var text = cast string $Await(DownloadSingleAsync(url));
+            result.Add(text);
         }
-        var task = asyncResult.Task;
-        task.AsyncResult = asyncResult;
-        asyncResult.Task = null;
-        task.Execute(callback);
-    }
-}
-
-interface IDownloadAsync : IAsyncResult
-{
-    prop CoroutineResult : int[] {const, not observe}
-}
-
-func DownloadAsync(string[] urls) : IDownloadAsync^
-{
-    return new IDownloadAsync^
-    {
-        override prop CoroutineResult : int[] = null {const, not observe}
-        override prop Task : ITask^ = $new Async
-        {
-            var result : int[] = {};
-            for(url in urls)
-            {
-                var text = $Await(DownloadSingleAsync(url));
-                result.Add(text);
-            }
-            SetCoroutineResult(result);
-        } {const, not observe}
+        return result;
     };
 }
 ```
@@ -319,44 +303,55 @@ func DownloadAsync(string[] urls) : IDownloadAsync^
 ```
 class AsyncCoroutine
 {
-    interface IImpl : ITask
+    interface IImpl : Async
     {
+        func OnReturn(value : object);
         func OnContinue() : void;
     }
 
-    static func AwaitAndRead(impl : IImpl^, value : IAsyncResult^) : void
+    static func AwaitAndPause_Result(impl : IImpl*, value : Async^) : void
     {
-        // The same to AwaitAndPause, but it supports
+        // If you write
         // var NAME = $Await(ASYNC-RESULT);
-        // expanding to:
+        // it expands to:
         //      var <ASYNC-RESULT>NAME = ASYNC-RESULT;
-        //      $pause { AwaitAndRead(impl, <ASYNC-RESULT>NAME); }
-        //      var NAME = <ASYNC-RESULT>NAME.CoroutineResult;
-        IAsyncResult::StartExecute(value, impl.OnContinue);
+        //      $pause { AwaitAndPause(impl, <ASYNC-RESULT>NAME); }
+        //      var NAME = <ASYNC-RESULT>NAME.Result;
+        value.Execute(impl.OnContinue);
     }
     
-    /*
-    var <ASYNC-RESULT>NAME = ASYNC-RESULT;
-        ICoroutine ---> IAsyncResult ---> ITask
-    $pause { AwaitAndRead(impl, <ASYNC-RESULT>NAME); }
-        ICoroutine +--> IAsyncResult <--+
-                   |                    |
-                   +--> ITask -> ICoroutine +--> IAsyncResult <--+
-                                            |                    |
-                                            +--> ITask -> ICoroutine ---> IAsyncResult ---> ITask
-    Impl^ in creator doesn't cause cycle referencing
-    */
-    static func Create(creator : func (impl : IImpl^) : Coroutine^) : ITask^
+    static func ReturnAndExit(impl : Impl*, value : object) : void
+    {
+        impl.OnReturn(object);
+    }
+
+    static func Create(creator : func (impl : IImpl*) : Coroutine^) : Async^
     {
         var impl = new IImpl^
         {
             var coroutine : ICoroutine^ = null;
             var callback : func():void;
-            override prop AsyncResult : IAsyncResult^ {not observe}
+            prop Result : object = null {const, not observe}
             
-            func OnContinue() : void
+            override Func GetStatus() : TaskStatus
             {
-                ITask::ScheduleToACorrectThread(func():void
+                if (coroutine is null) return Ready;
+                return coroutine.Status == Stopped ? Stopped : Executing;
+            }
+            
+            override func GetFailure() : Exception^
+            {
+                return Status == Stopped ? coroutine.Failure : null;
+            }
+            
+            override func OnReturn(value : object) : void
+            {
+                Result = value;
+            }
+            
+            override func OnContinue() : void
+            {
+                IAsync::ScheduleCallback(func():void
                 {
                     coroutine.Resume(true);
                     if (coroutine.Status == Stopped and callback is not null)
