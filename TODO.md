@@ -80,72 +80,11 @@ To implement
 * State machine (visual state, animation)
 
 ### Agenda
-* State Machine Interface
-* Raw state machine
-* Extension (Enumerable, $Yield)
-* Extension (Task, $Await, return)
-* Extension (State Machine)
-
-### State Machine Interface
-```
-namespace system
-{
-    enum CoroutineStatus
-    {
-        Waiting = 0,
-        Executing = 1,
-        Stopped = 2,
-    }
-
-    interface Coroutine
-    {
-        /* Call (Waiting -> Executing | Stopped), raise exception if (Executing | Stopped) */
-        /* If raiseException == true, the function will raise the exception after storing to the Failure property */
-        func Resume(raiseException : bool) : void;
-
-        /* Stored the $raise/$retry result */
-        prop Failure : Exception^ {const, not observe}
-        prop Status : CoroutineStatus {const, not observe}
-    }
-}
-```
-
-### Raw state machine
-
-#### Syntax
-* `$coroutine {...}` **expression**
-    * Create a Coroutine^
-* `$pause {}` **statement**
-    * `$pause` are not allowed inside another `$pause`
-    * If `return`, `break`, `continue` or any other statements are used to exit the scope
-        * The state machine will not pause
-* `return` **statement**
-    * No expression
-    * Stop the state machine
-* If an exception is raised and there is no `try` to catch it
-    * Stop the state machine with a failure
-
-#### Sample
-```
-/* Status == Waiting */
-$coroutine
-{
-    /* Resume(): Status == Executing */
-    for (i in range [1, 10])
-    {
-        /* Status == Waiting */
-        $pause
-        {
-            /* Execute some code after Status == Waiting and before yielding the state machine */
-        }
-        /* Resume(): Status == Executing */
-    }
-    /* Status == Stopped */
-    return;
-    /* Status == Stopped with exception */
-    raise "Something is happened!";
-}
-```
+- [x] State Machine Interface
+- [x] Raw state machine
+- [ ] Extension (Enumerable, $Yield)
+- [ ] Extension (Task, $Await, return)
+- [ ] Extension (State Machine)
 
 ### Extension (Enumerable, $Yield)
 
@@ -195,73 +134,7 @@ EnumerableCoroutine.Create
 ```
 
 #### Building a provider
-```
-class EnumerableCoroutine
-{
-    interface IImpl : Enumerator^
-    {
-        func OnNext(value : object) : void;
-    }
-    
-    /* The first argument should match the declaration of the Create function */
-    static func YieldAndPause(impl : IImpl*, value : object) : void
-    {
-        impl.OnNext(value);
-    }
-
-    /* The first argument should match the declaration of the Create function */
-    static func ReturnAndExit(impl : IImpl*) : void
-    {
-    }
-    
-    /* The argument of the Create function should be a function, which has one argument and returns a Coroutine^ */
-    static func Create(creator : func (impl : IImpl*) : Coroutine^) : Enumerable^
-    {
-        return new Enumerable^
-        {
-            override func CreateEnumerator() : Enumerator^
-            {
-                return new IImpl^
-                {
-                    var current = null;
-                    var index = -1;
-                    var coroutine : Coroutine^ = null;
-                    
-                    override func OnNext(value : object) : void
-                    {
-                        index = index + 1;
-                        current = value;
-                    }
-
-                    override func GetCurrent() : object
-                    {
-                        return current;
-                    }
-
-                    override func GetIndex() : int
-                    {
-                        return index;
-                    }
-
-                    override func Next() : bool
-                    {
-                        if (coroutine is null)
-                        {
-                            coroutine = creator(this);
-                        }
-                        
-                        if (coroutine.Status != Stopped)
-                        {
-                            coroutine.Resume(true);
-                        }
-                        return coroutine.Status != Stopped;
-                    }
-                }
-            }
-        }
-    }
-}
-```
+- [x] Already in Vlpp/Source/GuiTypeDescriptorPredefined.h
 
 ### Extension (Task, $Await, return)
 
