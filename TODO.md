@@ -82,8 +82,9 @@ To implement
 ### Agenda
 - [x] State Machine Interface
 - [x] Raw state machine
-- [ ] Extension (Enumerable, $Yield)
-- [ ] Extension (Task, $Await, return)
+- [ ] Extension Syntax
+- [x] Extension (Enumerable, $Yield)
+- [x] Extension (Task, $Await, return)
 - [ ] Extension (State Machine)
 
 ### Extension (Enumerable, $Yield)
@@ -140,31 +141,32 @@ EnumerableCoroutine.Create
 
 #### Build a coroutine using a provider
 ```
-enum AsyncStatus
+interface IDownloadSingleAsync : Async
 {
-    Ready,
-    Executing,
-    Stopped,
+    static func CastResult(value : object) : string
+    {
+        return cast string value;
+    }
 }
 
-interface Async
+func DownloadSingleAsync(url : string) : IDownloadSingleAsync^;
+
+interface IDownloadAsync : Async
 {
-    prop Result : object {const, not observe}
-    prop Status : TaskStatus {const, not observe}
-    prop Failure : Exception^ {const, not observe}
-    func Execute(callback : func():void) : void;
-    
-    static func ScheduleCallback(callback : func():void) : void;
+    static func CastResult(value : object) : int[]
+    {
+        return cast int[] value;
+    }
 }
 
-func DownloadAsync(string[] urls) : Async^
+func DownloadAsync(urls : string[]) : IDownloadAsync^
 {
-    return $new Async
+    return mixin_cast IDownloadAsync^ $new Async
     {
         var result : int[] = {};
         for(url in urls)
         {
-            var text = cast string $Await(DownloadSingleAsync(url));
+            var text = $Await(DownloadSingleAsync(url));
             result.Add(text);
         }
         return result;
@@ -172,82 +174,36 @@ func DownloadAsync(string[] urls) : Async^
 }
 ```
 
-#### Building a provider
+#### Generated code
 ```
-class AsyncCoroutine
-{
-    interface IImpl : Async
+AsyncCoroutine.Create
+(
+    func (impl : AsyncCoroutine.IImpl*) : Coroutine^
     {
-        func OnReturn(value : object);
-        func OnContinue() : void;
-    }
-
-    static func AwaitAndPause_Result(impl : IImpl*, value : Async^) : void
-    {
-        // If you write
-        // var NAME = $Await(ASYNC-RESULT);
-        // it expands to:
-        //      var <ASYNC-RESULT>NAME = ASYNC-RESULT;
-        //      $pause { AwaitAndPause(impl, <ASYNC-RESULT>NAME); }
-        //      var NAME = <ASYNC-RESULT>NAME.Result;
-        value.Execute(impl.OnContinue);
-    }
-    
-    static func ReturnAndExit(impl : Impl*, value : object) : void
-    {
-        impl.OnReturn(object);
-    }
-
-    static func Create(creator : func (impl : IImpl*) : Coroutine^) : Async^
-    {
-        var impl = new IImpl^
+        return $coroutine
         {
-            var coroutine : ICoroutine^ = null;
-            var callback : func():void;
-            prop Result : object = null {const, not observe}
-            
-            override Func GetStatus() : TaskStatus
+            var result : int[] = {};
+            for(url in urls)
             {
-                if (coroutine is null) return Ready;
-                return coroutine.Status == Stopped ? Stopped : Executing;
-            }
-            
-            override func GetFailure() : Exception^
-            {
-                return Status == Stopped ? coroutine.Failure : null;
-            }
-            
-            override func OnReturn(value : object) : void
-            {
-                Result = value;
-            }
-            
-            override func OnContinue() : void
-            {
-                IAsync::ScheduleCallback(func():void
+                var <cor>text : CoroutineResult^ = null;
+                $pause
                 {
-                    coroutine.Resume(true);
-                    if (coroutine.Status == Stopped and callback is not null)
-                    {
-                        callback();
-                    }
-                });
-            }
-            
-            override func Execute(_callback : func():void) : void
-            {
-                if (coroutine is not null)
-                {
-                    raise "Wrong!";
+                    <cor>text = AsyncCoroutine.AwaitAndPause(impl, DownloadSingleAsync(url));
                 }
-                coroutine = creator(cast IImpl^ this);
-                callback = _callback;
-                OnContinue();
+                var text = IDownloadSingleAsync::CastResult(<cor>text.Result);
+                result.Add(text);
+            }
+            {
+                AsyncCoroutine.ReturnAndExit(result);
+                return;
             }
         };
     }
-}
+);
 ```
+
+#### Building a provider
+- [x] Already in Vlpp/Source/GuiTypeDescriptorPredefined.h
 
 ### Extension (State Machine Interface)
 
