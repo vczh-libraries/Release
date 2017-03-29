@@ -188,12 +188,17 @@ AsyncCoroutine.Create
             var result : int[] = {};
             for(url in urls)
             {
-                var <cor>text = new CoroutineResult^();
+                var <coresult-1> = new CoroutineResult^();
                 $pause
                 {
-                    AsyncCoroutine.AwaitAndPause(impl, <cor>text, DownloadSingleAsync(url));
+                    AsyncCoroutine.AwaitAndPause(impl, <coresult-1>, DownloadSingleAsync(url));
                 }
-                var text = IDownloadSingleAsync::CastResult(<cor>text.Result);
+                if (<coresult-1>.Failure is not null)
+                {
+                    raise <coresult-1>.Failure;
+                }
+                /* the following line is not generated if "$Await" is used instead of "var text = $Await" */
+                var text = IDownloadSingleAsync::CastResult(<coresult-1>.Result);
                 result.Add(text);
             }
             {
