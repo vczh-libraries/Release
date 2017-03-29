@@ -94,6 +94,9 @@ To implement
     * If `return` has an expression, than `ReturnAndExit` should also have an argument
     * `ReturnAndExit` is always required, and is called at the end of the coroutine
         * All arguments are filled with default values
+* `var NAME = $OPERATOR(...);` is available if OPERATORAndPause function's second argument is CoroutineResult^
+    * The return type is object, except that there is a `static func CastResult(value : object):T` in one of the argument types
+    * Use the first available and correct CastResult that is discovered
 
 #### Build a coroutine using a provider
 ```
@@ -185,10 +188,10 @@ AsyncCoroutine.Create
             var result : int[] = {};
             for(url in urls)
             {
-                var <cor>text : CoroutineResult^ = null;
+                var <cor>text = new CoroutineResult^();
                 $pause
                 {
-                    <cor>text = AsyncCoroutine.AwaitAndPause(impl, DownloadSingleAsync(url));
+                    AsyncCoroutine.AwaitAndPause(impl, <cor>text, DownloadSingleAsync(url));
                 }
                 var text = IDownloadSingleAsync::CastResult(<cor>text.Result);
                 result.Add(text);
