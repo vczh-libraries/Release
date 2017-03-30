@@ -119,7 +119,7 @@ EnumerableCoroutine.Create
 (
     func (impl : EnumerableCoroutine.IImpl*) : Coroutine^
     {
-        return $coroutine
+        return $coroutine(<co-result>)
         {
             for (i in range [1, 10])
             {
@@ -183,7 +183,7 @@ AsyncCoroutine.Create
 (
     func (impl : AsyncCoroutine.IImpl*) : Coroutine^
     {
-        return $coroutine
+        return $coroutine(<co-result>)
         {
             var result : int[] = {};
             for(url in urls)
@@ -192,12 +192,12 @@ AsyncCoroutine.Create
                 {
                     AsyncCoroutine.AwaitAndRead(impl, DownloadSingleAsync(url));
                 }
-                if ($output.Failure is not null)
+                if (<co-result>.Failure is not null)
                 {
-                    raise $output.Failure;
+                    raise <co-result>.Failure;
                 }
                 /* the following line is not generated if "$Await" is used instead of "var text = $Await" */
-                var text = IDownloadSingleAsync::CastResult($output.Result);
+                var text = IDownloadSingleAsync::CastResult(<co-result>.Result);
                 result.Add(text);
             }
             {
