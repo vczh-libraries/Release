@@ -94,15 +94,32 @@ To implement
     * If `return` has an expression, than `ReturnAndExit` should also have an argument
     * `ReturnAndExit` is always required, and is called at the end of the coroutine
         * All arguments are filled with default values
-* `var NAME = $OPERATOR(...);` is available if OPERATORAndRead exists
+* `$<OPERATOR>(...);` is available if `<OPERATOR>AndRead` or `<OPERATOR>AndPause` exists
+* `var NAME = $<OPERATOR>(...);` is available if `<OPERATOR>AndRead` exists
     * The return type is object, except that there is a `static func CastResult(value : object):T` in one of the argument types
     * Use the first available and correct CastResult that is discovered
+* A function body begins with `${` or `$<PROVIDER>{` means this is a coroutine function
+    * If the provider is not omitted, it will search for a type named `<PROVIDER>`, and than use `<PROVIDER>Coroutine` as the provider
+    * If the provider is omitted, it will search the return type and its base types in order, and find the first existing `<TYPE>Coroutine` class as the provider
+    * A provider is only choosen by name. If the class ending with `Coroutine` doesn't have appropriate functions, errors occur.
+    * For example:
+        * `func F() : int[] ${}` returns `int[]`, which is `system::Enumerable`, so `system::EnumerableCoroutine` is used.
+        * `func F() : IDownloadAsync^ ${}` returns `IDownloadAsync`, which has a base interface `system::Async`, so `system::AsyncCoroutine` is used.
+        * `func F() : void $Async{}` has a provider `Async`, so `system::AsyncCoroutine` is used.
+* If the function return type does not match the provider's `Create` function
+    * If the function returns void, then `CreateAndRun` is used
+    * In other cases, `mixin_cast` is used
+* `mixin_cast <TYPE> <EXPRESSION>`
+    * Cast from InterfaceA to InterfaceB
+    * InterfaceB is required to inherit from InterfaceA
+    * If InterfaceB has extra methods, they will be implemented by redirecting them to InterfaceA's methods of the same name, with all arguments and result `cast`ed
+    * Auto-implementing will fail if overloading functions are found
 
 #### Build a coroutine using a provider
 ```
 /* Use [Enumerable]Coroutine, the ^ sign should match the return type of EnumerableCoroutine */
-$new Enumerable^
-{
+func GetNumbers() : int[]
+${
     for (i in range [1, 10])
     {
         /* Use [Enumerable]Coroutine.[Yield]And(Pause|Exit) */
@@ -115,26 +132,29 @@ $new Enumerable^
 
 #### Generated code
 ```
-EnumerableCoroutine.Create
-(
-    func (impl : EnumerableCoroutine.IImpl*) : Coroutine^
-    {
-        return $coroutine(<co-result>)
+func GetNumbers() : int[]
+{
+    return cast (int[]) EnumerableCoroutine.Create
+    (
+        func (impl : EnumerableCoroutine.IImpl*) : Coroutine^
         {
-            for (i in range [1, 10])
+            return $coroutine(<co-result>)
             {
-                $pause
+                for (i in range [1, 10])
                 {
-                    EnumerableCoroutine.YieldAndPause(impl, i);
+                    $pause
+                    {
+                        EnumerableCoroutine.YieldAndPause(impl, i);
+                    }
                 }
-            }
-            {
-                EnumerableCoroutine.ReturnAndExit(impl);
-                return;
-            }
-        };
-    }
-);
+                {
+                    EnumerableCoroutine.ReturnAndExit(impl);
+                    return;
+                }
+            };
+        }
+    );
+}
 ```
 
 #### Building a provider
@@ -163,50 +183,50 @@ interface IDownloadAsync : Async
 }
 
 func DownloadAsync(urls : string[]) : IDownloadAsync^
-{
-    return mixin_cast IDownloadAsync^ $new Async
+${
+    var result : int[] = {};
+    for(url in urls)
     {
-        var result : int[] = {};
-        for(url in urls)
-        {
-            var text = $Await(DownloadSingleAsync(url));
-            result.Add(text);
-        }
-        return result;
-    };
+        var text = $Await(DownloadSingleAsync(url));
+        result.Add(text);
+    }
+    return result;
 }
 ```
 
 #### Generated code
 ```
-AsyncCoroutine.Create
-(
-    func (impl : AsyncCoroutine.IImpl*) : Coroutine^
-    {
-        return $coroutine(<co-result>)
+func DownloadAsync(urls : string[]) : IDownloadAsync^
+{
+    return mixin_cast IDownloadAsync^ AsyncCoroutine.Create
+    (
+        func (impl : AsyncCoroutine.IImpl*) : Coroutine^
         {
-            var result : int[] = {};
-            for(url in urls)
+            return $coroutine(<co-result>)
             {
-                $pause
+                var result : int[] = {};
+                for(url in urls)
                 {
-                    AsyncCoroutine.AwaitAndRead(impl, DownloadSingleAsync(url));
+                    $pause
+                    {
+                        AsyncCoroutine.AwaitAndRead(impl, DownloadSingleAsync(url));
+                    }
+                    if (<co-result>.Failure is not null)
+                    {
+                        raise <co-result>.Failure;
+                    }
+                    /* the following line is not generated if "$Await" is used instead of "var text = $Await" */
+                    var text = IDownloadSingleAsync::CastResult(<co-result>.Result);
+                    result.Add(text);
                 }
-                if (<co-result>.Failure is not null)
                 {
-                    raise <co-result>.Failure;
+                    AsyncCoroutine.ReturnAndExit(result);
+                    return;
                 }
-                /* the following line is not generated if "$Await" is used instead of "var text = $Await" */
-                var text = IDownloadSingleAsync::CastResult(<co-result>.Result);
-                result.Add(text);
-            }
-            {
-                AsyncCoroutine.ReturnAndExit(result);
-                return;
-            }
-        };
-    }
-);
+            };
+        }
+    );
+}
 ```
 
 #### Building a provider
