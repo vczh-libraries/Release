@@ -87,9 +87,8 @@ To implement
 - [x] Extension (Task, $Await, return)
 - [ ] Extension (State Machine)
 
-### Extension (Enumerable, $Yield)
+### Extension (Syntax)
 
-#### Syntax
 * `return` is always mapped to `ReturnAndExit`
     * If `return` has an expression, than `ReturnAndExit` should also have an argument
     * `ReturnAndExit` is always required, and is called at the end of the coroutine
@@ -114,123 +113,22 @@ To implement
     * InterfaceB is required to inherit from InterfaceA
     * If InterfaceB has extra methods, they will be implemented by redirecting them to InterfaceA's methods of the same name, with all arguments and result `cast`ed
     * Auto-implementing will fail if overloading functions are found
+    
+#### Coroutine Opeartor Code Generation
 
-#### Build a coroutine using a provider
+* `var text = $Await DownloadSingleAsync(url);`
 ```
-/* Use [Enumerable]Coroutine, the ^ sign should match the return type of EnumerableCoroutine */
-func GetNumbers() : int[]
-${
-    for (i in range [1, 10])
-    {
-        /* Use [Enumerable]Coroutine.[Yield]And(Pause|Exit) */
-        $Yield i;
-    }
-    /* Use [Enumerable]Coroutine.ReturnAndExit */
-    return;
-}
-```
-
-#### Generated code
-```
-func GetNumbers() : int[]
+$pause
 {
-    return cast (int[]) EnumerableCoroutine.Create
-    (
-        func (impl : EnumerableCoroutine.IImpl*) : Coroutine^
-        {
-            return $coroutine(<co-result>)
-            {
-                for (i in range [1, 10])
-                {
-                    $pause
-                    {
-                        EnumerableCoroutine.YieldAndPause(impl, i);
-                    }
-                }
-                {
-                    EnumerableCoroutine.ReturnAndExit(impl);
-                    return;
-                }
-            };
-        }
-    );
+    AsyncCoroutine.AwaitAndRead(impl, DownloadSingleAsync(url));
 }
-```
-
-#### Building a provider
-- [x] Already in Vlpp/Source/GuiTypeDescriptorPredefined.h
-
-### Extension (Task, $Await, return)
-
-#### Build a coroutine using a provider
-```
-interface IDownloadSingleAsync : Async
+if (<co-result>.Failure is not null)
 {
-    static func CastResult(value : object) : string
-    {
-        return cast string value;
-    }
+    raise <co-result>.Failure;
 }
-
-func DownloadSingleAsync(url : string) : IDownloadSingleAsync^;
-
-interface IDownloadAsync : Async
-{
-    static func CastResult(value : object) : int[]
-    {
-        return cast int[] value;
-    }
-}
-
-func DownloadAsync(urls : string[]) : IDownloadAsync^
-${
-    var result : int[] = {};
-    for(url in urls)
-    {
-        var text = $Await DownloadSingleAsync(url);
-        result.Add(text);
-    }
-    return result;
-}
+/* the following line is not generated if "$Await" is used instead of "var text = $Await" */
+var text = IDownloadSingleAsync::CastResult(<co-result>.Result);
 ```
-
-#### Generated code
-```
-func DownloadAsync(urls : string[]) : IDownloadAsync^
-{
-    return mixin_cast IDownloadAsync^ AsyncCoroutine.Create
-    (
-        func (impl : AsyncCoroutine.IImpl*) : Coroutine^
-        {
-            return $coroutine(<co-result>)
-            {
-                var result : int[] = {};
-                for(url in urls)
-                {
-                    $pause
-                    {
-                        AsyncCoroutine.AwaitAndRead(impl, DownloadSingleAsync(url));
-                    }
-                    if (<co-result>.Failure is not null)
-                    {
-                        raise <co-result>.Failure;
-                    }
-                    /* the following line is not generated if "$Await" is used instead of "var text = $Await" */
-                    var text = IDownloadSingleAsync::CastResult(<co-result>.Result);
-                    result.Add(text);
-                }
-                {
-                    AsyncCoroutine.ReturnAndExit(result);
-                    return;
-                }
-            };
-        }
-    );
-}
-```
-
-#### Building a provider
-- [x] Already in Vlpp/Source/GuiTypeDescriptorPredefined.h
 
 ### Extension (State Machine Interface)
 
