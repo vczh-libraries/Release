@@ -94,8 +94,8 @@ To implement
     * If `return` has an expression, than `ReturnAndExit` should also have an argument
     * `ReturnAndExit` is always required, and is called at the end of the coroutine
         * All arguments are filled with default values
-* `$<OPERATOR>(...);` is available if `<OPERATOR>AndRead` or `<OPERATOR>AndPause` exists
-* `var NAME = $<OPERATOR>(...);` is available if `<OPERATOR>AndRead` exists
+* `$<OPERATOR> ...;` is available if `<OPERATOR>AndRead` or `<OPERATOR>AndPause` exists
+* `var NAME = $<OPERATOR> ...;` is available if `<OPERATOR>AndRead` exists
     * The return type is object, except that there is a `static func CastResult(value : object):T` in one of the argument types
     * Use the first available and correct CastResult that is discovered
 * A function body begins with `${` or `$<PROVIDER>{` means this is a coroutine function
@@ -123,7 +123,7 @@ ${
     for (i in range [1, 10])
     {
         /* Use [Enumerable]Coroutine.[Yield]And(Pause|Exit) */
-        $Yield(i);
+        $Yield i;
     }
     /* Use [Enumerable]Coroutine.ReturnAndExit */
     return;
@@ -187,7 +187,7 @@ ${
     var result : int[] = {};
     for(url in urls)
     {
-        var text = $Await(DownloadSingleAsync(url));
+        var text = $Await DownloadSingleAsync(url);
         result.Add(text);
     }
     return result;
