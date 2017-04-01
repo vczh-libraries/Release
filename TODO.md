@@ -9,9 +9,6 @@
         * Windows: Test UTF-8 correctness and local encoding correctness, may need to modify `vl::filesystem::File`
         * Others: Use local encoding (usually UTF-8)
 * GacUI
-    * Report errors with XML row/column number, instead of having Workflow_ValidateStatement
-        * in `<Workflow>`
-            * Create a full map from AST to position. The coordinate in the position will be used when an AST contains no codeRange.
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
     * Icon
 
