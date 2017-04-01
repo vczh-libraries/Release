@@ -82,7 +82,7 @@ To implement
 ### Agenda
 - [x] State Machine Interface
 - [x] Raw state machine
-- [ ] Extension Syntax
+- [x] Extension Syntax
 - [x] Extension (Enumerable, $Yield)
 - [x] Extension (Task, $Await, return)
 - [ ] Extension (State Machine)
@@ -91,8 +91,6 @@ To implement
 
 * `return` is always mapped to `ReturnAndExit`
     * If `return` has an expression, than `ReturnAndExit` should also have an argument
-    * `ReturnAndExit` is always required, and is called at the end of the coroutine
-        * All arguments are filled with default values
 * `$<OPERATOR> ...;` is available if `<OPERATOR>AndRead` or `<OPERATOR>AndPause` exists
 * `var NAME = $<OPERATOR> ...;` is available if `<OPERATOR>AndRead` exists
     * The return type is object, except that there is a `static func CastResult(value : object):T` in one of the argument types
@@ -107,28 +105,10 @@ To implement
         * `func F() : void $Async{}` has a provider `Async`, so `system::AsyncCoroutine` is used.
 * If the function return type does not match the provider's `Create` function
     * If the function returns void, then `CreateAndRun` is used
-    * In other cases, `mixin_cast` is used
-* `mixin_cast <TYPE> <EXPRESSION>`
-    * Cast from InterfaceA to InterfaceB
-    * InterfaceB is required to inherit from InterfaceA
-    * If InterfaceB has extra methods, they will be implemented by redirecting them to InterfaceA's methods of the same name, with all arguments and result `cast`ed
-    * Auto-implementing will fail if overloading functions are found
-    
-#### Coroutine Opeartor Code Generation
-
-* `var text = $Await DownloadSingleAsync(url);`
-```
-$pause
-{
-    AsyncCoroutine.AwaitAndRead(impl, DownloadSingleAsync(url));
-}
-if (<co-result>.Failure is not null)
-{
-    raise <co-result>.Failure;
-}
-/* the following line is not generated if "$Await" is used instead of "var text = $Await" */
-var text = IDownloadSingleAsync::CastResult(<co-result>.Result);
-```
+    * In other cases:
+        * Cast from InterfaceA to InterfaceB
+        * InterfaceB is required to inherit from InterfaceA
+        * Fail if InterfaceB has extra methods
 
 ### Extension (State Machine Interface)
 
