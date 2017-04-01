@@ -96,10 +96,16 @@ Closures
 	void __vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -117,10 +123,16 @@ Closures
 	void __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -138,10 +150,16 @@ Closures
 	void __vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -159,10 +177,16 @@ Closures
 	void __vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -180,10 +204,16 @@ Closures
 	void __vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -201,10 +231,16 @@ Closures
 	void __vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -222,10 +258,16 @@ Closures
 	void __vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -243,10 +285,16 @@ Closures
 	void __vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -284,10 +332,16 @@ Closures
 	void __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -305,10 +359,16 @@ Closures
 	void __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -326,10 +386,16 @@ Closures
 	void __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
@@ -347,10 +413,16 @@ Closures
 	void __vwsnf23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
-			using __vwsnt_0 = ::vl::presentation::compositions::GuiFlowItemComposition*;
-			FOREACH(__vwsnt_0, flowItem, ::vl::reflection::description::GetLazyList<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems())))
 			{
-				::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				{
+					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
+					}
+				}
 			}
 			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
 			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());

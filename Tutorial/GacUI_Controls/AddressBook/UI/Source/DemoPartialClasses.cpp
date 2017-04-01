@@ -651,10 +651,16 @@ Closures
 	void __vwsnc11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>([&](){ try{ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_bind_cache_0.Obj())->GetSelectedCategory().Obj())->GetContacts(); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IValueObservableList>(); } }());
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -751,10 +757,16 @@ Closures
 	void __vwsnc13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::UnboxWeak<::vl::Ptr<::demo::ICategory>>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelectedItem());
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -851,10 +863,16 @@ Closures
 	void __vwsnc15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::UnboxWeak<::vl::Ptr<::demo::IContact>>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelectedItem());
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -951,10 +969,16 @@ Closures
 	void __vwsnc17_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = (::vl::__vwsn::This(__vwsn_bind_cache_0)->GetForEdit() ? ::vl::WString(L"Edit Contact", false) : ::vl::WString(L"New Contact", false));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -1051,10 +1075,16 @@ Closures
 	void __vwsnc19_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -1121,10 +1151,16 @@ Closures
 	void __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = static_cast<bool>(::vl::__vwsn::This(__vwsn_bind_cache_0.Obj())->GetSelectedCategory());
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -1251,10 +1287,16 @@ Closures
 	void __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ try{ return (::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_bind_cache_0.Obj())->GetSelectedCategory().Obj())->GetParent() != nullptr); } catch(...){ return false; } }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -1351,10 +1393,16 @@ Closures
 	void __vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = static_cast<bool>(::vl::__vwsn::This(__vwsn_bind_cache_0.Obj())->GetSelectedCategory());
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -1451,10 +1499,16 @@ Closures
 	void __vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = static_cast<bool>(::vl::__vwsn::This(__vwsn_bind_cache_0.Obj())->GetSelectedContact());
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -1551,10 +1605,16 @@ Closures
 	void __vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = static_cast<bool>(::vl::__vwsn::This(__vwsn_bind_cache_0.Obj())->GetSelectedContact());
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 

@@ -2457,10 +2457,16 @@ Closures
 	void __vwsnc100_Demo_darkskin_LeftScrollButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -2601,10 +2607,16 @@ Closures
 	void __vwsnc104_Demo_darkskin_ListViewColumnHeaderTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#3E3E40", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#007ACC", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#3E3E40", false) : ::vl::WString(L"#252527", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -2721,10 +2733,16 @@ Closures
 	void __vwsnc106_Demo_darkskin_ListViewColumnHeaderTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -2823,10 +2841,16 @@ Closures
 	void __vwsnc108_Demo_darkskin_ListViewColumnHeaderTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#F1F1F1", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#FFFFFF", false) : ::vl::WString(L"#F1F1F1", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -2963,10 +2987,16 @@ Closures
 	void __vwsnc110_Demo_darkskin_ListViewColumnHeaderTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -3063,10 +3093,16 @@ Closures
 	void __vwsnc112_Demo_darkskin_ListViewColumnHeaderTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSubMenuExisting();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -3163,10 +3199,16 @@ Closures
 	void __vwsnc114_Demo_darkskin_ListViewColumnHeaderTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSubMenuOpening();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -3325,10 +3367,16 @@ Closures
 	void __vwsnc11_Demo_darkskin_ButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#F1F1F1", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#FFFFFF", false) : ::vl::WString(L"#F1F1F1", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -3424,10 +3472,16 @@ Closures
 	void __vwsnc121_Demo_darkskin_MenuBarButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#1B1B1C", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#3D3D40", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -3544,10 +3598,16 @@ Closures
 	void __vwsnc123_Demo_darkskin_MenuBarButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -3646,10 +3706,16 @@ Closures
 	void __vwsnc125_Demo_darkskin_MenuBarButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ::vl::WString(L"#FFFFFF", false)); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -3756,10 +3822,16 @@ Closures
 	void __vwsnc127_Demo_darkskin_MenuBarButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -3905,10 +3977,16 @@ Closures
 	void __vwsnc130_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#3D3D40", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Active) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#3D3D40", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -4025,10 +4103,16 @@ Closures
 	void __vwsnc132_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetImage().Obj())->GetImage(); } catch(...){ return ::vl::Ptr<::vl::presentation::INativeImage>(); } }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -4125,10 +4209,16 @@ Closures
 	void __vwsnc134_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetImage().Obj())->GetFrameIndex(); } catch(...){ return 0; } }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -4225,10 +4315,16 @@ Closures
 	void __vwsnc136_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetVisuallyEnabled();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -4325,10 +4421,16 @@ Closures
 	void __vwsnc138_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -4425,10 +4527,16 @@ Closures
 	void __vwsnc13_Demo_darkskin_ButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -4497,10 +4605,16 @@ Closures
 	void __vwsnc140_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ::vl::WString(L"#FFFFFF", false)); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -4607,10 +4721,16 @@ Closures
 	void __vwsnc142_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -4707,10 +4827,16 @@ Closures
 	void __vwsnc144_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetShortcutText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -4809,10 +4935,16 @@ Closures
 	void __vwsnc146_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ::vl::WString(L"#FFFFFF", false)); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -4919,10 +5051,16 @@ Closures
 	void __vwsnc148_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -5053,10 +5191,16 @@ Closures
 	void __vwsnc150_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Active) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#1997EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -5177,10 +5321,16 @@ Closures
 	void __vwsnc152_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Active) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#1997EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -5297,10 +5447,16 @@ Closures
 	void __vwsnc154_Demo_darkskin_MenuItemButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSubMenuExisting();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -5435,10 +5591,16 @@ Closures
 	void __vwsnc158_Demo_darkskin_ProgressBarTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = [&](auto width, auto max){ return ((max == 0) ? 0 : (width - ((width * ::vl::__vwsn::This(__vwsn_bind_cache_3)->GetPosition()) / max))); }((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetBounds().x2 - ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetBounds().x1), (::vl::__vwsn::This(__vwsn_bind_cache_4)->GetTotalSize() - ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetPageSize())); __vwsn_temp__.bottom = 0; return __vwsn_temp__; }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -5577,10 +5739,16 @@ Closures
 	void __vwsnc15_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#252526", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#54545C", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#3F3F46", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -5659,10 +5827,16 @@ Closures
 	void __vwsnc160_Demo_darkskin_RadioButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#252526", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#54545C", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#3F3F46", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -5771,10 +5945,16 @@ Closures
 	void __vwsnc162_Demo_darkskin_RadioButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#434346", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#6A6A75", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#1C97EA", false) : ::vl::WString(L"#54545C", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -5883,10 +6063,16 @@ Closures
 	void __vwsnc164_Demo_darkskin_RadioButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#F1F1F1", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#FFFFFF", false) : ::vl::WString(L"#F1F1F1", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -5993,10 +6179,16 @@ Closures
 	void __vwsnc166_Demo_darkskin_RadioButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -6093,10 +6285,16 @@ Closures
 	void __vwsnc168_Demo_darkskin_RadioButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -6223,10 +6421,16 @@ Closures
 	void __vwsnc170_Demo_darkskin_RadioButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>(((! ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ::vl::WString(L"#F1F1F1", false)));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -6323,10 +6527,16 @@ Closures
 	void __vwsnc172_Demo_darkskin_RadioButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -6485,10 +6695,16 @@ Closures
 	void __vwsnc178_Demo_darkskin_RightScrollButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -6597,10 +6813,16 @@ Closures
 	void __vwsnc17_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#434346", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#6A6A75", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#1C97EA", false) : ::vl::WString(L"#54545C", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -6679,10 +6901,16 @@ Closures
 	void __vwsnc180_Demo_darkskin_RightScrollButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -6819,10 +7047,16 @@ Closures
 	void __vwsnc184_Demo_darkskin_TabDropdownTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1C97EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#1C97EA", false) : ::vl::WString(L"#434346", false))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -6921,10 +7155,16 @@ Closures
 	void __vwsnc186_Demo_darkskin_TabHeaderTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return (::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() ? ::vl::WString(L"#007ACC", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1C97EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#1C97EA", false) : ::vl::WString(L"#434346", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -7031,10 +7271,16 @@ Closures
 	void __vwsnc188_Demo_darkskin_TabHeaderTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -7163,10 +7409,16 @@ Closures
 	void __vwsnc190_Demo_darkskin_TabHeaderTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#F1F1F1", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#FFFFFF", false) : ::vl::WString(L"#F1F1F1", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -7273,10 +7525,16 @@ Closures
 	void __vwsnc192_Demo_darkskin_TabHeaderTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -7465,10 +7723,16 @@ Closures
 	void __vwsnc19_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#F1F1F1", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#FFFFFF", false) : ::vl::WString(L"#F1F1F1", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -7547,10 +7811,16 @@ Closures
 	void __vwsnc1_Demo_darkskin_BottomScrollButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -7646,10 +7916,16 @@ Closures
 	void __vwsnc201_Demo_darkskin_ToolstripSplitArrowTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected()) ? ::vl::WString(L"#007ACC", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#54545C", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -7770,10 +8046,16 @@ Closures
 	void __vwsnc203_Demo_darkskin_ToolstripSplitArrowTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected()) ? ::vl::WString(L"#FFFFFF", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -7894,10 +8176,16 @@ Closures
 	void __vwsnc205_Demo_darkskin_ToolstripSplitArrowTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected()) ? ::vl::WString(L"#FFFFFF", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -8031,10 +8319,16 @@ Closures
 	void __vwsnc208_Demo_darkskin_ToolstripButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected()) ? ::vl::WString(L"#00000000", false) : ::vl::WString(L"#007ACC", false)); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -8175,10 +8469,16 @@ Closures
 	void __vwsnc210_Demo_darkskin_ToolstripButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#007ACC", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#54545C", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -8295,10 +8595,16 @@ Closures
 	void __vwsnc212_Demo_darkskin_ToolstripButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetImage().Obj())->GetImage(); } catch(...){ return ::vl::Ptr<::vl::presentation::INativeImage>(); } }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -8395,10 +8701,16 @@ Closures
 	void __vwsnc214_Demo_darkskin_ToolstripButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetImage().Obj())->GetFrameIndex(); } catch(...){ return 0; } }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -8495,10 +8807,16 @@ Closures
 	void __vwsnc216_Demo_darkskin_ToolstripButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetVisuallyEnabled();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -8612,10 +8930,16 @@ Closures
 	void __vwsnc219_Demo_darkskin_ToolstripDropdownButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected()) ? ::vl::WString(L"#00000000", false) : ::vl::WString(L"#007ACC", false)); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -8692,10 +9016,16 @@ Closures
 	void __vwsnc21_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -8796,10 +9126,16 @@ Closures
 	void __vwsnc221_Demo_darkskin_ToolstripDropdownButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#007ACC", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#54545C", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -8916,10 +9252,16 @@ Closures
 	void __vwsnc223_Demo_darkskin_ToolstripDropdownButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetImage().Obj())->GetImage(); } catch(...){ return ::vl::Ptr<::vl::presentation::INativeImage>(); } }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -9016,10 +9358,16 @@ Closures
 	void __vwsnc225_Demo_darkskin_ToolstripDropdownButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetImage().Obj())->GetFrameIndex(); } catch(...){ return 0; } }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -9116,10 +9464,16 @@ Closures
 	void __vwsnc227_Demo_darkskin_ToolstripDropdownButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetVisuallyEnabled();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -9220,10 +9574,16 @@ Closures
 	void __vwsnc229_Demo_darkskin_ToolstripDropdownButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#007ACC", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#54545C", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -9374,10 +9734,16 @@ Closures
 	void __vwsnc231_Demo_darkskin_ToolstripDropdownButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#FFFFFF", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -9498,10 +9864,16 @@ Closures
 	void __vwsnc233_Demo_darkskin_ToolstripDropdownButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#FFFFFF", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -9650,10 +10022,16 @@ Closures
 	void __vwsnc237_Demo_darkskin_ToolstripSplitButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected()) ? ::vl::WString(L"#00000000", false) : ::vl::WString(L"#007ACC", false)); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -9764,10 +10142,16 @@ Closures
 	void __vwsnc239_Demo_darkskin_ToolstripSplitButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#007ACC", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#54545C", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -9854,10 +10238,16 @@ Closures
 	void __vwsnc23_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -9954,10 +10344,16 @@ Closures
 	void __vwsnc241_Demo_darkskin_ToolstripSplitButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetImage().Obj())->GetImage(); } catch(...){ return ::vl::Ptr<::vl::presentation::INativeImage>(); } }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -10054,10 +10450,16 @@ Closures
 	void __vwsnc243_Demo_darkskin_ToolstripSplitButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetImage().Obj())->GetFrameIndex(); } catch(...){ return 0; } }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -10154,10 +10556,16 @@ Closures
 	void __vwsnc245_Demo_darkskin_ToolstripSplitButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetVisuallyEnabled();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -10256,10 +10664,16 @@ Closures
 	void __vwsnc247_Demo_darkskin_ToolstripSplitButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#54545C", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#54545C", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -10366,10 +10780,16 @@ Closures
 	void __vwsnc249_Demo_darkskin_ToolstripSplitButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSubMenuOpening();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -10498,10 +10918,16 @@ Closures
 	void __vwsnc251_Demo_darkskin_TopScrollButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -10610,10 +11036,16 @@ Closures
 	void __vwsnc253_Demo_darkskin_TopScrollButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -10782,10 +11214,16 @@ Closures
 	void __vwsnc259_Demo_darkskin_VScrollHandleTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#3D3D42", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#9E9E9E", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#EFEBEF", false) : ::vl::WString(L"#686868", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -10862,10 +11300,16 @@ Closures
 	void __vwsnc25_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>(((! ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ::vl::WString(L"#F1F1F1", false)));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -11011,10 +11455,16 @@ Closures
 	void __vwsnc264_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = ((::vl::__vwsn::This(__vwsn_bind_cache_1)->GetBounds().y2 - ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetBounds().y1) - ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetBounds().y1); return __vwsn_temp__; }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -11131,10 +11581,16 @@ Closures
 	void __vwsnc266_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetBounds().y2; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -11233,10 +11689,16 @@ Closures
 	void __vwsnc268_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = (static_cast<double>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetPageSize()) / static_cast<double>(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetTotalSize()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -11375,10 +11837,16 @@ Closures
 	void __vwsnc270_Demo_darkskin_VScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = (static_cast<double>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetPosition()) / static_cast<double>(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetTotalSize()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -11512,10 +11980,16 @@ Closures
 	void __vwsnc273_Demo_darkskin_VTrackerTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = [&](auto height, auto max){ return ((max == 0) ? 0 : ((height * ::vl::__vwsn::This(__vwsn_bind_cache_5)->GetPosition()) / max)); }(((::vl::__vwsn::This(__vwsn_bind_cache_2)->GetBounds().y2 - ::vl::__vwsn::This(__vwsn_bind_cache_3)->GetBounds().y1) - (::vl::__vwsn::This(__vwsn_bind_cache_0)->GetBounds().y2 - ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetBounds().y1)), (::vl::__vwsn::This(__vwsn_bind_cache_6)->GetTotalSize() - ::vl::__vwsn::This(__vwsn_bind_cache_4)->GetPageSize())); __vwsn_temp__.right = 0; __vwsn_temp__.bottom = (- 1); return __vwsn_temp__; }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -11732,10 +12206,16 @@ Closures
 	void __vwsnc279_Demo_darkskin_WindowTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = (::vl::__vwsn::This(__vwsn_bind_cache_0)->GetMaximized() ? ::vl::WString(L" 1 ", false) : ::vl::WString(L" 2 ", false));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -11802,10 +12282,16 @@ Closures
 	void __vwsnc27_Demo_darkskin_CheckBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -11902,10 +12388,16 @@ Closures
 	void __vwsnc281_Demo_darkskin_WindowTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -12291,10 +12783,16 @@ Closures
 	void __vwsnc29_Demo_darkskin_CheckItemBackgroundTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : ((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() || (state == ::vl::presentation::controls::GuiButton::ControlState::Pressed)) ? ::vl::WString(L"#3399FF", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#3F3F46", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -13735,10 +14233,16 @@ Closures
 	void __vwsnc37_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#2D2D30", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#3F3F46", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#3F3F46", false) : ::vl::WString(L"#333337", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -14140,10 +14644,16 @@ Closures
 	void __vwsnc399_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetPosition();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -14210,10 +14720,16 @@ Closures
 	void __vwsnc39_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -14282,10 +14798,16 @@ Closures
 	void __vwsnc3_Demo_darkskin_BottomScrollButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -14438,10 +14960,16 @@ Closures
 	void __vwsnc41_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#65655C", false) : ::vl::WString(L"#F1F1F1", false)); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -14548,10 +15076,16 @@ Closures
 	void __vwsnc43_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -14652,10 +15186,16 @@ Closures
 	void __vwsnc45_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#007ACC", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1F1F20", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -14776,10 +15316,16 @@ Closures
 	void __vwsnc47_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#999999", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#FFFFFF", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -14900,10 +15446,16 @@ Closures
 	void __vwsnc49_Demo_darkskin_ComboBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#2D2D30", false) : (((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) || ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetSubMenuOpening()) ? ::vl::WString(L"#3F3F46", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#3F3F46", false) : ::vl::WString(L"#434346", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -15127,10 +15679,16 @@ Closures
 	void __vwsnc56_Demo_darkskin_ExpandingDecoratorTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#0A75B9", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#0A75B9", false) : ::vl::WString(L"#F1F1F1", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -15241,10 +15799,16 @@ Closures
 	void __vwsnc58_Demo_darkskin_ExpandingDecoratorTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected()) ? ::vl::WString(L"#00000000", false) : ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#0A75B9", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#0A75B9", false) : ::vl::WString(L"#F1F1F1", false))))); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -15363,10 +15927,16 @@ Closures
 	void __vwsnc5_Demo_darkskin_ButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#252526", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#54545C", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#3F3F46", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -15443,10 +16013,16 @@ Closures
 	void __vwsnc60_Demo_darkskin_ExpandingDecoratorTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = (! ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected());
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -15545,10 +16121,16 @@ Closures
 	void __vwsnc62_Demo_darkskin_ExpandingDecoratorTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#0A75B9", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#0A75B9", false) : ::vl::WString(L"#F1F1F1", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -15659,10 +16241,16 @@ Closures
 	void __vwsnc64_Demo_darkskin_ExpandingDecoratorTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected()) ? ::vl::WString(L"#00000000", false) : ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#0A75B9", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#0A75B9", false) : ::vl::WString(L"#F1F1F1", false))))); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -15779,10 +16367,16 @@ Closures
 	void __vwsnc66_Demo_darkskin_ExpandingDecoratorTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -15879,10 +16473,16 @@ Closures
 	void __vwsnc68_Demo_darkskin_GroupBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = (::vl::__vwsn::This(__vwsn_bind_cache_0)->GetBounds().y2 / 2); __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -16009,10 +16609,16 @@ Closures
 	void __vwsnc70_Demo_darkskin_GroupBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -16109,10 +16715,16 @@ Closures
 	void __vwsnc72_Demo_darkskin_GroupBoxTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -16211,10 +16823,16 @@ Closures
 	void __vwsnc74_Demo_darkskin_HScrollHandleTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#3D3D42", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#9E9E9E", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#EFEBEF", false) : ::vl::WString(L"#686868", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -16370,10 +16988,16 @@ Closures
 	void __vwsnc79_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = ((::vl::__vwsn::This(__vwsn_bind_cache_1)->GetBounds().x2 - ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetBounds().x1) - ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetBounds().x1); __vwsn_temp__.bottom = 0; return __vwsn_temp__; }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -16462,10 +17086,16 @@ Closures
 	void __vwsnc7_Demo_darkskin_ButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#434346", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#6A6A75", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#1C97EA", false) : ::vl::WString(L"#54545C", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -16572,10 +17202,16 @@ Closures
 	void __vwsnc81_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetBounds().x2; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -16674,10 +17310,16 @@ Closures
 	void __vwsnc83_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = (static_cast<double>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetPageSize()) / static_cast<double>(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetTotalSize()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -16786,10 +17428,16 @@ Closures
 	void __vwsnc85_Demo_darkskin_HScrollTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = (static_cast<double>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetPosition()) / static_cast<double>(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetTotalSize()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -16923,10 +17571,16 @@ Closures
 	void __vwsnc88_Demo_darkskin_HTrackerTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = [&](auto width, auto max){ return ((max == 0) ? 0 : ((width * ::vl::__vwsn::This(__vwsn_bind_cache_5)->GetPosition()) / max)); }(((::vl::__vwsn::This(__vwsn_bind_cache_2)->GetBounds().x2 - ::vl::__vwsn::This(__vwsn_bind_cache_3)->GetBounds().x1) - (::vl::__vwsn::This(__vwsn_bind_cache_0)->GetBounds().x2 - ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetBounds().x1)), (::vl::__vwsn::This(__vwsn_bind_cache_6)->GetTotalSize() - ::vl::__vwsn::This(__vwsn_bind_cache_4)->GetPageSize())); __vwsn_temp__.top = 0; __vwsn_temp__.right = (- 1); __vwsn_temp__.bottom = 0; return __vwsn_temp__; }();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -17117,10 +17771,16 @@ Closures
 	void __vwsnc90_Demo_darkskin_ItemBackgroundTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_2)->GetVisuallyEnabled()) ? ::vl::WString(L"#00000000", false) : ((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() || (state == ::vl::presentation::controls::GuiButton::ControlState::Pressed)) ? ::vl::WString(L"#3399FF", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#3F3F46", false) : ::vl::WString(L"#00000000", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -17237,10 +17897,16 @@ Closures
 	void __vwsnc92_Demo_darkskin_LabelTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -17339,10 +18005,16 @@ Closures
 	void __vwsnc94_Demo_darkskin_LabelTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>(((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ::vl::__vwsn::ToString(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetTextColor())));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -17449,10 +18121,16 @@ Closures
 	void __vwsnc96_Demo_darkskin_LabelTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -17551,10 +18229,16 @@ Closures
 	void __vwsnc98_Demo_darkskin_LeftScrollButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#555558", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Active) ? ::vl::WString(L"#1997EA", false) : ((state == ::vl::presentation::controls::GuiButton::ControlState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#999999", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
@@ -17661,10 +18345,16 @@ Closures
 	void __vwsnc9_Demo_darkskin_ButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetText();
-		using __vwsnt_0 = ::vl::reflection::description::Value;
-		FOREACH(__vwsnt_0, __vwsn_bind_callback_, ::vl::reflection::description::GetLazyList<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues()))
 		{
-			::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+			auto __vwsn_for_enumerable_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_listeners_.Obj())->GetValues());
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_bind_callback_ = ::vl::__vwsn::Unbox<::vl::reflection::description::Value>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::Unbox<::vl::Func<void(const ::vl::reflection::description::Value&)>>(__vwsn_bind_callback_)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+				}
+			}
 		}
 	}
 
