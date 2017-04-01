@@ -3,7 +3,6 @@
 ## Working On
 * Workflow
     * State Machine
-        * WfCoroutineStatement: Base class of all coroutine statements, which will be totally removed after the ValidateSemantic pass
 * GacUI Resource
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
     * Handle resource file encoding if there is no BOM
@@ -18,7 +17,6 @@
 
 ## Wait For A Few Releases
 * Workflow
-    * async, delay, yield (provider written in C++).
     * **Workflow to C++ code generation with hint**.
         * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
         * Use ::vl::vint for int in both 32 and 64 configurations.
