@@ -1,8 +1,6 @@
 # TODO
 
 ## Working On
-* Workflow
-    * State Machine
 * GacUI Resource
     * Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
     * Handle resource file encoding if there is no BOM
@@ -11,6 +9,7 @@
 * GacUI
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
     * Icon
+    * Layout algorithm using less power
 
 ## Wait For A Few Releases
 * Workflow
@@ -45,6 +44,7 @@
         * Full CFG power, no limitation
         * Be able to assign to any properties (not just enum) in with statement
 * Workflow
+    * State Machine
     * Macro
     * Context-Grammar Sensitive Macro
     * Virtual function
@@ -52,7 +52,6 @@
 * GacUI Resource
     * InstanceStyle:Replace
     * Visual State, State Machine, Animation
-    * ev.Event-(eval|async|delayed)
 * GacUI
     * Embedded Languages: Colorizer, AutoComplete
     * Abstract Graphics API
