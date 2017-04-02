@@ -106,16 +106,16 @@
             <att.Enabled-bind>ViewModel.SelectedCategory is not null</att.Enabled-bind>
             <ev.Executed-eval>
               <![CDATA[
-                {
+                $Async{
                   var window = new demo::NewFolderWindow*();
                   window.MoveToScreenCenter();
-                  window.ShowModalAndDelete(self, func():void
+                  $Await window.ShowModalAsync(self);
+                  
+                  if (window.Ready)
                   {
-                    if (window.Ready)
-                    {
-                      ViewModel.AddCategory(window.FolderName);
-                    }
-                  });
+                    ViewModel.AddCategory(window.FolderName);
+                  }
+                  delete window;
                 }
               ]]>
             </ev.Executed-eval>
@@ -134,17 +134,17 @@
             <att.Enabled-bind>ViewModel.SelectedCategory is not null</att.Enabled-bind>
             <ev.Executed-eval>
               <![CDATA[
-                {
+                $Async{
                   var contact = ViewModel.CreateContact();
                   var window = new demo::NewContactWindow*(contact);
                   window.MoveToScreenCenter();
-                  window.ShowModalAndDelete(self, func():void
+                  $Await window.ShowModalAsync(self);
+                  
+                  if (window.Ready)
                   {
-                    if (window.Ready)
-                    {
-                      ViewModel.AddContact(contact);
-                    }
-                  });
+                    ViewModel.AddContact(contact);
+                  }
+                  delete window;
                 }
               ]]>
             </ev.Executed-eval>
@@ -153,11 +153,12 @@
             <att.Enabled-bind>ViewModel.SelectedContact is not null</att.Enabled-bind>
             <ev.Executed-eval>
               <![CDATA[
-                {
+                $Async{
                   var window = new demo::NewContactWindow*(ViewModel.SelectedContact);
                   window.ForEdit = true;
                   window.MoveToScreenCenter();
-                  window.ShowModalAndDelete(self, func():void{});
+                  $Await window.ShowModalAsync(self);
+                  delete window;
                 }
               ]]>
             </ev.Executed-eval>
