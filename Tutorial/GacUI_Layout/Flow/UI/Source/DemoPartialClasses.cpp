@@ -59,12 +59,10 @@ Closures
 
 	void __vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAlignment(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Left", false)) ? ::vl::presentation::compositions::FlowAlignment::Left : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Center", false)) ? ::vl::presentation::compositions::FlowAlignment::Center : ::vl::presentation::compositions::FlowAlignment::Extend)));
-			}
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAlignment(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Left", false)) ? ::vl::presentation::compositions::FlowAlignment::Left : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Center", false)) ? ::vl::presentation::compositions::FlowAlignment::Center : ::vl::presentation::compositions::FlowAlignment::Extend)));
 		}
 	}
 
@@ -77,12 +75,10 @@ Closures
 
 	void __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAlignment(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Left", false)) ? ::vl::presentation::compositions::FlowAlignment::Left : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Center", false)) ? ::vl::presentation::compositions::FlowAlignment::Center : ::vl::presentation::compositions::FlowAlignment::Extend)));
-			}
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAlignment(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Left", false)) ? ::vl::presentation::compositions::FlowAlignment::Left : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Center", false)) ? ::vl::presentation::compositions::FlowAlignment::Center : ::vl::presentation::compositions::FlowAlignment::Extend)));
 		}
 	}
 
@@ -96,21 +92,19 @@ Closures
 	void __vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -123,21 +117,19 @@ Closures
 	void __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -150,21 +142,19 @@ Closures
 	void __vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -177,21 +167,19 @@ Closures
 	void __vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -204,21 +192,19 @@ Closures
 	void __vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -231,21 +217,19 @@ Closures
 	void __vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -258,21 +242,19 @@ Closures
 	void __vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -285,21 +267,19 @@ Closures
 	void __vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -311,14 +291,12 @@ Closures
 
 	void __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
-				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
-			}
+			auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
+			auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 		}
 	}
 
@@ -332,21 +310,19 @@ Closures
 	void __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -359,21 +335,19 @@ Closures
 	void __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -386,21 +360,19 @@ Closures
 	void __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -413,21 +385,19 @@ Closures
 	void __vwsnf23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()));
-				auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
 				{
-					auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(flowItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiFlowItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->GetFlowItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -439,14 +409,12 @@ Closures
 
 	void __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
-				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
-			}
+			auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
+			auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 		}
 	}
 
@@ -459,14 +427,12 @@ Closures
 
 	void __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
-				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
-			}
+			auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
+			auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 		}
 	}
 
@@ -479,14 +445,12 @@ Closures
 
 	void __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
-				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
-			}
+			auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
+			auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 		}
 	}
 
@@ -499,14 +463,12 @@ Closures
 
 	void __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
-				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
-			}
+			auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
+			auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 		}
 	}
 
@@ -519,14 +481,12 @@ Closures
 
 	void __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
-				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
-			}
+			auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
+			auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 		}
 	}
 
@@ -539,14 +499,12 @@ Closures
 
 	void __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
-				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
-			}
+			auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
+			auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 		}
 	}
 
@@ -559,14 +517,12 @@ Closures
 
 	void __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
-				auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
-			}
+			auto direction = ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftDown", false)) ? ::vl::presentation::AxisDirection::LeftDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"LeftUp", false)) ? ::vl::presentation::AxisDirection::LeftUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightDown", false)) ? ::vl::presentation::AxisDirection::RightDown : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"RightUp", false)) ? ::vl::presentation::AxisDirection::RightUp : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpRight", false)) ? ::vl::presentation::AxisDirection::UpRight : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"UpLeft", false)) ? ::vl::presentation::AxisDirection::UpLeft : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"DownLeft", false)) ? ::vl::presentation::AxisDirection::DownLeft : ::vl::presentation::AxisDirection::DownRight)))))));
+			auto axis = ::vl::Ptr<::vl::presentation::compositions::GuiAxis>(new ::vl::presentation::compositions::GuiAxis(direction));
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAxis(::vl::Ptr<::vl::presentation::compositions::IGuiAxis>(axis));
 		}
 	}
 
@@ -579,12 +535,10 @@ Closures
 
 	void __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAlignment(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Left", false)) ? ::vl::presentation::compositions::FlowAlignment::Left : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Center", false)) ? ::vl::presentation::compositions::FlowAlignment::Center : ::vl::presentation::compositions::FlowAlignment::Extend)));
-			}
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->flowLayout)->SetAlignment(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Left", false)) ? ::vl::presentation::compositions::FlowAlignment::Left : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Center", false)) ? ::vl::presentation::compositions::FlowAlignment::Center : ::vl::presentation::compositions::FlowAlignment::Extend)));
 		}
 	}
 }

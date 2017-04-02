@@ -59,12 +59,10 @@ Closures
 
 	void __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
-			}
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
 		}
 	}
 
@@ -77,12 +75,10 @@ Closures
 
 	void __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
-			}
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
 		}
 	}
 
@@ -95,12 +91,10 @@ Closures
 
 	void __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
-			}
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
 		}
 	}
 
@@ -113,12 +107,10 @@ Closures
 
 	void __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
+		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
-			if (::vl::__vwsn::This(radioButton)->GetSelected())
-			{
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
-			}
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
 		}
 	}
 
@@ -132,21 +124,19 @@ Closures
 	void __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_stackItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()));
+			auto __vwsn_for_enumerator_stackItem = ::vl::__vwsn::This(__vwsn_for_enumerable_stackItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_stackItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()));
-				auto __vwsn_for_enumerator_stackItem = ::vl::__vwsn::This(__vwsn_for_enumerable_stackItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->Next())
+				auto stackItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiStackItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->GetCurrent());
 				{
-					auto stackItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiStackItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(stackItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(stackItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiStackItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiStackItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -159,21 +149,19 @@ Closures
 	void __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_stackItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()));
+			auto __vwsn_for_enumerator_stackItem = ::vl::__vwsn::This(__vwsn_for_enumerable_stackItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_stackItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()));
-				auto __vwsn_for_enumerator_stackItem = ::vl::__vwsn::This(__vwsn_for_enumerable_stackItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->Next())
+				auto stackItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiStackItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->GetCurrent());
 				{
-					auto stackItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiStackItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(stackItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(stackItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiStackItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiStackItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()).Obj())->GetCount() - 1));
 	}
 
 	//-------------------------------------------------------------------
@@ -186,21 +174,19 @@ Closures
 	void __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		{
+			auto __vwsn_for_enumerable_stackItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()));
+			auto __vwsn_for_enumerator_stackItem = ::vl::__vwsn::This(__vwsn_for_enumerable_stackItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->Next())
 			{
-				auto __vwsn_for_enumerable_stackItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()));
-				auto __vwsn_for_enumerator_stackItem = ::vl::__vwsn::This(__vwsn_for_enumerable_stackItem.Obj())->CreateEnumerator();
-				while (::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->Next())
+				auto stackItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiStackItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->GetCurrent());
 				{
-					auto stackItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiStackItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_stackItem.Obj())->GetCurrent());
-					{
-						::vl::__vwsn::This(stackItem)->SetExtraMargin(::vl::presentation::Margin{});
-					}
+					::vl::__vwsn::This(stackItem)->SetExtraMargin(::vl::presentation::Margin{});
 				}
 			}
-			auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiStackItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
-			::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()).Obj())->GetCount() - 1));
 		}
+		auto selectedItem = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::compositions::GuiStackItemComposition>(::vl::__vwsn::This(sender)->GetParent()));
+		::vl::__vwsn::This(selectedItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 10; __vwsn_temp__.top = 10; __vwsn_temp__.right = 10; __vwsn_temp__.bottom = 10; return __vwsn_temp__; }());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(selectedItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->stackLayout)->GetStackItems()).Obj())->GetCount() - 1));
 	}
 }
 

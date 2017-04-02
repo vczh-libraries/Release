@@ -7435,6 +7435,7 @@ namespace vl
 			None=0,
 			/// <summary>Ignore case using the file system rule.</summary>
 			IgnoreCase=1,
+#ifdef VCZH_MSVC
 			/// <summary>Ignore case using the linguistic rule.</summary>
 			IgnoreCaseLinguistic=2,
 			/// <summary>Ignore the difference between between hiragana and katakana characters.</summary>
@@ -7449,6 +7450,7 @@ namespace vl
 			DigitsAsNumbers=64,
 			/// <summary>Treat punctuation the same as symbols.</summary>
 			StringSoft=128,
+#endif
 		};
 
 		/// <summary>Compare two strings.</summary>
@@ -11165,7 +11167,7 @@ Coroutine (Async)
 				Stopped,
 			};
 
-			class IAsync : public IDescriptable, public Description<IAsync>
+			class IAsync : public virtual IDescriptable, public Description<IAsync>
 			{
 			public:
 				virtual AsyncStatus						GetStatus() = 0;
@@ -11174,10 +11176,26 @@ Coroutine (Async)
 				static Ptr<IAsync>						Delay(vint milliseconds);
 			};
 
-			class IAsyncScheduler : public IDescriptable, public Description<IAsyncScheduler>
+			class IPromise : public virtual IDescriptable, public Description<IPromise>
+			{
+			public:
+				virtual bool							SendResult(const Value& result) = 0;
+				virtual bool							SendFailure(Ptr<IValueException> failure) = 0;
+			};
+
+			class IFuture : public virtual IAsync, public Description<IFuture>
+			{
+			public:
+				virtual Ptr<IPromise>					GetPromise() = 0;
+
+				static Ptr<IFuture>						Create();
+			};
+
+			class IAsyncScheduler : public virtual IDescriptable, public Description<IAsyncScheduler>
 			{
 			public:
 				virtual void							Execute(const Func<void()>& callback) = 0;
+				virtual void							ExecuteInBackground(const Func<void()>& callback) = 0;
 				virtual void							DelayExecute(const Func<void()>& callback, vint milliseconds) = 0;
 
 				static void								RegisterDefaultScheduler(Ptr<IAsyncScheduler> scheduler);
@@ -15058,6 +15076,9 @@ Predefined Types
 			DECL_TYPE_INFO(EnumerableCoroutine)
 			DECL_TYPE_INFO(AsyncStatus)
 			DECL_TYPE_INFO(IAsync)
+			DECL_TYPE_INFO(IPromise)
+			DECL_TYPE_INFO(IFuture)
+			DECL_TYPE_INFO(IAsyncScheduler)
 			DECL_TYPE_INFO(AsyncCoroutine::IImpl)
 			DECL_TYPE_INFO(AsyncCoroutine)
 

@@ -59,9 +59,7 @@ Closures
 
 	void __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		{
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxC)->SetText([&](){ try{ return ::vl::__vwsn::ToString(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->ViewModel.Obj())->Add(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxA)->GetText()), ::vl::__vwsn::Parse<::vl::vint32_t>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxB)->GetText()))); } catch(...){ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->ViewModel.Obj())->Error(); } }());
-		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxC)->SetText([&](){ try{ return ::vl::__vwsn::ToString(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->ViewModel.Obj())->Add(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxA)->GetText()), ::vl::__vwsn::Parse<::vl::vint32_t>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxB)->GetText()))); } catch(...){ return ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->ViewModel.Obj())->Error(); } }());
 	}
 }
 

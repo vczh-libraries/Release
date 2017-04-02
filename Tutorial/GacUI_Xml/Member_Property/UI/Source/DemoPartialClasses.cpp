@@ -77,9 +77,7 @@ Closures
 
 	void __vwsnf2_Demo_demo_MyControlConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		{
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->SetSelectedOption(::vl::WString(L"A", false));
-		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->SetSelectedOption(::vl::WString(L"A", false));
 	}
 
 	//-------------------------------------------------------------------
@@ -91,9 +89,7 @@ Closures
 
 	void __vwsnf3_Demo_demo_MyControlConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		{
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->SetSelectedOption(::vl::WString(L"B", false));
-		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->SetSelectedOption(::vl::WString(L"B", false));
 	}
 
 	//-------------------------------------------------------------------

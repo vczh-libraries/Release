@@ -59,12 +59,10 @@ Closures
 
 	void __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		{
-			auto a = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxA)->GetText();
-			auto b = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxB)->GetText();
-			auto c = [&](){ try{ return ::vl::__vwsn::ToString((::vl::__vwsn::Parse<::vl::vint32_t>(a) + ::vl::__vwsn::Parse<::vl::vint32_t>(b))); } catch(...){ return ::vl::WString(L"<ERROR>", false); } }();
-			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxC)->SetText(c);
-		}
+		auto a = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxA)->GetText();
+		auto b = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxB)->GetText();
+		auto c = [&](){ try{ return ::vl::__vwsn::ToString((::vl::__vwsn::Parse<::vl::vint32_t>(a) + ::vl::__vwsn::Parse<::vl::vint32_t>(b))); } catch(...){ return ::vl::WString(L"<ERROR>", false); } }();
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxC)->SetText(c);
 	}
 }
 

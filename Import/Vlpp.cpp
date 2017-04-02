@@ -1924,28 +1924,20 @@ Locale
 #ifdef VCZH_MSVC
 	WString Locale::FormatNumber(const WString& number)const
 	{
-#if defined VCZH_MSVC
 		int length=GetNumberFormatEx(localeName.Buffer(), 0, number.Buffer(), NULL, NULL, 0);
 		if(length==0) return L"";
 		Array<wchar_t> buffer(length);
 		GetNumberFormatEx(localeName.Buffer(), 0, number.Buffer(), NULL, &buffer[0], (int)buffer.Count());
 		return &buffer[0];
-#elif defined VCZH_GCC
-		throw 0;
-#endif
 	}
 
 	WString Locale::FormatCurrency(const WString& currency)const
 	{
-#if defined VCZH_MSVC
 		int length=GetCurrencyFormatEx(localeName.Buffer(), 0, currency.Buffer(), NULL, NULL, 0);
 		if(length==0) return L"";
 		Array<wchar_t> buffer(length);
 		GetCurrencyFormatEx(localeName.Buffer(), 0, currency.Buffer(), NULL, &buffer[0], (int)buffer.Count());
 		return &buffer[0];
-#elif defined VCZH_GCC
-		throw 0;
-#endif
 	}
 #endif
 
@@ -2038,38 +2030,22 @@ Locale
 #ifdef VCZH_MSVC
 	WString Locale::ToFullWidth(const WString& str)const
 	{
-#if defined VCZH_MSVC
 		return Transform(localeName, str, LCMAP_FULLWIDTH);
-#elif defined VCZH_GCC
-		throw 0;
-#endif
 	}
 
 	WString Locale::ToHalfWidth(const WString& str)const
 	{
-#if defined VCZH_MSVC
 		return Transform(localeName, str, LCMAP_HALFWIDTH);
-#elif defined VCZH_GCC
-		throw 0;
-#endif
 	}
 
 	WString Locale::ToHiragana(const WString& str)const
 	{
-#if defined VCZH_MSVC
 		return Transform(localeName, str, LCMAP_HIRAGANA);
-#elif defined VCZH_GCC
-		throw 0;
-#endif
 	}
 
 	WString Locale::ToKatagana(const WString& str)const
 	{
-#if defined VCZH_MSVC
 		return Transform(localeName, str, LCMAP_KATAKANA);
-#elif defined VCZH_GCC
-		throw 0;
-#endif
 	}
 #endif
 
@@ -2112,29 +2088,17 @@ Locale
 #ifdef VCZH_MSVC
 	WString Locale::ToSimplifiedChinese(const WString& str)const
 	{
-#if defined VCZH_MSVC
 		return Transform(localeName, str, LCMAP_SIMPLIFIED_CHINESE);
-#elif defined VCZH_GCC
-		throw 0;
-#endif
 	}
 
 	WString Locale::ToTraditionalChinese(const WString& str)const
 	{
-#if defined VCZH_MSVC
 		return Transform(localeName, str, LCMAP_TRADITIONAL_CHINESE);
-#elif defined VCZH_GCC
-		throw 0;
-#endif
 	}
 
 	WString Locale::ToTileCase(const WString& str)const
 	{
-#if defined VCZH_MSVC
 		return Transform(localeName, str, LCMAP_TITLECASE);
-#elif defined VCZH_GCC
-		throw 0;
-#endif
 	}
 #endif
 
@@ -2154,8 +2118,6 @@ Locale
 				return wcscmp(s1.Buffer(), s2.Buffer());
 			case Normalization::IgnoreCase:
 				return wcscasecmp(s1.Buffer(), s2.Buffer());
-			default:
-				throw 0;
 		}
 #endif
 	}
@@ -2230,8 +2192,6 @@ Locale
 					}
 				}
 				break;
-			default:
-				throw 0;
 		}
 		return result == nullptr ? Pair<vint, vint>(-1, 0) : Pair<vint, vint>(result - text.Buffer(), find.Length());
 #endif
@@ -2277,8 +2237,6 @@ Locale
 					}
 				}
 				break;
-			default:
-				throw 0;
 		}
 		return result == nullptr ? Pair<vint, vint>(-1, 0) : Pair<vint, vint>(result - text.Buffer(), find.Length());
 #endif
@@ -2300,8 +2258,6 @@ Locale
 				return wcsncmp(text.Buffer(), find.Buffer(), find.Length()) == 0;
 			case Normalization::IgnoreCase:
 				return wcsncasecmp(text.Buffer(), find.Buffer(), find.Length()) == 0;
-			default:
-				throw 0;
 		}
 #endif
 	}
@@ -2322,8 +2278,6 @@ Locale
 				return wcsncmp(text.Buffer() + text.Length() - find.Length(), find.Buffer(), find.Length()) == 0;
 			case Normalization::IgnoreCase:
 				return wcsncasecmp(text.Buffer() + text.Length() - find.Length(), find.Buffer(), find.Length()) == 0;
-			default:
-				throw 0;
 		}
 #endif
 	}
@@ -18338,6 +18292,7 @@ IAsync
 			class DelayAsync : public Object, public virtual IAsync, public Description<DelayAsync>
 			{
 			protected:
+				SpinLock							lock;
 				vint								milliseconds;
 				AsyncStatus							status = AsyncStatus::Ready;
 
@@ -18354,12 +18309,18 @@ IAsync
 
 				bool Execute(const Func<void(Ptr<CoroutineResult>)>& _callback)override
 				{
-					if (status != AsyncStatus::Ready) return false;
-					status = AsyncStatus::Executing;
-					IAsyncScheduler::GetSchedulerForCurrentThread()->DelayExecute([async = Ptr<DelayAsync>(this), callback = _callback]()
+					SPIN_LOCK(lock)
 					{
-						callback(nullptr);
-					}, milliseconds);
+						if (status != AsyncStatus::Ready) return false;
+						status = AsyncStatus::Executing;
+						IAsyncScheduler::GetSchedulerForCurrentThread()->DelayExecute([async = Ptr<DelayAsync>(this), callback = _callback]()
+						{
+							if (callback)
+							{
+								callback(nullptr);
+							}
+						}, milliseconds);
+					}
 					return true;
 				}
 			};
@@ -18367,6 +18328,95 @@ IAsync
 			Ptr<IAsync> IAsync::Delay(vint milliseconds)
 			{
 				return new DelayAsync(milliseconds);
+			}
+
+/***********************************************************************
+IFuture
+***********************************************************************/
+
+			class FutureAndPromiseAsync : public virtual IFuture, public virtual IPromise, public Description<FutureAndPromiseAsync>
+			{
+			public:
+				SpinLock							lock;
+				AsyncStatus							status = AsyncStatus::Ready;
+				Ptr<CoroutineResult>				cr;
+				Func<void(Ptr<CoroutineResult>)>	callback;
+
+				void ExecuteCallbackAndClear()
+				{
+					status = AsyncStatus::Stopped;
+					if (callback)
+					{
+						callback(cr);
+					}
+					cr = nullptr;
+					callback = {};
+				}
+
+				template<typename F>
+				bool Send(F f)
+				{
+					SPIN_LOCK(lock)
+					{
+						if (status == AsyncStatus::Stopped || cr) return false;
+						cr = MakePtr<CoroutineResult>();
+						f();
+						if (status == AsyncStatus::Executing)
+						{
+							ExecuteCallbackAndClear();
+						}
+					}
+					return true;
+				}
+
+				AsyncStatus GetStatus()override
+				{
+					return status;
+				}
+
+				bool Execute(const Func<void(Ptr<CoroutineResult>)>& _callback)override
+				{
+					SPIN_LOCK(lock)
+					{
+						if (status != AsyncStatus::Ready) return false;
+						callback = _callback;
+						if (cr)
+						{
+							ExecuteCallbackAndClear();
+						}
+						else
+						{
+							status = AsyncStatus::Executing;
+						}
+					}
+					return true;
+				}
+
+				Ptr<IPromise> GetPromise()override
+				{
+					return this;
+				}
+
+				bool SendResult(const Value& result)override
+				{
+					return Send([=]()
+					{
+						cr->SetResult(result);
+					});
+				}
+
+				bool SendFailure(Ptr<IValueException> failure)override
+				{
+					return Send([=]()
+					{
+						cr->SetFailure(failure);
+					});
+				}
+			};
+
+			Ptr<IFuture> IFuture::Create()
+			{
+				return new FutureAndPromiseAsync();
 			}
 
 /***********************************************************************
@@ -18567,10 +18617,21 @@ AsyncCoroutine
 			{
 				return new CoroutineAsync(creator);
 			}
-
 			void AsyncCoroutine::CreateAndRun(const Creator& creator)
 			{
-				MakePtr<CoroutineAsync>(creator)->Execute({});
+				MakePtr<CoroutineAsync>(creator)->Execute(
+					[](Ptr<CoroutineResult> cr)
+					{
+						if (cr->GetFailure())
+						{
+#pragma push_macro("GetMessage")
+#if defined GetMessage
+#undef GetMessage
+#endif
+							throw Exception(cr->GetFailure()->GetMessage());
+#pragma pop_macro("GetMessage")
+						}
+					});
 			}
 
 /***********************************************************************
@@ -18705,6 +18766,9 @@ TypeName
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::EnumerableCoroutine, system::EnumerableCoroutine)
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::AsyncStatus, system::AsyncStatus)
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IAsync, system::Async)
+			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IPromise, system::Promise)
+			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IFuture, system::Future)
+			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IAsyncScheduler, system::AsyncScheduler)
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::AsyncCoroutine::IImpl, system::AsyncCoroutine::IImpl)
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::AsyncCoroutine, system::AsyncCoroutine)
 
@@ -19405,6 +19469,25 @@ LoadPredefinedTypes
 				CLASS_MEMBER_STATIC_METHOD(Delay, { L"milliseconds" })
 			END_INTERFACE_MEMBER(IAsync)
 
+			BEGIN_INTERFACE_MEMBER_NOPROXY(IPromise)
+				CLASS_MEMBER_METHOD(SendResult, { L"result" })
+				CLASS_MEMBER_METHOD(SendFailure, { L"failure" })
+			END_INTERFACE_MEMBER(IPromise)
+
+			BEGIN_INTERFACE_MEMBER_NOPROXY(IFuture)
+				CLASS_MEMBER_BASE(IAsync)
+				CLASS_MEMBER_BASE(IPromise)
+				CLASS_MEMBER_PROPERTY_READONLY_FAST(Promise)
+				CLASS_MEMBER_STATIC_METHOD(Create, NO_PARAMETER)
+			END_INTERFACE_MEMBER(IFuture)
+
+			BEGIN_INTERFACE_MEMBER_NOPROXY(IAsyncScheduler)
+				CLASS_MEMBER_METHOD(Execute, { L"callback" })
+				CLASS_MEMBER_METHOD(ExecuteInBackground, { L"callback" })
+				CLASS_MEMBER_METHOD(DelayExecute, { L"callback" _ L"milliseconds" })
+				CLASS_MEMBER_STATIC_METHOD(GetSchedulerForCurrentThread, NO_PARAMETER)
+			END_INTERFACE_MEMBER(IAsyncScheduler)
+
 			BEGIN_INTERFACE_MEMBER_NOPROXY(AsyncCoroutine::IImpl)
 				CLASS_MEMBER_BASE(IAsync)
 			END_INTERFACE_MEMBER(AsyncCoroutine::IImpl)
@@ -19632,6 +19715,9 @@ LoadPredefinedTypes
 					ADD_TYPE_INFO(EnumerableCoroutine)
 					ADD_TYPE_INFO(AsyncStatus)
 					ADD_TYPE_INFO(IAsync)
+					ADD_TYPE_INFO(IPromise)
+					ADD_TYPE_INFO(IFuture)
+					ADD_TYPE_INFO(IAsyncScheduler)
 					ADD_TYPE_INFO(AsyncCoroutine::IImpl)
 					ADD_TYPE_INFO(AsyncCoroutine)
 

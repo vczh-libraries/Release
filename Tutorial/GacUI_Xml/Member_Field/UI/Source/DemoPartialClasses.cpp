@@ -77,9 +77,7 @@ Closures
 
 	void __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		{
-			(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->integerState = ::vl::__vwsn::Parse<::vl::vint32_t>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxA)->GetText()));
-		}
+		(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->integerState = ::vl::__vwsn::Parse<::vl::vint32_t>(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textBoxA)->GetText()));
 	}
 
 	//-------------------------------------------------------------------

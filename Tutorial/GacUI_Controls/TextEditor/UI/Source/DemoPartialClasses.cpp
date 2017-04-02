@@ -161,11 +161,9 @@ Closures
 
 	void __vwsnf27_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		if ((! ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->FindNext(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textFind)->GetText(), ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->checkCase)->GetSelected(), ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->radioDown)->GetSelected())))
 		{
-			if ((! ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->self)->FindNext(::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textFind)->GetText(), ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->checkCase)->GetSelected(), ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->radioDown)->GetSelected())))
-			{
-				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->dialogContentNotFound)->ShowDialog();
-			}
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->dialogContentNotFound)->ShowDialog();
 		}
 	}
 
