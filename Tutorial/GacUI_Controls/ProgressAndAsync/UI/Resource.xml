@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\ProgressAndAsync.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="Name">Demo</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
+        <Window Text="ProgressAndAsync" ClientSize="x:480 y:320">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>

@@ -42,6 +42,9 @@ popd
 pushd AddressBook\UI
 call Codegen.bat
 popd
+pushd ProgressAndAsync\UI
+call Codegen.bat
+popd
 popd
 pushd GacUI_ControlTemplate
 pushd BlackSkin\UI
