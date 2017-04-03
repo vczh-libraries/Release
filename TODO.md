@@ -9,7 +9,21 @@
 * GacUI
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
     * Icon
-    * Layout algorithm using less power
+    * Layout algorithm using less power, Don't force re-rendering at every frame.
+        * GuiGraphicsComposition::Render will detect bounds change
+        * IGuiElement will detect property change
+* Vlpp
+    * Redesign vl::parsing
+        * No need to specify allow ambiguity or not
+        * Escaping and Unescaping pairs (instead of only unescaping)
+        * Calculate ambiguous **Parse** cases, pointing out which AST need to support ambiguity
+        * Calculate ambiguous **ToString** cases
+        * Generate **ToString** algorithm
+        * Low overhead AST with reflection
+        * Error message generation
+        * Error recovering
+        * Full CFG power, no limitation
+        * Be able to assign to any properties (not just enum) in with statement
 
 ## Wait For A Few Releases
 * Workflow
@@ -32,17 +46,6 @@
 * Vlpp
     * Regex supports UTF-16 (instead of UCS-2) on MSVC
         * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**)
-    * Redesign vl::parsing
-        * No need to specify allow ambiguity or not
-        * Escaping and Unescaping pairs (instead of only unescaping)
-        * Calculate ambiguous **Parse** cases, pointing out which AST need to support ambiguity
-        * Calculate ambiguous **ToString** cases
-        * Generate **ToString** algorithm
-        * Low overhead AST with reflection
-        * Error message generation
-        * Error recovering
-        * Full CFG power, no limitation
-        * Be able to assign to any properties (not just enum) in with statement
 * Workflow
     * State Machine
     * Macro
@@ -53,15 +56,11 @@
     * InstanceStyle:Replace
     * Visual State, State Machine, Animation
 * GacUI
-    * Embedded Languages: Colorizer, AutoComplete
     * Abstract Graphics API
     * Chart, Ribbon, Dock Container
     * **(after animation is done)**
         * New predefined control templates, written in XML generated C++ code.
         * Retire Win7/Win8 control templates, rewrite them in tutorials.
         * Remove control style interfaces, controls talk to templates directly
-    * Don't force re-rendering at every frame.
-        * GuiGraphicsComposition::Render will detect bounds change
-        * IGuiElement will detect property change
 * GacStudio.exe
 
