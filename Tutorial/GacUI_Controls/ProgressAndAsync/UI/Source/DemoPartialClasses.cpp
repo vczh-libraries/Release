@@ -45,6 +45,227 @@ Global Functions
 	{
 		return Getvl_workflow_global_Demo().instance;
 	}
+
+/***********************************************************************
+Closures
+***********************************************************************/
+
+	//-------------------------------------------------------------------
+
+	__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		::vl::reflection::description::AsyncCoroutine::CreateAndRun(LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(__vwsnthis_0)));
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::operator()(::vl::vint32_t progress) const
+	{
+		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____(progress, __vwsnthis_0)), (- 1));
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____(::vl::vint32_t __vwsnctor_progress, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:progress(__vwsnctor_progress)
+		, __vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____::operator()() const
+	{
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->progressBar)->SetPosition(progress);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::Ptr<::vl::reflection::description::ICoroutine> __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::operator()(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsn_co_impl_) const
+	{
+		return ::vl::Ptr<::vl::reflection::description::ICoroutine>(new ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine(__vwsn_co_impl_, __vwsnthis_0));
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____::operator()(::vl::vint32_t progress) const
+	{
+		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____(progress, __vwsnthis_0)), (- 1));
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____(::vl::vint32_t __vwsnctor_progress, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:progress(__vwsnctor_progress)
+		, __vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	void __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____::operator()() const
+	{
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->progressBar)->SetPosition(progress);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume_::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume_(::vl::reflection::description::ICoroutine* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1)
+		:__vwsnthis_0(__vwsnctorthis_0)
+		, __vwsnthis_1(__vwsnctorthis_1)
+	{
+	}
+
+	void __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume_::operator()(::vl::vint32_t progress) const
+	{
+		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume__(progress, __vwsnthis_0, __vwsnthis_1)), (- 1));
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume__::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume__(::vl::vint32_t __vwsnctor_progress, ::vl::reflection::description::ICoroutine* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1)
+		:progress(__vwsnctor_progress)
+		, __vwsnthis_0(__vwsnctorthis_0)
+		, __vwsnthis_1(__vwsnctorthis_1)
+	{
+	}
+
+	void __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume__::operator()() const
+	{
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_1)->progressBar)->SetPosition(progress);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf9_Demo_demo_IViewModel_DownloadAsync_::__vwsnf9_Demo_demo_IViewModel_DownloadAsync_(::vl::Ptr<::vl::reflection::description::IPromise> __vwsnctor_promise)
+		:promise(__vwsnctor_promise)
+	{
+	}
+
+	void __vwsnf9_Demo_demo_IViewModel_DownloadAsync_::operator()(const ::vl::WString& result) const
+	{
+		::vl::__vwsn::This(::vl::__vwsn::This(this)->promise.Obj())->SendResult(::vl::__vwsn::Box(result));
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsnctor___vwsn_co_impl_, ::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsn_co_impl_(__vwsnctor___vwsn_co_impl_)
+		, __vwsnthis_0(__vwsnctorthis_0)
+	{
+		this->__vwsn_co0_text = ::vl::WString(L"", false);
+		this->__vwsn_co_state_ = 0;
+		this->__vwsn_prop_Failure = ::vl::Ptr<::vl::reflection::description::IValueException>();
+		this->__vwsn_prop_Status = ::vl::reflection::description::CoroutineStatus::Waiting;
+	}
+
+	::vl::Ptr<::vl::reflection::description::IValueException> __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine::GetFailure()
+	{
+		return __vwsn_prop_Failure;
+	}
+	void __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine::SetFailure(::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_value_)
+	{
+		(__vwsn_prop_Failure = __vwsn_value_);
+	}
+
+	::vl::reflection::description::CoroutineStatus __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine::GetStatus()
+	{
+		return __vwsn_prop_Status;
+	}
+	void __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine::SetStatus(::vl::reflection::description::CoroutineStatus __vwsn_value_)
+	{
+		(__vwsn_prop_Status = __vwsn_value_);
+	}
+
+	void __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine::Resume(bool __vwsn_raise_exception_, ::vl::Ptr<::vl::reflection::description::CoroutineResult> __vwsn_co_result_)
+	{
+		if ((::vl::__vwsn::This(this)->GetStatus() != ::vl::reflection::description::CoroutineStatus::Waiting))
+		{
+			throw ::vl::Exception(::vl::WString(L"Resume should be called only when the coroutine is in the waiting status.", false));
+		}
+		::vl::__vwsn::This(this)->SetStatus(::vl::reflection::description::CoroutineStatus::Executing);
+		try
+		{
+			{
+				while (true)
+				{
+					if ((__vwsn_co_state_ == 0))
+					{
+						::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->buttonDownload)->SetEnabled(false);
+						(__vwsn_co_state_ = 2);
+						continue;
+					}
+					if ((__vwsn_co_state_ == 1))
+					{
+						if (static_cast<bool>(::vl::__vwsn::This(__vwsn_co_result_.Obj())->GetFailure()))
+						{
+							throw ::vl::Exception(::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_co_result_.Obj())->GetFailure().Obj())->GetMessage());
+						}
+						(__vwsn_co0_text = ::demo::IStringAsync::CastResult(::vl::__vwsn::This(__vwsn_co_result_.Obj())->GetResult()));
+						::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textResult)->SetText(__vwsn_co0_text);
+						::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0)->textResult)->Select([&](){ ::vl::presentation::TextPos __vwsn_temp__; __vwsn_temp__.row = 0; __vwsn_temp__.column = 0; return __vwsn_temp__; }(), [&](){ ::vl::presentation::TextPos __vwsn_temp__; __vwsn_temp__.row = 0; __vwsn_temp__.column = 0; return __vwsn_temp__; }());
+						::vl::__vwsn::This(this)->SetStatus(::vl::reflection::description::CoroutineStatus::Stopped);
+						return;
+					}
+					if ((__vwsn_co_state_ == 2))
+					{
+						::vl::__vwsn::This(this)->SetStatus(::vl::reflection::description::CoroutineStatus::Waiting);
+						(__vwsn_co_state_ = 1);
+						{
+							::vl::reflection::description::AsyncCoroutine::AwaitAndRead(__vwsn_co_impl_, ::vl::Ptr<::vl::reflection::description::IAsync>(::demo::IViewModel::DownloadAsync(::vl::__vwsn::This(__vwsnthis_0)->ViewModel, LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume_(this, __vwsnthis_0)))));
+						}
+						return;
+					}
+				}
+			}
+		}
+		catch(const ::vl::Exception& __vwsne_0)
+		{
+			auto __vwsn_co_ex_ = ::vl::reflection::description::IValueException::Create(__vwsne_0.Message());
+			{
+				::vl::__vwsn::This(this)->SetFailure(__vwsn_co_ex_);
+				::vl::__vwsn::This(this)->SetStatus(::vl::reflection::description::CoroutineStatus::Stopped);
+				if (__vwsn_raise_exception_)
+				{
+					throw;
+				}
+			}
+		}
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc2_Demo_demo_IViewModel_DownloadAsync__demo_IStringAsync::__vwsnc2_Demo_demo_IViewModel_DownloadAsync__demo_IStringAsync(::vl::Ptr<::vl::reflection::description::IFuture> __vwsnctor_future)
+	{
+		this->__vwsn_mixin_source_ = ::vl::Ptr<::vl::reflection::description::IAsync>(__vwsnctor_future);
+	}
+
+	bool __vwsnc2_Demo_demo_IViewModel_DownloadAsync__demo_IStringAsync::Execute(const ::vl::Func<void(::vl::Ptr<::vl::reflection::description::CoroutineResult>)>& callback)
+	{
+		return ::vl::__vwsn::This(::vl::__vwsn::Ensure(static_cast<::vl::reflection::description::IAsync*>(__vwsn_mixin_source_.Obj())))->Execute(callback);
+	}
+
+	::vl::reflection::description::AsyncStatus __vwsnc2_Demo_demo_IViewModel_DownloadAsync__demo_IStringAsync::GetStatus()
+	{
+		return ::vl::__vwsn::This(::vl::__vwsn::Ensure(static_cast<::vl::reflection::description::IAsync*>(__vwsn_mixin_source_.Obj())))->GetStatus();
+	}
+
 }
 
 /***********************************************************************
@@ -55,16 +276,104 @@ namespace demo
 {
 	void MainWindowConstructor::__vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_, ::vl::presentation::GuiResourcePathResolver* __vwsn_resolver_)
 	{
-		(::vl::__vwsn::This(this)->__vwsn_precompile_0 = __vwsn_this_);
-		(::vl::__vwsn::This(this)->__vwsn_precompile_1 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->GetBoundsComposition());
+		(::vl::__vwsn::This(this)->self = __vwsn_this_);
+		(::vl::__vwsn::This(this)->ViewModel = ::vl::__vwsn::This(__vwsn_this_)->GetViewModel());
+		(::vl::__vwsn::This(this)->__vwsn_precompile_6 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->GetBoundsComposition());
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 480; __vwsn_temp__.y = 320; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 480; __vwsn_temp__.y = 320; return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 480; __vwsn_temp__.y = 320; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = 480; __vwsn_temp__.y = 320; return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetText(::vl::WString(L"ProgressAndAsync", false));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetText(::vl::WString(L"ProgressAndAsync", false));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"5", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetRowsAndColumns(2, 2);
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetRowOption(0, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetRowOption(1, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = 1.0; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetColumnOption(0, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = 1.0; return __vwsn_temp__; }());
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetColumnOption(1, [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_1 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->SetSite(0, 0, 1, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateProgressBarStyle();
+			(::vl::__vwsn::This(this)->progressBar = new ::vl::presentation::controls::GuiScroll(__vwsn_controlStyle_));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->progressBar)->SetPageSize(0);
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_2 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->progressBar)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_2)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->progressBar)->SetTotalSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"10", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_1)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->progressBar)->GetBoundsComposition()));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_1));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_3 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->SetSite(0, 1, 1, 1);
+		}
+		{
+			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateButtonStyle();
+			(::vl::__vwsn::This(this)->buttonDownload = new ::vl::presentation::controls::GuiButton(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->buttonDownload)->SetText(::vl::WString(L"Begin Download!", false));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->buttonDownload)->GetBoundsComposition()));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_3));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_4 = new ::vl::presentation::compositions::GuiCellComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_4)->SetSite(1, 0, 1, 2);
+		}
+		{
+			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateMultilineTextBoxStyle();
+			(::vl::__vwsn::This(this)->textResult = new ::vl::presentation::controls::GuiMultilineTextBox(__vwsn_controlStyle_));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->textResult)->SetReadonly(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->textResult)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->textResult)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+		}
+		(::vl::__vwsn::This(this)->__vwsn_precompile_5 = ::vl::__vwsn::This(::vl::__vwsn::This(this)->textResult)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_4)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->textResult)->GetBoundsComposition()));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_4));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this)->__vwsn_precompile_0));
+		}
+		{
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(::vl::__vwsn::This(this)->buttonDownload)->Clicked, __vwsn_event_handler_);
 		}
 	}
 
@@ -76,9 +385,15 @@ namespace demo
 Class (::demo::MainWindow)
 ***********************************************************************/
 
-	MainWindow::MainWindow()
+	::vl::Ptr<::demo::IViewModel> MainWindow::GetViewModel()
+	{
+		return ::vl::__vwsn::This(this)->__vwsn_parameter_ViewModel;
+	}
+
+	MainWindow::MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel)
 		: ::vl::presentation::controls::GuiWindow(::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateWindowStyle())
 	{
+		(::vl::__vwsn::This(this)->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->__vwsn_initialize_instance_(this, ::vl::__vwsn::Ensure(static_cast<::vl::presentation::GuiResourcePathResolver*>(__vwsn_resolver_.Obj())));
@@ -87,6 +402,27 @@ Class (::demo::MainWindow)
 	MainWindow::~MainWindow()
 	{
 		::vl::__vwsn::This(this)->ClearSubscriptions();
+	}
+
+/***********************************************************************
+Class (::demo::IStringAsync)
+***********************************************************************/
+
+	::vl::WString IStringAsync::CastResult(const ::vl::reflection::description::Value& value)
+	{
+		return ::vl::__vwsn::Unbox<::vl::WString>(value);
+	}
+
+/***********************************************************************
+Class (::demo::IViewModel)
+***********************************************************************/
+
+	::vl::Ptr<::demo::IStringAsync> IViewModel::DownloadAsync(::vl::Ptr<::demo::IViewModel> viewModel, const ::vl::Func<void(::vl::vint32_t)>& progress)
+	{
+		auto future = ::vl::reflection::description::IFuture::Create();
+		auto promise = ::vl::__vwsn::This(future.Obj())->GetPromise();
+		::vl::__vwsn::This(viewModel.Obj())->BeginDownload(progress, LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_IViewModel_DownloadAsync_(promise)));
+		return ::vl::Ptr<::demo::IStringAsync>(new ::vl_workflow_global::__vwsnc2_Demo_demo_IViewModel_DownloadAsync__demo_IStringAsync(future));
 	}
 
 }
@@ -106,12 +442,26 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
+			IMPL_CPP_TYPE_INFO(demo::IStringAsync)
+			IMPL_CPP_TYPE_INFO(demo::IViewModel)
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
 			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
 
 #define _ ,
+			BEGIN_INTERFACE_MEMBER(::demo::IStringAsync)
+				CLASS_MEMBER_STATIC_METHOD(CastResult, { L"value" })
+			END_INTERFACE_MEMBER(::demo::IStringAsync)
+
+			BEGIN_INTERFACE_MEMBER(::demo::IViewModel)
+				CLASS_MEMBER_METHOD(BeginDownload, { L"progress" _ L"callback" })
+				CLASS_MEMBER_STATIC_METHOD(DownloadAsync, { L"viewModel" _ L"progress" })
+			END_INTERFACE_MEMBER(::demo::IViewModel)
+
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
-				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(::vl::Ptr<::demo::IViewModel>), { L"__vwsn_ctor_parameter_ViewModel" })
+				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
+				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
+				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
@@ -119,6 +469,16 @@ namespace vl
 				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" _ L"__vwsn_resolver_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_4)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_5)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_6)
+				CLASS_MEMBER_FIELD(ViewModel)
+				CLASS_MEMBER_FIELD(buttonDownload)
+				CLASS_MEMBER_FIELD(progressBar)
+				CLASS_MEMBER_FIELD(self)
+				CLASS_MEMBER_FIELD(textResult)
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 #undef _
@@ -127,6 +487,8 @@ namespace vl
 			public:
 				void Load(ITypeManager* manager)
 				{
+					ADD_TYPE_INFO(::demo::IStringAsync)
+					ADD_TYPE_INFO(::demo::IViewModel)
 					ADD_TYPE_INFO(::demo::MainWindow)
 					ADD_TYPE_INFO(::demo::MainWindowConstructor)
 				}

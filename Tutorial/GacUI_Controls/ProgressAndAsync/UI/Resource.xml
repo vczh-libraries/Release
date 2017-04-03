@@ -8,11 +8,84 @@
       <Text name="Name">Demo</Text>
     </Folder>
   </Folder>
+  <Script name="ViewModelResource">
+    <Workflow>
+      <![CDATA[
+        module viewmodel;
+        using system::*;
+
+        namespace demo
+        {
+          $interface IStringAsync : Async<string>;
+            
+          interface IViewModel
+          {
+            func BeginDownload(progress:func(int):void, callback:func(string):void) : void;
+            
+            static func DownloadAsync(viewModel : IViewModel^, progress:func(int):void) : IStringAsync^
+            {
+              var future = Future::Create();
+              var promise = future.Promise;
+              viewModel.BeginDownload(progress, func(result : string):void
+              {
+                promise.SendResult(result);
+              });
+              return new IStringAsync^(using future of Async^);
+            }
+          }
+        }
+      ]]>
+    </Workflow>
+  </Script>
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
-        <Window Text="ProgressAndAsync" ClientSize="x:480 y:320">
+        <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
+        <Window ref.Name="self" Text="ProgressAndAsync" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <ProgressBar ref.Name="progressBar" TotalSize="10">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </ProgressBar>
+            </Cell>
+
+            <Cell Site="row:0 column:1">
+              <Button ref.Name="buttonDownload" Text="Begin Download!">
+                <ev.Clicked-eval>
+                  <![CDATA[
+                    $Async{
+                      buttonDownload.Enabled = false;
+                      var text = $Await demo::IViewModel::DownloadAsync(ViewModel, func(progress : int):void
+                      {
+                        Application::GetApplication().InvokeInMainThreadAndWait(func():void
+                        {
+                          progressBar.Position = progress;
+                        }, -1);
+                      });
+                      textResult.Text = text;
+                      textResult.Select({row:0 column:0}, {row:0 column:0});
+                    }
+                  ]]>
+                </ev.Clicked-eval>
+              </Button>
+            </Cell>
+
+            <Cell Site="row:1 column:0 columnSpan:2">
+              <MultilineTextBox ref.Name="textResult" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" Readonly="true">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </MultilineTextBox>
+            </Cell>
+          </Table>
         </Window>
       </Instance>
     </Instance>
