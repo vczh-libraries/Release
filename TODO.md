@@ -57,6 +57,13 @@
     * Visual State, State Machine, Animation
 * GacUI
     * Abstract Graphics API
+        * MetaImageElement
+            * Remove PolygonElement
+            * Default non-text element renderer implementation by delegating things to MetaImageElement
+            * Remove non-text GDI and D2D element renderer implementation
+        * Meta3DImageElement
+            * Default implementation by delegating things to MetaImageElement
+                * Surface-sorting based renderer
     * Chart, Ribbon, Dock Container
     * **(after animation is done)**
         * New predefined control templates, written in XML generated C++ code.
