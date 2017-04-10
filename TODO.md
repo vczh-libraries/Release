@@ -9,9 +9,6 @@
 * GacUI
     * Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
     * Icon
-    * Layout algorithm using less power, Don't force re-rendering at every frame.
-        * GuiGraphicsComposition::Render will detect bounds change
-        * IGuiElement will detect property change
 * Vlpp
     * Redesign vl::parsing
         * No need to specify allow ambiguity or not
