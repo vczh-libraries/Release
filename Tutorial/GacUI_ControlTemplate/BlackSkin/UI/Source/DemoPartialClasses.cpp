@@ -19163,6 +19163,9 @@ Class (::darkskin::DocumentViewerTemplateConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetDefaultScrollSize(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"20", false)));
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetCaretColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+		}
+		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
 		}
 		(::vl::__vwsn::This(this)->__vwsn_precompile_0 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidBackgroundElement>()));
