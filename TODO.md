@@ -12,6 +12,9 @@
     * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
     * Use ::vl::vint for int in both 32 and 64 configurations.
 * State Machine
+
+#### (probably not do)
+
 * Macro
 * Context-Grammar Sensitive Macro
 * Virtual function
@@ -43,10 +46,12 @@
 * InheritableCustomWindow
 * InheritableCustomControl
 * GuiCustomControl::SetContainerComposition // using a special syntax
-* Make ItemSource from constructor argument to property
 * Localizable text template resource, adding str://
-* InstanceStyle:Replace
 * Visual State, State Machine, Animation
+
+#### (probably not do)
+
+* InstanceStyle:Replace
 
 ## ParserGen.exe
 
