@@ -41,7 +41,6 @@
 * Handle resource file encoding if there is no BOM
     * Windows: Test UTF-8 correctness and local encoding correctness, may need to modify `vl::filesystem::File`
     * Others: Use local encoding (usually UTF-8)
-* Add `<ref.Ctor>`, `<ref.Dtor>`
 * InheritableCustomWindow
 * InheritableCustomControl
 * GuiCustomControl::SetContainerComposition // using a special syntax
