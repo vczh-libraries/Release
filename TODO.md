@@ -37,7 +37,6 @@
 
 ## GacUI Resource
 
-* Don't need to specify item type when assigning to array properties (e.g. Table.(Rows|Columns))
 * Handle resource file encoding if there is no BOM
     * Windows: Test UTF-8 correctness and local encoding correctness, may need to modify `vl::filesystem::File`
     * Others: Use local encoding (usually UTF-8)
