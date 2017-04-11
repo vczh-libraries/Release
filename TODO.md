@@ -45,12 +45,12 @@
     * Others: Use local encoding (usually UTF-8)
 * InheritableCustomWindow
 * InheritableCustomControl
-* GuiCustomControl::SetContainerComposition // using a special syntax
 * Localizable text template resource, adding str://
 * Visual State, State Machine, Animation
 
 #### (probably not do)
 
+* GuiCustomControl::SetContainerComposition // using a special syntax
 * InstanceStyle:Replace
 
 ## ParserGen.exe
