@@ -26,7 +26,7 @@
 - [ ] GuiBindableRepeatContainer
     * Using `Flow` and `Stack` directly
     * Not a list control
-    * Or let list control be able to hide scrolls and extend the parent container
+    * Or let list control be able to hide scrolls and extend the parent container
 - [ ] Simplify item arranger
 - [ ] `ItemTemplate<T>` for control template properties
 - [ ] `ItemTemplate<T>` for item template properties, remove `IItemStyle(Provider|Controller)`
