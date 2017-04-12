@@ -26,8 +26,10 @@
 - [ ] GuiBindableRepeatContainer
     * Using `Flow` and `Stack` directly
     * Not a list control
+    * Or let list control be able to hide scrolls and extend the parent container
 - [ ] Simplify item arranger
-- [ ] `ItemTemplate<T>` for control template properties and item template properties, remove `IItemStyle(Provider|Controller)`
+- [ ] `ItemTemplate<T>` for control template properties
+- [ ] `ItemTemplate<T>` for item template properties, remove `IItemStyle(Provider|Controller)`
 - [ ] Redesign TabControl's control template so that a container can bind to tab header list control
 - [ ] Redesign ToolstripMenu so that items so that a container can bind to toolstrip items
 - [ ] Simple way to write animation using Workflow in Xml resource
