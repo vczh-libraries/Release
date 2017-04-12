@@ -23,7 +23,7 @@
 ## GacUI
 
 #### Templates
-- [ ] GuiRepeatContainer
+- [ ] GuiBindableRepeatContainer
     * Using `Flow` and `Stack` directly
     * Not a list control
 - [ ] Simplify item arranger
