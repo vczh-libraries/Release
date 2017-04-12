@@ -22,21 +22,33 @@
 
 ## GacUI
 
-* Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
-* Icon
-* Abstract Graphics API
-    * MetaImageElement
-        * Remove PolygonElement
-        * Default non-text element renderer implementation by delegating things to MetaImageElement
-        * Remove non-text GDI and D2D element renderer implementation
-    * Meta3DImageElement
-        * Default implementation by delegating things to MetaImageElement
-            * Surface-sorting based renderer
-* Chart, Ribbon, Dock Container
-* **(after animation is done)**
-    * New predefined control templates, written in XML generated C++ code.
-    * Retire Win7/Win8 control templates, rewrite them in tutorials.
-    * Remove control style interfaces, controls talk to templates directly
+#### Templates
+- [ ] GuiRepeatContainer
+    * Using `Flow` and `Stack` directly
+    * Not a list control
+- [ ] Simplify item arranger
+- [ ] `ItemTemplate<T>` for control template properties and item template properties, remove `IItemStyle(Provider|Controller)`
+- [ ] Redesign TabControl's control template so that a container can bind to tab header list control
+- [ ] Redesign ToolstripMenu so that items so that a container can bind to toolstrip items
+- [ ] Simple way to write animation using Workflow in Xml resource
+- [ ] New predefined control templates, written in XML generated C++ code.
+- [ ] Retire Win7/Win8 control templates, rewrite them in tutorials.
+- [ ] Remove control style interfaces, controls talk to templates directly
+- [ ] Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
+
+#### Graphics
+- [ ] MetaImageElement and MetaImage data structure
+- [ ] Remove PolygonElement
+- [ ] Default non-text element renderer using MetaImageElement
+- [ ] Replacing GDI and D2D non-text element renderers
+- [ ] Meta3DElement and Meta3D data structure
+- [ ] Default Meta3DElement renderer using MetaImageElement with a surface sorting based algorithm
+
+#### Controls
+- [ ] Chart
+- [ ] Ribbon
+- [ ] Dock Container
+- [ ] Icon
 
 ## GacUI Resource
 
