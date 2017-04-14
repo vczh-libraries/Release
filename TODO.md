@@ -28,6 +28,7 @@
     * Not a list control
     * Or let list control be able to hide scrolls and extend the parent container
 - [x] Simplify item arranger
+- [ ] Add deserializer to IGuiInstanceLoader series API
 - [ ] `ItemTemplate<T>` for control template properties
 - [ ] `ItemTemplate<T>` for item template properties, remove `IItemStyle(Provider|Controller)`
 - [ ] Redesign TabControl's control template so that a container can bind to tab header list control
