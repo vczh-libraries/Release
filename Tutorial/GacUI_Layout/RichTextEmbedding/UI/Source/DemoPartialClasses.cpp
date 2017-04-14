@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -558,7 +558,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::DocumentModel>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://EmbeddedDocument/Document\" cannot be read as type \"presentation::DocumentModel\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://EmbeddedDocument/Document\" cannot be read as type \"presentation::DocumentModel^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->documentViewer)->SetDocument(__vwsn_resource_value_);

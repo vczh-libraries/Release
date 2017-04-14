@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -136,7 +136,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Data/Logo\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Data/Logo\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_4.Obj())->SetImage(::vl::__vwsn::This(__vwsn_resource_value_.Obj())->GetImage());
@@ -151,7 +151,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::DocumentModel>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Data/Document\" cannot be read as type \"presentation::DocumentModel\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Data/Document\" cannot be read as type \"presentation::DocumentModel^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->documentLabel)->SetDocument(__vwsn_resource_value_);
@@ -169,7 +169,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiTextData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Data/Title\" cannot be read as type \"presentation::GuiTextData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Data/Title\" cannot be read as type \"presentation::GuiTextData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_0)->SetText(::vl::__vwsn::This(__vwsn_resource_value_.Obj())->GetText());

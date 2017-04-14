@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -19120,7 +19120,7 @@ Class (::darkskin::DocumentLabelTemplateConstructor)
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::DocumentModel>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://DarkSkin/BaselineDocument\" cannot be read as type \"presentation::DocumentModel\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://DarkSkin/BaselineDocument\" cannot be read as type \"presentation::DocumentModel^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetBaselineDocument(__vwsn_resource_value_);
@@ -19207,7 +19207,7 @@ Class (::darkskin::DocumentViewerTemplateConstructor)
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::DocumentModel>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://DarkSkin/BaselineDocument\" cannot be read as type \"presentation::DocumentModel\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://DarkSkin/BaselineDocument\" cannot be read as type \"presentation::DocumentModel^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->self)->SetBaselineDocument(__vwsn_resource_value_);
@@ -25659,7 +25659,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileNew)->SetImage(__vwsn_resource_value_);
@@ -25674,7 +25674,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileNewText)->SetImage(__vwsn_resource_value_);
@@ -25689,7 +25689,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_New.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileNewRtf)->SetImage(__vwsn_resource_value_);
@@ -25704,7 +25704,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileOpen)->SetImage(__vwsn_resource_value_);
@@ -25719,7 +25719,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileOpenText)->SetImage(__vwsn_resource_value_);
@@ -25734,7 +25734,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Open.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileOpenRtf)->SetImage(__vwsn_resource_value_);
@@ -25749,7 +25749,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Save.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Save.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileSave)->SetImage(__vwsn_resource_value_);
@@ -25764,7 +25764,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_SaveAs.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_SaveAs.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFileSaveAs)->SetImage(__vwsn_resource_value_);
@@ -25779,7 +25779,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Print.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Print.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandFilePrint)->SetImage(__vwsn_resource_value_);
@@ -25794,7 +25794,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Undo.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Undo.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditUndo)->SetImage(__vwsn_resource_value_);
@@ -25809,7 +25809,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Redo.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Redo.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditRedo)->SetImage(__vwsn_resource_value_);
@@ -25824,7 +25824,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Cut.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Cut.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditCut)->SetImage(__vwsn_resource_value_);
@@ -25839,7 +25839,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Copy.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Copy.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditCopy)->SetImage(__vwsn_resource_value_);
@@ -25854,7 +25854,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Paste.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Paste.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditPaste)->SetImage(__vwsn_resource_value_);
@@ -25869,7 +25869,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Delete.png\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/_Delete.png\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->commandEditDelete)->SetImage(__vwsn_resource_value_);
@@ -25923,7 +25923,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::DocumentModel>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Documents/Simple\" cannot be read as type \"presentation::DocumentModel\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Documents/Simple\" cannot be read as type \"presentation::DocumentModel^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_75)->SetDocument(__vwsn_resource_value_);
@@ -25941,7 +25941,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_175.Obj())->SetSmallImage(__vwsn_resource_value_);
@@ -25956,7 +25956,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeExcel.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeExcel.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_176.Obj())->SetSmallImage(__vwsn_resource_value_);
@@ -25971,7 +25971,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficePowerPoint.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficePowerPoint.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_177.Obj())->SetSmallImage(__vwsn_resource_value_);
@@ -25986,7 +25986,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOutlook.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOutlook.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_178.Obj())->SetSmallImage(__vwsn_resource_value_);
@@ -26001,7 +26001,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOneNote.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOneNote.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_179.Obj())->SetSmallImage(__vwsn_resource_value_);
@@ -26016,7 +26016,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_186.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
@@ -26032,7 +26032,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeExcel.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeExcel.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_187.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
@@ -26048,7 +26048,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficePowerPoint.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficePowerPoint.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_188.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
@@ -26064,7 +26064,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOutlook.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOutlook.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_189.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
@@ -26080,7 +26080,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOneNote.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeOneNote.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_190.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
@@ -26096,7 +26096,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" cannot be read as type \"presentation::GuiImageData\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Images/OfficeWord.ico\" cannot be read as type \"presentation::GuiImageData^\".", false));
 			}
 			{
 				(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::controls::tree::TreeViewItem>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_185.Obj())->GetData().Obj())).Obj())->image = __vwsn_resource_value_);
@@ -26112,7 +26112,7 @@ namespace demo
 			auto __vwsn_resource_value_ = ::vl::__vwsn::SharedPtrCast<::vl::presentation::DocumentModel>(__vwsn_resource_item_.Obj());
 			if ((! static_cast<bool>(__vwsn_resource_value_)))
 			{
-				throw ::vl::Exception(::vl::WString(L"Resource \"res://Documents/XmlDocDemo.xml\" cannot be read as type \"presentation::DocumentModel\".", false));
+				throw ::vl::Exception(::vl::WString(L"Resource \"res://Documents/XmlDocDemo.xml\" cannot be read as type \"presentation::DocumentModel^\".", false));
 			}
 			{
 				::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_209)->SetDocument(__vwsn_resource_value_);
