@@ -30,15 +30,16 @@
 - [x] Simplify item arranger
 - [x] Add deserializer to IGuiInstanceLoader series API
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
-- [ ] `ItemTemplate<T>` for control template properties
-- [ ] `ItemTemplate<T>` for item template properties, remove `IItemStyle(Provider|Controller)`
+- [x] `ItemTemplate<T>` for control template properties
+- [x] `ItemTemplate<T>` for item template properties
+- [ ] Remove `IItemStyle(Provider|Controller)`
 - [ ] Redesign TabControl's control template so that a container can bind to tab header list control
 - [ ] Redesign ToolstripMenu so that items so that a container can bind to toolstrip items
 - [ ] Simple way to write animation using Workflow in Xml resource
 - [ ] New predefined control templates, written in XML generated C++ code.
 - [ ] Retire Win7/Win8 control templates, rewrite them in tutorials.
 - [ ] Remove control style interfaces, controls talk to templates directly
-- [ ] Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
+- [x] Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
 
 #### Graphics
 - [ ] MetaImageElement and MetaImage data structure
