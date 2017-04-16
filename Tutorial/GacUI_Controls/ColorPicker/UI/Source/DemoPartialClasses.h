@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -33,7 +33,8 @@ namespace vl_workflow_global
 	struct __vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__;
 	struct __vwsnf4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__;
 	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	class __vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory;
+	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	class __vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 	class __vwsnc2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener;
 	class __vwsnc3_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
@@ -42,7 +43,6 @@ namespace vl_workflow_global
 	class __vwsnc6_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener;
 	class __vwsnc7_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 	class __vwsnc8_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__Subscribe__vl_reflection_description_IValueListener;
-	class __vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory;
 }
 
 namespace demo
@@ -144,9 +144,9 @@ namespace demo
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory;
-		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory;
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
@@ -169,9 +169,9 @@ namespace demo
 	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
 	{
 		friend class ::demo::MainWindowConstructor;
-		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory;
-		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory;
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
@@ -264,14 +264,22 @@ Closures
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	class __vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
+	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
-	public:
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
-		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
+		::vl::presentation::templates::GuiTextListItemTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
+	};
+
+	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiControlTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
 	};
 
 	class __vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
@@ -412,16 +420,6 @@ Closures
 		::vl::reflection::description::IValueSubscription* GetSubscription() override;
 		bool GetStopped() override;
 		bool StopListening() override;
-	};
-
-	class __vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory : public ::vl::Object, public virtual ::vl::presentation::templates::GuiTemplate::IFactory
-	{
-	public:
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::templates::GuiTemplate* CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_) override;
 	};
 }
 

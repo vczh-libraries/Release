@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -137,18 +137,35 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(__vwsnctorthis_0)
 	{
 	}
 
-	::vl::presentation::templates::GuiTemplate* __vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
+	::vl::presentation::templates::GuiTextListItemTemplate* __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const
 	{
 		{
 			if ([&](){ auto __vwsn_temp__ = __vwsn_viewModel_; return __vwsn_temp__.GetSharedPtr() && ::vl::__vwsn::RawPtrCast<::demo::IColorItem>(__vwsn_temp__.GetRawPtr()) != nullptr; }())
 			{
-				auto __vwsn_template_ = static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::demo::ColorBomboItemTemplate(::vl::__vwsn::Unbox<::vl::Ptr<::demo::IColorItem>>(__vwsn_viewModel_)));
-				return static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_);
+				return static_cast<::vl::presentation::templates::GuiTextListItemTemplate*>(new ::demo::ColorListItemTemplate(::vl::__vwsn::Unbox<::vl::Ptr<::demo::IColorItem>>(__vwsn_viewModel_)));
+			}
+		}
+		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(__vwsnctorthis_0)
+	{
+	}
+
+	::vl::presentation::templates::GuiControlTemplate* __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const
+	{
+		{
+			if ([&](){ auto __vwsn_temp__ = __vwsn_viewModel_; return __vwsn_temp__.GetSharedPtr() && ::vl::__vwsn::RawPtrCast<::demo::IColorItem>(__vwsn_temp__.GetRawPtr()) != nullptr; }())
+			{
+				return static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::demo::ColorBomboItemTemplate(::vl::__vwsn::Unbox<::vl::Ptr<::demo::IColorItem>>(__vwsn_viewModel_)));
 			}
 		}
 		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
@@ -578,25 +595,6 @@ Closures
 		return false;
 	}
 
-	//-------------------------------------------------------------------
-
-	__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(::demo::MainWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(__vwsnctorthis_0)
-	{
-	}
-
-	::vl::presentation::templates::GuiTemplate* __vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory::CreateTemplate(const ::vl::reflection::description::Value& __vwsn_viewModel_)
-	{
-		{
-			if ([&](){ auto __vwsn_temp__ = __vwsn_viewModel_; return __vwsn_temp__.GetSharedPtr() && ::vl::__vwsn::RawPtrCast<::demo::IColorItem>(__vwsn_temp__.GetRawPtr()) != nullptr; }())
-			{
-				auto __vwsn_template_ = static_cast<::vl::presentation::templates::GuiTextListItemTemplate*>(new ::demo::ColorListItemTemplate(::vl::__vwsn::Unbox<::vl::Ptr<::demo::IColorItem>>(__vwsn_viewModel_)));
-				return static_cast<::vl::presentation::templates::GuiTemplate*>(__vwsn_template_);
-			}
-		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
-	}
-
 }
 
 /***********************************************************************
@@ -840,7 +838,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->SetStyleProvider(::vl::Ptr<::vl::presentation::controls::GuiListControl::IItemStyleProvider>(::vl::Ptr<::vl::presentation::templates::GuiTextListItemTemplate_ItemStyleProvider>(new ::vl::presentation::templates::GuiTextListItemTemplate_ItemStyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this))))));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_6)->SetStyleProvider(::vl::Ptr<::vl::presentation::controls::GuiListControl::IItemStyleProvider>(::vl::Ptr<::vl::presentation::templates::GuiTextListItemTemplate_ItemStyleProvider>(new ::vl::presentation::templates::GuiTextListItemTemplate_ItemStyleProvider(LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this))))));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateComboBoxStyle();
@@ -851,7 +849,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_7)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = 0; __vwsn_temp__.top = 0; __vwsn_temp__.right = 0; __vwsn_temp__.bottom = 0; return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->SetStyleProvider(::vl::Ptr<::vl::presentation::controls::GuiComboBoxListControl::IItemStyleProvider>(::vl::Ptr<::vl::presentation::templates::GuiControlTemplate_ItemStyleProvider>(new ::vl::presentation::templates::GuiControlTemplate_ItemStyleProvider(::vl::Ptr<::vl::presentation::templates::GuiTemplate::IFactory>(new ::vl_workflow_global::__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_templates_GuiTemplate_IFactory(this))))));
+			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->SetStyleProvider(::vl::Ptr<::vl::presentation::controls::GuiComboBoxListControl::IItemStyleProvider>(::vl::Ptr<::vl::presentation::templates::GuiControlTemplate_ItemStyleProvider>(new ::vl::presentation::templates::GuiControlTemplate_ItemStyleProvider(LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this))))));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_4)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(::vl::__vwsn::This(this)->__vwsn_precompile_5)->GetBoundsComposition()));
