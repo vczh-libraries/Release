@@ -32,7 +32,8 @@
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
 - [x] `ItemTemplate<T>` for control template properties
 - [x] `ItemTemplate<T>` for item template properties
-- [ ] Remove `IItemStyle(Provider|Controller)`
+- [x] Remove `IItemStyle(Provider|Controller)`
+- [ ] Full control test UI in GacUISrc/Host project
 - [ ] Redesign TabControl's control template so that a container can bind to tab header list control
 - [ ] Redesign ToolstripMenu so that items so that a container can bind to toolstrip items
 - [ ] Simple way to write animation using Workflow in Xml resource
