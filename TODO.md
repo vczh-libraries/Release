@@ -31,17 +31,23 @@
 - [x] Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
 - [x] Remove `IItemStyle(Provider|Controller)`
 - [ ] Full control test UI in GacUISrc/Host project
-- [ ] New predefined control templates, written in XML generated C++ code.
+- [ ] **Update Release**, use Full control test to replace ControlTemplates tutorial
+- [ ] New default control templates, written in XML generated C++ code.
+- [ ] **Update Release**, use the new default control templates
 - [ ] GuiBindableRepeatContainer
     * Using `Flow` and `Stack` directly
     * Not a list control
     * Or let list control be able to hide scrolls and extend the parent container
 - [ ] Redesign TabControl's control template so that a container can bind to tab header list control
+- [ ] Update default control templates to write a new tab template
+- [ ] **Update Release**, update darkskin to write a new tab template
 - [ ] Remove control style interfaces, controls talk to templates directly, archive Win7/Win8 control templates
-- [ ] Redesign ToolstripMenu so that items so that a container can bind to toolstrip items
+- [ ] **Update Release**
 - [ ] Retire Win7/Win8 control templates, rewrite them in tutorials.
+- [ ] **Update Release**, reorganize ControlTemplates tutorial so that it builds a template library containing multiple set of skins
 - [ ] Simple way to write animation using Workflow in Xml resource, add animation to default control templates
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
+- [ ] Redesign ToolstripMenu so that items so that a container can bind to toolstrip items
 
 #### Graphics
 - [ ] MetaImageElement and MetaImage data structure
