@@ -2,6 +2,7 @@
 
 ## Vlpp
 
+* `IValueSubscription` uses event instead of `IValueListener` + `Subscribe(object)`
 * Regex supports UTF-16 (instead of UCS-2) on MSVC
     * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**)
 * Redesign vl::parsing
