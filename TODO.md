@@ -24,24 +24,24 @@
 ## GacUI
 
 #### Templates
+- [x] Simplify item arranger
+- [x] Add deserializer to IGuiInstanceLoader series API
+- [x] `ItemTemplate<T>` for control template properties
+- [x] `ItemTemplate<T>` for item template properties
+- [x] Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
+- [x] Remove `IItemStyle(Provider|Controller)`
+- [ ] Full control test UI in GacUISrc/Host project
+- [ ] New predefined control templates, written in XML generated C++ code.
 - [ ] GuiBindableRepeatContainer
     * Using `Flow` and `Stack` directly
     * Not a list control
     * Or let list control be able to hide scrolls and extend the parent container
-- [x] Simplify item arranger
-- [x] Add deserializer to IGuiInstanceLoader series API
-- [ ] Enable Workflow script template for IGuiInstanceLoader written in text
-- [x] `ItemTemplate<T>` for control template properties
-- [x] `ItemTemplate<T>` for item template properties
-- [x] Remove `IItemStyle(Provider|Controller)`
-- [ ] Full control test UI in GacUISrc/Host project
 - [ ] Redesign TabControl's control template so that a container can bind to tab header list control
+- [ ] Remove control style interfaces, controls talk to templates directly, archive Win7/Win8 control templates
 - [ ] Redesign ToolstripMenu so that items so that a container can bind to toolstrip items
-- [ ] Simple way to write animation using Workflow in Xml resource
-- [ ] New predefined control templates, written in XML generated C++ code.
 - [ ] Retire Win7/Win8 control templates, rewrite them in tutorials.
-- [ ] Remove control style interfaces, controls talk to templates directly
-- [x] Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
+- [ ] Simple way to write animation using Workflow in Xml resource, add animation to default control templates
+- [ ] Enable Workflow script template for IGuiInstanceLoader written in text
 
 #### Graphics
 - [ ] MetaImageElement and MetaImage data structure
