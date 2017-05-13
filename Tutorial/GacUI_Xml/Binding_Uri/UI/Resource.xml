@@ -48,18 +48,20 @@
           <Tab>
             <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
 
-            <TabPage Text="Image">
-              <Bounds MinSizeLimitation="LimitToElement">
-                <ImageFrameElement Image-uri="res://Data/Logo"/>
-              </Bounds>
-            </TabPage>
+            <att.Pages>
+              <TabPage Text="Image">
+                <Bounds MinSizeLimitation="LimitToElement">
+                  <ImageFrameElement Image-uri="res://Data/Logo"/>
+                </Bounds>
+              </TabPage>
 
-            <TabPage Text="Document">
-              <DocumentLabel ref.Name="documentLabel" Document-uri="res://Data/Document">
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                <ev.ActiveHyperlinkExecuted>documentLabel_ActiveHyperlinkExecuted</ev.ActiveHyperlinkExecuted>
-              </DocumentLabel>
-            </TabPage>
+              <TabPage Text="Document">
+                <DocumentLabel ref.Name="documentLabel" Document-uri="res://Data/Document">
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  <ev.ActiveHyperlinkExecuted>documentLabel_ActiveHyperlinkExecuted</ev.ActiveHyperlinkExecuted>
+                </DocumentLabel>
+              </TabPage>
+            </att.Pages>
           </Tab>
         </Window>
       </Instance>

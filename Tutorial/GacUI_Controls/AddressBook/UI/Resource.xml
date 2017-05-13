@@ -175,22 +175,22 @@
           </ToolstripCommand>
 
           <ToolstripCommand ref.Name="commandBigIcon" Image-uri="res://Images/BigIcon">
-            <ev.Executed>commandBigIcon_Executed</ev.Executed>
+            <ev.Executed-eval><![CDATA[listViewContacts.SetView(BigIcon);]]></ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandSmallIcon" Image-uri="res://Images/SmallIcon">
-            <ev.Executed>commandSmallIcon_Executed</ev.Executed>
+            <ev.Executed-eval><![CDATA[listViewContacts.SetView(SmallIcon);]]></ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandList" Image-uri="res://Images/List">
-            <ev.Executed>commandList_Executed</ev.Executed>
+            <ev.Executed-eval><![CDATA[listViewContacts.SetView(ListViewView::List);]]></ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandDetail" Image-uri="res://Images/Detail" Selected="true">
-            <ev.Executed>commandDetail_Executed</ev.Executed>
+            <ev.Executed-eval><![CDATA[listViewContacts.SetView(Detail);]]></ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandTile" Image-uri="res://Images/Tile">
-            <ev.Executed>commandTile_Executed</ev.Executed>
+            <ev.Executed-eval><![CDATA[listViewContacts.SetView(Tile);]]></ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandInformation" Image-uri="res://Images/Information">
-            <ev.Executed>commandInformation_Executed</ev.Executed>
+            <ev.Executed-eval><![CDATA[listViewContacts.SetView(Information);]]></ev.Executed-eval>
           </ToolstripCommand>
 
           <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
@@ -270,7 +270,7 @@
                   </Cell>
 
                   <Cell Site="row:1 column:0">
-                    <BindableListView ref.Name="listViewContacts" View="Detail" IconSize="x:16 y:16" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IContact^">
+                    <BindableListView ref.Name="listViewContacts" View="Detail" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IContact^">
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                       <att.ItemSource-bind>ViewModel.SelectedCategory.Contacts ?? null</att.ItemSource-bind>
                       <att.LargeImageProperty>BigImage</att.LargeImageProperty>

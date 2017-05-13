@@ -18823,7 +18823,6 @@ TypeName
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IValueDictionary, system::Dictionary)
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IValueInterfaceProxy, system::InterfaceProxy)
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IValueFunctionProxy, system::Function)
-			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IValueListener, system::Listener)
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IValueSubscription, system::Subscription)
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IValueCallStack, system::CallStack)
 			IMPL_TYPE_INFO_RENAME(vl::reflection::description::IValueException, system::Exception)
@@ -19194,57 +19193,66 @@ TypedValueSerializerProvider
 DateTimeValueSerializer
 ***********************************************************************/
 
-			class DateTimeValueSerializer : public Object, public virtual ISerializableType
+			BEGIN_GLOBAL_STORAGE_CLASS(DateTimeSerializerStorage)
+				Regex* regexDateTime = nullptr;
+
+				INITIALIZE_GLOBAL_STORAGE_CLASS
+					regexDateTime = new Regex(L"(<Y>/d/d/d/d)-(<M>/d/d)-(<D>/d/d) (<h>/d/d):(<m>/d/d):(<s>/d/d).(<ms>/d/d/d)");
+
+				FINALIZE_GLOBAL_STORAGE_CLASS
+					delete regexDateTime;
+					regexDateTime = nullptr;
+
+			END_GLOBAL_STORAGE_CLASS(DateTimeSerializerStorage)
+
+			DateTime TypedValueSerializerProvider<DateTime>::GetDefaultValue()
 			{
-			protected:
-				Regex				regexDateTime;
+				return DateTime();
+			}
 
-				WString Format(vint number, vint length)
+			WString FormatDigits(vint number, vint length)
+			{
+				WString result = itow(number);
+				while (result.Length() < length)
 				{
-					WString result = itow(number);
-					while (result.Length() < length)
-					{
-						result = L"0" + result;
-					}
-					return result;
+					result = L"0" + result;
 				}
+				return result;
+			}
 
-			public:
-				DateTimeValueSerializer()
-					:regexDateTime(L"(<Y>/d/d/d/d)-(<M>/d/d)-(<D>/d/d) (<h>/d/d):(<m>/d/d):(<s>/d/d).(<ms>/d/d/d)")
-				{
-				}
+			bool TypedValueSerializerProvider<DateTime>::Serialize(const DateTime& input, WString& output)
+			{
+				output =
+					FormatDigits(input.year, 4) + L"-" + FormatDigits(input.month, 2) + L"-" + FormatDigits(input.day, 2) + L" " +
+					FormatDigits(input.hour, 2) + L":" + FormatDigits(input.minute, 2) + L":" + FormatDigits(input.second, 2) + L"." +
+					FormatDigits(input.milliseconds, 3);
+				return true;
+			}
 
-				bool Serialize(const Value& input, WString& output)override
-				{
-					auto dt = UnboxValue<DateTime>(input);
-					output =
-						Format(dt.year, 4) + L"-" + Format(dt.month, 2) + L"-" + Format(dt.day, 2) + L" " +
-						Format(dt.hour, 2) + L":" + Format(dt.minute, 2) + L":" + Format(dt.second, 2) + L"." +
-						Format(dt.milliseconds, 3);
-					return true;
-				}
+			bool TypedValueSerializerProvider<DateTime>::Deserialize(const WString& input, DateTime& output)
+			{
+				Ptr<RegexMatch> match = GetDateTimeSerializerStorage().regexDateTime->Match(input);
+				if (!match) return false;
+				if (!match->Success()) return false;
+				if (match->Result().Start() != 0) return false;
+				if (match->Result().Length() != input.Length()) return false;
 
-				bool Deserialize(const WString& input, Value& output)override
-				{
-					Ptr<RegexMatch> match = regexDateTime.Match(input);
-					if (!match) return false;
-					if (!match->Success()) return false;
-					if (match->Result().Start() != 0) return false;
-					if (match->Result().Length() != input.Length()) return false;
+				vint year = wtoi(match->Groups()[L"Y"].Get(0).Value());
+				vint month = wtoi(match->Groups()[L"M"].Get(0).Value());
+				vint day = wtoi(match->Groups()[L"D"].Get(0).Value());
+				vint hour = wtoi(match->Groups()[L"h"].Get(0).Value());
+				vint minute = wtoi(match->Groups()[L"m"].Get(0).Value());
+				vint second = wtoi(match->Groups()[L"s"].Get(0).Value());
+				vint milliseconds = wtoi(match->Groups()[L"ms"].Get(0).Value());
 
-					vint year = wtoi(match->Groups()[L"Y"].Get(0).Value());
-					vint month = wtoi(match->Groups()[L"M"].Get(0).Value());
-					vint day = wtoi(match->Groups()[L"D"].Get(0).Value());
-					vint hour = wtoi(match->Groups()[L"h"].Get(0).Value());
-					vint minute = wtoi(match->Groups()[L"m"].Get(0).Value());
-					vint second = wtoi(match->Groups()[L"s"].Get(0).Value());
-					vint milliseconds = wtoi(match->Groups()[L"ms"].Get(0).Value());
+				output = DateTime::FromDateTime(year, month, day, hour, minute, second, milliseconds);
+				return true;
+			}
 
-					output = BoxValue<DateTime>(DateTime::FromDateTime(year, month, day, hour, minute, second, milliseconds));
-					return true;
-				}
-			};
+			IBoxedValue::CompareResult TypedValueSerializerProvider<DateTime>::Compare(const DateTime& a, const DateTime& b)
+			{
+				return IBoxedValue::NotComparable;
+			}
 
 /***********************************************************************
 Helper Functions
@@ -19389,7 +19397,7 @@ LoadPredefinedTypes
 			END_INTERFACE_MEMBER(IDescriptable)
 
 			BEGIN_STRUCT_MEMBER(DateTime)
-				serializableType = new DateTimeValueSerializer();
+				serializableType = new SerializableType<DateTime>();
 				STRUCT_MEMBER(year)
 				STRUCT_MEMBER(month)
 				STRUCT_MEMBER(dayOfWeek)
@@ -19461,14 +19469,9 @@ LoadPredefinedTypes
 				CLASS_MEMBER_METHOD(Invoke, { L"arguments" })
 			END_INTERFACE_MEMBER(IValueFunctionProxy)
 
-			BEGIN_INTERFACE_MEMBER(IValueListener)
-				CLASS_MEMBER_PROPERTY_READONLY_FAST(Subscription)
-				CLASS_MEMBER_PROPERTY_READONLY_FAST(Stopped)
-				CLASS_MEMBER_METHOD(StopListening, NO_PARAMETER)
-			END_INTERFACE_MEMBER(IValueListener)
-
 			BEGIN_INTERFACE_MEMBER(IValueSubscription)
-				CLASS_MEMBER_METHOD(Subscribe, { L"callback" })
+				CLASS_MEMBER_EVENT(ValueChanged)
+				CLASS_MEMBER_METHOD(Open, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(Update, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(Close, NO_PARAMETER)
 			END_CLASS_MEMBER(IValueSubscription)
@@ -19771,7 +19774,6 @@ LoadPredefinedTypes
 					ADD_TYPE_INFO(IValueInterfaceProxy)
 					ADD_TYPE_INFO(IValueFunctionProxy)
 
-					ADD_TYPE_INFO(IValueListener)
 					ADD_TYPE_INFO(IValueSubscription)
 					ADD_TYPE_INFO(IValueCallStack)
 					ADD_TYPE_INFO(IValueException)

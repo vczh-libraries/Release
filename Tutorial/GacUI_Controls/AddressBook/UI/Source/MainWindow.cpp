@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -46,66 +46,20 @@ namespace demo
 		return ::vl::__vwsn::This(this)->__vwsn_parameter_ViewModel;
 	}
 
-	USERIMPL(/* ::demo::MainWindow */)
-	void MainWindow::commandBigIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
-		ClearViewSelection();
-		commandBigIcon->SetSelected(true);
-		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewBigIconContentProvider);
-	}
-
-	USERIMPL(/* ::demo::MainWindow */)
-	void MainWindow::commandSmallIcon_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
-		ClearViewSelection();
-		commandSmallIcon->SetSelected(true);
-		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewSmallIconContentProvider);
-	}
-
-	USERIMPL(/* ::demo::MainWindow */)
-	void MainWindow::commandList_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
-		ClearViewSelection();
-		commandList->SetSelected(true);
-		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewListContentProvider);
-	}
-
-	USERIMPL(/* ::demo::MainWindow */)
-	void MainWindow::commandDetail_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
-		ClearViewSelection();
-		commandDetail->SetSelected(true);
-		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewDetailContentProvider);
-	}
-
-	USERIMPL(/* ::demo::MainWindow */)
-	void MainWindow::commandTile_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
-		ClearViewSelection();
-		commandTile->SetSelected(true);
-		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewTileContentProvider);
-	}
-
-	USERIMPL(/* ::demo::MainWindow */)
-	void MainWindow::commandInformation_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
-		ClearViewSelection();
-		commandInformation->SetSelected(true);
-		listViewContacts->ChangeItemStyle(new vl::presentation::controls::list::ListViewInformationContentProvider);
-	}
-
 	MainWindow::MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel)
 		: ::vl::presentation::controls::GuiWindow(::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateWindowStyle())
 	{
 		(::vl::__vwsn::This(this)->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->__vwsn_initialize_instance_(this, ::vl::__vwsn::Ensure(static_cast<::vl::presentation::GuiResourcePathResolver*>(__vwsn_resolver_.Obj())));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_initialize_instance_(this);
 	}
 
 	MainWindow::~MainWindow()
 	{
 		::vl::__vwsn::This(this)->ClearSubscriptions();
+		::vl::__vwsn::This(this)->ClearComponents();
 	}
 
 }
