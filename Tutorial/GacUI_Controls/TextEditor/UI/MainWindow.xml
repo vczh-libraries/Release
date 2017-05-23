@@ -56,11 +56,11 @@
     </ToolstripCommand>
 
     <ToolstripCommand ref.Name="commandEditUndo" Text="Undo" Image-uri="res://Images/EditUndo.png" ShortcutBuilder="Ctrl+Z">
-      <att.Enabled-bind>textBox.observe as _(_.CanUndo() on _.SelectionChanged)</att.Enabled-bind>
+      <att.Enabled-bind>textBox.observe as _(_.CanUndo() on _.UndoRedoChanged)</att.Enabled-bind>
       <ev.Executed>commandEditUndo_Executed</ev.Executed>
     </ToolstripCommand>
     <ToolstripCommand ref.Name="commandEditRedo" Text="Redo" Image-uri="res://Images/EditRedo.png" ShortcutBuilder="Ctrl+Y">
-      <att.Enabled-bind>textBox.observe as _(_.CanRedo() on _.SelectionChanged)</att.Enabled-bind>
+      <att.Enabled-bind>textBox.observe as _(_.CanRedo() on _.UndoRedoChanged)</att.Enabled-bind>
       <ev.Executed>commandEditRedo_Executed</ev.Executed>
     </ToolstripCommand>
     <ToolstripCommand ref.Name="commandEditCut" Text="Cut" Image-uri="res://Images/EditCut.png" ShortcutBuilder="Ctrl+X">
