@@ -76,7 +76,7 @@
       <ev.Executed>commandEditPaste_Executed</ev.Executed>
     </ToolstripCommand>
     <ToolstripCommand ref.Name="commandEditDelete" Text="Delete" Image-uri="res://Images/EditDelete.png">
-      <att.Enabled-bind>textBox.SelectionText != ''</att.Enabled-bind>
+      <att.Enabled-bind>textBox.observe as _(_.CanCut() on _.SelectionChanged)</att.Enabled-bind>
       <ev.Executed>commandEditDelete_Executed</ev.Executed>
     </ToolstripCommand>
     <ToolstripCommand ref.Name="commandEditSelect" Text="Select All" ShortcutBuilder="Ctrl+A">
