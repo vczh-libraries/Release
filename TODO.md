@@ -15,6 +15,7 @@
 * Issues:
     * `prop A : A = x {}` doesn't report error (because type A should resolve to the property itself)
     * `func X(x : NotExists) : void;` crashes
+    * `bind(let-expression)` generates wrong code
 
 #### (probably not do)
 
