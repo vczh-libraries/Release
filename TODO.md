@@ -13,7 +13,6 @@
     * Use ::vl::vint for int in both 32 and 64 configurations.
 * State Machine
 * Issues:
-    * `bind(let-expression)` generates wrong code
 
 #### (probably not do)
 
