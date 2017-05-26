@@ -16,6 +16,7 @@
     * `prop A : A = x {}` doesn't report error (because type A should resolve to the property itself)
     * `func X(x : NotExists) : void;` crashes
     * `bind(let-expression)` generates wrong code
+    * `(null of Enum?) == Enum::Item` crashes
 
 #### (probably not do)
 
@@ -33,7 +34,7 @@
 - [x] `ItemTemplate<T>` for item template properties
 - [x] Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
 - [x] Remove `IItemStyle(Provider|Controller)`
-- [ ] Full control test UI in GacUISrc/Host project
+- [x] Full control test UI in GacUISrc/Host project
 - [ ] **Update Release**, use Full control test to replace ControlTemplates tutorial
 - [ ] New default control templates, written in XML generated C++ code.
 - [ ] **Update Release**, use the new default control templates
