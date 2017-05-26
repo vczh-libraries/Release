@@ -13,7 +13,6 @@
     * Use ::vl::vint for int in both 32 and 64 configurations.
 * State Machine
 * Issues:
-    * `prop A : A = x {}` doesn't report error (because type A should resolve to the property itself)
     * `func X(x : NotExists) : void;` crashes
     * `bind(let-expression)` generates wrong code
 
