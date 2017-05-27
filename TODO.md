@@ -2,17 +2,25 @@
 
 ## Vlpp
 
-* Regex supports UTF-16 (instead of UCS-2) on MSVC
-    * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**)
-* Redesign vl::parsing
+* Regex supports UTF-16 (instead of UCS-2) on MSVC.
+    * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
+* Redesign vl::parsing.
+* Binary ITypeDescriptor provider format.
+* API to import and export fake types (ITypeDescriptor that cannot be executed)
 
 ## Workflow
 
 * **Workflow to C++ code generation with hint**.
     * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
-    * Use ::vl::vint for int in both 32 and 64 configurations.
-* State Machine
-* Issues:
+* Support `<category>name` identifier, make generated code re-parsable.
+* Separate assembly binary to types, instructions and debug informations.
+* State Machine.
+* WorkflowCompiler.exe (x32/x64)
+    * Enable external symbols
+    * Compile
+    * Binary Output (full assembly or types only)
+    * C++ Codegen (x32/x64)
+    * C++ Merge
 
 #### (probably not do)
 
@@ -78,6 +86,8 @@
 ## GacGen.exe
 
 * Enable linking to external symbols
+* In the final pass, only workflow scripts are printed
+    * Use WorkflowCompiler.exe to do codegen externally
 
 ## GacStudio.exe
 
