@@ -5,17 +5,20 @@
 * Regex supports UTF-16 (instead of UCS-2) on MSVC.
     * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
 * Redesign vl::parsing.
-* Binary ITypeDescriptor provider format.
-* API to import and export fake types (ITypeDescriptor that cannot be executed)
+* `IValueObservableList` inherits from `IValueList` instead of `IValueReadonlyList`
+* Move the `IValueObservableList` implementation from GacUI to Vlpp
+* **(optional)** Binary ITypeDescriptor provider format.
+* **(optional)** API to import and export fake types (ITypeDescriptor that cannot be executed)
 
 ## Workflow
 
 * **Workflow to C++ code generation with hint**.
     * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
+    * Leave spaces for user defined `#include`s or `using namespace`s.
 * Support `<category>name` identifier, make generated code re-parsable.
-* Separate assembly binary to types, instructions and debug informations.
-* State Machine.
-* WorkflowCompiler.exe (x32/x64)
+* **(optional)** Separate assembly binary to types, instructions and debug informations.
+* **(optional)** State Machine.
+* **(optional)** WorkflowCompiler.exe (x32/x64)
     * Enable external symbols
     * Compile
     * Binary Output (full assembly or types only)
@@ -86,7 +89,7 @@
 ## GacGen.exe
 
 * Enable linking to external symbols
-* In the final pass, only workflow scripts are printed
+* **(optional)** In the final pass, only workflow scripts are printed
     * Use WorkflowCompiler.exe to do codegen externally
 
 ## GacStudio.exe
