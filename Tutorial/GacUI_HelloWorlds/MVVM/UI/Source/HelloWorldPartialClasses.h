@@ -245,11 +245,11 @@ Closures
 
 		__vwsnc3_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
-		::vl::Ptr<::vm::IViewModel> __vwsn_bind_cache_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		::helloworld::MainWindow* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vm::IViewModel> __vwsn_bind_cache_1;
+		::vl::Ptr<::vm::IViewModel> __vwsn_bind_cache_2;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_1_0;
-		::helloworld::MainWindow* __vwsn_bind_cache_2 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_2_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;

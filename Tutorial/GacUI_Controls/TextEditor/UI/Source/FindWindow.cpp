@@ -101,8 +101,7 @@ namespace demo
 
 	FindWindow::~FindWindow()
 	{
-		::vl::__vwsn::This(this)->ClearSubscriptions();
-		::vl::__vwsn::This(this)->ClearComponents();
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControl*>(this));
 	}
 
 }

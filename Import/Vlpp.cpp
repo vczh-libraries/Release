@@ -18765,6 +18765,38 @@ Libraries
 				}
 				return new system_sys::ReverseEnumerable(list);
 			}
+
+#define DEFINE_COMPARE(TYPE)\
+			vint Sys::Compare(TYPE a, TYPE b)\
+			{\
+				auto result = TypedValueSerializerProvider<TYPE>::Compare(a, b);\
+				switch (result)\
+				{\
+				case IBoxedValue::Smaller:	return -1;\
+				case IBoxedValue::Greater:	return 1;\
+				case IBoxedValue::Equal:	return 0;\
+				default:\
+					CHECK_FAIL(L"Unexpected compare result.");\
+				}\
+			}\
+
+			REFLECTION_PREDEFINED_PRIMITIVE_TYPES(DEFINE_COMPARE)
+			DEFINE_COMPARE(DateTime)
+#undef DEFINE_COMPARE
+
+#define DEFINE_MINMAX(TYPE)\
+			TYPE Math::Min(TYPE a, TYPE b)\
+			{\
+				return Sys::Compare(a, b) < 0 ? a : b;\
+			}\
+			TYPE Math::Max(TYPE a, TYPE b)\
+			{\
+				return Sys::Compare(a, b) > 0 ? a : b;\
+			}\
+
+			REFLECTION_PREDEFINED_PRIMITIVE_TYPES(DEFINE_MINMAX)
+			DEFINE_MINMAX(DateTime)
+#undef DEFINE_MINMAX
 		}
 	}
 }
@@ -18870,20 +18902,7 @@ TypedValueSerializerProvider
 				return IBoxedValue::Equal;\
 			}\
 
-			DEFINE_COMPARE(vuint8_t)
-			DEFINE_COMPARE(vuint16_t)
-			DEFINE_COMPARE(vuint32_t)
-			DEFINE_COMPARE(vuint64_t)
-			DEFINE_COMPARE(vint8_t)
-			DEFINE_COMPARE(vint16_t)
-			DEFINE_COMPARE(vint32_t)
-			DEFINE_COMPARE(vint64_t)
-			DEFINE_COMPARE(float)
-			DEFINE_COMPARE(double)
-			DEFINE_COMPARE(bool)
-			DEFINE_COMPARE(wchar_t)
-			DEFINE_COMPARE(WString)
-			DEFINE_COMPARE(Locale)
+			REFLECTION_PREDEFINED_PRIMITIVE_TYPES(DEFINE_COMPARE)
 
 #undef DEFINE_COMPARE
 
@@ -19251,7 +19270,11 @@ DateTimeValueSerializer
 
 			IBoxedValue::CompareResult TypedValueSerializerProvider<DateTime>::Compare(const DateTime& a, const DateTime& b)
 			{
-				return IBoxedValue::NotComparable;
+				auto ta = a.filetime;
+				auto tb = b.filetime;
+				if (ta < tb) return IBoxedValue::Smaller;
+				if (ta > tb) return IBoxedValue::Greater;
+				return IBoxedValue::Equal;
 			}
 
 /***********************************************************************
@@ -19335,6 +19358,26 @@ LoadPredefinedTypes
 				};
 			};
 
+#define PT(TYPE) PT_##TYPE
+#define PT_vint Int
+#define PT_vint8_t Int8
+#define PT_vint16_t Int16
+#define PT_vint32_t Int32
+#define PT_vint64_t Int64
+#define PT_vuint8_t UInt8
+#define PT_vuint16_t UInt16
+#define PT_vuint32_t UInt32
+#define PT_vuint64_t UInt64
+#define PT_float Single
+#define PT_double Double
+#define PT_bool Bool
+#define PT_wchar_t Char
+#define PT_WString String
+#define PT_Locale Locale
+#define PT_DateTime DateTime
+#define PT_CONCAT_(A, B) A##B
+#define PT_CONCAT(A, B) PT_CONCAT_(A, B)
+
 			BEGIN_CLASS_MEMBER(Sys)
 				CLASS_MEMBER_STATIC_METHOD(Len, { L"value" })
 				CLASS_MEMBER_STATIC_METHOD(Left, { L"value" _ L"length" })
@@ -19342,29 +19385,34 @@ LoadPredefinedTypes
 				CLASS_MEMBER_STATIC_METHOD(Mid, { L"value" _ L"start" _ L"length" })
 				CLASS_MEMBER_STATIC_METHOD(Find, { L"value" _ L"substr" })
 				CLASS_MEMBER_STATIC_METHOD(ReverseEnumerable, { L"value" })
+#pragma push_macro("CompareString")
+#if defined CompareString
+#undef CompareString
+#endif
+#define DEFINE_COMPARE(TYPE) CLASS_MEMBER_STATIC_EXTERNALMETHOD(PT_CONCAT(Compare, PT(TYPE)), PROTECT_PARAMETERS({L"a" _ L"b"}), vint(*)(TYPE, TYPE), vl::reflection::description::Sys::Compare)
+				REFLECTION_PREDEFINED_PRIMITIVE_TYPES(DEFINE_COMPARE)
+				DEFINE_COMPARE(DateTime)
+				DEFINE_COMPARE(vint)
+#undef DEFINE_COMPARE
+#pragma pop_macro("CompareString")
 			END_CLASS_MEMBER(Sys)
 
 			BEGIN_CLASS_MEMBER(Math)
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Abs, { L"value" }, vint8_t(*)(vint8_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Abs, { L"value" }, vint16_t(*)(vint16_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Abs, { L"value" }, vint32_t(*)(vint32_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Abs, { L"value" }, vint64_t(*)(vint64_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Abs, { L"value" }, float(*)(float))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Abs, { L"value" }, double(*)(double))
+				CLASS_MEMBER_STATIC_EXTERNALMETHOD(AbsInt8, { L"value" }, vint8_t(*)(vint8_t), vl::reflection::description::Math::Abs)
+				CLASS_MEMBER_STATIC_EXTERNALMETHOD(AbsInt16, { L"value" }, vint16_t(*)(vint16_t), vl::reflection::description::Math::Abs)
+				CLASS_MEMBER_STATIC_EXTERNALMETHOD(AbsInt32, { L"value" }, vint32_t(*)(vint32_t), vl::reflection::description::Math::Abs)
+				CLASS_MEMBER_STATIC_EXTERNALMETHOD(AbsInt64, { L"value" }, vint64_t(*)(vint64_t), vl::reflection::description::Math::Abs)
+				CLASS_MEMBER_STATIC_EXTERNALMETHOD(AbsSingle, { L"value" }, float(*)(float), vl::reflection::description::Math::Abs)
+				CLASS_MEMBER_STATIC_EXTERNALMETHOD(AbsDouble, { L"value" }, double(*)(double), vl::reflection::description::Math::Abs)
 
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Max, { L"a" _ L"b" }, vint8_t(*)(vint8_t, vint8_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Max, { L"a" _ L"b" }, vint16_t(*)(vint16_t, vint16_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Max, { L"a" _ L"b" }, vint32_t(*)(vint32_t, vint32_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Max, { L"a" _ L"b" }, vint64_t(*)(vint64_t, vint64_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Max, { L"a" _ L"b" }, float(*)(float, float))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Max, { L"a" _ L"b" }, double(*)(double, double))
+#define DEFINE_MINMAX(TYPE)\
+				CLASS_MEMBER_STATIC_EXTERNALMETHOD(PT_CONCAT(Min, PT(TYPE)), PROTECT_PARAMETERS({L"a" _ L"b"}), TYPE(*)(TYPE, TYPE), vl::reflection::description::Math::Min)\
+				CLASS_MEMBER_STATIC_EXTERNALMETHOD(PT_CONCAT(Max, PT(TYPE)), PROTECT_PARAMETERS({L"a" _ L"b"}), TYPE(*)(TYPE, TYPE), vl::reflection::description::Math::Max)\
 
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Min, { L"a" _ L"b" }, vint8_t(*)(vint8_t, vint8_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Min, { L"a" _ L"b" }, vint16_t(*)(vint16_t, vint16_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Min, { L"a" _ L"b" }, vint32_t(*)(vint32_t, vint32_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Min, { L"a" _ L"b" }, vint64_t(*)(vint64_t, vint64_t))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Min, { L"a" _ L"b" }, float(*)(float, float))
-				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Min, { L"a" _ L"b" }, double(*)(double, double))
+				REFLECTION_PREDEFINED_PRIMITIVE_TYPES(DEFINE_MINMAX)
+				DEFINE_MINMAX(DateTime)
+				DEFINE_MINMAX(vint)
+#undef DEFINE_MINMAX
 
 				CLASS_MEMBER_STATIC_METHOD(Sin, { L"value" })
 				CLASS_MEMBER_STATIC_METHOD(Cos, { L"value" })
@@ -19390,6 +19438,24 @@ LoadPredefinedTypes
 				CLASS_MEMBER_STATIC_METHOD(TruncI, { L"value" })
 			END_CLASS_MEMBER(Math)
 
+#undef PT
+#undef PT_vint8_t
+#undef PT_vint16_t
+#undef PT_vint32_t
+#undef PT_vint64_t
+#undef PT_vuint8_t
+#undef PT_vuint16_t
+#undef PT_vuint32_t
+#undef PT_vuint64_t
+#undef PT_float
+#undef PT_double
+#undef PT_bool
+#undef PT_wchar_t
+#undef PT_WString
+#undef PT_DateTime
+#undef PT_CONCAT_
+#undef PT_CONCAT
+
 			BEGIN_STRUCT_MEMBER_FLAG(VoidValue, TypeDescriptorFlags::Primitive)
 			END_STRUCT_MEMBER(VoidValue)
 
@@ -19397,6 +19463,7 @@ LoadPredefinedTypes
 			END_INTERFACE_MEMBER(IDescriptable)
 
 			BEGIN_STRUCT_MEMBER(DateTime)
+				valueType = new SerializableValueType<DateTime>();
 				serializableType = new SerializableType<DateTime>();
 				STRUCT_MEMBER(year)
 				STRUCT_MEMBER(month)
@@ -19732,81 +19799,13 @@ LoadPredefinedTypes
 			class PredefinedTypeLoader : public Object, public ITypeLoader
 			{
 			public:
-				template<typename T>
-				void AddPrimitiveType(ITypeManager* manager)
-				{
-					manager->SetTypeDescriptor(TypeInfo<T>::content.typeName, new PrimitiveTypeDescriptor<T>());
-				}
-
 				void Load(ITypeManager* manager)override
 				{
 					manager->SetTypeDescriptor(TypeInfo<Value>::content.typeName, new TypedValueTypeDescriptorBase<Value, TypeDescriptorFlags::Object>);
-					AddPrimitiveType<vuint8_t>(manager);
-					AddPrimitiveType<vuint16_t>(manager);
-					AddPrimitiveType<vuint32_t>(manager);
-					AddPrimitiveType<vuint64_t>(manager);
-					AddPrimitiveType<vint8_t>(manager);
-					AddPrimitiveType<vint16_t>(manager);
-					AddPrimitiveType<vint32_t>(manager);
-					AddPrimitiveType<vint64_t>(manager);
-					AddPrimitiveType<float>(manager);
-					AddPrimitiveType<double>(manager);
-					AddPrimitiveType<wchar_t>(manager);
-					AddPrimitiveType<WString>(manager);
-					AddPrimitiveType<Locale>(manager);
-					AddPrimitiveType<bool>(manager);
-
-					ADD_TYPE_INFO(Sys)
-					ADD_TYPE_INFO(Math)
-
-					ADD_TYPE_INFO(VoidValue)
-					ADD_TYPE_INFO(IDescriptable)
-					ADD_TYPE_INFO(DescriptableObject)
-					ADD_TYPE_INFO(DateTime)
-
-					ADD_TYPE_INFO(IValueEnumerator)
-					ADD_TYPE_INFO(IValueEnumerable)
-					ADD_TYPE_INFO(IValueReadonlyList)
-					ADD_TYPE_INFO(IValueList)
-					ADD_TYPE_INFO(IValueObservableList)
-					ADD_TYPE_INFO(IValueReadonlyDictionary)
-					ADD_TYPE_INFO(IValueDictionary)
-					ADD_TYPE_INFO(IValueInterfaceProxy)
-					ADD_TYPE_INFO(IValueFunctionProxy)
-
-					ADD_TYPE_INFO(IValueSubscription)
-					ADD_TYPE_INFO(IValueCallStack)
-					ADD_TYPE_INFO(IValueException)
-
-					ADD_TYPE_INFO(CoroutineStatus)
-					ADD_TYPE_INFO(CoroutineResult)
-					ADD_TYPE_INFO(ICoroutine)
-					ADD_TYPE_INFO(EnumerableCoroutine::IImpl)
-					ADD_TYPE_INFO(EnumerableCoroutine)
-					ADD_TYPE_INFO(AsyncStatus)
-					ADD_TYPE_INFO(IAsync)
-					ADD_TYPE_INFO(IPromise)
-					ADD_TYPE_INFO(IFuture)
-					ADD_TYPE_INFO(IAsyncScheduler)
-					ADD_TYPE_INFO(AsyncCoroutine::IImpl)
-					ADD_TYPE_INFO(AsyncCoroutine)
-
-					ADD_TYPE_INFO(IBoxedValue)
-					ADD_TYPE_INFO(IBoxedValue::CompareResult)
-					ADD_TYPE_INFO(IValueType)
-					ADD_TYPE_INFO(IEnumType)
-					ADD_TYPE_INFO(ISerializableType)
-					ADD_TYPE_INFO(ITypeInfo)
-					ADD_TYPE_INFO(ITypeInfo::Decorator)
-					ADD_TYPE_INFO(IMemberInfo)
-					ADD_TYPE_INFO(IEventHandler)
-					ADD_TYPE_INFO(IEventInfo)
-					ADD_TYPE_INFO(IPropertyInfo)
-					ADD_TYPE_INFO(IParameterInfo)
-					ADD_TYPE_INFO(IMethodInfo)
-					ADD_TYPE_INFO(IMethodGroupInfo)
-					ADD_TYPE_INFO(TypeDescriptorFlags)
-					ADD_TYPE_INFO(ITypeDescriptor)
+#define ADD_PRIMITIVE_TYPE(TYPE) manager->SetTypeDescriptor(TypeInfo<TYPE>::content.typeName, new PrimitiveTypeDescriptor<TYPE>());
+					REFLECTION_PREDEFINED_PRIMITIVE_TYPES(ADD_PRIMITIVE_TYPE)
+#undef ADD_PRIMITIVE_TYPE
+					REFLECTION_PREDEFINED_COMPLEX_TYPES(ADD_TYPE_INFO, VoidValue)
 				}
 
 				void Unload(ITypeManager* manager)override

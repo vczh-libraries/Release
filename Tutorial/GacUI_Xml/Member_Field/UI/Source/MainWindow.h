@@ -36,7 +36,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	protected:
-		::vl::vint32_t integerState = 0;
+		::vl::vint32_t integerState = static_cast<::vl::vint32_t>(0);
 		void buttonPaste_Clicked(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments);
 	public:
 		MainWindow();

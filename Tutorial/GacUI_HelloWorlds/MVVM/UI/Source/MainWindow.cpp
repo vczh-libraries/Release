@@ -33,20 +33,20 @@ namespace helloworld
 {
 	bool MainWindow::GetHasLoggedIn()
 	{
-		return ::vl::__vwsn::This(this)->__vwsn_prop_HasLoggedIn;
+		return this->__vwsn_prop_HasLoggedIn;
 	}
 	void MainWindow::SetHasLoggedIn(bool __vwsn_value_)
 	{
-		if ((::vl::__vwsn::This(this)->__vwsn_prop_HasLoggedIn != __vwsn_value_))
+		if ((this->__vwsn_prop_HasLoggedIn != __vwsn_value_))
 		{
-			(::vl::__vwsn::This(this)->__vwsn_prop_HasLoggedIn = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(::vl::__vwsn::This(this)->HasLoggedInChanged)();
+			(this->__vwsn_prop_HasLoggedIn = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->HasLoggedInChanged)();
 		}
 	}
 
 	::vl::Ptr<::vm::IViewModel> MainWindow::GetViewModel()
 	{
-		return ::vl::__vwsn::This(this)->__vwsn_parameter_ViewModel;
+		return this->__vwsn_parameter_ViewModel;
 	}
 
 	USERIMPL(/* ::helloworld::MainWindow */)
@@ -62,7 +62,7 @@ namespace helloworld
 	MainWindow::MainWindow(::vl::Ptr<::vm::IViewModel> __vwsn_ctor_parameter_ViewModel)
 		: ::vl::presentation::controls::GuiWindow(::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateWindowStyle())
 	{
-		(::vl::__vwsn::This(this)->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
+		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"helloworld::MainWindow", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
@@ -71,8 +71,7 @@ namespace helloworld
 
 	MainWindow::~MainWindow()
 	{
-		::vl::__vwsn::This(this)->ClearSubscriptions();
-		::vl::__vwsn::This(this)->ClearComponents();
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControl*>(this));
 	}
 
 }
