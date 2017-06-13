@@ -16,3 +16,6 @@ popd
 pushd ListControls\UI
 call Codegen.bat
 popd
+pushd DataGrid\UI
+call Codegen.bat
+popd

@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProgressAndAsync", "Progres
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ListControls", "ListControls\ListControls.vcxproj", "{3E4357C6-179C-457E-ACCD-7ADE1887183F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataGrid", "DataGrid\DataGrid.vcxproj", "{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -73,6 +75,14 @@ Global
 		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Release|Win32.Build.0 = Release|Win32
 		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Release|x64.ActiveCfg = Release|x64
 		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Release|x64.Build.0 = Release|x64
+		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Debug|Win32.Build.0 = Debug|Win32
+		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Debug|x64.ActiveCfg = Debug|x64
+		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Debug|x64.Build.0 = Debug|x64
+		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Release|Win32.ActiveCfg = Release|Win32
+		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Release|Win32.Build.0 = Release|Win32
+		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Release|x64.ActiveCfg = Release|x64
+		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
