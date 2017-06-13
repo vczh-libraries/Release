@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddressBook", "AddressBook\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProgressAndAsync", "ProgressAndAsync\ProgressAndAsync.vcxproj", "{32CC91B1-D3A5-4030-9355-EAE1B87E12AB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ListControls", "ListControls\ListControls.vcxproj", "{3E4357C6-179C-457E-ACCD-7ADE1887183F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -63,6 +65,14 @@ Global
 		{32CC91B1-D3A5-4030-9355-EAE1B87E12AB}.Release|Win32.Build.0 = Release|Win32
 		{32CC91B1-D3A5-4030-9355-EAE1B87E12AB}.Release|x64.ActiveCfg = Release|x64
 		{32CC91B1-D3A5-4030-9355-EAE1B87E12AB}.Release|x64.Build.0 = Release|x64
+		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Debug|Win32.Build.0 = Debug|Win32
+		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Debug|x64.ActiveCfg = Debug|x64
+		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Debug|x64.Build.0 = Debug|x64
+		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Release|Win32.ActiveCfg = Release|Win32
+		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Release|Win32.Build.0 = Release|Win32
+		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Release|x64.ActiveCfg = Release|x64
+		{3E4357C6-179C-457E-ACCD-7ADE1887183F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
