@@ -90,6 +90,7 @@
 ## GacGen.exe
 
 * Enable linking to external symbols
+* Generate `ITheme` implementation
 * **(optional)** In the final pass, only workflow scripts are printed
     * Use WorkflowCompiler.exe to do codegen externally
 
