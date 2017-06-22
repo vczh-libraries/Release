@@ -5,8 +5,6 @@
 * Regex supports UTF-16 (instead of UCS-2) on MSVC.
     * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
 * Redesign vl::parsing.
-* `IValueObservableList` inherits from `IValueList` instead of `IValueReadonlyList`
-* Move the `IValueObservableList` implementation from GacUI to Vlpp
 * **(optional)** Binary ITypeDescriptor provider format.
 * **(optional)** API to import and export fake types (ITypeDescriptor that cannot be executed)
 
