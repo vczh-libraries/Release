@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ListControls", "ListControl
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataGrid", "DataGrid\DataGrid.vcxproj", "{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DocumentEditor", "DocumentEditor\DocumentEditor.vcxproj", "{DB0EEADE-E377-4A35-A432-96982EFC6AF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -83,6 +85,14 @@ Global
 		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Release|Win32.Build.0 = Release|Win32
 		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Release|x64.ActiveCfg = Release|x64
 		{4A3E9DB2-C440-42B5-AFCC-0FCA01909BF1}.Release|x64.Build.0 = Release|x64
+		{DB0EEADE-E377-4A35-A432-96982EFC6AF6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DB0EEADE-E377-4A35-A432-96982EFC6AF6}.Debug|Win32.Build.0 = Debug|Win32
+		{DB0EEADE-E377-4A35-A432-96982EFC6AF6}.Debug|x64.ActiveCfg = Debug|x64
+		{DB0EEADE-E377-4A35-A432-96982EFC6AF6}.Debug|x64.Build.0 = Debug|x64
+		{DB0EEADE-E377-4A35-A432-96982EFC6AF6}.Release|Win32.ActiveCfg = Release|Win32
+		{DB0EEADE-E377-4A35-A432-96982EFC6AF6}.Release|Win32.Build.0 = Release|Win32
+		{DB0EEADE-E377-4A35-A432-96982EFC6AF6}.Release|x64.ActiveCfg = Release|x64
+		{DB0EEADE-E377-4A35-A432-96982EFC6AF6}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

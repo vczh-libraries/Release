@@ -33,4 +33,12 @@
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="UI\DataGridComponents.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="UI\Resource.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+  </ItemGroup>
 </Project>

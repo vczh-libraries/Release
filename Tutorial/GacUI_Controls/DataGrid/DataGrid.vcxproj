@@ -162,6 +162,10 @@
       <Project>{96c559ca-9718-4bec-a053-28a0ab6a8ca2}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="UI\DataGridComponents.xml" />
+    <Xml Include="UI\Resource.xml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

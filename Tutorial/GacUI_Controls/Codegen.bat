@@ -19,3 +19,6 @@ popd
 pushd DataGrid\UI
 call Codegen.bat
 popd
+pushd DocumentEditor\UI
+call Codegen.bat
+popd
