@@ -60,7 +60,6 @@ namespace demo
 	class TreeViewTabPageConstructor;
 	class TreeViewTabPage;
 	class MyTextItem;
-	class IViewModel;
 
 	class ListViewTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<ListViewTabPageConstructor>
 	{
@@ -133,7 +132,6 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
-		::vl::Ptr<::demo::IViewModel> ViewModel = ::vl::Ptr<::demo::IViewModel>();
 		::demo::MainWindow* self = static_cast<::demo::MainWindow*>(nullptr);
 		::vl::presentation::controls::GuiTab* __vwsn_precompile_0 = static_cast<::vl::presentation::controls::GuiTab*>(nullptr);
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
@@ -153,9 +151,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
-		::vl::Ptr<::demo::IViewModel> __vwsn_parameter_ViewModel = ::vl::Ptr<::demo::IViewModel>();
-		::vl::Ptr<::demo::IViewModel> GetViewModel();
-		MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel);
+		MainWindow();
 		~MainWindow();
 	};
 
@@ -172,7 +168,6 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextListTabPageConstructor>;
 #endif
 	protected:
-		::vl::Ptr<::demo::IViewModel> ViewModel = ::vl::Ptr<::demo::IViewModel>();
 		::demo::TextListTabPage* self = static_cast<::demo::TextListTabPage*>(nullptr);
 		::vl::presentation::controls::GuiComboBoxListControl* comboView = static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr);
 		::vl::presentation::controls::GuiTextList* textList = static_cast<::vl::presentation::controls::GuiTextList*>(nullptr);
@@ -222,9 +217,8 @@ namespace demo
 #endif
 	public:
 		::vl::vint32_t counter = static_cast<::vl::vint32_t>(0);
-		::vl::Ptr<::demo::IViewModel> __vwsn_parameter_ViewModel = ::vl::Ptr<::demo::IViewModel>();
-		::vl::Ptr<::demo::IViewModel> GetViewModel();
-		TextListTabPage(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel);
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> itemsToBind = ::vl::reflection::description::IValueObservableList::Create();
+		TextListTabPage();
 		~TextListTabPage();
 	};
 
@@ -324,18 +318,6 @@ namespace demo
 		bool GetChecked();
 		void SetChecked(bool __vwsn_value_);
 		MyTextItem();
-	};
-
-	class IViewModel : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IViewModel>
-	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IViewModel>;
-#endif
-	public:
-		virtual ::vl::Ptr<::vl::reflection::description::IValueObservableList> GetTextItems() = 0;
-		virtual void AddTextItem(::vl::Ptr<::demo::MyTextItem> item) = 0;
-		virtual void RemoveTextItem(::vl::vint32_t index) = 0;
-		virtual void ClearTextItems() = 0;
 	};
 
 }
@@ -522,10 +504,10 @@ Closures
 
 	struct __vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__
 	{
-		::vl::Ptr<::vl::reflection::description::IValueList> itemsToBind;
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> itemsToBind;
 		::demo::ListViewTabPage* __vwsnthis_0;
 
-		__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(::vl::Ptr<::vl::reflection::description::IValueList> __vwsnctor_itemsToBind, ::demo::ListViewTabPage* __vwsnctorthis_0);
+		__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsnctor_itemsToBind, ::demo::ListViewTabPage* __vwsnctorthis_0);
 
 		void operator()(::vl::Ptr<::vl::presentation::controls::list::ListViewItem> item) const;
 	};

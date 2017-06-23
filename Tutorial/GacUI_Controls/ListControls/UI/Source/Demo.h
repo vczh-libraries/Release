@@ -23,7 +23,6 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::demo::IViewModel)
 			DECL_TYPE_INFO(::demo::ListViewTabPage)
 			DECL_TYPE_INFO(::demo::ListViewTabPageConstructor)
 			DECL_TYPE_INFO(::demo::MainWindow)
@@ -33,25 +32,6 @@ namespace vl
 			DECL_TYPE_INFO(::demo::TextListTabPageConstructor)
 			DECL_TYPE_INFO(::demo::TreeViewTabPage)
 			DECL_TYPE_INFO(::demo::TreeViewTabPageConstructor)
-
-			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::demo::IViewModel)
-				void AddTextItem(::vl::Ptr<::demo::MyTextItem> item) override
-				{
-					INVOKE_INTERFACE_PROXY(AddTextItem, item);
-				}
-				void ClearTextItems() override
-				{
-					INVOKE_INTERFACE_PROXY_NOPARAMS(ClearTextItems);
-				}
-				::vl::Ptr<::vl::reflection::description::IValueObservableList> GetTextItems() override
-				{
-					INVOKEGET_INTERFACE_PROXY_NOPARAMS(GetTextItems);
-				}
-				void RemoveTextItem(::vl::vint32_t index) override
-				{
-					INVOKE_INTERFACE_PROXY(RemoveTextItem, index);
-				}
-			END_INTERFACE_PROXY(::demo::IViewModel)
 #endif
 
 			extern bool LoadDemoTypes();

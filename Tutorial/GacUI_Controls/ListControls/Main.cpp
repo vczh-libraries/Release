@@ -12,32 +12,6 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	return SetupWindowsDirect2DRenderer();
 }
 
-class ViewModel : public Object, public IViewModel
-{
-public:
-	list::ObservableList<Ptr<MyTextItem>> textItems;
-
-	Ptr<IValueObservableList> GetTextItems()override
-	{
-		return textItems.GetWrapper();
-	}
-
-	void AddTextItem(Ptr<MyTextItem> item)override
-	{
-		textItems.Add(item);
-	}
-
-	void RemoveTextItem(vint32_t index)override
-	{
-		textItems.RemoveAt(index);
-	}
-
-	void ClearTextItems()override
-	{
-		textItems.Clear();
-	}
-};
-
 void GuiMain()
 {
 	{
@@ -45,7 +19,7 @@ void GuiMain()
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
 		GetResourceManager()->SetResource(L"Resource", resource);
 	}
-	demo::MainWindow window(new ViewModel);
+	demo::MainWindow window;
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }

@@ -11,13 +11,12 @@
   
   <Instance name="MainWindowResource">
     <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow" xmlns:demo="demo::*">
-      <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
       <Window ref.Name="self" Text="ListControls" ClientSize="x:640 y:480">
         <att.BoundsComposition-set PreferredMinSize="x:640 y:480"/>
         <Tab>
           <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
           <att.Pages>
-            <demo:TextListTabPage Alt="T" ViewModel-eval="ViewModel"/>
+            <demo:TextListTabPage Alt="T"/>
             <demo:ListViewTabPage Alt="L"/>
             <demo:TreeViewTabPage Alt="R"/>
           </att.Pages>
@@ -48,15 +47,6 @@
           {
             prop Name : string = "" {not observe}
             prop Checked : bool = false {not observe}
-          }
-        
-          interface IViewModel
-          {
-            prop TextItems : ObservableList^ {const, not observe}
-            
-            func AddTextItem(item : MyTextItem^) : void;
-            func RemoveTextItem(index : int) : void;
-            func ClearTextItems() : void;
           }
         }
       ]]>

@@ -24,10 +24,10 @@ class Category : public Object, public ICategory
 	friend class ViewModel;
 	friend class Contact;
 protected:
-	ICategory*									parent;
-	WString										name;
-	list::ObservableList<Ptr<ICategory>>		folders;
-	list::ObservableList<Ptr<IContact>>			contacts;
+	ICategory*							parent;
+	WString								name;
+	ObservableList<Ptr<ICategory>>		folders;
+	ObservableList<Ptr<IContact>>		contacts;
 
 public:
 	Category(ICategory* _parent)
@@ -150,7 +150,7 @@ public:
 class RootCategory : public Object, public ICategory
 {
 protected:
-	list::ObservableList<Ptr<ICategory>>		folders;
+	ObservableList<Ptr<ICategory>>		folders;
 
 public:
 	RootCategory()

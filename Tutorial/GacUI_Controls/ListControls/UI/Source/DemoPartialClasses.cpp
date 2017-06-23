@@ -429,7 +429,6 @@ Closures
 				(i = (i + static_cast<::vl::vint32_t>(1)));
 			}
 		}
-		if (static_cast<bool>(::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->GetTextItems()))
 		{
 			{
 				auto __vwsn_for_begin_i = static_cast<::vl::vint32_t>(0);
@@ -440,7 +439,7 @@ Closures
 					{
 						auto textItem = ::vl::Ptr<::demo::MyTextItem>(new ::demo::MyTextItem());
 						::vl::__vwsn::This(textItem.Obj())->SetName(::vl::__vwsn::ToString((::vl::__vwsn::This(__vwsnthis_0->self)->counter + i)));
-						::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->AddTextItem(textItem);
+						::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->itemsToBind.Obj())->Add(::vl::__vwsn::Box(textItem));
 					}
 					(i = (i + static_cast<::vl::vint32_t>(1)));
 				}
@@ -466,12 +465,11 @@ Closures
 				(i = (i + static_cast<::vl::vint32_t>(1)));
 			}
 		}
-		if (static_cast<bool>(::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->GetTextItems()))
 		{
 			auto i = static_cast<::vl::vint32_t>(0);
-			while ((i < ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->GetTextItems().Obj())->GetCount()))
+			while ((i < ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->itemsToBind.Obj())->GetCount()))
 			{
-				::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->RemoveTextItem(i);
+				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->itemsToBind.Obj())->RemoveAt(i);
 				(i = (i + static_cast<::vl::vint32_t>(1)));
 			}
 		}
@@ -494,12 +492,11 @@ Closures
 				(i = (i + static_cast<::vl::vint32_t>(1)));
 			}
 		}
-		if (static_cast<bool>(::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->GetTextItems()))
 		{
 			auto i = static_cast<::vl::vint32_t>(1);
-			while ((i < ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->GetTextItems().Obj())->GetCount()))
+			while ((i < ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->itemsToBind.Obj())->GetCount()))
 			{
-				::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->RemoveTextItem(i);
+				::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->itemsToBind.Obj())->RemoveAt(i);
 				(i = (i + static_cast<::vl::vint32_t>(1)));
 			}
 		}
@@ -515,10 +512,7 @@ Closures
 	void __vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(__vwsnthis_0->textList)->GetItems()).Obj())->Clear();
-		if (static_cast<bool>(::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->GetTextItems()))
-		{
-			::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->ClearTextItems();
-		}
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->itemsToBind.Obj())->Clear();
 	}
 
 	//-------------------------------------------------------------------
@@ -696,7 +690,7 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(::vl::Ptr<::vl::reflection::description::IValueList> __vwsnctor_itemsToBind, ::demo::ListViewTabPage* __vwsnctorthis_0)
+	__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsnctor_itemsToBind, ::demo::ListViewTabPage* __vwsnctorthis_0)
 		:itemsToBind(__vwsnctor_itemsToBind)
 		, __vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
@@ -1006,7 +1000,7 @@ Class (::demo::ListViewTabPage)
 	void ListViewTabPage::__vwsn_instance_ctor_()
 	{
 		GLOBAL_NAME LoadListView(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this), LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(this)));
-		auto itemsToBind = ::vl::reflection::description::IValueList::Create();
+		auto itemsToBind = ::vl::reflection::description::IValueObservableList::Create();
 		GLOBAL_NAME LoadListView(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this), LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(itemsToBind, this)));
 		::vl::__vwsn::This(this->bindableListView)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(itemsToBind));
 	}
@@ -1023,7 +1017,6 @@ Class (::demo::MainWindowConstructor)
 	void MainWindowConstructor::__vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_)
 	{
 		(this->self = __vwsn_this_);
-		(this->ViewModel = ::vl::__vwsn::This(__vwsn_this_)->GetViewModel());
 		(this->__vwsn_precompile_5 = ::vl::__vwsn::This(this->self)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint32_t>(640); __vwsn_temp__.y = static_cast<::vl::vint32_t>(480); return __vwsn_temp__; }());
@@ -1038,7 +1031,7 @@ Class (::demo::MainWindowConstructor)
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateTabStyle();
 			(this->__vwsn_precompile_0 = new ::vl::presentation::controls::GuiTab(__vwsn_controlStyle_));
 		}
-		(this->__vwsn_precompile_2 = new ::demo::TextListTabPage(this->ViewModel));
+		(this->__vwsn_precompile_2 = new ::demo::TextListTabPage());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetAlt(::vl::WString(L"T", false));
 		}
@@ -1079,15 +1072,9 @@ Class (::demo::MainWindowConstructor)
 Class (::demo::MainWindow)
 ***********************************************************************/
 
-	::vl::Ptr<::demo::IViewModel> MainWindow::GetViewModel()
-	{
-		return this->__vwsn_parameter_ViewModel;
-	}
-
-	MainWindow::MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel)
+	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateWindowStyle())
 	{
-		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
@@ -1106,7 +1093,6 @@ Class (::demo::TextListTabPageConstructor)
 	void TextListTabPageConstructor::__vwsn_initialize_instance_(::demo::TextListTabPage* __vwsn_this_)
 	{
 		(this->self = __vwsn_this_);
-		(this->ViewModel = ::vl::__vwsn::This(__vwsn_this_)->GetViewModel());
 		{
 			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"TextList", false));
 		}
@@ -1374,7 +1360,7 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_21)->Clicked, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->bindableTextList)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(this->ViewModel.Obj())->GetTextItems()));
+			::vl::__vwsn::This(this->bindableTextList)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(this->self)->itemsToBind));
 		}
 	}
 
@@ -1386,15 +1372,9 @@ Class (::demo::TextListTabPageConstructor)
 Class (::demo::TextListTabPage)
 ***********************************************************************/
 
-	::vl::Ptr<::demo::IViewModel> TextListTabPage::GetViewModel()
-	{
-		return this->__vwsn_parameter_ViewModel;
-	}
-
-	TextListTabPage::TextListTabPage(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel)
+	TextListTabPage::TextListTabPage()
 		: ::vl::presentation::controls::GuiTabPage(::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateCustomControlStyle())
 	{
-		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::TextListTabPage", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
@@ -1731,10 +1711,6 @@ Class (::demo::MyTextItem)
 	{
 	}
 
-/***********************************************************************
-Class (::demo::IViewModel)
-***********************************************************************/
-
 }
 #undef GLOBAL_SYMBOL
 #undef GLOBAL_NAME
@@ -1752,7 +1728,6 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
-			IMPL_CPP_TYPE_INFO(demo::IViewModel)
 			IMPL_CPP_TYPE_INFO(demo::ListViewTabPage)
 			IMPL_CPP_TYPE_INFO(demo::ListViewTabPageConstructor)
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
@@ -1764,14 +1739,6 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(demo::TreeViewTabPageConstructor)
 
 #define _ ,
-			BEGIN_INTERFACE_MEMBER(::demo::IViewModel)
-				CLASS_MEMBER_METHOD(AddTextItem, { L"item" })
-				CLASS_MEMBER_METHOD(ClearTextItems, NO_PARAMETER)
-				CLASS_MEMBER_METHOD(GetTextItems, NO_PARAMETER)
-				CLASS_MEMBER_METHOD(RemoveTextItem, { L"index" })
-				CLASS_MEMBER_PROPERTY_READONLY(TextItems, GetTextItems)
-			END_INTERFACE_MEMBER(::demo::IViewModel)
-
 			BEGIN_CLASS_MEMBER(::demo::ListViewTabPage)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::ListViewTabPage*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_instance_ctor_, NO_PARAMETER)
@@ -1809,10 +1776,7 @@ namespace vl
 			END_CLASS_MEMBER(::demo::ListViewTabPageConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
-				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(::vl::Ptr<::demo::IViewModel>), { L"__vwsn_ctor_parameter_ViewModel" })
-				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
-				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
-				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
@@ -1824,7 +1788,6 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_4)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_5)
-				CLASS_MEMBER_FIELD(ViewModel)
 				CLASS_MEMBER_FIELD(self)
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
@@ -1841,11 +1804,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MyTextItem)
 
 			BEGIN_CLASS_MEMBER(::demo::TextListTabPage)
-				CLASS_MEMBER_CONSTRUCTOR(::demo::TextListTabPage*(::vl::Ptr<::demo::IViewModel>), { L"__vwsn_ctor_parameter_ViewModel" })
-				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
-				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
-				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::TextListTabPage*(), NO_PARAMETER)
 				CLASS_MEMBER_FIELD(counter)
+				CLASS_MEMBER_FIELD(itemsToBind)
 			END_CLASS_MEMBER(::demo::TextListTabPage)
 
 			BEGIN_CLASS_MEMBER(::demo::TextListTabPageConstructor)
@@ -1876,7 +1837,6 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_7)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_8)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_9)
-				CLASS_MEMBER_FIELD(ViewModel)
 				CLASS_MEMBER_FIELD(bindableTextList)
 				CLASS_MEMBER_FIELD(comboView)
 				CLASS_MEMBER_FIELD(self)
@@ -1953,7 +1913,6 @@ namespace vl
 			public:
 				void Load(ITypeManager* manager)
 				{
-					ADD_TYPE_INFO(::demo::IViewModel)
 					ADD_TYPE_INFO(::demo::ListViewTabPage)
 					ADD_TYPE_INFO(::demo::ListViewTabPageConstructor)
 					ADD_TYPE_INFO(::demo::MainWindow)

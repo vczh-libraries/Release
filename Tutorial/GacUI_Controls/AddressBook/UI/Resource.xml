@@ -37,8 +37,8 @@
             prop Parent       : ICategory*                  {const, not observe}
             prop Name         : string                      {const, not observe}
             prop Image        : presentation::GuiImageData^ {const, not observe}
-            prop Folders      : ObservableList^             {const, not observe}
-            prop Contacts     : ObservableList^             {const, not observe}
+            prop Folders      : observe ICategory^[]        {const, not observe}
+            prop Contacts     : observe IContact^[]         {const, not observe}
           }
         
           interface IViewModel
