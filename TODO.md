@@ -13,8 +13,7 @@
 * **Workflow to C++ code generation with hint**.
     * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
     * Leave spaces for user defined `#include`s or `using namespace`s.
-* Support `<category>name` identifier, make generated code re-parsable.
-* Progress callback
+* **(optional)** Support `<category>name` identifier, make generated code re-parsable.
 * **(optional)** Separate assembly binary to types, instructions and debug informations.
 * **(optional)** State Machine.
 * **(optional)** WorkflowCompiler.exe (x32/x64)
