@@ -14,6 +14,7 @@
     * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
     * Leave spaces for user defined `#include`s or `using namespace`s.
 * Support `<category>name` identifier, make generated code re-parsable.
+* Progress callback
 * **(optional)** Separate assembly binary to types, instructions and debug informations.
 * **(optional)** State Machine.
 * **(optional)** WorkflowCompiler.exe (x32/x64)
@@ -58,6 +59,7 @@
 - [ ] Simple way to write animation using Workflow in Xml resource, add animation to default control templates
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
 - [ ] Redesign ToolstripMenu so that items so that a container can bind to toolstrip items
+- [ ] Normal text box supports surrogate pairs like document viewer
 
 #### Graphics
 - [ ] MetaImageElement and MetaImage data structure
