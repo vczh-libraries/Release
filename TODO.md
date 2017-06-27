@@ -5,25 +5,36 @@
 * Regex supports UTF-16 (instead of UCS-2) on MSVC.
     * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
 * Redesign vl::parsing.
-* **(optional)** Binary ITypeDescriptor provider format.
-* **(optional)** API to import and export fake types (ITypeDescriptor that cannot be executed)
+    * No need to specify ambiguity
+    * Will print all ambiguous cases and marked AST node
+    * ToString with hints and custom options
+    * Print diff when updating AST (for IDE)
+    * All existing features and backward compatible interface design
+
+### (optional)
+
+* Binary ITypeDescriptor provider format.
+* API to import and export fake types (ITypeDescriptor that cannot be executed)
 
 ## Workflow
 
 * **Workflow to C++ code generation with hint**.
     * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
     * Leave spaces for user defined `#include`s or `using namespace`s.
-* **(optional)** Support `<category>name` identifier, make generated code re-parsable.
-* **(optional)** Separate assembly binary to types, instructions and debug informations.
-* **(optional)** State Machine.
-* **(optional)** WorkflowCompiler.exe (x32/x64)
+
+### (optional)
+
+* Support `<category>name` identifier, make generated code re-parsable.
+* Separate assembly binary to types, instructions and debug informations.
+* State Machine.
+* WorkflowCompiler.exe (x32/x64)
     * Enable external symbols
     * Compile
     * Binary Output (full assembly or types only)
     * C++ Codegen (x32/x64)
     * C++ Merge
 
-#### (probably not do)
+### (probably not do)
 
 * Macro
 * Context-Grammar Sensitive Macro
@@ -81,7 +92,7 @@
 * Localizable text template resource, adding str://
 * Visual State, State Machine, Animation
 
-#### (probably not do)
+### (probably not do)
 
 * GuiCustomControl::SetContainerComposition // using a special syntax
 * InstanceStyle:Replace
@@ -90,7 +101,10 @@
 
 * Enable linking to external symbols
 * Generate `ITheme` implementation
-* **(optional)** In the final pass, only workflow scripts are printed
+
+### (optional)
+
+* In the final pass, only workflow scripts are printed
     * Use WorkflowCompiler.exe to do codegen externally
 
 ## GacStudio.exe
