@@ -51,7 +51,7 @@
 - [x] Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
 - [x] Remove `IItemStyle(Provider|Controller)`
 - [x] Full control test UI in GacUISrc/Host project
-- [ ] Fix ControlTemplates/BlackSkin
+- [x] Fix ControlTemplates/BlackSkin
 - [ ] **Update Release**, use Full control test to replace ControlTemplates tutorial
 - [ ] New default control templates, written in XML generated C++ code.
 - [ ] **Update Release**, use the new default control templates
