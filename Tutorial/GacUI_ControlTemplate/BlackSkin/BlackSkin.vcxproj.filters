@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Resource Files\Images">
-      <UniqueIdentifier>{a38b2626-b0ce-452b-8f55-bc3a2d7508ac}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI">
       <UniqueIdentifier>{9cdd5d13-56a2-41f5-90bf-e0f5d147d766}</UniqueIdentifier>
     </Filter>
@@ -24,82 +21,21 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UI\Source\DemoPartialClasses.cpp">
+    <ClCompile Include="UI\FullControlTest\Source\DemoPartialClasses.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\FullControlTest\Source\MainWindow.cpp">
       <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="UI\MainWindow.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
-    <Xml Include="UI\Resource.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
-    <Xml Include="UI\Skin.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
-    <Xml Include="UI\XmlDocDemo.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
-    <Xml Include="UI\Images\Folder.xml">
-      <Filter>Resource Files\Images</Filter>
-    </Xml>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="UI\Images\_Copy.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\_Cut.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\_Delete.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\_New.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\_Open.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\_Paste.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\_Print.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\_Redo.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\_Save.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\_SaveAs.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\_Undo.png">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\OfficeExcel.ico">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\OfficeOneNote.ico">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\OfficeOutlook.ico">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\OfficePowerPoint.ico">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-    <Image Include="UI\Images\OfficeWord.ico">
-      <Filter>Resource Files\Images</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="UI\Source\Demo.h">
+    <ClInclude Include="UI\FullControlTest\Source\Demo.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="UI\Source\DemoPartialClasses.h">
+    <ClInclude Include="UI\FullControlTest\Source\DemoPartialClasses.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\FullControlTest\Source\MainWindow.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>

@@ -81,46 +81,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="UI\Source\DemoPartialClasses.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="UI\Images\Folder.xml" />
-    <Xml Include="UI\MainWindow.xml" />
-    <Xml Include="UI\Resource.xml">
-      <SubType>Designer</SubType>
-    </Xml>
-    <Xml Include="UI\Skin.xml" />
-    <Xml Include="UI\XmlDocDemo.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="UI\Images\OfficeExcel.ico" />
-    <Image Include="UI\Images\OfficeOneNote.ico" />
-    <Image Include="UI\Images\OfficeOutlook.ico" />
-    <Image Include="UI\Images\OfficePowerPoint.ico" />
-    <Image Include="UI\Images\OfficeWord.ico" />
-    <Image Include="UI\Images\_Copy.png" />
-    <Image Include="UI\Images\_Cut.png" />
-    <Image Include="UI\Images\_Delete.png" />
-    <Image Include="UI\Images\_New.png" />
-    <Image Include="UI\Images\_Open.png" />
-    <Image Include="UI\Images\_Paste.png" />
-    <Image Include="UI\Images\_Print.png" />
-    <Image Include="UI\Images\_Redo.png" />
-    <Image Include="UI\Images\_Save.png" />
-    <Image Include="UI\Images\_SaveAs.png" />
-    <Image Include="UI\Images\_Undo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="UI\Source\Demo.h" />
-    <ClInclude Include="UI\Source\DemoPartialClasses.h" />
+    <ClCompile Include="UI\FullControlTest\Source\DemoPartialClasses.cpp" />
+    <ClCompile Include="UI\FullControlTest\Source\MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Lib\GacUILite\GacUILite.vcxproj">
       <Project>{96c559ca-9718-4bec-a053-28a0ab6a8ca2}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UI\FullControlTest\Source\Demo.h" />
+    <ClInclude Include="UI\FullControlTest\Source\DemoPartialClasses.h" />
+    <ClInclude Include="UI\FullControlTest\Source\MainWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

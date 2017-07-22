@@ -1,0 +1,128 @@
+<Instance ref.CodeBehind="false" ref.Class="demo::ListViewTabPage">
+  <ref.Ctor>
+    <![CDATA[
+      {
+        LoadListView(this, func(item : ListViewItem^):void
+        {
+          listView.Items.Add(item);
+        });
+        
+        var itemsToBind : observe ListViewItem^[] = {};
+        LoadListView(this, func(item : ListViewItem^):void
+        {
+          itemsToBind.Add(item);
+        });
+        bindableListView.ItemSource = itemsToBind;
+      }
+    ]]>
+  </ref.Ctor>
+  <TabPage ref.Name="self" Text="ListView">
+    <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
+      <att.Rows>
+        <_>composeType:MinSize</_>
+        <_>composeType:Percentage percentage:1.0</_>
+      </att.Rows>
+      <att.Columns>
+        <_>composeType:Percentage percentage:0.5</_>
+        <_>composeType:Percentage percentage:0.5</_>
+      </att.Columns>
+
+      <Cell Site="row:0 column:0 columnSpan:2">
+        <ComboBox ref.Name="comboView" Alt="V" SelectedIndex="5">
+          <att.BoundsComposition-set PreferredMinSize="x:120"/>
+          <att.ListControl>
+            <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+              <att.Items>
+                <TextItem Text="BigIcon"/>
+                <TextItem Text="SmallIcon"/>
+                <TextItem Text="List"/>
+                <TextItem Text="Tile"/>
+                <TextItem Text="Information"/>
+                <TextItem Text="Detail"/>
+              </att.Items>
+            </TextList>
+          </att.ListControl>
+          <ev.SelectedIndexChanged-eval>
+            <![CDATA[
+              {
+                switch (comboView.SelectedIndex)
+                {
+                case 0:
+                  {
+                    listView.View = BigIcon;
+                    bindableListView.View = BigIcon;
+                  }
+                case 1:
+                  {
+                    listView.View = SmallIcon;
+                    bindableListView.View = SmallIcon;
+                  }
+                case 2:
+                  {
+                    listView.View = ListViewView::List;
+                    bindableListView.View = ListViewView::List;
+                  }
+                case 3:
+                  {
+                    listView.View = Tile;
+                    bindableListView.View = Tile;
+                  }
+                case 4:
+                  {
+                    listView.View = Information;
+                    bindableListView.View = Information;
+                  }
+                case 5:
+                  {
+                    listView.View = Detail;
+                    bindableListView.View = Detail;
+                  }
+                }
+              }
+            ]]>
+          </ev.SelectedIndexChanged-eval>
+        </ComboBox>
+      </Cell>
+
+      <Cell Site="row:1 column:0">
+        <ListView ref.Name="listView" Alt="L" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+
+          <att.Columns>
+            <_ Text="Id"/>
+            <_ Text="Category"/>
+            <_ Text="Size"/>
+            <_ Text="File"/>
+          </att.Columns>
+
+          <att.DataColumns>
+            <_>0</_>
+            <_>1</_>
+            <_>2</_>
+          </att.DataColumns>
+        </ListView>
+      </Cell>
+
+      <Cell Site="row:1 column:1">
+        <BindableListView ref.Name="bindableListView" Alt="L" env.ItemType="ListViewItem^" env.ItemName="itemToBind" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+          <att.LargeImageProperty>LargeImage</att.LargeImageProperty>
+          <att.SmallImageProperty>SmallImage</att.SmallImageProperty>
+
+          <att.Columns>
+            <_ Text="Id" TextProperty="Text"/>
+            <_ Text="Category" TextProperty="itemToBind.SubItems[0]"/>
+            <_ Text="Size" TextProperty="itemToBind.SubItems[1]"/>
+            <_ Text="File" TextProperty="itemToBind.SubItems[2]"/>
+          </att.Columns>
+
+          <att.DataColumns>
+            <_>0</_>
+            <_>1</_>
+            <_>2</_>
+          </att.DataColumns>
+        </BindableListView>
+      </Cell>
+    </Table>
+  </TabPage>
+</Instance>
