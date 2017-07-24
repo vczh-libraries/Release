@@ -53,19 +53,23 @@
 - [x] Full control test UI in GacUISrc/Host project
 - [x] Fix ControlTemplates/BlackSkin
 - [x] **Update Release**, use Full control test to replace ControlTemplates tutorial
-- [ ] New default control templates, written in XML generated C++ code.
-- [ ] **Update Release**, use the new default control templates
-- [ ] GuiBindableRepeatContainer
-    * Using `Flow` and `Stack` directly
-    * Not a list control
-    * Or let list control be able to hide scrolls and extend the parent container
+- [ ] Generate ITheme implementation in XML Resource
+- [ ] Retire and archive Win7/Win8 control templates, using DarkSkin temporary.
+- [ ] Generate DarkSkin code to GacUIDefaultSkin.(h|cpp)
+- [ ] **Update Release**, every tutorial uses GacUIDefaultSkin
+- [ ] GuiListControl with non-virtual composition items
+    * GuiScrollView supports hiding scrolls forever
+    * New arranger for `Flow` and `Stack`
 - [ ] Redesign TabControl's control template so that a container can bind to tab header list control
-- [ ] Update default control templates to write a new tab template
-- [ ] **Update Release**, update darkskin to write a new tab template
-- [ ] Remove control style interfaces, controls talk to templates directly, archive Win7/Win8 control templates
+- [ ] Update DarkSkin to write a new tab template
 - [ ] **Update Release**
-- [ ] Retire Win7/Win8 control templates, rewrite them in tutorials.
-- [ ] **Update Release**, reorganize ControlTemplates tutorial so that it builds a template library containing multiple set of skins
+- [ ] Remove control style interfaces, controls talk to templates directly
+- [ ] **Update Release**
+- [ ] New default control templates, written in XML generated C++ code.
+- [ ] Default control templates replace GacUIDefaultSkin
+- [ ] **Update Release**
+- [ ] Reorganize GacUISrc so that it builds a template library containing multiple set of skins
+- [ ] **Update Release**, so that ControlTemplate tutorial is updated
 - [ ] Simple way to write animation using Workflow in Xml resource, add animation to default control templates
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
 - [ ] Redesign ToolstripMenu so that items so that a container can bind to toolstrip items
