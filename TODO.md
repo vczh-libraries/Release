@@ -53,8 +53,8 @@
 - [x] Full control test UI in GacUISrc/Host project
 - [x] Fix ControlTemplates/BlackSkin
 - [x] **Update Release**, use Full control test to replace ControlTemplates tutorial
-- [ ] Generate ITheme implementation in XML Resource
-- [X] Retire and archive Win7/Win8 control templates, using DarkSkin temporary.
+- [x] Generate ITheme implementation in XML Resource
+- [x] Retire and archive Win7/Win8 control templates, using DarkSkin temporary
 - [ ] Generate DarkSkin code to GacUIDefaultSkin.(h|cpp)
 - [ ] **Update Release**, every tutorial uses GacUIDefaultSkin
 - [ ] GuiListControl with non-virtual composition items
