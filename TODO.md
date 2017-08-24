@@ -55,8 +55,13 @@
 - [x] **Update Release**, use Full control test to replace ControlTemplates tutorial
 - [x] Generate ITheme implementation in XML Resource
 - [x] Retire and archive Win7/Win8 control templates, using DarkSkin temporary
-- [ ] Generate DarkSkin code to GacUIDefaultSkin.(h|cpp)
-- [ ] **Update Release**, every tutorial uses GacUIDefaultSkin
+- [x] Separate DarkSkin from FullControlTest
+- [ ] Update GacGen with new codegen functions
+- [ ] Support 32-64 merging in GacGen
+- [ ] Generate DarkSkin in `Source\Skins\DarkSkin\` using GacGen
+- [ ] Update CodePack to read `/* CodePack: */` comments
+- [ ] Generate DarkSkin code to Release\Skins\DarkSkin.(h|cpp)
+- [ ] **Update Release**, every tutorial uses DarkSkin in shared library, with a new common `WinMain.cpp`
 - [ ] GuiListControl with non-virtual composition items
     * GuiScrollView supports hiding scrolls forever
     * New arranger for `Flow` and `Stack`
