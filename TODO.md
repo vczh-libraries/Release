@@ -56,7 +56,7 @@
 - [x] Generate ITheme implementation in XML Resource
 - [x] Retire and archive Win7/Win8 control templates, using DarkSkin temporary
 - [x] Separate DarkSkin from FullControlTest
-- [ ] Update GacGen with new codegen functions
+- [x] Update GacGen with new codegen functions
 - [ ] Support 32-64 merging in GacGen
 - [ ] Generate DarkSkin in `Source\Skins\DarkSkin\` using GacGen
 - [ ] Update CodePack to read `/* CodePack: */` comments
