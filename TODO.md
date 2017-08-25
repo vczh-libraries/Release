@@ -57,7 +57,7 @@
 - [x] Retire and archive Win7/Win8 control templates, using DarkSkin temporary
 - [x] Separate DarkSkin from FullControlTest
 - [x] Update GacGen with new codegen functions
-- [ ] Support 32-64 merging in GacGen
+- [x] Support 32-64 merging in GacGen
 - [ ] Generate DarkSkin in `Source\Skins\DarkSkin\` using GacGen
 - [ ] Update CodePack to read `/* CodePack: */` comments
 - [ ] Generate DarkSkin code to Release\Skins\DarkSkin.(h|cpp)
