@@ -61,7 +61,7 @@
 - [x] Generate DarkSkin to `Source\Skins\DarkSkin\`
 - [x] Update CodePack to read `/* CodePack: */` comments
 - [x] Generate DarkSkin code to Release\Skins\DarkSkin.(h|cpp)
-- [ ] **Update Release**, every tutorial uses DarkSkin in shared library, with a new common `WinMain.cpp`
+- [x] **Update Release**, every tutorial uses DarkSkin in shared library, with a new common `WinMain.cpp`
 - [ ] GuiListControl with non-virtual composition items
     * GuiScrollView supports hiding scrolls forever
     * New arranger for `Flow` and `Stack`
