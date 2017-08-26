@@ -5,11 +5,6 @@
 using namespace vl::collections;
 using namespace vl::stream;
 
-int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int CmdShow)
-{
-	return SetupWindowsDirect2DRenderer();
-}
-
 class ViewModel : public Object, public virtual demo::IViewModel
 {
 public:

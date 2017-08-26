@@ -8,6 +8,12 @@ https://github.com/vczh-libraries
 ***********************************************************************/
 
 #include "Demo.h"
+/* CodePack:BeginIgnore() */
+#ifndef VCZH_DEBUG_NO_REFLECTION
+/* CodePack:ConditionOff(VCZH_DEBUG_NO_REFLECTION, DemoReflection.h) */
+#include "DemoReflection.h"
+#endif
+/* CodePack:EndIgnore() */
 
 #if defined( _MSC_VER)
 #pragma warning(push)
@@ -79,10 +85,10 @@ namespace demo
 		}
 		(this->__vwsn_precompile_51 = ::vl::__vwsn::This(this->__vwsn_precompile_0)->GetBoundsComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_51)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint32_t>(480); __vwsn_temp__.y = static_cast<::vl::vint32_t>(640); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_51)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(480); __vwsn_temp__.y = static_cast<::vl::vint>(640); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint32_t>(480); __vwsn_temp__.y = static_cast<::vl::vint32_t>(320); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(480); __vwsn_temp__.y = static_cast<::vl::vint>(320); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString(L"RichTextEmbedding", false));
@@ -93,7 +99,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_50 = ::vl::__vwsn::This(this->documentViewer)->GetBoundsComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_50)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint32_t>(5); __vwsn_temp__.top = static_cast<::vl::vint32_t>(5); __vwsn_temp__.right = static_cast<::vl::vint32_t>(5); __vwsn_temp__.bottom = static_cast<::vl::vint32_t>(5); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_50)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(5); __vwsn_temp__.top = static_cast<::vl::vint>(5); __vwsn_temp__.right = static_cast<::vl::vint>(5); __vwsn_temp__.bottom = static_cast<::vl::vint>(5); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->documentViewer)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::ViewOnly);
@@ -119,7 +125,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_8 = ::vl::__vwsn::This(this->__vwsn_precompile_4)->GetBoundsComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint32_t>(200); __vwsn_temp__.y = static_cast<::vl::vint32_t>(100); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(200); __vwsn_temp__.y = static_cast<::vl::vint>(100); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
@@ -354,19 +360,19 @@ namespace demo
 		(this->__vwsn_precompile_29 = ::vl::Ptr<::vl::presentation::controls::GuiDocumentItem>(new ::vl::presentation::controls::GuiDocumentItem(::vl::WString(L"Table", false))));
 		(this->__vwsn_precompile_30 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint32_t>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint32_t>(0); __vwsn_temp__.top = static_cast<::vl::vint32_t>(0); __vwsn_temp__.right = static_cast<::vl::vint32_t>(0); __vwsn_temp__.bottom = static_cast<::vl::vint32_t>(0); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetRowsAndColumns(static_cast<::vl::vint32_t>(3), static_cast<::vl::vint32_t>(3));
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetRowOption(static_cast<::vl::vint32_t>(0), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetRowOption(static_cast<::vl::vint32_t>(1), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetRowOption(static_cast<::vl::vint32_t>(2), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetColumnOption(static_cast<::vl::vint32_t>(0), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetColumnOption(static_cast<::vl::vint32_t>(1), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetColumnOption(static_cast<::vl::vint32_t>(2), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetRowsAndColumns(static_cast<::vl::vint>(3), static_cast<::vl::vint>(3));
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetRowOption(static_cast<::vl::vint>(0), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetRowOption(static_cast<::vl::vint>(1), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetRowOption(static_cast<::vl::vint>(2), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetColumnOption(static_cast<::vl::vint>(0), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetColumnOption(static_cast<::vl::vint>(1), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetColumnOption(static_cast<::vl::vint>(2), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
 		}
 		(this->__vwsn_precompile_31 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidBorderElement>()));
 		{
@@ -377,7 +383,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_32 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetSite(static_cast<::vl::vint32_t>(0), static_cast<::vl::vint32_t>(0), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1));
+			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateLabelStyle();
@@ -394,7 +400,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_34 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_34)->SetSite(static_cast<::vl::vint32_t>(0), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1));
+			::vl::__vwsn::This(this->__vwsn_precompile_34)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateLabelStyle();
@@ -411,7 +417,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_36 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_36)->SetSite(static_cast<::vl::vint32_t>(0), static_cast<::vl::vint32_t>(2), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1));
+			::vl::__vwsn::This(this->__vwsn_precompile_36)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(2), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateLabelStyle();
@@ -428,7 +434,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_38 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_38)->SetSite(static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(0), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1));
+			::vl::__vwsn::This(this->__vwsn_precompile_38)->SetSite(static_cast<::vl::vint>(1), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateLabelStyle();
@@ -445,7 +451,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_40 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_40)->SetSite(static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1));
+			::vl::__vwsn::This(this->__vwsn_precompile_40)->SetSite(static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateLabelStyle();
@@ -462,7 +468,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_42 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_42)->SetSite(static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(2), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1));
+			::vl::__vwsn::This(this->__vwsn_precompile_42)->SetSite(static_cast<::vl::vint>(1), static_cast<::vl::vint>(2), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateLabelStyle();
@@ -479,7 +485,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_44 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_44)->SetSite(static_cast<::vl::vint32_t>(2), static_cast<::vl::vint32_t>(0), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1));
+			::vl::__vwsn::This(this->__vwsn_precompile_44)->SetSite(static_cast<::vl::vint>(2), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateLabelStyle();
@@ -496,7 +502,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_46 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_46)->SetSite(static_cast<::vl::vint32_t>(2), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1));
+			::vl::__vwsn::This(this->__vwsn_precompile_46)->SetSite(static_cast<::vl::vint>(2), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateLabelStyle();
@@ -513,7 +519,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_48 = new ::vl::presentation::compositions::GuiCellComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_48)->SetSite(static_cast<::vl::vint32_t>(2), static_cast<::vl::vint32_t>(2), static_cast<::vl::vint32_t>(1), static_cast<::vl::vint32_t>(1));
+			::vl::__vwsn::This(this->__vwsn_precompile_48)->SetSite(static_cast<::vl::vint>(2), static_cast<::vl::vint>(2), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateLabelStyle();
@@ -571,7 +577,7 @@ Class (::demo::MainWindow)
 
 	MainWindow::~MainWindow()
 	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControl*>(this));
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
 	}
 
 /***********************************************************************
@@ -583,124 +589,6 @@ Class (::demo::IViewModel)
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
 #undef USERIMPL
-
-/***********************************************************************
-Reflection
-***********************************************************************/
-
-namespace vl
-{
-	namespace reflection
-	{
-		namespace description
-		{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-			IMPL_CPP_TYPE_INFO(demo::IViewModel)
-			IMPL_CPP_TYPE_INFO(demo::MainWindow)
-			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
-
-#define _ ,
-			BEGIN_INTERFACE_MEMBER(::demo::IViewModel)
-				CLASS_MEMBER_METHOD(OpenUrl, { L"url" })
-			END_INTERFACE_MEMBER(::demo::IViewModel)
-
-			BEGIN_CLASS_MEMBER(::demo::MainWindow)
-				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(::vl::Ptr<::demo::IViewModel>), { L"__vwsn_ctor_parameter_ViewModel" })
-				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
-				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
-				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
-			END_CLASS_MEMBER(::demo::MainWindow)
-
-			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
-				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
-				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_11)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_12)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_13)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_14)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_15)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_16)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_17)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_18)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_19)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_20)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_21)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_22)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_23)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_24)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_25)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_26)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_27)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_28)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_29)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_30)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_31)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_32)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_33)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_34)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_35)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_36)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_37)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_38)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_39)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_4)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_40)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_41)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_42)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_43)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_44)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_45)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_46)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_47)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_48)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_49)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_5)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_50)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_51)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_52)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_6)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_7)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_8)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_9)
-				CLASS_MEMBER_FIELD(ViewModel)
-				CLASS_MEMBER_FIELD(documentViewer)
-			END_CLASS_MEMBER(::demo::MainWindowConstructor)
-
-#undef _
-			class DemoTypeLoader : public Object, public ITypeLoader
-			{
-			public:
-				void Load(ITypeManager* manager)
-				{
-					ADD_TYPE_INFO(::demo::IViewModel)
-					ADD_TYPE_INFO(::demo::MainWindow)
-					ADD_TYPE_INFO(::demo::MainWindowConstructor)
-				}
-
-				void Unload(ITypeManager* manager)
-				{
-				}
-			};
-#endif
-
-			bool LoadDemoTypes()
-			{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-				if (auto manager = GetGlobalTypeManager())
-				{
-					return manager->AddTypeLoader(MakePtr<DemoTypeLoader>());
-				}
-#endif
-				return false;
-			}
-		}
-	}
-}
 
 #if defined( _MSC_VER)
 #pragma warning(pop)
