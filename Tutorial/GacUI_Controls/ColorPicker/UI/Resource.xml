@@ -109,7 +109,7 @@
       <Instance ref.CodeBehind="false" ref.Class="demo::ColorListItemTemplate" xmlns:x="demo::*">
         <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
         <TextListItemTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
-          <x:ColorBomboItemTemplate ViewModel-eval="ViewModel" Font-bind="self.Font" TextColor-bind="self.TextColor" AlignmentToParent="left:6 top:6 right:6 bottom:6"/>
+          <x:ColorBomboItemTemplate ViewModel-eval="ViewModel" Font-bind="self.Font" AlignmentToParent="left:6 top:6 right:6 bottom:6"/>
         </TextListItemTemplate>
       </Instance>
     </Instance>

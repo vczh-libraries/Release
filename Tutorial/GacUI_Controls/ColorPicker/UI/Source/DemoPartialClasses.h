@@ -28,14 +28,12 @@ namespace vl_workflow_global
 	struct __vwsnf1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_initialize_instance__;
 	struct __vwsnf2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_initialize_instance__;
 	struct __vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__;
-	struct __vwsnf4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__;
+	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	class __vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 	class __vwsnc2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 	class __vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 }
 
 namespace demo
@@ -95,9 +93,7 @@ namespace demo
 	class ColorListItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<ColorListItemTemplateConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorListItemTemplateConstructor>;
 #endif
@@ -114,9 +110,7 @@ namespace demo
 	{
 		friend class ::demo::ColorListItemTemplateConstructor;
 		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorListItemTemplate>;
 #endif
@@ -129,9 +123,9 @@ namespace demo
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
@@ -154,9 +148,9 @@ namespace demo
 	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
 	{
 		friend class ::demo::MainWindowConstructor;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
@@ -231,13 +225,13 @@ Closures
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__
+	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
-		::demo::ColorListItemTemplateConstructor* __vwsnthis_0;
+		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__(::demo::ColorListItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
 	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
@@ -246,7 +240,7 @@ Closures
 
 		__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
-		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
+		::vl::presentation::templates::GuiListItemTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
 	};
 
 	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
@@ -254,15 +248,6 @@ Closures
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
 		__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::templates::GuiListItemTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
-	};
-
-	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::templates::GuiTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
 	};
@@ -309,24 +294,6 @@ Closures
 		::demo::ColorListItemTemplateConstructor* __vwsnthis_0;
 
 		__vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ColorListItemTemplateConstructor* __vwsnctorthis_0);
-
-		::demo::ColorListItemTemplate* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
-		bool Open() override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::ColorListItemTemplateConstructor* __vwsnthis_0;
-
-		__vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ColorListItemTemplateConstructor* __vwsnctorthis_0);
 
 		::demo::ColorListItemTemplate* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;

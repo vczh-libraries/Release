@@ -112,20 +112,15 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__::__vwsnf4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__(::demo::ColorListItemTemplateConstructor* __vwsnctorthis_0)
+	__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	::vl::WString __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
 	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_0)->GetTextColor();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::Color>(__vwsn_value_);
-		if ((__vwsn_old_ == __vwsn_new_))
-		{
-			return;
-		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_0)->SetTextColor(__vwsn_new_);
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::IColorItem>>(__vwsn_item_);
+		return ::vl::__vwsn::This(item.Obj())->GetItemName();
 	}
 
 	//-------------------------------------------------------------------
@@ -135,20 +130,7 @@ Closures
 	{
 	}
 
-	::vl::WString __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
-	{
-		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::IColorItem>>(__vwsn_item_);
-		return ::vl::__vwsn::This(item.Obj())->GetItemName();
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
-	{
-	}
-
-	::vl::presentation::templates::GuiListItemTemplate* __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const
+	::vl::presentation::templates::GuiListItemTemplate* __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const
 	{
 		{
 			if ([&](){ auto __vwsn_temp__ = __vwsn_viewModel_; return __vwsn_temp__.GetSharedPtr() && ::vl::__vwsn::RawPtrCast<::demo::IColorItem>(__vwsn_temp__.GetRawPtr()) != nullptr; }())
@@ -161,12 +143,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
+	__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	::vl::presentation::templates::GuiTemplate* __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const
+	::vl::presentation::templates::GuiTemplate* __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__::operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const
 	{
 		{
 			if ([&](){ auto __vwsn_temp__ = __vwsn_viewModel_; return __vwsn_temp__.GetSharedPtr() && ::vl::__vwsn::RawPtrCast<::demo::IColorItem>(__vwsn_temp__.GetRawPtr()) != nullptr; }())
@@ -348,63 +330,6 @@ Closures
 		return false;
 	}
 
-	//-------------------------------------------------------------------
-
-	__vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ColorListItemTemplateConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
-	{
-		this->__vwsn_bind_cache_0 = static_cast<::demo::ColorListItemTemplate*>(nullptr);
-		this->__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>();
-		this->__vwsn_bind_opened_ = false;
-		this->__vwsn_bind_closed_ = false;
-	}
-
-	void __vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
-	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetTextColor();
-		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
-	}
-
-	void __vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
-	{
-		this->__vwsn_bind_activator_();
-	}
-
-	bool __vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::Open()
-	{
-		if ((! __vwsn_bind_opened_))
-		{
-			(__vwsn_bind_opened_ = true);
-			(__vwsn_bind_cache_0 = __vwsnthis_0->self);
-			(__vwsn_bind_handler_0_0 = ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->TextColorChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)));
-			return true;
-		}
-		return false;
-	}
-
-	bool __vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::Update()
-	{
-		if ((__vwsn_bind_opened_ && (! __vwsn_bind_closed_)))
-		{
-			this->__vwsn_bind_activator_();
-			return true;
-		}
-		return false;
-	}
-
-	bool __vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription::Close()
-	{
-		if ((! __vwsn_bind_closed_))
-		{
-			(__vwsn_bind_closed_ = true);
-			::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->TextColorChanged, __vwsn_bind_handler_0_0);
-			(__vwsn_bind_cache_0 = static_cast<::demo::ColorListItemTemplate*>(nullptr));
-			(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
-			return true;
-		}
-		return false;
-	}
-
 }
 
 /***********************************************************************
@@ -548,11 +473,6 @@ Class (::demo::ColorListItemTemplateConstructor)
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
-		{
-			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_ColorListItemTemplateConstructor___vwsn_initialize_instance__(this)));
-			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
-		}
 	}
 
 	ColorListItemTemplateConstructor::ColorListItemTemplateConstructor()
@@ -641,7 +561,7 @@ Class (::demo::MainWindowConstructor)
 			(this->__vwsn_precompile_6 = new ::vl::presentation::controls::GuiBindableTextList(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
@@ -650,7 +570,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
 			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateComboBoxStyle();
@@ -661,7 +581,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_5)->GetBoundsComposition()));
