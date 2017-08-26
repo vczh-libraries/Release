@@ -116,8 +116,8 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IViewModel>;
 #endif
 	public:
-		virtual void BeginDownload(const ::vl::Func<void(::vl::vint32_t)>& progress, const ::vl::Func<void(const ::vl::WString&)>& callback) = 0;
-		static ::vl::Ptr<::demo::IStringAsync> DownloadAsync(::vl::Ptr<::demo::IViewModel> viewModel, const ::vl::Func<void(::vl::vint32_t)>& progress);
+		virtual void BeginDownload(const ::vl::Func<void(::vl::vint)>& progress, const ::vl::Func<void(const ::vl::WString&)>& callback) = 0;
+		static ::vl::Ptr<::demo::IStringAsync> DownloadAsync(::vl::Ptr<::demo::IViewModel> viewModel, const ::vl::Func<void(::vl::vint)>& progress);
 	};
 
 }
@@ -153,15 +153,15 @@ Closures
 
 		__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::vint32_t progress) const;
+		void operator()(::vl::vint progress) const;
 	};
 
 	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____
 	{
-		::vl::vint32_t progress;
+		::vl::vint progress;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____(::vl::vint32_t __vwsnctor_progress, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____(::vl::vint __vwsnctor_progress, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()() const;
 	};
@@ -181,15 +181,15 @@ Closures
 
 		__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::vint32_t progress) const;
+		void operator()(::vl::vint progress) const;
 	};
 
 	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____
 	{
-		::vl::vint32_t progress;
+		::vl::vint progress;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____(::vl::vint32_t __vwsnctor_progress, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____(::vl::vint __vwsnctor_progress, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()() const;
 	};
@@ -201,16 +201,16 @@ Closures
 
 		__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume_(::vl::reflection::description::ICoroutine* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
 
-		void operator()(::vl::vint32_t progress) const;
+		void operator()(::vl::vint progress) const;
 	};
 
 	struct __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume__
 	{
-		::vl::vint32_t progress;
+		::vl::vint progress;
 		::vl::reflection::description::ICoroutine* __vwsnthis_0;
 		::demo::MainWindowConstructor* __vwsnthis_1;
 
-		__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume__(::vl::vint32_t __vwsnctor_progress, ::vl::reflection::description::ICoroutine* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
+		__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume__(::vl::vint __vwsnctor_progress, ::vl::reflection::description::ICoroutine* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
 
 		void operator()() const;
 	};
@@ -233,7 +233,7 @@ Closures
 		__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsnctor___vwsn_co_impl_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::WString __vwsn_co0_text;
-		::vl::vint32_t __vwsn_co_state_ = 0;
+		::vl::vint __vwsn_co_state_ = 0;
 		::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_prop_Failure;
 		::vl::Ptr<::vl::reflection::description::IValueException> GetFailure() override;
 		void SetFailure(::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_value_);

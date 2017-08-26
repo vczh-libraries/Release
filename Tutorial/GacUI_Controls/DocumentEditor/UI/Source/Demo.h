@@ -12,26 +12,4 @@ https://github.com/vczh-libraries
 
 #include "DemoPartialClasses.h"
 
-/***********************************************************************
-Reflection
-***********************************************************************/
-
-namespace vl
-{
-	namespace reflection
-	{
-		namespace description
-		{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::demo::HyperlinkWindow)
-			DECL_TYPE_INFO(::demo::HyperlinkWindowConstructor)
-			DECL_TYPE_INFO(::demo::MainWindow)
-			DECL_TYPE_INFO(::demo::MainWindowConstructor)
-#endif
-
-			extern bool LoadDemoTypes();
-		}
-	}
-}
-
 #endif

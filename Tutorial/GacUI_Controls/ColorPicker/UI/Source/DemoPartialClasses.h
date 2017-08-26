@@ -11,9 +11,6 @@ https://github.com/vczh-libraries
 #define VCZH_WORKFLOW_COMPILER_GENERATED_DEMOPARTIALCLASSES
 
 #include "GacUI.h"
-#ifndef VCZH_DEBUG_NO_REFLECTION
-#include "GacUIReflection.h"
-#endif
 
 #if defined( _MSC_VER)
 #pragma warning(push)
@@ -85,7 +82,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorBomboItemTemplate>;
 #endif
 	public:
-		::vl::presentation::Color __vwsn_prop_TextColor = ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#000000", false));
+		::vl::presentation::Color __vwsn_prop_TextColor = ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false));
 		::vl::presentation::Color GetTextColor();
 		void SetTextColor(::vl::presentation::Color __vwsn_value_);
 		::vl::Event<void()> TextColorChanged;

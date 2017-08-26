@@ -11,9 +11,6 @@ https://github.com/vczh-libraries
 #define VCZH_WORKFLOW_COMPILER_GENERATED_DEMOPARTIALCLASSES
 
 #include "GacUI.h"
-#ifndef VCZH_DEBUG_NO_REFLECTION
-#include "GacUIReflection.h"
-#endif
 
 #if defined( _MSC_VER)
 #pragma warning(push)
@@ -1017,7 +1014,7 @@ Closures
 
 		::vl::presentation::controls::GuiWindow* __vwsn_co0_mainWindow = nullptr;
 		::demo::HyperlinkWindow* __vwsn_co1_window = nullptr;
-		::vl::vint32_t __vwsn_co_state_ = 0;
+		::vl::vint __vwsn_co_state_ = 0;
 		::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_prop_Failure;
 		::vl::Ptr<::vl::reflection::description::IValueException> GetFailure() override;
 		void SetFailure(::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_value_);

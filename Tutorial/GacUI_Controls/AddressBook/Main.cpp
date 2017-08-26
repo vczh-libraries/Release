@@ -1,16 +1,10 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include "UI/Source/Demo.h"
-#include <Windows.h>
 
 using namespace vl::collections;
 using namespace vl::stream;
 using namespace vl::reflection::description;
 using namespace demo;
-
-int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int CmdShow)
-{
-	return SetupWindowsDirect2DRenderer();
-}
 
 Ptr<GuiImageData> folderImage;
 Ptr<GuiImageData> contactBigImage;

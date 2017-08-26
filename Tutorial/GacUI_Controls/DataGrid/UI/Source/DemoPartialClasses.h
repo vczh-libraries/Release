@@ -11,9 +11,6 @@ https://github.com/vczh-libraries
 #define VCZH_WORKFLOW_COMPILER_GENERATED_DEMOPARTIALCLASSES
 
 #include "GacUI.h"
-#ifndef VCZH_DEBUG_NO_REFLECTION
-#include "GacUIReflection.h"
-#endif
 
 #if defined( _MSC_VER)
 #pragma warning(push)
@@ -490,7 +487,7 @@ namespace demo
 #endif
 	protected:
 		::demo::CategoryItemTemplate* self = static_cast<::demo::CategoryItemTemplate*>(nullptr);
-		::demo::MyCategory SelectedCategory = static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint32_t>(0)));
+		::demo::MyCategory SelectedCategory = static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0)));
 		::demo::CategoryDisplayer* __vwsn_precompile_0 = static_cast<::demo::CategoryDisplayer*>(nullptr);
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
 		void __vwsn_initialize_instance_(::demo::CategoryItemTemplate* __vwsn_this_);
@@ -507,7 +504,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryItemTemplate>;
 #endif
 	public:
-		::demo::MyCategory __vwsn_parameter_SelectedCategory = static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint32_t>(0)));
+		::demo::MyCategory __vwsn_parameter_SelectedCategory = static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0)));
 		::demo::MyCategory GetSelectedCategory();
 		CategoryItemTemplate(::demo::MyCategory __vwsn_ctor_parameter_SelectedCategory);
 		~CategoryItemTemplate();
@@ -624,7 +621,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderItemTemplateConstructor>;
 #endif
 	protected:
-		::demo::MyGender SelectedGender = static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint32_t>(0)));
+		::demo::MyGender SelectedGender = static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0)));
 		::demo::GenderItemTemplate* __vwsn_precompile_0 = static_cast<::demo::GenderItemTemplate*>(nullptr);
 		::demo::GenderDisplayer* __vwsn_precompile_1 = static_cast<::demo::GenderDisplayer*>(nullptr);
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
@@ -640,7 +637,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderItemTemplate>;
 #endif
 	public:
-		::demo::MyGender __vwsn_parameter_SelectedGender = static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint32_t>(0)));
+		::demo::MyGender __vwsn_parameter_SelectedGender = static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0)));
 		::demo::MyGender GetSelectedGender();
 		GenderItemTemplate(::demo::MyGender __vwsn_ctor_parameter_SelectedGender);
 		~GenderItemTemplate();
@@ -1186,7 +1183,7 @@ Closures
 
 		__vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Compare_(::vl::presentation::controls::list::IDataSorter* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
 
-		::vl::vint32_t operator()(::vl::Ptr<::demo::MyDataItem> __vwsno_1, ::vl::Ptr<::demo::MyDataItem> __vwsno_2) const;
+		::vl::vint operator()(::vl::Ptr<::demo::MyDataItem> __vwsno_1, ::vl::Ptr<::demo::MyDataItem> __vwsno_2) const;
 	};
 
 	struct __vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Compare_
@@ -1196,7 +1193,7 @@ Closures
 
 		__vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Compare_(::vl::presentation::controls::list::IDataSorter* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
 
-		::vl::vint32_t operator()(::vl::Ptr<::demo::MyDataItem> __vwsno_1, ::vl::Ptr<::demo::MyDataItem> __vwsno_2) const;
+		::vl::vint operator()(::vl::Ptr<::demo::MyDataItem> __vwsno_1, ::vl::Ptr<::demo::MyDataItem> __vwsno_2) const;
 	};
 
 	struct __vwsno25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Compare_
@@ -1206,7 +1203,7 @@ Closures
 
 		__vwsno25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Compare_(::vl::presentation::controls::list::IDataSorter* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
 
-		::vl::vint32_t operator()(::vl::Ptr<::demo::MyDataItem> __vwsno_1, ::vl::Ptr<::demo::MyDataItem> __vwsno_2) const;
+		::vl::vint operator()(::vl::Ptr<::demo::MyDataItem> __vwsno_1, ::vl::Ptr<::demo::MyDataItem> __vwsno_2) const;
 	};
 
 	struct __vwsno3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Compare_
@@ -1216,7 +1213,7 @@ Closures
 
 		__vwsno3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Compare_(::vl::presentation::controls::list::IDataSorter* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
 
-		::vl::vint32_t operator()(::vl::Ptr<::demo::MyDataItem> __vwsno_1, ::vl::Ptr<::demo::MyDataItem> __vwsno_2) const;
+		::vl::vint operator()(::vl::Ptr<::demo::MyDataItem> __vwsno_1, ::vl::Ptr<::demo::MyDataItem> __vwsno_2) const;
 	};
 
 	struct __vwsno9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Compare_
@@ -1226,7 +1223,7 @@ Closures
 
 		__vwsno9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__Compare_(::vl::presentation::controls::list::IDataSorter* __vwsnctorthis_0, ::demo::MainWindowConstructor* __vwsnctorthis_1);
 
-		::vl::vint32_t operator()(::vl::Ptr<::demo::MyDataItem> __vwsno_1, ::vl::Ptr<::demo::MyDataItem> __vwsno_2) const;
+		::vl::vint operator()(::vl::Ptr<::demo::MyDataItem> __vwsno_1, ::vl::Ptr<::demo::MyDataItem> __vwsno_2) const;
 	};
 
 	class __vwsnc10_Demo_demo_DateFilter___vwsn_instance_ctor___vl_presentation_controls_list_IDataFilter : public ::vl::Object, public virtual ::vl::presentation::controls::list::IDataFilter
@@ -1410,7 +1407,7 @@ Closures
 		__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_controls_list_IDataSorter(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void SetCallback(::vl::presentation::controls::list::IDataProcessorCallback* value) override;
-		::vl::vint32_t Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_) override;
+		::vl::vint Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_) override;
 	};
 
 	class __vwsnc20_Demo_demo_CategoryVisualizerConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
@@ -1511,7 +1508,7 @@ Closures
 		__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_controls_list_IDataSorter(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void SetCallback(::vl::presentation::controls::list::IDataProcessorCallback* value) override;
-		::vl::vint32_t Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_) override;
+		::vl::vint Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_) override;
 	};
 
 	class __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_controls_list_IDataSorter : public ::vl::Object, public virtual ::vl::presentation::controls::list::IDataSorter
@@ -1522,7 +1519,7 @@ Closures
 		__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_controls_list_IDataSorter(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void SetCallback(::vl::presentation::controls::list::IDataProcessorCallback* value) override;
-		::vl::vint32_t Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_) override;
+		::vl::vint Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_) override;
 	};
 
 	class __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_controls_list_IDataSorter : public ::vl::Object, public virtual ::vl::presentation::controls::list::IDataSorter
@@ -1533,7 +1530,7 @@ Closures
 		__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_controls_list_IDataSorter(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void SetCallback(::vl::presentation::controls::list::IDataProcessorCallback* value) override;
-		::vl::vint32_t Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_) override;
+		::vl::vint Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_) override;
 	};
 
 	class __vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_controls_list_IDataSorter : public ::vl::Object, public virtual ::vl::presentation::controls::list::IDataSorter
@@ -1544,7 +1541,7 @@ Closures
 		__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_presentation_controls_list_IDataSorter(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void SetCallback(::vl::presentation::controls::list::IDataProcessorCallback* value) override;
-		::vl::vint32_t Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_) override;
+		::vl::vint Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_) override;
 	};
 
 	class __vwsnc6_Demo_demo_DateEditorConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription

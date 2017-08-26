@@ -2321,7 +2321,7 @@ Class (::demo::NewContactWindow)
 
 	NewContactWindow::~NewContactWindow()
 	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControl*>(this));
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
 	}
 
 /***********************************************************************
@@ -2505,7 +2505,7 @@ Class (::demo::NewFolderWindow)
 
 	NewFolderWindow::~NewFolderWindow()
 	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControl*>(this));
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
 	}
 
 /***********************************************************************

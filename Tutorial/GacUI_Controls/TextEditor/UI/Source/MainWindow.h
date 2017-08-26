@@ -63,7 +63,7 @@ namespace demo
 #endif
 	public:
 		bool CanCloseFile();
-		bool OpenFile(::vl::vint32_t filterIndex);
+		bool OpenFile(::vl::vint filterIndex);
 		bool SaveFile(bool saveAs);
 		void SetupTextConfig();
 		void SetupXmlConfig();

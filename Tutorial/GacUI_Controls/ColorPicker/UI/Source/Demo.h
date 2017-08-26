@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -11,49 +11,5 @@ https://github.com/vczh-libraries
 #define VCZH_WORKFLOW_COMPILER_GENERATED_DEMO
 
 #include "DemoPartialClasses.h"
-
-/***********************************************************************
-Reflection
-***********************************************************************/
-
-namespace vl
-{
-	namespace reflection
-	{
-		namespace description
-		{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::demo::ColorBomboItemTemplate)
-			DECL_TYPE_INFO(::demo::ColorBomboItemTemplateConstructor)
-			DECL_TYPE_INFO(::demo::ColorListItemTemplate)
-			DECL_TYPE_INFO(::demo::ColorListItemTemplateConstructor)
-			DECL_TYPE_INFO(::demo::IColorItem)
-			DECL_TYPE_INFO(::demo::IViewModel)
-			DECL_TYPE_INFO(::demo::MainWindow)
-			DECL_TYPE_INFO(::demo::MainWindowConstructor)
-
-			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::demo::IColorItem)
-				::vl::presentation::Color GetItemColor() override
-				{
-					INVOKEGET_INTERFACE_PROXY_NOPARAMS(GetItemColor);
-				}
-				::vl::WString GetItemName() override
-				{
-					INVOKEGET_INTERFACE_PROXY_NOPARAMS(GetItemName);
-				}
-			END_INTERFACE_PROXY(::demo::IColorItem)
-
-			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::demo::IViewModel)
-				::vl::collections::LazyList<::vl::Ptr<::demo::IColorItem>> GetColorItems() override
-				{
-					INVOKEGET_INTERFACE_PROXY_NOPARAMS(GetColorItems);
-				}
-			END_INTERFACE_PROXY(::demo::IViewModel)
-#endif
-
-			extern bool LoadDemoTypes();
-		}
-	}
-}
 
 #endif

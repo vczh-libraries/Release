@@ -38,7 +38,7 @@
   </Doc>
   <Instance name="AboutWindowResource">
     <Instance ref.CodeBehind="true" ref.Class="demo::AboutWindow">
-      <Window ref.Name="self" Text="About TextEditor" ClientSize="x:480 y:320" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
+      <Window ref.Name="self" Text="About TextEditor" ClientSize="x:480 y:360" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
 
         <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
           <att.Rows>

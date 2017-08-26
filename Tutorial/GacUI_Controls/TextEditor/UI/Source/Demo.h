@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -14,29 +14,5 @@ https://github.com/vczh-libraries
 #include "AboutWindow.h"
 #include "FindWindow.h"
 #include "MainWindow.h"
-
-/***********************************************************************
-Reflection
-***********************************************************************/
-
-namespace vl
-{
-	namespace reflection
-	{
-		namespace description
-		{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::demo::AboutWindow)
-			DECL_TYPE_INFO(::demo::AboutWindowConstructor)
-			DECL_TYPE_INFO(::demo::FindWindow)
-			DECL_TYPE_INFO(::demo::FindWindowConstructor)
-			DECL_TYPE_INFO(::demo::MainWindow)
-			DECL_TYPE_INFO(::demo::MainWindowConstructor)
-#endif
-
-			extern bool LoadDemoTypes();
-		}
-	}
-}
 
 #endif

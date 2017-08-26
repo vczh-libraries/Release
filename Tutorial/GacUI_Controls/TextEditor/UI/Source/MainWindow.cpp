@@ -8,6 +8,12 @@ https://github.com/vczh-libraries
 ***********************************************************************/
 
 #include "Demo.h"
+/* CodePack:BeginIgnore() */
+#ifndef VCZH_DEBUG_NO_REFLECTION
+/* CodePack:ConditionOff(VCZH_DEBUG_NO_REFLECTION, DemoReflection.h) */
+#include "DemoReflection.h"
+#endif
+/* CodePack:EndIgnore() */
 
 #if defined( _MSC_VER)
 #pragma warning(push)
@@ -53,7 +59,7 @@ namespace demo
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
-	bool MainWindow::OpenFile(::vl::vint32_t filterIndex)
+	bool MainWindow::OpenFile(::vl::vint filterIndex)
 	{
 		if (CanCloseFile())
 		{
@@ -294,7 +300,7 @@ namespace demo
 
 	MainWindow::~MainWindow()
 	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControl*>(this));
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
 	}
 
 }
@@ -310,9 +316,3 @@ namespace demo
 #elif defined(__clang__)
 #pragma clang diagnostic pop
 #endif
-// UNUSED_USER_CONTENT:
-//	USERIMPL(/* ::demo::MainWindow */)
-//	bool MainWindow::CanCLoseFile()
-//	{
-//		throw ::vl::Exception(L"You should implement this function.");
-//	}

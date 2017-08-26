@@ -7,11 +7,6 @@ using namespace vl::stream;
 
 #pragma comment(linker,"\"/manifestdependency:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
-int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int CmdShow)
-{
-	return SetupWindowsDirect2DRenderer();
-}
-
 void GuiMain()
 {
 	{
@@ -42,7 +37,13 @@ class XmlColorizer : public GuiTextBoxRegexColorizer
 public:
 	XmlColorizer()
 	{
-		text::ColorEntry entry = GetCurrentTheme()->GetDefaultTextBoxColorEntry();
+		text::ColorEntry entry;
+		entry.normal.text = Color(255, 255, 255);
+		entry.normal.background = Color(0, 0, 0, 0);
+		entry.selectedFocused.text = Color(255, 255, 255);
+		entry.selectedFocused.background = Color(0, 122, 204);
+		entry.selectedUnfocused.text = Color(255, 255, 255);
+		entry.selectedUnfocused.background = Color(0, 122, 204);
 		SetDefaultColor(entry);
 
 		entry.normal.text = Color(0, 128, 0);
@@ -51,7 +52,7 @@ public:
 		entry.normal.text = Color(128, 0, 255);
 		AddToken(L"/<!/[CDATA/[([^/]]|/][^/]]|/]/][^>])*/]/]/>", entry);
 
-		entry.normal.text = Color(0, 0, 0);
+		entry.normal.text = Color(255, 255, 255);
 		AddToken(L"\"[^\"]*\"", entry);
 
 		entry.normal.text = Color(0, 0, 255);

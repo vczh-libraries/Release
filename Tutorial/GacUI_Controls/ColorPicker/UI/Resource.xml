@@ -77,7 +77,7 @@
         <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
         <ref.Members>
           <![CDATA[
-            prop TextColor : Color = (cast Color "#000000") {}
+            prop TextColor : Color = (cast Color "#FFFFFF") {}
           ]]>
         </ref.Members>
         <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">

@@ -12,31 +12,4 @@ https://github.com/vczh-libraries
 
 #include "DemoPartialClasses.h"
 
-/***********************************************************************
-Reflection
-***********************************************************************/
-
-namespace vl
-{
-	namespace reflection
-	{
-		namespace description
-		{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::demo::ListViewTabPage)
-			DECL_TYPE_INFO(::demo::ListViewTabPageConstructor)
-			DECL_TYPE_INFO(::demo::MainWindow)
-			DECL_TYPE_INFO(::demo::MainWindowConstructor)
-			DECL_TYPE_INFO(::demo::MyTextItem)
-			DECL_TYPE_INFO(::demo::TextListTabPage)
-			DECL_TYPE_INFO(::demo::TextListTabPageConstructor)
-			DECL_TYPE_INFO(::demo::TreeViewTabPage)
-			DECL_TYPE_INFO(::demo::TreeViewTabPageConstructor)
-#endif
-
-			extern bool LoadDemoTypes();
-		}
-	}
-}
-
 #endif
