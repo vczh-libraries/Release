@@ -3,3 +3,6 @@
 	echo Processing %%~nxi ...
 	%~dp0CppMerge.exe %1.log\x32\Source\%%~nxi %1.log\x64\Source\%%~nxi %CppOutput%\%%~nxi
 )
+@if exist %1.log\x32\Deploy.bat @ (
+	call %1.log\x32\Deploy.bat
+)

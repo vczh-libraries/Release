@@ -284,8 +284,8 @@
                       </att.Columns>
 
                       <att.DataColumns>
-                        <Int32>1</Int32>
-                        <Int32>2</Int32>
+                        <_>1</_>
+                        <_>2</_>
                       </att.DataColumns>
                     </BindableListView>
                   </Cell>

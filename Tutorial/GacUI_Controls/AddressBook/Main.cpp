@@ -270,7 +270,6 @@ public:
 
 void GuiMain()
 {
-	LoadDemoTypes();
 	{
 		FileStream fileStream(L"../UIRes/AddressBook.bin", FileStream::ReadOnly);
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
