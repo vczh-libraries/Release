@@ -1,1 +1,1 @@
-%~dp0..\..\..\..\Tools\GacGen32.exe Resource.xml
+%~dp0..\..\..\..\Tools\GacGen32.exe %~dp0Resource.xml
