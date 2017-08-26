@@ -59,8 +59,8 @@
 - [x] Update GacGen with new codegen functions
 - [x] Support 32-64 merging in GacGen
 - [x] Generate DarkSkin to `Source\Skins\DarkSkin\`
-- [ ] Update CodePack to read `/* CodePack: */` comments
-- [ ] Generate DarkSkin code to Release\Skins\DarkSkin.(h|cpp)
+- [x] Update CodePack to read `/* CodePack: */` comments
+- [x] Generate DarkSkin code to Release\Skins\DarkSkin.(h|cpp)
 - [ ] **Update Release**, every tutorial uses DarkSkin in shared library, with a new common `WinMain.cpp`
 - [ ] GuiListControl with non-virtual composition items
     * GuiScrollView supports hiding scrolls forever
