@@ -13,21 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Import">
+      <UniqueIdentifier>{ea79debf-3d39-4992-8c43-1eab2f841a12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Import\GacUICompiler.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Import</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Import\VlppWorkflowCompiler.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Import</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Import\GacUICompiler.h">
-      <Filter>Header Files</Filter>
+      <Filter>Import</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Import\VlppWorkflowCompiler.h">
-      <Filter>Header Files</Filter>
+      <Filter>Import</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

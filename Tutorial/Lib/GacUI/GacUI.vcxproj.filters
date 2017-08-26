@@ -13,39 +13,63 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Import">
+      <UniqueIdentifier>{734768e1-c731-4563-ba14-c7bbb5c7f618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Import\Skins">
+      <UniqueIdentifier>{c5fafe3e-a864-4ba7-aff3-fbe8ed6bb5bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Import\Skins\DarkSkin">
+      <UniqueIdentifier>{5734f06c-6ba0-4560-87c1-cf76e113fb9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Import\GacUIReflection.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Import\VlppWorkflow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Import</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Import\GacUI.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Import</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\GacUIReflection.cpp">
+      <Filter>Import</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Import\GacUIWindows.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Import</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Import\Vlpp.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\Skins\DarkSkin\DarkSkin.cpp">
+      <Filter>Import\Skins\DarkSkin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\Skins\DarkSkin\DarkSkinReflection.cpp">
+      <Filter>Import\Skins\DarkSkin</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Import\GacUIReflection.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Import\VlppWorkflow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Import\GacUI.h">
-      <Filter>Header Files</Filter>
+      <Filter>Import</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\GacUIReflection.h">
+      <Filter>Import</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Import\GacUIWindows.h">
-      <Filter>Header Files</Filter>
+      <Filter>Import</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Import\Vlpp.h">
-      <Filter>Header Files</Filter>
+      <Filter>Import</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppWorkflow.h">
+      <Filter>Import</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\Skins\DarkSkin\DarkSkin.h">
+      <Filter>Import\Skins\DarkSkin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\Skins\DarkSkin\DarkSkinReflection.h">
+      <Filter>Import\Skins\DarkSkin</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

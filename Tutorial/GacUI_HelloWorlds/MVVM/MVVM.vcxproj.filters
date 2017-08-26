@@ -27,9 +27,6 @@
     <ClCompile Include="UI\Source\MainWindow.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\CppXml\WinMain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\Resource.xml">

@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -11,25 +11,5 @@ https://github.com/vczh-libraries
 #define VCZH_WORKFLOW_COMPILER_GENERATED_HELLOWORLD
 
 #include "HelloWorldPartialClasses.h"
-
-/***********************************************************************
-Reflection
-***********************************************************************/
-
-namespace vl
-{
-	namespace reflection
-	{
-		namespace description
-		{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::helloworld::MainWindow)
-			DECL_TYPE_INFO(::helloworld::MainWindowConstructor)
-#endif
-
-			extern bool LoadHelloWorldTypes();
-		}
-	}
-}
 
 #endif

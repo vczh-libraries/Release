@@ -80,7 +80,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\CppXml\WinMain.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="UI\Source\HelloWorldPartialClasses.cpp" />
     <ClCompile Include="UI\Source\MainWindow.cpp" />

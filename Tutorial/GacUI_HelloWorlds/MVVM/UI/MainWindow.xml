@@ -6,8 +6,8 @@
       prop HasLoggedIn : bool = false {}
     ]]>
   </ref.Members>
-  <Window ref.Name="self" Text="Let's Sign Up!" ClientSize="x:320 y:280">
-    <att.BoundsComposition-set PreferredMinSize="x:320 y:280"/>
+  <Window ref.Name="self" Text="Let's Sign Up!" ClientSize="x:320 y:320">
+    <att.BoundsComposition-set PreferredMinSize="x:320 y:320"/>
     <att.ViewModel-set UserName-bind="textBoxUserName.Text" Password-bind="textBoxPassword.Text"/>
     <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0">
       <att.Rows>

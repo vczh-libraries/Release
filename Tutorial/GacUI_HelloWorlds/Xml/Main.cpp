@@ -1,15 +1,9 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include <GacUIReflection.h>
-#include <Windows.h>
 
 using namespace vl::collections;
 using namespace vl::stream;
 using namespace vl::reflection::description;
-
-int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int CmdShow)
-{
-	return SetupWindowsDirect2DRenderer();
-}
 
 void GuiMain()
 {

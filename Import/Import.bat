@@ -1,3 +1,4 @@
+pushd %~dp0
 mkdir Skins
 mkdir Skins\DarkSkin
 copy ..\..\Vlpp\Release\*.h .
@@ -7,3 +8,4 @@ copy ..\..\Workflow\Release\*.cpp .
 copy ..\..\GacUI\Release\Gac*.h .
 copy ..\..\GacUI\Release\Gac*.cpp .
 copy ..\..\GacUI\Release\DarkSkin* .\Skins\DarkSkin\
+popd

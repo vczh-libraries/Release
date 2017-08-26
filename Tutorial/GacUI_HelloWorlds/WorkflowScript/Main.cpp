@@ -1,17 +1,11 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include <GacUICompiler.h>
-#include <Windows.h>
 
 using namespace vl::parsing;
 using namespace vl::collections;
 using namespace vl::workflow;
 using namespace vl::workflow::emitter;
 using namespace vl::workflow::runtime;
-
-int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int CmdShow)
-{
-	return SetupWindowsDirect2DRenderer();
-}
 
 const wchar_t* WorkflowScript = LR"workflow(
 

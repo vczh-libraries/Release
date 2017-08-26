@@ -1,14 +1,8 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include "UI/Source/HelloWorld.h"
-#include <Windows.h>
 
 using namespace vl::collections;
 using namespace vl::stream;
-
-int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int CmdShow)
-{
-	return SetupWindowsDirect2DRenderer();
-}
 
 void GuiMain()
 {
