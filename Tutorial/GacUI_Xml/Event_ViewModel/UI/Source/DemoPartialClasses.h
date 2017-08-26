@@ -88,7 +88,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IViewModel>;
 #endif
 	public:
-		virtual ::vl::vint32_t Add(::vl::vint32_t a, ::vl::vint32_t b) = 0;
+		virtual ::vl::vint Add(::vl::vint a, ::vl::vint b) = 0;
 		virtual ::vl::WString Error() = 0;
 	};
 

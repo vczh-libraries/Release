@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -12,27 +12,5 @@ https://github.com/vczh-libraries
 
 #include "DemoPartialClasses.h"
 #include "MainWindow.h"
-
-/***********************************************************************
-Reflection
-***********************************************************************/
-
-namespace vl
-{
-	namespace reflection
-	{
-		namespace description
-		{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::demo::AnotherWindow)
-			DECL_TYPE_INFO(::demo::AnotherWindowConstructor)
-			DECL_TYPE_INFO(::demo::MainWindow)
-			DECL_TYPE_INFO(::demo::MainWindowConstructor)
-#endif
-
-			extern bool LoadDemoTypes();
-		}
-	}
-}
 
 #endif

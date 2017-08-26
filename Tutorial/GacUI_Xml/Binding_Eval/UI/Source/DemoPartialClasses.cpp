@@ -8,6 +8,12 @@ https://github.com/vczh-libraries
 ***********************************************************************/
 
 #include "Demo.h"
+/* CodePack:BeginIgnore() */
+#ifndef VCZH_DEBUG_NO_REFLECTION
+/* CodePack:ConditionOff(VCZH_DEBUG_NO_REFLECTION, DemoReflection.h) */
+#include "DemoReflection.h"
+#endif
+/* CodePack:EndIgnore() */
 
 #if defined( _MSC_VER)
 #pragma warning(push)
@@ -58,10 +64,10 @@ namespace demo
 		(this->__vwsn_precompile_0 = __vwsn_this_);
 		(this->__vwsn_precompile_2 = ::vl::__vwsn::This(this->__vwsn_precompile_0)->GetBoundsComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint32_t>(480); __vwsn_temp__.y = static_cast<::vl::vint32_t>(320); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(480); __vwsn_temp__.y = static_cast<::vl::vint>(320); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint32_t>(480); __vwsn_temp__.y = static_cast<::vl::vint32_t>(320); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(480); __vwsn_temp__.y = static_cast<::vl::vint>(320); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString(L"Binding_Eval", false));
@@ -71,13 +77,13 @@ namespace demo
 			(this->__vwsn_precompile_1 = new ::vl::presentation::controls::GuiLabel(__vwsn_controlStyle_));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint32_t>(32); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(32); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->AddChild(static_cast<::vl::presentation::controls::GuiControl*>(this->__vwsn_precompile_1));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetText((::vl::WString(L"1+2+3+4+5+6+7+8+9+10 = ", false) + ::vl::__vwsn::ToString((((((((((static_cast<::vl::vint32_t>(1) + static_cast<::vl::vint32_t>(2)) + static_cast<::vl::vint32_t>(3)) + static_cast<::vl::vint32_t>(4)) + static_cast<::vl::vint32_t>(5)) + static_cast<::vl::vint32_t>(6)) + static_cast<::vl::vint32_t>(7)) + static_cast<::vl::vint32_t>(8)) + static_cast<::vl::vint32_t>(9)) + static_cast<::vl::vint32_t>(10)))));
+			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetText((::vl::WString(L"1+2+3+4+5+6+7+8+9+10 = ", false) + ::vl::__vwsn::ToString((((((((((static_cast<::vl::vint>(1) + static_cast<::vl::vint>(2)) + static_cast<::vl::vint>(3)) + static_cast<::vl::vint>(4)) + static_cast<::vl::vint>(5)) + static_cast<::vl::vint>(6)) + static_cast<::vl::vint>(7)) + static_cast<::vl::vint>(8)) + static_cast<::vl::vint>(9)) + static_cast<::vl::vint>(10)))));
 		}
 	}
 
@@ -100,7 +106,7 @@ Class (::demo::MainWindow)
 
 	MainWindow::~MainWindow()
 	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControl*>(this));
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
 	}
 
 }
@@ -108,63 +114,6 @@ Class (::demo::MainWindow)
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
 #undef USERIMPL
-
-/***********************************************************************
-Reflection
-***********************************************************************/
-
-namespace vl
-{
-	namespace reflection
-	{
-		namespace description
-		{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-			IMPL_CPP_TYPE_INFO(demo::MainWindow)
-			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
-
-#define _ ,
-			BEGIN_CLASS_MEMBER(::demo::MainWindow)
-				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
-			END_CLASS_MEMBER(::demo::MainWindow)
-
-			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
-				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
-				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
-			END_CLASS_MEMBER(::demo::MainWindowConstructor)
-
-#undef _
-			class DemoTypeLoader : public Object, public ITypeLoader
-			{
-			public:
-				void Load(ITypeManager* manager)
-				{
-					ADD_TYPE_INFO(::demo::MainWindow)
-					ADD_TYPE_INFO(::demo::MainWindowConstructor)
-				}
-
-				void Unload(ITypeManager* manager)
-				{
-				}
-			};
-#endif
-
-			bool LoadDemoTypes()
-			{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-				if (auto manager = GetGlobalTypeManager())
-				{
-					return manager->AddTypeLoader(MakePtr<DemoTypeLoader>());
-				}
-#endif
-				return false;
-			}
-		}
-	}
-}
 
 #if defined( _MSC_VER)
 #pragma warning(pop)

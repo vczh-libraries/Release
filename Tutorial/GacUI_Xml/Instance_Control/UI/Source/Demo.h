@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -11,27 +11,5 @@ https://github.com/vczh-libraries
 #define VCZH_WORKFLOW_COMPILER_GENERATED_DEMO
 
 #include "DemoPartialClasses.h"
-
-/***********************************************************************
-Reflection
-***********************************************************************/
-
-namespace vl
-{
-	namespace reflection
-	{
-		namespace description
-		{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::demo::MainWindow)
-			DECL_TYPE_INFO(::demo::MainWindowConstructor)
-			DECL_TYPE_INFO(::demo::MyControl)
-			DECL_TYPE_INFO(::demo::MyControlConstructor)
-#endif
-
-			extern bool LoadDemoTypes();
-		}
-	}
-}
 
 #endif

@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -11,37 +11,5 @@ https://github.com/vczh-libraries
 #define VCZH_WORKFLOW_COMPILER_GENERATED_DEMO
 
 #include "DemoPartialClasses.h"
-
-/***********************************************************************
-Reflection
-***********************************************************************/
-
-namespace vl
-{
-	namespace reflection
-	{
-		namespace description
-		{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::demo::IViewModel)
-			DECL_TYPE_INFO(::demo::MainWindow)
-			DECL_TYPE_INFO(::demo::MainWindowConstructor)
-
-			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::demo::IViewModel)
-				::vl::vint32_t Add(::vl::vint32_t a, ::vl::vint32_t b) override
-				{
-					INVOKEGET_INTERFACE_PROXY(Add, a, b);
-				}
-				::vl::WString Error() override
-				{
-					INVOKEGET_INTERFACE_PROXY_NOPARAMS(Error);
-				}
-			END_INTERFACE_PROXY(::demo::IViewModel)
-#endif
-
-			extern bool LoadDemoTypes();
-		}
-	}
-}
 
 #endif
