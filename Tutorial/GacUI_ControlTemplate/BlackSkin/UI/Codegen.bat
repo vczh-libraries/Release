@@ -1,3 +1,6 @@
-del /Q FullControlTest
+pushd %~dp0
+rmdir /S /Q FullControlTest
 robocopy ..\..\..\..\..\GacUI\Test\GacUISrc\Host\Resources\FullControlTest FullControlTest /E
-..\..\..\..\Tools\GacGen.exe FullControlTest\Resource.xml
+mkdir FullControlTest\Source
+..\..\..\..\Tools\GacGen FullControlTest\Resource.xml
+popd
