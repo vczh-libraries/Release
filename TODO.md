@@ -62,22 +62,24 @@
 - [x] Update CodePack to read `/* CodePack: */` comments
 - [x] Generate DarkSkin code to Release\Skins\DarkSkin.(h|cpp)
 - [x] **Update Release**, every tutorial uses DarkSkin in shared library, with a new common `WinMain.cpp`
-- [ ] GuiListControl with non-virtual composition items
-    * GuiScrollView supports hiding scrolls forever
-    * New arranger for `Flow` and `Stack`
-- [ ] Redesign TabControl's control template so that a container can bind to tab header list control
+- [ ] `GuiRepeater` component
+    * `void SetContainer(IGuiRepeatableContainer*);`
+    * `void SetItemSource(Ptr<IValueEnumerable>);`
+    * `void SetItemTemplate(TemplateProperty<GuiTemplate>);`
+    * `GuiStackComposition : public IGuiRepeatableContainer`
+    * `GuiFlowComposition : public IGuiRepeatableContainer`
+- [ ] Redesign TabControl's control template so that tab headers can be managed by an item source
 - [ ] Update DarkSkin to write a new tab template
 - [ ] **Update Release**
 - [ ] Remove control style interfaces, controls talk to templates directly
 - [ ] **Update Release**
 - [ ] New default control templates, written in XML generated C++ code.
-- [ ] Default control templates replace GacUIDefaultSkin
+- [ ] Tutorials use the new default control templates
+- [ ] ControlTemplate tutorial can switch between skins in runtime
 - [ ] **Update Release**
-- [ ] Reorganize GacUISrc so that it builds a template library containing multiple set of skins
-- [ ] **Update Release**, so that ControlTemplate tutorial is updated
 - [ ] Simple way to write animation using Workflow in Xml resource, add animation to default control templates
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
-- [ ] Redesign ToolstripMenu so that items so that a container can bind to toolstrip items
+- [ ] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
 - [ ] Normal text box supports surrogate pairs like document viewer
 
 #### Graphics
