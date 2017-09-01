@@ -62,12 +62,7 @@
 - [x] Update CodePack to read `/* CodePack: */` comments
 - [x] Generate DarkSkin code to Release\Skins\DarkSkin.(h|cpp)
 - [x] **Update Release**, every tutorial uses DarkSkin in shared library, with a new common `WinMain.cpp`
-- [ ] `GuiRepeater` component
-    * `void SetContainer(IGuiRepeatableContainer*);`
-    * `void SetItemSource(Ptr<IValueEnumerable>);`
-    * `void SetItemTemplate(TemplateProperty<GuiTemplate>);`
-    * `GuiStackComposition : public IGuiRepeatableContainer`
-    * `GuiFlowComposition : public IGuiRepeatableContainer`
+- [x] `GuiRepeatStackComposition` / `GuiRepeatFlowComposition`
 - [ ] Redesign TabControl's control template so that tab headers can be managed by an item source
 - [ ] Update DarkSkin to write a new tab template
 - [ ] **Update Release**
@@ -78,9 +73,13 @@
 - [ ] ControlTemplate tutorial can switch between skins in runtime
 - [ ] **Update Release**
 - [ ] Simple way to write animation using Workflow in Xml resource, add animation to default control templates
+- [ ] **Update Release**
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
+- [ ] **Update Release**
 - [ ] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
 - [ ] Normal text box supports surrogate pairs like document viewer
+- [ ] RTF / HTML clipboard format for document viewer
+- [ ] **Update Release**
 
 #### Graphics
 - [ ] MetaImageElement and MetaImage data structure
