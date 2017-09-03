@@ -42,7 +42,7 @@
 
 ## GacUI
 
-#### Templates
+#### Before 1.0
 - [x] Simplify item arranger
 - [x] Add deserializer to IGuiInstanceLoader series API
 - [x] `ItemTemplate<T>` for control template properties
@@ -81,6 +81,13 @@
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
 - [ ] **Update Release**
+- [ ] Inheritable custom window / control
+- [ ] Locale awared text resource with `str://` protocol
+- [ ] Bind to gradually changing value in a group calculated by time and key frames of jumping states
+- [ ] **Update Release**
+- [ ] Resource should have name and version
+- [ ] Depend on another resource, to decide loading order
+- [ ] **Update Release**
 
 #### Graphics
 - [ ] MetaImageElement and MetaImage data structure
@@ -95,13 +102,6 @@
 - [ ] Ribbon
 - [ ] Dock Container
 - [ ] Icon
-
-## GacUI Resource
-
-* InheritableCustomWindow
-* InheritableCustomControl
-* Localizable text template resource, adding str://
-* Visual State, State Machine, Animation
 
 ### (probably not do)
 
