@@ -65,10 +65,10 @@
 - [x] `GuiRepeatStackComposition` / `GuiRepeatFlowComposition`
 - [x] Redesign TabControl's control template so that tab headers can be managed by an item source
 - [x] Update DarkSkin to write a new tab template (bind `GuiTabPage`'s `Text` and `Alt` property to the header)
-- [ ] **Update Release**
+- [x] **Update Release**
 - [ ] Move all `IStyleProvider` hoster style controllers' implementations to corressponding control template classes
 - [ ] Remove control style interfaces, controls' constructors accept pointers to control template classes
-- [ ] Control's constructors accept `TemplateProperty<T>`
+- [ ] Each control has a `TemplateProperty<T>` property, default empty
 - [ ] **Update Release**
 - [ ] New default control templates, written in XML generated C++ code.
 - [ ] Tutorials use the new default control templates
