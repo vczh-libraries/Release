@@ -66,7 +66,9 @@
 - [ ] Redesign TabControl's control template so that tab headers can be managed by an item source
 - [ ] Update DarkSkin to write a new tab template
 - [ ] **Update Release**
-- [ ] Remove control style interfaces, controls talk to templates directly
+- [ ] Move all `IStyleProvider` hoster style controllers' implementations to corressponding control template classes
+- [ ] Remove control style interfaces, controls' constructors accept pointers to control template classes
+- [ ] Control's constructors accept `TemplateProperty<T>`
 - [ ] **Update Release**
 - [ ] New default control templates, written in XML generated C++ code.
 - [ ] Tutorials use the new default control templates
