@@ -63,7 +63,7 @@
 - [x] Generate DarkSkin code to Release\Skins\DarkSkin.(h|cpp)
 - [x] **Update Release**, every tutorial uses DarkSkin in shared library, with a new common `WinMain.cpp`
 - [x] `GuiRepeatStackComposition` / `GuiRepeatFlowComposition`
-- [ ] Redesign TabControl's control template so that tab headers can be managed by an item source
+- [x] Redesign TabControl's control template so that tab headers can be managed by an item source
 - [ ] Update DarkSkin to write a new tab template
 - [ ] **Update Release**
 - [ ] Move all `IStyleProvider` hoster style controllers' implementations to corressponding control template classes
