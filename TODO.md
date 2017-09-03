@@ -32,7 +32,6 @@
     * Compile
     * Binary Output (full assembly or types only)
     * C++ Codegen (x32/x64)
-    * C++ Merge
 
 ### (probably not do)
 
@@ -112,7 +111,6 @@
 ## GacGen.exe
 
 * Enable linking to external symbols
-* Generate `ITheme` implementation
 
 ### (optional)
 
@@ -123,4 +121,4 @@
 
 ## DocTools
 
-* Support `decltype(auto)` type
+* Rewrite in C++
