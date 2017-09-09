@@ -67,13 +67,13 @@
 - [x] **Update Release**
 - [x] Move all `IStyleProvider` hoster style controllers' implementations to corressponding control template classes
 - [x] Remove control style interfaces, controls' constructors accept pointers to control template classes
-- [ ] Each control has a `TemplateProperty<T>` property, default empty
+- [ ] Render focus
+- [ ] Move complex template logic to control
 - [ ] **Update Release**
 - [ ] New default control templates, written in XML generated C++ code.
-- [ ] Tutorials use the new default control templates
+- [ ] Each control has a `TemplateProperty<T>` property, default empty
 - [ ] ControlTemplate tutorial can switch between skins in runtime
-- [ ] **Update Release**
-- [ ] Simple way to write animation using Workflow in Xml resource, add animation to default control templates
+- [ ] Tutorials use the new default control templates
 - [ ] **Update Release**
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
 - [ ] **Update Release**
@@ -84,6 +84,9 @@
 - [ ] Inheritable custom window / control
 - [ ] Locale awared text resource with `str://` protocol
 - [ ] Bind to gradually changing value in a group calculated by time and key frames of jumping states
+- [ ] **Update Release**
+- [ ] Use formular to drive the changing of states, simple way to write animation in Xml resource
+- [ ] Add animation to skins
 - [ ] **Update Release**
 - [ ] Resource should have name and version
 - [ ] Depend on another resource, to decide loading order
