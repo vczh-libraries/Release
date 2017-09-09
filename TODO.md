@@ -66,7 +66,7 @@
 - [x] Update DarkSkin to write a new tab template (bind `GuiTabPage`'s `Text` and `Alt` property to the header)
 - [x] **Update Release**
 - [x] Move all `IStyleProvider` hoster style controllers' implementations to corressponding control template classes
-- [ ] Remove control style interfaces, controls' constructors accept pointers to control template classes
+- [x] Remove control style interfaces, controls' constructors accept pointers to control template classes
 - [ ] Each control has a `TemplateProperty<T>` property, default empty
 - [ ] **Update Release**
 - [ ] New default control templates, written in XML generated C++ code.
