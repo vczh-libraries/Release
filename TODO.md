@@ -67,12 +67,21 @@
 - [x] **Update Release**
 - [x] Move all `IStyleProvider` hoster style controllers' implementations to corressponding control template classes
 - [x] Remove control style interfaces, controls' constructors accept pointers to control template classes
-- [ ] Render focus
+- [ ] Each control has a `TemplateProperty<T>` nullable property, constructor consumes an enum item to define the default template
+  - Control template can be updated in runtime
+  - A window can be called to update all its controls' and components' template
+    - If a control has an empty control template, it will retrive the default control template using the enum item
 - [ ] Move complex template logic to control
+  - [x] GuiSinglelineTextBoxTemplate
+  - [ ] GuiDatePickerTemplate
+  - [ ] GuiScrollViewTemplate
+  - [ ] GuiMultilineTemplate
 - [ ] **Update Release**
+- [ ] Update all control template properties to have `in` or `out` prefix
+  - `in`: Template implementation should read
+  - `out`: Template implementation should write
+- [ ] Render focus
 - [ ] New default control templates, written in XML generated C++ code.
-- [ ] Each control has a `TemplateProperty<T>` property, default empty
-- [ ] ControlTemplate tutorial can switch between skins in runtime
 - [ ] Tutorials use the new default control templates
 - [ ] **Update Release**
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
