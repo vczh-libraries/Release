@@ -67,10 +67,10 @@
 - [x] **Update Release**
 - [x] Move all `IStyleProvider` hoster style controllers' implementations to corressponding control template classes
 - [x] Remove control style interfaces, controls' constructors accept pointers to control template classes
-- [ ] Each control has a `TemplateProperty<T>` nullable property, constructor consumes an enum item to define the default template
-  - Control template can be updated in runtime
-  - A window can be called to update all its controls' and components' template
-    - If a control has an empty control template, it will retrive the default control template using the enum item
+- [x] Each control has a `TemplateProperty<T>` nullable property, constructor consumes an enum item to define the default template
+  - [ ] Control template can be updated in runtime
+  - [ ] A window can be called to update all its controls' and components' template
+    - [x] If a control has an empty control template, it will retrive the default control template using the enum item
 - [ ] Move complex template logic to control
   - [x] GuiSinglelineTextBoxTemplate
   - [ ] GuiDatePickerTemplate
