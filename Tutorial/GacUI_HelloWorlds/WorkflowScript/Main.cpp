@@ -17,15 +17,13 @@ using presentation::theme::*;
 
 func CreateMainWindow() : Window*
 {
-	var theme = ITheme::GetCurrentTheme();
-
-	var window = new Window*(theme.CreateWindowStyle());
+	var window = new Window*(ThemeName::Window);
 	window.Text = "Hello, world!";
 	window.ClientSize = {x:480 y:320};
 	window.BoundsComposition.PreferredMinSize = {x:480 y:320};
 	window.MoveToScreenCenter();
 
-	var label = new Label*(theme.CreateLabelStyle());
+	var label = new Label*(ThemeName::Label);
 	label.Text = "Welcom to GacUI Library!";
 	label.Font = {fontFamily:"Segoe UI" size:32};
 	window.AddChild(label);
