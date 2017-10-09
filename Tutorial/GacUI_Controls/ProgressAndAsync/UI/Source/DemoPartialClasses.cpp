@@ -313,8 +313,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
-			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateProgressBarStyle();
-			(this->progressBar = new ::vl::presentation::controls::GuiScroll(__vwsn_controlStyle_));
+			(this->progressBar = new ::vl::presentation::controls::GuiScroll(::vl::presentation::theme::ThemeName::ProgressBar));
 			::vl::__vwsn::This(this->progressBar)->SetPageSize(static_cast<::vl::vint>(0));
 		}
 		(this->__vwsn_precompile_2 = ::vl::__vwsn::This(this->progressBar)->GetBoundsComposition());
@@ -335,8 +334,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		{
-			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateButtonStyle();
-			(this->buttonDownload = new ::vl::presentation::controls::GuiButton(__vwsn_controlStyle_));
+			(this->buttonDownload = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
 		}
 		{
 			::vl::__vwsn::This(this->buttonDownload)->SetText(::vl::WString(L"Begin Download!", false));
@@ -352,8 +350,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetSite(static_cast<::vl::vint>(1), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(2));
 		}
 		{
-			auto __vwsn_controlStyle_ = ::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateMultilineTextBoxStyle();
-			(this->textResult = new ::vl::presentation::controls::GuiMultilineTextBox(__vwsn_controlStyle_));
+			(this->textResult = new ::vl::presentation::controls::GuiMultilineTextBox(::vl::presentation::theme::ThemeName::MultilineTextBox));
 		}
 		{
 			::vl::__vwsn::This(this->textResult)->SetReadonly(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
@@ -397,7 +394,7 @@ Class (::demo::MainWindow)
 	}
 
 	MainWindow::MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel)
-		: ::vl::presentation::controls::GuiWindow(::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateWindowStyle())
+		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));

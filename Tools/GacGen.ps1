@@ -20,8 +20,14 @@ $x64_folder = "$($FileName).log\x64\Source"
 if (!(Test-Path -Path $output_folder)) {
     New-Item $output_folder -ItemType directory | Out-Null
 }
-Get-ChildItem -Path $output_folder -ErrorAction SilentlyContinue | %{
+Get-ChildItem -Path $x32_folder -ErrorAction SilentlyContinue | %{
     Write-Host "    Merging C++ Source File: $($_.Name) ..."
-    $cppmerge = Start-Process "$PSScriptRoot\CppMerge.exe" -ArgumentList "/P `"$x32_folder\$($_.Name)`" `"$x64_folder\$($_.Name)`" `"$output_folder\$($_.Name)`"" -PassThru
+    $cppmerge = Start-Process "$PSScriptRoot\CppMerge.exe" -ArgumentList "`"$x32_folder\$($_.Name)`" `"$x64_folder\$($_.Name)`" `"$output_folder\$($_.Name)`"" -PassThru
     $cppmerge.WaitForExit();
+}
+
+$deploy = "$($FileName).log\x32\Deploy.bat"
+if (Test-Path -Path $deploy) {
+    Write-Host "    Deploying ..."
+    Start-Process $env:ComSpec -ArgumentList "/c `"$deploy`""
 }
