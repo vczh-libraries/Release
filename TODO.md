@@ -76,7 +76,7 @@
   - [ ] GuiDatePickerTemplate
   - [ ] GuiScrollViewTemplate
   - [ ] GuiMultilineTemplate
-- [ ] **Update Release**
+- [x] **Update Release**
 - [ ] Update all control template properties to have `in` or `out` prefix
   - `in`: Template implementation should read
   - `out`: Template implementation should write
