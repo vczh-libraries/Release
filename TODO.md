@@ -68,20 +68,24 @@
 - [x] Move all `IStyleProvider` hoster style controllers' implementations to corressponding control template classes
 - [x] Remove control style interfaces, controls' constructors accept pointers to control template classes
 - [x] Each control has a `TemplateProperty<T>` nullable property, constructor consumes an enum item to define the default template
-  - [ ] Control template can be updated in runtime
-  - [ ] A window can be called to update all its controls' and components' template
-    - [x] If a control has an empty control template, it will retrive the default control template using the enum item
+  - [x] Control template can be updated in runtime
+  - [x] If a control has an empty control template, it will retrive the default control template using the enum item
 - [ ] Move complex template logic to control
   - [x] GuiSinglelineTextBoxTemplate
   - [ ] GuiDatePickerTemplate
   - [ ] GuiScrollViewTemplate
   - [ ] GuiMultilineTemplate
 - [x] **Update Release**
+  - [ ] Fix Bug: Combo box dropdown, which is for changing list style, shows unnecessary scroll bar
+  - [ ] Fix Bug: Radio list becomes check list
+  - [ ] Fix Bug: AddressBook tutorial / new contact window too long
+  - [ ] Fix Bug: DatePicker doesn't shows correct font
 - [ ] Update all control template properties to have `in` or `out` prefix
   - `in`: Template implementation should read
   - `out`: Template implementation should write
 - [ ] Render focus
 - [ ] New default control templates, written in XML generated C++ code.
+- [ ] A window can be called to update all its controls' and components' template
 - [ ] Tutorials use the new default control templates
 - [ ] **Update Release**
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
