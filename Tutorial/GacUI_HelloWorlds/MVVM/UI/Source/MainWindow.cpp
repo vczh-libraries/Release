@@ -66,7 +66,7 @@ namespace helloworld
 	}
 
 	MainWindow::MainWindow(::vl::Ptr<::vm::IViewModel> __vwsn_ctor_parameter_ViewModel)
-		: ::vl::presentation::controls::GuiWindow(::vl::__vwsn::This(::vl::presentation::theme::GetCurrentTheme())->CreateWindowStyle())
+		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"helloworld::MainWindow", false));
