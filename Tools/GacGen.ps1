@@ -2,10 +2,7 @@ param (
     [String]$FileName
 )
 Write-Host "Compiling GacUI Resource: $FileName ..."
-$gacgen_32 = Start-Process "$PSScriptRoot\GacGen32.exe" -ArgumentList "/P $FileName" -PassThru
-$gacgen_64 = Start-Process "$PSScriptRoot\GacGen64.exe" -ArgumentList "/P $FileName" -PassThru
-$gacgen_32.WaitForExit()
-$gacgen_64.WaitForExit()
+Start-Process-And-Wait (("$PSScriptRoot\GacGen32.exe", "/P $FileName"), ("$PSScriptRoot\GacGen64.exe", "/P $FileName"))
 
 if (Test-Path -Path "$($FileName).log\x32\Error.txt") {
     throw "Failed to compile GacUI Resource (x86): $FileName"
@@ -22,12 +19,11 @@ if (!(Test-Path -Path $output_folder)) {
 }
 Get-ChildItem -Path $x32_folder -ErrorAction SilentlyContinue | %{
     Write-Host "    Merging C++ Source File: $($_.Name) ..."
-    $cppmerge = Start-Process "$PSScriptRoot\CppMerge.exe" -ArgumentList "`"$x32_folder\$($_.Name)`" `"$x64_folder\$($_.Name)`" `"$output_folder\$($_.Name)`"" -PassThru
-    $cppmerge.WaitForExit();
+    Start-Process-And-Wait (,("$PSScriptRoot\CppMerge.exe", "`"$x32_folder\$($_.Name)`" `"$x64_folder\$($_.Name)`" `"$output_folder\$($_.Name)`""))
 }
 
 $deploy = "$($FileName).log\x32\Deploy.bat"
 if (Test-Path -Path $deploy) {
     Write-Host "    Deploying ..."
-    Start-Process $env:ComSpec -ArgumentList "/c `"$deploy`""
+    Start-Process-And-Wait (,($env:ComSpec, "/c `"$deploy`""))
 }
