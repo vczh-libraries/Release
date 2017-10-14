@@ -77,7 +77,7 @@
   - [ ] GuiMultilineTemplate
 - [x] **Update Release**
   - [ ] Fix Bug: Combo box dropdown, which is for changing list style, shows unnecessary scroll bar
-  - [ ] Fix Bug: Radio list becomes check list
+  - [x] Fix Bug: Radio list becomes check list
   - [ ] Fix Bug: AddressBook tutorial / new contact window too long
   - [ ] Fix Bug: DatePicker doesn't shows correct font
 - [ ] Update all control template properties to have `in` or `out` prefix
