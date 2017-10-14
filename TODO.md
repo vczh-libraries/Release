@@ -79,7 +79,7 @@
   - [ ] Fix Bug: Combo box dropdown, which is for changing list style, shows unnecessary scroll bar
   - [x] Fix Bug: Radio list becomes check list
   - [ ] Fix Bug: AddressBook tutorial / new contact window too long
-  - [ ] Fix Bug: DatePicker doesn't shows correct font
+  - [x] Fix Bug: DatePicker doesn't shows correct font
 - [ ] Update all control template properties to have `in` or `out` prefix
   - `in`: Template implementation should read
   - `out`: Template implementation should write
