@@ -1,4 +1,4 @@
-# Animation (continuation)
+## Animation (continuation)
 
 ### Goal
 - Implement Animation in GacUI XMl Resource
