@@ -1,3 +1,5 @@
+# Obsolete
+
 ## Proposal (Workflow State Machine)
 
 ### Goal
