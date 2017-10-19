@@ -72,7 +72,7 @@
   - [x] If a control has an empty control template, it will retrive the default control template using the enum item
 - [ ] Move complex template logic to control
   - [x] GuiSinglelineTextBoxTemplate
-  - [x] GuiDatePickerTemplate
+  - [x] GuiDatePickerTemplate
   - [ ] GuiScrollViewTemplate
   - [ ] GuiMultilineTemplate
 - [x] **Update Release**
