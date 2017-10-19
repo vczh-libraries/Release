@@ -94,8 +94,8 @@
 - [ ] **Update Release**
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
 - [ ] **Update Release**
-- [ ] `ViewModelContext` property for `GuiListControl` instead of `GuiVirtualDataGrid`
-- [ ] `ViewModelContext` property for repeat compositions
+- [ ] (optional) `ViewModelContext` property for `GuiListControl` instead of `GuiVirtualDataGrid`
+- [ ] (optional) `ViewModelContext` property for repeat compositions
 - [ ] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
