@@ -81,6 +81,7 @@
   - [ ] Fix Bug: AddressBook tutorial / new contact window too long
   - [x] Fix Bug: DatePicker doesn't shows correct font
   - [ ] Fix Bug: DateGrid column header sorting state
+  - [ ] Fix Bug: DatePicker year dropdown missing 1900-1902 at the first expansion
 - [ ] Update all control template properties to have `in` or `out` prefix
   - `in`: Template implementation should read
   - `out`: Template implementation should write
