@@ -72,7 +72,7 @@
   - [x] If a control has an empty control template, it will retrive the default control template using the enum item
 - [ ] Move complex template logic to control
   - [x] GuiSinglelineTextBoxTemplate
-  - [ ] GuiDatePickerTemplate
+  - [x] GuiDatePickerTemplate
   - [ ] GuiScrollViewTemplate
   - [ ] GuiMultilineTemplate
 - [x] **Update Release**
@@ -80,6 +80,7 @@
   - [x] Fix Bug: Radio list becomes check list
   - [ ] Fix Bug: AddressBook tutorial / new contact window too long
   - [x] Fix Bug: DatePicker doesn't shows correct font
+  - [ ] Fix Bug: DateGrid column header sorting state
 - [ ] Update all control template properties to have `in` or `out` prefix
   - `in`: Template implementation should read
   - `out`: Template implementation should write
