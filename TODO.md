@@ -74,8 +74,8 @@
   - [x] GuiSinglelineTextBoxTemplate
   - [x] GuiDatePickerTemplate
   - [x] GuiScrollViewTemplate
-  - [ ] Scroll
-  - [ ] Tracker
+  - [x] Scroll
+  - [x] Tracker
   - [x] GuiMultilineTemplate
 - [x] **Update Release**
   - [x] Fix Bug: Combo box dropdown, which is for changing list style, shows unnecessary scroll bar
