@@ -70,7 +70,7 @@
 - [x] Each control has a `TemplateProperty<T>` nullable property, constructor consumes an enum item to define the default template
   - [x] Control template can be updated in runtime
   - [x] If a control has an empty control template, it will retrive the default control template using the enum item
-- [ ] Move complex template logic to control
+- [x] Move complex template logic to control
   - [x] GuiSinglelineTextBoxTemplate
   - [x] GuiDatePickerTemplate
   - [x] GuiScrollViewTemplate
