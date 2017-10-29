@@ -356,7 +356,7 @@
           <![CDATA[
             prop ForEdit : bool = false {}
           
-            var Ready : bool = true;
+            var Ready : bool = false;
           ]]>
         </ref.Members>
         <Window ref.Name="self" Text-bind="self.ForEdit ? 'Edit Contact' : 'New Contact'" ClientSize="x:480 y:360" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
@@ -420,6 +420,7 @@
                   <![CDATA[
                     {
                       Contact.Update(textBoxName.Text, datePickerBirthday.Date, textBoxPhone.Text, textBoxAddress.Text);
+                      self.Ready = false;
                       self.Close();
                     }
                   ]]>
@@ -432,7 +433,8 @@
                 <ev.Clicked-eval>
                   <![CDATA[
                     {
-                      self.Ready = false; self.Close();
+                      self.Ready = false;
+                      self.Close();
                     }
                   ]]>
                 </ev.Clicked-eval>
