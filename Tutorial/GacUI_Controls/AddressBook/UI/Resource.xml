@@ -307,6 +307,7 @@
           ]]>
         </ref.Members>
         <Window ref.Name="self" Text="New Folder" ClientSize="x:240 y:120" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
+          <att.BoundsComposition-set PreferredMinSize="x:240 y:120"/>
           <att.FolderName-bind>textBoxName.Text</att.FolderName-bind>
           
           <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0">
@@ -359,8 +360,8 @@
             var Ready : bool = false;
           ]]>
         </ref.Members>
-        <Window ref.Name="self" Text-bind="self.ForEdit ? 'Edit Contact' : 'New Contact'" ClientSize="x:480 y:360" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
-
+        <Window ref.Name="self" Text-bind="self.ForEdit ? 'Edit Contact' : 'New Contact'" ClientSize="x:480 y:400" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:400"/>
           <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0">
             <att.Rows>
               <CellOption>composeType:MinSize</CellOption>
