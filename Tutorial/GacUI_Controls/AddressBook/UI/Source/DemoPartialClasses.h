@@ -209,7 +209,6 @@ namespace demo
 	protected:
 		::demo::NewContactWindow* self = static_cast<::demo::NewContactWindow*>(nullptr);
 		::vl::presentation::controls::GuiDocumentLabel* textBoxName = static_cast<::vl::presentation::controls::GuiDocumentLabel*>(nullptr);
-		::vl::Ptr<::demo::IContact> Contact = ::vl::Ptr<::demo::IContact>();
 		::vl::presentation::controls::GuiDocumentLabel* textBoxPhone = static_cast<::vl::presentation::controls::GuiDocumentLabel*>(nullptr);
 		::vl::presentation::controls::GuiDocumentLabel* textBoxAddress = static_cast<::vl::presentation::controls::GuiDocumentLabel*>(nullptr);
 		::vl::presentation::controls::GuiDatePicker* datePickerBirthday = static_cast<::vl::presentation::controls::GuiDatePicker*>(nullptr);
@@ -258,9 +257,9 @@ namespace demo
 		void SetForEdit(bool __vwsn_value_);
 		::vl::Event<void()> ForEditChanged;
 		bool Ready = false;
-		::vl::Ptr<::demo::IContact> __vwsn_parameter_Contact = ::vl::Ptr<::demo::IContact>();
-		::vl::Ptr<::demo::IContact> GetContact();
-		NewContactWindow(::vl::Ptr<::demo::IContact> __vwsn_ctor_parameter_Contact);
+		::vl::Ptr<::demo::IContact> contact = ::vl::Ptr<::demo::IContact>();
+		void SetContact(::vl::Ptr<::demo::IContact> value);
+		NewContactWindow();
 		~NewContactWindow();
 	};
 

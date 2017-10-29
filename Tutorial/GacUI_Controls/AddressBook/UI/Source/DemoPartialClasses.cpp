@@ -403,7 +403,7 @@ Closures
 
 	void __vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->Contact.Obj())->Update(::vl::__vwsn::This(__vwsnthis_0->textBoxName)->GetText(), ::vl::__vwsn::This(__vwsnthis_0->datePickerBirthday)->GetDate(), ::vl::__vwsn::This(__vwsnthis_0->textBoxPhone)->GetText(), ::vl::__vwsn::This(__vwsnthis_0->textBoxAddress)->GetText());
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->contact.Obj())->Update(::vl::__vwsn::This(__vwsnthis_0->textBoxName)->GetText(), ::vl::__vwsn::This(__vwsnthis_0->datePickerBirthday)->GetDate(), ::vl::__vwsn::This(__vwsnthis_0->textBoxPhone)->GetText(), ::vl::__vwsn::This(__vwsnthis_0->textBoxAddress)->GetText());
 		(::vl::__vwsn::This(__vwsnthis_0->self)->Ready = true);
 		::vl::__vwsn::This(__vwsnthis_0->self)->Close();
 	}
@@ -1110,8 +1110,9 @@ Closures
 					if ((__vwsn_co_state_ == static_cast<::vl::vint>(0)))
 					{
 						(__vwsn_co0_contact = ::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->CreateContact());
-						(__vwsn_co1_window = new ::demo::NewContactWindow(__vwsn_co0_contact));
+						(__vwsn_co1_window = new ::demo::NewContactWindow());
 						::vl::__vwsn::This(__vwsn_co1_window)->MoveToScreenCenter();
+						::vl::__vwsn::This(__vwsn_co1_window)->SetContact(__vwsn_co0_contact);
 						(__vwsn_co_state_ = static_cast<::vl::vint>(2));
 						continue;
 					}
@@ -1259,9 +1260,10 @@ Closures
 				{
 					if ((__vwsn_co_state_ == static_cast<::vl::vint>(0)))
 					{
-						(__vwsn_co0_window = new ::demo::NewContactWindow(::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->GetSelectedContact()));
+						(__vwsn_co0_window = new ::demo::NewContactWindow());
 						::vl::__vwsn::This(__vwsn_co0_window)->SetForEdit(true);
 						::vl::__vwsn::This(__vwsn_co0_window)->MoveToScreenCenter();
+						::vl::__vwsn::This(__vwsn_co0_window)->SetContact(::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->GetSelectedContact());
 						(__vwsn_co_state_ = static_cast<::vl::vint>(2));
 						continue;
 					}
@@ -2000,7 +2002,6 @@ Class (::demo::NewContactWindowConstructor)
 	void NewContactWindowConstructor::__vwsn_initialize_instance_(::demo::NewContactWindow* __vwsn_this_)
 	{
 		(this->self = __vwsn_this_);
-		(this->Contact = ::vl::__vwsn::This(__vwsn_this_)->GetContact());
 		{
 			::vl::__vwsn::This(this->self)->SetSizeBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
 		}
@@ -2240,18 +2241,6 @@ Class (::demo::NewContactWindowConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
-			::vl::__vwsn::This(this->textBoxName)->SetText(::vl::__vwsn::This(this->Contact.Obj())->GetName());
-		}
-		{
-			::vl::__vwsn::This(this->textBoxPhone)->SetText(::vl::__vwsn::This(this->Contact.Obj())->GetPhone());
-		}
-		{
-			::vl::__vwsn::This(this->textBoxAddress)->SetText(::vl::__vwsn::This(this->Contact.Obj())->GetAddress());
-		}
-		{
-			::vl::__vwsn::This(this->datePickerBirthday)->SetDate(::vl::__vwsn::This(this->Contact.Obj())->GetBirthday());
-		}
-		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_18)->Clicked, __vwsn_event_handler_);
 		}
@@ -2287,15 +2276,18 @@ Class (::demo::NewContactWindow)
 		}
 	}
 
-	::vl::Ptr<::demo::IContact> NewContactWindow::GetContact()
+	void NewContactWindow::SetContact(::vl::Ptr<::demo::IContact> value)
 	{
-		return this->__vwsn_parameter_Contact;
+		(this->contact = value);
+		::vl::__vwsn::This(this->textBoxName)->SetText(::vl::__vwsn::This(this->contact.Obj())->GetName());
+		::vl::__vwsn::This(this->textBoxPhone)->SetText(::vl::__vwsn::This(this->contact.Obj())->GetPhone());
+		::vl::__vwsn::This(this->textBoxAddress)->SetText(::vl::__vwsn::This(this->contact.Obj())->GetAddress());
+		::vl::__vwsn::This(this->datePickerBirthday)->SetDate(::vl::__vwsn::This(this->contact.Obj())->GetBirthday());
 	}
 
-	NewContactWindow::NewContactWindow(::vl::Ptr<::demo::IContact> __vwsn_ctor_parameter_Contact)
+	NewContactWindow::NewContactWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{
-		(this->__vwsn_parameter_Contact = __vwsn_ctor_parameter_Contact);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::NewContactWindow", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);

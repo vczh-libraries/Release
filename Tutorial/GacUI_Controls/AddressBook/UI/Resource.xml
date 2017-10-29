@@ -136,8 +136,9 @@
               <![CDATA[
                 $Async{
                   var contact = ViewModel.CreateContact();
-                  var window = new demo::NewContactWindow*(contact);
+                  var window = new demo::NewContactWindow*();
                   window.MoveToScreenCenter();
+                  window.SetContact(contact);
                   $Await window.ShowModalAsync(self);
                   
                   if (window.Ready)
@@ -154,9 +155,10 @@
             <ev.Executed-eval>
               <![CDATA[
                 $Async{
-                  var window = new demo::NewContactWindow*(ViewModel.SelectedContact);
+                  var window = new demo::NewContactWindow*();
                   window.ForEdit = true;
                   window.MoveToScreenCenter();
+                  window.SetContact(ViewModel.SelectedContact);
                   $Await window.ShowModalAsync(self);
                   delete window;
                 }
@@ -352,12 +354,21 @@
 
     <Instance name="NewContactWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::NewContactWindow">
-        <ref.Parameter Name="Contact" Class="demo::IContact"/>
         <ref.Members>
           <![CDATA[
             prop ForEdit : bool = false {}
           
             var Ready : bool = false;
+            var contact : IContact^ = null;
+            
+            func SetContact(value : IContact^): void
+            {
+              contact = value;
+              textBoxName.Text = contact.Name;
+              textBoxPhone.Text = contact.Phone;
+              textBoxAddress.Text = contact.Address;
+              datePickerBirthday.Date = contact.Birthday;
+            }
           ]]>
         </ref.Members>
         <Window ref.Name="self" Text-bind="self.ForEdit ? 'Edit Contact' : 'New Contact'" ClientSize="x:480 y:400" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
@@ -382,7 +393,7 @@
               <Label Text="Name:"/>
             </Cell>
             <Cell Site="row:0 column:1 columnSpan:3">
-              <DocumentTextBox ref.Name="textBoxName" EditMode="Editable" Text-eval="Contact.Name">
+              <DocumentTextBox ref.Name="textBoxName" EditMode="Editable">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </DocumentTextBox>
             </Cell>
@@ -391,7 +402,7 @@
               <Label Text="Phone:"/>
             </Cell>
             <Cell Site="row:1 column:1 columnSpan:3">
-              <DocumentTextBox ref.Name="textBoxPhone" EditMode="Editable" Text-eval="Contact.Phone">
+              <DocumentTextBox ref.Name="textBoxPhone" EditMode="Editable">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </DocumentTextBox>
             </Cell>
@@ -400,7 +411,7 @@
               <Label Text="Address:"/>
             </Cell>
             <Cell Site="row:2 column:1 columnSpan:3">
-              <DocumentTextBox ref.Name="textBoxAddress" EditMode="Editable" Text-eval="Contact.Address">
+              <DocumentTextBox ref.Name="textBoxAddress" EditMode="Editable">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </DocumentTextBox>
             </Cell>
@@ -409,7 +420,7 @@
               <Label Text="Birthday:"/>
             </Cell>
             <Cell Site="row:3 column:1 columnSpan:3">
-              <DatePicker ref.Name="datePickerBirthday" Date-eval="Contact.Birthday">
+              <DatePicker ref.Name="datePickerBirthday">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 bottom:0"/>
               </DatePicker>
             </Cell>
@@ -420,7 +431,7 @@
                 <ev.Clicked-eval>
                   <![CDATA[
                     {
-                      Contact.Update(textBoxName.Text, datePickerBirthday.Date, textBoxPhone.Text, textBoxAddress.Text);
+                      self.contact.Update(textBoxName.Text, datePickerBirthday.Date, textBoxPhone.Text, textBoxAddress.Text);
                       self.Ready = true;
                       self.Close();
                     }

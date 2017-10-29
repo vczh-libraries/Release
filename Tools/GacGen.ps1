@@ -8,10 +8,12 @@ Write-Host "Compiling GacUI Resource: $FileName ..."
 Start-Process-And-Wait (,("$PSScriptRoot\GacGen32.exe", "/P $FileName"))
 Start-Process-And-Wait (,("$PSScriptRoot\GacGen64.exe", "/P $FileName"))
 
-if (Test-Path -Path "$($FileName).log\x32\Error.txt") {
+if (Test-Path -Path "$($FileName).log\x32\Errors.txt") {
+    Write-Host (Get-Content "$($FileName).log\x32\Errors.txt") -ForegroundColor Red -Separator "`r`n"
     throw "Failed to compile GacUI Resource (x86): $FileName"
 }
-if (Test-Path -Path "$($FileName).log\x64\Error.txt") {
+if (Test-Path -Path "$($FileName).log\x64\Errors.txt") {
+    Write-Host (Get-Content "$($FileName).log\x64\Errors.txt") -ForegroundColor Red -Separator "`r`n"
     throw "Failed to compile GacUI Resource (x64): $FileName"
 }
     
