@@ -404,6 +404,7 @@ Closures
 	void __vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		::vl::__vwsn::This(__vwsnthis_0->Contact.Obj())->Update(::vl::__vwsn::This(__vwsnthis_0->textBoxName)->GetText(), ::vl::__vwsn::This(__vwsnthis_0->datePickerBirthday)->GetDate(), ::vl::__vwsn::This(__vwsnthis_0->textBoxPhone)->GetText(), ::vl::__vwsn::This(__vwsnthis_0->textBoxAddress)->GetText());
+		(::vl::__vwsn::This(__vwsnthis_0->self)->Ready = true);
 		::vl::__vwsn::This(__vwsnthis_0->self)->Close();
 	}
 

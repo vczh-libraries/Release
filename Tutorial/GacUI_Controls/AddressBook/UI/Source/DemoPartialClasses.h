@@ -256,7 +256,7 @@ namespace demo
 		bool GetForEdit();
 		void SetForEdit(bool __vwsn_value_);
 		::vl::Event<void()> ForEditChanged;
-		bool Ready = true;
+		bool Ready = false;
 		::vl::Ptr<::demo::IContact> __vwsn_parameter_Contact = ::vl::Ptr<::demo::IContact>();
 		::vl::Ptr<::demo::IContact> GetContact();
 		NewContactWindow(::vl::Ptr<::demo::IContact> __vwsn_ctor_parameter_Contact);

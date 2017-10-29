@@ -420,7 +420,7 @@
                   <![CDATA[
                     {
                       Contact.Update(textBoxName.Text, datePickerBirthday.Date, textBoxPhone.Text, textBoxAddress.Text);
-                      self.Ready = false;
+                      self.Ready = true;
                       self.Close();
                     }
                   ]]>
