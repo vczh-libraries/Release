@@ -72,7 +72,7 @@
   - [x] If a control has an empty control template, it will retrive the default control template using the enum item
 - [x] Move complex template logic to control
 - [x] **Update Release**
-- [ ] Update all control template properties to have `in` or `out` prefix
+- [ ] (optional) Update all control template properties to have `in` or `out` prefix
   - `in`: Template implementation should read
   - `out`: Template implementation should write
 - [ ] Render focus
@@ -81,7 +81,9 @@
    - [ ] Remove RoundBorder
    - [ ] Radian Gradient
    - [ ] Element demo page
-- [ ] New default control templates, written in XML generated C++ code.
+- [ ] Use formular to drive the changing of states, simple way to write animation in Xml resource
+- [ ] **Update Release**
+- [ ] New default control templates with animation, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
 - [ ] Tutorials use the new default control templates
 - [ ] **Update Release**
@@ -96,9 +98,6 @@
 - [ ] Inheritable custom window / control
 - [ ] Locale awared text resource with `str://` protocol
 - [ ] Bind to gradually changing value in a group calculated by time and key frames of jumping states
-- [ ] **Update Release**
-- [ ] Use formular to drive the changing of states, simple way to write animation in Xml resource
-- [ ] Add animation to skins
 - [ ] **Update Release**
 - [ ] Resource should have name and version
 - [ ] Depend on another resource, to decide loading order
