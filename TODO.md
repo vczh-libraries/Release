@@ -76,6 +76,11 @@
   - `in`: Template implementation should read
   - `out`: Template implementation should write
 - [ ] Render focus
+- [ ] Complete elements
+   - [ ] Merge RoundRect into ElementShape, add RoundRadiusX/Y to all related elements
+   - [ ] Remove RoundBorder
+   - [ ] Radian Gradient
+   - [ ] Element demo page
 - [ ] New default control templates, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
 - [ ] Tutorials use the new default control templates
