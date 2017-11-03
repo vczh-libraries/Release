@@ -76,11 +76,11 @@
   - `in`: Template implementation should read
   - `out`: Template implementation should write
 - [ ] Render focus
-- [ ] Complete elements
-   - [ ] Merge RoundRect into ElementShape, add RoundRadiusX/Y to all related elements
-   - [ ] Remove RoundBorder
-   - [ ] Radian Gradient
-   - [ ] Element demo page
+- [x] Complete elements
+   - [x] Merge RoundRect into ElementShape, add RoundRadiusX/Y to all related elements
+   - [x] Remove RoundBorder
+   - [x] Radian Gradient
+   - [x] Element demo page
 - [ ] Use formular to drive the changing of states, simple way to write animation in Xml resource
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
