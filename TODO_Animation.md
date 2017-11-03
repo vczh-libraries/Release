@@ -3,6 +3,7 @@
 ### Goal
 - Implement Animation in GacUI XMl Resource
 - Possible to provide state machine XML tags
+- Animation can be aborted at any moment, and launch a new one if necessary
 
 ### Script
 
