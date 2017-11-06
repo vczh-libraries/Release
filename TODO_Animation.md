@@ -14,3 +14,19 @@
 - When the downloading is finished, show a ending animation
 - Downloaded text fade in
 - Progress bar fly out
+
+### Animation
+
+- Feature
+  - Can be canceled at any moment
+  - Can set a new start state or start from the current state
+- Exit Condition
+  - Time based
+  - Condition based
+- Playing Rate
+  - Realtime
+  - Frame animation with a fixed interval
+- Composed animation
+- With infinite looping
+
+### XML
