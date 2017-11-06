@@ -81,6 +81,7 @@
    - [x] Remove RoundBorder
    - [x] Radian Gradient
    - [x] Element demo page
+- [ ] Async: `$Context()`(?) for query, no pause.
 - [ ] Use formular to drive the changing of states, simple way to write animation in Xml resource
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
