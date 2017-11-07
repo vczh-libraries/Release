@@ -3,13 +3,13 @@
 ## Vlpp
 
 * Regex supports UTF-16 (instead of UCS-2) on MSVC.
-    * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
+  * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
 * Redesign vl::parsing.
-    * No need to specify ambiguity
-    * Will print all ambiguous cases and marked AST node
-    * ToString with hints and custom options
-    * Print diff when updating AST (for IDE)
-    * All existing features and backward compatible interface design
+  * No need to specify ambiguity
+  * Will print all ambiguous cases and marked AST node
+  * ToString with hints and custom options
+  * Print diff when updating AST (for IDE)
+  * All existing features and backward compatible interface design
 
 ### (optional)
 
@@ -19,19 +19,18 @@
 ## Workflow
 
 * **Workflow to C++ code generation with hint**.
-    * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
-    * Leave spaces for user defined `#include`s or `using namespace`s.
+  * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
+  * Leave spaces for user defined `#include`s or `using namespace`s.
 
 ### (optional)
 
 * Support `<category>name` identifier, make generated code re-parsable.
 * Separate assembly binary to types, instructions and debug informations.
-* State Machine.
 * WorkflowCompiler.exe (x32/x64)
-    * Enable external symbols
-    * Compile
-    * Binary Output (full assembly or types only)
-    * C++ Codegen (x32/x64)
+  * Enable external symbols
+  * Compile
+  * Binary Output (full assembly or types only)
+  * C++ Codegen (x32/x64)
 
 ### (probably not do)
 
@@ -77,12 +76,15 @@
   - `out`: Template implementation should write
 - [ ] Render focus
 - [x] Complete elements
-   - [x] Merge RoundRect into ElementShape, add RoundRadiusX/Y to all related elements
-   - [x] Remove RoundBorder
-   - [x] Radian Gradient
-   - [x] Element demo page
+  - [x] Merge RoundRect into ElementShape, add RoundRadiusX/Y to all related elements
+  - [x] Remove RoundBorder
+  - [x] Radian Gradient
+  - [x] Element demo page
 - [ ] Async: `$Context()`(?) for query, no pause.
 - [ ] Coroutine: `SetResult` for `ReturnAndExit`
+- [ ] State Machine (coroutine)
+- [ ] Workflow (coroutine)
+  - To implement animation
 - [ ] Use formular to drive the changing of states, simple way to write animation in Xml resource
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
@@ -131,7 +133,7 @@
 ### (optional)
 
 * In the final pass, only workflow scripts are printed
-    * Use WorkflowCompiler.exe to do codegen externally
+  * Use WorkflowCompiler.exe to do codegen externally
 
 ## GacStudio.exe
 
