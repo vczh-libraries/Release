@@ -4,9 +4,10 @@
 - Author methods, maybe override, using state machine
 
 ### Syntax
-- `$state_machine` declaration (add methods to a class)
+- `$state_machine` declaration (add methods to a class or an anonymous interface)
   - `$state_input` definition
     - Declare a function, which will be implemented in the state machine
+    - Add `override` if necessary
     - If an input is not used, an error occurs
   - `$state` definition
     - Optional parameters
@@ -21,7 +22,7 @@
       - `$switch(ignore[_and_return])`: `default {[return;]}`
       - `$switch(pass[_and_return])`: `default {$pass_input; [return;]}`
   - `$pass_input` statement
-    - The next $switch will use the current input 
+    - The next `$switch` will use the current input 
 
 #### Sample
 ```
@@ -29,7 +30,7 @@ class Calculator
 {
     var valueFirst : string = "";
     var op : string = "";
-    override prop Value : string = "0";
+    prop Value : string = "0";
     
     func Update(value : string) : void
     {
@@ -132,5 +133,17 @@ class Calculator
             $goto_state Calculate();
         }
     }
+}
+
+func Main(): string
+{
+    var calculator = new Calculator^();
+    calculator.Digit(1);
+    calculator.Digit(2);
+    calculator.Add();
+    calculator.Digit(3);
+    calculator.Digit(4);
+    calculator.Equal();
+    return calculator.Value; // "46"
 }
 ```
