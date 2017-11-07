@@ -138,6 +138,7 @@ class Calculator
 func Main(): string
 {
     var calculator = new Calculator^();
+    calculator.RunStateMachine();
     calculator.Digit(1);
     calculator.Digit(2);
     calculator.Add();
