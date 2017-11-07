@@ -113,7 +113,7 @@ class Calculator
 
         $state Calculate()
         {
-            $pass_input Number();
+            $push_state Number();
             $switch
             {
                 case Add():     {Calculate(); op = "+";}
