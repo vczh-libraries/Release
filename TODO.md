@@ -80,7 +80,8 @@
   - [x] Remove RoundBorder
   - [x] Radian Gradient
   - [x] Element demo page
-- [ ] Async: `$Context()`(?) for query, no pause.
+- [x] Async: `$.IsCancelled()`
+- [ ] Use `GetTypeExpressionFromTypeDescriptor` in GacUI compiler
 - [ ] Coroutine: `SetResult` for `ReturnAndExit`
 - [ ] State Machine (coroutine)
 - [ ] Workflow (coroutine)
