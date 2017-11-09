@@ -82,7 +82,7 @@
   - [x] Element demo page
 - [x] Async: `$.IsCancelled()`
 - [ ] Use `GetTypeExpressionFromTypeDescriptor` in GacUI compiler
-- [ ] Coroutine: `SetResult` for `ReturnAndExit`
+- [x] Coroutine: `StoreResult` for `ReturnAndExit`
 - [ ] State Machine (coroutine)
 - [ ] Workflow (coroutine)
   - To implement animation
