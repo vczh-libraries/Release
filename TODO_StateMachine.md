@@ -187,6 +187,34 @@ class Calculator
     [cpp:Private]
     func <state>Resume(): void
     {
+        var <state>currentResult: ::system::CoroutineResult^ = null;
+        while (true)
+        {            
+            if (<state>coroutine: is null)
+            {
+                if (<state>Result is not null)
+                {
+                    if (<state>Result.Failure is not null)
+                    {
+                        raise <state>Result.Failure;
+                    }
+                }
+                break;
+            }
+            if (<state>coroutine.Status == ::system::CoroutineStatus::Waiting)
+            {
+                var <state>currentCoroutine = <state>coroutine;
+                <state>currentCoroutine.Status.Resume(true, <state>result);
+                if (<state>currentCoroutine.Status == ::system::CoroutineStatus::Waiting)
+                {
+                    currentResult = new ::system::CoroutineResult^();
+                    if (<state>currentCoroutine.Failure is not null)
+                    {
+                        currentResult.Failure = <state>currentCoroutine.Failure;
+                    }
+                }
+            }
+        }
     }
     
     func Digit(i: int): void  { <state>input = ::Calculator::<state>Input::Digit; <statep-Digit>i = i;  <state>Resume(); }
