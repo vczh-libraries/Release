@@ -168,11 +168,12 @@ class Calculator
     
     enum <state>State
     {
-        <state>Start = 0,
-        Digit = 1,
-        Integer = 2,
-        Number = 3,
-        Calculate = 4,
+        <state>Invalid = 0,
+        <state>Start = 1,
+        Digits = 2,
+        Integer = 3,
+        Number = 4,
+        Calculate = 5,
     }
     
     [cpp:Private]
@@ -207,11 +208,15 @@ class Calculator
                 <state>currentCoroutine.Status.Resume(true, <state>result);
                 if (<state>currentCoroutine.Status == ::system::CoroutineStatus::Waiting)
                 {
-                    currentResult = new ::system::CoroutineResult^();
+                    <state>currentResult = new ::system::CoroutineResult^();
                     if (<state>currentCoroutine.Failure is not null)
                     {
-                        currentResult.Failure = <state>currentCoroutine.Failure;
+                        <state>currentResult.Failure = <state>currentCoroutine.Failure;
                     }
+                }
+                else
+                {
+                    <state>currentResult = null;
                 }
             }
         }
@@ -234,13 +239,30 @@ class Calculator
             
             while (true)
             {
-                switch (<state>state)
+                var <state>currentState = <state>state;
+                <state>state = ::Calculator::<state>State::<state>Invalid;
+                switch (<state>currentState)
                 {
                 case ::Calculator::<state>State::<state>Start :
                     {
+                        <state>state = ::Calculator::<state>State::Calculate;
+                        // TODO: continue the loop
                     }
-                case ::Calculator::<state>State::Digit :
+                case ::Calculator::<state>State::Digits :
                     {
+                        $pause;
+                        switch (<state>input)
+                        {
+                        case ::Calculator::<state>Input::Digit
+                            {
+                                <state>input = ::Calculator::<state>Input::<state>Invalid;
+                                var i = <statep-Digit>i;
+                                Value = Value & i;
+                                <state>state = ::Calculator::<state>State::Digits;
+                                // TODO: continue the loop
+                            }
+                        }
+                        return;
                     }
                 case ::Calculator::<state>State::Integer :
                     {
