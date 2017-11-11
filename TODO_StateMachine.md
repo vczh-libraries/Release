@@ -171,7 +171,7 @@ class Calculator
         <state>Start = 0,
         Digit = 1,
         Integer = 2,
-        Numver = 3,
+        Number = 3,
         Calculate = 4,
     }
     
@@ -185,88 +185,57 @@ class Calculator
     var <statep-Digit>i: int = 0;
     
     [cpp:Private]
-    void <state>Resume(): void
+    func <state>Resume(): void
     {
     }
     
-    void Digit(i: int): void  { <state>input = ::Calculator::<state>Input::Digit; <statep-Digit>i = i;  <state>Resume(); }
-    void Dot(): void          { <state>input = ::Calculator::<state>Input::Dot;                         <state>Resume(); }
-    void Add(): void          { <state>input = ::Calculator::<state>Input::Add;                         <state>Resume(); }
-    void Mul(): void          { <state>input = ::Calculator::<state>Input::Mul;                         <state>Resume(); }
-    void Equal(): void        { <state>input = ::Calculator::<state>Input::Equal;                       <state>Resume(); }
-    void Clear(): void        { <state>input = ::Calculator::<state>Input::Clear;                       <state>Resume(); }
+    func Digit(i: int): void  { <state>input = ::Calculator::<state>Input::Digit; <statep-Digit>i = i;  <state>Resume(); }
+    func Dot(): void          { <state>input = ::Calculator::<state>Input::Dot;                         <state>Resume(); }
+    func Add(): void          { <state>input = ::Calculator::<state>Input::Add;                         <state>Resume(); }
+    func Mul(): void          { <state>input = ::Calculator::<state>Input::Mul;                         <state>Resume(); }
+    func Equal(): void        { <state>input = ::Calculator::<state>Input::Equal;                       <state>Resume(); }
+    func Clear(): void        { <state>input = ::Calculator::<state>Input::Clear;                       <state>Resume(); }
     
-    void RunStateMachine(): void
+    [cpp:Private]
+    func <state>CreateCoroutine(<state>startState: <state>State): void
     {
+        <state>previousCoroutine = <state>coroutine;
+        <state>coroutine = $coroutine
+        {
+            var <state>state : <state>State = <state>startState;
+            
+            while (true)
+            {
+                switch (<state>state)
+                {
+                case ::Calculator::<state>State::<state>Start :
+                    {
+                    }
+                case ::Calculator::<state>State::Digit :
+                    {
+                    }
+                case ::Calculator::<state>State::Integer :
+                    {
+                    }
+                case ::Calculator::<state>State::Number :
+                    {
+                    }
+                case ::Calculator::<state>State::Calculate :
+                    {
+                    }
+                }
+            }
+        };
     }
-
-    $state_machine
+    
+    func RunStateMachine(): void
     {
-        $state Digits()
+        if (<state>coroutine is not null)
         {
-            $switch(pass)
-            {
-                case Digit(i)
-                {
-                    Value = Value & i;
-                    $goto_state Digits();
-                }
-            }
+            raise "RunStateMachine() cannot be called while the state machine is running.";
         }
-
-        $state Integer(newNumber: bool)
-        {
-            $switch(pass)
-            {
-                case Digit(i)
-                {
-                    if (newNumber)
-                    {
-                        Value = i;
-                    }
-                    else
-                    {
-                        Value = Value & i;
-                    }
-                    $goto_state Digits();
-                }
-            }
-        }
-
-        $state Number()
-        {
-            $push_state Integer(true);
-            $switch(pass_and_return)
-            {
-                case Dot()
-                {
-                    Value = Value & ".";
-                }
-            }
-            $push_state Integer(false);
-        }
-
-        $state Calculate()
-        {
-            $push_state Number();
-            $switch
-            {
-                case Add():     {Calculate(); op = "+";}
-                case Mul():     {Calculate(); op = "-";}
-                case Equal():   {Calculate(); op = "=";}
-                case Clear():
-                {
-                    valueFirst = "";
-                    op = "";
-                    Value = "0";
-                }
-            }
-        }
-        
-        $state
-        {
-            $goto_state Calculate();
-        }
+        <state>CreateCoroutine(:Calculator::<state>State::<state>Start);
+        <state>Resume();
     }
 }
 ```
