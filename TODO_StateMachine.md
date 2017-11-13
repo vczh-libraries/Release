@@ -189,14 +189,14 @@ class Calculator
     [cpp:Private]
     func <state>Resume(): void
     {
-        var <state>currentResult: ::system::CoroutineResult^ = null;
+        var <state>previousResult: ::system::CoroutineResult^ = null;
         while (true)
         {            
             if (<state>coroutine: is null)
             {
-                if (<state>Result is not null)
+                if (<state>previousResult is not null)
                 {
-                    if (<state>Result.Failure is not null)
+                    if (<state>previousResult.Failure is not null)
                     {
                         raise <state>Result.Failure;
                     }
@@ -206,18 +206,24 @@ class Calculator
             if (<state>coroutine.Status != ::system::CoroutineStatus::Stopped)
             {
                 var <state>currentCoroutine = <state>coroutine;
-                <state>currentCoroutine.Status.Resume(true, <state>result);
-                if (<state>currentCoroutine.Status == ::system::CoroutineStatus::Waiting)
+                <state>currentCoroutine.Status.Resume(true, <state>previousResult);
+                if (<state>coroutine == <state>currentCoroutine)
                 {
-                    <state>currentResult = new ::system::CoroutineResult^();
+                    break; // wait for input
+                }
+                else if (<state>currentCoroutine.Status == ::system::CoroutineStatus::Stopped)
+                {
+                    // leave a state machine
+                    <state>previousResult = new ::system::CoroutineResult^();
                     if (<state>currentCoroutine.Failure is not null)
                     {
-                        <state>currentResult.Failure = <state>currentCoroutine.Failure;
+                        <state>previousResult.Failure = <state>currentCoroutine.Failure;
                     }
                 }
                 else
                 {
-                    <state>currentResult = null;
+                    // enter a state machine
+                    break;
                 }
             }
         }
