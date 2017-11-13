@@ -287,8 +287,6 @@ class Calculator
                                 goto <state-label>OUT_OF_STATES;
                             }
                         }
-                        <state>state = ::Calculator::<state>State::Calculate;
-                        goto <state-label>OUT_OF_STATES;
                         return;
                     }
                 case ::Calculator::<state>State::Number :
@@ -353,6 +351,8 @@ class Calculator
                                 raise "Calculator::Dot cannot be called at this moment.";
                             }
                         }
+                        <state>state = ::Calculator::<state>State::Calculate;
+                        goto <state-label>OUT_OF_STATES;
                         return;
                     }
                 }
