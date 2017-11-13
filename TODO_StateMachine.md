@@ -203,7 +203,7 @@ class Calculator
                 }
                 break;
             }
-            if (<state>coroutine.Status == ::system::CoroutineStatus::Waiting)
+            if (<state>coroutine.Status != ::system::CoroutineStatus::Stopped)
             {
                 var <state>currentCoroutine = <state>coroutine;
                 <state>currentCoroutine.Status.Resume(true, <state>result);
@@ -236,127 +236,135 @@ class Calculator
         <state>previousCoroutine = <state>coroutine;
         <state>coroutine = $coroutine
         {
-            var <state>state : <state>State = <state>startState;
-            
-            while (true)
+            try
             {
-                var <state>currentState = <state>state;
-                <state>state = ::Calculator::<state>State::<state>Invalid;
-                switch (<state>currentState)
+                var <state>state : <state>State = <state>startState;
+
+                while (true)
                 {
-                case ::Calculator::<state>State::<state>Start :
+                    var <state>currentState = <state>state;
+                    <state>state = ::Calculator::<state>State::<state>Invalid;
+                    switch (<state>currentState)
                     {
-                        <state>state = ::Calculator::<state>State::Calculate;
-                        goto <state-label>OUT_OF_STATES; // goto can only jump to the end of a containing block
-                        return;
-                    }
-                case ::Calculator::<state>State::Digits :
-                    {
-                        $pause;
-                        switch (<state>input)
+                    case ::Calculator::<state>State::<state>Start :
                         {
-                        case ::Calculator::<state>Input::Digit
-                            {
-                                <state>input = ::Calculator::<state>Input::<state>Invalid;
-                                var i = <statep-Digit>i;
-                                Value = Value & i;
-                                <state>state = ::Calculator::<state>State::Digits;
-                                goto <state-label>OUT_OF_STATES;
-                            }
+                            <state>state = ::Calculator::<state>State::Calculate;
+                            goto <state-label>OUT_OF_STATES; // goto can only jump to the end of a containing block
+                            goto <state-label>OUT_OF_STATE_MACHINE;
                         }
-                        return;
-                    }
-                case ::Calculator::<state>State::Integer :
-                    {
-                        $pause;
-                        switch (<state>input)
+                    case ::Calculator::<state>State::Digits :
                         {
-                        case ::Calculator::<state>Input::Digit
+                            $pause;
+                            switch (<state>input)
                             {
-                                <state>input = ::Calculator::<state>Input::<state>Invalid;
-                                var i = <statep-Digit>i;
-                                if (newNumber) // TODO: Declare the parameter
+                            case ::Calculator::<state>Input::Digit
                                 {
-                                    Value = i;
-                                }
-                                else
-                                {
+                                    <state>input = ::Calculator::<state>Input::<state>Invalid;
+                                    var i = <statep-Digit>i;
                                     Value = Value & i;
+                                    <state>state = ::Calculator::<state>State::Digits;
+                                    goto <state-label>OUT_OF_STATES;
                                 }
-                                <state>state = ::Calculator::<state>State::Digits;
-                                goto <state-label>OUT_OF_STATES;
                             }
+                            goto <state-label>OUT_OF_STATE_MACHINE;
                         }
-                        return;
-                    }
-                case ::Calculator::<state>State::Number :
-                    {
-                        // TODO: Pass the parameter (true)
-                        <state>CreateCoroutine(::Calculator::<state>State::Integer);
-                        $pause;
-                        $pause;
-                        switch (<state>input)
+                    case ::Calculator::<state>State::Integer :
                         {
-                        case ::Calculator::<state>::Input::Dot:
+                            $pause;
+                            switch (<state>input)
                             {
-                                <state>input = ::Calculator::<state>Input::<state>Invalid;
-                                Value = Value & ".";
+                            case ::Calculator::<state>Input::Digit
+                                {
+                                    <state>input = ::Calculator::<state>Input::<state>Invalid;
+                                    var i = <statep-Digit>i;
+                                    if (newNumber) // TODO: Declare the parameter
+                                    {
+                                        Value = i;
+                                    }
+                                    else
+                                    {
+                                        Value = Value & i;
+                                    }
+                                    <state>state = ::Calculator::<state>State::Digits;
+                                    goto <state-label>OUT_OF_STATES;
+                                }
                             }
-                        default:
-                            {
-                                return; // pass_and_return
-                            }
+                            goto <state-label>OUT_OF_STATE_MACHINE;
                         }
-                        // TODO: Pass the parameter (false)
-                        <state>CreateCoroutine(::Calculator::<state>State::Integer);
-                        $pause;
-                    }
-                case ::Calculator::<state>State::Calculate :
-                    {
-                        <state>CreateCoroutine(::Calculator::<state>State::Number);
-                        $pause;
-                        $pause;
-                        switch (<state>input)
+                    case ::Calculator::<state>State::Number :
                         {
-                        case ::Calculator::<state>::Input::Add:
+                            // TODO: Pass the parameter (true)
+                            <state>CreateCoroutine(::Calculator::<state>State::Integer);
+                            $pause;
+                            $pause;
+                            switch (<state>input)
                             {
-                                <state>input = ::Calculator::<state>Input::<state>Invalid;
-                                Calculate(); op = "+";
+                            case ::Calculator::<state>::Input::Dot:
+                                {
+                                    <state>input = ::Calculator::<state>Input::<state>Invalid;
+                                    Value = Value & ".";
+                                }
+                            default:
+                                {
+                                    goto <state-label>OUT_OF_STATE_MACHINE; // pass_and_return
+                                }
                             }
-                        case ::Calculator::<state>::Input::Mul:
-                            {
-                                <state>input = ::Calculator::<state>Input::<state>Invalid;
-                                Calculate(); op = "*";
-                            }
-                        case ::Calculator::<state>::Input::Equal:
-                            {
-                                <state>input = ::Calculator::<state>Input::<state>Invalid;
-                                Calculate(); op = "=";
-                            }
-                        case ::Calculator::<state>::Input::Clear:
-                            {
-                                <state>input = ::Calculator::<state>Input::<state>Invalid;
-                                valueFirst = "";
-                                op = "";
-                                Value = "0";
-                            }
-                        case ::Calculator::<state>::Input::Digit:
-                            {
-                                <state>input = ::Calculator::<state>Input::<state>Invalid;
-                                raise "Calculator::Digit cannot be called at this moment.";
-                            }
-                        case ::Calculator::<state>::Input::Dot:
-                            {
-                                <state>input = ::Calculator::<state>Input::<state>Invalid;
-                                raise "Calculator::Dot cannot be called at this moment.";
-                            }
+                            // TODO: Pass the parameter (false)
+                            <state>CreateCoroutine(::Calculator::<state>State::Integer);
+                            $pause;
                         }
-                        <state>state = ::Calculator::<state>State::Calculate;
-                        goto <state-label>OUT_OF_STATES;
-                        return;
+                    case ::Calculator::<state>State::Calculate :
+                        {
+                            <state>CreateCoroutine(::Calculator::<state>State::Number);
+                            $pause;
+                            $pause;
+                            switch (<state>input)
+                            {
+                            case ::Calculator::<state>::Input::Add:
+                                {
+                                    <state>input = ::Calculator::<state>Input::<state>Invalid;
+                                    Calculate(); op = "+";
+                                }
+                            case ::Calculator::<state>::Input::Mul:
+                                {
+                                    <state>input = ::Calculator::<state>Input::<state>Invalid;
+                                    Calculate(); op = "*";
+                                }
+                            case ::Calculator::<state>::Input::Equal:
+                                {
+                                    <state>input = ::Calculator::<state>Input::<state>Invalid;
+                                    Calculate(); op = "=";
+                                }
+                            case ::Calculator::<state>::Input::Clear:
+                                {
+                                    <state>input = ::Calculator::<state>Input::<state>Invalid;
+                                    valueFirst = "";
+                                    op = "";
+                                    Value = "0";
+                                }
+                            case ::Calculator::<state>::Input::Digit:
+                                {
+                                    <state>input = ::Calculator::<state>Input::<state>Invalid;
+                                    raise "Calculator::Digit cannot be called at this moment.";
+                                }
+                            case ::Calculator::<state>::Input::Dot:
+                                {
+                                    <state>input = ::Calculator::<state>Input::<state>Invalid;
+                                    raise "Calculator::Dot cannot be called at this moment.";
+                                }
+                            }
+                            <state>state = ::Calculator::<state>State::Calculate;
+                            goto <state-label>OUT_OF_STATES;
+                            goto <state-label>OUT_OF_STATE_MACHINE;
+                        }
                     }
+                <state-label>OUT_OF_CURRENT_STATE:; // label can only appear at the end of a block statement
                 }
-            <state-label>OUT_OF_STATES:; // label can only appear at the end of a block statement
+            <state-label>OUT_OF_STATE_MACHINE:;
+            }
+            finally
+            {
+                <state>coroutine = <state>previousCoroutine;
             }
         };
     }
