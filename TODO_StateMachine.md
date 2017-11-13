@@ -126,6 +126,7 @@ class Calculator
                     Value = "0";
                 }
             }
+            $goto_state Calculate();
         }
         
         $state
@@ -286,6 +287,8 @@ class Calculator
                                 goto <state-label>OUT_OF_STATES;
                             }
                         }
+                        <state>state = ::Calculator::<state>State::Calculate;
+                        goto <state-label>OUT_OF_STATES;
                         return;
                     }
                 case ::Calculator::<state>State::Number :
