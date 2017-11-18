@@ -139,7 +139,6 @@ class Calculator
 func Main(): string
 {
     var calculator = new Calculator^();
-    calculator.RunStateMachine();
     calculator.Digit(1);
     calculator.Digit(2);
     calculator.Add();
@@ -375,12 +374,8 @@ class Calculator
         };
     }
     
-    func RunStateMachine(): void
+    new()
     {
-        if (<state>coroutine is not null)
-        {
-            raise "RunStateMachine() cannot be called while the state machine is running.";
-        }
         <state>CreateCoroutine(:Calculator::<state>State::<state>Start);
         <state>Resume();
     }
