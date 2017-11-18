@@ -84,7 +84,9 @@
 - [ ] Use `GetTypeExpressionFromTypeDescriptor` in GacUI compiler
 - [x] Coroutine: `StoreResult` for `ReturnAndExit`
 - [ ] State Machine (coroutine)
+  - [ ] Calculator demo
 - [ ] Workflow (coroutine)
+  - ContextFreeVirtual(AST) and ContextSensitiveVirtual(AST)
   - To implement animation
 - [ ] Use formular to drive the changing of states, simple way to write animation in Xml resource
 - [ ] **Update Release**
