@@ -86,8 +86,8 @@
 - [ ] State Machine (coroutine)
   - [ ] Calculator demo
 - [ ] Workflow (coroutine)
-  - ContextFreeVirtual(AST) and ContextSensitiveVirtual(AST)
-  - To implement animation
+  - [x] ContextFreeVirtual(AST) and ContextSensitiveVirtual(AST)
+  - [ ] To implement animation
 - [ ] Use formular to drive the changing of states, simple way to write animation in Xml resource
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
