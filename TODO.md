@@ -84,7 +84,7 @@
 - [ ] Use `GetTypeExpressionFromTypeDescriptor` in GacUI compiler
 - [x] Coroutine: `StoreResult` for `ReturnAndExit`
 - [ ] State Machine (coroutine)
-  - [ ] VlppWorkflowRuntime.(h|cpp)
+  - [x] VlppWorkflowLibrary.(h|cpp)
   - [ ] Calculator demo
 - [ ] Workflow (coroutine)
   - [x] ContextFreeVirtual(AST) and ContextSensitiveVirtual(AST)
