@@ -42,35 +42,6 @@
 ## GacUI
 
 #### Before 1.0
-- [x] Simplify item arranger
-- [x] Add deserializer to IGuiInstanceLoader series API
-- [x] `ItemTemplate<T>` for control template properties
-- [x] `ItemTemplate<T>` for item template properties
-- [x] Strong-typed template checking (in XML, instead of delaying until compiling generated workflow script)
-- [x] Remove `IItemStyle(Provider|Controller)`
-- [x] Full control test UI in GacUISrc/Host project
-- [x] Fix ControlTemplates/BlackSkin
-- [x] **Update Release**, use Full control test to replace ControlTemplates tutorial
-- [x] Generate ITheme implementation in XML Resource
-- [x] Retire and archive Win7/Win8 control templates, using DarkSkin temporary
-- [x] Separate DarkSkin from FullControlTest
-- [x] Update GacGen with new codegen functions
-- [x] Support 32-64 merging in GacGen
-- [x] Generate DarkSkin to `Source\Skins\DarkSkin\`
-- [x] Update CodePack to read `/* CodePack: */` comments
-- [x] Generate DarkSkin code to Release\Skins\DarkSkin.(h|cpp)
-- [x] **Update Release**, every tutorial uses DarkSkin in shared library, with a new common `WinMain.cpp`
-- [x] `GuiRepeatStackComposition` / `GuiRepeatFlowComposition`
-- [x] Redesign TabControl's control template so that tab headers can be managed by an item source
-- [x] Update DarkSkin to write a new tab template (bind `GuiTabPage`'s `Text` and `Alt` property to the header)
-- [x] **Update Release**
-- [x] Move all `IStyleProvider` hoster style controllers' implementations to corressponding control template classes
-- [x] Remove control style interfaces, controls' constructors accept pointers to control template classes
-- [x] Each control has a `TemplateProperty<T>` nullable property, constructor consumes an enum item to define the default template
-  - [x] Control template can be updated in runtime
-  - [x] If a control has an empty control template, it will retrive the default control template using the enum item
-- [x] Move complex template logic to control
-- [x] **Update Release**
 - [ ] (optional) Update all control template properties to have `in` or `out` prefix
   - `in`: Template implementation should read
   - `out`: Template implementation should write
