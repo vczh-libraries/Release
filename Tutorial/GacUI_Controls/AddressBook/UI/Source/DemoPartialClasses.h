@@ -812,6 +812,7 @@ Closures
 
 		::demo::NewFolderWindow* __vwsn_co0_window = nullptr;
 		::vl::vint __vwsn_co_state_ = 0;
+		::vl::vint __vwsn_co_state_before_pause_ = 0;
 		::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_prop_Failure;
 		::vl::Ptr<::vl::reflection::description::IValueException> GetFailure() override;
 		void SetFailure(::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_value_);
@@ -868,6 +869,7 @@ Closures
 		::vl::Ptr<::demo::IContact> __vwsn_co0_contact;
 		::demo::NewContactWindow* __vwsn_co1_window = nullptr;
 		::vl::vint __vwsn_co_state_ = 0;
+		::vl::vint __vwsn_co_state_before_pause_ = 0;
 		::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_prop_Failure;
 		::vl::Ptr<::vl::reflection::description::IValueException> GetFailure() override;
 		void SetFailure(::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_value_);
@@ -905,6 +907,7 @@ Closures
 
 		::demo::NewContactWindow* __vwsn_co0_window = nullptr;
 		::vl::vint __vwsn_co_state_ = 0;
+		::vl::vint __vwsn_co_state_before_pause_ = 0;
 		::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_prop_Failure;
 		::vl::Ptr<::vl::reflection::description::IValueException> GetFailure() override;
 		void SetFailure(::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_value_);

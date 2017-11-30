@@ -39,6 +39,7 @@ namespace vl
 #define _ ,
 			BEGIN_INTERFACE_MEMBER(::demo::IStringAsync)
 				CLASS_MEMBER_STATIC_METHOD(CastResult, { L"value" })
+				CLASS_MEMBER_STATIC_METHOD(StoreResult, { L"value" })
 			END_INTERFACE_MEMBER(::demo::IStringAsync)
 
 			BEGIN_INTERFACE_MEMBER(::demo::IViewModel)

@@ -39,6 +39,9 @@
     <ClCompile Include="WinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppWorkflowLibrary.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Import\GacUI.h">
@@ -52,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Import\Skins\DarkSkin\DarkSkin.h">
       <Filter>Import\Skins\DarkSkin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppWorkflowLibrary.h">
+      <Filter>Import</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -24,9 +24,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Import\VlppWorkflow.cpp">
-      <Filter>Import</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Import\GacUI.cpp">
       <Filter>Import</Filter>
     </ClCompile>
@@ -48,6 +45,12 @@
     <ClCompile Include="WinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppWorkflowLibrary.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppWorkflowRuntime.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Import\GacUI.h">
@@ -62,14 +65,17 @@
     <ClInclude Include="..\..\..\Import\Vlpp.h">
       <Filter>Import</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Import\VlppWorkflow.h">
-      <Filter>Import</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Import\Skins\DarkSkin\DarkSkin.h">
       <Filter>Import\Skins\DarkSkin</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Import\Skins\DarkSkin\DarkSkinReflection.h">
       <Filter>Import\Skins\DarkSkin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppWorkflowLibrary.h">
+      <Filter>Import</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppWorkflowRuntime.h">
+      <Filter>Import</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

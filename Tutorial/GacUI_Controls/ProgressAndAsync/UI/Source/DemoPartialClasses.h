@@ -106,6 +106,7 @@ namespace demo
 #endif
 	public:
 		static ::vl::WString CastResult(const ::vl::reflection::description::Value& value);
+		static ::vl::reflection::description::Value StoreResult(const ::vl::WString& value);
 	};
 
 	class IViewModel : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IViewModel>
@@ -234,6 +235,7 @@ Closures
 
 		::vl::WString __vwsn_co0_text;
 		::vl::vint __vwsn_co_state_ = 0;
+		::vl::vint __vwsn_co_state_before_pause_ = 0;
 		::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_prop_Failure;
 		::vl::Ptr<::vl::reflection::description::IValueException> GetFailure() override;
 		void SetFailure(::vl::Ptr<::vl::reflection::description::IValueException> __vwsn_value_);
@@ -249,7 +251,7 @@ Closures
 		__vwsnc2_Demo_demo_IViewModel_DownloadAsync__demo_IStringAsync(::vl::Ptr<::vl::reflection::description::IFuture> __vwsnctor_future);
 
 		::vl::Ptr<::vl::reflection::description::IAsync> __vwsn_mixin_source_;
-		bool Execute(const ::vl::Func<void(::vl::Ptr<::vl::reflection::description::CoroutineResult>)>& callback) override;
+		bool Execute(const ::vl::Func<void(::vl::Ptr<::vl::reflection::description::CoroutineResult>)>& __vwsn_mixin_parameter_callback, ::vl::Ptr<::vl::reflection::description::AsyncContext> __vwsn_mixin_parameter_context) override;
 		::vl::reflection::description::AsyncStatus GetStatus() override;
 	};
 }
