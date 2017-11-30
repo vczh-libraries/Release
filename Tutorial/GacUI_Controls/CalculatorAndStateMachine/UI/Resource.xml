@@ -112,7 +112,7 @@
                 {
                   case Add():    {Calculate(); op = "+";}
                   case Mul():    {Calculate(); op = "*";}
-                  case Equal():  {Calculate(); op = "=";}
+                  case Equal():  {Calculate();}
                   case Clear():
                   {
                     valueFirst = "";
@@ -133,13 +133,88 @@
       ]]>
     </Workflow>
   </Script>
+
+  <InstanceStyle name="Style">
+    <Styles>
+      <Style ref.Path="//Cell/Button" Font="fontFamily:'Segoe UI' size: 24 antialias:true">
+        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+      </Style>
+    </Styles>
+  </InstanceStyle>
   
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
-      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
-        <ref.Parameter Name="CalculatorAndStateMachine" Class="demo::Calculator"/>
-        <Window Text="ColorPicker" ClientSize="x:480 y:320">
+      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow" ref.Styles="res://Style">
+        <ref.Parameter Name="calculator" Class="demo::Calculator"/>
+        <Window Text="CalculatorAndStateMachine" ClientSize="x:480 y:320">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
+            <att.Rows>
+              <CellOption>composeType:Percentage percentage:1</CellOption>
+              <CellOption>composeType:Percentage percentage:1</CellOption>
+              <CellOption>composeType:Percentage percentage:1</CellOption>
+              <CellOption>composeType:Percentage percentage:1</CellOption>
+              <CellOption>composeType:Percentage percentage:1</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1</CellOption>
+              <CellOption>composeType:Percentage percentage:1</CellOption>
+              <CellOption>composeType:Percentage percentage:1</CellOption>
+              <CellOption>composeType:Percentage percentage:1</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0 columnSpan:4">
+              <SolidLabel Font="fontFamily:'Segoe UI' size: 24 antialias:true" HorizontalAlignment="Right" VerticalAlignment="Center" Color="#FFFFFF" Text-bind="calculator.Value"/>
+            </Cell>
+
+            <Cell Site="row:1 column:0">
+              <Button Text="1" ev.Clicked-eval="calculator.Digit(1);"/>
+            </Cell>
+            <Cell Site="row:1 column:1">
+              <Button Text="2" ev.Clicked-eval="calculator.Digit(2);"/>
+            </Cell>
+            <Cell Site="row:1 column:2">
+              <Button Text="3" ev.Clicked-eval="calculator.Digit(3);"/>
+            </Cell>
+            <Cell Site="row:2 column:0">
+              <Button Text="4" ev.Clicked-eval="calculator.Digit(4);"/>
+            </Cell>
+            <Cell Site="row:2 column:1">
+              <Button Text="5" ev.Clicked-eval="calculator.Digit(5);"/>
+            </Cell>
+            <Cell Site="row:2 column:2">
+              <Button Text="6" ev.Clicked-eval="calculator.Digit(6);"/>
+            </Cell>
+            <Cell Site="row:3 column:0">
+              <Button Text="7" ev.Clicked-eval="calculator.Digit(7);"/>
+            </Cell>
+            <Cell Site="row:3 column:1">
+              <Button Text="8" ev.Clicked-eval="calculator.Digit(8);"/>
+            </Cell>
+            <Cell Site="row:3 column:2">
+              <Button Text="9" ev.Clicked-eval="calculator.Digit(9);"/>
+            </Cell>
+            <Cell Site="row:4 column:1">
+              <Button Text="0" ev.Clicked-eval="calculator.Digit(0);"/>
+            </Cell>
+
+            <Cell Site="row:4 column:0">
+              <Button Text="." ev.Clicked-eval="calculator.Dot();"/>
+            </Cell>
+            <Cell Site="row:4 column:2">
+              <Button Text="=" ev.Clicked-eval="calculator.Equal();"/>
+            </Cell>
+            <Cell Site="row:1 column:3">
+              <Button Text="CE" ev.Clicked-eval="calculator.Clear();"/>
+            </Cell>
+            <Cell Site="row:2 column:3">
+              <Button Text="*" ev.Clicked-eval="calculator.Mul();"/>
+            </Cell>
+            <Cell Site="row:3 column:3 rowSpan:2">
+              <Button Text="+" ev.Clicked-eval="calculator.Add();"/>
+            </Cell>
+          </Table>
         </Window>
       </Instance>
     </Instance>
