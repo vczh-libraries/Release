@@ -54,7 +54,7 @@
 - [x] Async: `$.IsCancelled()`
 - [ ] Use `GetTypeExpressionFromTypeDescriptor` in GacUI compiler
 - [x] Coroutine: `StoreResult` for `ReturnAndExit`
-- [ ] State Machine (coroutine)
+- [x] State Machine (coroutine)
   - [x] VlppWorkflowLibrary.(h|cpp)
   - [ ] Calculator demo
 - [ ] Workflow (coroutine)
