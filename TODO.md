@@ -52,11 +52,11 @@
   - [x] Radian Gradient
   - [x] Element demo page
 - [x] Async: `$.IsCancelled()`
-- [ ] Use `GetTypeExpressionFromTypeDescriptor` in GacUI compiler
+- [x] Use `GetTypeExpressionFromTypeDescriptor` in GacUI compiler
 - [x] Coroutine: `StoreResult` for `ReturnAndExit`
 - [x] State Machine (coroutine)
   - [x] VlppWorkflowLibrary.(h|cpp)
-  - [ ] Calculator demo
+  - [x] Calculator demo
 - [ ] Workflow (coroutine)
   - [x] ContextFreeVirtual(AST) and ContextSensitiveVirtual(AST)
   - [ ] To implement animation
