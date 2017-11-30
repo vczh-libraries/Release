@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\CalculatorAndStateMachine.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="ReflectionInclude">GacUIReflection.h</Text>
+      <Text name="Name">Demo</Text>
+    </Folder>
+  </Folder>
+  
+  <Script name="ViewModelResource">
+    <Workflow>
+      <![CDATA[
+        module viewmodel;
+        
+        using system::*;
+        using presentation::*;
+        
+        namespace demo
+        {
+          class Calculator : StateMachine
+          {
+            var valueFirst : string = "";
+            var op : string = "";
+            prop Value : string = "0" {}
+  
+            func Update(value : string) : void
+            {
+              SetValue(value);
+              valueFirst = value;
+            }
+  
+            func Calculate() : void
+            {
+              if (valueFirst == "")
+              {
+                valueFirst = Value;
+              }
+              else if (op == "+")
+              {
+                Update((cast double valueFirst) + (cast double Value));
+              }
+              else if (op == "*")
+              {
+                Update((cast double valueFirst) * (cast double Value));
+              }
+              else
+              {
+                raise $"Unrecognized operator: $(op)";
+              }
+            }
+  
+            $state_machine
+            {
+              $state_input Digit(i : int);
+              $state_input Dot();
+              $state_input Add();
+              $state_input Mul();
+              $state_input Equal();
+              $state_input Clear();
+  
+              $state Digits()
+              {
+                $switch (continue)
+                {
+                  case Digit(i):
+                  {
+                    Value = Value & i;
+                    $goto_state Digits();
+                  }
+                }
+              }
+
+              $state Integer(newNumber: bool)
+              {
+                $switch (continue)
+                {
+                  case Digit(i):
+                  {
+                    if (newNumber)
+                    {
+                      Value = i;
+                    }
+                    else
+                    {
+                      Value = Value & i;
+                    }
+                    $goto_state Digits();
+                  }
+                }
+              }
+
+              $state Number()
+              {
+                $push_state Integer(true);
+                $switch (continue, return)
+                {
+                  case Dot():
+                  {
+                    Value = Value & ".";
+                  }
+                }
+                $push_state Integer(false);
+              }
+
+              $state Operator()
+              {
+                $push_state Number();
+                $switch (raise)
+                {
+                  case Add():    {Calculate(); op = "+";}
+                  case Mul():    {Calculate(); op = "*";}
+                  case Equal():  {Calculate(); op = "=";}
+                  case Clear():
+                  {
+                    valueFirst = "";
+                    op = "";
+                    Value = "0";
+                  }
+                }
+                $goto_state Operator();
+              }
+    
+              $state default()
+              {
+                $goto_state Operator();
+              }
+            }
+          }
+        }
+      ]]>
+    </Workflow>
+  </Script>
+  
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
+        <ref.Parameter Name="CalculatorAndStateMachine" Class="demo::Calculator"/>
+        <Window Text="ColorPicker" ClientSize="x:480 y:320">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
