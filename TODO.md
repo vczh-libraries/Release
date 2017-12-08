@@ -60,6 +60,7 @@
 - [ ] Workflow (coroutine)
   - [x] ContextFreeVirtual(AST) and ContextSensitiveVirtual(AST)
   - [ ] To implement animation
+- [ ] Give up RadialGradient and replace it by InnerShadow: Color and Thickness
 - [ ] Use formular to drive the changing of states, simple way to write animation in Xml resource
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
