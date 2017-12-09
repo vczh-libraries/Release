@@ -46,6 +46,7 @@
   - `in`: Template implementation should read
   - `out`: Template implementation should write
 - [ ] Render focus
+- [ ] BlackSkin window template handle window properties (border, buttons, ...)
 - [x] Complete elements
   - [x] Merge RoundRect into ElementShape, add RoundRadiusX/Y to all related elements
   - [x] Remove RoundBorder
