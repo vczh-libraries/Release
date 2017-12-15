@@ -50,3 +50,48 @@ interface IGuiGraphicsAnimationInterpolation
 - Author calls animation APIs themselves to start an animation
 - State machine or async coroutine is supported by "end of animation notification"
 - Add `$Await GetApplication().DoEvents();`
+
+## Proposal (2)
+```xml
+<TimedAnimation Progress="progress"> <!-- Progress's default value is "progress" -->
+  <Interpolation> <!-- Interpolation's default value is "{ return progress; }" -->
+    <!CData[
+      {
+        var pi = 2 * Math::ASin(1);
+        return (Math::Sin((progress - 0.5) * pi) + 1) / 2;
+      }
+    ]]>
+  </Interpolation>
+  
+  <Data Name="Color" Type="Color"/>
+  <Data Name="Distance" Type="int"/> <!-- Data has its own Interpolation child element -->
+  
+  <States Default="A">
+    <State Name="A">
+      <Data Name="Color" Value="#FF0000"/>
+      <Data Name="Distance" Value="0"/>
+    </State>
+    <State Name="B">
+      <Data Name="Color" Value="#FFFFFF"/>
+      <Data Name="Distance" Value="100"/>
+    </State>
+  </States>
+  
+  <!--
+    Generate component:
+      class State{ /* all properties */ }
+      property Current : State^ {const, not observe}
+      property Source : State^ {const, not observe}
+      property Target : State^ {const, not observe}
+      property A : State^ {const, not observe}
+      property B : State^ {const, not observe}
+      func CreateAnimation(source:State^, target:State^, length:int):IGuiGraphicsAnimation^;
+      func ContinueAnimation(source:State^, target:State^, length:int):IGuiGraphicsAnimation^;
+      func GetAnimationLengthScale(source:State^, target:State^, current:State^):double;
+      func Interpolate(source:State^, target:State^, current:State^, progress:double):void;
+  -->
+</TimedAnimation>
+
+<InfiniteAnimation>
+</InfiniteAnimation>
+```
