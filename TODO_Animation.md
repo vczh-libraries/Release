@@ -95,3 +95,33 @@ interface IGuiGraphicsAnimationInterpolation
 <InfiniteAnimation>
 </InfiniteAnimation>
 ```
+
+## Proposal (3)
+
+- Remove `<InfiniteAnimation>`
+- Add `Type="Once|Repeat"` to `<TimedAnimation>`
+- All `<State>` should set exactly the same set of properties
+- All properties that are not set in `<State>` should have a `Value` property, which is similar to `Interpolation`
+  - `Property Value` = `Value`(`Interpolation`((`CurrentTime` - `StartTime`) % `Length` / cast double `Length`))
+- (optional) Syntax for `$switch` to wait for callbacks caused from some actions in the `$init` block
+- (optional) Syntax for `$switch` to raise a specified exception for wrong inputs
+
+```
+try
+  {
+    $switch(raise "Sad!")
+    {
+        $init
+        {
+            DownloadAsync().Execute([$1; this.Cancel(); ], null);
+        }
+        case A():{}
+        case B():{}
+    }
+}
+catch(ex)
+{
+    if (ex.Message == "Sad!") { return; }
+    raise;
+}
+```
