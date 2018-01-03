@@ -125,3 +125,14 @@ catch(ex)
     raise;
 }
 ```
+
+## Proposal (4)
+
+- Use XML to compose gradient timed animations as building blocks
+- Use coroutine to compose complex animation
+  - **$AwaitTask**: await a task
+  - **$Play**: initiate and await an animation
+  - **$PlayInGroup**: initiate an animation but not wait, a group object (maybe just a number) should be provided
+  - **$AwaitGroup**: await all animations in a group
+  - **$Pause**: wait for several milliseconds
+- If an animation is cancelled, all animations initiated by this animation are cancelled
