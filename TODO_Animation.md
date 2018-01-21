@@ -136,3 +136,8 @@ catch(ex)
   - **$AwaitGroup**: await all animations in a group
   - **$Pause**: wait for several milliseconds
 - If an animation is cancelled, all animations initiated by this animation are cancelled
+- Animation manager object in the control host becomes a animation timer callback
+  - When a root object begins an animation, it attaches the callback object to the manager
+  - When a root object finishes an animation, it detaches the callback object from the manager
+  - When a root object is removed from a control host, it detaches the callback object from the manager, and create a new callback object when it is added to a control host later. Durint the moment, the animation is paused.
+  - Detach an callback object by setting the return value of function "Run" to false, and let the animation manager remove this object later.
