@@ -95,3 +95,49 @@ interface IGuiGraphicsAnimationInterpolation
 <InfiniteAnimation>
 </InfiniteAnimation>
 ```
+
+## Proposal (3)
+
+- Remove `<InfiniteAnimation>`
+- Add `Type="Once|Repeat"` to `<TimedAnimation>`
+- All `<State>` should set exactly the same set of properties
+- All properties that are not set in `<State>` should have a `Value` property, which is similar to `Interpolation`
+  - `Property Value` = `Value`(`Interpolation`((`CurrentTime` - `StartTime`) % `Length` / cast double `Length`))
+- (optional) Syntax for `$switch` to wait for callbacks caused from some actions in the `$init` block
+- (optional) Syntax for `$switch` to raise a specified exception for wrong inputs
+
+```
+try
+  {
+    $switch(raise "Sad!")
+    {
+        $init
+        {
+            DownloadAsync().Execute([$1; this.Cancel(); ], null);
+        }
+        case A():{}
+        case B():{}
+    }
+}
+catch(ex)
+{
+    if (ex.Message == "Sad!") { return; }
+    raise;
+}
+```
+
+## Proposal (4)
+
+- Use XML to compose gradient timed animations as building blocks
+- Use coroutine to compose complex animation
+  - **$AwaitTask**: await a task
+  - **$Play**: initiate and await an animation
+  - **$PlayInGroup**: initiate an animation but not wait, a group object (maybe just a number) should be provided
+  - **$AwaitGroup**: await all animations in a group
+  - **$Pause**: wait for several milliseconds
+- If an animation is cancelled, all animations initiated by this animation are cancelled
+- Animation manager object in the control host becomes a animation timer callback
+  - When a root object begins an animation, it attaches the callback object to the manager
+  - When a root object finishes an animation, it detaches the callback object from the manager
+  - When a root object is removed from a control host, it detaches the callback object from the manager, and create a new callback object when it is added to a control host later. Durint the moment, the animation is paused.
+  - Detach an callback object by setting the return value of function "Run" to false, and let the animation manager remove this object later.
