@@ -307,11 +307,14 @@ namespace demo
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyTextItem>;
 #endif
-	public:
+	private:
 		::vl::WString __vwsn_prop_Name = ::vl::WString(L"", false);
+	public:
 		::vl::WString GetName();
 		void SetName(const ::vl::WString& __vwsn_value_);
+	private:
 		bool __vwsn_prop_Checked = false;
+	public:
 		bool GetChecked();
 		void SetChecked(bool __vwsn_value_);
 		MyTextItem();

@@ -77,7 +77,7 @@ Closures
 
 	void __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___::operator()(::vl::vint progress) const
 	{
-		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____(progress, __vwsnthis_0)), (- static_cast<::vl::vint>(1)));
+		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(static_cast<::vl::presentation::controls::GuiControlHost*>(__vwsnthis_0->self), LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____(progress, __vwsnthis_0)), (- static_cast<::vl::vint>(1)));
 	}
 
 	//-------------------------------------------------------------------
@@ -114,7 +114,7 @@ Closures
 
 	void __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____::operator()(::vl::vint progress) const
 	{
-		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____(progress, __vwsnthis_0)), (- static_cast<::vl::vint>(1)));
+		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(static_cast<::vl::presentation::controls::GuiControlHost*>(__vwsnthis_0->self), LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____(progress, __vwsnthis_0)), (- static_cast<::vl::vint>(1)));
 	}
 
 	//-------------------------------------------------------------------
@@ -140,7 +140,7 @@ Closures
 
 	void __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume_::operator()(::vl::vint progress) const
 	{
-		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume__(progress, __vwsnthis_0, __vwsnthis_1)), (- static_cast<::vl::vint>(1)));
+		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(static_cast<::vl::presentation::controls::GuiControlHost*>(__vwsnthis_1->self), LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance____Resume__(progress, __vwsnthis_0, __vwsnthis_1)), (- static_cast<::vl::vint>(1)));
 	}
 
 	//-------------------------------------------------------------------

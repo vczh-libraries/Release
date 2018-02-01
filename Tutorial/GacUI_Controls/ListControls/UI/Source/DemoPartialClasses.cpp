@@ -1684,6 +1684,7 @@ Class (::demo::MyTextItem)
 	{
 		return this->__vwsn_prop_Name;
 	}
+
 	void MyTextItem::SetName(const ::vl::WString& __vwsn_value_)
 	{
 		(this->__vwsn_prop_Name = __vwsn_value_);
@@ -1693,6 +1694,7 @@ Class (::demo::MyTextItem)
 	{
 		return this->__vwsn_prop_Checked;
 	}
+
 	void MyTextItem::SetChecked(bool __vwsn_value_)
 	{
 		(this->__vwsn_prop_Checked = __vwsn_value_);

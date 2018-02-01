@@ -677,26 +677,39 @@ namespace demo
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyDataItem>;
 #endif
-	public:
+	private:
 		::vl::WString __vwsn_prop_Name = ::vl::WString(L"", false);
+	public:
 		::vl::WString GetName();
 		void SetName(const ::vl::WString& __vwsn_value_);
+	private:
 		::demo::MyGender __vwsn_prop_Gender = ::demo::MyGender::Male;
+	public:
 		::demo::MyGender GetGender();
 		void SetGender(::demo::MyGender __vwsn_value_);
+	private:
 		::demo::MyCategory __vwsn_prop_Category = ::demo::MyCategory::White;
+	public:
 		::demo::MyCategory GetCategory();
 		void SetCategory(::demo::MyCategory __vwsn_value_);
+	private:
 		::vl::DateTime __vwsn_prop_Birthday = ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-01-01 00:00:00.000", false));
+	public:
 		::vl::DateTime GetBirthday();
 		void SetBirthday(::vl::DateTime __vwsn_value_);
+	private:
 		::vl::WString __vwsn_prop_Website = ::vl::WString(L"", false);
+	public:
 		::vl::WString GetWebsite();
 		void SetWebsite(const ::vl::WString& __vwsn_value_);
+	private:
 		::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_prop_LargeImage = ::vl::Ptr<::vl::presentation::GuiImageData>();
+	public:
 		::vl::Ptr<::vl::presentation::GuiImageData> GetLargeImage();
 		void SetLargeImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_);
+	private:
 		::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_prop_SmallImage = ::vl::Ptr<::vl::presentation::GuiImageData>();
+	public:
 		::vl::Ptr<::vl::presentation::GuiImageData> GetSmallImage();
 		void SetSmallImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_);
 		MyDataItem();

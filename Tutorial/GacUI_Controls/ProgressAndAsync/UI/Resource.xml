@@ -67,7 +67,7 @@
                       buttonDownload.Enabled = false;
                       var text = $Await demo::IViewModel::DownloadAsync(ViewModel, func(progress : int):void
                       {
-                        Application::GetApplication().InvokeInMainThreadAndWait(func():void
+                        Application::GetApplication().InvokeInMainThreadAndWait(self, func():void
                         {
                           progressBar.Position = progress;
                         }, -1);

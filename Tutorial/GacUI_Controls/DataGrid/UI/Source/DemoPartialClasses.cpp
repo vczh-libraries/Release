@@ -3335,6 +3335,7 @@ Class (::demo::MyDataItem)
 	{
 		return this->__vwsn_prop_Name;
 	}
+
 	void MyDataItem::SetName(const ::vl::WString& __vwsn_value_)
 	{
 		(this->__vwsn_prop_Name = __vwsn_value_);
@@ -3344,6 +3345,7 @@ Class (::demo::MyDataItem)
 	{
 		return this->__vwsn_prop_Gender;
 	}
+
 	void MyDataItem::SetGender(::demo::MyGender __vwsn_value_)
 	{
 		(this->__vwsn_prop_Gender = __vwsn_value_);
@@ -3353,6 +3355,7 @@ Class (::demo::MyDataItem)
 	{
 		return this->__vwsn_prop_Category;
 	}
+
 	void MyDataItem::SetCategory(::demo::MyCategory __vwsn_value_)
 	{
 		(this->__vwsn_prop_Category = __vwsn_value_);
@@ -3362,6 +3365,7 @@ Class (::demo::MyDataItem)
 	{
 		return this->__vwsn_prop_Birthday;
 	}
+
 	void MyDataItem::SetBirthday(::vl::DateTime __vwsn_value_)
 	{
 		(this->__vwsn_prop_Birthday = __vwsn_value_);
@@ -3371,6 +3375,7 @@ Class (::demo::MyDataItem)
 	{
 		return this->__vwsn_prop_Website;
 	}
+
 	void MyDataItem::SetWebsite(const ::vl::WString& __vwsn_value_)
 	{
 		(this->__vwsn_prop_Website = __vwsn_value_);
@@ -3380,6 +3385,7 @@ Class (::demo::MyDataItem)
 	{
 		return this->__vwsn_prop_LargeImage;
 	}
+
 	void MyDataItem::SetLargeImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_)
 	{
 		(this->__vwsn_prop_LargeImage = __vwsn_value_);
@@ -3389,6 +3395,7 @@ Class (::demo::MyDataItem)
 	{
 		return this->__vwsn_prop_SmallImage;
 	}
+
 	void MyDataItem::SetSmallImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_)
 	{
 		(this->__vwsn_prop_SmallImage = __vwsn_value_);
