@@ -59,11 +59,11 @@
 - [x] State Machine (coroutine)
   - [x] VlppWorkflowLibrary.(h|cpp)
   - [x] Calculator demo
-- [ ] Workflow (coroutine)
+- [x] Workflow (coroutine)
   - [x] ContextFreeVirtual(AST) and ContextSensitiveVirtual(AST)
-  - [ ] To implement animation
+  - [x] To implement animation
 - [x] Give up RadialGradient and replace it by InnerShadow: Color and Thickness
-- [ ] Use formular to drive the changing of states, simple way to write animation in Xml resource
+- [x] Use formular to drive the changing of states, simple way to write animation in Xml resource
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
@@ -79,7 +79,6 @@
 - [ ] **Update Release**
 - [ ] Inheritable custom window / control
 - [ ] Locale awared text resource with `str://` protocol
-- [ ] Bind to gradually changing value in a group calculated by time and key frames of jumping states
 - [ ] **Update Release**
 - [ ] Resource should have name and version
 - [ ] Depend on another resource, to decide loading order
