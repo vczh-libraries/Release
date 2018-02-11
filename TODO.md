@@ -42,29 +42,10 @@
 ## GacUI
 
 #### Before 1.0
-- [ ] (optional) Update all control template properties to have `in` or `out` prefix
-  - `in`: Template implementation should read
-  - `out`: Template implementation should write
-- [ ] Render focus
-- [ ] BlackSkin window template handle window properties (border, buttons, ...)
-- [ ] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
-- [ ] Real visual state: different layouts / different images in different sizes
-- [x] Complete elements
-  - [x] Merge RoundRect into ElementShape, add RoundRadiusX/Y to all related elements
-  - [x] Remove RoundBorder
-  - [x] Radian Gradient
-  - [x] Element demo page
-- [x] Async: `$.IsCancelled()`
-- [x] Use `GetTypeExpressionFromTypeDescriptor` in GacUI compiler
-- [x] Coroutine: `StoreResult` for `ReturnAndExit`
-- [x] State Machine (coroutine)
-  - [x] VlppWorkflowLibrary.(h|cpp)
-  - [x] Calculator demo
-- [x] Workflow (coroutine)
-  - [x] ContextFreeVirtual(AST) and ContextSensitiveVirtual(AST)
-  - [x] To implement animation
-- [x] Give up RadialGradient and replace it by InnerShadow: Color and Thickness
-- [x] Use formular to drive the changing of states, simple way to write animation in Xml resource
+- [ ] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
+- [ ] Normal text box supports surrogate pairs like document viewer
+- [ ] RTF / HTML clipboard format for document viewer
+- [ ] Locale awared text resource with `str://` protocol
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
@@ -74,15 +55,18 @@
 - [ ] **Update Release**
 - [ ] (optional) `ViewModelContext` property for `GuiListControl` instead of `GuiVirtualDataGrid`
 - [ ] (optional) `ViewModelContext` property for repeat compositions
-- [ ] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
-- [ ] Normal text box supports surrogate pairs like document viewer
-- [ ] RTF / HTML clipboard format for document viewer
 - [ ] **Update Release**
 - [ ] Inheritable custom window / control
-- [ ] Locale awared text resource with `str://` protocol
-- [ ] **Update Release**
 - [ ] Resource should have name and version
 - [ ] Depend on another resource, to decide loading order
+- [ ] **Update Release**
+- [ ] (optional) Update all control template properties to have `in` or `out` prefix
+  - `in`: Template implementation should read
+  - `out`: Template implementation should write
+- [ ] Render focus
+- [ ] BlackSkin window template handle window properties (border, buttons, ...)
+- [ ] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
+- [ ] Real visual state: different layouts / different images in different sizes
 - [ ] **Update Release**
 
 #### Graphics
