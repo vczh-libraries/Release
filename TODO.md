@@ -48,6 +48,7 @@
 - [ ] Render focus
 - [ ] BlackSkin window template handle window properties (border, buttons, ...)
 - [ ] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
+- [ ] Real visual state: different layouts / different images in different sizes
 - [x] Complete elements
   - [x] Merge RoundRect into ElementShape, add RoundRadiusX/Y to all related elements
   - [x] Remove RoundBorder
