@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ContainersAndButtons", "ContainersAndButtons\ContainersAndButtons.vcxproj", "{0C211930-C5DA-4567-A752-1D847CADEC1C}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DocumentEditor", "DocumentEditor\DocumentEditor.vcxproj", "{DB0EEADE-E377-4A35-A432-96982EFC6AF6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalculatorAndStateMachine", "CalculatorAndStateMachine\CalculatorAndStateMachine.vcxproj", "{7A1792BE-F866-44EE-83BF-E686BDA54B37}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Animation", "Animation\Animation.vcxproj", "{2D3277A7-05CC-4F4C-B12D-DAEDA13B4E5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,11 +105,22 @@ Global
 		{7A1792BE-F866-44EE-83BF-E686BDA54B37}.Release|Win32.Build.0 = Release|Win32
 		{7A1792BE-F866-44EE-83BF-E686BDA54B37}.Release|x64.ActiveCfg = Release|x64
 		{7A1792BE-F866-44EE-83BF-E686BDA54B37}.Release|x64.Build.0 = Release|x64
+		{2D3277A7-05CC-4F4C-B12D-DAEDA13B4E5E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2D3277A7-05CC-4F4C-B12D-DAEDA13B4E5E}.Debug|Win32.Build.0 = Debug|Win32
+		{2D3277A7-05CC-4F4C-B12D-DAEDA13B4E5E}.Debug|x64.ActiveCfg = Debug|x64
+		{2D3277A7-05CC-4F4C-B12D-DAEDA13B4E5E}.Debug|x64.Build.0 = Debug|x64
+		{2D3277A7-05CC-4F4C-B12D-DAEDA13B4E5E}.Release|Win32.ActiveCfg = Release|Win32
+		{2D3277A7-05CC-4F4C-B12D-DAEDA13B4E5E}.Release|Win32.Build.0 = Release|Win32
+		{2D3277A7-05CC-4F4C-B12D-DAEDA13B4E5E}.Release|x64.ActiveCfg = Release|x64
+		{2D3277A7-05CC-4F4C-B12D-DAEDA13B4E5E}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2} = {739DADD1-5B91-464A-B477-7581D6323E2B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7905D32D-3D44-4C67-B616-778937E189F9}
 	EndGlobalSection
 EndGlobal
