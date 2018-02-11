@@ -2477,6 +2477,31 @@ namespace demo
 	}
 
 	MainWindowConstructor::MainWindowConstructor()
+		: self(static_cast<::demo::MainWindow*>(nullptr))
+		, comboView(static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr))
+		, dataGrid(static_cast<::vl::presentation::controls::GuiBindableDataGrid*>(nullptr))
+		, dateFilter(static_cast<::demo::DateFilter*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::vl::presentation::controls::GuiTextList*>(nullptr))
+		, __vwsn_precompile_3(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_4(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_5(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_6(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_7(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_8(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_9(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_10(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_11(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_12(::vl::Ptr<::vl::presentation::controls::list::DataColumn>())
+		, __vwsn_precompile_13(::vl::Ptr<::vl::presentation::controls::list::DataColumn>())
+		, __vwsn_precompile_14(::vl::Ptr<::vl::presentation::controls::list::DataColumn>())
+		, __vwsn_precompile_15(::vl::Ptr<::vl::presentation::controls::list::DataColumn>())
+		, __vwsn_precompile_16(static_cast<::vl::presentation::controls::GuiToolstripMenu*>(nullptr))
+		, __vwsn_precompile_17(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_18(::vl::Ptr<::vl::presentation::controls::list::DataColumn>())
+		, __vwsn_precompile_19(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_20(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -2552,6 +2577,9 @@ Class (::demo::DateEditorConstructor)
 	}
 
 	DateEditorConstructor::DateEditorConstructor()
+		: self(static_cast<::demo::DateEditor*>(nullptr))
+		, comboBox(static_cast<::vl::presentation::controls::GuiDateComboBox*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -2700,6 +2728,18 @@ Class (::demo::DateFilterConstructor)
 	}
 
 	DateFilterConstructor::DateFilterConstructor()
+		: self(static_cast<::demo::DateFilter*>(nullptr))
+		, checkFrom(static_cast<::vl::presentation::controls::GuiSelectableButton*>(nullptr))
+		, dateFrom(static_cast<::vl::presentation::controls::GuiDateComboBox*>(nullptr))
+		, checkTo(static_cast<::vl::presentation::controls::GuiSelectableButton*>(nullptr))
+		, dateTo(static_cast<::vl::presentation::controls::GuiDateComboBox*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_3(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_4(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_5(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_6(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -2726,6 +2766,8 @@ Class (::demo::DateFilter)
 
 	DateFilter::DateFilter()
 		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
+		, callback(static_cast<::vl::presentation::controls::list::IDataProcessorCallback*>(nullptr))
+		, __vwsn_prop_Filter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter>())
 	{
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DateFilter", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
@@ -2777,6 +2819,9 @@ Class (::demo::TextEditorConstructor)
 	}
 
 	TextEditorConstructor::TextEditorConstructor()
+		: self(static_cast<::demo::TextEditor*>(nullptr))
+		, textBox(static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -2890,6 +2935,14 @@ Class (::demo::CategoryDisplayerConstructor)
 	}
 
 	CategoryDisplayerConstructor::CategoryDisplayerConstructor()
+		: self(static_cast<::demo::CategoryDisplayer*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>())
+		, __vwsn_precompile_3(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_4(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
+		, __vwsn_precompile_5(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_6(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
 	}
 
@@ -2912,6 +2965,7 @@ Class (::demo::CategoryDisplayer)
 
 	CategoryDisplayer::CategoryDisplayer()
 		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
+		, __vwsn_prop_Category(::demo::MyCategory::Black)
 	{
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryDisplayer", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
@@ -2972,6 +3026,10 @@ Class (::demo::CategoryEditorConstructor)
 	}
 
 	CategoryEditorConstructor::CategoryEditorConstructor()
+		: self(static_cast<::demo::CategoryEditor*>(nullptr))
+		, comboBox(static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::controls::GuiBindableTextList*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -2980,6 +3038,7 @@ Class (::demo::CategoryEditor)
 ***********************************************************************/
 
 	CategoryEditor::CategoryEditor()
+		: items((::vl::__vwsn::CreateList().Add(::demo::MyCategory::Black).Add(::demo::MyCategory::Red).Add(::demo::MyCategory::Lime).Add(::demo::MyCategory::Blue).Add(::demo::MyCategory::White)).list)
 	{
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryEditor", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
@@ -3022,6 +3081,10 @@ Class (::demo::CategoryItemTemplateConstructor)
 	}
 
 	CategoryItemTemplateConstructor::CategoryItemTemplateConstructor()
+		: self(static_cast<::demo::CategoryItemTemplate*>(nullptr))
+		, SelectedCategory(static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0))))
+		, __vwsn_precompile_0(static_cast<::demo::CategoryDisplayer*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -3035,6 +3098,7 @@ Class (::demo::CategoryItemTemplate)
 	}
 
 	CategoryItemTemplate::CategoryItemTemplate(::demo::MyCategory __vwsn_ctor_parameter_SelectedCategory)
+		: __vwsn_parameter_SelectedCategory(static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0))))
 	{
 		(this->__vwsn_parameter_SelectedCategory = __vwsn_ctor_parameter_SelectedCategory);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryItemTemplate", false));
@@ -3076,6 +3140,9 @@ Class (::demo::CategoryVisualizerConstructor)
 	}
 
 	CategoryVisualizerConstructor::CategoryVisualizerConstructor()
+		: self(static_cast<::demo::CategoryVisualizer*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::demo::CategoryDisplayer*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -3131,6 +3198,9 @@ Class (::demo::GenderDisplayerConstructor)
 	}
 
 	GenderDisplayerConstructor::GenderDisplayerConstructor()
+		: self(static_cast<::demo::GenderDisplayer*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement>())
 	{
 	}
 
@@ -3153,6 +3223,7 @@ Class (::demo::GenderDisplayer)
 
 	GenderDisplayer::GenderDisplayer()
 		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
+		, __vwsn_prop_Gender(::demo::MyGender::Male)
 	{
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderDisplayer", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
@@ -3213,6 +3284,10 @@ Class (::demo::GenderEditorConstructor)
 	}
 
 	GenderEditorConstructor::GenderEditorConstructor()
+		: self(static_cast<::demo::GenderEditor*>(nullptr))
+		, comboBox(static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::controls::GuiBindableTextList*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -3221,6 +3296,7 @@ Class (::demo::GenderEditor)
 ***********************************************************************/
 
 	GenderEditor::GenderEditor()
+		: items((::vl::__vwsn::CreateList().Add(::demo::MyGender::Male).Add(::demo::MyGender::Female)).list)
 	{
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderEditor", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
@@ -3258,6 +3334,10 @@ Class (::demo::GenderItemTemplateConstructor)
 	}
 
 	GenderItemTemplateConstructor::GenderItemTemplateConstructor()
+		: SelectedGender(static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0))))
+		, __vwsn_precompile_0(static_cast<::demo::GenderItemTemplate*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::demo::GenderDisplayer*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -3271,6 +3351,7 @@ Class (::demo::GenderItemTemplate)
 	}
 
 	GenderItemTemplate::GenderItemTemplate(::demo::MyGender __vwsn_ctor_parameter_SelectedGender)
+		: __vwsn_parameter_SelectedGender(static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0))))
 	{
 		(this->__vwsn_parameter_SelectedGender = __vwsn_ctor_parameter_SelectedGender);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderItemTemplate", false));
@@ -3307,6 +3388,9 @@ Class (::demo::GenderVisualizerConstructor)
 	}
 
 	GenderVisualizerConstructor::GenderVisualizerConstructor()
+		: self(static_cast<::demo::GenderVisualizer*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::demo::GenderDisplayer*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -3402,10 +3486,24 @@ Class (::demo::MyDataItem)
 	}
 
 	MyDataItem::MyDataItem()
+		: __vwsn_prop_Name(::vl::WString(L"", false))
+		, __vwsn_prop_Gender(::demo::MyGender::Male)
+		, __vwsn_prop_Category(::demo::MyCategory::White)
+		, __vwsn_prop_Birthday(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-01-01 00:00:00.000", false)))
+		, __vwsn_prop_Website(::vl::WString(L"", false))
+		, __vwsn_prop_LargeImage(::vl::Ptr<::vl::presentation::GuiImageData>())
+		, __vwsn_prop_SmallImage(::vl::Ptr<::vl::presentation::GuiImageData>())
 	{
 	}
 
 	MyDataItem::MyDataItem(const ::vl::WString& name, ::demo::MyGender gender, ::demo::MyCategory category, ::vl::DateTime birthday, const ::vl::WString& website)
+		: __vwsn_prop_Name(::vl::WString(L"", false))
+		, __vwsn_prop_Gender(::demo::MyGender::Male)
+		, __vwsn_prop_Category(::demo::MyCategory::White)
+		, __vwsn_prop_Birthday(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-01-01 00:00:00.000", false)))
+		, __vwsn_prop_Website(::vl::WString(L"", false))
+		, __vwsn_prop_LargeImage(::vl::Ptr<::vl::presentation::GuiImageData>())
+		, __vwsn_prop_SmallImage(::vl::Ptr<::vl::presentation::GuiImageData>())
 	{
 		this->SetName(name);
 		this->SetGender(gender);

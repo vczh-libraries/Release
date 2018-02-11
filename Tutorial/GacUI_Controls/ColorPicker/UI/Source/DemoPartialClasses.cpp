@@ -411,6 +411,13 @@ namespace demo
 	}
 
 	ColorBomboItemTemplateConstructor::ColorBomboItemTemplateConstructor()
+		: ViewModel(::vl::Ptr<::demo::IColorItem>())
+		, self(static_cast<::demo::ColorBomboItemTemplate*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
+		, __vwsn_precompile_3(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_4(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
 	}
 
@@ -437,6 +444,8 @@ Class (::demo::ColorBomboItemTemplate)
 	}
 
 	ColorBomboItemTemplate::ColorBomboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel)
+		: __vwsn_prop_TextColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)))
+		, __vwsn_parameter_ViewModel(::vl::Ptr<::demo::IColorItem>())
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::ColorBomboItemTemplate", false));
@@ -476,6 +485,9 @@ Class (::demo::ColorListItemTemplateConstructor)
 	}
 
 	ColorListItemTemplateConstructor::ColorListItemTemplateConstructor()
+		: ViewModel(::vl::Ptr<::demo::IColorItem>())
+		, self(static_cast<::demo::ColorListItemTemplate*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::demo::ColorBomboItemTemplate*>(nullptr))
 	{
 	}
 
@@ -489,6 +501,7 @@ Class (::demo::ColorListItemTemplate)
 	}
 
 	ColorListItemTemplate::ColorListItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel)
+		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::IColorItem>())
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::ColorListItemTemplate", false));
@@ -598,6 +611,16 @@ Class (::demo::MainWindowConstructor)
 	}
 
 	MainWindowConstructor::MainWindowConstructor()
+		: ViewModel(::vl::Ptr<::demo::IViewModel>())
+		, __vwsn_precompile_0(static_cast<::demo::MainWindow*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_3(static_cast<::vl::presentation::controls::GuiLabel*>(nullptr))
+		, __vwsn_precompile_4(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_5(static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr))
+		, __vwsn_precompile_6(static_cast<::vl::presentation::controls::GuiBindableTextList*>(nullptr))
+		, __vwsn_precompile_7(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_8(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -612,6 +635,7 @@ Class (::demo::MainWindow)
 
 	MainWindow::MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel)
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
+		, __vwsn_parameter_ViewModel(::vl::Ptr<::demo::IViewModel>())
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));

@@ -44,9 +44,9 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
-		::demo::MainWindow* __vwsn_precompile_0 = static_cast<::demo::MainWindow*>(nullptr);
-		::demo::MyControl* __vwsn_precompile_1 = static_cast<::demo::MyControl*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::MainWindow* __vwsn_precompile_0;
+		::demo::MyControl* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
 		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -73,10 +73,10 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyControlConstructor>;
 #endif
 	protected:
-		::demo::MyControl* self = static_cast<::demo::MyControl*>(nullptr);
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_0 = static_cast<::vl::presentation::controls::GuiLabel*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(nullptr);
+		::demo::MyControl* self;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_2;
 		void __vwsn_initialize_instance_(::demo::MyControl* __vwsn_this_);
 	public:
 		MyControlConstructor();

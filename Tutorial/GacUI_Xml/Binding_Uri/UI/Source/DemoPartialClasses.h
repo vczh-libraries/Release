@@ -40,16 +40,16 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
-		::vl::presentation::controls::GuiDocumentLabel* documentLabel = static_cast<::vl::presentation::controls::GuiDocumentLabel*>(nullptr);
-		::demo::MainWindow* __vwsn_precompile_0 = static_cast<::demo::MainWindow*>(nullptr);
-		::vl::presentation::controls::GuiTab* __vwsn_precompile_1 = static_cast<::vl::presentation::controls::GuiTab*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::controls::GuiTabPage* __vwsn_precompile_3 = static_cast<::vl::presentation::controls::GuiTabPage*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement> __vwsn_precompile_5 = ::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement>();
-		::vl::presentation::controls::GuiTabPage* __vwsn_precompile_6 = static_cast<::vl::presentation::controls::GuiTabPage*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_8 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::vl::presentation::controls::GuiDocumentLabel* documentLabel;
+		::demo::MainWindow* __vwsn_precompile_0;
+		::vl::presentation::controls::GuiTab* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
+		::vl::presentation::controls::GuiTabPage* __vwsn_precompile_3;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
+		::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement> __vwsn_precompile_5;
+		::vl::presentation::controls::GuiTabPage* __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_8;
 		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

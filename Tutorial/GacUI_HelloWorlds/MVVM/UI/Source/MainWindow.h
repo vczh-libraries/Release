@@ -44,11 +44,11 @@ namespace helloworld
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
-		bool __vwsn_prop_HasLoggedIn = false;
+		bool __vwsn_prop_HasLoggedIn;
 		bool GetHasLoggedIn();
 		void SetHasLoggedIn(bool __vwsn_value_);
 		::vl::Event<void()> HasLoggedInChanged;
-		::vl::Ptr<::vm::IViewModel> __vwsn_parameter_ViewModel = ::vl::Ptr<::vm::IViewModel>();
+		::vl::Ptr<::vm::IViewModel> __vwsn_parameter_ViewModel;
 		::vl::Ptr<::vm::IViewModel> GetViewModel();
 	protected:
 		void buttonSignUp_Clicked(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments);

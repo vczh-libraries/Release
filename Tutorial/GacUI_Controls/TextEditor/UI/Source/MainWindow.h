@@ -68,9 +68,9 @@ namespace demo
 		void SetupTextConfig();
 		void SetupXmlConfig();
 	protected:
-		::vl::WString fileName = ::vl::WString(L"", false);
-		bool isXml = false;
-		::vl::Ptr<::vl::presentation::controls::GuiWindow> findWindow = ::vl::Ptr<::vl::presentation::controls::GuiWindow>();
+		::vl::WString fileName;
+		bool isXml;
+		::vl::Ptr<::vl::presentation::controls::GuiWindow> findWindow;
 		void commandFileNewText_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments);
 		void commandFileNewXml_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments);
 		void commandFileOpen_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments);

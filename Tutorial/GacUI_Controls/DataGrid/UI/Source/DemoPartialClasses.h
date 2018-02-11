@@ -193,31 +193,31 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
-		::demo::MainWindow* self = static_cast<::demo::MainWindow*>(nullptr);
-		::vl::presentation::controls::GuiComboBoxListControl* comboView = static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr);
-		::vl::presentation::controls::GuiBindableDataGrid* dataGrid = static_cast<::vl::presentation::controls::GuiBindableDataGrid*>(nullptr);
-		::demo::DateFilter* dateFilter = static_cast<::demo::DateFilter*>(nullptr);
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0 = static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::controls::GuiTextList* __vwsn_precompile_2 = static_cast<::vl::presentation::controls::GuiTextList*>(nullptr);
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_3 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>();
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>();
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_5 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>();
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_6 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>();
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_7 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>();
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_8 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>();
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_9 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>();
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_10 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_11 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::Ptr<::vl::presentation::controls::list::DataColumn> __vwsn_precompile_12 = ::vl::Ptr<::vl::presentation::controls::list::DataColumn>();
-		::vl::Ptr<::vl::presentation::controls::list::DataColumn> __vwsn_precompile_13 = ::vl::Ptr<::vl::presentation::controls::list::DataColumn>();
-		::vl::Ptr<::vl::presentation::controls::list::DataColumn> __vwsn_precompile_14 = ::vl::Ptr<::vl::presentation::controls::list::DataColumn>();
-		::vl::Ptr<::vl::presentation::controls::list::DataColumn> __vwsn_precompile_15 = ::vl::Ptr<::vl::presentation::controls::list::DataColumn>();
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_16 = static_cast<::vl::presentation::controls::GuiToolstripMenu*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_17 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::Ptr<::vl::presentation::controls::list::DataColumn> __vwsn_precompile_18 = ::vl::Ptr<::vl::presentation::controls::list::DataColumn>();
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_19 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_20 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::MainWindow* self;
+		::vl::presentation::controls::GuiComboBoxListControl* comboView;
+		::vl::presentation::controls::GuiBindableDataGrid* dataGrid;
+		::demo::DateFilter* dateFilter;
+		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
+		::vl::presentation::controls::GuiTextList* __vwsn_precompile_2;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_3;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_4;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_5;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_6;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_7;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_8;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_9;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_10;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_11;
+		::vl::Ptr<::vl::presentation::controls::list::DataColumn> __vwsn_precompile_12;
+		::vl::Ptr<::vl::presentation::controls::list::DataColumn> __vwsn_precompile_13;
+		::vl::Ptr<::vl::presentation::controls::list::DataColumn> __vwsn_precompile_14;
+		::vl::Ptr<::vl::presentation::controls::list::DataColumn> __vwsn_precompile_15;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_16;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_17;
+		::vl::Ptr<::vl::presentation::controls::list::DataColumn> __vwsn_precompile_18;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_19;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_20;
 		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -279,9 +279,9 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateEditorConstructor>;
 #endif
 	protected:
-		::demo::DateEditor* self = static_cast<::demo::DateEditor*>(nullptr);
-		::vl::presentation::controls::GuiDateComboBox* comboBox = static_cast<::vl::presentation::controls::GuiDateComboBox*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_0 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::DateEditor* self;
+		::vl::presentation::controls::GuiDateComboBox* comboBox;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_0;
 		void __vwsn_initialize_instance_(::demo::DateEditor* __vwsn_this_);
 	public:
 		DateEditorConstructor();
@@ -316,18 +316,18 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateFilterConstructor>;
 #endif
 	protected:
-		::demo::DateFilter* self = static_cast<::demo::DateFilter*>(nullptr);
-		::vl::presentation::controls::GuiSelectableButton* checkFrom = static_cast<::vl::presentation::controls::GuiSelectableButton*>(nullptr);
-		::vl::presentation::controls::GuiDateComboBox* dateFrom = static_cast<::vl::presentation::controls::GuiDateComboBox*>(nullptr);
-		::vl::presentation::controls::GuiSelectableButton* checkTo = static_cast<::vl::presentation::controls::GuiSelectableButton*>(nullptr);
-		::vl::presentation::controls::GuiDateComboBox* dateTo = static_cast<::vl::presentation::controls::GuiDateComboBox*>(nullptr);
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0 = static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_4 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_5 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_6 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::DateFilter* self;
+		::vl::presentation::controls::GuiSelectableButton* checkFrom;
+		::vl::presentation::controls::GuiDateComboBox* dateFrom;
+		::vl::presentation::controls::GuiSelectableButton* checkTo;
+		::vl::presentation::controls::GuiDateComboBox* dateTo;
+		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_2;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_4;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_5;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_6;
 		void __vwsn_initialize_instance_(::demo::DateFilter* __vwsn_this_);
 	public:
 		DateFilterConstructor();
@@ -349,10 +349,10 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateFilter>;
 #endif
 	private:
-		::vl::presentation::controls::list::IDataProcessorCallback* callback = static_cast<::vl::presentation::controls::list::IDataProcessorCallback*>(nullptr);
+		::vl::presentation::controls::list::IDataProcessorCallback* callback;
 		void UpdateFilter();
 	public:
-		::vl::Ptr<::vl::presentation::controls::list::IDataFilter> __vwsn_prop_Filter = ::vl::Ptr<::vl::presentation::controls::list::IDataFilter>();
+		::vl::Ptr<::vl::presentation::controls::list::IDataFilter> __vwsn_prop_Filter;
 		::vl::Ptr<::vl::presentation::controls::list::IDataFilter> GetFilter();
 		void SetFilter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter> __vwsn_value_);
 		DateFilter();
@@ -370,9 +370,9 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextEditorConstructor>;
 #endif
 	protected:
-		::demo::TextEditor* self = static_cast<::demo::TextEditor*>(nullptr);
-		::vl::presentation::controls::GuiSinglelineTextBox* textBox = static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_0 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::TextEditor* self;
+		::vl::presentation::controls::GuiSinglelineTextBox* textBox;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_0;
 		void __vwsn_initialize_instance_(::demo::TextEditor* __vwsn_this_);
 	public:
 		TextEditorConstructor();
@@ -405,14 +405,14 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryDisplayerConstructor>;
 #endif
 	protected:
-		::demo::CategoryDisplayer* self = static_cast<::demo::CategoryDisplayer*>(nullptr);
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0 = static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement> __vwsn_precompile_2 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>();
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>();
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_5 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_6 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>();
+		::demo::CategoryDisplayer* self;
+		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement> __vwsn_precompile_2;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_4;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_5;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_6;
 		void __vwsn_initialize_instance_(::demo::CategoryDisplayer* __vwsn_this_);
 	public:
 		CategoryDisplayerConstructor();
@@ -431,7 +431,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryDisplayer>;
 #endif
 	public:
-		::demo::MyCategory __vwsn_prop_Category = ::demo::MyCategory::Black;
+		::demo::MyCategory __vwsn_prop_Category;
 		::demo::MyCategory GetCategory();
 		void SetCategory(::demo::MyCategory __vwsn_value_);
 		::vl::Event<void()> CategoryChanged;
@@ -451,10 +451,10 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryEditorConstructor>;
 #endif
 	protected:
-		::demo::CategoryEditor* self = static_cast<::demo::CategoryEditor*>(nullptr);
-		::vl::presentation::controls::GuiComboBoxListControl* comboBox = static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr);
-		::vl::presentation::controls::GuiBindableTextList* __vwsn_precompile_0 = static_cast<::vl::presentation::controls::GuiBindableTextList*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::CategoryEditor* self;
+		::vl::presentation::controls::GuiComboBoxListControl* comboBox;
+		::vl::presentation::controls::GuiBindableTextList* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1;
 		void __vwsn_initialize_instance_(::demo::CategoryEditor* __vwsn_this_);
 	public:
 		CategoryEditorConstructor();
@@ -473,7 +473,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryEditor>;
 #endif
 	public:
-		::vl::Ptr<::vl::reflection::description::IValueList> items = (::vl::__vwsn::CreateList().Add(::demo::MyCategory::Black).Add(::demo::MyCategory::Red).Add(::demo::MyCategory::Lime).Add(::demo::MyCategory::Blue).Add(::demo::MyCategory::White)).list;
+		::vl::Ptr<::vl::reflection::description::IValueList> items;
 		CategoryEditor();
 		~CategoryEditor();
 	};
@@ -486,10 +486,10 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryItemTemplateConstructor>;
 #endif
 	protected:
-		::demo::CategoryItemTemplate* self = static_cast<::demo::CategoryItemTemplate*>(nullptr);
-		::demo::MyCategory SelectedCategory = static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0)));
-		::demo::CategoryDisplayer* __vwsn_precompile_0 = static_cast<::demo::CategoryDisplayer*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::CategoryItemTemplate* self;
+		::demo::MyCategory SelectedCategory;
+		::demo::CategoryDisplayer* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1;
 		void __vwsn_initialize_instance_(::demo::CategoryItemTemplate* __vwsn_this_);
 	public:
 		CategoryItemTemplateConstructor();
@@ -504,7 +504,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryItemTemplate>;
 #endif
 	public:
-		::demo::MyCategory __vwsn_parameter_SelectedCategory = static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0)));
+		::demo::MyCategory __vwsn_parameter_SelectedCategory;
 		::demo::MyCategory GetSelectedCategory();
 		CategoryItemTemplate(::demo::MyCategory __vwsn_ctor_parameter_SelectedCategory);
 		~CategoryItemTemplate();
@@ -520,9 +520,9 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryVisualizerConstructor>;
 #endif
 	protected:
-		::demo::CategoryVisualizer* self = static_cast<::demo::CategoryVisualizer*>(nullptr);
-		::demo::CategoryDisplayer* __vwsn_precompile_0 = static_cast<::demo::CategoryDisplayer*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::CategoryVisualizer* self;
+		::demo::CategoryDisplayer* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1;
 		void __vwsn_initialize_instance_(::demo::CategoryVisualizer* __vwsn_this_);
 	public:
 		CategoryVisualizerConstructor();
@@ -551,9 +551,9 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderDisplayerConstructor>;
 #endif
 	protected:
-		::demo::GenderDisplayer* self = static_cast<::demo::GenderDisplayer*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_0 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement> __vwsn_precompile_1 = ::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement>();
+		::demo::GenderDisplayer* self;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_0;
+		::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement> __vwsn_precompile_1;
 		void __vwsn_initialize_instance_(::demo::GenderDisplayer* __vwsn_this_);
 	public:
 		GenderDisplayerConstructor();
@@ -568,7 +568,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderDisplayer>;
 #endif
 	public:
-		::demo::MyGender __vwsn_prop_Gender = ::demo::MyGender::Male;
+		::demo::MyGender __vwsn_prop_Gender;
 		::demo::MyGender GetGender();
 		void SetGender(::demo::MyGender __vwsn_value_);
 		::vl::Event<void()> GenderChanged;
@@ -588,10 +588,10 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderEditorConstructor>;
 #endif
 	protected:
-		::demo::GenderEditor* self = static_cast<::demo::GenderEditor*>(nullptr);
-		::vl::presentation::controls::GuiComboBoxListControl* comboBox = static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr);
-		::vl::presentation::controls::GuiBindableTextList* __vwsn_precompile_0 = static_cast<::vl::presentation::controls::GuiBindableTextList*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::GenderEditor* self;
+		::vl::presentation::controls::GuiComboBoxListControl* comboBox;
+		::vl::presentation::controls::GuiBindableTextList* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1;
 		void __vwsn_initialize_instance_(::demo::GenderEditor* __vwsn_this_);
 	public:
 		GenderEditorConstructor();
@@ -610,7 +610,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderEditor>;
 #endif
 	public:
-		::vl::Ptr<::vl::reflection::description::IValueList> items = (::vl::__vwsn::CreateList().Add(::demo::MyGender::Male).Add(::demo::MyGender::Female)).list;
+		::vl::Ptr<::vl::reflection::description::IValueList> items;
 		GenderEditor();
 		~GenderEditor();
 	};
@@ -621,10 +621,10 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderItemTemplateConstructor>;
 #endif
 	protected:
-		::demo::MyGender SelectedGender = static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0)));
-		::demo::GenderItemTemplate* __vwsn_precompile_0 = static_cast<::demo::GenderItemTemplate*>(nullptr);
-		::demo::GenderDisplayer* __vwsn_precompile_1 = static_cast<::demo::GenderDisplayer*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::MyGender SelectedGender;
+		::demo::GenderItemTemplate* __vwsn_precompile_0;
+		::demo::GenderDisplayer* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
 		void __vwsn_initialize_instance_(::demo::GenderItemTemplate* __vwsn_this_);
 	public:
 		GenderItemTemplateConstructor();
@@ -637,7 +637,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderItemTemplate>;
 #endif
 	public:
-		::demo::MyGender __vwsn_parameter_SelectedGender = static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0)));
+		::demo::MyGender __vwsn_parameter_SelectedGender;
 		::demo::MyGender GetSelectedGender();
 		GenderItemTemplate(::demo::MyGender __vwsn_ctor_parameter_SelectedGender);
 		~GenderItemTemplate();
@@ -651,9 +651,9 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderVisualizerConstructor>;
 #endif
 	protected:
-		::demo::GenderVisualizer* self = static_cast<::demo::GenderVisualizer*>(nullptr);
-		::demo::GenderDisplayer* __vwsn_precompile_0 = static_cast<::demo::GenderDisplayer*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::GenderVisualizer* self;
+		::demo::GenderDisplayer* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1;
 		void __vwsn_initialize_instance_(::demo::GenderVisualizer* __vwsn_this_);
 	public:
 		GenderVisualizerConstructor();
@@ -678,37 +678,37 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyDataItem>;
 #endif
 	private:
-		::vl::WString __vwsn_prop_Name = ::vl::WString(L"", false);
+		::vl::WString __vwsn_prop_Name;
 	public:
 		::vl::WString GetName();
 		void SetName(const ::vl::WString& __vwsn_value_);
 	private:
-		::demo::MyGender __vwsn_prop_Gender = ::demo::MyGender::Male;
+		::demo::MyGender __vwsn_prop_Gender;
 	public:
 		::demo::MyGender GetGender();
 		void SetGender(::demo::MyGender __vwsn_value_);
 	private:
-		::demo::MyCategory __vwsn_prop_Category = ::demo::MyCategory::White;
+		::demo::MyCategory __vwsn_prop_Category;
 	public:
 		::demo::MyCategory GetCategory();
 		void SetCategory(::demo::MyCategory __vwsn_value_);
 	private:
-		::vl::DateTime __vwsn_prop_Birthday = ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-01-01 00:00:00.000", false));
+		::vl::DateTime __vwsn_prop_Birthday;
 	public:
 		::vl::DateTime GetBirthday();
 		void SetBirthday(::vl::DateTime __vwsn_value_);
 	private:
-		::vl::WString __vwsn_prop_Website = ::vl::WString(L"", false);
+		::vl::WString __vwsn_prop_Website;
 	public:
 		::vl::WString GetWebsite();
 		void SetWebsite(const ::vl::WString& __vwsn_value_);
 	private:
-		::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_prop_LargeImage = ::vl::Ptr<::vl::presentation::GuiImageData>();
+		::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_prop_LargeImage;
 	public:
 		::vl::Ptr<::vl::presentation::GuiImageData> GetLargeImage();
 		void SetLargeImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_);
 	private:
-		::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_prop_SmallImage = ::vl::Ptr<::vl::presentation::GuiImageData>();
+		::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_prop_SmallImage;
 	public:
 		::vl::Ptr<::vl::presentation::GuiImageData> GetSmallImage();
 		void SetSmallImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_);

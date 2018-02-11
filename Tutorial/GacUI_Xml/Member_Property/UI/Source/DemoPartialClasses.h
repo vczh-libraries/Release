@@ -48,10 +48,10 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
-		::demo::MyControl* myControl = static_cast<::demo::MyControl*>(nullptr);
-		::demo::MainWindow* __vwsn_precompile_0 = static_cast<::demo::MainWindow*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::demo::MyControl* myControl;
+		::demo::MainWindow* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
 		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -80,16 +80,16 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyControlConstructor>;
 #endif
 	protected:
-		::demo::MyControl* self = static_cast<::demo::MyControl*>(nullptr);
-		::vl::presentation::controls::GuiSelectableButton::MutexGroupController* optionGroup = static_cast<::vl::presentation::controls::GuiSelectableButton::MutexGroupController*>(nullptr);
-		::vl::presentation::controls::GuiControl* __vwsn_precompile_0 = static_cast<::vl::presentation::controls::GuiControl*>(nullptr);
-		::vl::presentation::compositions::GuiStackComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiStackComposition*>(nullptr);
-		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiStackItemComposition*>(nullptr);
-		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_3 = static_cast<::vl::presentation::controls::GuiSelectableButton*>(nullptr);
-		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_4 = static_cast<::vl::presentation::compositions::GuiStackItemComposition*>(nullptr);
-		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_5 = static_cast<::vl::presentation::controls::GuiSelectableButton*>(nullptr);
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_6 = static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_7 = static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(nullptr);
+		::demo::MyControl* self;
+		::vl::presentation::controls::GuiSelectableButton::MutexGroupController* optionGroup;
+		::vl::presentation::controls::GuiControl* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiStackComposition* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_2;
+		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_3;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_4;
+		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_5;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_7;
 		void __vwsn_initialize_instance_(::demo::MyControl* __vwsn_this_);
 	public:
 		MyControlConstructor();
@@ -106,7 +106,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyControl>;
 #endif
 	public:
-		::vl::WString __vwsn_prop_SelectedOption = ::vl::WString(L"A", false);
+		::vl::WString __vwsn_prop_SelectedOption;
 		::vl::WString GetSelectedOption();
 		void SetSelectedOption(const ::vl::WString& __vwsn_value_);
 		::vl::Event<void()> SelectedOptionChanged;

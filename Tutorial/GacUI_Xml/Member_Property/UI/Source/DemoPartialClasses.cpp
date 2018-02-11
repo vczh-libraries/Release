@@ -267,6 +267,10 @@ namespace demo
 	}
 
 	MainWindowConstructor::MainWindowConstructor()
+		: myControl(static_cast<::demo::MyControl*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::demo::MainWindow*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -380,6 +384,16 @@ Class (::demo::MyControlConstructor)
 	}
 
 	MyControlConstructor::MyControlConstructor()
+		: self(static_cast<::demo::MyControl*>(nullptr))
+		, optionGroup(static_cast<::vl::presentation::controls::GuiSelectableButton::MutexGroupController*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiStackComposition*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiStackItemComposition*>(nullptr))
+		, __vwsn_precompile_3(static_cast<::vl::presentation::controls::GuiSelectableButton*>(nullptr))
+		, __vwsn_precompile_4(static_cast<::vl::presentation::compositions::GuiStackItemComposition*>(nullptr))
+		, __vwsn_precompile_5(static_cast<::vl::presentation::controls::GuiSelectableButton*>(nullptr))
+		, __vwsn_precompile_6(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(nullptr))
+		, __vwsn_precompile_7(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(nullptr))
 	{
 	}
 
@@ -402,6 +416,7 @@ Class (::demo::MyControl)
 
 	MyControl::MyControl()
 		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
+		, __vwsn_prop_SelectedOption(::vl::WString(L"A", false))
 	{
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MyControl", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));

@@ -67,6 +67,8 @@ namespace helloworld
 
 	MainWindow::MainWindow(::vl::Ptr<::vm::IViewModel> __vwsn_ctor_parameter_ViewModel)
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
+		, __vwsn_prop_HasLoggedIn(false)
+		, __vwsn_parameter_ViewModel(::vl::Ptr<::vm::IViewModel>())
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"helloworld::MainWindow", false));

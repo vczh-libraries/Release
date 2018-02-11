@@ -104,6 +104,9 @@ namespace demo
 	}
 
 	AnotherWindowConstructor::AnotherWindowConstructor()
+		: __vwsn_precompile_0(static_cast<::demo::AnotherWindow*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::controls::GuiLabel*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -161,6 +164,10 @@ Class (::demo::MainWindowConstructor)
 	}
 
 	MainWindowConstructor::MainWindowConstructor()
+		: __vwsn_precompile_0(static_cast<::demo::MainWindow*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_3(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 

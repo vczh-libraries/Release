@@ -35,10 +35,10 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
-		::vl::Ptr<::demo::IViewModel> ViewModel = ::vl::Ptr<::demo::IViewModel>();
-		::demo::MainWindow* __vwsn_precompile_0 = static_cast<::demo::MainWindow*>(nullptr);
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_1 = static_cast<::vl::presentation::controls::GuiLabel*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::vl::Ptr<::demo::IViewModel> ViewModel;
+		::demo::MainWindow* __vwsn_precompile_0;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
 		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -51,7 +51,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
-		::vl::Ptr<::demo::IViewModel> __vwsn_parameter_ViewModel = ::vl::Ptr<::demo::IViewModel>();
+		::vl::Ptr<::demo::IViewModel> __vwsn_parameter_ViewModel;
 		::vl::Ptr<::demo::IViewModel> GetViewModel();
 		MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel);
 		~MainWindow();

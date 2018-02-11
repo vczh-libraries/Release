@@ -57,13 +57,13 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorBomboItemTemplateConstructor>;
 #endif
 	protected:
-		::vl::Ptr<::demo::IColorItem> ViewModel = ::vl::Ptr<::demo::IColorItem>();
-		::demo::ColorBomboItemTemplate* self = static_cast<::demo::ColorBomboItemTemplate*>(nullptr);
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0 = static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_2 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>();
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_3 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>();
+		::vl::Ptr<::demo::IColorItem> ViewModel;
+		::demo::ColorBomboItemTemplate* self;
+		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_2;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_3;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_4;
 		void __vwsn_initialize_instance_(::demo::ColorBomboItemTemplate* __vwsn_this_);
 	public:
 		ColorBomboItemTemplateConstructor();
@@ -80,11 +80,11 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorBomboItemTemplate>;
 #endif
 	public:
-		::vl::presentation::Color __vwsn_prop_TextColor = ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false));
+		::vl::presentation::Color __vwsn_prop_TextColor;
 		::vl::presentation::Color GetTextColor();
 		void SetTextColor(::vl::presentation::Color __vwsn_value_);
 		::vl::Event<void()> TextColorChanged;
-		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel = ::vl::Ptr<::demo::IColorItem>();
+		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel;
 		::vl::Ptr<::demo::IColorItem> GetViewModel();
 		ColorBomboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);
 		~ColorBomboItemTemplate();
@@ -98,9 +98,9 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorListItemTemplateConstructor>;
 #endif
 	protected:
-		::vl::Ptr<::demo::IColorItem> ViewModel = ::vl::Ptr<::demo::IColorItem>();
-		::demo::ColorListItemTemplate* self = static_cast<::demo::ColorListItemTemplate*>(nullptr);
-		::demo::ColorBomboItemTemplate* __vwsn_precompile_0 = static_cast<::demo::ColorBomboItemTemplate*>(nullptr);
+		::vl::Ptr<::demo::IColorItem> ViewModel;
+		::demo::ColorListItemTemplate* self;
+		::demo::ColorBomboItemTemplate* __vwsn_precompile_0;
 		void __vwsn_initialize_instance_(::demo::ColorListItemTemplate* __vwsn_this_);
 	public:
 		ColorListItemTemplateConstructor();
@@ -115,7 +115,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorListItemTemplate>;
 #endif
 	public:
-		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel = ::vl::Ptr<::demo::IColorItem>();
+		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel;
 		::vl::Ptr<::demo::IColorItem> GetViewModel();
 		ColorListItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);
 		~ColorListItemTemplate();
@@ -130,16 +130,16 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
-		::vl::Ptr<::demo::IViewModel> ViewModel = ::vl::Ptr<::demo::IViewModel>();
-		::demo::MainWindow* __vwsn_precompile_0 = static_cast<::demo::MainWindow*>(nullptr);
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_3 = static_cast<::vl::presentation::controls::GuiLabel*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_4 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::controls::GuiComboBoxListControl* __vwsn_precompile_5 = static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr);
-		::vl::presentation::controls::GuiBindableTextList* __vwsn_precompile_6 = static_cast<::vl::presentation::controls::GuiBindableTextList*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_8 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::vl::Ptr<::demo::IViewModel> ViewModel;
+		::demo::MainWindow* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_2;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_3;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_4;
+		::vl::presentation::controls::GuiComboBoxListControl* __vwsn_precompile_5;
+		::vl::presentation::controls::GuiBindableTextList* __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_8;
 		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -155,7 +155,7 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
-		::vl::Ptr<::demo::IViewModel> __vwsn_parameter_ViewModel = ::vl::Ptr<::demo::IViewModel>();
+		::vl::Ptr<::demo::IViewModel> __vwsn_parameter_ViewModel;
 		::vl::Ptr<::demo::IViewModel> GetViewModel();
 		MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel);
 		~MainWindow();

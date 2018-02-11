@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -36,7 +36,7 @@ namespace demo
 	protected:
 		bool FindNext(const ::vl::WString& toFind, bool caseSensitive, bool down);
 	public:
-		::vl::presentation::controls::GuiMultilineTextBox* textBox = static_cast<::vl::presentation::controls::GuiMultilineTextBox*>(nullptr);
+		::vl::presentation::controls::GuiMultilineTextBox* textBox;
 		FindWindow();
 		~FindWindow();
 	};

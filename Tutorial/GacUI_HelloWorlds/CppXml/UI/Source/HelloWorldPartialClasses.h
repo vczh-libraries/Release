@@ -34,9 +34,9 @@ namespace helloworld
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
-		::helloworld::MainWindow* __vwsn_precompile_0 = static_cast<::helloworld::MainWindow*>(nullptr);
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_1 = static_cast<::vl::presentation::controls::GuiLabel*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::helloworld::MainWindow* __vwsn_precompile_0;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
 		void __vwsn_initialize_instance_(::helloworld::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

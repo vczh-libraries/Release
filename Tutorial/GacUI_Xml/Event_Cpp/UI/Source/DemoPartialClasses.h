@@ -40,27 +40,27 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
-		::vl::presentation::controls::GuiSinglelineTextBox* textBoxA = static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr);
-		::vl::presentation::controls::GuiSinglelineTextBox* textBoxB = static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr);
-		::vl::presentation::controls::GuiSinglelineTextBox* textBoxC = static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr);
-		::demo::MainWindow* __vwsn_precompile_0 = static_cast<::demo::MainWindow*>(nullptr);
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_1 = static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_2 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_3 = static_cast<::vl::presentation::controls::GuiLabel*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_4 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_6 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_7 = static_cast<::vl::presentation::controls::GuiLabel*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_8 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_9 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_10 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_11 = static_cast<::vl::presentation::controls::GuiLabel*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_12 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_13 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_14 = static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr);
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_15 = static_cast<::vl::presentation::controls::GuiButton*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_16 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_17 = static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr);
+		::vl::presentation::controls::GuiSinglelineTextBox* textBoxA;
+		::vl::presentation::controls::GuiSinglelineTextBox* textBoxB;
+		::vl::presentation::controls::GuiSinglelineTextBox* textBoxC;
+		::demo::MainWindow* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_2;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_3;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_4;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_6;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_7;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_8;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_9;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_10;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_11;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_12;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_13;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_14;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_15;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_16;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_17;
 		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

@@ -982,6 +982,32 @@ namespace demo
 	}
 
 	ListViewTabPageConstructor::ListViewTabPageConstructor()
+		: self(static_cast<::demo::ListViewTabPage*>(nullptr))
+		, comboView(static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr))
+		, listView(static_cast<::vl::presentation::controls::GuiListView*>(nullptr))
+		, bindableListView(static_cast<::vl::presentation::controls::GuiBindableListView*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::vl::presentation::controls::GuiTextList*>(nullptr))
+		, __vwsn_precompile_3(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_4(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_5(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_6(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_7(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_8(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_9(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_10(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_11(::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>())
+		, __vwsn_precompile_12(::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>())
+		, __vwsn_precompile_13(::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>())
+		, __vwsn_precompile_14(::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>())
+		, __vwsn_precompile_15(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_16(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_17(::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>())
+		, __vwsn_precompile_18(::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>())
+		, __vwsn_precompile_19(::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>())
+		, __vwsn_precompile_20(::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>())
+		, __vwsn_precompile_21(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -1066,6 +1092,13 @@ Class (::demo::MainWindowConstructor)
 	}
 
 	MainWindowConstructor::MainWindowConstructor()
+		: self(static_cast<::demo::MainWindow*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::controls::GuiTab*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::demo::TextListTabPage*>(nullptr))
+		, __vwsn_precompile_3(static_cast<::demo::ListViewTabPage*>(nullptr))
+		, __vwsn_precompile_4(static_cast<::demo::TreeViewTabPage*>(nullptr))
+		, __vwsn_precompile_5(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -1358,6 +1391,35 @@ Class (::demo::TextListTabPageConstructor)
 	}
 
 	TextListTabPageConstructor::TextListTabPageConstructor()
+		: self(static_cast<::demo::TextListTabPage*>(nullptr))
+		, comboView(static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr))
+		, textList(static_cast<::vl::presentation::controls::GuiTextList*>(nullptr))
+		, bindableTextList(static_cast<::vl::presentation::controls::GuiBindableTextList*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_2(static_cast<::vl::presentation::controls::GuiTextList*>(nullptr))
+		, __vwsn_precompile_3(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_4(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_5(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
+		, __vwsn_precompile_6(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_7(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_8(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_9(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_10(static_cast<::vl::presentation::compositions::GuiStackComposition*>(nullptr))
+		, __vwsn_precompile_11(static_cast<::vl::presentation::compositions::GuiStackItemComposition*>(nullptr))
+		, __vwsn_precompile_12(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
+		, __vwsn_precompile_13(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_14(static_cast<::vl::presentation::compositions::GuiStackItemComposition*>(nullptr))
+		, __vwsn_precompile_15(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
+		, __vwsn_precompile_16(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_17(static_cast<::vl::presentation::compositions::GuiStackItemComposition*>(nullptr))
+		, __vwsn_precompile_18(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
+		, __vwsn_precompile_19(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_20(static_cast<::vl::presentation::compositions::GuiStackItemComposition*>(nullptr))
+		, __vwsn_precompile_21(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
+		, __vwsn_precompile_22(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_23(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_24(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -1367,6 +1429,8 @@ Class (::demo::TextListTabPage)
 
 	TextListTabPage::TextListTabPage()
 		: ::vl::presentation::controls::GuiTabPage(::vl::presentation::theme::ThemeName::CustomControl)
+		, counter(static_cast<::vl::vint>(0))
+		, itemsToBind(::vl::reflection::description::IValueObservableList::Create())
 	{
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::TextListTabPage", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
@@ -1649,6 +1713,59 @@ Class (::demo::TreeViewTabPageConstructor)
 	}
 
 	TreeViewTabPageConstructor::TreeViewTabPageConstructor()
+		: self(static_cast<::demo::TreeViewTabPage*>(nullptr))
+		, treeView(static_cast<::vl::presentation::controls::GuiTreeView*>(nullptr))
+		, bindableTreeView(static_cast<::vl::presentation::controls::GuiBindableTreeView*>(nullptr))
+		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr))
+		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_3(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_4(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_5(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_6(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_7(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_8(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_9(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_10(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_11(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_12(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_13(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_14(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_15(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_16(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_17(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_18(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_19(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_20(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_21(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_22(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_23(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_24(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_25(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
+		, __vwsn_precompile_26(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_27(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_28(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_29(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_30(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_31(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_32(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_33(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_34(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_35(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_36(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_37(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_38(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_39(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_40(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_41(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_42(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_43(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_44(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_45(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_46(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_47(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_48(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
+		, __vwsn_precompile_49(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
 	{
 	}
 
@@ -1658,6 +1775,7 @@ Class (::demo::TreeViewTabPage)
 
 	TreeViewTabPage::TreeViewTabPage()
 		: ::vl::presentation::controls::GuiTabPage(::vl::presentation::theme::ThemeName::CustomControl)
+		, nodesToBind(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
 	{
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::TreeViewTabPage", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
@@ -1701,6 +1819,8 @@ Class (::demo::MyTextItem)
 	}
 
 	MyTextItem::MyTextItem()
+		: __vwsn_prop_Name(::vl::WString(L"", false))
+		, __vwsn_prop_Checked(false)
 	{
 	}
 
