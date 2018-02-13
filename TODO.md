@@ -69,6 +69,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] BlackSkin window template handle window properties (border, buttons, ...)
 - [ ] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
 - [ ] Real visual state: different layouts / different images in different sizes
+- [ ] High DPI for Direct2D (GDI will blur)
 - [ ] **Update Release**
 
 #### Graphics
