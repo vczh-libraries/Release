@@ -45,6 +45,9 @@ https://zhuanlan.zhihu.com/p/33778843
 
 #### Before 1.0
 - [ ] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
+  - Consider about <Repeat> with IObservableList^
+- [ ] Real visual state: different layouts / different images in different sizes
+- [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
 - [ ] Locale awared text resource with `str://` protocol
@@ -68,7 +71,6 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Render focus
 - [ ] BlackSkin window template handle window properties (border, buttons, ...)
 - [ ] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
-- [ ] Real visual state: different layouts / different images in different sizes
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] **Update Release**
 
