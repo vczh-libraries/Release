@@ -47,10 +47,16 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
   - Consider about <Repeat> with IObservableList^
 - [ ] Real visual state: different layouts / different images in different sizes
+- [ ] Add and query services from controls
+- [ ] Demos: DocumentEditor
+  - [ ] Manually crafted Ribbon
+  - [ ] Recently opened files menu
 - [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
 - [ ] Locale awared text resource with `str://` protocol
+- [ ] Demos: DocumentEditor
+  - [ ] Load / Save
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
