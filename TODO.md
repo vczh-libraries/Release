@@ -62,14 +62,15 @@ https://zhuanlan.zhihu.com/p/33778843
     - `<MenuItemGroupBinder>`, `<ToolstripItemGroupBinder>` (set `ItemTemplate` property)
 - [ ] Real visual state: different layouts / different images in different sizes
 - [ ] Add and query services from controls
-- [ ] Demos: DocumentEditor
+- [ ] Demo: DocumentEditor
   - [ ] Manually crafted Ribbon
-  - [ ] Recently opened files menu
+- [ ] Demo: TextEditor
+  - [ ] Recently opened files in both menu and toolbar
 - [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
 - [ ] Locale awared text resource with `str://` protocol
-- [ ] Demos: DocumentEditor
+- [ ] Demo: DocumentEditor
   - [ ] Load / Save
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
