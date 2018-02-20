@@ -50,16 +50,18 @@ https://zhuanlan.zhihu.com/p/33778843
     - `Direction` and `SplitterTemplate` property
     - `<MenuItemGroups>`, `<ToolstripItemGroups>`
   - [ ] `GuiToolstripGroup` insert multiple items in one control
-    - `Direction` and `ToolstripItems` (default) property
+    - `ThemeName` (must) constructor argument
+    - ItemTemplate property
+    - `Direction` (must) and `ToolstripItems` (default) property
     - `AutoVisible` property (set to true (default) will keep `Visible = ToolstripItems.Count() > 0`)
-    - `<MenuItemGroup>`, `<ToolstripItemGroup>` (set `Direction` property)
+    - `<MenuItemGroup>`, `<ToolstripItemGroup>` (set `ThemeName` and `Direction` property)
   - [ ] `GuiToolstripGroupBinder`
-    - `ItemTemplate` and `Commands` property
+    - `Commands` property
     - `OwnCommands` constructor argument, set to true so that
       - The binder will maintain lifecycles for commands
       - The binder will register / unregister commands
-    - `ToolstripGroup` property
-    - `<MenuItemGroupBinder>`, `<ToolstripItemGroupBinder>` (set `ItemTemplate` property)
+    - `ToolstripGroups` (default) property\
+  - `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
 - [ ] Real visual state: different layouts / different images in different sizes
 - [ ] Add and query services from controls
 - [ ] Demo: DocumentEditor
