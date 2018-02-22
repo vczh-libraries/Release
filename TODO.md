@@ -46,22 +46,21 @@ https://zhuanlan.zhihu.com/p/33778843
 #### Before 1.0
 - [ ] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
   - [ ] `GuiToolstripCollection` remove the space of an item if its `Visible` property is false
-  - [ ] `GuiToolstripGroupContainer` insert splitters between items
-    - `Direction` and `SplitterTemplate` property
-    - `<MenuItemGroups>`, `<ToolstripItemGroups>`
-  - [ ] `GuiToolstripGroup` insert multiple items in one control
-    - `ThemeName` (must) constructor argument
-    - ItemTemplate property
-    - `Direction` (must) and `ToolstripItems` (default) property
-    - `AutoVisible` property (set to true (default) will keep `Visible = ToolstripItems.Count() > 0`)
-    - `<MenuItemGroup>`, `<ToolstripItemGroup>` (set `ThemeName` and `Direction` property)
+  - [x] `GuiToolstripGroupContainer` insert splitters between items
+    - [x] `SplitterTemplate` property
+    - [x] `ToolstripItems` (default) property
+  - [x] `GuiToolstripGroup` insert multiple items in one control
+    - [ ] ItemTemplate property
+    - [x] `ToolstripItems` (default) property
+    - [ ] `AutoVisible` property (set to true (default) will keep `Visible = ToolstripItems.Count() > 0`)
+    - [ ] `<MenuItemGroup>`, `<ToolstripItemGroup>` (set `ItemTemplate` property)
   - [ ] `GuiToolstripGroupBinder`
     - `Commands` property
     - `OwnCommands` constructor argument, set to true so that
       - The binder will maintain lifecycles for commands
       - The binder will register / unregister commands
     - `ToolstripGroups` (default) property\
-  - `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
+  - [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
 - [ ] Real visual state: different layouts / different images in different sizes
 - [ ] Add and query services from controls
 - [ ] Demo: DocumentEditor
