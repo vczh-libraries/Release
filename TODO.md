@@ -66,6 +66,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Demo: DocumentEditor
   - [ ] Manually crafted Ribbon
 - [ ] Demo: TextEditor
+  - [ ] Use toolstrip group instead of splitter
   - [ ] Recently opened files in both menu and toolbar
 - [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
