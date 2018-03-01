@@ -56,6 +56,12 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Add and query services from controls
 - [ ] Demo: DocumentEditor
   - [ ] Manually crafted Ribbon
+    - [ ] Big version of toolstrip buttons / Button groups
+    - [ ] Label with icon and another editor control
+    - [ ] Multiple toolstrip panel
+    - [ ] Preview list box
+    - [ ] Ribbon Group with expand button
+    - [ ] Ribbon tab with home button
 - [ ] Demo: TextEditor
   - [ ] Use toolstrip group instead of splitter
   - [ ] Recently opened files in both menu and toolbar
