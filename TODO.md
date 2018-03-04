@@ -53,6 +53,15 @@ https://zhuanlan.zhihu.com/p/33778843
     - [x] `ToolstripItems` (default) property
 - [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
 - [ ] Real visual state: different layouts / different images in different sizes
+  - [ ] GuiResponsiveLayoutCompositionBase
+    - [ ] GuiResponsiveLayoutViewComposition
+      Explicitly define views for different size level, with shared item, views should be `GuiResponsiveLayoutCompositionBase`
+    - [ ] GuiResponsiveLayoutGroupComposition
+      All child `GuiResponsiveLayoutCompositionBase` transform at the same time
+    - [ ] GuiResponsiveLayoutStackComposition
+      All child `GuiResponsiveLayoutCompositionBase` transform one by one
+    - [ ] GuiFixedLayoutComposition
+      No transformation
 - [ ] Add and query services from controls
 - [ ] Demo: DocumentEditor
   - [ ] Manually crafted Ribbon
