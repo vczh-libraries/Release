@@ -63,6 +63,15 @@ https://zhuanlan.zhihu.com/p/33778843
       All child `GuiResponsiveLayoutCompositionBase` transform one by one
     - [ ] GuiFixedLayoutComposition
       No transformation
+- [ ] Add simple demo for responsive layout to FullControlTest
+- [ ] Demo: TextEditor
+  - [ ] Use toolstrip group instead of splitter
+  - [ ] Recently opened files in both menu and toolbar
+- [ ] **Update Release**
+- [ ] Demo: TriplePhaseImageButton
+  - [ ] Add TemplateContext(Changed) property to both Control and Template
+- [ ] Locale awared text resource with `str://` protocol
+- [ ] **Update Release**
 - [ ] Add and query services from controls
 - [ ] Demo: DocumentEditor
   - [ ] Manually crafted Ribbon
@@ -72,15 +81,9 @@ https://zhuanlan.zhihu.com/p/33778843
     - [ ] Preview list box
     - [ ] Ribbon Group with expand button
     - [ ] Ribbon tab with home button
-- [ ] Demo: TextEditor
-  - [ ] Use toolstrip group instead of splitter
-  - [ ] Recently opened files in both menu and toolbar
-- [ ] Demo: TriplePhaseImageButton
-  - [ ] Add TemplateContext(Changed) property to both Control and Template
 - [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
-- [ ] Locale awared text resource with `str://` protocol
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
 - [ ] **Update Release**
