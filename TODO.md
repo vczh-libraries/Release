@@ -75,6 +75,8 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Demo: TextEditor
   - [ ] Use toolstrip group instead of splitter
   - [ ] Recently opened files in both menu and toolbar
+- [ ] Demo: TriplePhaseImageButton
+  - [ ] Add TemplateContext(Changed) property to both Control and Template
 - [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
