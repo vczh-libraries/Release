@@ -52,16 +52,16 @@ https://zhuanlan.zhihu.com/p/33778843
   - [x] `GuiToolstripGroup` insert multiple items in one control
     - [x] `ToolstripItems` (default) property
 - [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
-- [ ] Real visual state: different layouts / different images in different sizes
+- [x] Real visual state: different layouts / different images in different sizes
   - [ ] `GuiResponsiveContainer` control to trigger level switching
-  - [ ] GuiResponsiveLayoutCompositionBase
-    - [ ] GuiResponsiveLayoutViewComposition
+  - [x] GuiResponsiveLayoutCompositionBase
+    - [x] GuiResponsiveLayoutViewComposition
       Explicitly define views for different size level, with shared item, views should be `GuiResponsiveLayoutCompositionBase`
-    - [ ] GuiResponsiveLayoutGroupComposition
+    - [x] GuiResponsiveLayoutGroupComposition
       All child `GuiResponsiveLayoutCompositionBase` transform at the same time
-    - [ ] GuiResponsiveLayoutStackComposition
+    - [x] GuiResponsiveLayoutStackComposition
       All child `GuiResponsiveLayoutCompositionBase` transform one by one
-    - [ ] GuiFixedLayoutComposition
+    - [x] GuiFixedLayoutComposition
       No transformation
 - [ ] Add simple demo for responsive layout to FullControlTest
 - [ ] Demo: TextEditor
