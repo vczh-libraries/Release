@@ -73,6 +73,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] **Update Release**
 - [ ] Demo: TriplePhaseImageButton
   - [x] Add TemplateContext(Changed) property to both Control and Template
+  - [x] Remove ViewModelContext in BindableDataGrid
 - [ ] Locale awared text resource with `str://` protocol
 - [ ] **Update Release**
 - [ ] Add and query services from controls
@@ -95,9 +96,6 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Tutorials use the new default control templates
 - [ ] **Update Release**
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
-- [ ] **Update Release**
-- [ ] (optional) `ViewModelContext` property for `GuiListControl` instead of `GuiVirtualDataGrid`
-- [ ] (optional) `ViewModelContext` property for repeat compositions
 - [ ] **Update Release**
 - [ ] Inheritable custom window / control
 - [ ] Resource should have name and version
