@@ -72,7 +72,7 @@ https://zhuanlan.zhihu.com/p/33778843
   - [ ] Recently opened files in both menu and toolbar
 - [ ] **Update Release**
 - [ ] Demo: TriplePhaseImageButton
-  - [ ] Add TemplateContext(Changed) property to both Control and Template
+  - [x] Add TemplateContext(Changed) property to both Control and Template
 - [ ] Locale awared text resource with `str://` protocol
 - [ ] **Update Release**
 - [ ] Add and query services from controls
