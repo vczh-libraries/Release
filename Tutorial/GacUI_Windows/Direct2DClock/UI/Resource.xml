@@ -1,0 +1,33 @@
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\Direct2DClock.bin</Text>
+      <Text name="NormalInclude">../../AnimationControl.h</Text>
+      <Text name="ReflectionInclude">GacUIReflection.h</Text>
+      <Text name="Name">Demo</Text>
+    </Folder>
+  </Folder>
+
+  <Instance name="MainWindowResource">
+    <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
+      <ref.Members>
+        <![CDATA[
+          @cpp:UserImpl
+          @cpp:Private
+          func InstallAnimationControl(): void {}
+        ]]>
+      </ref.Members>
+      <ref.Ctor>
+        <![CDATA[
+          {
+            self.InstallAnimationControl();
+          }
+        ]]>
+      </ref.Ctor>
+      <Window ref.Name="self" Text="Direct2DClock" ClientSize="x:800 y:600">
+        <Bounds ref.Name="animationBounds" PreferredMinSize="x:400 y:400" AlignmentToParent="left:5 top:5 right:-1 bottom:-1"/>
+      </Window>
+    </Instance>
+  </Instance>
+</Resource>

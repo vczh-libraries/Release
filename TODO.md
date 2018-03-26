@@ -44,34 +44,46 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [ ] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
-  - [ ] `GuiToolstripCollection` remove the space of an item if its `Visible` property is false
+- [x] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
+  - [x] `GuiToolstripCollection` remove the space of an item if its `Visible` property is false
   - [x] `GuiToolstripGroupContainer` insert splitters between items
     - [x] `SplitterTemplate` property
     - [x] `ToolstripItems` (default) property
   - [x] `GuiToolstripGroup` insert multiple items in one control
-    - [ ] ItemTemplate property
     - [x] `ToolstripItems` (default) property
-    - [ ] `AutoVisible` property (set to true (default) will keep `Visible = ToolstripItems.Count() > 0`)
-    - [ ] `<MenuItemGroup>`, `<ToolstripItemGroup>` (set `ItemTemplate` property)
-  - [ ] `GuiToolstripGroupBinder`
-    - `Commands` property
-    - `OwnCommands` constructor argument, set to true so that
-      - The binder will maintain lifecycles for commands
-      - The binder will register / unregister commands
-    - `ToolstripGroups` (default) property\
-  - [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
-- [ ] Real visual state: different layouts / different images in different sizes
-- [ ] Add and query services from controls
-- [ ] Demo: DocumentEditor
-  - [ ] Manually crafted Ribbon
+- [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
+- [x] Real visual state: different layouts / different images in different sizes
+  - [ ] `GuiResponsiveContainer` control to trigger level switching
+  - [x] GuiResponsiveLayoutCompositionBase
+    - [x] GuiResponsiveLayoutViewComposition
+      Explicitly define views for different size level, with shared item, views should be `GuiResponsiveLayoutCompositionBase`
+    - [x] GuiResponsiveLayoutGroupComposition
+      All child `GuiResponsiveLayoutCompositionBase` transform at the same time
+    - [x] GuiResponsiveLayoutStackComposition
+      All child `GuiResponsiveLayoutCompositionBase` transform one by one
+    - [x] GuiFixedLayoutComposition
+      No transformation
+- [ ] Add simple demo for responsive layout to FullControlTest
 - [ ] Demo: TextEditor
   - [ ] Use toolstrip group instead of splitter
   - [ ] Recently opened files in both menu and toolbar
 - [ ] **Update Release**
+- [ ] Demo: TriplePhaseImageButton
+  - [ ] Add TemplateContext(Changed) property to both Control and Template
+- [ ] Locale awared text resource with `str://` protocol
+- [ ] **Update Release**
+- [ ] Add and query services from controls
+- [ ] Demo: DocumentEditor
+  - [ ] Manually crafted Ribbon
+    - [ ] Big version of toolstrip buttons / Button groups
+    - [ ] Label with icon and another editor control
+    - [ ] Multiple toolstrip panel
+    - [ ] Preview list box
+    - [ ] Ribbon Group with expand button
+    - [ ] Ribbon tab with home button
+- [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
-- [ ] Locale awared text resource with `str://` protocol
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
 - [ ] **Update Release**
