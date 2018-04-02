@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TableSplitter", "TableSplit
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Responsive1", "Responsive1\Responsive1.vcxproj", "{B7E80D3D-6357-484C-A98F-17B6D6ABABF5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Responsive2", "Responsive2\Responsive2.vcxproj", "{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -79,6 +81,14 @@ Global
 		{B7E80D3D-6357-484C-A98F-17B6D6ABABF5}.Release|Win32.Build.0 = Release|Win32
 		{B7E80D3D-6357-484C-A98F-17B6D6ABABF5}.Release|x64.ActiveCfg = Release|x64
 		{B7E80D3D-6357-484C-A98F-17B6D6ABABF5}.Release|x64.Build.0 = Release|x64
+		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Debug|Win32.Build.0 = Debug|Win32
+		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Debug|x64.ActiveCfg = Debug|x64
+		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Debug|x64.Build.0 = Debug|x64
+		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Release|Win32.ActiveCfg = Release|Win32
+		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Release|Win32.Build.0 = Release|Win32
+		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Release|x64.ActiveCfg = Release|x64
+		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
