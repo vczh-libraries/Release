@@ -70,6 +70,7 @@ namespace demo
 			textBox->SetText(reader.ReadToEnd());
 			textBox->Select(TextPos(), TextPos());
 			textBox->SetFocus();
+			textBox->ClearUndoRedo();
 
 			fileName = dialogOpen->GetFileName();
 			if (INVLOC.EndsWith(fileName, L".xml", Locale::IgnoreCase))
@@ -81,8 +82,10 @@ namespace demo
 				SetupTextConfig();
 			}
 
-			textBox->ClearUndoRedo();
-			AddRecentFile(path);
+			GetApplication()->InvokeInMainThread(this, [=]()
+			{
+				AddRecentFile(path);
+			});
 			return true;
 		}
 		else
@@ -147,7 +150,11 @@ namespace demo
 			{
 				SetupTextConfig();
 			}
-			AddRecentFile(targetFileName);
+
+			GetApplication()->InvokeInMainThread(this, [=]()
+			{
+				AddRecentFile(targetFileName);
+			});
 			return true;
 		}
 		else
