@@ -68,7 +68,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [x] Demo: Responsive1
 - [x] Demo: Responsive2
 - [ ] Demo: TextEditor
-  - [ ] Use toolstrip group instead of splitter
+  - [x] Use toolstrip group instead of splitter
   - [ ] Recently opened files in both menu and toolbar
 - [x] Prevent from crashing while binding to a.b.c if a.b is null with a.b.cChanged exists
 - [ ] **Update Release**

@@ -140,33 +140,42 @@
           <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
           <MenuBarButton Text="File" Alt="F">
             <att.SubMenu-set>
-              <MenuItemButton Text="New" Alt="N" Image-uri="res://Images/New.png">
-                <att.SubMenu-set>
-                  <MenuItemButton Command-ref="commandFileNewText" Alt="T"/>
-                  <MenuItemButton Command-ref="commandFileNewXml" Alt="X"/>
-                </att.SubMenu-set>
-              </MenuItemButton>
-              <MenuItemButton Command-ref="commandFileOpen" Alt="O"/>
-              <MenuItemButton Command-ref="commandFileSave" Alt="S"/>
-              <MenuItemButton Command-ref="commandFileSaveAs" Alt="A"/>
-              <MenuSplitter/>
-              <MenuItemButton Command-ref="commandFileExit" Alt="X"/>
+              <ToolstripGroupContainer>
+                <ToolstripGroup>
+                  <MenuItemButton Text="New" Alt="N" Image-uri="res://Images/New.png">
+                    <att.SubMenu-set>
+                      <MenuItemButton Command-ref="commandFileNewText" Alt="T"/>
+                      <MenuItemButton Command-ref="commandFileNewXml" Alt="X"/>
+                    </att.SubMenu-set>
+                  </MenuItemButton>
+                  <MenuItemButton Command-ref="commandFileOpen" Alt="O"/>
+                  <MenuItemButton Command-ref="commandFileSave" Alt="S"/>
+                  <MenuItemButton Command-ref="commandFileSaveAs" Alt="A"/>
+                </ToolstripGroup>
+                <MenuItemButton Command-ref="commandFileExit" Alt="X"/>
+              </ToolstripGroupContainer>
             </att.SubMenu-set>
           </MenuBarButton>
           <MenuBarButton Text="Edit" Alt="E">
             <att.SubMenu-set>
-              <MenuItemButton Command-ref="commandEditUndo" Alt="U"/>
-              <MenuItemButton Command-ref="commandEditRedo" Alt="R"/>
-              <MenuSplitter/>
-              <MenuItemButton Command-ref="commandEditCut" Alt="X"/>
-              <MenuItemButton Command-ref="commandEditCopy" Alt="C"/>
-              <MenuItemButton Command-ref="commandEditPaste" Alt="V"/>
-              <MenuSplitter/>
-              <MenuItemButton Command-ref="commandEditDelete" Alt="D"/>
-              <MenuItemButton Command-ref="commandEditSelect" Alt="A"/>
-              <MenuSplitter/>
-              <MenuItemButton Command-ref="commandEditFind" Alt="F"/>
+              <ToolstripGroupContainer>
+                <ToolstripGroup>
+                  <MenuItemButton Command-ref="commandEditUndo" Alt="U"/>
+                  <MenuItemButton Command-ref="commandEditRedo" Alt="R"/>
+                </ToolstripGroup>
+                <ToolstripGroup>
+                  <MenuItemButton Command-ref="commandEditCut" Alt="X"/>
+                  <MenuItemButton Command-ref="commandEditCopy" Alt="C"/>
+                  <MenuItemButton Command-ref="commandEditPaste" Alt="V"/>
+                </ToolstripGroup>
+                <ToolstripGroup>
+                  <MenuItemButton Command-ref="commandEditDelete" Alt="D"/>
+                  <MenuItemButton Command-ref="commandEditSelect" Alt="A"/>
+                </ToolstripGroup>
+                <MenuItemButton Command-ref="commandEditFind" Alt="F"/>
+              </ToolstripGroupContainer>
             </att.SubMenu-set>
+          
           </MenuBarButton>
           <MenuBarButton Text="Help" Alt="H">
             <att.SubMenu-set>
