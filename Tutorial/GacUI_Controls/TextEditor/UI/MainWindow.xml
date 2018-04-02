@@ -175,7 +175,7 @@
                 <MenuItemButton Command-ref="commandEditFind" Alt="F"/>
               </ToolstripGroupContainer>
             </att.SubMenu-set>
-          
+
           </MenuBarButton>
           <MenuBarButton Text="Help" Alt="H">
             <att.SubMenu-set>
@@ -188,31 +188,37 @@
       <Cell Site="row:1 column:0">
         <ToolstripToolBar>
           <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-          <ToolstripDropdownButton Image-uri="res://Images/New.png" Alt="N">
-            <att.SubMenu-set>
-              <MenuItemButton Command-ref="commandFileNewText" Alt="T"/>
-              <MenuItemButton Command-ref="commandFileNewXml" Alt="X"/>
-            </att.SubMenu-set>
-          </ToolstripDropdownButton>
-          <ToolstripSplitButton Command-ref="commandFileOpen" Alt="O">
-            <att.SubMenu-set>
-              <MenuItemButton Command-ref="commandFileOpenText" Alt="T"/>
-              <MenuItemButton Command-ref="commandFileOpenXml" Alt="X"/>
-            </att.SubMenu-set>
-          </ToolstripSplitButton>
-          <ToolstripButton Command-ref="commandFileSave" Alt="S"/>
-          <ToolstripButton Command-ref="commandFileSaveAs" Alt="A"/>
-          <ToolstripSplitter/>
-          <ToolstripButton Command-ref="commandEditUndo" Alt="U"/>
-          <ToolstripButton Command-ref="commandEditRedo" Alt="R"/>
-          <ToolstripSplitter/>
-          <ToolstripButton Command-ref="commandEditCut" Alt="X"/>
-          <ToolstripButton Command-ref="commandEditCopy" Alt="C"/>
-          <ToolstripButton Command-ref="commandEditPaste" Alt="V"/>
-          <ToolstripSplitter/>
-          <ToolstripButton Command-ref="commandEditDelete" Alt="D"/>
-          <ToolstripSplitter/>
-          <ToolstripButton Command-ref="commandEditFind" Alt="I"/>
+          <ToolstripGroupContainer>
+            <ToolstripGroup>
+              <ToolstripDropdownButton Image-uri="res://Images/New.png" Alt="N">
+                <att.SubMenu-set>
+                  <MenuItemButton Command-ref="commandFileNewText" Alt="T"/>
+                  <MenuItemButton Command-ref="commandFileNewXml" Alt="X"/>
+                </att.SubMenu-set>
+              </ToolstripDropdownButton>
+              <ToolstripSplitButton Command-ref="commandFileOpen" Alt="O">
+                <att.SubMenu-set>
+                  <MenuItemButton Command-ref="commandFileOpenText" Alt="T"/>
+                  <MenuItemButton Command-ref="commandFileOpenXml" Alt="X"/>
+                </att.SubMenu-set>
+              </ToolstripSplitButton>
+            </ToolstripGroup>
+            <ToolstripGroup>
+              <ToolstripButton Command-ref="commandFileSave" Alt="S"/>
+              <ToolstripButton Command-ref="commandFileSaveAs" Alt="A"/>
+            </ToolstripGroup>
+            <ToolstripGroup>
+              <ToolstripButton Command-ref="commandEditUndo" Alt="U"/>
+              <ToolstripButton Command-ref="commandEditRedo" Alt="R"/>
+            </ToolstripGroup>
+            <ToolstripGroup>
+              <ToolstripButton Command-ref="commandEditCut" Alt="X"/>
+              <ToolstripButton Command-ref="commandEditCopy" Alt="C"/>
+              <ToolstripButton Command-ref="commandEditPaste" Alt="V"/>
+            </ToolstripGroup>
+            <ToolstripButton Command-ref="commandEditDelete" Alt="D"/>
+            <ToolstripButton Command-ref="commandEditFind" Alt="I"/>
+          </ToolstripGroupContainer>
         </ToolstripToolBar>
       </Cell>
 
