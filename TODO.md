@@ -44,34 +44,6 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [x] Redesign ToolstripMenu so that toolstrip items can be managed by an item source
-  - [x] `GuiToolstripCollection` remove the space of an item if its `Visible` property is false
-  - [x] `GuiToolstripGroupContainer` insert splitters between items
-    - [x] `SplitterTemplate` property
-    - [x] `ToolstripItems` (default) property
-  - [x] `GuiToolstripGroup` insert multiple items in one control
-    - [x] `ToolstripItems` (default) property
-- [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
-- [x] Real visual state: different layouts / different images in different sizes
-  - [x] `GuiResponsiveContainerComposition` to trigger level switching
-  - [x] GuiResponsiveLayoutCompositionBase
-    - [x] GuiResponsiveLayoutViewComposition
-      Explicitly define views for different size level, with shared item, views should be `GuiResponsiveLayoutCompositionBase`
-    - [x] GuiResponsiveLayoutGroupComposition
-      All child `GuiResponsiveLayoutCompositionBase` transform at the same time
-    - [x] GuiResponsiveLayoutStackComposition
-      All child `GuiResponsiveLayoutCompositionBase` transform one by one
-    - [x] GuiFixedLayoutComposition
-      No transformation
-- [x] Add simple demo for responsive layout to FullControlTest
-- [x] Demo: Direct2DClock
-- [x] Demo: Responsive1
-- [x] Demo: Responsive2
-- [x] Demo: TextEditor
-  - [x] Use toolstrip group instead of splitter
-  - [x] Recently opened files in both menu and toolbar
-- [x] Prevent from crashing while binding to a.b.c if a.b is null with a.b.cChanged exists
-- [ ] **Update Release**
 - [ ] Demo: TriplePhaseImageButton
   - [x] Add TemplateContext(Changed) property to both Control and Template
   - [x] Remove ViewModelContext in BindableDataGrid
@@ -102,6 +74,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Resource should have name and version
 - [ ] Depend on another resource, to decide loading order
 - [ ] **Update Release**
+- [ ] (optional) `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
 - [ ] (optional) Update all control template properties to have `in` or `out` prefix
   - `in`: Template implementation should read
   - `out`: Template implementation should write
