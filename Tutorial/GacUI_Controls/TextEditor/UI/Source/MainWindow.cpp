@@ -70,7 +70,6 @@ namespace demo
 			textBox->SetText(reader.ReadToEnd());
 			textBox->Select(TextPos(), TextPos());
 			textBox->SetFocus();
-			textBox->ClearUndoRedo();
 
 			fileName = dialogOpen->GetFileName();
 			if (INVLOC.EndsWith(fileName, L".xml", Locale::IgnoreCase))
@@ -81,6 +80,8 @@ namespace demo
 			{
 				SetupTextConfig();
 			}
+
+			textBox->ClearUndoRedo();
 			AddRecentFile(path);
 			return true;
 		}
