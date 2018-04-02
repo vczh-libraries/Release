@@ -28,8 +28,8 @@ namespace demo
 	class FindWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::FindWindowConstructor, public ::vl::reflection::Description<FindWindow>
 	{
 		friend class ::demo::FindWindowConstructor;
-		friend struct ::vl_workflow_global::__vwsnf27_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf28_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<FindWindow>;
 #endif

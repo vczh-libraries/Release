@@ -1,4 +1,4 @@
-/***********************************************************************
+﻿/***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
 GacGen.exe Resource.xml
@@ -28,8 +28,8 @@ namespace demo
 	class AboutWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::AboutWindowConstructor, public ::vl::reflection::Description<AboutWindow>
 	{
 		friend class ::demo::AboutWindowConstructor;
-		friend struct ::vl_workflow_global::__vwsnf26_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno25_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno1_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AboutWindow>;
 #endif

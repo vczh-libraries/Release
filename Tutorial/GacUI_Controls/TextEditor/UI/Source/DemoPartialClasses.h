@@ -25,50 +25,123 @@ https://github.com/vczh-libraries
 
 namespace vl_workflow_global
 {
-	struct __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf26_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf27_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf28_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf2_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf3_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf4_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsno10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsno12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno1_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsno21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsno23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno25_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsno6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsno7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsno8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	class __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 	class __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 	class __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 	class __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 	class __vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 	class __vwsnc6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
+	class __vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
+	class __vwsnc8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 }
 
 namespace demo
 {
-	class MainWindowConstructor;
-	class MainWindow;
 	class AboutWindowConstructor;
 	class AboutWindow;
 	class FindWindowConstructor;
 	class FindWindow;
+	class MainWindowConstructor;
+	class MainWindow;
+	class RecentFileItemTemplateConstructor;
+	class RecentFileItemTemplate;
+
+	class AboutWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<AboutWindowConstructor>
+	{
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno1_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AboutWindowConstructor>;
+#endif
+	protected:
+		::demo::AboutWindow* self;
+		::vl::presentation::controls::GuiDocumentLabel* documentLabel;
+		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
+		::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement> __vwsn_precompile_2;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_3;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_5;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
+		void __vwsn_initialize_instance_(::demo::AboutWindow* __vwsn_this_);
+	public:
+		AboutWindowConstructor();
+	};
+
+	class FindWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<FindWindowConstructor>
+	{
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<FindWindowConstructor>;
+#endif
+	protected:
+		::demo::FindWindow* self;
+		::vl::presentation::controls::GuiSelectableButton::MutexGroupController* groupDirection;
+		::vl::presentation::controls::GuiMessageDialog* dialogContentNotFound;
+		::vl::presentation::controls::GuiSinglelineTextBox* textFind;
+		::vl::presentation::controls::GuiSelectableButton* checkCase;
+		::vl::presentation::controls::GuiSelectableButton* radioUp;
+		::vl::presentation::controls::GuiSelectableButton* radioDown;
+		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_2;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_4;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiStackComposition* __vwsn_precompile_7;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_8;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_9;
+		::vl::presentation::controls::GuiControl* __vwsn_precompile_10;
+		::vl::presentation::compositions::GuiStackComposition* __vwsn_precompile_11;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_12;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_13;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_14;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_15;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_16;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_17;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_18;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_19;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_20;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_21;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_22;
+		void __vwsn_initialize_instance_(::demo::FindWindow* __vwsn_this_);
+	public:
+		FindWindowConstructor();
+	};
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
@@ -78,30 +151,35 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsno10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsno12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsno21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsno23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsno6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsno7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 		friend struct ::vl_workflow_global::__vwsno8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsno9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
@@ -145,121 +223,88 @@ namespace demo
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_12;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_13;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_14;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_15;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_16;
-		::vl::presentation::controls::GuiToolstripGroupContainer* __vwsn_precompile_17;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_18;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_15;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_16;
+		::vl::presentation::controls::GuiCustomControl* __vwsn_precompile_17;
+		::vl::presentation::compositions::GuiRepeatStackComposition* __vwsn_precompile_18;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_19;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_20;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_21;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_22;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_23;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_21;
+		::vl::presentation::controls::GuiToolstripGroupContainer* __vwsn_precompile_22;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_23;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_24;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_25;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_26;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_25;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_26;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_27;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_28;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_29;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_30;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_30;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_31;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_32;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_33;
-		::vl::presentation::controls::GuiToolstripToolBar* __vwsn_precompile_34;
-		::vl::presentation::controls::GuiToolstripGroupContainer* __vwsn_precompile_35;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_36;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_37;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_38;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_39;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_40;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_41;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_42;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_43;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_32;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_33;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_34;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_35;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_36;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_37;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_38;
+		::vl::presentation::controls::GuiToolstripToolBar* __vwsn_precompile_39;
+		::vl::presentation::controls::GuiToolstripGroupContainer* __vwsn_precompile_40;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_41;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_42;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_43;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_44;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_45;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_45;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_46;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_47;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_48;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_47;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_48;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_49;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_50;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_51;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_50;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_51;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_52;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_53;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_53;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_54;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_55;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_56;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_57;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_58;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_59;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_60;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_56;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_57;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_58;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_59;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_60;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_61;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_62;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_63;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_64;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_65;
 		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};
 
-	class AboutWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<AboutWindowConstructor>
+	class RecentFileItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<RecentFileItemTemplateConstructor>
 	{
-		friend struct ::vl_workflow_global::__vwsnf26_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno25_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
 #ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AboutWindowConstructor>;
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<RecentFileItemTemplateConstructor>;
 #endif
 	protected:
-		::demo::AboutWindow* self;
-		::vl::presentation::controls::GuiDocumentLabel* documentLabel;
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
-		::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement> __vwsn_precompile_2;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_3;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_5;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_6;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
-		void __vwsn_initialize_instance_(::demo::AboutWindow* __vwsn_this_);
+		::vl::presentation::controls::GuiToolstripCommand* ViewModel;
+		::demo::RecentFileItemTemplate* __vwsn_precompile_0;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
+		void __vwsn_initialize_instance_(::demo::RecentFileItemTemplate* __vwsn_this_);
 	public:
-		AboutWindowConstructor();
+		RecentFileItemTemplateConstructor();
 	};
 
-	class FindWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<FindWindowConstructor>
+	class RecentFileItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::RecentFileItemTemplateConstructor, public ::vl::reflection::Description<RecentFileItemTemplate>
 	{
-		friend struct ::vl_workflow_global::__vwsnf27_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf28_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
+		friend class ::demo::RecentFileItemTemplateConstructor;
 #ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<FindWindowConstructor>;
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<RecentFileItemTemplate>;
 #endif
-	protected:
-		::demo::FindWindow* self;
-		::vl::presentation::controls::GuiSelectableButton::MutexGroupController* groupDirection;
-		::vl::presentation::controls::GuiMessageDialog* dialogContentNotFound;
-		::vl::presentation::controls::GuiSinglelineTextBox* textFind;
-		::vl::presentation::controls::GuiSelectableButton* checkCase;
-		::vl::presentation::controls::GuiSelectableButton* radioUp;
-		::vl::presentation::controls::GuiSelectableButton* radioDown;
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_2;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_4;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_6;
-		::vl::presentation::compositions::GuiStackComposition* __vwsn_precompile_7;
-		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_8;
-		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_9;
-		::vl::presentation::controls::GuiControl* __vwsn_precompile_10;
-		::vl::presentation::compositions::GuiStackComposition* __vwsn_precompile_11;
-		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_12;
-		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_13;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_14;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_15;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_16;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_17;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_18;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_19;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_20;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_21;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_22;
-		void __vwsn_initialize_instance_(::demo::FindWindow* __vwsn_this_);
 	public:
-		FindWindowConstructor();
+		::vl::presentation::controls::GuiToolstripCommand* __vwsn_parameter_ViewModel;
+		::vl::presentation::controls::GuiToolstripCommand* GetViewModel();
+		RecentFileItemTemplate(::vl::presentation::controls::GuiToolstripCommand* __vwsn_ctor_parameter_ViewModel);
+		~RecentFileItemTemplate();
 	};
 
 }
@@ -280,85 +325,112 @@ namespace vl_workflow_global
 Closures
 ***********************************************************************/
 
-	struct __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf26_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf2_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::AboutWindowConstructor* __vwsnthis_0;
 
-		__vwsnf26_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__(::demo::AboutWindowConstructor* __vwsnctorthis_0);
+		__vwsnf2_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__(::demo::AboutWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf27_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::FindWindowConstructor* __vwsnthis_0;
-
-		__vwsnf27_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__(::demo::FindWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf28_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::FindWindowConstructor* __vwsnthis_0;
-
-		__vwsnf28_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__(::demo::FindWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf3_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::FindWindowConstructor* __vwsnthis_0;
+
+		__vwsnf3_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__(::demo::FindWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+	};
+
+	struct __vwsnf4_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::FindWindowConstructor* __vwsnthis_0;
+
+		__vwsnf4_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__(::demo::FindWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+	};
+
+	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::templates::GuiTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
 	};
 
 	struct __vwsno10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
@@ -367,6 +439,16 @@ Closures
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
 		__vwsno10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
+	};
+
+	struct __vwsno11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindow* __vwsn_this_;
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsno11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
@@ -381,52 +463,52 @@ Closures
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
 
-	struct __vwsno14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsno13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindow* __vwsn_this_;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsno14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsno13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
 
-	struct __vwsno16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindow* __vwsn_this_;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsno16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsno15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
 
-	struct __vwsno18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsno17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindow* __vwsn_this_;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsno18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsno17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
 
-	struct __vwsno1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindow* __vwsn_this_;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsno1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsno19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
 
-	struct __vwsno20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsno1_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__
 	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
+		::demo::AboutWindow* __vwsn_this_;
+		::demo::AboutWindowConstructor* __vwsnthis_0;
 
-		__vwsno20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsno1_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__(::demo::AboutWindow* __vwsnctor___vwsn_this_, ::demo::AboutWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
@@ -441,16 +523,6 @@ Closures
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
 
-	struct __vwsno22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
 	struct __vwsno23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindow* __vwsn_this_;
@@ -461,64 +533,54 @@ Closures
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
 
-	struct __vwsno24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsno25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
 	{
 		::demo::MainWindow* __vwsn_this_;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsno24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsno25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
+	};
+
+	struct __vwsno26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindow* __vwsn_this_;
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsno26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
+	};
+
+	struct __vwsno27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindow* __vwsn_this_;
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsno27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
+	};
+
+	struct __vwsno28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindow* __vwsn_this_;
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsno28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
+	};
+
+	struct __vwsno31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindow* __vwsn_this_;
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsno31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiRequestEventArgs* __vwsno_2) const;
-	};
-
-	struct __vwsno25_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::AboutWindow* __vwsn_this_;
-		::demo::AboutWindowConstructor* __vwsnthis_0;
-
-		__vwsno25_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__(::demo::AboutWindow* __vwsnctor___vwsn_this_, ::demo::AboutWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
-	struct __vwsno2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
-	struct __vwsno3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
-	struct __vwsno4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
-	};
-
-	struct __vwsno5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
-	{
-		::demo::MainWindow* __vwsn_this_;
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsno5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
 
 	struct __vwsno6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
@@ -547,6 +609,16 @@ Closures
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
 		__vwsno8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
+	};
+
+	struct __vwsno9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	{
+		::demo::MainWindow* __vwsn_this_;
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsno9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
@@ -654,6 +726,42 @@ Closures
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
 		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		bool Open() override;
+		bool Update() override;
+		bool Close() override;
+	};
+
+	class __vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsn_bind_cache_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		bool __vwsn_bind_opened_ = false;
+		bool __vwsn_bind_closed_ = false;
+		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0(::vl::vint __vwsn_bind_callback_argument_0, ::vl::vint __vwsn_bind_callback_argument_1, ::vl::vint __vwsn_bind_callback_argument_2);
+		bool Open() override;
+		bool Update() override;
+		bool Close() override;
+	};
+
+	class __vwsnc8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsn_bind_cache_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		bool __vwsn_bind_opened_ = false;
+		bool __vwsn_bind_closed_ = false;
+		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0(::vl::vint __vwsn_bind_callback_argument_0, ::vl::vint __vwsn_bind_callback_argument_1, ::vl::vint __vwsn_bind_callback_argument_2);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;

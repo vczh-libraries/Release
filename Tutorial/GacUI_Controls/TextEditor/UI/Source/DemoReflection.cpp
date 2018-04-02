@@ -37,6 +37,8 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(demo::FindWindowConstructor)
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
 			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
+			IMPL_CPP_TYPE_INFO(demo::RecentFileItemTemplate)
+			IMPL_CPP_TYPE_INFO(demo::RecentFileItemTemplateConstructor)
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::AboutWindow)
@@ -128,6 +130,7 @@ namespace vl
 				CLASS_MEMBER_FIELD(fileName)
 				CLASS_MEMBER_FIELD(findWindow)
 				CLASS_MEMBER_FIELD(isXml)
+				CLASS_MEMBER_FIELD(recentFiles)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
@@ -191,6 +194,11 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_59)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_6)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_60)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_61)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_62)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_63)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_64)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_65)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_7)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_8)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_9)
@@ -220,6 +228,22 @@ namespace vl
 				CLASS_MEMBER_FIELD(textBox)
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
+			BEGIN_CLASS_MEMBER(::demo::RecentFileItemTemplate)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::RecentFileItemTemplate*(::vl::presentation::controls::GuiToolstripCommand*), { L"__vwsn_ctor_parameter_ViewModel" })
+				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
+				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
+				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
+			END_CLASS_MEMBER(::demo::RecentFileItemTemplate)
+
+			BEGIN_CLASS_MEMBER(::demo::RecentFileItemTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::RecentFileItemTemplateConstructor>(), NO_PARAMETER)
+				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
+				CLASS_MEMBER_FIELD(ViewModel)
+			END_CLASS_MEMBER(::demo::RecentFileItemTemplateConstructor)
+
 #undef _
 			class DemoTypeLoader : public Object, public ITypeLoader
 			{
@@ -232,6 +256,8 @@ namespace vl
 					ADD_TYPE_INFO(::demo::FindWindowConstructor)
 					ADD_TYPE_INFO(::demo::MainWindow)
 					ADD_TYPE_INFO(::demo::MainWindowConstructor)
+					ADD_TYPE_INFO(::demo::RecentFileItemTemplate)
+					ADD_TYPE_INFO(::demo::RecentFileItemTemplateConstructor)
 				}
 
 				void Unload(ITypeManager* manager)

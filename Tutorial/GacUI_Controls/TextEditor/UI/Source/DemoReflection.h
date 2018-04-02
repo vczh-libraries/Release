@@ -40,6 +40,8 @@ namespace vl
 			DECL_TYPE_INFO(::demo::FindWindowConstructor)
 			DECL_TYPE_INFO(::demo::MainWindow)
 			DECL_TYPE_INFO(::demo::MainWindowConstructor)
+			DECL_TYPE_INFO(::demo::RecentFileItemTemplate)
+			DECL_TYPE_INFO(::demo::RecentFileItemTemplateConstructor)
 #endif
 
 			extern bool LoadDemoTypes();
