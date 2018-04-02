@@ -68,6 +68,7 @@ namespace demo
 #endif
 	public:
 		bool CanCloseFile();
+		bool LoadFile(const ::vl::WString& path);
 		bool OpenFile(::vl::vint filterIndex);
 		bool SaveFile(bool saveAs);
 		void SetupTextConfig();

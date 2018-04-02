@@ -105,6 +105,7 @@ namespace vl
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(CanCloseFile, NO_PARAMETER)
+				CLASS_MEMBER_METHOD(LoadFile, { L"path" })
 				CLASS_MEMBER_METHOD(OpenFile, { L"filterIndex" })
 				CLASS_MEMBER_METHOD(SaveFile, { L"saveAs" })
 				CLASS_MEMBER_METHOD(SetupTextConfig, NO_PARAMETER)

@@ -6,6 +6,9 @@
         <![CDATA[
           @cpp:UserImpl
           func CanCloseFile() : bool {}
+          
+          @cpp:UserImpl
+          func LoadFile(path : string) : bool {}
       
           @cpp:UserImpl
           func OpenFile(filterIndex : int) : bool {}

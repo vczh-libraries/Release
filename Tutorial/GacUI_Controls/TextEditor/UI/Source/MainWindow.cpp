@@ -59,6 +59,37 @@ namespace demo
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
+	bool MainWindow::LoadFile(const ::vl::WString& path)
+	{
+		stream::FileStream fileStream(path, stream::FileStream::ReadOnly);
+		if (fileStream.IsAvailable())
+		{
+			stream::BomDecoder decoder;
+			stream::DecoderStream decoderStream(fileStream, decoder);
+			stream::StreamReader reader(decoderStream);
+			textBox->SetText(reader.ReadToEnd());
+			textBox->Select(TextPos(), TextPos());
+			textBox->SetFocus();
+			textBox->ClearUndoRedo();
+
+			fileName = dialogOpen->GetFileName();
+			if (INVLOC.EndsWith(fileName, L".xml", Locale::IgnoreCase))
+			{
+				SetupXmlConfig();
+			}
+			else
+			{
+				SetupTextConfig();
+			}
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	USERIMPL(/* ::demo::MainWindow */)
 	bool MainWindow::OpenFile(::vl::vint filterIndex)
 	{
 		if (CanCloseFile())
@@ -66,26 +97,8 @@ namespace demo
 			dialogOpen->SetFilterIndex(filterIndex);
 			if (dialogOpen->ShowDialog())
 			{
-				stream::FileStream fileStream(dialogOpen->GetFileName(), stream::FileStream::ReadOnly);
-				if (fileStream.IsAvailable())
+				if (LoadFile(dialogOpen->GetFileName()))
 				{
-					stream::BomDecoder decoder;
-					stream::DecoderStream decoderStream(fileStream, decoder);
-					stream::StreamReader reader(decoderStream);
-					textBox->SetText(reader.ReadToEnd());
-					textBox->Select(TextPos(), TextPos());
-					textBox->SetFocus();
-					textBox->ClearUndoRedo();
-
-					fileName = dialogOpen->GetFileName();
-					if (INVLOC.EndsWith(fileName, L".xml", Locale::IgnoreCase))
-					{
-						SetupXmlConfig();
-					}
-					else
-					{
-						SetupTextConfig();
-					}
 					return true;
 				}
 				else
