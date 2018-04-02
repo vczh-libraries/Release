@@ -27,6 +27,7 @@ namespace demo
 {
 	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
 	{
+		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_MainWindow_AddRecentFile_;
 		friend class ::demo::MainWindowConstructor;
 		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
@@ -78,6 +79,7 @@ namespace demo
 		bool isXml;
 		::vl::Ptr<::vl::presentation::controls::GuiWindow> findWindow;
 		::vl::Ptr<::vl::reflection::description::IValueObservableList> recentFiles;
+		void AddRecentFile(const ::vl::WString& path);
 		void commandFileNewText_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments);
 		void commandFileNewXml_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments);
 		void commandFileOpen_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments);

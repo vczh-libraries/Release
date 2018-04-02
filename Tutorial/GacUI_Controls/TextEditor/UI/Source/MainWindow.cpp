@@ -81,6 +81,7 @@ namespace demo
 			{
 				SetupTextConfig();
 			}
+			AddRecentFile(path);
 			return true;
 		}
 		else
@@ -145,6 +146,7 @@ namespace demo
 			{
 				SetupTextConfig();
 			}
+			AddRecentFile(targetFileName);
 			return true;
 		}
 		else
@@ -172,6 +174,36 @@ namespace demo
 			isXml = true;
 			SetColorizer(textBox, true);
 		}
+	}
+
+	void MainWindow::AddRecentFile(const ::vl::WString& path)
+	{
+		{
+			auto __vwsn_for_begin_i = static_cast<::vl::vint>(0);
+			auto __vwsn_for_end_i = (::vl::__vwsn::This(this->recentFiles.Obj())->GetCount() - static_cast<::vl::vint>(1));
+			auto i = __vwsn_for_begin_i;
+			while ((i <= __vwsn_for_end_i))
+			{
+				{
+					if ((::vl::__vwsn::This(::vl::__vwsn::Unbox<::vl::presentation::controls::GuiToolstripCommand*>(::vl::__vwsn::This(this->recentFiles.Obj())->Get(i)))->GetText() == path))
+					{
+						auto existingCommand = ::vl::__vwsn::Unbox<::vl::presentation::controls::GuiToolstripCommand*>(::vl::__vwsn::This(this->recentFiles.Obj())->Get(i));
+						::vl::__vwsn::This(this->recentFiles.Obj())->RemoveAt(i);
+						::vl::__vwsn::This(this->recentFiles.Obj())->Insert(static_cast<::vl::vint>(0), ::vl::__vwsn::Box(existingCommand));
+						return;
+					}
+				}
+				(i = (i + static_cast<::vl::vint>(1)));
+			}
+		}
+		if ((::vl::__vwsn::This(this->recentFiles.Obj())->GetCount() == static_cast<::vl::vint>(10)))
+		{
+			::vl::__vwsn::This(this->recentFiles.Obj())->RemoveAt(static_cast<::vl::vint>(9));
+		}
+		auto command = new ::vl::presentation::controls::GuiToolstripCommand();
+		::vl::__vwsn::This(command)->SetText(path);
+		::vl::__vwsn::EventAttach(::vl::__vwsn::This(command)->Executed, LAMBDA(::vl_workflow_global::__vwsnf32_Demo_demo_MainWindow_AddRecentFile_(path, this)));
+		::vl::__vwsn::This(this->recentFiles.Obj())->Insert(static_cast<::vl::vint>(0), ::vl::__vwsn::Box(command));
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)

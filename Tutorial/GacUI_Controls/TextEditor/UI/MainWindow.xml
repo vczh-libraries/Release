@@ -33,6 +33,35 @@
       
           @cpp:Protected
           var recentFiles : observe ToolstripCommand*[] = {};
+          
+          @cpp:Protected
+          func AddRecentFile(path : string) : void
+          {
+            for (i in range [0, recentFiles.Count))
+            {
+              if (recentFiles[i].Text == path)
+              {
+                var existingCommand = recentFiles[i];
+                recentFiles.RemoveAt(i);
+                recentFiles.Insert(0, existingCommand);
+                return;
+              }
+            }
+          
+            if (recentFiles.Count == 10)
+            {
+              recentFiles.RemoveAt(9);
+            }
+            
+            var command = new ToolstripCommand*();
+            command.Text = path;
+            attach(command.Executed, func(sender : GuiGraphicsComposition*, arguments : GuiEventArgs*) : void
+            {
+              LoadFile(path);
+            });
+            
+            recentFiles.Insert(0, command);
+          }
         ]]>
       </ref.Members>
       <Window ref.Name="self" Text="TextEditor" ClientSize="x:480 y:320" ev.WindowClosing="window_Closing">

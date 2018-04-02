@@ -214,6 +214,19 @@ Closures
 
 	//-------------------------------------------------------------------
 
+	__vwsnf32_Demo_demo_MainWindow_AddRecentFile_::__vwsnf32_Demo_demo_MainWindow_AddRecentFile_(::vl::WString __vwsnctor_path, ::demo::MainWindow* __vwsnctorthis_0)
+		:path(__vwsnctor_path)
+		, __vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
+	{
+	}
+
+	void __vwsnf32_Demo_demo_MainWindow_AddRecentFile_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		__vwsnthis_0->LoadFile(path);
+	}
+
+	//-------------------------------------------------------------------
+
 	__vwsnf3_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__::__vwsnf3_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__(::demo::FindWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{

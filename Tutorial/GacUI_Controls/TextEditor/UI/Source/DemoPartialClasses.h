@@ -34,6 +34,7 @@ namespace vl_workflow_global
 	struct __vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsnf2_Demo_demo_AboutWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsnf32_Demo_demo_MainWindow_AddRecentFile_;
 	struct __vwsnf3_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsnf4_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__;
 	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
@@ -404,6 +405,16 @@ Closures
 		__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf32_Demo_demo_MainWindow_AddRecentFile_
+	{
+		::vl::WString path;
+		::demo::MainWindow* __vwsnthis_0;
+
+		__vwsnf32_Demo_demo_MainWindow_AddRecentFile_(::vl::WString __vwsnctor_path, ::demo::MainWindow* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf3_Demo_demo_FindWindowConstructor___vwsn_initialize_instance__
