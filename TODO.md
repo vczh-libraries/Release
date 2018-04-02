@@ -66,7 +66,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [x] Add simple demo for responsive layout to FullControlTest
 - [x] Demo: Direct2DClock
 - [x] Demo: Responsive1
-- [ ] Demo: Responsive2
+- [x] Demo: Responsive2
 - [ ] Demo: TextEditor
   - [ ] Use toolstrip group instead of splitter
   - [ ] Recently opened files in both menu and toolbar
