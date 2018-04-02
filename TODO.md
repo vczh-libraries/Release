@@ -53,7 +53,7 @@ https://zhuanlan.zhihu.com/p/33778843
     - [x] `ToolstripItems` (default) property
 - [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
 - [x] Real visual state: different layouts / different images in different sizes
-  - [ ] `GuiResponsiveContainer` control to trigger level switching
+  - [x] `GuiResponsiveContainerComposition` to trigger level switching
   - [x] GuiResponsiveLayoutCompositionBase
     - [x] GuiResponsiveLayoutViewComposition
       Explicitly define views for different size level, with shared item, views should be `GuiResponsiveLayoutCompositionBase`
