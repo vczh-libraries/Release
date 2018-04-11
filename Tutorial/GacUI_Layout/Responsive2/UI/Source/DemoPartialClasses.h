@@ -324,16 +324,19 @@ namespace demo
 	public:
 		::vl::presentation::controls::GuiSelectableButton::GroupController* GetController();
 		void SetController(::vl::presentation::controls::GuiSelectableButton::GroupController* __vwsn_value_);
+		::vl::Event<void()> ControllerChanged;
 	private:
 		::vl::WString __vwsn_prop_Name;
 	public:
 		::vl::WString GetName();
 		void SetName(const ::vl::WString& __vwsn_value_);
+		::vl::Event<void()> NameChanged;
 	private:
 		::vl::Ptr<::vl::presentation::INativeImage> __vwsn_prop_Image;
 	public:
 		::vl::Ptr<::vl::presentation::INativeImage> GetImage();
 		void SetImage(::vl::Ptr<::vl::presentation::INativeImage> __vwsn_value_);
+		::vl::Event<void()> ImageChanged;
 		AccountButtonViewModel();
 	};
 
@@ -662,11 +665,14 @@ Closures
 		__vwsnc2_Demo_demo_AccountButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::AccountButtonTemplateConstructor* __vwsnctorthis_0);
 
 		::demo::AccountButtonTemplate* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_bind_cache_1;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_1_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
 		void __vwsn_bind_callback_0_0();
+		void __vwsn_bind_callback_1_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -680,11 +686,14 @@ Closures
 		__vwsnc3_Demo_demo_AccountButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::AccountButtonTemplateConstructor* __vwsnctorthis_0);
 
 		::demo::AccountButtonTemplate* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_bind_cache_1;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_1_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
 		void __vwsn_bind_callback_0_0();
+		void __vwsn_bind_callback_1_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -734,11 +743,14 @@ Closures
 		__vwsnc6_Demo_demo_AccountButtonTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::AccountButtonTemplateConstructor* __vwsnctorthis_0);
 
 		::demo::AccountButtonTemplate* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_bind_cache_1;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_1_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
 		void __vwsn_bind_callback_0_0();
+		void __vwsn_bind_callback_1_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -769,9 +781,12 @@ Closures
 
 		__vwsnc8_Demo_demo_AccountMenuItemTemplateConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::AccountMenuItemTemplateConstructor* __vwsnctorthis_0);
 
+		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_bind_cache_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
