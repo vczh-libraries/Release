@@ -67,12 +67,12 @@ namespace demo
 		vint cx = arguments.bounds.Left() + arguments.bounds.Width() / 2;
 		vint cy = arguments.bounds.Top() + arguments.bounds.Height() / 2;
 
-		rt->DrawEllipse(D2D1::Ellipse(D2D1::Point2F(cx, cy), 160, 160), members->borderBrush.Obj());
+		rt->DrawEllipse(D2D1::Ellipse(D2D1::Point2F((FLOAT)cx, (FLOAT)cy), 160, 160), members->borderBrush.Obj());
 		for (vint i = 0; i < 12; i++)
 		{
 			auto s = sin(i * 3.14 / 6);
 			auto c = cos(i * 3.14 / 6);
-			rt->DrawLine(D2D1::Point2F(cx + c * 150, cy + s * 150), D2D1::Point2F(cx + c * 160, cy + s * 160), members->borderBrush.Obj());
+			rt->DrawLine(D2D1::Point2F((FLOAT)(cx + c * 150), (FLOAT)(cy + s * 150)), D2D1::Point2F((FLOAT)(cx + c * 160), (FLOAT)(cy + s * 160)), members->borderBrush.Obj());
 		}
 
 		auto time = DateTime::LocalTime();
@@ -80,19 +80,19 @@ namespace demo
 			auto d = ((time.hour + time.minute / 60.f + time.second / 3600.f) / 6.f - 0.5) * 3.14;
 			auto s = sin(d);
 			auto c = cos(d);
-			rt->DrawLine(D2D1::Point2F(cx, cy), D2D1::Point2F(cx + c * 90, cy + s * 90), members->hourBrush.Obj());
+			rt->DrawLine(D2D1::Point2F((FLOAT)cx, (FLOAT)cy), D2D1::Point2F((FLOAT)(cx + c * 90), (FLOAT)(cy + s * 90)), members->hourBrush.Obj());
 		}
 		{
 			auto d = ((time.minute + time.second / 60.f) / 30.f - 0.5) * 3.14;
 			auto s = sin(d);
 			auto c = cos(d);
-			rt->DrawLine(D2D1::Point2F(cx, cy), D2D1::Point2F(cx + c * 110, cy + s * 110), members->minuteBrush.Obj());
+			rt->DrawLine(D2D1::Point2F((FLOAT)cx, (FLOAT)cy), D2D1::Point2F((FLOAT)(cx + c * 110), (FLOAT)(cy + s * 110)), members->minuteBrush.Obj());
 		}
 		{
 			auto d = (time.second / 30.f - 0.5) * 3.14;
 			auto s = sin(d);
 			auto c = cos(d);
-			rt->DrawLine(D2D1::Point2F(cx, cy), D2D1::Point2F(cx + c * 130, cy + s * 130), members->secondBrush.Obj());
+			rt->DrawLine(D2D1::Point2F((FLOAT)cx, (FLOAT)cy), D2D1::Point2F((FLOAT)(cx + c * 130), (FLOAT)(cy + s * 130)), members->secondBrush.Obj());
 		}
 	}
 

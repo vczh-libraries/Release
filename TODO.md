@@ -47,7 +47,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Demo: TriplePhaseImageButton
   - [x] Add TemplateContext(Changed) property to both Control and Template
   - [x] Remove ViewModelContext in BindableDataGrid
-- [ ] Locale awared text resource with `str://` protocol
+- [x] Locale awared text resource with `str://` protocol
 - [ ] **Update Release**
 - [ ] Add and query services from controls
 - [ ] Demo: DocumentEditor
