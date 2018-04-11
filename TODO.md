@@ -44,11 +44,7 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [ ] Demo: TriplePhaseImageButton
-  - [x] Add TemplateContext(Changed) property to both Control and Template
-  - [x] Remove ViewModelContext in BindableDataGrid
-- [x] Locale awared text resource with `str://` protocol
-- [ ] **Update Release**
+- [ ] Demo: TriplePhaseImageButton using `Context` property
 - [ ] Add and query services from controls
 - [ ] Demo: DocumentEditor
   - [ ] Manually crafted Ribbon
