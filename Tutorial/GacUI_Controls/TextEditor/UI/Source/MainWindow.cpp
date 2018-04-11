@@ -61,31 +61,127 @@ namespace demo
 	USERIMPL(/* ::demo::MainWindow */)
 	bool MainWindow::LoadFile(const ::vl::WString& path)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		stream::FileStream fileStream(path, stream::FileStream::ReadOnly);
+		if (fileStream.IsAvailable())
+		{
+			stream::BomDecoder decoder;
+			stream::DecoderStream decoderStream(fileStream, decoder);
+			stream::StreamReader reader(decoderStream);
+			textBox->SetText(reader.ReadToEnd());
+			textBox->Select(TextPos(), TextPos());
+			textBox->SetFocus();
+			textBox->ClearUndoRedo();
+
+			fileName = dialogOpen->GetFileName();
+			if (INVLOC.EndsWith(fileName, L".xml", Locale::IgnoreCase))
+			{
+				SetupXmlConfig();
+			}
+			else
+			{
+				SetupTextConfig();
+			}
+
+			GetApplication()->InvokeInMainThread(this, [=]()
+			{
+				AddRecentFile(path);
+			});
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	bool MainWindow::OpenFile(::vl::vint filterIndex)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		if (CanCloseFile())
+		{
+			dialogOpen->SetFilterIndex(filterIndex);
+			if (dialogOpen->ShowDialog())
+			{
+				if (LoadFile(dialogOpen->GetFileName()))
+				{
+					return true;
+				}
+				else
+				{
+					dialogCannotOpen->ShowDialog();
+				}
+			}
+		}
+		return false;
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	bool MainWindow::SaveFile(bool saveAs)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		WString targetFileName = fileName;
+		if (saveAs || targetFileName == L"")
+		{
+			dialogSave->SetFilterIndex(isXml ? 1 : 0);
+			if (dialogSave->ShowDialog())
+			{
+				targetFileName = dialogSave->GetFileName();
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		stream::FileStream fileStream(targetFileName, stream::FileStream::WriteOnly);
+		if (fileStream.IsAvailable())
+		{
+			stream::BomEncoder encoder(stream::BomEncoder::Utf16);
+			stream::EncoderStream encoderStream(fileStream, encoder);
+			stream::StreamWriter writer(encoderStream);
+			writer.WriteString(textBox->GetText());
+			textBox->NotifyModificationSaved();
+
+			fileName = targetFileName;
+			if (INVLOC.EndsWith(fileName, L".xml", Locale::IgnoreCase))
+			{
+				SetupXmlConfig();
+			}
+			else
+			{
+				SetupTextConfig();
+			}
+
+			GetApplication()->InvokeInMainThread(this, [=]()
+			{
+				AddRecentFile(targetFileName);
+			});
+			return true;
+		}
+		else
+		{
+			dialogCannotSave->ShowDialog();
+		}
+		return false;
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::SetupTextConfig()
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		if (isXml == true)
+		{
+			isXml = false;
+			SetColorizer(textBox, false);
+		}
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::SetupXmlConfig()
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		if (isXml == false)
+		{
+			isXml = true;
+			SetColorizer(textBox, true);
+		}
 	}
 
 	void MainWindow::AddRecentFile(const ::vl::WString& path)
@@ -121,109 +217,129 @@ namespace demo
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileNewText_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		if (CanCloseFile())
+		{
+			textBox->SetText(L"");
+			textBox->ClearUndoRedo();
+			SetupTextConfig();
+		}
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileNewXml_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		if (CanCloseFile())
+		{
+			textBox->SetText(L"");
+			textBox->ClearUndoRedo();
+			SetupXmlConfig();
+		}
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileOpen_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		OpenFile(dialogOpen->GetFilterIndex());
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileOpenText_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		OpenFile(0);
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileOpenXml_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		OpenFile(1);
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileSave_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		SaveFile(false);
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileSaveAs_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		SaveFile(true);
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileExit_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		Close();
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditUndo_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		textBox->Undo();
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditRedo_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		textBox->Redo();
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditCut_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		textBox->Cut();
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditCopy_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		textBox->Copy();
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditPaste_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		textBox->Paste();
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditDelete_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		textBox->SetSelectionText(L"");
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditSelect_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		textBox->SelectAll();
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditFind_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		if (!findWindow)
+		{
+			auto window = MakePtr<FindWindow>();
+			window->textBox = textBox;
+			window->MoveToScreenCenter();
+			window->GetNativeWindow()->SetParent(GetNativeWindow());
+			findWindow = window;
+		}
+		findWindow->Show();
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandAbout_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		auto window = new AboutWindow;
+		window->MoveToScreenCenter();
+		window->ShowModalAndDelete(this, []() {});
 	}
 
 	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::window_Closing(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiRequestEventArgs* arguments)
 	{
-		throw ::vl::Exception(L"You should implement this function.");
+		arguments->cancel = !CanCloseFile();
 	}
 
 	MainWindow::MainWindow()
