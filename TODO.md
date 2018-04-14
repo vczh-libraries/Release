@@ -49,7 +49,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Demo: DocumentEditor with Ribbon
 - [ ] Demo: Ribbon to show all ribbon controls and possible combinations using normal controls
 - [ ] Ribbon
-   - [ ] RibbonTab(header area for e.g. home button) / RibbonTabPage / RibbonGroup(dropdown/expand)
+   - [ ] RibbonTab(header area for e.g. home button) / RibbonTabPage(highlighted) / RibbonGroup(dropdown/expand)
    - [ ] Ribbon buttons
      - [ ] `BigImage` property for `ToolstripCommand`
      - [ ] `ToolstripButton' with text
