@@ -46,14 +46,24 @@ https://zhuanlan.zhihu.com/p/33778843
 #### Before 1.0
 - [ ] Demo: TriplePhaseImageButton using `Context` property
 - [ ] Add and query services from controls
-- [ ] Demo: DocumentEditor
-  - [ ] Manually crafted Ribbon
-    - [ ] Big version of toolstrip buttons / Button groups
-    - [ ] Label with icon and another editor control
-    - [ ] Multiple toolstrip panel
-    - [ ] Preview list box
-    - [ ] Ribbon Group with expand button
-    - [ ] Ribbon tab with home button
+- [ ] Demo: DocumentEditor with Ribbon
+- [ ] Demo: Ribbon to show all ribbon controls and possible combinations using normal controls
+- [ ] Ribbon
+   - [ ] RibbonTab(header area for e.g. home button) / RibbonTabPage / RibbonGroup(dropdown/expand)
+   - [ ] Ribbon buttons
+     - [ ] `BigImage` property for `ToolstripCommand`
+     - [ ] `ToolstripButton' with text
+     - [ ] `ToolstripDropdownButton' with text
+     - [ ] `ToolstripSplitButton' with text
+     - [ ] Big `ToolstripButton' with text
+     - [ ] Big `ToolstripDropdownButton' with text (group text with dropdown triangle)
+     - [ ] Big `ToolstripSplitButton' with text
+   - [ ] Ribbon buttons transformation pattern controls (e.g. 3 big -> 3 small ->3small no text)
+     - [ ] Consider using a string with syntax to describe patterns
+   - [ ] Ribbon ListView (with groups, e.g. Word -> Design -> Themes)
+   - [ ] Ribbon ListView Button (with groups, multiple levels, e.g. Word -> Design)
+   - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
+   - [ ] User craft themselves for toolbars in ribbon groups using `<ResponsiveView>`
 - [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
