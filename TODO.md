@@ -48,6 +48,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Add and query services from controls
 - [ ] Demo: DocumentEditor with Ribbon
 - [ ] Demo: Ribbon to show all ribbon controls and possible combinations using normal controls
+- [ ] Demo: `<SharedSize>` and `<SharedSizeRoot>`, sync all buttons in item templates in a list control
 - [ ] Ribbon
    - [x] RibbonTab(header area for e.g. home button) / RibbonTabPage(highlighted) / RibbonGroup(dropdown/expand)
    - [x] Ribbon buttons
