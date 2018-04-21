@@ -79,6 +79,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] **Update Release**
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
 - [ ] **Update Release**
+- [ ] Inheritable custom window / control with `<ref.Parameter>`
 - [ ] Resource should have name and version
 - [ ] Depend on another resource, to decide loading order
 - [ ] **Update Release**
