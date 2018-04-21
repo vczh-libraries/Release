@@ -44,11 +44,11 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [ ] Demo: TriplePhaseImageButton using `Context` property
-- [ ] Add and query services from controls
-- [ ] Demo: DocumentEditor with Ribbon
-- [ ] Demo: Ribbon to show all ribbon controls and possible combinations using normal controls
-- [ ] Demo: `<SharedSize>` and `<SharedSizeRoot>`, sync all buttons in item templates in a list control
+- [ ] Demo: DocumentEditor
+  - [ ] DocumentEditorShared
+  - [ ] DocumentEditorToolstrip
+  - [ ] DocumentEditorRibbon
+- [ ] Inheritable custom window / control
 - [ ] Ribbon
    - [x] RibbonTab(header area for e.g. home button) / RibbonTabPage(highlighted) / RibbonGroup(dropdown/expand)
    - [x] Ribbon buttons
@@ -63,12 +63,15 @@ https://zhuanlan.zhihu.com/p/33778843
    - [ ] Ribbon ListView (with groups, e.g. Word -> Design -> Themes)
    - [ ] Ribbon ListView Button (with groups, multiple levels, e.g. Word -> Design)
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
-   - [ ] User craft themselves for toolbars in ribbon groups using `<ResponsiveView>`
+   - [ ] `RibbonToolbars` with `<ToolstripGroup>`s
 - [ ] **Update Release**
+- [ ] Add and query services from controls
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
+- [ ] Demo: TriplePhaseImageButton using `Context` property
+- [ ] Demo: `<SharedSize>` and `<SharedSizeRoot>`, sync all buttons in item templates in a list control
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
@@ -76,7 +79,6 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] **Update Release**
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
 - [ ] **Update Release**
-- [ ] Inheritable custom window / control
 - [ ] Resource should have name and version
 - [ ] Depend on another resource, to decide loading order
 - [ ] **Update Release**
