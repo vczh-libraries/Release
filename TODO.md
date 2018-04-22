@@ -48,7 +48,7 @@ https://zhuanlan.zhihu.com/p/33778843
   - [x] DocumentEditorShared
   - [x] DocumentEditorToolstrip
   - [x] DocumentEditorRibbon
-- [ ] Inheritable custom window / control
+- [x] Inheritable custom window / control
 - [ ] Ribbon
    - [x] RibbonTab(header area for e.g. home button) / RibbonTabPage(highlighted) / RibbonGroup(dropdown/expand)
    - [x] Ribbon buttons
