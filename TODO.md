@@ -45,9 +45,9 @@ https://zhuanlan.zhihu.com/p/33778843
 
 #### Before 1.0
 - [ ] Demo: DocumentEditor
-  - [ ] DocumentEditorShared
-  - [ ] DocumentEditorToolstrip
-  - [ ] DocumentEditorRibbon
+  - [x] DocumentEditorShared
+  - [x] DocumentEditorToolstrip
+  - [x] DocumentEditorRibbon
 - [ ] Inheritable custom window / control
 - [ ] Ribbon
    - [x] RibbonTab(header area for e.g. home button) / RibbonTabPage(highlighted) / RibbonGroup(dropdown/expand)
@@ -63,7 +63,8 @@ https://zhuanlan.zhihu.com/p/33778843
    - [ ] Ribbon ListView (with groups, e.g. Word -> Design -> Themes)
    - [ ] Ribbon ListView Button (with groups, multiple levels, e.g. Word -> Design)
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
-   - [ ] `RibbonToolbars` with `<ToolstripGroup>`s
+   - [x] `RibbonToolbars` with `<ToolstripGroup>`s
+   - [ ] RibbonGroup turns to dropdown button
 - [ ] **Update Release**
 - [ ] Add and query services from controls
 - [ ] Normal text box supports surrogate pairs like document viewer
