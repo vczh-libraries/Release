@@ -83,6 +83,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Inheritable custom window / control with `<ref.Parameter>`
 - [ ] Resource should have name and version
 - [ ] Depend on another resource, to decide loading order
+- [ ] Demo: DocumentEditor: Split 1 Resource.xml to 3.
 - [ ] **Update Release**
 - [ ] (optional) `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
 - [ ] (optional) Update all control template properties to have `in` or `out` prefix
