@@ -50,7 +50,11 @@ https://zhuanlan.zhihu.com/p/33778843
   - [x] DocumentEditorRibbon
 - [x] Inheritable custom window / control
 - [ ] Ribbon
-   - [x] RibbonTab(header area for e.g. home button) / RibbonTabPage(highlighted) / RibbonGroup(dropdown/expand)
+   - [x] RibbonTab (before/after header area)
+   - [x] RibbonTabPage (highlighted)
+   - [x] RibbonGroup
+     - [ ] Level down to dropdown button
+     - [ ] Detail button
    - [x] Ribbon buttons
      - [x] `BigImage` property for `ToolstripCommand`
      - [x] `ToolstripButton' with text
@@ -60,11 +64,12 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] Big `ToolstripDropdownButton' with text (group text with dropdown triangle)
      - [x] Big `ToolstripSplitButton' with text
    - [x] Ribbon buttons transformation pattern controls (e.g. 3 big -> 3 small ->3small no text)
-   - [ ] Ribbon ListView (with groups, e.g. Word -> Design -> Themes)
-   - [ ] Ribbon ListView Button (with groups, multiple levels, e.g. Word -> Design)
+   - [ ] Ribbon gallery button
+     - [ ] Level down to dropdown button
+   - [ ] Ribbon gallery toolstrip item
+   - [ ] Ribbon toolstrip header (highlighted non-interactive menu item)
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
    - [x] `RibbonToolbars` with `<ToolstripGroup>`s
-   - [ ] RibbonGroup turns to dropdown button
 - [ ] **Update Release**
 - [ ] Add and query services from controls
 - [ ] Normal text box supports surrogate pairs like document viewer
