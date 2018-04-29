@@ -65,11 +65,19 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] Big `ToolstripDropdownButton' with text (group text with dropdown triangle)
      - [x] Big `ToolstripSplitButton' with text
    - [x] Ribbon buttons transformation pattern controls (e.g. 3 big -> 3 small ->3small no text)
-   - [ ]  `GuiRibbonGallery`
+   - [ ] `GuiBindableRibbonGalleryBase`, which is the base class of gallery and gallery menu, but it is not a control
+     - `GroupTitle` property
+     - `GroupChildren` property, empty means there is no group
+     - `ItemSource` property
+       - When group is disabled, ItemSource is a collection of items.
+       - When group is enabled, ItemSource is a collection of groups, and its title and children are defined by two properties above.
+   - [ ]  `GuiBindableRibbonGallery`
      - Level down to dropdown button
      - Popup covered the whole button (gallery) or popup just below the button (dropdown)
-   - [ ] `GuiRibbonGalleryMenu`
-     - Created by `GuiRibbonGallery`
+     - When group is enabled, all group children are joined in sequence and display in the gallery control
+   - [ ] `GuiBindableRibbonGalleryMenu`
+     - If this menu is created by `GuiRibbonGallery`, then all three properties in `...Base` are controlled by the gallery control
+     - Display group headers if there are groups
    - [ ] Ribbon toolstrip header (highlighted non-interactive menu item)
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
    - [x] `RibbonToolbars` with `<ToolstripGroup>`s
