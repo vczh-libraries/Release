@@ -72,7 +72,7 @@ https://zhuanlan.zhihu.com/p/33778843
        - When group is disabled, ItemSource is a collection of items.
        - When group is enabled, ItemSource is a collection of groups, and its title and children are defined by two properties above.
    - [ ]  `GuiBindableRibbonGallery`
-     - Level down to dropdown button
+     - [ ] Level down to dropdown button
      - Popup covered the whole button (gallery) or popup just below the button (dropdown)
      - When group is enabled, all group children are joined in sequence and display in the gallery control
    - [ ] `GuiBindableRibbonGalleryMenu`
