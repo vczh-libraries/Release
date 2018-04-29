@@ -44,7 +44,7 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [ ] $ReturnAndExit for GuiAnimationCoroutine
+- [x] $ReturnAndExit for GuiAnimationCoroutine
 - [ ] Demo: DocumentEditor
   - [x] DocumentEditorShared
   - [x] DocumentEditorToolstrip
@@ -65,9 +65,11 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] Big `ToolstripDropdownButton' with text (group text with dropdown triangle)
      - [x] Big `ToolstripSplitButton' with text
    - [x] Ribbon buttons transformation pattern controls (e.g. 3 big -> 3 small ->3small no text)
-   - [ ] Ribbon gallery button
-     - [ ] Level down to dropdown button
-   - [ ] Ribbon gallery toolstrip item
+   - [ ]  `GuiRibbonGallery`
+     - Level down to dropdown button
+     - Popup covered the whole button (gallery) or popup just below the button (dropdown)
+   - [ ] `GuiRibbonGalleryMenu`
+     - Created by `GuiRibbonGallery`
    - [ ] Ribbon toolstrip header (highlighted non-interactive menu item)
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
    - [x] `RibbonToolbars` with `<ToolstripGroup>`s
