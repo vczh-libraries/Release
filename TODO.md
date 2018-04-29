@@ -44,6 +44,7 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
+- [ ] $ReturnAndExit for GuiAnimationCoroutine
 - [ ] Demo: DocumentEditor
   - [x] DocumentEditorShared
   - [x] DocumentEditorToolstrip
