@@ -81,6 +81,7 @@ https://zhuanlan.zhihu.com/p/33778843
      - Display group headers if there are groups
    - [ ] Ribbon toolstrip header (highlighted non-interactive menu item)
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
+- [ ] CppMerge.exe reports error instead of crashes
 - [ ] **Update Release**
 - [ ] Add and query services from controls
 - [ ] Normal text box supports surrogate pairs like document viewer
