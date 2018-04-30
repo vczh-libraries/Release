@@ -43,7 +43,7 @@ namespace demo
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_6;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
 		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_8;
-		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
+		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};

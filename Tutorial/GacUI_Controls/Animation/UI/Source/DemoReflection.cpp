@@ -38,6 +38,7 @@ namespace vl
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::ColorAnimation)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::ColorAnimation>(::vl::Ptr<::demo::ColorDef>), { L"__vwsn_ani_current" })
 				CLASS_MEMBER_METHOD(CreateAnimation, { L"__vwsn_ani_target" _ L"__vwsn_ani_time" })
 				CLASS_MEMBER_METHOD(GetBegin, NO_PARAMETER)
@@ -63,6 +64,7 @@ namespace vl
 			END_CLASS_MEMBER(::demo::ColorAnimation)
 
 			BEGIN_CLASS_MEMBER(::demo::ColorDef)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::ColorDef>(), NO_PARAMETER)
 				CLASS_MEMBER_STATIC_METHOD(Dark, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetBottom, NO_PARAMETER)
@@ -90,6 +92,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::ColorDef)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_instance_ctor_, NO_PARAMETER)
 				CLASS_MEMBER_STATIC_METHOD(BallAnimation, { L"container" _ L"ball" })
@@ -102,8 +106,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)

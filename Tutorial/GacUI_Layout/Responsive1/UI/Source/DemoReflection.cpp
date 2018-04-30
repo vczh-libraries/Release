@@ -42,12 +42,15 @@ namespace vl
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
@@ -69,12 +72,15 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::ResponsiveGroupControl)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiCustomControl)
+				CLASS_MEMBER_BASE(::demo::ResponsiveGroupControlConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::ResponsiveGroupControl*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::demo::ResponsiveGroupControl)
 
 			BEGIN_CLASS_MEMBER(::demo::ResponsiveGroupControlConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::ResponsiveGroupControlConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_ResponsiveGroupControl_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
@@ -121,12 +127,15 @@ namespace vl
 			END_CLASS_MEMBER(::demo::ResponsiveGroupControlConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::ResponsiveStackControl)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiCustomControl)
+				CLASS_MEMBER_BASE(::demo::ResponsiveStackControlConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::ResponsiveStackControl*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::demo::ResponsiveStackControl)
 
 			BEGIN_CLASS_MEMBER(::demo::ResponsiveStackControlConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::ResponsiveStackControlConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_ResponsiveStackControl_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
@@ -173,12 +182,15 @@ namespace vl
 			END_CLASS_MEMBER(::demo::ResponsiveStackControlConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::ResponsiveViewControl)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiCustomControl)
+				CLASS_MEMBER_BASE(::demo::ResponsiveViewControlConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::ResponsiveViewControl*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::demo::ResponsiveViewControl)
 
 			BEGIN_CLASS_MEMBER(::demo::ResponsiveViewControlConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::ResponsiveViewControlConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_ResponsiveViewControl_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)

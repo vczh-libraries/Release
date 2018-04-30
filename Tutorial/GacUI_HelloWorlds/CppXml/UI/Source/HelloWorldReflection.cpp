@@ -36,12 +36,15 @@ namespace vl
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::helloworld::MainWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::helloworld::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::helloworld::MainWindow*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::helloworld::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::helloworld::MainWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::helloworld::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_helloworld_MainWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)

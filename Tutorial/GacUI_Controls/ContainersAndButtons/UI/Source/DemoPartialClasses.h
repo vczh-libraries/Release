@@ -111,7 +111,7 @@ namespace demo
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_73;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_74;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_75;
-		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
+		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};

@@ -38,6 +38,8 @@ namespace vl
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::HyperlinkWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::HyperlinkWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::HyperlinkWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetUrl, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(SetUrl, { L"__vwsn_value_" })
@@ -47,12 +49,15 @@ namespace vl
 			END_CLASS_MEMBER(::demo::HyperlinkWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::HyperlinkWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::HyperlinkWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_HyperlinkWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_11)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_12)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_13)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_4)
@@ -66,6 +71,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::HyperlinkWindowConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_instance_ctor_, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetHasEditableSelection, NO_PARAMETER)
@@ -86,8 +93,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)

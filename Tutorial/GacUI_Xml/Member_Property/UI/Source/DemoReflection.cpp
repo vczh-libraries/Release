@@ -38,12 +38,15 @@ namespace vl
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
@@ -51,6 +54,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::MyControl)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiCustomControl)
+				CLASS_MEMBER_BASE(::demo::MyControlConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MyControl*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetSelectedOption, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(SetSelectedOption, { L"__vwsn_value_" })
@@ -60,8 +65,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MyControl)
 
 			BEGIN_CLASS_MEMBER(::demo::MyControlConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MyControlConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_MyControl_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)

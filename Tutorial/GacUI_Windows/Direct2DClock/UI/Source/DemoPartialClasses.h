@@ -36,7 +36,7 @@ namespace demo
 	protected:
 		::demo::MainWindow* self;
 		::vl::presentation::compositions::GuiBoundsComposition* animationBounds;
-		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
+		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};

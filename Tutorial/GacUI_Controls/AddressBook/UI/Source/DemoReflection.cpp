@@ -43,6 +43,7 @@ namespace vl
 
 #define _ ,
 			BEGIN_INTERFACE_MEMBER(::demo::ICategory)
+				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetContacts, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetFolders, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetImage, NO_PARAMETER)
@@ -56,6 +57,7 @@ namespace vl
 			END_INTERFACE_MEMBER(::demo::ICategory)
 
 			BEGIN_INTERFACE_MEMBER(::demo::IContact)
+				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetAddress, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetBigImage, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetBirthday, NO_PARAMETER)
@@ -74,6 +76,7 @@ namespace vl
 			END_INTERFACE_MEMBER(::demo::IContact)
 
 			BEGIN_INTERFACE_MEMBER(::demo::IViewModel)
+				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(AddCategory, { L"name" })
 				CLASS_MEMBER_METHOD(AddContact, { L"contact" })
 				CLASS_MEMBER_METHOD(CreateContact, NO_PARAMETER)
@@ -91,6 +94,8 @@ namespace vl
 			END_INTERFACE_MEMBER(::demo::IViewModel)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(::vl::Ptr<::demo::IViewModel>), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(ClearViewSelection, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
@@ -99,8 +104,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
@@ -159,6 +165,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::NewContactWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::NewContactWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::NewContactWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetForEdit, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(SetContact, { L"value" })
@@ -171,8 +179,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::NewContactWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::NewContactWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::NewContactWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_NewContactWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
@@ -205,6 +214,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::NewContactWindowConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::NewFolderWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::NewFolderWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::NewFolderWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetFolderName, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(SetFolderName, { L"__vwsn_value_" })
@@ -215,8 +226,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::NewFolderWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::NewFolderWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::NewFolderWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_NewFolderWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)

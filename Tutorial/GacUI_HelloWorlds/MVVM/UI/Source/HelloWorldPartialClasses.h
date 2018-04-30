@@ -25,46 +25,46 @@ https://github.com/vczh-libraries
 
 namespace vl_workflow_global
 {
-	struct __vwsnf1_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf2_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf3_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf5_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf6_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf7_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsno4_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-	class __vwsnc1_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc2_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc3_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc4_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc5_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
+	struct __vwsnf1_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+	struct __vwsnf2_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+	struct __vwsnf3_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+	struct __vwsnf5_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+	struct __vwsnf6_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+	struct __vwsnf7_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+	struct __vwsno4_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+	class __vwsnc1_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc2_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc3_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc4_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc5_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 }
 
 namespace helloworld
 {
 	class MainWindowConstructor;
-	class MainWindow;
 }
 namespace vm
 {
 	class IViewModel;
-
 }
 namespace helloworld
 {
+	class MainWindow;
+
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc1_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc3_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc4_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc5_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf2_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf3_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf5_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf6_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf7_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsno4_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__;
+		friend class ::vl_workflow_global::__vwsnc1_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc3_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc4_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc5_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf5_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsno4_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
@@ -95,7 +95,7 @@ namespace helloworld
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_17;
 		::vl::Ptr<::vm::IViewModel> __vwsn_precompile_18;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_19;
-		void __vwsn_initialize_instance_(::helloworld::MainWindow* __vwsn_this_);
+		void __vwsn_helloworld_MainWindow_Initialize(::helloworld::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};
@@ -138,76 +138,76 @@ namespace vl_workflow_global
 Closures
 ***********************************************************************/
 
-	struct __vwsnf1_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf1_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_
 	{
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf1_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf1_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf2_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf2_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_
 	{
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf2_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf2_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf3_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf3_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_
 	{
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf3_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf3_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf5_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf5_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_
 	{
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf5_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf5_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf6_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf6_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_
 	{
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf6_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf6_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf7_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf7_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_
 	{
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf7_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf7_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsno4_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsno4_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_
 	{
 		::helloworld::MainWindow* __vwsn_this_;
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsno4_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance__(::helloworld::MainWindow* __vwsnctor___vwsn_this_, ::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsno4_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize_(::helloworld::MainWindow* __vwsnctor___vwsn_this_, ::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};
 
-	class __vwsnc1_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc1_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc1_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc1_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vm::IViewModel> __vwsn_bind_cache_0;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -220,12 +220,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc2_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc2_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc2_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc2_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vm::IViewModel> __vwsn_bind_cache_0;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -238,12 +238,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc3_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc3_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc3_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc3_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		::helloworld::MainWindow* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vm::IViewModel> __vwsn_bind_cache_1;
@@ -262,12 +262,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc4_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc4_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc4_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc4_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -280,12 +280,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc5_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc5_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::helloworld::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc5_HelloWorld_helloworld_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc5_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::helloworld::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;

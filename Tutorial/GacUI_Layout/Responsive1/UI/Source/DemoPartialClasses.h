@@ -25,43 +25,43 @@ https://github.com/vczh-libraries
 
 namespace vl_workflow_global
 {
-	struct __vwsnf10_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf11_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf12_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf13_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf14_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf15_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf16_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-	struct __vwsnf9_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-	class __vwsnc10_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc5_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc6_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc7_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc8_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc9_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
+	struct __vwsnf10_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+	struct __vwsnf11_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+	struct __vwsnf12_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+	struct __vwsnf13_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+	struct __vwsnf14_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+	struct __vwsnf15_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+	struct __vwsnf16_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+	struct __vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+	struct __vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+	struct __vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+	struct __vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+	struct __vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+	struct __vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+	struct __vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+	struct __vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+	struct __vwsnf9_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+	class __vwsnc10_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc5_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc6_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc7_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc8_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc9_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
 }
 
 namespace demo
 {
 	class MainWindowConstructor;
-	class MainWindow;
 	class ResponsiveGroupControlConstructor;
-	class ResponsiveGroupControl;
 	class ResponsiveStackControlConstructor;
-	class ResponsiveStackControl;
 	class ResponsiveViewControlConstructor;
+	class MainWindow;
+	class ResponsiveGroupControl;
+	class ResponsiveStackControl;
 	class ResponsiveViewControl;
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
@@ -88,30 +88,19 @@ namespace demo
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_14;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_15;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_16;
-		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
+		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};
 
-	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
-	{
-		friend class ::demo::MainWindowConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
-#endif
-	public:
-		MainWindow();
-		~MainWindow();
-	};
-
 	class ResponsiveGroupControlConstructor : public ::vl::Object, public ::vl::reflection::Description<ResponsiveGroupControlConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveGroupControlConstructor>;
 #endif
@@ -159,36 +148,19 @@ namespace demo
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_38;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_39;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_40;
-		void __vwsn_initialize_instance_(::demo::ResponsiveGroupControl* __vwsn_this_);
+		void __vwsn_demo_ResponsiveGroupControl_Initialize(::demo::ResponsiveGroupControl* __vwsn_this_);
 	public:
 		ResponsiveGroupControlConstructor();
 	};
 
-	class ResponsiveGroupControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::ResponsiveGroupControlConstructor, public ::vl::reflection::Description<ResponsiveGroupControl>
-	{
-		friend class ::demo::ResponsiveGroupControlConstructor;
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveGroupControl>;
-#endif
-	public:
-		ResponsiveGroupControl();
-		~ResponsiveGroupControl();
-	};
-
 	class ResponsiveStackControlConstructor : public ::vl::Object, public ::vl::reflection::Description<ResponsiveStackControlConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
+		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveStackControlConstructor>;
 #endif
@@ -236,44 +208,27 @@ namespace demo
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_38;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_39;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_40;
-		void __vwsn_initialize_instance_(::demo::ResponsiveStackControl* __vwsn_this_);
+		void __vwsn_demo_ResponsiveStackControl_Initialize(::demo::ResponsiveStackControl* __vwsn_this_);
 	public:
 		ResponsiveStackControlConstructor();
 	};
 
-	class ResponsiveStackControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::ResponsiveStackControlConstructor, public ::vl::reflection::Description<ResponsiveStackControl>
-	{
-		friend class ::demo::ResponsiveStackControlConstructor;
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveStackControl>;
-#endif
-	public:
-		ResponsiveStackControl();
-		~ResponsiveStackControl();
-	};
-
 	class ResponsiveViewControlConstructor : public ::vl::Object, public ::vl::reflection::Description<ResponsiveViewControlConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
+		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveViewControlConstructor>;
 #endif
@@ -317,28 +272,73 @@ namespace demo
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_33;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_34;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_35;
-		void __vwsn_initialize_instance_(::demo::ResponsiveViewControl* __vwsn_this_);
+		void __vwsn_demo_ResponsiveViewControl_Initialize(::demo::ResponsiveViewControl* __vwsn_this_);
 	public:
 		ResponsiveViewControlConstructor();
+	};
+
+	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	{
+		friend class ::demo::MainWindowConstructor;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+#endif
+	public:
+		MainWindow();
+		~MainWindow();
+	};
+
+	class ResponsiveGroupControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::ResponsiveGroupControlConstructor, public ::vl::reflection::Description<ResponsiveGroupControl>
+	{
+		friend class ::demo::ResponsiveGroupControlConstructor;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveGroupControl>;
+#endif
+	public:
+		ResponsiveGroupControl();
+		~ResponsiveGroupControl();
+	};
+
+	class ResponsiveStackControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::ResponsiveStackControlConstructor, public ::vl::reflection::Description<ResponsiveStackControl>
+	{
+		friend class ::demo::ResponsiveStackControlConstructor;
+		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveStackControl>;
+#endif
+	public:
+		ResponsiveStackControl();
+		~ResponsiveStackControl();
 	};
 
 	class ResponsiveViewControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::ResponsiveViewControlConstructor, public ::vl::reflection::Description<ResponsiveViewControl>
 	{
 		friend class ::demo::ResponsiveViewControlConstructor;
-		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__;
+		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveViewControl>;
 #endif
@@ -365,156 +365,156 @@ namespace vl_workflow_global
 Closures
 ***********************************************************************/
 
-	struct __vwsnf10_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf10_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_
 	{
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnf10_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnf10_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf11_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf11_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_
 	{
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnf11_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnf11_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf12_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf12_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_
 	{
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnf12_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnf12_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf13_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf13_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_
 	{
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnf13_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnf13_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf14_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf14_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_
 	{
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnf14_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnf14_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf15_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf15_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_
 	{
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnf15_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnf15_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf16_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf16_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_
 	{
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnf16_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnf16_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_
 	{
 		::demo::ResponsiveGroupControlConstructor* __vwsnthis_0;
 
-		__vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
+		__vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_
 	{
 		::demo::ResponsiveGroupControlConstructor* __vwsnthis_0;
 
-		__vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
+		__vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_
 	{
 		::demo::ResponsiveGroupControlConstructor* __vwsnthis_0;
 
-		__vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
+		__vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_
 	{
 		::demo::ResponsiveGroupControlConstructor* __vwsnthis_0;
 
-		__vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
+		__vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_
 	{
 		::demo::ResponsiveStackControlConstructor* __vwsnthis_0;
 
-		__vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
+		__vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_
 	{
 		::demo::ResponsiveStackControlConstructor* __vwsnthis_0;
 
-		__vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
+		__vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_
 	{
 		::demo::ResponsiveStackControlConstructor* __vwsnthis_0;
 
-		__vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
+		__vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_
 	{
 		::demo::ResponsiveStackControlConstructor* __vwsnthis_0;
 
-		__vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
+		__vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf9_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__
+	struct __vwsnf9_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_
 	{
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnf9_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance__(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnf9_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	class __vwsnc10_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc10_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnc10_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnc10_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::compositions::GuiResponsiveViewComposition* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -527,12 +527,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ResponsiveGroupControlConstructor* __vwsnthis_0;
 
-		__vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
+		__vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::compositions::GuiResponsiveGroupComposition* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -545,12 +545,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ResponsiveGroupControlConstructor* __vwsnthis_0;
 
-		__vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
+		__vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription(::demo::ResponsiveGroupControlConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::compositions::GuiResponsiveGroupComposition* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -563,12 +563,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ResponsiveStackControlConstructor* __vwsnthis_0;
 
-		__vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
+		__vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::compositions::GuiResponsiveStackComposition* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -581,12 +581,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ResponsiveStackControlConstructor* __vwsnthis_0;
 
-		__vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
+		__vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription(::demo::ResponsiveStackControlConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::compositions::GuiResponsiveStackComposition* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -599,12 +599,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc5_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc5_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnc5_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnc5_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiDocumentLabel* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -617,12 +617,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc6_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc6_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnc6_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnc6_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiDocumentLabel* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -635,12 +635,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc7_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc7_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnc7_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnc7_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiDocumentLabel* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -653,12 +653,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc8_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc8_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnc8_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnc8_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiDocumentLabel* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -671,12 +671,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc9_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc9_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ResponsiveViewControlConstructor* __vwsnthis_0;
 
-		__vwsnc9_Demo_demo_ResponsiveViewControlConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
+		__vwsnc9_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize__vl_reflection_description_IValueSubscription(::demo::ResponsiveViewControlConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::compositions::GuiResponsiveViewComposition* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;

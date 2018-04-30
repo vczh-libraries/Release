@@ -42,13 +42,16 @@ namespace vl
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::AboutWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::AboutWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::AboutWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(documentLabel_ActiveHyperlinkExecuted, { L"sender" _ L"arguments" })
 			END_CLASS_MEMBER(::demo::AboutWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::AboutWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::AboutWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_AboutWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
@@ -62,14 +65,17 @@ namespace vl
 			END_CLASS_MEMBER(::demo::AboutWindowConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::FindWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::FindWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::FindWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(FindNext, { L"toFind" _ L"caseSensitive" _ L"down" })
 				CLASS_MEMBER_FIELD(textBox)
 			END_CLASS_MEMBER(::demo::FindWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::FindWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::FindWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_FindWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
@@ -103,6 +109,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::FindWindowConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(AddRecentFile, { L"path" })
 				CLASS_MEMBER_METHOD(CanCloseFile, NO_PARAMETER)
@@ -136,8 +144,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
@@ -231,6 +240,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::RecentFileItemTemplate)
+				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiControlTemplate)
+				CLASS_MEMBER_BASE(::demo::RecentFileItemTemplateConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::RecentFileItemTemplate*(::vl::presentation::controls::GuiToolstripCommand*), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
@@ -238,8 +249,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::RecentFileItemTemplate)
 
 			BEGIN_CLASS_MEMBER(::demo::RecentFileItemTemplateConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::RecentFileItemTemplateConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_RecentFileItemTemplate_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)

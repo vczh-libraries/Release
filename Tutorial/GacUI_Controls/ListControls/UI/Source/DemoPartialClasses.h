@@ -25,23 +25,23 @@ https://github.com/vczh-libraries
 
 namespace vl_workflow_global
 {
-	struct __vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-	struct __vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
+	struct __vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+	struct __vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+	struct __vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+	struct __vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+	struct __vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+	struct __vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+	struct __vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+	struct __vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
+	struct __vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
+	struct __vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
+	struct __vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+	struct __vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+	struct __vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+	struct __vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+	struct __vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+	struct __vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+	struct __vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
 	struct __vwsnf8_Demo_demo_ListViewTabPage___vwsn_instance_ctor__;
 	struct __vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__;
 }
@@ -49,24 +49,24 @@ namespace vl_workflow_global
 namespace demo
 {
 	class ListViewTabPageConstructor;
-	class ListViewTabPage;
 	class MainWindowConstructor;
-	class MainWindow;
-	class TextListTabPageConstructor;
-	class TextListTabPage;
-	class TreeViewTabPageConstructor;
-	class TreeViewTabPage;
 	class MyTextItem;
+	class TextListTabPageConstructor;
+	class TreeViewTabPageConstructor;
+	class ListViewTabPage;
+	class MainWindow;
+	class TextListTabPage;
+	class TreeViewTabPage;
 
 	class ListViewTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<ListViewTabPageConstructor>
 	{
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ListViewTabPageConstructor>;
 #endif
@@ -97,30 +97,9 @@ namespace demo
 		::vl::Ptr<::vl::presentation::controls::list::ListViewColumn> __vwsn_precompile_19;
 		::vl::Ptr<::vl::presentation::controls::list::ListViewColumn> __vwsn_precompile_20;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_21;
-		void __vwsn_initialize_instance_(::demo::ListViewTabPage* __vwsn_this_);
+		void __vwsn_demo_ListViewTabPage_Initialize(::demo::ListViewTabPage* __vwsn_this_);
 	public:
 		ListViewTabPageConstructor();
-	};
-
-	class ListViewTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::ListViewTabPageConstructor, public ::vl::reflection::Description<ListViewTabPage>
-	{
-		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_ListViewTabPage___vwsn_instance_ctor__;
-		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__;
-		friend class ::demo::ListViewTabPageConstructor;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ListViewTabPage>;
-#endif
-	public:
-		ListViewTabPage();
-		void __vwsn_instance_ctor_();
-		~ListViewTabPage();
 	};
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
@@ -136,31 +115,38 @@ namespace demo
 		::demo::ListViewTabPage* __vwsn_precompile_3;
 		::demo::TreeViewTabPage* __vwsn_precompile_4;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5;
-		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
+		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};
 
-	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	class MyTextItem : public ::vl::Object, public ::vl::reflection::Description<MyTextItem>
 	{
-		friend class ::demo::MainWindowConstructor;
 #ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyTextItem>;
 #endif
+	private:
+		::vl::WString __vwsn_prop_Name;
 	public:
-		MainWindow();
-		~MainWindow();
+		::vl::WString GetName();
+		void SetName(const ::vl::WString& __vwsn_value_);
+	private:
+		bool __vwsn_prop_Checked;
+	public:
+		bool GetChecked();
+		void SetChecked(bool __vwsn_value_);
+		MyTextItem();
 	};
 
 	class TextListTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<TextListTabPageConstructor>
 	{
-		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextListTabPageConstructor>;
 #endif
@@ -194,36 +180,16 @@ namespace demo
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_22;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_23;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_24;
-		void __vwsn_initialize_instance_(::demo::TextListTabPage* __vwsn_this_);
+		void __vwsn_demo_TextListTabPage_Initialize(::demo::TextListTabPage* __vwsn_this_);
 	public:
 		TextListTabPageConstructor();
 	};
 
-	class TextListTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::TextListTabPageConstructor, public ::vl::reflection::Description<TextListTabPage>
-	{
-		friend class ::demo::TextListTabPageConstructor;
-		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextListTabPage>;
-#endif
-	public:
-		::vl::vint counter;
-		::vl::Ptr<::vl::reflection::description::IValueObservableList> itemsToBind;
-		TextListTabPage();
-		~TextListTabPage();
-	};
-
 	class TreeViewTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<TreeViewTabPageConstructor>
 	{
-		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TreeViewTabPageConstructor>;
 #endif
@@ -281,17 +247,69 @@ namespace demo
 		::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider> __vwsn_precompile_47;
 		::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider> __vwsn_precompile_48;
 		::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider> __vwsn_precompile_49;
-		void __vwsn_initialize_instance_(::demo::TreeViewTabPage* __vwsn_this_);
+		void __vwsn_demo_TreeViewTabPage_Initialize(::demo::TreeViewTabPage* __vwsn_this_);
 	public:
 		TreeViewTabPageConstructor();
+	};
+
+	class ListViewTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::ListViewTabPageConstructor, public ::vl::reflection::Description<ListViewTabPage>
+	{
+		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_ListViewTabPage___vwsn_instance_ctor__;
+		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__;
+		friend class ::demo::ListViewTabPageConstructor;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ListViewTabPage>;
+#endif
+	public:
+		ListViewTabPage();
+		void __vwsn_instance_ctor_();
+		~ListViewTabPage();
+	};
+
+	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	{
+		friend class ::demo::MainWindowConstructor;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+#endif
+	public:
+		MainWindow();
+		~MainWindow();
+	};
+
+	class TextListTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::TextListTabPageConstructor, public ::vl::reflection::Description<TextListTabPage>
+	{
+		friend class ::demo::TextListTabPageConstructor;
+		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextListTabPage>;
+#endif
+	public:
+		::vl::vint counter;
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> itemsToBind;
+		TextListTabPage();
+		~TextListTabPage();
 	};
 
 	class TreeViewTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::TreeViewTabPageConstructor, public ::vl::reflection::Description<TreeViewTabPage>
 	{
 		friend class ::demo::TreeViewTabPageConstructor;
-		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__;
+		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TreeViewTabPage>;
 #endif
@@ -300,24 +318,6 @@ namespace demo
 		TreeViewTabPage();
 		void __vwsn_instance_ctor_();
 		~TreeViewTabPage();
-	};
-
-	class MyTextItem : public ::vl::Object, public ::vl::reflection::Description<MyTextItem>
-	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyTextItem>;
-#endif
-	private:
-		::vl::WString __vwsn_prop_Name;
-	public:
-		::vl::WString GetName();
-		void SetName(const ::vl::WString& __vwsn_value_);
-	private:
-		bool __vwsn_prop_Checked;
-	public:
-		bool GetChecked();
-		void SetChecked(bool __vwsn_value_);
-		MyTextItem();
 	};
 
 }
@@ -340,155 +340,155 @@ namespace vl_workflow_global
 Closures
 ***********************************************************************/
 
-	struct __vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_
 	{
 		::demo::TextListTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
 
 		bool operator()(const ::vl::reflection::description::Value& __vwsn_item_, bool __vwsn_value_, bool __vwsn_update_) const;
 	};
 
-	struct __vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_
 	{
 		::demo::TextListTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_
 	{
 		::demo::TextListTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_
 	{
 		::demo::TextListTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_
 	{
 		::demo::TextListTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_
 	{
 		::demo::TextListTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_
 	{
 		::demo::TextListTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_initialize_instance__(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(::demo::TextListTabPageConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_
 	{
 		::demo::TreeViewTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__(::demo::TreeViewTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(::demo::TreeViewTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::reflection::description::IValueEnumerable> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_
 	{
 		::demo::TreeViewTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__(::demo::TreeViewTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(::demo::TreeViewTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::presentation::GuiImageData> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_
 	{
 		::demo::TreeViewTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_initialize_instance__(::demo::TreeViewTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(::demo::TreeViewTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_
 	{
 		::demo::ListViewTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::presentation::GuiImageData> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_
 	{
 		::demo::ListViewTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::presentation::GuiImageData> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_
 	{
 		::demo::ListViewTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_
 	{
 		::demo::ListViewTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_
 	{
 		::demo::ListViewTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_
 	{
 		::demo::ListViewTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__
+	struct __vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_
 	{
 		::demo::ListViewTabPageConstructor* __vwsnthis_0;
 
-		__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_initialize_instance__(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
+		__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(::demo::ListViewTabPageConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};

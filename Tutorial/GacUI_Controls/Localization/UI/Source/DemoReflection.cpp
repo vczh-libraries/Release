@@ -38,6 +38,7 @@ namespace vl
 
 #define _ ,
 			BEGIN_INTERFACE_MEMBER(::demo::IStringResourceStrings)
+				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(Currency, { L"__vwsn_ls_0" })
 				CLASS_MEMBER_METHOD(DateFormat, { L"__vwsn_ls_0" })
 				CLASS_MEMBER_METHOD(Label, NO_PARAMETER)
@@ -53,6 +54,8 @@ namespace vl
 			END_INTERFACE_MEMBER(::demo::IStringResourceStrings)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetLocaleIndex, { L"locale" })
 				CLASS_MEMBER_METHOD(GetStrings, NO_PARAMETER)
@@ -66,8 +69,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
@@ -97,6 +101,7 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::StringResource)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::StringResource>(), NO_PARAMETER)
 				CLASS_MEMBER_STATIC_METHOD(__vwsn_ls_First, { L"__vwsn_ls_formats" })
 				CLASS_MEMBER_STATIC_METHOD(Get, { L"__vwsn_ls_locale" })

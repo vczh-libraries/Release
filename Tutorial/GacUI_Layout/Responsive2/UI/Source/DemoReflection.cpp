@@ -46,6 +46,8 @@ namespace vl
 
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::AccountButtonTemplate)
+				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiSelectableButtonTemplate)
+				CLASS_MEMBER_BASE(::demo::AccountButtonTemplateConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::AccountButtonTemplate*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(SetViewModel, { L"__vwsn_value_" })
@@ -55,8 +57,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::AccountButtonTemplate)
 
 			BEGIN_CLASS_MEMBER(::demo::AccountButtonTemplateConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::AccountButtonTemplateConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_AccountButtonTemplate_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
@@ -72,6 +75,7 @@ namespace vl
 			END_CLASS_MEMBER(::demo::AccountButtonTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::AccountButtonViewModel)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::AccountButtonViewModel>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetController, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetImage, NO_PARAMETER)
@@ -91,6 +95,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::AccountButtonViewModel)
 
 			BEGIN_CLASS_MEMBER(::demo::AccountItemTemplate)
+				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiControlTemplate)
+				CLASS_MEMBER_BASE(::demo::AccountItemTemplateConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::AccountItemTemplate*(::vl::Ptr<::demo::AccountButtonViewModel>), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
@@ -98,8 +104,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::AccountItemTemplate)
 
 			BEGIN_CLASS_MEMBER(::demo::AccountItemTemplateConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::AccountItemTemplateConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_AccountItemTemplate_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
@@ -107,6 +114,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::AccountItemTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::AccountMenuItemTemplate)
+				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiControlTemplate)
+				CLASS_MEMBER_BASE(::demo::AccountMenuItemTemplateConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::AccountMenuItemTemplate*(::vl::Ptr<::demo::AccountButtonViewModel>), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
@@ -114,8 +123,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::AccountMenuItemTemplate)
 
 			BEGIN_CLASS_MEMBER(::demo::AccountMenuItemTemplateConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::AccountMenuItemTemplateConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_AccountMenuItemTemplate_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
@@ -123,6 +133,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::AccountMenuItemTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
+				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_instance_ctor_, NO_PARAMETER)
 				CLASS_MEMBER_FIELD(accounts)
@@ -130,8 +142,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
@@ -157,6 +170,8 @@ namespace vl
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::VideoItemTemplate)
+				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiControlTemplate)
+				CLASS_MEMBER_BASE(::demo::VideoItemTemplateConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::VideoItemTemplate*(::vl::Ptr<::demo::VideoViewModel>), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
@@ -164,8 +179,9 @@ namespace vl
 			END_CLASS_MEMBER(::demo::VideoItemTemplate)
 
 			BEGIN_CLASS_MEMBER(::demo::VideoItemTemplateConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::VideoItemTemplateConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_initialize_instance_, { L"__vwsn_this_" })
+				CLASS_MEMBER_METHOD(__vwsn_demo_VideoItemTemplate_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
@@ -180,6 +196,7 @@ namespace vl
 			END_CLASS_MEMBER(::demo::VideoItemTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::VideoViewModel)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::VideoViewModel>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetAuthor, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetFont, NO_PARAMETER)

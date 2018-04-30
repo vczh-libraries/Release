@@ -25,114 +25,163 @@ https://github.com/vczh-libraries
 
 namespace vl_workflow_global
 {
-	struct __vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___;
-	struct __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___;
-	struct __vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___;
-	struct __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	struct __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-	class __vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine;
-	class __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine;
-	class __vwsnc6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine;
-	class __vwsnc8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-	class __vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
+	struct __vwsnf10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__;
+	struct __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf14_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__;
+	struct __vwsnf18_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf19_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__;
+	struct __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf29_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf30_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf31_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+	struct __vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+	struct __vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+	struct __vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
+	struct __vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
+	struct __vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
+	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	class __vwsnc10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine;
+	class __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine;
+	class __vwsnc6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine;
+	class __vwsnc8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 }
 
 namespace demo
 {
-	class MainWindowConstructor;
-	class MainWindow;
-	class NewContactWindowConstructor;
-	class NewContactWindow;
-	class NewFolderWindowConstructor;
-	class NewFolderWindow;
-	class IContact;
 	class ICategory;
+	class IContact;
 	class IViewModel;
+	class MainWindowConstructor;
+	class NewContactWindowConstructor;
+	class NewFolderWindowConstructor;
+	class MainWindow;
+	class NewContactWindow;
+	class NewFolderWindow;
+
+	class ICategory : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<ICategory>
+	{
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ICategory>;
+#endif
+	public:
+		virtual ::demo::ICategory* GetParent() = 0;
+		virtual ::vl::WString GetName() = 0;
+		virtual ::vl::Ptr<::vl::presentation::GuiImageData> GetImage() = 0;
+		virtual ::vl::Ptr<::vl::reflection::description::IValueObservableList> GetFolders() = 0;
+		virtual ::vl::Ptr<::vl::reflection::description::IValueObservableList> GetContacts() = 0;
+	};
+
+	class IContact : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IContact>
+	{
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IContact>;
+#endif
+	public:
+		virtual ::vl::WString GetName() = 0;
+		virtual ::vl::Ptr<::vl::presentation::GuiImageData> GetBigImage() = 0;
+		virtual ::vl::Ptr<::vl::presentation::GuiImageData> GetSmallImage() = 0;
+		virtual ::vl::DateTime GetBirthday() = 0;
+		virtual ::vl::WString GetBirthdayText() = 0;
+		virtual ::vl::WString GetPhone() = 0;
+		virtual ::vl::WString GetAddress() = 0;
+		virtual void Update(const ::vl::WString& name, ::vl::DateTime birthday, const ::vl::WString& phone, const ::vl::WString& address) = 0;
+	};
+
+	class IViewModel : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IViewModel>
+	{
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IViewModel>;
+#endif
+	public:
+		virtual ::vl::Ptr<::demo::ICategory> GetRootCategory() = 0;
+		virtual ::vl::Ptr<::demo::ICategory> GetSelectedCategory() = 0;
+		virtual void SetSelectedCategory(::vl::Ptr<::demo::ICategory> __vwsn_value_) = 0;
+		::vl::Event<void()> SelectedCategoryChanged;
+		virtual ::vl::Ptr<::demo::IContact> GetSelectedContact() = 0;
+		virtual void SetSelectedContact(::vl::Ptr<::demo::IContact> __vwsn_value_) = 0;
+		::vl::Event<void()> SelectedContactChanged;
+		virtual void AddCategory(const ::vl::WString& name) = 0;
+		virtual void RemoveCategory() = 0;
+		virtual ::vl::Ptr<::demo::IContact> CreateContact() = 0;
+		virtual void AddContact(::vl::Ptr<::demo::IContact> contact) = 0;
+		virtual void RemoveContact() = 0;
+	};
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine;
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine;
-		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine;
-		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___;
-		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___;
-		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___;
-		friend struct ::vl_workflow_global::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine;
+		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine;
+		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine;
+		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__;
+		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__;
+		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__;
+		friend struct ::vl_workflow_global::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf31_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
@@ -192,17 +241,17 @@ namespace demo
 		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_37;
 		::vl::Ptr<::demo::IViewModel> __vwsn_precompile_38;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_39;
-		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
+		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};
 
 	class NewContactWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<NewContactWindowConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__;
+		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewContactWindowConstructor>;
 #endif
@@ -236,39 +285,17 @@ namespace demo
 		::vl::presentation::controls::GuiButton* __vwsn_precompile_21;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_22;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_23;
-		void __vwsn_initialize_instance_(::demo::NewContactWindow* __vwsn_this_);
+		void __vwsn_demo_NewContactWindow_Initialize(::demo::NewContactWindow* __vwsn_this_);
 	public:
 		NewContactWindowConstructor();
 	};
 
-	class NewContactWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::NewContactWindowConstructor, public ::vl::reflection::Description<NewContactWindow>
-	{
-		friend class ::demo::NewContactWindowConstructor;
-		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewContactWindow>;
-#endif
-	public:
-		bool __vwsn_prop_ForEdit;
-		bool GetForEdit();
-		void SetForEdit(bool __vwsn_value_);
-		::vl::Event<void()> ForEditChanged;
-		bool Ready;
-		::vl::Ptr<::demo::IContact> contact;
-		void SetContact(::vl::Ptr<::demo::IContact> value);
-		NewContactWindow();
-		~NewContactWindow();
-	};
-
 	class NewFolderWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<NewFolderWindowConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__;
+		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewFolderWindowConstructor>;
 #endif
@@ -287,18 +314,40 @@ namespace demo
 		::vl::presentation::controls::GuiButton* __vwsn_precompile_9;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_10;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_11;
-		void __vwsn_initialize_instance_(::demo::NewFolderWindow* __vwsn_this_);
+		void __vwsn_demo_NewFolderWindow_Initialize(::demo::NewFolderWindow* __vwsn_this_);
 	public:
 		NewFolderWindowConstructor();
+	};
+
+	class NewContactWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::NewContactWindowConstructor, public ::vl::reflection::Description<NewContactWindow>
+	{
+		friend class ::demo::NewContactWindowConstructor;
+		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewContactWindow>;
+#endif
+	public:
+		bool __vwsn_prop_ForEdit;
+		bool GetForEdit();
+		void SetForEdit(bool __vwsn_value_);
+		::vl::Event<void()> ForEditChanged;
+		bool Ready;
+		::vl::Ptr<::demo::IContact> contact;
+		void SetContact(::vl::Ptr<::demo::IContact> value);
+		NewContactWindow();
+		~NewContactWindow();
 	};
 
 	class NewFolderWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::NewFolderWindowConstructor, public ::vl::reflection::Description<NewFolderWindow>
 	{
 		friend class ::demo::NewFolderWindowConstructor;
-		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__;
-		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__;
+		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewFolderWindow>;
 #endif
@@ -310,55 +359,6 @@ namespace demo
 		bool Ready;
 		NewFolderWindow();
 		~NewFolderWindow();
-	};
-
-	class IContact : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IContact>
-	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IContact>;
-#endif
-	public:
-		virtual ::vl::WString GetName() = 0;
-		virtual ::vl::Ptr<::vl::presentation::GuiImageData> GetBigImage() = 0;
-		virtual ::vl::Ptr<::vl::presentation::GuiImageData> GetSmallImage() = 0;
-		virtual ::vl::DateTime GetBirthday() = 0;
-		virtual ::vl::WString GetBirthdayText() = 0;
-		virtual ::vl::WString GetPhone() = 0;
-		virtual ::vl::WString GetAddress() = 0;
-		virtual void Update(const ::vl::WString& name, ::vl::DateTime birthday, const ::vl::WString& phone, const ::vl::WString& address) = 0;
-	};
-
-	class ICategory : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<ICategory>
-	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ICategory>;
-#endif
-	public:
-		virtual ::demo::ICategory* GetParent() = 0;
-		virtual ::vl::WString GetName() = 0;
-		virtual ::vl::Ptr<::vl::presentation::GuiImageData> GetImage() = 0;
-		virtual ::vl::Ptr<::vl::reflection::description::IValueObservableList> GetFolders() = 0;
-		virtual ::vl::Ptr<::vl::reflection::description::IValueObservableList> GetContacts() = 0;
-	};
-
-	class IViewModel : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IViewModel>
-	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IViewModel>;
-#endif
-	public:
-		virtual ::vl::Ptr<::demo::ICategory> GetRootCategory() = 0;
-		virtual ::vl::Ptr<::demo::ICategory> GetSelectedCategory() = 0;
-		virtual void SetSelectedCategory(::vl::Ptr<::demo::ICategory> __vwsn_value_) = 0;
-		::vl::Event<void()> SelectedCategoryChanged;
-		virtual ::vl::Ptr<::demo::IContact> GetSelectedContact() = 0;
-		virtual void SetSelectedContact(::vl::Ptr<::demo::IContact> __vwsn_value_) = 0;
-		::vl::Event<void()> SelectedContactChanged;
-		virtual void AddCategory(const ::vl::WString& name) = 0;
-		virtual void RemoveCategory() = 0;
-		virtual ::vl::Ptr<::demo::IContact> CreateContact() = 0;
-		virtual void AddContact(::vl::Ptr<::demo::IContact> contact) = 0;
-		virtual void RemoveContact() = 0;
 	};
 
 }
@@ -379,345 +379,345 @@ namespace vl_workflow_global
 Closures
 ***********************************************************************/
 
-	struct __vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___
+	struct __vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::reflection::description::ICoroutine> operator()(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsn_co_impl_) const;
 	};
 
-	struct __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf14_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf15_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___
+	struct __vwsnf17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::reflection::description::ICoroutine> operator()(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsn_co_impl_) const;
 	};
 
-	struct __vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf18_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf19_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf19_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf19_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::reflection::description::IValueEnumerable> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___
+	struct __vwsnf20_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::reflection::description::ICoroutine> operator()(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsn_co_impl_) const;
 	};
 
-	struct __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf25_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf26_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf27_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf28_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf29_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::presentation::GuiImageData> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf30_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf31_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf31_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf31_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_
 	{
 		::demo::NewContactWindowConstructor* __vwsnthis_0;
 
-		__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
+		__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_
 	{
 		::demo::NewContactWindowConstructor* __vwsnthis_0;
 
-		__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
+		__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_
 	{
 		::demo::NewContactWindowConstructor* __vwsnthis_0;
 
-		__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance__(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
+		__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_
 	{
 		::demo::NewFolderWindowConstructor* __vwsnthis_0;
 
-		__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
+		__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_
 	{
 		::demo::NewFolderWindowConstructor* __vwsnthis_0;
 
-		__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
+		__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_
 	{
 		::demo::NewFolderWindowConstructor* __vwsnthis_0;
 
-		__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance__(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
+		__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::presentation::GuiImageData> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::vl::presentation::GuiImageData> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	struct __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsnf9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
-	class __vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiBindableTreeView* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -730,12 +730,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc11_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiBindableListView* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -748,12 +748,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::NewContactWindowConstructor* __vwsnthis_0;
 
-		__vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
+		__vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::NewContactWindowConstructor* __vwsnctorthis_0);
 
 		::demo::NewContactWindow* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -766,12 +766,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::NewFolderWindowConstructor* __vwsnthis_0;
 
-		__vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
+		__vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::NewFolderWindowConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiDocumentLabel* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -784,12 +784,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -802,13 +802,13 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine : public ::vl::Object, public virtual ::vl::reflection::description::ICoroutine
+	class __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine : public ::vl::Object, public virtual ::vl::reflection::description::ICoroutine
 	{
 	public:
 		::vl::reflection::description::AsyncCoroutine::IImpl* __vwsn_co_impl_;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsnctor___vwsn_co_impl_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsnctor___vwsn_co_impl_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::demo::NewFolderWindow* __vwsn_co0_window = nullptr;
 		::vl::vint __vwsn_co_state_ = 0;
@@ -822,12 +822,12 @@ Closures
 		void Resume(bool __vwsn_raise_exception_, ::vl::Ptr<::vl::reflection::description::CoroutineResult> __vwsn_co_result_) override;
 	};
 
-	class __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -840,12 +840,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -858,13 +858,13 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine : public ::vl::Object, public virtual ::vl::reflection::description::ICoroutine
+	class __vwsnc5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine : public ::vl::Object, public virtual ::vl::reflection::description::ICoroutine
 	{
 	public:
 		::vl::reflection::description::AsyncCoroutine::IImpl* __vwsn_co_impl_;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsnctor___vwsn_co_impl_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsnctor___vwsn_co_impl_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::demo::IContact> __vwsn_co0_contact;
 		::demo::NewContactWindow* __vwsn_co1_window = nullptr;
@@ -879,12 +879,12 @@ Closures
 		void Resume(bool __vwsn_raise_exception_, ::vl::Ptr<::vl::reflection::description::CoroutineResult> __vwsn_co_result_) override;
 	};
 
-	class __vwsnc6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc6_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -897,13 +897,13 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine : public ::vl::Object, public virtual ::vl::reflection::description::ICoroutine
+	class __vwsnc7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine : public ::vl::Object, public virtual ::vl::reflection::description::ICoroutine
 	{
 	public:
 		::vl::reflection::description::AsyncCoroutine::IImpl* __vwsn_co_impl_;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc7_Demo_demo_MainWindowConstructor___vwsn_initialize_instance_____vl_reflection_description_ICoroutine(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsnctor___vwsn_co_impl_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____vl_reflection_description_ICoroutine(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsnctor___vwsn_co_impl_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::demo::NewContactWindow* __vwsn_co0_window = nullptr;
 		::vl::vint __vwsn_co_state_ = 0;
@@ -917,12 +917,12 @@ Closures
 		void Resume(bool __vwsn_raise_exception_, ::vl::Ptr<::vl::reflection::description::CoroutineResult> __vwsn_co_result_) override;
 	};
 
-	class __vwsnc8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc8_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -935,12 +935,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_initialize_instance___vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;

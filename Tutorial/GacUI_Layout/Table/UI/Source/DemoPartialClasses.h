@@ -66,7 +66,7 @@ namespace demo
 		::vl::presentation::controls::GuiButton* __vwsn_precompile_29;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_30;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_31;
-		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
+		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};

@@ -25,9 +25,18 @@ https://github.com/vczh-libraries
 
 namespace demo
 {
+	class IViewModel;
 	class MainWindowConstructor;
 	class MainWindow;
-	class IViewModel;
+
+	class IViewModel : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IViewModel>
+	{
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IViewModel>;
+#endif
+	public:
+		virtual ::vl::WString GetText() = 0;
+	};
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
@@ -39,7 +48,7 @@ namespace demo
 		::demo::MainWindow* __vwsn_precompile_0;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_1;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
-		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
+		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};
@@ -55,15 +64,6 @@ namespace demo
 		::vl::Ptr<::demo::IViewModel> GetViewModel();
 		MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel);
 		~MainWindow();
-	};
-
-	class IViewModel : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IViewModel>
-	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IViewModel>;
-#endif
-	public:
-		virtual ::vl::WString GetText() = 0;
 	};
 
 }

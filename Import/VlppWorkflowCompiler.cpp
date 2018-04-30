@@ -25440,8 +25440,14 @@ ValidateSemantic(Expression)
 
 						if (firstType && secondType)
 						{
-							auto mergedType = GetMergedType(firstType, secondType);
-							results.Add(ResolveExpressionResult::ReadonlyType(mergedType ? mergedType : firstType));
+							if (auto mergedType = GetMergedType(firstType, secondType))
+							{
+								results.Add(ResolveExpressionResult::ReadonlyType(mergedType));
+							}
+							else
+							{
+								manager->errors.Add(WfErrors::CannotMergeTwoType(node, firstType.Obj(), secondType.Obj()));
+							}
 						}
 					}
 					else
@@ -29333,48 +29339,119 @@ WfCppConfig
 				}
 			}
 
-			void WfCppConfig::Sort(collections::List<Ptr<WfStructDeclaration>>& structDecls)
+			template<typename T, typename U>
+			void WfCppConfig::SortInternal(collections::List<Ptr<T>>& decls, U dependOn)
 			{
 				List<ITypeDescriptor*> tds;
-				FOREACH_INDEXER(Ptr<WfStructDeclaration>, decl, index, structDecls)
+				Dictionary<ITypeDescriptor*, Ptr<T>> tdMap;
+				FOREACH_INDEXER(Ptr<T>, decl, index, decls)
 				{
-					tds.Add(manager->declarationTypes[decl.Obj()].Obj());
+					auto td = manager->declarationTypes[decl.Obj()].Obj();
+					tds.Add(td);
+					tdMap.Add(td, decl);
+				}
+				// key depends on values
+				Group<ITypeDescriptor*, ITypeDescriptor*> deps;
+				FOREACH(ITypeDescriptor*, td, tds)
+				{
+					deps.Add(td, td);
 				}
 
 				for (vint i = 0; i < tds.Count(); i++)
 				{
-					for (vint j = i; i < tds.Count(); j++)
+					for (vint j = 0; j < tds.Count(); j++)
 					{
-						auto td = tds[j];
-						vint count = td->GetPropertyCount();
-						bool found = false;
-						for (vint k = 0; k < count && !found; k++)
+						if (dependOn(tds[i], tds[j]))
 						{
-							auto prop = td->GetProperty(k);
-							auto propTd = prop->GetReturn()->GetTypeDescriptor();
-							for (vint l = k + 1; l < tds.Count() && !found; l++)
+							if (!deps.Contains(tds[i], tds[j]))
 							{
-								found = tds[l] == propTd;
+								deps.Add(tds[i], tds[j]);
 							}
-						}
-
-						if (!found)
-						{
-							if (j != i)
-							{
-								auto t = tds[j];
-								tds.RemoveAt(j);
-								tds.Insert(i, t);
-
-								auto decl = structDecls[j];
-								structDecls.RemoveAt(j);
-								structDecls.Insert(i, decl);
-							}
-
-							break;
 						}
 					}
 				}
+
+				tds.Clear();
+				while (deps.Count() != 0)
+				{
+					List<ITypeDescriptor*> selected;
+
+					for (vint i = 0; i < deps.Count(); i++)
+					{
+						if (deps.GetByIndex(i).Count() == 1)
+						{
+							selected.Add(deps.Keys()[i]);
+						}
+					}
+
+					for (vint i = deps.Count() - 1; i >= 0; i--)
+					{
+						if (deps.GetByIndex(i).Count() == 1)
+						{
+							deps.Remove(deps.Keys()[i]);
+						}
+					}
+
+					for (vint i = deps.Count() - 1; i >= 0; i--)
+					{
+						for (vint j = 0; j < selected.Count(); j++)
+						{
+							deps.Remove(deps.Keys()[i], selected[j]);
+						}
+					}
+
+					CopyFrom(selected, From(selected).OrderBy([](ITypeDescriptor* a, ITypeDescriptor* b) {return WString::Compare(a->GetTypeName(), b->GetTypeName()); }));
+					CopyFrom(tds, selected, true);
+					CHECK_ERROR(selected.Count() > 0, L"WfCppConfig::SortInternal<T, U>(collections::List<Ptr<T>>&, U)#Internal error: Unexpected circle dependency found, which should be cought by the Workflow semantic analyzer.");
+				}
+
+				CopyFrom(decls, From(tds).Select([&](ITypeDescriptor* td) {return tdMap[td]; }));
+			}
+
+			void WfCppConfig::Sort(collections::List<Ptr<WfStructDeclaration>>& structDecls)
+			{
+				SortInternal(structDecls, [](ITypeDescriptor* type, ITypeDescriptor* field)
+				{
+					vint count = type->GetPropertyCount();
+					for (vint i = 0; i < count; i++)
+					{
+						auto propType = type->GetProperty(i)->GetReturn();
+						if (propType->GetDecorator() == ITypeInfo::TypeDescriptor)
+						{
+							auto td = propType->GetTypeDescriptor();
+							if (td == field)
+							{
+								return true;
+							}
+							else if (INVLOC.StartsWith(td->GetTypeName(), field->GetTypeName() + L"::", Locale::None))
+							{
+								return true;
+							}
+						}
+					}
+					return false;
+				});
+			}
+
+			void WfCppConfig::Sort(collections::List<Ptr<WfClassDeclaration>>& classDecls)
+			{
+				SortInternal(classDecls, [](ITypeDescriptor* derived, ITypeDescriptor* base)
+				{
+					vint count = derived->GetBaseTypeDescriptorCount();
+					for (vint i = 0; i < count; i++)
+					{
+						auto td = derived->GetBaseTypeDescriptor(i);
+						if (td == base)
+						{
+							return true;
+						}
+						else if (INVLOC.StartsWith(td->GetTypeName(), base->GetTypeName() + L"::", Locale::None))
+						{
+							return true;
+						}
+					}
+					return false;
+				});
 			}
 
 			WfCppConfig::WfCppConfig(analyzer::WfLexicalScopeManager* _manager, const WString& _assemblyName, const WString& _assemblyNamespace)
@@ -29391,6 +29468,16 @@ WfCppConfig
 				{
 					const auto& values = structDecls.GetByIndex(i);
 					Sort(const_cast<List<Ptr<WfStructDeclaration>>&>(values));
+				}
+				for (vint i = 0; i < topLevelClassDeclsForFiles.Count(); i++)
+				{
+					const auto& values = topLevelClassDeclsForFiles.GetByIndex(i);
+					Sort(const_cast<List<Ptr<WfClassDeclaration>>&>(values));
+				}
+				for (vint i = 0; i < classDecls.Count(); i++)
+				{
+					const auto& values = classDecls.GetByIndex(i);
+					Sort(const_cast<List<Ptr<WfClassDeclaration>>&>(values));
 				}
 			}
 
@@ -33288,17 +33375,17 @@ MergeCppFile
 							state = WAIT_OPEN;
 							break;
 						case WAIT_OPEN:
-							if (content == L"{")
+							if (content.Length() >= 1 && content[0] == L'{')
 							{
 								state = WAIT_CLOSE;
 							}
 							break;
 						case WAIT_CLOSE:
-							if (content == L"{")
+							if (content.Length() >= 1 && content[0] == L'{')
 							{
 								counter++;
 							}
-							else if (content == L"}")
+							else if (content.Length() >= 1 && content[0] == L'}')
 							{
 								if (counter == 0)
 								{
@@ -35463,6 +35550,14 @@ namespace vl
 							}
 							writer.WriteString(ConvertType(td));
 							writer.WriteLine(L")");
+
+							vint baseCount = td->GetBaseTypeDescriptorCount();
+							for (vint i = 0; i < baseCount; i++)
+							{
+								writer.WriteString(L"\t\t\t\tCLASS_MEMBER_BASE(");
+								writer.WriteString(ConvertType(td->GetBaseTypeDescriptor(i)));
+								writer.WriteLine(L")");
+							}
 
 							if (td->GetTypeDescriptorFlags() == TypeDescriptorFlags::Class)
 							{

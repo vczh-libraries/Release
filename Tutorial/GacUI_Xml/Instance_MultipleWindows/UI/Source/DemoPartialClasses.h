@@ -25,14 +25,14 @@ https://github.com/vczh-libraries
 
 namespace vl_workflow_global
 {
-	struct __vwsno1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
+	struct __vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 }
 
 namespace demo
 {
 	class AnotherWindowConstructor;
-	class AnotherWindow;
 	class MainWindowConstructor;
+	class AnotherWindow;
 	class MainWindow;
 
 	class AnotherWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<AnotherWindowConstructor>
@@ -44,9 +44,25 @@ namespace demo
 		::demo::AnotherWindow* __vwsn_precompile_0;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_1;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
-		void __vwsn_initialize_instance_(::demo::AnotherWindow* __vwsn_this_);
+		void __vwsn_demo_AnotherWindow_Initialize(::demo::AnotherWindow* __vwsn_this_);
 	public:
 		AnotherWindowConstructor();
+	};
+
+	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
+	{
+		friend struct ::vl_workflow_global::__vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
+#endif
+	protected:
+		::demo::MainWindow* __vwsn_precompile_0;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3;
+		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
+	public:
+		MainWindowConstructor();
 	};
 
 	class AnotherWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::AnotherWindowConstructor, public ::vl::reflection::Description<AnotherWindow>
@@ -58,22 +74,6 @@ namespace demo
 	public:
 		AnotherWindow();
 		~AnotherWindow();
-	};
-
-	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
-	{
-		friend struct ::vl_workflow_global::__vwsno1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
-#endif
-	protected:
-		::demo::MainWindow* __vwsn_precompile_0;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_1;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3;
-		void __vwsn_initialize_instance_(::demo::MainWindow* __vwsn_this_);
-	public:
-		MainWindowConstructor();
 	};
 
 }
@@ -94,12 +94,12 @@ namespace vl_workflow_global
 Closures
 ***********************************************************************/
 
-	struct __vwsno1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__
+	struct __vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindow* __vwsn_this_;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsno1_Demo_demo_MainWindowConstructor___vwsn_initialize_instance__(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+		__vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};

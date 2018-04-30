@@ -37,7 +37,7 @@ namespace helloworld
 		::helloworld::MainWindow* __vwsn_precompile_0;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_1;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
-		void __vwsn_initialize_instance_(::helloworld::MainWindow* __vwsn_this_);
+		void __vwsn_helloworld_MainWindow_Initialize(::helloworld::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
 	};
