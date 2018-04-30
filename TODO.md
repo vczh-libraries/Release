@@ -45,17 +45,12 @@ https://zhuanlan.zhihu.com/p/33778843
 
 #### Before 1.0
 - [x] $ReturnAndExit for GuiAnimationCoroutine
-- [ ] Demo: DocumentEditor
-  - [x] DocumentEditorShared
-  - [x] DocumentEditorToolstrip
-  - [x] DocumentEditorRibbon
+- [x] Demo: DocumentEditor
 - [x] Inheritable custom window / control
-- [ ] Ribbon
+- [x] Ribbon
    - [x] RibbonTab (before/after header area)
    - [x] RibbonTabPage (highlighted)
    - [x] RibbonGroup
-     - [ ] Level down to dropdown button
-     - [ ] Detail button
    - [x] Ribbon buttons
      - [x] `BigImage` property for `ToolstripCommand`
      - [x] `ToolstripButton' with text
@@ -65,6 +60,12 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] Big `ToolstripDropdownButton' with text (group text with dropdown triangle)
      - [x] Big `ToolstripSplitButton' with text
    - [x] Ribbon buttons transformation pattern controls (e.g. 3 big -> 3 small ->3small no text)
+   - [x] `RibbonToolbars` with `<ToolstripGroup>`s
+- [x] **Update Release**
+- [ ] Ribbon
+   - [x] RibbonGroup
+     - [ ] Level down to dropdown button
+     - [ ] Detail button
    - [ ] `GuiBindableRibbonGalleryBase`, which is the base class of gallery and gallery menu, but it is not a control
      - `GroupTitle` property
      - `GroupChildren` property, empty means there is no group
@@ -80,7 +81,6 @@ https://zhuanlan.zhihu.com/p/33778843
      - Display group headers if there are groups
    - [ ] Ribbon toolstrip header (highlighted non-interactive menu item)
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
-   - [x] `RibbonToolbars` with `<ToolstripGroup>`s
 - [ ] **Update Release**
 - [ ] Add and query services from controls
 - [ ] Normal text box supports surrogate pairs like document viewer
