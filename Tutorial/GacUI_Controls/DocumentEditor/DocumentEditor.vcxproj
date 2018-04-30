@@ -163,8 +163,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="UI\DocumentComponents.xml" />
+    <Xml Include="UI\Base.xml" />
+    <Xml Include="UI\Hyperlink.xml" />
     <Xml Include="UI\Resource.xml" />
+    <Xml Include="UI\Ribbon.xml" />
+    <Xml Include="UI\ToolbarImages\Images.xml" />
+    <Xml Include="UI\Toolstrip.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
