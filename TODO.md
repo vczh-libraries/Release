@@ -76,9 +76,8 @@ https://zhuanlan.zhihu.com/p/33778843
      - [ ] Level down to dropdown button
      - Popup covered the whole button (gallery) or popup just below the button (dropdown)
      - When group is enabled, all group children are joined in sequence and display in the gallery control
-   - [ ] `GuiBindableRibbonGalleryMenu`
-     - If this menu is created by `GuiRibbonGallery`, then all three properties in `...Base` are controlled by the gallery control
-     - Display group headers if there are groups
+     - In toolstrip menu, display group headers if there are groups
+   - [ ] `GuiRibbonToolstripMenu` (`ContentComposition` property)
    - [ ] Ribbon toolstrip header (highlighted non-interactive menu item)
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
 - [ ] CppMerge.exe reports error instead of crashes
