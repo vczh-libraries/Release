@@ -66,18 +66,20 @@ https://zhuanlan.zhihu.com/p/33778843
    - [x] RibbonGroup
      - [ ] Level down to dropdown button
      - [ ] Detail button
-   - [ ] `GuiBindableRibbonGalleryBase`, which is the base class of gallery and gallery menu, but it is not a control
-     - `GroupTitle` property
-     - `GroupChildren` property, empty means there is no group
-     - `ItemSource` property
-       - When group is disabled, ItemSource is a collection of items.
-       - When group is enabled, ItemSource is a collection of groups, and its title and children are defined by two properties above.
-   - [ ]  `GuiBindableRibbonGallery`
+   - [ ]  `GuiRibbonGallery`
      - [ ] Level down to dropdown button
+     - Provide ScrollUp / ScrollDown / Dropdown button
+   - [ ] `GuiRibbonToolstripMenu` (`ContentComposition` property)
+   - [ ]  `GuiBindableRibbonGalleryList`
      - Popup covered the whole button (gallery) or popup just below the button (dropdown)
      - When group is enabled, all group children are joined in sequence and display in the gallery control
      - In toolstrip menu, display group headers if there are groups
-   - [ ] `GuiRibbonToolstripMenu` (`ContentComposition` property)
+     - [ ] `GuiBindableRibbonGalleryBase`, which is the base class of gallery and gallery menu, but it is not a control
+       - `GroupTitle` property
+       - `GroupChildren` property, empty means there is no group
+       - `ItemSource` property
+         - When group is disabled, ItemSource is a collection of items.
+         - When group is enabled, ItemSource is a collection of groups, and its title and children are defined by two properties above.
    - [ ] Ribbon toolstrip header (highlighted non-interactive menu item)
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
 - [ ] CppMerge.exe reports error instead of crashes
