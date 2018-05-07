@@ -66,10 +66,10 @@ https://zhuanlan.zhihu.com/p/33778843
    - [x] RibbonGroup
      - [ ] Level down to dropdown button
      - [ ] Detail button
-   - [ ]  `GuiRibbonGallery` (`ContentComposition` property)
+   - [x]  `GuiRibbonGallery` (`ContentComposition` property)
      - [ ] Level down to dropdown button
      - Provide ScrollUp / ScrollDown / Dropdown button
-   - [ ] `GuiRibbonToolstripMenu` (`ContentComposition` property)
+   - [x] `GuiRibbonToolstripMenu` (`ContentComposition` property)
    - [ ]  `GuiBindableRibbonGalleryList`
      - Popup covered the whole button (gallery) or popup just below the button (dropdown)
      - When group is enabled, all group children are joined in sequence and display in the gallery control
