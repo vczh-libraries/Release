@@ -66,7 +66,7 @@ https://zhuanlan.zhihu.com/p/33778843
    - [x] RibbonGroup
      - [ ] Level down to dropdown button
      - [ ] Detail button
-   - [ ]  `GuiRibbonGallery`
+   - [ ]  `GuiRibbonGallery` (`ContentComposition` property)
      - [ ] Level down to dropdown button
      - Provide ScrollUp / ScrollDown / Dropdown button
    - [ ] `GuiRibbonToolstripMenu` (`ContentComposition` property)
