@@ -70,11 +70,15 @@ https://zhuanlan.zhihu.com/p/33778843
      - [ ] Level down to dropdown button
      - Provide ScrollUp / ScrollDown / Dropdown button
    - [x] `GuiRibbonToolstripMenu` (`ContentComposition` property)
-   - [ ]  `GuiBindableRibbonGalleryList`
+   - [ ] `GuiBindableRibbonGalleryList`
      - Popup covered the whole button (gallery) or popup just below the button (dropdown)
      - When group is enabled, all group children are joined in sequence and display in the gallery control
      - In toolstrip menu, display group headers if there are groups
-     - [ ] `GuiBindableRibbonGalleryBase`, which is the base class of gallery and gallery menu, but it is not a control
+     - [x] `ribbon_impl::GalleryItemArranger`
+     - [x] `ribbon_impl::GalleryResponsiveLayout`
+     - [x] Item list part
+     - [ ] Dropdown list part
+     - [ ] `list::GroupedDataSource`, which is the base class of gallery and gallery menu, but it is not a control
        - `GroupTitle` property
        - `GroupChildren` property, empty means there is no group
        - `ItemSource` property
