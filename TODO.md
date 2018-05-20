@@ -63,11 +63,7 @@ https://zhuanlan.zhihu.com/p/33778843
    - [x] `RibbonToolbars` with `<ToolstripGroup>`s
 - [x] **Update Release**
 - [ ] Ribbon
-   - [x] RibbonGroup
-     - [ ] Level down to dropdown button
-     - [ ] Detail button
    - [x]  `GuiRibbonGallery` (`ContentComposition` property)
-     - [ ] Level down to dropdown button
      - Provide ScrollUp / ScrollDown / Dropdown button
    - [x] `GuiRibbonToolstripMenu` (`ContentComposition` property)
    - [ ] `GuiBindableRibbonGalleryList`
@@ -79,7 +75,14 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] Item list part
      - [ ] Dropdown list part
      - [x] `list::GroupedDataSource`, which is the base class of gallery and gallery menu, but it is not a control
-   - [ ] Ribbon toolstrip header (highlighted non-interactive menu item)
+   - [x] Ribbon toolstrip header (highlighted non-interactive menu item)
+- [x] **Update Release**
+- [ ] Ribbon
+   - [x] RibbonGroup
+     - [ ] Level down to dropdown button if there are more than one item
+     - [ ] Detail button
+   - [x]  `GuiRibbonGallery` (`ContentComposition` property)
+     - [ ] Level down to dropdown button
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
 - [ ] CppMerge.exe reports error instead of crashes
 - [ ] **Update Release**
