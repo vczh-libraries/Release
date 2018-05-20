@@ -78,7 +78,7 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] `ribbon_impl::GalleryResponsiveLayout`
      - [x] Item list part
      - [ ] Dropdown list part
-     - [ ] `list::GroupedDataSource`, which is the base class of gallery and gallery menu, but it is not a control
+     - [x] `list::GroupedDataSource`, which is the base class of gallery and gallery menu, but it is not a control
        - `GroupTitle` property
        - `GroupChildren` property, empty means there is no group
        - `ItemSource` property
