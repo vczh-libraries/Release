@@ -76,7 +76,7 @@ https://zhuanlan.zhihu.com/p/33778843
      - [ ] Dropdown list part
      - [x] `list::GroupedDataSource`, which is the base class of gallery and gallery menu, but it is not a control
    - [x] Ribbon toolstrip header (highlighted non-interactive menu item)
-- [x] **Update Release**
+- [ ] **Update Release**
 - [ ] Ribbon
    - [x] RibbonGroup
      - [ ] Level down to dropdown button if there are more than one item
