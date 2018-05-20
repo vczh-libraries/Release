@@ -83,6 +83,7 @@ https://zhuanlan.zhihu.com/p/33778843
      - [ ] Detail button
    - [x]  `GuiRibbonGallery` (`ContentComposition` property)
      - [ ] Level down to dropdown button
+     - [ ] Use gallery for editing styles
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
 - [ ] CppMerge.exe reports error instead of crashes
 - [ ] **Update Release**
