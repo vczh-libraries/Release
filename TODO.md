@@ -73,7 +73,7 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] `ribbon_impl::GalleryItemArranger`
      - [x] `ribbon_impl::GalleryResponsiveLayout`
      - [x] Item list part
-     - [ ] Dropdown list part
+     - [x] Dropdown list part
      - [x] `list::GroupedDataSource`, which is the base class of gallery and gallery menu, but it is not a control
    - [x] Ribbon toolstrip header (highlighted non-interactive menu item)
 - [ ] **Update Release**
