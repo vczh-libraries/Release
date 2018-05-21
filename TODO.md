@@ -73,7 +73,7 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] `ribbon_impl::GalleryItemArranger`
      - [x] `ribbon_impl::GalleryResponsiveLayout`
      - [x] Item list part
-     - [ ] Dropdown list part
+     - [x] Dropdown list part
      - [x] `list::GroupedDataSource`, which is the base class of gallery and gallery menu, but it is not a control
    - [x] Ribbon toolstrip header (highlighted non-interactive menu item)
 - [ ] **Update Release**
@@ -83,6 +83,7 @@ https://zhuanlan.zhihu.com/p/33778843
      - [ ] Detail button
    - [x]  `GuiRibbonGallery` (`ContentComposition` property)
      - [ ] Level down to dropdown button
+     - [ ] Use gallery for editing styles
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
 - [ ] CppMerge.exe reports error instead of crashes
 - [ ] **Update Release**
