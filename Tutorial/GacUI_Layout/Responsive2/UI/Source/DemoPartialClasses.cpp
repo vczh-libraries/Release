@@ -1801,19 +1801,19 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueObservableList>(::vl::__vwsn::This(this->self)->accounts));
+			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(this->self)->accounts));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetShared(static_cast<::vl::presentation::controls::GuiControl*>(this->videoContainer));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueObservableList>(::vl::__vwsn::This(this->self)->accounts));
+			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(this->self)->accounts));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetShared(static_cast<::vl::presentation::controls::GuiControl*>(this->videoContainer));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueObservableList>(::vl::__vwsn::This(this->self)->videos));
+			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(this->self)->videos));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));

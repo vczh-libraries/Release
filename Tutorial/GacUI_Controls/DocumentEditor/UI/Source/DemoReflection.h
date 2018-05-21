@@ -47,6 +47,10 @@ namespace vl
 			DECL_TYPE_INFO(::demo::HyperlinkWindowConstructor)
 			DECL_TYPE_INFO(::demo::MainWindow)
 			DECL_TYPE_INFO(::demo::MainWindowConstructor)
+			DECL_TYPE_INFO(::demo::StyleGroup)
+			DECL_TYPE_INFO(::demo::StyleItem)
+			DECL_TYPE_INFO(::demo::StyleItemTemplate)
+			DECL_TYPE_INFO(::demo::StyleItemTemplateConstructor)
 #endif
 
 			extern bool LoadDemoTypes();
