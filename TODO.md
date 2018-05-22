@@ -62,11 +62,11 @@ https://zhuanlan.zhihu.com/p/33778843
    - [x] Ribbon buttons transformation pattern controls (e.g. 3 big -> 3 small ->3small no text)
    - [x] `RibbonToolbars` with `<ToolstripGroup>`s
 - [x] **Update Release**
-- [ ] Ribbon
+- [x] Ribbon
    - [x]  `GuiRibbonGallery` (`ContentComposition` property)
      - Provide ScrollUp / ScrollDown / Dropdown button
    - [x] `GuiRibbonToolstripMenu` (`ContentComposition` property)
-   - [ ] `GuiBindableRibbonGalleryList`
+   - [x] `GuiBindableRibbonGalleryList`
      - Popup covered the whole button (gallery) or popup just below the button (dropdown)
      - When group is enabled, all group children are joined in sequence and display in the gallery control
      - In toolstrip menu, display group headers if there are groups
@@ -76,7 +76,7 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] Dropdown list part
      - [x] `list::GroupedDataSource`, which is the base class of gallery and gallery menu, but it is not a control
    - [x] Ribbon toolstrip header (highlighted non-interactive menu item)
-- [ ] **Update Release**
+- [x] **Update Release**
 - [ ] Ribbon
    - [x] RibbonGroup
      - [ ] Level down to dropdown button if there are more than one item
