@@ -79,10 +79,9 @@ https://zhuanlan.zhihu.com/p/33778843
 - [x] **Update Release**
 - [ ] Ribbon
    - [x] RibbonGroup
-     - [ ] Level down to dropdown button if there are more than one item
+     - [ ] Level down to dropdown button if there are more than one item.
+       - When there is only one item in the group, `IRibbonDropdownProvider` will be queried. If it exists, instead of showing the content of the group in the dropdown, the dropdown will be popuped by this service.
      - [ ] Detail button
-   - [x] `GuiRibbonGallery`
-     - [ ] Level down to dropdown button
    - [x] `GuiBindableRibbonGalleryList`
      - [x] `VisibleItemCount` property
      - [x] Use gallery for editing styles
