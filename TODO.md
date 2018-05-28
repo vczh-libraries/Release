@@ -81,12 +81,14 @@ https://zhuanlan.zhihu.com/p/33778843
    - [x] RibbonGroup
      - [ ] Level down to dropdown button if there are more than one item
      - [ ] Detail button
-   - [x]  `GuiRibbonGallery` (`ContentComposition` property)
+   - [x] `GuiRibbonGallery`
      - [ ] Level down to dropdown button
+   - [x] `GuiBindableRibbonGalleryList`
+     - [x] `VisibleItemCount` property
      - [x] Use gallery for editing styles
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
-- [ ] CppMerge.exe reports error instead of crashes
 - [ ] **Update Release**
+- [ ] CppMerge.exe reports error instead of crashes
 - [ ] Add and query services from controls
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
