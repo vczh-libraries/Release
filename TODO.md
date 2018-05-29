@@ -110,6 +110,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] BlackSkin window template handle window properties (border, buttons, ...)
 - [ ] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
 - [ ] High DPI for Direct2D (GDI will blur)
+- [ ] Window Icon
 - [ ] **Update Release**
 
 #### Before 1.0 (Optional)
@@ -126,14 +127,7 @@ https://zhuanlan.zhihu.com/p/33778843
 
 #### Controls
 - [ ] Chart
-- [ ] Ribbon
 - [ ] Dock Container
-- [ ] Icon
-
-### (probably not do)
-
-* GuiCustomControl::SetContainerComposition // using a special syntax
-* InstanceStyle:Replace
 
 ## GacGen.exe
 
