@@ -81,14 +81,12 @@ https://zhuanlan.zhihu.com/p/33778843
    - [x] RibbonGroup
      - [ ] Level down to dropdown button if there are more than one item.
        - When there is only one item in the group, `IRibbonDropdownProvider` will be queried. If it exists, instead of showing the content of the group in the dropdown, the dropdown will be popuped by this service.
-     - [ ] Detail button
+     - [x] Detail button
    - [x] `GuiBindableRibbonGalleryList`
      - [x] `VisibleItemCount` property
      - [x] Use gallery for editing styles
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
 - [ ] **Update Release**
-- [ ] CppMerge.exe reports error instead of crashes
-- [ ] Add and query services from controls
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] RTF / HTML clipboard format for document viewer
 - [ ] Demo: DocumentEditor
@@ -96,26 +94,27 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Demo: TriplePhaseImageButton using `Context` property
 - [ ] Demo: `<SharedSize>` and `<SharedSizeRoot>`, sync all buttons in item templates in a list control
 - [ ] **Update Release**
-- [ ] New default control templates with animation, written in XML generated C++ code.
-- [ ] A window can be called to update all its controls' and components' template
-- [ ] Tutorials use the new default control templates
-- [ ] **Update Release**
-- [ ] Enable Workflow script template for IGuiInstanceLoader written in text
-- [ ] **Update Release**
 - [ ] Inheritable custom window / control with `<ref.Parameter>`
 - [ ] Resource should have name and version
 - [ ] Depend on another resource, to decide loading order
 - [ ] Demo: DocumentEditor: Split 1 Resource.xml to 3.
 - [ ] **Update Release**
-- [ ] (optional) `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
-- [ ] (optional) Update all control template properties to have `in` or `out` prefix
-  - `in`: Template implementation should read
-  - `out`: Template implementation should write
+- [ ] CppMerge.exe reports error instead of crashes
+- [ ] Add and query services from controls
+- [ ] **Update Release**
+- [ ] New default control templates with animation, written in XML generated C++ code.
+- [ ] A window can be called to update all its controls' and components' template
+- [ ] Tutorials use the new default control templates
+- [ ] **Update Release**
 - [ ] Render focus
 - [ ] BlackSkin window template handle window properties (border, buttons, ...)
 - [ ] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] **Update Release**
+
+#### Before 1.0 (Optional)
+- [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
+- [ ] Enable Workflow script template for IGuiInstanceLoader written in text
 
 #### Graphics
 - [ ] MetaImageElement and MetaImage data structure
