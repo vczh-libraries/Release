@@ -87,10 +87,15 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] Use gallery for editing styles
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
 - [ ] **Update Release**
-- [ ] Normal text box supports surrogate pairs like document viewer
+- [ ] Fix Ribbon known issues
+  - [ ] Group title random missing while resizing
+  - [ ] Group dropdown button layout incorrectly while resizing
+  - [ ] Enforce extra click for dropdown buttons in a collapsed-state group dropdown menu
 - [ ] RTF / HTML clipboard format for document viewer
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
+- [ ] **Update Release**
+- [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] Demo: TriplePhaseImageButton using `Context` property
 - [ ] Demo: `<SharedSize>` and `<SharedSizeRoot>`, sync all buttons in item templates in a list control
 - [ ] **Update Release**
