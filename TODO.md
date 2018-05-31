@@ -96,6 +96,10 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Chart
 - [ ] Dock Container
 
+#### Binders
+- [ ] Web assembly
+- [ ] XML Metadata output for codegen written by users
+
 ## GacGen.exe
 
 * Enable linking to external symbols
