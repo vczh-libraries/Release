@@ -77,7 +77,7 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] `list::GroupedDataSource`, which is the base class of gallery and gallery menu, but it is not a control
    - [x] Ribbon toolstrip header (highlighted non-interactive menu item)
 - [x] **Update Release**
-- [ ] Ribbon
+- [x] Ribbon
    - [x] RibbonGroup
      - [x] Level down to dropdown button if there are more than one item.
        - When there is only one item in the group, `IRibbonDropdownProvider` will be queried. If it exists, instead of showing the content of the group in the dropdown, the dropdown will be popuped by this service.
@@ -85,9 +85,10 @@ https://zhuanlan.zhihu.com/p/33778843
    - [x] `GuiBindableRibbonGalleryList`
      - [x] `VisibleItemCount` property
      - [x] Use gallery for editing styles
-   - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
-- [ ] Log compositions and elements to text for debug purpose
 - [ ] **Update Release**
+- [ ] Ribbon
+  - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
+- [ ] Log compositions and elements to text for debug purpose
 - [ ] Fix Ribbon known issues
   - [ ] Group title random missing while resizing
   - [ ] Group dropdown button layout incorrectly while resizing
