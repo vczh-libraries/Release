@@ -86,6 +86,7 @@ https://zhuanlan.zhihu.com/p/33778843
      - [x] `VisibleItemCount` property
      - [x] Use gallery for editing styles
    - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
+- [ ] Log compositions and elements to text for debug purpose
 - [ ] **Update Release**
 - [ ] Fix Ribbon known issues
   - [ ] Group title random missing while resizing
