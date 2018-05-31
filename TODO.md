@@ -91,6 +91,7 @@ https://zhuanlan.zhihu.com/p/33778843
   - [ ] Group title random missing while resizing
   - [ ] Group dropdown button layout incorrectly while resizing
   - [ ] Enforce extra click for dropdown buttons in a collapsed-state group dropdown menu
+  - [ ] Ribbon tab cannot drag to short enough
 - [ ] RTF / HTML clipboard format for document viewer
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
