@@ -43,16 +43,16 @@
     <Xml Include="UI\ToolbarImages\Images.xml">
       <Filter>Resource Files\ToolbarImages</Filter>
     </Xml>
-    <Xml Include="UI\Toolstrip.xml">
+    <Xml Include="UI\DocumentEditorBase.xml">
       <Filter>Resource Files</Filter>
     </Xml>
-    <Xml Include="UI\Base.xml">
+    <Xml Include="UI\DocumentEditorRibbon.xml">
       <Filter>Resource Files</Filter>
     </Xml>
-    <Xml Include="UI\Hyperlink.xml">
+    <Xml Include="UI\DocumentEditorToolstrip.xml">
       <Filter>Resource Files</Filter>
     </Xml>
-    <Xml Include="UI\Ribbon.xml">
+    <Xml Include="UI\DocumentComponents.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

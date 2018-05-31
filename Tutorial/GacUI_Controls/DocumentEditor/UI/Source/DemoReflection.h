@@ -37,12 +37,16 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
+			DECL_TYPE_INFO(::demo::DocumentEditorBase)
+			DECL_TYPE_INFO(::demo::DocumentEditorBaseConstructor)
+			DECL_TYPE_INFO(::demo::DocumentEditorRibbon)
+			DECL_TYPE_INFO(::demo::DocumentEditorRibbonConstructor)
 			DECL_TYPE_INFO(::demo::DocumentEditorRibbonWindow)
 			DECL_TYPE_INFO(::demo::DocumentEditorRibbonWindowConstructor)
+			DECL_TYPE_INFO(::demo::DocumentEditorToolstrip)
+			DECL_TYPE_INFO(::demo::DocumentEditorToolstripConstructor)
 			DECL_TYPE_INFO(::demo::DocumentEditorToolstripWindow)
 			DECL_TYPE_INFO(::demo::DocumentEditorToolstripWindowConstructor)
-			DECL_TYPE_INFO(::demo::DocumentEditorWindowBase)
-			DECL_TYPE_INFO(::demo::DocumentEditorWindowBaseConstructor)
 			DECL_TYPE_INFO(::demo::HyperlinkWindow)
 			DECL_TYPE_INFO(::demo::HyperlinkWindowConstructor)
 			DECL_TYPE_INFO(::demo::MainWindow)
