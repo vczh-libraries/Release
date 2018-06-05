@@ -46,10 +46,11 @@ https://zhuanlan.zhihu.com/p/33778843
 #### Before 1.0
 - [ ] Ribbon
   - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
-- [ ] Log compositions and elements to text for debug purpose
+- [x] Log compositions and elements to text for debug purpose
 - [ ] Fix Ribbon known issues
-  - [ ] Group title random missing while resizing
-  - [ ] Group dropdown button layout incorrectly while resizing
+  - [ ] `GuiTableComposition` doesn't calculate percentage cells right, sometimes they will larger than the table.
+    - Group title random missing while resizing
+    - Group dropdown button layout incorrectly while resizing
   - [ ] Enforce extra click for dropdown buttons in a collapsed-state group dropdown menu
   - [ ] Ribbon tab cannot drag to short enough
 - [ ] **Update Release**
