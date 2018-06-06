@@ -44,16 +44,6 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [x] Ribbon
-  - [x] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
-- [x] Log compositions and elements to text for debug purpose
-- [x] Fix Ribbon known issues
-  - [x] `GuiTableComposition` doesn't calculate percentage cells right, sometimes they will larger than the table.
-    - Group title random missing while resizing
-    - Group dropdown button layout incorrectly while resizing
-  - [x] Enforce extra click for dropdown buttons in a collapsed-state group dropdown menu
-  - [x] Ribbon tab cannot drag to short enough
-- [x] `<InnerShadow>` renders nothing instead of crashes under GDI
 - [ ] **Update Release**
 - [ ] RTF / HTML clipboard format for document viewer
 - [ ] Demo: DocumentEditor
