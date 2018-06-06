@@ -53,7 +53,7 @@ https://zhuanlan.zhihu.com/p/33778843
     - Group dropdown button layout incorrectly while resizing
   - [x] Enforce extra click for dropdown buttons in a collapsed-state group dropdown menu
   - [x] Ribbon tab cannot drag to short enough
-- [ ] `<InnerShadow>` renders nothing instead of crashes under GDI
+- [x] `<InnerShadow>` renders nothing instead of crashes under GDI
 - [ ] **Update Release**
 - [ ] RTF / HTML clipboard format for document viewer
 - [ ] Demo: DocumentEditor
