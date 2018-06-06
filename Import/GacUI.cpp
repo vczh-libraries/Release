@@ -977,118 +977,11 @@ GuiTableComposition
 				return max - right;
 			}
 
-			void GuiTableComposition::UpdateCellBoundsInternal()
-			{
-				rowOffsets.Resize(rows);
-				rowSizes.Resize(rows);
-				columnOffsets.Resize(columns);
-				columnSizes.Resize(columns);
-				{
-					vint rowTotal = (rows - 1)*cellPadding;
-					vint columnTotal = (columns - 1)*cellPadding;
-					vint rowTotalWithPercentage = rowTotal;
-					vint columnTotalWithPercentage = columnTotal;
-
-					UpdateCellBoundsInternal(
-						rowSizes,
-						rowTotal,
-						rowTotalWithPercentage,
-						rowOptions,
-						&GuiTableComposition::rows,
-						&GuiTableComposition::columns,
-						&Y,
-						&RL,
-						&RS,
-						&First,
-						&Second,
-						1
-					);
-					UpdateCellBoundsInternal(
-						columnSizes,
-						columnTotal,
-						columnTotalWithPercentage,
-						columnOptions,
-						&GuiTableComposition::columns,
-						&GuiTableComposition::rows,
-						&X,
-						&CL,
-						&CS,
-						&Second,
-						&First,
-						1
-					);
-
-					Rect area = GetCellArea();
-					UpdateCellBoundsPercentages(rowSizes, rowTotal, area.Height(), rowOptions);
-					UpdateCellBoundsPercentages(columnSizes, columnTotal, area.Width(), columnOptions);
-					rowExtending = UpdateCellBoundsOffsets(rowOffsets, rowSizes, area.Height());
-					columnExtending = UpdateCellBoundsOffsets(columnOffsets, columnSizes, area.Width());
-
-					for (vint i = 0; i < rows; i++)
-					{
-						for (vint j = 0; j < columns; j++)
-						{
-							vint index = GetSiteIndex(rows, columns, i, j);
-							cellBounds[index] = Rect(Point(columnOffsets[j], rowOffsets[i]), Size(columnSizes[j], rowSizes[i]));
-						}
-					}
-				}
-			}
-
-			void GuiTableComposition::UpdateTableContentMinSize()
-			{
-				Array<vint> rowSizes, columnSizes;
-				rowSizes.Resize(rows);
-				columnSizes.Resize(columns);
-				{
-					vint rowTotal = (rows - 1) * cellPadding;
-					vint columnTotal = (columns - 1) * cellPadding;
-					vint rowTotalWithPercentage = rowTotal;
-					vint columnTotalWithPercentage = columnTotal;
-
-					UpdateCellBoundsInternal(
-						rowSizes,
-						rowTotal,
-						rowTotalWithPercentage,
-						rowOptions,
-						&GuiTableComposition::rows,
-						&GuiTableComposition::columns,
-						&Y,
-						&RL,
-						&RS,
-						&First,
-						&Second,
-						2
-						);
-					UpdateCellBoundsInternal(
-						columnSizes,
-						columnTotal,
-						columnTotalWithPercentage,
-						columnOptions,
-						&GuiTableComposition::columns,
-						&GuiTableComposition::rows,
-						&X,
-						&CL,
-						&CS,
-						&Second,
-						&First,
-						2
-						);
-					tableContentMinSize = Size(columnTotalWithPercentage, rowTotalWithPercentage);
-				}
-				if (previousContentMinSize != tableContentMinSize)
-				{
-					previousContentMinSize = tableContentMinSize;
-					UpdateCellBoundsInternal();
-					InvokeOnCompositionStateChanged();
-				}
-			}
-
 			void GuiTableComposition::OnRenderContextChanged()
 			{
 				if(GetRenderTarget())
 				{
-					UpdateTableContentMinSize();
+					UpdateCellBounds();
 				}
 			}
 
@@ -1143,7 +1036,6 @@ GuiTableComposition
 				}
 				ConfigChanged.Execute(GuiEventArgs(this));
 				UpdateCellBounds();
-				InvokeOnCompositionStateChanged();
 				return true;
 			}
 
@@ -1161,7 +1053,6 @@ GuiTableComposition
 			{
 				rowOptions[_row] = option;
 				UpdateCellBounds();
-				InvokeOnCompositionStateChanged();
 				ConfigChanged.Execute(GuiEventArgs(this));
 			}
 
@@ -1174,7 +1065,6 @@ GuiTableComposition
 			{
 				columnOptions[_column] = option;
 				UpdateCellBounds();
-				InvokeOnCompositionStateChanged();
 				ConfigChanged.Execute(GuiEventArgs(this));
 			}
 
@@ -1188,7 +1078,6 @@ GuiTableComposition
 				if (value < 0) value = 0;
 				cellPadding = value;
 				UpdateCellBounds();
-				InvokeOnCompositionStateChanged();
 			}
 
 			bool GuiTableComposition::GetBorderVisible()
@@ -1202,7 +1091,6 @@ GuiTableComposition
 				{
 					borderVisible = value;
 					UpdateCellBounds();
-					InvokeOnCompositionStateChanged();
 				}
 			}
 
@@ -1221,8 +1109,62 @@ GuiTableComposition
 
 			void GuiTableComposition::UpdateCellBounds()
 			{
-				UpdateCellBoundsInternal();
-				UpdateTableContentMinSize();
+				rowOffsets.Resize(rows);
+				rowSizes.Resize(rows);
+				columnOffsets.Resize(columns);
+				columnSizes.Resize(columns);
+
+				vint rowTotal = (rows - 1) * cellPadding;
+				vint columnTotal = (columns - 1) * cellPadding;
+				vint rowTotalWithPercentage = rowTotal;
+				vint columnTotalWithPercentage = columnTotal;
+
+				UpdateCellBoundsInternal(
+					rowSizes,
+					rowTotal,
+					rowTotalWithPercentage,
+					rowOptions,
+					&GuiTableComposition::rows,
+					&GuiTableComposition::columns,
+					&Y,
+					&RL,
+					&RS,
+					&First,
+					&Second,
+					1
+				);
+				UpdateCellBoundsInternal(
+					columnSizes,
+					columnTotal,
+					columnTotalWithPercentage,
+					columnOptions,
+					&GuiTableComposition::columns,
+					&GuiTableComposition::rows,
+					&X,
+					&CL,
+					&CS,
+					&Second,
+					&First,
+					1
+				);
+
+				Rect area = GetCellArea();
+				UpdateCellBoundsPercentages(rowSizes, rowTotal, area.Height(), rowOptions);
+				UpdateCellBoundsPercentages(columnSizes, columnTotal, area.Width(), columnOptions);
+				rowExtending = UpdateCellBoundsOffsets(rowOffsets, rowSizes, area.Height());
+				columnExtending = UpdateCellBoundsOffsets(columnOffsets, columnSizes, area.Width());
+
+				for (vint i = 0; i < rows; i++)
+				{
+					for (vint j = 0; j < columns; j++)
+					{
+						vint index = GetSiteIndex(rows, columns, i, j);
+						cellBounds[index] = Rect(Point(columnOffsets[j], rowOffsets[i]), Size(columnSizes[j], rowSizes[i]));
+					}
+				}
+
+				tableContentMinSize = Size(columnTotalWithPercentage, rowTotalWithPercentage);
+				InvokeOnCompositionStateChanged();
 			}
 
 			void GuiTableComposition::ForceCalculateSizeImmediately()
@@ -1262,7 +1204,6 @@ GuiTableComposition
 				if (cached != result || cellMinSizeModified)
 				{
 					UpdateCellBounds();
-					InvokeOnCompositionStateChanged();
 				}
 				return result;
 			}
@@ -1408,19 +1349,16 @@ GuiCellComposition
 
 			bool GuiCellComposition::SetSite(vint _row, vint _column, vint _rowSpan, vint _columnSpan)
 			{
-				if(SetSiteInternal(_row, _column, _rowSpan, _columnSpan))
-				{
-					if (tableParent)
-					{
-						tableParent->UpdateCellBounds();
-					}
-					InvokeOnCompositionStateChanged();
-					return true;
-				}
-				else
+				if (!SetSiteInternal(_row, _column, _rowSpan, _columnSpan))
 				{
 					return false;
 				}
+
+				if (tableParent)
+				{
+					tableParent->UpdateCellBounds();
+				}
+				return true;
 			}
 
 			Rect GuiCellComposition::GetBounds()
@@ -6202,6 +6140,12 @@ GuiFlowComposition
 				if (GetMinSizeLimitation() == GuiGraphicsComposition::LimitToElementAndChildren)
 				{
 					auto clientSize = axis->VirtualSizeToRealSize(Size(0, minHeight));
+					FOREACH(GuiFlowItemComposition*, item, flowItems)
+					{
+						auto itemSize = item->GetPreferredBounds().GetSize();
+						if (clientSize.x < itemSize.x) clientSize.x = itemSize.x;
+						if (clientSize.y < itemSize.y) clientSize.y = itemSize.y;
+					}
 					if (minSize.x < clientSize.x) minSize.x = clientSize.x;
 					if (minSize.y < clientSize.y) minSize.y = clientSize.y;
 				}
@@ -21146,9 +21090,9 @@ ListViewColumnItemArranger
 					listView = dynamic_cast<GuiListViewBase*>(value);
 					if (listView)
 					{
-						listView->GetContainerComposition()->AddChild(columnHeaders);
 						listViewItemView = dynamic_cast<IListViewItemView*>(listView->GetItemProvider()->RequestView(IListViewItemView::Identifier));
 						columnItemView = dynamic_cast<IColumnItemView*>(listView->GetItemProvider()->RequestView(IColumnItemView::Identifier));
+						listView->GetContainerComposition()->AddChild(columnHeaders);
 						if (columnItemView)
 						{
 							columnItemView->AttachCallback(columnItemViewCallback.Obj());
@@ -29367,9 +29311,9 @@ GuiRibbonGroupMenu
 					return IGuiMenuService::Horizontal;
 				}
 
-				bool IsSubMenuActivatedByMouseDown()override
+				bool IsActiveState()override
 				{
-					return true;
+					return false;
 				}
 
 			public:
@@ -29556,6 +29500,45 @@ GuiRibbonGroup
 			}
 
 /***********************************************************************
+GuiRibbonIconLabel
+***********************************************************************/
+
+			void GuiRibbonIconLabel::BeforeControlTemplateUninstalled_()
+			{
+			}
+
+			void GuiRibbonIconLabel::AfterControlTemplateInstalled_(bool initialize)
+			{
+				auto ct = GetControlTemplateObject(true);
+				ct->SetImage(image);
+			}
+
+			GuiRibbonIconLabel::GuiRibbonIconLabel(theme::ThemeName themeName)
+				:GuiControl(themeName)
+			{
+				ImageChanged.SetAssociatedComposition(boundsComposition);
+			}
+
+			GuiRibbonIconLabel::~GuiRibbonIconLabel()
+			{
+			}
+
+			Ptr<GuiImageData> GuiRibbonIconLabel::GetImage()
+			{
+				return image;
+			}
+
+			void GuiRibbonIconLabel::SetImage(Ptr<GuiImageData> value)
+			{
+				if (image != value)
+				{
+					image = value;
+					GetControlTemplateObject(true)->SetImage(image);
+					ImageChanged.Execute(GetNotifyEventArguments());
+				}
+			}
+
+/***********************************************************************
 GuiRibbonButtonsItemCollection
 ***********************************************************************/
 
@@ -29648,6 +29631,10 @@ GuiRibbonButtons
 					case ThemeName::ToolstripSplitButton:
 						type = 2;
 						break;
+					case ThemeName::RibbonSmallIconLabel:
+					case ThemeName::RibbonIconLabel:
+						type = 3;
+						break;
 					}
 
 					if (type != -1)
@@ -29662,6 +29649,7 @@ GuiRibbonButtons
 							case 0: themeName = ThemeName::RibbonLargeButton; break;
 							case 1: themeName = ThemeName::RibbonLargeDropdownButton; break;
 							case 2: themeName = ThemeName::RibbonLargeSplitButton; break;
+							case 3: themeName = ThemeName::RibbonSmallIconLabel; break;
 							}
 						}
 						else if (fixed == views[(vint)RibbonButtonSize::Small])
@@ -29671,6 +29659,7 @@ GuiRibbonButtons
 							case 0: themeName = ThemeName::RibbonSmallButton; break;
 							case 1: themeName = ThemeName::RibbonSmallDropdownButton; break;
 							case 2: themeName = ThemeName::RibbonSmallSplitButton; break;
+							case 3: themeName = ThemeName::RibbonSmallIconLabel; break;
 							}
 						}
 						else if (fixed == views[(vint)RibbonButtonSize::Icon])
@@ -29680,6 +29669,7 @@ GuiRibbonButtons
 							case 0: themeName = ThemeName::ToolstripButton; break;
 							case 1: themeName = ThemeName::ToolstripDropdownButton; break;
 							case 2: themeName = ThemeName::ToolstripSplitButton; break;
+							case 3: themeName = ThemeName::RibbonIconLabel; break;
 							}
 						}
 
@@ -29692,6 +29682,7 @@ GuiRibbonButtons
 								case 0: controlTemplate = ct->GetLargeButtonTemplate(); break;
 								case 1: controlTemplate = ct->GetLargeDropdownButtonTemplate(); break;
 								case 2: controlTemplate = ct->GetLargeSplitButtonTemplate(); break;
+								case 3: controlTemplate = ct->GetSmallIconLabelTemplate(); break;
 								}
 							}
 							else if (fixed == views[(vint)RibbonButtonSize::Small])
@@ -29701,6 +29692,7 @@ GuiRibbonButtons
 								case 0: controlTemplate = ct->GetSmallButtonTemplate(); break;
 								case 1: controlTemplate = ct->GetSmallDropdownButtonTemplate(); break;
 								case 2: controlTemplate = ct->GetSmallSplitButtonTemplate(); break;
+								case 3: controlTemplate = ct->GetSmallIconLabelTemplate(); break;
 								}
 							}
 							else if (fixed == views[(vint)RibbonButtonSize::Icon])
@@ -29710,6 +29702,7 @@ GuiRibbonButtons
 								case 0: controlTemplate = ct->GetIconButtonTemplate(); break;
 								case 1: controlTemplate = ct->GetIconDropdownButtonTemplate(); break;
 								case 2: controlTemplate = ct->GetIconSplitButtonTemplate(); break;
+								case 3: controlTemplate = ct->GetIconLabelTemplate(); break;
 								}
 							}
 						}
@@ -29758,7 +29751,12 @@ GuiRibbonButtons
 					}
 				}
 
-				containerComposition->AddChild(responsiveView);
+				auto sharedSizeRootComposition = new GuiSharedSizeRootComposition();
+				sharedSizeRootComposition->SetAlignmentToParent(Margin(0, 0, 0, 0));
+				sharedSizeRootComposition->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
+				sharedSizeRootComposition->AddChild(responsiveView);
+
+				containerComposition->AddChild(sharedSizeRootComposition);
 			}
 
 			GuiRibbonButtons::~GuiRibbonButtons()

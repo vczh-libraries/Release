@@ -7876,7 +7876,6 @@ Table Compositions
 				collections::Array<vint>					rowSizes;
 				collections::Array<vint>					columnSizes;
 
-				Size										previousContentMinSize;
 				Size										tableContentMinSize;
 
 				vint								GetSiteIndex(vint _rows, vint _columns, vint _row, vint _column);
@@ -7908,8 +7907,6 @@ Table Compositions
 														vint max
 														);
 				
-				void								UpdateCellBoundsInternal();
-				void								UpdateTableContentMinSize();
 				void								OnRenderContextChanged()override;
 			public:
 				GuiTableComposition();
@@ -8696,6 +8693,7 @@ namespace vl
 			F(GuiDateComboBoxTemplate,			GuiComboBoxTemplate)		\
 			F(GuiRibbonTabTemplate,				GuiTabTemplate)				\
 			F(GuiRibbonGroupTemplate,			GuiControlTemplate)			\
+			F(GuiRibbonIconLabelTemplate,		GuiControlTemplate)			\
 			F(GuiRibbonButtonsTemplate,			GuiControlTemplate)			\
 			F(GuiRibbonToolstripsTemplate,		GuiControlTemplate)			\
 			F(GuiRibbonToolstripMenuTemplate,	GuiMenuTemplate)			\
@@ -8889,6 +8887,9 @@ Control Template
 				F(GuiRibbonGroupTemplate, TemplateProperty<GuiToolstripButtonTemplate>, LargeDropdownButtonTemplate, {})\
 				F(GuiRibbonGroupTemplate, TemplateProperty<GuiMenuTemplate>, SubMenuTemplate, {})\
 
+#define GuiRibbonIconLabelTemplate_PROPERTIES(F)\
+				F(GuiRibbonIconLabelTemplate, Ptr<GuiImageData>, Image, {})\
+
 #define GuiRibbonButtonsTemplate_PROPERTIES(F)\
 				F(GuiRibbonButtonsTemplate, TemplateProperty<GuiToolstripButtonTemplate>, LargeButtonTemplate, {})\
 				F(GuiRibbonButtonsTemplate, TemplateProperty<GuiToolstripButtonTemplate>, LargeDropdownButtonTemplate, {})\
@@ -8896,9 +8897,11 @@ Control Template
 				F(GuiRibbonButtonsTemplate, TemplateProperty<GuiToolstripButtonTemplate>, SmallButtonTemplate, {})\
 				F(GuiRibbonButtonsTemplate, TemplateProperty<GuiToolstripButtonTemplate>, SmallDropdownButtonTemplate, {})\
 				F(GuiRibbonButtonsTemplate, TemplateProperty<GuiToolstripButtonTemplate>, SmallSplitButtonTemplate, {})\
+				F(GuiRibbonButtonsTemplate, TemplateProperty<GuiToolstripButtonTemplate>, SmallIconLabelTemplate, {})\
 				F(GuiRibbonButtonsTemplate, TemplateProperty<GuiToolstripButtonTemplate>, IconButtonTemplate, {})\
 				F(GuiRibbonButtonsTemplate, TemplateProperty<GuiToolstripButtonTemplate>, IconDropdownButtonTemplate, {})\
 				F(GuiRibbonButtonsTemplate, TemplateProperty<GuiToolstripButtonTemplate>, IconSplitButtonTemplate, {})\
+				F(GuiRibbonButtonsTemplate, TemplateProperty<GuiToolstripButtonTemplate>, IconLabelTemplate, {})\
 
 #define GuiRibbonToolstripsTemplate_PROPERTIES(F)\
 				F(GuiRibbonToolstripsTemplate, TemplateProperty<GuiControlTemplate>, ToolbarTemplate, {})\
@@ -9178,6 +9181,8 @@ namespace vl
 			F(ControlTemplate,				ToolstripSplitter)			\
 			F(RibbonTabTemplate,			RibbonTab)					\
 			F(RibbonGroupTemplate,			RibbonGroup)				\
+			F(RibbonIconLabelTemplate,		RibbonIconLabel)			\
+			F(RibbonIconLabelTemplate,		RibbonSmallIconLabel)		\
 			F(RibbonButtonsTemplate,		RibbonButtons)				\
 			F(RibbonToolstripsTemplate,		RibbonToolstrips)			\
 			F(RibbonGalleryTemplate,		RibbonGallery)				\
@@ -18074,6 +18079,30 @@ Ribbon Containers
 /***********************************************************************
 Ribbon Buttons
 ***********************************************************************/
+
+			/// <summary>Auto resizable ribbon icon label.</summary>
+			class GuiRibbonIconLabel : public GuiControl, public Description<GuiRibbonIconLabel>
+			{
+				GUI_SPECIFY_CONTROL_TEMPLATE_TYPE(RibbonIconLabelTemplate, GuiControl)
+			protected:
+				Ptr<GuiImageData>						image;
+
+			public:
+				/// <summary>Create a control with a specified default theme.</summary>
+				/// <param name="themeName">The theme name for retriving a default control template.</param>
+				GuiRibbonIconLabel(theme::ThemeName themeName);
+				~GuiRibbonIconLabel();
+
+				/// <summary>Image changed event.</summary>
+				compositions::GuiNotifyEvent			ImageChanged;
+
+				/// <summary>Get the image for the menu button.</summary>
+				/// <returns>The image for the menu button.</returns>
+				Ptr<GuiImageData>						GetImage();
+				/// <summary>Set the image for the menu button.</summary>
+				/// <param name="value">The image for the menu button.</param>
+				void									SetImage(Ptr<GuiImageData> value);
+			};
 
 			/// <summary>Represents the size of a ribbon button in a <see cref="GuiRibbonButtons"/> control.</summary>
 			enum class RibbonButtonSize
