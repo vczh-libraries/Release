@@ -573,6 +573,7 @@ Closures
 	void __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		auto window = new ::demo::DocumentEditorToolstripWindow();
+		::vl::__vwsn::This(window)->ForceCalculateSizeImmediately();
 		::vl::__vwsn::This(window)->MoveToScreenCenter();
 		::vl::__vwsn::This(window)->ShowModalAndDelete(static_cast<::vl::presentation::controls::GuiWindow*>(__vwsnthis_0->self), LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__(__vwsnthis_0)));
 	}
@@ -944,6 +945,7 @@ Closures
 	void __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		auto window = new ::demo::DocumentEditorRibbonWindow();
+		::vl::__vwsn::This(window)->ForceCalculateSizeImmediately();
 		::vl::__vwsn::This(window)->MoveToScreenCenter();
 		::vl::__vwsn::This(window)->ShowModalAndDelete(static_cast<::vl::presentation::controls::GuiWindow*>(__vwsnthis_0->self), LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__(__vwsnthis_0)));
 	}
@@ -1103,13 +1105,13 @@ Closures
 
 	void __vwsnf69_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_12)->GetLargeImage();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::presentation::GuiImageData>>(__vwsn_value_);
-		if ((__vwsn_old_.Obj() == __vwsn_new_.Obj()))
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_9.Obj())->GetFont();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::FontProperties>(__vwsn_value_);
+		if ((__vwsn_old_ == __vwsn_new_))
 		{
 			return;
 		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_12)->SetLargeImage(__vwsn_new_);
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_9.Obj())->SetFont(__vwsn_new_);
 	}
 
 	//-------------------------------------------------------------------
@@ -1132,13 +1134,13 @@ Closures
 
 	void __vwsnf70_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_19)->GetSelected();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
-		if ((__vwsn_old_ == __vwsn_new_))
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_16)->GetLargeImage();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::presentation::GuiImageData>>(__vwsn_value_);
+		if ((__vwsn_old_.Obj() == __vwsn_new_.Obj()))
 		{
 			return;
 		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_19)->SetSelected(__vwsn_new_);
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_16)->SetLargeImage(__vwsn_new_);
 	}
 
 	//-------------------------------------------------------------------
@@ -1150,13 +1152,13 @@ Closures
 
 	void __vwsnf71_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_20)->GetSelected();
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_23)->GetSelected();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
 		if ((__vwsn_old_ == __vwsn_new_))
 		{
 			return;
 		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_20)->SetSelected(__vwsn_new_);
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_23)->SetSelected(__vwsn_new_);
 	}
 
 	//-------------------------------------------------------------------
@@ -1168,13 +1170,13 @@ Closures
 
 	void __vwsnf72_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_21)->GetSelected();
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_24)->GetSelected();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
 		if ((__vwsn_old_ == __vwsn_new_))
 		{
 			return;
 		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_21)->SetSelected(__vwsn_new_);
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_24)->SetSelected(__vwsn_new_);
 	}
 
 	//-------------------------------------------------------------------
@@ -1184,9 +1186,15 @@ Closures
 	{
 	}
 
-	void __vwsnf73_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	void __vwsnf73_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->dialogMessage)->ShowDialog();
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_25)->GetSelected();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
+		if ((__vwsn_old_ == __vwsn_new_))
+		{
+			return;
+		}
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_25)->SetSelected(__vwsn_new_);
 	}
 
 	//-------------------------------------------------------------------
@@ -1196,7 +1204,19 @@ Closures
 	{
 	}
 
-	void __vwsnf74_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf74_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	{
+		::vl::__vwsn::This(__vwsnthis_0->dialogMessage)->ShowDialog();
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
+	{
+	}
+
+	void __vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->styleGallery)->GetItemSource();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueEnumerable>>(__vwsn_value_);
@@ -1209,12 +1229,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf76_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf76_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiItemEventArgs* arguments) const
+	void __vwsnf76_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiItemEventArgs* arguments) const
 	{
 		if ((::vl::__vwsn::This(arguments)->itemIndex != (- static_cast<::vl::vint>(1))))
 		{
@@ -1226,24 +1246,24 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf76_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__::__vwsnf76_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__(::demo::DocumentEditorRibbon* __vwsnctorthis_0)
+	__vwsnf77_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__::__vwsnf77_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__(::demo::DocumentEditorRibbon* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf76_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	void __vwsnf77_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		__vwsnthis_0->SelectStyleName(::vl::__vwsn::This(__vwsnthis_0->document)->SummarizeStyleName(::vl::__vwsn::This(__vwsnthis_0->document)->GetCaretBegin(), ::vl::__vwsn::This(__vwsnthis_0->document)->GetCaretEnd()));
 	}
 
 	//-------------------------------------------------------------------
 
-	__vwsnf77_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::__vwsnf77_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
+	__vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::__vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf77_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->GetText();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::WString>(__vwsn_value_);
@@ -1256,12 +1276,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::__vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
+	__vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::__vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->GetColor();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::Color>(__vwsn_value_);
@@ -1270,24 +1290,6 @@ Closures
 			return;
 		}
 		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->SetColor(__vwsn_new_);
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::__vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
-	{
-	}
-
-	void __vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
-	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_7.Obj())->GetText();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::WString>(__vwsn_value_);
-		if ((__vwsn_old_ == __vwsn_new_))
-		{
-			return;
-		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_7.Obj())->SetText(__vwsn_new_);
 	}
 
 	//-------------------------------------------------------------------
@@ -1305,12 +1307,30 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf80_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::__vwsnf80_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
+	__vwsnf80_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::__vwsnf80_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf80_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf80_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	{
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_7.Obj())->GetText();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::WString>(__vwsn_value_);
+		if ((__vwsn_old_ == __vwsn_new_))
+		{
+			return;
+		}
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_7.Obj())->SetText(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::__vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
+	{
+	}
+
+	void __vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_36)->GetImage();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::presentation::GuiImageData>>(__vwsn_value_);
@@ -1323,12 +1343,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::__vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
+	__vwsnf82_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::__vwsnf82_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf82_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->buttonAlignment)->GetImage();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::presentation::GuiImageData>>(__vwsn_value_);
@@ -3062,32 +3082,18 @@ Closures
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 		this->__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorRibbon*>(nullptr);
-		this->__vwsn_bind_cache_1 = static_cast<::vl::presentation::controls::GuiToolstripCommand*>(nullptr);
 		this->__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>();
-		this->__vwsn_bind_handler_1_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>();
 		this->__vwsn_bind_opened_ = false;
 		this->__vwsn_bind_closed_ = false;
 	}
 
 	void __vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetLargeImage(); } catch(...){ return ::vl::Ptr<::vl::presentation::GuiImageData>(); } }();
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
-	void __vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0()
-	{
-		if (static_cast<bool>(__vwsn_bind_handler_1_0))
-		{
-			::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_1)->DescriptionChanged, __vwsn_bind_handler_1_0);
-			(__vwsn_bind_handler_1_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
-		}
-		(__vwsn_bind_cache_1 = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetEditModeCommand(); } catch(...){ return static_cast<::vl::presentation::controls::GuiToolstripCommand*>(nullptr); } }());
-		(__vwsn_bind_handler_1_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_1)->DescriptionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
-		this->__vwsn_bind_activator_();
-	}
-
-	void __vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
+	void __vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
 	{
 		this->__vwsn_bind_activator_();
 	}
@@ -3098,9 +3104,7 @@ Closures
 		{
 			(__vwsn_bind_opened_ = true);
 			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::DocumentEditorRibbon*>(nullptr); } }());
-			(__vwsn_bind_cache_1 = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetEditModeCommand(); } catch(...){ return static_cast<::vl::presentation::controls::GuiToolstripCommand*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->EditModeCommandChanged, ::vl::Func<void()>(this, &__vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
-			(__vwsn_bind_handler_1_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_1)->DescriptionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->FontChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
@@ -3117,6 +3121,83 @@ Closures
 	}
 
 	bool __vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::Close()
+	{
+		if ((! __vwsn_bind_closed_))
+		{
+			(__vwsn_bind_closed_ = true);
+			if (static_cast<bool>(__vwsn_bind_handler_0_0))
+			{
+				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->FontChanged, __vwsn_bind_handler_0_0);
+				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
+			}
+			(__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorRibbon*>(nullptr));
+			(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
+			return true;
+		}
+		return false;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
+	{
+		this->__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorRibbon*>(nullptr);
+		this->__vwsn_bind_cache_1 = static_cast<::vl::presentation::controls::GuiToolstripCommand*>(nullptr);
+		this->__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>();
+		this->__vwsn_bind_handler_1_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>();
+		this->__vwsn_bind_opened_ = false;
+		this->__vwsn_bind_closed_ = false;
+	}
+
+	void __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
+	{
+		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetLargeImage(); } catch(...){ return ::vl::Ptr<::vl::presentation::GuiImageData>(); } }();
+		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+	}
+
+	void __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0()
+	{
+		if (static_cast<bool>(__vwsn_bind_handler_1_0))
+		{
+			::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_1)->DescriptionChanged, __vwsn_bind_handler_1_0);
+			(__vwsn_bind_handler_1_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
+		}
+		(__vwsn_bind_cache_1 = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetEditModeCommand(); } catch(...){ return static_cast<::vl::presentation::controls::GuiToolstripCommand*>(nullptr); } }());
+		(__vwsn_bind_handler_1_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_1)->DescriptionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+		this->__vwsn_bind_activator_();
+	}
+
+	void __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
+	{
+		this->__vwsn_bind_activator_();
+	}
+
+	bool __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::Open()
+	{
+		if ((! __vwsn_bind_opened_))
+		{
+			(__vwsn_bind_opened_ = true);
+			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::DocumentEditorRibbon*>(nullptr); } }());
+			(__vwsn_bind_cache_1 = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetEditModeCommand(); } catch(...){ return static_cast<::vl::presentation::controls::GuiToolstripCommand*>(nullptr); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->EditModeCommandChanged, ::vl::Func<void()>(this, &__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_1_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_1)->DescriptionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			return true;
+		}
+		return false;
+	}
+
+	bool __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::Update()
+	{
+		if ((__vwsn_bind_opened_ && (! __vwsn_bind_closed_)))
+		{
+			this->__vwsn_bind_activator_();
+			return true;
+		}
+		return false;
+	}
+
+	bool __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::Close()
 	{
 		if ((! __vwsn_bind_closed_))
 		{
@@ -3142,67 +3223,6 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
-	{
-		this->__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorRibbon*>(nullptr);
-		this->__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>();
-		this->__vwsn_bind_opened_ = false;
-		this->__vwsn_bind_closed_ = false;
-	}
-
-	void __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
-	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetAlignLeftSelected();
-		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
-	}
-
-	void __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0()
-	{
-		this->__vwsn_bind_activator_();
-	}
-
-	bool __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::Open()
-	{
-		if ((! __vwsn_bind_opened_))
-		{
-			(__vwsn_bind_opened_ = true);
-			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::DocumentEditorRibbon*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignLeftSelectedChanged, ::vl::Func<void()>(this, &__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
-			return true;
-		}
-		return false;
-	}
-
-	bool __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::Update()
-	{
-		if ((__vwsn_bind_opened_ && (! __vwsn_bind_closed_)))
-		{
-			this->__vwsn_bind_activator_();
-			return true;
-		}
-		return false;
-	}
-
-	bool __vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::Close()
-	{
-		if ((! __vwsn_bind_closed_))
-		{
-			(__vwsn_bind_closed_ = true);
-			if (static_cast<bool>(__vwsn_bind_handler_0_0))
-			{
-				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignLeftSelectedChanged, __vwsn_bind_handler_0_0);
-				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
-			}
-			(__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorRibbon*>(nullptr));
-			(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
-			return true;
-		}
-		return false;
-	}
-
-	//-------------------------------------------------------------------
-
 	__vwsnc37_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsnc37_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
@@ -3214,7 +3234,7 @@ Closures
 
 	void __vwsnc37_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetAlignCenterSelected();
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetAlignLeftSelected();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -3229,7 +3249,7 @@ Closures
 		{
 			(__vwsn_bind_opened_ = true);
 			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::DocumentEditorRibbon*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignCenterSelectedChanged, ::vl::Func<void()>(this, &__vwsnc37_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignLeftSelectedChanged, ::vl::Func<void()>(this, &__vwsnc37_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
@@ -3252,7 +3272,7 @@ Closures
 			(__vwsn_bind_closed_ = true);
 			if (static_cast<bool>(__vwsn_bind_handler_0_0))
 			{
-				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignCenterSelectedChanged, __vwsn_bind_handler_0_0);
+				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignLeftSelectedChanged, __vwsn_bind_handler_0_0);
 				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
 			}
 			(__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorRibbon*>(nullptr));
@@ -3275,7 +3295,7 @@ Closures
 
 	void __vwsnc38_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetAlignRightSelected();
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetAlignCenterSelected();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -3290,7 +3310,7 @@ Closures
 		{
 			(__vwsn_bind_opened_ = true);
 			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::DocumentEditorRibbon*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignRightSelectedChanged, ::vl::Func<void()>(this, &__vwsnc38_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignCenterSelectedChanged, ::vl::Func<void()>(this, &__vwsnc38_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
@@ -3313,7 +3333,7 @@ Closures
 			(__vwsn_bind_closed_ = true);
 			if (static_cast<bool>(__vwsn_bind_handler_0_0))
 			{
-				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignRightSelectedChanged, __vwsn_bind_handler_0_0);
+				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignCenterSelectedChanged, __vwsn_bind_handler_0_0);
 				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
 			}
 			(__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorRibbon*>(nullptr));
@@ -3336,7 +3356,7 @@ Closures
 
 	void __vwsnc39_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetStyleGroups());
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetAlignRightSelected();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -3351,7 +3371,7 @@ Closures
 		{
 			(__vwsn_bind_opened_ = true);
 			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::DocumentEditorRibbon*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->StyleGroupsChanged, ::vl::Func<void()>(this, &__vwsnc39_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignRightSelectedChanged, ::vl::Func<void()>(this, &__vwsnc39_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
@@ -3374,7 +3394,7 @@ Closures
 			(__vwsn_bind_closed_ = true);
 			if (static_cast<bool>(__vwsn_bind_handler_0_0))
 			{
-				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->StyleGroupsChanged, __vwsn_bind_handler_0_0);
+				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->AlignRightSelectedChanged, __vwsn_bind_handler_0_0);
 				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
 			}
 			(__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorRibbon*>(nullptr));
@@ -3447,30 +3467,39 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnc40_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsnc40_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
+	__vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
+		this->__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorRibbon*>(nullptr);
+		this->__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>();
 		this->__vwsn_bind_opened_ = false;
 		this->__vwsn_bind_closed_ = false;
 	}
 
-	void __vwsnc40_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
+	void __vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->Name;
+		auto __vwsn_bind_activator_result_ = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetStyleGroups());
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
-	bool __vwsnc40_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::Open()
+	void __vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0()
+	{
+		this->__vwsn_bind_activator_();
+	}
+
+	bool __vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::Open()
 	{
 		if ((! __vwsn_bind_opened_))
 		{
 			(__vwsn_bind_opened_ = true);
+			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::DocumentEditorRibbon*>(nullptr); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->StyleGroupsChanged, ::vl::Func<void()>(this, &__vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
 	}
 
-	bool __vwsnc40_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::Update()
+	bool __vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::Update()
 	{
 		if ((__vwsn_bind_opened_ && (! __vwsn_bind_closed_)))
 		{
@@ -3480,11 +3509,18 @@ Closures
 		return false;
 	}
 
-	bool __vwsnc40_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::Close()
+	bool __vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription::Close()
 	{
 		if ((! __vwsn_bind_closed_))
 		{
 			(__vwsn_bind_closed_ = true);
+			if (static_cast<bool>(__vwsn_bind_handler_0_0))
+			{
+				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->StyleGroupsChanged, __vwsn_bind_handler_0_0);
+				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
+			}
+			(__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorRibbon*>(nullptr));
+			(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
 			return true;
 		}
 		return false;
@@ -3495,21 +3531,14 @@ Closures
 	__vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
-		this->__vwsn_bind_cache_0 = static_cast<::demo::StyleItemTemplate*>(nullptr);
-		this->__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>();
 		this->__vwsn_bind_opened_ = false;
 		this->__vwsn_bind_closed_ = false;
 	}
 
 	void __vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() ? ::vl::WString(L"#FFFFFF", false) : ::vl::WString(L"#808080", false)));
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->Name;
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
-	}
-
-	void __vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
-	{
-		this->__vwsn_bind_activator_();
 	}
 
 	bool __vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::Open()
@@ -3517,8 +3546,6 @@ Closures
 		if ((! __vwsn_bind_opened_))
 		{
 			(__vwsn_bind_opened_ = true);
-			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::StyleItemTemplate*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->SelectedChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
@@ -3539,13 +3566,6 @@ Closures
 		if ((! __vwsn_bind_closed_))
 		{
 			(__vwsn_bind_closed_ = true);
-			if (static_cast<bool>(__vwsn_bind_handler_0_0))
-			{
-				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->SelectedChanged, __vwsn_bind_handler_0_0);
-				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
-			}
-			(__vwsn_bind_cache_0 = static_cast<::demo::StyleItemTemplate*>(nullptr));
-			(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
 			return true;
 		}
 		return false;
@@ -3556,14 +3576,21 @@ Closures
 	__vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
+		this->__vwsn_bind_cache_0 = static_cast<::demo::StyleItemTemplate*>(nullptr);
+		this->__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>();
 		this->__vwsn_bind_opened_ = false;
 		this->__vwsn_bind_closed_ = false;
 	}
 
 	void __vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->Name;
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() ? ::vl::WString(L"#FFFFFF", false) : ::vl::WString(L"#808080", false)));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+	}
+
+	void __vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
+	{
+		this->__vwsn_bind_activator_();
 	}
 
 	bool __vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::Open()
@@ -3571,6 +3598,8 @@ Closures
 		if ((! __vwsn_bind_opened_))
 		{
 			(__vwsn_bind_opened_ = true);
+			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::StyleItemTemplate*>(nullptr); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->SelectedChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
@@ -3591,6 +3620,13 @@ Closures
 		if ((! __vwsn_bind_closed_))
 		{
 			(__vwsn_bind_closed_ = true);
+			if (static_cast<bool>(__vwsn_bind_handler_0_0))
+			{
+				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->SelectedChanged, __vwsn_bind_handler_0_0);
+				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
+			}
+			(__vwsn_bind_cache_0 = static_cast<::demo::StyleItemTemplate*>(nullptr));
+			(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
 			return true;
 		}
 		return false;
@@ -3598,7 +3634,52 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
+	__vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
+	{
+		this->__vwsn_bind_opened_ = false;
+		this->__vwsn_bind_closed_ = false;
+	}
+
+	void __vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
+	{
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsnthis_0->ViewModel.Obj())->Name;
+		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
+	}
+
+	bool __vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::Open()
+	{
+		if ((! __vwsn_bind_opened_))
+		{
+			(__vwsn_bind_opened_ = true);
+			return true;
+		}
+		return false;
+	}
+
+	bool __vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::Update()
+	{
+		if ((__vwsn_bind_opened_ && (! __vwsn_bind_closed_)))
+		{
+			this->__vwsn_bind_activator_();
+			return true;
+		}
+		return false;
+	}
+
+	bool __vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::Close()
+	{
+		if ((! __vwsn_bind_closed_))
+		{
+			(__vwsn_bind_closed_ = true);
+			return true;
+		}
+		return false;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 		this->__vwsn_bind_cache_0 = static_cast<::demo::DocumentEditorToolstrip*>(nullptr);
@@ -3609,13 +3690,13 @@ Closures
 		this->__vwsn_bind_closed_ = false;
 	}
 
-	void __vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
+	void __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetImage(); } catch(...){ return ::vl::Ptr<::vl::presentation::GuiImageData>(); } }();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
-	void __vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0()
+	void __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0()
 	{
 		if (static_cast<bool>(__vwsn_bind_handler_1_0))
 		{
@@ -3623,30 +3704,30 @@ Closures
 			(__vwsn_bind_handler_1_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
 		}
 		(__vwsn_bind_cache_1 = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetEditModeCommand(); } catch(...){ return static_cast<::vl::presentation::controls::GuiToolstripCommand*>(nullptr); } }());
-		(__vwsn_bind_handler_1_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_1)->DescriptionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+		(__vwsn_bind_handler_1_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_1)->DescriptionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 		this->__vwsn_bind_activator_();
 	}
 
-	void __vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
+	void __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
 	{
 		this->__vwsn_bind_activator_();
 	}
 
-	bool __vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Open()
+	bool __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Open()
 	{
 		if ((! __vwsn_bind_opened_))
 		{
 			(__vwsn_bind_opened_ = true);
 			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::DocumentEditorToolstrip*>(nullptr); } }());
 			(__vwsn_bind_cache_1 = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetEditModeCommand(); } catch(...){ return static_cast<::vl::presentation::controls::GuiToolstripCommand*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->EditModeCommandChanged, ::vl::Func<void()>(this, &__vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
-			(__vwsn_bind_handler_1_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_1)->DescriptionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->EditModeCommandChanged, ::vl::Func<void()>(this, &__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_1_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_1)->DescriptionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_1_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
 	}
 
-	bool __vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Update()
+	bool __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Update()
 	{
 		if ((__vwsn_bind_opened_ && (! __vwsn_bind_closed_)))
 		{
@@ -3656,7 +3737,7 @@ Closures
 		return false;
 	}
 
-	bool __vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Close()
+	bool __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Close()
 	{
 		if ((! __vwsn_bind_closed_))
 		{
@@ -3682,7 +3763,7 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
+	__vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 		this->__vwsn_bind_cache_0 = static_cast<::vl::presentation::controls::GuiDocumentViewer*>(nullptr);
@@ -3691,30 +3772,30 @@ Closures
 		this->__vwsn_bind_closed_ = false;
 	}
 
-	void __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
+	void __vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
 		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->SelectAlignmentCommand())->GetImage();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
-	void __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
+	void __vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1)
 	{
 		this->__vwsn_bind_activator_();
 	}
 
-	bool __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Open()
+	bool __vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Open()
 	{
 		if ((! __vwsn_bind_opened_))
 		{
 			(__vwsn_bind_opened_ = true);
 			(__vwsn_bind_cache_0 = [&](){ try{ return ::vl::__vwsn::This(__vwsnthis_0->self)->document; } catch(...){ return static_cast<::vl::presentation::controls::GuiDocumentViewer*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->SelectionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->SelectionChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
 	}
 
-	bool __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Update()
+	bool __vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Update()
 	{
 		if ((__vwsn_bind_opened_ && (! __vwsn_bind_closed_)))
 		{
@@ -3724,7 +3805,7 @@ Closures
 		return false;
 	}
 
-	bool __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Close()
+	bool __vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription::Close()
 	{
 		if ((! __vwsn_bind_closed_))
 		{
@@ -4801,124 +4882,96 @@ Class (::demo::DocumentEditorRibbonConstructor)
 			(this->__vwsn_precompile_1 = new ::vl::presentation::controls::GuiRibbonTab(::vl::presentation::theme::ThemeName::RibbonTab));
 		}
 		{
-			(this->__vwsn_precompile_9 = new ::vl::presentation::controls::GuiRibbonTabPage(::vl::presentation::theme::ThemeName::CustomControl));
+			(this->__vwsn_precompile_13 = new ::vl::presentation::controls::GuiRibbonTabPage(::vl::presentation::theme::ThemeName::CustomControl));
 		}
 		{
-			(this->__vwsn_precompile_11 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
+			(this->__vwsn_precompile_15 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
 		}
 		{
-			(this->__vwsn_precompile_12 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::RibbonLargeDropdownButton));
+			(this->__vwsn_precompile_16 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::RibbonLargeDropdownButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetText(::vl::WString(L"Edit Mode", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetText(::vl::WString(L"Edit Mode", false));
 		}
-		(this->__vwsn_precompile_13 = ::vl::__vwsn::This(this->__vwsn_precompile_12)->EnsureToolstripSubMenu());
+		(this->__vwsn_precompile_17 = ::vl::__vwsn::This(this->__vwsn_precompile_16)->EnsureToolstripSubMenu());
 		{
-			(this->__vwsn_precompile_14 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetAlt(::vl::WString(L"V", false));
+			(this->__vwsn_precompile_18 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_13)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_14));
+			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetAlt(::vl::WString(L"V", false));
 		}
 		{
-			(this->__vwsn_precompile_15 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_17)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_18));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetAlt(::vl::WString(L"S", false));
+			(this->__vwsn_precompile_19 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_13)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_15));
+			::vl::__vwsn::This(this->__vwsn_precompile_19)->SetAlt(::vl::WString(L"S", false));
 		}
 		{
-			(this->__vwsn_precompile_16 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_17)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_19));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetAlt(::vl::WString(L"E", false));
+			(this->__vwsn_precompile_20 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_13)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_16));
+			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetAlt(::vl::WString(L"E", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_11)->GetItems());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_12));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_17)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_20));
 		}
 		{
-			(this->__vwsn_precompile_17 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonSplitter));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_15)->GetItems());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_16));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_11)->GetItems());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_17));
+			(this->__vwsn_precompile_21 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonSplitter));
 		}
 		{
-			(this->__vwsn_precompile_18 = new ::vl::presentation::controls::GuiRibbonButtons(::vl::presentation::theme::ThemeName::RibbonButtons, ::vl::presentation::controls::RibbonButtonSize::Large, ::vl::presentation::controls::RibbonButtonSize::Icon));
-		}
-		{
-			(this->__vwsn_precompile_19 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_18)->GetButtons());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_19));
-		}
-		{
-			(this->__vwsn_precompile_20 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_18)->GetButtons());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_20));
-		}
-		{
-			(this->__vwsn_precompile_21 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_18)->GetButtons());
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_15)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_21));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_11)->GetItems());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_18));
+			(this->__vwsn_precompile_22 = new ::vl::presentation::controls::GuiRibbonButtons(::vl::presentation::theme::ThemeName::RibbonButtons, ::vl::presentation::controls::RibbonButtonSize::Large, ::vl::presentation::controls::RibbonButtonSize::Icon));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetExpandable(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			(this->__vwsn_precompile_23 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetText(::vl::WString(L"Alignment", false));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9)->GetGroups());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_11));
-		}
-		{
-			(this->__vwsn_precompile_22 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
-		}
-		{
-			(this->__vwsn_precompile_23 = new ::vl::presentation::controls::GuiRibbonButtons(::vl::presentation::theme::ThemeName::RibbonButtons, ::vl::presentation::controls::RibbonButtonSize::Large, ::vl::presentation::controls::RibbonButtonSize::Icon));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_22)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_23));
 		}
 		{
 			(this->__vwsn_precompile_24 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23)->GetButtons());
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_22)->GetButtons());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_24));
 		}
 		{
 			(this->__vwsn_precompile_25 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23)->GetButtons());
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_22)->GetButtons());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_25));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_22)->GetItems());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_23));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_15)->GetItems());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_22));
 		}
 		{
-			(this->__vwsn_precompile_26 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonSplitter));
+			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetExpandable(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_22)->GetItems());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_26));
+			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetText(::vl::WString(L"Alignment", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_13)->GetGroups());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_15));
+		}
+		{
+			(this->__vwsn_precompile_26 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
 		}
 		{
 			(this->__vwsn_precompile_27 = new ::vl::presentation::controls::GuiRibbonButtons(::vl::presentation::theme::ThemeName::RibbonButtons, ::vl::presentation::controls::RibbonButtonSize::Large, ::vl::presentation::controls::RibbonButtonSize::Icon));
@@ -4938,105 +4991,108 @@ Class (::demo::DocumentEditorRibbonConstructor)
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_29));
 		}
 		{
-			(this->__vwsn_precompile_30 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_27)->GetButtons());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_30));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_22)->GetItems());
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_26)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_27));
 		}
 		{
-			(this->__vwsn_precompile_31 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonSplitter));
+			(this->__vwsn_precompile_30 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonSplitter));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_22)->GetItems());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_31));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_26)->GetItems());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_30));
 		}
 		{
-			(this->__vwsn_precompile_32 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::RibbonLargeButton));
+			(this->__vwsn_precompile_31 = new ::vl::presentation::controls::GuiRibbonButtons(::vl::presentation::theme::ThemeName::RibbonButtons, ::vl::presentation::controls::RibbonButtonSize::Large, ::vl::presentation::controls::RibbonButtonSize::Icon));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_22)->GetItems());
+			(this->__vwsn_precompile_32 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_31)->GetButtons());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_32));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_22)->SetText(::vl::WString(L"Edit", false));
+			(this->__vwsn_precompile_33 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9)->GetGroups());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_22));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_31)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_33));
 		}
 		{
-			(this->__vwsn_precompile_33 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
+			(this->__vwsn_precompile_34 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			(this->__vwsn_precompile_34 = new ::vl::presentation::controls::GuiRibbonToolstrips(::vl::presentation::theme::ThemeName::RibbonToolstrips));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_31)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_34));
 		}
 		{
-			(this->__vwsn_precompile_35 = new ::vl::presentation::controls::GuiToolstripGroup(::vl::presentation::theme::ThemeName::CustomControl));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_26)->GetItems());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_31));
 		}
 		{
-			(this->__vwsn_precompile_36 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
+			(this->__vwsn_precompile_35 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonSplitter));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_35)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_36));
-		}
-		{
-			(this->__vwsn_precompile_37 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_35)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_37));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_34)->GetGroups());
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_26)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_35));
 		}
 		{
-			(this->__vwsn_precompile_38 = new ::vl::presentation::controls::GuiToolstripGroup(::vl::presentation::theme::ThemeName::CustomControl));
+			(this->__vwsn_precompile_36 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::RibbonLargeButton));
 		}
 		{
-			(this->__vwsn_precompile_39 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_26)->GetItems());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_36));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_38)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_39));
+			::vl::__vwsn::This(this->__vwsn_precompile_26)->SetText(::vl::WString(L"Edit", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_13)->GetGroups());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_26));
+		}
+		{
+			(this->__vwsn_precompile_37 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
+		}
+		{
+			(this->__vwsn_precompile_38 = new ::vl::presentation::controls::GuiRibbonToolstrips(::vl::presentation::theme::ThemeName::RibbonToolstrips));
+		}
+		{
+			(this->__vwsn_precompile_39 = new ::vl::presentation::controls::GuiToolstripGroup(::vl::presentation::theme::ThemeName::CustomControl));
 		}
 		{
 			(this->__vwsn_precompile_40 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_38)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_40));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_39)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_40));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_34)->GetGroups());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_38));
+			(this->__vwsn_precompile_41 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			(this->__vwsn_precompile_41 = new ::vl::presentation::controls::GuiToolstripGroup(::vl::presentation::theme::ThemeName::CustomControl));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_39)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_41));
 		}
 		{
-			(this->__vwsn_precompile_42 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_38)->GetGroups());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_39));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_41)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_42));
+			(this->__vwsn_precompile_42 = new ::vl::presentation::controls::GuiToolstripGroup(::vl::presentation::theme::ThemeName::CustomControl));
 		}
 		{
 			(this->__vwsn_precompile_43 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_41)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_43));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_42)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_43));
 		}
 		{
 			(this->__vwsn_precompile_44 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_41)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_44));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_42)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_44));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_34)->GetGroups());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_41));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_38)->GetGroups());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_42));
 		}
 		{
 			(this->__vwsn_precompile_45 = new ::vl::presentation::controls::GuiToolstripGroup(::vl::presentation::theme::ThemeName::CustomControl));
@@ -5054,22 +5110,216 @@ Class (::demo::DocumentEditorRibbonConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_47));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_34)->GetGroups());
+			(this->__vwsn_precompile_48 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_48));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_38)->GetGroups());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_45));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_33)->GetItems());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_34));
+			(this->__vwsn_precompile_49 = new ::vl::presentation::controls::GuiToolstripGroup(::vl::presentation::theme::ThemeName::CustomControl));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_33)->SetText(::vl::WString(L"Text", false));
+			(this->__vwsn_precompile_50 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9)->GetGroups());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_33));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_49)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_50));
 		}
 		{
-			(this->__vwsn_precompile_48 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
+			(this->__vwsn_precompile_51 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
+		}
+		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_49)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_51));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_38)->GetGroups());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_49));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_37)->GetItems());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_38));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_37)->SetText(::vl::WString(L"Text", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_13)->GetGroups());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_37));
+		}
+		{
+			(this->__vwsn_precompile_52 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
+		}
+		{
+			(this->__vwsn_precompile_53 = new ::vl::presentation::controls::GuiRibbonButtons(::vl::presentation::theme::ThemeName::RibbonButtons, ::vl::presentation::controls::RibbonButtonSize::Small, ::vl::presentation::controls::RibbonButtonSize::Icon));
+		}
+		{
+			(this->__vwsn_precompile_54 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_54)->SetText(::vl::WString(L"Left", false));
+		}
+		{
+			(this->__vwsn_precompile_55 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+		}
+		(this->__vwsn_precompile_56 = ::vl::__vwsn::This(this->__vwsn_precompile_55)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_56)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(36); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_56)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_54)->AddChild(static_cast<::vl::presentation::controls::GuiControl*>(this->__vwsn_precompile_55));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_53)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_54));
+		}
+		{
+			(this->__vwsn_precompile_57 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_57)->SetText(::vl::WString(L"Center", false));
+		}
+		{
+			(this->__vwsn_precompile_58 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+		}
+		(this->__vwsn_precompile_59 = ::vl::__vwsn::This(this->__vwsn_precompile_58)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_59)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(36); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_59)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_57)->AddChild(static_cast<::vl::presentation::controls::GuiControl*>(this->__vwsn_precompile_58));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_53)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_57));
+		}
+		{
+			(this->__vwsn_precompile_60 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_60)->SetText(::vl::WString(L"Right", false));
+		}
+		{
+			(this->__vwsn_precompile_61 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+		}
+		(this->__vwsn_precompile_62 = ::vl::__vwsn::This(this->__vwsn_precompile_61)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_62)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(36); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_62)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_60)->AddChild(static_cast<::vl::presentation::controls::GuiControl*>(this->__vwsn_precompile_61));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_53)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_60));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_52)->GetItems());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_53));
+		}
+		{
+			(this->__vwsn_precompile_63 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonSplitter));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_52)->GetItems());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_63));
+		}
+		{
+			(this->__vwsn_precompile_64 = new ::vl::presentation::controls::GuiRibbonButtons(::vl::presentation::theme::ThemeName::RibbonButtons, ::vl::presentation::controls::RibbonButtonSize::Small, ::vl::presentation::controls::RibbonButtonSize::Icon));
+		}
+		{
+			(this->__vwsn_precompile_65 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_65)->SetText(::vl::WString(L"Left", false));
+		}
+		{
+			(this->__vwsn_precompile_66 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+		}
+		(this->__vwsn_precompile_67 = ::vl::__vwsn::This(this->__vwsn_precompile_66)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_67)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(36); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_67)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_65)->AddChild(static_cast<::vl::presentation::controls::GuiControl*>(this->__vwsn_precompile_66));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_65));
+		}
+		{
+			(this->__vwsn_precompile_68 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_68)->SetText(::vl::WString(L"Center", false));
+		}
+		{
+			(this->__vwsn_precompile_69 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+		}
+		(this->__vwsn_precompile_70 = ::vl::__vwsn::This(this->__vwsn_precompile_69)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_70)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(36); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_70)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_68)->AddChild(static_cast<::vl::presentation::controls::GuiControl*>(this->__vwsn_precompile_69));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_68));
+		}
+		{
+			(this->__vwsn_precompile_71 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_71)->SetText(::vl::WString(L"Right", false));
+		}
+		{
+			(this->__vwsn_precompile_72 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+		}
+		(this->__vwsn_precompile_73 = ::vl::__vwsn::This(this->__vwsn_precompile_72)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_73)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(36); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_73)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_71)->AddChild(static_cast<::vl::presentation::controls::GuiControl*>(this->__vwsn_precompile_72));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_71));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_52)->GetItems());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_64));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_52)->SetText(::vl::WString(L"Icon Labels", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_13)->GetGroups());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_52));
+		}
+		{
+			(this->__vwsn_precompile_74 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
 		}
 		{
 			(this->styleGallery = new ::vl::presentation::controls::GuiBindableRibbonGalleryList(::vl::presentation::theme::ThemeName::RibbonGalleryList));
@@ -5092,165 +5342,205 @@ Class (::demo::DocumentEditorRibbonConstructor)
 		{
 			::vl::__vwsn::This(this->styleGallery)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf65_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 		}
-		(this->__vwsn_precompile_49 = ::vl::__vwsn::This(this->styleGallery)->GetSubMenu());
+		(this->__vwsn_precompile_75 = ::vl::__vwsn::This(this->styleGallery)->GetSubMenu());
 		{
-			(this->__vwsn_precompile_50 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonToolstripHeader));
+			(this->__vwsn_precompile_76 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonToolstripHeader));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_50)->SetText(::vl::WString(L"Header A", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_76)->SetText(::vl::WString(L"Header A", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_49)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_50));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_75)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_76));
 		}
 		{
-			(this->__vwsn_precompile_51 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
+			(this->__vwsn_precompile_77 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_51)->SetText(::vl::WString(L"Item A1", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_77)->SetText(::vl::WString(L"Item A1", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_49)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_51));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_75)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_77));
 		}
 		{
-			(this->__vwsn_precompile_52 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
+			(this->__vwsn_precompile_78 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_52)->SetText(::vl::WString(L"Item A2", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_78)->SetText(::vl::WString(L"Item A2", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_49)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_52));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_75)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_78));
 		}
 		{
-			(this->__vwsn_precompile_53 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
+			(this->__vwsn_precompile_79 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_53)->SetText(::vl::WString(L"Item A3", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_79)->SetText(::vl::WString(L"Item A3", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_49)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_53));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_75)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_79));
 		}
 		{
-			(this->__vwsn_precompile_54 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonToolstripHeader));
+			(this->__vwsn_precompile_80 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonToolstripHeader));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_54)->SetText(::vl::WString(L"Header B", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_80)->SetText(::vl::WString(L"Header B", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_49)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_54));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_75)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_80));
 		}
 		{
-			(this->__vwsn_precompile_55 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
+			(this->__vwsn_precompile_81 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_55)->SetText(::vl::WString(L"Item B1", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_81)->SetText(::vl::WString(L"Item B1", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_49)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_55));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_75)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_81));
 		}
 		{
-			(this->__vwsn_precompile_56 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
+			(this->__vwsn_precompile_82 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_56)->SetText(::vl::WString(L"Item B2", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_82)->SetText(::vl::WString(L"Item B2", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_49)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_56));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_75)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_82));
 		}
 		{
-			(this->__vwsn_precompile_57 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
+			(this->__vwsn_precompile_83 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_57)->SetText(::vl::WString(L"Item B3", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_83)->SetText(::vl::WString(L"Item B3", false));
 		}
 		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_49)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_57));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_75)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_83));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_48)->GetItems());
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_74)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->styleGallery));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_48)->SetText(::vl::WString(L"Style", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_74)->SetText(::vl::WString(L"Style", false));
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9)->GetGroups());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_48));
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_13)->GetGroups());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_74));
 		}
-		(this->__vwsn_precompile_10 = ::vl::__vwsn::This(this->__vwsn_precompile_9)->GetContainerComposition());
+		(this->__vwsn_precompile_14 = ::vl::__vwsn::This(this->__vwsn_precompile_13)->GetContainerComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.y = static_cast<::vl::vint>(110); return __vwsn_temp__; }());
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetText(::vl::WString(L"Edit", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.y = static_cast<::vl::vint>(110); return __vwsn_temp__; }());
 		}
 		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueObservableList>(::vl::__vwsn::This(this->__vwsn_precompile_1)->GetPages());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_9));
-		}
-		{
-			(this->__vwsn_precompile_58 = new ::vl::presentation::controls::GuiRibbonTabPage(::vl::presentation::theme::ThemeName::CustomControl));
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_58)->SetHighlighted(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
-		}
-		{
-			(this->__vwsn_precompile_59 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
-		}
-		{
-			(this->__vwsn_precompile_60 = new ::vl::presentation::controls::GuiRibbonButtons(::vl::presentation::theme::ThemeName::RibbonButtons, ::vl::presentation::controls::RibbonButtonSize::Large, ::vl::presentation::controls::RibbonButtonSize::Small));
-		}
-		{
-			(this->__vwsn_precompile_61 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_60)->GetButtons());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_61));
-		}
-		{
-			(this->__vwsn_precompile_62 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_60)->GetButtons());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_62));
-		}
-		{
-			(this->__vwsn_precompile_63 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_60)->GetButtons());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_63));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_59)->GetItems());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_60));
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_59)->SetText(::vl::WString(L"Object", false));
-		}
-		{
-			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_58)->GetGroups());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_59));
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_58)->SetText(::vl::WString(L"Insert", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetText(::vl::WString(L"Edit", false));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueObservableList>(::vl::__vwsn::This(this->__vwsn_precompile_1)->GetPages());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_58));
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_13));
+		}
+		{
+			(this->__vwsn_precompile_84 = new ::vl::presentation::controls::GuiRibbonTabPage(::vl::presentation::theme::ThemeName::CustomControl));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_84)->SetHighlighted(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+		}
+		{
+			(this->__vwsn_precompile_85 = new ::vl::presentation::controls::GuiRibbonGroup(::vl::presentation::theme::ThemeName::RibbonGroup));
+		}
+		{
+			(this->__vwsn_precompile_86 = new ::vl::presentation::controls::GuiRibbonButtons(::vl::presentation::theme::ThemeName::RibbonButtons, ::vl::presentation::controls::RibbonButtonSize::Large, ::vl::presentation::controls::RibbonButtonSize::Small));
+		}
+		{
+			(this->__vwsn_precompile_87 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_86)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_87));
+		}
+		{
+			(this->__vwsn_precompile_88 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_86)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_88));
+		}
+		{
+			(this->__vwsn_precompile_89 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_86)->GetButtons());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_89));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_85)->GetItems());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_86));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_85)->SetText(::vl::WString(L"Object", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_84)->GetGroups());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_85));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_84)->SetText(::vl::WString(L"Insert", false));
+		}
+		{
+			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueObservableList>(::vl::__vwsn::This(this->__vwsn_precompile_1)->GetPages());
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_84));
 		}
 		(this->__vwsn_precompile_6 = ::vl::__vwsn::This(this->__vwsn_precompile_1)->GetAfterHeaders());
+		(this->__vwsn_precompile_7 = new ::vl::presentation::compositions::GuiStackComposition());
 		{
-			(this->__vwsn_precompile_7 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
-		}
-		(this->__vwsn_precompile_8 = ::vl::__vwsn::This(this->__vwsn_precompile_7)->GetBoundsComposition());
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetText(::vl::WString(L"  WHATEVER  ", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_7)->GetBoundsComposition()));
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = (- static_cast<::vl::vint>(1)); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+		}
+		(this->__vwsn_precompile_8 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetInternalMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(10); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+		}
+		(this->__vwsn_precompile_9 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Center);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->SetText(::vl::WString(L"Search:", false));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_9));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_8));
+		}
+		(this->__vwsn_precompile_10 = new ::vl::presentation::compositions::GuiStackItemComposition());
+		{
+			(this->__vwsn_precompile_11 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+		}
+		(this->__vwsn_precompile_12 = ::vl::__vwsn::This(this->__vwsn_precompile_11)->GetBoundsComposition());
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(180); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(1); return __vwsn_temp__; }());
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_10)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_11)->GetBoundsComposition()));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_10));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_6)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_7));
 		}
 		(this->__vwsn_precompile_3 = ::vl::__vwsn::This(this->__vwsn_precompile_1)->GetBeforeHeaders());
 		{
@@ -5302,21 +5592,21 @@ Class (::demo::DocumentEditorRibbonConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/EditableLarge", false), true).Obj())));
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetCommand(::vl::__vwsn::This(this->self)->commandViewOnly);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetCommand(::vl::__vwsn::This(this->self)->commandSelectable);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetCommand(::vl::__vwsn::This(this->self)->commandEditable);
-		}
-		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf69_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/EditableLarge", false), true).Obj())));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetCommand(::vl::__vwsn::This(this->self)->commandViewOnly);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_19)->SetCommand(::vl::__vwsn::This(this->self)->commandSelectable);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetCommand(::vl::__vwsn::This(this->self)->commandEditable);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -5324,15 +5614,12 @@ Class (::demo::DocumentEditorRibbonConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_19)->SetCommand(::vl::__vwsn::This(this->self)->commandAlignLeft);
-		}
-		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc37_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf71_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetCommand(::vl::__vwsn::This(this->self)->commandAlignCenter);
+			::vl::__vwsn::This(this->__vwsn_precompile_23)->SetCommand(::vl::__vwsn::This(this->self)->commandAlignLeft);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc38_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -5340,80 +5627,106 @@ Class (::demo::DocumentEditorRibbonConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetCommand(::vl::__vwsn::This(this->self)->commandAlignRight);
-		}
-		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf73_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_11)->ExpandButtonClicked, __vwsn_event_handler_);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_22)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/PasteLarge", false), true).Obj())));
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_24)->SetCommand(::vl::__vwsn::This(this->self)->commandUndo);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_25)->SetCommand(::vl::__vwsn::This(this->self)->commandRedo);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_28)->SetCommand(::vl::__vwsn::This(this->self)->commandCopy);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_29)->SetCommand(::vl::__vwsn::This(this->self)->commandCut);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetCommand(::vl::__vwsn::This(this->self)->commandPaste);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetCommand(::vl::__vwsn::This(this->self)->commandDelete);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_36)->SetCommand(::vl::__vwsn::This(this->self)->commandBold);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_37)->SetCommand(::vl::__vwsn::This(this->self)->commandItalic);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_39)->SetCommand(::vl::__vwsn::This(this->self)->commandUnderline);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_40)->SetCommand(::vl::__vwsn::This(this->self)->commandStrike);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_42)->SetCommand(::vl::__vwsn::This(this->self)->commandFont);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_43)->SetCommand(::vl::__vwsn::This(this->self)->commandColor);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_44)->SetCommand(::vl::__vwsn::This(this->self)->commandBackColor);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_46)->SetCommand(::vl::__vwsn::This(this->self)->commandEditHyperlink);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_47)->SetCommand(::vl::__vwsn::This(this->self)->commandRemoveHyperlink);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_48)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/EditableLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->__vwsn_precompile_24)->SetCommand(::vl::__vwsn::This(this->self)->commandAlignCenter);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc39_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf74_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf73_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this));
+			::vl::__vwsn::This(this->__vwsn_precompile_25)->SetCommand(::vl::__vwsn::This(this->self)->commandAlignRight);
+		}
+		{
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf74_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_15)->ExpandButtonClicked, __vwsn_event_handler_);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_26)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/PasteLarge", false), true).Obj())));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_28)->SetCommand(::vl::__vwsn::This(this->self)->commandUndo);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_29)->SetCommand(::vl::__vwsn::This(this->self)->commandRedo);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetCommand(::vl::__vwsn::This(this->self)->commandCopy);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_33)->SetCommand(::vl::__vwsn::This(this->self)->commandCut);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_34)->SetCommand(::vl::__vwsn::This(this->self)->commandPaste);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_36)->SetCommand(::vl::__vwsn::This(this->self)->commandDelete);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_40)->SetCommand(::vl::__vwsn::This(this->self)->commandBold);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_41)->SetCommand(::vl::__vwsn::This(this->self)->commandItalic);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_43)->SetCommand(::vl::__vwsn::This(this->self)->commandUnderline);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_44)->SetCommand(::vl::__vwsn::This(this->self)->commandStrike);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_46)->SetCommand(::vl::__vwsn::This(this->self)->commandFont);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_47)->SetCommand(::vl::__vwsn::This(this->self)->commandColor);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_48)->SetCommand(::vl::__vwsn::This(this->self)->commandBackColor);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_50)->SetCommand(::vl::__vwsn::This(this->self)->commandEditHyperlink);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_51)->SetCommand(::vl::__vwsn::This(this->self)->commandRemoveHyperlink);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_54)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignLeft", false), true).Obj())));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_57)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignCenter", false), true).Obj())));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_60)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignRight", false), true).Obj())));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_65)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignLeft", false), true).Obj())));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_68)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignCenter", false), true).Obj())));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_71)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignRight", false), true).Obj())));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_74)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/EditableLarge", false), true).Obj())));
+		}
+		{
+			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf76_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->styleGallery)->ItemApplied, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_61)->SetCommand(::vl::__vwsn::This(this->self)->commandInsertImage);
+			::vl::__vwsn::This(this->__vwsn_precompile_87)->SetCommand(::vl::__vwsn::This(this->self)->commandInsertImage);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_62)->SetCommand(::vl::__vwsn::This(this->self)->commandEditHyperlink);
+			::vl::__vwsn::This(this->__vwsn_precompile_88)->SetCommand(::vl::__vwsn::This(this->self)->commandEditHyperlink);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_63)->SetCommand(::vl::__vwsn::This(this->self)->commandRemoveHyperlink);
+			::vl::__vwsn::This(this->__vwsn_precompile_89)->SetCommand(::vl::__vwsn::This(this->self)->commandRemoveHyperlink);
 		}
 	}
 
@@ -5428,63 +5741,89 @@ Class (::demo::DocumentEditorRibbonConstructor)
 		, __vwsn_precompile_4(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
 		, __vwsn_precompile_5(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_6(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(nullptr))
-		, __vwsn_precompile_7(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
-		, __vwsn_precompile_8(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
-		, __vwsn_precompile_9(static_cast<::vl::presentation::controls::GuiRibbonTabPage*>(nullptr))
-		, __vwsn_precompile_10(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(nullptr))
-		, __vwsn_precompile_11(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
-		, __vwsn_precompile_12(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_13(static_cast<::vl::presentation::controls::GuiToolstripMenu*>(nullptr))
-		, __vwsn_precompile_14(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_15(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_7(static_cast<::vl::presentation::compositions::GuiStackComposition*>(nullptr))
+		, __vwsn_precompile_8(static_cast<::vl::presentation::compositions::GuiStackItemComposition*>(nullptr))
+		, __vwsn_precompile_9(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
+		, __vwsn_precompile_10(static_cast<::vl::presentation::compositions::GuiStackItemComposition*>(nullptr))
+		, __vwsn_precompile_11(static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr))
+		, __vwsn_precompile_12(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_13(static_cast<::vl::presentation::controls::GuiRibbonTabPage*>(nullptr))
+		, __vwsn_precompile_14(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(nullptr))
+		, __vwsn_precompile_15(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
 		, __vwsn_precompile_16(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_17(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
-		, __vwsn_precompile_18(static_cast<::vl::presentation::controls::GuiRibbonButtons*>(nullptr))
+		, __vwsn_precompile_17(static_cast<::vl::presentation::controls::GuiToolstripMenu*>(nullptr))
+		, __vwsn_precompile_18(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 		, __vwsn_precompile_19(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 		, __vwsn_precompile_20(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_21(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_22(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
-		, __vwsn_precompile_23(static_cast<::vl::presentation::controls::GuiRibbonButtons*>(nullptr))
+		, __vwsn_precompile_21(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
+		, __vwsn_precompile_22(static_cast<::vl::presentation::controls::GuiRibbonButtons*>(nullptr))
+		, __vwsn_precompile_23(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 		, __vwsn_precompile_24(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 		, __vwsn_precompile_25(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_26(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
+		, __vwsn_precompile_26(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
 		, __vwsn_precompile_27(static_cast<::vl::presentation::controls::GuiRibbonButtons*>(nullptr))
 		, __vwsn_precompile_28(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 		, __vwsn_precompile_29(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_30(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_31(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
+		, __vwsn_precompile_30(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
+		, __vwsn_precompile_31(static_cast<::vl::presentation::controls::GuiRibbonButtons*>(nullptr))
 		, __vwsn_precompile_32(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_33(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
-		, __vwsn_precompile_34(static_cast<::vl::presentation::controls::GuiRibbonToolstrips*>(nullptr))
-		, __vwsn_precompile_35(static_cast<::vl::presentation::controls::GuiToolstripGroup*>(nullptr))
+		, __vwsn_precompile_33(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_34(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_35(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
 		, __vwsn_precompile_36(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_37(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_38(static_cast<::vl::presentation::controls::GuiToolstripGroup*>(nullptr))
-		, __vwsn_precompile_39(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_37(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
+		, __vwsn_precompile_38(static_cast<::vl::presentation::controls::GuiRibbonToolstrips*>(nullptr))
+		, __vwsn_precompile_39(static_cast<::vl::presentation::controls::GuiToolstripGroup*>(nullptr))
 		, __vwsn_precompile_40(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_41(static_cast<::vl::presentation::controls::GuiToolstripGroup*>(nullptr))
-		, __vwsn_precompile_42(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_41(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_42(static_cast<::vl::presentation::controls::GuiToolstripGroup*>(nullptr))
 		, __vwsn_precompile_43(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 		, __vwsn_precompile_44(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 		, __vwsn_precompile_45(static_cast<::vl::presentation::controls::GuiToolstripGroup*>(nullptr))
 		, __vwsn_precompile_46(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 		, __vwsn_precompile_47(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_48(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
-		, __vwsn_precompile_49(static_cast<::vl::presentation::controls::GuiToolstripMenu*>(nullptr))
-		, __vwsn_precompile_50(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
+		, __vwsn_precompile_48(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_49(static_cast<::vl::presentation::controls::GuiToolstripGroup*>(nullptr))
+		, __vwsn_precompile_50(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 		, __vwsn_precompile_51(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_52(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_53(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_54(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
-		, __vwsn_precompile_55(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_56(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_57(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_58(static_cast<::vl::presentation::controls::GuiRibbonTabPage*>(nullptr))
-		, __vwsn_precompile_59(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
-		, __vwsn_precompile_60(static_cast<::vl::presentation::controls::GuiRibbonButtons*>(nullptr))
-		, __vwsn_precompile_61(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_62(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
-		, __vwsn_precompile_63(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_52(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
+		, __vwsn_precompile_53(static_cast<::vl::presentation::controls::GuiRibbonButtons*>(nullptr))
+		, __vwsn_precompile_54(static_cast<::vl::presentation::controls::GuiRibbonIconLabel*>(nullptr))
+		, __vwsn_precompile_55(static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr))
+		, __vwsn_precompile_56(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_57(static_cast<::vl::presentation::controls::GuiRibbonIconLabel*>(nullptr))
+		, __vwsn_precompile_58(static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr))
+		, __vwsn_precompile_59(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_60(static_cast<::vl::presentation::controls::GuiRibbonIconLabel*>(nullptr))
+		, __vwsn_precompile_61(static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr))
+		, __vwsn_precompile_62(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_63(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
+		, __vwsn_precompile_64(static_cast<::vl::presentation::controls::GuiRibbonButtons*>(nullptr))
+		, __vwsn_precompile_65(static_cast<::vl::presentation::controls::GuiRibbonIconLabel*>(nullptr))
+		, __vwsn_precompile_66(static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr))
+		, __vwsn_precompile_67(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_68(static_cast<::vl::presentation::controls::GuiRibbonIconLabel*>(nullptr))
+		, __vwsn_precompile_69(static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr))
+		, __vwsn_precompile_70(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_71(static_cast<::vl::presentation::controls::GuiRibbonIconLabel*>(nullptr))
+		, __vwsn_precompile_72(static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr))
+		, __vwsn_precompile_73(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_74(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
+		, __vwsn_precompile_75(static_cast<::vl::presentation::controls::GuiToolstripMenu*>(nullptr))
+		, __vwsn_precompile_76(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
+		, __vwsn_precompile_77(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_78(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_79(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_80(static_cast<::vl::presentation::controls::GuiControl*>(nullptr))
+		, __vwsn_precompile_81(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_82(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_83(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_84(static_cast<::vl::presentation::controls::GuiRibbonTabPage*>(nullptr))
+		, __vwsn_precompile_85(static_cast<::vl::presentation::controls::GuiRibbonGroup*>(nullptr))
+		, __vwsn_precompile_86(static_cast<::vl::presentation::controls::GuiRibbonButtons*>(nullptr))
+		, __vwsn_precompile_87(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_88(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
+		, __vwsn_precompile_89(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 	{
 	}
 
@@ -6109,8 +6448,8 @@ Class (::demo::DocumentEditorToolstripConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_40)->SetCommand(::vl::__vwsn::This(this->self)->commandEditable);
 		}
 		{
-			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc43_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf80_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(this)));
+			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -6126,8 +6465,8 @@ Class (::demo::DocumentEditorToolstripConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_45)->SetCommand(::vl::__vwsn::This(this->self)->commandAlignRight);
 		}
 		{
-			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(this)));
+			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf82_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -6704,21 +7043,21 @@ Class (::demo::StyleItemTemplateConstructor)
 			::vl::__vwsn::This(this->self)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->containerControl)->GetBoundsComposition()));
 		}
 		{
-			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc40_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf77_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
+			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
+			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetFont(::vl::__vwsn::This(this->containerControl)->GetFont());
 		}
 		{
-			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
+			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf80_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -7161,7 +7500,7 @@ Class (::demo::DocumentEditorRibbon)
 	void DocumentEditorRibbon::__vwsn_instance_ctor_()
 	{
 		this->SetStyleGroups(this->GenerateStyleGroups());
-		::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->document)->SelectionChanged, LAMBDA(::vl_workflow_global::__vwsnf76_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__(this)));
+		::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->document)->SelectionChanged, LAMBDA(::vl_workflow_global::__vwsnf77_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__(this)));
 	}
 
 	DocumentEditorRibbon::~DocumentEditorRibbon()

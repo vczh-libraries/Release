@@ -29,6 +29,7 @@
                 <![CDATA[
                   {
                     var window = new DocumentEditorToolstripWindow*();
+                    window.ForceCalculateSizeImmediately();
                     window.MoveToScreenCenter();
                     window.ShowModalAndDelete(self, func():void{});
                   }
@@ -44,6 +45,7 @@
                 <![CDATA[
                   {
                     var window = new DocumentEditorRibbonWindow*();
+                    window.ForceCalculateSizeImmediately();
                     window.MoveToScreenCenter();
                     window.ShowModalAndDelete(self, func():void{});
                   }
