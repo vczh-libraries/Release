@@ -51,7 +51,7 @@ https://zhuanlan.zhihu.com/p/33778843
   - [x] `GuiTableComposition` doesn't calculate percentage cells right, sometimes they will larger than the table.
     - Group title random missing while resizing
     - Group dropdown button layout incorrectly while resizing
-  - [ ] Enforce extra click for dropdown buttons in a collapsed-state group dropdown menu
+  - [x] Enforce extra click for dropdown buttons in a collapsed-state group dropdown menu
   - [ ] Ribbon tab cannot drag to short enough
 - [ ] `<InnerShadow>` renders nothing instead of crashes under GDI
 - [ ] **Update Release**
