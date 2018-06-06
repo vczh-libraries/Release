@@ -44,8 +44,8 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [ ] Ribbon
-  - [ ] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
+- [x] Ribbon
+  - [x] IconLabel (e.g. Word -> References -> Citations & Biblography -> Styles)
 - [x] Log compositions and elements to text for debug purpose
 - [x] Fix Ribbon known issues
   - [x] `GuiTableComposition` doesn't calculate percentage cells right, sometimes they will larger than the table.
