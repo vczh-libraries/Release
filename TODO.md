@@ -44,7 +44,8 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [ ] **Update Release**
+- [x] Delay all composition tree updating during rendering
+- [x] Cancel the delayed layout task in combo box if it is deleted right after the size is changed
 - [ ] Private clipboard format for `GuiDocument`
 - [ ] Generate `CF_RTF`(Rich Text Format) but not parse
 - [ ] Generate `CF_HTML`(HTML Format) but not parse
