@@ -45,7 +45,9 @@ https://zhuanlan.zhihu.com/p/33778843
 
 #### Before 1.0
 - [ ] **Update Release**
-- [ ] RTF / HTML clipboard format for document viewer
+- [ ] Private clipboard format for `GuiDocument`
+- [ ] Generate `CF_RTF`(Rich Text Format) but not parse
+- [ ] Generate `CF_HTML`(HTML Format) but not parse
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
 - [ ] **Update Release**
