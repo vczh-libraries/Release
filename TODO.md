@@ -46,9 +46,13 @@ https://zhuanlan.zhihu.com/p/33778843
 #### Before 1.0
 - [x] Delay all composition tree updating during rendering
 - [x] Cancel the delayed layout task in combo box if it is deleted right after the size is changed
-- [ ] Private clipboard format for `GuiDocument`
+- [x] Private clipboard format for `GuiDocument`
 - [ ] Generate `CF_RTF`(Rich Text Format) but not parse
 - [ ] Generate `CF_HTML`(HTML Format) but not parse
+- [ ] Copy image to clipboard if only an image is selected
+  - [ ] Generate `CF_BITMAP`
+  - [ ] Private clipboard format for image file format
+  - [ ] Add image file format for all three supported clipboard formats
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
 - [ ] **Update Release**
