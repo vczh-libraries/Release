@@ -47,7 +47,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [x] Delay all composition tree updating during rendering
 - [x] Cancel the delayed layout task in combo box if it is deleted right after the size is changed
 - [x] Private clipboard format for `GuiDocument`
-- [ ] Generate `CF_RTF`(Rich Text Format) but not parse
+- [x] Generate `CF_RTF`(Rich Text Format) but not parse
 - [x] Generate `CF_HTML`(HTML Format) but not parse
 - [ ] Copy image to clipboard if only an image is selected
   - [ ] Generate `CF_BITMAP`
