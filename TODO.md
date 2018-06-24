@@ -62,6 +62,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] **Update Release**
 - [ ] Inheritable custom window / control with `<ref.Parameter>`
 - [ ] Resource should have name and version
+- [ ] Document clipboard data should have version
 - [ ] Depend on another resource, to decide loading order
 - [ ] Demo: DocumentEditor: Split 1 Resource.xml to 3.
 - [ ] **Update Release**
