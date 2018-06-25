@@ -51,6 +51,9 @@ https://zhuanlan.zhihu.com/p/33778843
 - [x] Generate `CF_HTML`(HTML Format) but not parse
 - [x] Copy image to clipboard if only an image is selected
 - [ ] Add image file format for all three supported clipboard formats
+  - [x] Private clipboard format
+  - [ ] `CF_RTF`
+  - [ ] `CF_HTML`
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
 - [ ] **Update Release**
