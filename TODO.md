@@ -49,10 +49,8 @@ https://zhuanlan.zhihu.com/p/33778843
 - [x] Private clipboard format for `GuiDocument`
 - [x] Generate `CF_RTF`(Rich Text Format) but not parse
 - [x] Generate `CF_HTML`(HTML Format) but not parse
-- [ ] Copy image to clipboard if only an image is selected
-  - [ ] Generate `CF_BITMAP`
-  - [ ] Private clipboard format for image file format
-  - [ ] Add image file format for all three supported clipboard formats
+- [x] Copy image to clipboard if only an image is selected
+- [ ] Add image file format for all three supported clipboard formats
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
 - [ ] **Update Release**
