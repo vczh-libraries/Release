@@ -50,12 +50,14 @@ https://zhuanlan.zhihu.com/p/33778843
 - [x] Generate `CF_RTF`(Rich Text Format) but not parse
 - [x] Generate `CF_HTML`(HTML Format) but not parse
 - [x] Copy image to clipboard if only an image is selected
-- [ ] Add image file format for all three supported clipboard formats
+- [x] Add image file format for all three supported clipboard formats
   - [x] Private clipboard format
-  - [ ] `CF_RTF`
+  - [x] `CF_RTF`
   - [x] `CF_HTML`
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
+- [ ] Known issue: Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
+  - Find someday to fix it
 - [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] Demo: TriplePhaseImageButton using `Context` property
