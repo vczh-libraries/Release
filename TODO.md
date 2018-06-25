@@ -53,7 +53,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Add image file format for all three supported clipboard formats
   - [x] Private clipboard format
   - [ ] `CF_RTF`
-  - [ ] `CF_HTML`
+  - [x] `CF_HTML`
 - [ ] Demo: DocumentEditor
   - [ ] Load / Save
 - [ ] **Update Release**
