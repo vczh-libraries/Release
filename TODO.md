@@ -65,6 +65,10 @@ https://zhuanlan.zhihu.com/p/33778843
   - [ ] sync all buttons in item templates in a list control
   - [ ] Two columns in repeat flow
 - [ ] **Update Release**
+- [ ] Workflow Codegen
+  - [ ] When some `ref.CodeBehind="false"` classes inherit from a `ref.CodeBehind="true"` one, group them in a different pair of files.
+  - [ ] `USERIMPL_BEGIN` and `USERIMPL_END` for header includes, cpp includes and class members.
+  - [ ] Put `USERIMPL` series macros in `VlppWorkflowLibrary.h`
 - [ ] Inheritable custom window / control with `<ref.Parameter>`
 - [ ] Resource should have name and version
 - [ ] Document clipboard data should have version
