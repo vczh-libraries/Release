@@ -61,7 +61,9 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] Demo: TriplePhaseImageButton using `Context` property
-- [ ] Demo: `<SharedSize>` and `<SharedSizeRoot>`, sync all buttons in item templates in a list control
+- [ ] Demo: `<SharedSize>` and `<SharedSizeRoot>`
+  - [ ] sync all buttons in item templates in a list control
+  - [ ] Two columns in repeat flow
 - [ ] **Update Release**
 - [ ] Inheritable custom window / control with `<ref.Parameter>`
 - [ ] Resource should have name and version
