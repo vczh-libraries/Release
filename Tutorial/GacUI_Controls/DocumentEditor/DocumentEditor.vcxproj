@@ -152,10 +152,16 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="UI\Source\DemoPartialClasses.cpp" />
+    <ClCompile Include="UI\Source\DocumentEditorBase.cpp" />
+    <ClCompile Include="UI\Source\DocumentEditorRibbon.cpp" />
+    <ClCompile Include="UI\Source\DocumentEditorToolstrip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI\Source\Demo.h" />
     <ClInclude Include="UI\Source\DemoPartialClasses.h" />
+    <ClInclude Include="UI\Source\DocumentEditorBase.h" />
+    <ClInclude Include="UI\Source\DocumentEditorRibbon.h" />
+    <ClInclude Include="UI\Source\DocumentEditorToolstrip.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Lib\GacUILite\GacUILite.vcxproj">

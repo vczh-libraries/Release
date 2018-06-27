@@ -11,5 +11,8 @@ https://github.com/vczh-libraries
 #define VCZH_WORKFLOW_COMPILER_GENERATED_DEMO
 
 #include "DemoPartialClasses.h"
+#include "DocumentEditorBase.h"
+#include "DocumentEditorRibbon.h"
+#include "DocumentEditorToolstrip.h"
 
 #endif

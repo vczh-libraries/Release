@@ -43,13 +43,13 @@ namespace vl_workflow_global
 	struct __vwsnf24_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf25_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf26_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-	struct __vwsnf27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__;
+	struct __vwsnf27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf28_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf29_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf2_Demo_demo_DocumentEditorToolstripWindowConstructor___vwsn_demo_DocumentEditorToolstripWindow_Initialize_;
 	struct __vwsnf30_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf31_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-	struct __vwsnf32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+	struct __vwsnf32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__;
 	struct __vwsnf33_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf34_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf35_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
@@ -83,11 +83,11 @@ namespace vl_workflow_global
 	struct __vwsnf60_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf61_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf62_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-	struct __vwsnf63_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-	struct __vwsnf64_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-	struct __vwsnf65_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-	struct __vwsnf66_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-	struct __vwsnf67_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+	struct __vwsnf63_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+	struct __vwsnf64_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+	struct __vwsnf65_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+	struct __vwsnf66_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+	struct __vwsnf67_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	struct __vwsnf68_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 	struct __vwsnf69_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__;
@@ -98,18 +98,24 @@ namespace vl_workflow_global
 	struct __vwsnf74_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 	struct __vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 	struct __vwsnf76_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-	struct __vwsnf77_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__;
-	struct __vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
-	struct __vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+	struct __vwsnf77_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+	struct __vwsnf78_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+	struct __vwsnf79_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 	struct __vwsnf7_Demo_demo_HyperlinkWindowConstructor___vwsn_demo_HyperlinkWindow_Initialize_;
-	struct __vwsnf80_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
-	struct __vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
-	struct __vwsnf82_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
+	struct __vwsnf80_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+	struct __vwsnf81_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+	struct __vwsnf82_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+	struct __vwsnf83_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__;
+	struct __vwsnf84_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+	struct __vwsnf85_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+	struct __vwsnf86_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+	struct __vwsnf87_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
+	struct __vwsnf88_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
 	struct __vwsnf8_Demo_demo_HyperlinkWindowConstructor___vwsn_demo_HyperlinkWindow_Initialize_;
 	struct __vwsnf9_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 	class __vwsnc10_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-	class __vwsnc11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine;
-	class __vwsnc12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine;
 	class __vwsnc13_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc14_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc15_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
@@ -131,7 +137,7 @@ namespace vl_workflow_global
 	class __vwsnc2_Demo_demo_DocumentEditorToolstripWindowConstructor___vwsn_demo_DocumentEditorToolstripWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc30_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc31_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-	class __vwsnc32_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc33_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc34_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
@@ -141,11 +147,12 @@ namespace vl_workflow_global
 	class __vwsnc39_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc3_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-	class __vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc41_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-	class __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc44_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc46_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc4_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc5_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc6_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
@@ -178,8 +185,8 @@ namespace demo
 	class DocumentEditorBaseConstructor : public ::vl::Object, public ::vl::reflection::Description<DocumentEditorBaseConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine;
-		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine;
 		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc14_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc15_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
@@ -199,6 +206,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc29_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc30_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc31_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
@@ -223,12 +231,12 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf24_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf25_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf26_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__;
+		friend struct ::vl_workflow_global::__vwsnf27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf28_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf29_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf30_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf31_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__;
 		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
@@ -259,6 +267,11 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf60_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf61_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf62_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf63_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf64_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf65_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf66_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf67_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorBaseConstructor>;
@@ -266,10 +279,17 @@ namespace demo
 	protected:
 		::demo::DocumentEditorBase* self;
 		::vl::presentation::controls::GuiMessageDialog* dialogMessage;
+		::vl::presentation::controls::GuiMessageDialog* dialogNotImpl;
 		::vl::presentation::controls::GuiOpenFileDialog* dialogOpen;
+		::vl::presentation::controls::GuiOpenFileDialog* dialogOpenDoc;
+		::vl::presentation::controls::GuiSaveFileDialog* dialogSaveDoc;
 		::vl::presentation::compositions::GuiCellComposition* menuContainer;
 		::vl::presentation::compositions::GuiCellComposition* toolstripContainer;
 		::vl::presentation::controls::GuiDocumentViewer* document;
+		::vl::presentation::controls::GuiToolstripCommand* commandLoadPrivate;
+		::vl::presentation::controls::GuiToolstripCommand* commandSavePrivate;
+		::vl::presentation::controls::GuiToolstripCommand* commandSaveRtf;
+		::vl::presentation::controls::GuiToolstripCommand* commandSaveHtml;
 		::vl::presentation::controls::GuiToolstripCommand* commandUndo;
 		::vl::presentation::controls::GuiToolstripCommand* commandRedo;
 		::vl::presentation::controls::GuiToolstripCommand* commandCopy;
@@ -306,7 +326,6 @@ namespace demo
 
 	class DocumentEditorRibbonConstructor : public ::vl::Object, public ::vl::reflection::Description<DocumentEditorRibbonConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc32_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc33_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc34_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
@@ -315,11 +334,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc38_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc39_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf63_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf64_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf65_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf66_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf67_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend class ::vl_workflow_global::__vwsnc41_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf68_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf69_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf70_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
@@ -329,103 +344,117 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf74_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf76_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf77_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf78_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf79_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf80_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf81_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf82_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorRibbonConstructor>;
 #endif
 	protected:
 		::demo::DocumentEditorRibbon* self;
 		::vl::presentation::controls::GuiMessageDialog* dialogMessage;
+		::vl::presentation::controls::GuiToolstripMenu* toolstripHome;
+		::vl::presentation::controls::GuiButton* buttonHome;
 		::vl::presentation::controls::GuiBindableRibbonGalleryList* styleGallery;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_0;
-		::vl::presentation::controls::GuiRibbonTab* __vwsn_precompile_1;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_3;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_4;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_6;
-		::vl::presentation::compositions::GuiStackComposition* __vwsn_precompile_7;
-		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_8;
-		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_9;
-		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_10;
-		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_11;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_12;
-		::vl::presentation::controls::GuiRibbonTabPage* __vwsn_precompile_13;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_14;
-		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_15;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_16;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_17;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_18;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_19;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_20;
-		::vl::presentation::controls::GuiControl* __vwsn_precompile_21;
-		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_22;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_23;
+		::vl::presentation::controls::GuiToolstripGroupContainer* __vwsn_precompile_0;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_1;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_2;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_3;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_4;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_5;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_7;
+		::vl::presentation::controls::GuiRibbonTab* __vwsn_precompile_8;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_9;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_10;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_11;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_12;
+		::vl::presentation::compositions::GuiStackComposition* __vwsn_precompile_13;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_14;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_15;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_16;
+		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_17;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_18;
+		::vl::presentation::controls::GuiRibbonTabPage* __vwsn_precompile_19;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_20;
+		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_21;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_22;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_23;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_24;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_25;
-		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_26;
-		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_27;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_28;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_26;
+		::vl::presentation::controls::GuiControl* __vwsn_precompile_27;
+		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_28;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_29;
-		::vl::presentation::controls::GuiControl* __vwsn_precompile_30;
-		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_31;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_32;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_33;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_30;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_31;
+		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_32;
+		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_33;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_34;
-		::vl::presentation::controls::GuiControl* __vwsn_precompile_35;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_36;
-		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_37;
-		::vl::presentation::controls::GuiRibbonToolstrips* __vwsn_precompile_38;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_39;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_35;
+		::vl::presentation::controls::GuiControl* __vwsn_precompile_36;
+		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_37;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_38;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_39;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_40;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_41;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_42;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_43;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_44;
+		::vl::presentation::controls::GuiControl* __vwsn_precompile_41;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_42;
+		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_43;
+		::vl::presentation::controls::GuiRibbonToolstrips* __vwsn_precompile_44;
 		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_45;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_46;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_47;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_48;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_49;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_48;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_49;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_50;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_51;
-		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_52;
-		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_53;
-		::vl::presentation::controls::GuiRibbonIconLabel* __vwsn_precompile_54;
-		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_55;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_56;
-		::vl::presentation::controls::GuiRibbonIconLabel* __vwsn_precompile_57;
-		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_58;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_59;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_51;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_52;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_53;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_54;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_55;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_56;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_57;
+		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_58;
+		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_59;
 		::vl::presentation::controls::GuiRibbonIconLabel* __vwsn_precompile_60;
 		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_61;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_62;
-		::vl::presentation::controls::GuiControl* __vwsn_precompile_63;
-		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_64;
-		::vl::presentation::controls::GuiRibbonIconLabel* __vwsn_precompile_65;
-		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_66;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_67;
-		::vl::presentation::controls::GuiRibbonIconLabel* __vwsn_precompile_68;
-		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_69;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_70;
+		::vl::presentation::controls::GuiRibbonIconLabel* __vwsn_precompile_63;
+		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_64;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_65;
+		::vl::presentation::controls::GuiRibbonIconLabel* __vwsn_precompile_66;
+		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_67;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_68;
+		::vl::presentation::controls::GuiControl* __vwsn_precompile_69;
+		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_70;
 		::vl::presentation::controls::GuiRibbonIconLabel* __vwsn_precompile_71;
 		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_72;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_73;
-		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_74;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_75;
-		::vl::presentation::controls::GuiControl* __vwsn_precompile_76;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_77;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_78;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_79;
-		::vl::presentation::controls::GuiControl* __vwsn_precompile_80;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_81;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_82;
+		::vl::presentation::controls::GuiRibbonIconLabel* __vwsn_precompile_74;
+		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_75;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_76;
+		::vl::presentation::controls::GuiRibbonIconLabel* __vwsn_precompile_77;
+		::vl::presentation::controls::GuiSinglelineTextBox* __vwsn_precompile_78;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_79;
+		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_80;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_81;
+		::vl::presentation::controls::GuiControl* __vwsn_precompile_82;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_83;
-		::vl::presentation::controls::GuiRibbonTabPage* __vwsn_precompile_84;
-		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_85;
-		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_86;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_84;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_85;
+		::vl::presentation::controls::GuiControl* __vwsn_precompile_86;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_87;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_88;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_89;
+		::vl::presentation::controls::GuiRibbonTabPage* __vwsn_precompile_90;
+		::vl::presentation::controls::GuiRibbonGroup* __vwsn_precompile_91;
+		::vl::presentation::controls::GuiRibbonButtons* __vwsn_precompile_92;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_93;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_94;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_95;
 		void __vwsn_demo_DocumentEditorRibbon_Initialize(::demo::DocumentEditorRibbon* __vwsn_this_);
 	public:
 		DocumentEditorRibbonConstructor();
@@ -449,10 +478,10 @@ namespace demo
 
 	class DocumentEditorToolstripConstructor : public ::vl::Object, public ::vl::reflection::Description<DocumentEditorToolstripConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf82_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
+		friend class ::vl_workflow_global::__vwsnc46_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf87_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf88_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorToolstripConstructor>;
 #endif
@@ -463,70 +492,78 @@ namespace demo
 		::vl::presentation::controls::GuiToolstripMenuBar* __vwsn_precompile_1;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_2;
 		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_3;
-		::vl::presentation::controls::GuiToolstripGroupContainer* __vwsn_precompile_4;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_5;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_6;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_4;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_5;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_6;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_7;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_8;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_8;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_9;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_10;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_11;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_12;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_11;
+		::vl::presentation::controls::GuiToolstripGroupContainer* __vwsn_precompile_12;
 		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_13;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_14;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_15;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_16;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_16;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_17;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_18;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_19;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_20;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_21;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_21;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_22;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_23;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_24;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_24;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_25;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_26;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_27;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_27;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_28;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_29;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_29;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_30;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_31;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_32;
-		::vl::presentation::controls::GuiToolstripToolBar* __vwsn_precompile_33;
-		::vl::presentation::controls::GuiToolstripGroupContainer* __vwsn_precompile_34;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_35;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_31;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_32;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_33;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_34;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_35;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_36;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_37;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_37;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_38;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_39;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_40;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_41;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_42;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_43;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_39;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_40;
+		::vl::presentation::controls::GuiToolstripToolBar* __vwsn_precompile_41;
+		::vl::presentation::controls::GuiToolstripGroupContainer* __vwsn_precompile_42;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_43;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_44;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_45;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_46;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_45;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_46;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_47;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_48;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_49;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_49;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_50;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_51;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_52;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_53;
 		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_54;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_55;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_56;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_57;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_56;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_57;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_58;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_59;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_60;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_61;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_62;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_62;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_63;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_64;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_64;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_65;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_66;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_67;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_67;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_68;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_69;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_70;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_71;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_72;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_73;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_74;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_75;
 		void __vwsn_demo_DocumentEditorToolstrip_Initialize(::demo::DocumentEditorToolstrip* __vwsn_this_);
 	public:
 		DocumentEditorToolstripConstructor();
@@ -625,12 +662,12 @@ namespace demo
 
 	class StyleItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<StyleItemTemplateConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf80_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+		friend class ::vl_workflow_global::__vwsnc44_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf84_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf85_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf86_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StyleItemTemplateConstructor>;
 #endif
@@ -650,125 +687,6 @@ namespace demo
 		void __vwsn_demo_StyleItemTemplate_Initialize(::demo::StyleItemTemplate* __vwsn_this_);
 	public:
 		StyleItemTemplateConstructor();
-	};
-
-	class DocumentEditorBase : public ::vl::presentation::controls::GuiCustomControl, public ::demo::DocumentEditorBaseConstructor, public ::vl::reflection::Description<DocumentEditorBase>
-	{
-		friend class ::demo::DocumentEditorBaseConstructor;
-		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine;
-		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc14_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc15_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc16_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc17_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc19_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc20_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc21_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc22_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc23_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc24_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc25_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc26_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc28_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc29_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc30_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc31_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf20_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf21_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf22_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf23_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf24_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf25_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf26_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__;
-		friend struct ::vl_workflow_global::__vwsnf28_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf29_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf30_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf31_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf38_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf39_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf40_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf41_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf42_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf43_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf44_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf45_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf46_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf47_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf48_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf49_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf50_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf51_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf52_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf53_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf54_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf55_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf56_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf57_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf58_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf59_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf60_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf61_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf62_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorBase>;
-#endif
-	protected:
-		::vl::presentation::controls::GuiToolstripCommand* __vwsn_prop_EditModeCommand;
-		::vl::presentation::controls::GuiToolstripCommand* GetEditModeCommand();
-		void SetEditModeCommand(::vl::presentation::controls::GuiToolstripCommand* __vwsn_value_);
-		::vl::Event<void()> EditModeCommandChanged;
-	private:
-		void SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode editMode);
-	protected:
-		::vl::presentation::controls::GuiToolstripCommand* SelectAlignmentCommand();
-	private:
-		void SetAlignment(::vl::Nullable<::vl::presentation::Alignment> alignment);
-		bool __vwsn_prop_HasEditableSelection;
-		bool GetHasEditableSelection();
-		void SetHasEditableSelection(bool __vwsn_value_);
-		::vl::Event<void()> HasEditableSelectionChanged;
-		bool __vwsn_prop_HasEditableSelectionInSingleParagraph;
-		bool GetHasEditableSelectionInSingleParagraph();
-		void SetHasEditableSelectionInSingleParagraph(bool __vwsn_value_);
-		::vl::Event<void()> HasEditableSelectionInSingleParagraphChanged;
-		bool HasEditableCursor();
-		bool HasEditableHyperlink(bool forEdit);
-	protected:
-		::vl::presentation::compositions::GuiGraphicsComposition* GetMenuContainer();
-		::vl::presentation::compositions::GuiGraphicsComposition* GetToolstripContainer();
-	public:
-		DocumentEditorBase();
-		void __vwsn_instance_ctor_();
-		~DocumentEditorBase();
 	};
 
 	class DocumentEditorRibbonWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::DocumentEditorRibbonWindowConstructor, public ::vl::reflection::Description<DocumentEditorRibbonWindow>
@@ -832,12 +750,12 @@ namespace demo
 	class StyleItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::StyleItemTemplateConstructor, public ::vl::reflection::Description<StyleItemTemplate>
 	{
 		friend class ::demo::StyleItemTemplateConstructor;
-		friend class ::vl_workflow_global::__vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf80_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+		friend class ::vl_workflow_global::__vwsnc44_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf84_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf85_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf86_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 #ifndef VCZH_DEBUG_NO_REFLECTION
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StyleItemTemplate>;
 #endif
@@ -847,76 +765,6 @@ namespace demo
 		StyleItemTemplate(::vl::Ptr<::demo::StyleItem> __vwsn_ctor_parameter_ViewModel);
 		void __vwsn_instance_ctor_();
 		~StyleItemTemplate();
-	};
-
-	class DocumentEditorRibbon : public ::demo::DocumentEditorBase, public ::demo::DocumentEditorRibbonConstructor, public ::vl::reflection::Description<DocumentEditorRibbon>
-	{
-		friend struct ::vl_workflow_global::__vwsnf77_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__;
-		friend class ::demo::DocumentEditorRibbonConstructor;
-		friend class ::vl_workflow_global::__vwsnc32_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc33_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc34_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc37_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc38_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc39_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc40_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf63_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf64_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf65_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf66_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf67_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf68_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf69_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf70_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf71_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf72_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf73_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf74_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf75_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf76_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorRibbon>;
-#endif
-	private:
-		bool __vwsn_prop_AlignLeftSelected;
-		bool GetAlignLeftSelected();
-		void SetAlignLeftSelected(bool __vwsn_value_);
-		::vl::Event<void()> AlignLeftSelectedChanged;
-		bool __vwsn_prop_AlignCenterSelected;
-		bool GetAlignCenterSelected();
-		void SetAlignCenterSelected(bool __vwsn_value_);
-		::vl::Event<void()> AlignCenterSelectedChanged;
-		bool __vwsn_prop_AlignRightSelected;
-		bool GetAlignRightSelected();
-		void SetAlignRightSelected(bool __vwsn_value_);
-		::vl::Event<void()> AlignRightSelectedChanged;
-		::vl::Ptr<::vl::reflection::description::IValueList> __vwsn_prop_StyleGroups;
-		::vl::Ptr<::vl::reflection::description::IValueList> GetStyleGroups();
-		void SetStyleGroups(::vl::Ptr<::vl::reflection::description::IValueList> __vwsn_value_);
-		::vl::Event<void()> StyleGroupsChanged;
-		::vl::Ptr<::vl::reflection::description::IValueList> GenerateStyleGroups();
-		void SelectStyleName(const ::vl::Nullable<::vl::WString>& styleName);
-	public:
-		DocumentEditorRibbon();
-		void __vwsn_instance_ctor_();
-		~DocumentEditorRibbon();
-	};
-
-	class DocumentEditorToolstrip : public ::demo::DocumentEditorBase, public ::demo::DocumentEditorToolstripConstructor, public ::vl::reflection::Description<DocumentEditorToolstrip>
-	{
-		friend class ::demo::DocumentEditorToolstripConstructor;
-		friend class ::vl_workflow_global::__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf82_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorToolstrip>;
-#endif
-	public:
-		DocumentEditorToolstrip();
-		~DocumentEditorToolstrip();
 	};
 
 }
@@ -943,7 +791,7 @@ Closures
 
 		__vwsnf10_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -961,7 +809,7 @@ Closures
 
 		__vwsnf12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf13_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -979,7 +827,7 @@ Closures
 
 		__vwsnf14_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf15_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -988,7 +836,7 @@ Closures
 
 		__vwsnf15_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf16_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -997,7 +845,7 @@ Closures
 
 		__vwsnf16_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf17_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1006,7 +854,7 @@ Closures
 
 		__vwsnf17_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf18_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1015,7 +863,7 @@ Closures
 
 		__vwsnf18_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf19_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1024,7 +872,7 @@ Closures
 
 		__vwsnf19_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf1_Demo_demo_DocumentEditorRibbonWindowConstructor___vwsn_demo_DocumentEditorRibbonWindow_Initialize_
@@ -1042,7 +890,7 @@ Closures
 
 		__vwsnf20_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf21_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1051,7 +899,7 @@ Closures
 
 		__vwsnf21_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf22_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1099,13 +947,13 @@ Closures
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__
+	struct __vwsnf27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
 	{
 		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
 
-		__vwsnf27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
+		__vwsnf27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::vl::Ptr<::vl::reflection::description::ICoroutine> operator()(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsn_co_impl_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf28_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1150,16 +998,16 @@ Closures
 
 		__vwsnf31_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
+	struct __vwsnf32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__
 	{
 		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
 
-		__vwsnf32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
+		__vwsnf32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		::vl::Ptr<::vl::reflection::description::ICoroutine> operator()(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsn_co_impl_) const;
 	};
 
 	struct __vwsnf33_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1177,7 +1025,7 @@ Closures
 
 		__vwsnf34_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf35_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1186,7 +1034,7 @@ Closures
 
 		__vwsnf35_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf36_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1204,7 +1052,7 @@ Closures
 
 		__vwsnf37_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf38_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1213,7 +1061,7 @@ Closures
 
 		__vwsnf38_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf39_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1240,7 +1088,7 @@ Closures
 
 		__vwsnf40_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf41_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1249,7 +1097,7 @@ Closures
 
 		__vwsnf41_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf42_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1285,7 +1133,7 @@ Closures
 
 		__vwsnf45_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf46_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1294,7 +1142,7 @@ Closures
 
 		__vwsnf46_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf47_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1303,7 +1151,7 @@ Closures
 
 		__vwsnf47_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf48_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1321,7 +1169,7 @@ Closures
 
 		__vwsnf49_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__
@@ -1366,7 +1214,7 @@ Closures
 
 		__vwsnf53_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf54_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1375,7 +1223,7 @@ Closures
 
 		__vwsnf54_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf55_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1402,7 +1250,7 @@ Closures
 
 		__vwsnf57_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf58_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1411,7 +1259,7 @@ Closures
 
 		__vwsnf58_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf59_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1438,7 +1286,7 @@ Closures
 
 		__vwsnf60_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf61_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1447,7 +1295,7 @@ Closures
 
 		__vwsnf61_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf62_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
@@ -1459,47 +1307,47 @@ Closures
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf63_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
+	struct __vwsnf63_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
 	{
-		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
+		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
 
-		__vwsnf63_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
+		__vwsnf63_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::vl::Ptr<::vl::reflection::description::IValueEnumerable> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf64_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
+	struct __vwsnf64_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
 	{
-		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
+		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
 
-		__vwsnf64_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
-
-		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
-	};
-
-	struct __vwsnf65_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
-	{
-		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
-
-		__vwsnf65_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::templates::GuiListItemTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
-	};
-
-	struct __vwsnf66_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
-	{
-		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
-
-		__vwsnf66_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
+		__vwsnf64_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf67_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
+	struct __vwsnf65_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
 	{
-		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
+		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
 
-		__vwsnf67_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
+		__vwsnf65_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
+
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf66_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
+	{
+		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
+
+		__vwsnf66_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+	};
+
+	struct __vwsnf67_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_
+	{
+		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
+
+		__vwsnf67_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
@@ -1510,7 +1358,7 @@ Closures
 
 		__vwsnf68_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		::vl::Ptr<::vl::reflection::description::IValueEnumerable> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
 	struct __vwsnf69_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
@@ -1519,7 +1367,7 @@ Closures
 
 		__vwsnf69_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
 	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__
@@ -1537,7 +1385,7 @@ Closures
 
 		__vwsnf70_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		::vl::presentation::templates::GuiListItemTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
 	};
 
 	struct __vwsnf71_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
@@ -1591,32 +1439,32 @@ Closures
 
 		__vwsnf76_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiItemEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf77_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__
+	struct __vwsnf77_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
 	{
-		::demo::DocumentEditorRibbon* __vwsnthis_0;
+		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
 
-		__vwsnf77_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__(::demo::DocumentEditorRibbon* __vwsnctorthis_0);
-
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_
-	{
-		::demo::StyleItemTemplateConstructor* __vwsnthis_0;
-
-		__vwsnf78_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnf77_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_
+	struct __vwsnf78_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
 	{
-		::demo::StyleItemTemplateConstructor* __vwsnthis_0;
+		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
 
-		__vwsnf79_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnf78_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
+
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf79_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
+	{
+		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
+
+		__vwsnf79_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
@@ -1630,29 +1478,83 @@ Closures
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
-	struct __vwsnf80_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_
+	struct __vwsnf80_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
+	{
+		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
+
+		__vwsnf80_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+	};
+
+	struct __vwsnf81_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
+	{
+		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
+
+		__vwsnf81_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
+
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf82_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
+	{
+		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
+
+		__vwsnf82_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiItemEventArgs* arguments) const;
+	};
+
+	struct __vwsnf83_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__
+	{
+		::demo::DocumentEditorRibbon* __vwsnthis_0;
+
+		__vwsnf83_Demo_demo_DocumentEditorRibbon___vwsn_instance_ctor__(::demo::DocumentEditorRibbon* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+	};
+
+	struct __vwsnf84_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_
 	{
 		::demo::StyleItemTemplateConstructor* __vwsnthis_0;
 
-		__vwsnf80_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnf84_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_
+	struct __vwsnf85_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_
 	{
-		::demo::DocumentEditorToolstripConstructor* __vwsnthis_0;
+		::demo::StyleItemTemplateConstructor* __vwsnthis_0;
 
-		__vwsnf81_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
+		__vwsnf85_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf82_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_
+	struct __vwsnf86_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_
+	{
+		::demo::StyleItemTemplateConstructor* __vwsnthis_0;
+
+		__vwsnf86_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
+
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf87_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_
 	{
 		::demo::DocumentEditorToolstripConstructor* __vwsnthis_0;
 
-		__vwsnf82_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
+		__vwsnf87_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
+
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf88_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_
+	{
+		::demo::DocumentEditorToolstripConstructor* __vwsnthis_0;
+
+		__vwsnf88_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
@@ -1672,7 +1574,7 @@ Closures
 
 		__vwsnf9_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	class __vwsnc10_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
@@ -1681,6 +1583,21 @@ Closures
 		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
 
 		__vwsnc10_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
+
+		bool __vwsn_bind_opened_ = false;
+		bool __vwsn_bind_closed_ = false;
+		void __vwsn_bind_activator_();
+		bool Open() override;
+		bool Update() override;
+		bool Close() override;
+	};
+
+	class __vwsnc11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	{
+	public:
+		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
+
+		__vwsnc11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -1693,13 +1610,13 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine : public ::vl::Object, public virtual ::vl::reflection::description::ICoroutine
+	class __vwsnc12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine : public ::vl::Object, public virtual ::vl::reflection::description::ICoroutine
 	{
 	public:
 		::vl::reflection::description::AsyncCoroutine::IImpl* __vwsn_co_impl_;
 		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
 
-		__vwsnc11_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsnctor___vwsn_co_impl_, ::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
+		__vwsnc12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine(::vl::reflection::description::AsyncCoroutine::IImpl* __vwsnctor___vwsn_co_impl_, ::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiWindow* __vwsn_co0_mainWindow = nullptr;
 		::demo::HyperlinkWindow* __vwsn_co1_window = nullptr;
@@ -1714,24 +1631,6 @@ Closures
 		void Resume(bool __vwsn_raise_exception_, ::vl::Ptr<::vl::reflection::description::CoroutineResult> __vwsn_co_result_) override;
 	};
 
-	class __vwsnc12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
-
-		__vwsnc12_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
-		bool Open() override;
-		bool Update() override;
-		bool Close() override;
-	};
-
 	class __vwsnc13_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
@@ -1739,12 +1638,12 @@ Closures
 
 		__vwsnc13_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
+		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -1757,14 +1656,12 @@ Closures
 
 		__vwsnc14_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
+		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_1;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
-		void __vwsn_bind_callback_0_1(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		void __vwsn_bind_callback_0_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -1777,12 +1674,14 @@ Closures
 
 		__vwsnc15_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
+		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_1;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		void __vwsn_bind_callback_0_1(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -1795,14 +1694,12 @@ Closures
 
 		__vwsnc16_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
+		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_1;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
-		void __vwsn_bind_callback_0_1(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		void __vwsn_bind_callback_0_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -1815,24 +1712,6 @@ Closures
 
 		__vwsnc17_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
-		bool Open() override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc18_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
-
-		__vwsnc18_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
-
 		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_1;
@@ -1846,12 +1725,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc19_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc18_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
 
-		__vwsnc19_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
+		__vwsnc18_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
 		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -1859,6 +1738,26 @@ Closures
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
 		void __vwsn_bind_callback_0_0();
+		bool Open() override;
+		bool Update() override;
+		bool Close() override;
+	};
+
+	class __vwsnc19_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	{
+	public:
+		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
+
+		__vwsnc19_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
+
+		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_1;
+		bool __vwsn_bind_opened_ = false;
+		bool __vwsn_bind_closed_ = false;
+		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		void __vwsn_bind_callback_0_1(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -1889,14 +1788,12 @@ Closures
 
 		__vwsnc20_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
+		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_1;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
-		void __vwsn_bind_callback_0_1(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		void __vwsn_bind_callback_0_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -1909,12 +1806,14 @@ Closures
 
 		__vwsnc21_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
+		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_1;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		void __vwsn_bind_callback_0_1(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -1963,9 +1862,12 @@ Closures
 
 		__vwsnc24_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
+		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -1993,12 +1895,9 @@ Closures
 
 		__vwsnc26_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2011,9 +1910,12 @@ Closures
 
 		__vwsnc27_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
+		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2026,12 +1928,9 @@ Closures
 
 		__vwsnc28_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2044,9 +1943,12 @@ Closures
 
 		__vwsnc29_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
+		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2077,12 +1979,9 @@ Closures
 
 		__vwsnc30_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2106,12 +2005,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc32_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
-		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
+		::demo::DocumentEditorBaseConstructor* __vwsnthis_0;
 
-		__vwsnc32_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
+		__vwsnc32_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -2167,7 +2066,7 @@ Closures
 
 		__vwsnc35_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		::demo::DocumentEditorRibbon* __vwsn_bind_cache_0 = nullptr;
+		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
@@ -2186,14 +2085,11 @@ Closures
 		__vwsnc36_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
 		::demo::DocumentEditorRibbon* __vwsn_bind_cache_0 = nullptr;
-		::vl::presentation::controls::GuiToolstripCommand* __vwsn_bind_cache_1 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_1_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
-		void __vwsn_bind_callback_1_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2207,11 +2103,14 @@ Closures
 		__vwsnc37_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
 		::demo::DocumentEditorRibbon* __vwsn_bind_cache_0 = nullptr;
+		::vl::presentation::controls::GuiToolstripCommand* __vwsn_bind_cache_1 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_1_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
 		void __vwsn_bind_callback_0_0();
+		void __vwsn_bind_callback_1_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2260,7 +2159,7 @@ Closures
 
 		__vwsnc3_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
+		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
@@ -2289,16 +2188,19 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc41_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
-		::demo::StyleItemTemplateConstructor* __vwsnthis_0;
+		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
 
-		__vwsnc41_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnc41_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
+		::demo::DocumentEditorRibbon* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2311,12 +2213,9 @@ Closures
 
 		__vwsnc42_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
 
-		::demo::StyleItemTemplate* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2329,6 +2228,24 @@ Closures
 
 		__vwsnc43_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
 
+		::demo::StyleItemTemplate* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		bool __vwsn_bind_opened_ = false;
+		bool __vwsn_bind_closed_ = false;
+		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		bool Open() override;
+		bool Update() override;
+		bool Close() override;
+	};
+
+	class __vwsnc44_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	{
+	public:
+		::demo::StyleItemTemplateConstructor* __vwsnthis_0;
+
+		__vwsnc44_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
+
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
@@ -2337,12 +2254,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::DocumentEditorToolstripConstructor* __vwsnthis_0;
 
-		__vwsnc44_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
+		__vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
 
 		::demo::DocumentEditorToolstrip* __vwsn_bind_cache_0 = nullptr;
 		::vl::presentation::controls::GuiToolstripCommand* __vwsn_bind_cache_1 = nullptr;
@@ -2358,12 +2275,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc46_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::DocumentEditorToolstripConstructor* __vwsnthis_0;
 
-		__vwsnc45_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
+		__vwsnc46_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
@@ -2419,12 +2336,12 @@ Closures
 
 		__vwsnc6_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
-		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
+		::vl::presentation::controls::GuiDocumentViewer* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2442,7 +2359,7 @@ Closures
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		void __vwsn_bind_callback_0_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2460,7 +2377,7 @@ Closures
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
+		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
@@ -2473,9 +2390,12 @@ Closures
 
 		__vwsnc9_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(::demo::DocumentEditorBaseConstructor* __vwsnctorthis_0);
 
+		::demo::DocumentEditorBase* __vwsn_bind_cache_0 = nullptr;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;

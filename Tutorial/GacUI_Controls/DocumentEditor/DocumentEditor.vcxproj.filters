@@ -27,12 +27,30 @@
     <ClCompile Include="UI\Source\DemoPartialClasses.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="UI\Source\DocumentEditorBase.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Source\DocumentEditorRibbon.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Source\DocumentEditorToolstrip.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI\Source\DemoPartialClasses.h">
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="UI\Source\Demo.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\DocumentEditorBase.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\DocumentEditorRibbon.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\DocumentEditorToolstrip.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
