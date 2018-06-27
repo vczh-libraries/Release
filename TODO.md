@@ -44,7 +44,9 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [ ] Known issue: Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
+- [ ] Known issue
+  - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
+  - [ ] AddressBook demo's new contact window default height too large.
   - Find someday to fix it
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] Demo: TriplePhaseImageButton using `Context` property
