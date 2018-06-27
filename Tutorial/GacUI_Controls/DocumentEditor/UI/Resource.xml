@@ -58,11 +58,11 @@
     </Instance>
   </Instance>
 
-  <Folder name="ToolbarImages" content="Link">ToolbarImages/Images.xml</Folder>
-  <Folder name="DocumentComponents" content="Link">DocumentComponents.xml</Folder>
-  <Folder name="DocumentEditorBase" content="Link">DocumentEditorBase.xml</Folder>
-  <Folder name="DocumentEditorRibbon" content="Link">DocumentEditorRibbon.xml</Folder>
-  <Folder name="DocumentEditorToolstrip" content="Link">DocumentEditorToolstrip.xml</Folder>
+  <Folder name="ToolbarImages" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/ToolbarImages/Images.xml</Folder>
+  <Folder name="DocumentComponents" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/DocumentComponents.xml</Folder>
+  <Folder name="DocumentEditorBase" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/DocumentEditorBase.xml</Folder>
+  <Folder name="DocumentEditorRibbon" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/DocumentEditorRibbon.xml</Folder>
+  <Folder name="DocumentEditorToolstrip" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/DocumentEditorToolstrip.xml</Folder>
 
   <Instance name="DocumentEditorRibbonWindowResource">
     <Instance ref.CodeBehind="false" ref.Class="demo::DocumentEditorRibbonWindow" xmlns:demo="demo::*">
