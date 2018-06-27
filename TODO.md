@@ -58,6 +58,7 @@ https://zhuanlan.zhihu.com/p/33778843
   - [ ] Put `USERIMPL` series macros in `VlppWorkflowLibrary.h`
 - [ ] Inheritable custom window / control with `<ref.Parameter>`
 - [ ] Resource should have name and version
+- [ ] Output x86 and x64 Workflow assembly separately from the resource file. Remove the option of embedding assemblies in resource.
 - [ ] Document clipboard data should have version
 - [ ] Depend on another resource, to decide loading order
 - [ ] Demo: DocumentEditor: Split 1 Resource.xml to 3.
