@@ -169,12 +169,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="UI\DocumentComponents.xml" />
-    <Xml Include="UI\DocumentEditorBase.xml" />
-    <Xml Include="UI\DocumentEditorRibbon.xml" />
-    <Xml Include="UI\DocumentEditorToolstrip.xml" />
     <Xml Include="UI\Resource.xml" />
-    <Xml Include="UI\ToolbarImages\Images.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

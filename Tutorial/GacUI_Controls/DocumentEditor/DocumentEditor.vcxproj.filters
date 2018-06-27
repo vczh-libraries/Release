@@ -16,9 +16,6 @@
     <Filter Include="UI">
       <UniqueIdentifier>{69bac203-e424-45f8-9ee9-02339dc0166c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\ToolbarImages">
-      <UniqueIdentifier>{012f179d-483c-430b-9a29-52edd562ddbf}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -56,21 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\Resource.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
-    <Xml Include="UI\ToolbarImages\Images.xml">
-      <Filter>Resource Files\ToolbarImages</Filter>
-    </Xml>
-    <Xml Include="UI\DocumentEditorBase.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
-    <Xml Include="UI\DocumentEditorRibbon.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
-    <Xml Include="UI\DocumentEditorToolstrip.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
-    <Xml Include="UI\DocumentComponents.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>
