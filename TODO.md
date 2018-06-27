@@ -44,21 +44,8 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [x] Delay all composition tree updating during rendering
-- [x] Cancel the delayed layout task in combo box if it is deleted right after the size is changed
-- [x] Private clipboard format for `GuiDocument`
-- [x] Generate `CF_RTF`(Rich Text Format) but not parse
-- [x] Generate `CF_HTML`(HTML Format) but not parse
-- [x] Copy image to clipboard if only an image is selected
-- [x] Add image file format for all three supported clipboard formats
-  - [x] Private clipboard format
-  - [x] `CF_RTF`
-  - [x] `CF_HTML`
-- [ ] Demo: DocumentEditor
-  - [ ] Load / Save
 - [ ] Known issue: Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
   - Find someday to fix it
-- [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] Demo: TriplePhaseImageButton using `Context` property
 - [ ] Demo: `<SharedSize>` and `<SharedSizeRoot>`
