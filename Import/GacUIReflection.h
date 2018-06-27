@@ -121,6 +121,8 @@ Type List (Basic)
 			F(presentation::INativeImageService)\
 			F(presentation::INativeResourceService)\
 			F(presentation::INativeAsyncService)\
+			F(presentation::INativeClipboardReader)\
+			F(presentation::INativeClipboardWriter)\
 			F(presentation::INativeClipboardService)\
 			F(presentation::INativeScreenService)\
 			F(presentation::INativeInputService)\
@@ -336,6 +338,7 @@ Type List (Controls)
 			F(presentation::controls::list::FixedHeightMultiColumnItemArranger)\
 			F(presentation::controls::list::ITextItemView)\
 			F(presentation::controls::list::TextItem)\
+			F(presentation::controls::list::TextItemProvider)\
 			F(presentation::controls::TextListView)\
 			F(presentation::controls::list::IListViewItemView)\
 			F(presentation::controls::list::ListViewColumnItemArranger)\
@@ -343,6 +346,8 @@ Type List (Controls)
 			F(presentation::controls::list::ListViewColumnItemArranger::IColumnItemView)\
 			F(presentation::controls::list::ListViewItem)\
 			F(presentation::controls::list::ListViewColumn)\
+			F(presentation::controls::ListViewView)\
+			F(presentation::controls::list::ListViewItemProvider)\
 			F(presentation::controls::IGuiMenuService)\
 			F(presentation::controls::IGuiMenuService::Direction)\
 			F(presentation::controls::IGuiMenuDropdownProvider)\
@@ -350,6 +355,7 @@ Type List (Controls)
 			F(presentation::controls::tree::INodeProvider)\
 			F(presentation::controls::tree::INodeRootProvider)\
 			F(presentation::controls::tree::INodeItemView)\
+			F(presentation::controls::tree::NodeItemProvider)\
 			F(presentation::controls::tree::MemoryNodeProvider)\
 			F(presentation::controls::tree::NodeRootProviderBase)\
 			F(presentation::controls::tree::MemoryNodeRootProvider)\
@@ -410,7 +416,6 @@ Type List (Controls)
 			F(presentation::controls::GuiTextList)\
 			F(presentation::controls::GuiListViewColumnHeader)\
 			F(presentation::controls::GuiListViewBase)\
-			F(presentation::controls::ListViewView)\
 			F(presentation::controls::GuiVirtualListView)\
 			F(presentation::controls::GuiListView)\
 			F(presentation::controls::GuiMenu)\
