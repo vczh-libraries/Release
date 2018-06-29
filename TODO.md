@@ -44,10 +44,17 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
+- [ ] Inheritable custom window / control with `<ref.Parameter>`
+- [ ] Resource should have name and version
+- [ ] Output x86 and x64 Workflow assembly separately from the resource file. Remove the option of embedding assemblies in resource.
+- [ ] Depend on another resource, to decide loading order
+- [ ] Demo: DocumentEditor: Split 1 Resource.xml to 3.
+- [ ] **Update Release**
 - [ ] Known issue
   - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
   - [ ] AddressBook demo's new contact window default height too large.
   - Find someday to fix it
+- [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [ ] Demo: TriplePhaseImageButton using `Context` property
 - [ ] Demo: `<SharedSize>` and `<SharedSizeRoot>`
@@ -58,12 +65,7 @@ https://zhuanlan.zhihu.com/p/33778843
   - [ ] When some `ref.CodeBehind="false"` classes inherit from a `ref.CodeBehind="true"` one, group them in a different pair of files.
   - [ ] `USERIMPL_BEGIN` and `USERIMPL_END` for header includes, cpp includes and class members.
   - [ ] Put `USERIMPL` series macros in `VlppWorkflowLibrary.h`
-- [ ] Inheritable custom window / control with `<ref.Parameter>`
-- [ ] Resource should have name and version
-- [ ] Output x86 and x64 Workflow assembly separately from the resource file. Remove the option of embedding assemblies in resource.
 - [ ] Document clipboard data should have version
-- [ ] Depend on another resource, to decide loading order
-- [ ] Demo: DocumentEditor: Split 1 Resource.xml to 3.
 - [ ] **Update Release**
 - [ ] CppMerge.exe reports error instead of crashes
 - [ ] Add and query services from controls
