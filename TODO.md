@@ -44,7 +44,7 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [ ] Inheritable custom window / control with `<ref.Parameter>`
+- [x] Inheritable custom window / control with `<ref.Parameter>`
 - [ ] Resource should have name and version
 - [x] Change `GacConfig\Res` to `ResX86` and `ResX64`, with an additional `Assembly` option, to produce platform-dependended
   - Scripted resource binary
