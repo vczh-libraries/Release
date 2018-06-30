@@ -8,7 +8,11 @@ using namespace vl::reflection::description;
 void GuiMain()
 {
 	{
-		FileStream fileStream(L"../UIRes/Xml.bin", FileStream::ReadOnly);
+#ifdef VCZH_64
+		FileStream fileStream(L"../UIRes/Xml.bin.x64", FileStream::ReadOnly);
+#else
+		FileStream fileStream(L"../UIRes/Xml.bin.x86", FileStream::ReadOnly);
+#endif
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
 		GetResourceManager()->SetResource(L"Resource", resource, GuiResourceUsage::InstanceClass);
 	}

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Resource>
   <Folder name="GacGenConfig">
-    <Folder name="Res">
-      <Text name="Resource">..\..\UIRes\Xml.bin</Text>
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\Xml.bin.x86</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\Xml.bin.x64</Text>
     </Folder>
   </Folder>
   <Folder name="MainWindow">
