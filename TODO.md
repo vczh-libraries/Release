@@ -46,7 +46,11 @@ https://zhuanlan.zhihu.com/p/33778843
 #### Before 1.0
 - [ ] Inheritable custom window / control with `<ref.Parameter>`
 - [ ] Resource should have name and version
-- [ ] Output x86 and x64 Workflow assembly separately from the resource file. Remove the option of embedding assemblies in resource.
+- [x] Change `GacConfig\Res` to `ResX86` and `ResX64`, with an additional `Assembly` option, to produce platform-dependended
+  - Scripted resource binary
+  - Scripted compressed resource binary
+  - Assembly
+- [x] GacGen will always output all `Res*` supported binaries to `*.xml.log` folder
 - [ ] Depend on another resource, to decide loading order
 - [ ] Demo: DocumentEditor: Split 1 Resource.xml to 3.
 - [ ] **Update Release**
