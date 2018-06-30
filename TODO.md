@@ -46,9 +46,10 @@ https://zhuanlan.zhihu.com/p/33778843
 #### Before 1.0
 - [ ] Depend on another resource, to decide loading order
   - [ ] Resource should have name and version, resource needs to specify names of all depended resources, versions should be all identical.
-  - [ ] `GacDep.ps1` searches for all `Resource.xml` (maybe different name), and generate lists files of input files and output binary files, dependencies, binary files out dated or not, and build order, assuming `GacGen.ps1`.
+  - [ ] `GacDep.ps1` searches for all `Resource.xml` (maybe different name), and generate lists files of input files and output binary files, dependencies, binary files out dated or not, log folders, and build order, assuming `GacGen.ps1`.
   - [ ] `GacBuild.ps1` reads the output of `GacDep.ps1` and do incremental builds.
   - [ ] `GacClear.ps1` deletes all log folders of resources, using the output of `GacDep.ps1`, which causes `GacBuild.ps1` to do full build after that.
+  - [ ] `GacGen.exe` supports all operations above.
   - [ ] Add a metadata xml in front of binary resource data, so that GacUI knows how to load them in order.
 - [x] Inheritable custom window / control with `<ref.Parameter>`
 - [x] Change `GacConfig\Res` to `ResX86` and `ResX64`, with an additional `Assembly` option, to produce platform-dependended
