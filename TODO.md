@@ -70,6 +70,7 @@ https://zhuanlan.zhihu.com/p/33778843
   - [ ] `USERIMPL_BEGIN` and `USERIMPL_END` for header includes, cpp includes and class members.
   - [ ] Put `USERIMPL` series macros in `VlppWorkflowLibrary.h`
 - [ ] Document clipboard data should have version
+- [ ] Resource import item/folder from depended resources
 - [ ] **Update Release**
 - [ ] CppMerge.exe reports error instead of crashes
 - [ ] Add and query services from controls
