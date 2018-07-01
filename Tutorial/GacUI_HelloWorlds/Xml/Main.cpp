@@ -14,7 +14,7 @@ void GuiMain()
 		FileStream fileStream(L"../UIRes/Xml.bin.x86", FileStream::ReadOnly);
 #endif
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(L"Resource", resource, GuiResourceUsage::InstanceClass);
+		GetResourceManager()->SetResource(resource, GuiResourceUsage::InstanceClass);
 	}
 
 	auto window = UnboxValue<GuiWindow*>(Value::Create(L"helloworld::MainWindow"));

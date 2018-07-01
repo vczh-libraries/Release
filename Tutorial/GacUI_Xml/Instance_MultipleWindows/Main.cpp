@@ -8,7 +8,7 @@ void GuiMain()
 	{
 		FileStream fileStream(L"../UIRes/Instance_MultipleWindows.bin", FileStream::ReadOnly);
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(L"Resource", resource);
+		GetResourceManager()->SetResource(resource);
 	}
 	demo::MainWindow window;
 	window.MoveToScreenCenter();

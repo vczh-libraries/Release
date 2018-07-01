@@ -16,7 +16,7 @@ void GuiMain()
 	{
 		FileStream fileStream(L"../UIRes/BlackSkin.bin", FileStream::ReadOnly);
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(L"Resource", resource);
+		GetResourceManager()->SetResource(resource);
 	}
 	{
 		demo::MainWindow window;
