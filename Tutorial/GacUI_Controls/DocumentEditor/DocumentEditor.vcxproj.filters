@@ -18,33 +18,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="UI\Source\DemoPartialClasses.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
     <ClCompile Include="UI\Source\DocumentEditorBase.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="UI\Source\DocumentEditorRibbon.cpp">
+    <ClCompile Include="UI\Source\EditorBaseReflection.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="UI\Source\DocumentEditorToolstrip.cpp">
+    <ClCompile Include="UI\Source\EditorBasePartialClasses.cpp">
       <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UI\Source\DemoPartialClasses.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="UI\Source\Demo.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="UI\Source\DocumentEditorBase.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="UI\Source\DocumentEditorRibbon.h">
+    <ClInclude Include="UI\Source\EditorBasePartialClasses.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="UI\Source\DocumentEditorToolstrip.h">
+    <ClInclude Include="UI\Source\EditorBaseReflection.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\EditorBase.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>

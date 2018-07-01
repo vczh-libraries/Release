@@ -150,17 +150,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="UI\Source\DemoPartialClasses.cpp" />
     <ClCompile Include="UI\Source\DocumentEditorBase.cpp" />
-    <ClCompile Include="UI\Source\DocumentEditorRibbon.cpp" />
-    <ClCompile Include="UI\Source\DocumentEditorToolstrip.cpp" />
+    <ClCompile Include="UI\Source\EditorBasePartialClasses.cpp" />
+    <ClCompile Include="UI\Source\EditorBaseReflection.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UI\Source\Demo.h" />
-    <ClInclude Include="UI\Source\DemoPartialClasses.h" />
     <ClInclude Include="UI\Source\DocumentEditorBase.h" />
-    <ClInclude Include="UI\Source\DocumentEditorRibbon.h" />
-    <ClInclude Include="UI\Source\DocumentEditorToolstrip.h" />
+    <ClInclude Include="UI\Source\EditorBase.h" />
+    <ClInclude Include="UI\Source\EditorBasePartialClasses.h" />
+    <ClInclude Include="UI\Source\EditorBaseReflection.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\ResourceBase.xml" />
