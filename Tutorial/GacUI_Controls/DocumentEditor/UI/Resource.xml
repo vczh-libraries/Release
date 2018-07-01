@@ -1,5 +1,8 @@
 <Resource>
   <Folder name="GacGenConfig">
+    <Xml name="Metadata">
+      <ResourceMetadata Name="EditorBase" Version="1.0"/>
+    </Xml>
     <Folder name="Cpp">
       <Text name="SourceFolder">Source</Text>
       <Text name="Resource">..\..\UIRes\DocumentEditor.bin</Text>
