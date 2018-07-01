@@ -1,10 +1,11 @@
 <Resource>
   <Folder name="GacGenConfig">
     <Xml name="Metadata">
-      <ResourceMetadata Name="EditorToolstrip" Version="1.0"/>
-      <Dependencies>
-        <Resource Name="EditorBase"/>
-      </Dependencies>
+      <ResourceMetadata Name="EditorToolstrip" Version="1.0">
+        <Dependencies>
+          <Resource Name="EditorBase"/>
+        </Dependencies>
+      </ResourceMetadata>
     </Xml>
     <Folder name="Cpp">
       <Text name="SourceFolder">Source</Text>
