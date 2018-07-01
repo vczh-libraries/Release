@@ -1,5 +1,5 @@
 #define GAC_HEADER_USE_NAMESPACE
-#include "UI/Source/Demo.h"
+#include "Demo.h"
 
 using namespace vl::collections;
 using namespace vl::stream;
@@ -13,7 +13,7 @@ void GuiMain()
 		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
 		GetResourceManager()->SetResource(resource);
 	}
-	demo::MainWindow window;
+	demo::DocumentEditorRibbonWindow window;
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }
