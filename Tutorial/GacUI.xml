@@ -1,0 +1,4 @@
+<GacUI>
+  <Exclude Pattern="/Lib/FakeResource.xml"/>
+  <Exclude Pattern="/Lib/FakeResource2.xml"/>
+</GacUI>
