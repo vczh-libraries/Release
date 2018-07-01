@@ -1,0 +1,38 @@
+<Resource>
+  <Folder name="GacGenConfig">
+    <Xml name="Metadata">
+      <ResourceMetadata Name="EditorBase" Version="1.0"/>
+    </Xml>
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\DocumentEditor.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="ReflectionInclude">GacUIReflection.h</Text>
+      <Text name="Name">EditorBase</Text>
+    </Folder>
+  </Folder>
+
+  <Folder name="ToolbarImages" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/ToolbarImages/Images.xml</Folder>
+  <Folder name="DocumentComponents" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/DocumentComponents.xml</Folder>
+  <Folder name="DocumentEditorBase" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/DocumentEditorBase.xml</Folder>
+
+  <Instance name="DocumentEditorRibbonWindowResource">
+    <Instance ref.CodeBehind="false" ref.Class="demo::DocumentEditorRibbonWindow" xmlns:demo="demo::*">
+      <Window Text-bind="editor.Text" ClientSize="x:800 y:600">
+        <demo:DocumentEditorRibbon ref.Name="editor">
+          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+        </demo:DocumentEditorRibbon>
+      </Window>
+    </Instance>
+  </Instance>
+
+  <Instance name="DocumentEditorToolstripWindowResource">
+    <Instance ref.CodeBehind="false" ref.Class="demo::DocumentEditorToolstripWindow" xmlns:demo="demo::*">
+      <Window Text-bind="editor.Text" ClientSize="x:800 y:600">
+        <demo:DocumentEditorToolstrip ref.Name="editor">
+          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+        </demo:DocumentEditorToolstrip>
+      </Window>
+    </Instance>
+  </Instance>
+</Resource>

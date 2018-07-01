@@ -163,7 +163,7 @@
     <ClInclude Include="UI\Source\DocumentEditorToolstrip.h" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="UI\Resource.xml" />
+    <Xml Include="UI\ResourceBase.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

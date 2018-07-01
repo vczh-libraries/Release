@@ -49,7 +49,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="UI\Resource.xml">
+    <Xml Include="UI\ResourceBase.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>
