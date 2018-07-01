@@ -126,20 +126,19 @@ namespace vl
 		bool WriteBinaryResource(
 			Ptr<GuiResource> resource,
 			bool compress,
-			bool workflow,
-			const filesystem::FilePath& filePath)
+			bool includeAssemblyInResource,
+			Nullable<filesystem::FilePath> resourceOutput,
+			Nullable<filesystem::FilePath> assemblyOutput)
 		{
 			auto precompiled = resource->GetFolder(L"Precompiled");
 			auto folder = precompiled->GetFolder(L"Workflow");
-			if (!workflow)
-			{
-				precompiled->RemoveFolder(L"Workflow");
-			}
 
-			FileStream fileStream(filePath.GetFullPath(), FileStream::WriteOnly);
-
-			if (fileStream.IsAvailable())
+			if (resourceOutput)
 			{
+				FileStream fileStream(resourceOutput.Value().GetFullPath(), FileStream::WriteOnly);
+				if (!fileStream.IsAvailable()) return false;
+
+				if (!includeAssemblyInResource) precompiled->RemoveFolder(L"Workflow");
 				if (compress)
 				{
 					LzwEncoder encoder;
@@ -150,14 +149,26 @@ namespace vl
 				{
 					resource->SavePrecompiledBinary(fileStream);
 				}
+				if (!includeAssemblyInResource) precompiled->AddFolder(L"Workflow", folder);
 			}
 
-			if (folder && !workflow)
+			if (assemblyOutput)
 			{
-				precompiled->AddFolder(L"Workflow", folder);
+				if (auto item = folder->GetItem(L"InstanceClass"))
+				{
+					if (auto compiled = item->GetContent().Cast<GuiInstanceCompiledWorkflow>())
+					{
+						if (compiled->assembly)
+						{
+							FileStream fileStream(assemblyOutput.Value().GetFullPath(), FileStream::WriteOnly);
+							if (!fileStream.IsAvailable()) return false;
+							compiled->assembly->Serialize(fileStream);
+						}
+					}
+				}
 			}
 
-			return fileStream.IsAvailable();
+			return true;
 		}
 
 		void WriteEmbeddedBinaryClass(MemoryStream& binaryStream, bool compress, const WString& className, const WString& prefix, StreamWriter& writer)
@@ -280,8 +291,7 @@ namespace vl
 					writer.WriteLine(L"\t\t\t\t\tMemoryStream resourceStream;");
 					writer.WriteLine(L"\t\t\t\t\t" + cppInput->assemblyName + L"ResourceReader::ReadToStream(resourceStream);");
 					writer.WriteLine(L"\t\t\t\t\tresourceStream.SeekFromBegin(0);");
-					writer.WriteLine(L"\t\t\t\t\tauto resource = GuiResource::LoadPrecompiledBinary(resourceStream, errors);");
-					writer.WriteLine(L"\t\t\t\t\tGetResourceManager()->SetResource(L\"" + cppInput->assemblyName + L"\", resource, GuiResourceUsage::InstanceClass);");
+					writer.WriteLine(L"\t\t\t\t\tGetResourceManager()->LoadResourceOrPending(resourceStream, GuiResourceUsage::InstanceClass);");
 					writer.WriteLine(L"\t\t\t\t}");
 					writer.WriteLine(L"");
 					writer.WriteLine(L"\t\t\t\tvoid Unload()override");
@@ -3868,20 +3878,14 @@ WorkflowGenerateCreatingVisitor
 
 			void FillCtorArguments(GuiConstructorRepr* repr, IGuiInstanceLoader* loader, const IGuiInstanceLoader::TypeInfo& typeInfo, IGuiInstanceLoader::ArgumentMap& arguments)
 			{
-				List<GlobalStringKey> ctorProps;
-				loader->GetPropertyNames(typeInfo, ctorProps);
-
 				WORKFLOW_ENVIRONMENT_VARIABLE_ADD
 
-				FOREACH(GlobalStringKey, prop, ctorProps)
+				FOREACH_INDEXER(GlobalStringKey, prop, index, repr->setters.Keys())
 				{
-					auto propInfo = loader->GetPropertyType({ typeInfo,prop });
-					if (propInfo->usage != GuiInstancePropertyInfo::ConstructorArgument) continue;
-
-					auto index = repr->setters.Keys().IndexOf(prop);
-					if (index == -1) continue;
-
 					auto setter = repr->setters.Values()[index];
+					auto propertyResolving = resolvingResult.propertyResolvings[setter->values[0].Obj()];
+					if (propertyResolving.info->usage != GuiInstancePropertyInfo::ConstructorArgument) continue;
+
 					if (setter->binding == GlobalStringKey::Empty)
 					{
 						FOREACH(Ptr<GuiValueRepr>, value, setter->values)
@@ -3895,21 +3899,19 @@ WorkflowGenerateCreatingVisitor
 					}
 					else if (auto binder = GetInstanceLoaderManager()->GetInstanceBinder(setter->binding))
 					{
-						auto propInfo = IGuiInstanceLoader::PropertyInfo(typeInfo, prop);
-						auto resolvedPropInfo = loader->GetPropertyType(propInfo);
 						auto value = setter->values[0].Cast<GuiTextRepr>();
-						if (auto expression = binder->GenerateConstructorArgument(precompileContext, resolvingResult, loader, propInfo, resolvedPropInfo, value->text, value->tagPosition, errors))
+						if (auto expression = binder->GenerateConstructorArgument(precompileContext, resolvingResult, loader, propertyResolving.propertyInfo, propertyResolving.info, value->text, value->tagPosition, errors))
 						{
 							Workflow_RecordScriptPosition(precompileContext, value->tagPosition, expression);
 
 							IGuiInstanceLoader::ArgumentInfo argument;
 							argument.expression = expression;
-							argument.typeInfo = resolvedPropInfo->acceptableTypes[0];
+							argument.typeInfo = propertyResolving.info->acceptableTypes[0];
 							argument.attPosition = setter->attPosition;
 							arguments.Add(prop, argument);
 						}
 					}
-					else
+					else if (setter->binding != GlobalStringKey::_Set)
 					{
 						errors.Add(GuiResourceError({ resolvingResult.resource }, setter->attPosition,
 							L"[INTERNAL-ERROR] Precompile: The appropriate IGuiInstanceBinder of binding \"-" +
@@ -6528,7 +6530,7 @@ IGuiInstanceLoader
 
 		Ptr<workflow::WfBaseConstructorCall> IGuiInstanceLoader::CreateRootInstance(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, ArgumentMap& arguments, GuiResourceError::List& errors)
 		{
-			CHECK_FAIL(L"IGuiInstanceLoader::CreateControlTemplateArgument(types::ResolvingResult&, const TypeInfo&, Ptr<workflow::WfExpression>, collections::List<WString>&)#This function is not implemented.");
+			CHECK_FAIL(L"IGuiInstanceLoader::CreateRootInstance(GuiResourcePrecompileContext&, types::ResolvingResult&, const TypeInfo&, Ptr<workflow::WfExpression>, ArgumentMap&, GuiResourceError::List&)#This function is not implemented.");
 		}
 
 		Ptr<workflow::WfStatement> IGuiInstanceLoader::InitializeRootInstance(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, GlobalStringKey variableName, ArgumentMap& arguments, GuiResourceError::List& errors)
@@ -6538,17 +6540,17 @@ IGuiInstanceLoader
 
 		Ptr<workflow::WfStatement> IGuiInstanceLoader::CreateInstance(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, GlobalStringKey variableName, ArgumentMap& arguments, GuiResourceTextPos tagPosition, GuiResourceError::List& errors)
 		{
-			CHECK_FAIL(L"IGuiInstanceLoader::CreateInstance(types::ResolvingResult&, const TypeInfo&, GlobalStringKey, ArgumentMap&, collections::List<WString>&)#This function is not implemented.");
+			CHECK_FAIL(L"IGuiInstanceLoader::CreateInstance(GuiResourcePrecompileContext&, types::ResolvingResult&, const TypeInfo&, GlobalStringKey, ArgumentMap&, GuiResourceTextPos, GuiResourceError::List&)#This function is not implemented.");
 		}
 
 		Ptr<workflow::WfStatement> IGuiInstanceLoader::AssignParameters(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, GlobalStringKey variableName, ArgumentMap& arguments, GuiResourceTextPos attPosition, GuiResourceError::List& errors)
 		{
-			CHECK_FAIL(L"IGuiInstanceLoader::AssignParameters(types::ResolvingResult&, const TypeInfo&, GlobalStringKey, ArgumentMap&, collections::List<WString>&)#This function is not implemented.");
+			CHECK_FAIL(L"IGuiInstanceLoader::AssignParameters(GuiResourcePrecompileContext&, types::ResolvingResult&, const TypeInfo&, GlobalStringKey, ArgumentMap&, GuiResourceTextPos, GuiResourceError::List&)#This function is not implemented.");
 		}
 
 		Ptr<workflow::WfExpression> IGuiInstanceLoader::GetParameter(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const PropertyInfo& propertyInfo, GlobalStringKey variableName, GuiResourceTextPos attPosition, GuiResourceError::List& errors)
 		{
-			CHECK_FAIL(L"IGuiInstanceLoader::GetParameter(types::ResolvingResult&, const PropertyInfo&, GlobalStringKey, collections::List<WString>&)#This function is not implemented.");
+			CHECK_FAIL(L"IGuiInstanceLoader::GetParameter(GuiResourcePrecompileContext&, types::ResolvingResult&, const PropertyInfo&, GlobalStringKey, GuiResourceTextPos, GuiResourceError::List&)#This function is not implemented.");
 		}
 
 /***********************************************************************
@@ -6916,6 +6918,39 @@ GuiDefaultInstanceLoader
 				return
 					GetDefaultConstructor(typeInfo.typeInfo->GetTypeDescriptor()) != nullptr ||
 					GetInstanceConstructor(typeInfo.typeInfo->GetTypeDescriptor()) != nullptr;
+			}
+
+			Ptr<workflow::WfBaseConstructorCall> CreateRootInstance(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, ArgumentMap& arguments, GuiResourceError::List& errors)
+			{
+				CTOR_PARAM_PREFIX
+
+				if (arguments.Count() > 0)
+				{
+					auto call = MakePtr<WfBaseConstructorCall>();
+
+					auto baseTd = typeInfo.typeInfo->GetTypeDescriptor()->GetBaseTypeDescriptor(0);
+					auto baseTypeInfo = MakePtr<TypeDescriptorTypeInfo>(baseTd, TypeInfoHint::Normal);
+					call->type = GetTypeFromTypeInfo(baseTypeInfo.Obj());
+
+					auto ctor = baseTd->GetConstructorGroup()->GetMethod(0);
+					vint count = ctor->GetParameterCount();
+					for (vint i = 0; i < count; i++)
+					{
+						auto key = GlobalStringKey::Get(CTOR_PARAM_NAME(ctor->GetParameter(0)->GetName()));
+
+						vint index = arguments.Keys().IndexOf(key);
+						if (index == -1)
+						{
+							return nullptr;
+						}
+						else
+						{
+							call->arguments.Add(arguments.GetByIndex(index)[0].expression);
+						}
+					}
+					return call;
+				}
+				return nullptr;
 			}
 
 			Ptr<workflow::WfStatement> CreateInstance(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, GlobalStringKey variableName, ArgumentMap& arguments, GuiResourceTextPos tagPosition, GuiResourceError::List& errors)override
@@ -7591,38 +7626,33 @@ namespace vl
 			}
 		};
 
-		Ptr<GuiInstanceCompiledWorkflow> Workflow_GetModule(GuiResourcePrecompileContext& context, const WString& path)
+		Ptr<GuiInstanceCompiledWorkflow> Workflow_GetModule(GuiResourcePrecompileContext& context, const WString& path, Nullable<GuiInstanceCompiledWorkflow::AssemblyType> assemblyType)
 		{
-			return context.targetFolder->GetValueByPath(path).Cast<GuiInstanceCompiledWorkflow>();
+			auto compiled = context.targetFolder->GetValueByPath(path).Cast<GuiInstanceCompiledWorkflow>();
+			if (assemblyType && !compiled)
+			{
+				compiled = new GuiInstanceCompiledWorkflow;
+				compiled->type = assemblyType.Value();
+				context.targetFolder->CreateValueByPath(path, L"Workflow", compiled);
+			}
+			return compiled;
 		}
 
 		void Workflow_AddModule(GuiResourcePrecompileContext& context, const WString& path, Ptr<WfModule> module, GuiInstanceCompiledWorkflow::AssemblyType assemblyType, GuiResourceTextPos tagPosition)
 		{
-			auto compiled = Workflow_GetModule(context, path);
-			if (!compiled)
-			{
-				compiled = new GuiInstanceCompiledWorkflow;
-				compiled->type = assemblyType;
-				context.targetFolder->CreateValueByPath(path, L"Workflow", compiled);
-			}
-			else
-			{
-				CHECK_ERROR(compiled->type == assemblyType, L"Workflow_AddModule(GuiResourcePrecompiledContext&, const WString&, GuiInstanceCompiledWorkflow::AssemblyType)#Unexpected assembly type.");
-			}
+			auto compiled = Workflow_GetModule(context, path, assemblyType);
+			CHECK_ERROR(compiled->type == assemblyType, L"Workflow_AddModule(GuiResourcePrecompiledContext&, const WString&, GuiInstanceCompiledWorkflow::AssemblyType)#Unexpected assembly type.");
 
-			if (compiled)
-			{
-				GuiInstanceCompiledWorkflow::ModuleRecord record;
-				record.module = module;
-				record.position = tagPosition;
-				record.shared = assemblyType == GuiInstanceCompiledWorkflow::Shared;
-				compiled->modules.Add(record);
-			}
+			GuiInstanceCompiledWorkflow::ModuleRecord record;
+			record.module = module;
+			record.position = tagPosition;
+			record.shared = assemblyType == GuiInstanceCompiledWorkflow::Shared;
+			compiled->modules.Add(record);
 		}
 
 		void Workflow_GenerateAssembly(GuiResourcePrecompileContext& context, const WString& path, GuiResourceError::List& errors, bool keepMetadata, IWfCompilerCallback* compilerCallback)
 		{
-			auto compiled = Workflow_GetModule(context, path);
+			auto compiled = Workflow_GetModule(context, path, {});
 			if (!compiled)
 			{
 				return;
@@ -7779,7 +7809,7 @@ Shared Script Type Resolver (Script)
 				{
 				case Workflow_Compile:
 					Workflow_GenerateAssembly(context, Path_Shared, errors, false, context.compilerCallback);
-					if (auto compiled = Workflow_GetModule(context, Path_Shared))
+					if (auto compiled = Workflow_GetModule(context, Path_Shared, {}))
 					{
 						for (vint i = 0; i < compiled->modules.Count(); i++)
 						{
@@ -7883,8 +7913,8 @@ Instance Type Resolver (Instance)
 				}
 			}
 
-#define ENSURE_ASSEMBLY_EXISTS(PATH)\
-			if (auto compiled = Workflow_GetModule(context, PATH))\
+#define ENSURE_ASSEMBLY_EXISTS(PATH, ASSEMBLY_TYPE)\
+			if (auto compiled = Workflow_GetModule(context, PATH, GuiInstanceCompiledWorkflow::ASSEMBLY_TYPE))\
 			{\
 				if (!compiled->assembly)\
 				{\
@@ -7897,13 +7927,13 @@ Instance Type Resolver (Instance)
 			}\
 
 #define UNLOAD_ASSEMBLY(PATH)\
-			if (auto compiled = Workflow_GetModule(context, PATH))\
+			if (auto compiled = Workflow_GetModule(context, PATH, {}))\
 			{\
 				compiled->context = nullptr;\
 			}\
 
 #define DELETE_ASSEMBLY(PATH)\
-			if (auto compiled = Workflow_GetModule(context, PATH))\
+			if (auto compiled = Workflow_GetModule(context, PATH, {}))\
 			{\
 				compiled->context = nullptr;\
 				compiled->assembly = nullptr;\
@@ -7933,7 +7963,7 @@ Instance Type Resolver (Instance)
 					}
 					break;
 				case Instance_CollectEventHandlers:
-					ENSURE_ASSEMBLY_EXISTS(Path_TemporaryClass)
+					ENSURE_ASSEMBLY_EXISTS(Path_TemporaryClass, TemporaryClass)
 				case Instance_CollectInstanceTypes:
 					{
 						if (auto obj = resource->GetContent().Cast<GuiInstanceContext>())
@@ -7998,7 +8028,7 @@ Instance Type Resolver (Instance)
 					break;
 				case Instance_GenerateInstanceClass:
 					{
-						ENSURE_ASSEMBLY_EXISTS(Path_TemporaryClass)
+						ENSURE_ASSEMBLY_EXISTS(Path_TemporaryClass, TemporaryClass)
 						if (auto obj = resource->GetContent().Cast<GuiInstanceContext>())
 						{
 							vint previousErrorCount = errors.Count();
@@ -8028,26 +8058,30 @@ Instance Type Resolver (Instance)
 			void PerPassPrecompile(GuiResourcePrecompileContext& context, GuiResourceError::List& errors)override
 			{
 				WString path;
+				GuiInstanceCompiledWorkflow::AssemblyType assemblyType;
 				switch (context.passIndex)
 				{
 				case Instance_CompileInstanceTypes:
 					DELETE_ASSEMBLY(Path_Shared)
 					path = Path_TemporaryClass;
+					assemblyType = GuiInstanceCompiledWorkflow::TemporaryClass;
 					break;
 				case Instance_CompileEventHandlers:
 					DELETE_ASSEMBLY(Path_TemporaryClass)
 					path = Path_TemporaryClass;
+					assemblyType = GuiInstanceCompiledWorkflow::TemporaryClass;
 					break;
 				case Instance_CompileInstanceClass:
 					UNLOAD_ASSEMBLY(Path_TemporaryClass)
 					path = Path_InstanceClass;
+					assemblyType = GuiInstanceCompiledWorkflow::InstanceClass;
 					break;
 				default:
 					return;
 				}
 
-				auto sharedCompiled = Workflow_GetModule(context, Path_Shared);
-				auto compiled = Workflow_GetModule(context, path);
+				auto sharedCompiled = Workflow_GetModule(context, Path_Shared, {});
+				auto compiled = Workflow_GetModule(context, path, assemblyType);
 				if (sharedCompiled && compiled)
 				{
 					CopyFrom(
@@ -9790,6 +9824,31 @@ Workflow_GenerateInstanceClass
 				return block;
 			};
 
+			auto getDefaultType = [&](const WString& className)->Tuple<Ptr<ITypeInfo>, WString>
+			{
+				auto paramTd = GetTypeDescriptor(className);
+				if (!paramTd)
+				{
+					auto source = FindInstanceLoadingSource(resolvingResult.context, {}, className);
+					if (auto typeInfo = GetInstanceLoaderManager()->GetTypeInfoForType(source.typeName))
+					{
+						paramTd = typeInfo->GetTypeDescriptor();
+					}
+				}
+
+				if (paramTd)
+				{
+					auto typeInfo = Workflow_GetSuggestedParameterType(paramTd);
+					switch (typeInfo->GetDecorator())
+					{
+					case ITypeInfo::RawPtr: return { typeInfo,className + L"*" };
+					case ITypeInfo::SharedPtr: return { typeInfo,className + L"^" };
+					default: return { typeInfo,className };
+					}
+				}
+				return { nullptr,className };
+			};
+
 			///////////////////////////////////////////////////////////////
 			// ref.Members
 			///////////////////////////////////////////////////////////////
@@ -9825,7 +9884,30 @@ Workflow_GenerateInstanceClass
 
 			if (baseWfType)
 			{
-				// Fill later
+				auto call = MakePtr<WfBaseConstructorCall>();
+				ctor->baseConstructorCalls.Add(call);
+				call->type = CopyType(instanceClass->baseTypes[0]);
+				baseTypeContext = baseTypeResourceItem->GetContent().Cast<GuiInstanceContext>();
+
+				FOREACH(Ptr<GuiInstanceParameter>, parameter, baseTypeContext->parameters)
+				{
+					auto parameterTypeInfoTuple = getDefaultType(parameter->className.ToString());
+					auto expression = Workflow_ParseExpression(
+						precompileContext,
+						parameter->classPosition.originalLocation,
+						L"cast("+parameterTypeInfoTuple.f1+L") (null of object)",
+						parameter->classPosition,
+						errors,
+						{ 0,5 }
+						);
+					if (!expression)
+					{
+						auto nullExpr = MakePtr<WfLiteralExpression>();
+						nullExpr->value = WfLiteralValue::Null;
+						expression = nullExpr;
+					}
+					call->arguments.Add(expression);
+				}
 			}
 			else if (auto group = baseType->GetTypeDescriptor()->GetConstructorGroup())
 			{
@@ -9882,34 +9964,11 @@ Workflow_GenerateInstanceClass
 
 			FOREACH(Ptr<GuiInstanceParameter>, parameter, context->parameters)
 			{
-				WString classNameTail;
-				Ptr<ITypeInfo> parameterTypeInfo;
-				{
-					auto paramTd = GetTypeDescriptor(parameter->className.ToString());
-					if (!paramTd)
-					{
-						auto source = FindInstanceLoadingSource(resolvingResult.context, {}, parameter->className.ToString());
-						if (auto typeInfo = GetInstanceLoaderManager()->GetTypeInfoForType(source.typeName))
-						{
-							paramTd = typeInfo->GetTypeDescriptor();
-						}
-					}
-
-					if (paramTd)
-					{
-						parameterTypeInfo = Workflow_GetSuggestedParameterType(paramTd);
-						switch (parameterTypeInfo->GetDecorator())
-						{
-						case ITypeInfo::RawPtr: classNameTail = L"*"; break;
-						case ITypeInfo::SharedPtr: classNameTail = L"^"; break;
-						default:;
-						}
-					}
-				}
-
+				auto parameterTypeInfoTuple = getDefaultType(parameter->className.ToString());
 				vint errorCount = errors.Count();
-				auto type = Workflow_ParseType(precompileContext, { resolvingResult.resource }, parameter->className.ToString() + classNameTail, parameter->classPosition, errors);
-				if (!needFunctionBody && !parameterTypeInfo && errorCount == errors.Count())
+				auto type = Workflow_ParseType(precompileContext, { resolvingResult.resource }, parameterTypeInfoTuple.f1, parameter->classPosition, errors);
+
+				if (!needFunctionBody && !parameterTypeInfoTuple.f0 && errorCount == errors.Count())
 				{
 					if (!type || type.Cast<WfReferenceType>() || type.Cast<WfChildType>() || type.Cast<WfTopQualifiedType>())
 					{
@@ -9925,7 +9984,7 @@ Workflow_GenerateInstanceClass
 
 						decl->name.value = L"<parameter>" + parameter->name.ToString();
 						decl->type = CopyType(type);
-						decl->expression = CreateDefaultValue(parameterTypeInfo.Obj());
+						decl->expression = CreateDefaultValue(parameterTypeInfoTuple.f0.Obj());
 
 						Workflow_RecordScriptPosition(precompileContext, parameter->tagPosition, (Ptr<WfDeclaration>)decl);
 					}
@@ -10328,11 +10387,56 @@ namespace vl
 		using namespace workflow::analyzer;
 
 /***********************************************************************
+Workflow_AdjustPropertySearchType
+***********************************************************************/
+
+		IGuiInstanceLoader::TypeInfo Workflow_AdjustPropertySearchType(types::ResolvingResult& resolvingResult, IGuiInstanceLoader::TypeInfo resolvedTypeInfo, GlobalStringKey prop)
+		{
+			if (resolvedTypeInfo.typeName.ToString() == resolvingResult.context->className)
+			{
+				if (auto propTd = resolvedTypeInfo.typeInfo->GetTypeDescriptor())
+				{
+					vint baseCount = propTd->GetBaseTypeDescriptorCount();
+					for (vint i = 0; i < baseCount; i++)
+					{
+						auto baseTd = propTd->GetBaseTypeDescriptor(i);
+						if (auto ctorGroup = baseTd->GetConstructorGroup())
+						{
+							if (ctorGroup->GetMethodCount() == 1)
+							{
+								auto ctor = ctorGroup->GetMethod(0);
+								auto propertyName = prop.ToString();
+								auto ctorArgumentName = L"<ctor-parameter>" + propertyName;
+								vint paramCount = ctor->GetParameterCount();
+								for (vint j = 0; j < paramCount; j++)
+								{
+									auto parameterInfo = ctor->GetParameter(j);
+									if (parameterInfo->GetName() == ctorArgumentName)
+									{
+										if (baseTd->GetPropertyByName(propertyName, false))
+										{
+											resolvedTypeInfo.typeInfo = CopyTypeInfo(ctor->GetReturn());
+											resolvedTypeInfo.typeName = GlobalStringKey::Get(baseTd->GetTypeName());
+											return resolvedTypeInfo;
+										}
+										break;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			return resolvedTypeInfo;
+		}
+
+/***********************************************************************
 Workflow_GetPropertyTypes
 ***********************************************************************/
 
 		bool Workflow_GetPropertyTypes(WString& errorPrefix, types::ResolvingResult& resolvingResult, IGuiInstanceLoader* loader, IGuiInstanceLoader::TypeInfo resolvedTypeInfo, GlobalStringKey prop, Ptr<GuiAttSetterRepr::SetterValue> setter, collections::List<types::PropertyResolving>& possibleInfos, GuiResourceError::List& errors)
 		{
+			resolvedTypeInfo = Workflow_AdjustPropertySearchType(resolvingResult, resolvedTypeInfo, prop);
 			bool reportedNotSupported = false;
 			IGuiInstanceLoader::PropertyInfo propertyInfo(resolvedTypeInfo, prop);
 
@@ -10663,7 +10767,7 @@ WorkflowReferenceNamesVisitor
 
 							errors.Add(GuiResourceError({ resolvingResult.resource }, repr->tagPosition,
 								L"Precompile: Missing required " +
-								WString(info->usage == GuiInstancePropertyInfo::ConstructorArgument ? L"constructor argument" : L"required property") +
+								WString(info->usage == GuiInstancePropertyInfo::ConstructorArgument ? L"constructor argument" : L"property") +
 								L" \"" +
 								prop.ToString() +
 								L"\" of type \"" +
@@ -10772,6 +10876,48 @@ WorkflowReferenceNamesVisitor
 						auto source = FindInstanceLoadingSource(resolvingResult.context, repr);
 						resolvedTypeInfo.typeName = source.typeName;
 						resolvedTypeInfo.typeInfo = GetInstanceLoaderManager()->GetTypeInfoForType(source.typeName);
+					}
+				}
+
+				if (resolvingResult.context->instance == repr)
+				{
+					static const wchar_t Prefix[] = L"<ctor-parameter>";
+					static const vint PrefixLength = (vint)sizeof(Prefix) / sizeof(*Prefix) - 1;
+
+					auto source = FindInstanceLoadingSource(resolvingResult.context, repr);
+					if (auto baseTd = description::GetTypeDescriptor(source.typeName.ToString()))
+					{
+						if (auto ctorGroup = baseTd->GetConstructorGroup())
+						{
+							if (ctorGroup->GetMethodCount() == 1)
+							{
+								auto ctor = ctorGroup->GetMethod(0);
+								vint paramCount = ctor->GetParameterCount();
+								for (vint i = 0; i < paramCount; i++)
+								{
+									auto parameterInfo = ctor->GetParameter(i);
+									auto ctorArg = parameterInfo->GetName();
+									if (ctorArg.Length() > PrefixLength && ctorArg.Left(PrefixLength) == Prefix)
+									{
+										auto propName = ctorArg.Right(ctorArg.Length() - PrefixLength);
+										if (baseTd->GetPropertyByName(propName, false))
+										{
+											if (!repr->setters.Keys().Contains(GlobalStringKey::Get(propName)))
+											{
+												errors.Add(GuiResourceError({ resolvingResult.resource }, repr->tagPosition,
+													L"Precompile: Missing required property \"" +
+													propName +
+													L"\" of type \"" +
+													resolvedTypeInfo.typeName.ToString() +
+													L"\" for its base type \"" +
+													baseTd->GetTypeName() +
+													L"\"."));
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 

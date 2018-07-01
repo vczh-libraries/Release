@@ -4214,18 +4214,37 @@ Resource
 			DataOnly,
 			InstanceClass,
 		};
+
+		/// <summary>Resource metadata.</summary>
+		class GuiResourceMetadata : public Object
+		{
+		public:
+			WString									name;
+			WString									version;
+			collections::List<WString>				dependencies;
+
+			void									LoadFromXml(Ptr<parsing::xml::XmlDocument> xml, GuiResourceLocation location, GuiResourceError::List& errors);
+			Ptr<parsing::xml::XmlDocument>			SaveToXml();
+		};
 		
 		/// <summary>Resource. A resource is a root resource folder that does not have a name.</summary>
 		class GuiResource : public GuiResourceFolder, public Description<GuiResource>
 		{
 		protected:
 			WString									workingDirectory;
+			Ptr<GuiResourceMetadata>				metadata;
 
 			static void								ProcessDelayLoading(Ptr<GuiResource> resource, DelayLoadingList& delayLoadings, GuiResourceError::List& errors);
 		public:
+			static const wchar_t*					CurrentVersionString;
+
 			/// <summary>Create a resource.</summary>
 			GuiResource();
 			~GuiResource();
+
+			/// <summary>Get the metadata of the resource.</summary>
+			/// <returns>The metadata.</returns>
+			Ptr<GuiResourceMetadata>				GetMetadata();
 
 			/// <summary>Get the directory where the resource is load.</summary>
 			/// <returns>The directory.</returns>
@@ -9283,12 +9302,14 @@ namespace vl
 			{
 				friend class Theme;
 			protected:
-				ThemeTemplates*														previous = nullptr;
-				ThemeTemplates*														next = nullptr;
+				ThemeTemplates*					previous = nullptr;
+				ThemeTemplates*					next = nullptr;
 
-				controls::GuiControlHost*											GetControlHostForInstance()override;
+				controls::GuiControlHost*		GetControlHostForInstance()override;
 			public:
 				~ThemeTemplates();
+
+				WString							Name;
 
 #define GUI_DEFINE_ITEM_PROPERTY(TEMPLATE, CONTROL) TemplateProperty<templates::Gui##TEMPLATE> CONTROL;
 				GUI_CONTROL_TEMPLATE_TYPES(GUI_DEFINE_ITEM_PROPERTY)
@@ -9304,7 +9325,7 @@ namespace vl
 			/// <returns>Returns true if this operation succeeded.</returns>
 			/// <param name="name">The name of the theme.</param>
 			/// <param name="theme">The control template collection object.</param>
-			extern bool							RegisterTheme(const WString& name, Ptr<ThemeTemplates> theme);
+			extern bool							RegisterTheme(Ptr<ThemeTemplates> theme);
 			/// <summary>Unregister a control template collection object.</summary>
 			/// <returns>The registered object. Returns null if it does not exist.</returns>
 			/// <param name="name">The name of the theme.</param>
@@ -15753,7 +15774,10 @@ ComboBox with GuiListControl
 ***********************************************************************/
 
 			/// <summary>Combo box list control. This control is a combo box with a list control in its popup.</summary>
-			class GuiComboBoxListControl : public GuiComboBoxBase, public Description<GuiComboBoxListControl>
+			class GuiComboBoxListControl
+				: public GuiComboBoxBase
+				, private GuiListControl::IItemProviderCallback
+				, public Description<GuiComboBoxListControl>
 			{
 			public:
 				using ItemStyleProperty = TemplateProperty<templates::GuiTemplate>;
@@ -15779,6 +15803,12 @@ ComboBox with GuiListControl
 				void										OnListControlAdoptedSizeInvalidated(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnListControlBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnListControlSelectionChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
+
+			private:
+				// ===================== GuiListControl::IItemProviderCallback =====================
+
+				void										OnAttached(GuiListControl::IItemProvider* provider)override;
+				void										OnItemModified(vint start, vint count, vint newCount)override;
 			public:
 				/// <summary>Create a control with a specified default theme and a list control that will be put in the popup control to show all items.</summary>
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
@@ -18919,9 +18949,12 @@ IGuiResourceManager
 		class IGuiResourceManager : public IDescriptable, public Description<IGuiResourceManager>
 		{
 		public:
-			virtual bool								SetResource(const WString& name, Ptr<GuiResource> resource, GuiResourceUsage usage = GuiResourceUsage::DataOnly) = 0;
+			virtual bool								SetResource(Ptr<GuiResource> resource, GuiResourceUsage usage = GuiResourceUsage::DataOnly) = 0;
 			virtual Ptr<GuiResource>					GetResource(const WString& name) = 0;
 			virtual Ptr<GuiResource>					GetResourceFromClassName(const WString& classFullName) = 0;
+			virtual void								UnloadResource(const WString& name) = 0;
+			virtual void								LoadResourceOrPending(stream::IStream& stream, GuiResourceUsage usage = GuiResourceUsage::DataOnly) = 0;
+			virtual void								GetPendingResourceNames(collections::List<WString>& names) = 0;
 		};
 
 		extern IGuiResourceManager*						GetResourceManager();
