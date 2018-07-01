@@ -63,6 +63,7 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] Known issue
   - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
   - [ ] AddressBook demo's new contact window default height too large.
+  - [ ] `Text-bind="Strings.f()"` should not be allowed for `<ref.LocalizedStrings Name="Strings"/>`, it should be `self.Strings.f()`.
   - Find someday to fix it
 - [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
