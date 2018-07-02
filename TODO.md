@@ -50,7 +50,8 @@ https://zhuanlan.zhihu.com/p/33778843
   - [x] `GacClear.ps1` clear all outputs.
   - [x] `GacGen.exe` supports all operations above.
   - [x] Add a metadata xml in front of binary resource data, so that GacUI knows how to load them in order.
-  - [ ] `GacBuild.ps1` sort named resource by dependency
+  - [x] `GacBuild.ps1` sort named resource by dependency
+  - [ ] Rebuilding dependencies cause the resource to rebuild
 - [x] Inheritable custom window / control with `<ref.Parameter>`
 - [x] Change `GacConfig\Res` to `ResX86` and `ResX64`, with an additional `Assembly` option, to produce platform-dependended
   - Scripted resource binary
