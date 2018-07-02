@@ -153,9 +153,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="UI\Source\DocumentEditorRibbon.cpp" />
+    <ClCompile Include="UI\Source\EditorRibbonPartialClasses.cpp" />
+    <ClCompile Include="UI\Source\EditorRibbonReflection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\ResourceRibbon.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UI\Source\DocumentEditorRibbon.h" />
+    <ClInclude Include="UI\Source\EditorRibbon.h" />
+    <ClInclude Include="UI\Source\EditorRibbonPartialClasses.h" />
+    <ClInclude Include="UI\Source\EditorRibbonReflection.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

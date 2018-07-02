@@ -1,5 +1,5 @@
 #define GAC_HEADER_USE_NAMESPACE
-#include "Demo.h"
+#include "UI/Source/EditorRibbon.h"
 
 using namespace vl::collections;
 using namespace vl::stream;
@@ -10,11 +10,13 @@ void GuiMain()
 {
 	{
 		FileStream fileStream(L"../UIRes/DocumentEditor.bin", FileStream::ReadOnly);
-		FileStream fileStream(L"../UIRes/DocumentEditorRibbon.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(resource);
+		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
-	demo::DocumentEditorRibbonWindow window;
+	{
+		FileStream fileStream(L"../UIRes/DocumentEditorRibbon.bin", FileStream::ReadOnly);
+		GetResourceManager()->LoadResourceOrPending(fileStream);
+	}
+	demo::MainWindow window;
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }

@@ -1,5 +1,5 @@
 #define GAC_HEADER_USE_NAMESPACE
-#include "Demo.h"
+#include "UI/Source/EditorToolstrip.h"
 
 using namespace vl::collections;
 using namespace vl::stream;
@@ -10,11 +10,13 @@ void GuiMain()
 {
 	{
 		FileStream fileStream(L"../UIRes/DocumentEditor.bin", FileStream::ReadOnly);
-		FileStream fileStream(L"../UIRes/DocumentEditorToolstrip.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(resource);
+		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
-	demo::DocumentEditorToolstripWindow window;
+	{
+		FileStream fileStream(L"../UIRes/DocumentEditorToolstrip.bin", FileStream::ReadOnly);
+		GetResourceManager()->LoadResourceOrPending(fileStream);
+	}
+	demo::MainWindow window;
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }

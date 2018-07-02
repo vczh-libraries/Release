@@ -13,15 +13,41 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{fc8cef8e-b8c4-43e0-9d82-590321fa9b73}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Source\DocumentEditorToolstrip.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Source\EditorToolstripPartialClasses.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Source\EditorToolstripReflection.cpp">
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\ResourceToolstrip.xml">
       <Filter>Resource Files</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UI\Source\DocumentEditorToolstrip.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\EditorToolstrip.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\EditorToolstripPartialClasses.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\EditorToolstripReflection.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

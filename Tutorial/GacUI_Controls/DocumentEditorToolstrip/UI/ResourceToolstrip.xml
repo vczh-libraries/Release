@@ -10,7 +10,7 @@
     <Folder name="Cpp">
       <Text name="SourceFolder">Source</Text>
       <Text name="Resource">..\..\UIRes\DocumentEditorToolstrip.bin</Text>
-      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="NormalInclude">EditorBase.h</Text>
       <Text name="ReflectionInclude">GacUIReflection.h</Text>
       <Text name="Name">EditorToolstrip</Text>
     </Folder>
