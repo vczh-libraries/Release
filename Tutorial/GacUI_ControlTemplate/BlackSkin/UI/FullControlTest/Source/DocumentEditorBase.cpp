@@ -124,46 +124,25 @@ namespace demo
 	USERIMPL(/* ::demo::DocumentEditorBase */)
 	void DocumentEditorBase::LoadAsPrivateFormat(const ::vl::WString& fileName)
 	{
-		vl::stream::FileStream fileStream(fileName, vl::stream::FileStream::ReadOnly);
-		auto model = vl::presentation::LoadDocumentFromClipboardStream(fileStream);
-		document->SetDocument(model);
+		throw ::vl::Exception(L"You should implement this function.");
 	}
 
 	USERIMPL(/* ::demo::DocumentEditorBase */)
 	void DocumentEditorBase::SaveAsPrivateFormat(const ::vl::WString& fileName)
 	{
-		document->SelectAll();
-		auto model = document->GetSelectionModel();
-
-		vl::presentation::ModifyDocumentForClipboard(model);
-		vl::stream::FileStream fileStream(fileName, vl::stream::FileStream::WriteOnly);
-		vl::presentation::SaveDocumentToClipboardStream(model, fileStream);
+		throw ::vl::Exception(L"You should implement this function.");
 	}
 
 	USERIMPL(/* ::demo::DocumentEditorBase */)
 	void DocumentEditorBase::SaveAsRTF(const ::vl::WString& fileName)
 	{
-		document->SelectAll();
-		auto model = document->GetSelectionModel();
-
-		vl::AString rtf;
-		vl::presentation::SaveDocumentToRtf(model, rtf);
-		vl::stream::FileStream fileStream(fileName, vl::stream::FileStream::WriteOnly);
-		fileStream.Write((void*)rtf.Buffer(), rtf.Length());
+		throw ::vl::Exception(L"You should implement this function.");
 	}
 
 	USERIMPL(/* ::demo::DocumentEditorBase */)
 	void DocumentEditorBase::SaveAsHTML(const ::vl::WString& fileName)
 	{
-		document->SelectAll();
-		auto model = document->GetSelectionModel();
-
-		vl::AString header, content, footer;
-		vl::presentation::SaveDocumentToHtmlUtf8(model, header, content, footer);
-		vl::stream::FileStream fileStream(fileName, vl::stream::FileStream::WriteOnly);
-		fileStream.Write((void*)header.Buffer(), header.Length());
-		fileStream.Write((void*)content.Buffer(), content.Length());
-		fileStream.Write((void*)footer.Buffer(), footer.Length());
+		throw ::vl::Exception(L"You should implement this function.");
 	}
 
 	void DocumentEditorBase::SaveDocument()
