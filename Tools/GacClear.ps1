@@ -20,8 +20,10 @@ try {
         throw "Input does not exist: $FileName"
     }
     $FileName = (Resolve-Path -Path $FileName).Path
-    Remove-Item -Path "$($FileName).log" -Recurse | Out-Null
-    New-Item -ItemType Directory "$($FileName).log" | Out-Null
+    if (Test-Path -Path "$($FileName).log") {
+        Remove-Item -Path "$($FileName).log" -Recurse | Out-Null
+        New-Item -ItemType Directory "$($FileName).log" | Out-Null
+    }
 
     EnumerateResourceFiles $FileName
     if (-not (Test-Path -Path "$($FileName).log\ResourceFiles.txt")) {
