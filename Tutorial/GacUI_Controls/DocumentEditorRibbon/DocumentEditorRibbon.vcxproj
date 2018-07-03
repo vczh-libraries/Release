@@ -98,6 +98,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -111,6 +114,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -128,6 +134,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -145,6 +154,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Lib\GacUILite\GacUILite.vcxproj">
@@ -158,7 +170,6 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="UI\Source\DocumentEditorRibbon.cpp" />
     <ClCompile Include="UI\Source\EditorRibbonPartialClasses.cpp" />
-    <ClCompile Include="UI\Source\EditorRibbonReflection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\ResourceRibbon.xml" />
@@ -167,7 +178,6 @@
     <ClInclude Include="UI\Source\DocumentEditorRibbon.h" />
     <ClInclude Include="UI\Source\EditorRibbon.h" />
     <ClInclude Include="UI\Source\EditorRibbonPartialClasses.h" />
-    <ClInclude Include="UI\Source\EditorRibbonReflection.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

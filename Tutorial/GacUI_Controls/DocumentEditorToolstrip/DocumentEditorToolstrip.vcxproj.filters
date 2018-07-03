@@ -27,9 +27,6 @@
     <ClCompile Include="UI\Source\EditorToolstripPartialClasses.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="UI\Source\EditorToolstripReflection.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\ResourceToolstrip.xml">
@@ -44,9 +41,6 @@
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="UI\Source\EditorToolstripPartialClasses.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="UI\Source\EditorToolstripReflection.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>

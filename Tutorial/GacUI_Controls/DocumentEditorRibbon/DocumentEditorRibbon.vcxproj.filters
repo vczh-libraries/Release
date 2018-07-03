@@ -27,9 +27,6 @@
     <ClCompile Include="UI\Source\EditorRibbonPartialClasses.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="UI\Source\EditorRibbonReflection.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\ResourceRibbon.xml">
@@ -44,9 +41,6 @@
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="UI\Source\EditorRibbonPartialClasses.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="UI\Source\EditorRibbonReflection.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
