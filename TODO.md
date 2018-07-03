@@ -44,22 +44,6 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [x] Depend on another resource, to decide loading order
-  - [x] Resource should have name and version, resource needs to specify names of all depended resources, versions should be all identical.
-  - [x] `GacBuild.ps1` do incremental builds.
-  - [x] `GacClear.ps1` clear all outputs.
-  - [x] `GacGen.exe` supports all operations above.
-  - [x] Add a metadata xml in front of binary resource data, so that GacUI knows how to load them in order.
-  - [x] `GacBuild.ps1` sort named resource by dependency
-  - [x] Rebuilding dependencies cause the resource to rebuild
-- [x] Inheritable custom window / control with `<ref.Parameter>`
-- [x] Change `GacConfig\Res` to `ResX86` and `ResX64`, with an additional `Assembly` option, to produce platform-dependended
-  - Scripted resource binary
-  - Scripted compressed resource binary
-  - Assembly
-- [x] GacGen will always output all `Res*` supported binaries to `*.xml.log` folder
-- [x] Demo: DocumentEditor: Split 1 Resource.xml to 3.
-- [ ] **Update Release**
 - [ ] Resource import item/folder from depended resources
 - [ ] Known issue
   - [ ] Ribbon groups doesn't layout well at the beginning, user should resize the window to fix it.
