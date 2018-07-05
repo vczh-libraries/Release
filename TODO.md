@@ -46,13 +46,13 @@ https://zhuanlan.zhihu.com/p/33778843
 #### Before 1.0
 - [ ] Resource import item/folder from depended resources
   - [ ] `<Folder content="Import" name="Images" uri="global-res://OtherResource/Images"/>`
-  - [ ] `<ref.LocalizedStrings>` refer to class name not uri
+  - [x] `<ref.LocalizedStrings>` refer to class name not uri
   - [ ] Add demos
 - [ ] Known issue
   - [ ] Ribbon groups doesn't layout well at the beginning, user should resize the window to fix it.
   - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
   - [ ] AddressBook demo's new contact window default height too large.
-  - [ ] `Text-bind="Strings.f()"` should not be allowed for `<ref.LocalizedStrings Name="Strings"/>`, it should be `self.Strings.f()`.
+  - [x] `Text-bind="Strings.f()"` should not be allowed for `<ref.LocalizedStrings Name="Strings"/>`, it should be `self.Strings.f()`.
   - Find someday to fix it
 - [ ] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
