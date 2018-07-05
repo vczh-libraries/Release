@@ -1853,8 +1853,7 @@ Class (::demo::MainWindowConstructor)
 	}
 
 	MainWindowConstructor::MainWindowConstructor()
-		: Strings(::vl::Ptr<::demo::IStringResourceStrings>())
-		, self(static_cast<::demo::MainWindow*>(nullptr))
+		: self(static_cast<::demo::MainWindow*>(nullptr))
 		, comboLocales(static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr))
 		, listLocales(static_cast<::vl::presentation::controls::GuiTextList*>(nullptr))
 		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr))

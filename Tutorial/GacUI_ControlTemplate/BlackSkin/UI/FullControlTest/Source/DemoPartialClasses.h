@@ -1382,7 +1382,6 @@ namespace demo
 #endif
 	protected:
 		::demo::LocalizedStringsTabPage* self;
-		::vl::Ptr<::demo::IStringResourceStrings> Strings;
 		::vl::presentation::controls::GuiComboBoxListControl* comboLocales;
 		::vl::presentation::controls::GuiTextList* listLocales;
 		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;

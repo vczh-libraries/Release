@@ -16051,7 +16051,6 @@ Class (::demo::LocalizedStringsTabPageConstructor)
 
 	LocalizedStringsTabPageConstructor::LocalizedStringsTabPageConstructor()
 		: self(static_cast<::demo::LocalizedStringsTabPage*>(nullptr))
-		, Strings(::vl::Ptr<::demo::IStringResourceStrings>())
 		, comboLocales(static_cast<::vl::presentation::controls::GuiComboBoxListControl*>(nullptr))
 		, listLocales(static_cast<::vl::presentation::controls::GuiTextList*>(nullptr))
 		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiTableComposition*>(nullptr))

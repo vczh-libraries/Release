@@ -132,7 +132,6 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
-		::vl::Ptr<::demo::IStringResourceStrings> Strings;
 		::demo::MainWindow* self;
 		::vl::presentation::controls::GuiComboBoxListControl* comboLocales;
 		::vl::presentation::controls::GuiTextList* listLocales;
