@@ -1,0 +1,43 @@
+<Resource>
+  <Folder name="GacGenConfig">
+    <Xml name="Metadata">
+      <ResourceMetadata Name="ResDerived" Version="1.0">
+        <Dependencies>
+          <Resource Name="ResBase"/>
+        </Dependencies>
+      </ResourceMetadata>
+    </Xml>
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\..\UIRes\Misc_ImportFolder_ResBase.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="Name">Demo</Text>
+    </Folder>
+  </Folder>
+  
+  <Folder name="Images" content="Import">import-res://ResBase/Images/</Folder>
+  
+  <Instance name="MainWindowResource">
+    <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow" xmlns:demo="demo::*">
+      <Window ref.Name="self" ClientSize="x:640 y:480">
+        <Table AlignmentToParent="left:0 top:0 right:0 bottom:0">
+          <att.Rows>
+            <_>composeType:Percentage percentage:1.0</_>
+          </att.Rows>
+          <att.Columns>
+            <_>composeType:Percentage percentage:1.0</_>
+            <_>composeType:Percentage percentage:1.0</_>
+          </att.Columns>
+
+          <Cell Site="row:0 column:0">
+            <ImageFrame Image-uri="res://Images/Logo" FrameIndex="0" Stretch="true"/>
+          </Cell>
+
+          <Cell Site="row:0 column:1">
+            <ImageFrame Image-uri="import-res://ResBase/Images/Logo" FrameIndex="0" Stretch="true"/>
+          </Cell>
+        </Table>
+      </Window>
+    </Instance>
+  </Instance>
+</Resource>

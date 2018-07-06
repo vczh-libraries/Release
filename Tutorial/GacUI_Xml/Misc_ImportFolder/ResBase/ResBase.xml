@@ -1,0 +1,16 @@
+<Resource>
+  <Folder name="GacGenConfig">
+    <Xml name="Metadata">
+      <ResourceMetadata Name="ResBase" Version="1.0"/>
+    </Xml>
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\..\UIRes\Misc_ImportFolder_ResBase.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="Name">Demo</Text>
+    </Folder>
+  </Folder>
+  <Folder name="Images">
+    <Image name="Logo" content="File">Gaclib.png</Image>
+  </Folder>
+</Resource>
