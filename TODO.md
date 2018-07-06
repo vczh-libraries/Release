@@ -45,7 +45,8 @@ https://zhuanlan.zhihu.com/p/33778843
 
 #### Before 1.0
 - [ ] Resource import item/folder from depended resources
-  - [ ] `<Folder content="Import" name="Images" uri="global-res://OtherResource/Images"/>`
+  - [ ] `<Folder content="Import" name="Images">import-res://Base/Images</Folder>`
+  - [ ] `import-res://ResourceName/Path`
   - [x] `<ref.LocalizedStrings>` refer to class name not uri
   - [ ] Add demos
 - [ ] Known issue
