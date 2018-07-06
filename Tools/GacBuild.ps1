@@ -29,9 +29,24 @@ you should add the following metadata in GacGenConfig like this:
         </Dependencies>
       </ResourceMetadata>
     </Xml>
-    <Folder name="Cpp">...</Folder>
-    <Folder name="ResX86">...</Folder>
-    <Folder name="ResX64">...</Folder>
+    <Folder name="Cpp">
+        <Text name="Resource">The output path for unscripted binary resource. Use GetResourceManager()->LoadResourceOrPending to load the resource.</Text>
+        <Text name="Compressed">The output path for unscripted compressed binary resource. Call DecompressStream before loading the resource.</Text>
+        <Text name="CppResource">The output path for unscripted binary resource embedded in C++ code. Just add this cpp file to your project and it just works.</Text>
+        <Text name="CppCompressed">The output path for unscripted binary resource embedded in C++ code. Just add this cpp file to your project and it just works.</Text>
+        <Text name="NormalInclude">#include targets in generated C++ files, seperated by semicolon.</Text>
+        <Text name="ReflectionInclude">#include targets in generated C++ files when you turn on reflection, seperated by semicolon.</Text>
+        <Text name="Name">General file name for generated C++ files without extension.</Text>
+        <Text name="SourceFolder">The output folder for all generated C++ files.</Text>
+    </Folder>
+    <Folder name="ResX86">
+        <Text name="Resource">The output path for scripted binary resource. Use GetResourceManager()->LoadResourceOrPending with GuiResourceUsage::InstanceClass to load the resource.</Text>
+        <Text name="Compressed">The output path for scripted compressed binary resource. Use GetResourceManager()->LoadResourceOrPending to load the resource.</Text>
+        <Text name="Assembly">Generated Workflow script, which is equivalent to generated C++ code. All assemblies are included in scripted binary resources, but if you want to load unscripted binary resources and assemblies separately, you will need this file.</Text>
+    </Folder>
+    <Folder name="ResX64">
+        <!-- just like RexX86 but they are for x64. x86 and x64 generates different Workflow script. -->
+    </Folder>
     </Folder>
   </Folder>
   ...
@@ -58,8 +73,8 @@ try {
     $FileName = (Resolve-Path -Path $FileName).Path
     if (Test-Path -Path "$($FileName).log") {
         Remove-Item -Path "$($FileName).log" -Recurse | Out-Null
-        New-Item -ItemType Directory "$($FileName).log" | Out-Null
     }
+    New-Item -ItemType Directory "$($FileName).log" | Out-Null
 
     EnumerateResourceFiles $FileName
     if (-not (Test-Path -Path "$($FileName).log\ResourceFiles.txt")) {
