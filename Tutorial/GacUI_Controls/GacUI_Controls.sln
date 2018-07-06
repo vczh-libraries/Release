@@ -35,6 +35,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DocumentEditorToolstrip", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DocumentEditorRibbon", "DocumentEditorRibbon\DocumentEditorRibbon.vcxproj", "{5B82834D-51AB-44D1-B5D4-F1209F7EC54F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TriplePhaseImageButton", "TriplePhaseImageButton\TriplePhaseImageButton.vcxproj", "{924D3A27-4CAC-4D7C-AC10-2A003375E444}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -153,6 +155,14 @@ Global
 		{5B82834D-51AB-44D1-B5D4-F1209F7EC54F}.Release|Win32.Build.0 = Release|Win32
 		{5B82834D-51AB-44D1-B5D4-F1209F7EC54F}.Release|x64.ActiveCfg = Release|x64
 		{5B82834D-51AB-44D1-B5D4-F1209F7EC54F}.Release|x64.Build.0 = Release|x64
+		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Debug|Win32.ActiveCfg = Debug|Win32
+		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Debug|Win32.Build.0 = Debug|Win32
+		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Debug|x64.ActiveCfg = Debug|x64
+		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Debug|x64.Build.0 = Debug|x64
+		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Release|Win32.ActiveCfg = Release|Win32
+		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Release|Win32.Build.0 = Release|Win32
+		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Release|x64.ActiveCfg = Release|x64
+		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
