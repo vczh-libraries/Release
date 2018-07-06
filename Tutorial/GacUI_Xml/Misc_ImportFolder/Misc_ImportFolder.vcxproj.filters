@@ -13,10 +13,19 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{c83502cd-3b73-4b6a-b9e6-0b627d3cf2a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResDerived\Source\ResDerivedPartialClasses.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ResBase\Source\ResBasePartialClasses.cpp">
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -31,5 +40,19 @@
     <Xml Include="ResDerived\ResDerived.xml">
       <Filter>Resource Files</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ResDerived\Source\ResDerivedPartialClasses.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ResDerived\Source\ResDerived.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ResBase\Source\ResBasePartialClasses.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ResBase\Source\ResBase.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

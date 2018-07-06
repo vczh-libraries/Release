@@ -5,9 +5,9 @@
     </Xml>
     <Folder name="Cpp">
       <Text name="SourceFolder">Source</Text>
-      <Text name="Resource">..\..\..\UIRes\Misc_ImportFolder_ResBase.bin</Text>
+      <Text name="Resource">..\..\UIRes\Misc_ImportFolder_ResBase.bin</Text>
       <Text name="NormalInclude">GacUI.h</Text>
-      <Text name="Name">Demo</Text>
+      <Text name="Name">ResBase</Text>
     </Folder>
   </Folder>
   <Folder name="Images">
