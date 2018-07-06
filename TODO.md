@@ -49,7 +49,7 @@ https://zhuanlan.zhihu.com/p/33778843
   - [x] `<ref.LocalizedStrings>` refer to class name not uri
   - [ ] Add demos
 - [ ] Known issue
-  - [ ] Ribbon groups doesn't layout well at the beginning, user should resize the window to fix it.
+  - [x] Ribbon groups doesn't layout well at the beginning, user should resize the window to fix it.
   - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
   - [x] AddressBook demo's new contact window default height too large.
   - [x] `Text-bind="Strings.f()"` should not be allowed for `<ref.LocalizedStrings Name="Strings"/>`, it should be `self.Strings.f()`.
