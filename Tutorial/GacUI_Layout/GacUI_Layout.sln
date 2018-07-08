@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Responsive1", "Responsive1\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Responsive2", "Responsive2\Responsive2.vcxproj", "{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SharedSize", "SharedSize\SharedSize.vcxproj", "{8E2665E6-4FB4-429D-8D9F-E538B5D9894C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -89,6 +91,14 @@ Global
 		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Release|Win32.Build.0 = Release|Win32
 		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Release|x64.ActiveCfg = Release|x64
 		{747D66CE-7F4C-44A0-BE17-99C23C8AC55F}.Release|x64.Build.0 = Release|x64
+		{8E2665E6-4FB4-429D-8D9F-E538B5D9894C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8E2665E6-4FB4-429D-8D9F-E538B5D9894C}.Debug|Win32.Build.0 = Debug|Win32
+		{8E2665E6-4FB4-429D-8D9F-E538B5D9894C}.Debug|x64.ActiveCfg = Debug|x64
+		{8E2665E6-4FB4-429D-8D9F-E538B5D9894C}.Debug|x64.Build.0 = Debug|x64
+		{8E2665E6-4FB4-429D-8D9F-E538B5D9894C}.Release|Win32.ActiveCfg = Release|Win32
+		{8E2665E6-4FB4-429D-8D9F-E538B5D9894C}.Release|Win32.Build.0 = Release|Win32
+		{8E2665E6-4FB4-429D-8D9F-E538B5D9894C}.Release|x64.ActiveCfg = Release|x64
+		{8E2665E6-4FB4-429D-8D9F-E538B5D9894C}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
