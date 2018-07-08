@@ -56,6 +56,8 @@ https://zhuanlan.zhihu.com/p/33778843
   - Find someday to fix it
 - [x] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
+  - [ ] Don't cache width for non-UCS2 characters.
+  - [ ] Share char measurer for the same font, create it from the render target.
 - [x] Demo: TriplePhaseImageButton using `Context` property
 - [x] Demo: `<SharedSize>` and `<SharedSizeRoot>`
   - [x] sync all buttons in item templates in a list control
