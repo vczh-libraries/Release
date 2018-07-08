@@ -57,9 +57,9 @@ https://zhuanlan.zhihu.com/p/33778843
 - [x] **Update Release**
 - [ ] Normal text box supports surrogate pairs like document viewer
 - [x] Demo: TriplePhaseImageButton using `Context` property
-- [ ] Demo: `<SharedSize>` and `<SharedSizeRoot>`
-  - [ ] sync all buttons in item templates in a list control
-  - [ ] Two columns in repeat flow
+- [x] Demo: `<SharedSize>` and `<SharedSizeRoot>`
+  - [x] sync all buttons in item templates in a list control
+  - [x] Two columns in repeat flow
 - [ ] **Update Release**
 - [ ] Workflow Codegen
   - [ ] When some `ref.CodeBehind="false"` classes inherit from a `ref.CodeBehind="true"` one, group them in a different pair of files.
