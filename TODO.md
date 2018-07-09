@@ -44,25 +44,6 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacUI
 
 #### Before 1.0
-- [x] Resource import item/folder from depended resources
-  - [x] `<Folder content="Import" name="Images">import-res://Base/Images</Folder>`
-  - [x] `import-res://ResourceName/Path`
-  - [x] `<ref.LocalizedStrings>` refer to class name not uri
-  - [x] Add Demo: GacUI_Xml/Misc_ImportFolder
-- [x] Known issue
-  - [x] Ribbon groups doesn't layout well at the beginning, user should resize the window to fix it.
-  - [x] AddressBook demo's new contact window default height too large.
-  - [x] `Text-bind="Strings.f()"` should not be allowed for `<ref.LocalizedStrings Name="Strings"/>`, it should be `self.Strings.f()`.
-  - Find someday to fix it
-- [x] **Update Release**
-- [x] Normal text box supports surrogate pairs like document viewer
-  - [x] Don't cache width for non-UCS2 characters.
-  - [x] Share char measurer for the same font, create it from the render target.
-- [x] Demo: TriplePhaseImageButton using `Context` property
-- [x] Demo: `<SharedSize>` and `<SharedSizeRoot>`
-  - [x] sync all buttons in item templates in a list control
-  - [x] Two columns in repeat flow
-- [ ] **Update Release**
 - [ ] Workflow Codegen
   - [ ] When some `ref.CodeBehind="false"` classes inherit from a `ref.CodeBehind="true"` one, group them in a different pair of files.
   - [ ] `USERIMPL_BEGIN` and `USERIMPL_END` for header includes, cpp includes and class members.
