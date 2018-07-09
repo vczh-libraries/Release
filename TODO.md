@@ -2,48 +2,8 @@
 
 https://zhuanlan.zhihu.com/p/33778843
 
-## Vlpp
+# GacUI 1.0
 
-* Regex supports UTF-16 (instead of UCS-2) on MSVC.
-  * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
-* Redesign vl::parsing.
-  * No need to specify ambiguity
-  * Will print all ambiguous cases and marked AST node
-  * ToString with hints and custom options
-  * Print diff when updating AST (for IDE)
-  * All existing features and backward compatible interface design
-
-### (optional)
-
-* Binary ITypeDescriptor provider format.
-* API to import and export fake types (ITypeDescriptor that cannot be executed)
-
-## Workflow
-
-* **Workflow to C++ code generation with hint**.
-  * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
-  * Leave spaces for user defined `#include`s or `using namespace`s.
-
-### (optional)
-
-* Support `<category>name` identifier, make generated code re-parsable.
-* Separate assembly binary to types, instructions and debug informations.
-* WorkflowCompiler.exe (x32/x64)
-  * Enable external symbols
-  * Compile
-  * Binary Output (full assembly or types only)
-  * C++ Codegen (x32/x64)
-
-### (probably not do)
-
-* Macro
-* Context-Grammar Sensitive Macro
-* Virtual function
-* Class implements interface
-
-## GacUI
-
-#### Before 1.0
 - [ ] Workflow Codegen
   - [ ] When some `ref.CodeBehind="false"` classes inherit from a `ref.CodeBehind="true"` one, group them in a different pair of files.
   - [ ] `USERIMPL_BEGIN` and `USERIMPL_END` for header includes, cpp includes and class members.
@@ -64,6 +24,40 @@ https://zhuanlan.zhihu.com/p/33778843
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Window Icon
 - [ ] **Update Release**
+
+# GacUI 2.0
+
+## Vlpp
+
+* Regex supports UTF-16 (instead of UCS-2) on MSVC.
+  * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
+* Redesign vl::parsing.
+  * No need to specify ambiguity
+  * Will print all ambiguous cases and marked AST node
+  * ToString with hints and custom options
+  * Print diff when updating AST (for IDE)
+  * All existing features and backward compatible interface design
+* Binary ITypeDescriptor provider format.
+* API to import and export fake types (ITypeDescriptor that cannot be executed)
+
+## Workflow
+
+* Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
+* Support `<category>name` identifier, make generated code re-parsable.
+* WorkflowCompiler.exe (x32/x64)
+  * Enable external symbols
+  * Compile
+  * Binary Output (full assembly or types only)
+  * C++ Codegen (x32/x64)
+
+### (probably not do)
+
+* Macro
+* Context-Grammar Sensitive Macro
+* Virtual function
+* Class implements interface
+
+## GacUI
 
 #### Before 1.0 (Optional)
 - [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
@@ -88,9 +82,6 @@ https://zhuanlan.zhihu.com/p/33778843
 ## GacGen.exe
 
 * Enable linking to external symbols
-
-### (optional)
-
 * In the final pass, only workflow scripts are printed
   * Use WorkflowCompiler.exe to do codegen externally
 
