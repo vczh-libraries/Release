@@ -305,7 +305,7 @@
           <![CDATA[
             prop FolderName : string = "" {}
             
-            var Ready : bool = true;
+            var Ready : bool = false;
           ]]>
         </ref.Members>
         <Window ref.Name="self" Text="New Folder" ClientSize="x:240 y:120" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
