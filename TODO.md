@@ -6,8 +6,7 @@ https://zhuanlan.zhihu.com/p/39369370
 
 - [ ] Workflow Codegen
   - [ ] When some `ref.CodeBehind="false"` classes inherit from a `ref.CodeBehind="true"` one, group them in a different pair of files.
-  - [ ] Change `USERIMPL`
-    from
+  - [ ] Change `USERIMPL` and finish compatibility for merging old code using `USERIMPL(NAME)` from
     ```c++
     USERIMPL(NAME)
     FUNCTION-HEADER
