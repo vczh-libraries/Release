@@ -6,8 +6,22 @@ https://zhuanlan.zhihu.com/p/39369370
 
 - [ ] Workflow Codegen
   - [ ] When some `ref.CodeBehind="false"` classes inherit from a `ref.CodeBehind="true"` one, group them in a different pair of files.
-  - [ ] `USERIMPL_BEGIN` and `USERIMPL_END` for header includes, cpp includes and class members.
-  - [ ] Put `USERIMPL` series macros in `VlppWorkflowLibrary.h`
+  - [ ] Change `USERIMPL`
+    from
+    ```c++
+    USERIMPL(NAME)
+    FUNCTION-HEADER
+    {
+      // USER CODE
+    }
+    ```
+    to
+    ```c++
+    FUNCTION-HEADER
+    {/* USERIMPL_BEGIN(NAME) */
+    }/* USERIMPL_END() */
+    ```
+  - [ ] Use `/* USERIMPL_BEGIN(NAME) */` and `/* USERIMPL_END() */` for custom includes(h/cpp) and class members(h).
 - [ ] Document clipboard data should have version
 - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
 - [ ] **Update Release**
