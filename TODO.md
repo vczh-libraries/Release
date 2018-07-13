@@ -17,10 +17,10 @@ https://zhuanlan.zhihu.com/p/39369370
     to
     ```c++
     FUNCTION-HEADER
-    {/* USERIMPL_BEGIN(NAME) */
-    }/* USERIMPL_END() */
+    {/* USER_CONTENT_BEGIN(NAME) */
+    }/* USER_CONTENT_END() */
     ```
-  - [ ] Use `/* USERIMPL_BEGIN(NAME) */` and `/* USERIMPL_END() */` for custom includes(h/cpp) and class members(h).
+  - [ ] Use `/* USER_CONTENT_BEGIN(NAME) */` and `/* USER_CONTENT_END() */` for custom includes(h/cpp) and class members(h).
 - [ ] Document clipboard data should have version
 - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
 - [ ] **Update Release**
