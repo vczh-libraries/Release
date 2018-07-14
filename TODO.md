@@ -6,7 +6,7 @@ https://zhuanlan.zhihu.com/p/39369370
 
 - [ ] Workflow Codegen
   - [ ] When some `ref.CodeBehind="false"` classes inherit from a `ref.CodeBehind="true"` one, group them in a different pair of files.
-  - [ ] Change `USERIMPL` and finish compatibility for merging old code using `USERIMPL(NAME)` from
+  - [x] Change `USERIMPL` and finish compatibility for merging old code using `USERIMPL(NAME)` from
     ```c++
     USERIMPL(NAME)
     FUNCTION-HEADER
@@ -20,7 +20,7 @@ https://zhuanlan.zhihu.com/p/39369370
     {/* USER_CONTENT_BEGIN(NAME) */
     }/* USER_CONTENT_END() */
     ```
-  - [ ] Use `/* USER_CONTENT_BEGIN(NAME) */` and `/* USER_CONTENT_END() */` for custom includes(h/cpp) and class members(h).
+  - [x] Use `/* USER_CONTENT_BEGIN(NAME) */` and `/* USER_CONTENT_END() */` for class members(h).
 - [ ] Document clipboard data should have version
 - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
 - [ ] **Update Release**
