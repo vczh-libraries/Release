@@ -4,6 +4,12 @@ https://zhuanlan.zhihu.com/p/39369370
 
 # GacUI 1.0
 
+- [ ] Add partial ordering to Vlpp and refactor
+  - [ ] CodePack `SortDependencies` function
+  - [ ] Workflow `WfCppConfig::SortInternal` function
+  - [ ] Workflow `PostCollect` function
+  - [ ] Workflow `StructRecursivelyIncludeItself` `DuplicatedBaseInterface` errors
+  - [ ] `GacBuild.ps1`
 - [ ] Workflow Codegen
   - [x] When some classes inherit from a `@cpp:File` class, group them in a different pair of files.
     - [ ] Test internal structs and classes, which depends on other internal structs and classes inside a `@cpp:File` class.
