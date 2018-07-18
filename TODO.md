@@ -4,6 +4,7 @@ https://zhuanlan.zhihu.com/p/39369370
 
 # GacUI 1.0
 
+- [ ] Move `CopyStream`(GacUI) and `GenerateToStream`(Workflow) to Vlpp and refactor in everywhere including using or copying.
 - [ ] Add partial ordering to Vlpp and refactor
   - [ ] CodePack `SortDependencies` function
   - [ ] Workflow `WfCppConfig::SortInternal` function
