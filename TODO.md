@@ -4,10 +4,31 @@ https://zhuanlan.zhihu.com/p/39369370
 
 # GacUI 1.0
 
+- [ ] Move `CopyStream`(GacUI) and `GenerateToStream`(Workflow) to Vlpp and refactor in everywhere including using or copying.
+- [x] Add partial ordering to Vlpp and refactor
+  - [x] CodePack `SortDependencies` function
+  - [ ] Workflow `WfCppConfig::SortInternal` function
+  - [ ] Workflow `PostCollect` function
+  - [ ] Workflow `StructRecursivelyIncludeItself` `DuplicatedBaseInterface` errors
+  - [ ] `GacBuild.ps1`
 - [ ] Workflow Codegen
-  - [ ] When some `ref.CodeBehind="false"` classes inherit from a `ref.CodeBehind="true"` one, group them in a different pair of files.
-  - [ ] `USERIMPL_BEGIN` and `USERIMPL_END` for header includes, cpp includes and class members.
-  - [ ] Put `USERIMPL` series macros in `VlppWorkflowLibrary.h`
+  - [x] When some classes inherit from a `@cpp:File` class, group them in a different pair of files.
+    - [ ] Test internal structs and classes, which depends on other internal structs and classes inside a `@cpp:File` class.
+  - [x] Change `USERIMPL` and finish compatibility for merging old code using `USERIMPL(NAME)` from
+    ```c++
+    USERIMPL(NAME)
+    FUNCTION-HEADER
+    {
+      // USER CODE
+    }
+    ```
+    to
+    ```c++
+    FUNCTION-HEADER
+    {/* USER_CONTENT_BEGIN(NAME) */
+    }/* USER_CONTENT_END() */
+    ```
+  - [x] Use `/* USER_CONTENT_BEGIN(NAME) */` and `/* USER_CONTENT_END() */` for class members(h).
 - [ ] Document clipboard data should have version
 - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
 - [ ] **Update Release**
