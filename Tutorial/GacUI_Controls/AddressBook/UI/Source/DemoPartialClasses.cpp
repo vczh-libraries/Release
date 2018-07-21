@@ -29,7 +29,6 @@ https://github.com/vczh-libraries
 #define GLOBAL_SYMBOL ::vl_workflow_global::Demo::
 #define GLOBAL_NAME ::vl_workflow_global::Demo::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::Demo::Instance()
-#define USERIMPL(...)
 
 /***********************************************************************
 Global Variables
@@ -2685,7 +2684,7 @@ Class (::demo::NewFolderWindow)
 	NewFolderWindow::NewFolderWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 		, __vwsn_prop_FolderName(::vl::WString(L"", false))
-		, Ready(true)
+		, Ready(false)
 	{
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::NewFolderWindow", false));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
@@ -2702,7 +2701,6 @@ Class (::demo::NewFolderWindow)
 #undef GLOBAL_SYMBOL
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
-#undef USERIMPL
 
 #if defined( _MSC_VER)
 #pragma warning(pop)

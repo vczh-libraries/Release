@@ -29,7 +29,9 @@ https://github.com/vczh-libraries
 #define GLOBAL_SYMBOL ::vl_workflow_global::Demo::
 #define GLOBAL_NAME ::vl_workflow_global::Demo::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::Demo::Instance()
-#define USERIMPL(...)
+
+/* USER_CONTENT_BEGIN(custom global declarations) */
+/* USER_CONTENT_END() */
 
 /***********************************************************************
 Class (::demo::DocumentEditorBase)
@@ -121,29 +123,25 @@ namespace demo
 		return static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->toolstripContainer);
 	}
 
-	USERIMPL(/* ::demo::DocumentEditorBase */)
 	void DocumentEditorBase::LoadAsPrivateFormat(const ::vl::WString& fileName)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::DocumentEditorBase) */
 		throw ::vl::Exception(L"You should implement this function.");
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::DocumentEditorBase */)
 	void DocumentEditorBase::SaveAsPrivateFormat(const ::vl::WString& fileName)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::DocumentEditorBase) */
 		throw ::vl::Exception(L"You should implement this function.");
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::DocumentEditorBase */)
 	void DocumentEditorBase::SaveAsRTF(const ::vl::WString& fileName)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::DocumentEditorBase) */
 		throw ::vl::Exception(L"You should implement this function.");
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::DocumentEditorBase */)
 	void DocumentEditorBase::SaveAsHTML(const ::vl::WString& fileName)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::DocumentEditorBase) */
 		throw ::vl::Exception(L"You should implement this function.");
-	}
+	}/* USER_CONTENT_END() */
 
 	void DocumentEditorBase::SaveDocument()
 	{
@@ -194,7 +192,6 @@ namespace demo
 #undef GLOBAL_SYMBOL
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
-#undef USERIMPL
 
 #if defined( _MSC_VER)
 #pragma warning(pop)

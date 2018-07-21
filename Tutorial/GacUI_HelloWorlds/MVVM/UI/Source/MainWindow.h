@@ -55,6 +55,9 @@ namespace helloworld
 	public:
 		MainWindow(::vl::Ptr<::vm::IViewModel> __vwsn_ctor_parameter_ViewModel);
 		~MainWindow();
+
+	/* USER_CONTENT_BEGIN(custom members of ::helloworld::MainWindow) */
+	/* USER_CONTENT_END() */
 	};
 
 }

@@ -101,6 +101,9 @@ namespace demo
 	public:
 		MainWindow();
 		~MainWindow();
+
+	/* USER_CONTENT_BEGIN(custom members of ::demo::MainWindow) */
+	/* USER_CONTENT_END() */
 	};
 
 }

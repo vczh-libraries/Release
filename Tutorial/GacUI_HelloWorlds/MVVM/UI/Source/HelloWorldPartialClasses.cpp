@@ -29,7 +29,6 @@ https://github.com/vczh-libraries
 #define GLOBAL_SYMBOL ::vl_workflow_global::HelloWorld::
 #define GLOBAL_NAME ::vl_workflow_global::HelloWorld::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::HelloWorld::Instance()
-#define USERIMPL(...)
 
 /***********************************************************************
 Global Variables
@@ -820,7 +819,6 @@ namespace vm
 #undef GLOBAL_SYMBOL
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
-#undef USERIMPL
 
 #if defined( _MSC_VER)
 #pragma warning(pop)

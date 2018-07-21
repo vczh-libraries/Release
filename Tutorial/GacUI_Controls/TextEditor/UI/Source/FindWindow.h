@@ -39,6 +39,9 @@ namespace demo
 		::vl::presentation::controls::GuiMultilineTextBox* textBox;
 		FindWindow();
 		~FindWindow();
+
+	/* USER_CONTENT_BEGIN(custom members of ::demo::FindWindow) */
+	/* USER_CONTENT_END() */
 	};
 
 }

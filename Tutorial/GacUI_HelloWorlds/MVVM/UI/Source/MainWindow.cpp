@@ -29,7 +29,9 @@ https://github.com/vczh-libraries
 #define GLOBAL_SYMBOL ::vl_workflow_global::HelloWorld::
 #define GLOBAL_NAME ::vl_workflow_global::HelloWorld::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::HelloWorld::Instance()
-#define USERIMPL(...)
+
+/* USER_CONTENT_BEGIN(custom global declarations) */
+/* USER_CONTENT_END() */
 
 /***********************************************************************
 Class (::helloworld::MainWindow)
@@ -55,15 +57,14 @@ namespace helloworld
 		return this->__vwsn_parameter_ViewModel;
 	}
 
-	USERIMPL(/* ::helloworld::MainWindow */)
 	void MainWindow::buttonSignUp_Clicked(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::helloworld::MainWindow) */
 		if (this->GetViewModel()->SignUp())
 		{
 			this->SetHasLoggedIn(true);
 			this->buttonSignUp->SetText(L"Success!");
 		}
-	}
+	}/* USER_CONTENT_END() */
 
 	MainWindow::MainWindow(::vl::Ptr<::vm::IViewModel> __vwsn_ctor_parameter_ViewModel)
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
@@ -86,7 +87,6 @@ namespace helloworld
 #undef GLOBAL_SYMBOL
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
-#undef USERIMPL
 
 #if defined( _MSC_VER)
 #pragma warning(pop)

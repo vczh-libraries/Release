@@ -37,6 +37,9 @@ namespace demo
 		MainWindow();
 		void __vwsn_instance_ctor_();
 		~MainWindow();
+
+	/* USER_CONTENT_BEGIN(custom members of ::demo::MainWindow) */
+	/* USER_CONTENT_END() */
 	};
 
 }

@@ -29,7 +29,9 @@ https://github.com/vczh-libraries
 #define GLOBAL_SYMBOL ::vl_workflow_global::Demo::
 #define GLOBAL_NAME ::vl_workflow_global::Demo::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::Demo::Instance()
-#define USERIMPL(...)
+
+/* USER_CONTENT_BEGIN(custom global declarations) */
+/* USER_CONTENT_END() */
 
 /***********************************************************************
 Class (::demo::FindWindow)
@@ -37,9 +39,8 @@ Class (::demo::FindWindow)
 
 namespace demo
 {
-	USERIMPL(/* ::demo::FindWindow */)
 	bool FindWindow::FindNext(const ::vl::WString& toFind, bool caseSensitive, bool down)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::FindWindow) */
 		auto position = textBox->GetCaretEnd();
 		auto rowCount = textBox->GetRowCount();
 		auto normalization = caseSensitive ? Locale::None : Locale::IgnoreCase;
@@ -94,7 +95,7 @@ namespace demo
 		}
 
 		return false;
-	}
+	}/* USER_CONTENT_END() */
 
 	FindWindow::FindWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
@@ -115,7 +116,6 @@ namespace demo
 #undef GLOBAL_SYMBOL
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
-#undef USERIMPL
 
 #if defined( _MSC_VER)
 #pragma warning(pop)

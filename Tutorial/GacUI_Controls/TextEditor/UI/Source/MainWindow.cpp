@@ -29,7 +29,9 @@ https://github.com/vczh-libraries
 #define GLOBAL_SYMBOL ::vl_workflow_global::Demo::
 #define GLOBAL_NAME ::vl_workflow_global::Demo::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::Demo::Instance()
-#define USERIMPL(...)
+
+/* USER_CONTENT_BEGIN(custom global declarations) */
+/* USER_CONTENT_END() */
 
 /***********************************************************************
 Class (::demo::MainWindow)
@@ -37,9 +39,8 @@ Class (::demo::MainWindow)
 
 namespace demo
 {
-	USERIMPL(/* ::demo::MainWindow */)
 	bool MainWindow::CanCloseFile()
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		if (textBox->GetModified())
 		{
 			switch (dialogQueryClose->ShowDialog())
@@ -56,11 +57,10 @@ namespace demo
 		{
 			return true;
 		}
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	bool MainWindow::LoadFile(const ::vl::WString& path)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		stream::FileStream fileStream(path, stream::FileStream::ReadOnly);
 		if (fileStream.IsAvailable())
 		{
@@ -92,11 +92,10 @@ namespace demo
 		{
 			return false;
 		}
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	bool MainWindow::OpenFile(::vl::vint filterIndex)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		if (CanCloseFile())
 		{
 			dialogOpen->SetFilterIndex(filterIndex);
@@ -113,11 +112,10 @@ namespace demo
 			}
 		}
 		return false;
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	bool MainWindow::SaveFile(bool saveAs)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		WString targetFileName = fileName;
 		if (saveAs || targetFileName == L"")
 		{
@@ -162,27 +160,25 @@ namespace demo
 			dialogCannotSave->ShowDialog();
 		}
 		return false;
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::SetupTextConfig()
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		if (isXml == true)
 		{
 			isXml = false;
 			SetColorizer(textBox, false);
 		}
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::SetupXmlConfig()
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		if (isXml == false)
 		{
 			isXml = true;
 			SetColorizer(textBox, true);
 		}
-	}
+	}/* USER_CONTENT_END() */
 
 	void MainWindow::AddRecentFile(const ::vl::WString& path)
 	{
@@ -214,109 +210,93 @@ namespace demo
 		::vl::__vwsn::This(this->recentFiles.Obj())->Insert(static_cast<::vl::vint>(0), ::vl::__vwsn::Box(command));
 	}
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileNewText_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		if (CanCloseFile())
 		{
 			textBox->SetText(L"");
 			textBox->ClearUndoRedo();
 			SetupTextConfig();
 		}
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileNewXml_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		if (CanCloseFile())
 		{
 			textBox->SetText(L"");
 			textBox->ClearUndoRedo();
 			SetupXmlConfig();
 		}
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileOpen_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		OpenFile(dialogOpen->GetFilterIndex());
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileOpenText_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		OpenFile(0);
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileOpenXml_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		OpenFile(1);
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileSave_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		SaveFile(false);
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileSaveAs_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		SaveFile(true);
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandFileExit_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		Close();
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditUndo_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		textBox->Undo();
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditRedo_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		textBox->Redo();
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditCut_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		textBox->Cut();
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditCopy_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		textBox->Copy();
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditPaste_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		textBox->Paste();
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditDelete_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		textBox->SetSelectionText(L"");
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditSelect_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		textBox->SelectAll();
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandEditFind_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		if (!findWindow)
 		{
 			auto window = MakePtr<FindWindow>();
@@ -326,21 +306,19 @@ namespace demo
 			findWindow = window;
 		}
 		findWindow->Show();
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::commandAbout_Executed(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		auto window = new AboutWindow;
 		window->MoveToScreenCenter();
 		window->ShowModalAndDelete(this, []() {});
-	}
+	}/* USER_CONTENT_END() */
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::window_Closing(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiRequestEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		arguments->cancel = !CanCloseFile();
-	}
+	}/* USER_CONTENT_END() */
 
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
@@ -364,7 +342,6 @@ namespace demo
 #undef GLOBAL_SYMBOL
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
-#undef USERIMPL
 
 #if defined( _MSC_VER)
 #pragma warning(pop)

@@ -38,6 +38,9 @@ namespace demo
 	public:
 		AboutWindow();
 		~AboutWindow();
+
+	/* USER_CONTENT_BEGIN(custom members of ::demo::AboutWindow) */
+	/* USER_CONTENT_END() */
 	};
 
 }

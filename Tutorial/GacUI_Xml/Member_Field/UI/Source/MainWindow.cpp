@@ -29,7 +29,9 @@ https://github.com/vczh-libraries
 #define GLOBAL_SYMBOL ::vl_workflow_global::Demo::
 #define GLOBAL_NAME ::vl_workflow_global::Demo::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::Demo::Instance()
-#define USERIMPL(...)
+
+/* USER_CONTENT_BEGIN(custom global declarations) */
+/* USER_CONTENT_END() */
 
 /***********************************************************************
 Class (::demo::MainWindow)
@@ -37,11 +39,10 @@ Class (::demo::MainWindow)
 
 namespace demo
 {
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::buttonPaste_Clicked(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		textBoxB->SetText(vl::itow(this->integerState));
-	}
+	}/* USER_CONTENT_END() */
 
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
@@ -62,7 +63,6 @@ namespace demo
 #undef GLOBAL_SYMBOL
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
-#undef USERIMPL
 
 #if defined( _MSC_VER)
 #pragma warning(pop)

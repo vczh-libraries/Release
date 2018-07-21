@@ -29,7 +29,6 @@ https://github.com/vczh-libraries
 #define GLOBAL_SYMBOL ::vl_workflow_global::ResDerived::
 #define GLOBAL_NAME ::vl_workflow_global::ResDerived::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::ResDerived::Instance()
-#define USERIMPL(...)
 
 /***********************************************************************
 Global Variables
@@ -152,7 +151,6 @@ Class (::demo::MainWindow)
 #undef GLOBAL_SYMBOL
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
-#undef USERIMPL
 
 #if defined( _MSC_VER)
 #pragma warning(pop)

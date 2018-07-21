@@ -29,7 +29,6 @@ https://github.com/vczh-libraries
 #define GLOBAL_SYMBOL ::vl_workflow_global::Demo::
 #define GLOBAL_NAME ::vl_workflow_global::Demo::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::Demo::Instance()
-#define USERIMPL(...)
 
 /***********************************************************************
 Global Variables
@@ -169,11 +168,10 @@ namespace demo
 Class (::demo::MainWindow)
 ***********************************************************************/
 
-	USERIMPL(/* ::demo::MainWindow */)
 	void MainWindow::documentLabel_ActiveHyperlinkExecuted(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
-	{
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		throw ::vl::Exception(L"You should implement this function.");
-	}
+	}/* USER_CONTENT_END() */
 
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
@@ -193,7 +191,6 @@ Class (::demo::MainWindow)
 #undef GLOBAL_SYMBOL
 #undef GLOBAL_NAME
 #undef GLOBAL_OBJ
-#undef USERIMPL
 
 #if defined( _MSC_VER)
 #pragma warning(pop)
