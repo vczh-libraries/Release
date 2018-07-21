@@ -6,7 +6,7 @@ https://zhuanlan.zhihu.com/p/39369370
 
 - [ ] Move `CopyStream`(GacUI) and `GenerateToStream`(Workflow) to Vlpp and refactor in everywhere including using or copying.
 - [x] Add partial ordering to Vlpp and refactor
-  - [ ] CodePack `SortDependencies` function
+  - [x] CodePack `SortDependencies` function
   - [ ] Workflow `WfCppConfig::SortInternal` function
   - [ ] Workflow `PostCollect` function
   - [ ] Workflow `StructRecursivelyIncludeItself` `DuplicatedBaseInterface` errors
