@@ -32,10 +32,10 @@ https://zhuanlan.zhihu.com/p/39369370
     }/* USER_CONTENT_END() */
     ```
   - [x] Use `/* USER_CONTENT_BEGIN(NAME) */` and `/* USER_CONTENT_END() */` for class members(h).
+- [ ] CppMerge.exe reports error instead of crashes
+- [ ] **Update Release**
 - [ ] Document clipboard data should have version
 - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
-- [ ] **Update Release**
-- [ ] CppMerge.exe reports error instead of crashes
 - [ ] Add and query services from controls
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
