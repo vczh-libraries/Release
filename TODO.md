@@ -9,7 +9,7 @@ https://zhuanlan.zhihu.com/p/39369370
   - [x] CodePack `SortDependencies` function
   - [ ] Workflow `WfCppConfig::SortInternal` function
   - [ ] Workflow `PostCollect` function
-  - [ ] Workflow `StructRecursivelyIncludeItself` `DuplicatedBaseInterface` errors
+  - [x] Workflow `StructRecursivelyIncludeItself` `DuplicatedBaseInterface` errors
   - [ ] `GacBuild.ps1`
 - [ ] Workflow Codegen
   - [x] When some classes inherit from a `@cpp:File` class, group them in a different pair of files.
