@@ -8,7 +8,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] Add partial ordering to Vlpp and refactor
   - [x] CodePack `SortDependencies` function
   - [ ] Workflow `WfCppConfig::SortInternal` and `PostCollect` function
-    - [ ] Write all enums and structs before all classes, regardless they are declared inside a class or not.
+    - [x] Write all enums and structs before all classes, regardless they are declared inside a class or not.
       - All names after `__vwsn_(enum|struct)_<all-levels-of-parent-classes>_name`.
       - All generate `using name = __vwsn_(enum|struct)_<all-levels-of-parent-classes>_name` in the right place.
     - [ ] Check if inheritance relationships satisfy C++'s declare-before-use rule.
