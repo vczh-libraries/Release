@@ -4,16 +4,19 @@ https://zhuanlan.zhihu.com/p/39369370
 
 # GacUI 1.0
 
-- [ ] Move `CopyStream`(GacUI) and `GenerateToStream`(Workflow) to Vlpp and refactor in everywhere including using or copying.
+- [x] Move `CopyStream`(GacUI) and `GenerateToStream`(Workflow) to Vlpp and refactor in everywhere including using or copying.
 - [x] Add partial ordering to Vlpp and refactor
   - [x] CodePack `SortDependencies` function
-  - [ ] Workflow `WfCppConfig::SortInternal` function
-  - [ ] Workflow `PostCollect` function
-  - [ ] Workflow `StructRecursivelyIncludeItself` `DuplicatedBaseInterface` errors
+  - [x] Workflow `WfCppConfig::SortInternal` and `PostCollect` function
+    - [x] Write all enums and structs before all classes, regardless they are declared inside a class or not.
+      - All names after `__vwsn_(enum|struct)_<all-levels-of-parent-classes>_name`.
+      - All generate `using name = __vwsn_(enum|struct)_<all-levels-of-parent-classes>_name` in the right place.
+    - [x] Check if inheritance relationships satisfy C++'s declare-before-use rule.
+  - [x] Workflow `StructRecursivelyIncludeItself` `DuplicatedBaseInterface` errors
   - [ ] `GacBuild.ps1`
-- [ ] Workflow Codegen
+- [x] Workflow Codegen
   - [x] When some classes inherit from a `@cpp:File` class, group them in a different pair of files.
-    - [ ] Test internal structs and classes, which depends on other internal structs and classes inside a `@cpp:File` class.
+    - [x] Test internal structs and classes, which depends on other internal structs and classes inside a `@cpp:File` class.
   - [x] Change `USERIMPL` and finish compatibility for merging old code using `USERIMPL(NAME)` from
     ```c++
     USERIMPL(NAME)
@@ -29,10 +32,11 @@ https://zhuanlan.zhihu.com/p/39369370
     }/* USER_CONTENT_END() */
     ```
   - [x] Use `/* USER_CONTENT_BEGIN(NAME) */` and `/* USER_CONTENT_END() */` for class members(h).
+- [ ] Workflow Codegen reports error during generating C++ code instead of crash
+- [ ] CppMerge.exe reports error instead of crashes
+- [ ] **Update Release**
 - [ ] Document clipboard data should have version
 - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
-- [ ] **Update Release**
-- [ ] CppMerge.exe reports error instead of crashes
 - [ ] Add and query services from controls
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
