@@ -4,7 +4,7 @@ https://zhuanlan.zhihu.com/p/39369370
 
 # GacUI 1.0
 
-- [ ] Move `CopyStream`(GacUI) and `GenerateToStream`(Workflow) to Vlpp and refactor in everywhere including using or copying.
+- [x] Move `CopyStream`(GacUI) and `GenerateToStream`(Workflow) to Vlpp and refactor in everywhere including using or copying.
 - [x] Add partial ordering to Vlpp and refactor
   - [x] CodePack `SortDependencies` function
   - [x] Workflow `WfCppConfig::SortInternal` and `PostCollect` function
@@ -16,7 +16,7 @@ https://zhuanlan.zhihu.com/p/39369370
   - [ ] `GacBuild.ps1`
 - [x] Workflow Codegen
   - [x] When some classes inherit from a `@cpp:File` class, group them in a different pair of files.
-    - [ ] Test internal structs and classes, which depends on other internal structs and classes inside a `@cpp:File` class.
+    - [x] Test internal structs and classes, which depends on other internal structs and classes inside a `@cpp:File` class.
   - [x] Change `USERIMPL` and finish compatibility for merging old code using `USERIMPL(NAME)` from
     ```c++
     USERIMPL(NAME)
