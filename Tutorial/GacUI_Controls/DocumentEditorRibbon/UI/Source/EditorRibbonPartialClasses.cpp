@@ -2216,6 +2216,162 @@ namespace demo
 	}
 
 /***********************************************************************
+Class (::demo::DocumentEditorRibbon)
+***********************************************************************/
+
+	bool DocumentEditorRibbon::GetAlignLeftSelected()
+	{
+		return this->__vwsn_prop_AlignLeftSelected;
+	}
+	void DocumentEditorRibbon::SetAlignLeftSelected(bool __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_AlignLeftSelected != __vwsn_value_))
+		{
+			(this->__vwsn_prop_AlignLeftSelected = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->AlignLeftSelectedChanged)();
+		}
+	}
+
+	bool DocumentEditorRibbon::GetAlignCenterSelected()
+	{
+		return this->__vwsn_prop_AlignCenterSelected;
+	}
+	void DocumentEditorRibbon::SetAlignCenterSelected(bool __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_AlignCenterSelected != __vwsn_value_))
+		{
+			(this->__vwsn_prop_AlignCenterSelected = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->AlignCenterSelectedChanged)();
+		}
+	}
+
+	bool DocumentEditorRibbon::GetAlignRightSelected()
+	{
+		return this->__vwsn_prop_AlignRightSelected;
+	}
+	void DocumentEditorRibbon::SetAlignRightSelected(bool __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_AlignRightSelected != __vwsn_value_))
+		{
+			(this->__vwsn_prop_AlignRightSelected = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->AlignRightSelectedChanged)();
+		}
+	}
+
+	::vl::Ptr<::vl::reflection::description::IValueList> DocumentEditorRibbon::GetStyleGroups()
+	{
+		return this->__vwsn_prop_StyleGroups;
+	}
+	void DocumentEditorRibbon::SetStyleGroups(::vl::Ptr<::vl::reflection::description::IValueList> __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_StyleGroups.Obj() != __vwsn_value_.Obj()))
+		{
+			(this->__vwsn_prop_StyleGroups = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->StyleGroupsChanged)();
+		}
+	}
+
+	::vl::Ptr<::vl::reflection::description::IValueList> DocumentEditorRibbon::GenerateStyleGroups()
+	{
+		auto group1 = ::vl::Ptr<::demo::StyleGroup>(new ::demo::StyleGroup());
+		(::vl::__vwsn::This(group1.Obj())->Name = ::vl::WString(L"Headers", false));
+		::vl::__vwsn::This(::vl::__vwsn::This(group1.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Header 1", false), [&](){ ::vl::presentation::DocumentFontSize __vwsn_temp__; __vwsn_temp__.size = static_cast<double>(2); __vwsn_temp__.relative = true; return __vwsn_temp__; }(), ::vl::Nullable<::vl::presentation::Color>(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FF8000", false))), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group1.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Header 2", false), [&](){ ::vl::presentation::DocumentFontSize __vwsn_temp__; __vwsn_temp__.size = static_cast<double>(1.6); __vwsn_temp__.relative = true; return __vwsn_temp__; }(), ::vl::Nullable<::vl::presentation::Color>(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FF8000", false))), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group1.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Header 3", false), [&](){ ::vl::presentation::DocumentFontSize __vwsn_temp__; __vwsn_temp__.size = static_cast<double>(1.3); __vwsn_temp__.relative = true; return __vwsn_temp__; }(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
+		auto group2 = ::vl::Ptr<::demo::StyleGroup>(new ::demo::StyleGroup());
+		(::vl::__vwsn::This(group2.Obj())->Name = ::vl::WString(L"Content", false));
+		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Strong", false), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Quote", false), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Emphasis", false), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Intense Emphasis", false), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#8080FF", false))), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Deleted", false), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true)))));
+		auto styles = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueDictionary>(::vl::__vwsn::This(::vl::__vwsn::This(this->document)->GetDocument().Obj())->styles);
+		{
+			auto __vwsn_for_enumerable_styleItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(group1.Obj())->Items);
+			auto __vwsn_for_enumerator_styleItem = ::vl::__vwsn::This(__vwsn_for_enumerable_styleItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_styleItem.Obj())->Next())
+			{
+				auto styleItem = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::StyleItem>>(::vl::__vwsn::This(__vwsn_for_enumerator_styleItem.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::This(styles.Obj())->Set(::vl::__vwsn::Box(::vl::__vwsn::This(styleItem.Obj())->Name), ::vl::__vwsn::Box(::vl::__vwsn::This(styleItem.Obj())->Style));
+				}
+			}
+		}
+		{
+			auto __vwsn_for_enumerable_styleItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(group2.Obj())->Items);
+			auto __vwsn_for_enumerator_styleItem = ::vl::__vwsn::This(__vwsn_for_enumerable_styleItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_styleItem.Obj())->Next())
+			{
+				auto styleItem = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::StyleItem>>(::vl::__vwsn::This(__vwsn_for_enumerator_styleItem.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::This(styles.Obj())->Set(::vl::__vwsn::Box(::vl::__vwsn::This(styleItem.Obj())->Name), ::vl::__vwsn::Box(::vl::__vwsn::This(styleItem.Obj())->Style));
+				}
+			}
+		}
+		return (::vl::__vwsn::CreateList().Add(group1).Add(group2)).list;
+	}
+
+	void DocumentEditorRibbon::SelectStyleName(const ::vl::Nullable<::vl::WString>& styleName)
+	{
+		if (static_cast<bool>(styleName))
+		{
+			{
+				auto __vwsn_for_begin_groupIndex = static_cast<::vl::vint>(0);
+				auto __vwsn_for_end_groupIndex = (::vl::__vwsn::This(this->GetStyleGroups().Obj())->GetCount() - static_cast<::vl::vint>(1));
+				auto groupIndex = __vwsn_for_begin_groupIndex;
+				while ((groupIndex <= __vwsn_for_end_groupIndex))
+				{
+					{
+						auto group = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::StyleGroup>>(::vl::__vwsn::This(this->GetStyleGroups().Obj())->Get(groupIndex));
+						{
+							auto __vwsn_for_begin_itemIndex = static_cast<::vl::vint>(0);
+							auto __vwsn_for_end_itemIndex = (::vl::__vwsn::This(::vl::__vwsn::This(group.Obj())->Items.Obj())->GetCount() - static_cast<::vl::vint>(1));
+							auto itemIndex = __vwsn_for_begin_itemIndex;
+							while ((itemIndex <= __vwsn_for_end_itemIndex))
+							{
+								{
+									if ((::vl::__vwsn::This(::vl::__vwsn::Unbox<::vl::Ptr<::demo::StyleItem>>(::vl::__vwsn::This(::vl::__vwsn::This(group.Obj())->Items.Obj())->Get(itemIndex)).Obj())->Name == styleName.Value()))
+									{
+										::vl::__vwsn::This(this->styleGallery)->SelectItem(::vl::__vwsn::This(this->styleGallery)->GalleryPosToIndex([&](){ ::vl::presentation::controls::GalleryPos __vwsn_temp__; __vwsn_temp__.group = groupIndex; __vwsn_temp__.item = itemIndex; return __vwsn_temp__; }()));
+										return;
+									}
+								}
+								(itemIndex = (itemIndex + static_cast<::vl::vint>(1)));
+							}
+						}
+					}
+					(groupIndex = (groupIndex + static_cast<::vl::vint>(1)));
+				}
+			}
+		}
+		::vl::__vwsn::This(this->styleGallery)->SelectItem((- static_cast<::vl::vint>(1)));
+	}
+
+	DocumentEditorRibbon::DocumentEditorRibbon()
+		: __vwsn_prop_AlignLeftSelected(true)
+		, __vwsn_prop_AlignCenterSelected(true)
+		, __vwsn_prop_AlignRightSelected(true)
+		, __vwsn_prop_StyleGroups(::vl::Ptr<::vl::reflection::description::IValueList>())
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DocumentEditorRibbon", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_DocumentEditorRibbon_Initialize(this);
+		this->__vwsn_instance_ctor_();
+	}
+
+	void DocumentEditorRibbon::__vwsn_instance_ctor_()
+	{
+		this->SetStyleGroups(this->GenerateStyleGroups());
+		::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->document)->SelectionChanged, LAMBDA(::vl_workflow_global::__vwsnf17_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__(this)));
+	}
+
+	DocumentEditorRibbon::~DocumentEditorRibbon()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::MainWindowConstructor)
 ***********************************************************************/
 
@@ -2245,6 +2401,24 @@ Class (::demo::MainWindowConstructor)
 		, __vwsn_precompile_0(static_cast<::demo::MainWindow*>(nullptr))
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::demo::MainWindow)
+***********************************************************************/
+
+	MainWindow::MainWindow()
+		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
+	}
+
+	MainWindow::~MainWindow()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
 	}
 
 /***********************************************************************
@@ -2423,24 +2597,6 @@ Class (::demo::StyleItemTemplateConstructor)
 		, __vwsn_precompile_6(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_7(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
-	}
-
-/***********************************************************************
-Class (::demo::MainWindow)
-***********************************************************************/
-
-	MainWindow::MainWindow()
-		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
-	}
-
-	MainWindow::~MainWindow()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
 	}
 
 /***********************************************************************

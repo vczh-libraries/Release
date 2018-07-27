@@ -168,14 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="UI\Source\DocumentEditorToolstrip.cpp" />
     <ClCompile Include="UI\Source\EditorToolstripPartialClasses.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\ResourceToolstrip.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UI\Source\DocumentEditorToolstrip.h" />
     <ClInclude Include="UI\Source\EditorToolstrip.h" />
     <ClInclude Include="UI\Source\EditorToolstripPartialClasses.h" />
   </ItemGroup>

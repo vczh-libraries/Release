@@ -27,12 +27,6 @@
     <ClCompile Include="UI\FullControlTest\Source\MainWindow.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="UI\FullControlTest\Source\DocumentEditorRibbon.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
-    <ClCompile Include="UI\FullControlTest\Source\DocumentEditorToolstrip.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
     <ClCompile Include="UI\FullControlTest\Source\DocumentEditorBase.cpp">
       <Filter>UI</Filter>
     </ClCompile>
@@ -47,13 +41,10 @@
     <ClInclude Include="UI\FullControlTest\Source\MainWindow.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="UI\FullControlTest\Source\DocumentEditorRibbon.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="UI\FullControlTest\Source\DocumentEditorToolstrip.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="UI\FullControlTest\Source\DocumentEditorBase.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\FullControlTest\Source\DemoPartialClasses1.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>

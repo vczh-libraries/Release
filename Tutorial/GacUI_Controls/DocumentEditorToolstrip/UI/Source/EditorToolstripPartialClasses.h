@@ -36,8 +36,8 @@ namespace vl_workflow_global
 namespace demo
 {
 	class DocumentEditorToolstripConstructor;
-	class MainWindowConstructor;
 	class DocumentEditorToolstrip;
+	class MainWindowConstructor;
 	class MainWindow;
 
 	class DocumentEditorToolstripConstructor : public ::vl::Object, public ::vl::reflection::Description<DocumentEditorToolstripConstructor>
@@ -131,6 +131,21 @@ namespace demo
 		void __vwsn_demo_DocumentEditorToolstrip_Initialize(::demo::DocumentEditorToolstrip* __vwsn_this_);
 	public:
 		DocumentEditorToolstripConstructor();
+	};
+
+	class DocumentEditorToolstrip : public ::demo::DocumentEditorBase, public ::demo::DocumentEditorToolstripConstructor, public ::vl::reflection::Description<DocumentEditorToolstrip>
+	{
+		friend class ::demo::DocumentEditorToolstripConstructor;
+		friend class ::vl_workflow_global::__vwsnc2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorToolstrip>;
+#endif
+	public:
+		DocumentEditorToolstrip();
+		~DocumentEditorToolstrip();
 	};
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>

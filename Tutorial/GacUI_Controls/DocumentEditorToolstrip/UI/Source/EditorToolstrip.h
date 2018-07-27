@@ -11,6 +11,5 @@ https://github.com/vczh-libraries
 #define VCZH_WORKFLOW_COMPILER_GENERATED_EDITORTOOLSTRIP
 
 #include "EditorToolstripPartialClasses.h"
-#include "DocumentEditorToolstrip.h"
 
 #endif

@@ -63,12 +63,12 @@ namespace vl_workflow_global
 namespace demo
 {
 	class DocumentEditorRibbonConstructor;
+	class DocumentEditorRibbon;
 	class MainWindowConstructor;
+	class MainWindow;
 	class StyleGroup;
 	class StyleItem;
 	class StyleItemTemplateConstructor;
-	class DocumentEditorRibbon;
-	class MainWindow;
 	class StyleItemTemplate;
 
 	class DocumentEditorRibbonConstructor : public ::vl::Object, public ::vl::reflection::Description<DocumentEditorRibbonConstructor>
@@ -207,6 +207,62 @@ namespace demo
 		DocumentEditorRibbonConstructor();
 	};
 
+	class DocumentEditorRibbon : public ::demo::DocumentEditorBase, public ::demo::DocumentEditorRibbonConstructor, public ::vl::reflection::Description<DocumentEditorRibbon>
+	{
+		friend struct ::vl_workflow_global::__vwsnf17_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__;
+		friend class ::demo::DocumentEditorRibbonConstructor;
+		friend class ::vl_workflow_global::__vwsnc10_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc7_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf10_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf11_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf12_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf13_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorRibbon>;
+#endif
+	private:
+		bool __vwsn_prop_AlignLeftSelected;
+		bool GetAlignLeftSelected();
+		void SetAlignLeftSelected(bool __vwsn_value_);
+		::vl::Event<void()> AlignLeftSelectedChanged;
+		bool __vwsn_prop_AlignCenterSelected;
+		bool GetAlignCenterSelected();
+		void SetAlignCenterSelected(bool __vwsn_value_);
+		::vl::Event<void()> AlignCenterSelectedChanged;
+		bool __vwsn_prop_AlignRightSelected;
+		bool GetAlignRightSelected();
+		void SetAlignRightSelected(bool __vwsn_value_);
+		::vl::Event<void()> AlignRightSelectedChanged;
+		::vl::Ptr<::vl::reflection::description::IValueList> __vwsn_prop_StyleGroups;
+		::vl::Ptr<::vl::reflection::description::IValueList> GetStyleGroups();
+		void SetStyleGroups(::vl::Ptr<::vl::reflection::description::IValueList> __vwsn_value_);
+		::vl::Event<void()> StyleGroupsChanged;
+		::vl::Ptr<::vl::reflection::description::IValueList> GenerateStyleGroups();
+		void SelectStyleName(const ::vl::Nullable<::vl::WString>& styleName);
+	public:
+		DocumentEditorRibbon();
+		void __vwsn_instance_ctor_();
+		~DocumentEditorRibbon();
+	};
+
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
@@ -221,6 +277,19 @@ namespace demo
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
+	};
+
+	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	{
+		friend class ::demo::MainWindowConstructor;
+		friend class ::vl_workflow_global::__vwsnc1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+#endif
+	public:
+		MainWindow();
+		~MainWindow();
 	};
 
 	class StyleGroup : public ::vl::Object, public ::vl::reflection::Description<StyleGroup>
@@ -272,19 +341,6 @@ namespace demo
 		void __vwsn_demo_StyleItemTemplate_Initialize(::demo::StyleItemTemplate* __vwsn_this_);
 	public:
 		StyleItemTemplateConstructor();
-	};
-
-	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
-	{
-		friend class ::demo::MainWindowConstructor;
-		friend class ::vl_workflow_global::__vwsnc1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
-#endif
-	public:
-		MainWindow();
-		~MainWindow();
 	};
 
 	class StyleItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::StyleItemTemplateConstructor, public ::vl::reflection::Description<StyleItemTemplate>

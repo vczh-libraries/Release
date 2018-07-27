@@ -21,9 +21,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UI\Source\DocumentEditorToolstrip.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
     <ClCompile Include="UI\Source\EditorToolstripPartialClasses.cpp">
       <Filter>UI</Filter>
     </ClCompile>
@@ -34,9 +31,6 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UI\Source\DocumentEditorToolstrip.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="UI\Source\EditorToolstrip.h">
       <Filter>UI</Filter>
     </ClInclude>

@@ -1142,6 +1142,23 @@ namespace demo
 	}
 
 /***********************************************************************
+Class (::demo::DocumentEditorToolstrip)
+***********************************************************************/
+
+	DocumentEditorToolstrip::DocumentEditorToolstrip()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DocumentEditorToolstrip", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_DocumentEditorToolstrip_Initialize(this);
+	}
+
+	DocumentEditorToolstrip::~DocumentEditorToolstrip()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::MainWindowConstructor)
 ***********************************************************************/
 

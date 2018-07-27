@@ -11,6 +11,5 @@ https://github.com/vczh-libraries
 #define VCZH_WORKFLOW_COMPILER_GENERATED_EDITORRIBBON
 
 #include "EditorRibbonPartialClasses.h"
-#include "DocumentEditorRibbon.h"
 
 #endif

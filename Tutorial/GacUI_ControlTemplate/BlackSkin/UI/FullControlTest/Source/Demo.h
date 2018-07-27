@@ -12,8 +12,7 @@ https://github.com/vczh-libraries
 
 #include "DemoPartialClasses.h"
 #include "DocumentEditorBase.h"
-#include "DocumentEditorRibbon.h"
-#include "DocumentEditorToolstrip.h"
 #include "MainWindow.h"
+#include "DemoPartialClasses1.h"
 
 #endif
