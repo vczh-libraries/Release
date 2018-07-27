@@ -32,6 +32,7 @@ https://zhuanlan.zhihu.com/p/39369370
     }/* USER_CONTENT_END() */
     ```
   - [x] Use `/* USER_CONTENT_BEGIN(NAME) */` and `/* USER_CONTENT_END() */` for class members(h).
+- [ ] Workflow Codegen reports error during generating C++ code instead of crash
 - [ ] CppMerge.exe reports error instead of crashes
 - [ ] **Update Release**
 - [ ] Document clipboard data should have version
