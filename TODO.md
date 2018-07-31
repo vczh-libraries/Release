@@ -33,7 +33,7 @@ https://zhuanlan.zhihu.com/p/39369370
     ```
   - [x] Use `/* USER_CONTENT_BEGIN(NAME) */` and `/* USER_CONTENT_END() */` for class members(h).
 - [ ] Workflow Codegen reports error during generating C++ code instead of crash
-- [ ] CppMerge.exe reports error instead of crashes
+- [x] CppMerge.exe reports error before crashes, which can be displayed by GacGen.ps1
 - [ ] **Update Release**
 - [ ] Document clipboard data should have version
 - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
