@@ -34,6 +34,7 @@ https://zhuanlan.zhihu.com/p/39369370
   - [x] Use `/* USER_CONTENT_BEGIN(NAME) */` and `/* USER_CONTENT_END() */` for class members(h).
 - [ ] Workflow Codegen reports error during generating C++ code instead of crash
 - [x] CppMerge.exe reports error before crashes, which can be displayed by GacGen.ps1
+- [x] Provide `Sys::(U)Int(32|64)?ToInt(32|64)?` functions to solve merge problems by mixing 32 or 64 integer types with `int` or `uint`. People should always use `Sys::(U)Int(32|64)?ToInt(32|64)?` to cast integers in this case.
 - [ ] **Update Release**
 - [ ] Document clipboard data should have version
 - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
