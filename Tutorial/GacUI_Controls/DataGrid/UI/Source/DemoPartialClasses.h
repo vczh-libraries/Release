@@ -106,9 +106,9 @@ namespace vl_workflow_global
 	class __vwsnc9_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize__vl_reflection_description_IValueSubscription;
 }
 
-namespace demo
+namespace __vwsn_enums
 {
-	enum class MyCategory : vl::vuint64_t
+	enum class _demo_MyCategory : vl::vuint64_t
 	{
 		Black = 0UL,
 		Red = 1UL,
@@ -116,41 +116,47 @@ namespace demo
 		Blue = 3UL,
 		White = 4UL,
 	};
-	inline MyCategory operator& (MyCategory a, MyCategory b) { return static_cast<MyCategory>(static_cast<::vl::vuint64_t>(a) & static_cast<::vl::vuint64_t>(b)); }
-	inline MyCategory operator| (MyCategory a, MyCategory b) { return static_cast<MyCategory>(static_cast<::vl::vuint64_t>(a) | static_cast<::vl::vuint64_t>(b)); }
+	inline _demo_MyCategory operator& (_demo_MyCategory a, _demo_MyCategory b) { return static_cast<_demo_MyCategory>(static_cast<::vl::vuint64_t>(a) & static_cast<::vl::vuint64_t>(b)); }
+	inline _demo_MyCategory operator| (_demo_MyCategory a, _demo_MyCategory b) { return static_cast<_demo_MyCategory>(static_cast<::vl::vuint64_t>(a) | static_cast<::vl::vuint64_t>(b)); }
 
-	enum class MyGender : vl::vuint64_t
+	enum class _demo_MyGender : vl::vuint64_t
 	{
 		Male = 0UL,
 		Female = 1UL,
 	};
-	inline MyGender operator& (MyGender a, MyGender b) { return static_cast<MyGender>(static_cast<::vl::vuint64_t>(a) & static_cast<::vl::vuint64_t>(b)); }
-	inline MyGender operator| (MyGender a, MyGender b) { return static_cast<MyGender>(static_cast<::vl::vuint64_t>(a) | static_cast<::vl::vuint64_t>(b)); }
+	inline _demo_MyGender operator& (_demo_MyGender a, _demo_MyGender b) { return static_cast<_demo_MyGender>(static_cast<::vl::vuint64_t>(a) & static_cast<::vl::vuint64_t>(b)); }
+	inline _demo_MyGender operator| (_demo_MyGender a, _demo_MyGender b) { return static_cast<_demo_MyGender>(static_cast<::vl::vuint64_t>(a) | static_cast<::vl::vuint64_t>(b)); }
+
+}
+namespace demo
+{
+	using MyCategory = ::__vwsn_enums::_demo_MyCategory;
+	using MyGender = ::__vwsn_enums::_demo_MyGender;
 
 	class CategoryDisplayerConstructor;
+	class CategoryDisplayer;
 	class CategoryEditorConstructor;
+	class CategoryEditor;
 	class CategoryItemTemplateConstructor;
+	class CategoryItemTemplate;
 	class CategoryVisualizerConstructor;
+	class CategoryVisualizer;
 	class DateEditorConstructor;
+	class DateEditor;
 	class DateFilterConstructor;
+	class DateFilter;
 	class GenderDisplayerConstructor;
+	class GenderDisplayer;
 	class GenderEditorConstructor;
+	class GenderEditor;
 	class GenderItemTemplateConstructor;
+	class GenderItemTemplate;
 	class GenderVisualizerConstructor;
+	class GenderVisualizer;
 	class MainWindowConstructor;
+	class MainWindow;
 	class MyDataItem;
 	class TextEditorConstructor;
-	class CategoryDisplayer;
-	class CategoryEditor;
-	class CategoryItemTemplate;
-	class CategoryVisualizer;
-	class DateEditor;
-	class DateFilter;
-	class GenderDisplayer;
-	class GenderEditor;
-	class GenderItemTemplate;
-	class GenderVisualizer;
-	class MainWindow;
 	class TextEditor;
 
 	class CategoryDisplayerConstructor : public ::vl::Object, public ::vl::reflection::Description<CategoryDisplayerConstructor>
@@ -178,6 +184,27 @@ namespace demo
 		CategoryDisplayerConstructor();
 	};
 
+	class CategoryDisplayer : public ::vl::presentation::controls::GuiCustomControl, public ::demo::CategoryDisplayerConstructor, public ::vl::reflection::Description<CategoryDisplayer>
+	{
+		friend class ::demo::CategoryDisplayerConstructor;
+		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc14_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc15_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf40_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf41_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf42_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryDisplayer>;
+#endif
+	public:
+		::demo::MyCategory __vwsn_prop_Category;
+		::demo::MyCategory GetCategory();
+		void SetCategory(::demo::MyCategory __vwsn_value_);
+		::vl::Event<void()> CategoryChanged;
+		CategoryDisplayer();
+		~CategoryDisplayer();
+	};
+
 	class CategoryEditorConstructor : public ::vl::Object, public ::vl::reflection::Description<CategoryEditorConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc16_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize__vl_reflection_description_IValueSubscription;
@@ -199,6 +226,24 @@ namespace demo
 		CategoryEditorConstructor();
 	};
 
+	class CategoryEditor : public ::vl::presentation::templates::GuiGridEditorTemplate, public ::demo::CategoryEditorConstructor, public ::vl::reflection::Description<CategoryEditor>
+	{
+		friend class ::demo::CategoryEditorConstructor;
+		friend class ::vl_workflow_global::__vwsnc16_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc17_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf43_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf44_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf45_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf46_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryEditor>;
+#endif
+	public:
+		::vl::Ptr<::vl::reflection::description::IValueList> items;
+		CategoryEditor();
+		~CategoryEditor();
+	};
+
 	class CategoryItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<CategoryItemTemplateConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
@@ -214,6 +259,21 @@ namespace demo
 		void __vwsn_demo_CategoryItemTemplate_Initialize(::demo::CategoryItemTemplate* __vwsn_this_);
 	public:
 		CategoryItemTemplateConstructor();
+	};
+
+	class CategoryItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::CategoryItemTemplateConstructor, public ::vl::reflection::Description<CategoryItemTemplate>
+	{
+		friend class ::demo::CategoryItemTemplateConstructor;
+		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf47_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryItemTemplate>;
+#endif
+	public:
+		::demo::MyCategory __vwsn_parameter_SelectedCategory;
+		::demo::MyCategory GetSelectedCategory();
+		CategoryItemTemplate(::demo::MyCategory __vwsn_ctor_parameter_SelectedCategory);
+		~CategoryItemTemplate();
 	};
 
 	class CategoryVisualizerConstructor : public ::vl::Object, public ::vl::reflection::Description<CategoryVisualizerConstructor>
@@ -234,6 +294,21 @@ namespace demo
 		CategoryVisualizerConstructor();
 	};
 
+	class CategoryVisualizer : public ::vl::presentation::templates::GuiGridVisualizerTemplate, public ::demo::CategoryVisualizerConstructor, public ::vl::reflection::Description<CategoryVisualizer>
+	{
+		friend class ::demo::CategoryVisualizerConstructor;
+		friend class ::vl_workflow_global::__vwsnc19_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc20_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf48_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf49_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryVisualizer>;
+#endif
+	public:
+		CategoryVisualizer();
+		~CategoryVisualizer();
+	};
+
 	class DateEditorConstructor : public ::vl::Object, public ::vl::reflection::Description<DateEditorConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription;
@@ -250,6 +325,21 @@ namespace demo
 		void __vwsn_demo_DateEditor_Initialize(::demo::DateEditor* __vwsn_this_);
 	public:
 		DateEditorConstructor();
+	};
+
+	class DateEditor : public ::vl::presentation::templates::GuiGridEditorTemplate, public ::demo::DateEditorConstructor, public ::vl::reflection::Description<DateEditor>
+	{
+		friend class ::demo::DateEditorConstructor;
+		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf30_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf31_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateEditor>;
+#endif
+	public:
+		DateEditor();
+		~DateEditor();
 	};
 
 	class DateFilterConstructor : public ::vl::Object, public ::vl::reflection::Description<DateFilterConstructor>
@@ -283,6 +373,33 @@ namespace demo
 		DateFilterConstructor();
 	};
 
+	class DateFilter : public ::vl::presentation::controls::GuiCustomControl, public ::demo::DateFilterConstructor, public ::vl::reflection::Description<DateFilter>
+	{
+		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_DateFilter___vwsn_instance_ctor___vl_presentation_controls_list_IDataFilter;
+		friend class ::demo::DateFilterConstructor;
+		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateFilter>;
+#endif
+	private:
+		::vl::presentation::controls::list::IDataProcessorCallback* callback;
+		void UpdateFilter();
+	public:
+		::vl::Ptr<::vl::presentation::controls::list::IDataFilter> __vwsn_prop_Filter;
+		::vl::Ptr<::vl::presentation::controls::list::IDataFilter> GetFilter();
+		void SetFilter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter> __vwsn_value_);
+		DateFilter();
+		void __vwsn_instance_ctor_();
+		~DateFilter();
+	};
+
 	class GenderDisplayerConstructor : public ::vl::Object, public ::vl::reflection::Description<GenderDisplayerConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc21_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize__vl_reflection_description_IValueSubscription;
@@ -297,6 +414,23 @@ namespace demo
 		void __vwsn_demo_GenderDisplayer_Initialize(::demo::GenderDisplayer* __vwsn_this_);
 	public:
 		GenderDisplayerConstructor();
+	};
+
+	class GenderDisplayer : public ::vl::presentation::controls::GuiCustomControl, public ::demo::GenderDisplayerConstructor, public ::vl::reflection::Description<GenderDisplayer>
+	{
+		friend class ::demo::GenderDisplayerConstructor;
+		friend class ::vl_workflow_global::__vwsnc21_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf50_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderDisplayer>;
+#endif
+	public:
+		::demo::MyGender __vwsn_prop_Gender;
+		::demo::MyGender GetGender();
+		void SetGender(::demo::MyGender __vwsn_value_);
+		::vl::Event<void()> GenderChanged;
+		GenderDisplayer();
+		~GenderDisplayer();
 	};
 
 	class GenderEditorConstructor : public ::vl::Object, public ::vl::reflection::Description<GenderEditorConstructor>
@@ -320,6 +454,24 @@ namespace demo
 		GenderEditorConstructor();
 	};
 
+	class GenderEditor : public ::vl::presentation::templates::GuiGridEditorTemplate, public ::demo::GenderEditorConstructor, public ::vl::reflection::Description<GenderEditor>
+	{
+		friend class ::demo::GenderEditorConstructor;
+		friend class ::vl_workflow_global::__vwsnc22_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc23_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf51_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf52_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf53_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf54_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderEditor>;
+#endif
+	public:
+		::vl::Ptr<::vl::reflection::description::IValueList> items;
+		GenderEditor();
+		~GenderEditor();
+	};
+
 	class GenderItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<GenderItemTemplateConstructor>
 	{
 #ifndef VCZH_DEBUG_NO_REFLECTION
@@ -333,6 +485,19 @@ namespace demo
 		void __vwsn_demo_GenderItemTemplate_Initialize(::demo::GenderItemTemplate* __vwsn_this_);
 	public:
 		GenderItemTemplateConstructor();
+	};
+
+	class GenderItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::GenderItemTemplateConstructor, public ::vl::reflection::Description<GenderItemTemplate>
+	{
+		friend class ::demo::GenderItemTemplateConstructor;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderItemTemplate>;
+#endif
+	public:
+		::demo::MyGender __vwsn_parameter_SelectedGender;
+		::demo::MyGender GetSelectedGender();
+		GenderItemTemplate(::demo::MyGender __vwsn_ctor_parameter_SelectedGender);
+		~GenderItemTemplate();
 	};
 
 	class GenderVisualizerConstructor : public ::vl::Object, public ::vl::reflection::Description<GenderVisualizerConstructor>
@@ -349,6 +514,19 @@ namespace demo
 		void __vwsn_demo_GenderVisualizer_Initialize(::demo::GenderVisualizer* __vwsn_this_);
 	public:
 		GenderVisualizerConstructor();
+	};
+
+	class GenderVisualizer : public ::vl::presentation::templates::GuiGridVisualizerTemplate, public ::demo::GenderVisualizerConstructor, public ::vl::reflection::Description<GenderVisualizer>
+	{
+		friend class ::demo::GenderVisualizerConstructor;
+		friend class ::vl_workflow_global::__vwsnc24_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf55_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderVisualizer>;
+#endif
+	public:
+		GenderVisualizer();
+		~GenderVisualizer();
 	};
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
@@ -421,6 +599,52 @@ namespace demo
 		MainWindowConstructor();
 	};
 
+	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	{
+		friend class ::demo::MainWindowConstructor;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter;
+		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter;
+		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter;
+		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter;
+		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsno15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
+		friend struct ::vl_workflow_global::__vwsno19_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
+		friend struct ::vl_workflow_global::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
+		friend struct ::vl_workflow_global::__vwsno3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
+		friend struct ::vl_workflow_global::__vwsno9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+#endif
+	public:
+		MainWindow();
+		void __vwsn_instance_ctor_();
+		~MainWindow();
+	};
+
 	class MyDataItem : public ::vl::Object, public ::vl::reflection::Description<MyDataItem>
 	{
 #ifndef VCZH_DEBUG_NO_REFLECTION
@@ -481,224 +705,6 @@ namespace demo
 		void __vwsn_demo_TextEditor_Initialize(::demo::TextEditor* __vwsn_this_);
 	public:
 		TextEditorConstructor();
-	};
-
-	class CategoryDisplayer : public ::vl::presentation::controls::GuiCustomControl, public ::demo::CategoryDisplayerConstructor, public ::vl::reflection::Description<CategoryDisplayer>
-	{
-		friend class ::demo::CategoryDisplayerConstructor;
-		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc14_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc15_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf40_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf41_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf42_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryDisplayer>;
-#endif
-	public:
-		::demo::MyCategory __vwsn_prop_Category;
-		::demo::MyCategory GetCategory();
-		void SetCategory(::demo::MyCategory __vwsn_value_);
-		::vl::Event<void()> CategoryChanged;
-		CategoryDisplayer();
-		~CategoryDisplayer();
-	};
-
-	class CategoryEditor : public ::vl::presentation::templates::GuiGridEditorTemplate, public ::demo::CategoryEditorConstructor, public ::vl::reflection::Description<CategoryEditor>
-	{
-		friend class ::demo::CategoryEditorConstructor;
-		friend class ::vl_workflow_global::__vwsnc16_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc17_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf43_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf44_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf45_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf46_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryEditor>;
-#endif
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueList> items;
-		CategoryEditor();
-		~CategoryEditor();
-	};
-
-	class CategoryItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::CategoryItemTemplateConstructor, public ::vl::reflection::Description<CategoryItemTemplate>
-	{
-		friend class ::demo::CategoryItemTemplateConstructor;
-		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf47_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryItemTemplate>;
-#endif
-	public:
-		::demo::MyCategory __vwsn_parameter_SelectedCategory;
-		::demo::MyCategory GetSelectedCategory();
-		CategoryItemTemplate(::demo::MyCategory __vwsn_ctor_parameter_SelectedCategory);
-		~CategoryItemTemplate();
-	};
-
-	class CategoryVisualizer : public ::vl::presentation::templates::GuiGridVisualizerTemplate, public ::demo::CategoryVisualizerConstructor, public ::vl::reflection::Description<CategoryVisualizer>
-	{
-		friend class ::demo::CategoryVisualizerConstructor;
-		friend class ::vl_workflow_global::__vwsnc19_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc20_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf48_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf49_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryVisualizer>;
-#endif
-	public:
-		CategoryVisualizer();
-		~CategoryVisualizer();
-	};
-
-	class DateEditor : public ::vl::presentation::templates::GuiGridEditorTemplate, public ::demo::DateEditorConstructor, public ::vl::reflection::Description<DateEditor>
-	{
-		friend class ::demo::DateEditorConstructor;
-		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf30_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf31_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateEditor>;
-#endif
-	public:
-		DateEditor();
-		~DateEditor();
-	};
-
-	class DateFilter : public ::vl::presentation::controls::GuiCustomControl, public ::demo::DateFilterConstructor, public ::vl::reflection::Description<DateFilter>
-	{
-		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_DateFilter___vwsn_instance_ctor___vl_presentation_controls_list_IDataFilter;
-		friend class ::demo::DateFilterConstructor;
-		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateFilter>;
-#endif
-	private:
-		::vl::presentation::controls::list::IDataProcessorCallback* callback;
-		void UpdateFilter();
-	public:
-		::vl::Ptr<::vl::presentation::controls::list::IDataFilter> __vwsn_prop_Filter;
-		::vl::Ptr<::vl::presentation::controls::list::IDataFilter> GetFilter();
-		void SetFilter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter> __vwsn_value_);
-		DateFilter();
-		void __vwsn_instance_ctor_();
-		~DateFilter();
-	};
-
-	class GenderDisplayer : public ::vl::presentation::controls::GuiCustomControl, public ::demo::GenderDisplayerConstructor, public ::vl::reflection::Description<GenderDisplayer>
-	{
-		friend class ::demo::GenderDisplayerConstructor;
-		friend class ::vl_workflow_global::__vwsnc21_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf50_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderDisplayer>;
-#endif
-	public:
-		::demo::MyGender __vwsn_prop_Gender;
-		::demo::MyGender GetGender();
-		void SetGender(::demo::MyGender __vwsn_value_);
-		::vl::Event<void()> GenderChanged;
-		GenderDisplayer();
-		~GenderDisplayer();
-	};
-
-	class GenderEditor : public ::vl::presentation::templates::GuiGridEditorTemplate, public ::demo::GenderEditorConstructor, public ::vl::reflection::Description<GenderEditor>
-	{
-		friend class ::demo::GenderEditorConstructor;
-		friend class ::vl_workflow_global::__vwsnc22_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc23_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf51_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf52_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf53_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf54_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderEditor>;
-#endif
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueList> items;
-		GenderEditor();
-		~GenderEditor();
-	};
-
-	class GenderItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::GenderItemTemplateConstructor, public ::vl::reflection::Description<GenderItemTemplate>
-	{
-		friend class ::demo::GenderItemTemplateConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderItemTemplate>;
-#endif
-	public:
-		::demo::MyGender __vwsn_parameter_SelectedGender;
-		::demo::MyGender GetSelectedGender();
-		GenderItemTemplate(::demo::MyGender __vwsn_ctor_parameter_SelectedGender);
-		~GenderItemTemplate();
-	};
-
-	class GenderVisualizer : public ::vl::presentation::templates::GuiGridVisualizerTemplate, public ::demo::GenderVisualizerConstructor, public ::vl::reflection::Description<GenderVisualizer>
-	{
-		friend class ::demo::GenderVisualizerConstructor;
-		friend class ::vl_workflow_global::__vwsnc24_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf55_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderVisualizer>;
-#endif
-	public:
-		GenderVisualizer();
-		~GenderVisualizer();
-	};
-
-	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
-	{
-		friend class ::demo::MainWindowConstructor;
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter;
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter;
-		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter;
-		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter;
-		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsno15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
-		friend struct ::vl_workflow_global::__vwsno19_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
-		friend struct ::vl_workflow_global::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
-		friend struct ::vl_workflow_global::__vwsno3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
-		friend struct ::vl_workflow_global::__vwsno9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
-#endif
-	public:
-		MainWindow();
-		void __vwsn_instance_ctor_();
-		~MainWindow();
 	};
 
 	class TextEditor : public ::vl::presentation::templates::GuiGridEditorTemplate, public ::demo::TextEditorConstructor, public ::vl::reflection::Description<TextEditor>

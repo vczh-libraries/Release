@@ -56,12 +56,12 @@ namespace vl_workflow_global
 namespace demo
 {
 	class MainWindowConstructor;
-	class ResponsiveGroupControlConstructor;
-	class ResponsiveStackControlConstructor;
-	class ResponsiveViewControlConstructor;
 	class MainWindow;
+	class ResponsiveGroupControlConstructor;
 	class ResponsiveGroupControl;
+	class ResponsiveStackControlConstructor;
 	class ResponsiveStackControl;
+	class ResponsiveViewControlConstructor;
 	class ResponsiveViewControl;
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
@@ -91,6 +91,17 @@ namespace demo
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
+	};
+
+	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	{
+		friend class ::demo::MainWindowConstructor;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+#endif
+	public:
+		MainWindow();
+		~MainWindow();
 	};
 
 	class ResponsiveGroupControlConstructor : public ::vl::Object, public ::vl::reflection::Description<ResponsiveGroupControlConstructor>
@@ -153,6 +164,23 @@ namespace demo
 		ResponsiveGroupControlConstructor();
 	};
 
+	class ResponsiveGroupControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::ResponsiveGroupControlConstructor, public ::vl::reflection::Description<ResponsiveGroupControl>
+	{
+		friend class ::demo::ResponsiveGroupControlConstructor;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveGroupControl>;
+#endif
+	public:
+		ResponsiveGroupControl();
+		~ResponsiveGroupControl();
+	};
+
 	class ResponsiveStackControlConstructor : public ::vl::Object, public ::vl::reflection::Description<ResponsiveStackControlConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
@@ -211,6 +239,23 @@ namespace demo
 		void __vwsn_demo_ResponsiveStackControl_Initialize(::demo::ResponsiveStackControl* __vwsn_this_);
 	public:
 		ResponsiveStackControlConstructor();
+	};
+
+	class ResponsiveStackControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::ResponsiveStackControlConstructor, public ::vl::reflection::Description<ResponsiveStackControl>
+	{
+		friend class ::demo::ResponsiveStackControlConstructor;
+		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveStackControl>;
+#endif
+	public:
+		ResponsiveStackControl();
+		~ResponsiveStackControl();
 	};
 
 	class ResponsiveViewControlConstructor : public ::vl::Object, public ::vl::reflection::Description<ResponsiveViewControlConstructor>
@@ -275,51 +320,6 @@ namespace demo
 		void __vwsn_demo_ResponsiveViewControl_Initialize(::demo::ResponsiveViewControl* __vwsn_this_);
 	public:
 		ResponsiveViewControlConstructor();
-	};
-
-	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
-	{
-		friend class ::demo::MainWindowConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
-#endif
-	public:
-		MainWindow();
-		~MainWindow();
-	};
-
-	class ResponsiveGroupControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::ResponsiveGroupControlConstructor, public ::vl::reflection::Description<ResponsiveGroupControl>
-	{
-		friend class ::demo::ResponsiveGroupControlConstructor;
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveGroupControl>;
-#endif
-	public:
-		ResponsiveGroupControl();
-		~ResponsiveGroupControl();
-	};
-
-	class ResponsiveStackControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::ResponsiveStackControlConstructor, public ::vl::reflection::Description<ResponsiveStackControl>
-	{
-		friend class ::demo::ResponsiveStackControlConstructor;
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveStackControl>;
-#endif
-	public:
-		ResponsiveStackControl();
-		~ResponsiveStackControl();
 	};
 
 	class ResponsiveViewControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::ResponsiveViewControlConstructor, public ::vl::reflection::Description<ResponsiveViewControl>

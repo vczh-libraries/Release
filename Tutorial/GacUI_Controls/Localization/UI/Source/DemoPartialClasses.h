@@ -68,8 +68,8 @@ namespace demo
 {
 	class IStringResourceStrings;
 	class MainWindowConstructor;
-	class StringResource;
 	class MainWindow;
+	class StringResource;
 
 	class IStringResourceStrings : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IStringResourceStrings>
 	{
@@ -162,19 +162,6 @@ namespace demo
 		MainWindowConstructor();
 	};
 
-	class StringResource : public ::vl::Object, public ::vl::reflection::Description<StringResource>
-	{
-		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_StringResource_Get__demo_IStringResourceStrings;
-		friend class ::vl_workflow_global::__vwsnc19_Demo_demo_StringResource_Get__demo_IStringResourceStrings;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StringResource>;
-#endif
-	public:
-		static ::vl::WString __vwsn_ls_First(const ::vl::collections::LazyList<::vl::WString>& __vwsn_ls_formats);
-		static ::vl::Ptr<::demo::IStringResourceStrings> Get(::vl::Locale __vwsn_ls_locale);
-		StringResource();
-	};
-
 	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
 	{
 		friend class ::demo::MainWindowConstructor;
@@ -227,6 +214,19 @@ namespace demo
 		::vl::Event<void()> StringsChanged;
 		MainWindow();
 		~MainWindow();
+	};
+
+	class StringResource : public ::vl::Object, public ::vl::reflection::Description<StringResource>
+	{
+		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_StringResource_Get__demo_IStringResourceStrings;
+		friend class ::vl_workflow_global::__vwsnc19_Demo_demo_StringResource_Get__demo_IStringResourceStrings;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StringResource>;
+#endif
+	public:
+		static ::vl::WString __vwsn_ls_First(const ::vl::collections::LazyList<::vl::WString>& __vwsn_ls_formats);
+		static ::vl::Ptr<::demo::IStringResourceStrings> Get(::vl::Locale __vwsn_ls_locale);
+		StringResource();
 	};
 
 }

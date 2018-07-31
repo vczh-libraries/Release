@@ -8,73 +8,6 @@ DEVELOPER: Zihan Chen(vczh)
 #endif
 
 /***********************************************************************
-.\DARKSKINRESOURCE.CPP
-***********************************************************************/
-
-namespace vl
-{
-	namespace presentation
-	{
-		namespace user_resource
-		{
-			using namespace collections;
-			using namespace stream;
-			using namespace controls;
-
-			class DarkSkinResourceReader
-			{
-			public:
-				static const vint parserBufferLength = 1721; // 4400 bytes before compressing
-				static const vint parserBufferBlock = 1024;
-				static const vint parserBufferRemain = 697;
-				static const vint parserBufferRows = 2;
-				static const char* parserBuffer[2];
-
-				static void ReadToStream(vl::stream::MemoryStream& stream)
-				{
-					DecompressStream(parserBuffer, true, parserBufferRows, parserBufferBlock, parserBufferRemain, stream);
-				}
-			};
-
-			const char* DarkSkinResourceReader::parserBuffer[] = {
-				"\x30\x11\x00\x00\xB1\x06\x00\x00\x4A\x00\x01\x82\x80\x00\x81\x80\x1E\x29\x65\x73\x2F\x35\x32\x3B\x31\x33\x26\x65\x74\x21\x24\x31\x32\x88\x10\x27\x61\x6D\x25\x3D\x12\x12\x10\x10\x2B\x65\x72\x33\x29\x3F\x36\x34\x8F\x18\x2E\x30\x22\x1E\x1C\x1C\x21\x32\x38\x65\x6E\x24\x31\x93\x31\x35\x85\x17\x2C\xAF\x08\x8A\x8C\x86\x84\x88\x89\x14\x92\xBE\x05\x03\x82\x80\x05\xA2\x01\xC7\x81\x89\x2E\x33\x3A\x88\x37\x0E\x8D\x08\xA0\x02\xAB\xA5\xA7\xA7\x0E\xD3\x34\x39\x3C\x35\x33\x01\xA9\x5F\x81\x84\x2F\x33\x34\x03\xA8\xB3\x01\xD4\x25\x38\x34\x3F\x07\xA8\xB7\x01\xC3\x2C\x21\x33\x3B\x38\x8C\x8D\x08\xE3\x2F\x32\x34\x33\xA8\x01\xB0\x45\xCA\x81\xC2\x84\x21\x32\x39\x35\x53\x6B\x29\x2E\x3E\xBE\xBE\x05\xA9\x06\x10\xC2\x82\x25\x3C\x38\x3B\x92\x8D\x99\xC3\xC8\xA2\xC3\xB3\x31\x3A\x1A\xEE\x34\x3E\xB1\x03\xAA\x01\xA9\x10\x28\xD3\xD4\xB5\x34\x37\xC5\x32\x9E\xA0\xF1\x94\x3E\x5B\xA9\xDA\x83\x9E\xAC\x83\x25\x94\x3B\xD8\x9C\x1E\x5A\xDC\x89\x8C\x91\xE5\xAC\x10\x37\x19\x9B\xA2\x03\x1E\x96\x31\x31\x3A\x6C\x74\x2D\x0F\x26\x39\x92\x39\x34\x33\xAB\xBC\x1A\xBC\x33\xBE\x1F\x11\x46\x61\xE2\xFC\x1F\x14\xEE\xEE\xF2\xC5\xE5\x04\xFB\xA6\xE0\xE6\x8C\x8E\x23\x53\x2D\xC5\x33\x34\x38\x92\x37\xD3\xD5\xF2\x37\xE9\xEC\x96\xF2\x39\xDF\x62\x73\x79\x79\x6F\x1D\x70\x80\x0F\x62\x2B\x1F\x7F\x77\x30\x30\x07\x0D\x10\x43\x03\x14\x79\x82\x0B\xA8\x7C\x7A\x7A\x16\x82\x73\x1D\x4E\xB9\x7E\x58\x59\x51\x1F\x8C\x19\x1A\x53\x9A\x65\x80\x03\x87\x03\x5F\x8D\x13\x88\x63\x26\x8A\x65\x64\x48\x70\x80\x02\x14\x69\x22\x12\x18\x66\x2E\x8D\x62\x8F\x40\x32\x93\x13\x1A\x1C\x05\xAC\x19\x8D\x63\x80\x43\x40\x60\x15\x61\x22\x13\x92\x5F\x07\x13\x5D\x91\x5A\x6B\x74\x12\x13\x1B\x78\x0B\x93\x55\x02\x57\x82\x44\x17\x1B\x05\x8E\x57\x74\x1C\x56\xB1\x82\x65\x40\x57\x0B\x64\x1B\x1B\x77\x21\x95\x50\x03\x53\x6C\x91\x43\x11\x61\x23\x17\x11\x4C\xBB\x6E\x16\x19\x1A\x67\x03\x95\x68\x52\x45\x82\x40\x63\x10\x70\x20\x93\x54\x51\x7C\x93\x55\x55\x51\x87\x80\xA0\x1F\x6E\x6D\x30\x12\x1D\x42\x73\x25\x14\x18\x05\x53\x54\xA2\x5A\x61\x88\x4A\x6E\x1B\x4E\x0B\x4D\x45\x1A\x0B\x63\x01\xAD\x9D\x40\x28\x82\x4F\x87\x5D\x65\x02\x63\x41\x67\x98\x89\x6B\x63\xA8\x54\x46\xA2\x42\x13\x7B\x6D\x11\x18\x1B\x4C\x63\x1C\x19\x1D\x33\x69\x68\x52\xAF\x00\x2E\x0E\x0B\x0B\xC2\x84\xB3\xB0\x9C\x63\x15\x19\x12\x0B\x68\x30\xA1\x07\x54\xCF\x81\x48\x42\x19\x5D\x75\x77\x7D\xAE\xBB\xB3\x49\x0F\x54\xDB\x81\x45\xB3\xB7\xC3\x93\xB5\xB6\x7D\x25\x6F\x04\x15\x1E\x30\x6E\x43\x1F\x8F\x69\x30\x17\x66\x48\x2F\x07\x15\x1D\x1A\xE2\xB4\x74\xBA\x1B\x50\x3B\xA7\x1B\x62\xCC\xB0\xAE\x9B\x9A\x02\x53\x1D\xA6\x43\x46\x05\x83\x4E\x1C\x3B\x82\x4D\x8F\xC0\x65\x3E\x5B\x03\x54\x0F\xC1\x40\x17\xA3\x7A\x4D\xA9\x19\x57\x7D\x53\x5B\x9C\x88\x6F\x5D\xC1\x5F\x5C\x75\x68\xA9\x5F\x5E\x64\x04\x1E\xC5\x51\x70\x40\x04\x47\x61\x73\x1A\xAA\x0E\x0E\x54\x28\x15\x1A\x46\x18\x13\x55\xCD\x40\x2B\xEB\x1D\xCB\x62\x2F\xD4\x66\x65\x49\x6A\x4D\xA3\x5D\x6F\x1A\x13\x55\xD0\xCE\x98\xBB\xCE\x1B\xCB\x43\x32\xC3\x1B\x1A\x53\xB8\x11\xD0\x1C\x43\xE5\x1D\x07\x54\x57\xC8\xDC\xCA\xCB\x3A\x12\x13\x44\x49\x3E\xD7\x6E\x1B\xD4\x55\xDF\x03\x56\xD9\x5A\xFA\xCC\xD5\x6C\xA1\x74\x1C\x11\x92\xAD\x64\xD5\x45\x19\x21\x13\x55\xDD\xDA\x4A\xEF\xCC\xDB\x6C\x6A\x6C\x51\xD6\xDC\xBD\x60\x03\x56\xE0\x78\xEB\xD4\x5A\x6C\xA2\x56\x16\x4F\x1D\x21\x40\xE5\x19\x09\x53\x50\xE5\xE0\xCF\x3A\x0D\xD4\x7F\x1A\x49\x3D\x6D\x1A\x10\x71\xAB\x17\x18\x90\x75\x32\x4E\xE3\xD1\x45\x64\xE9\xCD\xDE\x95\xEF\x1D\x1B\x8D\x7F\xF3\xC4\xD7\xDC\x24\x13\x51\xEF\xE4\x4B\xFA\x05\x10\x1E\x70\x21\x12\x4F\x62\x67\x2E\x4A\x5E\x1C\x15\x7B\x5E\xE0\xE1\x45\x44\xF7\xE8\xD7\x99\xF3\xCC\xE7\xD3\x9F\xCB\x42\xEA\xEB\x55\xE6\x03\x56\xF4\xB4\xEF\xC2\x8A\x53\x8A\xE5\x17\x1F\x6E\xBB\xAD\x1E\x18\x12\x65\x13\x4D\xE0\xF4\x73\xE4\xE3\x42\xE9\x49\xDC\xD7\xF4\x1D\xD9\xF7\x13\xEA\xD1\x02\x47\xF4\xE5\xDF\x6E\xE3\x84\x1F\xFB\x48\x68\xFB\xD7\xFC\x8F\xA5\x1D\xFA\xE3\x1C\x13\x29\x00\xD5\x7A\x07\xC2\x3D\x30\x0A\x69\x0F\x6B\xF8\x42\x65\x7C\xF8\x44\x87\x08\xA0\x70\x0D\xEB\x0C\x8D\x37\x0B\x13\x2E\x82\x04\x8F\x6E\x18\x71\x64\x7D\xDE\x19\x6D\x28\x1F\x92\x7D\xED\x53\x08\x0D\xBD\x34\x0F\x33\x74\x0B\x09\x19\x79\x0E\x70\x11\x13\x2E\x85\x04\x94\x46\x8D\x25\x23\x0A\xAA\x69\x0C\x0E\x41\x1B\x3C\x9A\x0E\x78\x6D\xA2\x3D\x82",
-				"\x84\x2F\x72\x87\x8D\x6E\x01\x6D\x92\x33\x0E\x71\x2D\x13\x29\x12\xB1\x85\x47\x21\xB0\x4C\x0D\x5D\x32\x0D\x1E\x44\x00\x48\x38\x27\x4F\x0E\x44\x95\x32\xD8\x0E\x77\x05\xA9\x1D\x8C\x89\x33\x8E\x0F\x13\xD1\x89\x0F\xE4\x6D\x0B\x7D\x3C\x87\x6D\xFC\x69\x74\x72\x21\xA5\x23\x8C\x21\x2C\x85\x07\xE5\x09\x05\xA9\x35\x88\x8C\x4E\x91\x83\xED\x39\x72\x27\x22\xA3\x6B\x8E\x77\x65\x29\x20\xC0\x8D\x6B\x26\xAF\x89\x82\x10\x2E\x0D\x1D\x0E\x7F\x83\x81\x21\x84\x8D\xB5\x6E\x8E\x18\x91\x8E\x71\x40\x83\x23\x90\x90\x81\x8A\x21\xEE\x09\x08\xBD\x2E\x0A\x83\x1C\x94\x81\x19\x23\x03\x2A\x52\xB8\x8D\x24\x6F\x72\x0F\x19\x65\x0E\x8E\xC7\x6B\x03\x2A\xAF\x87\x97\x27\x86\x3B\x94\x2A\xAF\x0E\x8A\x68\x59\x8B\xCF\x7F\x82\x94\x14\x13\x2E\x97\xB2\x89\x97\x2A\xB5\x8E\x34\x29\x5A\x88\x68\x73\x86\x95\x51\x4A\x94\x90\x49\x93\x0E\x56\x50\x8D\x97\x1C\xB1\x95\x28\x6A\x8D\x9B\x93\xCF\x97\x54\x1B\x36\x98\x96\x2C\x92\x9A\x94\xD4\x65\x29\x38\xD7\x91\x8D\x6C\x90\x8D\x93\xA8\x90\x6C\x1B\x0E\x70\x99\xA2\x2D\x9C\x9C\x43\x86\x9C\x1B\x44\x97\x87\x6F\xAF\x75\x37\x5F\x85\x29\x3E\xF0\x90\x68\x2E\x6C\x0E\x4B\xED\x40\x7E\xF8\x72\x0E\x70\xC9\x45\x2E\xA0\xFC\x83\x6E\x3F\x80\xA0\x0F\x44\x8B\x93\x8E\x30\x85\x29\x44\x89\xAB\x4B\x2E\x74\x0F\x4B\x47\x93\x8F\xEC\x45\x2B\xA2\x42\x93\x4F\x67\x6D\x1E\x44\x90\x51\x97\x98\x5E\xB7\x9D\x0C\x3D\x83\x23\x0F\x99\x9A\x06\x24\x22\xA1\x48\x48\x1A\x74\x19\x5D\x2E\x71\x0C\x13\x2E\xA6\x04\x8E\xA7\x8F\x41\x48\x7F\xD2\x6B\x8B\x7F\xB5\x68\x08\x15\x40\x7A\x80\x82\x90\xA7\x85\x3F\xAA\x6C\xE5\x4C\x05\x0C\x33\x34\x0F\xA5\x24\xBB\x94\x23\xD8\x69\xA8\xD4\x53\x67\x0D\x9F\x70\x50\xE7\x46\xA2\x94\x65\x83\x24\x99\x2C\xB4\x47\x19\x68\x0F\xA9\x9D\x91\xAB\x8B\x73\x83\x81\x51\x6A\xA4\x90\xA8\xAC\x0F\x7F\x80\x96\x6D\x55\xDC\x6B\x4A\x38\x2E\xAE\x9E\x65\x6A\x8C\x01\xD6\x0E\xAD\x98\xB2\x24\xA6\x73\x98\xA5\x51\x02\xB4\x90\xBE\xA6\xAB\x9D\x73\x86\x7E\x40\x7A\x7A\xA9\xDA\x56\x0B\xA8\x9D\x6B\x83\x49\x96\x92\x20\x4C\x80\xAF\x65\x48\x42\x0E\x40\x87\x68\xAF\xB9\x5B\x03\x2A\x9F\xA4\x81\x66\x9B\xB2\xB3\xAA\x55\x03\x2A\xA7\xA2\xB5\x92\x2D\x88\xA8\x02\x8D\x08\x3A\xF6\x2E\x36\x1B\x65\x04\x7F\x09\xA7\xA6\xAB\x02\x20\xAF\x65\xBA\x03\x0A\xDE\x5D\x2A\xB6\xB4\xB1\x4A\x6D\xF9\xA8\x29\x95\xBB\xB6\xA1\x5B\xBD\xB1\xE0\x03\x73\xAE\xCA\x4E\xA6\x8C\xCA\xA5\x0E\x07\x53\x23\xBA\xD7\xB1\x25\x0E\xF4\x96\x31\x69\xF3\x66\xA1\x81\x08\xA4\xA5\x15\xBF\x9F\x45\xED\x59\xBB\x1C\x80\x4E\x7D\x71\xA8\x2A\x65\x8D\xB8\xB3\x85\xA3\xBA\x82\x25\xAE\x73\x1D\xC5\x23\xBE\x42\xA1\xBC\xA1\xDC\x97\x8A\x2E\xE8\xA2\x95\x94\x82\x26\xB8\xEC\xB0\x66\x7B\xDF\x4E\xA0\xC7\x61\x9B\x20\xE3\x80\xBF\x80\xE4\xB6\x86\x63\x92\xA9\x99\xA5\x8D\xB9\xED\x77\xBF\xBD\xEC\xBD\x34\xAB\x27\xA1\xB5\x51\x1A\xC6\xBF\x05\xF0\x09\x8D\xC5\xB2\xC0\xD3\x75\x0E\x28\xD5\x75\x4F\xA2\x05\x55\xA7\x4D\xA2\xC2\xC1\x02\x76\x3F\xC3\x73\x97\x65\x51\x32\xC4\x91\x32\x72\x23\x87\x73\x9E\x2C",
-				};
-
-			class DarkSkinResourceLoaderPlugin : public Object, public IGuiPlugin
-			{
-			public:
-
-				GUI_PLUGIN_NAME(GacGen_DarkSkinResourceLoader)
-				{
-					GUI_PLUGIN_DEPEND(GacUI_Res_Resource);
-					GUI_PLUGIN_DEPEND(GacUI_Res_TypeResolvers);
-#ifndef VCZH_DEBUG_NO_REFLECTION
-					GUI_PLUGIN_DEPEND(GacUI_Instance_Reflection);
-					GUI_PLUGIN_DEPEND(GacUI_Compiler_WorkflowTypeResolvers);
-#endif
-				}
-
-				void Load()override
-				{
-					List<GuiResourceError> errors;
-					MemoryStream resourceStream;
-					DarkSkinResourceReader::ReadToStream(resourceStream);
-					resourceStream.SeekFromBegin(0);
-					GetResourceManager()->LoadResourceOrPending(resourceStream, GuiResourceUsage::InstanceClass);
-				}
-
-				void Unload()override
-				{
-				}
-			};
-			GUI_REGISTER_PLUGIN(DarkSkinResourceLoaderPlugin)
-		}
-	}
-}
-
-
-/***********************************************************************
 .\DARKSKINPARTIALCLASSES.CPP
 ***********************************************************************/
 /***********************************************************************
@@ -21210,6 +21143,23 @@ namespace darkskin
 	}
 
 /***********************************************************************
+Class (::darkskin::BottomScrollButtonTemplate)
+***********************************************************************/
+
+	BottomScrollButtonTemplate::BottomScrollButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::BottomScrollButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_BottomScrollButtonTemplate_Initialize(this);
+	}
+
+	BottomScrollButtonTemplate::~BottomScrollButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::ButtonTemplateConstructor)
 ***********************************************************************/
 
@@ -21292,6 +21242,23 @@ Class (::darkskin::ButtonTemplateConstructor)
 		, __vwsn_precompile_3(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_4(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::ButtonTemplate)
+***********************************************************************/
+
+	ButtonTemplate::ButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ButtonTemplate_Initialize(this);
+	}
+
+	ButtonTemplate::~ButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -21464,6 +21431,23 @@ Class (::darkskin::CheckBoxTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::CheckBoxTemplate)
+***********************************************************************/
+
+	CheckBoxTemplate::CheckBoxTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::CheckBoxTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_CheckBoxTemplate_Initialize(this);
+	}
+
+	CheckBoxTemplate::~CheckBoxTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::CheckItemBackgroundTemplateConstructor)
 ***********************************************************************/
 
@@ -21502,6 +21486,23 @@ Class (::darkskin::CheckItemBackgroundTemplateConstructor)
 		, self(static_cast<::darkskin::CheckItemBackgroundTemplate*>(nullptr))
 		, __vwsn_precompile_0(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::CheckItemBackgroundTemplate)
+***********************************************************************/
+
+	CheckItemBackgroundTemplate::CheckItemBackgroundTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::CheckItemBackgroundTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_CheckItemBackgroundTemplate_Initialize(this);
+	}
+
+	CheckItemBackgroundTemplate::~CheckItemBackgroundTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -21678,6 +21679,23 @@ Class (::darkskin::ComboBoxTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::ComboBoxTemplate)
+***********************************************************************/
+
+	ComboBoxTemplate::ComboBoxTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ComboBoxTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ComboBoxTemplate_Initialize(this);
+	}
+
+	ComboBoxTemplate::~ComboBoxTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::CustomControlTemplateConstructor)
 ***********************************************************************/
 
@@ -21692,6 +21710,23 @@ Class (::darkskin::CustomControlTemplateConstructor)
 	CustomControlTemplateConstructor::CustomControlTemplateConstructor()
 		: __vwsn_precompile_0(static_cast<::darkskin::CustomControlTemplate*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::CustomControlTemplate)
+***********************************************************************/
+
+	CustomControlTemplate::CustomControlTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::CustomControlTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_CustomControlTemplate_Initialize(this);
+	}
+
+	CustomControlTemplate::~CustomControlTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -21754,6 +21789,23 @@ Class (::darkskin::DatePickerTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::DatePickerTemplate)
+***********************************************************************/
+
+	DatePickerTemplate::DatePickerTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::DatePickerTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_DatePickerTemplate_Initialize(this);
+	}
+
+	DatePickerTemplate::~DatePickerTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::DocumentLabelTemplateConstructor)
 ***********************************************************************/
 
@@ -21774,6 +21826,23 @@ Class (::darkskin::DocumentLabelTemplateConstructor)
 	DocumentLabelTemplateConstructor::DocumentLabelTemplateConstructor()
 		: self(static_cast<::darkskin::DocumentLabelTemplate*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::DocumentLabelTemplate)
+***********************************************************************/
+
+	DocumentLabelTemplate::DocumentLabelTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::DocumentLabelTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_DocumentLabelTemplate_Initialize(this);
+	}
+
+	DocumentLabelTemplate::~DocumentLabelTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -21830,6 +21899,23 @@ Class (::darkskin::DocumentTextBoxTemplateConstructor)
 		, __vwsn_precompile_0(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::DocumentTextBoxTemplate)
+***********************************************************************/
+
+	DocumentTextBoxTemplate::DocumentTextBoxTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::DocumentTextBoxTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_DocumentTextBoxTemplate_Initialize(this);
+	}
+
+	DocumentTextBoxTemplate::~DocumentTextBoxTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -21906,6 +21992,23 @@ Class (::darkskin::DocumentViewerTemplateConstructor)
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::DocumentViewerTemplate)
+***********************************************************************/
+
+	DocumentViewerTemplate::DocumentViewerTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::DocumentViewerTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_DocumentViewerTemplate_Initialize(this);
+	}
+
+	DocumentViewerTemplate::~DocumentViewerTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -22022,6 +22125,23 @@ Class (::darkskin::ExpandingDecoratorTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::ExpandingDecoratorTemplate)
+***********************************************************************/
+
+	ExpandingDecoratorTemplate::ExpandingDecoratorTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ExpandingDecoratorTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ExpandingDecoratorTemplate_Initialize(this);
+	}
+
+	ExpandingDecoratorTemplate::~ExpandingDecoratorTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::GroupBoxTemplateConstructor)
 ***********************************************************************/
 
@@ -22135,6 +22255,23 @@ Class (::darkskin::GroupBoxTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::GroupBoxTemplate)
+***********************************************************************/
+
+	GroupBoxTemplate::GroupBoxTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::GroupBoxTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_GroupBoxTemplate_Initialize(this);
+	}
+
+	GroupBoxTemplate::~GroupBoxTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::HScrollHandleTemplateConstructor)
 ***********************************************************************/
 
@@ -22170,6 +22307,23 @@ Class (::darkskin::HScrollHandleTemplateConstructor)
 		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::HScrollHandleTemplate)
+***********************************************************************/
+
+	HScrollHandleTemplate::HScrollHandleTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::HScrollHandleTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_HScrollHandleTemplate_Initialize(this);
+	}
+
+	HScrollHandleTemplate::~HScrollHandleTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -22302,6 +22456,32 @@ Class (::darkskin::HScrollTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::HScrollTemplate)
+***********************************************************************/
+
+	HScrollTemplate::HScrollTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::HScrollTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_HScrollTemplate_Initialize(this);
+		this->__vwsn_instance_ctor_();
+	}
+
+	void HScrollTemplate::__vwsn_instance_ctor_()
+	{
+		::vl::__vwsn::This(this->behavior)->AttachScrollTemplate(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(this->self));
+		::vl::__vwsn::This(this->behavior)->AttachDecreaseButton(this->buttonDecrease);
+		::vl::__vwsn::This(this->behavior)->AttachIncreaseButton(this->buttonIncrease);
+		::vl::__vwsn::This(this->behavior)->AttachHorizontalScrollHandle(this->handle);
+	}
+
+	HScrollTemplate::~HScrollTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::HTrackerTemplateConstructor)
 ***********************************************************************/
 
@@ -22419,6 +22599,30 @@ Class (::darkskin::HTrackerTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::HTrackerTemplate)
+***********************************************************************/
+
+	HTrackerTemplate::HTrackerTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::HTrackerTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_HTrackerTemplate_Initialize(this);
+		this->__vwsn_instance_ctor_();
+	}
+
+	void HTrackerTemplate::__vwsn_instance_ctor_()
+	{
+		::vl::__vwsn::This(this->behavior)->AttachScrollTemplate(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(this->self));
+		::vl::__vwsn::This(this->behavior)->AttachHorizontalTrackerHandle(this->handle);
+	}
+
+	HTrackerTemplate::~HTrackerTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::ItemBackgroundTemplateConstructor)
 ***********************************************************************/
 
@@ -22460,6 +22664,23 @@ Class (::darkskin::ItemBackgroundTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::ItemBackgroundTemplate)
+***********************************************************************/
+
+	ItemBackgroundTemplate::ItemBackgroundTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ItemBackgroundTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ItemBackgroundTemplate_Initialize(this);
+	}
+
+	ItemBackgroundTemplate::~ItemBackgroundTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::LabelTemplateConstructor)
 ***********************************************************************/
 
@@ -22497,6 +22718,23 @@ Class (::darkskin::LabelTemplateConstructor)
 		: self(static_cast<::darkskin::LabelTemplate*>(nullptr))
 		, __vwsn_precompile_0(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::LabelTemplate)
+***********************************************************************/
+
+	LabelTemplate::LabelTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::LabelTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_LabelTemplate_Initialize(this);
+	}
+
+	LabelTemplate::~LabelTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -22563,6 +22801,23 @@ Class (::darkskin::LeftScrollButtonTemplateConstructor)
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiPolygonElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::LeftScrollButtonTemplate)
+***********************************************************************/
+
+	LeftScrollButtonTemplate::LeftScrollButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::LeftScrollButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_LeftScrollButtonTemplate_Initialize(this);
+	}
+
+	LeftScrollButtonTemplate::~LeftScrollButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -22828,6 +23083,23 @@ Class (::darkskin::ListViewColumnHeaderTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::ListViewColumnHeaderTemplate)
+***********************************************************************/
+
+	ListViewColumnHeaderTemplate::ListViewColumnHeaderTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ListViewColumnHeaderTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ListViewColumnHeaderTemplate_Initialize(this);
+	}
+
+	ListViewColumnHeaderTemplate::~ListViewColumnHeaderTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::ListViewTemplateConstructor)
 ***********************************************************************/
 
@@ -22913,6 +23185,23 @@ Class (::darkskin::ListViewTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::ListViewTemplate)
+***********************************************************************/
+
+	ListViewTemplate::ListViewTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ListViewTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ListViewTemplate_Initialize(this);
+	}
+
+	ListViewTemplate::~ListViewTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::MenuBarButtonTemplateConstructor)
 ***********************************************************************/
 
@@ -22977,6 +23266,23 @@ Class (::darkskin::MenuBarButtonTemplateConstructor)
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::MenuBarButtonTemplate)
+***********************************************************************/
+
+	MenuBarButtonTemplate::MenuBarButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::MenuBarButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_MenuBarButtonTemplate_Initialize(this);
+	}
+
+	MenuBarButtonTemplate::~MenuBarButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -23197,6 +23503,23 @@ Class (::darkskin::MenuItemButtonTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::MenuItemButtonTemplate)
+***********************************************************************/
+
+	MenuItemButtonTemplate::MenuItemButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::MenuItemButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_MenuItemButtonTemplate_Initialize(this);
+	}
+
+	MenuItemButtonTemplate::~MenuItemButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::MenuSplitterTemplateConstructor)
 ***********************************************************************/
 
@@ -23241,6 +23564,23 @@ Class (::darkskin::MenuSplitterTemplateConstructor)
 		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_3(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::MenuSplitterTemplate)
+***********************************************************************/
+
+	MenuSplitterTemplate::MenuSplitterTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::MenuSplitterTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_MenuSplitterTemplate_Initialize(this);
+	}
+
+	MenuSplitterTemplate::~MenuSplitterTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -23320,6 +23660,23 @@ Class (::darkskin::MultilineTextBoxTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::MultilineTextBoxTemplate)
+***********************************************************************/
+
+	MultilineTextBoxTemplate::MultilineTextBoxTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::MultilineTextBoxTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_MultilineTextBoxTemplate_Initialize(this);
+	}
+
+	MultilineTextBoxTemplate::~MultilineTextBoxTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::ProgressBarTemplateConstructor)
 ***********************************************************************/
 
@@ -23393,6 +23750,23 @@ Class (::darkskin::ProgressBarTemplateConstructor)
 		, __vwsn_precompile_3(static_cast<::vl::presentation::compositions::GuiPartialViewComposition*>(nullptr))
 		, __vwsn_precompile_4(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::ProgressBarTemplate)
+***********************************************************************/
+
+	ProgressBarTemplate::ProgressBarTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ProgressBarTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ProgressBarTemplate_Initialize(this);
+	}
+
+	ProgressBarTemplate::~ProgressBarTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -23562,6 +23936,23 @@ Class (::darkskin::RadioButtonTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::RadioButtonTemplate)
+***********************************************************************/
+
+	RadioButtonTemplate::RadioButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RadioButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RadioButtonTemplate_Initialize(this);
+	}
+
+	RadioButtonTemplate::~RadioButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::RibbonButtonsTemplateConstructor)
 ***********************************************************************/
 
@@ -23576,6 +23967,23 @@ Class (::darkskin::RibbonButtonsTemplateConstructor)
 	RibbonButtonsTemplateConstructor::RibbonButtonsTemplateConstructor()
 		: __vwsn_precompile_0(static_cast<::darkskin::RibbonButtonsTemplate*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RibbonButtonsTemplate)
+***********************************************************************/
+
+	RibbonButtonsTemplate::RibbonButtonsTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonButtonsTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonButtonsTemplate_Initialize(this);
+	}
+
+	RibbonButtonsTemplate::~RibbonButtonsTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -23665,6 +24073,23 @@ Class (::darkskin::RibbonGalleryDropdownButtonTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::RibbonGalleryDropdownButtonTemplate)
+***********************************************************************/
+
+	RibbonGalleryDropdownButtonTemplate::RibbonGalleryDropdownButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGalleryDropdownButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGalleryDropdownButtonTemplate_Initialize(this);
+	}
+
+	RibbonGalleryDropdownButtonTemplate::~RibbonGalleryDropdownButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::RibbonGalleryItemListTemplateConstructor)
 ***********************************************************************/
 
@@ -23679,6 +24104,23 @@ Class (::darkskin::RibbonGalleryItemListTemplateConstructor)
 	RibbonGalleryItemListTemplateConstructor::RibbonGalleryItemListTemplateConstructor()
 		: self(static_cast<::darkskin::RibbonGalleryItemListTemplate*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RibbonGalleryItemListTemplate)
+***********************************************************************/
+
+	RibbonGalleryItemListTemplate::RibbonGalleryItemListTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGalleryItemListTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGalleryItemListTemplate_Initialize(this);
+	}
+
+	RibbonGalleryItemListTemplate::~RibbonGalleryItemListTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -23865,6 +24307,23 @@ Class (::darkskin::RibbonGalleryTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::RibbonGalleryTemplate)
+***********************************************************************/
+
+	RibbonGalleryTemplate::RibbonGalleryTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGalleryTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGalleryTemplate_Initialize(this);
+	}
+
+	RibbonGalleryTemplate::~RibbonGalleryTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::RibbonGroupExpandButtonTemplateConstructor)
 ***********************************************************************/
 
@@ -23911,6 +24370,23 @@ Class (::darkskin::RibbonGroupExpandButtonTemplateConstructor)
 		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiPolygonElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RibbonGroupExpandButtonTemplate)
+***********************************************************************/
+
+	RibbonGroupExpandButtonTemplate::RibbonGroupExpandButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGroupExpandButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGroupExpandButtonTemplate_Initialize(this);
+	}
+
+	RibbonGroupExpandButtonTemplate::~RibbonGroupExpandButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -23961,6 +24437,23 @@ Class (::darkskin::RibbonGroupMenuTemplateConstructor)
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RibbonGroupMenuTemplate)
+***********************************************************************/
+
+	RibbonGroupMenuTemplate::RibbonGroupMenuTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGroupMenuTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGroupMenuTemplate_Initialize(this);
+	}
+
+	RibbonGroupMenuTemplate::~RibbonGroupMenuTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -24127,6 +24620,23 @@ Class (::darkskin::RibbonGroupTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::RibbonGroupTemplate)
+***********************************************************************/
+
+	RibbonGroupTemplate::RibbonGroupTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGroupTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGroupTemplate_Initialize(this);
+	}
+
+	RibbonGroupTemplate::~RibbonGroupTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::RibbonIconLabelTemplateConstructor)
 ***********************************************************************/
 
@@ -24206,6 +24716,23 @@ Class (::darkskin::RibbonIconLabelTemplateConstructor)
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RibbonIconLabelTemplate)
+***********************************************************************/
+
+	RibbonIconLabelTemplate::RibbonIconLabelTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonIconLabelTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonIconLabelTemplate_Initialize(this);
+	}
+
+	RibbonIconLabelTemplate::~RibbonIconLabelTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -24365,6 +24892,23 @@ Class (::darkskin::RibbonLargeButtonTemplateConstructor)
 		, __vwsn_precompile_7(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_8(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RibbonLargeButtonTemplate)
+***********************************************************************/
+
+	RibbonLargeButtonTemplate::RibbonLargeButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonLargeButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonLargeButtonTemplate_Initialize(this);
+	}
+
+	RibbonLargeButtonTemplate::~RibbonLargeButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -24585,6 +25129,23 @@ Class (::darkskin::RibbonLargeDropdownButtonTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::RibbonLargeDropdownButtonTemplate)
+***********************************************************************/
+
+	RibbonLargeDropdownButtonTemplate::RibbonLargeDropdownButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonLargeDropdownButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonLargeDropdownButtonTemplate_Initialize(this);
+	}
+
+	RibbonLargeDropdownButtonTemplate::~RibbonLargeDropdownButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::RibbonLargeSplitButtonTemplateConstructor)
 ***********************************************************************/
 
@@ -24756,6 +25317,23 @@ Class (::darkskin::RibbonLargeSplitButtonTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::RibbonLargeSplitButtonTemplate)
+***********************************************************************/
+
+	RibbonLargeSplitButtonTemplate::RibbonLargeSplitButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonLargeSplitButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonLargeSplitButtonTemplate_Initialize(this);
+	}
+
+	RibbonLargeSplitButtonTemplate::~RibbonLargeSplitButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::RibbonSmallButtonTemplateConstructor)
 ***********************************************************************/
 
@@ -24900,6 +25478,23 @@ Class (::darkskin::RibbonSmallButtonTemplateConstructor)
 		, __vwsn_precompile_6(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, __vwsn_precompile_7(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RibbonSmallButtonTemplate)
+***********************************************************************/
+
+	RibbonSmallButtonTemplate::RibbonSmallButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonSmallButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonSmallButtonTemplate_Initialize(this);
+	}
+
+	RibbonSmallButtonTemplate::~RibbonSmallButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -25112,6 +25707,23 @@ Class (::darkskin::RibbonSmallDropdownButtonTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::RibbonSmallDropdownButtonTemplate)
+***********************************************************************/
+
+	RibbonSmallDropdownButtonTemplate::RibbonSmallDropdownButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonSmallDropdownButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonSmallDropdownButtonTemplate_Initialize(this);
+	}
+
+	RibbonSmallDropdownButtonTemplate::~RibbonSmallDropdownButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::RibbonSmallIconLabelTemplateConstructor)
 ***********************************************************************/
 
@@ -25240,6 +25852,23 @@ Class (::darkskin::RibbonSmallIconLabelTemplateConstructor)
 		, __vwsn_precompile_4(static_cast<::vl::presentation::compositions::GuiSharedSizeItemComposition*>(nullptr))
 		, __vwsn_precompile_5(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RibbonSmallIconLabelTemplate)
+***********************************************************************/
+
+	RibbonSmallIconLabelTemplate::RibbonSmallIconLabelTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonSmallIconLabelTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonSmallIconLabelTemplate_Initialize(this);
+	}
+
+	RibbonSmallIconLabelTemplate::~RibbonSmallIconLabelTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -25445,6 +26074,23 @@ Class (::darkskin::RibbonSmallSplitButtonTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::RibbonSmallSplitButtonTemplate)
+***********************************************************************/
+
+	RibbonSmallSplitButtonTemplate::RibbonSmallSplitButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonSmallSplitButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonSmallSplitButtonTemplate_Initialize(this);
+	}
+
+	RibbonSmallSplitButtonTemplate::~RibbonSmallSplitButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::RibbonSplitArrowTemplateConstructor)
 ***********************************************************************/
 
@@ -25567,6 +26213,23 @@ Class (::darkskin::RibbonSplitArrowTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::RibbonSplitArrowTemplate)
+***********************************************************************/
+
+	RibbonSplitArrowTemplate::RibbonSplitArrowTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonSplitArrowTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonSplitArrowTemplate_Initialize(this);
+	}
+
+	RibbonSplitArrowTemplate::~RibbonSplitArrowTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::RibbonToolstripHeaderTemplateConstructor)
 ***********************************************************************/
 
@@ -25616,6 +26279,23 @@ Class (::darkskin::RibbonToolstripHeaderTemplateConstructor)
 		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RibbonToolstripHeaderTemplate)
+***********************************************************************/
+
+	RibbonToolstripHeaderTemplate::RibbonToolstripHeaderTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonToolstripHeaderTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonToolstripHeaderTemplate_Initialize(this);
+	}
+
+	RibbonToolstripHeaderTemplate::~RibbonToolstripHeaderTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -25776,6 +26456,23 @@ Class (::darkskin::RibbonToolstripMenuTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::RibbonToolstripMenuTemplate)
+***********************************************************************/
+
+	RibbonToolstripMenuTemplate::RibbonToolstripMenuTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonToolstripMenuTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonToolstripMenuTemplate_Initialize(this);
+	}
+
+	RibbonToolstripMenuTemplate::~RibbonToolstripMenuTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::RibbonToolstripsTemplateConstructor)
 ***********************************************************************/
 
@@ -25790,6 +26487,23 @@ Class (::darkskin::RibbonToolstripsTemplateConstructor)
 	RibbonToolstripsTemplateConstructor::RibbonToolstripsTemplateConstructor()
 		: __vwsn_precompile_0(static_cast<::darkskin::RibbonToolstripsTemplate*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RibbonToolstripsTemplate)
+***********************************************************************/
+
+	RibbonToolstripsTemplate::RibbonToolstripsTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonToolstripsTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonToolstripsTemplate_Initialize(this);
+	}
+
+	RibbonToolstripsTemplate::~RibbonToolstripsTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -25856,6 +26570,23 @@ Class (::darkskin::RightScrollButtonTemplateConstructor)
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiPolygonElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::RightScrollButtonTemplate)
+***********************************************************************/
+
+	RightScrollButtonTemplate::RightScrollButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RightScrollButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_RightScrollButtonTemplate_Initialize(this);
+	}
+
+	RightScrollButtonTemplate::~RightScrollButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -25926,6 +26657,23 @@ Class (::darkskin::ScrollViewTemplateConstructor)
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::ScrollViewTemplate)
+***********************************************************************/
+
+	ScrollViewTemplate::ScrollViewTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ScrollViewTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ScrollViewTemplate_Initialize(this);
+	}
+
+	ScrollViewTemplate::~ScrollViewTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -26007,6 +26755,23 @@ Class (::darkskin::ShortcutKeyTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::ShortcutKeyTemplate)
+***********************************************************************/
+
+	ShortcutKeyTemplate::ShortcutKeyTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ShortcutKeyTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ShortcutKeyTemplate_Initialize(this);
+	}
+
+	ShortcutKeyTemplate::~ShortcutKeyTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::SinglelineTextBoxTemplateConstructor)
 ***********************************************************************/
 
@@ -26060,6 +26825,23 @@ Class (::darkskin::SinglelineTextBoxTemplateConstructor)
 		, __vwsn_precompile_0(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::SinglelineTextBoxTemplate)
+***********************************************************************/
+
+	SinglelineTextBoxTemplate::SinglelineTextBoxTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::SinglelineTextBoxTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_SinglelineTextBoxTemplate_Initialize(this);
+	}
+
+	SinglelineTextBoxTemplate::~SinglelineTextBoxTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -26132,6 +26914,37 @@ Class (::darkskin::TabHeaderButtonTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::TabHeaderButtonTemplate)
+***********************************************************************/
+
+	bool TabHeaderButtonTemplate::GetHighlighted()
+	{
+		return this->__vwsn_prop_Highlighted;
+	}
+	void TabHeaderButtonTemplate::SetHighlighted(bool __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_Highlighted != __vwsn_value_))
+		{
+			(this->__vwsn_prop_Highlighted = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->HighlightedChanged)();
+		}
+	}
+
+	TabHeaderButtonTemplate::TabHeaderButtonTemplate()
+		: __vwsn_prop_Highlighted(false)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TabHeaderButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_TabHeaderButtonTemplate_Initialize(this);
+	}
+
+	TabHeaderButtonTemplate::~TabHeaderButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::TabHeaderTemplateConstructor)
 ***********************************************************************/
 
@@ -26188,6 +27001,44 @@ Class (::darkskin::TabHeaderTemplateConstructor)
 		, __vwsn_precompile_0(static_cast<::vl::presentation::controls::GuiSelectableButton*>(nullptr))
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::TabHeaderTemplate)
+***********************************************************************/
+
+	::vl::presentation::controls::ITabCommandExecutor* TabHeaderTemplate::GetCommands()
+	{
+		return this->__vwsn_prop_Commands;
+	}
+	void TabHeaderTemplate::SetCommands(::vl::presentation::controls::ITabCommandExecutor* __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_Commands != __vwsn_value_))
+		{
+			(this->__vwsn_prop_Commands = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->CommandsChanged)();
+		}
+	}
+
+	::vl::presentation::controls::GuiTabPage* TabHeaderTemplate::GetCurrentTabPage()
+	{
+		return this->__vwsn_parameter_CurrentTabPage;
+	}
+
+	TabHeaderTemplate::TabHeaderTemplate(::vl::presentation::controls::GuiTabPage* __vwsn_ctor_parameter_CurrentTabPage)
+		: __vwsn_prop_Commands(static_cast<::vl::presentation::controls::ITabCommandExecutor*>(nullptr))
+		, __vwsn_parameter_CurrentTabPage(static_cast<::vl::presentation::controls::GuiTabPage*>(nullptr))
+	{
+		(this->__vwsn_parameter_CurrentTabPage = __vwsn_ctor_parameter_CurrentTabPage);
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TabHeaderTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_TabHeaderTemplate_Initialize(this);
+	}
+
+	TabHeaderTemplate::~TabHeaderTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -26353,6 +27204,61 @@ Class (::darkskin::TabTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::TabTemplate)
+***********************************************************************/
+
+	bool TabTemplate::GetHighlighted()
+	{
+		return this->__vwsn_prop_Highlighted;
+	}
+	void TabTemplate::SetHighlighted(bool __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_Highlighted != __vwsn_value_))
+		{
+			(this->__vwsn_prop_Highlighted = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->HighlightedChanged)();
+		}
+	}
+
+	void TabTemplate::UpdateTabHeader()
+	{
+		{
+			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(this->header)->GetFlowItems()));
+			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
+			{
+				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
+				{
+					auto item = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::darkskin::TabHeaderTemplate>(::vl::__vwsn::This(flowItem)->Children()[static_cast<::vl::vint>(0)]));
+					if ((::vl::__vwsn::This(item)->GetCurrentTabPage() == ::vl::__vwsn::This(this->self)->GetSelectedTabPage()))
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(2); __vwsn_temp__.top = static_cast<::vl::vint>(2); __vwsn_temp__.right = static_cast<::vl::vint>(2); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+						::vl::__vwsn::This(this->header)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(flowItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(this->header)->Children()).Obj())->GetCount() - static_cast<::vl::vint>(1)));
+					}
+					else
+					{
+						::vl::__vwsn::This(flowItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+					}
+				}
+			}
+		}
+	}
+
+	TabTemplate::TabTemplate()
+		: __vwsn_prop_Highlighted(false)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TabTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_TabTemplate_Initialize(this);
+	}
+
+	TabTemplate::~TabTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::TextListTemplateConstructor)
 ***********************************************************************/
 
@@ -26432,6 +27338,23 @@ Class (::darkskin::TextListTemplateConstructor)
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::TextListTemplate)
+***********************************************************************/
+
+	TextListTemplate::TextListTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TextListTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_TextListTemplate_Initialize(this);
+	}
+
+	TextListTemplate::~TextListTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -26614,6 +27537,23 @@ Class (::darkskin::ThemeConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::Theme)
+***********************************************************************/
+
+	Theme::Theme()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::Theme", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_Theme_Initialize(this);
+	}
+
+	Theme::~Theme()
+	{
+		this->FinalizeGeneralInstance(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::ToolstripButtonTemplateConstructor)
 ***********************************************************************/
 
@@ -26707,6 +27647,23 @@ Class (::darkskin::ToolstripButtonTemplateConstructor)
 		, __vwsn_precompile_3(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 		, __vwsn_precompile_4(::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::ToolstripButtonTemplate)
+***********************************************************************/
+
+	ToolstripButtonTemplate::ToolstripButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripButtonTemplate_Initialize(this);
+	}
+
+	ToolstripButtonTemplate::~ToolstripButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -26868,6 +27825,23 @@ Class (::darkskin::ToolstripDropdownButtonTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::ToolstripDropdownButtonTemplate)
+***********************************************************************/
+
+	ToolstripDropdownButtonTemplate::ToolstripDropdownButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripDropdownButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripDropdownButtonTemplate_Initialize(this);
+	}
+
+	ToolstripDropdownButtonTemplate::~ToolstripDropdownButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::ToolstripMenuTemplateConstructor)
 ***********************************************************************/
 
@@ -26915,6 +27889,23 @@ Class (::darkskin::ToolstripMenuTemplateConstructor)
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::ToolstripMenuTemplate)
+***********************************************************************/
+
+	ToolstripMenuTemplate::ToolstripMenuTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripMenuTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripMenuTemplate_Initialize(this);
+	}
+
+	ToolstripMenuTemplate::~ToolstripMenuTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -26994,6 +27985,23 @@ Class (::darkskin::ToolstripSplitArrowTemplateConstructor)
 		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, __vwsn_precompile_3(::vl::Ptr<::vl::presentation::elements::GuiPolygonElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::ToolstripSplitArrowTemplate)
+***********************************************************************/
+
+	ToolstripSplitArrowTemplate::ToolstripSplitArrowTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripSplitArrowTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripSplitArrowTemplate_Initialize(this);
+	}
+
+	ToolstripSplitArrowTemplate::~ToolstripSplitArrowTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -27148,6 +28156,23 @@ Class (::darkskin::ToolstripSplitButtonTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::ToolstripSplitButtonTemplate)
+***********************************************************************/
+
+	ToolstripSplitButtonTemplate::ToolstripSplitButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripSplitButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripSplitButtonTemplate_Initialize(this);
+	}
+
+	ToolstripSplitButtonTemplate::~ToolstripSplitButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::ToolstripSplitterTemplateConstructor)
 ***********************************************************************/
 
@@ -27198,6 +28223,23 @@ Class (::darkskin::ToolstripSplitterTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::ToolstripSplitterTemplate)
+***********************************************************************/
+
+	ToolstripSplitterTemplate::ToolstripSplitterTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripSplitterTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripSplitterTemplate_Initialize(this);
+	}
+
+	ToolstripSplitterTemplate::~ToolstripSplitterTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::ToolstripTemplateConstructor)
 ***********************************************************************/
 
@@ -27223,6 +28265,23 @@ Class (::darkskin::ToolstripTemplateConstructor)
 		: __vwsn_precompile_0(static_cast<::darkskin::ToolstripTemplate*>(nullptr))
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::ToolstripTemplate)
+***********************************************************************/
+
+	ToolstripTemplate::ToolstripTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripTemplate_Initialize(this);
+	}
+
+	ToolstripTemplate::~ToolstripTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -27281,6 +28340,23 @@ Class (::darkskin::TooltipTemplateConstructor)
 		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_3(::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::TooltipTemplate)
+***********************************************************************/
+
+	TooltipTemplate::TooltipTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TooltipTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_TooltipTemplate_Initialize(this);
+	}
+
+	TooltipTemplate::~TooltipTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -27347,6 +28423,23 @@ Class (::darkskin::TopScrollButtonTemplateConstructor)
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::elements::GuiPolygonElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::TopScrollButtonTemplate)
+***********************************************************************/
+
+	TopScrollButtonTemplate::TopScrollButtonTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TopScrollButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_TopScrollButtonTemplate_Initialize(this);
+	}
+
+	TopScrollButtonTemplate::~TopScrollButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -27429,6 +28522,23 @@ Class (::darkskin::TreeViewTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::TreeViewTemplate)
+***********************************************************************/
+
+	TreeViewTemplate::TreeViewTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TreeViewTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_TreeViewTemplate_Initialize(this);
+	}
+
+	TreeViewTemplate::~TreeViewTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::VScrollHandleTemplateConstructor)
 ***********************************************************************/
 
@@ -27464,6 +28574,23 @@ Class (::darkskin::VScrollHandleTemplateConstructor)
 		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::VScrollHandleTemplate)
+***********************************************************************/
+
+	VScrollHandleTemplate::VScrollHandleTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::VScrollHandleTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_VScrollHandleTemplate_Initialize(this);
+	}
+
+	VScrollHandleTemplate::~VScrollHandleTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -27596,6 +28723,32 @@ Class (::darkskin::VScrollTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::darkskin::VScrollTemplate)
+***********************************************************************/
+
+	VScrollTemplate::VScrollTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::VScrollTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_VScrollTemplate_Initialize(this);
+		this->__vwsn_instance_ctor_();
+	}
+
+	void VScrollTemplate::__vwsn_instance_ctor_()
+	{
+		::vl::__vwsn::This(this->behavior)->AttachScrollTemplate(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(this->self));
+		::vl::__vwsn::This(this->behavior)->AttachDecreaseButton(this->buttonDecrease);
+		::vl::__vwsn::This(this->behavior)->AttachIncreaseButton(this->buttonIncrease);
+		::vl::__vwsn::This(this->behavior)->AttachVerticalScrollHandle(this->handle);
+	}
+
+	VScrollTemplate::~VScrollTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::darkskin::VTrackerTemplateConstructor)
 ***********************************************************************/
 
@@ -27710,6 +28863,30 @@ Class (::darkskin::VTrackerTemplateConstructor)
 		, __vwsn_precompile_6(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
 		, __vwsn_precompile_7(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::darkskin::VTrackerTemplate)
+***********************************************************************/
+
+	VTrackerTemplate::VTrackerTemplate()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::VTrackerTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_darkskin_VTrackerTemplate_Initialize(this);
+		this->__vwsn_instance_ctor_();
+	}
+
+	void VTrackerTemplate::__vwsn_instance_ctor_()
+	{
+		::vl::__vwsn::This(this->behavior)->AttachScrollTemplate(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(this->self));
+		::vl::__vwsn::This(this->behavior)->AttachVerticalTrackerHandle(this->handle);
+	}
+
+	VTrackerTemplate::~VTrackerTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -28057,1250 +29234,6 @@ Class (::darkskin::WindowTemplateConstructor)
 	}
 
 /***********************************************************************
-Class (::darkskin::BottomScrollButtonTemplate)
-***********************************************************************/
-
-	BottomScrollButtonTemplate::BottomScrollButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::BottomScrollButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_BottomScrollButtonTemplate_Initialize(this);
-	}
-
-	BottomScrollButtonTemplate::~BottomScrollButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ButtonTemplate)
-***********************************************************************/
-
-	ButtonTemplate::ButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ButtonTemplate_Initialize(this);
-	}
-
-	ButtonTemplate::~ButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::CheckBoxTemplate)
-***********************************************************************/
-
-	CheckBoxTemplate::CheckBoxTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::CheckBoxTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_CheckBoxTemplate_Initialize(this);
-	}
-
-	CheckBoxTemplate::~CheckBoxTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::CheckItemBackgroundTemplate)
-***********************************************************************/
-
-	CheckItemBackgroundTemplate::CheckItemBackgroundTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::CheckItemBackgroundTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_CheckItemBackgroundTemplate_Initialize(this);
-	}
-
-	CheckItemBackgroundTemplate::~CheckItemBackgroundTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ComboBoxTemplate)
-***********************************************************************/
-
-	ComboBoxTemplate::ComboBoxTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ComboBoxTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ComboBoxTemplate_Initialize(this);
-	}
-
-	ComboBoxTemplate::~ComboBoxTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::CustomControlTemplate)
-***********************************************************************/
-
-	CustomControlTemplate::CustomControlTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::CustomControlTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_CustomControlTemplate_Initialize(this);
-	}
-
-	CustomControlTemplate::~CustomControlTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::DatePickerTemplate)
-***********************************************************************/
-
-	DatePickerTemplate::DatePickerTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::DatePickerTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_DatePickerTemplate_Initialize(this);
-	}
-
-	DatePickerTemplate::~DatePickerTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::DocumentLabelTemplate)
-***********************************************************************/
-
-	DocumentLabelTemplate::DocumentLabelTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::DocumentLabelTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_DocumentLabelTemplate_Initialize(this);
-	}
-
-	DocumentLabelTemplate::~DocumentLabelTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::DocumentTextBoxTemplate)
-***********************************************************************/
-
-	DocumentTextBoxTemplate::DocumentTextBoxTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::DocumentTextBoxTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_DocumentTextBoxTemplate_Initialize(this);
-	}
-
-	DocumentTextBoxTemplate::~DocumentTextBoxTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::DocumentViewerTemplate)
-***********************************************************************/
-
-	DocumentViewerTemplate::DocumentViewerTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::DocumentViewerTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_DocumentViewerTemplate_Initialize(this);
-	}
-
-	DocumentViewerTemplate::~DocumentViewerTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ExpandingDecoratorTemplate)
-***********************************************************************/
-
-	ExpandingDecoratorTemplate::ExpandingDecoratorTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ExpandingDecoratorTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ExpandingDecoratorTemplate_Initialize(this);
-	}
-
-	ExpandingDecoratorTemplate::~ExpandingDecoratorTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::GroupBoxTemplate)
-***********************************************************************/
-
-	GroupBoxTemplate::GroupBoxTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::GroupBoxTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_GroupBoxTemplate_Initialize(this);
-	}
-
-	GroupBoxTemplate::~GroupBoxTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::HScrollHandleTemplate)
-***********************************************************************/
-
-	HScrollHandleTemplate::HScrollHandleTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::HScrollHandleTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_HScrollHandleTemplate_Initialize(this);
-	}
-
-	HScrollHandleTemplate::~HScrollHandleTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::HScrollTemplate)
-***********************************************************************/
-
-	HScrollTemplate::HScrollTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::HScrollTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_HScrollTemplate_Initialize(this);
-		this->__vwsn_instance_ctor_();
-	}
-
-	void HScrollTemplate::__vwsn_instance_ctor_()
-	{
-		::vl::__vwsn::This(this->behavior)->AttachScrollTemplate(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(this->self));
-		::vl::__vwsn::This(this->behavior)->AttachDecreaseButton(this->buttonDecrease);
-		::vl::__vwsn::This(this->behavior)->AttachIncreaseButton(this->buttonIncrease);
-		::vl::__vwsn::This(this->behavior)->AttachHorizontalScrollHandle(this->handle);
-	}
-
-	HScrollTemplate::~HScrollTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::HTrackerTemplate)
-***********************************************************************/
-
-	HTrackerTemplate::HTrackerTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::HTrackerTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_HTrackerTemplate_Initialize(this);
-		this->__vwsn_instance_ctor_();
-	}
-
-	void HTrackerTemplate::__vwsn_instance_ctor_()
-	{
-		::vl::__vwsn::This(this->behavior)->AttachScrollTemplate(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(this->self));
-		::vl::__vwsn::This(this->behavior)->AttachHorizontalTrackerHandle(this->handle);
-	}
-
-	HTrackerTemplate::~HTrackerTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ItemBackgroundTemplate)
-***********************************************************************/
-
-	ItemBackgroundTemplate::ItemBackgroundTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ItemBackgroundTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ItemBackgroundTemplate_Initialize(this);
-	}
-
-	ItemBackgroundTemplate::~ItemBackgroundTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::LabelTemplate)
-***********************************************************************/
-
-	LabelTemplate::LabelTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::LabelTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_LabelTemplate_Initialize(this);
-	}
-
-	LabelTemplate::~LabelTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::LeftScrollButtonTemplate)
-***********************************************************************/
-
-	LeftScrollButtonTemplate::LeftScrollButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::LeftScrollButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_LeftScrollButtonTemplate_Initialize(this);
-	}
-
-	LeftScrollButtonTemplate::~LeftScrollButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ListViewColumnHeaderTemplate)
-***********************************************************************/
-
-	ListViewColumnHeaderTemplate::ListViewColumnHeaderTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ListViewColumnHeaderTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ListViewColumnHeaderTemplate_Initialize(this);
-	}
-
-	ListViewColumnHeaderTemplate::~ListViewColumnHeaderTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ListViewTemplate)
-***********************************************************************/
-
-	ListViewTemplate::ListViewTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ListViewTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ListViewTemplate_Initialize(this);
-	}
-
-	ListViewTemplate::~ListViewTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::MenuBarButtonTemplate)
-***********************************************************************/
-
-	MenuBarButtonTemplate::MenuBarButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::MenuBarButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_MenuBarButtonTemplate_Initialize(this);
-	}
-
-	MenuBarButtonTemplate::~MenuBarButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::MenuItemButtonTemplate)
-***********************************************************************/
-
-	MenuItemButtonTemplate::MenuItemButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::MenuItemButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_MenuItemButtonTemplate_Initialize(this);
-	}
-
-	MenuItemButtonTemplate::~MenuItemButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::MenuSplitterTemplate)
-***********************************************************************/
-
-	MenuSplitterTemplate::MenuSplitterTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::MenuSplitterTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_MenuSplitterTemplate_Initialize(this);
-	}
-
-	MenuSplitterTemplate::~MenuSplitterTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::MultilineTextBoxTemplate)
-***********************************************************************/
-
-	MultilineTextBoxTemplate::MultilineTextBoxTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::MultilineTextBoxTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_MultilineTextBoxTemplate_Initialize(this);
-	}
-
-	MultilineTextBoxTemplate::~MultilineTextBoxTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ProgressBarTemplate)
-***********************************************************************/
-
-	ProgressBarTemplate::ProgressBarTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ProgressBarTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ProgressBarTemplate_Initialize(this);
-	}
-
-	ProgressBarTemplate::~ProgressBarTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RadioButtonTemplate)
-***********************************************************************/
-
-	RadioButtonTemplate::RadioButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RadioButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RadioButtonTemplate_Initialize(this);
-	}
-
-	RadioButtonTemplate::~RadioButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonButtonsTemplate)
-***********************************************************************/
-
-	RibbonButtonsTemplate::RibbonButtonsTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonButtonsTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonButtonsTemplate_Initialize(this);
-	}
-
-	RibbonButtonsTemplate::~RibbonButtonsTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonGalleryDropdownButtonTemplate)
-***********************************************************************/
-
-	RibbonGalleryDropdownButtonTemplate::RibbonGalleryDropdownButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGalleryDropdownButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGalleryDropdownButtonTemplate_Initialize(this);
-	}
-
-	RibbonGalleryDropdownButtonTemplate::~RibbonGalleryDropdownButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonGalleryItemListTemplate)
-***********************************************************************/
-
-	RibbonGalleryItemListTemplate::RibbonGalleryItemListTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGalleryItemListTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGalleryItemListTemplate_Initialize(this);
-	}
-
-	RibbonGalleryItemListTemplate::~RibbonGalleryItemListTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonGalleryTemplate)
-***********************************************************************/
-
-	RibbonGalleryTemplate::RibbonGalleryTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGalleryTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGalleryTemplate_Initialize(this);
-	}
-
-	RibbonGalleryTemplate::~RibbonGalleryTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonGroupExpandButtonTemplate)
-***********************************************************************/
-
-	RibbonGroupExpandButtonTemplate::RibbonGroupExpandButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGroupExpandButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGroupExpandButtonTemplate_Initialize(this);
-	}
-
-	RibbonGroupExpandButtonTemplate::~RibbonGroupExpandButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonGroupMenuTemplate)
-***********************************************************************/
-
-	RibbonGroupMenuTemplate::RibbonGroupMenuTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGroupMenuTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGroupMenuTemplate_Initialize(this);
-	}
-
-	RibbonGroupMenuTemplate::~RibbonGroupMenuTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonGroupTemplate)
-***********************************************************************/
-
-	RibbonGroupTemplate::RibbonGroupTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonGroupTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonGroupTemplate_Initialize(this);
-	}
-
-	RibbonGroupTemplate::~RibbonGroupTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonIconLabelTemplate)
-***********************************************************************/
-
-	RibbonIconLabelTemplate::RibbonIconLabelTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonIconLabelTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonIconLabelTemplate_Initialize(this);
-	}
-
-	RibbonIconLabelTemplate::~RibbonIconLabelTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonLargeButtonTemplate)
-***********************************************************************/
-
-	RibbonLargeButtonTemplate::RibbonLargeButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonLargeButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonLargeButtonTemplate_Initialize(this);
-	}
-
-	RibbonLargeButtonTemplate::~RibbonLargeButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonLargeDropdownButtonTemplate)
-***********************************************************************/
-
-	RibbonLargeDropdownButtonTemplate::RibbonLargeDropdownButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonLargeDropdownButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonLargeDropdownButtonTemplate_Initialize(this);
-	}
-
-	RibbonLargeDropdownButtonTemplate::~RibbonLargeDropdownButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonLargeSplitButtonTemplate)
-***********************************************************************/
-
-	RibbonLargeSplitButtonTemplate::RibbonLargeSplitButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonLargeSplitButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonLargeSplitButtonTemplate_Initialize(this);
-	}
-
-	RibbonLargeSplitButtonTemplate::~RibbonLargeSplitButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonSmallButtonTemplate)
-***********************************************************************/
-
-	RibbonSmallButtonTemplate::RibbonSmallButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonSmallButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonSmallButtonTemplate_Initialize(this);
-	}
-
-	RibbonSmallButtonTemplate::~RibbonSmallButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonSmallDropdownButtonTemplate)
-***********************************************************************/
-
-	RibbonSmallDropdownButtonTemplate::RibbonSmallDropdownButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonSmallDropdownButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonSmallDropdownButtonTemplate_Initialize(this);
-	}
-
-	RibbonSmallDropdownButtonTemplate::~RibbonSmallDropdownButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonSmallIconLabelTemplate)
-***********************************************************************/
-
-	RibbonSmallIconLabelTemplate::RibbonSmallIconLabelTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonSmallIconLabelTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonSmallIconLabelTemplate_Initialize(this);
-	}
-
-	RibbonSmallIconLabelTemplate::~RibbonSmallIconLabelTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonSmallSplitButtonTemplate)
-***********************************************************************/
-
-	RibbonSmallSplitButtonTemplate::RibbonSmallSplitButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonSmallSplitButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonSmallSplitButtonTemplate_Initialize(this);
-	}
-
-	RibbonSmallSplitButtonTemplate::~RibbonSmallSplitButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonSplitArrowTemplate)
-***********************************************************************/
-
-	RibbonSplitArrowTemplate::RibbonSplitArrowTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonSplitArrowTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonSplitArrowTemplate_Initialize(this);
-	}
-
-	RibbonSplitArrowTemplate::~RibbonSplitArrowTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonToolstripHeaderTemplate)
-***********************************************************************/
-
-	RibbonToolstripHeaderTemplate::RibbonToolstripHeaderTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonToolstripHeaderTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonToolstripHeaderTemplate_Initialize(this);
-	}
-
-	RibbonToolstripHeaderTemplate::~RibbonToolstripHeaderTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonToolstripMenuTemplate)
-***********************************************************************/
-
-	RibbonToolstripMenuTemplate::RibbonToolstripMenuTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonToolstripMenuTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonToolstripMenuTemplate_Initialize(this);
-	}
-
-	RibbonToolstripMenuTemplate::~RibbonToolstripMenuTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RibbonToolstripsTemplate)
-***********************************************************************/
-
-	RibbonToolstripsTemplate::RibbonToolstripsTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RibbonToolstripsTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RibbonToolstripsTemplate_Initialize(this);
-	}
-
-	RibbonToolstripsTemplate::~RibbonToolstripsTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::RightScrollButtonTemplate)
-***********************************************************************/
-
-	RightScrollButtonTemplate::RightScrollButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::RightScrollButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_RightScrollButtonTemplate_Initialize(this);
-	}
-
-	RightScrollButtonTemplate::~RightScrollButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ScrollViewTemplate)
-***********************************************************************/
-
-	ScrollViewTemplate::ScrollViewTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ScrollViewTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ScrollViewTemplate_Initialize(this);
-	}
-
-	ScrollViewTemplate::~ScrollViewTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ShortcutKeyTemplate)
-***********************************************************************/
-
-	ShortcutKeyTemplate::ShortcutKeyTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ShortcutKeyTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ShortcutKeyTemplate_Initialize(this);
-	}
-
-	ShortcutKeyTemplate::~ShortcutKeyTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::SinglelineTextBoxTemplate)
-***********************************************************************/
-
-	SinglelineTextBoxTemplate::SinglelineTextBoxTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::SinglelineTextBoxTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_SinglelineTextBoxTemplate_Initialize(this);
-	}
-
-	SinglelineTextBoxTemplate::~SinglelineTextBoxTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::TabHeaderButtonTemplate)
-***********************************************************************/
-
-	bool TabHeaderButtonTemplate::GetHighlighted()
-	{
-		return this->__vwsn_prop_Highlighted;
-	}
-	void TabHeaderButtonTemplate::SetHighlighted(bool __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_Highlighted != __vwsn_value_))
-		{
-			(this->__vwsn_prop_Highlighted = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->HighlightedChanged)();
-		}
-	}
-
-	TabHeaderButtonTemplate::TabHeaderButtonTemplate()
-		: __vwsn_prop_Highlighted(false)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TabHeaderButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_TabHeaderButtonTemplate_Initialize(this);
-	}
-
-	TabHeaderButtonTemplate::~TabHeaderButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::TabHeaderTemplate)
-***********************************************************************/
-
-	::vl::presentation::controls::ITabCommandExecutor* TabHeaderTemplate::GetCommands()
-	{
-		return this->__vwsn_prop_Commands;
-	}
-	void TabHeaderTemplate::SetCommands(::vl::presentation::controls::ITabCommandExecutor* __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_Commands != __vwsn_value_))
-		{
-			(this->__vwsn_prop_Commands = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->CommandsChanged)();
-		}
-	}
-
-	::vl::presentation::controls::GuiTabPage* TabHeaderTemplate::GetCurrentTabPage()
-	{
-		return this->__vwsn_parameter_CurrentTabPage;
-	}
-
-	TabHeaderTemplate::TabHeaderTemplate(::vl::presentation::controls::GuiTabPage* __vwsn_ctor_parameter_CurrentTabPage)
-		: __vwsn_prop_Commands(static_cast<::vl::presentation::controls::ITabCommandExecutor*>(nullptr))
-		, __vwsn_parameter_CurrentTabPage(static_cast<::vl::presentation::controls::GuiTabPage*>(nullptr))
-	{
-		(this->__vwsn_parameter_CurrentTabPage = __vwsn_ctor_parameter_CurrentTabPage);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TabHeaderTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_TabHeaderTemplate_Initialize(this);
-	}
-
-	TabHeaderTemplate::~TabHeaderTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::TabTemplate)
-***********************************************************************/
-
-	bool TabTemplate::GetHighlighted()
-	{
-		return this->__vwsn_prop_Highlighted;
-	}
-	void TabTemplate::SetHighlighted(bool __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_Highlighted != __vwsn_value_))
-		{
-			(this->__vwsn_prop_Highlighted = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->HighlightedChanged)();
-		}
-	}
-
-	void TabTemplate::UpdateTabHeader()
-	{
-		{
-			auto __vwsn_for_enumerable_flowItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(this->header)->GetFlowItems()));
-			auto __vwsn_for_enumerator_flowItem = ::vl::__vwsn::This(__vwsn_for_enumerable_flowItem.Obj())->CreateEnumerator();
-			while (::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->Next())
-			{
-				auto flowItem = ::vl::__vwsn::Unbox<::vl::presentation::compositions::GuiFlowItemComposition*>(::vl::__vwsn::This(__vwsn_for_enumerator_flowItem.Obj())->GetCurrent());
-				{
-					auto item = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::darkskin::TabHeaderTemplate>(::vl::__vwsn::This(flowItem)->Children()[static_cast<::vl::vint>(0)]));
-					if ((::vl::__vwsn::This(item)->GetCurrentTabPage() == ::vl::__vwsn::This(this->self)->GetSelectedTabPage()))
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(2); __vwsn_temp__.top = static_cast<::vl::vint>(2); __vwsn_temp__.right = static_cast<::vl::vint>(2); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
-						::vl::__vwsn::This(this->header)->MoveChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(flowItem), (::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueReadonlyList>(::vl::__vwsn::This(this->header)->Children()).Obj())->GetCount() - static_cast<::vl::vint>(1)));
-					}
-					else
-					{
-						::vl::__vwsn::This(flowItem)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
-					}
-				}
-			}
-		}
-	}
-
-	TabTemplate::TabTemplate()
-		: __vwsn_prop_Highlighted(false)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TabTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_TabTemplate_Initialize(this);
-	}
-
-	TabTemplate::~TabTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::TextListTemplate)
-***********************************************************************/
-
-	TextListTemplate::TextListTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TextListTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_TextListTemplate_Initialize(this);
-	}
-
-	TextListTemplate::~TextListTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::Theme)
-***********************************************************************/
-
-	Theme::Theme()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::Theme", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_Theme_Initialize(this);
-	}
-
-	Theme::~Theme()
-	{
-		this->FinalizeGeneralInstance(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ToolstripButtonTemplate)
-***********************************************************************/
-
-	ToolstripButtonTemplate::ToolstripButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripButtonTemplate_Initialize(this);
-	}
-
-	ToolstripButtonTemplate::~ToolstripButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ToolstripDropdownButtonTemplate)
-***********************************************************************/
-
-	ToolstripDropdownButtonTemplate::ToolstripDropdownButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripDropdownButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripDropdownButtonTemplate_Initialize(this);
-	}
-
-	ToolstripDropdownButtonTemplate::~ToolstripDropdownButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ToolstripMenuTemplate)
-***********************************************************************/
-
-	ToolstripMenuTemplate::ToolstripMenuTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripMenuTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripMenuTemplate_Initialize(this);
-	}
-
-	ToolstripMenuTemplate::~ToolstripMenuTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ToolstripSplitArrowTemplate)
-***********************************************************************/
-
-	ToolstripSplitArrowTemplate::ToolstripSplitArrowTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripSplitArrowTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripSplitArrowTemplate_Initialize(this);
-	}
-
-	ToolstripSplitArrowTemplate::~ToolstripSplitArrowTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ToolstripSplitButtonTemplate)
-***********************************************************************/
-
-	ToolstripSplitButtonTemplate::ToolstripSplitButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripSplitButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripSplitButtonTemplate_Initialize(this);
-	}
-
-	ToolstripSplitButtonTemplate::~ToolstripSplitButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ToolstripSplitterTemplate)
-***********************************************************************/
-
-	ToolstripSplitterTemplate::ToolstripSplitterTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripSplitterTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripSplitterTemplate_Initialize(this);
-	}
-
-	ToolstripSplitterTemplate::~ToolstripSplitterTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::ToolstripTemplate)
-***********************************************************************/
-
-	ToolstripTemplate::ToolstripTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::ToolstripTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_ToolstripTemplate_Initialize(this);
-	}
-
-	ToolstripTemplate::~ToolstripTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::TooltipTemplate)
-***********************************************************************/
-
-	TooltipTemplate::TooltipTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TooltipTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_TooltipTemplate_Initialize(this);
-	}
-
-	TooltipTemplate::~TooltipTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::TopScrollButtonTemplate)
-***********************************************************************/
-
-	TopScrollButtonTemplate::TopScrollButtonTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TopScrollButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_TopScrollButtonTemplate_Initialize(this);
-	}
-
-	TopScrollButtonTemplate::~TopScrollButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::TreeViewTemplate)
-***********************************************************************/
-
-	TreeViewTemplate::TreeViewTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::TreeViewTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_TreeViewTemplate_Initialize(this);
-	}
-
-	TreeViewTemplate::~TreeViewTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::VScrollHandleTemplate)
-***********************************************************************/
-
-	VScrollHandleTemplate::VScrollHandleTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::VScrollHandleTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_VScrollHandleTemplate_Initialize(this);
-	}
-
-	VScrollHandleTemplate::~VScrollHandleTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::VScrollTemplate)
-***********************************************************************/
-
-	VScrollTemplate::VScrollTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::VScrollTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_VScrollTemplate_Initialize(this);
-		this->__vwsn_instance_ctor_();
-	}
-
-	void VScrollTemplate::__vwsn_instance_ctor_()
-	{
-		::vl::__vwsn::This(this->behavior)->AttachScrollTemplate(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(this->self));
-		::vl::__vwsn::This(this->behavior)->AttachDecreaseButton(this->buttonDecrease);
-		::vl::__vwsn::This(this->behavior)->AttachIncreaseButton(this->buttonIncrease);
-		::vl::__vwsn::This(this->behavior)->AttachVerticalScrollHandle(this->handle);
-	}
-
-	VScrollTemplate::~VScrollTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::darkskin::VTrackerTemplate)
-***********************************************************************/
-
-	VTrackerTemplate::VTrackerTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"darkskin::VTrackerTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_darkskin_VTrackerTemplate_Initialize(this);
-		this->__vwsn_instance_ctor_();
-	}
-
-	void VTrackerTemplate::__vwsn_instance_ctor_()
-	{
-		::vl::__vwsn::This(this->behavior)->AttachScrollTemplate(static_cast<::vl::presentation::templates::GuiScrollTemplate*>(this->self));
-		::vl::__vwsn::This(this->behavior)->AttachVerticalTrackerHandle(this->handle);
-	}
-
-	VTrackerTemplate::~VTrackerTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
 Class (::darkskin::WindowTemplate)
 ***********************************************************************/
 
@@ -29329,4 +29262,71 @@ Class (::darkskin::WindowTemplate)
 #elif defined(__clang__)
 #pragma clang diagnostic pop
 #endif
+
+
+/***********************************************************************
+.\DARKSKINRESOURCE.CPP
+***********************************************************************/
+
+namespace vl
+{
+	namespace presentation
+	{
+		namespace user_resource
+		{
+			using namespace collections;
+			using namespace stream;
+			using namespace controls;
+
+			class DarkSkinResourceReader
+			{
+			public:
+				static const vint parserBufferLength = 1721; // 4400 bytes before compressing
+				static const vint parserBufferBlock = 1024;
+				static const vint parserBufferRemain = 697;
+				static const vint parserBufferRows = 2;
+				static const char* parserBuffer[2];
+
+				static void ReadToStream(vl::stream::MemoryStream& stream)
+				{
+					DecompressStream(parserBuffer, true, parserBufferRows, parserBufferBlock, parserBufferRemain, stream);
+				}
+			};
+
+			const char* DarkSkinResourceReader::parserBuffer[] = {
+				"\x30\x11\x00\x00\xB1\x06\x00\x00\x4A\x00\x01\x82\x80\x00\x81\x80\x1E\x29\x65\x73\x2F\x35\x32\x3B\x31\x33\x26\x65\x74\x21\x24\x31\x32\x88\x10\x27\x61\x6D\x25\x3D\x12\x12\x10\x10\x2B\x65\x72\x33\x29\x3F\x36\x34\x8F\x18\x2E\x30\x22\x1E\x1C\x1C\x21\x32\x38\x65\x6E\x24\x31\x93\x31\x35\x85\x17\x2C\xAF\x08\x8A\x8C\x86\x84\x88\x89\x14\x92\xBE\x05\x03\x82\x80\x05\xA2\x01\xC7\x81\x89\x2E\x33\x3A\x88\x37\x0E\x8D\x08\xA0\x02\xAB\xA5\xA7\xA7\x0E\xD3\x34\x39\x3C\x35\x33\x01\xA9\x5F\x81\x84\x2F\x33\x34\x03\xA8\xB3\x01\xD4\x25\x38\x34\x3F\x07\xA8\xB7\x01\xC3\x2C\x21\x33\x3B\x38\x8C\x8D\x08\xE3\x2F\x32\x34\x33\xA8\x01\xB0\x45\xCA\x81\xC2\x84\x21\x32\x39\x35\x53\x6B\x29\x2E\x3E\xBE\xBE\x05\xA9\x06\x10\xC2\x82\x25\x3C\x38\x3B\x92\x8D\x99\xC3\xC8\xA2\xC3\xB3\x31\x3A\x1A\xEE\x34\x3E\xB1\x03\xAA\x01\xA9\x10\x28\xD3\xD4\xB5\x34\x37\xC5\x32\x9E\xA0\xF1\x94\x3E\x5B\xA9\xDA\x83\x9E\xAC\x83\x25\x94\x3B\xD8\x9C\x1E\x5A\xDC\x89\x8C\x91\xE5\xAC\x10\x37\x19\x9B\xA2\x03\x1E\x96\x31\x31\x3A\x6C\x74\x2D\x0F\x26\x39\x92\x39\x34\x33\xAB\xBC\x1A\xBC\x33\xBE\x1F\x11\x46\x61\xE2\xFC\x1F\x14\xEE\xEE\xF2\xC5\xE5\x04\xFB\xA6\xE0\xE6\x8C\x8E\x23\x53\x2D\xC5\x33\x34\x38\x92\x37\xD3\xD5\xF2\x37\xE9\xEC\x96\xF2\x39\xDF\x62\x73\x79\x79\x6F\x1D\x70\x80\x0F\x62\x2B\x1F\x7F\x77\x30\x30\x07\x0D\x10\x43\x03\x14\x79\x82\x0B\xA8\x7C\x7A\x7A\x16\x82\x73\x1D\x4E\xB9\x7E\x58\x59\x51\x1F\x8C\x19\x1A\x53\x9A\x65\x80\x03\x87\x03\x5F\x8D\x13\x88\x63\x26\x8A\x65\x64\x48\x70\x80\x02\x14\x69\x22\x12\x18\x66\x2E\x8D\x62\x8F\x40\x32\x93\x13\x1A\x1C\x05\xAC\x19\x8D\x63\x80\x43\x40\x60\x15\x61\x22\x13\x92\x5F\x07\x13\x5D\x91\x5A\x6B\x74\x12\x13\x1B\x78\x0B\x93\x55\x02\x57\x82\x44\x17\x1B\x05\x8E\x57\x74\x1C\x56\xB1\x82\x65\x40\x57\x0B\x64\x1B\x1B\x77\x21\x95\x50\x03\x53\x6C\x91\x43\x11\x61\x23\x17\x11\x4C\xBB\x6E\x16\x19\x1A\x67\x03\x95\x68\x52\x45\x82\x40\x63\x10\x70\x20\x93\x54\x51\x7C\x93\x55\x55\x51\x87\x80\xA0\x1F\x6E\x6D\x30\x12\x1D\x42\x73\x25\x14\x18\x05\x53\x54\xA2\x5A\x61\x88\x4A\x6E\x1B\x4E\x0B\x4D\x45\x1A\x0B\x63\x01\xAD\x9D\x40\x28\x82\x4F\x87\x5D\x65\x02\x63\x41\x67\x98\x89\x6B\x63\xA8\x54\x46\xA2\x42\x13\x7B\x6D\x11\x18\x1B\x4C\x63\x1C\x19\x1D\x33\x69\x68\x52\xAF\x00\x2E\x0E\x0B\x0B\xC2\x84\xB3\xB0\x9C\x63\x15\x19\x12\x0B\x68\x30\xA1\x07\x54\xCF\x81\x48\x42\x19\x5D\x75\x77\x7D\xAE\xBB\xB3\x49\x0F\x54\xDB\x81\x45\xB3\xB7\xC3\x93\xB5\xB6\x7D\x25\x6F\x04\x15\x1E\x30\x6E\x43\x1F\x8F\x69\x30\x17\x66\x48\x2F\x07\x15\x1D\x1A\xE2\xB4\x74\xBA\x1B\x50\x3B\xA7\x1B\x62\xCC\xB0\xAE\x9B\x9A\x02\x53\x1D\xA6\x43\x46\x05\x83\x4E\x1C\x3B\x82\x4D\x8F\xC0\x65\x3E\x5B\x03\x54\x0F\xC1\x40\x17\xA3\x7A\x4D\xA9\x19\x57\x7D\x53\x5B\x9C\x88\x6F\x5D\xC1\x5F\x5C\x75\x68\xA9\x5F\x5E\x64\x04\x1E\xC5\x51\x70\x40\x04\x47\x61\x73\x1A\xAA\x0E\x0E\x54\x28\x15\x1A\x46\x18\x13\x55\xCD\x40\x2B\xEB\x1D\xCB\x62\x2F\xD4\x66\x65\x49\x6A\x4D\xA3\x5D\x6F\x1A\x13\x55\xD0\xCE\x98\xBB\xCE\x1B\xCB\x43\x32\xC3\x1B\x1A\x53\xB8\x11\xD0\x1C\x43\xE5\x1D\x07\x54\x57\xC8\xDC\xCA\xCB\x3A\x12\x13\x44\x49\x3E\xD7\x6E\x1B\xD4\x55\xDF\x03\x56\xD9\x5A\xFA\xCC\xD5\x6C\xA1\x74\x1C\x11\x92\xAD\x64\xD5\x45\x19\x21\x13\x55\xDD\xDA\x4A\xEF\xCC\xDB\x6C\x6A\x6C\x51\xD6\xDC\xBD\x60\x03\x56\xE0\x78\xEB\xD4\x5A\x6C\xA2\x56\x16\x4F\x1D\x21\x40\xE5\x19\x09\x53\x50\xE5\xE0\xCF\x3A\x0D\xD4\x7F\x1A\x49\x3D\x6D\x1A\x10\x71\xAB\x17\x18\x90\x75\x32\x4E\xE3\xD1\x45\x64\xE9\xCD\xDE\x95\xEF\x1D\x1B\x8D\x7F\xF3\xC4\xD7\xDC\x24\x13\x51\xEF\xE4\x4B\xFA\x05\x10\x1E\x70\x21\x12\x4F\x62\x67\x2E\x4A\x5E\x1C\x15\x7B\x5E\xE0\xE1\x45\x44\xF7\xE8\xD7\x99\xF3\xCC\xE7\xD3\x9F\xCB\x42\xEA\xEB\x55\xE6\x03\x56\xF4\xB4\xEF\xC2\x8A\x53\x8A\xE5\x17\x1F\x6E\xBB\xAD\x1E\x18\x12\x65\x13\x4D\xE0\xF4\x73\xE4\xE3\x42\xE9\x49\xDC\xD7\xF4\x1D\xD9\xF7\x13\xEA\xD1\x02\x47\xF4\xE5\xDF\x6E\xE3\x84\x1F\xFB\x48\x68\xFB\xD7\xFC\x8F\xA5\x1D\xFA\xE3\x1C\x13\x29\x00\xD5\x7A\x07\xC2\x3D\x30\x0A\x69\x0F\x6B\xF8\x42\x65\x7C\xF8\x44\x87\x08\xA0\x70\x0D\xEB\x0C\x8D\x37\x0B\x13\x2E\x82\x04\x8F\x6E\x18\x71\x64\x7D\xDE\x19\x6D\x28\x1F\x92\x7D\xED\x53\x08\x0D\xBD\x34\x0F\x33\x74\x0B\x09\x19\x79\x0E\x70\x11\x13\x2E\x85\x04\x94\x46\x8D\x25\x23\x0A\xAA\x69\x0C\x0E\x41\x1B\x3C\x9A\x0E\x78\x6D\xA2\x3D\x82",
+				"\x84\x2F\x72\x87\x8D\x6E\x01\x6D\x92\x33\x0E\x71\x2D\x13\x29\x12\xB1\x85\x47\x21\xB0\x4C\x0D\x5D\x32\x0D\x1E\x44\x00\x48\x38\x27\x4F\x0E\x44\x95\x32\xD8\x0E\x77\x05\xA9\x1D\x8C\x89\x33\x8E\x0F\x13\xD1\x89\x0F\xE4\x6D\x0B\x7D\x3C\x87\x6D\xFC\x69\x74\x72\x21\xA5\x23\x8C\x21\x2C\x85\x07\xE5\x09\x05\xA9\x35\x88\x8C\x4E\x91\x83\xED\x39\x72\x27\x22\xA3\x6B\x8E\x77\x65\x29\x20\xC0\x8D\x6B\x26\xAF\x89\x82\x10\x2E\x0D\x1D\x0E\x7F\x83\x81\x21\x84\x8D\xB5\x6E\x8E\x18\x91\x8E\x71\x40\x83\x23\x90\x90\x81\x8A\x21\xEE\x09\x08\xBD\x2E\x0A\x83\x1C\x94\x81\x19\x23\x03\x2A\x52\xB8\x8D\x24\x6F\x72\x0F\x19\x65\x0E\x8E\xC7\x6B\x03\x2A\xAF\x87\x97\x27\x86\x3B\x94\x2A\xAF\x0E\x8A\x68\x59\x8B\xCF\x7F\x82\x94\x14\x13\x2E\x97\xB2\x89\x97\x2A\xB5\x8E\x34\x29\x5A\x88\x68\x73\x86\x95\x51\x4A\x94\x90\x49\x93\x0E\x56\x50\x8D\x97\x1C\xB1\x95\x28\x6A\x8D\x9B\x93\xCF\x97\x54\x1B\x36\x98\x96\x2C\x92\x9A\x94\xD4\x65\x29\x38\xD7\x91\x8D\x6C\x90\x8D\x93\xA8\x90\x6C\x1B\x0E\x70\x99\xA2\x2D\x9C\x9C\x43\x86\x9C\x1B\x44\x97\x87\x6F\xAF\x75\x37\x5F\x85\x29\x3E\xF0\x90\x68\x2E\x6C\x0E\x4B\xED\x40\x7E\xF8\x72\x0E\x70\xC9\x45\x2E\xA0\xFC\x83\x6E\x3F\x80\xA0\x0F\x44\x8B\x93\x8E\x30\x85\x29\x44\x89\xAB\x4B\x2E\x74\x0F\x4B\x47\x93\x8F\xEC\x45\x2B\xA2\x42\x93\x4F\x67\x6D\x1E\x44\x90\x51\x97\x98\x5E\xB7\x9D\x0C\x3D\x83\x23\x0F\x99\x9A\x06\x24\x22\xA1\x48\x48\x1A\x74\x19\x5D\x2E\x71\x0C\x13\x2E\xA6\x04\x8E\xA7\x8F\x41\x48\x7F\xD2\x6B\x8B\x7F\xB5\x68\x08\x15\x40\x7A\x80\x82\x90\xA7\x85\x3F\xAA\x6C\xE5\x4C\x05\x0C\x33\x34\x0F\xA5\x24\xBB\x94\x23\xD8\x69\xA8\xD4\x53\x67\x0D\x9F\x70\x50\xE7\x46\xA2\x94\x65\x83\x24\x99\x2C\xB4\x47\x19\x68\x0F\xA9\x9D\x91\xAB\x8B\x73\x83\x81\x51\x6A\xA4\x90\xA8\xAC\x0F\x7F\x80\x96\x6D\x55\xDC\x6B\x4A\x38\x2E\xAE\x9E\x65\x6A\x8C\x01\xD6\x0E\xAD\x98\xB2\x24\xA6\x73\x98\xA5\x51\x02\xB4\x90\xBE\xA6\xAB\x9D\x73\x86\x7E\x40\x7A\x7A\xA9\xDA\x56\x0B\xA8\x9D\x6B\x83\x49\x96\x92\x20\x4C\x80\xAF\x65\x48\x42\x0E\x40\x87\x68\xAF\xB9\x5B\x03\x2A\x9F\xA4\x81\x66\x9B\xB2\xB3\xAA\x55\x03\x2A\xA7\xA2\xB5\x92\x2D\x88\xA8\x02\x8D\x08\x3A\xF6\x2E\x36\x1B\x65\x04\x7F\x09\xA7\xA6\xAB\x02\x20\xAF\x65\xBA\x03\x0A\xDE\x5D\x2A\xB6\xB4\xB1\x4A\x6D\xF9\xA8\x29\x95\xBB\xB6\xA1\x5B\xBD\xB1\xE0\x03\x73\xAE\xCA\x4E\xA6\x8C\xCA\xA5\x0E\x07\x53\x23\xBA\xD7\xB1\x25\x0E\xF4\x96\x31\x69\xF3\x66\xA1\x81\x08\xA4\xA5\x15\xBF\x9F\x45\xED\x59\xBB\x1C\x80\x4E\x7D\x71\xA8\x2A\x65\x8D\xB8\xB3\x85\xA3\xBA\x82\x25\xAE\x73\x1D\xC5\x23\xBE\x42\xA1\xBC\xA1\xDC\x97\x8A\x2E\xE8\xA2\x95\x94\x82\x26\xB8\xEC\xB0\x66\x7B\xDF\x4E\xA0\xC7\x61\x9B\x20\xE3\x80\xBF\x80\xE4\xB6\x86\x63\x92\xA9\x99\xA5\x8D\xB9\xED\x77\xBF\xBD\xEC\xBD\x34\xAB\x27\xA1\xB5\x51\x1A\xC6\xBF\x05\xF0\x09\x8D\xC5\xB2\xC0\xD3\x75\x0E\x28\xD5\x75\x4F\xA2\x05\x55\xA7\x4D\xA2\xC2\xC1\x02\x76\x3F\xC3\x73\x97\x65\x51\x32\xC4\x91\x32\x72\x23\x87\x73\x9E\x2C",
+				};
+
+			class DarkSkinResourceLoaderPlugin : public Object, public IGuiPlugin
+			{
+			public:
+
+				GUI_PLUGIN_NAME(GacGen_DarkSkinResourceLoader)
+				{
+					GUI_PLUGIN_DEPEND(GacUI_Res_Resource);
+					GUI_PLUGIN_DEPEND(GacUI_Res_TypeResolvers);
+#ifndef VCZH_DEBUG_NO_REFLECTION
+					GUI_PLUGIN_DEPEND(GacUI_Instance_Reflection);
+					GUI_PLUGIN_DEPEND(GacUI_Compiler_WorkflowTypeResolvers);
+#endif
+				}
+
+				void Load()override
+				{
+					List<GuiResourceError> errors;
+					MemoryStream resourceStream;
+					DarkSkinResourceReader::ReadToStream(resourceStream);
+					resourceStream.SeekFromBegin(0);
+					GetResourceManager()->LoadResourceOrPending(resourceStream, GuiResourceUsage::InstanceClass);
+				}
+
+				void Unload()override
+				{
+				}
+			};
+			GUI_REGISTER_PLUGIN(DarkSkinResourceLoaderPlugin)
+		}
+	}
+}
 

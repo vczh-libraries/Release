@@ -42,15 +42,15 @@ namespace vl_workflow_global
 namespace helloworld
 {
 	class MainWindowConstructor;
+	class MainWindow;
 }
 namespace vm
 {
 	class IViewModel;
+
 }
 namespace helloworld
 {
-	class MainWindow;
-
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc1_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription;

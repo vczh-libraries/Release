@@ -2455,6 +2455,49 @@ Class (::demo::NewContactWindowConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::NewContactWindow)
+***********************************************************************/
+
+	bool NewContactWindow::GetForEdit()
+	{
+		return this->__vwsn_prop_ForEdit;
+	}
+	void NewContactWindow::SetForEdit(bool __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_ForEdit != __vwsn_value_))
+		{
+			(this->__vwsn_prop_ForEdit = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->ForEditChanged)();
+		}
+	}
+
+	void NewContactWindow::SetContact(::vl::Ptr<::demo::IContact> value)
+	{
+		(this->contact = value);
+		::vl::__vwsn::This(this->textBoxName)->SetText(::vl::__vwsn::This(this->contact.Obj())->GetName());
+		::vl::__vwsn::This(this->textBoxPhone)->SetText(::vl::__vwsn::This(this->contact.Obj())->GetPhone());
+		::vl::__vwsn::This(this->textBoxAddress)->SetText(::vl::__vwsn::This(this->contact.Obj())->GetAddress());
+		::vl::__vwsn::This(this->datePickerBirthday)->SetDate(::vl::__vwsn::This(this->contact.Obj())->GetBirthday());
+	}
+
+	NewContactWindow::NewContactWindow()
+		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
+		, __vwsn_prop_ForEdit(false)
+		, Ready(false)
+		, contact(::vl::Ptr<::demo::IContact>())
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::NewContactWindow", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_NewContactWindow_Initialize(this);
+	}
+
+	NewContactWindow::~NewContactWindow()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::NewFolderWindowConstructor)
 ***********************************************************************/
 
@@ -2619,49 +2662,6 @@ Class (::demo::NewFolderWindowConstructor)
 		, __vwsn_precompile_10(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_11(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
-	}
-
-/***********************************************************************
-Class (::demo::NewContactWindow)
-***********************************************************************/
-
-	bool NewContactWindow::GetForEdit()
-	{
-		return this->__vwsn_prop_ForEdit;
-	}
-	void NewContactWindow::SetForEdit(bool __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_ForEdit != __vwsn_value_))
-		{
-			(this->__vwsn_prop_ForEdit = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->ForEditChanged)();
-		}
-	}
-
-	void NewContactWindow::SetContact(::vl::Ptr<::demo::IContact> value)
-	{
-		(this->contact = value);
-		::vl::__vwsn::This(this->textBoxName)->SetText(::vl::__vwsn::This(this->contact.Obj())->GetName());
-		::vl::__vwsn::This(this->textBoxPhone)->SetText(::vl::__vwsn::This(this->contact.Obj())->GetPhone());
-		::vl::__vwsn::This(this->textBoxAddress)->SetText(::vl::__vwsn::This(this->contact.Obj())->GetAddress());
-		::vl::__vwsn::This(this->datePickerBirthday)->SetDate(::vl::__vwsn::This(this->contact.Obj())->GetBirthday());
-	}
-
-	NewContactWindow::NewContactWindow()
-		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
-		, __vwsn_prop_ForEdit(false)
-		, Ready(false)
-		, contact(::vl::Ptr<::demo::IContact>())
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::NewContactWindow", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_NewContactWindow_Initialize(this);
-	}
-
-	NewContactWindow::~NewContactWindow()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
 	}
 
 /***********************************************************************

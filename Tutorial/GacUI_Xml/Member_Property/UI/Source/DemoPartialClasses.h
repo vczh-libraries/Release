@@ -36,8 +36,8 @@ namespace vl_workflow_global
 namespace demo
 {
 	class MainWindowConstructor;
-	class MyControlConstructor;
 	class MainWindow;
+	class MyControlConstructor;
 	class MyControl;
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
@@ -55,6 +55,19 @@ namespace demo
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
+	};
+
+	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	{
+		friend class ::demo::MainWindowConstructor;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+#endif
+	public:
+		MainWindow();
+		~MainWindow();
 	};
 
 	class MyControlConstructor : public ::vl::Object, public ::vl::reflection::Description<MyControlConstructor>
@@ -80,19 +93,6 @@ namespace demo
 		void __vwsn_demo_MyControl_Initialize(::demo::MyControl* __vwsn_this_);
 	public:
 		MyControlConstructor();
-	};
-
-	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
-	{
-		friend class ::demo::MainWindowConstructor;
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
-#endif
-	public:
-		MainWindow();
-		~MainWindow();
 	};
 
 	class MyControl : public ::vl::presentation::controls::GuiCustomControl, public ::demo::MyControlConstructor, public ::vl::reflection::Description<MyControl>

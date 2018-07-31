@@ -2348,6 +2348,38 @@ namespace demo
 	}
 
 /***********************************************************************
+Class (::demo::CategoryDisplayer)
+***********************************************************************/
+
+	::demo::MyCategory CategoryDisplayer::GetCategory()
+	{
+		return this->__vwsn_prop_Category;
+	}
+	void CategoryDisplayer::SetCategory(::demo::MyCategory __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_Category != __vwsn_value_))
+		{
+			(this->__vwsn_prop_Category = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->CategoryChanged)();
+		}
+	}
+
+	CategoryDisplayer::CategoryDisplayer()
+		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
+		, __vwsn_prop_Category(::demo::MyCategory::Black)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryDisplayer", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_CategoryDisplayer_Initialize(this);
+	}
+
+	CategoryDisplayer::~CategoryDisplayer()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::CategoryEditorConstructor)
 ***********************************************************************/
 
@@ -2403,6 +2435,24 @@ Class (::demo::CategoryEditorConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::CategoryEditor)
+***********************************************************************/
+
+	CategoryEditor::CategoryEditor()
+		: items((::vl::__vwsn::CreateList().Add(::demo::MyCategory::Black).Add(::demo::MyCategory::Red).Add(::demo::MyCategory::Lime).Add(::demo::MyCategory::Blue).Add(::demo::MyCategory::White)).list)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryEditor", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_CategoryEditor_Initialize(this);
+	}
+
+	CategoryEditor::~CategoryEditor()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::CategoryItemTemplateConstructor)
 ***********************************************************************/
 
@@ -2440,6 +2490,30 @@ Class (::demo::CategoryItemTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::CategoryItemTemplate)
+***********************************************************************/
+
+	::demo::MyCategory CategoryItemTemplate::GetSelectedCategory()
+	{
+		return this->__vwsn_parameter_SelectedCategory;
+	}
+
+	CategoryItemTemplate::CategoryItemTemplate(::demo::MyCategory __vwsn_ctor_parameter_SelectedCategory)
+		: __vwsn_parameter_SelectedCategory(static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0))))
+	{
+		(this->__vwsn_parameter_SelectedCategory = __vwsn_ctor_parameter_SelectedCategory);
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryItemTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_CategoryItemTemplate_Initialize(this);
+	}
+
+	CategoryItemTemplate::~CategoryItemTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::CategoryVisualizerConstructor)
 ***********************************************************************/
 
@@ -2471,6 +2545,23 @@ Class (::demo::CategoryVisualizerConstructor)
 		, __vwsn_precompile_0(static_cast<::demo::CategoryDisplayer*>(nullptr))
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::demo::CategoryVisualizer)
+***********************************************************************/
+
+	CategoryVisualizer::CategoryVisualizer()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryVisualizer", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_CategoryVisualizer_Initialize(this);
+	}
+
+	CategoryVisualizer::~CategoryVisualizer()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -2510,6 +2601,23 @@ Class (::demo::DateEditorConstructor)
 		, comboBox(static_cast<::vl::presentation::controls::GuiDateComboBox*>(nullptr))
 		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::demo::DateEditor)
+***********************************************************************/
+
+	DateEditor::DateEditor()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DateEditor", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_DateEditor_Initialize(this);
+	}
+
+	DateEditor::~DateEditor()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -2656,6 +2764,49 @@ Class (::demo::DateFilterConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::DateFilter)
+***********************************************************************/
+
+	void DateFilter::UpdateFilter()
+	{
+		if ((this->callback != nullptr))
+		{
+			::vl::__vwsn::This(this->callback)->OnProcessorChanged();
+		}
+	}
+
+	::vl::Ptr<::vl::presentation::controls::list::IDataFilter> DateFilter::GetFilter()
+	{
+		return this->__vwsn_prop_Filter;
+	}
+	void DateFilter::SetFilter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter> __vwsn_value_)
+	{
+		(this->__vwsn_prop_Filter = __vwsn_value_);
+	}
+
+	DateFilter::DateFilter()
+		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
+		, callback(static_cast<::vl::presentation::controls::list::IDataProcessorCallback*>(nullptr))
+		, __vwsn_prop_Filter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter>())
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DateFilter", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_DateFilter_Initialize(this);
+		this->__vwsn_instance_ctor_();
+	}
+
+	void DateFilter::__vwsn_instance_ctor_()
+	{
+		this->SetFilter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter>(new ::vl_workflow_global::__vwsnc10_Demo_demo_DateFilter___vwsn_instance_ctor___vl_presentation_controls_list_IDataFilter(this)));
+	}
+
+	DateFilter::~DateFilter()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::GenderDisplayerConstructor)
 ***********************************************************************/
 
@@ -2694,6 +2845,38 @@ Class (::demo::GenderDisplayerConstructor)
 		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement>())
 	{
+	}
+
+/***********************************************************************
+Class (::demo::GenderDisplayer)
+***********************************************************************/
+
+	::demo::MyGender GenderDisplayer::GetGender()
+	{
+		return this->__vwsn_prop_Gender;
+	}
+	void GenderDisplayer::SetGender(::demo::MyGender __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_Gender != __vwsn_value_))
+		{
+			(this->__vwsn_prop_Gender = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->GenderChanged)();
+		}
+	}
+
+	GenderDisplayer::GenderDisplayer()
+		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
+		, __vwsn_prop_Gender(::demo::MyGender::Male)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderDisplayer", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_GenderDisplayer_Initialize(this);
+	}
+
+	GenderDisplayer::~GenderDisplayer()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
 	}
 
 /***********************************************************************
@@ -2752,6 +2935,24 @@ Class (::demo::GenderEditorConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::GenderEditor)
+***********************************************************************/
+
+	GenderEditor::GenderEditor()
+		: items((::vl::__vwsn::CreateList().Add(::demo::MyGender::Male).Add(::demo::MyGender::Female)).list)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderEditor", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_GenderEditor_Initialize(this);
+	}
+
+	GenderEditor::~GenderEditor()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::GenderItemTemplateConstructor)
 ***********************************************************************/
 
@@ -2784,6 +2985,30 @@ Class (::demo::GenderItemTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::GenderItemTemplate)
+***********************************************************************/
+
+	::demo::MyGender GenderItemTemplate::GetSelectedGender()
+	{
+		return this->__vwsn_parameter_SelectedGender;
+	}
+
+	GenderItemTemplate::GenderItemTemplate(::demo::MyGender __vwsn_ctor_parameter_SelectedGender)
+		: __vwsn_parameter_SelectedGender(static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0))))
+	{
+		(this->__vwsn_parameter_SelectedGender = __vwsn_ctor_parameter_SelectedGender);
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderItemTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_GenderItemTemplate_Initialize(this);
+	}
+
+	GenderItemTemplate::~GenderItemTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::GenderVisualizerConstructor)
 ***********************************************************************/
 
@@ -2810,6 +3035,23 @@ Class (::demo::GenderVisualizerConstructor)
 		, __vwsn_precompile_0(static_cast<::demo::GenderDisplayer*>(nullptr))
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::demo::GenderVisualizer)
+***********************************************************************/
+
+	GenderVisualizer::GenderVisualizer()
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderVisualizer", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_GenderVisualizer_Initialize(this);
+	}
+
+	GenderVisualizer::~GenderVisualizer()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -3146,6 +3388,45 @@ Class (::demo::MainWindowConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::MainWindow)
+***********************************************************************/
+
+	MainWindow::MainWindow()
+		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
+		this->__vwsn_instance_ctor_();
+	}
+
+	void MainWindow::__vwsn_instance_ctor_()
+	{
+		auto tempData = (::vl::__vwsn::CreateObservableList().Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"涼宮 春日", false), ::demo::MyGender::Female, ::demo::MyCategory::Lime, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1988-08-08 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"キョン", false), ::demo::MyGender::Male, ::demo::MyCategory::Black, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1988-08-08 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"长门 有希", false), ::demo::MyGender::Female, ::demo::MyCategory::White, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-08-06 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"朝比奈 实玖瑠", false), ::demo::MyGender::Female, ::demo::MyCategory::Red, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1987-08-30 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"古泉 一树", false), ::demo::MyGender::Male, ::demo::MyCategory::Blue, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1986-08-12 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false))))).list;
+		auto largeImage = ::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(this->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Large", false), true).Obj()));
+		auto smallImage = ::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(this->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Small", false), true).Obj()));
+		{
+			auto __vwsn_for_enumerable_item = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(tempData);
+			auto __vwsn_for_enumerator_item = ::vl::__vwsn::This(__vwsn_for_enumerable_item.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_item.Obj())->Next())
+			{
+				auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(::vl::__vwsn::This(__vwsn_for_enumerator_item.Obj())->GetCurrent());
+				{
+					::vl::__vwsn::This(item.Obj())->SetLargeImage(largeImage);
+					::vl::__vwsn::This(item.Obj())->SetSmallImage(smallImage);
+				}
+			}
+		}
+		::vl::__vwsn::This(this->dataGrid)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(tempData));
+	}
+
+	MainWindow::~MainWindow()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::MyDataItem)
 ***********************************************************************/
 
@@ -3283,287 +3564,6 @@ Class (::demo::TextEditorConstructor)
 		, textBox(static_cast<::vl::presentation::controls::GuiSinglelineTextBox*>(nullptr))
 		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
-	}
-
-/***********************************************************************
-Class (::demo::CategoryDisplayer)
-***********************************************************************/
-
-	::demo::MyCategory CategoryDisplayer::GetCategory()
-	{
-		return this->__vwsn_prop_Category;
-	}
-	void CategoryDisplayer::SetCategory(::demo::MyCategory __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_Category != __vwsn_value_))
-		{
-			(this->__vwsn_prop_Category = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->CategoryChanged)();
-		}
-	}
-
-	CategoryDisplayer::CategoryDisplayer()
-		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
-		, __vwsn_prop_Category(::demo::MyCategory::Black)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryDisplayer", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_CategoryDisplayer_Initialize(this);
-	}
-
-	CategoryDisplayer::~CategoryDisplayer()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::CategoryEditor)
-***********************************************************************/
-
-	CategoryEditor::CategoryEditor()
-		: items((::vl::__vwsn::CreateList().Add(::demo::MyCategory::Black).Add(::demo::MyCategory::Red).Add(::demo::MyCategory::Lime).Add(::demo::MyCategory::Blue).Add(::demo::MyCategory::White)).list)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryEditor", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_CategoryEditor_Initialize(this);
-	}
-
-	CategoryEditor::~CategoryEditor()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::CategoryItemTemplate)
-***********************************************************************/
-
-	::demo::MyCategory CategoryItemTemplate::GetSelectedCategory()
-	{
-		return this->__vwsn_parameter_SelectedCategory;
-	}
-
-	CategoryItemTemplate::CategoryItemTemplate(::demo::MyCategory __vwsn_ctor_parameter_SelectedCategory)
-		: __vwsn_parameter_SelectedCategory(static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0))))
-	{
-		(this->__vwsn_parameter_SelectedCategory = __vwsn_ctor_parameter_SelectedCategory);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryItemTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_CategoryItemTemplate_Initialize(this);
-	}
-
-	CategoryItemTemplate::~CategoryItemTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::CategoryVisualizer)
-***********************************************************************/
-
-	CategoryVisualizer::CategoryVisualizer()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryVisualizer", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_CategoryVisualizer_Initialize(this);
-	}
-
-	CategoryVisualizer::~CategoryVisualizer()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::DateEditor)
-***********************************************************************/
-
-	DateEditor::DateEditor()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DateEditor", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_DateEditor_Initialize(this);
-	}
-
-	DateEditor::~DateEditor()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::DateFilter)
-***********************************************************************/
-
-	void DateFilter::UpdateFilter()
-	{
-		if ((this->callback != nullptr))
-		{
-			::vl::__vwsn::This(this->callback)->OnProcessorChanged();
-		}
-	}
-
-	::vl::Ptr<::vl::presentation::controls::list::IDataFilter> DateFilter::GetFilter()
-	{
-		return this->__vwsn_prop_Filter;
-	}
-	void DateFilter::SetFilter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter> __vwsn_value_)
-	{
-		(this->__vwsn_prop_Filter = __vwsn_value_);
-	}
-
-	DateFilter::DateFilter()
-		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
-		, callback(static_cast<::vl::presentation::controls::list::IDataProcessorCallback*>(nullptr))
-		, __vwsn_prop_Filter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter>())
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DateFilter", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_DateFilter_Initialize(this);
-		this->__vwsn_instance_ctor_();
-	}
-
-	void DateFilter::__vwsn_instance_ctor_()
-	{
-		this->SetFilter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter>(new ::vl_workflow_global::__vwsnc10_Demo_demo_DateFilter___vwsn_instance_ctor___vl_presentation_controls_list_IDataFilter(this)));
-	}
-
-	DateFilter::~DateFilter()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::GenderDisplayer)
-***********************************************************************/
-
-	::demo::MyGender GenderDisplayer::GetGender()
-	{
-		return this->__vwsn_prop_Gender;
-	}
-	void GenderDisplayer::SetGender(::demo::MyGender __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_Gender != __vwsn_value_))
-		{
-			(this->__vwsn_prop_Gender = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->GenderChanged)();
-		}
-	}
-
-	GenderDisplayer::GenderDisplayer()
-		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
-		, __vwsn_prop_Gender(::demo::MyGender::Male)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderDisplayer", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_GenderDisplayer_Initialize(this);
-	}
-
-	GenderDisplayer::~GenderDisplayer()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::GenderEditor)
-***********************************************************************/
-
-	GenderEditor::GenderEditor()
-		: items((::vl::__vwsn::CreateList().Add(::demo::MyGender::Male).Add(::demo::MyGender::Female)).list)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderEditor", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_GenderEditor_Initialize(this);
-	}
-
-	GenderEditor::~GenderEditor()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::GenderItemTemplate)
-***********************************************************************/
-
-	::demo::MyGender GenderItemTemplate::GetSelectedGender()
-	{
-		return this->__vwsn_parameter_SelectedGender;
-	}
-
-	GenderItemTemplate::GenderItemTemplate(::demo::MyGender __vwsn_ctor_parameter_SelectedGender)
-		: __vwsn_parameter_SelectedGender(static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0))))
-	{
-		(this->__vwsn_parameter_SelectedGender = __vwsn_ctor_parameter_SelectedGender);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderItemTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_GenderItemTemplate_Initialize(this);
-	}
-
-	GenderItemTemplate::~GenderItemTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::GenderVisualizer)
-***********************************************************************/
-
-	GenderVisualizer::GenderVisualizer()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderVisualizer", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_GenderVisualizer_Initialize(this);
-	}
-
-	GenderVisualizer::~GenderVisualizer()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::MainWindow)
-***********************************************************************/
-
-	MainWindow::MainWindow()
-		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
-		this->__vwsn_instance_ctor_();
-	}
-
-	void MainWindow::__vwsn_instance_ctor_()
-	{
-		auto tempData = (::vl::__vwsn::CreateObservableList().Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"涼宮 春日", false), ::demo::MyGender::Female, ::demo::MyCategory::Lime, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1988-08-08 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"キョン", false), ::demo::MyGender::Male, ::demo::MyCategory::Black, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1988-08-08 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"长门 有希", false), ::demo::MyGender::Female, ::demo::MyCategory::White, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-08-06 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"朝比奈 实玖瑠", false), ::demo::MyGender::Female, ::demo::MyCategory::Red, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1987-08-30 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"古泉 一树", false), ::demo::MyGender::Male, ::demo::MyCategory::Blue, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1986-08-12 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false))))).list;
-		auto largeImage = ::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(this->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Large", false), true).Obj()));
-		auto smallImage = ::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(this->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Small", false), true).Obj()));
-		{
-			auto __vwsn_for_enumerable_item = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(tempData);
-			auto __vwsn_for_enumerator_item = ::vl::__vwsn::This(__vwsn_for_enumerable_item.Obj())->CreateEnumerator();
-			while (::vl::__vwsn::This(__vwsn_for_enumerator_item.Obj())->Next())
-			{
-				auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(::vl::__vwsn::This(__vwsn_for_enumerator_item.Obj())->GetCurrent());
-				{
-					::vl::__vwsn::This(item.Obj())->SetLargeImage(largeImage);
-					::vl::__vwsn::This(item.Obj())->SetSmallImage(smallImage);
-				}
-			}
-		}
-		::vl::__vwsn::This(this->dataGrid)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(tempData));
-	}
-
-	MainWindow::~MainWindow()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
 	}
 
 /***********************************************************************

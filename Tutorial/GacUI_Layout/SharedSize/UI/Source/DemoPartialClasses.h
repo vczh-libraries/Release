@@ -48,15 +48,15 @@ namespace vl_workflow_global
 namespace demo
 {
 	class EnglishNumbersControllerConstructor;
+	class EnglishNumbersController;
 	class EnglishNumbersControllerTabPageConstructor;
+	class EnglishNumbersControllerTabPage;
 	class MainWindowConstructor;
+	class MainWindow;
 	class MyTextItem;
 	class SharedSizeItemTemplateConstructor;
-	class SharedSizeTextItemTemplateConstructor;
-	class EnglishNumbersController;
-	class EnglishNumbersControllerTabPage;
-	class MainWindow;
 	class SharedSizeItemTemplate;
+	class SharedSizeTextItemTemplateConstructor;
 	class SharedSizeTextItemTemplate;
 
 	class EnglishNumbersControllerConstructor : public ::vl::Object, public ::vl::reflection::Description<EnglishNumbersControllerConstructor>
@@ -97,6 +97,36 @@ namespace demo
 		EnglishNumbersControllerConstructor();
 	};
 
+	class EnglishNumbersController : public ::vl::presentation::controls::GuiCustomControl, public ::demo::EnglishNumbersControllerConstructor, public ::vl::reflection::Description<EnglishNumbersController>
+	{
+		friend class ::demo::EnglishNumbersControllerConstructor;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersController>;
+#endif
+	private:
+		::vl::vint counter;
+	public:
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsn_prop_ItemsToBind;
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> GetItemsToBind();
+		void SetItemsToBind(::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsn_value_);
+	private:
+		::vl::WString ToText_1to9(::vl::vint i);
+		::vl::WString ToText_11to19(::vl::vint i);
+		::vl::WString NumberToText_1To99(::vl::vint i);
+		::vl::WString NumberToText_0to999(::vl::vint i);
+		::vl::WString NumberToText(::vl::vint i);
+	public:
+		EnglishNumbersController();
+		~EnglishNumbersController();
+	};
+
 	class EnglishNumbersControllerTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<EnglishNumbersControllerTabPageConstructor>
 	{
 #ifndef VCZH_DEBUG_NO_REFLECTION
@@ -112,6 +142,24 @@ namespace demo
 		void __vwsn_demo_EnglishNumbersControllerTabPage_Initialize(::demo::EnglishNumbersControllerTabPage* __vwsn_this_);
 	public:
 		EnglishNumbersControllerTabPageConstructor();
+	};
+
+	class EnglishNumbersControllerTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::EnglishNumbersControllerTabPageConstructor, public ::vl::reflection::Description<EnglishNumbersControllerTabPage>
+	{
+		friend class ::demo::EnglishNumbersControllerTabPageConstructor;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersControllerTabPage>;
+#endif
+	public:
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsn_prop_ItemsToBind;
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> GetItemsToBind();
+		void SetItemsToBind(::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsn_value_);
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_prop_ContentComposition;
+		::vl::presentation::compositions::GuiGraphicsComposition* GetContentComposition();
+		void SetContentComposition(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_value_);
+		EnglishNumbersControllerTabPage();
+		void __vwsn_instance_ctor_();
+		~EnglishNumbersControllerTabPage();
 	};
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
@@ -140,6 +188,20 @@ namespace demo
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
+	};
+
+	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	{
+		friend class ::demo::MainWindowConstructor;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+#endif
+	public:
+		MainWindow();
+		~MainWindow();
 	};
 
 	class MyTextItem : public ::vl::Object, public ::vl::reflection::Description<MyTextItem>
@@ -178,6 +240,21 @@ namespace demo
 		SharedSizeItemTemplateConstructor();
 	};
 
+	class SharedSizeItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::SharedSizeItemTemplateConstructor, public ::vl::reflection::Description<SharedSizeItemTemplate>
+	{
+		friend class ::demo::SharedSizeItemTemplateConstructor;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeItemTemplate>;
+#endif
+	public:
+		::vl::Ptr<::demo::MyTextItem> __vwsn_parameter_ViewModel;
+		::vl::Ptr<::demo::MyTextItem> GetViewModel();
+		SharedSizeItemTemplate(::vl::Ptr<::demo::MyTextItem> __vwsn_ctor_parameter_ViewModel);
+		~SharedSizeItemTemplate();
+	};
+
 	class SharedSizeTextItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<SharedSizeTextItemTemplateConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
@@ -197,83 +274,6 @@ namespace demo
 		void __vwsn_demo_SharedSizeTextItemTemplate_Initialize(::demo::SharedSizeTextItemTemplate* __vwsn_this_);
 	public:
 		SharedSizeTextItemTemplateConstructor();
-	};
-
-	class EnglishNumbersController : public ::vl::presentation::controls::GuiCustomControl, public ::demo::EnglishNumbersControllerConstructor, public ::vl::reflection::Description<EnglishNumbersController>
-	{
-		friend class ::demo::EnglishNumbersControllerConstructor;
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersController>;
-#endif
-	private:
-		::vl::vint counter;
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsn_prop_ItemsToBind;
-		::vl::Ptr<::vl::reflection::description::IValueObservableList> GetItemsToBind();
-		void SetItemsToBind(::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsn_value_);
-	private:
-		::vl::WString ToText_1to9(::vl::vint i);
-		::vl::WString ToText_11to19(::vl::vint i);
-		::vl::WString NumberToText_1To99(::vl::vint i);
-		::vl::WString NumberToText_0to999(::vl::vint i);
-		::vl::WString NumberToText(::vl::vint i);
-	public:
-		EnglishNumbersController();
-		~EnglishNumbersController();
-	};
-
-	class EnglishNumbersControllerTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::EnglishNumbersControllerTabPageConstructor, public ::vl::reflection::Description<EnglishNumbersControllerTabPage>
-	{
-		friend class ::demo::EnglishNumbersControllerTabPageConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersControllerTabPage>;
-#endif
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsn_prop_ItemsToBind;
-		::vl::Ptr<::vl::reflection::description::IValueObservableList> GetItemsToBind();
-		void SetItemsToBind(::vl::Ptr<::vl::reflection::description::IValueObservableList> __vwsn_value_);
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_prop_ContentComposition;
-		::vl::presentation::compositions::GuiGraphicsComposition* GetContentComposition();
-		void SetContentComposition(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_value_);
-		EnglishNumbersControllerTabPage();
-		void __vwsn_instance_ctor_();
-		~EnglishNumbersControllerTabPage();
-	};
-
-	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
-	{
-		friend class ::demo::MainWindowConstructor;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
-#endif
-	public:
-		MainWindow();
-		~MainWindow();
-	};
-
-	class SharedSizeItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::SharedSizeItemTemplateConstructor, public ::vl::reflection::Description<SharedSizeItemTemplate>
-	{
-		friend class ::demo::SharedSizeItemTemplateConstructor;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeItemTemplate>;
-#endif
-	public:
-		::vl::Ptr<::demo::MyTextItem> __vwsn_parameter_ViewModel;
-		::vl::Ptr<::demo::MyTextItem> GetViewModel();
-		SharedSizeItemTemplate(::vl::Ptr<::demo::MyTextItem> __vwsn_ctor_parameter_ViewModel);
-		~SharedSizeItemTemplate();
 	};
 
 	class SharedSizeTextItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::SharedSizeTextItemTemplateConstructor, public ::vl::reflection::Description<SharedSizeTextItemTemplate>

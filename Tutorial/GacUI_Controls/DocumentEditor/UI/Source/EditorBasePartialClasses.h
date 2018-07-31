@@ -121,8 +121,8 @@ namespace vl_workflow_global
 namespace demo
 {
 	class DocumentEditorBaseConstructor;
-	class HyperlinkWindowConstructor;
 	class DocumentEditorBase;
+	class HyperlinkWindowConstructor;
 	class HyperlinkWindow;
 
 	class DocumentEditorBaseConstructor : public ::vl::Object, public ::vl::reflection::Description<DocumentEditorBaseConstructor>

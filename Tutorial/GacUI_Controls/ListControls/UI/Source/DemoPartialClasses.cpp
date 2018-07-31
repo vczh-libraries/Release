@@ -1011,6 +1011,33 @@ namespace demo
 	}
 
 /***********************************************************************
+Class (::demo::ListViewTabPage)
+***********************************************************************/
+
+	ListViewTabPage::ListViewTabPage()
+		: ::vl::presentation::controls::GuiTabPage(::vl::presentation::theme::ThemeName::CustomControl)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::ListViewTabPage", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_ListViewTabPage_Initialize(this);
+		this->__vwsn_instance_ctor_();
+	}
+
+	void ListViewTabPage::__vwsn_instance_ctor_()
+	{
+		GLOBAL_NAME LoadListView(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this), LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(this)));
+		auto itemsToBind = ::vl::reflection::description::IValueObservableList::Create();
+		GLOBAL_NAME LoadListView(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this), LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(itemsToBind, this)));
+		::vl::__vwsn::This(this->bindableListView)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(itemsToBind));
+	}
+
+	ListViewTabPage::~ListViewTabPage()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::MainWindowConstructor)
 ***********************************************************************/
 
@@ -1072,6 +1099,24 @@ Class (::demo::MainWindowConstructor)
 		, __vwsn_precompile_4(static_cast<::demo::TreeViewTabPage*>(nullptr))
 		, __vwsn_precompile_5(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::demo::MainWindow)
+***********************************************************************/
+
+	MainWindow::MainWindow()
+		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
+	}
+
+	MainWindow::~MainWindow()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
 	}
 
 /***********************************************************************
@@ -1408,6 +1453,26 @@ Class (::demo::TextListTabPageConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::TextListTabPage)
+***********************************************************************/
+
+	TextListTabPage::TextListTabPage()
+		: ::vl::presentation::controls::GuiTabPage(::vl::presentation::theme::ThemeName::CustomControl)
+		, counter(static_cast<::vl::vint>(0))
+		, itemsToBind(::vl::reflection::description::IValueObservableList::Create())
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::TextListTabPage", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_TextListTabPage_Initialize(this);
+	}
+
+	TextListTabPage::~TextListTabPage()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::TreeViewTabPageConstructor)
 ***********************************************************************/
 
@@ -1731,71 +1796,6 @@ Class (::demo::TreeViewTabPageConstructor)
 		, __vwsn_precompile_48(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
 		, __vwsn_precompile_49(::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>())
 	{
-	}
-
-/***********************************************************************
-Class (::demo::ListViewTabPage)
-***********************************************************************/
-
-	ListViewTabPage::ListViewTabPage()
-		: ::vl::presentation::controls::GuiTabPage(::vl::presentation::theme::ThemeName::CustomControl)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::ListViewTabPage", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_ListViewTabPage_Initialize(this);
-		this->__vwsn_instance_ctor_();
-	}
-
-	void ListViewTabPage::__vwsn_instance_ctor_()
-	{
-		GLOBAL_NAME LoadListView(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this), LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(this)));
-		auto itemsToBind = ::vl::reflection::description::IValueObservableList::Create();
-		GLOBAL_NAME LoadListView(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this), LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(itemsToBind, this)));
-		::vl::__vwsn::This(this->bindableListView)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(itemsToBind));
-	}
-
-	ListViewTabPage::~ListViewTabPage()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::MainWindow)
-***********************************************************************/
-
-	MainWindow::MainWindow()
-		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
-	}
-
-	MainWindow::~MainWindow()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::TextListTabPage)
-***********************************************************************/
-
-	TextListTabPage::TextListTabPage()
-		: ::vl::presentation::controls::GuiTabPage(::vl::presentation::theme::ThemeName::CustomControl)
-		, counter(static_cast<::vl::vint>(0))
-		, itemsToBind(::vl::reflection::description::IValueObservableList::Create())
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::TextListTabPage", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_TextListTabPage_Initialize(this);
-	}
-
-	TextListTabPage::~TextListTabPage()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
 	}
 
 /***********************************************************************

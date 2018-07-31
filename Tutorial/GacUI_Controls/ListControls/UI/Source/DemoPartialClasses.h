@@ -49,13 +49,13 @@ namespace vl_workflow_global
 namespace demo
 {
 	class ListViewTabPageConstructor;
+	class ListViewTabPage;
 	class MainWindowConstructor;
+	class MainWindow;
 	class MyTextItem;
 	class TextListTabPageConstructor;
-	class TreeViewTabPageConstructor;
-	class ListViewTabPage;
-	class MainWindow;
 	class TextListTabPage;
+	class TreeViewTabPageConstructor;
 	class TreeViewTabPage;
 
 	class ListViewTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<ListViewTabPageConstructor>
@@ -102,6 +102,27 @@ namespace demo
 		ListViewTabPageConstructor();
 	};
 
+	class ListViewTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::ListViewTabPageConstructor, public ::vl::reflection::Description<ListViewTabPage>
+	{
+		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_ListViewTabPage___vwsn_instance_ctor__;
+		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__;
+		friend class ::demo::ListViewTabPageConstructor;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ListViewTabPage>;
+#endif
+	public:
+		ListViewTabPage();
+		void __vwsn_instance_ctor_();
+		~ListViewTabPage();
+	};
+
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
 #ifndef VCZH_DEBUG_NO_REFLECTION
@@ -118,6 +139,17 @@ namespace demo
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
+	};
+
+	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	{
+		friend class ::demo::MainWindowConstructor;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+#endif
+	public:
+		MainWindow();
+		~MainWindow();
 	};
 
 	class MyTextItem : public ::vl::Object, public ::vl::reflection::Description<MyTextItem>
@@ -185,6 +217,26 @@ namespace demo
 		TextListTabPageConstructor();
 	};
 
+	class TextListTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::TextListTabPageConstructor, public ::vl::reflection::Description<TextListTabPage>
+	{
+		friend class ::demo::TextListTabPageConstructor;
+		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextListTabPage>;
+#endif
+	public:
+		::vl::vint counter;
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> itemsToBind;
+		TextListTabPage();
+		~TextListTabPage();
+	};
+
 	class TreeViewTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<TreeViewTabPageConstructor>
 	{
 		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
@@ -250,58 +302,6 @@ namespace demo
 		void __vwsn_demo_TreeViewTabPage_Initialize(::demo::TreeViewTabPage* __vwsn_this_);
 	public:
 		TreeViewTabPageConstructor();
-	};
-
-	class ListViewTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::ListViewTabPageConstructor, public ::vl::reflection::Description<ListViewTabPage>
-	{
-		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_ListViewTabPage___vwsn_instance_ctor__;
-		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__;
-		friend class ::demo::ListViewTabPageConstructor;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ListViewTabPage>;
-#endif
-	public:
-		ListViewTabPage();
-		void __vwsn_instance_ctor_();
-		~ListViewTabPage();
-	};
-
-	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
-	{
-		friend class ::demo::MainWindowConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
-#endif
-	public:
-		MainWindow();
-		~MainWindow();
-	};
-
-	class TextListTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::TextListTabPageConstructor, public ::vl::reflection::Description<TextListTabPage>
-	{
-		friend class ::demo::TextListTabPageConstructor;
-		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextListTabPage>;
-#endif
-	public:
-		::vl::vint counter;
-		::vl::Ptr<::vl::reflection::description::IValueObservableList> itemsToBind;
-		TextListTabPage();
-		~TextListTabPage();
 	};
 
 	class TreeViewTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::TreeViewTabPageConstructor, public ::vl::reflection::Description<TreeViewTabPage>

@@ -52,22 +52,27 @@ namespace vl_workflow_global
 	class __vwsnc9_Demo_demo_TriplePhaseImageButtonTemplateConstructor___vwsn_demo_TriplePhaseImageButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
 }
 
-enum class TripleState : vl::vuint64_t
+namespace __vwsn_enums
 {
-	Normal = 0UL,
-	Checked = 1UL,
-	Partial = 2UL,
-};
-inline TripleState operator& (TripleState a, TripleState b) { return static_cast<TripleState>(static_cast<::vl::vuint64_t>(a) & static_cast<::vl::vuint64_t>(b)); }
-inline TripleState operator| (TripleState a, TripleState b) { return static_cast<TripleState>(static_cast<::vl::vuint64_t>(a) | static_cast<::vl::vuint64_t>(b)); }
+	enum class _TripleState : vl::vuint64_t
+	{
+		Normal = 0UL,
+		Checked = 1UL,
+		Partial = 2UL,
+	};
+	inline _TripleState operator& (_TripleState a, _TripleState b) { return static_cast<_TripleState>(static_cast<::vl::vuint64_t>(a) & static_cast<::vl::vuint64_t>(b)); }
+	inline _TripleState operator| (_TripleState a, _TripleState b) { return static_cast<_TripleState>(static_cast<::vl::vuint64_t>(a) | static_cast<::vl::vuint64_t>(b)); }
+
+}
+using TripleState = ::__vwsn_enums::_TripleState;
 
 namespace demo
 {
 	class MainWindowConstructor;
-	class TriplePhaseButtonConstructor;
-	class TriplePhaseImageButtonTemplateConstructor;
 	class MainWindow;
+	class TriplePhaseButtonConstructor;
 	class TriplePhaseButton;
+	class TriplePhaseImageButtonTemplateConstructor;
 	class TriplePhaseImageButtonTemplate;
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
@@ -94,6 +99,22 @@ namespace demo
 		MainWindowConstructor();
 	};
 
+	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	{
+		friend class ::demo::MainWindowConstructor;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+#endif
+	public:
+		MainWindow();
+		~MainWindow();
+	};
+
 	class TriplePhaseButtonConstructor : public ::vl::Object, public ::vl::reflection::Description<TriplePhaseButtonConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize__vl_reflection_description_IValueSubscription;
@@ -112,6 +133,35 @@ namespace demo
 		void __vwsn_demo_TriplePhaseButton_Initialize(::demo::TriplePhaseButton* __vwsn_this_);
 	public:
 		TriplePhaseButtonConstructor();
+	};
+
+	class TriplePhaseButton : public ::vl::presentation::controls::GuiCustomControl, public ::demo::TriplePhaseButtonConstructor, public ::vl::reflection::Description<TriplePhaseButton>
+	{
+		friend class ::demo::TriplePhaseButtonConstructor;
+		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TriplePhaseButton>;
+#endif
+	public:
+		::TripleState __vwsn_prop_State;
+		::TripleState GetState();
+		void SetState(::TripleState __vwsn_value_);
+		::vl::Event<void()> StateChanged;
+		::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_prop_CheckedImage;
+		::vl::Ptr<::vl::presentation::GuiImageData> GetCheckedImage();
+		void SetCheckedImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_);
+		::vl::Event<void()> CheckedImageChanged;
+		::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_prop_PartialImage;
+		::vl::Ptr<::vl::presentation::GuiImageData> GetPartialImage();
+		void SetPartialImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_);
+		::vl::Event<void()> PartialImageChanged;
+		TriplePhaseButton();
+		~TriplePhaseButton();
 	};
 
 	class TriplePhaseImageButtonTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<TriplePhaseImageButtonTemplateConstructor>
@@ -145,51 +195,6 @@ namespace demo
 		void __vwsn_demo_TriplePhaseImageButtonTemplate_Initialize(::demo::TriplePhaseImageButtonTemplate* __vwsn_this_);
 	public:
 		TriplePhaseImageButtonTemplateConstructor();
-	};
-
-	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
-	{
-		friend class ::demo::MainWindowConstructor;
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
-#endif
-	public:
-		MainWindow();
-		~MainWindow();
-	};
-
-	class TriplePhaseButton : public ::vl::presentation::controls::GuiCustomControl, public ::demo::TriplePhaseButtonConstructor, public ::vl::reflection::Description<TriplePhaseButton>
-	{
-		friend class ::demo::TriplePhaseButtonConstructor;
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TriplePhaseButton>;
-#endif
-	public:
-		::TripleState __vwsn_prop_State;
-		::TripleState GetState();
-		void SetState(::TripleState __vwsn_value_);
-		::vl::Event<void()> StateChanged;
-		::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_prop_CheckedImage;
-		::vl::Ptr<::vl::presentation::GuiImageData> GetCheckedImage();
-		void SetCheckedImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_);
-		::vl::Event<void()> CheckedImageChanged;
-		::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_prop_PartialImage;
-		::vl::Ptr<::vl::presentation::GuiImageData> GetPartialImage();
-		void SetPartialImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_);
-		::vl::Event<void()> PartialImageChanged;
-		TriplePhaseButton();
-		~TriplePhaseButton();
 	};
 
 	class TriplePhaseImageButtonTemplate : public ::vl::presentation::templates::GuiButtonTemplate, public ::demo::TriplePhaseImageButtonTemplateConstructor, public ::vl::reflection::Description<TriplePhaseImageButtonTemplate>

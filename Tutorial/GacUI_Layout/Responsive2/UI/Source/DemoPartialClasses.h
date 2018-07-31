@@ -62,17 +62,17 @@ namespace vl_workflow_global
 namespace demo
 {
 	class AccountButtonTemplateConstructor;
+	class AccountButtonTemplate;
 	class AccountButtonViewModel;
 	class AccountItemTemplateConstructor;
-	class AccountMenuItemTemplateConstructor;
-	class MainWindowConstructor;
-	class VideoItemTemplateConstructor;
-	class VideoViewModel;
-	class AccountButtonTemplate;
 	class AccountItemTemplate;
+	class AccountMenuItemTemplateConstructor;
 	class AccountMenuItemTemplate;
+	class MainWindowConstructor;
 	class MainWindow;
+	class VideoItemTemplateConstructor;
 	class VideoItemTemplate;
+	class VideoViewModel;
 
 	class AccountButtonTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<AccountButtonTemplateConstructor>
 	{
@@ -109,6 +109,35 @@ namespace demo
 		void __vwsn_demo_AccountButtonTemplate_Initialize(::demo::AccountButtonTemplate* __vwsn_this_);
 	public:
 		AccountButtonTemplateConstructor();
+	};
+
+	class AccountButtonTemplate : public ::vl::presentation::templates::GuiSelectableButtonTemplate, public ::demo::AccountButtonTemplateConstructor, public ::vl::reflection::Description<AccountButtonTemplate>
+	{
+		friend class ::demo::AccountButtonTemplateConstructor;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountButtonTemplate>;
+#endif
+	public:
+		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_prop_ViewModel;
+		::vl::Ptr<::demo::AccountButtonViewModel> GetViewModel();
+		void SetViewModel(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_value_);
+		::vl::Event<void()> ViewModelChanged;
+		AccountButtonTemplate();
+		~AccountButtonTemplate();
 	};
 
 	class AccountButtonViewModel : public ::vl::Object, public ::vl::reflection::Description<AccountButtonViewModel>
@@ -153,6 +182,20 @@ namespace demo
 		AccountItemTemplateConstructor();
 	};
 
+	class AccountItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::AccountItemTemplateConstructor, public ::vl::reflection::Description<AccountItemTemplate>
+	{
+		friend class ::demo::AccountItemTemplateConstructor;
+		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_AccountItemTemplateConstructor___vwsn_demo_AccountItemTemplate_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountItemTemplate>;
+#endif
+	public:
+		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_parameter_ViewModel;
+		::vl::Ptr<::demo::AccountButtonViewModel> GetViewModel();
+		AccountItemTemplate(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_ctor_parameter_ViewModel);
+		~AccountItemTemplate();
+	};
+
 	class AccountMenuItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<AccountMenuItemTemplateConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_AccountMenuItemTemplateConstructor___vwsn_demo_AccountMenuItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
@@ -168,6 +211,21 @@ namespace demo
 		void __vwsn_demo_AccountMenuItemTemplate_Initialize(::demo::AccountMenuItemTemplate* __vwsn_this_);
 	public:
 		AccountMenuItemTemplateConstructor();
+	};
+
+	class AccountMenuItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::AccountMenuItemTemplateConstructor, public ::vl::reflection::Description<AccountMenuItemTemplate>
+	{
+		friend class ::demo::AccountMenuItemTemplateConstructor;
+		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_AccountMenuItemTemplateConstructor___vwsn_demo_AccountMenuItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_AccountMenuItemTemplateConstructor___vwsn_demo_AccountMenuItemTemplate_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountMenuItemTemplate>;
+#endif
+	public:
+		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_parameter_ViewModel;
+		::vl::Ptr<::demo::AccountButtonViewModel> GetViewModel();
+		AccountMenuItemTemplate(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_ctor_parameter_ViewModel);
+		~AccountMenuItemTemplate();
 	};
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
@@ -208,6 +266,25 @@ namespace demo
 		MainWindowConstructor();
 	};
 
+	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
+	{
+		friend class ::demo::MainWindowConstructor;
+		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
+#endif
+	public:
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> accounts;
+		::vl::Ptr<::vl::reflection::description::IValueObservableList> videos;
+		MainWindow();
+		void __vwsn_instance_ctor_();
+		~MainWindow();
+	};
+
 	class VideoItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<VideoItemTemplateConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
@@ -240,6 +317,29 @@ namespace demo
 		VideoItemTemplateConstructor();
 	};
 
+	class VideoItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::VideoItemTemplateConstructor, public ::vl::reflection::Description<VideoItemTemplate>
+	{
+		friend class ::demo::VideoItemTemplateConstructor;
+		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc11_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc14_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<VideoItemTemplate>;
+#endif
+	public:
+		::vl::Ptr<::demo::VideoViewModel> __vwsn_parameter_ViewModel;
+		::vl::Ptr<::demo::VideoViewModel> GetViewModel();
+		VideoItemTemplate(::vl::Ptr<::demo::VideoViewModel> __vwsn_ctor_parameter_ViewModel);
+		~VideoItemTemplate();
+	};
+
 	class VideoViewModel : public ::vl::Object, public ::vl::reflection::Description<VideoViewModel>
 	{
 #ifndef VCZH_DEBUG_NO_REFLECTION
@@ -264,106 +364,6 @@ namespace demo
 		void SetFont(::vl::presentation::FontProperties __vwsn_value_);
 		::vl::Event<void()> FontChanged;
 		VideoViewModel();
-	};
-
-	class AccountButtonTemplate : public ::vl::presentation::templates::GuiSelectableButtonTemplate, public ::demo::AccountButtonTemplateConstructor, public ::vl::reflection::Description<AccountButtonTemplate>
-	{
-		friend class ::demo::AccountButtonTemplateConstructor;
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountButtonTemplate>;
-#endif
-	public:
-		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_prop_ViewModel;
-		::vl::Ptr<::demo::AccountButtonViewModel> GetViewModel();
-		void SetViewModel(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_value_);
-		::vl::Event<void()> ViewModelChanged;
-		AccountButtonTemplate();
-		~AccountButtonTemplate();
-	};
-
-	class AccountItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::AccountItemTemplateConstructor, public ::vl::reflection::Description<AccountItemTemplate>
-	{
-		friend class ::demo::AccountItemTemplateConstructor;
-		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_AccountItemTemplateConstructor___vwsn_demo_AccountItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountItemTemplate>;
-#endif
-	public:
-		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_parameter_ViewModel;
-		::vl::Ptr<::demo::AccountButtonViewModel> GetViewModel();
-		AccountItemTemplate(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_ctor_parameter_ViewModel);
-		~AccountItemTemplate();
-	};
-
-	class AccountMenuItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::AccountMenuItemTemplateConstructor, public ::vl::reflection::Description<AccountMenuItemTemplate>
-	{
-		friend class ::demo::AccountMenuItemTemplateConstructor;
-		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_AccountMenuItemTemplateConstructor___vwsn_demo_AccountMenuItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_AccountMenuItemTemplateConstructor___vwsn_demo_AccountMenuItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountMenuItemTemplate>;
-#endif
-	public:
-		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_parameter_ViewModel;
-		::vl::Ptr<::demo::AccountButtonViewModel> GetViewModel();
-		AccountMenuItemTemplate(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_ctor_parameter_ViewModel);
-		~AccountMenuItemTemplate();
-	};
-
-	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
-	{
-		friend class ::demo::MainWindowConstructor;
-		friend class ::vl_workflow_global::__vwsnc9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
-#endif
-	public:
-		::vl::Ptr<::vl::reflection::description::IValueObservableList> accounts;
-		::vl::Ptr<::vl::reflection::description::IValueObservableList> videos;
-		MainWindow();
-		void __vwsn_instance_ctor_();
-		~MainWindow();
-	};
-
-	class VideoItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::VideoItemTemplateConstructor, public ::vl::reflection::Description<VideoItemTemplate>
-	{
-		friend class ::demo::VideoItemTemplateConstructor;
-		friend class ::vl_workflow_global::__vwsnc10_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc11_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc14_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<VideoItemTemplate>;
-#endif
-	public:
-		::vl::Ptr<::demo::VideoViewModel> __vwsn_parameter_ViewModel;
-		::vl::Ptr<::demo::VideoViewModel> GetViewModel();
-		VideoItemTemplate(::vl::Ptr<::demo::VideoViewModel> __vwsn_ctor_parameter_ViewModel);
-		~VideoItemTemplate();
 	};
 
 }

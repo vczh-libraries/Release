@@ -1881,39 +1881,6 @@ Class (::demo::MainWindowConstructor)
 	}
 
 /***********************************************************************
-Class (::demo::StringResource)
-***********************************************************************/
-
-	::vl::WString StringResource::__vwsn_ls_First(const ::vl::collections::LazyList<::vl::WString>& __vwsn_ls_formats)
-	{
-		{
-			auto __vwsn_for_enumerable_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueEnumerable>(__vwsn_ls_formats);
-			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
-			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
-			{
-				auto __vwsn_ls_format = ::vl::__vwsn::Unbox<::vl::WString>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
-				{
-					return __vwsn_ls_format;
-				}
-			}
-		}
-		return ::vl::WString(L"", false);
-	}
-
-	::vl::Ptr<::demo::IStringResourceStrings> StringResource::Get(::vl::Locale __vwsn_ls_locale)
-	{
-		if (::vl::__vwsn::InSet(::vl::__vwsn::ToString(__vwsn_ls_locale), (::vl::__vwsn::CreateList().Add(::vl::WString(L"zh-CN", false))).list))
-		{
-			return ::vl::Ptr<::demo::IStringResourceStrings>(new ::vl_workflow_global::__vwsnc18_Demo_demo_StringResource_Get__demo_IStringResourceStrings(__vwsn_ls_locale));
-		}
-		return ::vl::Ptr<::demo::IStringResourceStrings>(new ::vl_workflow_global::__vwsnc19_Demo_demo_StringResource_Get__demo_IStringResourceStrings(__vwsn_ls_locale));
-	}
-
-	StringResource::StringResource()
-	{
-	}
-
-/***********************************************************************
 Class (::demo::MainWindow)
 ***********************************************************************/
 
@@ -1966,6 +1933,39 @@ Class (::demo::MainWindow)
 	MainWindow::~MainWindow()
 	{
 		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
+	}
+
+/***********************************************************************
+Class (::demo::StringResource)
+***********************************************************************/
+
+	::vl::WString StringResource::__vwsn_ls_First(const ::vl::collections::LazyList<::vl::WString>& __vwsn_ls_formats)
+	{
+		{
+			auto __vwsn_for_enumerable_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueEnumerable>(__vwsn_ls_formats);
+			auto __vwsn_for_enumerator_ = ::vl::__vwsn::This(__vwsn_for_enumerable_.Obj())->CreateEnumerator();
+			while (::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->Next())
+			{
+				auto __vwsn_ls_format = ::vl::__vwsn::Unbox<::vl::WString>(::vl::__vwsn::This(__vwsn_for_enumerator_.Obj())->GetCurrent());
+				{
+					return __vwsn_ls_format;
+				}
+			}
+		}
+		return ::vl::WString(L"", false);
+	}
+
+	::vl::Ptr<::demo::IStringResourceStrings> StringResource::Get(::vl::Locale __vwsn_ls_locale)
+	{
+		if (::vl::__vwsn::InSet(::vl::__vwsn::ToString(__vwsn_ls_locale), (::vl::__vwsn::CreateList().Add(::vl::WString(L"zh-CN", false))).list))
+		{
+			return ::vl::Ptr<::demo::IStringResourceStrings>(new ::vl_workflow_global::__vwsnc18_Demo_demo_StringResource_Get__demo_IStringResourceStrings(__vwsn_ls_locale));
+		}
+		return ::vl::Ptr<::demo::IStringResourceStrings>(new ::vl_workflow_global::__vwsnc19_Demo_demo_StringResource_Get__demo_IStringResourceStrings(__vwsn_ls_locale));
+	}
+
+	StringResource::StringResource()
+	{
 	}
 
 }

@@ -1220,6 +1220,24 @@ namespace demo
 	}
 
 /***********************************************************************
+Class (::demo::MainWindow)
+***********************************************************************/
+
+	MainWindow::MainWindow()
+		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
+	}
+
+	MainWindow::~MainWindow()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::TriplePhaseButtonConstructor)
 ***********************************************************************/
 
@@ -1263,6 +1281,66 @@ Class (::demo::TriplePhaseButtonConstructor)
 		, __vwsn_precompile_0(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::demo::TriplePhaseButton)
+***********************************************************************/
+
+	::TripleState TriplePhaseButton::GetState()
+	{
+		return this->__vwsn_prop_State;
+	}
+	void TriplePhaseButton::SetState(::TripleState __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_State != __vwsn_value_))
+		{
+			(this->__vwsn_prop_State = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->StateChanged)();
+		}
+	}
+
+	::vl::Ptr<::vl::presentation::GuiImageData> TriplePhaseButton::GetCheckedImage()
+	{
+		return this->__vwsn_prop_CheckedImage;
+	}
+	void TriplePhaseButton::SetCheckedImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_CheckedImage.Obj() != __vwsn_value_.Obj()))
+		{
+			(this->__vwsn_prop_CheckedImage = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->CheckedImageChanged)();
+		}
+	}
+
+	::vl::Ptr<::vl::presentation::GuiImageData> TriplePhaseButton::GetPartialImage()
+	{
+		return this->__vwsn_prop_PartialImage;
+	}
+	void TriplePhaseButton::SetPartialImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_PartialImage.Obj() != __vwsn_value_.Obj()))
+		{
+			(this->__vwsn_prop_PartialImage = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->PartialImageChanged)();
+		}
+	}
+
+	TriplePhaseButton::TriplePhaseButton()
+		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
+		, __vwsn_prop_State(::TripleState::Checked)
+		, __vwsn_prop_CheckedImage(::vl::Ptr<::vl::presentation::GuiImageData>())
+		, __vwsn_prop_PartialImage(::vl::Ptr<::vl::presentation::GuiImageData>())
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::TriplePhaseButton", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_TriplePhaseButton_Initialize(this);
+	}
+
+	TriplePhaseButton::~TriplePhaseButton()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
 	}
 
 /***********************************************************************
@@ -1382,84 +1460,6 @@ Class (::demo::TriplePhaseImageButtonTemplateConstructor)
 		, __vwsn_precompile_5(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, __vwsn_precompile_6(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
 	{
-	}
-
-/***********************************************************************
-Class (::demo::MainWindow)
-***********************************************************************/
-
-	MainWindow::MainWindow()
-		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
-	}
-
-	MainWindow::~MainWindow()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::TriplePhaseButton)
-***********************************************************************/
-
-	::TripleState TriplePhaseButton::GetState()
-	{
-		return this->__vwsn_prop_State;
-	}
-	void TriplePhaseButton::SetState(::TripleState __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_State != __vwsn_value_))
-		{
-			(this->__vwsn_prop_State = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->StateChanged)();
-		}
-	}
-
-	::vl::Ptr<::vl::presentation::GuiImageData> TriplePhaseButton::GetCheckedImage()
-	{
-		return this->__vwsn_prop_CheckedImage;
-	}
-	void TriplePhaseButton::SetCheckedImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_CheckedImage.Obj() != __vwsn_value_.Obj()))
-		{
-			(this->__vwsn_prop_CheckedImage = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->CheckedImageChanged)();
-		}
-	}
-
-	::vl::Ptr<::vl::presentation::GuiImageData> TriplePhaseButton::GetPartialImage()
-	{
-		return this->__vwsn_prop_PartialImage;
-	}
-	void TriplePhaseButton::SetPartialImage(::vl::Ptr<::vl::presentation::GuiImageData> __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_PartialImage.Obj() != __vwsn_value_.Obj()))
-		{
-			(this->__vwsn_prop_PartialImage = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->PartialImageChanged)();
-		}
-	}
-
-	TriplePhaseButton::TriplePhaseButton()
-		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
-		, __vwsn_prop_State(::TripleState::Checked)
-		, __vwsn_prop_CheckedImage(::vl::Ptr<::vl::presentation::GuiImageData>())
-		, __vwsn_prop_PartialImage(::vl::Ptr<::vl::presentation::GuiImageData>())
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::TriplePhaseButton", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_TriplePhaseButton_Initialize(this);
-	}
-
-	TriplePhaseButton::~TriplePhaseButton()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiCustomControl*>(this));
 	}
 
 /***********************************************************************

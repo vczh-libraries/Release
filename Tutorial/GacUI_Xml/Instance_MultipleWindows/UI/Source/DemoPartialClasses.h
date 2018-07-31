@@ -31,8 +31,8 @@ namespace vl_workflow_global
 namespace demo
 {
 	class AnotherWindowConstructor;
-	class MainWindowConstructor;
 	class AnotherWindow;
+	class MainWindowConstructor;
 	class MainWindow;
 
 	class AnotherWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<AnotherWindowConstructor>
@@ -49,6 +49,17 @@ namespace demo
 		AnotherWindowConstructor();
 	};
 
+	class AnotherWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::AnotherWindowConstructor, public ::vl::reflection::Description<AnotherWindow>
+	{
+		friend class ::demo::AnotherWindowConstructor;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AnotherWindow>;
+#endif
+	public:
+		AnotherWindow();
+		~AnotherWindow();
+	};
+
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
 		friend struct ::vl_workflow_global::__vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
@@ -63,17 +74,6 @@ namespace demo
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
-	};
-
-	class AnotherWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::AnotherWindowConstructor, public ::vl::reflection::Description<AnotherWindow>
-	{
-		friend class ::demo::AnotherWindowConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AnotherWindow>;
-#endif
-	public:
-		AnotherWindow();
-		~AnotherWindow();
 	};
 
 }

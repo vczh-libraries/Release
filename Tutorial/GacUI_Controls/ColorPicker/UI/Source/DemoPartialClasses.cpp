@@ -433,6 +433,44 @@ namespace demo
 	}
 
 /***********************************************************************
+Class (::demo::ColorBomboItemTemplate)
+***********************************************************************/
+
+	::vl::presentation::Color ColorBomboItemTemplate::GetTextColor()
+	{
+		return this->__vwsn_prop_TextColor;
+	}
+	void ColorBomboItemTemplate::SetTextColor(::vl::presentation::Color __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_TextColor != __vwsn_value_))
+		{
+			(this->__vwsn_prop_TextColor = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->TextColorChanged)();
+		}
+	}
+
+	::vl::Ptr<::demo::IColorItem> ColorBomboItemTemplate::GetViewModel()
+	{
+		return this->__vwsn_parameter_ViewModel;
+	}
+
+	ColorBomboItemTemplate::ColorBomboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel)
+		: __vwsn_prop_TextColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)))
+		, __vwsn_parameter_ViewModel(::vl::Ptr<::demo::IColorItem>())
+	{
+		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::ColorBomboItemTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_ColorBomboItemTemplate_Initialize(this);
+	}
+
+	ColorBomboItemTemplate::~ColorBomboItemTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::ColorListItemTemplateConstructor)
 ***********************************************************************/
 
@@ -462,6 +500,30 @@ Class (::demo::ColorListItemTemplateConstructor)
 		, self(static_cast<::demo::ColorListItemTemplate*>(nullptr))
 		, __vwsn_precompile_0(static_cast<::demo::ColorBomboItemTemplate*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::demo::ColorListItemTemplate)
+***********************************************************************/
+
+	::vl::Ptr<::demo::IColorItem> ColorListItemTemplate::GetViewModel()
+	{
+		return this->__vwsn_parameter_ViewModel;
+	}
+
+	ColorListItemTemplate::ColorListItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel)
+		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::IColorItem>())
+	{
+		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::ColorListItemTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_ColorListItemTemplate_Initialize(this);
+	}
+
+	ColorListItemTemplate::~ColorListItemTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -579,68 +641,6 @@ Class (::demo::MainWindowConstructor)
 		, __vwsn_precompile_7(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_8(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
-	}
-
-/***********************************************************************
-Class (::demo::ColorBomboItemTemplate)
-***********************************************************************/
-
-	::vl::presentation::Color ColorBomboItemTemplate::GetTextColor()
-	{
-		return this->__vwsn_prop_TextColor;
-	}
-	void ColorBomboItemTemplate::SetTextColor(::vl::presentation::Color __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_TextColor != __vwsn_value_))
-		{
-			(this->__vwsn_prop_TextColor = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->TextColorChanged)();
-		}
-	}
-
-	::vl::Ptr<::demo::IColorItem> ColorBomboItemTemplate::GetViewModel()
-	{
-		return this->__vwsn_parameter_ViewModel;
-	}
-
-	ColorBomboItemTemplate::ColorBomboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel)
-		: __vwsn_prop_TextColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)))
-		, __vwsn_parameter_ViewModel(::vl::Ptr<::demo::IColorItem>())
-	{
-		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::ColorBomboItemTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_ColorBomboItemTemplate_Initialize(this);
-	}
-
-	ColorBomboItemTemplate::~ColorBomboItemTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::ColorListItemTemplate)
-***********************************************************************/
-
-	::vl::Ptr<::demo::IColorItem> ColorListItemTemplate::GetViewModel()
-	{
-		return this->__vwsn_parameter_ViewModel;
-	}
-
-	ColorListItemTemplate::ColorListItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel)
-		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::IColorItem>())
-	{
-		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::ColorListItemTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_ColorListItemTemplate_Initialize(this);
-	}
-
-	ColorListItemTemplate::~ColorListItemTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************

@@ -83,10 +83,10 @@ namespace demo
 	class IContact;
 	class IViewModel;
 	class MainWindowConstructor;
-	class NewContactWindowConstructor;
-	class NewFolderWindowConstructor;
 	class MainWindow;
+	class NewContactWindowConstructor;
 	class NewContactWindow;
+	class NewFolderWindowConstructor;
 	class NewFolderWindow;
 
 	class ICategory : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<ICategory>
@@ -290,6 +290,28 @@ namespace demo
 		NewContactWindowConstructor();
 	};
 
+	class NewContactWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::NewContactWindowConstructor, public ::vl::reflection::Description<NewContactWindow>
+	{
+		friend class ::demo::NewContactWindowConstructor;
+		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewContactWindow>;
+#endif
+	public:
+		bool __vwsn_prop_ForEdit;
+		bool GetForEdit();
+		void SetForEdit(bool __vwsn_value_);
+		::vl::Event<void()> ForEditChanged;
+		bool Ready;
+		::vl::Ptr<::demo::IContact> contact;
+		void SetContact(::vl::Ptr<::demo::IContact> value);
+		NewContactWindow();
+		~NewContactWindow();
+	};
+
 	class NewFolderWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<NewFolderWindowConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc13_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize__vl_reflection_description_IValueSubscription;
@@ -317,28 +339,6 @@ namespace demo
 		void __vwsn_demo_NewFolderWindow_Initialize(::demo::NewFolderWindow* __vwsn_this_);
 	public:
 		NewFolderWindowConstructor();
-	};
-
-	class NewContactWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::NewContactWindowConstructor, public ::vl::reflection::Description<NewContactWindow>
-	{
-		friend class ::demo::NewContactWindowConstructor;
-		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewContactWindow>;
-#endif
-	public:
-		bool __vwsn_prop_ForEdit;
-		bool GetForEdit();
-		void SetForEdit(bool __vwsn_value_);
-		::vl::Event<void()> ForEditChanged;
-		bool Ready;
-		::vl::Ptr<::demo::IContact> contact;
-		void SetContact(::vl::Ptr<::demo::IContact> value);
-		NewContactWindow();
-		~NewContactWindow();
 	};
 
 	class NewFolderWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::NewFolderWindowConstructor, public ::vl::reflection::Description<NewFolderWindow>

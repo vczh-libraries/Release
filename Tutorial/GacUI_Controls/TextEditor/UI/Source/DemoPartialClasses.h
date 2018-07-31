@@ -70,12 +70,12 @@ namespace vl_workflow_global
 namespace demo
 {
 	class AboutWindowConstructor;
-	class FindWindowConstructor;
-	class MainWindowConstructor;
-	class RecentFileItemTemplateConstructor;
 	class AboutWindow;
+	class FindWindowConstructor;
 	class FindWindow;
+	class MainWindowConstructor;
 	class MainWindow;
+	class RecentFileItemTemplateConstructor;
 	class RecentFileItemTemplate;
 
 	class AboutWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<AboutWindowConstructor>

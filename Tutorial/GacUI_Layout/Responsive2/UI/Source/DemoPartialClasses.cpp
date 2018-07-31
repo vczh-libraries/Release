@@ -1451,6 +1451,37 @@ namespace demo
 	}
 
 /***********************************************************************
+Class (::demo::AccountButtonTemplate)
+***********************************************************************/
+
+	::vl::Ptr<::demo::AccountButtonViewModel> AccountButtonTemplate::GetViewModel()
+	{
+		return this->__vwsn_prop_ViewModel;
+	}
+	void AccountButtonTemplate::SetViewModel(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_value_)
+	{
+		if ((this->__vwsn_prop_ViewModel.Obj() != __vwsn_value_.Obj()))
+		{
+			(this->__vwsn_prop_ViewModel = __vwsn_value_);
+			::vl::__vwsn::EventInvoke(this->ViewModelChanged)();
+		}
+	}
+
+	AccountButtonTemplate::AccountButtonTemplate()
+		: __vwsn_prop_ViewModel(::vl::Ptr<::demo::AccountButtonViewModel>())
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::AccountButtonTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_AccountButtonTemplate_Initialize(this);
+	}
+
+	AccountButtonTemplate::~AccountButtonTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::AccountButtonViewModel)
 ***********************************************************************/
 
@@ -1547,6 +1578,30 @@ Class (::demo::AccountItemTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::AccountItemTemplate)
+***********************************************************************/
+
+	::vl::Ptr<::demo::AccountButtonViewModel> AccountItemTemplate::GetViewModel()
+	{
+		return this->__vwsn_parameter_ViewModel;
+	}
+
+	AccountItemTemplate::AccountItemTemplate(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_ctor_parameter_ViewModel)
+		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::AccountButtonViewModel>())
+	{
+		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::AccountItemTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_AccountItemTemplate_Initialize(this);
+	}
+
+	AccountItemTemplate::~AccountItemTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::AccountMenuItemTemplateConstructor)
 ***********************************************************************/
 
@@ -1583,6 +1638,30 @@ Class (::demo::AccountMenuItemTemplateConstructor)
 		, __vwsn_precompile_1(static_cast<::vl::presentation::controls::GuiToolstripButton*>(nullptr))
 		, __vwsn_precompile_2(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
+	}
+
+/***********************************************************************
+Class (::demo::AccountMenuItemTemplate)
+***********************************************************************/
+
+	::vl::Ptr<::demo::AccountButtonViewModel> AccountMenuItemTemplate::GetViewModel()
+	{
+		return this->__vwsn_parameter_ViewModel;
+	}
+
+	AccountMenuItemTemplate::AccountMenuItemTemplate(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_ctor_parameter_ViewModel)
+		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::AccountButtonViewModel>())
+	{
+		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::AccountMenuItemTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_AccountMenuItemTemplate_Initialize(this);
+	}
+
+	AccountMenuItemTemplate::~AccountMenuItemTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 /***********************************************************************
@@ -1848,6 +1927,63 @@ Class (::demo::MainWindowConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::MainWindow)
+***********************************************************************/
+
+	MainWindow::MainWindow()
+		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
+		, accounts(::vl::reflection::description::IValueObservableList::Create())
+		, videos(::vl::reflection::description::IValueObservableList::Create())
+	{
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
+		this->__vwsn_instance_ctor_();
+	}
+
+	void MainWindow::__vwsn_instance_ctor_()
+	{
+		{
+			auto __vwsn_for_begin_i = static_cast<::vl::vint>(1);
+			auto __vwsn_for_end_i = static_cast<::vl::vint>(8);
+			auto i = __vwsn_for_begin_i;
+			while ((i <= __vwsn_for_end_i))
+			{
+				{
+					auto item = ::vl::Ptr<::demo::AccountButtonViewModel>(new ::demo::AccountButtonViewModel());
+					::vl::__vwsn::This(item.Obj())->SetController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this->self)->accountController));
+					::vl::__vwsn::This(item.Obj())->SetName(::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(20)));
+					::vl::__vwsn::This(item.Obj())->SetImage(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(this->self)->ResolveResource(::vl::WString(L"res", false), (::vl::WString(L"Images/_", false) + ::vl::__vwsn::ToString(i)), true).Obj())).Obj())->GetImage());
+					::vl::__vwsn::This(::vl::__vwsn::This(this->self)->accounts.Obj())->Add(::vl::__vwsn::Box(item));
+				}
+				(i = (i + static_cast<::vl::vint>(1)));
+			}
+		}
+		{
+			auto __vwsn_for_begin_i = (static_cast<::vl::vint>(0) + static_cast<::vl::vint>(1));
+			auto __vwsn_for_end_i = (static_cast<::vl::vint>(20) - static_cast<::vl::vint>(1));
+			auto i = __vwsn_for_begin_i;
+			while ((i <= __vwsn_for_end_i))
+			{
+				{
+					auto item = ::vl::Ptr<::demo::VideoViewModel>(new ::demo::VideoViewModel());
+					::vl::__vwsn::This(item.Obj())->SetAuthor(::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(16)));
+					::vl::__vwsn::This(item.Obj())->SetTitle(::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(80)));
+					::vl::__vwsn::This(item.Obj())->SetFont(::vl::__vwsn::This(this->self)->GetFont());
+					::vl::__vwsn::This(::vl::__vwsn::This(this->self)->videos.Obj())->Add(::vl::__vwsn::Box(item));
+				}
+				(i = (i + static_cast<::vl::vint>(1)));
+			}
+		}
+	}
+
+	MainWindow::~MainWindow()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::VideoItemTemplateConstructor)
 ***********************************************************************/
 
@@ -1994,6 +2130,30 @@ Class (::demo::VideoItemTemplateConstructor)
 	}
 
 /***********************************************************************
+Class (::demo::VideoItemTemplate)
+***********************************************************************/
+
+	::vl::Ptr<::demo::VideoViewModel> VideoItemTemplate::GetViewModel()
+	{
+		return this->__vwsn_parameter_ViewModel;
+	}
+
+	VideoItemTemplate::VideoItemTemplate(::vl::Ptr<::demo::VideoViewModel> __vwsn_ctor_parameter_ViewModel)
+		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::VideoViewModel>())
+	{
+		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::VideoItemTemplate", false));
+		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
+		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
+		::vl::__vwsn::This(this)->__vwsn_demo_VideoItemTemplate_Initialize(this);
+	}
+
+	VideoItemTemplate::~VideoItemTemplate()
+	{
+		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
+	}
+
+/***********************************************************************
 Class (::demo::VideoViewModel)
 ***********************************************************************/
 
@@ -2044,166 +2204,6 @@ Class (::demo::VideoViewModel)
 		, __vwsn_prop_Title(::vl::WString(L"", false))
 		, __vwsn_prop_Font(::vl::presentation::FontProperties{})
 	{
-	}
-
-/***********************************************************************
-Class (::demo::AccountButtonTemplate)
-***********************************************************************/
-
-	::vl::Ptr<::demo::AccountButtonViewModel> AccountButtonTemplate::GetViewModel()
-	{
-		return this->__vwsn_prop_ViewModel;
-	}
-	void AccountButtonTemplate::SetViewModel(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_value_)
-	{
-		if ((this->__vwsn_prop_ViewModel.Obj() != __vwsn_value_.Obj()))
-		{
-			(this->__vwsn_prop_ViewModel = __vwsn_value_);
-			::vl::__vwsn::EventInvoke(this->ViewModelChanged)();
-		}
-	}
-
-	AccountButtonTemplate::AccountButtonTemplate()
-		: __vwsn_prop_ViewModel(::vl::Ptr<::demo::AccountButtonViewModel>())
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::AccountButtonTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_AccountButtonTemplate_Initialize(this);
-	}
-
-	AccountButtonTemplate::~AccountButtonTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::AccountItemTemplate)
-***********************************************************************/
-
-	::vl::Ptr<::demo::AccountButtonViewModel> AccountItemTemplate::GetViewModel()
-	{
-		return this->__vwsn_parameter_ViewModel;
-	}
-
-	AccountItemTemplate::AccountItemTemplate(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_ctor_parameter_ViewModel)
-		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::AccountButtonViewModel>())
-	{
-		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::AccountItemTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_AccountItemTemplate_Initialize(this);
-	}
-
-	AccountItemTemplate::~AccountItemTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::AccountMenuItemTemplate)
-***********************************************************************/
-
-	::vl::Ptr<::demo::AccountButtonViewModel> AccountMenuItemTemplate::GetViewModel()
-	{
-		return this->__vwsn_parameter_ViewModel;
-	}
-
-	AccountMenuItemTemplate::AccountMenuItemTemplate(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_ctor_parameter_ViewModel)
-		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::AccountButtonViewModel>())
-	{
-		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::AccountMenuItemTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_AccountMenuItemTemplate_Initialize(this);
-	}
-
-	AccountMenuItemTemplate::~AccountMenuItemTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::MainWindow)
-***********************************************************************/
-
-	MainWindow::MainWindow()
-		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
-		, accounts(::vl::reflection::description::IValueObservableList::Create())
-		, videos(::vl::reflection::description::IValueObservableList::Create())
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
-		this->__vwsn_instance_ctor_();
-	}
-
-	void MainWindow::__vwsn_instance_ctor_()
-	{
-		{
-			auto __vwsn_for_begin_i = static_cast<::vl::vint>(1);
-			auto __vwsn_for_end_i = static_cast<::vl::vint>(8);
-			auto i = __vwsn_for_begin_i;
-			while ((i <= __vwsn_for_end_i))
-			{
-				{
-					auto item = ::vl::Ptr<::demo::AccountButtonViewModel>(new ::demo::AccountButtonViewModel());
-					::vl::__vwsn::This(item.Obj())->SetController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this->self)->accountController));
-					::vl::__vwsn::This(item.Obj())->SetName(::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(20)));
-					::vl::__vwsn::This(item.Obj())->SetImage(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(this->self)->ResolveResource(::vl::WString(L"res", false), (::vl::WString(L"Images/_", false) + ::vl::__vwsn::ToString(i)), true).Obj())).Obj())->GetImage());
-					::vl::__vwsn::This(::vl::__vwsn::This(this->self)->accounts.Obj())->Add(::vl::__vwsn::Box(item));
-				}
-				(i = (i + static_cast<::vl::vint>(1)));
-			}
-		}
-		{
-			auto __vwsn_for_begin_i = (static_cast<::vl::vint>(0) + static_cast<::vl::vint>(1));
-			auto __vwsn_for_end_i = (static_cast<::vl::vint>(20) - static_cast<::vl::vint>(1));
-			auto i = __vwsn_for_begin_i;
-			while ((i <= __vwsn_for_end_i))
-			{
-				{
-					auto item = ::vl::Ptr<::demo::VideoViewModel>(new ::demo::VideoViewModel());
-					::vl::__vwsn::This(item.Obj())->SetAuthor(::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(16)));
-					::vl::__vwsn::This(item.Obj())->SetTitle(::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(80)));
-					::vl::__vwsn::This(item.Obj())->SetFont(::vl::__vwsn::This(this->self)->GetFont());
-					::vl::__vwsn::This(::vl::__vwsn::This(this->self)->videos.Obj())->Add(::vl::__vwsn::Box(item));
-				}
-				(i = (i + static_cast<::vl::vint>(1)));
-			}
-		}
-	}
-
-	MainWindow::~MainWindow()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::controls::GuiControlHost*>(this));
-	}
-
-/***********************************************************************
-Class (::demo::VideoItemTemplate)
-***********************************************************************/
-
-	::vl::Ptr<::demo::VideoViewModel> VideoItemTemplate::GetViewModel()
-	{
-		return this->__vwsn_parameter_ViewModel;
-	}
-
-	VideoItemTemplate::VideoItemTemplate(::vl::Ptr<::demo::VideoViewModel> __vwsn_ctor_parameter_ViewModel)
-		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::VideoViewModel>())
-	{
-		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::VideoItemTemplate", false));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_demo_VideoItemTemplate_Initialize(this);
-	}
-
-	VideoItemTemplate::~VideoItemTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
 	}
 
 }

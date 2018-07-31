@@ -39,12 +39,12 @@ namespace vl_workflow_global
 namespace demo
 {
 	class ColorBomboItemTemplateConstructor;
+	class ColorBomboItemTemplate;
 	class ColorListItemTemplateConstructor;
+	class ColorListItemTemplate;
 	class IColorItem;
 	class IViewModel;
 	class MainWindowConstructor;
-	class ColorBomboItemTemplate;
-	class ColorListItemTemplate;
 	class MainWindow;
 
 	class ColorBomboItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<ColorBomboItemTemplateConstructor>
@@ -69,6 +69,27 @@ namespace demo
 		ColorBomboItemTemplateConstructor();
 	};
 
+	class ColorBomboItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::ColorBomboItemTemplateConstructor, public ::vl::reflection::Description<ColorBomboItemTemplate>
+	{
+		friend class ::demo::ColorBomboItemTemplateConstructor;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorBomboItemTemplate>;
+#endif
+	public:
+		::vl::presentation::Color __vwsn_prop_TextColor;
+		::vl::presentation::Color GetTextColor();
+		void SetTextColor(::vl::presentation::Color __vwsn_value_);
+		::vl::Event<void()> TextColorChanged;
+		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel;
+		::vl::Ptr<::demo::IColorItem> GetViewModel();
+		ColorBomboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);
+		~ColorBomboItemTemplate();
+	};
+
 	class ColorListItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<ColorListItemTemplateConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
@@ -83,6 +104,21 @@ namespace demo
 		void __vwsn_demo_ColorListItemTemplate_Initialize(::demo::ColorListItemTemplate* __vwsn_this_);
 	public:
 		ColorListItemTemplateConstructor();
+	};
+
+	class ColorListItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::ColorListItemTemplateConstructor, public ::vl::reflection::Description<ColorListItemTemplate>
+	{
+		friend class ::demo::ColorListItemTemplateConstructor;
+		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_;
+#ifndef VCZH_DEBUG_NO_REFLECTION
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorListItemTemplate>;
+#endif
+	public:
+		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel;
+		::vl::Ptr<::demo::IColorItem> GetViewModel();
+		ColorListItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);
+		~ColorListItemTemplate();
 	};
 
 	class IColorItem : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IColorItem>
@@ -126,42 +162,6 @@ namespace demo
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
-	};
-
-	class ColorBomboItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::ColorBomboItemTemplateConstructor, public ::vl::reflection::Description<ColorBomboItemTemplate>
-	{
-		friend class ::demo::ColorBomboItemTemplateConstructor;
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorBomboItemTemplate>;
-#endif
-	public:
-		::vl::presentation::Color __vwsn_prop_TextColor;
-		::vl::presentation::Color GetTextColor();
-		void SetTextColor(::vl::presentation::Color __vwsn_value_);
-		::vl::Event<void()> TextColorChanged;
-		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel;
-		::vl::Ptr<::demo::IColorItem> GetViewModel();
-		ColorBomboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);
-		~ColorBomboItemTemplate();
-	};
-
-	class ColorListItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::ColorListItemTemplateConstructor, public ::vl::reflection::Description<ColorListItemTemplate>
-	{
-		friend class ::demo::ColorListItemTemplateConstructor;
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorListItemTemplate>;
-#endif
-	public:
-		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel;
-		::vl::Ptr<::demo::IColorItem> GetViewModel();
-		ColorListItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);
-		~ColorListItemTemplate();
 	};
 
 	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
