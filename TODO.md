@@ -8,15 +8,15 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
 - [ ] Add and query services from controls
 - [ ] **Update Release**
-- [ ] New default control templates with animation, written in XML generated C++ code.
-- [ ] A window can be called to update all its controls' and components' template
-- [ ] Tutorials use the new default control templates
-- [ ] **Update Release**
 - [ ] Render focus
 - [ ] BlackSkin window template handle window properties (border, buttons, ...)
 - [ ] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Window Icon
+- [ ] **Update Release**
+- [ ] New default control templates with animation, written in XML generated C++ code.
+- [ ] A window can be called to update all its controls' and components' template
+- [ ] Tutorials use the new default control templates
 - [ ] **Update Release**
 
 # GacUI 2.0
