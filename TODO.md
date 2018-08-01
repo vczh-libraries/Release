@@ -4,7 +4,7 @@ https://zhuanlan.zhihu.com/p/39369370
 
 # GacUI 1.0
 
-- [ ] Document clipboard data should have version
+- [x] Document clipboard data should have version
 - [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
 - [ ] Add and query services from controls
 - [ ] **Update Release**
