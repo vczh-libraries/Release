@@ -6,7 +6,7 @@ https://zhuanlan.zhihu.com/p/39369370
 
 - [x] Document clipboard data should have version
 - [x] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
-- [ ] Add and query services from controls
+- [x] Add and query services from controls
 - [ ] **Update Release**
 - [ ] Render focus
 - [ ] BlackSkin window template handle window properties (border, buttons, ...)
