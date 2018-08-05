@@ -37,6 +37,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DocumentEditorRibbon", "Doc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TriplePhaseImageButton", "TriplePhaseImageButton\TriplePhaseImageButton.vcxproj", "{924D3A27-4CAC-4D7C-AC10-2A003375E444}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QueryService", "QueryService\QueryService.vcxproj", "{54A3E487-AF4A-4148-B28C-6190A52CC5D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -163,6 +165,14 @@ Global
 		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Release|Win32.Build.0 = Release|Win32
 		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Release|x64.ActiveCfg = Release|x64
 		{924D3A27-4CAC-4D7C-AC10-2A003375E444}.Release|x64.Build.0 = Release|x64
+		{54A3E487-AF4A-4148-B28C-6190A52CC5D1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{54A3E487-AF4A-4148-B28C-6190A52CC5D1}.Debug|Win32.Build.0 = Debug|Win32
+		{54A3E487-AF4A-4148-B28C-6190A52CC5D1}.Debug|x64.ActiveCfg = Debug|x64
+		{54A3E487-AF4A-4148-B28C-6190A52CC5D1}.Debug|x64.Build.0 = Debug|x64
+		{54A3E487-AF4A-4148-B28C-6190A52CC5D1}.Release|Win32.ActiveCfg = Release|Win32
+		{54A3E487-AF4A-4148-B28C-6190A52CC5D1}.Release|Win32.Build.0 = Release|Win32
+		{54A3E487-AF4A-4148-B28C-6190A52CC5D1}.Release|x64.ActiveCfg = Release|x64
+		{54A3E487-AF4A-4148-B28C-6190A52CC5D1}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
