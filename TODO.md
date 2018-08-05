@@ -7,7 +7,8 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] Document clipboard data should have version
 - [x] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
 - [x] Add and query services from controls
-- [ ] **Update Release**
+- [x] Demo: QueryService
+- [x] **Update Release**
 - [ ] Render focus
 - [ ] BlackSkin window template handle window properties (border, buttons, ...)
 - [ ] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
