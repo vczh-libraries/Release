@@ -5,8 +5,8 @@ https://zhuanlan.zhihu.com/p/39369370
 # GacUI 1.0
 
 - [x] Document clipboard data should have version
-- [ ] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
-- [ ] Add and query services from controls
+- [x] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
+- [x] Add and query services from controls
 - [ ] **Update Release**
 - [ ] Render focus
 - [ ] BlackSkin window template handle window properties (border, buttons, ...)
@@ -56,6 +56,7 @@ https://zhuanlan.zhihu.com/p/39369370
 #### Before 1.0 (Optional)
 - [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
+- [ ] INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
 
 #### Graphics
 - [ ] MetaImageElement and MetaImage data structure
