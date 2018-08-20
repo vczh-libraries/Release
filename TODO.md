@@ -13,6 +13,15 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] BlackSkin window template handle window properties (border, buttons, ...)
 - [x] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
 - [ ] Key accessibility for controls
+  - Check List
+    - [ ] Button: ENTER / SPACE
+    - [ ] ComboBox: Keyboard enter focus to select item workflow
+    - [ ] Ribbon / Tab: Jump between tabs
+    - [ ] List: Item selection / Traversing  / Scrolling (h/v)
+    - [ ] TextBox / DocumentBox: Scrolling (h/v)
+    - [ ] DatePicker / DateComboBox: Selecting
+    - [ ] Scroll / Tracker: AutoFocus property (default to true, false in scroll view) / Keyboard operations
+    - [ ] Jump between controls
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Window Icon
 - [ ] **Update Release**
