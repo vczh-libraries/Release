@@ -14,7 +14,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
 - [ ] Key accessibility for controls
   - Check List
-    - [ ] Button: ENTER / SPACE
+    - [x] Button: ENTER / SPACE
     - [ ] ComboBox: Keyboard enter focus to select item workflow
     - [ ] Ribbon / Tab: Jump between tabs
     - [ ] List: Item selection / Traversing  / Scrolling (h/v)
