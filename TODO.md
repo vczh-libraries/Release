@@ -15,9 +15,9 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] Key accessibility for controls
   - Check List
     - [x] Button: ENTER / SPACE
-    - [ ] ComboBox: Keyboard enter focus to select item workflow
+    - [x] ComboBox: Keyboard enter focus to select item workflow
     - [ ] Ribbon / Tab: Jump between tabs
-    - [ ] List: Item selection / Traversing  / Scrolling (h/v)
+    - [x] List: Item selection / Traversing  / Scrolling (h/v)
     - [ ] TextBox / DocumentBox: Scrolling (h/v)
     - [ ] DatePicker / DateComboBox: Selecting
     - [ ] Scroll / Tracker: AutoFocus property (default to true, false in scroll view) / Keyboard operations
