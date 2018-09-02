@@ -22,8 +22,8 @@ https://zhuanlan.zhihu.com/p/39369370
     - [ ] DatePicker / DateComboBox: Selecting
     - [ ] Scroll / Tracker: AutoFocus property (default to true, false in scroll view) / Keyboard operations
     - [ ] Jump between controls
-    - [ ] ComboBox focus rendering
-    - [ ] TabHeader focus rendering
+    - [x] ComboBox focus rendering
+    - [x] TabHeader focus rendering
     - [ ] DatePicker focus rendering
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Window Icon
