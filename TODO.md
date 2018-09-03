@@ -25,7 +25,7 @@ https://zhuanlan.zhihu.com/p/39369370
     - [ ] Jump between controls
     - [x] ComboBox focus rendering
     - [x] TabHeader focus rendering
-    - [ ] Scroll focus rendering
+    - [x] Scroll focus rendering
     - [ ] DatePicker focus rendering
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Window Icon
