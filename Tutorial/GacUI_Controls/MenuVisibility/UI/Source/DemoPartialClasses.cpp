@@ -225,7 +225,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_17 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->SetChecked(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->SetChecked(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->SetText(::vl::WString(L"Item 1", false));
@@ -236,7 +236,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_18 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetChecked(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetChecked(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetText(::vl::WString(L"Item 2", false));
@@ -247,7 +247,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_19 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetChecked(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetChecked(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetText(::vl::WString(L"Item 3", false));
@@ -258,7 +258,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_20 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->SetChecked(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->SetChecked(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->SetText(::vl::WString(L"Item 4", false));
@@ -269,7 +269,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_21 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_21.Obj())->SetChecked(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_21.Obj())->SetChecked(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_21.Obj())->SetText(::vl::WString(L"Item 5", false));
@@ -280,7 +280,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_22 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_22.Obj())->SetChecked(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_22.Obj())->SetChecked(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_22.Obj())->SetText(::vl::WString(L"Item 6", false));
@@ -291,7 +291,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_23 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->SetChecked(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->SetChecked(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->SetText(::vl::WString(L"Item 7", false));
@@ -302,7 +302,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_24 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_24.Obj())->SetChecked(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_24.Obj())->SetChecked(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_24.Obj())->SetText(::vl::WString(L"Item 8", false));
@@ -313,7 +313,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_25 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_25.Obj())->SetChecked(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_25.Obj())->SetChecked(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_25.Obj())->SetText(::vl::WString(L"Item 9", false));
@@ -324,7 +324,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_26 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->SetChecked(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->SetChecked(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->SetText(::vl::WString(L"Item 10", false));

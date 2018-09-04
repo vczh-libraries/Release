@@ -721,7 +721,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -789,16 +789,16 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_8));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetHorizontalAlwaysVisible(false);
 		}
 		{
 			(this->comboView = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->__vwsn_precompile_2)));
 		}
 		{
-			::vl::__vwsn::This(this->comboView)->SetSelectedIndex(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->comboView)->SetSelectedIndex(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->comboView)->SetAlt(::vl::WString(L"V", false));
@@ -822,21 +822,21 @@ namespace demo
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->listView)->GetDataColumns());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"0", false))));
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(static_cast<::vl::vint>(0)));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->listView)->GetDataColumns());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"1", false))));
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(static_cast<::vl::vint>(1)));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->listView)->GetDataColumns());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"2", false))));
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(static_cast<::vl::vint>(2)));
 		}
 		{
-			::vl::__vwsn::This(this->listView)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->listView)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->listView)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->listView)->SetHorizontalAlwaysVisible(false);
 		}
 		{
 			::vl::__vwsn::This(this->listView)->SetAlt(::vl::WString(L"L", false));
@@ -898,21 +898,21 @@ namespace demo
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->bindableListView)->GetDataColumns());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"0", false))));
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(static_cast<::vl::vint>(0)));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->bindableListView)->GetDataColumns());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"1", false))));
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(static_cast<::vl::vint>(1)));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->bindableListView)->GetDataColumns());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"2", false))));
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(static_cast<::vl::vint>(2)));
 		}
 		{
-			::vl::__vwsn::This(this->bindableListView)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->bindableListView)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->bindableListView)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->bindableListView)->SetHorizontalAlwaysVisible(false);
 		}
 		{
 			::vl::__vwsn::This(this->bindableListView)->SetAlt(::vl::WString(L"L", false));
@@ -1161,7 +1161,7 @@ Class (::demo::TextListTabPageConstructor)
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -1206,16 +1206,16 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_5));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetHorizontalAlwaysVisible(false);
 		}
 		{
 			(this->comboView = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->__vwsn_precompile_2)));
 		}
 		{
-			::vl::__vwsn::This(this->comboView)->SetSelectedIndex(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"0", false)));
+			::vl::__vwsn::This(this->comboView)->SetSelectedIndex(static_cast<::vl::vint>(0));
 		}
 		{
 			::vl::__vwsn::This(this->comboView)->SetAlt(::vl::WString(L"V", false));
@@ -1238,10 +1238,10 @@ Class (::demo::TextListTabPageConstructor)
 			(this->textList = new ::vl::presentation::controls::GuiTextList(::vl::presentation::theme::ThemeName::TextList));
 		}
 		{
-			::vl::__vwsn::This(this->textList)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->textList)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->textList)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->textList)->SetHorizontalAlwaysVisible(false);
 		}
 		{
 			::vl::__vwsn::This(this->textList)->SetAlt(::vl::WString(L"L", false));
@@ -1265,7 +1265,7 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Vertical);
@@ -1373,10 +1373,10 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(this->bindableTextList)->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->bindableTextList)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->bindableTextList)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->bindableTextList)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->bindableTextList)->SetHorizontalAlwaysVisible(false);
 		}
 		{
 			::vl::__vwsn::This(this->bindableTextList)->SetAlt(::vl::WString(L"B", false));
@@ -1576,7 +1576,7 @@ Class (::demo::TreeViewTabPageConstructor)
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -1595,10 +1595,10 @@ Class (::demo::TreeViewTabPageConstructor)
 			(this->treeView = new ::vl::presentation::controls::GuiTreeView(::vl::presentation::theme::ThemeName::TreeView));
 		}
 		{
-			::vl::__vwsn::This(this->treeView)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->treeView)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->treeView)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->treeView)->SetHorizontalAlwaysVisible(false);
 		}
 		{
 			::vl::__vwsn::This(this->treeView)->SetAlt(::vl::WString(L"L", false));
@@ -1718,10 +1718,10 @@ Class (::demo::TreeViewTabPageConstructor)
 			::vl::__vwsn::This(this->bindableTreeView)->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->bindableTreeView)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->bindableTreeView)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->bindableTreeView)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->bindableTreeView)->SetHorizontalAlwaysVisible(false);
 		}
 		{
 			::vl::__vwsn::This(this->bindableTreeView)->SetAlt(::vl::WString(L"L", false));

@@ -128,14 +128,14 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(200); __vwsn_temp__.y = static_cast<::vl::vint>(100); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetHorizontalAlwaysVisible(false);
 		}
 		(this->__vwsn_precompile_5 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::reflection::DescriptableObject>(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem(::vl::Ptr<::vl::presentation::GuiImageData>(), ::vl::WString(L"GacUI Renderers", false)))))));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->SetExpanding(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->SetExpanding(true);
 		}
 		(this->__vwsn_precompile_6 = ::vl::Ptr<::vl::presentation::controls::tree::MemoryNodeProvider>(new ::vl::presentation::controls::tree::MemoryNodeProvider(::vl::Ptr<::vl::reflection::DescriptableObject>(::vl::Ptr<::vl::presentation::controls::tree::TreeViewItem>(new ::vl::presentation::controls::tree::TreeViewItem(::vl::Ptr<::vl::presentation::GuiImageData>(), ::vl::WString(L"Direct2D", false)))))));
 		{
@@ -343,7 +343,7 @@ Class (::demo::MainWindowConstructor)
 		(this->__vwsn_precompile_29 = ::vl::Ptr<::vl::presentation::controls::GuiDocumentItem>(new ::vl::presentation::controls::GuiDocumentItem(::vl::WString(L"Table", false))));
 		(this->__vwsn_precompile_30 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());

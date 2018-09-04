@@ -1016,13 +1016,13 @@ namespace demo
 	{
 		(this->self = __vwsn_this_);
 		{
-			::vl::__vwsn::This(this->self)->SetSizeBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetSizeBox(false);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetMinimizedBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetMinimizedBox(false);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetMaximizedBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetMaximizedBox(false);
 		}
 		{
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(480); __vwsn_temp__.y = static_cast<::vl::vint>(360); return __vwsn_temp__; }());
@@ -1032,7 +1032,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -1055,7 +1055,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_2 = ::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiImageFrameElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetStretch(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetStretch(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_2));
@@ -1147,10 +1147,10 @@ Class (::demo::FindWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_22)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(360); __vwsn_temp__.y = static_cast<::vl::vint>(150); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetMinimizedBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetMinimizedBox(false);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetMaximizedBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetMaximizedBox(false);
 		}
 		{
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(360); __vwsn_temp__.y = static_cast<::vl::vint>(150); return __vwsn_temp__; }());
@@ -1174,7 +1174,7 @@ Class (::demo::FindWindowConstructor)
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -1236,7 +1236,7 @@ Class (::demo::FindWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"20", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetPadding(static_cast<::vl::vint>(20));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal);
@@ -1277,7 +1277,7 @@ Class (::demo::FindWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"20", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetPadding(static_cast<::vl::vint>(20));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal);
@@ -1303,7 +1303,7 @@ Class (::demo::FindWindowConstructor)
 			(this->radioDown = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::RadioButton));
 		}
 		{
-			::vl::__vwsn::This(this->radioDown)->SetSelected(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->radioDown)->SetSelected(true);
 		}
 		{
 			::vl::__vwsn::This(this->radioDown)->SetText(::vl::WString(L"Down", false));
@@ -1766,7 +1766,7 @@ Class (::demo::MainWindowConstructor)
 			(this->__vwsn_precompile_16 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetEnabled(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetEnabled(false);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetText(::vl::WString(L"(Empty)", false));
@@ -2143,10 +2143,10 @@ Class (::demo::MainWindowConstructor)
 			(this->textBox = new ::vl::presentation::controls::GuiMultilineTextBox(::vl::presentation::theme::ThemeName::MultilineTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->textBox)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->textBox)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->textBox)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->textBox)->SetHorizontalAlwaysVisible(false);
 		}
 		(this->__vwsn_precompile_64 = ::vl::__vwsn::This(this->textBox)->GetBoundsComposition());
 		{

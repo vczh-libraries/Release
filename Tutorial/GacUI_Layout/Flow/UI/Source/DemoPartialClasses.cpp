@@ -584,7 +584,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(5); __vwsn_temp__.top = static_cast<::vl::vint>(5); __vwsn_temp__.right = static_cast<::vl::vint>(5); __vwsn_temp__.bottom = static_cast<::vl::vint>(5); return __vwsn_temp__; }());
@@ -642,7 +642,7 @@ namespace demo
 			(this->__vwsn_precompile_5 = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::RadioButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetSelected(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetSelected(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetText(::vl::WString(L"RightDown", false));
@@ -814,7 +814,7 @@ namespace demo
 			(this->__vwsn_precompile_25 = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::RadioButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_25)->SetSelected(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_25)->SetSelected(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_25)->SetText(::vl::WString(L"Left", false));
@@ -891,10 +891,10 @@ namespace demo
 			::vl::__vwsn::This(this->flowLayout)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(10); __vwsn_temp__.top = static_cast<::vl::vint>(10); __vwsn_temp__.right = static_cast<::vl::vint>(10); __vwsn_temp__.bottom = static_cast<::vl::vint>(10); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->flowLayout)->SetColumnPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->flowLayout)->SetColumnPadding(static_cast<::vl::vint>(5));
 		}
 		{
-			::vl::__vwsn::This(this->flowLayout)->SetRowPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"20", false)));
+			::vl::__vwsn::This(this->flowLayout)->SetRowPadding(static_cast<::vl::vint>(20));
 		}
 		{
 			::vl::__vwsn::This(this->flowLayout)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);

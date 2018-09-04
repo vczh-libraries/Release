@@ -792,7 +792,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetRowsAndColumns(static_cast<::vl::vint>(2), static_cast<::vl::vint>(1));
@@ -808,7 +808,7 @@ namespace demo
 			(this->checkBorder = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
 		}
 		{
-			::vl::__vwsn::This(this->checkBorder)->SetSelected(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->checkBorder)->SetSelected(true);
 		}
 		{
 			::vl::__vwsn::This(this->checkBorder)->SetText(::vl::WString(L"Table size contains borders", false));
@@ -849,7 +849,7 @@ namespace demo
 			::vl::__vwsn::This(this->table)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->table)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->table)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->table)->SetRowsAndColumns(static_cast<::vl::vint>(7), static_cast<::vl::vint>(7));
@@ -870,56 +870,56 @@ namespace demo
 		}
 		(this->__vwsn_precompile_7 = new ::vl::presentation::compositions::GuiRowSplitterComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetRowsToTheTop(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"2", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetRowsToTheTop(static_cast<::vl::vint>(2));
 		}
 		{
 			::vl::__vwsn::This(this->table)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_7));
 		}
 		(this->__vwsn_precompile_8 = new ::vl::presentation::compositions::GuiRowSplitterComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetRowsToTheTop(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"3", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetRowsToTheTop(static_cast<::vl::vint>(3));
 		}
 		{
 			::vl::__vwsn::This(this->table)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_8));
 		}
 		(this->__vwsn_precompile_9 = new ::vl::presentation::compositions::GuiRowSplitterComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetRowsToTheTop(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetRowsToTheTop(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->table)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_9));
 		}
 		(this->__vwsn_precompile_10 = new ::vl::presentation::compositions::GuiRowSplitterComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetRowsToTheTop(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"6", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetRowsToTheTop(static_cast<::vl::vint>(6));
 		}
 		{
 			::vl::__vwsn::This(this->table)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_10));
 		}
 		(this->__vwsn_precompile_11 = new ::vl::presentation::compositions::GuiColumnSplitterComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetColumnsToTheLeft(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"2", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetColumnsToTheLeft(static_cast<::vl::vint>(2));
 		}
 		{
 			::vl::__vwsn::This(this->table)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_11));
 		}
 		(this->__vwsn_precompile_12 = new ::vl::presentation::compositions::GuiColumnSplitterComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetColumnsToTheLeft(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"3", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetColumnsToTheLeft(static_cast<::vl::vint>(3));
 		}
 		{
 			::vl::__vwsn::This(this->table)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_12));
 		}
 		(this->__vwsn_precompile_13 = new ::vl::presentation::compositions::GuiColumnSplitterComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetColumnsToTheLeft(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetColumnsToTheLeft(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->table)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_13));
 		}
 		(this->__vwsn_precompile_14 = new ::vl::presentation::compositions::GuiColumnSplitterComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetColumnsToTheLeft(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"6", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetColumnsToTheLeft(static_cast<::vl::vint>(6));
 		}
 		{
 			::vl::__vwsn::This(this->table)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_14));

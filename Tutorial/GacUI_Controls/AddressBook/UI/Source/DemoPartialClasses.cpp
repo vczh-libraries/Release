@@ -1588,7 +1588,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->commandDetail = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandDetail)->SetSelected(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->commandDetail)->SetSelected(true);
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandDetail));
@@ -1609,7 +1609,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetRowsAndColumns(static_cast<::vl::vint>(1), static_cast<::vl::vint>(2));
@@ -1619,7 +1619,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_1 = new ::vl::presentation::compositions::GuiColumnSplitterComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetColumnsToTheLeft(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"1", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetColumnsToTheLeft(static_cast<::vl::vint>(1));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_1));
@@ -1644,13 +1644,13 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_4 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetBorderVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetBorderVisible(false);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetRowsAndColumns(static_cast<::vl::vint>(2), static_cast<::vl::vint>(1));
@@ -1704,10 +1704,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->treeViewFolders)->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->treeViewFolders)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->treeViewFolders)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->treeViewFolders)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->treeViewFolders)->SetHorizontalAlwaysVisible(false);
 		}
 		(this->__vwsn_precompile_11 = ::vl::__vwsn::This(this->treeViewFolders)->GetBoundsComposition());
 		{
@@ -1748,13 +1748,13 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_16 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetBorderVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetBorderVisible(false);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetRowsAndColumns(static_cast<::vl::vint>(2), static_cast<::vl::vint>(1));
@@ -1848,11 +1848,11 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->listViewContacts)->GetDataColumns());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"1", false))));
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(static_cast<::vl::vint>(1)));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->listViewContacts)->GetDataColumns());
-			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"2", false))));
+			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(static_cast<::vl::vint>(2)));
 		}
 		{
 			::vl::__vwsn::This(this->listViewContacts)->SetSmallImageProperty(LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
@@ -1864,10 +1864,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->listViewContacts)->SetView(::vl::presentation::controls::ListViewView::Detail);
 		}
 		{
-			::vl::__vwsn::This(this->listViewContacts)->SetVerticalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->listViewContacts)->SetVerticalAlwaysVisible(false);
 		}
 		{
-			::vl::__vwsn::This(this->listViewContacts)->SetHorizontalAlwaysVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->listViewContacts)->SetHorizontalAlwaysVisible(false);
 		}
 		(this->__vwsn_precompile_35 = ::vl::__vwsn::This(this->listViewContacts)->GetBoundsComposition());
 		{
@@ -1875,7 +1875,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_31 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_31.Obj())->SetSize(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"120", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_31.Obj())->SetSize(static_cast<::vl::vint>(120));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_31.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
@@ -1889,7 +1889,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_32 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_32.Obj())->SetSize(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"120", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_32.Obj())->SetSize(static_cast<::vl::vint>(120));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_32.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
@@ -1903,7 +1903,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_33 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_33.Obj())->SetSize(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"120", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_33.Obj())->SetSize(static_cast<::vl::vint>(120));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_33.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
@@ -1917,7 +1917,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_34 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_34.Obj())->SetSize(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"120", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_34.Obj())->SetSize(static_cast<::vl::vint>(120));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_34.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
@@ -2169,13 +2169,13 @@ Class (::demo::NewContactWindowConstructor)
 	{
 		(this->self = __vwsn_this_);
 		{
-			::vl::__vwsn::This(this->self)->SetSizeBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetSizeBox(false);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetMinimizedBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetMinimizedBox(false);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetMaximizedBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetMaximizedBox(false);
 		}
 		(this->__vwsn_precompile_23 = ::vl::__vwsn::This(this->self)->GetBoundsComposition());
 		{
@@ -2189,7 +2189,7 @@ Class (::demo::NewContactWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetRowsAndColumns(static_cast<::vl::vint>(6), static_cast<::vl::vint>(4));
@@ -2505,13 +2505,13 @@ Class (::demo::NewFolderWindowConstructor)
 	{
 		(this->self = __vwsn_this_);
 		{
-			::vl::__vwsn::This(this->self)->SetSizeBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetSizeBox(false);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetMinimizedBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetMinimizedBox(false);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetMaximizedBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetMaximizedBox(false);
 		}
 		(this->__vwsn_precompile_11 = ::vl::__vwsn::This(this->self)->GetBoundsComposition());
 		{
@@ -2528,7 +2528,7 @@ Class (::demo::NewFolderWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetRowsAndColumns(static_cast<::vl::vint>(3), static_cast<::vl::vint>(4));

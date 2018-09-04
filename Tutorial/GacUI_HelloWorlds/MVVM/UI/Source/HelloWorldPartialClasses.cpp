@@ -535,7 +535,7 @@ namespace helloworld
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetRowsAndColumns(static_cast<::vl::vint>(8), static_cast<::vl::vint>(2));
@@ -619,10 +619,10 @@ namespace helloworld
 		}
 		(this->__vwsn_precompile_8 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetWrapLineHeightCalculation(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetWrapLineHeightCalculation(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetWrapLine(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetWrapLine(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FF0000", false)));
@@ -685,10 +685,10 @@ namespace helloworld
 		}
 		(this->__vwsn_precompile_14 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetWrapLineHeightCalculation(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetWrapLineHeightCalculation(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetWrapLine(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetWrapLine(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FF0000", false)));

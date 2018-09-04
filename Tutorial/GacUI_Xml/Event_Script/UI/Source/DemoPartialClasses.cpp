@@ -98,7 +98,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetRowsAndColumns(static_cast<::vl::vint>(4), static_cast<::vl::vint>(4));
@@ -216,7 +216,7 @@ namespace demo
 			(this->textBoxC = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->textBoxC)->SetReadonly(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->textBoxC)->SetReadonly(true);
 		}
 		(this->__vwsn_precompile_13 = ::vl::__vwsn::This(this->textBoxC)->GetBoundsComposition());
 		{

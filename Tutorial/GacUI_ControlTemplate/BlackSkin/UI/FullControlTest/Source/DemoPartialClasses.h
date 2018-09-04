@@ -1395,6 +1395,18 @@ namespace demo
 		::vl::Ptr<::vl::presentation::elements::GuiInnerShadowElement> __vwsn_precompile_40;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_41;
 		::vl::Ptr<::vl::presentation::elements::GuiInnerShadowElement> __vwsn_precompile_42;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_43;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_44;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_45;
+		::vl::Ptr<::vl::presentation::elements::GuiFocusRectangleElement> __vwsn_precompile_46;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_47;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_48;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_49;
+		::vl::Ptr<::vl::presentation::elements::GuiFocusRectangleElement> __vwsn_precompile_50;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_51;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_52;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_53;
+		::vl::Ptr<::vl::presentation::elements::GuiFocusRectangleElement> __vwsn_precompile_54;
 		void __vwsn_demo_ElementTabPage_Initialize(::demo::ElementTabPage* __vwsn_this_);
 	public:
 		ElementTabPageConstructor();
@@ -2081,13 +2093,19 @@ namespace demo
 		::vl::presentation::controls::GuiBindableTextList* __vwsn_precompile_19;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_20;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_21;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_22;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_23;
-		::vl::presentation::controls::GuiScroll* __vwsn_precompile_24;
+		::vl::presentation::controls::GuiScroll* __vwsn_precompile_22;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_23;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_24;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_25;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_26;
 		::vl::presentation::controls::GuiScroll* __vwsn_precompile_27;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_28;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_29;
+		::vl::presentation::controls::GuiScroll* __vwsn_precompile_30;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_31;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_32;
+		::vl::presentation::controls::GuiScroll* __vwsn_precompile_33;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_34;
 		void __vwsn_demo_RepeatTabPage_Initialize(::demo::RepeatTabPage* __vwsn_this_);
 	public:
 		RepeatTabPageConstructor();
@@ -2666,6 +2684,7 @@ namespace demo
 #endif
 	protected:
 		::demo::TextListTabPage* self;
+		::vl::presentation::controls::GuiSelectableButton::MutexGroupController* mutexGroupController;
 		::vl::presentation::controls::GuiComboBoxListControl* comboView;
 		::vl::presentation::controls::GuiTextList* textList;
 		::vl::presentation::controls::GuiBindableTextList* bindableTextList;
@@ -2693,10 +2712,22 @@ namespace demo
 		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_21;
 		::vl::presentation::controls::GuiButton* __vwsn_precompile_22;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_23;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_24;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_25;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_26;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_27;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_24;
+		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_25;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_26;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_27;
+		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_28;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_29;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_30;
+		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_31;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_32;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_33;
+		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_34;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_35;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_36;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_37;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_38;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_39;
 		void __vwsn_demo_TextListTabPage_Initialize(::demo::TextListTabPage* __vwsn_this_);
 	public:
 		TextListTabPageConstructor();

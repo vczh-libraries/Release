@@ -326,7 +326,7 @@ Class (::demo::MyControlConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"10", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetPadding(static_cast<::vl::vint>(10));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetDirection(::vl::presentation::compositions::GuiStackComposition::Direction::Vertical);
@@ -339,7 +339,7 @@ Class (::demo::MyControlConstructor)
 			(this->__vwsn_precompile_3 = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::RadioButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetSelected(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetSelected(true);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetText(::vl::WString(L"Option A", false));

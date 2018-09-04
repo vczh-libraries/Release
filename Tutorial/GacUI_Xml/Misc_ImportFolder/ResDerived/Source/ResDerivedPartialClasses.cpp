@@ -80,10 +80,10 @@ namespace demo
 		}
 		(this->__vwsn_precompile_2 = ::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiImageFrameElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetStretch(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetStretch(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetFrameIndex(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"0", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetFrameIndex(static_cast<::vl::vint>(0));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_2));
@@ -97,10 +97,10 @@ namespace demo
 		}
 		(this->__vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiImageFrameElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetStretch(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetStretch(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetFrameIndex(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"0", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetFrameIndex(static_cast<::vl::vint>(0));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_4));

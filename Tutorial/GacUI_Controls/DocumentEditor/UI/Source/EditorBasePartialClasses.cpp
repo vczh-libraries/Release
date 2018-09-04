@@ -2919,7 +2919,7 @@ namespace demo
 			::vl::__vwsn::This(this->dialogOpen)->SetOptions((::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogFileMustExist | ::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogDereferenceLinks));
 		}
 		{
-			::vl::__vwsn::This(this->dialogOpen)->SetEnabledPreview(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->dialogOpen)->SetEnabledPreview(true);
 		}
 		{
 			::vl::__vwsn::This(this->dialogOpen)->SetFilter(::vl::WString(L"Image Files (*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp", false));
@@ -3153,20 +3153,20 @@ namespace demo
 		}
 		(this->dialogColor = new ::vl::presentation::controls::GuiColorDialog());
 		{
-			::vl::__vwsn::This(this->dialogColor)->SetEnabledCustomColor(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->dialogColor)->SetEnabledCustomColor(false);
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogColor));
 		}
 		(this->dialogFont = new ::vl::presentation::controls::GuiFontDialog());
 		{
-			::vl::__vwsn::This(this->dialogFont)->SetForceFontExist(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->dialogFont)->SetForceFontExist(true);
 		}
 		{
-			::vl::__vwsn::This(this->dialogFont)->SetShowSelection(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->dialogFont)->SetShowSelection(true);
 		}
 		{
-			::vl::__vwsn::This(this->dialogFont)->SetShowEffect(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->dialogFont)->SetShowEffect(false);
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogFont));
@@ -3709,16 +3709,16 @@ Class (::demo::HyperlinkWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(320); __vwsn_temp__.y = static_cast<::vl::vint>(80); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetShowInTaskBar(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetShowInTaskBar(false);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetMaximizedBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetMaximizedBox(false);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetMinimizedBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetMinimizedBox(false);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetSizeBox(::vl::__vwsn::Parse<bool>(::vl::WString(L"false", false)));
+			::vl::__vwsn::This(this->self)->SetSizeBox(false);
 		}
 		{
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(320); __vwsn_temp__.y = static_cast<::vl::vint>(80); return __vwsn_temp__; }());
@@ -3731,10 +3731,10 @@ Class (::demo::HyperlinkWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetBorderVisible(::vl::__vwsn::Parse<bool>(::vl::WString(L"true", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetBorderVisible(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(::vl::__vwsn::Parse<::vl::vint>(::vl::WString(L"5", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetCellPadding(static_cast<::vl::vint>(5));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetRowsAndColumns(static_cast<::vl::vint>(3), static_cast<::vl::vint>(4));
