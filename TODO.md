@@ -19,14 +19,13 @@ https://zhuanlan.zhihu.com/p/39369370
     - [x] Ribbon / Tab: Jump between tabs
     - [x] List: Item selection / Traversing  / Scrolling (h/v)
     - [x] TextBox / DocumentBox: Scrolling (h/v)
-    - [ ] DatePicker / DateComboBox: Selecting
+    - [x] DatePicker / DateComboBox: Selecting
     - [x] Scroll / Tracker: AutoFocus property (default to true, false in scroll view) / Keyboard operations
     - [ ] DataGrid editing
     - [ ] Jump between controls
     - [x] ComboBox focus rendering
     - [x] TabHeader focus rendering
     - [x] Scroll focus rendering
-    - [ ] DatePicker focus rendering
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Window Icon
 - [ ] **Update Release**
