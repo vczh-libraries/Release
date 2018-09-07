@@ -21,7 +21,7 @@ https://zhuanlan.zhihu.com/p/39369370
     - [x] TextBox / DocumentBox: Scrolling (h/v)
     - [x] DatePicker / DateComboBox: Selecting
     - [x] Scroll / Tracker: AutoFocus property (default to true, false in scroll view) / Keyboard operations
-    - [ ] DataGrid editing
+    - [x] DataGrid editing
     - [ ] Jump between controls
     - [x] ComboBox focus rendering
     - [x] TabHeader focus rendering
