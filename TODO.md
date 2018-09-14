@@ -4,28 +4,6 @@ https://zhuanlan.zhihu.com/p/39369370
 
 # GacUI 1.0
 
-- [x] Document clipboard data should have version
-- [x] Word doesn't recognize embedded GIF represented by data URL in HTML clipboard format.
-- [x] Add and query services from controls
-- [x] Demo: QueryService
-- [x] **Update Release**
-- [x] Render focus
-- [x] BlackSkin window template handle window properties (border, buttons, ...)
-- [x] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
-- [x] Key accessibility for controls
-  - Check List
-    - [x] Button: ENTER / SPACE
-    - [x] ComboBox: Keyboard enter focus to select item workflow
-    - [x] Ribbon / Tab: Jump between tabs
-    - [x] List: Item selection / Traversing  / Scrolling (h/v)
-    - [x] TextBox / DocumentBox: Scrolling (h/v)
-    - [x] DatePicker / DateComboBox: Selecting
-    - [x] Scroll / Tracker: AutoFocus property (default to true, false in scroll view) / Keyboard operations
-    - [x] DataGrid editing
-    - [x] Jump between controls
-    - [x] ComboBox focus rendering
-    - [x] TabHeader focus rendering
-    - [x] Scroll focus rendering
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Window Icon
 - [ ] **Update Release**
