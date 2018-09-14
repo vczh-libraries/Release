@@ -12,7 +12,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] Render focus
 - [x] BlackSkin window template handle window properties (border, buttons, ...)
 - [x] SM_CXPADDEDBORDER + SM_CXFRAME == 8, don't hardcode this in DarkSkin.xml. This is for the necessary border when the window is maximized.
-- [ ] Key accessibility for controls
+- [x] Key accessibility for controls
   - Check List
     - [x] Button: ENTER / SPACE
     - [x] ComboBox: Keyboard enter focus to select item workflow
@@ -22,7 +22,7 @@ https://zhuanlan.zhihu.com/p/39369370
     - [x] DatePicker / DateComboBox: Selecting
     - [x] Scroll / Tracker: AutoFocus property (default to true, false in scroll view) / Keyboard operations
     - [x] DataGrid editing
-    - [ ] Jump between controls
+    - [x] Jump between controls
     - [x] ComboBox focus rendering
     - [x] TabHeader focus rendering
     - [x] Scroll focus rendering
