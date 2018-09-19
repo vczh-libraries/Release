@@ -54,3 +54,8 @@ class CLASS_NAME [: BASE_CLASS]
 - Being able to change token subset during parsing.
 - Being able to specify a error message when a certain action fails.
 - Generate SAX-like parser, with a default handler to create AST.
+
+## High level steps
+- Name each progresses in all branches in all rules, including rule names as start progresses, as states.
+- Build DFA per rule, merging all branches with priority, assuming **rule-input**s are different from **token-input**s.
+- Add push-state, pop-state, remove **rule-input** transitions.
