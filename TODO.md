@@ -7,6 +7,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Window Icon
 - [ ] Use another way to create focus rectangle bitmap mask for Direct2D
+- [ ] Fix combo dropdown hidden in topmost window
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
