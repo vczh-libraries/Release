@@ -23,7 +23,7 @@
     <ProjectGuid>{5B82834D-51AB-44D1-B5D4-F1209F7EC54F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DocumentEditorRibbon</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
