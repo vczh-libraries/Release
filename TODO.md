@@ -7,6 +7,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Window Icon
 - [ ] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
+- [ ] Try to repro: getting template object from sub controls in parent control's `<ref.Ctor>` cause composition tree modified during rendering and hit assert
 - [x] Use another way to create focus rectangle bitmap mask for Direct2D
 - [ ] Fix combo dropdown hidden in topmost window
 - [ ] **Update Release**
