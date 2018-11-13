@@ -10,6 +10,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] Try to repro: getting template object from sub controls in parent control's `<ref.Ctor>` cause composition tree modified during rendering and hit assert
 - [x] Use another way to create focus rectangle bitmap mask for Direct2D
 - [ ] Fix combo dropdown hidden in topmost window
+- [ ] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
