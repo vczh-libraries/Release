@@ -7,7 +7,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Window Icon
 - [ ] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
-- [ ] When there are combo boxes in item templates, inserting items will cause recursively calling list::ItemProviderBase::InvokeOnItemModified
+- [x] When there are combo boxes in item templates, inserting items will cause recursively calling list::ItemProviderBase::InvokeOnItemModified
 - [x] Use another way to create focus rectangle bitmap mask for Direct2D
 - [x] Fix combo dropdown hidden in topmost window
 - [ ] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
