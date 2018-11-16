@@ -10,7 +10,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] Try to repro: getting template object from sub controls in parent control's `<ref.Ctor>` cause composition tree modified during rendering and hit assert
   - This is possibly due to recursively calling list::ItemProviderBase::InvokeOnItemModified
 - [x] Use another way to create focus rectangle bitmap mask for Direct2D
-- [ ] Fix combo dropdown hidden in topmost window
+- [x] Fix combo dropdown hidden in topmost window
 - [ ] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
 - [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
 - [ ] **Update Release**
