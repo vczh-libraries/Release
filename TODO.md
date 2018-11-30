@@ -20,6 +20,8 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] Tutorials use the new default control templates
 - [ ] **Update Release**
 
+**ON GOING**: Document repo
+
 # GacUI 2.0
 
 ## Vlpp
