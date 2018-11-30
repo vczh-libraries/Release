@@ -4,12 +4,14 @@ https://zhuanlan.zhihu.com/p/39369370
 
 # GacUI 1.0
 
-- [ ] High DPI for Direct2D (GDI will blur)
-- [ ] Window Icon
-- [ ] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
 - [x] When there are combo boxes in item templates, inserting items will cause recursively calling list::ItemProviderBase::InvokeOnItemModified
 - [x] Use another way to create focus rectangle bitmap mask for Direct2D
 - [x] Fix combo dropdown hidden in topmost window
+- [ ] High DPI for Direct2D (GDI will blur)
+- [ ] Change `GuiControl::Font` from `FontProperties` to `Nullable<FontProperties>`. It will changes following parent controls if it is set to null. If `GuiControlHost`'s font is null, it will become the default font.
+- [ ] **Update Release**
+- [ ] Window Icon
+- [ ] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
 - [ ] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
 - [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
 - [ ] **Update Release**
