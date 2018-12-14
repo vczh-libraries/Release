@@ -7,6 +7,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] When there are combo boxes in item templates, inserting items will cause recursively calling list::ItemProviderBase::InvokeOnItemModified
 - [x] Use another way to create focus rectangle bitmap mask for Direct2D
 - [x] Fix combo dropdown hidden in topmost window
+- [ ] New `GuiListControl::IItemArranger` with different item height
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Change `GuiControl::Font` from `FontProperties` to `Nullable<FontProperties>`. It will changes following parent controls if it is set to null. If `GuiControlHost`'s font is null, it will become the default font.
 - [ ] **Update Release**
