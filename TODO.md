@@ -11,7 +11,9 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] Change `GuiControl::Font` from `FontProperties` to `Nullable<FontProperties>`. It will changes following parent controls if it is set to null. If `GuiControlHost`'s font is null, it will become the default font.
 - [ ] Window Icon
 - [ ] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
+- [ ] Fix GacGen reports only "error dumping resource file" while the resource file contains some syntax errors preventing GacGen from reading it
 - [ ] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
+- [ ] Fix list control being able to scroll by mouse while there is no scroll bar
 - [ ] **Update Release**
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
