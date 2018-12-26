@@ -13,7 +13,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
 - [ ] Fix GacGen reports only "error dumping resource file" while the resource file contains some syntax errors preventing GacGen from reading it
 - [ ] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
-- [ ] Fix list control being able to scroll by mouse while there is no scroll bar
+- [x] Fix list control being able to scroll by mouse while there is no scroll bar
 - [x] Fix list control cannot set data source from non-null to null
 - [ ] **Update Release**
 - [ ] High DPI for Direct2D (GDI will blur)
