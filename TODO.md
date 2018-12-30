@@ -16,6 +16,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
 - [x] Fix list control being able to scroll by mouse while there is no scroll bar
 - [x] Fix list control cannot set data source from non-null to null
+- [x] Initialize localized strings object to `en-US` at the beginning to prevent from getting a null object in script
 - [ ] **Update Release**
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
