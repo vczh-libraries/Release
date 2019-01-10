@@ -8,7 +8,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] Use another way to create focus rectangle bitmap mask for Direct2D
 - [x] Fix combo dropdown hidden in topmost window
 - [x] New `GuiListControl::IItemArranger` with different item height
-  - [ ] Correctly implement `FreeHeightItemArranger::EnsureItemVisible`
+  - [x] Correctly implement `FreeHeightItemArranger::EnsureItemVisible`
 - [x] Change `GuiControl::Font` from `FontProperties` to `Nullable<FontProperties>`. It will changes following parent controls if it is set to null. If `GuiControlHost`'s font is null, it will become the default font.
 - [ ] Window Icon
 - [x] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
