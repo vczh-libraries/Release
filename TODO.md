@@ -19,7 +19,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] Initialize localized strings object to `en-US` at the beginning to prevent from getting a null object in script
 - [x] `GuiControl::GetDisposeFlag`
 - [ ] Fix tutorials in release
-  - [ ] Localization doesn't need to test null Strings
+  - [x] Localization doesn't need to test null Strings
   - [ ] DataGrid combo box editor doesn't work
   - [ ] AddressBook new folder doesn't work
   - [ ] BlackSkin document changing font size doesn't work
