@@ -19,6 +19,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] Initialize localized strings object to `en-US` at the beginning to prevent from getting a null object in script
 - [x] `GuiControl::GetDisposeFlag`
 - [ ] **Update Release**
+- [ ] Fix `<childControl Font-bind="parentControl.Font"/>` script crash.
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
 - [ ] **Update Release**
