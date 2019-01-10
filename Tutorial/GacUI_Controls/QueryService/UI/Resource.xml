@@ -72,7 +72,7 @@
           </Cell>
 
           <Cell Site="row:2 column:0">
-            <SolidLabel HorizontalAlignment="Center" Font-bind="self.Font" Color="#FFFFFF" Text="Type and change the title of the window."/>
+            <SolidLabel HorizontalAlignment="Center" Font-bind="self.DisplayFont" Color="#FFFFFF" Text="Type and change the title of the window."/>
           </Cell>
         </Table>
       </CustomControl>

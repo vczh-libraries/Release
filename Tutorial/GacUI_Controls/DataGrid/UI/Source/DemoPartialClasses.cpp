@@ -736,7 +736,7 @@ Closures
 	void __vwsnf47_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_0)->GetFont();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::FontProperties>(__vwsn_value_);
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Nullable<::vl::presentation::FontProperties>>(__vwsn_value_);
 		if ((__vwsn_old_ == __vwsn_new_))
 		{
 			return;
@@ -754,7 +754,7 @@ Closures
 	void __vwsnf48_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_0)->GetFont();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::FontProperties>(__vwsn_value_);
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Nullable<::vl::presentation::FontProperties>>(__vwsn_value_);
 		if ((__vwsn_old_ == __vwsn_new_))
 		{
 			return;
@@ -1318,7 +1318,7 @@ Closures
 
 	void __vwsnc15_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetDisplayFont();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -1333,7 +1333,7 @@ Closures
 		{
 			(__vwsn_bind_opened_ = true);
 			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::demo::CategoryDisplayer*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->FontChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc15_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->DisplayFontChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc15_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
@@ -1356,7 +1356,7 @@ Closures
 			(__vwsn_bind_closed_ = true);
 			if (static_cast<bool>(__vwsn_bind_handler_0_0))
 			{
-				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->FontChanged, __vwsn_bind_handler_0_0);
+				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->DisplayFontChanged, __vwsn_bind_handler_0_0);
 				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
 			}
 			(__vwsn_bind_cache_0 = static_cast<::demo::CategoryDisplayer*>(nullptr));
@@ -1501,7 +1501,7 @@ Closures
 
 	void __vwsnc18_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
+		auto __vwsn_bind_activator_result_ = ::vl::Nullable<::vl::presentation::FontProperties>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont());
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -1562,7 +1562,7 @@ Closures
 
 	void __vwsnc19_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
+		auto __vwsn_bind_activator_result_ = ::vl::Nullable<::vl::presentation::FontProperties>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont());
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 

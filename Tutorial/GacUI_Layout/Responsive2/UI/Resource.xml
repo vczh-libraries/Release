@@ -172,7 +172,7 @@
               var item = new VideoViewModel^();
               item.Author = Sys::LoremIpsumTitle(16);
               item.Title = Sys::LoremIpsumTitle(80);
-              item.Font = self.Font;
+              item.Font = self.DisplayFont;
               self.videos.Add(item);
             }
           }

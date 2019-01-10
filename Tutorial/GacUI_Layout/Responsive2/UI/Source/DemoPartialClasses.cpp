@@ -1970,7 +1970,7 @@ Class (::demo::MainWindow)
 					auto item = ::vl::Ptr<::demo::VideoViewModel>(new ::demo::VideoViewModel());
 					::vl::__vwsn::This(item.Obj())->SetAuthor(::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(16)));
 					::vl::__vwsn::This(item.Obj())->SetTitle(::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(80)));
-					::vl::__vwsn::This(item.Obj())->SetFont(::vl::__vwsn::This(this->self)->GetFont());
+					::vl::__vwsn::This(item.Obj())->SetFont(::vl::__vwsn::This(this->self)->GetDisplayFont());
 					::vl::__vwsn::This(::vl::__vwsn::This(this->self)->videos.Obj())->Add(::vl::__vwsn::Box(item));
 				}
 				(i = (i + static_cast<::vl::vint>(1)));
