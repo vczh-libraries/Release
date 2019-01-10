@@ -18,6 +18,11 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] Fix list control cannot set data source from non-null to null
 - [x] Initialize localized strings object to `en-US` at the beginning to prevent from getting a null object in script
 - [x] `GuiControl::GetDisposeFlag`
+- [ ] Fix tutorials in release
+  - [x] Localization doesn't need to test null Strings
+  - [ ] DataGrid combo box editor doesn't work
+  - [ ] AddressBook new folder doesn't work
+  - [ ] BlackSkin document changing font size doesn't work
 - [ ] **Update Release**
 - [ ] Fix `<childControl Font-bind="parentControl.Font"/>` script crash.
 - [ ] High DPI for Direct2D (GDI will blur)
