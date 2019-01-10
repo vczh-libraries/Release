@@ -338,7 +338,7 @@
             <Cell Site="row:2 column:2">
               <Button Text="OK">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
-                <ev.Clicked-eval><![CDATA[{ self.Close(); }]]></ev.Clicked-eval>
+                <ev.Clicked-eval><![CDATA[{ self.Ready = true; self.Close(); }]]></ev.Clicked-eval>
               </Button>
             </Cell>
             <Cell Site="row:2 column:3">

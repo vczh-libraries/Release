@@ -447,6 +447,7 @@ Closures
 
 	void __vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
+		(::vl::__vwsn::This(__vwsnthis_0->self)->Ready = true);
 		::vl::__vwsn::This(__vwsnthis_0->self)->Close();
 	}
 
