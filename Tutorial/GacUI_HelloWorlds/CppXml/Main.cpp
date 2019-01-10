@@ -8,8 +8,7 @@ void GuiMain()
 {
 	{
 		FileStream fileStream(L"../UIRes/CppXml.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(resource);
+		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
 	helloworld::MainWindow window;
 	window.MoveToScreenCenter();

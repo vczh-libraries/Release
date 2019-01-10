@@ -10,8 +10,7 @@ void GuiMain()
 {
 	{
 		FileStream fileStream(L"../UIRes/Direct2DClock.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(resource);
+		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
 	MainWindow window;
 	window.MoveToScreenCenter();

@@ -8,8 +8,7 @@ void GuiMain()
 {
 	{
 		FileStream fileStream(L"../UIRes/CalculatorAndStateMachine.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(resource);
+		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
 	demo::MainWindow window(new demo::Calculator);
 	window.MoveToScreenCenter();

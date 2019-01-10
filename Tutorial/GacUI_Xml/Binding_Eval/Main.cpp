@@ -8,8 +8,7 @@ void GuiMain()
 {
 	{
 		FileStream fileStream(L"../UIRes/Binding_Eval.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(resource);
+		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
 	demo::MainWindow window;
 	window.MoveToScreenCenter();

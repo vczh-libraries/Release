@@ -272,8 +272,7 @@ void GuiMain()
 {
 	{
 		FileStream fileStream(L"../UIRes/AddressBook.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(resource);
+		GetResourceManager()->LoadResourceOrPending(fileStream);
 
 		folderImage = resource->GetImageByPath(L"Images/Folder");
 		contactBigImage = resource->GetImageByPath(L"Images/ContactBig");

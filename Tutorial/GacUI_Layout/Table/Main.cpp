@@ -8,8 +8,7 @@ void GuiMain()
 {
 	{
 		FileStream fileStream(L"../UIRes/Table.bin", FileStream::ReadOnly);
-		auto resource = GuiResource::LoadPrecompiledBinary(fileStream);
-		GetResourceManager()->SetResource(resource);
+		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
 	demo::MainWindow window;
 	window.MoveToScreenCenter();
