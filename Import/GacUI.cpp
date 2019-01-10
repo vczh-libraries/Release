@@ -719,8 +719,40 @@ namespace vl
 			using namespace reflection::description;
 
 /***********************************************************************
+GuiDisposedFlag
+***********************************************************************/
+
+			void GuiDisposedFlag::SetDisposed()
+			{
+				disposed = true;
+			}
+
+			GuiDisposedFlag::GuiDisposedFlag(GuiControl* _owner)
+				:owner(_owner)
+			{
+			}
+
+			GuiDisposedFlag::~GuiDisposedFlag()
+			{
+			}
+
+			bool GuiDisposedFlag::IsDisposed()
+			{
+				return disposed;
+			}
+
+/***********************************************************************
 GuiControl
 ***********************************************************************/
+
+			Ptr<GuiDisposedFlag> GuiControl::GetDisposedFlag()
+			{
+				if (!disposedFlag)
+				{
+					disposedFlag = new GuiDisposedFlag(this);
+				}
+				return disposedFlag;
+			}
 
 			void GuiControl::BeforeControlTemplateUninstalled()
 			{
@@ -729,7 +761,7 @@ GuiControl
 			void GuiControl::AfterControlTemplateInstalled(bool initialize)
 			{
 				controlTemplateObject->SetText(text);
-				controlTemplateObject->SetFont(font);
+				controlTemplateObject->SetFont(displayFont);
 				controlTemplateObject->SetContext(context);
 				controlTemplateObject->SetVisuallyEnabled(isVisuallyEnabled);
 				controlTemplateObject->SetFocusableComposition(focusableComposition);
@@ -788,6 +820,7 @@ GuiControl
 				control->parent=this;
 				control->OnParentChanged(oldParent, control->parent);
 				control->UpdateVisuallyEnabled();
+				control->UpdateDisplayFont();
 
 				if (auto host = boundsComposition->GetRelatedGraphicsHost())
 				{
@@ -869,6 +902,29 @@ GuiControl
 					for (vint i = 0; i < children.Count(); i++)
 					{
 						children[i]->UpdateVisuallyEnabled();
+					}
+				}
+			}
+
+			void GuiControl::UpdateDisplayFont()
+			{
+				auto newValue =
+					font ? font.Value() :
+					parent ? parent->GetDisplayFont() :
+					GetCurrentController()->ResourceService()->GetDefaultFont();
+
+				if (displayFont != newValue)
+				{
+					displayFont = newValue;
+					if (controlTemplateObject)
+					{
+						controlTemplateObject->SetFont(displayFont);
+					}
+					DisplayFontChanged.Execute(GetNotifyEventArguments());
+
+					for (vint i = 0; i < children.Count(); i++)
+					{
+						children[i]->UpdateDisplayFont();
 					}
 				}
 			}
@@ -993,7 +1049,7 @@ GuiControl
 
 			GuiControl::GuiControl(theme::ThemeName themeName)
 				:controlThemeName(themeName)
-				, flagDisposed(new bool(false))
+				, displayFont(GetCurrentController()->ResourceService()->GetDefaultFont())
 			{
 				{
 					boundsComposition = new GuiBoundsComposition;
@@ -1015,18 +1071,21 @@ GuiControl
 					EnabledChanged.SetAssociatedComposition(boundsComposition);
 					FocusedChanged.SetAssociatedComposition(boundsComposition);
 					VisuallyEnabledChanged.SetAssociatedComposition(boundsComposition);
+					DisplayFontChanged.SetAssociatedComposition(boundsComposition);
 					AltChanged.SetAssociatedComposition(boundsComposition);
 					TextChanged.SetAssociatedComposition(boundsComposition);
 					FontChanged.SetAssociatedComposition(boundsComposition);
 					ContextChanged.SetAssociatedComposition(boundsComposition);
 				}
-				font = GetCurrentController()->ResourceService()->GetDefaultFont();
 				sharedPtrDestructorProc = &GuiControl::SharedPtrDestructorProc;
 			}
 
 			GuiControl::~GuiControl()
 			{
-				*flagDisposed.Obj() = true;
+				if (disposedFlag)
+				{
+					disposedFlag->SetDisposed();
+				}
 				// prevent a root bounds composition from notifying its dead controls
 				if (!parent)
 				{
@@ -1061,10 +1120,10 @@ GuiControl
 				auto controlHost = GetRelatedControlHost();
 				if (controlHost && boundsComposition->IsRendering())
 				{
-					auto flag = flagDisposed;
+					auto flag = GetDisposedFlag();
 					GetApplication()->InvokeInMainThread(controlHost, [=]()
 					{
-						if (!*flag.Obj())
+						if (!flag->IsDisposed())
 						{
 							proc();
 						}
@@ -1283,22 +1342,24 @@ GuiControl
 				}
 			}
 
-			const FontProperties& GuiControl::GetFont()
+			const Nullable<FontProperties>& GuiControl::GetFont()
 			{
 				return font;
 			}
 
-			void GuiControl::SetFont(const FontProperties& value)
+			void GuiControl::SetFont(const Nullable<FontProperties>& value)
 			{
 				if (font != value)
 				{
 					font = value;
-					if (controlTemplateObject)
-					{
-						controlTemplateObject->SetFont(font);
-					}
 					FontChanged.Execute(GetNotifyEventArguments());
+					UpdateDisplayFont();
 				}
+			}
+
+			const FontProperties& GuiControl::GetDisplayFont()
+			{
+				return displayFont;
 			}
 			
 			description::Value GuiControl::GetContext()
@@ -2117,6 +2178,12 @@ GuiScrollView
 				CalculateView();
 			}
 
+			void GuiScrollView::UpdateDisplayFont()
+			{
+				GuiControl::UpdateDisplayFont();
+				CalculateView();
+			}
+
 			void GuiScrollView::OnContainerBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
 			{
 				InvokeOrDelayIfRendering([=]()
@@ -2238,7 +2305,7 @@ GuiScrollView
 
 			vint GuiScrollView::GetSmallMove()
 			{
-				return GetFont().size * 2;
+				return GetDisplayFont().size * 2;
 			}
 
 			Size GuiScrollView::GetBigMove()
@@ -2248,12 +2315,6 @@ GuiScrollView
 			
 			GuiScrollView::~GuiScrollView()
 			{
-			}
-
-			void GuiScrollView::SetFont(const FontProperties& value)
-			{
-				GuiControl::SetFont(value);
-				CalculateView();
 			}
 
 			void GuiScrollView::CalculateView()
@@ -2681,7 +2742,7 @@ GuiDateComboBox
 			{
 			}
 
-			void GuiDateComboBox::SetFont(const FontProperties& value)
+			void GuiDateComboBox::SetFont(const Nullable<FontProperties>& value)
 			{
 				GuiComboBoxBase::SetFont(value);
 				datePicker->SetFont(value);
@@ -6670,6 +6731,16 @@ GuiComboBoxBase
 GuiComboBoxListControl
 ***********************************************************************/
 
+			void GuiComboBoxListControl::UpdateDisplayFont()
+			{
+				GuiControl::UpdateDisplayFont();
+				if (itemStyleController)
+				{
+					itemStyleController->SetFont(GetDisplayFont());
+				}
+				AdoptSubMenuSize();
+			}
+
 			void GuiComboBoxListControl::BeforeControlTemplateUninstalled()
 			{
 				GuiComboBoxBase::BeforeControlTemplateUninstalled();
@@ -6703,7 +6774,7 @@ GuiComboBoxListControl
 							{
 								itemStyleController = style;
 								itemStyleController->SetText(GetText());
-								itemStyleController->SetFont(GetFont());
+								itemStyleController->SetFont(GetDisplayFont());
 								itemStyleController->SetContext(GetContext());
 								itemStyleController->SetVisuallyEnabled(GetVisuallyEnabled());
 								itemStyleController->SetAlignmentToParent(Margin(0, 0, 0, 0));
@@ -6737,7 +6808,7 @@ GuiComboBoxListControl
 
 			void GuiComboBoxListControl::AdoptSubMenuSize()
 			{
-				Size expectedSize(0, GetFont().size * 20);
+				Size expectedSize(0, GetDisplayFont().size * 20);
 				Size adoptedSize = containedListControl->GetAdoptedSize(expectedSize);
 
 				Size clientSize = GetPreferredMenuClientSize();
@@ -6756,15 +6827,6 @@ GuiComboBoxListControl
 				{
 					itemStyleController->SetText(GetText());
 				}
-			}
-
-			void GuiComboBoxListControl::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
-			{
-				if (itemStyleController)
-				{
-					itemStyleController->SetFont(GetFont());
-				}
-				AdoptSubMenuSize();
 			}
 
 			void GuiComboBoxListControl::OnContextChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
@@ -6798,10 +6860,10 @@ GuiComboBoxListControl
 
 			void GuiComboBoxListControl::OnListControlBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
 			{
-				auto flag = flagDisposed;
+				auto flag = GetDisposedFlag();
 				GetApplication()->InvokeLambdaInMainThread(GetRelatedControlHost(), [=]()
 				{
-					if (!*flag.Obj())
+					if (!flag->IsDisposed())
 					{
 						AdoptSubMenuSize();
 					}
@@ -6856,7 +6918,6 @@ GuiComboBoxListControl
 				, containedListControl(_containedListControl)
 			{
 				TextChanged.AttachMethod(this, &GuiComboBoxListControl::OnTextChanged);
-				FontChanged.AttachMethod(this, &GuiComboBoxListControl::OnFontChanged);
 				ContextChanged.AttachMethod(this, &GuiComboBoxListControl::OnContextChanged);
 				VisuallyEnabledChanged.AttachMethod(this, &GuiComboBoxListControl::OnVisuallyEnabledChanged);
 				AfterSubMenuOpening.AttachMethod(this, &GuiComboBoxListControl::OnAfterSubMenuOpening);
@@ -8250,16 +8311,13 @@ RangedItemArrangerBase
 					StyleList newVisibleStyles;
 					for (vint i = newStartIndex; i < itemCount; i++)
 					{
-						auto style
-							= startIndex <= i && i <= endIndex
-							? visibleStyles[i - startIndex]
-							: CreateStyle(i)
-							;
+						bool reuseOldStyle = startIndex <= i && i <= endIndex;
+						auto style = reuseOldStyle ? visibleStyles[i - startIndex] : CreateStyle(i);
 						newVisibleStyles.Add(style);
 
 						Rect bounds;
 						Margin alignmentToParent;
-						PlaceItem(true, i, style, newBounds, bounds, alignmentToParent);
+						PlaceItem(true, !reuseOldStyle, i, style, newBounds, bounds, alignmentToParent);
 						if (IsItemOutOfViewBounds(i, style, bounds, newBounds))
 						{
 							break;
@@ -8299,7 +8357,7 @@ RangedItemArrangerBase
 						auto style = visibleStyles[i];
 						Rect bounds;
 						Margin alignmentToParent(-1, -1, -1, -1);
-						PlaceItem(false, startIndex + i, style, viewBounds, bounds, alignmentToParent);
+						PlaceItem(false, false, startIndex + i, style, viewBounds, bounds, alignmentToParent);
 
 						bounds.x1 -= viewBounds.x1;
 						bounds.x2 -= viewBounds.x1;
@@ -8443,7 +8501,7 @@ RangedItemArrangerBase
 					}
 					else
 					{
-						return 0;
+						return nullptr;
 					}
 				}
 
@@ -8517,15 +8575,20 @@ FreeHeightItemArranger
 					}
 				}
 
-				void FreeHeightItemArranger::PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
+				void FreeHeightItemArranger::PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
 				{
-					vint styleHeight = 0;
+					vint styleHeight = heights[index];
 					{
 						auto composition = GetStyleBounds(style);
 						auto currentBounds = callback->GetStyleBounds(composition);
 						callback->SetStyleBounds(composition, Rect(bounds.LeftTop(), Size(viewBounds.Width(), bounds.Height())));
-						styleHeight = callback->GetStylePreferredSize(GetStyleBounds(style)).y;
+						vint newStyleHeight = callback->GetStylePreferredSize(composition).y;
 						callback->SetStyleBounds(composition, currentBounds);
+
+						if (!newCreatedStyle || styleHeight < newStyleHeight)
+						{
+							styleHeight = newStyleHeight;
+						}
 					}
 
 					if (heights[index] != styleHeight)
@@ -8608,12 +8671,30 @@ FreeHeightItemArranger
 				{
 					availableOffsetCount = start;
 					vint itemCount = heights.Count() + newCount - count;
-					heights.Resize(itemCount);
-					offsets.Resize(itemCount);
+
+					if (count < newCount)
+					{
+						heights.Resize(itemCount);
+						if (start + newCount < itemCount)
+						{
+							memmove(&heights[start + newCount], &heights[start + count], sizeof(vint) * (itemCount - start - newCount));
+						}
+					}
+					else if (count > newCount)
+					{
+						if (start + newCount < itemCount)
+						{
+							memmove(&heights[start + newCount], &heights[start + count], sizeof(vint) * (itemCount - start - newCount));
+						}
+						heights.Resize(itemCount);
+					}
+
 					for (vint i = 0; i < newCount; i++)
 					{
 						heights[start + i] = 1;
 					}
+					offsets.Resize(itemCount);
+
 					RangedItemArrangerBase::OnItemModified(start, count, newCount);
 				}
 
@@ -8636,22 +8717,10 @@ FreeHeightItemArranger
 						itemIndex = count;
 						break;
 					case KeyDirection::PageUp:
-						EnsureOffsetForItem(itemIndex);
-						while (true)
-						{
-							--itemIndex;
-							if (itemIndex < 0) break;
-							if (offsets[itemIndex] + heights[itemIndex] <= viewBounds.Top()) break;
-						}
+						itemIndex -= visibleStyles.Count();
 						break;
 					case KeyDirection::PageDown:
-						while (true)
-						{
-							++itemIndex;
-							if (itemIndex > offsets.Count()) break;
-							EnsureOffsetForItem(itemIndex);
-							if (offsets[itemIndex] > -viewBounds.Bottom()) break;
-						}
+						itemIndex += visibleStyles.Count();
 						break;
 					default:
 						return -1;
@@ -8662,13 +8731,46 @@ FreeHeightItemArranger
 					else return itemIndex;
 				}
 
-				bool FreeHeightItemArranger::EnsureItemVisible(vint itemIndex)
+				GuiListControl::EnsureItemVisibleResult FreeHeightItemArranger::EnsureItemVisible(vint itemIndex)
 				{
 					if (callback)
 					{
-						return true;
+						bool moved = false;
+						while (true)
+						{
+							if (itemIndex < 0 || itemIndex >= itemProvider->Count())
+							{
+								return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
+							}
+
+							EnsureOffsetForItem(itemIndex);
+							vint offset = viewBounds.y1;
+							vint top = offsets[itemIndex];
+							vint bottom = top + heights[itemIndex];
+							vint height = viewBounds.Height();
+
+							Point location = viewBounds.LeftTop();
+							if (offset > top)
+							{
+								location.y = top;
+							}
+							else if (offset < bottom - height)
+							{
+								location.y = bottom - height;
+							}
+							else
+							{
+								break;
+							}
+
+							auto oldLeftTop = viewBounds.LeftTop();
+							callback->SetViewLocation(location);
+							moved |= viewBounds.LeftTop() != oldLeftTop;
+							if (viewBounds.LeftTop() != location) break;
+						}
+						return moved ? GuiListControl::EnsureItemVisibleResult::Moved : GuiListControl::EnsureItemVisibleResult::NotMoved;
 					}
-					return false;
+					return GuiListControl::EnsureItemVisibleResult::NotMoved;
 				}
 
 				Size FreeHeightItemArranger::GetAdoptedSize(Size expectedSize)
@@ -8702,7 +8804,7 @@ FixedHeightItemArranger
 					}
 				}
 
-				void FixedHeightItemArranger::PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
+				void FixedHeightItemArranger::PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
 				{
 					vint top = GetYOffset() + index * rowHeight;
 					if (pi_width == -1)
@@ -8800,14 +8902,15 @@ FixedHeightItemArranger
 					else return itemIndex;
 				}
 
-				bool FixedHeightItemArranger::EnsureItemVisible(vint itemIndex)
+				GuiListControl::EnsureItemVisibleResult FixedHeightItemArranger::EnsureItemVisible(vint itemIndex)
 				{
 					if (callback)
 					{
 						if (itemIndex < 0 || itemIndex >= itemProvider->Count())
 						{
-							return false;
+							return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
 						}
+						bool moved = false;
 						while (true)
 						{
 							vint yOffset = GetYOffset();
@@ -8835,11 +8938,15 @@ FixedHeightItemArranger
 							{
 								break;
 							}
+
+							auto oldLeftTop = viewBounds.LeftTop();
 							callback->SetViewLocation(location);
+							moved |= viewBounds.LeftTop() != oldLeftTop;
+							if (viewBounds.LeftTop() != location) break;
 						}
-						return true;
+						return moved ? GuiListControl::EnsureItemVisibleResult::Moved : GuiListControl::EnsureItemVisibleResult::NotMoved;
 					}
-					return false;
+					return GuiListControl::EnsureItemVisibleResult::NotMoved;
 				}
 
 				Size FixedHeightItemArranger::GetAdoptedSize(Size expectedSize)
@@ -8871,7 +8978,7 @@ FixedSizeMultiColumnItemArranger
 					}
 				}
 
-				void FixedSizeMultiColumnItemArranger::PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
+				void FixedSizeMultiColumnItemArranger::PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
 				{
 					vint rowItems = viewBounds.Width() / itemSize.x;
 					if (rowItems < 1) rowItems = 1;
@@ -8990,14 +9097,15 @@ FixedSizeMultiColumnItemArranger
 					else return itemIndex;
 				}
 
-				bool FixedSizeMultiColumnItemArranger::EnsureItemVisible(vint itemIndex)
+				GuiListControl::EnsureItemVisibleResult FixedSizeMultiColumnItemArranger::EnsureItemVisible(vint itemIndex)
 				{
 					if (callback)
 					{
 						if (itemIndex < 0 || itemIndex >= itemProvider->Count())
 						{
-							return false;
+							return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
 						}
+						bool moved = false;
 						while (true)
 						{
 							vint rowHeight = itemSize.y;
@@ -9029,11 +9137,15 @@ FixedSizeMultiColumnItemArranger
 							{
 								break;
 							}
+
+							auto oldLeftTop = viewBounds.LeftTop();
 							callback->SetViewLocation(location);
+							moved |= viewBounds.LeftTop() != oldLeftTop;
+							if (viewBounds.LeftTop() != location) break;
 						}
-						return true;
+						return moved ? GuiListControl::EnsureItemVisibleResult::Moved : GuiListControl::EnsureItemVisibleResult::NotMoved;
 					}
-					return false;
+					return GuiListControl::EnsureItemVisibleResult::NotMoved;
 				}
 
 				Size FixedSizeMultiColumnItemArranger::GetAdoptedSize(Size expectedSize)
@@ -9076,7 +9188,7 @@ FixedHeightMultiColumnItemArranger
 					}
 				}
 
-				void FixedHeightMultiColumnItemArranger::PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
+				void FixedHeightMultiColumnItemArranger::PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
 				{
 					vint rows = viewBounds.Height() / itemHeight;
 					if (rows < 1) rows = 1;
@@ -9178,14 +9290,15 @@ FixedHeightMultiColumnItemArranger
 					else return itemIndex;
 				}
 
-				bool FixedHeightMultiColumnItemArranger::EnsureItemVisible(vint itemIndex)
+				GuiListControl::EnsureItemVisibleResult FixedHeightMultiColumnItemArranger::EnsureItemVisible(vint itemIndex)
 				{
 					if (callback)
 					{
 						if (itemIndex < 0 || itemIndex >= itemProvider->Count())
 						{
-							return false;
+							return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
 						}
+						bool moved = false;
 						while (true)
 						{
 							vint rowCount = viewBounds.Height() / itemHeight;
@@ -9227,11 +9340,15 @@ FixedHeightMultiColumnItemArranger
 							{
 								break;
 							}
+
+							auto oldLeftTop = viewBounds.LeftTop();
 							callback->SetViewLocation(location);
+							moved |= viewBounds.LeftTop() != oldLeftTop;
+							if (viewBounds.LeftTop() != location) break;
 						}
-						return true;
+						return moved ? GuiListControl::EnsureItemVisibleResult::Moved : GuiListControl::EnsureItemVisibleResult::NotMoved;
 					}
-					return false;
+					return GuiListControl::EnsureItemVisibleResult::NotMoved;
 				}
 
 				Size FixedHeightMultiColumnItemArranger::GetAdoptedSize(Size expectedSize)
@@ -9408,7 +9525,7 @@ GuiListControl
 
 			void GuiListControl::OnStyleInstalled(vint itemIndex, ItemStyle* style)
 			{
-				style->SetFont(GetFont());
+				style->SetFont(GetDisplayFont());
 				style->SetContext(GetContext());
 				style->SetText(itemProvider->GetTextValue(itemIndex));
 				style->SetVisuallyEnabled(GetVisuallyEnabled());
@@ -9490,6 +9607,15 @@ GuiListControl
 				CalculateView();
 			}
 
+			void GuiListControl::UpdateDisplayFont()
+			{
+				GuiControl::UpdateDisplayFont();
+				FOREACH(ItemStyle*, style, visibleStyles.Keys())
+				{
+					style->SetFont(GetDisplayFont());
+				}
+			}
+
 			void GuiListControl::OnClientBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
 			{
 				auto args = GetNotifyEventArguments();
@@ -9501,14 +9627,6 @@ GuiListControl
 				FOREACH(ItemStyle*, style, visibleStyles.Keys())
 				{
 					style->SetVisuallyEnabled(GetVisuallyEnabled());
-				}
-			}
-
-			void GuiListControl::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
-			{
-				FOREACH(ItemStyle*, style, visibleStyles.Keys())
-				{
-					style->SetFont(GetFont());
 				}
 			}
 
@@ -9629,7 +9747,6 @@ GuiListControl
 				:GuiScrollView(themeName)
 				, itemProvider(_itemProvider)
 			{
-				FontChanged.AttachMethod(this, &GuiListControl::OnFontChanged);
 				ContextChanged.AttachMethod(this, &GuiListControl::OnContextChanged);
 				VisuallyEnabledChanged.AttachMethod(this, &GuiListControl::OnVisuallyEnabledChanged);
 				containerComposition->BoundsChanged.AttachMethod(this, &GuiListControl::OnClientBoundsChanged);
@@ -9722,7 +9839,24 @@ GuiListControl
 				{
 					return false;
 				}
-				return itemArranger ? itemArranger->EnsureItemVisible(itemIndex) : false;
+
+				if (!itemArranger) return false;
+				auto result = itemArranger->EnsureItemVisible(itemIndex);
+				if (result == EnsureItemVisibleResult::Moved)
+				{
+					if (auto host = GetBoundsComposition()->GetRelatedGraphicsHost())
+					{
+						auto flag = GetDisposedFlag();
+						host->InvokeAfterRendering([=]()
+						{
+							if (!flag->IsDisposed())
+							{
+								EnsureItemVisible(itemIndex);
+							}
+						}, { this,0 });
+					}
+				}
+				return result != EnsureItemVisibleResult::ItemNotExists;
 			}
 
 			Size GuiListControl::GetAdoptedSize(Size expectedSize)
@@ -15188,7 +15322,7 @@ GuiDocumentCommonInterface
 
 			void GuiDocumentCommonInterface::MergeBaselineAndDefaultFont(Ptr<DocumentModel> document)
 			{
-				document->MergeDefaultFont(documentControl->GetFont());
+				document->MergeDefaultFont(documentControl->GetDisplayFont());
 				if (baselineDocument)
 				{
 					document->MergeBaselineStyles(baselineDocument);
@@ -17146,6 +17280,36 @@ GuiMultilineTextBox
 				ct->SetCommands(commandExecutor.Obj());
 			}
 
+			void GuiMultilineTextBox::UpdateVisuallyEnabled()
+			{
+				GuiControl::UpdateVisuallyEnabled();
+				textElement->SetVisuallyEnabled(GetVisuallyEnabled());
+			}
+
+			void GuiMultilineTextBox::UpdateDisplayFont()
+			{
+				GuiControl::UpdateDisplayFont();
+				textElement->SetFont(GetDisplayFont());
+				CalculateViewAndSetScroll();
+			}
+
+			void GuiMultilineTextBox::OnRenderTargetChanged(elements::IGuiGraphicsRenderTarget* renderTarget)
+			{
+				CalculateViewAndSetScroll();
+				GuiScrollView::OnRenderTargetChanged(renderTarget);
+			}
+
+			Size GuiMultilineTextBox::QueryFullSize()
+			{
+				text::TextLines& lines = textElement->GetLines();
+				return Size(lines.GetMaxWidth() + TextMargin * 2, lines.GetMaxHeight() + TextMargin * 2);
+			}
+
+			void GuiMultilineTextBox::UpdateView(Rect viewBounds)
+			{
+				textElement->SetViewPosition(viewBounds.LeftTop() - Size(TextMargin, TextMargin));
+			}
+
 			void GuiMultilineTextBox::CalculateViewAndSetScroll()
 			{
 				auto ct = GetControlTemplateObject(true);
@@ -17166,28 +17330,6 @@ GuiMultilineTextBox
 				}
 			}
 
-			void GuiMultilineTextBox::OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
-			{
-				textElement->SetVisuallyEnabled(GetVisuallyEnabled());
-			}
-
-			Size GuiMultilineTextBox::QueryFullSize()
-			{
-				text::TextLines& lines = textElement->GetLines();
-				return Size(lines.GetMaxWidth() + TextMargin * 2, lines.GetMaxHeight() + TextMargin * 2);
-			}
-
-			void GuiMultilineTextBox::UpdateView(Rect viewBounds)
-			{
-				textElement->SetViewPosition(viewBounds.LeftTop() - Size(TextMargin, TextMargin));
-			}
-
-			void GuiMultilineTextBox::OnRenderTargetChanged(elements::IGuiGraphicsRenderTarget* renderTarget)
-			{
-				CalculateViewAndSetScroll();
-				GuiScrollView::OnRenderTargetChanged(renderTarget);
-			}
-
 			void GuiMultilineTextBox::OnBoundsMouseButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments)
 			{
 				if(GetVisuallyEnabled())
@@ -17200,7 +17342,7 @@ GuiMultilineTextBox
 				:GuiScrollView(themeName)
 			{
 				textElement = GuiColorizedTextElement::Create();
-				textElement->SetFont(GetFont());
+				textElement->SetFont(GetDisplayFont());
 
 				textComposition = new GuiBoundsComposition;
 				textComposition->SetAlignmentToParent(Margin(0, 0, 0, 0));
@@ -17215,7 +17357,6 @@ GuiMultilineTextBox
 				Install(textElement, textComposition, this, boundsComposition, focusableComposition);
 				SetCallback(callback.Obj());
 
-				VisuallyEnabledChanged.AttachMethod(this, &GuiMultilineTextBox::OnVisuallyEnabledChanged);
 				boundsComposition->GetEventReceiver()->leftButtonDown.AttachMethod(this, &GuiMultilineTextBox::OnBoundsMouseButtonDown);
 				boundsComposition->GetEventReceiver()->middleButtonDown.AttachMethod(this, &GuiMultilineTextBox::OnBoundsMouseButtonDown);
 				boundsComposition->GetEventReceiver()->rightButtonDown.AttachMethod(this, &GuiMultilineTextBox::OnBoundsMouseButtonDown);
@@ -17237,13 +17378,6 @@ GuiMultilineTextBox
 				textElement->SetCaretBegin(TextPos(0, 0));
 				textElement->SetCaretEnd(TextPos(0, 0));
 				CalculateView();
-			}
-
-			void GuiMultilineTextBox::SetFont(const FontProperties& value)
-			{
-				GuiControl::SetFont(value);
-				textElement->SetFont(value);
-				CalculateViewAndSetScroll();
 			}
 
 /***********************************************************************
@@ -17331,6 +17465,19 @@ GuiSinglelineTextBox
 				textElement->SetCaretColor(ct->GetCaretColor());
 			}
 
+			void GuiSinglelineTextBox::UpdateVisuallyEnabled()
+			{
+				GuiControl::UpdateVisuallyEnabled();
+				textElement->SetVisuallyEnabled(GetVisuallyEnabled());
+			}
+
+			void GuiSinglelineTextBox::UpdateDisplayFont()
+			{
+				GuiControl::UpdateDisplayFont();
+				textElement->SetFont(GetDisplayFont());
+				RearrangeTextElement();
+			}
+
 			void GuiSinglelineTextBox::RearrangeTextElement()
 			{
 				textCompositionTable->SetRowOption(
@@ -17346,11 +17493,6 @@ GuiSinglelineTextBox
 				RearrangeTextElement();
 			}
 
-			void GuiSinglelineTextBox::OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
-			{
-				textElement->SetVisuallyEnabled(GetVisuallyEnabled());
-			}
-
 			void GuiSinglelineTextBox::OnBoundsMouseButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments)
 			{
 				if(GetVisuallyEnabled())
@@ -17363,7 +17505,7 @@ GuiSinglelineTextBox
 				:GuiControl(themeName)
 			{
 				textElement = GuiColorizedTextElement::Create();
-				textElement->SetFont(GetFont());
+				textElement->SetFont(GetDisplayFont());
 				textElement->SetViewPosition(Point(-GuiSinglelineTextBox::TextMargin, -GuiSinglelineTextBox::TextMargin));
 
 				textCompositionTable = new GuiTableComposition;
@@ -17387,7 +17529,6 @@ GuiSinglelineTextBox
 				Install(textElement, textComposition, this, boundsComposition, focusableComposition);
 				SetCallback(callback.Obj());
 
-				VisuallyEnabledChanged.AttachMethod(this, &GuiSinglelineTextBox::OnVisuallyEnabledChanged);
 				boundsComposition->GetEventReceiver()->leftButtonDown.AttachMethod(this, &GuiSinglelineTextBox::OnBoundsMouseButtonDown);
 				boundsComposition->GetEventReceiver()->middleButtonDown.AttachMethod(this, &GuiSinglelineTextBox::OnBoundsMouseButtonDown);
 				boundsComposition->GetEventReceiver()->rightButtonDown.AttachMethod(this, &GuiSinglelineTextBox::OnBoundsMouseButtonDown);
@@ -17408,13 +17549,6 @@ GuiSinglelineTextBox
 				UnsafeSetText(value);
 				textElement->SetCaretBegin(TextPos(0, 0));
 				textElement->SetCaretEnd(TextPos(0, 0));
-			}
-
-			void GuiSinglelineTextBox::SetFont(const FontProperties& value)
-			{
-				GuiControl::SetFont(value);
-				textElement->SetFont(value);
-				RearrangeTextElement();
 			}
 
 			wchar_t GuiSinglelineTextBox::GetPasswordChar()
@@ -22593,7 +22727,7 @@ GalleryItemArranger
 					}
 				}
 
-				void GalleryItemArranger::PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
+				void GalleryItemArranger::PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
 				{
 					alignmentToParent = Margin(-1, 0, -1, 0);
 					bounds = Rect(Point((index - firstIndex) * itemWidth, 0), Size(itemWidth, 0));
@@ -22686,24 +22820,31 @@ GalleryItemArranger
 					else return itemIndex;
 				}
 
-				bool GalleryItemArranger::EnsureItemVisible(vint itemIndex)
+				GuiListControl::EnsureItemVisibleResult GalleryItemArranger::EnsureItemVisible(vint itemIndex)
 				{
-					if (callback && 0 <= itemIndex && itemIndex < itemProvider->Count())
+					if (callback)
 					{
-						vint groupCount = viewBounds.Width() / itemWidth;
-						if (itemIndex < firstIndex)
+						if (0 <= itemIndex && itemIndex < itemProvider->Count())
 						{
-							firstIndex = itemIndex;
-							callback->OnTotalSizeChanged();
+							vint groupCount = viewBounds.Width() / itemWidth;
+							if (itemIndex < firstIndex)
+							{
+								firstIndex = itemIndex;
+								callback->OnTotalSizeChanged();
+							}
+							else if (itemIndex >= firstIndex + groupCount)
+							{
+								firstIndex = itemIndex - groupCount + 1;
+								callback->OnTotalSizeChanged();
+							}
+							return GuiListControl::EnsureItemVisibleResult::NotMoved;
 						}
-						else if (itemIndex >= firstIndex + groupCount)
+						else
 						{
-							firstIndex = itemIndex - groupCount + 1;
-							callback->OnTotalSizeChanged();
+							return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
 						}
-						return true;
 					}
-					return false;
+					return GuiListControl::EnsureItemVisibleResult::NotMoved;
 				}
 
 				Size GalleryItemArranger::GetAdoptedSize(Size expectedSize)
@@ -31934,11 +32075,45 @@ GuiGraphicsHost
 					default:;
 					}
 				}
+
+				if (!needRender)
+				{
+					{
+						ProcList procs;
+						CopyFrom(procs, afterRenderProcs);
+						afterRenderProcs.Clear();
+						for (vint i = 0; i < procs.Count(); i++)
+						{
+							procs[i]();
+						}
+					}
+					{
+						ProcMap procs;
+						CopyFrom(procs, afterRenderKeyedProcs);
+						afterRenderKeyedProcs.Clear();
+						for (vint i = 0; i < procs.Count(); i++)
+						{
+							procs.Values()[i]();
+						}
+					}
+				}
 			}
 
 			void GuiGraphicsHost::RequestRender()
 			{
 				needRender = true;
+			}
+
+			void GuiGraphicsHost::InvokeAfterRendering(const Func<void()>& proc, ProcKey key)
+			{
+				if (key.key == nullptr)
+				{
+					afterRenderProcs.Add(proc);
+				}
+				else
+				{
+					afterRenderKeyedProcs.Set(key, proc);
+				}
 			}
 
 			void GuiGraphicsHost::InvalidateTabOrderCache()
@@ -38872,7 +39047,7 @@ GuiResourceFolder
 			}
 		}
 
-		void GuiResourceFolder::InitializeResourceFolder(GuiResourceInitializeContext& context)
+		void GuiResourceFolder::InitializeResourceFolder(GuiResourceInitializeContext& context, GuiResourceError::List& errors)
 		{
 			if (importUri != L"") return;
 			FOREACH(Ptr<GuiResourceItem>, item, items.Values())
@@ -38880,13 +39055,13 @@ GuiResourceFolder
 				auto typeResolver = GetResourceResolverManager()->GetTypeResolver(item->GetTypeName());
 				if (auto initialize = typeResolver->Initialize())
 				{
-					initialize->Initialize(item, context);
+					initialize->Initialize(item, context, errors);
 				}
 			}
 
 			FOREACH(Ptr<GuiResourceFolder>, folder, folders.Values())
 			{
-				folder->InitializeResourceFolder(context);
+				folder->InitializeResourceFolder(context, errors);
 			}
 		}
 
@@ -39382,7 +39557,7 @@ GuiResource
 			return context.targetFolder;
 		}
 
-		void GuiResource::Initialize(GuiResourceUsage usage)
+		void GuiResource::Initialize(GuiResourceUsage usage, GuiResourceError::List& errors)
 		{
 			auto precompiledFolder = GetFolder(L"Precompiled");
 			if (!precompiledFolder)
@@ -39401,7 +39576,7 @@ GuiResource
 			for (vint i = 0; i <= maxPass; i++)
 			{
 				context.passIndex = i;
-				InitializeResourceFolder(context);
+				InitializeResourceFolder(context, errors);
 			}
 		}
 
@@ -39870,20 +40045,28 @@ IGuiInstanceResourceManager
 				resourceManager = nullptr;
 			}
 
-			bool SetResource(Ptr<GuiResource> resource, GuiResourceUsage usage)override
+			void SetResource(Ptr<GuiResource> resource, GuiResourceError::List& errors, GuiResourceUsage usage)override
 			{
 				auto metadata = resource->GetMetadata();
 				if (metadata->name == L"")
 				{
-					if (anonymousResources.Contains(resource.Obj())) return false;
-					resource->Initialize(usage);
+					if (anonymousResources.Contains(resource.Obj())) return;
+					resource->Initialize(usage, errors);
+					if (errors.Count() > 0)
+					{
+						return;
+					}
 					anonymousResources.Add(resource);
 				}
 				else
 				{
 					CHECK_ERROR(!resources.Keys().Contains(metadata->name), L"GuiResourceManager::SetResource(Ptr<GuiResource>, GuiResourceUsage)#A resource with the same name has been loaded.");
 
-					resource->Initialize(usage);
+					resource->Initialize(usage, errors);
+					if (errors.Count() > 0)
+					{
+						return;
+					}
 					resources.Add(metadata->name, resource);
 				}
 				
@@ -39910,12 +40093,11 @@ IGuiInstanceResourceManager
 							if (pr->dependencies.Count() == 0)
 							{
 								pendingResources.Remove(pr.Obj());
-								SetResource(pr->LoadResource(), pr->usage);
+								SetResource(pr->LoadResource(), errors, pr->usage);
 							}
 						}
 					}
 				}
-				return true;
 			}
 
 			Ptr<GuiResource> GetResource(const WString& name)override
@@ -39949,7 +40131,7 @@ IGuiInstanceResourceManager
 				}
 			}
 
-			void LoadResourceOrPending(stream::IStream& stream, GuiResourceUsage usage = GuiResourceUsage::DataOnly)override
+			void LoadResourceOrPending(stream::IStream& stream, GuiResourceError::List& errors, GuiResourceUsage usage)override
 			{
 				auto pr = MakePtr<PendingResource>();
 				pr->usage = usage;
@@ -39978,7 +40160,7 @@ IGuiInstanceResourceManager
 
 				if (pr->dependencies.Count() == 0)
 				{
-					SetResource(pr->LoadResource(), pr->usage);
+					SetResource(pr->LoadResource(), errors, pr->usage);
 				}
 				else
 				{
@@ -39988,6 +40170,13 @@ IGuiInstanceResourceManager
 						depToPendings.Add(dep, pr);
 					}
 				}
+			}
+
+			void LoadResourceOrPending(stream::IStream& stream, GuiResourceUsage usage)override
+			{
+				GuiResourceError::List errors;
+				LoadResourceOrPending(stream, errors, usage);
+				CHECK_ERROR(errors.Count() == 0, L"GuiResourceManager::LoadResourceOrPending(stream::IStream&, GuiResourceUsage)#Error happened.");
 			}
 
 			void GetPendingResourceNames(collections::List<WString>& names)override

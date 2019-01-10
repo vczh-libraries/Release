@@ -4345,7 +4345,7 @@ Resource Structure
 			void									LoadResourceFolderFromBinary(DelayLoadingList& delayLoadings, stream::internal::ContextFreeReader& reader, collections::List<WString>& typeNames, GuiResourceError::List& errors);
 			void									SaveResourceFolderToBinary(stream::internal::ContextFreeWriter& writer, collections::List<WString>& typeNames);
 			void									PrecompileResourceFolder(GuiResourcePrecompileContext& context, IGuiResourcePrecompileCallback* callback, GuiResourceError::List& errors);
-			void									InitializeResourceFolder(GuiResourceInitializeContext& context);
+			void									InitializeResourceFolder(GuiResourceInitializeContext& context, GuiResourceError::List& errors);
 			void									ImportFromUri(const WString& uri, GuiResourceTextPos position, GuiResourceError::List& errors);
 		public:
 			/// <summary>Create a resource folder.</summary>
@@ -4499,7 +4499,8 @@ Resource
 
 			/// <summary>Initialize a precompiled resource.</summary>
 			/// <param name="usage">In which role an application is initializing this resource.</param>
-			void									Initialize(GuiResourceUsage usage);
+			/// <param name="errors">All collected errors during initializing a resource.</param>
+			void									Initialize(GuiResourceUsage usage, GuiResourceError::List& errors);
 			
 			/// <summary>Get a contained document model using a path like "Packages\Application\Name". If the path does not exists or the type does not match, an exception will be thrown.</summary>
 			/// <returns>The containd resource object.</returns>
@@ -4718,7 +4719,7 @@ Resource Type Resolver
 			/// <summary>Initialize the resource item.</summary>
 			/// <param name="resource">The resource to initializer.</param>
 			/// <param name="context">The context for initializing.</param>
-			virtual void										Initialize(Ptr<GuiResourceItem> resource, GuiResourceInitializeContext& context) = 0;
+			virtual void										Initialize(Ptr<GuiResourceItem> resource, GuiResourceInitializeContext& context, GuiResourceError::List& errors) = 0;
 		};
 
 		/// <summary>Represents a symbol type for loading a resource without a preload type.</summary>
@@ -8151,6 +8152,24 @@ Basic Construction
 ***********************************************************************/
 
 			/// <summary>
+			/// A helper object to test if a control has been deleted or not.
+			/// </summary>
+			class GuiDisposedFlag : public Object, public Description<GuiDisposedFlag>
+			{
+				friend class GuiControl;
+			protected:
+				GuiControl*								owner = nullptr;
+				bool									disposed = false;
+
+				void									SetDisposed();
+			public:
+				GuiDisposedFlag(GuiControl* _owner);
+				~GuiDisposedFlag();
+
+				bool									IsDisposed();
+			};
+
+			/// <summary>
 			/// The base class of all controls.
 			/// When the control is destroyed, it automatically destroys sub controls, and the bounds composition from the style controller.
 			/// If you want to manually destroy a control, you should first remove it from its parent.
@@ -8174,6 +8193,10 @@ Basic Construction
 				theme::ThemeName						controlThemeName;
 				ControlTemplatePropertyType				controlTemplate;
 				templates::GuiControlTemplate*			controlTemplateObject = nullptr;
+				Ptr<GuiDisposedFlag>					disposedFlag;
+
+			public:
+				Ptr<GuiDisposedFlag>					GetDisposedFlag();
 
 			protected:
 				compositions::GuiBoundsComposition*		boundsComposition = nullptr;
@@ -8192,7 +8215,8 @@ Basic Construction
 				bool									isVisible = true;
 				WString									alt;
 				WString									text;
-				FontProperties							font;
+				Nullable<FontProperties>				font;
+				FontProperties							displayFont;
 				description::Value						context;
 				compositions::IGuiAltActionHost*		activatingAltHost = nullptr;
 				ControlServiceMap						controlServices;
@@ -8202,8 +8226,6 @@ Basic Construction
 				description::Value						tag;
 				GuiControl*								tooltipControl = nullptr;
 				vint									tooltipWidth = 0;
-
-				Ptr<bool>								flagDisposed;
 
 				virtual void							BeforeControlTemplateUninstalled();
 				virtual void							AfterControlTemplateInstalled(bool initialize);
@@ -8218,6 +8240,7 @@ Basic Construction
 				virtual void							OnRenderTargetChanged(elements::IGuiGraphicsRenderTarget* renderTarget);
 				virtual void							OnBeforeReleaseGraphicsHost();
 				virtual void							UpdateVisuallyEnabled();
+				virtual void							UpdateDisplayFont();
 				void									OnGotFocus(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void									OnLostFocus(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void									SetFocusableComposition(compositions::GuiGraphicsComposition* value);
@@ -8264,6 +8287,8 @@ Basic Construction
 				compositions::GuiNotifyEvent			TextChanged;
 				/// <summary>Font changed event. This event will be raised when the font of the control is changed.</summary>
 				compositions::GuiNotifyEvent			FontChanged;
+				/// <summary>Display font changed event. This event will be raised when the display font of the control is changed.</summary>
+				compositions::GuiNotifyEvent			DisplayFontChanged;
 				/// <summary>Context changed event. This event will be raised when the font of the control is changed.</summary>
 				compositions::GuiNotifyEvent			ContextChanged;
 
@@ -8368,12 +8393,15 @@ Basic Construction
 				/// <summary>Set the text to display on the control.</summary>
 				/// <param name="value">The text to display on the control.</param>
 				virtual void							SetText(const WString& value);
-				/// <summary>Get the font to render the text.</summary>
+				/// <summary>Get the font of this control.</summary>
+				/// <returns>The font of this control.</returns>
+				virtual const Nullable<FontProperties>&	GetFont();
+				/// <summary>Set the font of this control.</summary>
+				/// <param name="value">The font of this control.</param>
+				virtual void							SetFont(const Nullable<FontProperties>& value);
+				/// <summary>Get the font to render the text. If the font of this control is null, then the display font is either the parent control's display font, or the system's default font when there is no parent control.</summary>
 				/// <returns>The font to render the text.</returns>
-				virtual const FontProperties&			GetFont();
-				/// <summary>Set the font to render the text.</summary>
-				/// <param name="value">The font to render the text.</param>
-				virtual void							SetFont(const FontProperties& value);
+				virtual const FontProperties&			GetDisplayFont();
 				/// <summary>Get the context of this control. The control template and all item templates (if it has) will see this context property.</summary>
 				/// <returns>The context of this context.</returns>
 				virtual description::Value				GetContext();
@@ -9512,10 +9540,11 @@ IGuiResourceManager
 		class IGuiResourceManager : public IDescriptable, public Description<IGuiResourceManager>
 		{
 		public:
-			virtual bool								SetResource(Ptr<GuiResource> resource, GuiResourceUsage usage = GuiResourceUsage::DataOnly) = 0;
+			virtual void								SetResource(Ptr<GuiResource> resource, GuiResourceError::List& errors, GuiResourceUsage usage = GuiResourceUsage::DataOnly) = 0;
 			virtual Ptr<GuiResource>					GetResource(const WString& name) = 0;
 			virtual Ptr<GuiResource>					GetResourceFromClassName(const WString& classFullName) = 0;
 			virtual void								UnloadResource(const WString& name) = 0;
+			virtual void								LoadResourceOrPending(stream::IStream& stream, GuiResourceError::List& errors, GuiResourceUsage usage = GuiResourceUsage::DataOnly) = 0;
 			virtual void								LoadResourceOrPending(stream::IStream& stream, GuiResourceUsage usage = GuiResourceUsage::DataOnly) = 0;
 			virtual void								GetPendingResourceNames(collections::List<WString>& names) = 0;
 		};
@@ -11010,12 +11039,18 @@ Host
 			{
 				typedef collections::List<GuiGraphicsComposition*>							CompositionList;
 				typedef GuiGraphicsComposition::GraphicsHostRecord							HostRecord;
+				typedef collections::Pair<DescriptableObject*, vint>						ProcKey;
+				typedef collections::List<Func<void()>>										ProcList;
+				typedef collections::Dictionary<ProcKey, Func<void()>>						ProcMap;
 			public:
 				static const vuint64_t					CaretInterval = 500;
+
 			protected:
 				HostRecord								hostRecord;
 				bool									supressPaint = false;
 				bool									needRender = true;
+				ProcList								afterRenderProcs;
+				ProcMap									afterRenderKeyedProcs;
 
 				GuiAltActionManager*					altActionManager = nullptr;
 				GuiTabActionManager*					tabActionManager = nullptr;
@@ -11088,6 +11123,10 @@ Host
 				void									Render(bool forceUpdate);
 				/// <summary>Request a rendering</summary>
 				void									RequestRender();
+				/// <summary>Invoke a specified function after rendering.</summary>
+				/// <param name="proc">The specified function.</param>
+				/// <param name="key">A key to cancel a previous binded key if not null.</param>
+				void									InvokeAfterRendering(const Func<void()>& proc, ProcKey key = { nullptr,-1 });
 
 				/// <summary>Invalidte the internal tab order control list. Next time when TAB is pressed it will be rebuilt.</summary>
 				void									InvalidateTabOrderCache();
@@ -11592,6 +11631,8 @@ Scroll View
 				bool									horizontalAlwaysVisible = true;
 				bool									verticalAlwaysVisible = true;
 
+				void									UpdateDisplayFont()override;
+
 				void									OnContainerBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void									OnHorizontalScroll(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void									OnVerticalScroll(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
@@ -11618,8 +11659,6 @@ Scroll View
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
 				GuiScrollView(theme::ThemeName themeName);
 				~GuiScrollView();
-
-				virtual void							SetFont(const FontProperties& value)override;
 
 				/// <summary>Force to update contents and scroll bars.</summary>
 				void									CalculateView();
@@ -12167,6 +12206,17 @@ List Control
 				//-----------------------------------------------------------
 				// Item Layout Interfaces
 				//-----------------------------------------------------------
+
+				/// <summary>EnsureItemVisible result for item arranger.</summary>
+				enum class EnsureItemVisibleResult
+				{
+					/// <summary>The requested item does not exist.</summary>
+					ItemNotExists,
+					/// <summary>The view location is moved.</summary>
+					Moved,
+					/// <summary>The view location is not moved.</summary>
+					NotMoved,
+				};
 				
 				/// <summary>Item arranger for a <see cref="GuiListControl"/>. Item arranger decides how to arrange and item controls. When implementing an item arranger, <see cref="IItemArrangerCallback"/> is suggested to use when calculating locations and sizes for item controls.</summary>
 				class IItemArranger : public virtual IItemProviderCallback, public Description<IItemArranger>
@@ -12205,9 +12255,9 @@ List Control
 					/// <param name="key">The key direction.</param>
 					virtual vint								FindItem(vint itemIndex, compositions::KeyDirection key) = 0;
 					/// <summary>Adjust the view location to make an item visible.</summary>
-					/// <returns>Returns true if this operation succeeded.</returns>
+					/// <returns>Returns the result of this operation.</returns>
 					/// <param name="itemIndex">The item index of the item to be made visible.</param>
-					virtual bool								EnsureItemVisible(vint itemIndex) = 0;
+					virtual EnsureItemVisibleResult				EnsureItemVisible(vint itemIndex) = 0;
 					/// <summary>Get the adopted size for the view bounds.</summary>
 					/// <returns>The adopted size, making the vids bounds just enough to display several items.</returns>
 					/// <param name="expectedSize">The expected size, to provide a guidance.</param>
@@ -12300,9 +12350,9 @@ List Control
 				friend class collections::ArrayBase<Ptr<VisibleStyleHelper>>;
 				collections::Dictionary<ItemStyle*, Ptr<VisibleStyleHelper>>		visibleStyles;
 
+				void											UpdateDisplayFont()override;
 				void											OnClientBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void											OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
-				void											OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void											OnContextChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void											OnItemMouseEvent(compositions::GuiItemMouseEvent& itemEvent, ItemStyle* style, compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 				void											OnItemNotifyEvent(compositions::GuiItemNotifyEvent& itemEvent, ItemStyle* style, compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
@@ -13606,6 +13656,7 @@ ComboBox with GuiListControl
 				templates::GuiTemplate*						itemStyleController = nullptr;
 				Ptr<compositions::IGuiGraphicsEventHandler>	boundsChangedHandler;
 
+				void										UpdateDisplayFont()override;
 				void										BeforeControlTemplateUninstalled()override;
 				void										AfterControlTemplateInstalled(bool initialize)override;
 				void										RemoveStyleController();
@@ -13613,7 +13664,6 @@ ComboBox with GuiListControl
 				virtual void								DisplaySelectedContent(vint itemIndex);
 				void										AdoptSubMenuSize();
 				void										OnTextChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
-				void										OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnContextChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnAfterSubMenuOpening(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
@@ -13792,7 +13842,7 @@ DateComboBox
 				/// <summary>Selected data changed event.</summary>
 				compositions::GuiNotifyEvent							SelectedDateChanged;
 				
-				void													SetFont(const FontProperties& value)override;
+				void													SetFont(const Nullable<FontProperties>& value)override;
 				/// <summary>Get the displayed date.</summary>
 				/// <returns>The date.</returns>
 				const DateTime&											GetSelectedDate();
@@ -13866,7 +13916,7 @@ Predefined ItemArranger
 					virtual void								RearrangeItemBounds();
 
 					virtual void								BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex) = 0;
-					virtual void								PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent) = 0;
+					virtual void								PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent) = 0;
 					virtual bool								IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds) = 0;
 					virtual bool								EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex) = 0;
 					virtual void								InvalidateItemSizeCache() = 0;
@@ -13902,7 +13952,7 @@ Predefined ItemArranger
 					void										EnsureOffsetForItem(vint itemIndex);
 
 					void										BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)override;
-					void										PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
+					void										PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
 					bool										IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)override;
 					bool										EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)override;
 					void										InvalidateItemSizeCache()override;
@@ -13915,7 +13965,7 @@ Predefined ItemArranger
 					void										OnAttached(GuiListControl::IItemProvider* provider)override;
 					void										OnItemModified(vint start, vint count, vint newCount)override;
 					vint										FindItem(vint itemIndex, compositions::KeyDirection key)override;
-					bool										EnsureItemVisible(vint itemIndex)override;
+					GuiListControl::EnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
 					Size										GetAdoptedSize(Size expectedSize)override;
 				};
 				
@@ -13933,7 +13983,7 @@ Predefined ItemArranger
 					virtual vint								GetYOffset();
 
 					void										BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)override;
-					void										PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
+					void										PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
 					bool										IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)override;
 					bool										EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)override;
 					void										InvalidateItemSizeCache()override;
@@ -13944,7 +13994,7 @@ Predefined ItemArranger
 					~FixedHeightItemArranger();
 
 					vint										FindItem(vint itemIndex, compositions::KeyDirection key)override;
-					bool										EnsureItemVisible(vint itemIndex)override;
+					GuiListControl::EnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
 					Size										GetAdoptedSize(Size expectedSize)override;
 				};
 
@@ -13960,7 +14010,7 @@ Predefined ItemArranger
 					void										CalculateRange(Size itemSize, Rect bounds, vint count, vint& start, vint& end);
 
 					void										BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)override;
-					void										PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
+					void										PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
 					bool										IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)override;
 					bool										EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)override;
 					void										InvalidateItemSizeCache()override;
@@ -13971,7 +14021,7 @@ Predefined ItemArranger
 					~FixedSizeMultiColumnItemArranger();
 
 					vint										FindItem(vint itemIndex, compositions::KeyDirection key)override;
-					bool										EnsureItemVisible(vint itemIndex)override;
+					GuiListControl::EnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
 					Size										GetAdoptedSize(Size expectedSize)override;
 				};
 				
@@ -13989,7 +14039,7 @@ Predefined ItemArranger
 					void										CalculateRange(vint itemHeight, Rect bounds, vint& rows, vint& startColumn);
 
 					void										BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)override;
-					void										PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
+					void										PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
 					bool										IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)override;
 					bool										EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)override;
 					void										InvalidateItemSizeCache()override;
@@ -14000,7 +14050,7 @@ Predefined ItemArranger
 					~FixedHeightMultiColumnItemArranger();
 
 					vint										FindItem(vint itemIndex, compositions::KeyDirection key)override;
-					bool										EnsureItemVisible(vint itemIndex)override;
+					GuiListControl::EnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
 					Size										GetAdoptedSize(Size expectedSize)override;
 				};
 			}
@@ -17442,11 +17492,12 @@ MultilineTextBox
 				elements::GuiColorizedTextElement*			textElement = nullptr;
 				compositions::GuiBoundsComposition*			textComposition = nullptr;
 
-				void										CalculateViewAndSetScroll();
+				void										UpdateVisuallyEnabled()override;
+				void										UpdateDisplayFont()override;
 				void										OnRenderTargetChanged(elements::IGuiGraphicsRenderTarget* renderTarget)override;
 				Size										QueryFullSize()override;
 				void										UpdateView(Rect viewBounds)override;
-				void										OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
+				void										CalculateViewAndSetScroll();
 				void										OnBoundsMouseButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 			public:
 				/// <summary>Create a control with a specified style provider.</summary>
@@ -17456,7 +17507,6 @@ MultilineTextBox
 
 				const WString&								GetText()override;
 				void										SetText(const WString& value)override;
-				void										SetFont(const FontProperties& value)override;
 			};
 
 /***********************************************************************
@@ -17488,9 +17538,10 @@ SinglelineTextBox
 				compositions::GuiTableComposition*			textCompositionTable = nullptr;
 				compositions::GuiCellComposition*			textComposition = nullptr;
 				
+				void										UpdateVisuallyEnabled()override;
+				void										UpdateDisplayFont()override;
 				void										RearrangeTextElement();
 				void										OnRenderTargetChanged(elements::IGuiGraphicsRenderTarget* renderTarget)override;
-				void										OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnBoundsMouseButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 			public:
 				/// <summary>Create a control with a specified style provider.</summary>
@@ -17500,7 +17551,6 @@ SinglelineTextBox
 
 				const WString&								GetText()override;
 				void										SetText(const WString& value)override;
-				void										SetFont(const FontProperties& value)override;
 
 				/// <summary>
 				/// Get the password mode displaying character.
@@ -19507,7 +19557,7 @@ GalleryItemArranger
 					vint										firstIndex = 0;
 
 					void										BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)override;
-					void										PlaceItem(bool forMoving, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
+					void										PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
 					bool										IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)override;
 					bool										EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)override;
 					void										InvalidateItemSizeCache()override;
@@ -19517,7 +19567,7 @@ GalleryItemArranger
 					~GalleryItemArranger();
 
 					vint										FindItem(vint itemIndex, compositions::KeyDirection key)override;
-					bool										EnsureItemVisible(vint itemIndex)override;
+					GuiListControl::EnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
 					Size										GetAdoptedSize(Size expectedSize)override;
 
 					void										ScrollUp();

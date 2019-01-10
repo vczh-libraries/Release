@@ -20,11 +20,15 @@ namespace vl
 GuiInstanceSharedScript
 ***********************************************************************/
 
-		void GuiInstanceCompiledWorkflow::Initialize(bool initializeContext)
+		bool GuiInstanceCompiledWorkflow::Initialize(bool initializeContext, workflow::runtime::WfAssemblyLoadErrors& loadErrors)
 		{
 			if (binaryToLoad)
 			{
-				assembly = new WfAssembly(*binaryToLoad.Obj());
+				assembly = WfAssembly::Deserialize(*binaryToLoad.Obj(), loadErrors);
+				if (!assembly)
+				{
+					return false;
+				}
 				context = nullptr;
 				binaryToLoad = nullptr;
 			}
@@ -34,6 +38,7 @@ GuiInstanceSharedScript
 				context = new WfRuntimeGlobalContext(assembly);
 				LoadFunction<void()>(context, L"<initialize>")();
 			}
+			return true;
 		}
 
 /***********************************************************************
@@ -67,7 +72,7 @@ Compiled Workflow Type Resolver (Workflow)
 				return 1;
 			}
 
-			void Initialize(Ptr<GuiResourceItem> resource, GuiResourceInitializeContext& context)override
+			void Initialize(Ptr<GuiResourceItem> resource, GuiResourceInitializeContext& context, GuiResourceError::List& errors)override
 			{
 				if (auto compiled = resource->GetContent().Cast<GuiInstanceCompiledWorkflow>())
 				{
@@ -78,7 +83,22 @@ Compiled Workflow Type Resolver (Workflow)
 						{
 							if (context.usage == GuiResourceUsage::InstanceClass)
 							{
-								compiled->Initialize(true);
+								WfAssemblyLoadErrors loadErrors;
+								if (!compiled->Initialize(true, loadErrors))
+								{
+									FOREACH(WString, loadError, loadErrors.duplicatedTypes)
+									{
+										errors.Add({ {resource},L"Failed to add an existing type: " + loadError });
+									}
+									FOREACH(WString, loadError, loadErrors.unresolvedTypes)
+									{
+										errors.Add({ {resource},L"Unable to resolve type: " + loadError });
+									}
+									FOREACH(WString, loadError, loadErrors.unresolvedMembers)
+									{
+										errors.Add({ {resource},L"Unable to resolve member: " + loadError });
+									}
+								}
 							}
 						}
 						break;
@@ -1542,6 +1562,12 @@ Type Declaration (Extra)
 				CLASS_MEMBER_METHOD(OnTotalSizeChanged, NO_PARAMETER)
 			END_INTERFACE_MEMBER(GuiListControl::IItemArrangerCallback)
 
+			BEGIN_ENUM_ITEM(GuiListControl::EnsureItemVisibleResult)
+				ENUM_CLASS_ITEM(ItemNotExists)
+				ENUM_CLASS_ITEM(Moved)
+				ENUM_CLASS_ITEM(NotMoved)
+			END_ENUM_ITEM(GuiListControl::EnsureItemVisibleResult)
+
 			BEGIN_INTERFACE_MEMBER(GuiListControl::IItemProvider)
 				CLASS_MEMBER_BASE(IDescriptable)
 
@@ -2048,11 +2074,16 @@ Type Declaration (Extra)
 Type Declaration (Class)
 ***********************************************************************/
 
+			BEGIN_CLASS_MEMBER(GuiDisposedFlag)
+				CLASS_MEMBER_METHOD(IsDisposed, NO_PARAMETER)
+			END_CLASS_MEMBER(GuiDisposedFlag)
+
 			BEGIN_CLASS_MEMBER(GuiControl)
 				CONTROL_CONSTRUCTOR_CONTROLT_TEMPLATE(GuiControl)
 
 				CLASS_MEMBER_EXTERNALMETHOD(SafeDelete, NO_PARAMETER, void(GuiControl::*)(), vl::presentation::compositions::SafeDeleteControl)
 
+				CLASS_MEMBER_PROPERTY_READONLY_FAST(DisposedFlag)
 				CLASS_MEMBER_GUIEVENT(ControlSignalTrigerred)
 				CLASS_MEMBER_PROPERTY_GUIEVENT_FAST(ControlThemeName)
 				CLASS_MEMBER_PROPERTY_GUIEVENT_FAST(ControlTemplate)
@@ -2071,6 +2102,7 @@ Type Declaration (Class)
 				CLASS_MEMBER_PROPERTY_GUIEVENT_FAST(Alt)
 				CLASS_MEMBER_PROPERTY_GUIEVENT_FAST(Text)
 				CLASS_MEMBER_PROPERTY_GUIEVENT_FAST(Font)
+				CLASS_MEMBER_PROPERTY_GUIEVENT_READONLY_FAST(DisplayFont)
 				CLASS_MEMBER_PROPERTY_GUIEVENT_FAST(Context)
 				CLASS_MEMBER_PROPERTY_FAST(Tag)
 				CLASS_MEMBER_PROPERTY_FAST(TooltipControl)
