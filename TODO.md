@@ -22,7 +22,7 @@ https://zhuanlan.zhihu.com/p/39369370
   - [x] Localization doesn't need to test null Strings
   - [ ] DataGrid combo box editor doesn't work
   - [x] AddressBook new folder doesn't work
-  - [ ] BlackSkin document changing font size doesn't work
+  - [x] BlackSkin document changing font size doesn't work
 - [ ] **Update Release**
 - [ ] Fix `<childControl Font-bind="parentControl.Font"/>` script crash.
 - [ ] High DPI for Direct2D (GDI will blur)
