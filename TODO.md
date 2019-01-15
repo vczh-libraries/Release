@@ -18,9 +18,9 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] Fix list control cannot set data source from non-null to null
 - [x] Initialize localized strings object to `en-US` at the beginning to prevent from getting a null object in script
 - [x] `GuiControl::GetDisposeFlag`
-- [ ] Fix tutorials in release
+- [x] Fix tutorials in release
   - [x] Localization doesn't need to test null Strings
-  - [ ] DataGrid combo box editor doesn't work
+  - [x] DataGrid combo box editor doesn't work
   - [x] AddressBook new folder doesn't work
   - [x] BlackSkin document changing font size doesn't work
 - [ ] **Update Release**
