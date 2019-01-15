@@ -10,7 +10,9 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] New `GuiListControl::IItemArranger` with different item height
   - [x] Correctly implement `FreeHeightItemArranger::EnsureItemVisible`
 - [x] Change `GuiControl::Font` from `FontProperties` to `Nullable<FontProperties>`. It will changes following parent controls if it is set to null. If `GuiControlHost`'s font is null, it will become the default font.
-- [ ] Window Icon
+- [x] Window Icon
+  - [x] `vl::presentation::windows::SetWindowDefaultIcon`
+  - [ ] Show the default icon on default window template
 - [x] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
 - [x] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
 - [x] Fix list control being able to scroll by mouse while there is no scroll bar
