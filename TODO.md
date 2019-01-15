@@ -12,7 +12,6 @@ https://zhuanlan.zhihu.com/p/39369370
 - [x] Change `GuiControl::Font` from `FontProperties` to `Nullable<FontProperties>`. It will changes following parent controls if it is set to null. If `GuiControlHost`'s font is null, it will become the default font.
 - [ ] Window Icon
 - [x] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
-- [ ] Fix GacGen reports only "error dumping resource file" while the resource file contains some syntax errors preventing GacGen from reading it
 - [x] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
 - [x] Fix list control being able to scroll by mouse while there is no scroll bar
 - [x] Fix list control cannot set data source from non-null to null
@@ -32,6 +31,8 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] A window can be called to update all its controls' and components' template
 - [ ] Tutorials use the new default control templates
 - [ ] **Update Release**
+- [ ] Fix GacGen reports only "error dumping resource file" while the resource file contains some syntax errors preventing GacGen from reading it
+  - Unable to repro
 
 **ON GOING**: Document repo
 
