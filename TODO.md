@@ -14,6 +14,7 @@ https://zhuanlan.zhihu.com/p/39369370
   - [x] `vl::presentation::windows::SetWindowDefaultIcon`
   - [x] Add `Icon` property to window
   - [x] if `IconVisible` (default true) is true then the default window template will display an icon. If the `Icon` is null then it will be retrived from the `INativeWindow`, which in Windows get the current icon.
+  - [x] new demo: GacUI_Windows\WindowIcon
 - [x] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
 - [x] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
 - [x] Fix list control being able to scroll by mouse while there is no scroll bar
