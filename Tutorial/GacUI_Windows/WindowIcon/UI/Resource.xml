@@ -1,0 +1,46 @@
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\WindowIcon.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="ReflectionInclude">GacUIReflection.h</Text>
+      <Text name="Name">Demo</Text>
+    </Folder>
+  </Folder>
+
+  <Folder name="Images">
+    <Image name="CustomIcon" content="File">Annotate_Default.ico</Image>
+  </Folder>
+
+  <Instance name="MainWindowResource">
+    <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
+      <ref.Members>
+        <![CDATA[
+          prop CustomIcon : GuiImageData^ = null {}
+        ]]>
+      </ref.Members>
+      <Window ref.Name="self" Text="WindowIcon" ClientSize="x:640 y:480" TopMost="true" IconVisible-bind="checkVisible.Selected" Icon-bind="checkCustom.Selected ? self.CustomIcon : null" CustomIcon-uri="res://Images/CustomIcon">
+        <Stack AlignmentToParent="left:10 top:10 right:-1 bottom:-1" MinSizeLimitation="LimitToElementAndChildren" Direction="Vertical">
+          <StackItem>
+            <CheckBox ref.Name="checkVisible" Text="Icon Visible" Selected="true"/>
+          </StackItem>
+          <StackItem>
+            <CheckBox ref.Name="checkCustom" Text="Custom Icon" Selected="false"/>
+          </StackItem>
+          <StackItem>
+            <Button Text="Create another copy">
+              <ev.Clicked-eval>
+                <![CDATA[
+                  {
+                    new MainWindow*().ShowModalAndDelete(self, func():void{});
+                  }
+                ]]>
+              </ev.Clicked-eval>
+            </Button>
+          </StackItem>
+        </Stack>
+      </Window>
+    </Instance>
+  </Instance>
+</Resource>

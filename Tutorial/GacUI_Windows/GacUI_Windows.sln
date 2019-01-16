@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{A9A7E9AB-319
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUILite", "..\Lib\GacUILite\GacUILite.vcxproj", "{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowIcon", "WindowIcon\WindowIcon.vcxproj", "{05144B92-0CDF-4E81-A151-413305E40CE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +33,14 @@ Global
 		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}.Release|Win32.ActiveCfg = Release|Win32
 		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}.Release|Win32.Build.0 = Release|Win32
 		{96C559CA-9718-4BEC-A053-28A0AB6A8CA2}.Release|x64.ActiveCfg = Release|Win32
+		{05144B92-0CDF-4E81-A151-413305E40CE9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{05144B92-0CDF-4E81-A151-413305E40CE9}.Debug|Win32.Build.0 = Debug|Win32
+		{05144B92-0CDF-4E81-A151-413305E40CE9}.Debug|x64.ActiveCfg = Debug|x64
+		{05144B92-0CDF-4E81-A151-413305E40CE9}.Debug|x64.Build.0 = Debug|x64
+		{05144B92-0CDF-4E81-A151-413305E40CE9}.Release|Win32.ActiveCfg = Release|Win32
+		{05144B92-0CDF-4E81-A151-413305E40CE9}.Release|Win32.Build.0 = Release|Win32
+		{05144B92-0CDF-4E81-A151-413305E40CE9}.Release|x64.ActiveCfg = Release|x64
+		{05144B92-0CDF-4E81-A151-413305E40CE9}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
