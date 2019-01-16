@@ -4,29 +4,6 @@ https://zhuanlan.zhihu.com/p/39369370
 
 # GacUI 1.0
 
-- [x] When there are combo boxes in item templates, inserting items will cause recursively calling list::ItemProviderBase::InvokeOnItemModified
-- [x] Use another way to create focus rectangle bitmap mask for Direct2D
-- [x] Fix combo dropdown hidden in topmost window
-- [x] New `GuiListControl::IItemArranger` with different item height
-  - [x] Correctly implement `FreeHeightItemArranger::EnsureItemVisible`
-- [x] Change `GuiControl::Font` from `FontProperties` to `Nullable<FontProperties>`. It will changes following parent controls if it is set to null. If `GuiControlHost`'s font is null, it will become the default font.
-- [x] Window Icon
-  - [x] `vl::presentation::windows::SetWindowDefaultIcon`
-  - [x] Add `Icon` property to window
-  - [x] if `IconVisible` (default true) is true then the default window template will display an icon. If the `Icon` is null then it will be retrived from the `INativeWindow`, which in Windows get the current icon.
-  - [x] new demo: GacUI_Windows\WindowIcon
-- [x] Fix GacGen crash when defining an instance whose name conflicts with something from imported resources
-- [x] Fix hook mouse events in ButtonTemplate make GuiButton::Click not working
-- [x] Fix list control being able to scroll by mouse while there is no scroll bar
-- [x] Fix list control cannot set data source from non-null to null
-- [x] Initialize localized strings object to `en-US` at the beginning to prevent from getting a null object in script
-- [x] `GuiControl::GetDisposeFlag`
-- [x] Fix tutorials in release
-  - [x] Localization doesn't need to test null Strings
-  - [x] DataGrid combo box editor doesn't work
-  - [x] AddressBook new folder doesn't work
-  - [x] BlackSkin document changing font size doesn't work
-- [ ] **Update Release**
 - [ ] Fix `<childControl Font-bind="parentControl.Font"/>` script crash.
 - [ ] High DPI for Direct2D (GDI will blur)
 - [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
