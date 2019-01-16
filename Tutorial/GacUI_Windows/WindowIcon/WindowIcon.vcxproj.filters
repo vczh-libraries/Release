@@ -24,6 +24,12 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UI\Source\DemoPartialClasses.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Source\MainWindow.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UI\Resource.xml">
@@ -41,6 +47,15 @@
   <ItemGroup>
     <ClInclude Include="resource.h">
       <Filter>Icon</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\MainWindow.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\Demo.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Source\DemoPartialClasses.h">
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

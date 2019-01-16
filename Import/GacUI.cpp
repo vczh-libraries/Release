@@ -4219,6 +4219,13 @@ GuiWindow
 				ct->SetMaximized(GetNativeWindow()->GetSizeState() != INativeWindow::Maximized);
 				ct->SetActivated(GetActivated());
 				ct->SetCustomFramePadding(Margin(8, 8, 8, 8));
+
+				auto window = GetNativeWindow();
+				if (window)
+				{
+					window->SetIcon(icon);
+				}
+				ct->SetIcon(icon ? icon : window ? window->GetIcon() : nullptr);
 				SyncNativeWindowProperties();
 			}
 
@@ -4378,6 +4385,30 @@ GuiWindow
 			IMPL_WINDOW_PROPERTY(hasSizeBox, SizeBox, IMPL_WINDOW_PROPERTY_EMPTY_CONDITION)
 			IMPL_WINDOW_PROPERTY(isIconVisible, IconVisible, IMPL_WINDOW_PROPERTY_EMPTY_CONDITION)
 			IMPL_WINDOW_PROPERTY(hasTitleBar, TitleBar, IMPL_WINDOW_PROPERTY_EMPTY_CONDITION)
+
+			Ptr<GuiImageData> GuiWindow::GetIcon()
+			{
+				return icon;
+			}
+
+			void GuiWindow::SetIcon(Ptr<GuiImageData> value)
+			{
+				if (icon != value)
+				{
+					icon = value;
+
+					auto window = GetNativeWindow();
+					if (window)
+					{
+						window->SetIcon(icon);
+					}
+
+					if (auto ct = GetControlTemplateObject(false))
+					{
+						ct->SetIcon(icon ? icon : window ? window->GetIcon() : nullptr);
+					}
+				}
+			}
 
 #undef IMPL_WINDOW_PROPERTY_BORDER_CONDITION
 #undef IMPL_WINDOW_PROPERTY_EMPTY_CONDITION
@@ -7097,7 +7128,10 @@ DefaultDataGridItemTemplate
 				{
 					if (auto dataGrid = dynamic_cast<GuiVirtualDataGrid*>(listControl))
 					{
-						IsInEditor(dataGrid, arguments);
+						if (IsInEditor(dataGrid, arguments))
+						{
+							arguments.handled = true;
+						}
 					}
 				}
 
@@ -13769,8 +13803,8 @@ GuiCommonDatePickerLook
 				wchar_t alt[] = L"D00";
 				if (monthOffset == -1) alt[0] = L'C';
 				else if (monthOffset == 1) alt[0] = L'E';
-				alt[1] = L'0' + day.day / 10;
-				alt[2] = L'0' + day.day % 10;
+				alt[1] = (wchar_t)(L'0' + day.day / 10);
+				alt[2] = (wchar_t)(L'0' + day.day % 10);
 				buttonDays[index]->SetAlt(alt);
 
 				index++;
@@ -15188,7 +15222,6 @@ GuiDocumentCommonInterface
 				documentComposition->GetEventReceiver()->leftButtonUp.AttachMethod(this, &GuiDocumentCommonInterface::OnMouseUp);
 				documentComposition->GetEventReceiver()->mouseLeave.AttachMethod(this, &GuiDocumentCommonInterface::OnMouseLeave);
 
-				_sender->FontChanged.AttachMethod(this, &GuiDocumentCommonInterface::OnFontChanged);
 				focusableComposition->GetEventReceiver()->caretNotify.AttachMethod(this, &GuiDocumentCommonInterface::OnCaretNotify);
 				focusableComposition->GetEventReceiver()->gotFocus.AttachMethod(this, &GuiDocumentCommonInterface::OnGotFocus);
 				focusableComposition->GetEventReceiver()->lostFocus.AttachMethod(this, &GuiDocumentCommonInterface::OnLostFocus);
@@ -15329,7 +15362,7 @@ GuiDocumentCommonInterface
 				}
 			}
 
-			void GuiDocumentCommonInterface::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
+			void GuiDocumentCommonInterface::OnFontChanged()
 			{
 				auto document = documentElement->GetDocument();
 				MergeBaselineAndDefaultFont(document);
@@ -16118,6 +16151,12 @@ GuiDocumentViewer
 				}
 			}
 
+			void GuiDocumentViewer::UpdateDisplayFont()
+			{
+				GuiScrollContainer::UpdateDisplayFont();
+				OnFontChanged();
+			}
+
 			Point GuiDocumentViewer::GetDocumentViewPosition()
 			{
 				return GetViewBounds().LeftTop();
@@ -16186,6 +16225,12 @@ GuiDocumentLabel
 					documentElement->SetCaretColor(ct->GetCaretColor());
 					SetDocument(GetDocument());
 				}
+			}
+
+			void GuiDocumentLabel::UpdateDisplayFont()
+			{
+				GuiControl::UpdateDisplayFont();
+				OnFontChanged();
 			}
 
 			GuiDocumentLabel::GuiDocumentLabel(theme::ThemeName themeName)

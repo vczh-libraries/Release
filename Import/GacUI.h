@@ -1288,6 +1288,7 @@ namespace vl
 {
 	namespace presentation
 	{
+		class GuiImageData;
 		class DocumentModel;
 		class INativeWindow;
 		class INativeWindowListener;
@@ -1686,6 +1687,17 @@ Native Window
 				/// <summary>Maximized.</summary>
 				Maximized,
 			};
+
+			/// <summary>
+			/// Get the icon.
+			/// </summary>
+			/// <returns>Returns the icon.</returns>
+			virtual Ptr<GuiImageData>	GetIcon()=0;
+			/// <summary>
+			/// Set the icon.
+			/// </summary>
+			/// <param name="icon">The icon. Set to null to use the default icon.</param>
+			virtual void				SetIcon(Ptr<GuiImageData> icon)=0;
 
 			/// <summary>
 			/// Get the window size state.
@@ -4719,6 +4731,7 @@ Resource Type Resolver
 			/// <summary>Initialize the resource item.</summary>
 			/// <param name="resource">The resource to initializer.</param>
 			/// <param name="context">The context for initializing.</param>
+			/// <param name="errors">All collected errors during initializing a resource.</param>
 			virtual void										Initialize(Ptr<GuiResourceItem> resource, GuiResourceInitializeContext& context, GuiResourceError::List& errors) = 0;
 		};
 
@@ -7932,6 +7945,7 @@ Control Template
 				F(GuiWindowTemplate, TemplateProperty<GuiLabelTemplate>, ShortcutKeyTemplate, {})\
 				F(GuiWindowTemplate, bool, CustomFrameEnabled, true)\
 				F(GuiWindowTemplate, Margin, CustomFramePadding, {})\
+				F(GuiWindowTemplate, Ptr<GuiImageData>, Icon, {})\
 
 #define GuiMenuTemplate_PROPERTIES(F)
 
@@ -8442,17 +8456,17 @@ Basic Construction
 				/// <param name="identifier">The identifier.</param>
 				virtual IDescriptable*					QueryService(const WString& identifier);
 
-				/// <summary>Add a service to this control dynamically. The added service cannot override existing services.</summary>
-				/// <returns>Returns true if this operation succeeded.</returns>
-				/// <param name="identifier">The identifier. You are suggested to fill this parameter using the value from the interface's GetIdentifier function, or <see cref="QueryTypedService`1"/> will not work on this service.</param>
-				/// <param name="value">The service.</param>
-				bool									AddService(const WString& identifier, Ptr<IDescriptable> value);
-
 				template<typename T>
 				T* QueryTypedService()
 				{
 					return dynamic_cast<T*>(QueryService(QueryServiceHelper<T>::GetIdentifier()));
 				}
+
+				/// <summary>Add a service to this control dynamically. The added service cannot override existing services.</summary>
+				/// <returns>Returns true if this operation succeeded.</returns>
+				/// <param name="identifier">The identifier. You are suggested to fill this parameter using the value from the interface's GetIdentifier function, or <see cref="QueryTypedService`1"/> will not work on this service.</param>
+				/// <param name="value">The service.</param>
+				bool									AddService(const WString& identifier, Ptr<IDescriptable> value);
 			};
 
 			/// <summary>Represnets a user customizable control.</summary>
@@ -8767,6 +8781,7 @@ Window
 				bool									hasSizeBox = true;
 				bool									isIconVisible = true;
 				bool									hasTitleBar = true;
+				Ptr<GuiImageData>						icon;
 				
 				void									SyncNativeWindowProperties();
 				void									Moved()override;
@@ -8843,6 +8858,16 @@ Window
 				/// </summary>
 				/// <param name="visible">True to make the icon visible.</param>
 				void									SetIconVisible(bool visible);
+				/// <summary>
+				/// Get the icon which replaces the default one.
+				/// </summary>
+				/// <returns>Returns the icon that replaces the default one.</returns>
+				Ptr<GuiImageData>						GetIcon();
+				/// <summary>
+				/// Set the icon that replaces the default one.
+				/// </summary>
+				/// <param name="value">The icon that replaces the default one.</param>
+				void									SetIcon(Ptr<GuiImageData> value);
 				/// <summary>
 				/// Test is the title bar visible.
 				/// </summary>
@@ -16635,7 +16660,7 @@ GuiDocumentCommonInterface
 				void										EditStyleInternal(TextPos begin, TextPos end, const Func<void(TextPos, TextPos)>& editor);
 				
 				void										MergeBaselineAndDefaultFont(Ptr<DocumentModel> document);
-				void										OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
+				void										OnFontChanged();
 				void										OnCaretNotify(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnGotFocus(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnLostFocus(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
@@ -16890,6 +16915,7 @@ GuiDocumentViewer
 				GUI_SPECIFY_CONTROL_TEMPLATE_TYPE(DocumentViewerTemplate, GuiScrollContainer)
 			protected:
 
+				void										UpdateDisplayFont()override;
 				Point										GetDocumentViewPosition()override;
 				void										EnsureRectVisible(Rect bounds)override;
 			public:
@@ -16910,6 +16936,9 @@ GuiDocumentViewer
 			class GuiDocumentLabel : public GuiControl, public GuiDocumentCommonInterface, public Description<GuiDocumentLabel>
 			{
 				GUI_SPECIFY_CONTROL_TEMPLATE_TYPE(DocumentLabelTemplate, GuiControl)
+			protected:
+
+				void										UpdateDisplayFont()override;
 			public:
 				/// <summary>Create a control with a specified default theme.</summary>
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
