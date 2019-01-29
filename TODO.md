@@ -11,7 +11,6 @@ https://zhuanlan.zhihu.com/p/39369370
   - [ ] Like a table, a column can use `Absolute`, `Draggable` and `Percentage` to specify a column size. Only when a column is draggable, users can use their mouse to change the size of a column, and then trigger `IColumnItemView::SetColumnSize`
 - [ ] **Update Release**
 - [ ] Consider drag and drop support, with column drag and drop
-- [ ] Consider touch support
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
@@ -72,6 +71,7 @@ https://zhuanlan.zhihu.com/p/39369370
 #### Controls
 - [ ] Chart
 - [ ] Dock Container
+- [ ] Touch support
 
 #### Binders
 - [ ] Web assembly
