@@ -4,9 +4,6 @@ https://zhuanlan.zhihu.com/p/39369370
 
 # GacUI 1.0
 
-- [x] Fix `<childControl Font-bind="parentControl.Font"/>` script crash.
-- [x] High DPI for Direct2D (GDI will blur)
-- [ ] **Update Release**
 - [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
   - [ ] Considering GuiBindableDataGrid updating columns' sizes according to configuration automatically, and call `GuiControl::InvokeOrDelayIfRendering` (indirectly) inside `DataColumn::NotifyAllColumnsUpdate` when necessary.
   - [ ] Like a table, a column can use `Absolute`, `Draggable` and `Percentage` to specify a column size. Only when a column is draggable, users can use their mouse to change the size of a column, and then trigger `IColumnItemView::SetColumnSize`
