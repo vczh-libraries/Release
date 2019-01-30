@@ -80,8 +80,17 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] Touch support
 
 #### Binders
-- [ ] Web assembly
-- [ ] XML Metadata output for codegen written by users
+- [ ] Other languages
+  - XML still generate C++ files, and they need to be compiled to an appropriate form.
+  - Other programming languages doesn't access GacUI objects, instead they implement view model interfaces that defined in XML.
+  - Users need to compile C++ code by themselves.
+  - Users are not required to write C++ code, but they can.
+  - Users can add attributes in XML defined interfaces, so that GacGen can generate a list of them. After that, by reading generated workflow assembly files, glue code can be generated so that users can implement required view model interfaces directly. I will provide some tools for listed languages.
+  - Resources need to be generated in C++ files, because other languages cannot access GacUI objects, which means they cannot load resources manually.
+  - Languages:
+    - [ ] JavaScript / TypeScript through Web assembly
+    - [ ] .NET (core?) through dll
+    - [ ] Python through dll
 
 ## GacGen.exe
 
