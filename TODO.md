@@ -61,6 +61,11 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] Enable Workflow script template for IGuiInstanceLoader written in text
 - [ ] INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
 
+#### Cross Platforms
+- [ ] Ncurses on Ubuntu
+- [ ] macOS
+- [ ] Web Assembly
+
 #### Graphics
 - [ ] MetaImageElement and MetaImage data structure
 - [ ] Remove PolygonElement
