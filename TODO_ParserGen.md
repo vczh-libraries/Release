@@ -85,4 +85,4 @@ class CLASS_NAME [: BASE_CLASS]
 ## ToString Algorithm Requirements
 - Every clause should create an AST node. `EXP ::= '(' !EXP ')'` is not allowed, except that this clause has only one node.
 - Every rule-name node should be assigned to a property. Token nodes are optional but those properties will be auto-generated.
-- Loops cannot be embedded in another loop.
+- Loops cannot be embedded in another loop. It doesn't limit the syntax, but it limit the shape of AST.
