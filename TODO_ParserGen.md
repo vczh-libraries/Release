@@ -65,8 +65,8 @@ class CLASS_NAME [: BASE_CLASS]
 
 ## Supported EBNF
 
-- TOKEN [`:` <PROPERTY-NAME>]
-- RULE [`:` <PROPERTY-NAME>]
+- TOKEN [`:` PROPERTY-NAME]
+- RULE [`:` PROPERTY-NAME]
 - Optional:
   - `+[` EBNF `]`
   - `-[` EBNF `]`
@@ -79,7 +79,7 @@ class CLASS_NAME [: BASE_CLASS]
  
 ## EBNF Program
 
-- RULE {`::=` CLAUSE `as` <CLASS-NAME>} `;`
+- RULE {`::=` CLAUSE `as` CLASS-NAME} `;`
   - Consider a syntax here to switch token set
 
 ## ToString Algorithm Requirements
