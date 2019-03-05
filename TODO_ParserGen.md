@@ -86,3 +86,36 @@ class CLASS_NAME [: BASE_CLASS]
 - Every clause should create an AST node. `EXP ::= '(' !EXP ')'` is not allowed, except that this clause has only one node.
 - Every rule-name node should be assigned to a property. Token nodes are optional but those properties will be auto-generated.
 - Loops cannot be embedded in another loop. It doesn't limit the syntax, but it limit the shape of AST.
+
+## Development Project Structure
+- Original ParserGen code will be separated from Vlpp.
+- **AstGen**:
+  - AST symbols and C++ code generation.
+- **Execution**:
+  - Parser-generated instructions serialization.
+  - Execute instructions as a SAX-like parser, with notification on ambigious node, error message generation and error recovering.
+- **Compiler**: depends on **AstGen** and **Execution**, taking the generated `AST for ParserGen`.
+  - Take the `AST for ParserGen` and generate instructions.
+  - Generate the default handler to create AST for the SAX-like parser.
+  - ToString algorithm
+- **ParserGen**: depends on **Compiler**, taking the generated parser and the default handler to create AST for `AST for ParserGen`.
+  - All code integrating together.
+- **UnitTestAst**:
+  - Unit test of **AstGen** building block and pool allocation etc.
+  - Hand-written `AST for ParserGen` symbols and codegen it.
+- **UnitTestExecution**:
+  - Unit test of **Execution**.
+  - Assert directly on SAX-like parser.
+- **UnitTestCompiler**:
+  - Unit test of **Compiler**, input are all **UnitTestExecution** test cases rewritten using the generated easy-builder for `AST for ParserGen` AST.
+  - Assert on the ToString-ed AST. (shared)
+  - One of the test case will take the syntax of `AST for ParserGen` itself and serialize instructions to a cpp file, so that we create a parser in C++ to parse the input of the ParserGen.
+- **UnitTestParserGen**:
+  - Unit test of **Parsergen**, input are all **UnitTestExecution** test cases rewritten in text format.
+  - Assert on the ToString-ed AST. (shared)
+  - Generate all parser in text format to C++ code
+- **UnitTest**:
+  - Link all cpp files in all other unit test projects so that all test cases can be run in one F5.
+  - Test all generated parsers in **UnitTestParserGen**.
+  - Assert on the ToString-ed AST. (shared)
+- Since parser are written in different ways for different unit test projects, they are stored separately from unit test projects to share necessary files.
