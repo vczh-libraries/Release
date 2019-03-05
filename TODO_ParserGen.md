@@ -92,6 +92,7 @@ class CLASS_NAME [: BASE_CLASS]
 - **AstGen**:
   - AST symbols and C++ code generation.
   - Generate visitors.
+  - Generate easy builder.
 - **Execution**:
   - Parser-generated instructions serialization.
   - Execute instructions as a SAX-like parser, with notification on ambigious node, error message generation and error recovering.
@@ -103,7 +104,7 @@ class CLASS_NAME [: BASE_CLASS]
   - All code integrating together.
 - **UnitTestAst**:
   - Unit test of **AstGen** building block and pool allocation etc.
-  - Hand-written `AST for ParserGen` symbols and codegen it, with all visitors.
+  - Hand-written `AST for ParserGen` symbols and codegen it, with all visitors and the easy builder.
 - **UnitTestExecution**:
   - Unit test of **Execution**.
   - Assert directly on SAX-like parser.
