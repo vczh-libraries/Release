@@ -101,7 +101,8 @@ class CLASS_NAME [: BASE_CLASS]
 - **Compiler**: depends on **AstGen** and **Execution**, taking the generated `AST for ParserGen`.
   - Take the `AST for ParserGen` and generate instructions.
   - Generate the default handler to create AST for the SAX-like parser.
-  - ToString algorithm
+  - ToString algorithm.
+  - Bidirection binding with AST the text.
 - **ParserGen**: depends on **Compiler**, taking the generated parser and the default handler to create AST for `AST for ParserGen`.
   - All code integrating together.
 - **UnitTestAst**:
