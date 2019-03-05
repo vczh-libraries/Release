@@ -113,7 +113,7 @@ class CLASS_NAME [: BASE_CLASS]
   - Assert on the ToString-ed AST. (shared)
   - One of the test case will take the syntax of `AST for ParserGen` itself and serialize instructions to a cpp file, so that we create a parser in C++ to parse the input of the ParserGen.
 - **UnitTestParserGen**:
-  - Unit test of **Parsergen**, input are all **UnitTestExecution** test cases rewritten in text format.
+  - Unit test of **ParserGen**, input are all **UnitTestExecution** test cases rewritten in text format.
   - Assert on the ToString-ed AST. (shared)
   - Generate all parser in text format to C++ code
 - **UnitTest**:
