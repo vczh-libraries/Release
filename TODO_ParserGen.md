@@ -93,6 +93,8 @@ class CLASS_NAME [: BASE_CLASS]
   - AST symbols and C++ code generation.
   - Generate visitors.
   - Generate easy builder.
+  - Generate reflection.
+  - Symbol serialization (this is not exposed on the final ParserGen.exe)
 - **Execution**:
   - Parser-generated instructions serialization.
   - Execute instructions as a SAX-like parser, with notification on ambigious node, error message generation and error recovering.
@@ -111,7 +113,7 @@ class CLASS_NAME [: BASE_CLASS]
 - **UnitTestCompiler**:
   - Unit test of **Compiler**, input are all **UnitTestExecution** test cases rewritten using the generated easy-builder for `AST for ParserGen` AST.
   - Assert on the ToString-ed AST. (shared)
-  - One of the test case will take the syntax of `AST for ParserGen` itself and serialize instructions to a cpp file, so that we create a parser in C++ to parse the input of the ParserGen.
+  - One of the test case will take the syntax of `AST for ParserGen` itself, with the symbol directly for the AST, and serialize instructions to a cpp file, so that we create a parser in C++ to parse the input of the ParserGen.
 - **UnitTestParserGen**:
   - Unit test of **ParserGen**, input are all **UnitTestExecution** test cases rewritten in text format.
   - Assert on the ToString-ed AST. (shared)
