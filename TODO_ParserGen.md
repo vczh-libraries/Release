@@ -121,3 +121,4 @@ class CLASS_NAME [: BASE_CLASS]
   - Test all generated parsers in **UnitTestParserGen**.
   - Assert on the ToString-ed AST. (shared)
 - Since parser are written in different ways for different unit test projects, they are stored separately from unit test projects to share necessary files.
+- Do not really write a file if the generated content doesn't change.
