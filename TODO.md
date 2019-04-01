@@ -9,6 +9,7 @@ https://zhuanlan.zhihu.com/p/39369370
   - [ ] Like a table, a column can use `Absolute`, `Draggable` and `Percentage` to specify a column size. Only when a column is draggable, users can use their mouse to change the size of a column, and then trigger `IColumnItemView::SetColumnSize`
 - [ ] Consider drag and drop support, with column drag and drop
 - [ ] New item arranger that can accept a `GuiRepeatCompositionBase`
+- [ ] `let X = Y in (F(X.a.b.c))` reports `X does not exist in the current scope`
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
