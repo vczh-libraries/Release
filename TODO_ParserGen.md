@@ -4,6 +4,8 @@
   * No need to specify allow ambiguity or not
   * Calculate ambiguous **Parse** cases, pointing out which AST need to support ambiguity
   * Full CFG power, no limitation
+    * Experiment: expanding all left-recursive grammer to right-recursive grammar with instructions
+    * Experiment: optionally inline all rules which don't generate parser functions
   * Error message generation
   * Error recovering
 * Serializing
@@ -30,6 +32,12 @@ class CLASS_NAME [: BASE_CLASS]
 - Depended AST definition files
 - Visitors selected to generate
 - Optional reflection support
+  - All AST constructors are protected
+  - Generated factory class
+  - If AST object pool is enabled
+    - reflection is disabled
+    - `Ptr<T>` for all AST types are generated will enumerated `Cast` function.
+    - Use generated RTTI constructions (e.g. enum class tag for type)
 
 ## Types
 
