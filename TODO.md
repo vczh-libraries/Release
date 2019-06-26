@@ -35,11 +35,16 @@ https://zhuanlan.zhihu.com/p/39369370
   * All existing features and backward compatible interface design
 * Binary ITypeDescriptor provider format.
 * API to import and export fake types (ITypeDescriptor that cannot be executed)
+* Interfaces for collections types like `IReadableCollection<T>`
+* Reflectable interfaces like `IReflectableReadableCollection<T>`, inherits from `IReadableCollection<T>` and `IReadableCollection<Value>`
 
 ## Workflow
 
 * Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
 * Support `<category>name` identifier, make generated code re-parsable.
+* Recognize collection interfaces instead of collection entities.
+  * Reconsider how to implement collection creating code in Workflow.
+* Move to new ParserGen.
 * WorkflowCompiler.exe (x32/x64)
   * Enable external symbols
   * Compile
@@ -56,40 +61,44 @@ https://zhuanlan.zhihu.com/p/39369370
 ## GacUI
 
 #### Before 1.0 (Optional)
-- [ ] `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
-- [ ] Enable Workflow script template for IGuiInstanceLoader written in text
-- [ ] INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
+* `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
+* Enable Workflow script template for IGuiInstanceLoader written in text
+* INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
+
+#### After 1.0
+* Use collection interfaces on function signatures.
+* Move to new ParserGen.
 
 #### Cross Platforms
-- [ ] Ncurses on Ubuntu
-- [ ] macOS
-- [ ] Web Assembly
+* Ncurses on Ubuntu
+* macOS
+* Web Assembly
 
 #### Graphics
-- [ ] MetaImageElement and MetaImage data structure
-- [ ] Remove PolygonElement
-- [ ] Default non-text element renderer using MetaImageElement
-- [ ] Replacing GDI and D2D non-text element renderers
-- [ ] Meta3DElement and Meta3D data structure
-- [ ] Default Meta3DElement renderer using MetaImageElement with a surface sorting based algorithm
+* MetaImageElement and MetaImage data structure
+* Remove PolygonElement
+* Default non-text element renderer using MetaImageElement
+* Replacing GDI and D2D non-text element renderers
+* Meta3DElement and Meta3D data structure
+* Default Meta3DElement renderer using MetaImageElement with a surface sorting based algorithm
 
 #### Controls
-- [ ] Chart
-- [ ] Dock Container
-- [ ] Touch support
+* Chart
+* Dock Container
+* Touch support
 
 #### Binders
-- [ ] Other languages
-  - XML still generate C++ files, and they need to be compiled to an appropriate form.
-  - Other programming languages doesn't access GacUI objects, instead they implement view model interfaces that defined in XML.
-  - Users need to compile C++ code by themselves.
-  - Users are not required to write C++ code, but they can.
-  - Users can add attributes in XML defined interfaces, so that GacGen can generate a list of them. After that, by reading generated workflow assembly files, glue code can be generated so that users can implement required view model interfaces directly. I will provide some tools for listed languages.
-  - Resources need to be generated in C++ files, because other languages cannot access GacUI objects, which means they cannot load resources manually.
-  - Languages:
-    - [ ] JavaScript / TypeScript through Web assembly
-    - [ ] .NET (core?) through dll
-    - [ ] Python through dll
+* Other languages
+  * XML still generate C++ files, and they need to be compiled to an appropriate form.
+  * Other programming languages doesn't access GacUI objects, instead they implement view model interfaces that defined in XML.
+  * Users need to compile C++ code by themselves.
+  * Users are not required to write C++ code, but they can.
+  * Users can add attributes in XML defined interfaces, so that GacGen can generate a list of them. After that, by reading generated workflow assembly files, glue code can be generated so that users can implement required view model interfaces directly. I will provide some tools for listed languages.
+  * Resources need to be generated in C++ files, because other languages cannot access GacUI objects, which means they cannot load resources manually.
+  * Languages:
+    * [ ] JavaScript / TypeScript through Web assembly
+    * [ ] .NET (core?) through dll
+    * [ ] Python through dll
 
 ## GacGen.exe
 
