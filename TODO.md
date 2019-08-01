@@ -2,7 +2,7 @@
 
 https://zhuanlan.zhihu.com/p/39369370
 
-# GacUI 1.0
+## GacUI 1.0
 
 - [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
   - [ ] Considering GuiBindableDataGrid updating columns' sizes according to configuration automatically, and call `GuiControl::InvokeOrDelayIfRendering` (indirectly) inside `DataColumn::NotifyAllColumnsUpdate` when necessary.
@@ -21,93 +21,99 @@ https://zhuanlan.zhihu.com/p/39369370
 
 **ON GOING**: Document repo
 
-# GacUI 2.0
+## GacUI 2.0
 
-## Vlpp
+### Vlpp
 
-* Regex supports UTF-16 (instead of UCS-2) on MSVC.
-  * Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
-* Redesign vl::parsing.
-  * No need to specify ambiguity
-  * Will print all ambiguous cases and marked AST node
-  * ToString with hints and custom options
-  * Print diff when updating AST (for IDE)
-  * All existing features and backward compatible interface design
-* Binary ITypeDescriptor provider format.
-* API to import and export fake types (ITypeDescriptor that cannot be executed)
-* Interfaces for collections types like `IReadableCollection<T>`
-* Reflectable interfaces like `IReflectableReadableCollection<T>`, inherits from `IReadableCollection<T>` and `IReadableCollection<Value>`
+- Regex supports UTF-16 (instead of UCS-2) on MSVC.
+  - Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
+- Redesign vl::parsing.
+  - No need to specify ambiguity
+  - Will print all ambiguous cases and marked AST node
+  - ToString with hints and custom options
+  - Print diff when updating AST (for IDE)
+  - All existing features and backward compatible interface design
+- Binary ITypeDescriptor provider format.
+- API to import and export fake types (ITypeDescriptor that cannot be executed)
+- Interfaces for collections types like `IReadableCollection<T>`
+  - or `IReadOnlyCollection`, `IWriteOnlyCollection`, `ICollection`
+  - `Slice`, `Contact` functions on interfaces
+- Reflectable interfaces like `IReflectableReadableCollection<T>`, inherits from `IReadableCollection<T>` and `IReadableCollection<Value>`
 
-## Workflow
+### Workflow
 
-* Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
-* Support `<category>name` identifier, make generated code re-parsable.
-* Recognize collection interfaces instead of collection entities.
-  * Reconsider how to implement collection creating code in Workflow.
-* Move to new ParserGen.
-* WorkflowCompiler.exe (x32/x64)
-  * Enable external symbols
-  * Compile
-  * Binary Output (full assembly or types only)
-  * C++ Codegen (x32/x64)
-
-### (probably not do)
-
-* Macro
-* Context-Grammar Sensitive Macro
-* Virtual function
-* Class implements interface
+- Don't create IValueList if apply `{1 2 3}` on `List<int>` argument.
+- Support `<category>name` identifier, make generated code re-parsable.
+- Recognize collection interfaces instead of collection entities.
+  - Reconsider how to implement collection creating code in Workflow.
+- Move to new ParserGen.
+- WorkflowCompiler.exe (x32/x64)
+  - Enable external symbols
+  - Compile
+  - Binary Output (full assembly or types only)
+  - C++ Codegen (x32/x64)
+- (probably not do)
+  - Macro
+  - Context-Grammar Sensitive Macro
+  - Virtual function
+  - Class implements interface
 
 ## GacUI
 
-#### Before 1.0 (Optional)
-* `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
-* Enable Workflow script template for IGuiInstanceLoader written in text
-* INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
+### Before 1.0 (Optional)
 
-#### After 1.0
-* Use collection interfaces on function signatures.
-* Move to new ParserGen.
+- `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
+- Enable Workflow script template for IGuiInstanceLoader written in text
+- INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
 
-#### Cross Platforms
-* Ncurses on Ubuntu
-* macOS
-* Web Assembly
+### After 1.0
 
-#### Graphics
-* MetaImageElement and MetaImage data structure
-* Remove PolygonElement
-* Default non-text element renderer using MetaImageElement
-* Replacing GDI and D2D non-text element renderers
-* Meta3DElement and Meta3D data structure
-* Default Meta3DElement renderer using MetaImageElement with a surface sorting based algorithm
+- Use collection interfaces on function signatures.
+- Move to new ParserGen.
 
-#### Controls
-* Chart
-* Dock Container
-* Touch support
+### Cross Platforms
 
-#### Binders
-* Other languages
-  * XML still generate C++ files, and they need to be compiled to an appropriate form.
-  * Other programming languages doesn't access GacUI objects, instead they implement view model interfaces that defined in XML.
-  * Users need to compile C++ code by themselves.
-  * Users are not required to write C++ code, but they can.
-  * Users can add attributes in XML defined interfaces, so that GacGen can generate a list of them. After that, by reading generated workflow assembly files, glue code can be generated so that users can implement required view model interfaces directly. I will provide some tools for listed languages.
-  * Resources need to be generated in C++ files, because other languages cannot access GacUI objects, which means they cannot load resources manually.
-  * Languages:
-    * [ ] JavaScript / TypeScript through Web assembly
-    * [ ] .NET (core?) through dll
-    * [ ] Python through dll
+- Ncurses on Ubuntu
+- macOS
+- Web Assembly
+
+### Graphics
+
+- MetaImageElement and MetaImage data structure
+- Remove PolygonElement
+- Default non-text element renderer using MetaImageElement
+- Replacing GDI and D2D non-text element renderers
+- Meta3DElement and Meta3D data structure
+- Default Meta3DElement renderer using MetaImageElement with a surface sorting based algorithm
+
+### Controls
+
+- Chart
+- Dock Container
+- Touch support
+
+### Binders
+
+- Other languages
+  - XML still generate C++ files, and they need to be compiled to an appropriate form.
+  - Other programming languages doesn't access GacUI objects, instead they implement view model interfaces that defined in XML.
+  - Users need to compile C++ code by themselves.
+  - Users are not required to write C++ code, but they can.
+  - Users can add attributes in XML defined interfaces, so that GacGen can generate a list of them. After that, by reading generated workflow assembly files, glue code can be generated so that users can implement required view model interfaces directly. I will provide some tools for listed languages.
+  - Resources need to be generated in C++ files, because other languages cannot access GacUI objects, which means they cannot load resources manually.
+  - Languages:
+    - [ ] JavaScript / TypeScript through Web assembly
+    - [ ] .NET (core?) through dll
+    - [ ] Python through dll
 
 ## GacGen.exe
 
-* Enable linking to external symbols
-* In the final pass, only workflow scripts are printed
-  * Use WorkflowCompiler.exe to do codegen externally
+- Enable linking to external symbols
+- In the final pass, only workflow scripts are printed
+  - Use WorkflowCompiler.exe to do codegen externally
 
 ## GacStudio.exe
 
 ## DocTools
 
-* Rewrite in C++
+- Rewrite in C++
