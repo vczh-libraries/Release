@@ -113,7 +113,3 @@ https://zhuanlan.zhihu.com/p/39369370
   - Use WorkflowCompiler.exe to do codegen externally
 
 ## GacStudio.exe
-
-## DocTools
-
-- Rewrite in C++
