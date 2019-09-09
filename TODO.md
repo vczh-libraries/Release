@@ -41,6 +41,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - Reflectable interfaces like `IReflectableReadableCollection<T>`, inherits from `IReadableCollection<T>` and `IReadableCollection<Value>`
 - Remove `FOREACH` and `FOREACH_INDEXER`, replaced by range-based for loop
 - Fix `Linq` so that lambda parameters can be `auto`, instead of specified `types`
+- Redesign `VCZH_MSVC` series macros
 
 ### Workflow
 
