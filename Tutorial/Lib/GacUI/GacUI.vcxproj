@@ -97,6 +97,10 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppOS.cpp" />
+    <ClCompile Include="..\..\..\Import\VlppParser.cpp" />
+    <ClCompile Include="..\..\..\Import\VlppReflection.cpp" />
+    <ClCompile Include="..\..\..\Import\VlppRegex.cpp" />
     <ClCompile Include="..\..\..\Import\VlppWorkflowLibrary.cpp" />
     <ClCompile Include="..\..\..\Import\VlppWorkflowRuntime.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -108,6 +112,10 @@
     <ClInclude Include="..\..\..\Import\Skins\DarkSkin\DarkSkin.h" />
     <ClInclude Include="..\..\..\Import\Skins\DarkSkin\DarkSkinReflection.h" />
     <ClInclude Include="..\..\..\Import\Vlpp.h" />
+    <ClInclude Include="..\..\..\Import\VlppOS.h" />
+    <ClInclude Include="..\..\..\Import\VlppParser.h" />
+    <ClInclude Include="..\..\..\Import\VlppReflection.h" />
+    <ClInclude Include="..\..\..\Import\VlppRegex.h" />
     <ClInclude Include="..\..\..\Import\VlppWorkflowLibrary.h" />
     <ClInclude Include="..\..\..\Import\VlppWorkflowRuntime.h" />
   </ItemGroup>
