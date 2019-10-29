@@ -97,32 +97,50 @@ class CLASS_NAME [: BASE_CLASS]
 
 ## Development Project Structure
 - Original ParserGen code will be separated from Vlpp.
+- **Development Steps**
+  1. Symbols for ParserGen AST
+  2. Manually: symbols -> `ParserGen AST described in C++`
+  3. Manually: ParserGen Syntax described in `ParserGen AST described in C++` -> `ParserGen Parser described in C++`
+  4. Integrate
 - **AstGen**:
+  - **Goal**: given symbols and generated C++ code for AST
+    - **Produce** (from unit test):
+      - Generated source code (AST part): declaration, visitors, builder, reflection for ParserGen input
   - AST symbols and C++ code generation.
   - Generate visitors.
   - Generate easy builder.
   - Generate reflection.
-  - Symbol serialization (this is not exposed on the final ParserGen.exe)
 - **Execution**:
+  - **Goal**: given instructions and parse input text with SAX-like callback
   - Parser-generated instructions serialization.
-  - Execute instructions as a SAX-like parser, with notification on ambigious node, error message generation and error recovering.
-- **Compiler**: depends on **AstGen** and **Execution**, taking the generated `AST for ParserGen`.
-  - Take the `AST for ParserGen` and generate instructions.
+  - Execute instructions as a SAX-like parser, with notification on ambiguous node, error message generation and error recovering.
+- **Compiler** -> **AstGen**, **Execution**
+  - **Goal**: input described using `Generated source code (AST part)` and generate instructions (text parser)
+    - **Produce** (from unit test)
+      - Generated C++ source code (parser part) for ParserGen input
+  - Take the `ParserGen AST declaration` and generate instructions.
   - Generate the default handler to create AST for the SAX-like parser.
   - ToString algorithm.
   - Bidirection binding with AST the text.
-- **ParserGen**: depends on **Compiler**, taking the generated parser and the default handler to create AST for `AST for ParserGen`.
-  - All code integrating together.
+- **ParserGen** -> **Compiler**
+  - **Goal**: CLI Tool
+  - Integrate `Generated source code (AST part)`
+  - Integrate `Generated source code (parser part)`
+  - Handle command line arguments
 - **UnitTestAst**:
   - Unit test of **AstGen** building block and pool allocation etc.
-  - Hand-written `AST for ParserGen` symbols and codegen it, with all visitors and the easy builder.
+  - **Produces** steps
+    - Hand-written `AST for ParserGen` symbols.
+    - Codegen symbols and get `Generated source code (AST part)` for ParserGen input
 - **UnitTestExecution**:
   - Unit test of **Execution**.
   - Assert directly on SAX-like parser.
 - **UnitTestCompiler**:
   - Unit test of **Compiler**, input are all **UnitTestExecution** test cases rewritten using the generated easy-builder for `AST for ParserGen` AST.
   - Assert on the ToString-ed AST. (shared)
-  - One of the test case will take the syntax of `AST for ParserGen` itself, with the symbol directly for the AST, and serialize instructions to a cpp file, so that we create a parser in C++ to parse the input of the ParserGen.
+  - **Produces** steps
+    - Implementa ParserGen AST Input syntax using generated easy builder form `Generated source code (AST part)`
+    - Serialize instructions and get `C++ source code (parser part)` for ParserGen input
 - **UnitTestParserGen**:
   - Unit test of **ParserGen**, input are all **UnitTestExecution** test cases rewritten in text format.
   - Assert on the ToString-ed AST. (shared)
