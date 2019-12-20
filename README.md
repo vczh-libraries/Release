@@ -14,7 +14,6 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
   - **ParserGen.exe** General LR parser to C++ code generator
   - **GacBuild.ps1** Do everything for you if you don't want to understand build steps. This one builds multiple resource xml files at the same time. Read the comment for more information.
   - **GacClear.ps1** Force `GacBuild.ps1` rebuilding all resource xml files for the next time.
-  - **GacGen.ps1** Do everything for you if you don't want to understand build steps. This script builds one resource xml.
 - **Tutorial** Sample code
   - **Lib** Static library projects for all tutorials
   - **GacUI_HelloWorlds** Different ways to create a GacUI hello world project
