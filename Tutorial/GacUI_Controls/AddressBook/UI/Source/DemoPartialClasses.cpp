@@ -264,6 +264,8 @@ Closures
 	void __vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		::vl::__vwsn::This(__vwsnthis_0->listViewContacts)->SetView(::vl::presentation::controls::ListViewView::BigIcon);
+		::vl::__vwsn::This(__vwsnthis_0->self)->ClearViewSelection();
+		::vl::__vwsn::This(__vwsnthis_0->commandBigIcon)->SetSelected(true);
 	}
 
 	//-------------------------------------------------------------------
@@ -276,6 +278,8 @@ Closures
 	void __vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		::vl::__vwsn::This(__vwsnthis_0->listViewContacts)->SetView(::vl::presentation::controls::ListViewView::SmallIcon);
+		::vl::__vwsn::This(__vwsnthis_0->self)->ClearViewSelection();
+		::vl::__vwsn::This(__vwsnthis_0->commandSmallIcon)->SetSelected(true);
 	}
 
 	//-------------------------------------------------------------------
@@ -288,6 +292,8 @@ Closures
 	void __vwsnf25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		::vl::__vwsn::This(__vwsnthis_0->listViewContacts)->SetView(::vl::presentation::controls::ListViewView::List);
+		::vl::__vwsn::This(__vwsnthis_0->self)->ClearViewSelection();
+		::vl::__vwsn::This(__vwsnthis_0->commandList)->SetSelected(true);
 	}
 
 	//-------------------------------------------------------------------
@@ -300,6 +306,8 @@ Closures
 	void __vwsnf26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		::vl::__vwsn::This(__vwsnthis_0->listViewContacts)->SetView(::vl::presentation::controls::ListViewView::Detail);
+		::vl::__vwsn::This(__vwsnthis_0->self)->ClearViewSelection();
+		::vl::__vwsn::This(__vwsnthis_0->commandDetail)->SetSelected(true);
 	}
 
 	//-------------------------------------------------------------------
@@ -312,6 +320,8 @@ Closures
 	void __vwsnf27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		::vl::__vwsn::This(__vwsnthis_0->listViewContacts)->SetView(::vl::presentation::controls::ListViewView::Tile);
+		::vl::__vwsn::This(__vwsnthis_0->self)->ClearViewSelection();
+		::vl::__vwsn::This(__vwsnthis_0->commandTile)->SetSelected(true);
 	}
 
 	//-------------------------------------------------------------------
@@ -324,6 +334,8 @@ Closures
 	void __vwsnf28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		::vl::__vwsn::This(__vwsnthis_0->listViewContacts)->SetView(::vl::presentation::controls::ListViewView::Information);
+		::vl::__vwsn::This(__vwsnthis_0->self)->ClearViewSelection();
+		::vl::__vwsn::This(__vwsnthis_0->commandInformation)->SetSelected(true);
 	}
 
 	//-------------------------------------------------------------------

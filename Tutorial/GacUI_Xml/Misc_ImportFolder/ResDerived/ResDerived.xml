@@ -19,7 +19,7 @@
   
   <Instance name="MainWindowResource">
     <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow" xmlns:demo="demo::*">
-      <Window ref.Name="self" ClientSize="x:640 y:480">
+      <Window ref.Name="self" Text="Misc_ImportFolder" ClientSize="x:640 y:480">
         <Table AlignmentToParent="left:0 top:0 right:0 bottom:0">
           <att.Rows>
             <_>composeType:Percentage percentage:1.0</_>

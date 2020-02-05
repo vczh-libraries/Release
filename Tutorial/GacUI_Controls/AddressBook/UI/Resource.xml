@@ -177,22 +177,22 @@
           </ToolstripCommand>
 
           <ToolstripCommand ref.Name="commandBigIcon" Image-uri="res://Images/BigIcon">
-            <ev.Executed-eval><![CDATA[listViewContacts.SetView(BigIcon);]]></ev.Executed-eval>
+            <ev.Executed-eval><![CDATA[{listViewContacts.SetView(BigIcon);              self.ClearViewSelection();  commandBigIcon.Selected = true;     }]]></ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandSmallIcon" Image-uri="res://Images/SmallIcon">
-            <ev.Executed-eval><![CDATA[listViewContacts.SetView(SmallIcon);]]></ev.Executed-eval>
+            <ev.Executed-eval><![CDATA[{listViewContacts.SetView(SmallIcon);            self.ClearViewSelection();  commandSmallIcon.Selected = true;   }]]></ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandList" Image-uri="res://Images/List">
-            <ev.Executed-eval><![CDATA[listViewContacts.SetView(ListViewView::List);]]></ev.Executed-eval>
+            <ev.Executed-eval><![CDATA[{listViewContacts.SetView(ListViewView::List);   self.ClearViewSelection();  commandList.Selected = true;        }]]></ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandDetail" Image-uri="res://Images/Detail" Selected="true">
-            <ev.Executed-eval><![CDATA[listViewContacts.SetView(Detail);]]></ev.Executed-eval>
+            <ev.Executed-eval><![CDATA[{listViewContacts.SetView(Detail);               self.ClearViewSelection();  commandDetail.Selected = true;      }]]></ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandTile" Image-uri="res://Images/Tile">
-            <ev.Executed-eval><![CDATA[listViewContacts.SetView(Tile);]]></ev.Executed-eval>
+            <ev.Executed-eval><![CDATA[{listViewContacts.SetView(Tile);                 self.ClearViewSelection();  commandTile.Selected = true;        }]]></ev.Executed-eval>
           </ToolstripCommand>
           <ToolstripCommand ref.Name="commandInformation" Image-uri="res://Images/Information">
-            <ev.Executed-eval><![CDATA[listViewContacts.SetView(Information);]]></ev.Executed-eval>
+            <ev.Executed-eval><![CDATA[{listViewContacts.SetView(Information);          self.ClearViewSelection();  commandInformation.Selected = true; }]]></ev.Executed-eval>
           </ToolstripCommand>
 
           <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
