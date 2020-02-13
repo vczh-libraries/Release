@@ -1,8 +1,7 @@
 # Goal
 
 * Parsing
-  * No need to specify allow ambiguity or not
-  * Calculate ambiguous **Parse** cases, pointing out which AST need to support ambiguity
+  * Explicily declare the boundary of ambiguity resolving (e.g. on EXPR or on STAT)
   * Full CFG power, no limitation
     * Experiment: expanding all left-recursive grammer to right-recursive grammar with instructions
     * Experiment: optionally inline all rules which don't generate parser functions
