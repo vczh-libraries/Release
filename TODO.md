@@ -62,12 +62,15 @@ https://zhuanlan.zhihu.com/p/39369370
   - Virtual function
   - Class implements interface
 
+### Hero DB
+
+### ParserGen 2
+
 ## GacUI
 
 ### Before 1.0 (Optional)
 
-- `<eval Ref="Name"/>` and `<eval Eval="expression"/>` tags
-- Enable Workflow script template for IGuiInstanceLoader written in text
+- `<eval Eval="expression"/>` tags
 - INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
 
 ### After 1.0
@@ -83,12 +86,20 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ### Graphics
 
-- MetaImageElement and MetaImage data structure
-- Remove PolygonElement
-- Default non-text element renderer using MetaImageElement
-- Replacing GDI and D2D non-text element renderers
-- Meta3DElement and Meta3D data structure
-- Default Meta3DElement renderer using MetaImageElement with a surface sorting based algorithm
+- Proposal 1
+  - MetaImageElement and MetaImage data structure
+  - Remove PolygonElement
+  - Default non-text element renderer using MetaImageElement
+  - Replacing GDI and D2D non-text element renderers
+  - Meta3DElement and Meta3D data structure
+  - Default Meta3DElement renderer using MetaImageElement with a surface sorting based algorithm
+- Proposal 2
+  - 2D drawing API
+  - restriction-based meta image
+  - basic 3D rendering based on the above item with a surface sorting based algorithm
+- Others
+  - GIF player
+  - video player
 
 ### Controls
 
@@ -113,6 +124,27 @@ https://zhuanlan.zhihu.com/p/39369370
 ## GacGen.exe
 
 - Enable linking to external symbols
+  - Remove all loader implementation
+  - `mynamespaces::VirtualClassesX` for adding classes (under this namespace) and specifying their base types
+    - X for anything, for simulating partial classes
+    - following a naming convention, like: `GuiSelectableButton* CheckBox()`
+  - `mynamespaces::XXXLoader` for implementing different kinds of properties / constructors that are not actually exist in `mynamespaces::XXX`
+    - following a naming convention, e.g. `GuiTableComposition`'s rows/columns properties
+    - searching for correct default control templates
+  - GacGen.exe uses external files for control types (but not for elements / compositions)
+    - external files provide reflection-only type information, maybe created by Workflow
+- Modulized GacUISrc sources and projects
+  - NativeWindow
+  - Windows
+  - WindowsGDI
+  - WindowsDirect2D
+  - GacUI
+  - Basic Controls / List Controls / Toolstrip Controls / TextBox Controls
+    - Controls in future
+    - UI in future (e.g. Wizard framework)
+    - With reflections / virtual classes / loaders placed separately
+    - CodePack-ed files don't change
+  - Compiler
 - In the final pass, only workflow scripts are printed
   - Use WorkflowCompiler.exe to do codegen externally
 
