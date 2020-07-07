@@ -7,19 +7,8 @@ DEVELOPER: Zihan Chen(vczh)
 .\BASIC.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Framework::Basic
-
-Classes:
-	NotCopyable									: Object inherits from this type cannot be copied
-	Error										: Error, unlike exception, is not encouraged to catch
-	Object										: Base class of all classes
-
-Macros:
-	CHECK_ERROR(CONDITION,DESCRIPTION)			: Assert, throws an Error if failed
-	CHECK_FAIL(DESCRIPTION)						: Force an assert failure
-	SCOPE_VARIABLE(TYPE,VARIABLE,VALUE){ ... }	: Scoped variable
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_BASIC
@@ -117,18 +106,18 @@ namespace vl
 #endif
 
 #ifdef VCZH_64
-	/// <summary>Signed interface whose size is equal to sizeof(void*).</summary>
+	/// <summary>Signed interface whose size equals to sizeof(void*).</summary>
 	typedef vint64_t				vint;
-	/// <summary>Signed interface whose size is equal to sizeof(void*).</summary>
+	/// <summary>Signed interface whose size equals to sizeof(void*).</summary>
 	typedef vint64_t				vsint;
-	/// <summary>Unsigned interface whose size is equal to sizeof(void*).</summary>
+	/// <summary>Unsigned interface whose size equals to sizeof(void*).</summary>
 	typedef vuint64_t				vuint;
 #else
-	/// <summary>Signed interface whose size is equal to sizeof(void*).</summary>
+	/// <summary>Signed interface whose size equals to sizeof(void*).</summary>
 	typedef vint32_t				vint;
-	/// <summary>Signed interface whose size is equal to sizeof(void*).</summary>
+	/// <summary>Signed interface whose size equals to sizeof(void*).</summary>
 	typedef vint32_t				vsint;
-	/// <summary>Unsigned interface whose size is equal to sizeof(void*).</summary>
+	/// <summary>Unsigned interface whose size equals to sizeof(void*).</summary>
 	typedef vuint32_t				vuint;
 #endif
 	/// <summary>Signed interger representing position.</summary>
@@ -172,6 +161,7 @@ namespace vl
 	Basic Types
 	***********************************************************************/
 
+	/// <summary>Base type for all classes to stop generating default copy constructors.</summary>
 	class NotCopyable
 	{
 	private:
@@ -181,7 +171,7 @@ namespace vl
 		NotCopyable();
 	};
 
-	/// <summary>Base type of all errors. An error is an exception that you are not allowed to catch. Raising it means there is a fatal error in the code.</summary>
+	/// <summary>Base type of all errors. An error is an exception that is not recommended to catch. Raising it means there is a mistake in the code.</summary>
 	class Error
 	{
 	private:
@@ -307,210 +297,202 @@ namespace vl
 	Basic Types
 	***********************************************************************/
 
-	/// <summary>Base type of all classes.</summary>
+	/// <summary>
+	/// Base type of all classes.
+	/// This type has a virtual destructor, making all derived classes destructors virtual.
+	/// In this way an object is allowed to be deleted using a pointer of a qualified base type pointing to this object.
+	/// </summary>
 	class Object
 	{
 	public:
 		virtual ~Object();
 	};
 
-	/// <summary>Type for storing a value to wherever requiring a [T:vl.Ptr`1] to [T:vl.Object].</summary>
-	/// <typeparam name="T">Type of the value.</typeparam>
+	/// <summary>Store data of a value type in a reference type object. It is useful when the data is required to be stored in a pointer to [T:vl.Object].</summary>
+	/// <example><![CDATA[
+	/// int main()
+	/// {
+	///     Ptr<Object> boxed = MakePtr<ObjectBox<vint>>(100);
+	///     vint unboxed = boxed.Cast<ObjectBox<vint>>().UnBox();
+	///     Console::WriteLine(itow(unboxed));
+	/// }
+	/// ]]></example>
+	/// <typeparam name="T">Value type to use.</typeparam>
 	template<typename T>
 	class ObjectBox : public Object
 	{
 	private:
 		T					object;
 	public:
-		/// <summary>Box a value.</summary>
-		/// <param name="_object">The value to box.</param>
+		/// <summary>Create a boxed reference object from data of a value type.</summary>
+		/// <param name="_object">The data to box.</param>
 		ObjectBox(const T& _object)
 			:object(_object)
 		{
 		}
 
-		/// <summary>Box a movable value.</summary>
-		/// <param name="_object">The value to box.</param>
+		/// <summary>Create a boxed reference object by moving data of a value type.</summary>
+		/// <param name="_object">The data to move and box.</param>
 		ObjectBox(T&& _object)
 			:object(MoveValue(_object))
 		{
 		}
 
-		/// <summary>Copy a box.</summary>
-		/// <param name="value">The box.</param>
-		ObjectBox(const ObjectBox<T>& value)
-			:object(value.object)
-		{
-		}
+		/// <summary>Copy a boxed reference object.</summary>
+		/// <param name="value">The reference object to copy.</param>
+		ObjectBox(const ObjectBox<T>& value) = default;
 
-		/// <summary>Move a box.</summary>
-		/// <param name="value">The box.</param>
-		ObjectBox(ObjectBox<T>&& value)
-			:object(MoveValue(value.object))
-		{
-		}
+		/// <summary>Move a boxed reference object.</summary>
+		/// <param name="value">The reference object to move.</param>
+		ObjectBox(ObjectBox<T>&& value) = default;
 
-		/// <summary>Box a value.</summary>
-		/// <returns>The boxed value.</returns>
-		/// <param name="_object">The value to box.</param>
+		/// <summary>Replace the boxed data of a value type.</summary>
+		/// <returns>The reference object itself.</returns>
+		/// <param name="_object">The data to replace the original data.</param>
 		ObjectBox<T>& operator=(const T& _object)
 		{
 			object = _object;
 			return *this;
 		}
 
-		/// <summary>Copy a box.</summary>
-		/// <returns>The boxed value.</returns>
-		/// <param name="value">The box.</param>
-		ObjectBox<T>& operator=(const ObjectBox<T>& value)
-		{
-			object = value.object;
-			return *this;
-		}
+		/// <summary>Replace the boxed data from another reference object.</summary>
+		/// <returns>The reference object itself.</returns>
+		/// <param name="value">The reference object to copy.</param>
+		ObjectBox<T>& operator=(const ObjectBox<T>& value) = default;
 
-		/// <summary>Move a box.</summary>
-		/// <returns>The boxed value.</returns>
-		/// <param name="value">The box.</param>
-		ObjectBox<T>& operator=(ObjectBox<T>&& value)
-		{
-			object = MoveValue(value.object);
-			return *this;
-		}
+		/// <summary>Replace the boxed data by moving from another reference object.</summary>
+		/// <returns>The reference object itself.</returns>
+		/// <param name="value">The reference object to move.</param>
+		ObjectBox<T>& operator=(ObjectBox<T>&& value) = default;
 
-		/// <summary>Unbox the value.</summary>
-		/// <returns>The original value.</returns>
+		/// <summary>Get the boxed data of a value type.</summary>
+		/// <returns>The unboxed data of a value type.</returns>
 		const T& Unbox()
 		{
 			return object;
 		}
 	};
 
-	/// <summary>Type for optionally storing a value.</summary>
-	/// <typeparam name="T">Type of the value.</typeparam>
+	/// <summary>Type for representing nullable data.</summary>
+	/// <typeparam name="T">Type of the data, typically it is a value type, or [T:vl.Ptr`1] could be used here.</typeparam>
 	template<typename T>
 	class Nullable
 	{
 	private:
-		T*					object;
+		T*					object = nullptr;
 	public:
 		/// <summary>Create a null value.</summary>
-		Nullable()
-			:object(0)
-		{
-		}
+		Nullable() = default;
 
-		/// <summary>Create a non-null value.</summary>
-		/// <param name="value">The value to copy.</param>
+		/// <summary>Create a non-null value by copying data.</summary>
+		/// <param name="value">The data to copy.</param>
 		Nullable(const T& value)
 			:object(new T(value))
 		{
 		}
 
-		/// <summary>Create a non-null value.</summary>
-		/// <param name="value">The value to move.</param>
+		/// <summary>Create a non-null value by moving data.</summary>
+		/// <param name="value">The data to move.</param>
 		Nullable(T&& value)
 			:object(new T(MoveValue(value)))
 		{
 		}
 
-		/// <summary>Copy a nullable value.</summary>
+		/// <summary>Create a nullable value by copying from another nullable value.</summary>
 		/// <param name="nullable">The nullable value to copy.</param>
 		Nullable(const Nullable<T>& nullable)
-			:object(nullable.object ? new T(*nullable.object) : 0)
+			:object(nullable.object ? new T(*nullable.object) : nullptr)
 		{
 		}
 
-		/// <summary>Move a nullable value.</summary>
+		/// <summary>Create a nullable value by moving from another nullable value.</summary>
 		/// <param name="nullable">The nullable value to move.</param>
 		Nullable(Nullable<T>&& nullable)
 			:object(nullable.object)
 		{
-			nullable.object = 0;
+			nullable.object = nullptr;
 		}
 
 		~Nullable()
 		{
-			if (object)
-			{
-				delete object;
-				object = 0;
-			}
+			if (object) delete object;
 		}
 
-		/// <summary>Create a non-null value.</summary>
-		/// <returns>The created nullable value.</returns>
-		/// <param name="value">The value to copy.</param>
+		/// <summary>Replace the data inside this nullable value by copying from data.</summary>
+		/// <returns>The nullable value itself.</returns>
+		/// <param name="value">The data to copy.</param>
 		Nullable<T>& operator=(const T& value)
 		{
-			if (object)
-			{
-				delete object;
-				object = 0;
-			}
+			if (object) delete object;
 			object = new T(value);
 			return *this;
 		}
 
-		/// <summary>Copy a nullable value.</summary>
-		/// <returns>The created nullable value.</returns>
+		/// <summary>Replace the data inside this nullable value by copying from another nullable value.</summary>
+		/// <returns>The nullable value itself.</returns>
 		/// <param name="nullable">The nullable value to copy.</param>
 		Nullable<T>& operator=(const Nullable<T>& nullable)
 		{
 			if (this != &nullable)
 			{
-				if (object)
-				{
-					delete object;
-					object = 0;
-				}
+				if (object) delete object;
 				if (nullable.object)
 				{
 					object = new T(*nullable.object);
+				}
+				else
+				{
+					object = nullptr;
 				}
 			}
 			return *this;
 		}
 
-		/// <summary>Move a nullable value.</summary>
-		/// <returns>The created nullable value.</returns>
+		/// <summary>Replace the data inside this nullable value by moving from another nullable value.</summary>
+		/// <returns>The nullable value itself.</returns>
 		/// <param name="nullable">The nullable value to move.</param>
 		Nullable<T>& operator=(Nullable<T>&& nullable)
 		{
 			if (this != &nullable)
 			{
-				if (object)
-				{
-					delete object;
-					object = 0;
-				}
+				if (object) delete object;
 				object = nullable.object;
-				nullable.object = 0;
+				nullable.object = nullptr;
 			}
 			return *this;
 		}
 
+		/// <summary>Comparing two nullable values.</summary>
+		/// <returns>Returns true when these nullable values are all null, or the data inside them equals.</returns>
+		/// <param name="a">The first nullable value to compare.</param>
+		/// <param name="b">The second nullable value to compare.</param>
 		static bool Equals(const Nullable<T>& a, const Nullable<T>& b)
 		{
-			return
-				a.object
-				? b.object
-				? *a.object == *b.object
-				: false
-				: b.object
-				? false
-				: true;
+			if (!a.object && !b.object) return true;
+			if (a.object && b.object) return *a.object == *b.object;
+			return false;
 		}
 
+		/// <summary>Comparing two nullable values.</summary>
+		/// <returns>
+		/// Returns a positive value when the first value is greater than the second value.
+		/// Returns a negative value when the first value is lesser than the second value.
+		/// Returns zero when the two values equal.
+		/// When one is null and another one is not, the non-null one is greater.
+		/// </returns>
+		/// <param name="a">The first nullable value to compare.</param>
+		/// <param name="b">The second nullable value to compare.</param>
 		static vint Compare(const Nullable<T>& a, const Nullable<T>& b)
 		{
-			return
-				a.object
-				? b.object
-				? (*a.object == *b.object ? 0 : *a.object < *b.object ? -1 : 1)
-				: 1
-				: b.object
-				? -1
-				: 0;
+			if (a.object && b.object)
+			{
+				if (*a.object > *b.object) return 1;
+				if (*a.object < *b.object) return -1;
+				return 0;
+			}
+			if (a.object) return 1;
+			if (b.object) return -1;
+			return 0;
 		}
 
 		bool operator==(const Nullable<T>& nullable)const
@@ -543,17 +525,18 @@ namespace vl
 			return Compare(*this, nullable) >= 0;
 		}
 
-		/// <summary>Convert the nullable value to a bool value.</summary>
-		/// <returns>Returns true if it is not null.</returns>
+		/// <summary>Test if this nullable value is non-null.</summary>
+		/// <returns>Returns true if it is non-null.</returns>
 		operator bool()const
 		{
-			return object != 0;
+			return object != nullptr;
 		}
 
-		/// <summary>Unbox the value. This operation will cause an access violation of it is null.</summary>
-		/// <returns>The original value.</returns>
+		/// <summary>Return the data inside this nullable value</summary>
+		/// <returns>The data inside this nullable value. It crashes when it is null.</returns>
 		const T& Value()const
 		{
+			if (!object) throw Error(L"Nullable<T>::Value()#Cannot unbox from null.");
 			return *object;
 		}
 	};
@@ -569,18 +552,18 @@ namespace vl
 	Type Traits
 	***********************************************************************/
 
-	/// <summary>Get the index type of a value for containers.</summary>
-	/// <typeparam name="T">Type of the value.</typeparam>
+	/// <summary>Type for specify and create a representative value for comparing another value of a specific type for containers.</summary>
+	/// <typeparam name="T">The element type for containers.</typeparam>
 	template<typename T>
 	struct KeyType
 	{
 	public:
-		/// <summary>The index type of a value for containers.</summary>
+		/// <summary>The type of the representative value.</summary>
 		typedef T Type;
 
-		/// <summary>Convert a value to its index type.</summary>
-		/// <returns>The corresponding index value.</returns>
-		/// <param name="value">The value.</param>
+		/// <summary>Convert a value in a container to its representative value.</summary>
+		/// <returns>The representative value.</returns>
+		/// <param name="value">The value in a container.</param>
 		static const T& GetKeyValue(const T& value)
 		{
 			return value;
@@ -623,18 +606,39 @@ namespace vl
 	/// <summary>A type representing the combination of date and time.</summary>
 	struct DateTime
 	{
+		/// <summary>The year.</summary>
 		vint				year;
+		/// <summary>The month, from 1 to 12.</summary>
 		vint				month;
-		vint				dayOfWeek;
+		/// <summary>The day, from 1 to 31.</summary>
 		vint				day;
+		/// <summary>The hour, from 0 to 23.</summary>
 		vint				hour;
+		/// <summary>The minute, from 0 to 59.</summary>
 		vint				minute;
+		/// <summary>The second, from 0 to 60.</summary>
 		vint				second;
+		/// <summary>The milliseconds, from 0 to 999.</summary>
 		vint				milliseconds;
 
+		/// <summary>
+		/// The calculated total milliseconds. It is OS dependent because the start time is different.
+		/// It is from 0 to 6, representing Sunday to Saturday.
+		/// </summary>
+		vint				dayOfWeek;
+
+		/// <summary>
+		/// The calculated total milliseconds. It is OS dependent because the start time is different.
+		/// You should not rely on the fact about how this value is created.
+		/// The only invariant thing is that, when an date time is earlier than another, the totalMilliseconds is lesser.
+		/// </summary>
 		vuint64_t			totalMilliseconds;
 
-		// in gcc, this will be mktime(t) * 1000 + gettimeofday().tv_usec / 1000
+		/// <summary>
+		/// The calculated file time for the date and time. It is OS dependent.
+		/// You should not rely on the fact about how this value is created.
+		/// The only invariant thing is that, when an date time is earlier than another, the filetime is lesser.
+		/// </summary>
 		vuint64_t			filetime;
 
 		/// <summary>Get the current local time.</summary>
@@ -656,9 +660,12 @@ namespace vl
 		/// <param name="_milliseconds">The millisecond.</param>
 		static DateTime		FromDateTime(vint _year, vint _month, vint _day, vint _hour = 0, vint _minute = 0, vint _second = 0, vint _milliseconds = 0);
 
+		/// <summary>Create a date time value from a file time.</summary>
+		/// <returns>The created date time value.</returns>
+		/// <param name="filetime">The file time.</param>
 		static DateTime		FromFileTime(vuint64_t filetime);
 
-		/// <summary>Create an empty date time value.</summary>
+		/// <summary>Create an empty date time value that is not meaningful.</summary>
 		DateTime();
 
 		/// <summary>Convert the UTC time to the local time.</summary>
@@ -799,705 +806,11 @@ namespace vl
 
 
 /***********************************************************************
-.\STRING.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::String
-
-Classes:
-	AString										: Mbcs using the code page of the current locale
-	WString										: UTF-16 (for Windows), or UTF-32 (for Linux and macOS)
-***********************************************************************/
-
-#ifndef VCZH_STRING
-#define VCZH_STRING
-
-#include <memory.h>
-
-namespace vl
-{
-	/// <summary>A type representing a string.</summary>
-	/// <typeparam name="T">Type of a character.</typeparam>
-	template<typename T>
-	class ObjectString : public Object
-	{
-	private:
-		static const T				zero;
-
-		mutable T*					buffer;
-		mutable volatile vint*		counter;
-		mutable vint				start;
-		mutable vint				length;
-		mutable vint				realLength;
-
-		static vint CalculateLength(const T* buffer)
-		{
-			vint result=0;
-			while(*buffer++)result++;
-			return result;
-		}
-
-		static vint Compare(const T* bufA, const ObjectString<T>& strB)
-		{
-			const T* bufB=strB.buffer+strB.start;
-			const T* bufAOld=bufA;
-			vint length=strB.length;
-			while(length-- && *bufA)
-			{
-				vint diff=*bufA++-*bufB++;
-				if(diff!=0)
-				{
-					return diff;
-				}
-			};
-			return CalculateLength(bufAOld)-strB.length;
-		}
-
-	public:
-
-		static vint Compare(const ObjectString<T>& strA, const ObjectString<T>& strB)
-		{
-			const T* bufA=strA.buffer+strA.start;
-			const T* bufB=strB.buffer+strB.start;
-			vint length=strA.length<strB.length?strA.length:strB.length;
-			while(length--)
-			{
-				vint diff=*bufA++-*bufB++;
-				if(diff!=0)
-				{
-					return diff;
-				}
-			};
-			return strA.length-strB.length;
-		}
-
-	private:
-
-		void Inc()const
-		{
-			if(counter)
-			{
-				INCRC(counter);
-			}
-		}
-
-		void Dec()const
-		{
-			if(counter)
-			{
-				if(DECRC(counter)==0)
-				{
-					delete[] buffer;
-					delete counter;
-				}
-			}
-		}
-
-		ObjectString(const ObjectString<T>& string, vint _start, vint _length)
-		{
-			if(_length<=0)
-			{
-				buffer=(T*)&zero;
-				counter=0;
-				start=0;
-				length=0;
-				realLength=0;
-			}
-			else
-			{
-				buffer=string.buffer;
-				counter=string.counter;
-				start=string.start+_start;
-				length=_length;
-				realLength=string.realLength;
-				Inc();
-			}
-		}
-
-		ObjectString(const ObjectString<T>& dest, const ObjectString<T>& source, vint index, vint count)
-		{
-			if(index==0 && count==dest.length && source.length==0)
-			{
-				buffer=(T*)&zero;
-				counter=0;
-				start=0;
-				length=0;
-				realLength=0;
-			}
-			else
-			{
-				counter=new vint(1);
-				start=0;
-				length=dest.length-count+source.length;
-				realLength=length;
-				buffer=new T[length+1];
-				memcpy(buffer, dest.buffer+dest.start, sizeof(T)*index);
-				memcpy(buffer+index, source.buffer+source.start, sizeof(T)*source.length);
-				memcpy(buffer+index+source.length, (dest.buffer+dest.start+index+count), sizeof(T)*(dest.length-index-count));
-				buffer[length]=0;
-			}
-		}
-	public:
-		static ObjectString<T>	Empty;
-
-		/// <summary>Create an empty string.</summary>
-		ObjectString()
-		{
-			buffer=(T*)&zero;
-			counter=0;
-			start=0;
-			length=0;
-			realLength=0;
-		}
-
-		/// <summary>Create a string continaing one character.</summary>
-		/// <param name="_char">The character.</param>
-		ObjectString(const T& _char)
-		{
-			counter=new vint(1);
-			start=0;
-			length=1;
-			buffer=new T[2];
-			buffer[0]=_char;
-			buffer[1]=0;
-			realLength=length;
-		}
-
-		/// <summary>Copy a string.</summary>
-		/// <param name="_buffer">Memory to copy. It does not have to contain the zero terminator.</param>
-		/// <param name="_length">Size of the content in characters.</param>
-		ObjectString(const T* _buffer, vint _length)
-		{
-			if(_length<=0)
-			{
-				buffer=(T*)&zero;
-				counter=0;
-				start=0;
-				length=0;
-				realLength=0;
-			}
-			else
-			{
-				buffer=new T[_length+1];
-				memcpy(buffer, _buffer, _length*sizeof(T));
-				buffer[_length]=0;
-				counter=new vint(1);
-				start=0;
-				length=_length;
-				realLength=_length;
-			}
-		}
-		
-		/// <summary>Copy a string.</summary>
-		/// <param name="_buffer">Memory to copy. It should have to contain the zero terminator.</param>
-		/// <param name="copy">Set to true to copy the memory. Set to false to use the memory directly.</param>
-		ObjectString(const T* _buffer, bool copy = true)
-		{
-			CHECK_ERROR(_buffer!=0, L"ObjectString<T>::ObjectString(const T*, bool)#Cannot construct a string from nullptr.");
-			if(copy)
-			{
-				counter=new vint(1);
-				start=0;
-				length=CalculateLength(_buffer);
-				buffer=new T[length+1];
-				memcpy(buffer, _buffer, sizeof(T)*(length+1));
-				realLength=length;
-			}
-			else
-			{
-				buffer=(T*)_buffer;
-				counter=0;
-				start=0;
-				length=CalculateLength(_buffer);
-				realLength=length;
-			}
-		}
-		
-		/// <summary>Copy a string.</summary>
-		/// <param name="string">The string to copy.</param>
-		ObjectString(const ObjectString<T>& string)
-		{
-			buffer=string.buffer;
-			counter=string.counter;
-			start=string.start;
-			length=string.length;
-			realLength=string.realLength;
-			Inc();
-		}
-		
-		/// <summary>Move a string.</summary>
-		/// <param name="string">The string to move.</param>
-		ObjectString(ObjectString<T>&& string)
-		{
-			buffer=string.buffer;
-			counter=string.counter;
-			start=string.start;
-			length=string.length;
-			realLength=string.realLength;
-			
-			string.buffer=(T*)&zero;
-			string.counter=0;
-			string.start=0;
-			string.length=0;
-			string.realLength=0;
-		}
-
-		~ObjectString()
-		{
-			Dec();
-		}
-
-		/// <summary>Get the zero-terminated buffer in the string. Copying parts of a string does not necessarily create a new buffer, so in some situation the string will not actually points to a zero-terminated buffer. In this case, this function will copy the content to a new buffer with a zero terminator and return.</summary>
-		/// <returns>Returns the buffer.</returns>
-		const T* Buffer()const
-		{
-			if(start+length!=realLength)
-			{
-				T* newBuffer=new T[length+1];
-				memcpy(newBuffer, buffer+start, sizeof(T)*length);
-				newBuffer[length]=0;
-				Dec();
-				buffer=newBuffer;
-				counter=new vint(1);
-				start=0;
-				realLength=length;
-			}
-			return buffer+start;
-		}
-
-		ObjectString<T>& operator=(const ObjectString<T>& string)
-		{
-			if(this!=&string)
-			{
-				Dec();
-				buffer=string.buffer;
-				counter=string.counter;
-				start=string.start;
-				length=string.length;
-				realLength=string.realLength;
-				Inc();
-			}
-			return *this;
-		}
-
-		ObjectString<T>& operator=(ObjectString<T>&& string)
-		{
-			if(this!=&string)
-			{
-				Dec();
-				buffer=string.buffer;
-				counter=string.counter;
-				start=string.start;
-				length=string.length;
-				realLength=string.realLength;
-			
-				string.buffer=(T*)&zero;
-				string.counter=0;
-				string.start=0;
-				string.length=0;
-				string.realLength=0;
-			}
-			return *this;
-		}
-
-		ObjectString<T>& operator+=(const ObjectString<T>& string)
-		{
-			return *this=*this+string;
-		}
-
-		ObjectString<T> operator+(const ObjectString<T>& string)const
-		{
-			return ObjectString<T>(*this, string, length, 0);
-		}
-
-		bool operator==(const ObjectString<T>& string)const
-		{
-			return Compare(*this, string)==0;
-		}
-
-		bool operator!=(const ObjectString<T>& string)const
-		{
-			return Compare(*this, string)!=0;
-		}
-
-		bool operator>(const ObjectString<T>& string)const
-		{
-			return Compare(*this, string)>0;
-		}
-
-		bool operator>=(const ObjectString<T>& string)const
-		{
-			return Compare(*this, string)>=0;
-		}
-
-		bool operator<(const ObjectString<T>& string)const
-		{
-			return Compare(*this, string)<0;
-		}
-
-		bool operator<=(const ObjectString<T>& string)const
-		{
-			return Compare(*this, string)<=0;
-		}
-
-		bool operator==(const T* buffer)const
-		{
-			return Compare(buffer, *this)==0;
-		}
-
-		bool operator!=(const T* buffer)const
-		{
-			return Compare(buffer, *this)!=0;
-		}
-
-		bool operator>(const T* buffer)const
-		{
-			return Compare(buffer, *this)<0;
-		}
-
-		bool operator>=(const T* buffer)const
-		{
-			return Compare(buffer, *this)<=0;
-		}
-
-		bool operator<(const T* buffer)const
-		{
-			return Compare(buffer, *this)>0;
-		}
-
-		bool operator<=(const T* buffer)const
-		{
-			return Compare(buffer, *this)>=0;
-		}
-
-		T operator[](vint index)const
-		{
-			CHECK_ERROR(index>=0 && index<length, L"ObjectString:<T>:operator[](vint)#Argument index not in range.");
-			return buffer[start+index];
-		}
-
-		/// <summary>Get the size of the string in characters.</summary>
-		/// <returns>The size.</returns>
-		vint Length()const
-		{
-			return length;
-		}
-
-		/// <summary>Find a character.</summary>
-		/// <returns>The position of the character. Returns -1 if it doesn not exist.</returns>
-		/// <param name="c">The character to find.</param>
-		vint IndexOf(T c)const
-		{
-			const T* reading=buffer+start;
-			for(vint i=0;i<length;i++)
-			{
-				if(reading[i]==c)
-					return i;
-			}
-			return -1;
-		}
-
-		/// <summary>Copy the beginning of the string.</summary>
-		/// <returns>The copied string.</returns>
-		/// <param name="count">Size of characters to copy.</param>
-		ObjectString<T> Left(vint count)const
-		{
-			CHECK_ERROR(count>=0 && count<=length, L"ObjectString<T>::Left(vint)#Argument count not in range.");
-			return ObjectString<T>(*this, 0, count);
-		}
-		
-		/// <summary>Copy the ending of the string.</summary>
-		/// <returns>The copied string.</returns>
-		/// <param name="count">Size of characters to copy.</param>
-		ObjectString<T> Right(vint count)const
-		{
-			CHECK_ERROR(count>=0 && count<=length, L"ObjectString<T>::Right(vint)#Argument count not in range.");
-			return ObjectString<T>(*this, length-count, count);
-		}
-		
-		/// <summary>Copy the middle of the string.</summary>
-		/// <returns>The copied string.</returns>
-		/// <param name="index">Position of characters to copy.</param>
-		/// <param name="count">Size of characters to copy.</param>
-		ObjectString<T> Sub(vint index, vint count)const
-		{
-			CHECK_ERROR(index>=0 && index<=length, L"ObjectString<T>::Sub(vint, vint)#Argument index not in range.");
-			CHECK_ERROR(index+count>=0 && index+count<=length, L"ObjectString<T>::Sub(vint, vint)#Argument count not in range.");
-			return ObjectString<T>(*this, index, count);
-		}
-
-		/// <summary>Copy the beginning and the end of the string.</summary>
-		/// <returns>The copied string.</returns>
-		/// <param name="index">Position of characters NOT to copy.</param>
-		/// <param name="count">Size of characters NOT to copy.</param>
-		ObjectString<T> Remove(vint index, vint count)const
-		{
-			CHECK_ERROR(index>=0 && index<length, L"ObjectString<T>::Remove(vint, vint)#Argument index not in range.");
-			CHECK_ERROR(index+count>=0 && index+count<=length, L"ObjectString<T>::Remove(vint, vint)#Argument count not in range.");
-			return ObjectString<T>(*this, ObjectString<T>(), index, count);
-		}
-
-		/// <summary>Make a new string by inserting a string in this string.</summary>
-		/// <returns>The copied string.</returns>
-		/// <param name="index">Position of characters to insert.</param>
-		/// <param name="string">The string to be inserted in this string.</param>
-		ObjectString<T> Insert(vint index, const ObjectString<T>& string)const
-		{
-			CHECK_ERROR(index>=0 && index<=length, L"ObjectString<T>::Insert(vint)#Argument count not in range.");
-			return ObjectString<T>(*this, string, index, 0);
-		}
-
-		friend bool operator<(const T* left, const ObjectString<T>& right)
-		{
-			return Compare(left, right)<0;
-		}
-
-		friend bool operator<=(const T* left, const ObjectString<T>& right)
-		{
-			return Compare(left, right)<=0;
-		}
-
-		friend bool operator>(const T* left, const ObjectString<T>& right)
-		{
-			return Compare(left, right)>0;
-		}
-
-		friend bool operator>=(const T* left, const ObjectString<T>& right)
-		{
-			return Compare(left, right)>=0;
-		}
-
-		friend bool operator==(const T* left, const ObjectString<T>& right)
-		{
-			return Compare(left, right)==0;
-		}
-
-		friend bool operator!=(const T* left, const ObjectString<T>& right)
-		{
-			return Compare(left, right)!=0;
-		}
-
-		friend ObjectString<T> operator+(const T* left, const ObjectString<T>& right)
-		{
-			return ObjectString<T>(left, false)+right;
-		}
-	};
-
-	template<typename T>
-	ObjectString<T> ObjectString<T>::Empty=ObjectString<T>();
-	template<typename T>
-	const T ObjectString<T>::zero=0;
-
-	/// <summary>Ansi string.</summary>
-	typedef ObjectString<char>		AString;
-	/// <summary>Unicode string.</summary>
-	typedef ObjectString<wchar_t>	WString;
-
-	/// <summary>Convert a string to an signed integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	/// <param name="success">Returns true if this operation succeeded.</param>
-	extern vint					atoi_test(const AString& string, bool& success);
-	/// <summary>Convert a string to an signed integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	/// <param name="success">Returns true if this operation succeeded.</param>
-	extern vint					wtoi_test(const WString& string, bool& success);
-	/// <summary>Convert a string to an signed 64-bits integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	/// <param name="success">Returns true if this operation succeeded.</param>
-	extern vint64_t				atoi64_test(const AString& string, bool& success);
-	/// <summary>Convert a string to an signed 64-bits integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	/// <param name="success">Returns true if this operation succeeded.</param>
-	extern vint64_t				wtoi64_test(const WString& string, bool& success);
-	/// <summary>Convert a string to an unsigned integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	/// <param name="success">Returns true if this operation succeeded.</param>
-	extern vuint				atou_test(const AString& string, bool& success);
-	/// <summary>Convert a string to an unsigned integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	/// <param name="success">Returns true if this operation succeeded.</param>
-	extern vuint				wtou_test(const WString& string, bool& success);
-	/// <summary>Convert a string to a 64-bits unsigned integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	/// <param name="success">Returns true if this operation succeeded.</param>
-	extern vuint64_t			atou64_test(const AString& string, bool& success);
-	/// <summary>Convert a string to a 64-bits unsigned integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	/// <param name="success">Returns true if this operation succeeded.</param>
-	extern vuint64_t			wtou64_test(const WString& string, bool& success);
-	/// <summary>Convert a string to 64-bits floating point number.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	/// <param name="success">Returns true if this operation succeeded.</param>
-	extern double				atof_test(const AString& string, bool& success);
-	/// <summary>Convert a string to 64-bits floating point number.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	/// <param name="success">Returns true if this operation succeeded.</param>
-	extern double				wtof_test(const WString& string, bool& success);
-
-	/// <summary>Convert a string to an signed integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern vint					atoi(const AString& string);
-	/// <summary>Convert a string to an signed integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern vint					wtoi(const WString& string);
-	/// <summary>Convert a string to an signed 64-bits integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern vint64_t				atoi64(const AString& string);
-	/// <summary>Convert a string to an signed 64-bits integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern vint64_t				wtoi64(const WString& string);
-	/// <summary>Convert a string to an unsigned integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern vuint				atou(const AString& string);
-	/// <summary>Convert a string to an unsigned integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern vuint				wtou(const WString& string);
-	/// <summary>Convert a string to a 64-bits unsigned integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern vuint64_t			atou64(const AString& string);
-	/// <summary>Convert a string to a 64-bits unsigned integer.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern vuint64_t			wtou64(const WString& string);
-	/// <summary>Convert a string to a 64-bits floating point number.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern double				atof(const AString& string);
-	/// <summary>Convert a string to a 64-bits floating point number.</summary>
-	/// <returns>The converted number. If the convert failed, the result is undefined.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern double				wtof(const WString& string);
-
-	/// <summary>Convert a signed interger to a string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="number">The number to convert.</param>
-	extern AString				itoa(vint number);
-	/// <summary>Convert a signed interger to a string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="number">The number to convert.</param>
-	extern WString				itow(vint number);
-	/// <summary>Convert a 64-bits signed interger to a string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="number">The number to convert.</param>
-	extern AString				i64toa(vint64_t number);
-	/// <summary>Convert a 64-bits signed interger to a string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="number">The number to convert.</param>
-	extern WString				i64tow(vint64_t number);
-	/// <summary>Convert an unsigned interger to a string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="number">The number to convert.</param>
-	extern AString				utoa(vuint number);
-	/// <summary>Convert an unsigned interger to a string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="number">The number to convert.</param>
-	extern WString				utow(vuint number);
-	/// <summary>Convert a 64-bits unsigned interger to a string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="number">The number to convert.</param>
-	extern AString				u64toa(vuint64_t number);
-	/// <summary>Convert a 64-bits unsigned interger to a string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="number">The number to convert.</param>
-	extern WString				u64tow(vuint64_t number);
-	/// <summary>Convert a 64-bits floating pointer number to a string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="number">The number to convert.</param>
-	extern AString				ftoa(double number);
-	/// <summary>Convert a 64-bits floating pointer number to a string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="number">The number to convert.</param>
-	extern WString				ftow(double number);
-
-	extern vint					_wtoa(const wchar_t* w, char* a, vint chars);
-	/// <summary>Convert an Unicode string to an Ansi string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern AString				wtoa(const WString& string);
-	extern vint					_atow(const char* a, wchar_t* w, vint chars);
-	/// <summary>Convert an Ansi string to an Unicode string.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern WString				atow(const AString& string);
-	/// <summary>Convert all letters to lower case letters.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern AString				alower(const AString& string);
-	/// <summary>Convert all letters to lower case letters.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern WString				wlower(const WString& string);
-	/// <summary>Convert all letters to upper case letters.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern AString				aupper(const AString& string);
-	/// <summary>Convert all letters to upper case letters.</summary>
-	/// <returns>The converted string.</returns>
-	/// <param name="string">The string to convert.</param>
-	extern WString				wupper(const WString& string);
-
-#if defined VCZH_GCC
-	extern void					_itoa_s(vint32_t value, char* buffer, size_t size, vint radix);
-	extern void					_itow_s(vint32_t value, wchar_t* buffer, size_t size, vint radix);
-	extern void					_i64toa_s(vint64_t value, char* buffer, size_t size, vint radix);
-	extern void					_i64tow_s(vint64_t value, wchar_t* buffer, size_t size, vint radix);
-	extern void					_uitoa_s(vuint32_t value, char* buffer, size_t size, vint radix);
-	extern void					_uitow_s(vuint32_t value, wchar_t* buffer, size_t size, vint radix);
-	extern void					_ui64toa_s(vuint64_t value, char* buffer, size_t size, vint radix);
-	extern void					_ui64tow_s(vuint64_t value, wchar_t* buffer, size_t size, vint radix);
-	extern void					_gcvt_s(char* buffer, size_t size, double value, vint numberOfDigits);
-	extern void					_strlwr_s(char* buffer, size_t size);
-	extern void					_strupr_s(char* buffer, size_t size);
-	extern void					_wcslwr_s(wchar_t* buffer, size_t size);
-	extern void					_wcsupr_s(wchar_t* buffer, size_t size);
-	extern void					wcscpy_s(wchar_t* buffer, size_t size, const wchar_t* text);
-#endif
-
-	enum class LoremIpsumCasing
-	{
-		AllWordsLowerCase,
-		FirstWordUpperCase,
-		AllWordsUpperCase,
-	};
-
-	extern WString				LoremIpsum(vint bestLength, LoremIpsumCasing casing);
-	extern WString				LoremIpsumTitle(vint bestLength);
-	extern WString				LoremIpsumSentence(vint bestLength);
-	extern WString				LoremIpsumParagraph(vint bestLength);
-}
-
-#endif
-
-
-/***********************************************************************
 .\POINTER.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Smart Pointer
-
-Classes:
-	Ptr<T>							: Shared Pointer
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_POINTER
@@ -1511,13 +824,23 @@ namespace vl
 ReferenceCounterOperator
 ***********************************************************************/
 
-	/// <summary>The strategy to get the pointer to the reference counter from an object. If you get the same pointer multiple times from the same object by calling [M:vl.ReferenceCounterOperator`2.CreateCounter], than it is safe to convert a object pointer to a [T:vl.Ptr`1]. Currently for reflectable C++ types which inherit from [T:vl.reflection.DescriptableObject] it is yet. For others it is no.</summary>
-	/// <typeparam name="T">The type of the object.</typeparam>
-	/// <typeparam name="Enabled">[T:vl.Ptr`1] will always use [T:vl.YesType] as the second type parameter. This parameter is useful when you want to do partial specialization in the SFINAE way.</typeparam>
+	/// <summary>
+	/// The strategy class to create and delete the reference counter of an object.
+	/// For any object inherits from [T:vl.reflection.DescriptableObject], the reference counter is stored inside the object.
+	/// For any other object, the reference counter is allocated separately.
+	/// You can create your own strategy by adding a new partial specialization to this class.
+	/// </summary>
+	/// <typeparam name="T">
+	/// The type of the object.
+	/// </typeparam>
+	/// <typeparam name="Enabled">
+	/// [T:vl.Ptr`1] will always use [T:vl.YesType] as the second type parameter.
+	/// This parameter is useful when you want to do partial specialization in the SFINAE way.
+	/// </typeparam>
 	template<typename T, typename Enabled=YesType>
 	struct ReferenceCounterOperator
 	{
-		/// <summary>Create a pointer to the reference counter from an object.</summary>
+		/// <summary>Create the reference counter of an object.</summary>
 		/// <returns>The pointer to the reference counter.</returns>
 		/// <param name="reference">The object.</param>
 		static __forceinline volatile vint* CreateCounter(T* reference)
@@ -1525,7 +848,7 @@ ReferenceCounterOperator
 			return new vint(0);
 		}
 
-		/// <summary>Destroy a pointer to the reference counter from an object.</summary>
+		/// <summary>Delete the reference counter from an object.</summary>
 		/// <param name="counter">The pointer to the reference counter.</param>
 		/// <param name="reference">The object.</param>
 		static __forceinline void DeleteReference(volatile vint* counter, void* reference)
@@ -1539,7 +862,17 @@ ReferenceCounterOperator
 Ptr
 ***********************************************************************/
 
-	/// <summary>A smart pointer. It is always safe to convert a pointer to an object to a smart pointer once. If you do it multiple times, it may be wrong due to different implementation of [T:vl.ReferenceCounterOperator`2]. In case of wrong, disposing the smart pointer will cause an access violation.</summary>
+	/// <summary>
+	/// A shared pointer.
+	/// It maintains a reference counter to the object.
+	/// When no [T:vl.Ptr`1] is referencing the object, the object will be deleted automatically.
+	/// </summary>
+	/// <remarks>
+	/// It is safe to convert the same pointer to an object to a shared pointer once.
+	/// If you do it multiple times, it depends on [T:vl.ReferenceCounterOperator`2].
+	/// For built-in strategies, only pointer to [T:vl.reflection.DescriptableObject] or its derived classes can be safely converted to a shared pointer for multiple times.
+	/// For any other object, it will crash on the destructor of [T:vl.Ptr`1].
+	/// </remarks>
 	/// <typeparam name="T">The type of the object.</typeparam>
 	template<typename T>
 	class Ptr
@@ -1601,11 +934,9 @@ Ptr
 	public:
 
 		/// <summary>Create a null pointer.</summary>
-		Ptr()
-		{
-		}
+		Ptr() = default;
 
-		/// <summary>Convert a pointer to an object to a smart pointer.</summary>
+		/// <summary>Convert a pointer to an object to a shared pointer.</summary>
 		/// <param name="pointer">The pointer to the object.</param>
 		Ptr(T* pointer)
 		{
@@ -1619,8 +950,8 @@ Ptr
 			}
 		}
 
-		/// <summary>Copy a smart pointer.</summary>
-		/// <param name="pointer">The smart pointer to copy.</param>
+		/// <summary>Copy a shared pointer.</summary>
+		/// <param name="pointer">The shared pointer to copy.</param>
 		Ptr(const Ptr<T>& pointer)
 			:counter(pointer.counter)
 			, reference(pointer.reference)
@@ -1630,8 +961,8 @@ Ptr
 			Inc();
 		}
 
-		/// <summary>Move a smart pointer.</summary>
-		/// <param name="pointer">The smart pointer to Move.</param>
+		/// <summary>Move a shared pointer.</summary>
+		/// <param name="pointer">The shared pointer to Move.</param>
 		Ptr(Ptr<T>&& pointer)
 			:counter(pointer.counter)
 			, reference(pointer.reference)
@@ -1641,9 +972,9 @@ Ptr
 			pointer.SetEmptyNoIncDec();
 		}
 
-		/// <summary>Cast a smart pointer.</summary>
+		/// <summary>Cast a shared pointer implicitly by copying another shared pointer.</summary>
 		/// <typeparam name="C">The type of the object before casting.</typeparam>
-		/// <param name="pointer">The smart pointer to cast.</param>
+		/// <param name="pointer">The shared pointer to cast.</param>
 		template<typename C, typename = typename AcceptType<void, typename PointerConvertable<C, T>::YesNoType>::Type>
 		Ptr(const Ptr<C>& pointer)
 		{
@@ -1657,9 +988,9 @@ Ptr
 			}
 		}
 
-		/// <summary>Cast a smart pointer.</summary>
+		/// <summary>Cast a shared pointer implicitly by moving another shared pointer.</summary>
 		/// <typeparam name="C">The type of the object before casting.</typeparam>
-		/// <param name="pointer">The smart pointer to cast.</param>
+		/// <param name="pointer">The shared pointer to cast.</param>
 		template<typename C, typename = typename AcceptType<void, typename PointerConvertable<C, T>::YesNoType>::Type>
 		Ptr(Ptr<C>&& pointer)
 		{
@@ -1678,8 +1009,11 @@ Ptr
 			Dec();
 		}
 
-		/// <summary>Detach the contained object from this smart pointer.</summary>
-		/// <returns>The detached object. Returns null if this smart pointer is empty.</returns>
+		/// <summary>
+		/// Detach the contained object from this shared pointer.
+		/// When no [T:vl.Ptr`1] is referencing to the object because of a call to Detach, the object will not be deleted.
+		/// </summary>
+		/// <returns>The detached object. Returns null if this shared pointer is empty.</returns>
 		T* Detach()
 		{
 			auto detached = reference;
@@ -1687,9 +1021,9 @@ Ptr
 			return detached;
 		}
 
-		/// <summary>Cast a smart pointer.</summary>
+		/// <summary>Cast a shared pointer explicitly.</summary>
 		/// <typeparam name="C">The type of the object after casting.</typeparam>
-		/// <returns>The casted smart pointer. Returns null if failed.</returns>
+		/// <returns>The casted shared pointer. Returns null for empty shared pointer or a failed cast.</returns>
 		template<typename C>
 		Ptr<C> Cast()const
 		{
@@ -1697,9 +1031,9 @@ Ptr
 			return Ptr<C>((converted ? counter : 0), converted, originalReference, originalDestructor);
 		}
 
-		/// <summary>Convert a pointer to an object to a smart pointer.</summary>
-		/// <returns>The converted smart pointer.</returns>
-		/// <param name="pointer">The pointer to the object.</param>
+		/// <summary>Replace the object inside this shared pointer.</summary>
+		/// <returns>The shared pointer itself.</returns>
+		/// <param name="pointer">The pointer to the new object.</param>
 		Ptr<T>& operator=(T* pointer)
 		{
 			Dec();
@@ -1718,9 +1052,9 @@ Ptr
 			return *this;
 		}
 
-		/// <summary>Copy a smart pointer.</summary>
-		/// <returns>The copied smart pointer.</returns>
-		/// <param name="pointer">The smart pointer to copy.</param>
+		/// <summary>Replace by copying another shared pointer.</summary>
+		/// <returns>The shared pointer itself.</returns>
+		/// <param name="pointer">The shared pointer to copy.</param>
 		Ptr<T>& operator=(const Ptr<T>& pointer)
 		{
 			if (this != &pointer)
@@ -1735,9 +1069,9 @@ Ptr
 			return *this;
 		}
 
-		/// <summary>Move a smart pointer.</summary>
-		/// <returns>The moved smart pointer.</returns>
-		/// <param name="pointer">The smart pointer to Move.</param>
+		/// <summary>Replace by moving another shared pointer.</summary>
+		/// <returns>The shared pointer itself.</returns>
+		/// <param name="pointer">The shared pointer to copy.</param>
 		Ptr<T>& operator=(Ptr<T>&& pointer)
 		{
 			if (this != &pointer)
@@ -1812,22 +1146,22 @@ Ptr
 			return reference <= pointer.reference;
 		}
 
-		/// <summary>Test if it is a null pointer.</summary>
-		/// <returns>Returns true if it is not null.</returns>
+		/// <summary>Test if it is an empty shared pointer.</summary>
+		/// <returns>Returns true if it is non-null.</returns>
 		operator bool()const
 		{
 			return reference != 0;
 		}
 
-		/// <summary>Get the pointer to the object.</summary>
-		/// <returns>The pointer to the object.</returns>
+		/// <summary>Get the pointer to the contained object.</summary>
+		/// <returns>The pointer to the contained object. Returns null for an empty shared pointer.</returns>
 		T* Obj()const
 		{
 			return reference;
 		}
 
-		/// <summary>Get the pointer to the object.</summary>
-		/// <returns>The pointer to the object.</returns>
+		/// <summary>Get the pointer to the contained object.</summary>
+		/// <returns>The pointer to the contained object. Returns null for an empty shared pointer.</returns>
 		T* operator->()const
 		{
 			return reference;
@@ -2090,26 +1424,18 @@ Traits
 .\FUNCTION.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Framework::Function
-
-Classes:
-	Func<function-type>									: Functor
-
-Functions:
-	Curry :: (A->B) -> A -> B							: Currying
-	Combine :: (A->B) -> (A->C) -> (B->C->D) -> (A->D)	: Combine multiple functors using an operator
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
+
 #ifndef VCZH_FUNCTION
 #define VCZH_FUNCTION
+#include <memory.h>
 namespace vl
 {
 
 	template<typename T>
-	class Func
-	{
-	};
+	class Func;
  
 /***********************************************************************
 vl::function_lambda::LambdaRetriveType<R(TArgs...)>
@@ -2265,7 +1591,7 @@ vl::Func<R(TArgs...)>
 		};
 	}
 
-	/// <summary>A type representing a function reference.</summary>
+	/// <summary>A type for functors.</summary>
 	/// <typeparam name="R">The return type.</typeparam>
 	/// <typeparam name="TArgs">Types of parameters.</typeparam>
 	template<typename R, typename ...TArgs>
@@ -2295,45 +1621,37 @@ vl::Func<R(TArgs...)>
 		typedef R FunctionType(TArgs...);
 		typedef R ResultType;
 
-		/// <summary>Create a null function reference.</summary>
-		Func()
-		{
-		}
+		/// <summary>Create a null functor.</summary>
+		Func() = default;
 
-		/// <summary>Copy a function reference.</summary>
-		/// <param name="function">The function reference to copy.</param>
-		Func(const Func<R(TArgs...)>& function)
-			:invoker(function.invoker)
-		{
-		}
+		/// <summary>Copy a functor.</summary>
+		/// <param name="function">The functor to copy.</param>
+		Func(const Func<R(TArgs...)>& function) = default;
 
-		/// <summary>Move a function reference.</summary>
-		/// <param name="function">The function reference to move.</param>
-		Func(Func<R(TArgs...)>&& function)
-			:invoker(MoveValue(function.invoker))
-		{
-		}
+		/// <summary>Move a functor.</summary>
+		/// <param name="function">The functor to move.</param>
+		Func(Func<R(TArgs...)>&& function) = default;
 
-		/// <summary>Create a reference using a function pointer.</summary>
+		/// <summary>Create a functor from a function pointer.</summary>
 		/// <param name="function">The function pointer.</param>
 		Func(R(*function)(TArgs...))
 		{
 			invoker = new internal_invokers::StaticInvoker<R, TArgs...>(function);
 		}
 
-		/// <summary>Create a reference using a method.</summary>
-		/// <typeparam name="C">Type of the class that has the method.</typeparam>
-		/// <param name="sender">The object that has the method.</param>
-		/// <param name="function">The function pointer.</param>
+		/// <summary>Create a functor from a method.</summary>
+		/// <typeparam name="C">Type of the class that this method belongs to.</typeparam>
+		/// <param name="sender">The object that this method belongs to.</param>
+		/// <param name="function">The method pointer.</param>
 		template<typename C>
 		Func(C* sender, R(C::*function)(TArgs...))
 		{
 			invoker = new internal_invokers::MemberInvoker<C, R, TArgs...>(sender, function);
 		}
 
-		/// <summary>Create a reference using a function object.</summary>
-		/// <typeparam name="C">Type of the function object.</typeparam>
-		/// <param name="function">The function object. It could be a lambda expression.</param>
+		/// <summary>Create a functor from another compatible functor.</summary>
+		/// <typeparam name="C">Type of the functor to copy.</typeparam>
+		/// <param name="function">The functor to copy. It could be a lambda expression, or any types that has operator() members.</param>
 		template<typename C, typename = typename AcceptType<void, typename ReturnConvertable<decltype(ValueOf<C>()(ValueOf<TArgs>()...)), R>::YesNoType>::Type>
 		Func(C&& function)
 		{
@@ -2344,7 +1662,7 @@ vl::Func<R(TArgs...)>
 		}
 
 		/// <summary>Invoke the function.</summary>
-		/// <returns>Returns the function result.</returns>
+		/// <returns>Returns the function result. It crashes when the functor is null.</returns>
 		/// <param name="args">Arguments to invoke the function.</param>
 		R operator()(TArgs ...args)const
 		{
@@ -2373,8 +1691,8 @@ vl::Func<R(TArgs...)>
 			return invoker != function.invoker;
 		}
 
-		/// <summary>Test is the reference a null reference.</summary>
-		/// <returns>Returns true if it is not a null reference.</returns>
+		/// <summary>Test is the functor is non-null.</summary>
+		/// <returns>Returns true if the functor is non-null.</returns>
 		operator bool()const
 		{
 			return invoker;
@@ -2387,19 +1705,19 @@ LAMBDA
  
 	namespace function_lambda
 	{
-		/// <summary>Create a function reference to a function object or a lambda expression, with all type information autotimatically inferred. You can use the macro called "LAMBDA" to refer to this function.</summary>
-		/// <typeparam name="T">Type of the function object or the lambda expression.</typeparam>
-		/// <returns>The function reference.</returns>
-		/// <param name="functionObject">The function object or the lambda expression.</param>
+		/// <summary>Create a functor in [T:vl.Func`1] from another functor, with all type arguments autotimatically inferred. The "LAMBDA" macro is recommended for the same purpose for writing compact code.</summary>
+		/// <typeparam name="T">Type of the functor to copy.</typeparam>
+		/// <returns>A copied functor in [T:vl.Func`1].</returns>
+		/// <param name="functionObject">The functor to copy.</param>
 		template<typename T>
 		typename LambdaRetriveType<decltype(&T::operator())>::Type Lambda(T functionObject)
 		{
 			return functionObject;
 		}
 
-		/// <summary>Create a function reference to a function pointer, with all type information autotimatically inferred. You can use the macro called "FUNCTION" to refer to this function.</summary>
+		/// <summary>Create a functor in [T:vl.Func`1] from a function pointer, with all type arguments autotimatically inferred. The "FUNCTION" macro is recommended for the same purpose for writing compact code.</summary>
 		/// <typeparam name="T">Type of the function pointer.</typeparam>
-		/// <returns>The function reference.</returns>
+		/// <returns>A copied functor in [T:vl.Func`1].</returns>
 		/// <param name="functionObject">The function pointer.</param>
 		template<typename T>
 		typename FunctionObjectRetriveType<T>::Type ConvertToFunction(T functionObject)
@@ -2476,9 +1794,14 @@ vl::function_binding::Binding<R(TArgs...)>
 		}; 
 	}
  
-	/// <summary>Currize a function. Currizing means to create a new function whose argument is the first argument of the original function. Calling this function will return another function reference whose arguments is all remain arguments of the original function. Calling the returned function will call the original function.</summary>
-	/// <typeparam name="T">Type of the function.</typeparam>
-	/// <returns>The currized function.</returns>
+	/// <summary>
+	/// Currize a function pointer.
+	/// Currizing means to create a new functor whose argument is the first argument of the original function.
+	/// Calling this functor will return another functor whose arguments are all remaining arguments of the original function.
+	/// Calling the returned function will call the original function.
+	/// </summary>
+	/// <typeparam name="T">Type of the function pointer.</typeparam>
+	/// <returns>The currized functor.</returns>
 	/// <param name="function">The function pointer to currize.</param>
 	template<typename T>
 	Func<Func<typename function_binding::Binding<T>::CurriedType>(typename function_binding::Binding<T>::FirstParameterType)>
@@ -2486,81 +1809,1454 @@ vl::function_binding::Binding<R(TArgs...)>
 	{
 		return typename function_binding::Binding<T>::Currier(function);
 	}
- 
-	/// <summary>Currize a function. Currizing means to create a new function whose argument is the first argument of the original function. Calling this function will return another function reference whose arguments is all remain arguments of the original function. Calling the returned function will call the original function.</summary>
-	/// <typeparam name="T">Type of the function.</typeparam>
-	/// <returns>The currized function.</returns>
-	/// <param name="function">The function reference to currize.</param>
+
+	/// <summary>
+	/// Currize a functor in [T:vl.Func`1].
+	/// Currizing means to create a new functor whose argument is the first argument of the original function.
+	/// Calling this functor will return another functor whose arguments are all remaining arguments of the original function.
+	/// Calling the returned function will call the original function.
+	/// </summary>
+	/// <typeparam name="T">Type of the functor.</typeparam>
+	/// <returns>The currized functor.</returns>
+	/// <param name="function">The functor to currize.</param>
 	template<typename T>
 	Func<Func<typename function_binding::Binding<T>::CurriedType>(typename function_binding::Binding<T>::FirstParameterType)>
 	Curry(const Func<T>& function)
 	{
 		return typename function_binding::Binding<T>::Currier(function);
 	}
+}
+#endif
 
 /***********************************************************************
-vl::function_combining::Combining<R1(TArgs...), R2(TArgs...), R(R1,R2)>
+.\LAZY.H
 ***********************************************************************/
- 
-	namespace function_combining
-	{
-		template<typename A, typename B, typename C>
-		class Combining
-		{
-		};
- 
-		template<typename R1, typename R2, typename R, typename ...TArgs>
-		class Combining<R1(TArgs...), R2(TArgs...), R(R1,R2)> : public Object
-		{
-		protected:
-			Func<R1(TArgs...)>			function1;
-			Func<R2(TArgs...)>			function2;
-			Func<R(R1, R2)>				converter;
-		public:
-			typedef R1 FirstFunctionType(TArgs...);
-			typedef R2 SecondFunctionType(TArgs...);
-			typedef R ConverterFunctionType(R1, R2);
-			typedef R FinalFunctionType(TArgs...);
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
 
-			Combining(const Func<R1(TArgs...)>& _function1, const Func<R2(TArgs...)>& _function2, const Func<R(R1,R2)>& _converter)
-				:function1(_function1)
-				,function2(_function2)
-				,converter(_converter)
-			{
-			}
+#ifndef VCZH_LAZY
+#define VCZH_LAZY
 
-			R operator()(TArgs&& ...args)const
-			{
-				return converter(function1(ForwardValue<TArgs>(args)...), function2(ForwardValue<TArgs>(args)...));
-			}
-		};
-	}
 
-	/// <summary>Combine two functions with a converter function. The two functions to combine should have the same argument types. The converter function will use the return values of the two function to calculate the final value.</summary>
-	/// <typeparam name="F1">Type of the first function.</typeparam>
-	/// <typeparam name="F2">Type of the second function.</typeparam>
-	/// <typeparam name="C">Type of the converter function.</typeparam>
-	/// <returns>A new function whose argument list are the same of the two functions to provide. Calling this function will call function1, function2 and converter in order to calculate the final value.</returns>
-	/// <param name="converter">The converter function.</param>
-	/// <param name="function1">The first function.</param>
-	/// <param name="function2">The second function.</param>
-	template<typename F1, typename F2, typename C>
-	Func<typename function_combining::Combining<F1, F2, C>::FinalFunctionType>
-	Combine(Func<C> converter, Func<F1> function1, Func<F2> function2)
-	{
-		return function_combining::Combining<F1, F2, C>(function1, function2, converter);
-	}
-
-	/// <summary>Use the converter function to create a combiner, who will receive two function and use <see cref="Combine"/> to create a combined function. This function assumes the result types of the two provided function in the future are the same, and the converter function will not change the result type.</summary>
-	/// <typeparam name="T">Type of the two functions to combine.</typeparam>
-	/// <returns>The combiner.</returns>
-	/// <param name="converter">The converter function.</param>
+namespace vl
+{
+	/// <summary>A type representing a lazy evaluation.</summary>
+	/// <typeparam name="T">The type of the evaluation result.</typeparam>
 	template<typename T>
-	Func<Func<T>(Func<T>,Func<T>)> Combiner(const Func<typename Func<T>::ResultType(typename Func<T>::ResultType,typename Func<T>::ResultType)>& converter)
+	class Lazy : public Object
 	{
-		typedef typename Func<T>::ResultType R;
-		return Curry<Func<T>(Func<R(R,R)>,Func<T>,Func<T>)>(Combine)(converter);
+	protected:
+		class Internal
+		{
+		public:
+			Func<T()>			evaluator;
+			T					value;
+			bool				evaluated;
+		};
+
+		Ptr<Internal>			internalValue;
+	public:
+		/// <summary>Create an empty evaluation.</summary>
+		Lazy() = default;
+
+		/// <summary>Create an evaluation using a function, which produces the evaluation result.</summary>
+		/// <param name="evaluator">The function.</param>
+		Lazy(const Func<T()>& evaluator)
+		{
+			internalValue=new Internal;
+			internalValue->evaluated=false;
+			internalValue->evaluator=evaluator;
+		}
+
+		/// <summary>Create an evaluation with the immediate result.</summary>
+		/// <param name="value">The result.</param>0
+		Lazy(const T& value)
+		{
+			internalValue=new Internal;
+			internalValue->evaluated=true;
+			internalValue->value=value;
+		}
+
+		/// <summary>Create an evaluation by copying another one.</summary>
+		/// <param name="lazy">The evaluation to copy.</param>
+		Lazy(const Lazy<T>& lazy) = default;
+
+		/// <summary>Create an evaluation by moving another one.</summary>
+		/// <param name="lazy">The evaluation to move.</param>
+		Lazy(Lazy<T>&& lazy) = default;
+
+		Lazy<T>& operator=(const Func<T()>& evaluator)
+		{
+			internalValue=new Internal;
+			internalValue->evaluated=false;
+			internalValue->evaluator=evaluator;
+			return *this;
+		}
+
+		Lazy<T>& operator=(const T& value)
+		{
+			internalValue=new Internal;
+			internalValue->evaluated=true;
+			internalValue->value=value;
+			return *this;
+		}
+
+		Lazy<T>& operator=(const Lazy<T>& lazy)
+		{
+			internalValue=lazy.internalValue;
+			return *this;
+		}
+
+		/// <summary>Get the evaluation result. If the evaluation has not been performed, it will run the evaluation function and cache the result.</summary>
+		/// <returns>The evaluation result.</returns>
+		const T& Value()const
+		{
+			if(!internalValue->evaluated)
+			{
+				internalValue->evaluated=true;
+				internalValue->value=internalValue->evaluator();
+				internalValue->evaluator=Func<T()>();
+			}
+			return internalValue->value;
+		}
+
+		/// <summary>Test if it has already been evaluated or not.</summary>
+		/// <returns>Returns true if it has already been evaluated.</returns>
+		bool IsEvaluated()const
+		{
+			return internalValue->evaluated;
+		}
+
+		/// <summary>Test if it is an empty evaluation or not.</summary>
+		/// <returns>Returns true if it is not empty.</returns>
+		operator bool()const
+		{
+			return internalValue;
+		}
+	};
+}
+
+#endif
+
+
+/***********************************************************************
+.\STRING.H
+***********************************************************************/
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+#ifndef VCZH_STRING
+#define VCZH_STRING
+
+
+namespace vl
+{
+	/// <summary>
+	/// Immutable string. <see cref="AString"/> and <see cref="WString"/> is recommended instead.
+	/// Locale awared operations are in [T:vl.Locale], typically by using the "INVLOC" macro.
+	/// </summary>
+	/// <typeparam name="T">Type of code points.</typeparam>
+	template<typename T>
+	class ObjectString : public Object
+	{
+	private:
+		static const T				zero;
+
+		mutable T*					buffer;
+		mutable volatile vint*		counter;
+		mutable vint				start;
+		mutable vint				length;
+		mutable vint				realLength;
+
+		static vint CalculateLength(const T* buffer)
+		{
+			vint result=0;
+			while(*buffer++)result++;
+			return result;
+		}
+
+		static vint Compare(const T* bufA, const ObjectString<T>& strB)
+		{
+			const T* bufB=strB.buffer+strB.start;
+			const T* bufAOld=bufA;
+			vint length=strB.length;
+			while(length-- && *bufA)
+			{
+				vint diff=*bufA++-*bufB++;
+				if(diff!=0)
+				{
+					return diff;
+				}
+			};
+			return CalculateLength(bufAOld)-strB.length;
+		}
+
+	public:
+
+		static vint Compare(const ObjectString<T>& strA, const ObjectString<T>& strB)
+		{
+			const T* bufA=strA.buffer+strA.start;
+			const T* bufB=strB.buffer+strB.start;
+			vint length=strA.length<strB.length?strA.length:strB.length;
+			while(length--)
+			{
+				vint diff=*bufA++-*bufB++;
+				if(diff!=0)
+				{
+					return diff;
+				}
+			};
+			return strA.length-strB.length;
+		}
+
+	private:
+
+		void Inc()const
+		{
+			if(counter)
+			{
+				INCRC(counter);
+			}
+		}
+
+		void Dec()const
+		{
+			if(counter)
+			{
+				if(DECRC(counter)==0)
+				{
+					delete[] buffer;
+					delete counter;
+				}
+			}
+		}
+
+		ObjectString(const ObjectString<T>& string, vint _start, vint _length)
+		{
+			if(_length<=0)
+			{
+				buffer=(T*)&zero;
+				counter=0;
+				start=0;
+				length=0;
+				realLength=0;
+			}
+			else
+			{
+				buffer=string.buffer;
+				counter=string.counter;
+				start=string.start+_start;
+				length=_length;
+				realLength=string.realLength;
+				Inc();
+			}
+		}
+
+		ObjectString(const ObjectString<T>& dest, const ObjectString<T>& source, vint index, vint count)
+		{
+			if(index==0 && count==dest.length && source.length==0)
+			{
+				buffer=(T*)&zero;
+				counter=0;
+				start=0;
+				length=0;
+				realLength=0;
+			}
+			else
+			{
+				counter=new vint(1);
+				start=0;
+				length=dest.length-count+source.length;
+				realLength=length;
+				buffer=new T[length+1];
+				memcpy(buffer, dest.buffer+dest.start, sizeof(T)*index);
+				memcpy(buffer+index, source.buffer+source.start, sizeof(T)*source.length);
+				memcpy(buffer+index+source.length, (dest.buffer+dest.start+index+count), sizeof(T)*(dest.length-index-count));
+				buffer[length]=0;
+			}
+		}
+	public:
+		static ObjectString<T>	Empty;
+
+		/// <summary>Create an empty string.</summary>
+		ObjectString()
+		{
+			buffer=(T*)&zero;
+			counter=0;
+			start=0;
+			length=0;
+			realLength=0;
+		}
+
+		/// <summary>Create a string continaing one code point.</summary>
+		/// <param name="_char">The code point.</param>
+		ObjectString(const T& _char)
+		{
+			counter=new vint(1);
+			start=0;
+			length=1;
+			buffer=new T[2];
+			buffer[0]=_char;
+			buffer[1]=0;
+			realLength=length;
+		}
+
+		/// <summary>Copy a string.</summary>
+		/// <param name="_buffer">Memory to copy. It is not required to be zero terminated.</param>
+		/// <param name="_length">Size of the content in code points.</param>
+		ObjectString(const T* _buffer, vint _length)
+		{
+			if(_length<=0)
+			{
+				buffer=(T*)&zero;
+				counter=0;
+				start=0;
+				length=0;
+				realLength=0;
+			}
+			else
+			{
+				buffer=new T[_length+1];
+				memcpy(buffer, _buffer, _length*sizeof(T));
+				buffer[_length]=0;
+				counter=new vint(1);
+				start=0;
+				length=_length;
+				realLength=_length;
+			}
+		}
+		
+		/// <summary>Copy a string.</summary>
+		/// <param name="_buffer">Memory to copy. It must be zero terminated.</param>
+		/// <param name="copy">Set to true to copy the memory. Set to false to use the memory directly.</param>
+		ObjectString(const T* _buffer, bool copy = true)
+		{
+			CHECK_ERROR(_buffer!=0, L"ObjectString<T>::ObjectString(const T*, bool)#Cannot construct a string from nullptr.");
+			if(copy)
+			{
+				counter=new vint(1);
+				start=0;
+				length=CalculateLength(_buffer);
+				buffer=new T[length+1];
+				memcpy(buffer, _buffer, sizeof(T)*(length+1));
+				realLength=length;
+			}
+			else
+			{
+				buffer=(T*)_buffer;
+				counter=0;
+				start=0;
+				length=CalculateLength(_buffer);
+				realLength=length;
+			}
+		}
+		
+		/// <summary>Copy a string.</summary>
+		/// <param name="string">The string to copy.</param>
+		ObjectString(const ObjectString<T>& string)
+		{
+			buffer=string.buffer;
+			counter=string.counter;
+			start=string.start;
+			length=string.length;
+			realLength=string.realLength;
+			Inc();
+		}
+		
+		/// <summary>Move a string.</summary>
+		/// <param name="string">The string to move.</param>
+		ObjectString(ObjectString<T>&& string)
+		{
+			buffer=string.buffer;
+			counter=string.counter;
+			start=string.start;
+			length=string.length;
+			realLength=string.realLength;
+			
+			string.buffer=(T*)&zero;
+			string.counter=0;
+			string.start=0;
+			string.length=0;
+			string.realLength=0;
+		}
+
+		~ObjectString()
+		{
+			Dec();
+		}
+
+		/// <summary>
+		/// Get the zero terminated buffer in the string.
+		/// Copying parts of a string does not necessarily create a new buffer,
+		/// so in some situation the string will not actually points to a zero terminated buffer.
+		/// In this case, this function will copy the content to a new buffer with a zero terminator and return.
+		/// </summary>
+		/// <returns>The zero terminated buffer.</returns>
+		const T* Buffer()const
+		{
+			if(start+length!=realLength)
+			{
+				T* newBuffer=new T[length+1];
+				memcpy(newBuffer, buffer+start, sizeof(T)*length);
+				newBuffer[length]=0;
+				Dec();
+				buffer=newBuffer;
+				counter=new vint(1);
+				start=0;
+				realLength=length;
+			}
+			return buffer+start;
+		}
+
+		/// <summary>Replace the string by copying another string.</summary>
+		/// <returns>The string itself.</returns>
+		/// <param name="string">The string to copy.</param>
+		ObjectString<T>& operator=(const ObjectString<T>& string)
+		{
+			if(this!=&string)
+			{
+				Dec();
+				buffer=string.buffer;
+				counter=string.counter;
+				start=string.start;
+				length=string.length;
+				realLength=string.realLength;
+				Inc();
+			}
+			return *this;
+		}
+
+		/// <summary>Replace the string by moving another string.</summary>
+		/// <returns>The string itself.</returns>
+		/// <param name="string">The string to move.</param>
+		ObjectString<T>& operator=(ObjectString<T>&& string)
+		{
+			if(this!=&string)
+			{
+				Dec();
+				buffer=string.buffer;
+				counter=string.counter;
+				start=string.start;
+				length=string.length;
+				realLength=string.realLength;
+			
+				string.buffer=(T*)&zero;
+				string.counter=0;
+				string.start=0;
+				string.length=0;
+				string.realLength=0;
+			}
+			return *this;
+		}
+
+		/// <summary>Replace the string by appending another string.</summary>
+		/// <returns>The string itself.</returns>
+		/// <param name="string">The string to append.</param>
+		ObjectString<T>& operator+=(const ObjectString<T>& string)
+		{
+			return *this=*this+string;
+		}
+
+		/// <summary>Create a new string by concatenating two strings.</summary>
+		/// <returns>The new string.</returns>
+		/// <param name="string">The string to append.</param>
+		ObjectString<T> operator+(const ObjectString<T>& string)const
+		{
+			return ObjectString<T>(*this, string, length, 0);
+		}
+
+		bool operator==(const ObjectString<T>& string)const
+		{
+			return Compare(*this, string)==0;
+		}
+
+		bool operator!=(const ObjectString<T>& string)const
+		{
+			return Compare(*this, string)!=0;
+		}
+
+		bool operator>(const ObjectString<T>& string)const
+		{
+			return Compare(*this, string)>0;
+		}
+
+		bool operator>=(const ObjectString<T>& string)const
+		{
+			return Compare(*this, string)>=0;
+		}
+
+		bool operator<(const ObjectString<T>& string)const
+		{
+			return Compare(*this, string)<0;
+		}
+
+		bool operator<=(const ObjectString<T>& string)const
+		{
+			return Compare(*this, string)<=0;
+		}
+
+		bool operator==(const T* buffer)const
+		{
+			return Compare(buffer, *this)==0;
+		}
+
+		bool operator!=(const T* buffer)const
+		{
+			return Compare(buffer, *this)!=0;
+		}
+
+		bool operator>(const T* buffer)const
+		{
+			return Compare(buffer, *this)<0;
+		}
+
+		bool operator>=(const T* buffer)const
+		{
+			return Compare(buffer, *this)<=0;
+		}
+
+		bool operator<(const T* buffer)const
+		{
+			return Compare(buffer, *this)>0;
+		}
+
+		bool operator<=(const T* buffer)const
+		{
+			return Compare(buffer, *this)>=0;
+		}
+
+		/// <summary>Get a code point in the specified position.</summary>
+		/// <returns>Returns the code point. It will crash when the specified position is out of range.</returns>
+		/// <param name="index"></param>
+		T operator[](vint index)const
+		{
+			CHECK_ERROR(index>=0 && index<length, L"ObjectString:<T>:operator[](vint)#Argument index not in range.");
+			return buffer[start+index];
+		}
+
+		/// <summary>Get the size of the string in code points.</summary>
+		/// <returns>The size, not including the zero terminator.</returns>
+		vint Length()const
+		{
+			return length;
+		}
+
+		/// <summary>Find a code point.</summary>
+		/// <returns>The position of the code point. Returns -1 if it does not exist.</returns>
+		/// <param name="c">The code point to find.</param>
+		vint IndexOf(T c)const
+		{
+			const T* reading=buffer+start;
+			for(vint i=0;i<length;i++)
+			{
+				if(reading[i]==c)
+					return i;
+			}
+			return -1;
+		}
+
+		/// <summary>Get the prefix of the string.</summary>
+		/// <returns>The prefix. It will crash when the specified size is out of range.</returns>
+		/// <param name="count">Size of the prefix.</param>
+		/// <example><![CDATA[
+		/// int main()
+		/// {
+		///     WString s = L"Hello, world!";
+		///     Console::WriteLine(s.Left(5));
+		/// }
+		/// ]]></example>
+		ObjectString<T> Left(vint count)const
+		{
+			CHECK_ERROR(count>=0 && count<=length, L"ObjectString<T>::Left(vint)#Argument count not in range.");
+			return ObjectString<T>(*this, 0, count);
+		}
+		
+		/// <summary>Get the postfix of the string.</summary>
+		/// <returns>The postfix. It will crash when the specified size is out of range.</returns>
+		/// <param name="count">Size of the prefix.</param>
+		/// <example><![CDATA[
+		/// int main()
+		/// {
+		///     WString s = L"Hello, world!";
+		///     Console::WriteLine(s.Right(6));
+		/// }
+		/// ]]></example>
+		ObjectString<T> Right(vint count)const
+		{
+			CHECK_ERROR(count>=0 && count<=length, L"ObjectString<T>::Right(vint)#Argument count not in range.");
+			return ObjectString<T>(*this, length-count, count);
+		}
+		
+		/// <summary>Get a sub string.</summary>
+		/// <returns>The sub string. It will crash when the specified position or size is out of range.</returns>
+		/// <param name="index">The position of the first code point of the sub string.</param>
+		/// <param name="count">The size of the sub string.</param>
+		/// <example><![CDATA[
+		/// int main()
+		/// {
+		///     WString s = L"Hello, world!";
+		///     Console::WriteLine(s.Sub(7, 5));
+		/// }
+		/// ]]></example>
+		ObjectString<T> Sub(vint index, vint count)const
+		{
+			CHECK_ERROR(index>=0 && index<=length, L"ObjectString<T>::Sub(vint, vint)#Argument index not in range.");
+			CHECK_ERROR(index+count>=0 && index+count<=length, L"ObjectString<T>::Sub(vint, vint)#Argument count not in range.");
+			return ObjectString<T>(*this, index, count);
+		}
+
+		/// <summary>Get a string by removing a sub string.</summary>
+		/// <returns>The string without the sub string. It will crash when the specified position or size is out of range.</returns>
+		/// <param name="index">The position of the first code point of the sub string.</param>
+		/// <param name="count">The size of the sub string.</param>
+		/// <example><![CDATA[
+		/// int main()
+		/// {
+		///     WString s = L"Hello, world!";
+		///     Console::WriteLine(s.Remove(5, 7));
+		/// }
+		/// ]]></example>
+		ObjectString<T> Remove(vint index, vint count)const
+		{
+			CHECK_ERROR(index>=0 && index<length, L"ObjectString<T>::Remove(vint, vint)#Argument index not in range.");
+			CHECK_ERROR(index+count>=0 && index+count<=length, L"ObjectString<T>::Remove(vint, vint)#Argument count not in range.");
+			return ObjectString<T>(*this, ObjectString<T>(), index, count);
+		}
+
+		/// <summary>Get a string by inserting another string.</summary>
+		/// <returns>The string with another string inserted. It will crash when the specified position is out of range.</returns>
+		/// <param name="index">The position to insert.</param>
+		/// <param name="string">The string to insert.</param>
+		/// <example><![CDATA[
+		/// int main()
+		/// {
+		///     WString s = L"Hello, world!";
+		///     Console::WriteLine(s.Insert(7, L"a great "));
+		/// }
+		/// ]]></example>
+		ObjectString<T> Insert(vint index, const ObjectString<T>& string)const
+		{
+			CHECK_ERROR(index>=0 && index<=length, L"ObjectString<T>::Insert(vint)#Argument count not in range.");
+			return ObjectString<T>(*this, string, index, 0);
+		}
+
+		friend bool operator<(const T* left, const ObjectString<T>& right)
+		{
+			return Compare(left, right)<0;
+		}
+
+		friend bool operator<=(const T* left, const ObjectString<T>& right)
+		{
+			return Compare(left, right)<=0;
+		}
+
+		friend bool operator>(const T* left, const ObjectString<T>& right)
+		{
+			return Compare(left, right)>0;
+		}
+
+		friend bool operator>=(const T* left, const ObjectString<T>& right)
+		{
+			return Compare(left, right)>=0;
+		}
+
+		friend bool operator==(const T* left, const ObjectString<T>& right)
+		{
+			return Compare(left, right)==0;
+		}
+
+		friend bool operator!=(const T* left, const ObjectString<T>& right)
+		{
+			return Compare(left, right)!=0;
+		}
+
+		friend ObjectString<T> operator+(const T* left, const ObjectString<T>& right)
+		{
+			return ObjectString<T>(left, false)+right;
+		}
+	};
+
+	template<typename T>
+	ObjectString<T> ObjectString<T>::Empty=ObjectString<T>();
+	template<typename T>
+	const T ObjectString<T>::zero=0;
+
+	/// <summary>Ansi string in local code page.</summary>
+	typedef ObjectString<char>		AString;
+	/// <summary>
+	/// Unicode string, UTF-16 on Windows, UTF-32 on Linux and macOS.
+	/// </summary>
+	typedef ObjectString<wchar_t>	WString;
+
+	/// <summary>Convert a string to a signed integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <param name="success">Returns true if this operation succeeded.</param>
+	extern vint					atoi_test(const AString& string, bool& success);
+	/// <summary>Convert a string to a signed integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <param name="success">Returns true if this operation succeeded.</param>
+	extern vint					wtoi_test(const WString& string, bool& success);
+	/// <summary>Convert a string to a signed 64-bits integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <param name="success">Returns true if this operation succeeded.</param>
+	extern vint64_t				atoi64_test(const AString& string, bool& success);
+	/// <summary>Convert a string to a signed 64-bits integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <param name="success">Returns true if this operation succeeded.</param>
+	extern vint64_t				wtoi64_test(const WString& string, bool& success);
+	/// <summary>Convert a string to an unsigned integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <param name="success">Returns true if this operation succeeded.</param>
+	extern vuint				atou_test(const AString& string, bool& success);
+	/// <summary>Convert a string to an unsigned integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <param name="success">Returns true if this operation succeeded.</param>
+	extern vuint				wtou_test(const WString& string, bool& success);
+	/// <summary>Convert a string to an unsigned 64-bits integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <param name="success">Returns true if this operation succeeded.</param>
+	extern vuint64_t			atou64_test(const AString& string, bool& success);
+	/// <summary>Convert a string to an unsigned 64-bits integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <param name="success">Returns true if this operation succeeded.</param>
+	extern vuint64_t			wtou64_test(const WString& string, bool& success);
+	/// <summary>Convert a string to a 64-bits floating point number.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <param name="success">Returns true if this operation succeeded.</param>
+	extern double				atof_test(const AString& string, bool& success);
+	/// <summary>Convert a string to a 64-bits floating point number.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <param name="success">Returns true if this operation succeeded.</param>
+	extern double				wtof_test(const WString& string, bool& success);
+
+	/// <summary>Convert a string to a signed integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <remarks>If you need to know whether the conversion is succeeded or not, please use <see cref="atoi_test"/> instead.</remarks>
+	extern vint					atoi(const AString& string);
+	/// <summary>Convert a string to a signed integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <remarks>If you need to know whether the conversion is succeeded or not, please use <see cref="wtoi_test"/> instead.</remarks>
+	extern vint					wtoi(const WString& string);
+	/// <summary>Convert a string to a signed 64-bits integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <remarks>If you need to know whether the conversion is succeeded or not, please use <see cref="atoi64_test"/> instead.</remarks>
+	extern vint64_t				atoi64(const AString& string);
+	/// <summary>Convert a string to a signed 64-bits integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <remarks>If you need to know whether the conversion is succeeded or not, please use <see cref="wtoi64_test"/> instead.</remarks>
+	extern vint64_t				wtoi64(const WString& string);
+	/// <summary>Convert a string to an usigned integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <remarks>If you need to know whether the conversion is succeeded or not, please use <see cref="atou_test"/> instead.</remarks>
+	extern vuint				atou(const AString& string);
+	/// <summary>Convert a string to an usigned integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <remarks>If you need to know whether the conversion is succeeded or not, please use <see cref="wtou_test"/> instead.</remarks>
+	extern vuint				wtou(const WString& string);
+	/// <summary>Convert a string to an usigned 64-bits integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <remarks>If you need to know whether the conversion is succeeded or not, please use <see cref="atou64_test"/> instead.</remarks>
+	extern vuint64_t			atou64(const AString& string);
+	/// <summary>Convert a string to an usigned 64-bits integer.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <remarks>If you need to know whether the conversion is succeeded or not, please use <see cref="wtou64_test"/> instead.</remarks>
+	extern vuint64_t			wtou64(const WString& string);
+	/// <summary>Convert a string to a 64-bits floating point number.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <remarks>If you need to know whether the conversion is succeeded or not, please use <see cref="atof_test"/> instead.</remarks>
+	extern double				atof(const AString& string);
+	/// <summary>Convert a string to a 64-bits floating point number.</summary>
+	/// <returns>The converted number. If the conversion failed, the result is undefined.</returns>
+	/// <param name="string">The string to convert.</param>
+	/// <remarks>If you need to know whether the conversion is succeeded or not, please use <see cref="wtof_test"/> instead.</remarks>
+	extern double				wtof(const WString& string);
+
+	/// <summary>Convert a signed interger to a string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="number">The number to convert.</param>
+	extern AString				itoa(vint number);
+	/// <summary>Convert a signed interger to a string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="number">The number to convert.</param>
+	extern WString				itow(vint number);
+	/// <summary>Convert a signed 64-bits interger to a string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="number">The number to convert.</param>
+	extern AString				i64toa(vint64_t number);
+	/// <summary>Convert a signed 64-bits interger to a string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="number">The number to convert.</param>
+	extern WString				i64tow(vint64_t number);
+	/// <summary>Convert an unsigned interger to a string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="number">The number to convert.</param>
+	extern AString				utoa(vuint number);
+	/// <summary>Convert an unsigned interger to a string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="number">The number to convert.</param>
+	extern WString				utow(vuint number);
+	/// <summary>Convert an unsigned 64-bits interger to a string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="number">The number to convert.</param>
+	extern AString				u64toa(vuint64_t number);
+	/// <summary>Convert an unsigned 64-bits interger to a string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="number">The number to convert.</param>
+	extern WString				u64tow(vuint64_t number);
+	/// <summary>Convert a 64-bits floating pointer number to a string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="number">The number to convert.</param>
+	extern AString				ftoa(double number);
+	/// <summary>Convert a 64-bits floating pointer number to a string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="number">The number to convert.</param>
+	extern WString				ftow(double number);
+
+	extern vint					_wtoa(const wchar_t* w, char* a, vint chars);
+	/// <summary>Convert a Unicode string to an Ansi string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="string">The string to convert.</param>
+	extern AString				wtoa(const WString& string);
+	extern vint					_atow(const char* a, wchar_t* w, vint chars);
+	/// <summary>Convert an Ansi string to an Unicode string.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="string">The string to convert.</param>
+	extern WString				atow(const AString& string);
+	/// <summary>Convert all letters to lower case letters.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="string">The string to convert.</param>
+	extern AString				alower(const AString& string);
+	/// <summary>Convert all letters to lower case letters.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="string">The string to convert.</param>
+	extern WString				wlower(const WString& string);
+	/// <summary>Convert all letters to upper case letters.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="string">The string to convert.</param>
+	extern AString				aupper(const AString& string);
+	/// <summary>Convert all letters to upper case letters.</summary>
+	/// <returns>The converted string.</returns>
+	/// <param name="string">The string to convert.</param>
+	extern WString				wupper(const WString& string);
+
+#if defined VCZH_GCC
+	extern void					_itoa_s(vint32_t value, char* buffer, size_t size, vint radix);
+	extern void					_itow_s(vint32_t value, wchar_t* buffer, size_t size, vint radix);
+	extern void					_i64toa_s(vint64_t value, char* buffer, size_t size, vint radix);
+	extern void					_i64tow_s(vint64_t value, wchar_t* buffer, size_t size, vint radix);
+	extern void					_uitoa_s(vuint32_t value, char* buffer, size_t size, vint radix);
+	extern void					_uitow_s(vuint32_t value, wchar_t* buffer, size_t size, vint radix);
+	extern void					_ui64toa_s(vuint64_t value, char* buffer, size_t size, vint radix);
+	extern void					_ui64tow_s(vuint64_t value, wchar_t* buffer, size_t size, vint radix);
+	extern void					_gcvt_s(char* buffer, size_t size, double value, vint numberOfDigits);
+	extern void					_strlwr_s(char* buffer, size_t size);
+	extern void					_strupr_s(char* buffer, size_t size);
+	extern void					_wcslwr_s(wchar_t* buffer, size_t size);
+	extern void					_wcsupr_s(wchar_t* buffer, size_t size);
+	extern void					wcscpy_s(wchar_t* buffer, size_t size, const wchar_t* text);
+#endif
+
+	/// <summary>Style of the random text.</summary>
+	enum class LoremIpsumCasing
+	{
+		/// <summary>First letters of all words are lower cased.</summary>
+		AllWordsLowerCase,
+		/// <summary>first letters of first words of all sentences are upper cased.</summary>
+		FirstWordUpperCase,
+		/// <summary>First letters of all words are upper cased.</summary>
+		AllWordsUpperCase,
+	};
+
+	/// <summary>Get some random text.</summary>
+	/// <returns>The generated random text. It may not exactly in the expected size.</returns>
+	/// <param name="bestLength">The expected size.</param>
+	/// <param name="casing">The expected casing.</param>
+	extern WString				LoremIpsum(vint bestLength, LoremIpsumCasing casing);
+	/// <summary>Get some random text for a title, first letters of all words are upper cased.</summary>
+	/// <returns>The generated random text. It may not be exactly in the expected size.</returns>
+	/// <param name="bestLength">The expected size.</param>
+	extern WString				LoremIpsumTitle(vint bestLength);
+	/// <summary>Get some random sentences. The first letter of the first word is uppder cased.</summary>
+	/// <returns>The generated random text with a period character ".". It may not be exactly in the expected size.</returns>
+	/// <param name="bestLength">The expected size.</param>
+	extern WString				LoremIpsumSentence(vint bestLength);
+	/// <summary>Get some random paragraphs. First letters of first words of all sentences are upper cased.</summary>
+	/// <returns>The generated random text with multiple sentences ending with period characters ".". It may not be exactly in the expected size.</returns>
+	/// <param name="bestLength">The expected size.</param>
+	extern WString				LoremIpsumParagraph(vint bestLength);
+}
+
+#endif
+
+
+/***********************************************************************
+.\CONSOLE.H
+***********************************************************************/
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+#ifndef VCZH_CONSOLE
+#define VCZH_CONSOLE
+
+
+namespace vl
+{
+	namespace console
+	{
+		/// <summary>Basic I/O for command-line applications.</summary>
+		class Console abstract
+		{
+		public:
+			/// <summary>Write a string to the command-line window.</summary>
+			/// <param name="string">Content to write.</param>
+			/// <param name="length">Size of the content in wchar_t, not including the zero terminator.</param>
+			static void Write(const wchar_t* string, vint length);
+
+			/// <summary>Write a string to the command-line window.</summary>
+			/// <param name="string">Content to write, must be zero terminated.</param>
+			static void Write(const wchar_t* string);
+
+			/// <summary>Write a string to the command-line window.</summary>
+			/// <param name="string">Content to write.</param>
+			static void Write(const WString& string);
+
+			/// <summary>Write to the command-line window, following CR/LF characters.</summary>
+			/// <param name="string">Content to write.</param>
+			static void WriteLine(const WString& string);
+
+			/// <summary>Read a string from the command-line window.</summary>
+			/// <returns>The whole line read from the command-line window.</returns>
+			static WString Read();
+
+			static void SetColor(bool red, bool green, bool blue, bool light);
+			static void SetTitle(const WString& string);
+		};
 	}
+}
+
+#endif
+
+/***********************************************************************
+.\EXCEPTION.H
+***********************************************************************/
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+#ifndef VCZH_EXCEPTION
+#define VCZH_EXCEPTION
+
+
+namespace vl
+{
+	/// <summary>Base type of all exceptions.</summary>
+	class Exception : public Object
+	{
+	protected:
+		WString						message;
+
+	public:
+		Exception(const WString& _message=WString::Empty);
+
+		const WString&				Message()const;
+	};
+
+	class ArgumentException : public Exception
+	{
+	protected:
+		WString						function;
+		WString						name;
+
+	public:
+		ArgumentException(const WString& _message=WString::Empty, const WString& _function=WString::Empty, const WString& _name=WString::Empty);
+
+		const WString&				GetFunction()const;
+		const WString&				GetName()const;
+	};
+
+	class ParsingException : public Exception
+	{
+	protected:
+		vint						position;
+		WString						expression;
+
+	public:
+		ParsingException(const WString& _message, const WString& _expression, vint _position);
+
+		const WString&				GetExpression()const;
+		vint						GetPosition()const;
+	};
+}
+
+#endif
+
+/***********************************************************************
+.\GLOBALSTORAGE.H
+***********************************************************************/
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+#ifndef VCZH_GLOBALSTORAGE
+#define VCZH_GLOBALSTORAGE
+
+
+namespace vl
+{
+	/// <summary>
+	/// Base type of all global storages.
+	/// A global storage stores multiple values using a name.
+	/// The "BEGIN_GLOBAL_STOREGE_CLASS" macro is recommended to create a global storage.
+	/// </summary>
+	/// <remarks>
+	/// All values are shared like global variables, but they are created at the first time when they need to be accessed.
+	/// <see cref="FinalizeGlobalStorage"/> is recommended after you don't need any global storages any more, it frees memory.
+	/// </remarks>
+	/// <example><![CDATA[
+	/// BEGIN_GLOBAL_STOREGE_CLASS(MyStorage)
+	///     Ptr<vint> data;
+	/// INITIALIZE_GLOBAL_STORAGE_CLASS
+	///     data = new vint(100);
+	/// FINALIZE_GLOBAL_STORAGE_CLASS
+	///     data = nullptr;
+	/// END_GLOBAL_STORAGE_CLASS(MyStorage)
+	///
+	/// int main()
+	/// {
+	///     // GetMyStorage is generated by defining MyStorage
+	///     Console::WriteLine(itow(*GetMyStorage().data.Obj()));
+	///     FinalizeGlobalStorage();
+	/// }
+	/// ]]></example>
+	class GlobalStorage : public Object, private NotCopyable
+	{
+	private:
+		bool					cleared = false;
+	public:
+		GlobalStorage(const wchar_t* key);
+		~GlobalStorage();
+
+		bool					Cleared();
+		virtual void			ClearResource() = 0;
+	};
+
+	extern GlobalStorage* GetGlobalStorage(const wchar_t* key);
+	extern GlobalStorage* GetGlobalStorage(const WString& key);
+
+	extern void InitializeGlobalStorage();
+	/// <summary>Free all memories used by global storages.</summary>
+	extern void FinalizeGlobalStorage();
+}
+
+#define BEGIN_GLOBAL_STORAGE_CLASS(NAME)		\
+	class NAME : public vl::GlobalStorage		\
+	{											\
+	public:										\
+		NAME()									\
+			:vl::GlobalStorage(L ## #NAME)		\
+		{										\
+			InitializeClearResource();			\
+		}										\
+		~NAME()									\
+		{										\
+			if(!Cleared())ClearResource();		\
+		}										\
+
+#define INITIALIZE_GLOBAL_STORAGE_CLASS			\
+		void InitializeClearResource()			\
+		{										\
+
+#define FINALIZE_GLOBAL_STORAGE_CLASS			\
+		}										\
+		void ClearResource()					\
+		{										\
+
+#define END_GLOBAL_STORAGE_CLASS(NAME)			\
+		}										\
+	};											\
+	NAME& Get##NAME()							\
+	{											\
+		static NAME __global_storage_##NAME;	\
+		return __global_storage_##NAME;			\
+	}											\
+
+#define EXTERN_GLOBAL_STORAGE_CLASS(NAME)\
+	class NAME;\
+	extern NAME& Get##NAME();\
+
+#endif
+
+
+/***********************************************************************
+.\TUPLE.H
+***********************************************************************/
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+	
+This file is generated by: Vczh Functional Macro
+***********************************************************************/
+#ifndef VCZH_TUPLE
+#define VCZH_TUPLE
+
+
+namespace vl
+{
+	class TupleNullItem
+	{
+	};
+	template<typename T0 = TupleNullItem,typename T1 = TupleNullItem,typename T2 = TupleNullItem,typename T3 = TupleNullItem,typename T4 = TupleNullItem,typename T5 = TupleNullItem,typename T6 = TupleNullItem,typename T7 = TupleNullItem,typename T8 = TupleNullItem,typename T9 = TupleNullItem,typename T10 = TupleNullItem>
+	class Tuple
+	{
+	};
+ 
+/***********************************************************************
+vl::Tuple<T0>
+***********************************************************************/
+	template<typename T0>
+	class Tuple<T0> : public Object
+	{
+	public:
+		T0 f0;
+ 
+		Tuple()
+		{
+		}
+ 
+		Tuple(T0 p0)
+			:f0(p0)
+		{
+		}
+ 
+		static int Compare(const Tuple<T0>& a, const Tuple<T0>& b)
+		{
+			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;
+			return 0;
+		}
+ 
+		bool operator==(const Tuple<T0>& value)const{ return Compare(*this, value) == 0; }
+		bool operator!=(const Tuple<T0>& value)const{ return Compare(*this, value) != 0; }
+		bool operator< (const Tuple<T0>& value)const{ return Compare(*this, value) < 0; }
+		bool operator<=(const Tuple<T0>& value)const{ return Compare(*this, value) <= 0; }
+		bool operator> (const Tuple<T0>& value)const{ return Compare(*this, value) > 0; }
+		bool operator>=(const Tuple<T0>& value)const{ return Compare(*this, value) >= 0; }
+	};
+  
+/***********************************************************************
+vl::Tuple<T0,T1>
+***********************************************************************/
+	template<typename T0,typename T1>
+	class Tuple<T0,T1> : public Object
+	{
+	public:
+		T0 f0;T1 f1;
+ 
+		Tuple()
+		{
+		}
+ 
+		Tuple(T0 p0,T1 p1)
+			:f0(p0),f1(p1)
+		{
+		}
+ 
+		static int Compare(const Tuple<T0,T1>& a, const Tuple<T0,T1>& b)
+		{
+			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;
+			return 0;
+		}
+ 
+		bool operator==(const Tuple<T0,T1>& value)const{ return Compare(*this, value) == 0; }
+		bool operator!=(const Tuple<T0,T1>& value)const{ return Compare(*this, value) != 0; }
+		bool operator< (const Tuple<T0,T1>& value)const{ return Compare(*this, value) < 0; }
+		bool operator<=(const Tuple<T0,T1>& value)const{ return Compare(*this, value) <= 0; }
+		bool operator> (const Tuple<T0,T1>& value)const{ return Compare(*this, value) > 0; }
+		bool operator>=(const Tuple<T0,T1>& value)const{ return Compare(*this, value) >= 0; }
+	};
+  
+/***********************************************************************
+vl::Tuple<T0,T1,T2>
+***********************************************************************/
+	template<typename T0,typename T1,typename T2>
+	class Tuple<T0,T1,T2> : public Object
+	{
+	public:
+		T0 f0;T1 f1;T2 f2;
+ 
+		Tuple()
+		{
+		}
+ 
+		Tuple(T0 p0,T1 p1,T2 p2)
+			:f0(p0),f1(p1),f2(p2)
+		{
+		}
+ 
+		static int Compare(const Tuple<T0,T1,T2>& a, const Tuple<T0,T1,T2>& b)
+		{
+			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;
+			return 0;
+		}
+ 
+		bool operator==(const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) == 0; }
+		bool operator!=(const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) != 0; }
+		bool operator< (const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) < 0; }
+		bool operator<=(const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) <= 0; }
+		bool operator> (const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) > 0; }
+		bool operator>=(const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) >= 0; }
+	};
+  
+/***********************************************************************
+vl::Tuple<T0,T1,T2,T3>
+***********************************************************************/
+	template<typename T0,typename T1,typename T2,typename T3>
+	class Tuple<T0,T1,T2,T3> : public Object
+	{
+	public:
+		T0 f0;T1 f1;T2 f2;T3 f3;
+ 
+		Tuple()
+		{
+		}
+ 
+		Tuple(T0 p0,T1 p1,T2 p2,T3 p3)
+			:f0(p0),f1(p1),f2(p2),f3(p3)
+		{
+		}
+ 
+		static int Compare(const Tuple<T0,T1,T2,T3>& a, const Tuple<T0,T1,T2,T3>& b)
+		{
+			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;
+			return 0;
+		}
+ 
+		bool operator==(const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) == 0; }
+		bool operator!=(const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) != 0; }
+		bool operator< (const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) < 0; }
+		bool operator<=(const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) <= 0; }
+		bool operator> (const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) > 0; }
+		bool operator>=(const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) >= 0; }
+	};
+  
+/***********************************************************************
+vl::Tuple<T0,T1,T2,T3,T4>
+***********************************************************************/
+	template<typename T0,typename T1,typename T2,typename T3,typename T4>
+	class Tuple<T0,T1,T2,T3,T4> : public Object
+	{
+	public:
+		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;
+ 
+		Tuple()
+		{
+		}
+ 
+		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4)
+			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4)
+		{
+		}
+ 
+		static int Compare(const Tuple<T0,T1,T2,T3,T4>& a, const Tuple<T0,T1,T2,T3,T4>& b)
+		{
+			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;
+			return 0;
+		}
+ 
+		bool operator==(const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) == 0; }
+		bool operator!=(const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) != 0; }
+		bool operator< (const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) < 0; }
+		bool operator<=(const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) <= 0; }
+		bool operator> (const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) > 0; }
+		bool operator>=(const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) >= 0; }
+	};
+  
+/***********************************************************************
+vl::Tuple<T0,T1,T2,T3,T4,T5>
+***********************************************************************/
+	template<typename T0,typename T1,typename T2,typename T3,typename T4,typename T5>
+	class Tuple<T0,T1,T2,T3,T4,T5> : public Object
+	{
+	public:
+		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;T5 f5;
+ 
+		Tuple()
+		{
+		}
+ 
+		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4,T5 p5)
+			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4),f5(p5)
+		{
+		}
+ 
+		static int Compare(const Tuple<T0,T1,T2,T3,T4,T5>& a, const Tuple<T0,T1,T2,T3,T4,T5>& b)
+		{
+			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;if (a.f5 < b.f5) return -1; else if (a.f5 > b.f5) return 1;
+			return 0;
+		}
+ 
+		bool operator==(const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) == 0; }
+		bool operator!=(const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) != 0; }
+		bool operator< (const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) < 0; }
+		bool operator<=(const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) <= 0; }
+		bool operator> (const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) > 0; }
+		bool operator>=(const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) >= 0; }
+	};
+  
+/***********************************************************************
+vl::Tuple<T0,T1,T2,T3,T4,T5,T6>
+***********************************************************************/
+	template<typename T0,typename T1,typename T2,typename T3,typename T4,typename T5,typename T6>
+	class Tuple<T0,T1,T2,T3,T4,T5,T6> : public Object
+	{
+	public:
+		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;T5 f5;T6 f6;
+ 
+		Tuple()
+		{
+		}
+ 
+		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4,T5 p5,T6 p6)
+			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4),f5(p5),f6(p6)
+		{
+		}
+ 
+		static int Compare(const Tuple<T0,T1,T2,T3,T4,T5,T6>& a, const Tuple<T0,T1,T2,T3,T4,T5,T6>& b)
+		{
+			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;if (a.f5 < b.f5) return -1; else if (a.f5 > b.f5) return 1;if (a.f6 < b.f6) return -1; else if (a.f6 > b.f6) return 1;
+			return 0;
+		}
+ 
+		bool operator==(const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) == 0; }
+		bool operator!=(const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) != 0; }
+		bool operator< (const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) < 0; }
+		bool operator<=(const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) <= 0; }
+		bool operator> (const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) > 0; }
+		bool operator>=(const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) >= 0; }
+	};
+  
+/***********************************************************************
+vl::Tuple<T0,T1,T2,T3,T4,T5,T6,T7>
+***********************************************************************/
+	template<typename T0,typename T1,typename T2,typename T3,typename T4,typename T5,typename T6,typename T7>
+	class Tuple<T0,T1,T2,T3,T4,T5,T6,T7> : public Object
+	{
+	public:
+		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;T5 f5;T6 f6;T7 f7;
+ 
+		Tuple()
+		{
+		}
+ 
+		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4,T5 p5,T6 p6,T7 p7)
+			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4),f5(p5),f6(p6),f7(p7)
+		{
+		}
+ 
+		static int Compare(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& a, const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& b)
+		{
+			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;if (a.f5 < b.f5) return -1; else if (a.f5 > b.f5) return 1;if (a.f6 < b.f6) return -1; else if (a.f6 > b.f6) return 1;if (a.f7 < b.f7) return -1; else if (a.f7 > b.f7) return 1;
+			return 0;
+		}
+ 
+		bool operator==(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) == 0; }
+		bool operator!=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) != 0; }
+		bool operator< (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) < 0; }
+		bool operator<=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) <= 0; }
+		bool operator> (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) > 0; }
+		bool operator>=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) >= 0; }
+	};
+  
+/***********************************************************************
+vl::Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>
+***********************************************************************/
+	template<typename T0,typename T1,typename T2,typename T3,typename T4,typename T5,typename T6,typename T7,typename T8>
+	class Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8> : public Object
+	{
+	public:
+		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;T5 f5;T6 f6;T7 f7;T8 f8;
+ 
+		Tuple()
+		{
+		}
+ 
+		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4,T5 p5,T6 p6,T7 p7,T8 p8)
+			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4),f5(p5),f6(p6),f7(p7),f8(p8)
+		{
+		}
+ 
+		static int Compare(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& a, const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& b)
+		{
+			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;if (a.f5 < b.f5) return -1; else if (a.f5 > b.f5) return 1;if (a.f6 < b.f6) return -1; else if (a.f6 > b.f6) return 1;if (a.f7 < b.f7) return -1; else if (a.f7 > b.f7) return 1;if (a.f8 < b.f8) return -1; else if (a.f8 > b.f8) return 1;
+			return 0;
+		}
+ 
+		bool operator==(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) == 0; }
+		bool operator!=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) != 0; }
+		bool operator< (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) < 0; }
+		bool operator<=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) <= 0; }
+		bool operator> (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) > 0; }
+		bool operator>=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) >= 0; }
+	};
+  
+/***********************************************************************
+vl::Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>
+***********************************************************************/
+	template<typename T0,typename T1,typename T2,typename T3,typename T4,typename T5,typename T6,typename T7,typename T8,typename T9>
+	class Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9> : public Object
+	{
+	public:
+		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;T5 f5;T6 f6;T7 f7;T8 f8;T9 f9;
+ 
+		Tuple()
+		{
+		}
+ 
+		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4,T5 p5,T6 p6,T7 p7,T8 p8,T9 p9)
+			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4),f5(p5),f6(p6),f7(p7),f8(p8),f9(p9)
+		{
+		}
+ 
+		static int Compare(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& a, const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& b)
+		{
+			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;if (a.f5 < b.f5) return -1; else if (a.f5 > b.f5) return 1;if (a.f6 < b.f6) return -1; else if (a.f6 > b.f6) return 1;if (a.f7 < b.f7) return -1; else if (a.f7 > b.f7) return 1;if (a.f8 < b.f8) return -1; else if (a.f8 > b.f8) return 1;if (a.f9 < b.f9) return -1; else if (a.f9 > b.f9) return 1;
+			return 0;
+		}
+ 
+		bool operator==(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) == 0; }
+		bool operator!=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) != 0; }
+		bool operator< (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) < 0; }
+		bool operator<=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) <= 0; }
+		bool operator> (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) > 0; }
+		bool operator>=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) >= 0; }
+	};
+ 
 }
 #endif
 
@@ -2568,12 +3264,8 @@ vl::function_combining::Combining<R1(TArgs...), R2(TArgs...), R(R1,R2)>
 .\COLLECTIONS\PAIR.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Pair
-
-Classes:
-	Pair<K, V>							: Pair
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_COLLECTIONS_PAIR
@@ -2681,13 +3373,8 @@ namespace vl
 .\COLLECTIONS\INTERFACES.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Interfaces
-
-Interfaces:
-	IEnumerator<T>									: Enumerator interface
-	IEnumerable<T>									: Enumerable object interface
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_COLLECTIONS_INTERFACES
@@ -2703,8 +3390,8 @@ namespace vl
 Interfaces
 ***********************************************************************/
 
-		/// <summary>Enumerator.</summary>
-		/// <typeparam name="T">Type of the elements in the enumerator.</typeparam>
+		/// <summary>An enumerator interface for receiving values without going back.</summary>
+		/// <typeparam name="T">Type of the values returned from the enumerator.</typeparam>
 		template<typename T>
 		class IEnumerator : public virtual Interface
 		{
@@ -2714,30 +3401,79 @@ Interfaces
 			/// <summary>Copy the enumerator with the current state.</summary>
 			/// <returns>The copied enumerator.</returns>
 			virtual IEnumerator<T>*						Clone()const=0;
-			/// <summary>Get the reference to the current element in the enumerator.</summary>
-			/// <returns>The reference to the current element.</returns>
+			/// <summary>Get the reference to the current value in the enumerator.</summary>
+			/// <returns>The reference to the current value.</returns>
+			/// <remarks>
+			/// After calling <see cref="IEnumerable`1::CreateEnumerator"/>, <see cref="Next"/> need to be called to make the first value available.
+			/// Return value of <see cref="Current"/> will be changed after each time <see cref="Next"/> is called.
+			/// If <see cref="Next"/> returns false, the behavior of <see cref="Current"/> is undefined.
+			/// </remarks>
 			virtual const T&							Current()const=0;
-			/// <summary>Get the position of the current element in the enumerator.</summary>
-			/// <returns>The position of the current element.</returns>
+			/// <summary>Get the position of the current value in the enumerator.</summary>
+			/// <returns>The position of the current value.</returns>
+			/// <remarks>
+			/// After calling <see cref="IEnumerable`1::CreateEnumerator"/>, <see cref="Next"/> need to be called to make the first value available.
+			/// Index will be increased after each time <see cref="Next"/> is called with true returned.
+			/// </remarks>
 			virtual vint								Index()const=0;
-			/// <summary>Step forward.</summary>
-			/// <returns>Returns false if the enumerator reaches the end.</returns>
+			/// <summary>Prepare for the next value.</summary>
+			/// <returns>Returns false if there is no more value.</returns>
 			virtual bool								Next()=0;
 			/// <summary>Reset the enumerator.</summary>
 			virtual void								Reset()=0;
-
+			/// <summary>Test if all values of this enumerator have been evaluated.</summary>
+			/// <returns>Returns true if all values have been evaluated.</returns>
+			/// <remakrs>An evaluated enumerator typically means, there will be no more calculation happens in <see cref="Next"/> regardless if all values have been read or not.</remakrs>
 			virtual bool								Evaluated()const{return false;}
 		};
 		
-		/// <summary>Enumerable.</summary>
-		/// <typeparam name="T">Type of the elements in the enumerator.</typeparam>
+		/// <summary>
+		/// An enumerable interface representing all types that provide multiple values in order.
+		/// range-based for-loop is not supported on enumerable yet, current we have "FOREACH" and "FOREACH_INDEXER" for iterating values.
+		/// <see cref="CopyFrom`*"/> functions work for all enumerable implementation.
+		/// <see cref="LazyList`1"/> provides high-level operations for enumerables, you can create a lazy list by calling <see cref="From`*"/> on any enumerables.
+		/// </summary>
+		/// <example><![CDATA[
+		/// int main()
+		/// {
+		///     List<vint> xs;
+		///     for (vint i = 0; i < 10; i++)
+		///         xs.Add(i);
+		///     List<vint> ys;
+		///
+		///     // replace values in ys using xs, it could also be appending instead of replacing, which is controlled by the third argument
+		///     CopyFrom(ys, xs);
+		///
+		///     // print ys
+		///     FOREACH(vint, y, ys)
+		///         Console::Write(itow(y) + L" ");
+		///     Console::WriteLine(L"");
+		///
+		///     // print ys, added by the position
+		///     FOREACH_INDEXER(vint, y, i, ys)
+		///         Console::Write(itow(y + i) + L" ");
+		///     Console::WriteLine(L"");
+		///
+		///     // print all odd numbers in ys
+		///     FOREACH(vint, y, From(ys).Where([](int a){return a % 2 == 1;}))
+		///         Console::Write(itow(y) + L" ");
+		///     Console::WriteLine(L"");
+		/// }
+		/// ]]></example>
+		/// <typeparam name="T">Type of the values in the enumerable.</typeparam>
 		template<typename T>
 		class IEnumerable : public virtual Interface
 		{
 		public:
 			typedef T									ElementType;
 
-			/// <summary>Create an enumerator. [M:vl.collections.IEnumerator`1.Next] should be called to get the first element.</summary>
+			/// <summary>
+			/// Create an enumerator. [M:vl.collections.IEnumerator`1.Next] should be called before reading the first value.
+			/// </summary>
+			/// <remarks>
+			/// In most of the cases, you do not need to call this function.
+			/// "FOREACH", "FOREACH_INDEXER", <see cref="CopyFrom`*"/> and <see cref="LazyList`1"/> do all the jobs for you.
+			/// </remarks>
 			/// <returns>The enumerator.</returns>
 			virtual IEnumerator<T>*						CreateEnumerator()const=0;
 		};
@@ -2794,16 +3530,8 @@ Random Access
 .\COLLECTIONS\LIST.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::List
-
-Classes:
-	ListStore<T,PODType>				: Array copy helper functions
-	ListBase<T,K>						: Base class for array
-	Array<T,K>							: Array
-	List<T,K>							: List
-	SortedList<T,K>						: List with item order maintained
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_COLLECTIONS_LIST
@@ -2985,30 +3713,35 @@ ArrayBase
 					index = _index;
 				}
 
-				IEnumerator<T>* Clone()const
+				IEnumerator<T>* Clone()const override
 				{
 					return new Enumerator(container, index);
 				}
 
-				const T& Current()const
+				const T& Current()const override
 				{
 					return container->Get(index);
 				}
 
-				vint Index()const
+				vint Index()const override
 				{
 					return index;
 				}
 
-				bool Next()
+				bool Next() override
 				{
 					index++;
 					return index >= 0 && index < container->Count();
 				}
 
-				void Reset()
+				void Reset() override
 				{
 					index = -1;
+				}
+
+				bool Evaluated()const override
+				{
+					return true;
 				}
 			};
 
@@ -3047,7 +3780,7 @@ ArrayBase
 			}
 
 			/// <summary>Get the reference to the specified element.</summary>
-			/// <returns>The reference to the specified element.</returns>
+			/// <returns>The reference to the specified element. It will crash when the index is out of range.</returns>
 			/// <param name="index">The index of the element.</param>
 			const T& Get(vint index)const
 			{
@@ -3056,7 +3789,7 @@ ArrayBase
 			}
 
 			/// <summary>Get the reference to the specified element.</summary>
-			/// <returns>The reference to the specified element.</returns>
+			/// <returns>The reference to the specified element. It will crash when the index is out of range.</returns>
 			/// <param name="index">The index of the element.</param>
 			const T& operator[](vint index)const
 			{
@@ -3069,27 +3802,34 @@ ArrayBase
 Array
 ***********************************************************************/
 
-		/// <summary>Array.</summary>
+		/// <summary>Array: linear container with fixed size in runtime. All elements are contiguous in memory.</summary>
 		/// <typeparam name="T">Type of elements.</typeparam>
-		/// <typeparam name="K">Type of the key type of elements.</typeparam>
+		/// <typeparam name="K">Type of the key type of elements. It is recommended to use the default value.</typeparam>
 		template<typename T, typename K = typename KeyType<T>::Type>
 		class Array : public ArrayBase<T>
 		{
 		public:
 			/// <summary>Create an array.</summary>
 			/// <param name="size">The size of the array.</param>
+			/// <remarks>
+			/// The default value is zero. <see cref="Resize"/> can be called to determine the size later.
+			/// It will crash when the size is a negative number.
+			/// </remarks>
 			Array(vint size = 0)
 			{
+				CHECK_ERROR(size >= 0, L"Array<T>::Array(vint)#Size should not be negative.");
 				this->buffer = this->AllocateBuffer(size);
 				this->InitializeItemsByDefault(this->buffer, size);
 				this->count = size;
 			}
 
-			/// <summary>Create an array.</summary>
-			/// <param name="_buffer">Pointer to an array to copy.</param>
-			/// <param name="size">The size of the array.</param>
+			/// <summary>Create an array with elements provided.</summary>
+			/// <param name="_buffer">Pointer to values to copy.</param>
+			/// <param name="size">The number of values to copy.</param>
+			/// <remarks>It will crash when the size is a negative number.</remarks>
 			Array(const T* _buffer, vint size)
 			{
+				CHECK_ERROR(size >= 0, L"Array<T>::Array(const T*, vint)#Size should not be negative.");
 				this->buffer = this->AllocateBuffer(size);
 				this->InitializeItemsByCopy(this->buffer, (void*)_buffer, size);
 				this->count = size;
@@ -3101,17 +3841,17 @@ Array
 				this->DeallocateBuffer(this->buffer);
 			}
 
-			/// <summary>Test does the array contain an item or not.</summary>
-			/// <returns>Returns true if the array contains the specified item.</returns>
-			/// <param name="item">The item to test.</param>
+			/// <summary>Test does the array contain a value or not.</summary>
+			/// <returns>Returns true if the array contains the specified value.</returns>
+			/// <param name="item">The value to test.</param>
 			bool Contains(const K& item)const
 			{
 				return IndexOf(item) != -1;
 			}
 
-			/// <summary>Get the position of an item in this array.</summary>
-			/// <returns>Returns the position. Returns -1 if not exists</returns>
-			/// <param name="item">The item to find.</param>
+			/// <summary>Get the position of a value in this array.</summary>
+			/// <returns>Returns the position of first element that equals to the specified value. Returns -1 if failed to find.</returns>
+			/// <param name="item">The value to find.</param>
 			vint IndexOf(const K& item)const
 			{
 				for (vint i = 0; i < this->count; i++)
@@ -3124,29 +3864,34 @@ Array
 				return -1;
 			}
 
-			/// <summary>Replace an item.</summary>
-			/// <param name="index">The position of the item.</param>
-			/// <param name="item">The new item to put into the array.</param>
-			void Set(vint index, const T& item)
+			/// <summary>Replace an element in the specified position.</summary>
+			/// <returns>Returns true if this operation succeeded. It will crash when the index is out of range</returns>
+			/// <param name="index">The position of the element to replace.</param>
+			/// <param name="item">The new value to replace.</param>
+			bool Set(vint index, const T& item)
 			{
 				CHECK_ERROR(index >= 0 && index < this->count, L"Array<T, K>::Set(vint)#Argument index not in range.");
 				this->ItemOf(index) = item;
+				return true;
 			}
 
-			/// <summary>Get the reference to the specified element.</summary>
-			/// <returns>The reference to the specified element.</returns>
-			/// <param name="index">The index of the element.</param>
 			using ArrayBase<T>::operator[];
+
+			/// <summary>Get the reference to the specified element.</summary>
+			/// <returns>The reference to the specified element. It will crash when the index is out of range.</returns>
+			/// <param name="index">The index of the element.</param>
 			T& operator[](vint index)
 			{
 				CHECK_ERROR(index >= 0 && index < this->count, L"Array<T, K>::operator[](vint)#Argument index not in range.");
 				return this->ItemOf(index);
 			}
 
-			/// <summary>Change the size of the array.</summary>
+			/// <summary>Change the size of the array. This function can be called multiple times to change the size.</summary>
 			/// <param name="size">The new size of the array.</param>
+			/// <remarks>It will crash when the size is a negative number.</remarks>
 			void Resize(vint size)
 			{
+				CHECK_ERROR(size >= 0, L"Array<T>::Resize(vint)#Size should not be negative.");
 				void* newBuffer = this->AllocateBuffer(size);
 				if (size < this->count)
 				{
@@ -3169,9 +3914,9 @@ Array
 ListBase
 ***********************************************************************/
 
-		/// <summary>Base type for a list container.</summary>
+		/// <summary>Base type for all list containers.</summary>
 		/// <typeparam name="T">Type of elements.</typeparam>
-		/// <typeparam name="K">Type of the key type of elements.</typeparam>
+		/// <typeparam name="K">Type of the key type of elements. It is recommended to use the default value.</typeparam>
 		template<typename T, typename K = typename KeyType<T>::Type>
 		class ListBase abstract : public ArrayBase<T>
 		{
@@ -3255,14 +4000,17 @@ ListBase
 			}
 
 			/// <summary>Set a preference of using memory.</summary>
-			/// <param name="mode">Set to true (by default) to let the container efficiently reduce memory usage when necessary.</param>
+			/// <param name="mode">
+			/// Set to true (by default) to let the container actively reduce memories when there is too much room for unused elements.
+			/// This could happen after removing a lot of elements.
+			/// </param>
 			void SetLessMemoryMode(bool mode)
 			{
 				this->lessMemoryMode = mode;
 			}
 
-			/// <summary>Remove an element.</summary>
-			/// <returns>Returns true if the element is removed.</returns>
+			/// <summary>Remove an element at a specified position.</summary>
+			/// <returns>Returns true if the element is removed. It will crash when the index is out of range.</returns>
 			/// <param name="index">The index of the element to remove.</param>
 			bool RemoveAt(vint index)
 			{
@@ -3274,8 +4022,8 @@ ListBase
 				return true;
 			}
 
-			/// <summary>Remove elements.</summary>
-			/// <returns>Returns true if the element is removed.</returns>
+			/// <summary>Remove contiguous elements at a specified psition.</summary>
+			/// <returns>Returns true if elements are removed. It will crash when the index or the size is out of range.</returns>
 			/// <param name="index">The index of the first element to remove.</param>
 			/// <param name="_count">The number of elements to remove.</param>
 			bool RemoveRange(vint index, vint _count)
@@ -3314,29 +4062,27 @@ ListBase
 List
 ***********************************************************************/
 
-		/// <summary>List.</summary>
+		/// <summary>List: linear container with dynamic size in runtime for unordered values. All elements are contiguous in memory.</summary>
 		/// <typeparam name="T">Type of elements.</typeparam>
-		/// <typeparam name="K">Type of the key type of elements.</typeparam>
+		/// <typeparam name="K">Type of the key type of elements. It is recommended to use the default value.</typeparam>
 		template<typename T, typename K = typename KeyType<T>::Type>
 		class List : public ListBase<T, K>
 		{
 		public:
-			/// <summary>Create a list.</summary>
-			List()
-			{
-			}
+			/// <summary>Create an empty list.</summary>
+			List() = default;
 
-			/// <summary>Test does the list contain an item or not.</summary>
-			/// <returns>Returns true if the list contains the specified item.</returns>
-			/// <param name="item">The item to test.</param>
+			/// <summary>Test does the list contain a value or not.</summary>
+			/// <returns>Returns true if the list contains the specified value.</returns>
+			/// <param name="item">The value to test.</param>
 			bool Contains(const K& item)const
 			{
 				return IndexOf(item) != -1;
 			}
 
-			/// <summary>Get the position of an item in this list.</summary>
-			/// <returns>Returns the position. Returns -1 if not exists</returns>
-			/// <param name="item">The item to find.</param>
+			/// <summary>Get the position of a value in this list.</summary>
+			/// <returns>Returns the position of first element that equals to the specified value. Returns -1 if failed to find.</returns>
+			/// <param name="item">The value to find.</param>
 			vint IndexOf(const K& item)const
 			{
 				for (vint i = 0; i < this->count; i++)
@@ -3349,18 +4095,18 @@ List
 				return -1;
 			}
 
-			/// <summary>Add an item at the end of the list.</summary>
+			/// <summary>Append a value at the end of the list.</summary>
 			/// <returns>The index of the added item.</returns>
-			/// <param name="item">The item to add.</param>
+			/// <param name="item">The value to add.</param>
 			vint Add(const T& item)
 			{
 				return Insert(this->count, item);
 			}
 
-			/// <summary>Add an item at the specified position.</summary>
-			/// <returns>The index of the added item.</returns>
-			/// <param name="index">The position of the item to add.</param>
-			/// <param name="item">The item to add.</param>
+			/// <summary>Insert a value at the specified position.</summary>
+			/// <returns>The index of the added item. It will crash if the index is out of range</returns>
+			/// <param name="index">The position to insert the value.</param>
+			/// <param name="item">The value to add.</param>
 			vint Insert(vint index, const T& item)
 			{
 				CHECK_ERROR(index >= 0 && index <= this->count, L"List<T, K>::Insert(vint, const T&)#Argument index not in range.");
@@ -3377,8 +4123,8 @@ List
 				return index;
 			}
 
-			/// <summary>Remove an item.</summary>
-			/// <returns>Returns true if the item is removed.</returns>
+			/// <summary>Remove an element from the list. If multiple elements equal to the specified value, only the first one will be removed</summary>
+			/// <returns>Returns true if the element is removed.</returns>
 			/// <param name="item">The item to remove.</param>
 			bool Remove(const K& item)
 			{
@@ -3394,10 +4140,10 @@ List
 				}
 			}
 
-			/// <summary>Replace an item.</summary>
-			/// <returns>Returns true if this operation succeeded.</returns>
-			/// <param name="index">The position of the item.</param>
-			/// <param name="item">The new item to put into the array.</param>
+			/// <summary>Replace an element in the specified position.</summary>
+			/// <returns>Returns true if this operation succeeded. It will crash when the index is out of range</returns>
+			/// <param name="index">The position of the element to replace.</param>
+			/// <param name="item">The new value to replace.</param>
 			bool Set(vint index, const T& item)
 			{
 				CHECK_ERROR(index >= 0 && index < this->count, L"List<T, K>::Set(vint)#Argument index not in range.");
@@ -3405,10 +4151,11 @@ List
 				return true;
 			}
 
-			/// <summary>Get the reference to the specified element.</summary>
-			/// <returns>The reference to the specified element.</returns>
-			/// <param name="index">The index of the element.</param>
 			using ListBase<T, K>::operator[];
+
+			/// <summary>Get the reference to the specified element.</summary>
+			/// <returns>The reference to the specified element. It will crash when the index is out of range.</returns>
+			/// <param name="index">The index of the element.</param>
 			T& operator[](vint index)
 			{
 				CHECK_ERROR(index >= 0 && index < this->count, L"List<T, K>::operator[](vint)#Argument index not in range.");
@@ -3420,19 +4167,24 @@ List
 SortedList
 ***********************************************************************/
 
-		/// <summary>List that keeps everything in order.</summary>
+		/// <summary>SortedList: linear container with dynamic size in runtime for ordered values. All elements are kept in order, and are contiguous in memory.</summary>
 		/// <typeparam name="T">Type of elements.</typeparam>
-		/// <typeparam name="K">Type of the key type of elements.</typeparam>
+		/// <typeparam name="K">Type of the key type of elements. It is recommended to use the default value.</typeparam>
 		template<typename T, typename K = typename KeyType<T>::Type>
 		class SortedList : public ListBase<T, K>
 		{
 		protected:
 
-			/// <summary>Get the position of an item in this list.</summary>
-			/// <typeparam name="Key">Type of the item to find.</typeparam>
-			/// <returns>Returns the position. Returns -1 if not exists</returns>
-			/// <param name="item">The item to find.</param>
-			/// <param name="index">Returns the last index.</param>
+			/// <summary>Get the position of an element in this list by performing binary search.</summary>
+			/// <typeparam name="Key">Type of the element to find.</typeparam>
+			/// <returns>Returns the position. Returns -1 if it does not exist.</returns>
+			/// <param name="item">The element to find.</param>
+			/// <param name="index">
+			/// If the element exist, this argument returns one of the element that equals to the specified value.
+			/// If the element doesn not exist,
+			/// this argument returns either the greatest element that less than the specified value,
+			/// or the lest element that greater than the specified value.
+			/// </param>
 			template<typename Key>
 			vint IndexOfInternal(const Key& item, vint& index)const
 			{
@@ -3473,31 +4225,29 @@ SortedList
 				return index;
 			}
 		public:
-			/// <summary>Create a list.</summary>
-			SortedList()
-			{
-			}
+			/// <summary>Create an empty list.</summary>
+			SortedList() = default;
 
-			/// <summary>Test does the list contain an item or not.</summary>
-			/// <returns>Returns true if the list contains the specified item.</returns>
-			/// <param name="item">The item to test.</param>
+			/// <summary>Test does the list contain a value or not.</summary>
+			/// <returns>Returns true if the list contains the specified value.</returns>
+			/// <param name="item">The value to test.</param>
 			bool Contains(const K& item)const
 			{
 				return IndexOf(item) != -1;
 			}
 
-			/// <summary>Get the position of an item in this list.</summary>
-			/// <returns>Returns the position. Returns -1 if not exists</returns>
-			/// <param name="item">The item to find.</param>
+			/// <summary>Get the position of a value in this list.</summary>
+			/// <returns>Returns the position of first element that equals to the specified value. Returns -1 if failed to find.</returns>
+			/// <param name="item">The value to find.</param>
 			vint IndexOf(const K& item)const
 			{
 				vint outputIndex = -1;
 				return IndexOfInternal<K>(item, outputIndex);
 			}
 
-			/// <summary>Add an item at a correct position to keep everying in order.</summary>
+			/// <summary>Add a value at the correct position, all elements will be kept in order.</summary>
 			/// <returns>The index of the added item.</returns>
-			/// <param name="item">The item to add.</param>
+			/// <param name="item">The value to add.</param>
 			vint Add(const T& item)
 			{
 				if (ArrayBase<T>::count == 0)
@@ -3517,8 +4267,8 @@ SortedList
 				}
 			}
 
-			/// <summary>Remove an item.</summary>
-			/// <returns>Returns true if the item is removed.</returns>
+			/// <summary>Remove an element from the list. If multiple elements equal to the specified value, only the first one will be removed</summary>
+			/// <returns>Returns true if the element is removed.</returns>
 			/// <param name="item">The item to remove.</param>
 			bool Remove(const K& item)
 			{
@@ -3598,7 +4348,7 @@ Special Containers
 				{
 					if (!root)
 					{
-						return 0;
+						return nullptr;
 					}
 					vint fragmentIndex = (index >> (2 * (Index - 1))) % 4;
 					TreeNode* fragmentRoot = root->nodes[fragmentIndex];
@@ -3639,17 +4389,11 @@ Special Containers
 		public:
 			typedef PushOnlyAllocator<bom_helper::TreeNode>			Allocator;
 		protected:
-			bom_helper::TreeNode*			root;
+			bom_helper::TreeNode*			root = nullptr;
 
 		public:
-			ByteObjectMap()
-				:root(0)
-			{
-			}
-
-			~ByteObjectMap()
-			{
-			}
+			ByteObjectMap() = default;
+			~ByteObjectMap() = default;
 
 			T* Get(vuint8_t index)
 			{
@@ -3700,13 +4444,670 @@ Random Access
 
 
 /***********************************************************************
+.\COLLECTIONS\DICTIONARY.H
+***********************************************************************/
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+#ifndef VCZH_COLLECTIONS_DICTIONARY
+#define VCZH_COLLECTIONS_DICTIONARY
+
+
+namespace vl
+{
+	namespace collections
+	{
+		/// <summary>Dictionary: one to one map container.</summary>
+		/// <typeparam name="KT">Type of keys.</typeparam>
+		/// <typeparam name="VT">Type of values.</typeparam>
+		/// <typeparam name="KK">Type of the key type of keys. It is recommended to use the default value.</typeparam>
+		/// <typeparam name="VK">Type of the key type of values. It is recommended to use the default value.</typeparam>
+		template<
+			typename KT,
+			typename VT,
+			typename KK=typename KeyType<KT>::Type, 
+			typename VK=typename KeyType<VT>::Type
+		>
+		class Dictionary : public Object, public virtual IEnumerable<Pair<KT, VT>>
+		{
+		public:
+			typedef SortedList<KT, KK>			KeyContainer;
+			typedef List<VT, VK>				ValueContainer;
+		protected:
+			class Enumerator : public Object, public virtual IEnumerator<Pair<KT, VT>>
+			{
+			private:
+				const Dictionary<KT, VT, KK, VK>*	container;
+				vint								index;
+				Pair<KT, VT>						current;
+
+				void UpdateCurrent()
+				{
+					if(index<container->Count())
+					{
+						current.key=container->Keys().Get(index);
+						current.value=container->Values().Get(index);
+					}
+				}
+			public:
+				Enumerator(const Dictionary<KT, VT, KK, VK>* _container, vint _index=-1)
+				{
+					container=_container;
+					index=_index;
+				}
+				
+				IEnumerator<Pair<KT, VT>>* Clone()const override
+				{
+					return new Enumerator(container, index);
+				}
+
+				const Pair<KT, VT>& Current()const override
+				{
+					return current;
+				}
+
+				vint Index()const override
+				{
+					return index;
+				}
+
+				bool Next() override
+				{
+					index++;
+					UpdateCurrent();
+					return index>=0 && index<container->Count();
+				}
+
+				void Reset() override
+				{
+					index=-1;
+					UpdateCurrent();
+				}
+
+				bool Evaluated()const override
+				{
+					return true;
+				}
+			};
+
+			KeyContainer						keys;
+			ValueContainer						values;
+		public:
+			/// <summary>Create an empty dictionary.</summary>
+			Dictionary() = default;
+
+			IEnumerator<Pair<KT, VT>>* CreateEnumerator()const
+			{
+				return new Enumerator(this);
+			}
+
+			/// <summary>Set a preference of using memory.</summary>
+			/// <param name="mode">
+			/// Set to true (by default) to let the container actively reduce memories when there is too much room for unused elements.
+			/// This could happen after removing a lot of elements.
+			/// </param>
+			void SetLessMemoryMode(bool mode)
+			{
+				keys.SetLessMemoryMode(mode);
+				values.SetLessMemoryMode(mode);
+			}
+
+			/// <summary>Get all keys.</summary>
+			/// <returns>All keys.</returns>
+			const KeyContainer& Keys()const
+			{
+				return keys;
+			}
+			
+			/// <summary>Get all values.</summary>
+			/// <returns>All values.</returns>
+			const ValueContainer& Values()const
+			{
+				return values;
+			}
+
+			/// <summary>Get the number of keys.</summary>
+			/// <returns>The number of keys. It is also the number of values.</returns>
+			vint Count()const
+			{
+				return keys.Count();
+			}
+
+			/// <summary>Get the reference to the value associated to a specified key.</summary>
+			/// <returns>The reference to the value. It will crash if the key does not exist.</returns>
+			/// <param name="key">The key to find.</param>
+			const VT& Get(const KK& key)const
+			{
+				return values.Get(keys.IndexOf(key));
+			}
+
+			/// <summary>Get the reference to the value associated to a specified key.</summary>
+			/// <returns>The reference to the value. It will crash if the key does not exist.</returns>
+			/// <param name="key">The key to find.</param>
+			const VT& operator[](const KK& key)const
+			{
+				return values.Get(keys.IndexOf(key));
+			}
+			
+			/// <summary>Replace the value associated to a specified key.</summary>
+			/// <returns>Returns true if the value is replaced.</returns>
+			/// <param name="key">The key to find. If the key does not exist, it will be added to the dictionary.</param>
+			/// <param name="value">The associated value to replace.</param>
+			bool Set(const KT& key, const VT& value)
+			{
+				vint index=keys.IndexOf(KeyType<KT>::GetKeyValue(key));
+				if(index==-1)
+				{
+					index=keys.Add(key);
+					values.Insert(index, value);
+				}
+				else
+				{
+					values[index]=value;
+				}
+				return true;
+			}
+
+			/// <summary>Add a key with an associated value.</summary>
+			/// <returns>Returns true if the pair is added. If will crash if the key exists.</returns>
+			/// <param name="value">The pair of key and value.</param>
+			bool Add(const Pair<KT, VT>& value)
+			{
+				return Add(value.key, value.value);
+			}
+
+			/// <summary>Add a key with an associated value.</summary>
+			/// <returns>Returns true if the pair is added. If will crash if the key exists.</returns>
+			/// <param name="key">The key to add.</param>
+			/// <param name="value">The value to add.</param>
+			bool Add(const KT& key, const VT& value)
+			{
+				CHECK_ERROR(!keys.Contains(KeyType<KT>::GetKeyValue(key)), L"Dictionary<KT, KK, ValueContainer, VT, VK>::Add(const KT&, const VT&)#Key already exists.");
+				vint index=keys.Add(key);
+				values.Insert(index, value);
+				return true;
+			}
+
+			/// <summary>Remove a key with the associated value.</summary>
+			/// <returns>Returns true if the key and the value is removed.</returns>
+			/// <param name="key">The key to find.</param>
+			bool Remove(const KK& key)
+			{
+				vint index=keys.IndexOf(key);
+				if(index!=-1)
+				{
+					keys.RemoveAt(index);
+					values.RemoveAt(index);
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+
+			/// <summary>Remove all elements.</summary>
+			/// <returns>Returns true if all elements are removed.</returns>
+			bool Clear()
+			{
+				keys.Clear();
+				values.Clear();
+				return true;
+			}
+		};
+
+		/// <summary>Group: one to many map container.</summary>
+		/// <typeparam name="KT">Type of keys.</typeparam>
+		/// <typeparam name="VT">Type of values.</typeparam>
+		/// <typeparam name="KK">Type of the key type of keys. It is recommended to use the default value.</typeparam>
+		/// <typeparam name="VK">Type of the key type of values. It is recommended to use the default value.</typeparam>
+		template<
+			typename KT,
+			typename VT,
+			typename KK=typename KeyType<KT>::Type,
+			typename VK=typename KeyType<VT>::Type
+		>
+		class Group : public Object, public virtual IEnumerable<Pair<KT, VT>>
+		{
+		public:
+			typedef SortedList<KT, KK>		KeyContainer;
+			typedef List<VT, VK>			ValueContainer;
+		protected:
+			class Enumerator : public Object, public virtual IEnumerator<Pair<KT, VT>>
+			{
+			private:
+				const Group<KT, VT, KK, VK>*		container;
+				vint								keyIndex;
+				vint								valueIndex;
+				Pair<KT, VT>						current;
+
+				void UpdateCurrent()
+				{
+					if(keyIndex<container->Count())
+					{
+						const ValueContainer& values=container->GetByIndex(keyIndex);
+						if(valueIndex<values.Count())
+						{
+							current.key=container->Keys().Get(keyIndex);
+							current.value=values.Get(valueIndex);
+						}
+					}
+				}
+			public:
+				Enumerator(const Group<KT, VT, KK, VK>* _container, vint _keyIndex=-1, vint _valueIndex=-1)
+				{
+					container=_container;
+					keyIndex=_keyIndex;
+					valueIndex=_valueIndex;
+				}
+				
+				IEnumerator<Pair<KT, VT>>* Clone()const override
+				{
+					return new Enumerator(container, keyIndex, valueIndex);
+				}
+
+				const Pair<KT, VT>& Current()const override
+				{
+					return current;
+				}
+
+				vint Index()const override
+				{
+					if(0<=keyIndex && keyIndex<container->Count())
+					{
+						vint index=0;
+						for(vint i=0;i<keyIndex;i++)
+						{
+							index+=container->GetByIndex(i).Count();
+						}
+						return index+valueIndex;
+					}
+					else
+					{
+						return -1;
+					}
+				}
+
+				bool Next() override
+				{
+					if(keyIndex==-1)
+					{
+						keyIndex=0;
+					}
+					while(keyIndex<container->Count())
+					{
+						valueIndex++;
+						const ValueContainer& values=container->GetByIndex(keyIndex);
+						if(valueIndex<values.Count())
+						{
+							UpdateCurrent();
+							return true;
+						}
+						else
+						{
+							keyIndex++;
+							valueIndex=-1;
+						}
+					}
+					return false;
+				}
+
+				void Reset() override
+				{
+					keyIndex=-1;
+					valueIndex=-1;
+					UpdateCurrent();
+				}
+
+				bool Evaluated()const override
+				{
+					return true;
+				}
+			};
+
+			KeyContainer					keys;
+			List<ValueContainer*>			values;
+		public:
+			/// <summary>Create an empty group.</summary>
+			Group() = default;
+
+			~Group()
+			{
+				Clear();
+			}
+
+			IEnumerator<Pair<KT, VT>>* CreateEnumerator()const
+			{
+				return new Enumerator(this);
+			}
+			
+			/// <summary>Get all keys.</summary>
+			/// <returns>All keys.</returns>
+			const KeyContainer& Keys()const
+			{
+				return keys;
+			}
+			
+			/// <summary>Get the number of keys.</summary>
+			/// <returns>The number of keys.</returns>
+			vint Count()const
+			{
+				return keys.Count();
+			}
+			
+			/// <summary>Get all values associated to a specified key.</summary>
+			/// <returns>All associated values. It will crash if the key does not exist.</returns>
+			/// <param name="key">The key to find.</param>
+			const ValueContainer& Get(const KK& key)const
+			{
+				return *values.Get(keys.IndexOf(key));
+			}
+			
+			/// <summary>Get all values associated to a key at a specified index in <see cref="Keys"/>.</summary>
+			/// <returns>All associaged values. It will crash if the index is out of range.</returns>
+			/// <param name="index">The position of the key.</param>
+			const ValueContainer& GetByIndex(vint index)const
+			{
+				return *values.Get(index);
+			}
+
+			/// <summary>Get all values associated to a specified key.</summary>
+			/// <returns>All associated values. It will crash if the key does not exist.</returns>
+			/// <param name="key">The key to find.</param>
+			const ValueContainer& operator[](const KK& key)const
+			{
+				return *values.Get(keys.IndexOf(key));
+			}
+
+			/// <summary>Test if there is any value associated to a specified key or not.</summary>
+			/// <returns>Returns true there is at least one value associated to this key.</returns>
+			/// <param name="key">The key to find.</param>
+			bool Contains(const KK& key)const
+			{
+				return keys.Contains(key);
+			}
+			
+			/// <summary>Test if a value is associated to a specified key or not.</summary>
+			/// <returns>Returns true if the specified value is associated to the specified key.</returns>
+			/// <param name="key">The key to find.</param>
+			/// <param name="value">The value to find.</param>
+			bool Contains(const KK& key, const VK& value)const
+			{
+				vint index=keys.IndexOf(key);
+				if(index!=-1)
+				{
+					return values.Get(index)->Contains(value);
+				}
+				else
+				{
+					return false;
+				}
+			}
+			
+			/// <summary>
+			/// Add a key with an associated value.
+			/// If the key already exists, the value will be associated to the key with other values.
+			/// If this value has already been associated to the key, it will still be duplicated.
+			/// </summary>
+			/// <returns>Returns true if the pair is added.</returns>
+			/// <param name="value">The pair of key and value to add.</param>
+			bool Add(const Pair<KT, VT>& value)
+			{
+				return Add(value.key, value.value);
+			}
+
+			/// <summary>
+			/// Add a key with an associated value.
+			/// If the key already exists, the value will be associated to the key with other values.
+			/// If this value has already been associated to the key, it will still be duplicated.
+			/// </summary>
+			/// <returns>Returns true if the key and the value are added.</returns>
+			/// <param name="key">The key to add.</param>
+			/// <param name="value">The value to add.</param>
+			bool Add(const KT& key, const VT& value)
+			{
+				ValueContainer* target=0;
+				vint index=keys.IndexOf(KeyType<KT>::GetKeyValue(key));
+				if(index==-1)
+				{
+					target=new ValueContainer;
+					values.Insert(keys.Add(key), target);
+				}
+				else
+				{
+					target=values[index];
+				}
+				target->Add(value);
+				return true;
+			}
+			
+			/// <summary>Remove a key with all associated values.</summary>
+			/// <returns>Returns true if the key and all associated values are removed.</returns>
+			/// <param name="key">The key to find.</param>
+			bool Remove(const KK& key)
+			{
+				vint index=keys.IndexOf(key);
+				if(index!=-1)
+				{
+					keys.RemoveAt(index);
+					List<VT, VK>* target=values[index];
+					values.RemoveAt(index);
+					delete target;
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			
+			/// <summary>Remove a value associated to a specified key.</summary>
+			/// <returns>
+			/// Returns true if the value is removed.
+			/// If this value is associated to the key for jultiple times, only the first one will be removed.
+			/// If this value is associated to the key for jultiple times, only the first one will be removed.
+			/// </returns>
+			/// <param name="key">The key to find.</param>
+			/// <param name="value">The value to remove.</param>
+			bool Remove(const KK& key, const VK& value)
+			{
+				vint index=keys.IndexOf(key);
+				if(index!=-1)
+				{
+					List<VT, VK>* target=values[index];
+					target->Remove(value);
+					if(target->Count()==0)
+					{
+						keys.RemoveAt(index);
+						values.RemoveAt(index);
+						delete target;
+					}
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			
+			/// <summary>Remove everything.</summary>
+			/// <returns>Returns true if all keys and values are removed.</returns>
+			bool Clear()
+			{
+				for(vint i=0;i<values.Count();i++)
+				{
+					delete values[i];
+				}
+				keys.Clear();
+				values.Clear();
+				return true;
+			}
+		};
+
+/***********************************************************************
+GroupInnerJoin
+***********************************************************************/
+
+		/// <summary>Perform inner join on two groups.</summary>
+		/// <typeparam name="TKey">The type of keys in two groups.</typeparam>
+		/// <typeparam name="TValueFirst">The type of values in the first group.</typeparam>
+		/// <typeparam name="TValueSecond">The type of values in the second group.</typeparam>
+		/// <typeparam name="TDiscardFirst">The type of the first callback.</typeparam>
+		/// <typeparam name="TDiscardSecond">The type of the second callback.</typeparam>
+		/// <typeparam name="TAccept">The type of the third callback.</typeparam>
+		/// <param name="first">The first group.</param>
+		/// <param name="second">The second group.</param>
+		/// <param name="discardFirst">
+		/// Callback that is called when a value in the first group is discarded.
+		/// This happens for values associated to a key in the first group, that no value is assocated to the same key in the second group.
+		/// The first argument is the key, the second argument is the discarded value in the first group.
+		/// </param>
+		/// <param name="discardSecond">
+		/// Callback that is called when a value in the second group is discarded.
+		/// This happens for values associated to a key in the second group, that no value is assocated to the same key in the first group.
+		/// The first argument is the key, the second argument is the discarded value in the first group.
+		/// </param>
+		/// <param name="accept">
+		/// Callback that is called when a match of values in both groups are found.
+		/// This happens for any key that, values are associated to this key in both group.
+		/// If multiple values are associated to this key in both group, cartesian product applies on values.
+		/// The first argument is the key, the second argument is the associated value in the first group, the third argument is the associated value in the second group.
+		/// </param>
+		/// <remarks>
+		/// This function does not change data in provided groups.
+		/// </remarks>
+		/// <example><![CDATA[
+		/// int main()
+		/// {
+		///     Group<vint, WString> as, bs;
+		///     as.Add(1 ,L"A"); as.Add(1 ,L"B"); as.Add(2 ,L"C"); as.Add(2 ,L"D");
+		///     bs.Add(1 ,L"X"); bs.Add(1 ,L"Y"); as.Add(3 ,L"Z"); as.Add(3 ,L"W");
+		///     GroupInnerJoin(
+		///         as,
+		///         bs,
+		///         [](vint key, const WString& value) { Console::WriteLine(L"Discarded in as: " + itow(key) + L", " + value); },
+		///         [](vint key, const WString& value) { Console::WriteLine(L"Discarded in bs: " + itow(key) + L", " + value); },
+		///         [](vint key, const WString& value1, const WString& value 2) { Console::WriteLine(L"Accepted: " + itow(key) + L", " + value1 + L", " + value2); }
+		///         );
+		/// }
+		/// ]]></example>
+		template<
+			typename TKey,
+			typename TValueFirst,
+			typename TValueSecond,
+			typename TDiscardFirst,		// TKey * [TValueFirst] -> void
+			typename TDiscardSecond,	// TKey * [TValueSecond] -> void
+			typename TAccept			// TKey * [TValueFirst] * [TValueSecond] -> void
+		>
+		void GroupInnerJoin(
+			const Group<TKey, TValueFirst>& first,
+			const Group<TKey, TValueSecond>& second,
+			const TDiscardFirst& discardFirst,
+			const TDiscardSecond& discardSecond,
+			const TAccept& accept
+			)
+		{
+			vint firstIndex = 0;
+			vint secondIndex = 0;
+			vint firstCount = first.Keys().Count();
+			vint secondCount = second.Keys().Count();
+			while (true)
+			{
+				if (firstIndex < firstCount)
+				{
+					auto firstKey = first.Keys()[firstIndex];
+					const List<TValueFirst>& firstValues = first.GetByIndex(firstIndex);
+
+					if (secondIndex < secondCount)
+					{
+						auto secondKey = second.Keys()[secondIndex];
+						const List<TValueSecond>& secondValues = second.GetByIndex(secondIndex);
+
+						if (firstKey < secondKey)
+						{
+							discardFirst(firstKey, firstValues);
+							firstIndex++;
+						}
+						else if (firstKey > secondKey)
+						{
+							discardSecond(secondKey, secondValues);
+							secondIndex++;
+						}
+						else
+						{
+							accept(firstKey, firstValues, secondValues);
+							firstIndex++;
+							secondIndex++;
+						}
+					}
+					else
+					{
+						discardFirst(firstKey, firstValues);
+						firstIndex++;
+					}
+				}
+				else
+				{
+					if (secondIndex < secondCount)
+					{
+						auto secondKey = second.Keys()[secondIndex];
+						const List<TValueSecond>& secondValues = second.GetByIndex(secondIndex);
+
+						discardSecond(secondKey, secondValues);
+						secondIndex++;
+					}
+					else
+					{
+						break;
+					}
+				}
+			}
+		}
+
+/***********************************************************************
+Random Access
+***********************************************************************/
+		namespace randomaccess_internal
+		{
+			template<typename KT, typename VT, typename KK, typename VK>
+			struct RandomAccessable<Dictionary<KT, VT, KK, VK>>
+			{
+				static const bool							CanRead = true;
+				static const bool							CanResize = false;
+			};
+		
+			template<typename KT, typename VT, typename KK, typename VK>
+			struct RandomAccess<Dictionary<KT, VT, KK, VK>>
+			{
+				static vint GetCount(const Dictionary<KT, VT, KK, VK>& t)
+				{
+					return t.Count();
+				}
+
+				static Pair<KT, VT> GetValue(const Dictionary<KT, VT, KK, VK>& t, vint index)
+				{
+					return Pair<KT, VT>(t.Keys().Get(index), t.Values().Get(index));
+				}
+
+				static void AppendValue(Dictionary<KT, VT, KK, VK>& t, const Pair<KT, VT>& value)
+				{
+					t.Set(value.key, value.value);
+				}
+			};
+		}
+	}
+}
+
+#endif
+
+/***********************************************************************
 .\COLLECTIONS\OPERATIONCOPYFROM.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_COLLECTIONS_OPERATIONCOPYFROM
@@ -3840,42 +5241,42 @@ Copy Functions for Containers
 		}
 
 		/// <summary>Copy containers.</summary>
-		/// <typeparam name="Ds">Type of the destination container.</typeparam>
+		/// <typeparam name="Ds">Type of the target container.</typeparam>
 		/// <typeparam name="Ss">Type of the source container.</typeparam>
-		/// <param name="ds">The destination container.</param>
+		/// <param name="ds">The target container.</param>
 		/// <param name="ss">The source container.</param>
-		/// <param name="append">Set to false to delete everything in the destination container before copying.</param>
+		/// <param name="append">Set to true to perform appending instead of replacing.</param>
 		template<typename Ds, typename Ss>
-		void CopyFrom(Ds& ds, const Ss& ss, bool append=false)
+		void CopyFrom(Ds& ds, const Ss& ss, bool append = false)
 		{
 			copyfrom_internal::CopyFromAlgorithm<Ds, Ss, randomaccess_internal::RandomAccessable<Ds>::CanResize, randomaccess_internal::RandomAccessable<Ss>::CanRead>::Perform(ds, ss, append);
 		}
 		
 		/// <summary>Copy containers.</summary>
-		/// <typeparam name="Ds">Type of the destination container.</typeparam>
-		/// <typeparam name="S">Type of the elements in the source container.</typeparam>
-		/// <param name="ds">The destination container.</param>
-		/// <param name="buffer">Pointer to the source array.</param>
-		/// <param name="count">The number of elements to copy.</param>
-		/// <param name="append">Set to false to delete everything in the destination container before copying.</param>
+		/// <typeparam name="Ds">Type of the target container.</typeparam>
+		/// <typeparam name="S">Type of values in the source container.</typeparam>
+		/// <param name="ds">The target container.</param>
+		/// <param name="buffer">Pointer to source values.</param>
+		/// <param name="count">The number of values to copy.</param>
+		/// <param name="append">Set to true to perform appending instead of replacing.</param>
 		template<typename Ds, typename S>
-		void CopyFrom(Ds& ds, const S* buffer, vint count, bool append=false)
+		void CopyFrom(Ds& ds, const S* buffer, vint count, bool append = false)
 		{
-			copyfrom_internal::Slice<S> slice={buffer, count};
+			copyfrom_internal::Slice<S> slice = { buffer, count };
 			CopyFrom(ds, slice, append);
 		}
-		
+
 		/// <summary>Copy containers.</summary>
-		/// <typeparam name="Ds">Type of the destination container.</typeparam>
-		/// <typeparam name="S">Type of the elements in the source container.</typeparam>
-		/// <param name="ds">The destination container.</param>
-		/// <param name="begin">Pointer to the first element in the source array.</param>
-		/// <param name="end">Pointer to the element after the last element in the source array.</param>
-		/// <param name="append">Set to false to delete everything in the destination container before copying.</param>
+		/// <typeparam name="Ds">Type of the target container.</typeparam>
+		/// <typeparam name="S">Type of values in the source container.</typeparam>
+		/// <param name="ds">The target container.</param>
+		/// <param name="begin">Pointer to the first source value.</param>
+		/// <param name="end">Pointer to the value after the last source value.</param>
+		/// <param name="append">Set to true to perform appending instead of replacing.</param>
 		template<typename Ds, typename S>
-		void CopyFrom(Ds& ds, const S* begin, const S* end, bool append=false)
+		void CopyFrom(Ds& ds, const S* begin, const S* end, bool append = false)
 		{
-			copyfrom_internal::Slice<S> slice={begin, end-begin};
+			copyfrom_internal::Slice<S> slice = { begin, end - begin };
 			CopyFrom(ds, slice, append);
 		}
 	}
@@ -3887,10 +5288,8 @@ Copy Functions for Containers
 .\COLLECTIONS\OPERATIONENUMERABLE.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_COLLECTIONS_OPERATIONENUMERABLE
@@ -4067,26 +5466,43 @@ ContainerEnumerator
 CompareEnumerable
 ***********************************************************************/
 
+		/// <summary>Compare two enumerables.</summary>
+		/// <typeparam name="T">Type of elements in the first enumerable.</typeparam>
+		/// <typeparam name="U">Type of elements in the second enumerable.</typeparam>
+		/// <returns>
+		/// Returns a positive value when the first enumerable is greater than the second enumerable.
+		/// Returns a negative value when the first enumerable is lesser than the second enumerable.
+		/// Returns zero when the two enumerables equal.
+		/// </returns>
+		/// <param name="a">The first enumerable to compare.</param>
+		/// <param name="b">The second enumerable to compare.</param>
+		/// <remarks>
+		/// The comparison result is similar to comparing two strings.
+		/// When an enumerable contains no value but another one does, the empty one is lesser.
+		/// When an enumerable is the prefix of another one, the prefix is lesser.
+		/// When two enumerable contain the same values in the same order, they equals.
+		/// In other cases, the results represents the comparison result of the first pair of inequal values in enumerables.
+		/// </remarks>
 		template<typename T, typename U>
 		vint CompareEnumerable(const IEnumerable<T>& a, const IEnumerable<U>& b)
 		{
-			Ptr<IEnumerator<T>> ator=a.CreateEnumerator();
-			Ptr<IEnumerator<U>> btor=b.CreateEnumerator();
-			while(true)
+			Ptr<IEnumerator<T>> ator = a.CreateEnumerator();
+			Ptr<IEnumerator<U>> btor = b.CreateEnumerator();
+			while (true)
 			{
-				bool a=ator->Next();
-				bool b=btor->Next();
-				if(a&&!b) return 1;
-				if(!a&&b) return -1;
-				if(!a&&!b) break;
+				bool a = ator->Next();
+				bool b = btor->Next();
+				if (a && !b) return 1;
+				if (!a&&b) return -1;
+				if (!a && !b) break;
 
-				const T& ac=ator->Current();
-				const U& bc=btor->Current();
-				if(ac<bc)
+				const T& ac = ator->Current();
+				const U& bc = btor->Current();
+				if (ac < bc)
 				{
 					return -1;
 				}
-				else if(ac>bc)
+				else if (ac > bc)
 				{
 					return 1;
 				}
@@ -4118,176 +5534,11 @@ CompareEnumerable
 
 
 /***********************************************************************
-.\COLLECTIONS\OPERATIONSELECT.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
-***********************************************************************/
-
-#ifndef VCZH_COLLECTIONS_OPERATIONSELECT
-#define VCZH_COLLECTIONS_OPERATIONSELECT
-
-
-namespace vl
-{
-	namespace collections
-	{
-
-/***********************************************************************
-Select
-***********************************************************************/
-
-		template<typename T, typename K>
-		class SelectEnumerator : public virtual IEnumerator<K>
-		{
-		protected:
-			IEnumerator<T>*		enumerator;
-			Func<K(T)>			selector;
-			K					current;
-		public:
-			SelectEnumerator(IEnumerator<T>* _enumerator, const Func<K(T)>& _selector, K _current=K())
-				:enumerator(_enumerator)
-				,selector(_selector)
-				,current(_current)
-			{
-			}
-
-			~SelectEnumerator()
-			{
-				delete enumerator;
-			}
-
-			IEnumerator<K>* Clone()const override
-			{
-				return new SelectEnumerator(enumerator->Clone(), selector, current);
-			}
-
-			const K& Current()const override
-			{
-				return current;
-			}
-
-			vint Index()const override
-			{
-				return enumerator->Index();
-			}
-
-			bool Next()override
-			{
-				if(enumerator->Next())
-				{
-					current=selector(enumerator->Current());
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-
-			void Reset()override
-			{
-				enumerator->Reset();
-			}
-		};
-	}
-}
-
-#endif
-
-/***********************************************************************
-.\COLLECTIONS\OPERATIONWHERE.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
-***********************************************************************/
-
-#ifndef VCZH_COLLECTIONS_OPERATIONWHERE
-#define VCZH_COLLECTIONS_OPERATIONWHERE
-
-
-namespace vl
-{
-	namespace collections
-	{
-/***********************************************************************
-Where
-***********************************************************************/
-
-		template<typename T>
-		class WhereEnumerator : public virtual IEnumerator<T>
-		{
-		protected:
-			IEnumerator<T>*			enumerator;
-			Func<bool(T)>			selector;
-			vint					index;
-
-		public:
-			WhereEnumerator(IEnumerator<T>* _enumerator, const Func<bool(T)>& _selector, vint _index=-1)
-				:enumerator(_enumerator)
-				,selector(_selector)
-				,index(_index)
-			{
-			}
-
-			~WhereEnumerator()
-			{
-				delete enumerator;
-			}
-
-			IEnumerator<T>* Clone()const override
-			{
-				return new WhereEnumerator(enumerator->Clone(), selector, index);
-			}
-
-			const T& Current()const override
-			{
-				return enumerator->Current();
-			}
-
-			vint Index()const override
-			{
-				return index;
-			}
-
-			bool Next()override
-			{
-				while(enumerator->Next())
-				{
-					if(selector(enumerator->Current()))
-					{
-						index++;
-						return true;
-					}
-				}
-				return false;
-			}
-
-			void Reset()override
-			{
-				enumerator->Reset();
-				index=-1;
-			}
-		};
-	}
-}
-
-#endif
-
-/***********************************************************************
 .\COLLECTIONS\OPERATIONCONCAT.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_COLLECTIONS_OPERATIONCONCAT
@@ -4388,13 +5639,265 @@ Concat
 #endif
 
 /***********************************************************************
+.\COLLECTIONS\OPERATIONFOREACH.H
+***********************************************************************/
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+#ifndef VCZH_COLLECTIONS_FOREACH
+#define VCZH_COLLECTIONS_FOREACH
+
+namespace vl
+{
+	namespace collections
+	{
+
+/***********************************************************************
+ForEachIterator
+***********************************************************************/
+
+		template<typename T>
+		class ForEachIterator : public Object
+		{
+		public:
+			virtual bool				Next(T& variable)const=0;
+
+			operator bool()const
+			{
+				return true;
+			}
+		};
+
+/***********************************************************************
+ForEachIterator for IEnumerable
+***********************************************************************/
+
+		template<typename T>
+		class EnumerableForEachIterator : public ForEachIterator<T>
+		{
+		protected:
+			Ptr<IEnumerator<T>>			enumerator;
+		public:
+			EnumerableForEachIterator(const IEnumerable<T>& enumerable)
+				:enumerator(enumerable.CreateEnumerator())
+			{
+			}
+
+			EnumerableForEachIterator(const EnumerableForEachIterator<T>& enumerableIterator)
+				:enumerator(enumerableIterator.enumerator)
+			{
+			}
+
+			bool Next(T& variable)const
+			{
+				if(enumerator->Next())
+				{
+					variable=enumerator->Current();
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		};
+
+		template<typename T>
+		EnumerableForEachIterator<T> CreateForEachIterator(const IEnumerable<T>& enumerable)
+		{
+			return enumerable;
+		}
+
+/***********************************************************************
+FOREACH and FOREACH_INDEXER
+***********************************************************************/
+
+#define FOREACH(TYPE, VARIABLE, COLLECTION)\
+		SCOPE_VARIABLE(const ::vl::collections::ForEachIterator<TYPE>&, __foreach_iterator__, ::vl::collections::CreateForEachIterator(COLLECTION))\
+		for(TYPE VARIABLE;__foreach_iterator__.Next(VARIABLE);)
+
+#define FOREACH_INDEXER(TYPE, VARIABLE, INDEXER, COLLECTION)\
+		SCOPE_VARIABLE(const ::vl::collections::ForEachIterator<TYPE>&, __foreach_iterator__, ::vl::collections::CreateForEachIterator(COLLECTION))\
+		SCOPE_VARIABLE(vint, INDEXER, 0)\
+		for(TYPE VARIABLE;__foreach_iterator__.Next(VARIABLE);INDEXER++)
+	}
+}
+
+#endif
+
+/***********************************************************************
+.\COLLECTIONS\OPERATIONPAIR.H
+***********************************************************************/
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+#ifndef VCZH_COLLECTIONS_OPERATIONPAIR
+#define VCZH_COLLECTIONS_OPERATIONPAIR
+
+
+namespace vl
+{
+	namespace collections
+	{
+
+/***********************************************************************
+Pairwise
+***********************************************************************/
+
+		template<typename S, typename T>
+		class PairwiseEnumerator : public virtual IEnumerator<Pair<S, T>>
+		{
+		protected:
+			IEnumerator<S>*					enumerator1;
+			IEnumerator<T>*					enumerator2;
+			Pair<S, T>						current;
+		public:
+			PairwiseEnumerator(IEnumerator<S>* _enumerator1, IEnumerator<T>* _enumerator2, Pair<S, T> _current=Pair<S, T>())
+				:enumerator1(_enumerator1)
+				,enumerator2(_enumerator2)
+				,current(_current)
+			{
+			}
+
+			~PairwiseEnumerator()
+			{
+				delete enumerator1;
+				delete enumerator2;
+			}
+
+			IEnumerator<Pair<S, T>>* Clone()const override
+			{
+				return new PairwiseEnumerator(enumerator1->Clone(), enumerator2->Clone(), current);
+			}
+
+			const Pair<S, T>& Current()const override
+			{
+				return current;
+			}
+
+			vint Index()const override
+			{
+				return enumerator1->Index();
+			}
+
+			bool Next()override
+			{
+				if(enumerator1->Next() && enumerator2->Next())
+				{
+					current=Pair<S, T>(enumerator1->Current(), enumerator2->Current());
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+
+			void Reset()override
+			{
+				enumerator1->Reset();
+				enumerator2->Reset();
+			}
+
+			bool Evaluated()const override
+			{
+				return enumerator1->Evaluated() && enumerator2->Evaluated();
+			}
+		};
+	}
+}
+
+#endif
+
+/***********************************************************************
+.\COLLECTIONS\OPERATIONSELECT.H
+***********************************************************************/
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+#ifndef VCZH_COLLECTIONS_OPERATIONSELECT
+#define VCZH_COLLECTIONS_OPERATIONSELECT
+
+
+namespace vl
+{
+	namespace collections
+	{
+
+/***********************************************************************
+Select
+***********************************************************************/
+
+		template<typename T, typename K>
+		class SelectEnumerator : public virtual IEnumerator<K>
+		{
+		protected:
+			IEnumerator<T>*		enumerator;
+			Func<K(T)>			selector;
+			K					current;
+		public:
+			SelectEnumerator(IEnumerator<T>* _enumerator, const Func<K(T)>& _selector, K _current=K())
+				:enumerator(_enumerator)
+				,selector(_selector)
+				,current(_current)
+			{
+			}
+
+			~SelectEnumerator()
+			{
+				delete enumerator;
+			}
+
+			IEnumerator<K>* Clone()const override
+			{
+				return new SelectEnumerator(enumerator->Clone(), selector, current);
+			}
+
+			const K& Current()const override
+			{
+				return current;
+			}
+
+			vint Index()const override
+			{
+				return enumerator->Index();
+			}
+
+			bool Next()override
+			{
+				if(enumerator->Next())
+				{
+					current=selector(enumerator->Current());
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+
+			void Reset()override
+			{
+				enumerator->Reset();
+			}
+		};
+	}
+}
+
+#endif
+
+/***********************************************************************
 .\COLLECTIONS\OPERATIONSEQUENCE.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_COLLECTIONS_OPERATIONSEQUENCE
@@ -4829,10 +6332,8 @@ FromIterator
 .\COLLECTIONS\OPERATIONSET.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_COLLECTIONS_OPERATIONSET
@@ -4916,101 +6417,11 @@ Intersect/Except
 #endif
 
 /***********************************************************************
-.\COLLECTIONS\OPERATIONPAIR.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
-***********************************************************************/
-
-#ifndef VCZH_COLLECTIONS_OPERATIONPAIR
-#define VCZH_COLLECTIONS_OPERATIONPAIR
-
-
-namespace vl
-{
-	namespace collections
-	{
-
-/***********************************************************************
-Pairwise
-***********************************************************************/
-
-		template<typename S, typename T>
-		class PairwiseEnumerator : public virtual IEnumerator<Pair<S, T>>
-		{
-		protected:
-			IEnumerator<S>*					enumerator1;
-			IEnumerator<T>*					enumerator2;
-			Pair<S, T>						current;
-		public:
-			PairwiseEnumerator(IEnumerator<S>* _enumerator1, IEnumerator<T>* _enumerator2, Pair<S, T> _current=Pair<S, T>())
-				:enumerator1(_enumerator1)
-				,enumerator2(_enumerator2)
-				,current(_current)
-			{
-			}
-
-			~PairwiseEnumerator()
-			{
-				delete enumerator1;
-				delete enumerator2;
-			}
-
-			IEnumerator<Pair<S, T>>* Clone()const override
-			{
-				return new PairwiseEnumerator(enumerator1->Clone(), enumerator2->Clone(), current);
-			}
-
-			const Pair<S, T>& Current()const override
-			{
-				return current;
-			}
-
-			vint Index()const override
-			{
-				return enumerator1->Index();
-			}
-
-			bool Next()override
-			{
-				if(enumerator1->Next() && enumerator2->Next())
-				{
-					current=Pair<S, T>(enumerator1->Current(), enumerator2->Current());
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-
-			void Reset()override
-			{
-				enumerator1->Reset();
-				enumerator2->Reset();
-			}
-
-			bool Evaluated()const override
-			{
-				return enumerator1->Evaluated() && enumerator2->Evaluated();
-			}
-		};
-	}
-}
-
-#endif
-
-/***********************************************************************
 .\COLLECTIONS\OPERATIONSTRING.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_COLLECTIONS_OPERATIONSTRING
@@ -5021,26 +6432,38 @@ namespace vl
 {
 	namespace collections
 	{
+		/// <summary>Copy containers.</summary>
+		/// <typeparam name="Ds">Type of the target container.</typeparam>
+		/// <typeparam name="S">Type of code points in the source string.</typeparam>
+		/// <param name="ds">The target container.</param>
+		/// <param name="ss">The source string.</param>
+		/// <param name="append">Set to true to perform appending instead of replacing.</param>
 		template<typename Ds, typename S>
-		void CopyFrom(Ds& ds, const ObjectString<S>& ss, bool append=false)
+		void CopyFrom(Ds& ds, const ObjectString<S>& ss, bool append = false)
 		{
-			const S* buffer=ss.Buffer();
-			vint count=ss.Length();
+			const S* buffer = ss.Buffer();
+			vint count = ss.Length();
 			CopyFrom(ds, buffer, count, append);
 		}
 
+		/// <summary>Copy containers.</summary>
+		/// <typeparam name="D">Type of code points in the target string.</typeparam>
+		/// <typeparam name="Ss">Type of the source container.</typeparam>
+		/// <param name="ds">The target string.</param>
+		/// <param name="ss">The source container.</param>
+		/// <param name="append">Set to true to perform appending instead of replacing.</param>
 		template<typename D, typename Ss>
-		void CopyFrom(ObjectString<D>& ds, const Ss& ss, bool append=false)
+		void CopyFrom(ObjectString<D>& ds, const Ss& ss, bool append = false)
 		{
 			Array<D> da(ds.Buffer(), ds.Length());
 			CopyFrom(da, ss, append);
-			if(da.Count()==0)
+			if (da.Count() == 0)
 			{
-				ds=ObjectString<D>();
+				ds = ObjectString<D>();
 			}
 			else
 			{
-				ds=ObjectString<D>(&da[0], da.Count());
+				ds = ObjectString<D>(&da[0], da.Count());
 			}
 		}
 	}
@@ -5049,21 +6472,142 @@ namespace vl
 #endif
 
 /***********************************************************************
-.\COLLECTIONS\OPERATIONFOREACH.H
+.\COLLECTIONS\OPERATIONWHERE.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
-In order to let a container support FOREACH and FOREACH_INDEXER��
-	Implement a global function overloading: IteratorType vl::collections::CreateForEachIterator(const CollectionType& collection);
-	CollectionType is the container type
-	IteratorType should inherit from ForEachIterator<T>
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
-#ifndef VCZH_COLLECTIONS_FOREACH
-#define VCZH_COLLECTIONS_FOREACH
+#ifndef VCZH_COLLECTIONS_OPERATIONWHERE
+#define VCZH_COLLECTIONS_OPERATIONWHERE
+
+
+namespace vl
+{
+	namespace collections
+	{
+/***********************************************************************
+Where
+***********************************************************************/
+
+		template<typename T>
+		class WhereEnumerator : public virtual IEnumerator<T>
+		{
+		protected:
+			IEnumerator<T>*			enumerator;
+			Func<bool(T)>			selector;
+			vint					index;
+
+		public:
+			WhereEnumerator(IEnumerator<T>* _enumerator, const Func<bool(T)>& _selector, vint _index=-1)
+				:enumerator(_enumerator)
+				,selector(_selector)
+				,index(_index)
+			{
+			}
+
+			~WhereEnumerator()
+			{
+				delete enumerator;
+			}
+
+			IEnumerator<T>* Clone()const override
+			{
+				return new WhereEnumerator(enumerator->Clone(), selector, index);
+			}
+
+			const T& Current()const override
+			{
+				return enumerator->Current();
+			}
+
+			vint Index()const override
+			{
+				return index;
+			}
+
+			bool Next()override
+			{
+				while(enumerator->Next())
+				{
+					if(selector(enumerator->Current()))
+					{
+						index++;
+						return true;
+					}
+				}
+				return false;
+			}
+
+			void Reset()override
+			{
+				enumerator->Reset();
+				index=-1;
+			}
+		};
+	}
+}
+
+#endif
+
+/***********************************************************************
+.\COLLECTIONS\OPERATION.H
+***********************************************************************/
+/***********************************************************************
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
+
+Functions:
+	CopyFrom(TargetContainer, SourceContainer)
+	[T]			.Select(T->K) => [K]
+	[T]			.Where(T->bool) => [T]
+	[Ptr<T>]	.Cast<K>() => [Ptr<K>]
+	[Ptr<T>]	.FindType<K>() => [Ptr<K>]
+	[T]			.OrderBy(T->T->int) => [T]
+
+	[T]			.Aggregate(T->T->T) => T
+	[T]			.Aggregate(T->T->T, T) => T
+	[T]			.All(T->bool) => bool
+	[T]			.Any(T->bool) => bool
+	[T]			.Max() => T
+	[T]			.Min() => T
+	[T]			.First() => T
+	[T]			.FirstOrDefault(T) => T
+	[T]			.Last() => T
+	[T]			.LastOrDefault(T) => T
+	[T]			.Count() => vint
+	[T]			.IsEmpty() => bool
+
+	[T]			.Concat([T]) => [T]				(evaluated)
+	[T]			.Take(vint) => [T]				(evaluated)
+	[T]			.Skip(vint) => [T]				(evaluated)
+	[T]			.Repeat(vint) => [T]			(evaluated)
+	[T]			.Distinct() => [T]
+	[T]			.Reverse() => [T]				(evaluated)
+
+	[T]			.Pairwise([K]) => [(T,K)]		(evaluated)
+	[T]			.Intersect([T]) => [T]
+	[T]			.Except([T]) => [T]
+	[T]			.Union([T]) => [T]
+
+	[T]			.Evaluate() => [T]
+	[T]			.SelectMany(T->[K]) => [K]
+	[T]			.GroupBy(T->K) => [(K, [T])]
+
+	(evaluated) means the lazy list is evaluated when all sources are evaluated
+
+	From(begin, end) => [T]
+	From(array) => [T]
+	Range(start, count) => [vint]
+
+	FOREACH(X, a, XList)
+	FOREACH_INDEXER(X, a, index, XList)
+***********************************************************************/
+
+#ifndef VCZH_COLLECTIONS_OPERATION
+#define VCZH_COLLECTIONS_OPERATION
+
 
 namespace vl
 {
@@ -5071,875 +6615,899 @@ namespace vl
 	{
 
 /***********************************************************************
-ForEachIterator
+Quick Sort
 ***********************************************************************/
 
-		template<typename T>
-		class ForEachIterator : public Object
+		/// <summary>Quick sort.</summary>
+		/// <typeparam name="T">Type of elements.</typeparam>
+		/// <typeparam name="F">Type of the comparer.</typeparam>
+		/// <param name="items">Pointer to element array to sort.</param>
+		/// <param name="length">The number of elements to sort.</param>
+		/// <param name="orderer">
+		/// The comparar for two elements.
+		/// Both arguments are elements to compare.
+		/// Returns a positive number when the first argument is greater.
+		/// Returns a negative number when the second argument is greater.
+		/// Returns zero when two arguments equal.
+		/// </param>
+		template<typename T, typename F>
+		void SortLambda(T* items, vint length, F orderer)
 		{
-		public:
-			virtual bool				Next(T& variable)const=0;
+			if (length == 0) return;
+			vint pivot = 0;
+			vint left = 0;
+			vint right = 0;
+			bool flag = false;
 
-			operator bool()const
+			while (left + right + 1 != length)
 			{
-				return true;
-			}
-		};
+				vint& mine = (flag ? left : right);
+				vint& theirs = (flag ? right : left);
+				vint candidate = (flag ? left : length - right - 1);
+				vint factor = (flag ? -1 : 1);
 
-/***********************************************************************
-ForEachIterator for IEnumerable
-***********************************************************************/
-
-		template<typename T>
-		class EnumerableForEachIterator : public ForEachIterator<T>
-		{
-		protected:
-			Ptr<IEnumerator<T>>			enumerator;
-		public:
-			EnumerableForEachIterator(const IEnumerable<T>& enumerable)
-				:enumerator(enumerable.CreateEnumerator())
-			{
-			}
-
-			EnumerableForEachIterator(const EnumerableForEachIterator<T>& enumerableIterator)
-				:enumerator(enumerableIterator.enumerator)
-			{
-			}
-
-			bool Next(T& variable)const
-			{
-				if(enumerator->Next())
+				if (orderer(items[pivot], items[candidate])*factor <= 0)
 				{
-					variable=enumerator->Current();
-					return true;
+					mine++;
 				}
 				else
 				{
-					return false;
+					theirs++;
+					T temp = items[pivot];
+					items[pivot] = items[candidate];
+					items[candidate] = temp;
+					pivot = candidate;
+					flag = !flag;
 				}
+			}
+
+			SortLambda(items, left, orderer);
+			SortLambda(items + left + 1, right, orderer);
+		}
+
+		/// <summary>Quick sort.</summary>
+		/// <typeparam name="T">Type of elements.</typeparam>
+		/// <param name="items">Pointer to element array to sort.</param>
+		/// <param name="length">The number of elements to sort.</param>
+		/// <param name="orderer">
+		/// The comparar for two elements.
+		/// Both arguments are elements to compare.
+		/// Returns a positive number when the first argument is greater.
+		/// Returns a negative number when the second argument is greater.
+		/// Returns zero when two arguments equal.
+		/// </param>
+		template<typename T>
+		void Sort(T* items, vint length, const Func<vint(T, T)>& orderer)
+		{
+			SortLambda<T, Func<vint(T, T)>>(items, length, orderer);
+		}
+
+/***********************************************************************
+LazyList
+***********************************************************************/
+
+		/// <summary>A lazy evaluated container with rich operations. <see cref="From`*"/> is useful to create lazy list from arrays or containers.</summary>
+		/// <typeparam name="T">The type of elements.</typeparam>
+		/// <remarks>
+		/// A lazy list is usually created directly from a container source, or from a calculation on a source.
+		/// Typically the lazy list cannot be used after the source is deleted.
+		/// If this lazy list needs to be used after the source is deleted,
+		/// you are recommended to use [F:vl.collections.LazyList`1.Evaluate], <b>with forceCopy set to true</b>.
+		/// In this way you get a lazy list with all values copied, they do not rely on other objects.
+		/// </remarks>
+		template<typename T>
+		class LazyList : public Object, public IEnumerable<T>
+		{
+		protected:
+			Ptr<IEnumerator<T>>			enumeratorPrototype;
+
+			IEnumerator<T>* xs()const
+			{
+				return enumeratorPrototype->Clone();
+			}
+		public:
+			/// <summary>Create a lazy list from an enumerator. This enumerator will be deleted when this lazy list is deleted.</summary>
+			/// <param name="enumerator">The enumerator.</param>
+			LazyList(IEnumerator<T>* enumerator)
+				:enumeratorPrototype(enumerator)
+			{
+			}
+			
+			/// <summary>Create a lazy list from an enumerator.</summary>
+			/// <param name="enumerator">The enumerator.</param>
+			LazyList(Ptr<IEnumerator<T>> enumerator)
+				:enumeratorPrototype(enumerator)
+			{
+			}
+			
+			/// <summary>Create a lazy list from an enumerable.</summary>
+			/// <param name="enumerable">The enumerable.</param>
+			LazyList(const IEnumerable<T>& enumerable)
+				:enumeratorPrototype(enumerable.CreateEnumerator())
+			{
+			}
+			
+			/// <summary>Create a lazy list from another lazy list.</summary>
+			/// <param name="lazyList">The lazy list.</param>
+			LazyList(const LazyList<T>& lazyList)
+				:enumeratorPrototype(lazyList.enumeratorPrototype)
+			{
+			}
+			
+			/// <summary>Create a lazy list from a container. It is very useful to <see cref="MakePtr`2"/> a container as an intermediate result and then put in a lazy list.</summary>
+			/// <typeparam name="TContainer">Type of the container.</typeparam>
+			/// <param name="container">The container.</param>
+			template<typename TContainer>
+			LazyList(Ptr<TContainer> container)
+				:enumeratorPrototype(new ContainerEnumerator<T, TContainer>(container))
+			{
+			}
+			
+			/// <summary>Create an empty lazy list.</summary>
+			LazyList()
+				:enumeratorPrototype(EmptyEnumerable<T>().CreateEnumerator())
+			{
+			}
+
+			LazyList<T>& operator=(const LazyList<T>& lazyList)
+			{
+				enumeratorPrototype=lazyList.enumeratorPrototype;
+				return *this;
+			}
+
+			IEnumerator<T>* CreateEnumerator()const
+			{
+				return enumeratorPrototype->Clone();
+			}
+
+			//-------------------------------------------------------
+
+			/// <summary>Create a new lazy list with all elements transformed.</summary>
+			/// <typeparam name="F">Type of the transformer.</typeparam>
+			/// <returns>The created lazy list.</returns>
+			/// <param name="f">The transformer.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Select([](vint x){ return x * 2; });
+			///     FOREACH(vint, y, ys) Console::Write(itow(y) + L" ");
+			/// }
+			/// ]]></example>
+			template<typename F>
+			LazyList<FUNCTION_RESULT_TYPE(F)> Select(F f)const
+			{
+				return new SelectEnumerator<T, FUNCTION_RESULT_TYPE(F)>(xs(), f);
+			}
+			
+			/// <summary>Create a new lazy list with all elements filtered.</summary>
+			/// <typeparam name="F">Type of the filter.</typeparam>
+			/// <returns>The created lazy list.</returns>
+			/// <param name="f">The filter.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Where([](vint x){ return x % 2 == 0; });
+			///     FOREACH(vint, y, ys) Console::Write(itow(y) + L" ");
+			/// }
+			/// ]]></example>
+			template<typename F>
+			LazyList<T> Where(F f)const
+			{
+				return new WhereEnumerator<T>(xs(), f);
+			}
+
+			/// <summary>Create a new lazy list with all elements casted to a new type.</summary>
+			/// <typeparam name="U">The new type.</typeparam>
+			/// <returns>The created lazy list.</returns>
+			/// <remarks>
+			/// The lazy list being casted contains elements of type [T:vl.Ptr`1].
+			/// [F:vl.Ptr`1.Cast`1] is called on each elements.
+			/// If some elements fail to cast, they become empty shared pointers.
+			/// </remarks>
+			template<typename U>
+			LazyList<Ptr<U>> Cast()const
+			{
+				Func<Ptr<U>(T)> f=[](T t)->Ptr<U>{return t.template Cast<U>();};
+				return new SelectEnumerator<T, Ptr<U>>(xs(), f);
+			}
+			
+			/// <summary>Create a new lazy list with only elements that successfully casted to a new type.</summary>
+			/// <typeparam name="U">The new type.</typeparam>
+			/// <returns>The created lazy list.</returns>
+			/// <remarks>
+			/// The lazy list being casted contains elements of type [T:vl.Ptr`1].
+			/// [F:vl.Ptr`1.Cast`1] is called on each elements.
+			/// If some elements fail to cast, they are eliminated from the result.
+			/// </remarks>
+			template<typename U>
+			LazyList<Ptr<U>> FindType()const
+			{
+				return Cast<U>().Where([](Ptr<U> t){return t;});
+			}
+			
+			/// <summary>Create a new lazy list with all elements sorted.</summary>
+			/// <typeparam name="F">Type of the comparer.</typeparam>
+			/// <returns>The created lazy list.</returns>
+			/// <param name="f">
+			/// The comparar for two elements.
+			/// Both arguments are elements to compare.
+			/// Returns a positive number when the first argument is greater.
+			/// Returns a negative number when the second argument is greater.
+			/// Returns zero when two arguments equal.
+			/// </param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).OrderBy([](vint x, vint y){ return x - y; });
+			///     FOREACH(vint, y, ys) Console::Write(itow(y) + L" ");
+			/// }
+			/// ]]></example>
+			template<typename F>
+			LazyList<T> OrderBy(F f)const
+			{
+				Ptr<List<T>> sorted=new List<T>;
+				CopyFrom(*sorted.Obj(), *this);
+				if(sorted->Count()>0)
+				{
+					SortLambda<T, F>(&sorted->operator[](0), sorted->Count(), f);
+				}
+				return new ContainerEnumerator<T, List<T>>(sorted);
+			}
+
+			//-------------------------------------------------------
+			
+			/// <summary>Aggregate a lazy list. It will crash if the lazy list is empty.</summary>
+			/// <typeparam name="F">Type of the aggregator.</typeparam>
+			/// <returns>The aggregated value.</returns>
+			/// <param name="f">
+			/// The aggregator.
+			/// The first argument is the aggregated value of any prefix.
+			/// The second argument is the element right after a prefix.
+			/// Returns the aggregated value of the new prefix.
+			/// For the first call, the first argument is the first element in the lazy list.
+			/// </param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Aggregate([](vint x, vint y){ return x + y; });
+			///     Console::WriteLine(itow(ys));
+			/// }
+			/// ]]></example>
+			template<typename F>
+			T Aggregate(F f)const
+			{
+				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
+				if(!enumerator->Next())
+				{
+					throw Error(L"LazyList<T>::Aggregate(F)#Aggregate failed to calculate from an empty container.");
+				}
+				T result=enumerator->Current();
+				while(enumerator->Next())
+				{
+					result=f(result, enumerator->Current());
+				}
+				return result;
+			}
+			
+			/// <summary>Aggregate a lazy list.</summary>
+			/// <typeparam name="I">Type of the initial value.</typeparam>
+			/// <typeparam name="F">Type of the aggregator.</typeparam>
+			/// <returns>The aggregated value.</returns>
+			/// <param name="init">The aggregated value defined for the empty prefix.</param>
+			/// <param name="f">
+			/// The aggregator.
+			/// The first argument is the aggregated value of any prefix.
+			/// The second argument is the element right after a prefix.
+			/// Returns the aggregated value of the new prefix.
+			/// </param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Aggregate(1, [](vint x, vint y){ return x * y; });
+			///     Console::WriteLine(itow(ys));
+			/// }
+			/// ]]></example>
+			template<typename I, typename F>
+			I Aggregate(I init, F f)const
+			{
+				FOREACH(T, t, *this)
+				{
+					init=f(init, t);
+				}
+				return init;
+			}
+
+			/// <summary>Test if all elements in the lazy list satisfy a filter.</summary>
+			/// <typeparam name="F">Type of the filter.</typeparam>
+			/// <returns>Returns true if all elements satisfy the filter.</returns>
+			/// <param name="f">The filter.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).All([](vint x){ return x % 2 == 0; });
+			///     Console::WriteLine(ys ? L"All numbers are even" : L"Not all numbers are even");
+			/// }
+			/// ]]></example>
+			template<typename F>
+			bool All(F f)const
+			{
+				return Select(f).Aggregate(true, [](bool a, bool b){return a&&b;});
+			}
+			
+			/// <summary>Test if any elements in the lazy list satisfy a filter.</summary>
+			/// <typeparam name="F">Type of the filter.</typeparam>
+			/// <returns>Returns true if there is at least one element satisfies the filter.</returns>
+			/// <param name="f">The filter.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Any([](vint x){ return x % 2 == 0; });
+			///     Console::WriteLine(ys ? L"There are even numbers" : L"There is no even number");
+			/// }
+			/// ]]></example>
+			template<typename F>
+			bool Any(F f)const
+			{
+				return Select(f).Aggregate(false, [](bool a, bool b){return a||b;});
+			}
+
+			/// <summary>Get the maximum value in the lazy list. It will crash if the lazy list is empty.</summary>
+			/// <returns>The maximum value.</returns>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Max();
+			///     Console::WriteLine(itow(ys));
+			/// }
+			/// ]]></example>
+			T Max()const
+			{
+				return Aggregate([](T a, T b){return a>b?a:b;});
+			}
+			
+			/// <summary>Get the minimum value in the lazy list. It will crash if the lazy list is empty.</summary>
+			/// <returns>The minimum value.</returns>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Min();
+			///     Console::WriteLine(itow(ys));
+			/// }
+			/// ]]></example>
+			T Min()const
+			{
+				return Aggregate([](T a, T b){return a<b?a:b;});
+			}
+			
+			/// <summary>Get the first value in the lazy list. It will crash if the lazy list is empty.</summary>
+			/// <returns>The first value.</returns>
+			T First()const
+			{
+				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
+				if(!enumerator->Next())
+				{
+					throw Error(L"LazyList<T>::First(F)#First failed to calculate from an empty container.");
+				}
+				return enumerator->Current();
+			}
+			
+			/// <summary>Get the first value in the lazy list.</summary>
+			/// <returns>The first value. If the lazy list is empty, the argument is returned.</returns>
+			/// <param name="defaultValue">The argument to return if the lazy list is empty.</param>
+			T First(T defaultValue)const
+			{
+				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
+				if(!enumerator->Next())
+				{
+					return defaultValue;
+				}
+				return enumerator->Current();
+			}
+
+			/// <summary>Get the last value in the lazy list. It will crash if the lazy list is empty.</summary>
+			/// <returns>The last value.</returns>
+			T Last()const
+			{
+				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
+				if(!enumerator->Next())
+				{
+					throw Error(L"LazyList<T>::Last(F)#Last failed to calculate from an empty container.");
+				}
+				else
+				{
+					T value=enumerator->Current();
+					while(enumerator->Next())
+					{
+						value=enumerator->Current();
+					}
+					return value;
+				}
+			}
+
+			/// <summary>Get the last value in the lazy list.</summary>
+			/// <returns>The last value. If the lazy list is empty, the argument is returned.</returns>
+			/// <param name="defaultValue">The argument to return if the lazy list is empty.</param>
+			T Last(T defaultValue)const
+			{
+				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
+				while(enumerator->Next())
+				{
+					defaultValue=enumerator->Current();
+				}
+				return defaultValue;
+			}
+
+			/// <summary>Get the number of elements in the lazy list.</summary>
+			/// <returns>The number of elements.</returns>
+			vint Count()const
+			{
+				vint result=0;
+				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
+				while(enumerator->Next())
+				{
+					result++;
+				}
+				return result;
+			}
+
+			/// <summary>Test if the lazy list is empty.</summary>
+			/// <returns>Returns true if the lazy list is empty.</returns>
+			bool IsEmpty()const
+			{
+				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
+				return !enumerator->Next();
+			}
+
+			//-------------------------------------------------------
+
+			/// <summary>Create a new lazy list containing elements of the two container in order.</summary>
+			/// <returns>The created lazy list.</returns>
+			/// <param name="remains">Elements to be appended.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     vint ys[] = {6, 7, 8, 9, 10};
+			///     auto zs = From(xs).Concat(From(ys));
+			///     FOREACH(vint, z, zs) Console::Write(itow(z) + L" ");
+			/// }
+			/// ]]></example>
+			LazyList<T> Concat(const IEnumerable<T>& remains)const
+			{
+				return new ConcatEnumerator<T>(xs(), remains.CreateEnumerator());
+			}
+
+			/// <summary>Create a new lazy list with a prefix of the lazy list.</summary>
+			/// <returns>The created lazy list.</returns>
+			/// <param name="count">The size of the prefix.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Take(3);
+			///     FOREACH(vint, y, ys) Console::Write(itow(y) + L" ");
+			/// }
+			/// ]]></example>
+			LazyList<T> Take(vint count)const
+			{
+				return new TakeEnumerator<T>(xs(), count);
+			}
+			
+			/// <summary>Create a new lazy list with a postfix of the lazy list.</summary>
+			/// <returns>The created lazy list.</returns>
+			/// <param name="count">The number of elements to skip.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Skip(3);
+			///     FOREACH(vint, y, ys) Console::Write(itow(y) + L" ");
+			/// }
+			/// ]]></example>
+			LazyList<T> Skip(vint count)const
+			{
+				return new SkipEnumerator<T>(xs(), count);
+			}
+
+			/// <summary>Create a new lazy list with several copies of the lazy list in order.</summary>
+			/// <returns>The created lazy list.</returns>
+			/// <param name="count">The numbers of copies.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Repeat(3);
+			///     FOREACH(vint, y, ys) Console::Write(itow(y) + L" ");
+			/// }
+			/// ]]></example>
+			LazyList<T> Repeat(vint count)const
+			{
+				return new RepeatEnumerator<T>(xs(), count);
+			}
+
+			/// <summary>Create a new lazy list with duplicated elements removed in this lazy list.</summary>
+			/// <returns>The created lazy list.</returns>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 2, 3, 3, 3, 4, 4, 5};
+			///     auto ys = From(xs).Distinct();
+			///     FOREACH(vint, y, ys) Console::Write(itow(y) + L" ");
+			/// }
+			/// ]]></example>
+			LazyList<T> Distinct()const
+			{
+				return new DistinctEnumerator<T>(xs());
+			}
+
+			/// <summary>Create a new lazy list with all elements in this lazy list in a reverse order.</summary>
+			/// <returns>The created lazy list.</returns>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).Reverse();
+			///     FOREACH(vint, y, ys) Console::Write(itow(y) + L" ");
+			/// }
+			/// ]]></example>
+			LazyList<T> Reverse()const
+			{
+				return new ReverseEnumerator<T>(*this);
+			}
+
+			//-------------------------------------------------------
+
+			/// <summary>Create a new lazy list of pairs from elements from two containers.</summary>
+			/// <typeparam name="U">Type of all elements in the second container.</typeparam>
+			/// <returns>
+			/// The created lazy list, which contains pairs of elements from two containers at the same position.
+			/// If the two container have different sizes, the created lazy list has the size of the shorter one.
+			/// </returns>
+			/// <param name="remains">The second container.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5, 6, 7};
+			///     vint ys[] = {60, 70, 80, 90, 100};
+			///     auto zs = From(xs).Pairwise(From(ys)).Select(Pair<vint, vint> p){ return p.key + p.value; });
+			///     FOREACH(vint, z, zs) Console::Write(itow(z) + L" ");
+			/// }
+			/// ]]></example>
+			template<typename U>
+			LazyList<Pair<T, U>> Pairwise(const IEnumerable<U>& remains)const
+			{
+				return new PairwiseEnumerator<T, U>(xs(), remains.CreateEnumerator());
+			}
+
+			/// <summary>Create a new lazy list with elements from the lazy list, which also appear in the second container.</summary>
+			/// <returns>The created lazy list. Elements in the create lazy list is in the same order as in this lazy list.</returns>
+			/// <param name="remains">The second container.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     vint ys[] = {3, 4, 5, 6, 7};
+			///     auto zs = From(xs).Intersect(From(ys));
+			///     FOREACH(vint, z, zs) Console::Write(itow(z) + L" ");
+			/// }
+			/// ]]></example>
+			LazyList<T> Intersect(const IEnumerable<T>& remains)const
+			{
+				return LazyList<T>(new IntersectExceptEnumerator<T, true>(xs(), remains)).Distinct();
+			}
+
+			/// <summary>Create a new lazy list with elements from the lazy list, which do not appear in the second container.</summary>
+			/// <returns>The created lazy list. Elements in the create lazy list is in the same order as in this lazy list.</returns>
+			/// <param name="remains">The second container.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     vint ys[] = {3, 4, 5, 6, 7};
+			///     auto zs = From(xs).Except(From(ys));
+			///     FOREACH(vint, z, zs) Console::Write(itow(z) + L" ");
+			/// }
+			/// ]]></example>
+			LazyList<T> Except(const IEnumerable<T>& remains)const
+			{
+				return LazyList<T>(new IntersectExceptEnumerator<T, false>(xs(), remains)).Distinct();
+			}
+			
+			/// <summary>Create a new lazy list with elements in two containers. Duplicated elements will be removed.</summary>
+			/// <returns>The created lazy list.</returns>
+			/// <param name="remains">The second container.</param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     vint ys[] = {3, 4, 5, 6, 7};
+			///     auto zs = From(xs).Union(From(ys));
+			///     FOREACH(vint, z, zs) Console::Write(itow(z) + L" ");
+			/// }
+			/// ]]></example>
+			LazyList<T> Union(const IEnumerable<T>& remains)const
+			{
+				return Concat(remains).Distinct();
+			}
+
+			//-------------------------------------------------------
+
+			/// <summary>Get an evaluated copy of this lazy list.</summary>
+			/// <returns>
+			/// The created lazy list.
+			/// If this lazy list has been evaluated before, it returns a reference to this lazy list.
+			/// If this lazy list has not been evaluated before, it go through this lazy list and copy all values.
+			/// </returns>
+			/// <param name="forceCopy">Set to true to force copying values, regardless of whether this lazy list is evaluated or not.</param>
+			/// <remarks>
+			/// "Evaluated" means reading from this lazy list cause no extra calculation.
+			/// In most of the cases, the created lazy list relies on its source.
+			/// For example, a lazy list can be created from a reference to a <see cref="List`*"/>, or from an array on stack.
+			/// If this list or array is deleted, then iterating the created lazy list will crash.
+			/// By calling the Evaluate function <b>with forceCopy set to true</b>, a new lazy list is created, with all values cached in it.
+			/// Its connection to the source list or array is removed, and can then be passed to everywhere.
+			/// </remarks>
+			LazyList<T> Evaluate(bool forceCopy = false)const
+			{
+				if (!forceCopy && enumeratorPrototype->Evaluated())
+				{
+					return *this;
+				}
+				else
+				{
+					Ptr<List<T>> xs = new List<T>;
+					CopyFrom(*xs.Obj(), *this);
+					return xs;
+				}
+			}
+
+			/// <summary>Create a new lazy list, whose elements are from transformed elements in this lazy list.</summary>
+			/// <typeparam name="F">Type of the transformer.</typeparam>
+			/// <returns>The created lazy list.</returns>
+			/// <param name="f">
+			/// The transformer.
+			/// The first argument is any element in this lazy list.
+			/// Returns the transformed lazy list from this argument.
+			/// </param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5};
+			///     auto ys = From(xs).SelectMany([](vint x)
+			///     {
+			///         vint factors[] = {1, 10, 100};
+			///         return From(factors).Select([](vint f){ return f * x; }).Evaluate(true);
+			///     });
+			///     FOREACH(vint, y, ys) Console::Write(itow(y) + L" ");
+			/// }
+			/// ]]></example>
+			template<typename F>
+			FUNCTION_RESULT_TYPE(F) SelectMany(F f)const
+			{
+				typedef FUNCTION_RESULT_TYPE(F) LazyListU;
+				typedef typename LazyListU::ElementType U;
+				return Select(f).Aggregate(LazyList<U>(), [](const LazyList<U>& a, const IEnumerable<U>& b)->LazyList<U>{return a.Concat(b);});
+			}
+
+			/// <summary>Create a new lazy list, with elements from this lazy list grouped by a key function.</summary>
+			/// <typeparam name="F">Type of the key function.</typeparam>
+			/// <returns>The created lazy list.</returns>
+			/// <param name="f">
+			/// The key function.
+			/// The first argument is any element in this lazy list.
+			/// Returns a key calculated from this argument.
+			/// Elements that have the same key will be grouped together.
+			/// </param>
+			/// <example><![CDATA[
+			/// int main()
+			/// {
+			///     vint xs[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+			///     auto ys = From(xs).GroupBy([](vint x){ return x % 3; });
+			///     using TY = Pair<vint, LazyList<vint>>;
+			///     FOREACH(TY, y, ys)
+			///     {
+			///         Console::Write(itow(y.key) + L":");
+			///         FOREACH(vint, z, y.value) Console::Write(L" " + itow(z));
+			///         Console::WriteLine(L"");
+			///     }
+			/// }
+			/// ]]></example>
+			template<typename F>
+			LazyList<Pair<FUNCTION_RESULT_TYPE(F), LazyList<T>>> GroupBy(F f)const
+			{
+				typedef FUNCTION_RESULT_TYPE(F) K;
+				return Select(f)
+					.Distinct()
+					.Select([=](K k)
+					{
+						return Pair<K, LazyList<T>>(
+							k,
+							Where([=](T t){return k==f(t);})
+							);
+					});
 			}
 		};
 
+		/// <summary>Create a lazy list with a series of increasing number.</summary>
+		/// <typeparam name="T">Type of elements.</typeparam>
+		/// <returns>A lazy list of increasing numbers.</returns>
+		/// <param name="start">The first number.</param>
+		/// <param name="count">Total amount of increasing numbers.</param>
 		template<typename T>
-		EnumerableForEachIterator<T> CreateForEachIterator(const IEnumerable<T>& enumerable)
+		LazyList<T> Range(T start, T count)
+		{
+			return new RangeEnumerator<T>(start, count);
+		}
+
+		/// <summary>Create a lazy list from an enumerable.</summary>
+		/// <typeparam name="T">Type of elements.</typeparam>
+		/// <returns>The created lazy list.</returns>
+		/// <param name="enumerable">The enumerable.</param>
+		template<typename T>
+		LazyList<T> From(const IEnumerable<T>& enumerable)
 		{
 			return enumerable;
 		}
 
-/***********************************************************************
-FOREACH and FOREACH_INDEXER
-***********************************************************************/
-
-#define FOREACH(TYPE, VARIABLE, COLLECTION)\
-		SCOPE_VARIABLE(const ::vl::collections::ForEachIterator<TYPE>&, __foreach_iterator__, ::vl::collections::CreateForEachIterator(COLLECTION))\
-		for(TYPE VARIABLE;__foreach_iterator__.Next(VARIABLE);)
-
-#define FOREACH_INDEXER(TYPE, VARIABLE, INDEXER, COLLECTION)\
-		SCOPE_VARIABLE(const ::vl::collections::ForEachIterator<TYPE>&, __foreach_iterator__, ::vl::collections::CreateForEachIterator(COLLECTION))\
-		SCOPE_VARIABLE(vint, INDEXER, 0)\
-		for(TYPE VARIABLE;__foreach_iterator__.Next(VARIABLE);INDEXER++)
-	}
-}
-
-#endif
-
-/***********************************************************************
-.\COLLECTIONS\DICTIONARY.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Dictionary
-
-Classes:
-	Dictionary<KT, VT, KK, VK>					: One to one mapping
-	Group<KT, VT, KK, VK>						: One to many mapping
-***********************************************************************/
-
-#ifndef VCZH_COLLECTIONS_DICTIONARY
-#define VCZH_COLLECTIONS_DICTIONARY
-
-
-namespace vl
-{
-	namespace collections
-	{
-		/// <summary>Dictionary.</summary>
-		/// <typeparam name="KT">Type of keys.</typeparam>
-		/// <typeparam name="VT">Type of values.</typeparam>
-		/// <typeparam name="KK">Type of the key type of keys.</typeparam>
-		/// <typeparam name="VK">Type of the key type of values.</typeparam>
-		template<
-			typename KT,
-			typename VT,
-			typename KK=typename KeyType<KT>::Type, 
-			typename VK=typename KeyType<VT>::Type
-		>
-		class Dictionary : public Object, public virtual IEnumerable<Pair<KT, VT>>
+		/// <summary>Create a lazy list from another lazy list.</summary>
+		/// <typeparam name="T">Type of elements.</typeparam>
+		/// <returns>The created lazy list.</returns>
+		/// <param name="enumerable">The lazy list to copy.</param>
+		template<typename T>
+		LazyList<T> From(const LazyList<T>& enumerable)
 		{
-		public:
-			typedef SortedList<KT, KK>			KeyContainer;
-			typedef List<VT, VK>				ValueContainer;
-		protected:
-			class Enumerator : public Object, public virtual IEnumerator<Pair<KT, VT>>
-			{
-			private:
-				const Dictionary<KT, VT, KK, VK>*	container;
-				vint								index;
-				Pair<KT, VT>						current;
-
-				void UpdateCurrent()
-				{
-					if(index<container->Count())
-					{
-						current.key=container->Keys().Get(index);
-						current.value=container->Values().Get(index);
-					}
-				}
-			public:
-				Enumerator(const Dictionary<KT, VT, KK, VK>* _container, vint _index=-1)
-				{
-					container=_container;
-					index=_index;
-				}
-				
-				IEnumerator<Pair<KT, VT>>* Clone()const
-				{
-					return new Enumerator(container, index);
-				}
-
-				const Pair<KT, VT>& Current()const
-				{
-					return current;
-				}
-
-				vint Index()const
-				{
-					return index;
-				}
-
-				bool Next()
-				{
-					index++;
-					UpdateCurrent();
-					return index>=0 && index<container->Count();
-				}
-
-				void Reset()
-				{
-					index=-1;
-					UpdateCurrent();
-				}
-			};
-
-			KeyContainer						keys;
-			ValueContainer						values;
-		public:
-			/// <summary>Create a dictionary.</summary>
-			Dictionary()
-			{
-			}
-
-			IEnumerator<Pair<KT, VT>>* CreateEnumerator()const
-			{
-				return new Enumerator(this);
-			}
-			
-			/// <summary>Set a preference of using memory.</summary>
-			/// <param name="mode">Set to true (by default) to let the container efficiently reduce memory usage when necessary.</param>
-			void SetLessMemoryMode(bool mode)
-			{
-				keys.SetLessMemoryMode(mode);
-				values.SetLessMemoryMode(mode);
-			}
-
-			/// <summary>Get all keys.</summary>
-			/// <returns>All keys.</returns>
-			const KeyContainer& Keys()const
-			{
-				return keys;
-			}
-			
-			/// <summary>Get all values.</summary>
-			/// <returns>All values.</returns>
-			const ValueContainer& Values()const
-			{
-				return values;
-			}
-
-			/// <summary>Get the number of keys.</summary>
-			/// <returns>The number of keys.</returns>
-			vint Count()const
-			{
-				return keys.Count();
-			}
-
-			/// <summary>Get the reference to the value associated with a key.</summary>
-			/// <returns>The reference to the value.</returns>
-			/// <param name="key">The key to find.</param>
-			const VT& Get(const KK& key)const
-			{
-				return values.Get(keys.IndexOf(key));
-			}
-			
-			/// <summary>Get the reference to the value associated with a key.</summary>
-			/// <returns>The reference to the value.</returns>
-			/// <param name="key">The key to find.</param>
-			const VT& operator[](const KK& key)const
-			{
-				return values.Get(keys.IndexOf(key));
-			}
-			
-			/// <summary>Replace the value associated with a key.</summary>
-			/// <returns>Returns true if the value is replaced.</returns>
-			/// <param name="key">The key to find.</param>
-			/// <param name="value">The key to replace.</param>
-			bool Set(const KT& key, const VT& value)
-			{
-				vint index=keys.IndexOf(KeyType<KT>::GetKeyValue(key));
-				if(index==-1)
-				{
-					index=keys.Add(key);
-					values.Insert(index, value);
-				}
-				else
-				{
-					values[index]=value;
-				}
-				return true;
-			}
-
-			/// <summary>Add a key with an associated value. Exception will raise if the key already exists.</summary>
-			/// <returns>Returns true if the pair is added.</returns>
-			/// <param name="value">The pair of key and value.</param>
-			bool Add(const Pair<KT, VT>& value)
-			{
-				return Add(value.key, value.value);
-			}
-			
-			/// <summary>Add a key with an associated value. Exception will raise if the key already exists.</summary>
-			/// <returns>Returns true if the pair is added.</returns>
-			/// <param name="key">The key.</param>
-			/// <param name="value">The value.</param>
-			bool Add(const KT& key, const VT& value)
-			{
-				CHECK_ERROR(!keys.Contains(KeyType<KT>::GetKeyValue(key)), L"Dictionary<KT, KK, ValueContainer, VT, VK>::Add(const KT&, const VT&)#Key already exists.");
-				vint index=keys.Add(key);
-				values.Insert(index, value);
-				return true;
-			}
-
-			/// <summary>Remove a key with the associated value.</summary>
-			/// <returns>Returns true if the key and the value is removed.</returns>
-			/// <param name="key">The key.</param>
-			bool Remove(const KK& key)
-			{
-				vint index=keys.IndexOf(key);
-				if(index!=-1)
-				{
-					keys.RemoveAt(index);
-					values.RemoveAt(index);
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-
-			/// <summary>Remove everything.</summary>
-			/// <returns>Returns true if all keys and values are removed.</returns>
-			bool Clear()
-			{
-				keys.Clear();
-				values.Clear();
-				return true;
-			}
-		};
-		
-		/// <summary>Group, which is similar to an dictionary, but a group can associate multiple values with a key.</summary>
-		/// <typeparam name="KT">Type of keys.</typeparam>
-		/// <typeparam name="VT">Type of values.</typeparam>
-		/// <typeparam name="KK">Type of the key type of keys.</typeparam>
-		/// <typeparam name="VK">Type of the key type of values.</typeparam>
-		template<
-			typename KT,
-			typename VT,
-			typename KK=typename KeyType<KT>::Type,
-			typename VK=typename KeyType<VT>::Type
-		>
-		class Group : public Object, public virtual IEnumerable<Pair<KT, VT>>
-		{
-		public:
-			typedef SortedList<KT, KK>		KeyContainer;
-			typedef List<VT, VK>			ValueContainer;
-		protected:
-			class Enumerator : public Object, public virtual IEnumerator<Pair<KT, VT>>
-			{
-			private:
-				const Group<KT, VT, KK, VK>*		container;
-				vint								keyIndex;
-				vint								valueIndex;
-				Pair<KT, VT>						current;
-
-				void UpdateCurrent()
-				{
-					if(keyIndex<container->Count())
-					{
-						const ValueContainer& values=container->GetByIndex(keyIndex);
-						if(valueIndex<values.Count())
-						{
-							current.key=container->Keys().Get(keyIndex);
-							current.value=values.Get(valueIndex);
-						}
-					}
-				}
-			public:
-				Enumerator(const Group<KT, VT, KK, VK>* _container, vint _keyIndex=-1, vint _valueIndex=-1)
-				{
-					container=_container;
-					keyIndex=_keyIndex;
-					valueIndex=_valueIndex;
-				}
-				
-				IEnumerator<Pair<KT, VT>>* Clone()const
-				{
-					return new Enumerator(container, keyIndex, valueIndex);
-				}
-
-				const Pair<KT, VT>& Current()const
-				{
-					return current;
-				}
-
-				vint Index()const
-				{
-					if(0<=keyIndex && keyIndex<container->Count())
-					{
-						vint index=0;
-						for(vint i=0;i<keyIndex;i++)
-						{
-							index+=container->GetByIndex(i).Count();
-						}
-						return index+valueIndex;
-					}
-					else
-					{
-						return -1;
-					}
-				}
-
-				bool Next()
-				{
-					if(keyIndex==-1)
-					{
-						keyIndex=0;
-					}
-					while(keyIndex<container->Count())
-					{
-						valueIndex++;
-						const ValueContainer& values=container->GetByIndex(keyIndex);
-						if(valueIndex<values.Count())
-						{
-							UpdateCurrent();
-							return true;
-						}
-						else
-						{
-							keyIndex++;
-							valueIndex=-1;
-						}
-					}
-					return false;
-				}
-
-				void Reset()
-				{
-					keyIndex=-1;
-					valueIndex=-1;
-					UpdateCurrent();
-				}
-			};
-
-			KeyContainer					keys;
-			List<ValueContainer*>			values;
-		public:
-			Group()
-			{
-			}
-
-			~Group()
-			{
-				Clear();
-			}
-
-			IEnumerator<Pair<KT, VT>>* CreateEnumerator()const
-			{
-				return new Enumerator(this);
-			}
-			
-			/// <summary>Get all keys.</summary>
-			/// <returns>All keys.</returns>
-			const KeyContainer& Keys()const
-			{
-				return keys;
-			}
-			
-			/// <summary>Get the number of keys.</summary>
-			/// <returns>The number of keys.</returns>
-			vint Count()const
-			{
-				return keys.Count();
-			}
-			
-			/// <summary>Get all values associated with a key.</summary>
-			/// <returns>All values.</returns>
-			/// <param name="key">The key to find.</param>
-			const ValueContainer& Get(const KK& key)const
-			{
-				return *values.Get(keys.IndexOf(key));
-			}
-			
-			/// <summary>Get all values associated with a key.</summary>
-			/// <returns>All values.</returns>
-			/// <param name="index">The position of a the key.</param>
-			const ValueContainer& GetByIndex(vint index)const
-			{
-				return *values.Get(index);
-			}
-			
-			/// <summary>Get all values associated with a key.</summary>
-			/// <returns>All values.</returns>
-			/// <param name="key">The key to find.</param>
-			const ValueContainer& operator[](const KK& key)const
-			{
-				return *values.Get(keys.IndexOf(key));
-			}
-
-			/// <summary>Test if a key exists in the group or not.</summary>
-			/// <returns>Returns true if the key exists.</returns>
-			/// <param name="key">The key to find.</param>
-			bool Contains(const KK& key)const
-			{
-				return keys.Contains(key);
-			}
-			
-			/// <summary>Test if a key exists with an associated value in the group or not.</summary>
-			/// <returns>Returns true if the key exists with an associated value.</returns>
-			/// <param name="key">The key to find.</param>
-			/// <param name="value">The value to find.</param>
-			bool Contains(const KK& key, const VK& value)const
-			{
-				vint index=keys.IndexOf(key);
-				if(index!=-1)
-				{
-					return values.Get(index)->Contains(value);
-				}
-				else
-				{
-					return false;
-				}
-			}
-			
-			/// <summary>Add a key with an associated value. If the key already exists, the value will be associated with the key with other values.</summary>
-			/// <returns>Returns true if the pair is added.</returns>
-			/// <param name="value">The pair of key and value.</param>
-			bool Add(const Pair<KT, VT>& value)
-			{
-				return Add(value.key, value.value);
-			}
-			
-			/// <summary>Add a key with an associated value. If the key already exists, the value will be associated with the key with other values.</summary>
-			/// <returns>Returns true if the pair is added.</returns>
-			/// <param name="key">The key.</param>
-			/// <param name="value">The value.</param>
-			bool Add(const KT& key, const VT& value)
-			{
-				ValueContainer* target=0;
-				vint index=keys.IndexOf(KeyType<KT>::GetKeyValue(key));
-				if(index==-1)
-				{
-					target=new ValueContainer;
-					values.Insert(keys.Add(key), target);
-				}
-				else
-				{
-					target=values[index];
-				}
-				target->Add(value);
-				return true;
-			}
-			
-			/// <summary>Remove a key with all associated values.</summary>
-			/// <returns>Returns true if the key and all associated values are removed.</returns>
-			/// <param name="key">The key.</param>
-			bool Remove(const KK& key)
-			{
-				vint index=keys.IndexOf(key);
-				if(index!=-1)
-				{
-					keys.RemoveAt(index);
-					List<VT, VK>* target=values[index];
-					values.RemoveAt(index);
-					delete target;
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-			
-			/// <summary>Remove a key with the associated values.</summary>
-			/// <returns>Returns true if the key and the associated values are removed. If there are multiple values associated with the key, only the value will be removed.</returns>
-			/// <param name="key">The key.</param>
-			/// <param name="value">The value.</param>
-			bool Remove(const KK& key, const VK& value)
-			{
-				vint index=keys.IndexOf(key);
-				if(index!=-1)
-				{
-					List<VT, VK>* target=values[index];
-					target->Remove(value);
-					if(target->Count()==0)
-					{
-						keys.RemoveAt(index);
-						values.RemoveAt(index);
-						delete target;
-					}
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-			
-			/// <summary>Remove everything.</summary>
-			/// <returns>Returns true if all keys and values are removed.</returns>
-			bool Clear()
-			{
-				for(vint i=0;i<values.Count();i++)
-				{
-					delete values[i];
-				}
-				keys.Clear();
-				values.Clear();
-				return true;
-			}
-		};
-
-/***********************************************************************
-GroupInnerJoin
-***********************************************************************/
-
-		template<
-			typename TKey,
-			typename TValueFirst,
-			typename TValueSecond,
-			typename TDiscardFirst,		// TKey * [TValueFirst] -> void
-			typename TDiscardSecond,	// TKey * [TValueSecond] -> void
-			typename TAccept			// TKey * [TValueFirst] * [TValueSecond] -> void
-		>
-		void GroupInnerJoin(
-			const Group<TKey, TValueFirst>& first,
-			const Group<TKey, TValueSecond>& second,
-			const TDiscardFirst& discardFirst,
-			const TDiscardSecond& discardSecond,
-			const TAccept& accept
-			)
-		{
-			vint firstIndex = 0;
-			vint secondIndex = 0;
-			vint firstCount = first.Keys().Count();
-			vint secondCount = second.Keys().Count();
-			while (true)
-			{
-				if (firstIndex < firstCount)
-				{
-					auto firstKey = first.Keys()[firstIndex];
-					const List<TValueFirst>& firstValues = first.GetByIndex(firstIndex);
-
-					if (secondIndex < secondCount)
-					{
-						auto secondKey = second.Keys()[secondIndex];
-						const List<TValueSecond>& secondValues = second.GetByIndex(secondIndex);
-
-						if (firstKey < secondKey)
-						{
-							discardFirst(firstKey, firstValues);
-							firstIndex++;
-						}
-						else if (firstKey > secondKey)
-						{
-							discardSecond(secondKey, secondValues);
-							secondIndex++;
-						}
-						else
-						{
-							accept(firstKey, firstValues, secondValues);
-							firstIndex++;
-							secondIndex++;
-						}
-					}
-					else
-					{
-						discardFirst(firstKey, firstValues);
-						firstIndex++;
-					}
-				}
-				else
-				{
-					if (secondIndex < secondCount)
-					{
-						auto secondKey = second.Keys()[secondIndex];
-						const List<TValueSecond>& secondValues = second.GetByIndex(secondIndex);
-
-						discardSecond(secondKey, secondValues);
-						secondIndex++;
-					}
-					else
-					{
-						break;
-					}
-				}
-			}
+			return enumerable;
 		}
 
-/***********************************************************************
-Random Access
-***********************************************************************/
-		namespace randomaccess_internal
+		/// <summary>Create a lazy list from an array.</summary>
+		/// <typeparam name="T">Type of elements.</typeparam>
+		/// <returns>The created lazy list.</returns>
+		/// <param name="begin">Pointer to the first element in the array.</param>
+		/// <param name="end">Pointer to the element after the last element in the array.</param>
+		template<typename T>
+		LazyList<T> From(const T* begin, const T* end)
 		{
-			template<typename KT, typename VT, typename KK, typename VK>
-			struct RandomAccessable<Dictionary<KT, VT, KK, VK>>
-			{
-				static const bool							CanRead = true;
-				static const bool							CanResize = false;
-			};
-		
-			template<typename KT, typename VT, typename KK, typename VK>
-			struct RandomAccess<Dictionary<KT, VT, KK, VK>>
-			{
-				static vint GetCount(const Dictionary<KT, VT, KK, VK>& t)
-				{
-					return t.Count();
-				}
+			return FromPointer(begin, end);
+		}
 
-				static Pair<KT, VT> GetValue(const Dictionary<KT, VT, KK, VK>& t, vint index)
-				{
-					return Pair<KT, VT>(t.Keys().Get(index), t.Values().Get(index));
-				}
+		/// <summary>Create a lazy list from an array.</summary>
+		/// <typeparam name="T">Type of elements.</typeparam>
+		/// <typeparam name="size">Size of the array.</typeparam>
+		/// <returns>The created lazy list.</returns>
+		/// <param name="items">The array.</param>
+		template<typename T, int size>
+		LazyList<T> From(T (&items)[size])
+		{
+			return FromArray(items);
+		}
 
-				static void AppendValue(Dictionary<KT, VT, KK, VK>& t, const Pair<KT, VT>& value)
-				{
-					t.Set(value.key, value.value);
-				}
-			};
+		/// <summary>Create a lazy list from an array.</summary>
+		/// <typeparam name="T">Type of elements.</typeparam>
+		/// <typeparam name="size">Size of the array.</typeparam>
+		/// <returns>The created lazy list.</returns>
+		/// <param name="items">The array.</param>
+		template<typename T, int size>
+		LazyList<T> From(const T (&items)[size])
+		{
+			return FromArray(items);
 		}
 	}
 }
 
 #endif
 
+
 /***********************************************************************
-.\EXCEPTION.H
+.\EVENT.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Framework::Exception
-
-Classes:
-	Exception									: Exception
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
-
-#ifndef VCZH_EXCEPTION
-#define VCZH_EXCEPTION
+#ifndef VCZH_EVENT
+#define VCZH_EVENT
 
 
 namespace vl
 {
-	/// <summary>Base type of all exceptions.</summary>
-	class Exception : public Object
+	template<typename T>
+	class Event;
+ 
+	class EventHandler : public Object
 	{
-	protected:
-		WString						message;
-
 	public:
-		Exception(const WString& _message=WString::Empty);
-
-		const WString&				Message()const;
+		virtual bool							IsAttached() = 0;
 	};
 
-	class ArgumentException : public Exception
+	/// <summary>An event for being subscribed using multiple callbacks. A callback is any functor that returns void.</summary>
+	/// <typeparam name="TArgs">Types of callback parameters.</typeparam>
+	template<typename ...TArgs>
+	class Event<void(TArgs...)> : public Object, private NotCopyable
 	{
 	protected:
-		WString						function;
-		WString						name;
-
-	public:
-		ArgumentException(const WString& _message=WString::Empty, const WString& _function=WString::Empty, const WString& _name=WString::Empty);
-
-		const WString&				GetFunction()const;
-		const WString&				GetName()const;
-	};
-
-	class ParsingException : public Exception
-	{
-	protected:
-		vint							position;
-		WString						expression;
-
-	public:
-		ParsingException(const WString& _message, const WString& _expression, vint _position);
-
-		const WString&				GetExpression()const;
-		vint							GetPosition()const;
-	};
-}
-
-#endif
-
-/***********************************************************************
-.\CONSOLE.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-UI::Console
-
-***********************************************************************/
-
-#ifndef VCZH_CONSOLE
-#define VCZH_CONSOLE
-
-
-namespace vl
-{
-	namespace console
-	{
-		/// <summary>A Static class for command line window operations.</summary>
-		class Console abstract
+		class EventHandlerImpl : public EventHandler
 		{
 		public:
-			/// <summary>Write to the command line window.</summary>
-			/// <param name="string">Content to write.</param>
-			/// <param name="length">Size of the content in wchar_t. The zero terminator is not included.</param>
-			static void Write(const wchar_t* string, vint length);
+			bool								attached;
+			Func<void(TArgs...)>				function;
 
-			/// <summary>Write to the command line window.</summary>
-			/// <param name="string">Content to write.</param>
-			static void Write(const wchar_t* string);
-
-			/// <summary>Write to the command line window.</summary>
-			/// <param name="string">Content to write.</param>
-			static void Write(const WString& string);
-
-			/// <summary>Write to the command line window with a CRLF.</summary>
-			/// <param name="string">Content to write.</param>
-			static void WriteLine(const WString& string);
-
-			/// <summary>Read from the command line window.</summary>
-			/// <returns>The whole line read from the command line window.</returns>
-			static WString Read();
-
-			static void SetColor(bool red, bool green, bool blue, bool light);
-			static void SetTitle(const WString& string);
+			EventHandlerImpl(const Func<void(TArgs...)>& _function)
+				:attached(true)
+				, function(_function)
+			{
+			}
+ 
+			bool IsAttached()override
+			{
+				return attached;
+			}
 		};
-	}
-}
-
-#endif
-
-/***********************************************************************
-.\GLOBALSTORAGE.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Framework::Global Storage
-
-Classes:
-	GlobalStorage							: Global storage accessable by name, each storage will be initialized on the first access, and all storages will be released by FinalizeGlobalStorage
-
-***********************************************************************/
-
-#ifndef VCZH_GLOBALSTORAGE
-#define VCZH_GLOBALSTORAGE
-
-
-namespace vl
-{
-	/// <summary><![CDATA[
-	/// Base type of all global storages. A global storage is a value with a key to store some information. In order to create a global storage, you should do the following in a cpp file:
-	/// BEGIN_GLOBAL_STOREGE_CLASS(<put the key here, it should be a legal C++ identifier>)
-	///		<put all variables here>
-	/// INITIALIZE_GLOBAL_STORAGE_CLASS
-	///		<initialize all variables>
-	/// FINALIZE_GLOBAL_STORAGE_CLASS
-	///		<clear all resources because the program is about to exit>
-	/// END_GLOBAL_STORAGE_CLASS
-	/// Then you have a global storage. You can only use this global storage in the current cpp file. [M:vl.InitializeGlobalStorage] should be called before using any global storage. [M:vl.FinalizeGlobalStorage] is encouraged to call if you think you will not use any global storages anymore. It will reduce noices when you want to detect memory leaks.
-	/// If the key of the global variable is called Key, and the variable you want to access is called Variable, then you can use GetKey()->Variable to access that variable. The GetKey function is created in the macro calls before.
-	/// ]]></summary>
-	class GlobalStorage : public Object, private NotCopyable
-	{
-	private:
-		bool					cleared;
+ 
+		collections::SortedList<Ptr<EventHandlerImpl>>	handlers;
 	public:
-		GlobalStorage(const wchar_t* key);
-		~GlobalStorage();
-
-		bool					Cleared();
-		virtual void			ClearResource()=0;
+		/// <summary>Add a callback to the event.</summary>
+		/// <returns>The event handler representing the callback.</returns>
+		/// <param name="function">The callback.</param>
+		Ptr<EventHandler> Add(const Func<void(TArgs...)>& function)
+		{
+			Ptr<EventHandlerImpl> handler = new EventHandlerImpl(function);
+			handlers.Add(handler);
+			return handler;
+		}
+ 
+		/// <summary>Add a callback to the event.</summary>
+		/// <returns>The event handler representing the callback.</returns>
+		/// <param name="function">The callback.</param>
+		Ptr<EventHandler> Add(void(*function)(TArgs...))
+		{
+			return Add(Func<void(TArgs...)>(function));
+		}
+ 
+		/// <summary>Add a method callback to the event.</summary>
+		/// <typeparam name="C">Type of the class that the callback belongs to.</typeparam>
+		/// <returns>The event handler representing the callback.</returns>
+		/// <param name="sender">The object that the callback belongs to.</param>
+		/// <param name="function">The method callback.</param>
+		template<typename C>
+		Ptr<EventHandler> Add(C* sender, void(C::*function)(TArgs...))
+		{
+			return Add(Func<void(TArgs...)>(sender, function));
+		}
+ 
+		/// <summary>Remove a callback by an event handler returns from <see cref="Add"/>.</summary>
+		/// <returns>Returns true if this operation succeeded.</returns>
+		/// <param name="handler">The event handler representing the callback.</param>
+		bool Remove(Ptr<EventHandler> handler)
+		{
+			auto impl = handler.Cast<EventHandlerImpl>();
+			if (!impl) return false;
+			vint index = handlers.IndexOf(impl.Obj());
+			if (index == -1) return false;
+			impl->attached = false;
+			handlers.RemoveAt(index);
+			return true;
+		}
+ 
+		/// <summary>Invoke all callbacks in the event.</summary>
+		/// <param name="args">Arguments to invoke all callbacks.</param>
+		void operator()(TArgs ...args)const
+		{
+			for(vint i = 0; i < handlers.Count(); i++)
+			{
+				handlers[i]->function(args...);
+			}
+		}
 	};
-
-	extern GlobalStorage* GetGlobalStorage(const wchar_t* key);
-	extern GlobalStorage* GetGlobalStorage(const WString& key);
-
-	/// <summary>Initialize the global storage.</summary>
-	extern void InitializeGlobalStorage();
-	/// <summary>Finalize the global storage.</summary>
-	extern void FinalizeGlobalStorage();
 }
-
-#define BEGIN_GLOBAL_STORAGE_CLASS(NAME)\
-	class NAME : public vl::GlobalStorage\
-	{\
-	public:\
-		NAME()\
-			:vl::GlobalStorage(L ## #NAME)\
-		{\
-			InitializeClearResource();\
-		}\
-		~NAME()\
-		{\
-			if(!Cleared())ClearResource();\
-		}\
-
-#define INITIALIZE_GLOBAL_STORAGE_CLASS\
-		void InitializeClearResource()\
-		{\
-
-#define FINALIZE_GLOBAL_STORAGE_CLASS\
-		}\
-		void ClearResource()\
-		{\
-
-#define END_GLOBAL_STORAGE_CLASS(NAME)\
-		}\
-	};\
-	NAME& Get##NAME()\
-	{\
-		static NAME __global_storage_##NAME;\
-		return __global_storage_##NAME;\
-	}\
-
-#define EXTERN_GLOBAL_STORAGE_CLASS(NAME)\
-	class NAME;\
-	extern NAME& Get##NAME();\
-
 #endif
 
 
@@ -5947,10 +7515,8 @@ namespace vl
 .\COLLECTIONS\PARTIALORDERING.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Partial Ordering
-
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_COLLECTIONS_PARTIALORDERING
@@ -5991,7 +7557,7 @@ Partial Ordering
 		/// Partial ordering item sorter.
 		/// This class sorts items in a partial order using the given dependency information.
 		/// Node stored in this class using the index of items.
-		/// If a depends on b, then a.ins->Contains(b) &amp;&amp; b.outs->Contains(a).
+		/// If a depends on b, then a.ins-&gt;Contains(b) &amp;&amp; b.outs-&gt;Contains(a).
 		/// The sorting result is a list of strong connected components in order.
 		/// If a depends on b, then the component containing a appears after the component containing b.
 		/// Node could represent a sub class if InitWithSubClass is called.
@@ -6183,10 +7749,8 @@ Partial Ordering
 .\UNITTEST\UNITTEST.H
 ***********************************************************************/
 /***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-UI::Console
-
+Author: Zihan Chen (vczh)
+Licensed under https://github.com/vczh-libraries/License
 ***********************************************************************/
 
 #ifndef VCZH_UNITTEST
@@ -6199,30 +7763,85 @@ namespace vl
 	{
 		using UnitTestFileProc = void(*)();
 
-		/// <summary><![CDATA[
-		/// A static class containing all unit test operations.
-		/// 1) Writing test cases:
-		///   TEST_FILE
-		///   {
-		///     TEST_CATEGORY(L"Category Description"){ ... });
-		///     TEST_CASE(L"Test Case Description"){ ... });
-		///   }
-		///   A category could contains other categories and cases, but a case should only contain assertions.
-		/// 2) Writing asserts:
-		///   TEST_CASE_ASSERT(condition): An assertion that is also a test case, only legal to call inside a category, with a description equivalents to the condition.
-		///   TEST_ASSERT(condition); Only legal to call inside a case. It passes when condition evaluates to true.
-		///   TEST_ERROR(condition); Only legal to call inside a case. It passes when condition throws vl::Error
-		///   TEST_EXCEPTION(statement, exception, callback); Only legal to call inside a case. It passes when an exception of the expected type is thrown, and callback(exception) passes.
-		/// 3) Other functions
-		///   TEST_PRINT(message); Print neutral message.
-		/// 4)
-		///   You should call [M:vl.unittest.UnitTest.RunAndDisposeTests] in your main function to run all test cases, and return the value from this function.
-		///   When "/D" is provided, the test program crashes at any failed assertiong.
-		///   When "/R" is provided, the test program consumes all failed assertions and run all cases. A test case stopped at the first failed assertion. Exit code will be 1 when any case fails.
-		///   When no argument is provided
-		///     In Windows, it becomes "/D" only when a debugger is attached, in other cases it becomes "/R".
-		///     In other platforms, it becomes "/R"
-		/// ]]></summary>
+		/// <summary>
+		/// <p>Unit test framework.</p>
+		/// <p>
+		/// Test cases could be defined in multiple cpp files. In each cpp file, there can be one <b>TEST_FILE</b> call.
+		/// <program><code><![CDATA[
+		/// TEST_FILE
+		/// {
+		///     // here could be multiple TEST_CATEGORY and TEST_CASE
+		/// }
+		/// ]]></code></program>
+		/// </p>
+		/// <p>
+		/// Both <b>TEST_CATEGORY</b> could be used inside <b>TEST_FILE</b>, or nested inside another <b>TEST_CATEGORY</b>.
+		/// <b>TEST_CASE</b> could be used inside <b>TEST_FILE</b> or <b>TEST_CATEGORY</b>.
+		/// </p>
+		/// <p>
+		/// <b>TEST_ASSERT</b> is used to verify a boolean expression.
+		/// It could only be used in <b>TEST_CASE</b>.
+		/// <b>TEST_ASSERT</b> could not be used in <b>TEST_FILE</b> or <b>TEST_CATEGORY</b>.
+		/// </p>
+		/// <p>
+		/// When the test program is started in debug mode (Windows only), or by command line options "/D",
+		/// A <b>TEST_ASSERT</b> failure will trigger a break point, it could be catched by any debugger.
+		/// </p>
+		/// <p>
+		/// When the test program is started in release mode, or by command line options "/R", or without command line options,
+		/// A <b>TEST_ASSERT</b> failure will report an error and skip rest of the current <b>TEST_CASE</b>, the execution will continue.
+		/// </p>
+		/// <p>
+		/// <b>TEST_ERROR</b> execute one statement, it fails when no [T:vl.Error] is thrown.
+		/// </p>
+		/// <p>
+		/// <b>TEST_EXCEPTION</b> execute one statement, it fails when the specified exception type is not thrown.
+		/// Another callback will be called when the exception is thrown, given a chance to check data in the exception.
+		/// </p>
+		/// <p>
+		/// <b>TEST_CASE_ASSERT</b> is an abbreviation of <b>TEST_CASE</b> + <b>TEST_ASSERT</b>.
+		/// It is very common that are multiple independent assertions.
+		/// </p>
+		/// <p>
+		/// <b>TEST_CASE_ASSERT</b> is a test case, it can be used in <b>TEST_CATEGORY</b> or <b>TEST_FILE</b>.
+		/// In release mode, by failing this assertion, the execution does not stop.
+		/// </p>
+		/// <p>
+		/// <b>TEST_CATEGORY</b> is very useful when multiple assertions do not have dependencies.
+		/// During the execution of the test program, <b>TEST_FILE</b>, <b>TEST_CATEGORY</b>, <b>TEST_CASE</b> and failed <b>TEST_ASSERT</b> will be rendered with indentation and different colors.
+		/// </p>
+		/// <p>
+		/// <see cref="UnitTest::RunAndDisposeTests"/> is needed in the main function to execute test cases.
+		/// <b>TEST_PRINT</b> could be used during test cases to print debug information to a command-line application.
+		/// </p>
+		/// </summary>
+		/// <example><![CDATA[
+		/// TEST_FILE
+		/// {
+		///     TEST_CATEGORY(L"This is a test category)
+		///     {
+		///         TEST_CASE(L"This is a test case")
+		///         {
+		///             TEST_ASSERT(true);
+		///             TEST_ERROR({WString::Empty[0];});
+		///             TEST_EXCEPTION({throw Exception();}, Exception, [](const Exception&){});
+		///         }
+		///         TEST_CASE_ASSERT(true);
+		///     }
+		///
+		///     TEST_CATEGORY(L"This is another test category")
+		///     {
+		///         TEST_PRINT(L"some information");
+		///         TEST_CASE_ASSERT(true);
+		///     }
+		/// }
+		///
+		/// int main(int argc, wchar_t* argv[])
+		/// {
+		///     // in Linux or macOS, argv must be char*[]
+		///     return unittest::UnitTest::RunAndDisposeTests(argc, argv);
+		/// }
+		/// ]]></example>
 		class UnitTest
 		{
 		public:
@@ -6237,12 +7856,12 @@ namespace vl
 				Case,
 			};
 
-			/// <summary>Print a message with specified color.</summary>
-			/// <param name="string">The content.</param>
-			/// <param name="kind">The kind of the content.</param>
 			static void PrintMessage(const WString& string, MessageKind kind);
 
 			/// <summary>Run all test cases.</summary>
+			/// <returns>The return value for the main function. If any assertion fails, it is non-zero.</returns>
+			/// <param name="argc">Accept the first argument of the main function.</param>
+			/// <param name="argv">Accept the second argument of the main function.</param>
 #ifdef VCZH_MSVC
 			static int RunAndDisposeTests(int argc, wchar_t* argv[]);
 #else
@@ -6317,1145 +7936,6 @@ namespace vl
 #define TEST_CASE_ASSERT(CONDITION)\
 		TEST_CASE(L ## # CONDITION) { TEST_ASSERT(CONDITION); })\
 
-	}
-}
-
-#endif
-
-
-/***********************************************************************
-.\EVENT.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Framework::Event
-
-Classes:
-	Event<function-type>									: Event object, which is a functor with no return value, executing multiple functors stored inside
-***********************************************************************/
-#ifndef VCZH_EVENT
-#define VCZH_EVENT
-
-
-namespace vl
-{
-	template<typename T>
-	class Event
-	{
-	};
- 
-	class EventHandler : public Object
-	{
-	public:
-		virtual bool							IsAttached() = 0;
-	};
-
-	/// <summary>Event.</summary>
-	/// <typeparam name="TArgs">Types of callback parameters.</typeparam>
-	template<typename ...TArgs>
-	class Event<void(TArgs...)> : public Object, private NotCopyable
-	{
-	protected:
-		class EventHandlerImpl : public EventHandler
-		{
-		public:
-			bool								attached;
-			Func<void(TArgs...)>				function;
-
-			EventHandlerImpl(const Func<void(TArgs...)>& _function)
-				:attached(true)
-				, function(_function)
-			{
-			}
- 
-			bool IsAttached()override
-			{
-				return attached;
-			}
-		};
- 
-		collections::SortedList<Ptr<EventHandlerImpl>>	handlers;
-	public:
-		/// <summary>Add a callback to the event.</summary>
-		/// <returns>The event handler representing the callback.</returns>
-		/// <param name="function">The callback.</param>
-		Ptr<EventHandler> Add(const Func<void(TArgs...)>& function)
-		{
-			Ptr<EventHandlerImpl> handler = new EventHandlerImpl(function);
-			handlers.Add(handler);
-			return handler;
-		}
- 
-		/// <summary>Add a callback to the event.</summary>
-		/// <returns>The event handler representing the callback.</returns>
-		/// <param name="function">The callback.</param>
-		Ptr<EventHandler> Add(void(*function)(TArgs...))
-		{
-			return Add(Func<void(TArgs...)>(function));
-		}
- 
-		/// <summary>Add a method callback to the event.</summary>
-		/// <typeparam name="C">Type of the class that has the method callback.</typeparam>
-		/// <returns>The event handler representing the callback.</returns>
-		/// <param name="sender">The object that has the method callback.</param>
-		/// <param name="function">The method callback.</param>
-		template<typename C>
-		Ptr<EventHandler> Add(C* sender, void(C::*function)(TArgs...))
-		{
-			return Add(Func<void(TArgs...)>(sender, function));
-		}
- 
-		/// <summary>Remove a callback.</summary>
-		/// <returns>Returns true if this operation succeeded.</returns>
-		/// <param name="handler">The event handler representing the callback.</param>
-		bool Remove(Ptr<EventHandler> handler)
-		{
-			Ptr<EventHandlerImpl> impl = handler.Cast<EventHandlerImpl>();
-			if (!impl) return false;
-			vint index = handlers.IndexOf(impl.Obj());
-			if (index == -1) return false;
-			impl->attached = false;
-			handlers.RemoveAt(index);
-			return true;
-		}
- 
-		/// <summary>Invoke all callbacks in the event.</summary>
-		/// <param name="args">Arguments to invoke all callbacks.</param>
-		void operator()(TArgs ...args)const
-		{
-			for(vint i = 0; i < handlers.Count(); i++)
-			{
-				handlers[i]->function(args...);
-			}
-		}
-	};
-}
-#endif
-
-
-/***********************************************************************
-.\LAZY.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Framework::Lazy Evaluation
-
-Classes:
-	Lazy<T>									: Object with lazy evaluation
-
-***********************************************************************/
-
-#ifndef VCZH_LAZY
-#define VCZH_LAZY
-
-
-namespace vl
-{
-	/// <summary>A type representing a lazy evaluation.</summary>
-	/// <typeparam name="T">The type of the evaluation result.</typeparam>
-	template<typename T>
-	class Lazy : public Object
-	{
-	protected:
-		class Internal
-		{
-		public:
-			Func<T()>			evaluator;
-			T					value;
-			bool				evaluated;
-		};
-
-		Ptr<Internal>			internalValue;
-	public:
-		/// <summary>Create an empty evaluation.</summary>
-		Lazy()
-		{
-		}
-
-		/// <summary>Create an evaluation using a function.</summary>
-		/// <param name="evaluator">The function.</param>
-		Lazy(const Func<T()>& evaluator)
-		{
-			internalValue=new Internal;
-			internalValue->evaluated=false;
-			internalValue->evaluator=evaluator;
-		}
-
-		/// <summary>Create an evaluation using the result directly.</summary>
-		/// <param name="value">The result that you have already known.</param>0
-		Lazy(const T& value)
-		{
-			internalValue=new Internal;
-			internalValue->evaluated=true;
-			internalValue->value=value;
-		}
-
-		/// <summary>Copy an evaluation.</summary>
-		/// <param name="lazy">The evaluation to copy.</param>
-		Lazy(const Lazy<T>& lazy)
-			:internalValue(lazy.internalValue)
-		{
-		}
-
-		Lazy<T>& operator=(const Func<T()>& evaluator)
-		{
-			internalValue=new Internal;
-			internalValue->evaluated=false;
-			internalValue->evaluator=evaluator;
-			return *this;
-		}
-
-		Lazy<T>& operator=(const T& value)
-		{
-			internalValue=new Internal;
-			internalValue->evaluated=true;
-			internalValue->value=value;
-			return *this;
-		}
-
-		Lazy<T>& operator=(const Lazy<T>& lazy)
-		{
-			internalValue=lazy.internalValue;
-			return *this;
-		}
-
-		/// <summary>Get the evaluation result. If it has not been calculated yet, it will run the evaluation and cache the result. You will not need to calculate for the second time.</summary>
-		/// <returns>The evaluation result.</returns>
-		const T& Value()const
-		{
-			if(!internalValue->evaluated)
-			{
-				internalValue->evaluated=true;
-				internalValue->value=internalValue->evaluator();
-				internalValue->evaluator=Func<T()>();
-			}
-			return internalValue->value;
-		}
-
-		/// <summary>Test if it has already been evaluated or not.</summary>
-		/// <returns>Returns true if it has already been evaluated.</returns>
-		const bool IsEvaluated()const
-		{
-			return internalValue->evaluated;
-		}
-
-		/// <summary>Test if it is an empty evaluation or not.</summary>
-		/// <returns>Returns true if it is not empty.</returns>
-		const bool IsAvailable()const
-		{
-			return internalValue;
-		}
-	};
-}
-
-#endif
-
-
-/***********************************************************************
-.\TUPLE.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Framework::Tuple
-	
-This file is generated by: Vczh Functional Macro
-***********************************************************************/
-#ifndef VCZH_TUPLE
-#define VCZH_TUPLE
-
-
-namespace vl
-{
-	class TupleNullItem
-	{
-	};
-	template<typename T0 = TupleNullItem,typename T1 = TupleNullItem,typename T2 = TupleNullItem,typename T3 = TupleNullItem,typename T4 = TupleNullItem,typename T5 = TupleNullItem,typename T6 = TupleNullItem,typename T7 = TupleNullItem,typename T8 = TupleNullItem,typename T9 = TupleNullItem,typename T10 = TupleNullItem>
-	class Tuple
-	{
-	};
- 
-/***********************************************************************
-vl::Tuple<T0>
-***********************************************************************/
-	template<typename T0>
-	class Tuple<T0> : public Object
-	{
-	public:
-		T0 f0;
- 
-		Tuple()
-		{
-		}
- 
-		Tuple(T0 p0)
-			:f0(p0)
-		{
-		}
- 
-		static int Compare(const Tuple<T0>& a, const Tuple<T0>& b)
-		{
-			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;
-			return 0;
-		}
- 
-		bool operator==(const Tuple<T0>& value)const{ return Compare(*this, value) == 0; }
-		bool operator!=(const Tuple<T0>& value)const{ return Compare(*this, value) != 0; }
-		bool operator< (const Tuple<T0>& value)const{ return Compare(*this, value) < 0; }
-		bool operator<=(const Tuple<T0>& value)const{ return Compare(*this, value) <= 0; }
-		bool operator> (const Tuple<T0>& value)const{ return Compare(*this, value) > 0; }
-		bool operator>=(const Tuple<T0>& value)const{ return Compare(*this, value) >= 0; }
-	};
-  
-/***********************************************************************
-vl::Tuple<T0,T1>
-***********************************************************************/
-	template<typename T0,typename T1>
-	class Tuple<T0,T1> : public Object
-	{
-	public:
-		T0 f0;T1 f1;
- 
-		Tuple()
-		{
-		}
- 
-		Tuple(T0 p0,T1 p1)
-			:f0(p0),f1(p1)
-		{
-		}
- 
-		static int Compare(const Tuple<T0,T1>& a, const Tuple<T0,T1>& b)
-		{
-			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;
-			return 0;
-		}
- 
-		bool operator==(const Tuple<T0,T1>& value)const{ return Compare(*this, value) == 0; }
-		bool operator!=(const Tuple<T0,T1>& value)const{ return Compare(*this, value) != 0; }
-		bool operator< (const Tuple<T0,T1>& value)const{ return Compare(*this, value) < 0; }
-		bool operator<=(const Tuple<T0,T1>& value)const{ return Compare(*this, value) <= 0; }
-		bool operator> (const Tuple<T0,T1>& value)const{ return Compare(*this, value) > 0; }
-		bool operator>=(const Tuple<T0,T1>& value)const{ return Compare(*this, value) >= 0; }
-	};
-  
-/***********************************************************************
-vl::Tuple<T0,T1,T2>
-***********************************************************************/
-	template<typename T0,typename T1,typename T2>
-	class Tuple<T0,T1,T2> : public Object
-	{
-	public:
-		T0 f0;T1 f1;T2 f2;
- 
-		Tuple()
-		{
-		}
- 
-		Tuple(T0 p0,T1 p1,T2 p2)
-			:f0(p0),f1(p1),f2(p2)
-		{
-		}
- 
-		static int Compare(const Tuple<T0,T1,T2>& a, const Tuple<T0,T1,T2>& b)
-		{
-			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;
-			return 0;
-		}
- 
-		bool operator==(const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) == 0; }
-		bool operator!=(const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) != 0; }
-		bool operator< (const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) < 0; }
-		bool operator<=(const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) <= 0; }
-		bool operator> (const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) > 0; }
-		bool operator>=(const Tuple<T0,T1,T2>& value)const{ return Compare(*this, value) >= 0; }
-	};
-  
-/***********************************************************************
-vl::Tuple<T0,T1,T2,T3>
-***********************************************************************/
-	template<typename T0,typename T1,typename T2,typename T3>
-	class Tuple<T0,T1,T2,T3> : public Object
-	{
-	public:
-		T0 f0;T1 f1;T2 f2;T3 f3;
- 
-		Tuple()
-		{
-		}
- 
-		Tuple(T0 p0,T1 p1,T2 p2,T3 p3)
-			:f0(p0),f1(p1),f2(p2),f3(p3)
-		{
-		}
- 
-		static int Compare(const Tuple<T0,T1,T2,T3>& a, const Tuple<T0,T1,T2,T3>& b)
-		{
-			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;
-			return 0;
-		}
- 
-		bool operator==(const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) == 0; }
-		bool operator!=(const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) != 0; }
-		bool operator< (const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) < 0; }
-		bool operator<=(const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) <= 0; }
-		bool operator> (const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) > 0; }
-		bool operator>=(const Tuple<T0,T1,T2,T3>& value)const{ return Compare(*this, value) >= 0; }
-	};
-  
-/***********************************************************************
-vl::Tuple<T0,T1,T2,T3,T4>
-***********************************************************************/
-	template<typename T0,typename T1,typename T2,typename T3,typename T4>
-	class Tuple<T0,T1,T2,T3,T4> : public Object
-	{
-	public:
-		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;
- 
-		Tuple()
-		{
-		}
- 
-		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4)
-			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4)
-		{
-		}
- 
-		static int Compare(const Tuple<T0,T1,T2,T3,T4>& a, const Tuple<T0,T1,T2,T3,T4>& b)
-		{
-			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;
-			return 0;
-		}
- 
-		bool operator==(const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) == 0; }
-		bool operator!=(const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) != 0; }
-		bool operator< (const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) < 0; }
-		bool operator<=(const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) <= 0; }
-		bool operator> (const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) > 0; }
-		bool operator>=(const Tuple<T0,T1,T2,T3,T4>& value)const{ return Compare(*this, value) >= 0; }
-	};
-  
-/***********************************************************************
-vl::Tuple<T0,T1,T2,T3,T4,T5>
-***********************************************************************/
-	template<typename T0,typename T1,typename T2,typename T3,typename T4,typename T5>
-	class Tuple<T0,T1,T2,T3,T4,T5> : public Object
-	{
-	public:
-		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;T5 f5;
- 
-		Tuple()
-		{
-		}
- 
-		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4,T5 p5)
-			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4),f5(p5)
-		{
-		}
- 
-		static int Compare(const Tuple<T0,T1,T2,T3,T4,T5>& a, const Tuple<T0,T1,T2,T3,T4,T5>& b)
-		{
-			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;if (a.f5 < b.f5) return -1; else if (a.f5 > b.f5) return 1;
-			return 0;
-		}
- 
-		bool operator==(const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) == 0; }
-		bool operator!=(const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) != 0; }
-		bool operator< (const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) < 0; }
-		bool operator<=(const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) <= 0; }
-		bool operator> (const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) > 0; }
-		bool operator>=(const Tuple<T0,T1,T2,T3,T4,T5>& value)const{ return Compare(*this, value) >= 0; }
-	};
-  
-/***********************************************************************
-vl::Tuple<T0,T1,T2,T3,T4,T5,T6>
-***********************************************************************/
-	template<typename T0,typename T1,typename T2,typename T3,typename T4,typename T5,typename T6>
-	class Tuple<T0,T1,T2,T3,T4,T5,T6> : public Object
-	{
-	public:
-		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;T5 f5;T6 f6;
- 
-		Tuple()
-		{
-		}
- 
-		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4,T5 p5,T6 p6)
-			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4),f5(p5),f6(p6)
-		{
-		}
- 
-		static int Compare(const Tuple<T0,T1,T2,T3,T4,T5,T6>& a, const Tuple<T0,T1,T2,T3,T4,T5,T6>& b)
-		{
-			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;if (a.f5 < b.f5) return -1; else if (a.f5 > b.f5) return 1;if (a.f6 < b.f6) return -1; else if (a.f6 > b.f6) return 1;
-			return 0;
-		}
- 
-		bool operator==(const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) == 0; }
-		bool operator!=(const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) != 0; }
-		bool operator< (const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) < 0; }
-		bool operator<=(const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) <= 0; }
-		bool operator> (const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) > 0; }
-		bool operator>=(const Tuple<T0,T1,T2,T3,T4,T5,T6>& value)const{ return Compare(*this, value) >= 0; }
-	};
-  
-/***********************************************************************
-vl::Tuple<T0,T1,T2,T3,T4,T5,T6,T7>
-***********************************************************************/
-	template<typename T0,typename T1,typename T2,typename T3,typename T4,typename T5,typename T6,typename T7>
-	class Tuple<T0,T1,T2,T3,T4,T5,T6,T7> : public Object
-	{
-	public:
-		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;T5 f5;T6 f6;T7 f7;
- 
-		Tuple()
-		{
-		}
- 
-		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4,T5 p5,T6 p6,T7 p7)
-			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4),f5(p5),f6(p6),f7(p7)
-		{
-		}
- 
-		static int Compare(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& a, const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& b)
-		{
-			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;if (a.f5 < b.f5) return -1; else if (a.f5 > b.f5) return 1;if (a.f6 < b.f6) return -1; else if (a.f6 > b.f6) return 1;if (a.f7 < b.f7) return -1; else if (a.f7 > b.f7) return 1;
-			return 0;
-		}
- 
-		bool operator==(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) == 0; }
-		bool operator!=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) != 0; }
-		bool operator< (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) < 0; }
-		bool operator<=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) <= 0; }
-		bool operator> (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) > 0; }
-		bool operator>=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7>& value)const{ return Compare(*this, value) >= 0; }
-	};
-  
-/***********************************************************************
-vl::Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>
-***********************************************************************/
-	template<typename T0,typename T1,typename T2,typename T3,typename T4,typename T5,typename T6,typename T7,typename T8>
-	class Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8> : public Object
-	{
-	public:
-		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;T5 f5;T6 f6;T7 f7;T8 f8;
- 
-		Tuple()
-		{
-		}
- 
-		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4,T5 p5,T6 p6,T7 p7,T8 p8)
-			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4),f5(p5),f6(p6),f7(p7),f8(p8)
-		{
-		}
- 
-		static int Compare(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& a, const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& b)
-		{
-			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;if (a.f5 < b.f5) return -1; else if (a.f5 > b.f5) return 1;if (a.f6 < b.f6) return -1; else if (a.f6 > b.f6) return 1;if (a.f7 < b.f7) return -1; else if (a.f7 > b.f7) return 1;if (a.f8 < b.f8) return -1; else if (a.f8 > b.f8) return 1;
-			return 0;
-		}
- 
-		bool operator==(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) == 0; }
-		bool operator!=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) != 0; }
-		bool operator< (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) < 0; }
-		bool operator<=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) <= 0; }
-		bool operator> (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) > 0; }
-		bool operator>=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8>& value)const{ return Compare(*this, value) >= 0; }
-	};
-  
-/***********************************************************************
-vl::Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>
-***********************************************************************/
-	template<typename T0,typename T1,typename T2,typename T3,typename T4,typename T5,typename T6,typename T7,typename T8,typename T9>
-	class Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9> : public Object
-	{
-	public:
-		T0 f0;T1 f1;T2 f2;T3 f3;T4 f4;T5 f5;T6 f6;T7 f7;T8 f8;T9 f9;
- 
-		Tuple()
-		{
-		}
- 
-		Tuple(T0 p0,T1 p1,T2 p2,T3 p3,T4 p4,T5 p5,T6 p6,T7 p7,T8 p8,T9 p9)
-			:f0(p0),f1(p1),f2(p2),f3(p3),f4(p4),f5(p5),f6(p6),f7(p7),f8(p8),f9(p9)
-		{
-		}
- 
-		static int Compare(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& a, const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& b)
-		{
-			if (a.f0 < b.f0) return -1; else if (a.f0 > b.f0) return 1;if (a.f1 < b.f1) return -1; else if (a.f1 > b.f1) return 1;if (a.f2 < b.f2) return -1; else if (a.f2 > b.f2) return 1;if (a.f3 < b.f3) return -1; else if (a.f3 > b.f3) return 1;if (a.f4 < b.f4) return -1; else if (a.f4 > b.f4) return 1;if (a.f5 < b.f5) return -1; else if (a.f5 > b.f5) return 1;if (a.f6 < b.f6) return -1; else if (a.f6 > b.f6) return 1;if (a.f7 < b.f7) return -1; else if (a.f7 > b.f7) return 1;if (a.f8 < b.f8) return -1; else if (a.f8 > b.f8) return 1;if (a.f9 < b.f9) return -1; else if (a.f9 > b.f9) return 1;
-			return 0;
-		}
- 
-		bool operator==(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) == 0; }
-		bool operator!=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) != 0; }
-		bool operator< (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) < 0; }
-		bool operator<=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) <= 0; }
-		bool operator> (const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) > 0; }
-		bool operator>=(const Tuple<T0,T1,T2,T3,T4,T5,T6,T7,T8,T9>& value)const{ return Compare(*this, value) >= 0; }
-	};
- 
-}
-#endif
-
-/***********************************************************************
-.\COLLECTIONS\OPERATION.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-Data Structure::Operations
-
-Functions:
-	CopyFrom(TargetContainer, SourceContainer)
-	[T]		.Select(T->K) => [K]
-	[T]		.SelectMany(T->[K]) => [K]
-	[T]		.Where(T->bool) => [T]
-	[Ptr<T>].Cast<K>() => [Ptr<K>]
-	[Ptr<T>].FindType<K>() => [Ptr<K>]
-	[T]		.OrderBy(T->T->int) => [T]
-
-	[T]		.Aggregate(T->T->T) => T
-	[T]		.Aggregate(T->T->T, T) => T
-	[T]		.All(T->bool) => bool
-	[T]		.Any(T->bool) => bool
-	[T]		.Max() => T
-	[T]		.Min() => T
-	[T]		.First() => T
-	[T]		.FirstOrDefault(T) => T
-	[T]		.Last() => T
-	[T]		.LastOrDefault(T) => T
-	[T]		.Count() => vint
-	[T]		.IsEmpty() => bool
-
-	[T]		.Concat([T]) => [T]
-	[T]		.Repeat(vint) => [T]
-	[T]		.Take(vint) => [T]
-	[T]		.Skip(vint) => [T]
-	[T]		.Distinct() => [T]
-	[T]		.Reverse() => [T]
-
-	[T]		.Pairwise([K]) => [(T,K)]
-	[T]		.Intersect([T]) => [T]
-	[T]		.Union([T]) => [T]
-	[T]		.Except([T]) => [T]
-
-	[T]		.Evaluate() => [T]
-	[T]		.GroupBy(T->K) => [(K, [T])]
-
-	From(begin, end) => [T]
-	From(array) => [T]
-	Range(start, count) => [vint]
-
-	FOREACH(X, a, XList)
-	FOREACH_INDEXER(X, a, index, XList)
-***********************************************************************/
-
-#ifndef VCZH_COLLECTIONS_OPERATION
-#define VCZH_COLLECTIONS_OPERATION
-
-
-namespace vl
-{
-	namespace collections
-	{
-
-/***********************************************************************
-OrderBy Quick Sort
-***********************************************************************/
-
-		template<typename T, typename F>
-		void SortLambda(T* items, vint length, F orderer)
-		{
-			if(length==0) return;
-			vint pivot=0;
-			vint left=0;
-			vint right=0;
-			bool flag=false;
-
-			while(left+right+1!=length)
-			{
-				vint& mine=(flag?left:right);
-				vint& theirs=(flag?right:left);
-				vint candidate=(flag?left:length-right-1);
-				vint factor=(flag?-1:1);
-
-				if(orderer(items[pivot], items[candidate])*factor<=0)
-				{
-					mine++;
-				}
-				else
-				{
-					theirs++;
-					T temp=items[pivot];
-					items[pivot]=items[candidate];
-					items[candidate]=temp;
-					pivot=candidate;
-					flag=!flag;
-				}
-			}
-
-			SortLambda(items, left, orderer);
-			SortLambda(items+left+1, right, orderer);
-		}
-
-		template<typename T>
-		void Sort(T* items, vint length, const Func<vint(T, T)>& orderer)
-		{
-			SortLambda<T, Func<vint(T, T)>>(items, length, orderer);
-		}
-
-/***********************************************************************
-LazyList
-***********************************************************************/
-
-		/// <summary>A lazy evaluated readonly container.</summary>
-		/// <typeparam name="T">The type of elements.</typeparam>
-		template<typename T>
-		class LazyList : public Object, public IEnumerable<T>
-		{
-		protected:
-			Ptr<IEnumerator<T>>			enumeratorPrototype;
-
-			template<typename U>
-			static U Element(const IEnumerable<U>&);
-
-			IEnumerator<T>* xs()const
-			{
-				return enumeratorPrototype->Clone();
-			}
-		public:
-			/// <summary>Create a lazy list with an enumerator.</summary>
-			/// <param name="enumerator">The enumerator.</param>
-			LazyList(IEnumerator<T>* enumerator)
-				:enumeratorPrototype(enumerator)
-			{
-			}
-			
-			/// <summary>Create a lazy list with an enumerator.</summary>
-			/// <param name="enumerator">The enumerator.</param>
-			LazyList(Ptr<IEnumerator<T>> enumerator)
-				:enumeratorPrototype(enumerator)
-			{
-			}
-			
-			/// <summary>Create a lazy list with an enumerable.</summary>
-			/// <param name="enumerable">The enumerator.</param>
-			LazyList(const IEnumerable<T>& enumerable)
-				:enumeratorPrototype(enumerable.CreateEnumerator())
-			{
-			}
-			
-			/// <summary>Create a lazy list with an lazy list.</summary>
-			/// <param name="lazyList">The lazy list.</param>
-			LazyList(const LazyList<T>& lazyList)
-				:enumeratorPrototype(lazyList.enumeratorPrototype)
-			{
-			}
-			
-			/// <summary>Create a lazy list with a container.</summary>
-			/// <typeparam name="TContainer">Type of the container.</typeparam>
-			/// <param name="container">The container.</param>
-			template<typename TContainer>
-			LazyList(Ptr<TContainer> container)
-				:enumeratorPrototype(new ContainerEnumerator<T, TContainer>(container))
-			{
-			}
-			
-			/// <summary>Create an empty lazy list.</summary>
-			LazyList()
-				:enumeratorPrototype(EmptyEnumerable<T>().CreateEnumerator())
-			{
-			}
-
-			LazyList<T>& operator=(const LazyList<T>& lazyList)
-			{
-				enumeratorPrototype=lazyList.enumeratorPrototype;
-				return *this;
-			}
-
-			IEnumerator<T>* CreateEnumerator()const
-			{
-				return enumeratorPrototype->Clone();
-			}
-
-			//-------------------------------------------------------
-
-			/// <summary>Create a new lazy list with all elements transformed.</summary>
-			/// <typeparam name="F">Type of the lambda expression.</typeparam>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="f">The lambda expression as a transformation function.</param>
-			template<typename F>
-			LazyList<FUNCTION_RESULT_TYPE(F)> Select(F f)const
-			{
-				return new SelectEnumerator<T, FUNCTION_RESULT_TYPE(F)>(xs(), f);
-			}
-			
-			/// <summary>Create a new lazy list with all elements that satisfy with a condition.</summary>
-			/// <typeparam name="F">Type of the lambda expression.</typeparam>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="f">The lambda expression as a filter.</param>
-			template<typename F>
-			LazyList<T> Where(F f)const
-			{
-				return new WhereEnumerator<T>(xs(), f);
-			}
-
-			/// <summary>Create a new lazy list with all elements casted to a new type.</summary>
-			/// <typeparam name="U">The new type.</typeparam>
-			/// <returns>The created lazy list.</returns>
-			template<typename U>
-			LazyList<Ptr<U>> Cast()const
-			{
-				Func<Ptr<U>(T)> f=[](T t)->Ptr<U>{return t.template Cast<U>();};
-				return new SelectEnumerator<T, Ptr<U>>(xs(), f);
-			}
-			
-			/// <summary>Create a new lazy list with only elements that successfully casted to a new type.</summary>
-			/// <typeparam name="U">The new type.</typeparam>
-			/// <returns>The created lazy list.</returns>
-			template<typename U>
-			LazyList<Ptr<U>> FindType()const
-			{
-				return Cast<U>().Where([](Ptr<U> t){return t;});
-			}
-			
-			/// <summary>Create a new lazy list with all elements sorted.</summary>
-			/// <typeparam name="F">Type of the lambda expression.</typeparam>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="f">The lambda expression as a comparing function.</param>
-			template<typename F>
-			LazyList<T> OrderBy(F f)const
-			{
-				Ptr<List<T>> sorted=new List<T>;
-				CopyFrom(*sorted.Obj(), *this);
-				if(sorted->Count()>0)
-				{
-					SortLambda<T, F>(&sorted->operator[](0), sorted->Count(), f);
-				}
-				return new ContainerEnumerator<T, List<T>>(sorted);
-			}
-
-			//-------------------------------------------------------
-			
-			/// <summary>Aggregate a lazy list. An exception will raise if the lazy list is empty.</summary>
-			/// <typeparam name="F">Type of the lambda expression.</typeparam>
-			/// <returns>The aggregated value.</returns>
-			/// <param name="f">The lambda expression as an aggregator.</param>
-			template<typename F>
-			T Aggregate(F f)const
-			{
-				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
-				if(!enumerator->Next())
-				{
-					throw Error(L"LazyList<T>::Aggregate(F)#Aggregate failed to calculate from an empty container.");
-				}
-				T result=enumerator->Current();
-				while(enumerator->Next())
-				{
-					result=f(result, enumerator->Current());
-				}
-				return result;
-			}
-			
-			/// <summary>Aggregate a lazy list.</summary>
-			/// <typeparam name="I">Type of the initial value.</typeparam>
-			/// <typeparam name="F">Type of the lambda expression.</typeparam>
-			/// <returns>The aggregated value.</returns>
-			/// <param name="init">The initial value that is virtually added before the lazy list.</param>
-			/// <param name="f">The lambda expression as an aggregator.</param>
-			template<typename I, typename F>
-			I Aggregate(I init, F f)const
-			{
-				FOREACH(T, t, *this)
-				{
-					init=f(init, t);
-				}
-				return init;
-			}
-
-			/// <summary>Test does all elements in the lazy list satisfy with a condition.</summary>
-			/// <typeparam name="F">Type of the lambda expression.</typeparam>
-			/// <returns>Returns true if all elements satisfy with a condition.</returns>
-			/// <param name="f">The lambda expression as a filter.</param>
-			template<typename F>
-			bool All(F f)const
-			{
-				return Select(f).Aggregate(true, [](bool a, bool b){return a&&b;});
-			}
-			
-			/// <summary>Test does any elements in the lazy list satisfy with a condition.</summary>
-			/// <typeparam name="F">Type of the lambda expression.</typeparam>
-			/// <returns>Returns true if at least one element satisfies with a condition.</returns>
-			/// <param name="f">The lambda expression as a filter.</param>
-			template<typename F>
-			bool Any(F f)const
-			{
-				return Select(f).Aggregate(false, [](bool a, bool b){return a||b;});
-			}
-
-			/// <summary>Get the maximum value in the lazy list. An exception will raise if the lazy list is empty.</summary>
-			/// <returns>The maximum value.</returns>
-			T Max()const
-			{
-				return Aggregate([](T a, T b){return a>b?a:b;});
-			}
-			
-			/// <summary>Get the minimum value in the lazy list. An exception will raise if the lazy list is empty.</summary>
-			/// <returns>The minimum value.</returns>
-			T Min()const
-			{
-				return Aggregate([](T a, T b){return a<b?a:b;});
-			}
-			
-			/// <summary>Get the first value in the lazy list. An exception will raise if the lazy list is empty.</summary>
-			/// <returns>The first value.</returns>
-			T First()const
-			{
-				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
-				if(!enumerator->Next())
-				{
-					throw Error(L"LazyList<T>::First(F)#First failed to calculate from an empty container.");
-				}
-				return enumerator->Current();
-			}
-			
-			/// <summary>Get the first value in the lazy list.</summary>
-			/// <returns>The first value.</returns>
-			/// <param name="defaultValue">Returns this argument if the lazy list is empty.</param>
-			T First(T defaultValue)const
-			{
-				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
-				if(!enumerator->Next())
-				{
-					return defaultValue;
-				}
-				return enumerator->Current();
-			}
-			
-			/// <summary>Get the last value in the lazy list. An exception will raise if the lazy list is empty.</summary>
-			/// <returns>The last value.</returns>
-			T Last()const
-			{
-				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
-				if(!enumerator->Next())
-				{
-					throw Error(L"LazyList<T>::Last(F)#Last failed to calculate from an empty container.");
-				}
-				else
-				{
-					T value=enumerator->Current();
-					while(enumerator->Next())
-					{
-						value=enumerator->Current();
-					}
-					return value;
-				}
-			}
-			
-			/// <summary>Get the last value in the lazy list.</summary>
-			/// <returns>The last value.</returns>
-			/// <param name="defaultValue">Returns this argument if the lazy list is empty.</param>
-			T Last(T defaultValue)const
-			{
-				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
-				while(enumerator->Next())
-				{
-					defaultValue=enumerator->Current();
-				}
-				return defaultValue;
-			}
-
-			/// <summary>Get the number of elements in the lazy list.</summary>
-			/// <returns>The number of elements.</returns>
-			vint Count()const
-			{
-				vint result=0;
-				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
-				while(enumerator->Next())
-				{
-					result++;
-				}
-				return result;
-			}
-
-			/// <summary>Test is the lazy list empty.</summary>
-			/// <returns>Returns true if the lazy list is empty.</returns>
-			bool IsEmpty()const
-			{
-				Ptr<IEnumerator<T>> enumerator=CreateEnumerator();
-				return !enumerator->Next();
-			}
-
-			//-------------------------------------------------------
-
-			/// <summary>Create a new lazy list containing elements of the two container one after another.</summary>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="remains">Elements that put after this lazy list.</param>
-			LazyList<T> Concat(const IEnumerable<T>& remains)const
-			{
-				return new ConcatEnumerator<T>(xs(), remains.CreateEnumerator());
-			}
-
-			/// <summary>Create a new lazy list with some prefix elements.</summary>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="count">The size of the prefix.</param>
-			LazyList<T> Take(vint count)const
-			{
-				return new TakeEnumerator<T>(xs(), count);
-			}
-			
-			/// <summary>Create a new lazy list without some prefix elements.</summary>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="count">The size of the prefix.</param>
-			LazyList<T> Skip(vint count)const
-			{
-				return new SkipEnumerator<T>(xs(), count);
-			}
-
-			/// <summary>Create a new lazy list with several copies of this lazy list one after another.</summary>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="count">The numbers of copies.</param>
-			LazyList<T> Repeat(vint count)const
-			{
-				return new RepeatEnumerator<T>(xs(), count);
-			}
-
-			/// <summary>Create a new lazy list with all elements in this lazy list. If some elements appear several times, only one will be kept.</summary>
-			/// <returns>The created lazy list.</returns>
-			LazyList<T> Distinct()const
-			{
-				return new DistinctEnumerator<T>(xs());
-			}
-
-			/// <summary>Create a new lazy list with all elements in this lazy list in a reverse order.</summary>
-			/// <returns>The created lazy list.</returns>
-			LazyList<T> Reverse()const
-			{
-				return new ReverseEnumerator<T>(*this);
-			}
-
-			//-------------------------------------------------------
-
-			/// <summary>Create a new lazy list of pairs from elements from two containers.</summary>
-			/// <typeparam name="U">Type of all elements in the second container.</typeparam>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="remains">The second container.</param>
-			template<typename U>
-			LazyList<Pair<T, U>> Pairwise(const IEnumerable<U>& remains)const
-			{
-				return new PairwiseEnumerator<T, U>(xs(), remains.CreateEnumerator());
-			}
-
-			/// <summary>Create a new lazy list with only elements that appear in both containers.</summary>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="remains">The second container.</param>
-			LazyList<T> Intersect(const IEnumerable<T>& remains)const
-			{
-				return LazyList<T>(new IntersectExceptEnumerator<T, true>(xs(), remains)).Distinct();
-			}
-			
-			/// <summary>Create a new lazy list with only elements that appear in this lazy list but not in another container.</summary>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="remains">The second container.</param>
-			LazyList<T> Except(const IEnumerable<T>& remains)const
-			{
-				return LazyList<T>(new IntersectExceptEnumerator<T, false>(xs(), remains)).Distinct();
-			}
-			
-			/// <summary>Create a new lazy list with elements in two containers. If some elements appear several times, only one will be kept.</summary>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="remains">The second container.</param>
-			LazyList<T> Union(const IEnumerable<T>& remains)const
-			{
-				return Concat(remains).Distinct();
-			}
-
-			//-------------------------------------------------------
-
-			LazyList<T> Evaluate()const
-			{
-				if(enumeratorPrototype->Evaluated())
-				{
-					return *this;
-				}
-				else
-				{
-					Ptr<List<T>> xs=new List<T>;
-					CopyFrom(*xs.Obj(), *this);
-					return xs;
-				}
-			}
-
-			/// <summary>Create a new lazy list, whose elements are from transformed elements in this lazy list.</summary>
-			/// <typeparam name="F">Type of the lambda expression.</typeparam>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="f">The lambda expression as a transformation function to transform one element to multiple elements.</param>
-			template<typename F>
-			FUNCTION_RESULT_TYPE(F) SelectMany(F f)const
-			{
-				typedef FUNCTION_RESULT_TYPE(F) LazyListU;
-				typedef typename LazyListU::ElementType U;
-				return Select(f).Aggregate(LazyList<U>(), [](const LazyList<U>& a, const IEnumerable<U>& b)->LazyList<U>{return a.Concat(b);});
-			}
-
-			/// <summary>Create a new lazy list, whose elements are groupd by from elements in this lazy list.</summary>
-			/// <typeparam name="F">Type of the lambda expression.</typeparam>
-			/// <returns>The created lazy list.</returns>
-			/// <param name="f">The lambda expression as a key retriver to calcuate a key from an element.</param>
-			template<typename F>
-			LazyList<Pair<FUNCTION_RESULT_TYPE(F), LazyList<T>>> GroupBy(F f)const
-			{
-				typedef FUNCTION_RESULT_TYPE(F) K;
-				return Select(f)
-					.Distinct()
-					.Select([=](K k)
-					{
-						return Pair<K, LazyList<T>>(
-							k,
-							Where([=](T t){return k==f(t);})
-							);
-					});
-			}
-		};
-
-		template<typename T>
-		LazyList<T> Range(T start, T count)
-		{
-			return new RangeEnumerator<T>(start, count);
-		}
-
-		template<typename T>
-		LazyList<T> From(const IEnumerable<T>& enumerable)
-		{
-			return enumerable;
-		}
-
-		template<typename T>
-		LazyList<T> From(const LazyList<T>& enumerable)
-		{
-			return enumerable;
-		}
-
-		template<typename T>
-		LazyList<T> From(const T* begin, const T* end)
-		{
-			return FromPointer(begin, end);
-		}
-
-		template<typename T, int size>
-		LazyList<T> From(T (&items)[size])
-		{
-			return FromArray(items);
-		}
-
-		template<typename T, int size>
-		LazyList<T> From(const T (&items)[size])
-		{
-			return FromArray(items);
-		}
 	}
 }
 
