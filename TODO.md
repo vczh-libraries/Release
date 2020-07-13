@@ -30,6 +30,7 @@ https://zhuanlan.zhihu.com/p/39369370
   - `TextWriter/TextReader`, encoder, decoder
   - Regex
   - Parser
+- Add `Utf32Encoder` and `Utf32Decoder` to `vl::stream`.
 - Regex supports UTF-16 (instead of UCS-2) on MSVC.
   - Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
 - Redesign vl::parsing.
