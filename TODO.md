@@ -26,6 +26,10 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ### Vlpp
 
+- Add `char8_t` and `UString`, and make following library support `UString` natively:
+  - `TextWriter/TextReader`, encoder, decoder
+  - Regex
+  - Parser
 - Regex supports UTF-16 (instead of UCS-2) on MSVC.
   - Always convert to UTF-32 internally (**`vl::regex::Utf32Reader`**).
 - Redesign vl::parsing.
