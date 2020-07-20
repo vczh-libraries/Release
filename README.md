@@ -3,14 +3,15 @@ Release folder of all projects.
 
 **Read the [LICENSE](https://github.com/vczh-libraries/Release/blob/master/LICENSE.md) first.**
 
-**Read [GacUI website](http://gaclib.net) for more information.**
+**Read [GacUI website](http://vczh-libraries.github.io/) or [the mirror website](http://gaclib.net) for more information.**
 
 Download code from [public releases](https://github.com/vczh-libraries/Release/releases) to get the latest stable release. Code from this repo is also usable but I don't make any promise. I will only make a new release when I think the code is ready to update.
 
-### Here is a simple description to the code
+## Content of This Project
+
 - **Import** Gaclib source code
   - **Skins** Predefined control templates. You will need to call `vl::presentation::theme::RegisterTheme` to set a default skin before creating any controls. Read [WinMain.cpp](https://github.com/vczh-libraries/Release/blob/master/Tutorial/Lib/GacUILite/WinMain.cpp) for details.
-- **Tools** 
+- **Tools**
   - **GacGen32.exe** / **GacGen64.exe** GacUI resource compiler and C++ code generator for x86 and x64
   - **CppMerge.exe** Merge GacUI generated code for x86 and x64 to architecture-independent code
   - **ParserGen.exe** General LR parser to C++ code generator
