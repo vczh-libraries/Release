@@ -5,7 +5,6 @@ https://zhuanlan.zhihu.com/p/39369370
 ## GacUI 1.0
 
 - [ ] Remove global variable facility from Vlpp, move dependended plugin from GacUI to Vlpp (optional)
-- [ ] `RegexProc::extendProc`'s example doesn't colorize tokens correctly if we do nothing in `extendProc`
 - [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
   - [ ] Considering GuiBindableDataGrid updating columns' sizes according to configuration automatically, and call `GuiControl::InvokeOrDelayIfRendering` (indirectly) inside `DataColumn::NotifyAllColumnsUpdate` when necessary.
   - [ ] Like a table, a column can use `Absolute`, `Draggable` and `Percentage` to specify a column size. Only when a column is draggable, users can use their mouse to change the size of a column, and then trigger `IColumnItemView::SetColumnSize`
