@@ -1,4 +1,4 @@
-function Start-Process-And-Wait([String[][]] $Pairs, [Boolean]$Inline = $false, [String]$workingDirectory = "") {
+function Start-Process-And-Wait([String[][]] $Pairs, [Boolean]$Inline = $false, [String]$WorkingDirectory = "", [Boolean]$ThrowOnCrash = $true) {
     $processes = New-Object System.Diagnostics.Process[] $Pairs.Length
     for ($i = 0; $i -lt $Pairs.Length; $i++) {
         Write-Host "    Running: $($Pairs[$i][0]) $($Pairs[$i][1])" -ForegroundColor DarkGray
@@ -9,8 +9,8 @@ function Start-Process-And-Wait([String[][]] $Pairs, [Boolean]$Inline = $false, 
         }
         $arguments.Add("PassThru", $true)
         $arguments.Add("NoNewWindow", $Inline)
-        if ($workingDirectory -ne "") {
-            $arguments.Add("WorkingDirectory", $workingDirectory)
+        if ($WorkingDirectory -ne "") {
+            $arguments.Add("WorkingDirectory", $WorkingDirectory)
         }
 
         $processes[$i] = Start-Process $Pairs[$i][0] @arguments
@@ -21,7 +21,7 @@ function Start-Process-And-Wait([String[][]] $Pairs, [Boolean]$Inline = $false, 
         $process = $processes[$i]
         $process_handle = $process.Handle
         $process.WaitForExit()
-        if ($process.ExitCode -ne 0) {
+        if (($process.ExitCode -ne 0) -and $ThrowOnCrash) {
             Write-Host "    Crashes($($process.ExitCode)): $($Pairs[$i][0]) $($Pairs[$i][1])" -ForegroundColor Red
             $failed = $true
         }
