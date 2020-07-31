@@ -31,10 +31,17 @@ namespace myapi
 			Console::WriteLine(text);
 		}
 	};
+
+	class IScripting : public virtual IDescriptable, public Description<IScripting>
+	{
+	public:
+		virtual void Execute(const WString& name) = 0;
+	};
 }
 
 #define MYAPI_TYPELIST(F)\
 	F(myapi::App)\
+	F(myapi::IScripting)\
 
 namespace vl
 {
@@ -47,6 +54,16 @@ namespace vl
 
 			using namespace myapi;
 
+#pragma warning(push)
+#pragma warning(disable:4250)
+			BEGIN_INTERFACE_PROXY_SHAREDPTR(IScripting)
+				void Execute(const WString& name)override
+				{
+					INVOKE_INTERFACE_PROXY(Execute, name);
+				}
+			END_INTERFACE_PROXY(IScripting)
+#pragma warning(pop)
+
 #define _ ,
 
 			BEGIN_CLASS_MEMBER(App)
@@ -54,6 +71,10 @@ namespace vl
 				CLASS_MEMBER_STATIC_METHOD_OVERLOAD(Get, { L"message" }, WString(*)(const WString&))
 				CLASS_MEMBER_STATIC_METHOD(Print, { L"text" })
 			END_CLASS_MEMBER(App)
+
+			BEGIN_INTERFACE_MEMBER(IScripting)
+				CLASS_MEMBER_METHOD(Execute, { L"name" })
+			END_INTERFACE_MEMBER(IScripting)
 
 #undef _
 			class MyApiTypeLoader : public Object, public ITypeLoader
@@ -78,10 +99,15 @@ module sampleModule;
 
 using myapi::*;
 
-func main(): void
+func main(): IScripting^
 {
-	var name = App::Get("Please enter your name:");
-	App::Print($"Hello, $(name)!");
+	return new IScripting^
+	{
+		override func Execute(name: string): void
+		{
+			App::Print($"Hello, $(name)!");
+		}
+	};
 }
 
 )Workflow";
@@ -111,8 +137,8 @@ int main()
 		initializeFunction();
 
 		// call main
-		auto mainFunction = LoadFunction<void()>(globalContext, L"main");
-		mainFunction();
+		auto mainFunction = LoadFunction<Ptr<myapi::IScripting>()>(globalContext, L"main");
+		mainFunction()->Execute(L"Gaclib");
 	}
 
 	// stop reflection
