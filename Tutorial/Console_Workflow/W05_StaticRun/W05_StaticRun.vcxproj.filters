@@ -45,6 +45,9 @@
     <ClInclude Include="Generated\W05ScriptIncludes.h">
       <Filter>Generated</Filter>
     </ClInclude>
+    <ClInclude Include="Generated\W05ScriptReflection.h">
+      <Filter>Generated</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Import\VlppWorkflowLibrary.cpp">
@@ -69,6 +72,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Generated\W05Script.cpp">
+      <Filter>Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="Generated\W05ScriptReflection.cpp">
       <Filter>Generated</Filter>
     </ClCompile>
   </ItemGroup>

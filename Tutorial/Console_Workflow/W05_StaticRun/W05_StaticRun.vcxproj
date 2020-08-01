@@ -155,6 +155,7 @@
     <ClInclude Include="..\W05_Lib\W05_Lib.h" />
     <ClInclude Include="Generated\W05Script.h" />
     <ClInclude Include="Generated\W05ScriptIncludes.h" />
+    <ClInclude Include="Generated\W05ScriptReflection.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Import\Vlpp.cpp">
@@ -189,6 +190,7 @@
     </ClCompile>
     <ClCompile Include="..\W05_Lib\W05_Lib.cpp" />
     <ClCompile Include="Generated\W05Script.cpp" />
+    <ClCompile Include="Generated\W05ScriptReflection.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
