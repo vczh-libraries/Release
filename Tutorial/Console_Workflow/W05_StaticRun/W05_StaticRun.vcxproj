@@ -152,9 +152,9 @@
     <ClInclude Include="..\..\..\Import\VlppReflection.h" />
     <ClInclude Include="..\..\..\Import\VlppRegex.h" />
     <ClInclude Include="..\..\..\Import\VlppWorkflowLibrary.h" />
-    <ClInclude Include="..\W05_DynamicRun\Generated\W05Script.h" />
-    <ClInclude Include="..\W05_DynamicRun\Generated\W05ScriptIncludes.h" />
     <ClInclude Include="..\W05_Lib\W05_Lib.h" />
+    <ClInclude Include="Generated\W05Script.h" />
+    <ClInclude Include="Generated\W05ScriptIncludes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Import\Vlpp.cpp">
@@ -187,8 +187,9 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\W05_DynamicRun\Generated\W05Script.cpp" />
     <ClCompile Include="..\W05_Lib\W05_Lib.cpp" />
+    <ClCompile Include="Generated\W05Script.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -11,6 +11,7 @@ https://github.com/vczh-libraries
 #define W05_SCRIPT_W05SCRIPT
 
 #include "../../W05_Lib/W05_Lib.h"
+#include "VlppWorkflowLibrary.h"
 
 #if defined( _MSC_VER)
 #pragma warning(push)

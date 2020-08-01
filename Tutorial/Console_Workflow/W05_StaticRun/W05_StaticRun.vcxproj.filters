@@ -39,10 +39,10 @@
     <ClInclude Include="..\W05_Lib\W05_Lib.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\W05_DynamicRun\Generated\W05ScriptIncludes.h">
+    <ClInclude Include="Generated\W05Script.h">
       <Filter>Generated</Filter>
     </ClInclude>
-    <ClInclude Include="..\W05_DynamicRun\Generated\W05Script.h">
+    <ClInclude Include="Generated\W05ScriptIncludes.h">
       <Filter>Generated</Filter>
     </ClInclude>
   </ItemGroup>
@@ -65,7 +65,10 @@
     <ClCompile Include="..\W05_Lib\W05_Lib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\W05_DynamicRun\Generated\W05Script.cpp">
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Generated\W05Script.cpp">
       <Filter>Generated</Filter>
     </ClCompile>
   </ItemGroup>
