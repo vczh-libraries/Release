@@ -150,9 +150,13 @@
     <ProjectReference Include="..\Lib\Lib.vcxproj">
       <Project>{6d6fe50e-fd92-46f1-8897-3045e14be02b}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\W05_Lib\W05_Lib.vcxproj">
-      <Project>{2061d6ee-36d8-4d98-8221-14e86da3c79b}</Project>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\W05_Lib\W05_Lib.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\W05_Lib\W05_Lib.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -33,6 +33,9 @@
     <ClInclude Include="..\..\..\Import\VlppReflection.h">
       <Filter>Import</Filter>
     </ClInclude>
+    <ClInclude Include="..\W05_Lib\W05_Lib.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Import\VlppWorkflowLibrary.cpp">
@@ -49,6 +52,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Import\VlppRegex.cpp">
       <Filter>Import</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W05_Lib\W05_Lib.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

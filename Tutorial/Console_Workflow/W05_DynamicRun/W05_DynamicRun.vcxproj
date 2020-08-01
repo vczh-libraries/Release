@@ -189,6 +189,7 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\W05_Lib\W05_Lib.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Import\Vlpp.h" />
@@ -198,11 +199,7 @@
     <ClInclude Include="..\..\..\Import\VlppRegex.h" />
     <ClInclude Include="..\..\..\Import\VlppWorkflowLibrary.h" />
     <ClInclude Include="..\..\..\Import\VlppWorkflowRuntime.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\W05_Lib\W05_Lib.vcxproj">
-      <Project>{2061d6ee-36d8-4d98-8221-14e86da3c79b}</Project>
-    </ProjectReference>
+    <ClInclude Include="..\W05_Lib\W05_Lib.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
