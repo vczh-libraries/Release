@@ -1,6 +1,7 @@
 #include <VlppWorkflowCompiler.h>
 #include "../W05_Lib/W05_Lib.h"
 
+using namespace vl::collections;
 using namespace vl::stream;
 using namespace vl::parsing;
 using namespace vl::filesystem;
@@ -46,14 +47,17 @@ int wmain(int argc, const wchar_t* argv[])
 	GetGlobalTypeManager()->Load();
 
 	{
+		// prepare Workflow script code
+		List<WString> codes;
+		codes.Add(WString(ScriptCode, false));
+
 		// compile code
-		// this is required because we produce assembly and C++ code at the same time
+		// WfLexicalScopeManager is required because we produce assembly and C++ code at the same time
+		List<Ptr<ParsingError>> errors;
 		auto table = WfLoadTable();
 		WfLexicalScopeManager manager(table);
-		manager.AddModule(WString(ScriptCode, false));
-		CHECK_ERROR(manager.errors.Count() == 0, L"Please check the 'manager.errors' variable.");
-		manager.Rebuild(true);
-		CHECK_ERROR(manager.errors.Count() == 0, L"Please check the 'manager.errors' variable.");
+		auto assembly = Compile(table, &manager, codes, errors);
+		CHECK_ERROR(assembly && errors.Count() == 0, L"Please check the 'errors' variable.");
 
 		// save the assembly to file
 		{
