@@ -12,7 +12,7 @@ using namespace vl::workflow::runtime;
 
 namespace myapi
 {
-	class App : public Object, public Description<Console>
+	class App : public Object, public AggregatableDescription<App>
 	{
 	private:
 		WString name;
@@ -43,6 +43,7 @@ namespace myapi
 			{
 				sub->Close();
 			}
+			FinalizeAggregation();
 		}
 
 		Event<void()> NameChanged;
@@ -127,14 +128,23 @@ namespace myscript
 		{
 			Name = name;
 
-			value subscription = bind($"Hello, $(this.Name)");
-			subscription.Open();
+			/* "this" is not allowed in binding, copy it to a variable */
+			var self = this;
+			var subscription = bind($"Hello, $(self.Name)");
+
 			attach(subscription.ValueChanged,
 				func (value: object): void
 				{
 					Print(cast string value);
 				});
+
+			subscription.Open();
 			Subscriptions.Add(subscription);
+		}
+
+		delete
+		{
+			Print("Destructing myscript::MyApp");
 		}
 	}
 }
@@ -171,6 +181,8 @@ int main()
 			(
 				Value_xs(), WString(L"vczh")
 			)));
+		myapp->SetName(L"Vczh Libraries++");
+		myapp->SetName(L"Workflow");
 		myapp->SetName(L"Gaclib");
 	}
 

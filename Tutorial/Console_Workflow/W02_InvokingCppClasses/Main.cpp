@@ -12,7 +12,7 @@ using namespace vl::workflow::runtime;
 
 namespace myapi
 {
-	class App : public Object, public Description<Console>
+	class App : public Object, public Description<App>
 	{
 	public:
 		static WString Get()
