@@ -89,12 +89,13 @@ func main(): void
 class MyDebugger : public WfDebugger
 {
 protected:
-	void OnBlockExecution()
+	void OnBlockExecution()override
 	{
 		// get the context for the current thread
 		auto context = GetCurrentThreadContext();
 
-		// whatever the input is, change the "name" variable
+		// whatever the input is, change the "name" variable to be "MyDebugger"
+		// it will print "Hello, MyDebugger!" after continuing
 		auto assembly = context->globalContext->assembly;
 		vint functionIndex = context->GetCurrentStackFrame().functionIndex;
 		auto functionMetadata = assembly->functions[functionIndex];
@@ -131,14 +132,14 @@ int main()
 		initializeFunction();
 
 		// start debugging
-		auto debugger = MakePtr<WfDebugger>();
+		auto debugger = MakePtr<MyDebugger>();
 		SetDebuggerForCurrentThread(debugger);
 
 		// break at App::Print(...);
 		// it is in file 0 row 9
 		debugger->AddCodeLineBreakPoint(assembly.Obj(), 0, 9, true);
 
-		// call main
+		// call main, will trap into MyDebugger::OnBlockExecution when hitting the break point
 		auto mainFunction = LoadFunction<void()>(globalContext, L"main");
 		mainFunction();
 
