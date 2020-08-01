@@ -135,8 +135,20 @@ int main()
 		auto debugger = MakePtr<MyDebugger>();
 		SetDebuggerForCurrentThread(debugger);
 
-		// break at App::Print(...);
-		// it is in file 0 row 9
+		// break at App::Print(...);, which is at line 9 in file 0
+		// line  0: 
+		// line  1: 
+		// line  2: module sampleModule;
+		// line  3: 
+		// line  4: using myapi::*;
+		// line  5: 
+		// line  6: func main() : void
+		// line  7: {
+		// line  8: 	var name = App::Get("Please enter your name:");
+		// line  9: 	App::Print($"Hello, $(name)!");
+		// line 10: }
+		// line 11: 
+		// line 12: 
 		debugger->AddCodeLineBreakPoint(assembly.Obj(), 0, 9, true);
 
 		// call main, will trap into MyDebugger::OnBlockExecution when hitting the break point
