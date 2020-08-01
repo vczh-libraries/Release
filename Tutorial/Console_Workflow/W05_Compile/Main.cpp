@@ -1,7 +1,6 @@
 #include <VlppWorkflowCompiler.h>
 #include "../W05_Lib/W05_Lib.h"
 
-using namespace vl::collections;
 using namespace vl::stream;
 using namespace vl::parsing;
 using namespace vl::filesystem;

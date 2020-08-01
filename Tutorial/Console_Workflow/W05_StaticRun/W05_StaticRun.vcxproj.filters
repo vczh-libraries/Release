@@ -16,6 +16,9 @@
     <Filter Include="Import">
       <UniqueIdentifier>{c19153f0-f627-4efb-9291-6658296b5572}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Generated">
+      <UniqueIdentifier>{5cde26dc-d02c-4b14-81bd-e3c77ab4c4c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Import\VlppRegex.h">
@@ -36,6 +39,12 @@
     <ClInclude Include="..\W05_Lib\W05_Lib.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\W05_DynamicRun\Generated\W05ScriptIncludes.h">
+      <Filter>Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\W05_DynamicRun\Generated\W05Script.h">
+      <Filter>Generated</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Import\VlppWorkflowLibrary.cpp">
@@ -55,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="..\W05_Lib\W05_Lib.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W05_DynamicRun\Generated\W05Script.cpp">
+      <Filter>Generated</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
