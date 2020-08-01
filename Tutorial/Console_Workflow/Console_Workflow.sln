@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "W02_InvokingCppClasses", "W
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "W03_InheritingCppInterfaces", "W03_InheritingCppInterfaces\W03_InheritingCppInterfaces.vcxproj", "{E53A8108-D14F-453D-969E-D00E2668396C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "W04_InheritingCppClasses", "W04_InheritingCppClasses\W04_InheritingCppClasses.vcxproj", "{0A86BD59-877D-440B-9E7D-7E1E7DF6AB2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{E53A8108-D14F-453D-969E-D00E2668396C}.Release|x64.Build.0 = Release|x64
 		{E53A8108-D14F-453D-969E-D00E2668396C}.Release|x86.ActiveCfg = Release|Win32
 		{E53A8108-D14F-453D-969E-D00E2668396C}.Release|x86.Build.0 = Release|Win32
+		{0A86BD59-877D-440B-9E7D-7E1E7DF6AB2C}.Debug|x64.ActiveCfg = Debug|x64
+		{0A86BD59-877D-440B-9E7D-7E1E7DF6AB2C}.Debug|x64.Build.0 = Debug|x64
+		{0A86BD59-877D-440B-9E7D-7E1E7DF6AB2C}.Debug|x86.ActiveCfg = Debug|Win32
+		{0A86BD59-877D-440B-9E7D-7E1E7DF6AB2C}.Debug|x86.Build.0 = Debug|Win32
+		{0A86BD59-877D-440B-9E7D-7E1E7DF6AB2C}.Release|x64.ActiveCfg = Release|x64
+		{0A86BD59-877D-440B-9E7D-7E1E7DF6AB2C}.Release|x64.Build.0 = Release|x64
+		{0A86BD59-877D-440B-9E7D-7E1E7DF6AB2C}.Release|x86.ActiveCfg = Release|Win32
+		{0A86BD59-877D-440B-9E7D-7E1E7DF6AB2C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
