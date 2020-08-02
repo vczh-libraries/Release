@@ -9542,6 +9542,14 @@ IsExpressionDependOnExpectedType(Expression)
 					result = scope->symbols.Count() > 0;
 				}
 
+				void Visit(WfBinaryExpression* node)override
+				{
+					if (node->op == WfBinaryOperator::Intersect)
+					{
+						result = Execute(node->first) && Execute(node->second);
+					}
+				}
+
 				void Visit(WfLiteralExpression* node)override
 				{
 					if (node->value == WfLiteralValue::Null)
