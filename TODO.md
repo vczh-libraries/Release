@@ -4,14 +4,20 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ## GacUI 1.0
 
+### Bug
+
+- [ ] `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
+- [ ] `let X = Y in (F(X.a.b.c))` reports `X does not exist in the current scope` in binding property value
+  - while `F((let X = Y.a.b).c)` works
+
+### Feature
+
 - [ ] Move dependended plugin from GacUI to Vlpp (optional)
 - [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
   - [ ] Considering GuiBindableDataGrid updating columns' sizes according to configuration automatically, and call `GuiControl::InvokeOrDelayIfRendering` (indirectly) inside `DataColumn::NotifyAllColumnsUpdate` when necessary.
   - [ ] Like a table, a column can use `Absolute`, `Draggable` and `Percentage` to specify a column size. Only when a column is draggable, users can use their mouse to change the size of a column, and then trigger `IColumnItemView::SetColumnSize`
 - [ ] Consider drag and drop support, with column drag and drop
 - [ ] New item arranger that can accept a `GuiRepeatCompositionBase`
-- [ ] `let X = Y in (F(X.a.b.c))` reports `X does not exist in the current scope` in binding property value
-  - while `F((let X = Y.a.b).c)` works
 - [ ] **Update Release**
 - [ ] New default control templates with animation, written in XML generated C++ code.
 - [ ] A window can be called to update all its controls' and components' template
