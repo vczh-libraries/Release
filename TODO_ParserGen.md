@@ -7,7 +7,6 @@
   * Full CFG power, no limitation
     * Experiment: expanding all left-recursive grammer to right-recursive grammar with instructions
     * Experiment: optionally inline all rules which don't generate parser functions
-    * Experiment: run through a CFG automaton first, determine the state transition path for the input, and then run instructions to drive SAX-like callback
   * Error message generation
   * Error recovering
 * Serializing
@@ -134,7 +133,10 @@ class CLASS_NAME [: BASE_CLASS]
 * **Execution**:
   * **Goal**: given instructions and parse input text with SAX-like callback
     * An instruction could generate multiple continuations
-  * Parser-generated instructions serialization.
+  * Serialization for parser-generated automaton and instructions.
+  * Run the automaton on an input
+    * Determine a path on state transition from the input first, and then follow this path to execute instructions.
+    * Introduce a garbage-collectable memory allocation for path, could be ref counted.
   * Execute instructions as a SAX-like parser, with notification on ambiguous node, error message generation and error recovering.
     * If there is ambiguity, different callbacks could be called on the same position, and results could be discarded in the future execution.
 * **Compiler** -> **AstGen**, **Execution**
