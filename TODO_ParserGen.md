@@ -7,6 +7,7 @@
   * Full CFG power, no limitation
     * Experiment: expanding all left-recursive grammer to right-recursive grammar with instructions
     * Experiment: optionally inline all rules which don't generate parser functions
+    * Experiment: run through a CFG automaton first, determine the state transition path for the input, and then run instructions to drive SAX-like callback
   * Error message generation
   * Error recovering
 * Serializing
