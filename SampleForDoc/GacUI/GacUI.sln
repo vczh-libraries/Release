@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RunResource", "RunResource\RunResource.vcxproj", "{0FAA859A-1B12-4F70-9EA9-31DBBF202595}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{21E29BA1-4CA5-4BDB-B7BF-19A6E76B3A12}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacUI", "..\..\Tutorial\Lib\GacUI\GacUI.vcxproj", "{8018D622-66BA-4E65-9D03-BDAC37EA9A54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FAA859A-1B12-4F70-9EA9-31DBBF202595}.Debug|x64.ActiveCfg = Debug|x64
+		{0FAA859A-1B12-4F70-9EA9-31DBBF202595}.Debug|x64.Build.0 = Debug|x64
+		{0FAA859A-1B12-4F70-9EA9-31DBBF202595}.Debug|x86.ActiveCfg = Debug|Win32
+		{0FAA859A-1B12-4F70-9EA9-31DBBF202595}.Debug|x86.Build.0 = Debug|Win32
+		{0FAA859A-1B12-4F70-9EA9-31DBBF202595}.Release|x64.ActiveCfg = Release|x64
+		{0FAA859A-1B12-4F70-9EA9-31DBBF202595}.Release|x64.Build.0 = Release|x64
+		{0FAA859A-1B12-4F70-9EA9-31DBBF202595}.Release|x86.ActiveCfg = Release|Win32
+		{0FAA859A-1B12-4F70-9EA9-31DBBF202595}.Release|x86.Build.0 = Release|Win32
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Debug|x64.ActiveCfg = Debug|Win32
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Debug|x86.ActiveCfg = Debug|Win32
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Debug|x86.Build.0 = Debug|Win32
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Release|x64.ActiveCfg = Release|Win32
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Release|x86.ActiveCfg = Release|Win32
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8018D622-66BA-4E65-9D03-BDAC37EA9A54} = {21E29BA1-4CA5-4BDB-B7BF-19A6E76B3A12}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1089FAC6-7FE3-4ED1-A226-E1D2CEE0930E}
+	EndGlobalSection
+EndGlobal

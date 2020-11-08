@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\kb_elements.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\kb_elements.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.CodeBehind="false" ref.Class="sample::MainWindow">
+        <Window Text="Hello, world!" ClientSize="x:480 y:320">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <Label Text="Welcome to GacUI Library!">
+            <att.Font>fontFamily:"Segoe UI" size:32 antialias:true</att.Font>
+          </Label>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
