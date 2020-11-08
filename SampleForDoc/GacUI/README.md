@@ -16,6 +16,7 @@ http://vczh-libraries.github.io/doc/current/gacui/home.html
 
 - Go to folder `XmlRes`
 - Run `..\..\..\Tools\GacClear.ps1 -FileName GacUI.xml`
+  - Only run this command if you want to rebuild everything, or you will get a incremental build
 - Run `..\..\..\Tools\GacBuild.ps1 -FileName GacUI.xml`
 
 ### Execute
