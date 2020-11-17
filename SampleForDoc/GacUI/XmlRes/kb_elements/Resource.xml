@@ -22,7 +22,7 @@
       <Instance ref.Class="sample::MainWindow" ref.Styles="res://MainWindow/SharedStyle">
         <Window Text="Hello, world!" ClientSize="x:640 y:480">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
-          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="10">
             <att.Rows>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
@@ -30,12 +30,16 @@
             </att.Rows>
             <att.Columns>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:Absolute absolute:2</CellOption>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
             </att.Columns>
 
             <Cell Site="row:0 column:0">
-              <Gui3DBorderElement Color1="#FFB900" Color2="#847545"/>
+              <Gui3DBorderElement Color1="#805000" Color2="#FFB900"/>
+              <Bounds AlignmentToParent="left:1 top:1 right:1 bottom:1">
+                <Gui3DBorderElement Color1="#FFB900" Color2="#805000"/>
+              </Bounds>
               <Bounds ref.Style="label">
                 <SolidLabel Text="&lt;Gui3DBorderElement/&gt;"/>
               </Bounds>
@@ -49,39 +53,43 @@
             <Cell Site="row:2 column:0">
               <SolidLabel Text="&lt;SolidLabel/&gt;"/>
             </Cell>
+
+            <Cell Site="row:0 column:1 rowSpan:3">
+              <Gui3DBorderElement Color1="#805000" Color2="#FFB900"/>
+            </Cell>
             
-            <Cell Site="row:0 column:1">
+            <Cell Site="row:0 column:2">
               <SolidBorder Color="#EB1123"/>
               <Bounds ref.Style="label">
                 <SolidLabel Text="&lt;SolidBorder/&gt;"/>
               </Bounds>
             </Cell>
-            <Cell Site="row:1 column:1">
+            <Cell Site="row:1 column:2">
               <SolidBackground Color="#498206"/>
               <Bounds ref.Style="label">
                 <SolidLabel Text="&lt;SolidBackground/&gt;"/>
               </Bounds>
             </Cell>
-            <Cell Site="row:2 column:1">
+            <Cell Site="row:2 column:2">
               <GradientBackground Color1="#0099BC" Color2="#9A0089" Direction="Vertical"/>
               <Bounds ref.Style="label">
                 <SolidLabel Text="&lt;GradientBackground/&gt;"/>
               </Bounds>
             </Cell>
             
-            <Cell Site="row:0 column:2">
+            <Cell Site="row:0 column:3">
               <SolidBorder Color="#EB1123" Shape="shapeType:RoundRect radiusX:20 radiusY:15"/>
               <Bounds ref.Style="label">
                 <SolidLabel Text="&lt;SolidBorder/&gt;"/>
               </Bounds>
             </Cell>
-            <Cell Site="row:1 column:2">
+            <Cell Site="row:1 column:3">
               <SolidBackground Color="#498206" Shape="shapeType:RoundRect radiusX:20 radiusY:15"/>
               <Bounds ref.Style="label">
                 <SolidLabel Text="&lt;SolidBackground/&gt;"/>
               </Bounds>
             </Cell>
-            <Cell Site="row:2 column:2">
+            <Cell Site="row:2 column:3">
               <GradientBackground Color1="#0099BC" Color2="#9A0089" Direction="Vertical" Shape="shapeType:RoundRect radiusX:20 radiusY:15"/>
               <Bounds ref.Style="label">
                 <SolidLabel Text="&lt;GradientBackground/&gt;"/>
