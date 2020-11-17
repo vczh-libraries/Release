@@ -1,5 +1,6 @@
 #include <GacUIReflection.h>
-#include <Windows.h>
+#include <GacUIWindows.h>
+#include "resource.h"
 
 using namespace vl;
 using namespace vl::filesystem;
@@ -7,6 +8,20 @@ using namespace vl::reflection::description;
 using namespace vl::presentation;
 using namespace vl::presentation::controls;
 using namespace vl::presentation::compositions;
+
+/*
+The code has to run before calling SetupWindowsDirect2DRenderer
+But I am lazy and I don't want to create another GacUILite without WinMain
+So I just do this
+*/
+class Initialize
+{
+public:
+	Initialize()
+	{
+		windows::SetWindowDefaultIcon(MAINICON);
+	}
+} initialize;
 
 void GuiMain()
 {
