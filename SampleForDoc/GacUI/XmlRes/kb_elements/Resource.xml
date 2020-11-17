@@ -49,6 +49,44 @@
             <Cell Site="row:2 column:0">
               <SolidLabel Text="&lt;SolidLabel/&gt;"/>
             </Cell>
+            
+            <Cell Site="row:0 column:1">
+              <SolidBorder Color="#EB1123"/>
+              <Bounds ref.Style="label">
+                <SolidLabel Text="&lt;SolidBorder/&gt;"/>
+              </Bounds>
+            </Cell>
+            <Cell Site="row:1 column:1">
+              <SolidBackground Color="#498206"/>
+              <Bounds ref.Style="label">
+                <SolidLabel Text="&lt;SolidBackground/&gt;"/>
+              </Bounds>
+            </Cell>
+            <Cell Site="row:2 column:1">
+              <GradientBackground Color1="#0099BC" Color2="#9A0089" Direction="Vertical"/>
+              <Bounds ref.Style="label">
+                <SolidLabel Text="&lt;GradientBackground/&gt;"/>
+              </Bounds>
+            </Cell>
+            
+            <Cell Site="row:0 column:2">
+              <SolidBorder Color="#EB1123" Shape="shapeType:RoundRect radiusX:20 radiusY:15"/>
+              <Bounds ref.Style="label">
+                <SolidLabel Text="&lt;SolidBorder/&gt;"/>
+              </Bounds>
+            </Cell>
+            <Cell Site="row:1 column:2">
+              <SolidBackground Color="#498206" Shape="shapeType:RoundRect radiusX:20 radiusY:15"/>
+              <Bounds ref.Style="label">
+                <SolidLabel Text="&lt;SolidBackground/&gt;"/>
+              </Bounds>
+            </Cell>
+            <Cell Site="row:2 column:2">
+              <GradientBackground Color1="#0099BC" Color2="#9A0089" Direction="Vertical" Shape="shapeType:RoundRect radiusX:20 radiusY:15"/>
+              <Bounds ref.Style="label">
+                <SolidLabel Text="&lt;GradientBackground/&gt;"/>
+              </Bounds>
+            </Cell>
           </Table>
         </Window>
       </Instance>
