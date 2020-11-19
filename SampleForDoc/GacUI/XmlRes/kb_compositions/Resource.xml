@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\kb_compositions.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\kb_compositions.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="Templates">
+    <Instance name="LayoutTabHeaderTemplate">
+      <Instance ref.Class="sample::LayoutTabHeaderTemplate">
+        <ref.Parameter Name="CurrentTabPage" Class="presentation::controls::GuiTabPage"/>
+        <ref.Members>
+          <![CDATA[
+            prop Commands : ITabCommandExecutor* = null {}
+          ]]>
+        </ref.Members>
+        <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
+          <RadioButton AutoFocus="false" AutoSelection="false">
+            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+            <att.Context-ref>CurrentTabPage</att.Context-ref>
+            <att.Text-bind>CurrentTabPage.Text</att.Text-bind>
+            <att.Alt-bind>CurrentTabPage.Alt</att.Alt-bind>
+            <att.Selected-bind>CurrentTabPage.OwnerTab.SelectedPage == CurrentTabPage</att.Selected-bind>
+            <ev.Clicked-eval>
+              <![CDATA[
+                {
+                  self.Commands.ShowTab(CurrentTabPage.OwnerTab.Pages.IndexOf(CurrentTabPage), true);
+                }
+              ]]>
+            </ev.Clicked-eval>
+          </RadioButton>
+        </ControlTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="LayoutTabTemplate">
+      <Instance ref.Class="sample::LayoutTabTemplate">
+        <TabTemplate ref.Name="self" ContainerComposition-ref="container" TabOrder="TopToBottom" MinSizeLimitation="LimitToElementAndChildren">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <RepeatStack ref.Name="header" AlignmentToParent="left:0 top:0 right:0 bottom:0" Padding="2" Direction="Vertical" MinSizeLimitation="LimitToElementAndChildren">
+                <att.ItemTemplate>sample::LayoutTabHeaderTemplate</att.ItemTemplate>
+                <att.ItemSource-bind>self.TabPages</att.ItemSource-bind>
+                <ev.ItemInserted-eval>
+                  <![CDATA[
+                    {
+                      var stackItem = header.StackItems[arguments.itemIndex];
+                      var item = cast (LayoutTabHeaderTemplate*) stackItem.Children[0];
+                      item.Commands = self.Commands;
+                    }
+                  ]]>
+                </ev.ItemInserted-eval>
+              </RepeatStack>
+            </Cell>
+
+            <Cell Site="row:0 column:1 rowSpan:2">
+              <FocusRectangle/>
+              <Bounds ref.Name="container" AlignmentToParent="left:1 top:1 right:1 bottom:1"/>
+            </Cell>
+          </Table>
+        </TabTemplate>
+      </Instance>
+    </Instance>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <Window Text="kb_compositions" IconVisible="true" ClientSize="x:640 y:480">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <Tab>
+            <att.ControlTemplate>sample::LayoutTabTemplate</att.ControlTemplate>
+            <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
+            <att.Pages>
+              <TabPage Text="Bounds">
+              </TabPage>
+
+              <TabPage Text="Stack">
+              </TabPage>
+
+              <TabPage Text="Flow">
+              </TabPage>
+
+              <TabPage Text="Table">
+              </TabPage>
+
+              <TabPage Text="SharedSize">
+              </TabPage>
+
+              <TabPage Text="ResponsiveStack">
+              </TabPage>
+
+              <TabPage Text="ResponsiveGroup">
+              </TabPage>
+            </att.Pages>
+          </Tab>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
