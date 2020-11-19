@@ -49,7 +49,7 @@
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
             </att.Columns>
 
-            <Cell Site="row:0 column:0">
+            <Cell Site="row:0 column:0 rowSpan:2">
               <RepeatStack ref.Name="header" AlignmentToParent="left:0 top:0 right:0 bottom:0" Padding="2" Direction="Vertical" MinSizeLimitation="LimitToElementAndChildren">
                 <att.ItemTemplate>sample::LayoutTabHeaderTemplate</att.ItemTemplate>
                 <att.ItemSource-bind>self.TabPages</att.ItemSource-bind>
@@ -65,7 +65,13 @@
               </RepeatStack>
             </Cell>
 
-            <Cell Site="row:0 column:1 rowSpan:2">
+            <Cell Site="row:0 column:1">
+              <Label Font-bind="self.Font">
+                <att.Text-format>&lt;$(self.SelectedTabPage.Text ?? '')/&gt;</att.Text-format>
+              </Label>
+            </Cell>
+
+            <Cell Site="row:1 column:1">
               <FocusRectangle/>
               <Bounds ref.Name="container" AlignmentToParent="left:1 top:1 right:1 bottom:1"/>
             </Cell>
@@ -74,6 +80,7 @@
       </Instance>
     </Instance>
   </Folder>
+
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow">
@@ -83,25 +90,28 @@
             <att.ControlTemplate>sample::LayoutTabTemplate</att.ControlTemplate>
             <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
             <att.Pages>
-              <TabPage Text="Bounds">
+              <TabPage Text="Bounds" Alt="B">
               </TabPage>
 
-              <TabPage Text="Stack">
+              <TabPage Text="Stack" Alt="S">
               </TabPage>
 
-              <TabPage Text="Flow">
+              <TabPage Text="Flow" Alt="F">
               </TabPage>
 
-              <TabPage Text="Table">
+              <TabPage Text="Table" Alt="T">
               </TabPage>
 
-              <TabPage Text="SharedSize">
+              <TabPage Text="SharedSize" Alt="S">
               </TabPage>
 
-              <TabPage Text="ResponsiveStack">
+              <TabPage Text="ResponsiveView" Alt="RV">
               </TabPage>
 
-              <TabPage Text="ResponsiveGroup">
+              <TabPage Text="ResponsiveStack" Alt="RS">
+              </TabPage>
+
+              <TabPage Text="ResponsiveGroup" Alt="RG">
               </TabPage>
             </att.Pages>
           </Tab>
