@@ -1,5 +1,10 @@
 <Instance ref.Class="sample::BoundsControl">
   <CustomControl>
-    <Label Text="sample::BoundsControl"/>
+    <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:-1" PreferredMinSize="y:50">
+      <SolidBorder Color="#FFFFFF"/>
+    </Bounds>
+    <Bounds AlignmentToParent="left:-1 top:-1 right:0 bottom:0" PreferredMinSize="x:50 y:50">
+      <SolidBorder Color="#FFFFFF"/>
+    </Bounds>
   </CustomControl>
 </Instance>
