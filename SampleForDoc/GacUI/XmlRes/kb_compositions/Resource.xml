@@ -82,8 +82,23 @@
   </Folder>
 
   <Folder name="MainWindow">
+    <Instance name="BoundsControlResource" content="File">Bounds.xml</Instance>
+    <Instance name="StackControlResource" content="File">Stack.xml</Instance>
+    <Instance name="FlowControlResource" content="File">Flow.xml</Instance>
+    <Instance name="TableControlResource" content="File">Table.xml</Instance>
+    <Instance name="SharedSizeControlResource" content="File">SharedSize.xml</Instance>
+    <Instance name="ResponsiveControlResource" content="File">Responsive.xml</Instance>
+
+    <InstanceStyle name="SharedStyle">
+      <Styles>
+        <Style ref.Path="//TabPage/*">
+          <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
+        </Style>
+      </Styles>
+    </InstanceStyle>
+
     <Instance name="MainWindowResource">
-      <Instance ref.Class="sample::MainWindow">
+      <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*" ref.Styles="res://MainWindow/SharedStyle">
         <Window Text="kb_compositions" IconVisible="true" ClientSize="x:640 y:480">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
           <Tab>
@@ -91,27 +106,27 @@
             <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
             <att.Pages>
               <TabPage Text="Bounds" Alt="B">
+                <sample:BoundsControl/>
               </TabPage>
 
               <TabPage Text="Stack" Alt="S">
+                <sample:StackControl/>
               </TabPage>
 
               <TabPage Text="Flow" Alt="F">
+                <sample:FlowControl/>
               </TabPage>
 
               <TabPage Text="Table" Alt="T">
+                <sample:TableControl/>
               </TabPage>
 
               <TabPage Text="SharedSize" Alt="S">
+                <sample:SharedSizeControl/>
               </TabPage>
 
-              <TabPage Text="ResponsiveView" Alt="RV">
-              </TabPage>
-
-              <TabPage Text="ResponsiveStack" Alt="RS">
-              </TabPage>
-
-              <TabPage Text="ResponsiveGroup" Alt="RG">
+              <TabPage Text="ResponsiveContainer" Alt="R">
+                <sample:ResponsiveControl/>
               </TabPage>
             </att.Pages>
           </Tab>

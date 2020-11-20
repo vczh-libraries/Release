@@ -1,0 +1,5 @@
+<Instance ref.Class="sample::BoundsControl">
+  <CustomControl>
+    <Label Text="sample::BoundsControl"/>
+  </CustomControl>
+</Instance>
