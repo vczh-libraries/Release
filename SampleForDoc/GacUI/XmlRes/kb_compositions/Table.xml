@@ -1,5 +1,45 @@
 <Instance ref.Class="sample::TableControl">
   <CustomControl>
-    <Label Text="sample::TableControl"/>
+    <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+      <att.Rows>
+        <CellOption>composeType:Absolute absolute:32</CellOption>
+        <CellOption>composeType:Percentage percentage:1.0</CellOption>
+        <CellOption>composeType:MinSize</CellOption>
+      </att.Rows>
+      <att.Columns>
+        <CellOption>composeType:Percentage percentage:0.3</CellOption>
+        <CellOption>composeType:Percentage percentage:0.7</CellOption>
+      </att.Columns>
+
+      <Cell Site="row:0 column:0 columnSpan:2">
+        <SolidBorder Color="#FFFF00"/>
+      </Cell>
+      <Cell Site="row:1 column:0">
+        <SolidBorder Color="#FF00FF"/>
+      </Cell>
+      <Cell Site="row:1 column:1">
+        <SolidBorder Color="#00FFFF"/>
+      </Cell>
+
+      <Cell Site="row:2 column:0 columnSpan:2" MinSizeLimitation="LimitToElementAndChildren">
+        <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+          <att.Rows>
+            <CellOption>composeType:MinSize</CellOption>
+          </att.Rows>
+          <att.Columns>
+            <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            <CellOption>composeType:MinSize</CellOption>
+            <CellOption>composeType:MinSize</CellOption>
+          </att.Columns>
+
+          <Cell Site="row:0 column:1" PreferredMinSize="x:100 y:32">
+            <SolidBorder Color="#00FF00"/>
+          </Cell>
+          <Cell Site="row:0 column:2" PreferredMinSize="x:100 y:32">
+            <SolidBorder Color="#0000FF"/>
+          </Cell>
+        </Table>
+      </Cell>
+    </Table>
   </CustomControl>
 </Instance>
