@@ -1,5 +1,15 @@
 <Instance ref.Class="sample::StackControl">
   <CustomControl>
-    <Label Text="sample::StackControl"/>
+    <Stack AlignmentToParent="left:0 top:0 right:0 bottom:0" Padding="5" Direction="Horizontal">
+      <StackItem PreferredMinSize="x:100">
+        <SolidBorder Color="#FFFF00"/>
+      </StackItem>
+      <StackItem PreferredMinSize="x:100">
+        <SolidBorder Color="#FF00FF"/>
+      </StackItem>
+      <StackItem PreferredMinSize="x:100">
+        <SolidBorder Color="#00FFFF"/>
+      </StackItem>
+    </Stack>
   </CustomControl>
 </Instance>
