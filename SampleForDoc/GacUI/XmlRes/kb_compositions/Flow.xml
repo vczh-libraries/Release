@@ -1,5 +1,47 @@
 <Instance ref.Class="sample::FlowControl">
   <CustomControl>
-    <Label Text="sample::FlowControl"/>
+    <Flow AlignmentToParent="left:0 top:0 right:0 bottom:0" RowPadding="5" ColumnPadding="5">
+      <att.Axis>
+        <Axis AxisDirection="RightDown"/>
+      </att.Axis>
+
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#FF0000"/>
+      </FlowItem>
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#00FF00"/>
+      </FlowItem>
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#0000FF"/>
+      </FlowItem>
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#FFFF00"/>
+      </FlowItem>
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#FF00FF"/>
+      </FlowItem>
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#00FFFF"/>
+      </FlowItem>
+
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#FF0000"/>
+      </FlowItem>
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#00FF00"/>
+      </FlowItem>
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#0000FF"/>
+      </FlowItem>
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#FFFF00"/>
+      </FlowItem>
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#FF00FF"/>
+      </FlowItem>
+      <FlowItem PreferredMinSize="x:100 y:100">
+        <SolidBorder Color="#00FFFF"/>
+      </FlowItem>
+    </Flow>
   </CustomControl>
 </Instance>
