@@ -86,8 +86,7 @@
     <Instance name="StackControlResource" content="File">Stack.xml</Instance>
     <Instance name="FlowControlResource" content="File">Flow.xml</Instance>
     <Instance name="TableControlResource" content="File">Table.xml</Instance>
-    <Instance name="SharedSizeControlResource" content="File">SharedSize.xml</Instance>
-    <Instance name="ResponsiveControlResource" content="File">Responsive.xml</Instance>
+    <Folder name="SharedSizeControlResource" content="Link">SharedSize.xml</Folder>
 
     <InstanceStyle name="SharedStyle">
       <Styles>
@@ -123,10 +122,6 @@
 
               <TabPage Text="SharedSize" Alt="S">
                 <sample:SharedSizeControl/>
-              </TabPage>
-
-              <TabPage Text="ResponsiveContainer" Alt="R">
-                <sample:ResponsiveControl/>
               </TabPage>
             </att.Pages>
           </Tab>

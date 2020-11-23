@@ -1,5 +1,53 @@
-<Instance ref.Class="sample::SharedSizeControl">
-  <CustomControl>
-    <Label Text="sample::SharedSizeControl"/>
-  </CustomControl>
-</Instance>
+<Folder>
+  <InstanceStyle name="SharedStyles">
+    <Styles>
+      <Style ref.Path="//Table + //Cell + //Stack + //StackItem + //SharedSizeRoot + //SharedSizeItem" MinSizeLimitation="LimitToElementAndChildren"/>
+      <Style ref.Path="//Table + //SharedSizeRoot + //SharedSizeItem" AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+      <Style ref.Path="//Stack" Padding="5" AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
+      <Style ref.Path="//Button + //GroupBox + //DocumentLabel">
+        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+      </Style>
+      
+      <Style ref.Path="//Table" BorderVisible="false" CellPadding="5"/>
+      <Style ref.Path="//DocumentLabel">
+        <att.BoundsComposition-set PreferredMinSize="y:30"/>
+      </Style>
+      <Style ref.Path="//SharedSizeItem" Group="HeightGroup" SharedHeight="true"/>
+    </Styles>
+  </InstanceStyle>
+  <Instance name="Control">
+    <Instance ref.Class="sample::SharedSizeControl" ref.Styles="res://MainWindow/SharedSizeControlResource/SharedStyles">
+      <CustomControl>
+        <SharedSizeRoot>
+          <Table>
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <GroupBox ref.Styles="widthGroup" Text="Type to change heights">
+                <SharedSizeItem>
+                  <DocumentLabel EditMode="Editable" Text="Something"/>
+                </SharedSizeItem>
+              </GroupBox>
+            </Cell>
+
+            <Cell Site="row:1 column:0">
+              <GroupBox Text="&lt;SharedSizeItem SharedHeight=&quot;true&quot;/&gt;">
+                <Stack Direction="Vertical">
+                  <StackItem><SharedSizeItem><Button Text="One"/></SharedSizeItem></StackItem>
+                  <StackItem><SharedSizeItem><Button Text="Two"/></SharedSizeItem></StackItem>
+                  <StackItem><SharedSizeItem><Button Text="Three"/></SharedSizeItem></StackItem>
+                </Stack>
+              </GroupBox>
+            </Cell>
+          </Table>
+        </SharedSizeRoot>
+      </CustomControl>
+    </Instance>
+  </Instance>
+</Folder>
