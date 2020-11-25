@@ -51,7 +51,8 @@
           ]]>
         </ref.Members>
         <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
-          <RadioButton AutoFocus="false" AutoSelection="false">
+          <CheckBox AutoFocus="false" AutoSelection="false">
+            <att.ControlTemplate>sample::TabHeaderButtonTemplate</att.ControlTemplate>
             <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
             <att.Context-ref>CurrentTabPage</att.Context-ref>
             <att.Text-bind>CurrentTabPage.Text</att.Text-bind>
@@ -64,7 +65,7 @@
                 }
               ]]>
             </ev.Clicked-eval>
-          </RadioButton>
+          </CheckBox>
         </ControlTemplate>
       </Instance>
     </Instance>
@@ -72,9 +73,8 @@
     <Instance name="TabTemplate">
       <Instance ref.Class="sample::TabTemplate">
         <TabTemplate ref.Name="self" ContainerComposition-ref="container" TabOrder="TopToBottom" MinSizeLimitation="LimitToElementAndChildren">
-          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
-              <CellOption>composeType:MinSize</CellOption>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
             </att.Rows>
             <att.Columns>
@@ -82,7 +82,7 @@
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
             </att.Columns>
 
-            <Cell Site="row:0 column:0 rowSpan:2">
+            <Cell Site="row:0 column:0">
               <RepeatStack ref.Name="header" AlignmentToParent="left:0 top:0 right:0 bottom:0" Padding="2" Direction="Vertical" MinSizeLimitation="LimitToElementAndChildren">
                 <att.ItemTemplate>sample::TabHeaderTemplate</att.ItemTemplate>
                 <att.ItemSource-bind>self.TabPages</att.ItemSource-bind>
@@ -99,13 +99,7 @@
             </Cell>
 
             <Cell Site="row:0 column:1">
-              <Label Font-bind="self.Font">
-                <att.Text-format>&lt;$(self.SelectedTabPage.Text ?? '')/&gt;</att.Text-format>
-              </Label>
-            </Cell>
-
-            <Cell Site="row:1 column:1">
-              <FocusRectangle/>
+              <SolidBackground Color="#3D3D3D"/>
               <Bounds ref.Name="container" AlignmentToParent="left:1 top:1 right:1 bottom:1"/>
             </Cell>
           </Table>
@@ -127,11 +121,20 @@
       <Instance ref.Class="sample::MainWindow" ref.Styles="res://MainWindow/SharedStyle">
         <Window Text="kb_ctemplates" IconVisible="true" ClientSize="x:640 y:480">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
-            <Stack Direction="Vertical" MinSizeLimitation="LimitToElementAndChildren" AlignmentToParent="left:5 top:5 right:-1 bottom:-1" Padding="5">
-              <StackItem><CheckBox Text="Button 1"/></StackItem>
-              <StackItem><CheckBox Text="Button 2"/></StackItem>
-              <StackItem><CheckBox Text="Button 3"/></StackItem>
-            </Stack>
+            <Tab>
+              <att.ControlTemplate>sample::TabTemplate</att.ControlTemplate>
+              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              <att.Pages>
+                <TabPage Text="First TabPage">
+                </TabPage>
+
+                <TabPage Text="Second TabPage">
+                </TabPage>
+
+                <TabPage Text="Third TabPage">
+                </TabPage>
+              </att.Pages>
+            </Tab>
         </Window>
       </Instance>
     </Instance>
