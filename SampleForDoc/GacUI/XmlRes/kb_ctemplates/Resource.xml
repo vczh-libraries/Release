@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\kb_ctemplates.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\kb_ctemplates.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="Templates">
+    <Instance name="TabHeaderButtonTemplate">
+      <Instance ref.Class="sample::TabHeaderButtonTemplate">
+        <SelectableButtonTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
+          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
+            <SolidBackground>
+              <att.Color-bind><![CDATA[
+                cast Color (
+                  not self.VisuallyEnabled ? "#00000000" :
+                  self.State == ButtonState::Pressed ? "#3D3D3D" :
+                  self.State == ButtonState::Active ? "#808080" :
+                  self.Selected ? "#3D3D3D" :
+                  "#00000000"
+                )
+              ]]></att.Color-bind>
+            </SolidBackground>
+          </Bounds>
+          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
+            <att.Visible-bind>self.Focused</att.Visible-bind>
+            <FocusRectangle/>
+          </Bounds>
+          <Bounds AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElement">
+            <SolidLabel Text-bind="self.Text" Font-bind="self.Font">
+              <att.Color-bind><![CDATA[
+                cast Color (
+                  self.VisuallyEnabled ? "#FFFFFF" : "808080"
+                )
+              ]]></att.Color-bind>
+            </SolidLabel>
+          </Bounds>
+        </SelectableButtonTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="TabHeaderTemplate">
+      <Instance ref.Class="sample::TabHeaderTemplate">
+        <ref.Parameter Name="CurrentTabPage" Class="presentation::controls::GuiTabPage"/>
+        <ref.Members>
+          <![CDATA[
+            prop Commands : ITabCommandExecutor* = null {}
+          ]]>
+        </ref.Members>
+        <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
+          <RadioButton AutoFocus="false" AutoSelection="false">
+            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+            <att.Context-ref>CurrentTabPage</att.Context-ref>
+            <att.Text-bind>CurrentTabPage.Text</att.Text-bind>
+            <att.Alt-bind>CurrentTabPage.Alt</att.Alt-bind>
+            <att.Selected-bind>CurrentTabPage.OwnerTab.SelectedPage == CurrentTabPage</att.Selected-bind>
+            <ev.Clicked-eval>
+              <![CDATA[
+                {
+                  self.Commands.ShowTab(CurrentTabPage.OwnerTab.Pages.IndexOf(CurrentTabPage), true);
+                }
+              ]]>
+            </ev.Clicked-eval>
+          </RadioButton>
+        </ControlTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="TabTemplate">
+      <Instance ref.Class="sample::TabTemplate">
+        <TabTemplate ref.Name="self" ContainerComposition-ref="container" TabOrder="TopToBottom" MinSizeLimitation="LimitToElementAndChildren">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0 rowSpan:2">
+              <RepeatStack ref.Name="header" AlignmentToParent="left:0 top:0 right:0 bottom:0" Padding="2" Direction="Vertical" MinSizeLimitation="LimitToElementAndChildren">
+                <att.ItemTemplate>sample::TabHeaderTemplate</att.ItemTemplate>
+                <att.ItemSource-bind>self.TabPages</att.ItemSource-bind>
+                <ev.ItemInserted-eval>
+                  <![CDATA[
+                    {
+                      var stackItem = header.StackItems[arguments.itemIndex];
+                      var item = cast (TabHeaderTemplate*) stackItem.Children[0];
+                      item.Commands = self.Commands;
+                    }
+                  ]]>
+                </ev.ItemInserted-eval>
+              </RepeatStack>
+            </Cell>
+
+            <Cell Site="row:0 column:1">
+              <Label Font-bind="self.Font">
+                <att.Text-format>&lt;$(self.SelectedTabPage.Text ?? '')/&gt;</att.Text-format>
+              </Label>
+            </Cell>
+
+            <Cell Site="row:1 column:1">
+              <FocusRectangle/>
+              <Bounds ref.Name="container" AlignmentToParent="left:1 top:1 right:1 bottom:1"/>
+            </Cell>
+          </Table>
+        </TabTemplate>
+      </Instance>
+    </Instance>
+  </Folder>
+
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <Window Text="kb_ctemplates" IconVisible="true" ClientSize="x:640 y:480">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+            <Stack Direction="Vertical" MinSizeLimitation="LimitToElementAndChildren" AlignmentToParent="left:5 top:5 right:-1 bottom:-1" Padding="5">
+              <StackItem>
+                <CheckBox Text="Button 1">
+                  <att.ControlTemplate>sample::TabHeaderButtonTemplate</att.ControlTemplate>
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                </CheckBox>
+              </StackItem>
+              <StackItem>
+                <CheckBox Text="Button 2">
+                  <att.ControlTemplate>sample::TabHeaderButtonTemplate</att.ControlTemplate>
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                </CheckBox>
+              </StackItem>
+              <StackItem>
+                <CheckBox Text="Button 3">
+                  <att.ControlTemplate>sample::TabHeaderButtonTemplate</att.ControlTemplate>
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                </CheckBox>
+              </StackItem>
+            </Stack>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
