@@ -115,29 +115,22 @@
   </Folder>
 
   <Folder name="MainWindow">
+    <InstanceStyle name="SharedStyle">
+      <Styles>
+        <Style ref.Path="//CheckBox">
+          <att.ControlTemplate>sample::TabHeaderButtonTemplate</att.ControlTemplate>
+          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+        </Style>
+      </Styles>
+    </InstanceStyle>
     <Instance name="MainWindowResource">
-      <Instance ref.Class="sample::MainWindow">
+      <Instance ref.Class="sample::MainWindow" ref.Styles="res://MainWindow/SharedStyle">
         <Window Text="kb_ctemplates" IconVisible="true" ClientSize="x:640 y:480">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
             <Stack Direction="Vertical" MinSizeLimitation="LimitToElementAndChildren" AlignmentToParent="left:5 top:5 right:-1 bottom:-1" Padding="5">
-              <StackItem>
-                <CheckBox Text="Button 1">
-                  <att.ControlTemplate>sample::TabHeaderButtonTemplate</att.ControlTemplate>
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                </CheckBox>
-              </StackItem>
-              <StackItem>
-                <CheckBox Text="Button 2">
-                  <att.ControlTemplate>sample::TabHeaderButtonTemplate</att.ControlTemplate>
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                </CheckBox>
-              </StackItem>
-              <StackItem>
-                <CheckBox Text="Button 3">
-                  <att.ControlTemplate>sample::TabHeaderButtonTemplate</att.ControlTemplate>
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                </CheckBox>
-              </StackItem>
+              <StackItem><CheckBox Text="Button 1"/></StackItem>
+              <StackItem><CheckBox Text="Button 2"/></StackItem>
+              <StackItem><CheckBox Text="Button 3"/></StackItem>
             </Stack>
         </Window>
       </Instance>
