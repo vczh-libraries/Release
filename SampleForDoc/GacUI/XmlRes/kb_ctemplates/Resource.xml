@@ -113,6 +113,9 @@
       <Styles>
         <Style ref.Path="//Stack" Direction="Vertical" MinSizeLimitation="LimitToElementAndChildren"/>
         <Style ref.Path="//RadioButton" GroupController-ref="groupDirection"/>
+        <Style ref.Path="//TabPage">
+          <att.ContainerComposition-set InternalMargin="left:10 top:10 right:10 bottom:10"/>
+        </Style>
       </Styles>
     </InstanceStyle>
     
