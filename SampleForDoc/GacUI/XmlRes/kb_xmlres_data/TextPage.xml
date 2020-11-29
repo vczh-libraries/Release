@@ -1,0 +1,44 @@
+<Folder>
+  <Text name="TextResource1">This is the first text resource.</Text>
+  <Text name="TextResource2">the second</Text>
+  <Text name="TextResource3">the third text resource.</Text>
+
+  <InstanceStyle name="SharedStyle">
+    <Styles>
+      <Style ref.Path="//Stack" AlignmentToParent="left:5 top:5 right:5 bottom:5" Padding="5" Direction="Vertical"/>
+      <Style ref.Path="//Stack + //StackItem" MinSizeLimitation="LimitToElementAndChildren"/>
+      <Style ref.Path="//StackItem/*">
+        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+      </Style>
+    </Styles>
+  </InstanceStyle>
+
+  <Instance name="TabPageResource">
+    <Instance ref.Class="sample::TextPage" ref.Styles="res://MainWindow/TextPage/SharedStyle">
+      <TabPage ref.Name="self" Text="&lt;Text/&gt;">
+        <Stack>
+          <StackItem>
+            <Button Text-uri="res://MainWindow/TextPage/TextResource1"/>
+          </StackItem>
+
+          <StackItem>
+            <Button Text-format="This is $((cast (TextData^) self.ResolveResource('res', 'MainWindow/TextPage/TextResource2', true)).Text) text resource."/>
+          </StackItem>
+
+          <StackItem>
+            <Button ref.Name="button3" Text="Click Me!">
+              <ev.Clicked-eval>
+                <![CDATA[
+                  {
+                    var textRes = (cast (TextData^) self.ResolveResource('res', 'MainWindow/TextPage/TextResource3', true)).Text;
+                    button3.Text = $"This button shows $(textRes)!";
+                  }
+                ]]>
+              </ev.Clicked-eval>
+            </Button>
+          </StackItem>
+        </Stack>
+      </TabPage>
+    </Instance>
+  </Instance>
+</Folder>

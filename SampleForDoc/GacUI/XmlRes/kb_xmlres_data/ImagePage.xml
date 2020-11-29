@@ -1,0 +1,8 @@
+<Folder>
+  <Instance name="TabPageResource">
+    <Instance ref.Class="sample::ImagePage">
+      <TabPage Text="&lt;Image/&gt;">
+      </TabPage>
+    </Instance>
+  </Instance>
+</Folder>

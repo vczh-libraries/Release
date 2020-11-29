@@ -1,0 +1,8 @@
+<Folder>
+  <Instance name="TabPageResource">
+    <Instance ref.Class="sample::XmlPage">
+      <TabPage Text="&lt;Xml/&gt;">
+      </TabPage>
+    </Instance>
+  </Instance>
+</Folder>
