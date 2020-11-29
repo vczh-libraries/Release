@@ -1,7 +1,92 @@
 <Folder>
+  <Xml name="IDE">
+    <IDEs>
+      <IDE name="Visual Studio" dev="Microsoft" />
+      <IDE name="Visual Studio Code" dev="Microsoft" />
+      <IDE name="XCode" dev="Apple" />
+      <IDE name="CLion" dev="JetBrains" />
+      <IDE name="C++ Builder" dev="Embarcadero" />
+      <IDE name="Eclipse" dev="Eclipse Foundation" />
+    </IDEs>
+  </Xml>
+
+  <Script name="SharedScript">
+    <Workflow><![CDATA[
+      module sharedscript;
+
+      using system::*;
+      using system::xml::*;
+
+      namespace sample
+      {
+        class IDE
+        {
+          prop Name: string = "" {}
+          prop Developer: string = "" {}
+        }
+
+        func Fill(doc: XmlDocument^, ides: observe IDE^[]): void
+        {
+          for (nodeIde in doc.rootElement.subNodes)
+          {
+            var xIde = cast (XmlElement^) nodeIde;
+            var oIde = new IDE^();
+            for (att in xIde.attributes)
+            {
+              switch (att.name)
+              {
+                case "name": { oIde.Name = att.value; }
+                case "dev": { oIde.Developer = att.value; }
+              }
+            }
+            ides.Add(oIde);
+          }
+        }
+      }
+    ]]></Workflow>
+  </Script>
+
   <Instance name="TabPageResource">
     <Instance ref.Class="sample::XmlPage">
-      <TabPage Text="&lt;Xml/&gt;">
+      <ref.Members><![CDATA[
+        var ides: observe IDE^[] = {};
+      ]]></ref.Members>
+      <TabPage ref.Name="self" Text="&lt;Xml/&gt;">
+        <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="true" MinSizeLimitation="LimitToElementAndChildren">
+          <att.Rows>
+            <CellOption>composeType:MinSize</CellOption>
+            <CellOption>composeType:Percentage percentage:1.0</CellOption>
+          </att.Rows>
+          <att.Columns>
+            <CellOption>composeType:MinSize</CellOption>
+            <CellOption>composeType:Percentage percentage:1.0</CellOption>
+          </att.Columns>
+
+          <Cell Site="row:0 column:0">
+            <Button ref.Name="buttonLoad" Text="Click Me To Load Data">
+              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              <ev.Clicked-eval><![CDATA[
+                {
+                  var doc = cast (system::XmlDocument^) self.ResolveResource('res', 'MainWindow/XmlPage/IDE', true);
+                  Fill(doc, self.ides);
+                  buttonLoad.Enabled = false;
+                }
+              ]]></ev.Clicked-eval>
+            </Button>
+          </Cell>
+
+          <Cell Site="row:1 column:0 columnSpan:2">
+            <BindableListView View="Detail" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="sample::IDE^">
+              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              <att.ItemSource-bind>self.ides</att.ItemSource-bind>
+
+              <att.Columns>
+                <ListViewColumn Text="IDE" TextProperty="Name" Size="180"/>
+                <ListViewColumn Text="Developer" TextProperty="Developer" Size="240"/>
+              </att.Columns>
+            </BindableListView>
+          </Cell>
+        </Table>
       </TabPage>
     </Instance>
   </Instance>
