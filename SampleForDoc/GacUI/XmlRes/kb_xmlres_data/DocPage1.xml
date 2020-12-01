@@ -1,7 +1,112 @@
 <Folder>
+  <Doc name="DocumentResource">
+    <Doc>
+      <Content>
+        <p align="Center">
+          <div style="Header">Fake Gaclib Membership</div>
+        </p>
+        <p>
+          <nop>This is a membership application for <a href="http://www.gaclib.net/">Gaclib</a>.</nop><sp/>
+          <nop>By filling your information and submitting the form,</nop><sp/>
+          <nop>you will become one of a Gaclib member.</nop>
+        </p>
+        <p align="Center">
+          <div style="Title">Your Information</div>
+        </p>
+        <p>
+          <nop>Name:<br/><object name="Name"/><br/></nop>
+          <nop>Day of Birth:<br/><object name="Birth"/><br/></nop>
+          <nop>Phone:<br/><object name="Phone"/><br/></nop>
+          <nop>Address:<br/><object name="Address"/><br/></nop>
+        </p>
+        <p align="Center">
+          <div style="Title">Your Interest</div>
+        </p>
+        <p>
+          <nop><object name="x1"/></nop><br/>
+          <nop><object name="x2"/></nop><br/>
+          <nop><object name="x3"/></nop><br/>
+        </p>
+        <p align="Center">
+          <div style="Title">Submit</div>
+        </p>
+        <p align="Center">
+          <object name="Submit"/>
+        </p>
+        <p align="Center">
+          <div style="Title">Have a good day!</div>
+        </p>
+      </Content>
+      <Styles>
+        <Style name="Header">
+          <size>36</size>
+          <b>true</b>
+        </Style>
+        <Style name="Title">
+          <size>24</size>
+          <b>true</b>
+        </Style>
+      </Styles>
+    </Doc>
+  </Doc>
   <Instance name="TabPageResource">
     <Instance ref.Class="sample::DocPage1">
-      <TabPage Text="&lt;Doc/&gt;[1]">
+      <TabPage ref.Name="self" Text="&lt;Doc/&gt;[1]">
+        <MessageDialog ref.Name="dialogHyperlink"
+                       Input="DisplayOK"
+                       Title="You clicked a hyperlink!"
+          />
+        <MessageDialog ref.Name="dialogSubmit"
+                       Input="DisplayOK"
+                       Title="You clicked a button!"
+                       Text="The application is submitted."
+          />
+
+        <DocumentViewer ref.Name="docApp" EditMode="ViewOnly" Document-uri="res://MainWindow/DocPage1/DocumentResource">
+          <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
+          <att.Font>fontFamily:"Segoe UI" size:14 antialias:true</att.Font>
+          <att.HorizontalAlwaysVisible>false</att.HorizontalAlwaysVisible>
+          <att.VerticalAlwaysVisible>false</att.VerticalAlwaysVisible>
+          <ev.ActiveHyperlinkExecuted-eval><![CDATA[
+            {
+              dialogHyperlink.Text = docApp.ActiveHyperlinkReference;
+              dialogHyperlink.ShowDialog();
+            }
+          ]]></ev.ActiveHyperlinkExecuted-eval>
+
+          <DocumentItem Name="Submit">
+            <Button Text="Submit the Application" ev.Clicked-eval="dialogSubmit.ShowDialog();"/>
+          </DocumentItem>
+          
+          <DocumentItem Name="Name">
+            <DocumentTextBox EditMode="Editable">
+              <att.BoundsComposition-set PreferredMinSize="x:240"/>
+            </DocumentTextBox>
+          </DocumentItem>
+          <DocumentItem Name="Birth">
+            <DatePicker Date="2000-01-01 00:00:00.000"/>
+          </DocumentItem>
+          <DocumentItem Name="Phone">
+            <DocumentTextBox EditMode="Editable">
+              <att.BoundsComposition-set PreferredMinSize="x:240"/>
+            </DocumentTextBox>
+          </DocumentItem>
+          <DocumentItem Name="Address">
+            <DocumentTextBox EditMode="Editable">
+              <att.BoundsComposition-set PreferredMinSize="x:240"/>
+            </DocumentTextBox>
+          </DocumentItem>
+          
+          <DocumentItem Name="x1">
+            <CheckBox Text="Parser Generator"/>
+          </DocumentItem>
+          <DocumentItem Name="x2">
+            <CheckBox Text="GacUI"/>
+          </DocumentItem>
+          <DocumentItem Name="x3">
+            <CheckBox Text="Porting to WebAssembly"/>
+          </DocumentItem>
+        </DocumentViewer>
       </TabPage>
     </Instance>
   </Instance>
