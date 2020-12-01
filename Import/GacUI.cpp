@@ -15524,7 +15524,6 @@ GuiDocumentCommonInterface
 			{
 				if(documentControl->GetVisuallyEnabled())
 				{
-					documentControl->SetFocus();
 					switch(editMode)
 					{
 					case ViewOnly:
@@ -15533,6 +15532,7 @@ GuiDocumentCommonInterface
 					case Selectable:
 					case Editable:
 						{
+							documentControl->SetFocus();
 							TextPos caret=documentElement->CalculateCaretFromPoint(Point(arguments.x, arguments.y));
 							TextPos oldCaret=documentElement->GetCaretEnd();
 							if(caret!=oldCaret)
