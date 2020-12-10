@@ -9,7 +9,7 @@
     </Folder>
   </Folder>
   <Folder name="MainWindow">
-    <LocalizedStrings>
+    <LocalizedStrings name="StringResource">
       <LocalizedStrings ref.Class="sample::StringResource" DefaultLocale="en-US">
         <Strings Locales="en-US">
           <String Name="Date" Text="Date: $(0:LongDate)"/>
