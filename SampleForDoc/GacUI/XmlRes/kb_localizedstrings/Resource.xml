@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\kb_localizedstrings.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\kb_localizedstrings.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <LocalizedStrings>
+      <LocalizedStrings ref.Class="sample::StringResource" DefaultLocale="en-US">
+        <Strings Locales="en-US">
+          <String Name="Date" Text="Date: $(0:LongDate)"/>
+          <String Name="Week" Text=", $(0:Date:dddd)"/>
+          <String Name="Time" Text="Time: $(0:LongTime)"/>
+          <String Name="Message" Text="Good morning, $(0)!"/>
+          <String Name="Title" Text="Localization"/>
+          <String Name="SelectLocal" Text="Selected Locale:"/>
+          <String Name="SelectName" Text="Enter Your Name:"/>
+          <String Name="OK" Text="OK"/>
+          <String Name="Cancel" Text="Cancel"/>
+        </Strings>
+        
+        <Strings Locales="zh-CN">
+          <String Name="Date" Text="日期：$(0:LongDate)"/>
+          <String Name="Week" Text="，$(0:Date:dddd)"/>
+          <String Name="Time" Text="时间：$(0:LongTime)"/>
+          <String Name="Message" Text="早上好，$(0)！"/>
+          <String Name="Title" Text="本地化"/>
+          <String Name="SelectLocal" Text="语言设置："/>
+          <String Name="SelectName" Text="输入名字："/>
+          <String Name="OK" Text="确定"/>
+          <String Name="Cancel" Text="取消"/>
+        </Strings>
+        
+        <Strings Locales="ja-JP">
+          <String Name="Date" Text="日付：$(0:LongDate)"/>
+          <String Name="Week" Text=" $(0:Date:dddd)"/>
+          <String Name="Time" Text="時刻：$(0:LongTime)"/>
+          <String Name="Message" Text="おはようございます，$(0)さん！"/>
+          <String Name="Title" Text="ローカライゼーション"/>
+          <String Name="SelectLocal" Text="選択したロケール："/>
+          <String Name="SelectName" Text="名前を入力してください："/>
+          <String Name="OK" Text="OK"/>
+          <String Name="Cancel" Text="キャンセル"/>
+        </Strings>
+      </LocalizedStrings>
+    </LocalizedStrings>
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*">
+        <ref.LocalizedStrings Name="Strings" Class="sample::StringResource" Default="true"/>
+        <ref.Members>
+          <![CDATA[
+            var dateTime: DateTime = Sys::GetLocalTime();
+          ]]>
+        </ref.Members>
+        <ref.Ctor>
+          <![CDATA[
+            comboLocale.SelectedIndex = 0;
+          ]]>
+        </ref.Ctor>
+        <Window ref.Name="self" Text-str="Title()" IconVisible="true" ClientSize="x:480 y:320">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:0 top:5 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <SolidLabel Text-str="SelectLocal()" Font-bind="cast FontProperties self.Font ?? {}" Color="#FFFFFF" VerticalAlignment="Center"/>
+            </Cell>
+
+            <Cell Site="row:0 column:1">
+              <ComboBox ref.Name="comboLocale">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:-1 bottom:0" PreferredMinSize="x:240"/>
+                <ev.SelectedIndexChanged-eval>
+                  <![CDATA[
+                    {
+                      if (comboLocale.Text != "")
+                      {
+                        Application::GetApplication().Locale = cast Locale comboLocale.Text;
+                      }
+                    }
+                  ]]>
+                </ev.SelectedIndexChanged-eval>
+                <att.ListControl>
+                  <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <att.Items>
+                      <_ Text="en-US"/>
+                      <_ Text="zh-CN"/>
+                      <_ Text="ja-JP"/>
+                    </att.Items>
+                  </TextList>
+                </att.ListControl>
+              </ComboBox>
+            </Cell>
+
+            <Cell Site="row:1 column:0">
+              <SolidLabel Text-str="SelectName()" Font-bind="cast FontProperties self.Font ?? {}" Color="#FFFFFF" VerticalAlignment="Center"/>
+            </Cell>
+
+            <Cell Site="row:1 column:1">
+              <DocumentTextBox ref.Name="docName" EditMode="Editable" Text="John Smith">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:-1 bottom:0" PreferredMinSize="x:240"/>
+              </DocumentTextBox>
+            </Cell>
+
+            <Cell Site="row:2 column:0 columnSpan:2">
+              <Label Text-str="Message(docName.Text)"/>
+            </Cell>
+
+            <Cell Site="row:3 column:0 columnSpan:2">
+              <Label Text-bind="self.Strings.Date(self.dateTime) &amp; self.Strings.Week(self.dateTime) ?? ''"/>
+            </Cell>
+
+            <Cell Site="row:4 column:0 columnSpan:2">
+              <Label Text-str="Time(self.dateTime)"/>
+            </Cell>
+
+            <Cell Site="row:6 column:0 columnSpan:2">
+              <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                <att.Rows>
+                  <CellOption>composeType:MinSize</CellOption>
+                </att.Rows>
+                <att.Columns>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                  <CellOption>composeType:MinSize</CellOption>
+                  <CellOption>composeType:MinSize</CellOption>
+                </att.Columns>
+
+                <Cell Site="row:0 column:1">
+                  <Button Text-str="OK()"/>
+                </Cell>
+
+                <Cell Site="row:0 column:2">
+                  <Button Text-str="Cancel()"/>
+                </Cell>
+              </Table>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
