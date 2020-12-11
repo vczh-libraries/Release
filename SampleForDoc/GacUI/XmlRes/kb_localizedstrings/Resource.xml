@@ -49,7 +49,7 @@
       </LocalizedStrings>
     </LocalizedStrings>
     <Instance name="MainWindowResource">
-      <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*">
+      <Instance ref.Class="sample::MainWindow">
         <ref.LocalizedStrings Name="Strings" Class="sample::StringResource" Default="true"/>
         <ref.Members>
           <![CDATA[
@@ -79,7 +79,7 @@
             </att.Columns>
 
             <Cell Site="row:0 column:0">
-              <SolidLabel Text-str="SelectLocal()" Font-bind="cast FontProperties self.Font ?? {}" Color="#FFFFFF" VerticalAlignment="Center"/>
+              <SolidLabel Text-str="SelectLocal()" Font-bind="self.DisplayFont" Color="#FFFFFF" VerticalAlignment="Center"/>
             </Cell>
 
             <Cell Site="row:0 column:1">
@@ -108,7 +108,7 @@
             </Cell>
 
             <Cell Site="row:1 column:0">
-              <SolidLabel Text-str="SelectName()" Font-bind="cast FontProperties self.Font ?? {}" Color="#FFFFFF" VerticalAlignment="Center"/>
+              <SolidLabel Text-str="SelectName()" Font-bind="self.DisplayFont" Color="#FFFFFF" VerticalAlignment="Center"/>
             </Cell>
 
             <Cell Site="row:1 column:1">

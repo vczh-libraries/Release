@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\kb_animation.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\kb_animation.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="RadioButtonTemplateResource">
+      <Instance ref.Class="sample::RadioButtonTemplate">
+        <SelectableButtonTemplate ref.Name="self" ContainerComposition-ref="container" MinSizeLimitation="LimitToElementAndChildren">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:Absolute absolute:10</CellOption>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+              <CellOption>composeType:Absolute absolute:10</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Absolute absolute:5</CellOption>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+              <CellOption>composeType:Absolute absolute:5</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:2 column:2">
+              <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+              </Bounds>
+              <Bounds AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElementAndChildren">
+                <SolidLabel Text-bind="self.Text" Font-bind="self.Font" Color="#FFFFFF"/>
+              </Bounds>
+              <Bounds ref.Name="container" AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElementAndChildren"/>
+            </Cell>
+          </Table>
+        </SelectableButtonTemplate>
+      </Instance>
+    </Instance>
+
+    <InstanceStyle name="SharedStyle">
+      <Styles>
+        <Style ref.Path="//Cell/RadioButton" GroupController-ref="groupDirection">
+          <att.ControlTemplate>sample::RadioButtonTemplate</att.ControlTemplate>
+          <att.BoundsComposition-set PreferredMinSize="x:160"/>
+        </Style>
+      </Styles>
+    </InstanceStyle>
+
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow" ref.Styles="res://MainWindow/SharedStyle" xmlns:x="presentation::controls::GuiSelectableButton::*">
+        <Window Text="kb_animation" IconVisible="true" ClientSize="x:480 y:320">
+          <x:MutexGroupController ref.Name="groupDirection"/>
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <Table CellPadding="5" BorderVisible="true" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:1 column:1">
+              <RadioButton Text="Option A"/>
+            </Cell>
+            <Cell Site="row:2 column:1">
+              <RadioButton Text="Option B"/>
+            </Cell>
+            <Cell Site="row:3 column:1">
+              <RadioButton Text="Option C"/>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
