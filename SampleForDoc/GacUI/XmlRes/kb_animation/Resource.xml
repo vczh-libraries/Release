@@ -74,14 +74,14 @@
                   1,
                   cast Color "#000000",
                   cast Color "#FFFF00",
-                  cast Color "#00FF00"
+                  cast Color "#FFFF00"
                   );
               }
 
               static func Pressed(): RadioButtonTemplateState^
               {
                 return new RadioButtonTemplateState^(
-                  0,
+                  1,
                   cast Color "#FFFFFF",
                   cast Color "#00FF00",
                   cast Color "#00000000"
@@ -132,15 +132,15 @@
               {
                 case Normal:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Normal(), cast UInt64 750);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::NormalSelected(), cast UInt64 250);
                 }
                 case Active:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Active(), cast UInt64 750);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::ActiveSelected(), cast UInt64 250);
                 }
                 case Pressed:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Pressed(), cast UInt64 750);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::PressedSelected(), cast UInt64 250);
                 }
               }
             }
@@ -150,15 +150,15 @@
               {
                 case Normal:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::NormalSelected(), cast UInt64 750);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Normal(), cast UInt64 250);
                 }
                 case Active:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::ActiveSelected(), cast UInt64 750);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Active(), cast UInt64 250);
                 }
                 case Pressed:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::PressedSelected(), cast UInt64 750);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Pressed(), cast UInt64 250);
                 }
               }
             }
@@ -174,18 +174,16 @@
               left:0
               top:0
               bottom:0
-              right:-(
-                cast int (
-                  self.animationBuilder.Current.Length * (
-                    self.boundary.Bounds.x2 - self.boundary.Bounds.x1 - 10
-                  )
+              right:(
+                cast int Math::Round(
+                  (1 - self.animationBuilder.Current.Length) * (self.boundary.Bounds.x2 - self.boundary.Bounds.x1 - 10)
                 )
               )
             };
           }
         ]]></ref.Members>
         <SelectableButtonTemplate ref.Name="self" ContainerComposition-ref="container" MinSizeLimitation="LimitToElementAndChildren">
-          <Bounds ref.Name="boundary" AlignmentToParent="left:0 top:0 right:-1 bottom:0">
+          <Bounds ref.Name="boundary" AlignmentToParent="left:0 top:0 right:0 bottom:0">
             <Bounds AlignmentToParent-bind="self.observe as _ (_.GetAlignment() on _.boundary.BoundsChanged, _.animationBuilder.Current.LengthChanged)">
               <SolidBorder Color-bind="self.animationBuilder.Current.Border" Shape="shapeType:RoundRect radiusX:5 radiusY:5"/>
             </Bounds>
