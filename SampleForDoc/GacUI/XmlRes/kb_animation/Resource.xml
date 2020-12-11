@@ -108,11 +108,7 @@
         <Interpolation><![CDATA[
           func (x: double): double
           {
-            var d = 0.1;
-            if (x < d) { return 0; }
-            if (x > (1 - d)) { return 1; }
-            var y = (x - d) * (1 / (1 - d * 2));
-            if (y < 0.5) { return y * y * 2; } else { return 1 - (1 - y) * (1 - y) * 2; }
+            if (x < 0.5) { return x * x * 2; } else { return 1 - (1 - x) * (1 - x) * 2; }
           }
         ]]></Interpolation>
         <Targets>
@@ -139,15 +135,15 @@
               {
                 case Normal:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::NormalSelected(), cast UInt64 1000);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::NormalSelected(), cast UInt64 500);
                 }
                 case Active:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::ActiveSelected(), cast UInt64 1000);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::ActiveSelected(), cast UInt64 500);
                 }
                 case Pressed:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::PressedSelected(), cast UInt64 1000);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::PressedSelected(), cast UInt64 500);
                 }
               }
             }
@@ -157,15 +153,15 @@
               {
                 case Normal:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Normal(), cast UInt64 1000);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Normal(), cast UInt64 500);
                 }
                 case Active:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Active(), cast UInt64 1000);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Active(), cast UInt64 500);
                 }
                 case Pressed:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Pressed(), cast UInt64 1000);
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Pressed(), cast UInt64 500);
                 }
               }
             }
