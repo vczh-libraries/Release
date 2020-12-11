@@ -9,9 +9,170 @@
     </Folder>
   </Folder>
   <Folder name="MainWindow">
+    <Script name="SharedScript">
+      <Workflow>
+        <![CDATA[
+          module sharedscript;
+
+          using system::*;
+          using presentation::*;
+
+          namespace sample
+          {
+            class RadioButtonTemplateState
+            {
+              prop Length : double = 0 {}
+              prop Text : Color = {} {}
+              prop Border : Color = {} {}
+              prop Background : Color = {} {}
+
+              new ()
+              {
+              }
+
+              new (length: double, text: Color, border: Color, background: Color)
+              {
+                Length = length;
+                Text = text;
+                Border = border;
+                Background = background;
+              }
+
+              static func Normal(): RadioButtonTemplateState^
+              {
+                return new RadioButtonTemplateState^(
+                  0,
+                  cast Color "#FFFFFF",
+                  cast Color "#00FF00",
+                  cast Color "#00000000"
+                  );
+              }
+
+              static func NormalSelected(): RadioButtonTemplateState^
+              {
+                return new RadioButtonTemplateState^(
+                  1,
+                  cast Color "#000000",
+                  cast Color "#00FF00",
+                  cast Color "#00FF00"
+                  );
+              }
+
+              static func Active(): RadioButtonTemplateState^
+              {
+                return new RadioButtonTemplateState^(
+                  1,
+                  cast Color "#FFFFFF",
+                  cast Color "#FFFF00",
+                  cast Color "#00000000"
+                  );
+              }
+
+              static func ActiveSelected(): RadioButtonTemplateState^
+              {
+                return new RadioButtonTemplateState^(
+                  1,
+                  cast Color "#000000",
+                  cast Color "#FFFF00",
+                  cast Color "#00FF00"
+                  );
+              }
+
+              static func Pressed(): RadioButtonTemplateState^
+              {
+                return new RadioButtonTemplateState^(
+                  0,
+                  cast Color "#FFFFFF",
+                  cast Color "#00FF00",
+                  cast Color "#00000000"
+                  );
+              }
+
+              static func PressedSelected(): RadioButtonTemplateState^
+              {
+                return new RadioButtonTemplateState^(
+                  1,
+                  cast Color "#000000",
+                  cast Color "#FFFF00",
+                  cast Color "#FFFF00"
+                  );
+              }
+            }
+          }
+        ]]>
+      </Workflow>
+    </Script>
+
+    <Animation name="RadioButtonTemplateAnimation">
+      <Gradient ref.Class="sample::RadioButtonTemplateAnimation" Type="sample::RadioButtonTemplateState">
+        <Interpolation><![CDATA[
+          [$1]
+        ]]></Interpolation>
+        <Targets>
+          <Target Name="Length"/>
+          <Target Name="Text"/>
+          <Target Name="Border"/>
+          <Target Name="Background"/>
+        </Targets>
+      </Gradient>
+    </Animation>
+
     <Instance name="RadioButtonTemplateResource">
       <Instance ref.Class="sample::RadioButtonTemplate">
+        <ref.Members><![CDATA[
+          var animationBuilder : RadioButtonTemplateAnimation^ = new RadioButtonTemplateAnimation^(RadioButtonTemplateState::Normal());
+          var lastAnimation : IGuiAnimation^ = null;
+
+          func OnStateChanged(): void
+          {
+            var newAnimation : IGuiAnimation^ = null;
+            if (self.Selected)
+            {
+              switch (self.State)
+              {
+                case Normal:
+                {
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Normal(), cast UInt64 750);
+                }
+                case Active:
+                {
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Active(), cast UInt64 750);
+                }
+                case Pressed:
+                {
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Pressed(), cast UInt64 750);
+                }
+              }
+            }
+            else
+            {
+              switch (self.State)
+              {
+                case Normal:
+                {
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::NormalSelected(), cast UInt64 750);
+                }
+                case Active:
+                {
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::ActiveSelected(), cast UInt64 750);
+                }
+                case Pressed:
+                {
+                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::PressedSelected(), cast UInt64 750);
+                }
+              }
+            }
+            
+            KillAnimation(lastAnimation);
+            lastAnimation = newAnimation;
+            AddAnimation(lastAnimation);
+          }
+        ]]></ref.Members>
         <SelectableButtonTemplate ref.Name="self" ContainerComposition-ref="container" MinSizeLimitation="LimitToElementAndChildren">
+          <Bounds AlignmentToParent="left:0 top:0 right:-1 bottom:0" PreferredMinSize="x:10">
+            <SolidBorder Color="#FFFF00" Shape="shapeType:RoundRect radiusX:5 radiusY:5"/>
+          </Bounds>
+
           <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
               <CellOption>composeType:Absolute absolute:10</CellOption>
@@ -37,6 +198,14 @@
               <Bounds ref.Name="container" AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElementAndChildren"/>
             </Cell>
           </Table>
+
+          <ev.StateChanged-eval><![CDATA[
+            self.OnStateChanged();
+          ]]></ev.StateChanged-eval>
+          
+          <ev.SelectedChanged-eval><![CDATA[
+            self.OnStateChanged();
+          ]]></ev.SelectedChanged-eval>
         </SelectableButtonTemplate>
       </Instance>
     </Instance>
@@ -55,7 +224,7 @@
         <Window Text="kb_animation" IconVisible="true" ClientSize="x:480 y:320">
           <x:MutexGroupController ref.Name="groupDirection"/>
           <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
-          <Table CellPadding="5" BorderVisible="true" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+          <Table CellPadding="10" BorderVisible="true" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
               <CellOption>composeType:Percentage percentage:0.5</CellOption>
               <CellOption>composeType:MinSize</CellOption>
