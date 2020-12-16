@@ -19,92 +19,66 @@
 
           namespace sample
           {
-            class RadioButtonTemplateState
+            class AnimationState
             {
-              prop Length : double = 0 {}
-              prop Text : Color = {} {}
-              prop Border : Color = {} {}
-              prop Background : Color = {} {}
+              prop Length : double    = 0                       {}
+              prop Text : Color       = cast Color "#FFFFFF"    {}
+              prop Border : Color     = cast Color "#00FF00"    {}
+              prop Background : Color = cast Color "#00000000"  {}
 
-              new ()
-              {
-              }
+              new(){}
+            }
 
-              new (length: double, text: Color, border: Color, background: Color)
-              {
-                Length = length;
-                Text = text;
-                Border = border;
-                Background = background;
-              }
+            class AnimationConfig
+            {
+              prop Normal: AnimationState^ = null {}
+              prop NormalSelected: AnimationState^ = null {}
+              prop Active: AnimationState^ = null {}
+              prop ActiveSelected: AnimationState^ = null {}
+              prop Pressed: AnimationState^ = null {}
+              prop PressedSelected: AnimationState^ = null {}
 
-              static func Normal(): RadioButtonTemplateState^
-              {
-                return new RadioButtonTemplateState^(
-                  0,
-                  cast Color "#FFFFFF",
-                  cast Color "#00FF00",
-                  cast Color "#00000000"
-                  );
-              }
-
-              static func NormalSelected(): RadioButtonTemplateState^
-              {
-                return new RadioButtonTemplateState^(
-                  1,
-                  cast Color "#000000",
-                  cast Color "#00FF00",
-                  cast Color "#00FF00"
-                  );
-              }
-
-              static func Active(): RadioButtonTemplateState^
-              {
-                return new RadioButtonTemplateState^(
-                  1,
-                  cast Color "#FFFFFF",
-                  cast Color "#FFFF00",
-                  cast Color "#00000000"
-                  );
-              }
-
-              static func ActiveSelected(): RadioButtonTemplateState^
-              {
-                return new RadioButtonTemplateState^(
-                  1,
-                  cast Color "#000000",
-                  cast Color "#FFFF00",
-                  cast Color "#FFFF00"
-                  );
-              }
-
-              static func Pressed(): RadioButtonTemplateState^
-              {
-                return new RadioButtonTemplateState^(
-                  1,
-                  cast Color "#FFFFFF",
-                  cast Color "#00FF00",
-                  cast Color "#00000000"
-                  );
-              }
-
-              static func PressedSelected(): RadioButtonTemplateState^
-              {
-                return new RadioButtonTemplateState^(
-                  1,
-                  cast Color "#000000",
-                  cast Color "#FFFF00",
-                  cast Color "#FFFF00"
-                  );
-              }
+              new(){}
+              func SetResourceResolver      (resolver: GuiResourcePathResolver^)  : void {}
+              func FinalizeGeneralInstance  (self: AnimationConfig*)              : void {}
             }
           }
         ]]>
       </Workflow>
     </Script>
 
+    <Instance name="AnimationConfigResource">
+      <Instance ref.Class="sample::RadioButtonAnimationConfig" xmlns:sample="sample::*">
+        <sample:AnimationConfig>
+          <att.Normal>
+            <sample:AnimationState/>
+          </att.Normal>
+
+          <att.NormalSelected>
+            <sample:AnimationState Length="1" Text="#000000" Border="#00FF00" Background="#00FF00"/>
+          </att.NormalSelected>
+          <att.Active>
+
+            <sample:AnimationState Length="1" Text="#FFFFFF" Border="#FFFF00" Background="#00000000"/>
+          </att.Active>
+
+          <att.ActiveSelected>
+            <sample:AnimationState Length="1" Text="#000000" Border="#FFFF00" Background="#FFFF00"/>
+          </att.ActiveSelected>
+
+          <att.Pressed>
+            <sample:AnimationState Length="1" Text="#FFFFFF" Border="#00FF00" Background="#00000000"/>
+          </att.Pressed>
+
+          <att.PressedSelected>
+            <sample:AnimationState Length="1" Text="#000000" Border="#FFFF00" Background="#FFFF00"/>
+          </att.PressedSelected>
+        </sample:AnimationConfig>
+      </Instance>
+    </Instance>
+
     <Animation name="RadioButtonTemplateAnimation">
-      <Gradient ref.Class="sample::RadioButtonTemplateAnimation" Type="sample::RadioButtonTemplateState">
+      <Gradient ref.Class="sample::RadioButtonTemplateAnimation" Type="sample::AnimationState">
         <Interpolation><![CDATA[
           func (x: double): double
           {
@@ -123,7 +97,8 @@
     <Instance name="RadioButtonTemplateResource">
       <Instance ref.Class="sample::RadioButtonTemplate">
         <ref.Members><![CDATA[
-          var animationBuilder : RadioButtonTemplateAnimation^ = new RadioButtonTemplateAnimation^(RadioButtonTemplateState::Normal());
+          var animationBuilder : RadioButtonTemplateAnimation^ = new RadioButtonTemplateAnimation^(new AnimationState^());
+          var animationConfig : RadioButtonAnimationConfig^ = cast (RadioButtonAnimationConfig^) new RadioButtonAnimationConfig*();
           var lastAnimation : IGuiAnimation^ = null;
 
           func OnStateChanged(): void
@@ -135,15 +110,15 @@
               {
                 case Normal:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::NormalSelected(), cast UInt64 500);
+                  newAnimation = animationBuilder.CreateAnimation(animationConfig.NormalSelected, cast UInt64 500);
                 }
                 case Active:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::ActiveSelected(), cast UInt64 500);
+                  newAnimation = animationBuilder.CreateAnimation(animationConfig.ActiveSelected, cast UInt64 500);
                 }
                 case Pressed:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::PressedSelected(), cast UInt64 500);
+                  newAnimation = animationBuilder.CreateAnimation(animationConfig.PressedSelected, cast UInt64 500);
                 }
               }
             }
@@ -153,15 +128,15 @@
               {
                 case Normal:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Normal(), cast UInt64 500);
+                  newAnimation = animationBuilder.CreateAnimation(animationConfig.Normal, cast UInt64 500);
                 }
                 case Active:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Active(), cast UInt64 500);
+                  newAnimation = animationBuilder.CreateAnimation(animationConfig.Active, cast UInt64 500);
                 }
                 case Pressed:
                 {
-                  newAnimation = animationBuilder.CreateAnimation(RadioButtonTemplateState::Pressed(), cast UInt64 500);
+                  newAnimation = animationBuilder.CreateAnimation(animationConfig.Pressed, cast UInt64 500);
                 }
               }
             }
