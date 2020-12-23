@@ -20884,7 +20884,10 @@ GuiMenuButton
 
 			void GuiMenuButton::SetSubMenu(GuiMenu* value, bool owned)
 			{
-				DetachSubMenu();
+				if(subMenu)
+				{
+					DetachSubMenu();
+				}
 				subMenu=value;
 				ownedSubMenu=owned;
 				if(subMenu)
