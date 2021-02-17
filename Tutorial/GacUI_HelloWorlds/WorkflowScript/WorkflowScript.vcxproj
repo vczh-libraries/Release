@@ -14,7 +14,7 @@
     <ProjectGuid>{F56E51BA-C13B-411D-841B-633AF07BB902}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>WorkflowScript</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
