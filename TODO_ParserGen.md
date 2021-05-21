@@ -176,3 +176,11 @@ class CLASS_NAME [: BASE_CLASS]
   * Assert on the ToString-ed AST. (shared)
 * Since parser are written in different ways for different unit test projects, they are stored separately from unit test projects to share necessary files.
 * Do not really write a file if the generated content doesn't change.
+
+## Note
+
+* Pooled data structure (tree/linked list) for intermediate parsing result before turning into AST
+* Multiple way of AST codegen (normal/reflection/pooled)
+* Imperative & concurrent parsing and AST building instructions, potential to generate parser in different languages
+* Serialized lexical table instead of storing regex
+* VlppParser2
