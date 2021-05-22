@@ -48,7 +48,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - API to import and export fake types (ITypeDescriptor that cannot be executed)
 - Interfaces for collections types like `IReadableCollection<T>`
   - or `IReadOnlyCollection`, `IWriteOnlyCollection`, `ICollection`
-  - `Slice`, `Contact` functions on interfaces
+  - `Slice`, `Concat` functions on interfaces
 - Reflectable interfaces like `IReflectableReadableCollection<T>`, inherits from `IReadableCollection<T>` and `IReadableCollection<Value>`
 - Remove `FOREACH` and `FOREACH_INDEXER`, replaced by range-based for loop
 - Fix `Linq` so that lambda parameters can be `auto`, instead of specified `types`
@@ -93,6 +93,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - Ncurses on Ubuntu
 - macOS
 - Web Assembly
+- Virtual Screen version of INativeController so that only one native window is needed for the whole GacUI application
 
 ### Graphics
 
