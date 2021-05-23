@@ -79,6 +79,7 @@ https://zhuanlan.zhihu.com/p/39369370
 ## GacUI
 
 - Use collection interfaces on function signatures.
+- UI Automation
 
 ### Cross Platforms
 
