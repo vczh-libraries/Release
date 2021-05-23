@@ -85,8 +85,11 @@ https://zhuanlan.zhihu.com/p/39369370
 
 - Ncurses on Ubuntu
 - macOS
-- Web Assembly
-- Virtual Screen version of INativeController so that only one native window is needed for the whole GacUI application
+- UWP (sync tree)
+- GDI+D2D (hosted single window)
+- Console (hosted single window)
+- Web Assembly (sync tree + hosted single window)
+- Hosted single window version of INativeController so that only one native window is needed for the whole GacUI application
 
 ### Graphics
 
