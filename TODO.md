@@ -9,22 +9,22 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
 - [ ] `let X = Y in (F(X.a.b.c))` reports `X does not exist in the current scope` in binding property value
   - while `F((let X = Y.a.b).c)` works
-
-### Feature
-
-- [ ] Move dependended plugin from GacUI to Vlpp (optional)
-- [ ] Cannot change column size during datagrid's bounds changing, which is by designed and this could be solved by calling InvokeInMainThread. But new feature for solving this is under considering
-  - [ ] Considering GuiBindableDataGrid updating columns' sizes according to configuration automatically, and call `GuiControl::InvokeOrDelayIfRendering` (indirectly) inside `DataColumn::NotifyAllColumnsUpdate` when necessary.
-  - [ ] Like a table, a column can use `Absolute`, `Draggable` and `Percentage` to specify a column size. Only when a column is draggable, users can use their mouse to change the size of a column, and then trigger `IColumnItemView::SetColumnSize`
-- [ ] Consider drag and drop support, with column drag and drop
-- [ ] New item arranger that can accept a `GuiRepeatCompositionBase`
-- [ ] **Update Release**
-- [ ] New default control templates with animation, written in XML generated C++ code.
-- [ ] A window can be called to update all its controls' and components' template
-- [ ] Tutorials use the new default control templates
-- [ ] **Update Release**
-- [ ] Fix GacGen reports only "error dumping resource file" while the resource file contains some syntax errors preventing GacGen from reading it
+- [ ] GacGen reports only "error dumping resource file" while the resource file contains some syntax errors preventing GacGen from reading it
   - Unable to repro
+
+### Feature (not necessary 1.0)
+
+- [ ] Drag and Drop framework
+- [ ] `IColumnItemView`
+  - [ ] Support `GuiCellOption` on `GetColumnSize` and `SetColumnSize`
+  - [ ] Column drag and drop
+- [ ] New `GuiListControl::IItemArranger` that can accept a `GuiRepeatCompositionBase`
+- [ ] - `<eval Eval="expression"/>` tags
+- [ ] INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
+- [ ] New skin
+  - [ ] New default control templates with animation, written in XML generated C++ code.
+  - [ ] A window can be called to update all its controls' and components' template
+  - [ ] Tutorials use the new default control templates
 
 ## GacUI 2.0
 
@@ -78,15 +78,7 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ## GacUI
 
-### Before 1.0 (Optional)
-
-- `<eval Eval="expression"/>` tags
-- INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
-
-### After 1.0
-
 - Use collection interfaces on function signatures.
-- Move to new ParserGen.
 
 ### Cross Platforms
 
@@ -97,20 +89,14 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ### Graphics
 
-- Proposal 1
-  - MetaImageElement and MetaImage data structure
+- 2D drawing API
+- restriction-based MetaImageElement
   - Remove PolygonElement
-  - Default non-text element renderer using MetaImageElement
-  - Replacing GDI and D2D non-text element renderers
-  - Meta3DElement and Meta3D data structure
+  - Default non-text element renderer using 2D drawing API
+- Meta3DElement and Meta3D data structure
   - Default Meta3DElement renderer using MetaImageElement with a surface sorting based algorithm
-- Proposal 2
-  - 2D drawing API
-  - restriction-based meta image
-  - basic 3D rendering based on the above item with a surface sorting based algorithm
-- Others
-  - GIF player
-  - video player
+- GIF player
+- video player
 
 ### Controls
 
