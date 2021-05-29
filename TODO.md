@@ -18,6 +18,9 @@ https://zhuanlan.zhihu.com/p/39369370
 - [ ] `IColumnItemView`
   - [ ] Support `GuiCellOption` on `GetColumnSize` and `SetColumnSize`
   - [ ] Column drag and drop
+- [ ] ListView
+  - [ ] Group headers on all views
+  - [ ] TreeListView (new item source view)
 - [ ] New `GuiListControl::IItemArranger` that can accept a `GuiRepeatCompositionBase`
 - [ ] - `<eval Eval="expression"/>` tags
 - [ ] INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
