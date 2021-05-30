@@ -126,18 +126,8 @@ https://zhuanlan.zhihu.com/p/39369370
     - [ ] .NET (core?) through dll
     - [ ] Python through dll
 
-## GacGen.exe
+### Refactoring
 
-- Enable linking to external symbols
-  - Remove all loader implementation
-  - `mynamespaces::VirtualClassesX` for adding classes (under this namespace) and specifying their base types
-    - X for anything, for simulating partial classes
-    - following a naming convention, like: `GuiSelectableButton* CheckBox()`
-  - `mynamespaces::XXXLoader` for implementing different kinds of properties / constructors that are not actually exist in `mynamespaces::XXX`
-    - following a naming convention, e.g. `GuiTableComposition`'s rows/columns properties
-    - searching for correct default control templates
-  - GacGen.exe uses external files for control types (but not for elements / compositions)
-    - external files provide reflection-only type information, maybe created by Workflow
 - Modulized GacUISrc sources and projects
   - NativeWindow
   - Windows
@@ -150,6 +140,19 @@ https://zhuanlan.zhihu.com/p/39369370
     - With reflections / virtual classes / loaders placed separately
     - CodePack-ed files don't change
   - Compiler
+
+## GacGen.exe
+
+- Enable linking to external symbols
+  - Remove all loader implementation
+  - `mynamespaces::VirtualClassesX` for adding classes (under this namespace) and specifying their base types
+    - X for anything, for simulating partial classes
+    - following a naming convention, like: `GuiSelectableButton* CheckBox()`
+  - `mynamespaces::XXXLoader` for implementing different kinds of properties / constructors that are not actually exist in `mynamespaces::XXX`
+    - following a naming convention, e.g. `GuiTableComposition`'s rows/columns properties
+    - searching for correct default control templates
+  - GacGen.exe uses external files for control types (but not for elements / compositions)
+    - external files provide reflection-only type information, maybe created by Workflow
 - In the final pass, only workflow scripts are printed
   - Use WorkflowCompiler.exe to do codegen externally
 
