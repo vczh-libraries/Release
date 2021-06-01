@@ -7,8 +7,8 @@ https://zhuanlan.zhihu.com/p/39369370
 ### Bug
 
 - [ ] Remove global mouse hook for menu, add "PopupMode" in INativeWindow instead.
-  - [ ] Check: after opening a combo box, UP/DOWN/LEFT/RIGHT should move selected item
-  - [ ] Check: ALT into menus
+  - [x] Check: after opening a combo box, UP/DOWN/LEFT/RIGHT should move selected item
+  - [x] Check: ALT into menus
   - [ ] Check: model window activation/focusing
 - [ ] `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
 - [ ] `let X = Y in (F(X.a.b.c))` reports `X does not exist in the current scope` in binding property value
