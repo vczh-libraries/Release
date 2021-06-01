@@ -7,6 +7,9 @@ https://zhuanlan.zhihu.com/p/39369370
 ### Bug
 
 - [ ] Remove global mouse hook for menu, add "PopupMode" in INativeWindow instead.
+  - [ ] Check: after opening a combo box, UP/DOWN/LEFT/RIGHT should move selected item
+  - [ ] Check: ALT into menus
+  - [ ] Check: model window activation/focusing
 - [ ] `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
 - [ ] `let X = Y in (F(X.a.b.c))` reports `X does not exist in the current scope` in binding property value
   - while `F((let X = Y.a.b).c)` works
@@ -17,11 +20,13 @@ https://zhuanlan.zhihu.com/p/39369370
 
 - [ ] Drag and Drop framework
 - [ ] `IColumnItemView`
-  - [ ] Support `GuiCellOption` on `GetColumnSize` and `SetColumnSize`
+  - [ ] Change column size from `int` to `{minSize:int, columnOption:Absolute|Percentage, absolute:int, percentage:float}`
   - [ ] Column drag and drop
+    - [ ] ListView: swap column object, texts in list view items are not touch
+    - [ ] DataGrid: swap column object, cells are changed due to binding
 - [ ] ListView
-  - [ ] Group headers on all views
-  - [ ] TreeListView (new item source view)
+  - [ ] `GroupedListView` and `BindableGroupedListView` from `GuiVirtualListView`: Group headers on all views
+  - [ ] `TreeListView` and `BindableTreeListView` from `GuiVirtualTreeView`
 - [ ] New `GuiListControl::IItemArranger` that can accept a `GuiRepeatCompositionBase`
 - [ ] - `<eval Eval="expression"/>` tags
 - [ ] INativeImage::SaveToStream handle correctly for git format. It is possible that LoadFromStream need to process diff between git raw frames.
