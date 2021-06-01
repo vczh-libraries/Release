@@ -92,13 +92,23 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ### Cross Platforms
 
-- Ncurses on Ubuntu
-- macOS
-- UWP (sync tree)
-- GDI+D2D (hosted single window)
-- Console (hosted single window)
-- Web Assembly (sync tree + hosted single window)
-- Hosted single window version of INativeController so that only one native window is needed for the whole GacUI application
+- `INativeHostedController` + `INativeHostedWindow`
+  - Implementing these interfaces enable GacUI to run in the `hosted single window` mode, all GacUI windows and menus are rendered in one native window
+- SyncTree architecture that streams layout/element changes per `GuiControlHost`
+- Port GacUI to other platforms:
+  - Windows
+    - Command/Powershell Line in Windows (hosted)
+    - GDI (hosted mode)
+    - Direct2d (hosted mode)
+    - UWP (hosted mode + sync tree)
+  - Linux
+    - Ncurses on Ubuntu (hosted)
+    - xGac repo
+  - macOS
+    - iGac repo
+  - Web Assembly (hosted mode + sync tree)
+    - Canvas?
+    - DOM?
 
 ### Graphics
 
