@@ -166,5 +166,9 @@ https://zhuanlan.zhihu.com/p/39369370
     - external files provide reflection-only type information, maybe created by Workflow
 - In the final pass, only workflow scripts are printed
   - Use WorkflowCompiler.exe to do codegen externally
+- Incremental build inside single resource.
+  -  Calculate dependencies by only parsing.
+  -  Cache workflow assembly per resource in file.
+  -  Codegen c++ from multiple workflow assembly.
 
 ## GacStudio.exe
