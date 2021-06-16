@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\starter_resource.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\starter_resource.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <Window ref.Name="self" Text="starter_resource" ClientSize="x:480 y:320">
+          <Label Text="Hello, world!" Font="fontFamily:'Segoe UI' size:16"/>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
