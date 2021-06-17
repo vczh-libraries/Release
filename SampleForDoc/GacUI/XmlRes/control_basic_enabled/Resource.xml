@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_basic_enabled.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_basic_enabled.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="CustomControlTemplateResource">
+      <Instance ref.Class="sample::CustomControlTemplate">
+        <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren" ContainerComposition-ref="containerCell">
+          <Table AlignmentToParent="left:5 top:5 right:5 bottom:5" CellPadding="5" BorderVisible="true" MinSizeLimitation="LimitToElementAndChildren">
+            <SolidBorder Color="#FFFF00"/>
+
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <Label Text-format="$(self.Text).VisuallyEnabled: $(self.VisuallyEnabled)"/>
+            </Cell>
+            <Cell Site="row:1 column:0" ref.Name="containerCell">
+            </Cell>
+          </Table>
+        </ControlTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <Window ref.Name="self" Text="control_basic_enabled" ClientSize="x:480 y:320">
+          <Table AlignmentToParent="left:5 top:5 right:5 bottom:5" CellPadding="5" BorderVisible="true" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <CustomControl Text="First" Enabled-bind="c1.Selected">
+                <att.ControlTemplate>sample::CustomControlTemplate</att.ControlTemplate>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                
+                <CustomControl Text="Second" Enabled-bind="c2.Selected">
+                  <att.ControlTemplate>sample::CustomControlTemplate</att.ControlTemplate>
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  
+                  <CustomControl Text="Third" Enabled-bind="c3.Selected">
+                    <att.ControlTemplate>sample::CustomControlTemplate</att.ControlTemplate>
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </CustomControl>
+                </CustomControl>
+              </CustomControl>
+            </Cell>
+
+            <Cell Site="row:1 column:0">
+              <CheckBox ref.Name="c1" Text="First.Enabled" Selected="true"/>
+            </Cell>
+            <Cell Site="row:2 column:0">
+              <CheckBox ref.Name="c2" Text="Second.Enabled" Selected="true"/>
+            </Cell>
+            <Cell Site="row:3 column:0">
+              <CheckBox ref.Name="c3" Text="Third.Enabled" Selected="true"/>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
