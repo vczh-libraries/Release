@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_basic_font.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_basic_font.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="CustomControlTemplateResource">
+      <Instance ref.Class="sample::CustomControlTemplate">
+        <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren" ContainerComposition-ref="containerCell">
+          <Table AlignmentToParent="left:5 top:5 right:5 bottom:5" CellPadding="5" BorderVisible="true" MinSizeLimitation="LimitToElementAndChildren">
+            <SolidBorder Color="#FFFF00"/>
+
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <Label Text-format="$(self.Text).DisplayFont: $(self.Font.fontFamily)"/>
+            </Cell>
+            <Cell Site="row:1 column:0" ref.Name="containerCell">
+            </Cell>
+          </Table>
+        </ControlTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="FontSelectorResource">
+      <Instance ref.Class="sample::FontSelector">
+        <ref.Members><![CDATA[
+          @cpp:Private
+          var fonts : FontProperties?[] = {
+            null
+            {fontFamily:"Segoe Script" size:16}
+            {fontFamily:"Old English Text MT" size:20}
+          };
+
+          prop SelectedFont : FontProperties? = null {}
+        ]]></ref.Members>
+        <CustomControl ref.Name="self">
+          <att.SelectedFont-bind>self.fonts[comboBox.SelectedIndex]</att.SelectedFont-bind>
+          <ComboBox ref.Name="comboBox" SelectedIndex="0">
+            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+            <att.ListControl>
+              <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                <att.Items>
+                  <TextItem Text="null"/>
+                  <TextItem Text="Segoe Script (16)"/>
+                  <TextItem Text="Old English Text MT (20)"/>
+                </att.Items>
+              </TextList>
+            </att.ListControl>
+          </ComboBox>
+        </CustomControl>
+      </Instance>
+    </Instance>
+
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*">
+        <Window ref.Name="self" Text="control_basic_font" ClientSize="x:480 y:320">
+          <Table AlignmentToParent="left:5 top:5 right:5 bottom:5" CellPadding="5" BorderVisible="true" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Absolute absolute:160</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0 columnSpan:3">
+              <CustomControl Text="First" Font-bind="f1.SelectedFont">
+                <att.ControlTemplate>sample::CustomControlTemplate</att.ControlTemplate>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                
+                <CustomControl Text="Second" Font-bind="f2.SelectedFont">
+                  <att.ControlTemplate>sample::CustomControlTemplate</att.ControlTemplate>
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  
+                  <CustomControl Text="Third" Font-bind="f3.SelectedFont">
+                    <att.ControlTemplate>sample::CustomControlTemplate</att.ControlTemplate>
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </CustomControl>
+                </CustomControl>
+              </CustomControl>
+            </Cell>
+
+            <Cell Site="row:1 column:0">
+              <Label Text="First.Font:"/>
+            </Cell>
+            <Cell Site="row:1 column:1">
+              <sample:FontSelector ref.Name="f1">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </sample:FontSelector>
+            </Cell>
+
+            <Cell Site="row:2 column:0">
+              <Label Text="Second.Font:"/>
+            </Cell>
+            <Cell Site="row:2 column:1">
+              <sample:FontSelector ref.Name="f2">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </sample:FontSelector>
+            </Cell>
+
+            <Cell Site="row:3 column:0">
+              <Label Text="Third.Font:"/>
+            </Cell>
+            <Cell Site="row:3 column:1">
+              <sample:FontSelector ref.Name="f3">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </sample:FontSelector>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
