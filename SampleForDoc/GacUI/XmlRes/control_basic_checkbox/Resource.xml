@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_basic_checkbox.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_basic_checkbox.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow" xmlns:x="presentation::controls::GuiSelectableButton::*">
+        <Window ref.Name="self" Text="control_basic_checkbox" ClientSize="x:480 y:320">
+          <x:MutexGroupController ref.Name="gc"/>
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="10" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:1 column:1">
+              <CheckBox Text="&lt;CheckBox AutoSelection=&quot;true&quot;/&gt;"/>
+            </Cell>
+            <Cell Site="row:1 column:2">
+              <CheckBox AutoSelection="false" Text="&lt;CheckBox AutoSelection=&quot;false&quot;/&gt;"/>
+            </Cell>
+
+            <Cell Site="row:2 column:1">
+              <GroupBox Text="&lt;RadioButton GroupController-ref=&quot;gc&quot;/&gt;">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <Stack Direction="Vertical" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                  <StackItem><RadioButton Text="Option 1" GroupController-ref="gc"/></StackItem>
+                  <StackItem><RadioButton Text="Option 2" GroupController-ref="gc"/></StackItem>
+                  <StackItem><RadioButton Text="Option 3" GroupController-ref="gc"/></StackItem>
+                </Stack>
+              </GroupBox>
+            </Cell>
+            <Cell Site="row:2 column:2">
+              <GroupBox Text="&lt;RadioButton/&gt;">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <Stack Direction="Vertical" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                  <StackItem><RadioButton Text="Option 1"/></StackItem>
+                  <StackItem><RadioButton Text="Option 2"/></StackItem>
+                  <StackItem><RadioButton Text="Option 3"/></StackItem>
+                </Stack>
+              </GroupBox>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>

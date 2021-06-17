@@ -36,8 +36,6 @@
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow">
         <Window ref.Name="self" Text="control_basic_button" ClientSize="x:480 y:320">
-          <MessageDialog ref.Name="messageDialog" Title-bind="self.Text" Text="Hello, world!"/>
-
           <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="10" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
               <CellOption>composeType:Percentage percentage:0.5</CellOption>
