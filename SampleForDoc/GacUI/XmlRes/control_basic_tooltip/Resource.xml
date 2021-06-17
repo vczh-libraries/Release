@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_basic_tooltip.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_basic_tooltip.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Doc name="TooltipDocument">
+      <Doc>
+        <Content>
+          <p align="Center">
+            <div style="Header">Hi!</div>
+          </p>
+          <p>
+            <nop>This is a tooltip!</nop><br/>
+            <nop>It is in <b>DocumentLabel</b> control.</nop>
+          </p>
+          <p>
+            <nop>You can put anything in the <b>TooltipControl</b> property.</nop>
+          </p>
+        </Content>
+        <Styles>
+          <Style name="Header">
+            <size>24</size>
+            <b>true</b>
+          </Style>
+        </Styles>
+      </Doc>
+    </Doc>
+
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <Window ref.Name="self" Text="control_basic_tooltip" ClientSize="x:480 y:320">
+          <MessageDialog ref.Name="messageDialog" Title-bind="self.Text" Text="Hello, world!"/>
+
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="10" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:0.5</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:1 column:1">
+              <Label Text="Hover to show tooltip"/>
+            </Cell>
+            <Cell Site="row:2 column:1">
+              <Button Text=" Click Me! " Font-bind="{fontFamily:self.DisplayFont.fontFamily size:48}">
+                <ev.Clicked-eval><![CDATA[
+                  messageDialog.ShowDialog();
+                ]]></ev.Clicked-eval>
+
+                <att.TooltipWidth>200</att.TooltipWidth>
+                <att.TooltipControl>
+                  <DocumentLabel EditMode="ViewOnly" Document-uri="res://MainWindow/TooltipDocument"/>
+                </att.TooltipControl>
+              </Button>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
