@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\layout_bounds.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\layout_bounds.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow" xmlns:x="presentation::controls::GuiSelectableButton::*">
+        <ref.Members><![CDATA[
+          prop AtpLeft : int = 5 {}
+          prop AtpTop : int = 5 {}
+          prop AtpRight : int = 5 {}
+          prop AtpBottom : int = 5 {}
+        ]]></ref.Members>
+        <Window ref.Name="self" Text="layout_bounds" ClientSize="x:480 y:320">
+          <x:MutexGroupController ref.Name="c1"/>
+          <x:MutexGroupController ref.Name="c2"/>
+          <x:MutexGroupController ref.Name="c3"/>
+          <x:MutexGroupController ref.Name="c4"/>
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="true" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0 columnSpan:4">
+              <Label Text="Parent Composition"/>
+            </Cell>
+            <Cell Site="row:1 column:0 columnSpan:4">
+              <SolidBorder Color="#00FF00"/>
+              <Bounds ref.Name="bounds" PreferredMinSize="x:64 y:64" AlignmentToParent-bind="{left:self.AtpLeft top:self.AtpTop right:self.AtpRight bottom:self.AtpBottom}">
+                <SolidBorder Color="#FFFF00"/>
+              </Bounds>
+            </Cell>
+
+            <Cell Site="row:2 column:0 columnSpan:4">
+              <Label Text-format="&lt;Bounds PreferredMinSize=\&quot;x:64 y:64\&quot; AlignmentToParent=\&quot;left:$(self.AtpLeft) top:$(self.AtpTop) right:$(self.AtpRight) bottom:$(self.AtpBottom)\&quot;/&gt;"/>
+            </Cell>
+
+            <Cell Site="row:3 column:0">
+              <Label Text="left:"/>
+            </Cell>
+            <Cell Site="row:3 column:1">
+              <RadioButton Text="5" Selected="true" GroupController-ref="c1">
+                <ev.SelectedChanged-eval><![CDATA[
+                  if ((cast (SelectableButton*) (sender.RelatedControl)).Selected) { self.AtpLeft = 5; }
+                ]]></ev.SelectedChanged-eval>
+              </RadioButton>
+            </Cell>
+            <Cell Site="row:3 column:2">
+              <RadioButton Text="-1" GroupController-ref="c1">
+                <ev.SelectedChanged-eval><![CDATA[
+                  if ((cast (SelectableButton*) (sender.RelatedControl)).Selected) { self.AtpLeft = -1; }
+                ]]></ev.SelectedChanged-eval>
+              </RadioButton>
+            </Cell>
+
+            <Cell Site="row:4 column:0">
+              <Label Text="top:"/>
+            </Cell>
+            <Cell Site="row:4 column:1">
+              <RadioButton Text="5" Selected="true" GroupController-ref="c2">
+                <ev.SelectedChanged-eval><![CDATA[
+                  if ((cast (SelectableButton*) (sender.RelatedControl)).Selected) { self.AtpTop = 5; }
+                ]]></ev.SelectedChanged-eval>
+              </RadioButton>
+            </Cell>
+            <Cell Site="row:4 column:2">
+              <RadioButton Text="-1" GroupController-ref="c2">
+                <ev.SelectedChanged-eval><![CDATA[
+                  if ((cast (SelectableButton*) (sender.RelatedControl)).Selected) { self.AtpTop = -1; }
+                ]]></ev.SelectedChanged-eval>
+              </RadioButton>
+            </Cell>
+
+            <Cell Site="row:5 column:0">
+              <Label Text="right:"/>
+            </Cell>
+            <Cell Site="row:5 column:1">
+              <RadioButton Text="5" Selected="true" GroupController-ref="c3">
+                <ev.SelectedChanged-eval><![CDATA[
+                  if ((cast (SelectableButton*) (sender.RelatedControl)).Selected) { self.AtpRight = 5; }
+                ]]></ev.SelectedChanged-eval>
+              </RadioButton>
+            </Cell>
+            <Cell Site="row:5 column:2">
+              <RadioButton Text="-1" GroupController-ref="c3">
+                <ev.SelectedChanged-eval><![CDATA[
+                  if ((cast (SelectableButton*) (sender.RelatedControl)).Selected) { self.AtpRight = -1; }
+                ]]></ev.SelectedChanged-eval>
+              </RadioButton>
+            </Cell>
+
+            <Cell Site="row:6 column:0">
+              <Label Text="bottom:"/>
+            </Cell>
+            <Cell Site="row:6 column:1">
+              <RadioButton Text="5" Selected="true" GroupController-ref="c4">
+                <ev.SelectedChanged-eval><![CDATA[
+                  if ((cast (SelectableButton*) (sender.RelatedControl)).Selected) { self.AtpBottom = 5; }
+                ]]></ev.SelectedChanged-eval>
+              </RadioButton>
+            </Cell>
+            <Cell Site="row:6 column:2">
+              <RadioButton Text="-1" GroupController-ref="c4">
+                <ev.SelectedChanged-eval><![CDATA[
+                  if ((cast (SelectableButton*) (sender.RelatedControl)).Selected) { self.AtpBottom = -1; }
+                ]]></ev.SelectedChanged-eval>
+              </RadioButton>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
