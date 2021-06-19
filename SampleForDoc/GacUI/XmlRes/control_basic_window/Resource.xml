@@ -16,9 +16,16 @@
 
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow">
-        <Window ref.Name="self" Text="control_basic_window" ClientSize="x:640 y:480">
+        <ref.Ctor><![CDATA[
+          {
+            var wct = cast (TabWindowTemplate*) self.ControlTemplateObject;
+            var tct = cast (TabWindowTabTemplate*) tab.ControlTemplateObject;
+            tct.SetTabHeaderContainer(wct.TabHeaderContainer);
+          }
+        ]]></ref.Ctor>
+        <Window ref.Name="self" Text="Lorem Ipsum Reader" ClientSize="x:640 y:480">
           <att.ControlTemplate>sample::TabWindowTemplate</att.ControlTemplate>
-          <Tab>
+          <Tab ref.Name="tab">
             <att.ControlTemplate>sample::TabWindowTabTemplate</att.ControlTemplate>
             <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
             <att.Pages>

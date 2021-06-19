@@ -1,4 +1,11 @@
 <Instance ref.Class="sample::TabWindowTemplate">
+  <ref.Members><![CDATA[
+    func GetTabHeaderContainer() : GuiGraphicsComposition*
+    {
+      return self.headerContainer;
+    }
+    prop TabHeaderContainer : GuiGraphicsComposition* {GetTabHeaderContainer}
+  ]]></ref.Members>
   <WindowTemplate ref.Name="self" ContainerComposition-ref="container" MinSizeLimitation="LimitToElementAndChildren">
     <att.CustomFrameEnabled>true</att.CustomFrameEnabled>
     <att.MaximizedBoxOption>AlwaysTrue</att.MaximizedBoxOption>
@@ -64,23 +71,24 @@
         </att.Rows>
         <att.Columns>
           <CellOption>composeType:MinSize</CellOption>
+          <CellOption>composeType:MinSize</CellOption>
           <CellOption>composeType:Percentage percentage:1.0</CellOption>
           <CellOption>composeType:MinSize</CellOption>
           <CellOption>composeType:MinSize</CellOption>
           <CellOption>composeType:MinSize</CellOption>
         </att.Columns>
 
-        <Cell Site="row:0 column:2" AssociatedHitTestResult="ButtonMinimum">
+        <Cell Site="row:0 column:3" AssociatedHitTestResult="ButtonMinimum">
           <Button AutoFocus="false" Text=" 0 " Font="fontFamily:'Webdings' size:16">
             <att.BoundsComposition-set AlignmentToParent="left:1 top:1 right:1 bottom:1"/>
           </Button>
         </Cell>
-        <Cell Site="row:0 column:3" AssociatedHitTestResult="ButtonMaximum">
+        <Cell Site="row:0 column:4" AssociatedHitTestResult="ButtonMaximum">
           <Button AutoFocus="false" Text-bind="self.Maximized ? ' 1 ' : ' 2 '" Font="fontFamily:'Webdings' size:16">
             <att.BoundsComposition-set AlignmentToParent="left:1 top:1 right:1 bottom:1"/>
           </Button>
         </Cell>
-        <Cell Site="row:0 column:4" AssociatedHitTestResult="ButtonClose">
+        <Cell Site="row:0 column:5" AssociatedHitTestResult="ButtonClose">
           <Button AutoFocus="false" Text=" r " Font="fontFamily:'Webdings' size:16">
             <att.BoundsComposition-set AlignmentToParent="left:1 top:1 right:1 bottom:1"/>
           </Button>
@@ -104,7 +112,7 @@
         </Cell>
         <Cell Site="row:0 column:1" AssociatedHitTestResult="Title">
           <Bounds AlignmentToParent="left:5 top:5 right:5 bottom:5" MinSizeLimitation="LimitToElementAndChildren">
-            <SolidLabel Text-bind="self.Text" Ellipse="true" Font="fontFamily:'Segoe WP SemiLight' size:14 antialias:true">
+            <SolidLabel Text-bind="self.Text" Font="fontFamily:'Segoe WP SemiLight' size:14 antialias:true">
               <att.Color-bind>
                 <![CDATA[
                   cast Color (
@@ -116,7 +124,11 @@
             </SolidLabel>
           </Bounds>
         </Cell>
-        <Cell Site="row:1 column:0 columnSpan:5" AssociatedHitTestResult="Client">
+
+        <Cell Site="row:0 column:2" AssociatedHitTestResult="Title">
+          <Bounds ref.Name="headerContainer" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren"/>
+        </Cell>
+        <Cell Site="row:1 column:0 columnSpan:6" AssociatedHitTestResult="Client">
           <Bounds ref.Name="container" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren"/>
         </Cell>
       </Table>

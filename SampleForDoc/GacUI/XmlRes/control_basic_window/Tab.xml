@@ -1,6 +1,7 @@
 <Instance ref.CodeBehind="false" ref.Class="sample::TabWindowTabTemplate">
   <ref.Members>
     <![CDATA[
+      @cpp:Private
       func UpdateTabHeader() : void
       {
         for (flowItem in header.FlowItems)
@@ -16,6 +17,10 @@
             flowItem.ExtraMargin = {left:0 top:0 right:0 bottom:0};
           }
         }
+      }
+
+      func SetTabHeaderContainer(value : GuiGraphicsComposition*) : void
+      {
       }
     ]]>
   </ref.Members>
