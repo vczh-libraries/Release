@@ -1,0 +1,25 @@
+<Instance ref.CodeBehind="false" ref.Class="sample::TabWindowTabHeaderTemplate">
+  <ref.Parameter Name="CurrentTabPage" Class="presentation::controls::GuiTabPage"/>
+  <ref.Members>
+    <![CDATA[
+      prop Commands : ITabCommandExecutor* = null {}
+    ]]>
+  </ref.Members>
+  <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
+    <CheckBox AutoFocus="false" AutoSelection="false">
+      <att.ControlTemplate>sample::TabWindowTabHeaderButtonTemplate</att.ControlTemplate>
+      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+      <att.Context-ref>CurrentTabPage</att.Context-ref>
+      <att.Text-bind>CurrentTabPage.Text</att.Text-bind>
+      <att.Alt-bind>CurrentTabPage.Alt</att.Alt-bind>
+      <att.Selected-bind>CurrentTabPage.OwnerTab.SelectedPage == CurrentTabPage</att.Selected-bind>
+      <ev.Clicked-eval>
+        <![CDATA[
+          {
+            self.Commands.ShowTab(CurrentTabPage.OwnerTab.Pages.IndexOf(CurrentTabPage), true);
+          }
+        ]]>
+      </ev.Clicked-eval>
+    </CheckBox>
+  </ControlTemplate>
+</Instance>

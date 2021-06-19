@@ -9,13 +9,17 @@
     </Folder>
   </Folder>
   <Folder name="MainWindow">
-    <Instance name="TabWindowTemplateResource" content="File">Window.xml</Instance>
+    <Instance name="WindowTemplate" content="File">Window.xml</Instance>
+    <Instance name="TabHeaderButtonTemplate" content="File">TabHeaderButton.xml</Instance>
+    <Instance name="TabHeaderTemplate" content="File">TabHeader.xml</Instance>
+    <Instance name="TabTemplate" content="File">Tab.xml</Instance>
 
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow">
         <Window ref.Name="self" Text="control_basic_window" ClientSize="x:640 y:480">
           <att.ControlTemplate>sample::TabWindowTemplate</att.ControlTemplate>
           <Tab>
+            <att.ControlTemplate>sample::TabWindowTabTemplate</att.ControlTemplate>
             <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
             <att.Pages>
               <TabPage Text="First"/>
