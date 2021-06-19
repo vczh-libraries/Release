@@ -19,12 +19,32 @@
         }
       }
 
+      @cpp:Private
+      var remoteHeaderContainer : GuiGraphicsComposition* = null;
+
       func SetTabHeaderContainer(value : GuiGraphicsComposition*) : void
       {
+        if (remoteHeaderContainer is not null)
+        {
+          remoteHeaderContainer.RemoveChild(header);
+        }
+        else
+        {
+          headerContainer.RemoveChild(header);
+        }
+        remoteHeaderContainer = value;
+        if (remoteHeaderContainer is not null)
+        {
+          remoteHeaderContainer.AddChild(header);
+        }
+        else
+        {
+          headerContainer.AddChild(header);
+        }
       }
     ]]>
   </ref.Members>
-  <RibbonTabTemplate ref.Name="self" ContainerComposition-ref="container" TabOrder="LeftToRight" MinSizeLimitation="LimitToElementAndChildren">
+  <TabTemplate ref.Name="self" ContainerComposition-ref="container" TabOrder="LeftToRight" MinSizeLimitation="LimitToElementAndChildren">
     <ev.SelectedTabPageChanged-eval>
       <![CDATA[
         {
@@ -32,10 +52,8 @@
         }
       ]]>
     </ev.SelectedTabPageChanged-eval>
-    <att.BeforeHeadersContainer-ref>beforeHeadersContainer</att.BeforeHeadersContainer-ref>
-    <att.AfterHeadersContainer-ref>afterHeadersContainer</att.AfterHeadersContainer-ref>
     
-    <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+    <Table ref.Name="headerTable" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
       <SolidBackground Color="#2D2D30"/>
       <att.Rows>
         <CellOption>composeType:MinSize</CellOption>
@@ -43,16 +61,11 @@
         <CellOption>composeType:Percentage percentage:1.0</CellOption>
       </att.Rows>
       <att.Columns>
-        <CellOption>composeType:MinSize</CellOption>
         <CellOption>composeType:Percentage percentage:1.0</CellOption>
-        <CellOption>composeType:MinSize</CellOption>
       </att.Columns>
 
-      <Cell ref.Name="beforeHeadersContainer" Site="row:0 column:0"/>
-      <Cell ref.Name="afterHeadersContainer" Site="row:0 column:2"/>
-
-      <Cell Site="row:0 column:1">
-        <RepeatFlow ref.Name="header" AlignmentToParent="left:0 top:0 right:0 bottom:0" ExtraMargin="left:2 top:2 right:2 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+      <Cell ref.Name="headerContainer" Site="row:0 column:0">
+        <RepeatFlow ref.Name="header" AlignmentToParent="left:0 top:-1 right:0 bottom:0" ExtraMargin="left:2 top:2 right:2 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
           <att.ItemTemplate>sample::TabWindowTabHeaderTemplate</att.ItemTemplate>
           <att.ItemSource-bind>self.TabPages</att.ItemSource-bind>
           <ev.ItemInserted-eval>
@@ -74,13 +87,13 @@
           </ev.ItemRemoved-eval>
         </RepeatFlow>
       </Cell>
-      <Cell Site="row:1 column:0 columnSpan:3">
+      <Cell Site="row:1 column:0">
         <SolidBackground Color="#007ACC"/>
       </Cell>
-      <Cell Site="row:2 column:0 columnSpan:3">
+      <Cell Site="row:2 column:0">
         <SolidBorder Color="#434346"/>
         <Bounds ref.Name="container" AlignmentToParent="left:1 top:1 right:1 bottom:1"/>
       </Cell>
     </Table>
-  </RibbonTabTemplate>
+  </TabTemplate>
 </Instance>
