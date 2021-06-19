@@ -5,7 +5,7 @@
       prop Commands : ITabCommandExecutor* = null {}
     ]]>
   </ref.Members>
-  <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
+  <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren" AssociatedHitTestResult="Client">
     <CheckBox AutoFocus="false" AutoSelection="false">
       <att.ControlTemplate>sample::TabWindowTabHeaderButtonTemplate</att.ControlTemplate>
       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>

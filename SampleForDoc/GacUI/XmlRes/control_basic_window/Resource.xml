@@ -29,9 +29,9 @@
             <att.ControlTemplate>sample::TabWindowTabTemplate</att.ControlTemplate>
             <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
             <att.Pages>
-              <TabPage Text="First"/>
-              <TabPage Text="Second"/>
-              <TabPage Text="Third"/>
+              <TabPage Text="First"><Label Text="First"/></TabPage>
+              <TabPage Text="Second"><Label Text="Second"/></TabPage>
+              <TabPage Text="Third"><Label Text="Third"/></TabPage>
             </att.Pages>
           </Tab>
         </Window>
