@@ -14,6 +14,26 @@
     <Instance name="TabHeaderTemplate" content="File">TabHeader.xml</Instance>
     <Instance name="TabTemplate" content="File">Tab.xml</Instance>
 
+    <Instance name="LoremIpsumTabPageResource">
+      <Instance ref.Class="sample::LoremIpsumTabPage">
+        <ref.Ctor><![CDATA[
+          {
+            var text : string = "";
+            for (i in range [0, 5))
+            {
+              text = text & Sys::LoremIpsumParagraph(800) & "\r\n\r\n";
+            }
+            documentViewer.Text = text;
+          }
+        ]]></ref.Ctor>
+        <TabPage Text-eval="Sys::LoremIpsumTitle(16)">
+          <DocumentViewer ref.Name="documentViewer" EditMode="Selectable" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+            <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
+          </DocumentViewer>
+        </TabPage>
+      </Instance>
+    </Instance>
+
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow">
         <ref.Ctor><![CDATA[
@@ -21,6 +41,10 @@
             var wct = cast (TabWindowTemplate*) self.ControlTemplateObject;
             var tct = cast (TabWindowTabTemplate*) tab.ControlTemplateObject;
             tct.SetTabHeaderContainer(wct.TabHeaderContainer);
+
+            tab.Pages.Add(new LoremIpsumTabPage*());
+            tab.Pages.Add(new LoremIpsumTabPage*());
+            tab.Pages.Add(new LoremIpsumTabPage*());
           }
         ]]></ref.Ctor>
         <Window ref.Name="self" Text="Lorem Ipsum Reader" ClientSize="x:640 y:480">
@@ -28,11 +52,6 @@
           <Tab ref.Name="tab">
             <att.ControlTemplate>sample::TabWindowTabTemplate</att.ControlTemplate>
             <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-            <att.Pages>
-              <TabPage Text="First"><Label Text="First"/></TabPage>
-              <TabPage Text="Second"><Label Text="Second"/></TabPage>
-              <TabPage Text="Third"><Label Text="Third"/></TabPage>
-            </att.Pages>
           </Tab>
         </Window>
       </Instance>
