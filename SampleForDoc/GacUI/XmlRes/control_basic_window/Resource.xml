@@ -26,7 +26,7 @@
             documentViewer.Text = text;
           }
         ]]></ref.Ctor>
-        <TabPage Text-eval="Sys::LoremIpsumTitle(16)">
+        <TabPage Text-eval="Sys::LoremIpsumTitle(12)">
           <DocumentViewer ref.Name="documentViewer" EditMode="Selectable" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
             <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
           </DocumentViewer>

@@ -4,7 +4,7 @@
       prop TabFocused: bool = false {}
     ]]>
   </ref.Members>
-  <SelectableButtonTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
+  <SelectableButtonTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren" ContainerComposition-ref="container">
     <att.TabFocused-bind>(cast (TabPage*) self.Context).OwnerTab.Focused ?? false</att.TabFocused-bind>
     <SolidBackground>
       <att.Color-bind>
@@ -21,19 +21,31 @@
     <Bounds AlignmentToParent="left:1 top:1 right:1 bottom:1" Visible-bind="self.Selected and self.TabFocused" MinSizeLimitation="LimitToElementAndChildren">
       <FocusRectangle/>
     </Bounds>
-    <Bounds AlignmentToParent="left:6 top:3 right:6 bottom:3" MinSizeLimitation="LimitToElementAndChildren">
-      <SolidLabel Text-bind="self.Text" Font-bind="self.Font" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <att.Color-bind>
-          <![CDATA[
-            cast Color let state = self.State in (
-              not self.VisuallyEnabled ? "#6D6D6D" :
-              state == ButtonState::Active ? "#F1F1F1" :
-              state == ButtonState::Pressed ? "#FFFFFF" :
-              "#F1F1F1"
-            )
-          ]]>
-        </att.Color-bind>
-      </SolidLabel>
-    </Bounds>
+    <Table AlignmentToParent="left:3 top:0 right:0 bottom:0" CellPadding="3" BorderVisible="true" MinSizeLimitation="LimitToElementAndChildren">
+      <att.Rows>
+        <CellOption>composeType:Percentage percentage:1.0</CellOption>
+        <CellOption>composeType:MinSize</CellOption>
+      </att.Rows>
+      <att.Columns>
+        <CellOption>composeType:Percentage percentage:1.0</CellOption>
+        <CellOption>composeType:MinSize</CellOption>
+      </att.Columns>
+
+      <Cell Site="row:0 column:0 rowSpan:2">
+        <SolidLabel Text-bind="self.Text" Font-bind="self.Font" HorizontalAlignment="Center" VerticalAlignment="Center">
+          <att.Color-bind>
+            <![CDATA[
+              cast Color let state = self.State in (
+                not self.VisuallyEnabled ? "#6D6D6D" :
+                state == ButtonState::Active ? "#F1F1F1" :
+                state == ButtonState::Pressed ? "#FFFFFF" :
+                "#F1F1F1"
+              )
+            ]]>
+          </att.Color-bind>
+        </SolidLabel>
+      </Cell>
+      <Cell ref.Name="container" Site="row:1 column:1"/>
+    </Table>
   </SelectableButtonTemplate>
 </Instance>

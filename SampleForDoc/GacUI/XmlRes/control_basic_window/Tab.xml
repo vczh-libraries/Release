@@ -26,20 +26,20 @@
       {
         if (remoteHeaderContainer is not null)
         {
-          remoteHeaderContainer.RemoveChild(header);
+          remoteHeaderContainer.RemoveChild(headerTable);
         }
         else
         {
-          headerContainer.RemoveChild(header);
+          headerContainer.RemoveChild(headerTable);
         }
         remoteHeaderContainer = value;
         if (remoteHeaderContainer is not null)
         {
-          remoteHeaderContainer.AddChild(header);
+          remoteHeaderContainer.AddChild(headerTable);
         }
         else
         {
-          headerContainer.AddChild(header);
+          headerContainer.AddChild(headerTable);
         }
       }
     ]]>
@@ -53,7 +53,7 @@
       ]]>
     </ev.SelectedTabPageChanged-eval>
     
-    <Table ref.Name="headerTable" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+    <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
       <SolidBackground Color="#2D2D30"/>
       <att.Rows>
         <CellOption>composeType:MinSize</CellOption>
@@ -65,27 +65,29 @@
       </att.Columns>
 
       <Cell ref.Name="headerContainer" Site="row:0 column:0">
-        <RepeatFlow ref.Name="header" AlignmentToParent="left:0 top:-1 right:0 bottom:0" ExtraMargin="left:2 top:2 right:2 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <att.ItemTemplate>sample::TabWindowTabHeaderTemplate</att.ItemTemplate>
-          <att.ItemSource-bind>self.TabPages</att.ItemSource-bind>
-          <ev.ItemInserted-eval>
-            <![CDATA[
-              {
-                var flowItem = header.FlowItems[arguments.itemIndex];
-                var item = cast (TabWindowTabHeaderTemplate*) flowItem.Children[0];
-                item.Commands = self.Commands;
-                self.UpdateTabHeader();
-              }
-            ]]>
-          </ev.ItemInserted-eval>
-          <ev.ItemRemoved-eval>
-            <![CDATA[
-              {
-                self.UpdateTabHeader();
-              }
-            ]]>
-          </ev.ItemRemoved-eval>
-        </RepeatFlow>
+        <Bounds ref.Name="headerTable" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+          <RepeatFlow ref.Name="header" AlignmentToParent="left:0 top:-1 right:0 bottom:0" ExtraMargin="left:2 top:2 right:2 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <att.ItemTemplate>sample::TabWindowTabHeaderTemplate</att.ItemTemplate>
+            <att.ItemSource-bind>self.TabPages</att.ItemSource-bind>
+            <ev.ItemInserted-eval>
+              <![CDATA[
+                {
+                  var flowItem = header.FlowItems[arguments.itemIndex];
+                  var item = cast (TabWindowTabHeaderTemplate*) flowItem.Children[0];
+                  item.Commands = self.Commands;
+                  self.UpdateTabHeader();
+                }
+              ]]>
+            </ev.ItemInserted-eval>
+            <ev.ItemRemoved-eval>
+              <![CDATA[
+                {
+                  self.UpdateTabHeader();
+                }
+              ]]>
+            </ev.ItemRemoved-eval>
+          </RepeatFlow>
+        </Bounds>
       </Cell>
       <Cell Site="row:1 column:0">
         <SolidBackground Color="#007ACC"/>

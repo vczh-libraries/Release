@@ -20,6 +20,18 @@
           }
         ]]>
       </ev.Clicked-eval>
+      <Button Text="X">
+        <ev.Clicked-eval><![CDATA[
+          {
+            var tabPage = CurrentTabPage;
+            Application::GetApplication().InvokeInMainThread(tabPage.RelatedControlHost, func():void
+            {
+              tabPage.OwnerTab.Pages.Remove(tabPage);
+              delete tabPage;
+            });
+          }
+        ]]></ev.Clicked-eval>
+      </Button>
     </CheckBox>
   </ControlTemplate>
 </Instance>
