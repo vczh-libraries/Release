@@ -42,6 +42,8 @@
           headerContainer.AddChild(headerTable);
         }
       }
+
+      event AddPageRequested();
     ]]>
   </ref.Members>
   <TabTemplate ref.Name="self" ContainerComposition-ref="container" TabOrder="LeftToRight" MinSizeLimitation="LimitToElementAndChildren">
@@ -65,29 +67,46 @@
       </att.Columns>
 
       <Cell ref.Name="headerContainer" Site="row:0 column:0">
-        <Bounds ref.Name="headerTable" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <RepeatFlow ref.Name="header" AlignmentToParent="left:0 top:-1 right:0 bottom:0" ExtraMargin="left:2 top:2 right:2 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-            <att.ItemTemplate>sample::TabWindowTabHeaderTemplate</att.ItemTemplate>
-            <att.ItemSource-bind>self.TabPages</att.ItemSource-bind>
-            <ev.ItemInserted-eval>
-              <![CDATA[
-                {
-                  var flowItem = header.FlowItems[arguments.itemIndex];
-                  var item = cast (TabWindowTabHeaderTemplate*) flowItem.Children[0];
-                  item.Commands = self.Commands;
-                  self.UpdateTabHeader();
-                }
-              ]]>
-            </ev.ItemInserted-eval>
-            <ev.ItemRemoved-eval>
-              <![CDATA[
-                {
-                  self.UpdateTabHeader();
-                }
-              ]]>
-            </ev.ItemRemoved-eval>
-          </RepeatFlow>
-        </Bounds>
+        <Table ref.Name="headerTable" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+          <att.Rows>
+            <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            <CellOption>composeType:MinSize</CellOption>
+            <CellOption>composeType:Percentage percentage:1.0</CellOption>
+          </att.Rows>
+          <att.Columns>
+            <CellOption>composeType:MinSize</CellOption>
+            <CellOption>composeType:Percentage percentage:1.0</CellOption>
+          </att.Columns>
+
+          <Cell Site="row:1 column:0" InternalMargin="left:2 top:0 right:2 bottom:0">
+            <Button Text="+" ev.Clicked-eval="self.AddPageRequested();">
+              <att.BoundsComposition-set AssociatedHitTestResult="Client"/>
+            </Button>
+          </Cell>
+          <Cell Site="row:0 column:1 rowSpan:3">
+            <RepeatFlow ref.Name="header" AlignmentToParent="left:0 top:-1 right:0 bottom:0" ExtraMargin="left:2 top:2 right:2 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+              <att.ItemTemplate>sample::TabWindowTabHeaderTemplate</att.ItemTemplate>
+              <att.ItemSource-bind>self.TabPages</att.ItemSource-bind>
+              <ev.ItemInserted-eval>
+                <![CDATA[
+                  {
+                    var flowItem = header.FlowItems[arguments.itemIndex];
+                    var item = cast (TabWindowTabHeaderTemplate*) flowItem.Children[0];
+                    item.Commands = self.Commands;
+                    self.UpdateTabHeader();
+                  }
+                ]]>
+              </ev.ItemInserted-eval>
+              <ev.ItemRemoved-eval>
+                <![CDATA[
+                  {
+                    self.UpdateTabHeader();
+                  }
+                ]]>
+              </ev.ItemRemoved-eval>
+            </RepeatFlow>
+          </Cell>
+        </Table>
       </Cell>
       <Cell Site="row:1 column:0">
         <SolidBackground Color="#007ACC"/>

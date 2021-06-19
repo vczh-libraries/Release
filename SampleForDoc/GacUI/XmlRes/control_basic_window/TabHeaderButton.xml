@@ -25,13 +25,14 @@
       <att.Rows>
         <CellOption>composeType:Percentage percentage:1.0</CellOption>
         <CellOption>composeType:MinSize</CellOption>
+        <CellOption>composeType:Percentage percentage:1.0</CellOption>
       </att.Rows>
       <att.Columns>
         <CellOption>composeType:Percentage percentage:1.0</CellOption>
         <CellOption>composeType:MinSize</CellOption>
       </att.Columns>
 
-      <Cell Site="row:0 column:0 rowSpan:2">
+      <Cell Site="row:0 column:0 rowSpan:3">
         <SolidLabel Text-bind="self.Text" Font-bind="self.Font" HorizontalAlignment="Center" VerticalAlignment="Center">
           <att.Color-bind>
             <![CDATA[

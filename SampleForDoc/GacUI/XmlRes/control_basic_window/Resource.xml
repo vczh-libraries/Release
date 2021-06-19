@@ -42,8 +42,13 @@
             var tct = cast (TabWindowTabTemplate*) tab.ControlTemplateObject;
             tct.SetTabHeaderContainer(wct.TabHeaderContainer);
 
-            tab.Pages.Add(new LoremIpsumTabPage*());
-            tab.Pages.Add(new LoremIpsumTabPage*());
+            attach(tct.AddPageRequested, func():void
+            {
+              var tabPage = new LoremIpsumTabPage*();
+              tab.Pages.Insert(0, tabPage);
+              tab.SelectedPage = tabPage;
+            });
+
             tab.Pages.Add(new LoremIpsumTabPage*());
           }
         ]]></ref.Ctor>
