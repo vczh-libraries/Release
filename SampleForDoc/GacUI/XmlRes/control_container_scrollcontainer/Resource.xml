@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_container_scrollcontainer.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_container_scrollcontainer.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Script name="ViewModel">
+      <Workflow><![CDATA[
+        module viewmodel;
+
+        using system::*;
+
+        class LoremIpsumItem
+        {
+          prop Text : string = Sys::LoremIpsumTitle(20) {const, not observe}
+        }
+      ]]></Workflow>
+    </Script>
+
+    <Instance name="LoremIpsumItemTemplateResource">
+      <Instance ref.Class="sample::LoremIpsumItemTemplate">
+        <ref.Parameter Name="item" Class="LoremIpsumItem"/>
+        <ControlTemplate MinSizeLimitation="LimitToElementAndChildren">
+          <Button Text-eval="item.Text">
+            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+          </Button>
+        </ControlTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <ref.Members><![CDATA[
+          @cpp:Private
+          var items : observe LoremIpsumItem^[] = {};
+        ]]></ref.Members>
+        <Window ref.Name="self" Text="control_container_scrollcontainer" ClientSize="x:480 y:320">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <Button Text="Add 25 Items">
+                <ev.Clicked-eval><![CDATA[
+                  {
+                    for (i in range [0, 25))
+                    {
+                      self.items.Add(new LoremIpsumItem^());
+                    }
+                  }
+                ]]></ev.Clicked-eval>
+              </Button>
+            </Cell>
+            <Cell Site="row:1 column:0 columnSpan:2">
+              <ScrollContainer HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" ExtendToFullWidth="true">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <RepeatFlow RowPadding="5" ColumnPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                  <att.ItemSource-bind>self.items</att.ItemSource-bind>
+                  <att.ItemTemplate>sample::LoremIpsumItemTemplate</att.ItemTemplate>
+                </RepeatFlow>
+              </ScrollContainer>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
