@@ -98,7 +98,7 @@
                 </Button>
               </Cell>
 
-              <Cell Site="row:0 column:0" MinSizeLimitation-bind="((self.Icon is not null) and self.IconVisible ? LimitToElementAndChildren : NoLimit) of (GuiGraphicsComposition::MinSizeLimitation)">
+              <Cell Site="row:0 column:0" MinSizeLimitation-bind="(self.Icon is not null ? LimitToElementAndChildren : NoLimit) of (GuiGraphicsComposition::MinSizeLimitation)">
                 <Table AlignmentToParent="left:0 top:0 right:2 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
                   <att.Rows>
                     <CellOption>composeType:Percentage percentage:1.0</CellOption>
@@ -141,6 +141,14 @@
       <Instance ref.Class="sample::MainWindow">
         <Window ref.Name="self" Text="control_basic_window" ClientSize="x:640 y:480">
           <att.ControlTemplate>sample::TabWindowTemplate</att.ControlTemplate>
+          <Tab>
+            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+            <att.Pages>
+              <TabPage Text="First"/>
+              <TabPage Text="Second"/>
+              <TabPage Text="Third"/>
+            </att.Pages>
+          </Tab>
         </Window>
       </Instance>
     </Instance>
