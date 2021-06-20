@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_list_treeview_bindable.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_list_treeview_bindable.bin</Text>
+    </Folder>
+  </Folder>
+  <Image content="File">First.png</Image>
+  <Image content="File">Second.png</Image>
+  <Image content="File">Third.png</Image>
+  <Folder name="MainWindow">
+    <Script name="ViewModel">
+      <Workflow><![CDATA[
+        module viewmodel;
+        using system::*;
+        using presentation::*;
+
+        namespace sample
+        {
+          class LoremIpsumItem
+          {
+            prop Text : string = "" {not observe}
+            prop Image : GuiImageData^ = null {not observe}
+            prop Children : observe LoremIpsumItem^[] = {} {not observe}
+
+            new() {}
+
+            new(image: GuiImageData^, length: int)
+            {
+              Image = image;
+              Text = Sys::LoremIpsumTitle(length);
+            }
+          }
+        }
+      ]]></Workflow>
+    </Script>
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <ref.Members><![CDATA[
+          @cpp:Private
+          var rootItem : LoremIpsumItem^ = new LoremIpsumItem^();
+        ]]></ref.Members>
+        <Window ref.Name="self" Text="control_list_treeview_bindable" ClientSize="x:480 y:320">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <Button Text="Add another sub tree">
+                <ev.Clicked-eval><![CDATA[
+                  {
+                    var firstImage = cast (ImageData^) self.ResolveResource("res", "First.png", true);
+                    var secondImage = cast (ImageData^) self.ResolveResource("res", "Second.png", true);
+                    var thirdImage = cast (ImageData^) self.ResolveResource("res", "Third.png", true);
+
+                    var first = new LoremIpsumItem^(firstImage, 16);
+                    self.rootItem.Children.Add(first);
+                    for (i in range [0, 3))
+                    {
+                      var second = new LoremIpsumItem^(secondImage, 32);
+                      first.Children.Add(second);
+                      for (j in range [0, 3))
+                      {
+                        var third = new LoremIpsumItem^(thirdImage, 48);
+                        second.Children.Add(third);
+                      }
+                    }
+                  }
+                ]]></ev.Clicked-eval>
+              </Button>
+            </Cell>
+
+            <Cell Site="row:1 column:0 columnSpan:2">
+              <BindableTreeView ref.Name="treeView" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="sample::LoremIpsumItem^">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.ItemSource-eval>self.rootItem</att.ItemSource-eval>
+                <att.TextProperty>Text</att.TextProperty>
+                <att.ImageProperty>Image</att.ImageProperty>
+                <att.ChildrenProperty>Children</att.ChildrenProperty>
+              </BindableTreeView>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
