@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_list_textlist.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_list_textlist.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <ref.Members><![CDATA[
+          @cpp:Private
+          var views: TextListView[] = {
+            TextListView::Text;
+            TextListView::Check;
+            TextListView::Radio;
+          };
+        ]]></ref.Members>
+        <ref.Ctor><![CDATA[
+          {
+            for (i in range [0, 20))
+            {
+              textList.Items.Add(new TextItem^(Sys::LoremIpsumTitle(32)));
+            }
+          }
+        ]]></ref.Ctor>
+        <Window ref.Name="self" Text="control_list_textlist" ClientSize="x:480 y:320">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Absolute absolute:120</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+                <att.Rows>
+                  <CellOption>composeType:Percentage percentage:0.5</CellOption>
+                  <CellOption>composeType:MinSize</CellOption>
+                  <CellOption>composeType:Percentage percentage:0.5</CellOption>
+                </att.Rows>
+                <att.Columns>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                </att.Columns>
+                <Cell Site="row:1 column:0">
+                  <Label Text="textList.View = TextListView::"/>
+                </Cell>
+              </Table>
+            </Cell>
+
+            <Cell Site="row:0 column:1">
+              <ComboBox ref.Name="comboView" SelectedIndex="0">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.ListControl>
+                  <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <att.Items>
+                      <TextItem Text="Text"/>
+                      <TextItem Text="Check"/>
+                      <TextItem Text="Radio"/>
+                    </att.Items>
+                  </TextList>
+                </att.ListControl>
+              </ComboBox>
+            </Cell>
+            
+            <Cell Site="row:1 column:0 columnSpan:3">
+              <TextList ref.Name="textList" View-bind="self.views[comboView.SelectedIndex]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </TextList>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
