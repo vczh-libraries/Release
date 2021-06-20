@@ -28,6 +28,10 @@
 
           @cpp:Private
           var books: string[] = {};
+          @cpp:Private
+          var lastSelectedItem: int = -1;
+          @cpp:Private
+          var suppressEvent: bool = false;
 
           @cpp:Private
           var iconBook16: ImageData^ = null;
@@ -111,27 +115,131 @@
             </Cell>
             
             <Cell Site="row:1 column:0 columnSpan:3">
-              <ListView ref.Name="listView" View-bind="self.views[comboView.SelectedIndex]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+                <att.Rows>
+                  <CellOption>composeType:MinSize</CellOption>
+                  <CellOption>composeType:MinSize</CellOption>
+                  <CellOption>composeType:MinSize</CellOption>
+                  <CellOption>composeType:MinSize</CellOption>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                </att.Rows>
                 <att.Columns>
-                  <ListViewColumn Text="Title"/>
-                  <ListViewColumn Text="Author" SortingState="Ascending"/>
-                  <ListViewColumn Text="Date Published" SortingState="Descending"/>
-                  <ListViewColumn Text="Summary">
-                    <att.DropdownPopup>
-                      <ToolstripMenu>
-                        <MenuItemButton Text="Fake"/>
-                        <MenuItemButton Text="Menu"/>
-                        <MenuItemButton Text="Item"/>
-                      </ToolstripMenu>
-                    </att.DropdownPopup>
-                  </ListViewColumn>
+                  <CellOption>composeType:Absolute absolute:400</CellOption>
+                  <CellOption>composeType:MinSize</CellOption>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
                 </att.Columns>
-                <att.DataColumns>
-                  <_>0</_>
-                  <_>1</_>
-                </att.DataColumns>
-              </ListView>
+
+                <ColumnSplitter ColumnsToTheLeft ="1"/>
+
+                <Cell Site="row:0 column:0 rowSpan:5">
+                  <ListView ref.Name="listView" View-bind="self.views[comboView.SelectedIndex]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                    <att.Columns>
+                      <ListViewColumn Text="Title"/>
+                      <ListViewColumn Text="Author" SortingState="Ascending"/>
+                      <ListViewColumn Text="Date Published" SortingState="Descending"/>
+                      <ListViewColumn Text="Summary">
+                        <att.DropdownPopup>
+                          <ToolstripMenu>
+                            <MenuItemButton Text="Fake"/>
+                            <MenuItemButton Text="Menu"/>
+                            <MenuItemButton Text="Item"/>
+                          </ToolstripMenu>
+                        </att.DropdownPopup>
+                      </ListViewColumn>
+                    </att.Columns>
+                    <att.DataColumns>
+                      <_>0</_>
+                      <_>1</_>
+                    </att.DataColumns>
+
+                    <ev.SelectionChanged-eval><![CDATA[
+                      {
+                        if (self.suppressEvent)
+                        {
+                          return;
+                        }
+                        var last = self.lastSelectedItem;
+                        var current = listView.SelectedItemIndex;
+                        self.lastSelectedItem = current;
+
+                        Application::GetApplication().InvokeInMainThread(self, func():void
+                        {
+                          self.suppressEvent = true;
+                          if (last != -1)
+                          {
+                            listView.Items[last].SmallImage = self.iconBook16;
+                            listView.Items[last].LargeImage = self.iconBook32;
+                          }
+                          if (current != -1)
+                          {
+                            listView.Items[current].SmallImage = self.iconOpen16;
+                            listView.Items[current].LargeImage = self.iconOpen32;
+                          }
+
+                          if (current == -1)
+                          {
+                            doc1.Text = "";
+                            doc2.Text = "";
+                            doc3.Text = "";
+                            doc4.Text = "";
+                            docBook.Text = "";
+                          }
+                          else
+                          {
+                            var view = cast (IListViewItemView*) (listView.ItemProvider.RequestView(IListViewItemView::GetIdentifier()));
+                            doc1.Text = view.GetText(current);
+                            doc2.Text = view.GetSubItem(current, 0);
+                            doc3.Text = view.GetSubItem(current, 1);
+                            doc4.Text = view.GetSubItem(current, 2);
+                            docBook.Text = self.books[current];
+                          }
+                          self.suppressEvent = false;
+                        });
+                      }
+                    ]]></ev.SelectionChanged-eval>
+                  </ListView>
+                </Cell>
+
+                <Cell Site="row:0 column:1">
+                  <Label Text-eval="listView.Columns[0].Text"/>
+                </Cell>
+                <Cell Site="row:1 column:1">
+                  <Label Text-eval="listView.Columns[1].Text"/>
+                </Cell>
+                <Cell Site="row:2 column:1">
+                  <Label Text-eval="listView.Columns[2].Text"/>
+                </Cell>
+                <Cell Site="row:3 column:1">
+                  <Label Text-eval="listView.Columns[3].Text"/>
+                </Cell>
+
+                <Cell Site="row:0 column:2">
+                  <DocumentTextBox ref.Name="doc1" EditMode="Selectable">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </DocumentTextBox>
+                </Cell>
+                <Cell Site="row:1 column:2">
+                  <DocumentTextBox ref.Name="doc2" EditMode="Selectable">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </DocumentTextBox>
+                </Cell>
+                <Cell Site="row:2 column:2">
+                  <DocumentTextBox ref.Name="doc3" EditMode="Selectable">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </DocumentTextBox>
+                </Cell>
+                <Cell Site="row:3 column:2">
+                  <DocumentTextBox ref.Name="doc4" EditMode="Selectable">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </DocumentTextBox>
+                </Cell>
+                <Cell Site="row:4 column:1 columnSpan:2">
+                  <DocumentViewer ref.Name="docBook" EditMode="Selectable" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </DocumentViewer>
+                </Cell>
+              </Table>
             </Cell>
           </Table>
         </Window>
