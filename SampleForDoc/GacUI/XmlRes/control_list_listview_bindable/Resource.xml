@@ -2,10 +2,10 @@
 <Resource>
   <Folder name="GacGenConfig">
     <Folder name="ResX86">
-      <Text name="Resource">..\..\UIRes\32bits\control_list_listview.bin</Text>
+      <Text name="Resource">..\..\UIRes\32bits\control_list_listview_bindable.bin</Text>
     </Folder>
     <Folder name="ResX64">
-      <Text name="Resource">..\..\UIRes\64bits\control_list_listview.bin</Text>
+      <Text name="Resource">..\..\UIRes\64bits\control_list_listview_bindable.bin</Text>
     </Folder>
   </Folder>
   <Image content="File">Book16.png</Image>
@@ -13,6 +13,27 @@
   <Image content="File">Open16.png</Image>
   <Image content="File">Open32.png</Image>
   <Folder name="MainWindow">
+    <Script name="ViewModel">
+      <Workflow><![CDATA[
+        module viewmodel;
+        using system::*;
+        using presentation::*;
+
+        namespace sample
+        {
+          class BookItem
+          {
+            prop Title : string = Sys::LoremIpsumTitle(24) {not observe}
+            prop Author : string = Sys::LoremIpsumTitle(16) {not observe}
+            prop DatePublished : DateTime = {} {not observe}
+            prop Summary : string = Sys::LoremIpsumTitle(64) {not observe}
+            prop Content : string = Sys::LoremIpsumTitle(512) {not observe}
+            prop SmallImage : GuiImageData^ = null {not observe}
+            prop LargeImage : GuiImageData^ = null {not observe}
+          }
+        }
+      ]]></Workflow>
+    </Script>
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow">
         <ref.Members><![CDATA[
@@ -27,7 +48,7 @@
           };
 
           @cpp:Private
-          var books: string[] = {};
+          var books: observe BookItem^[] = {};
           @cpp:Private
           var lastSelectedItem: int = -1;
 
@@ -39,6 +60,15 @@
           var iconOpen16: ImageData^ = null;
           @cpp:Private
           var iconOpen32: ImageData^ = null;
+
+          func FormatDate(date: DateTime): string
+          {
+            var locale = Application::GetApplication().Locale;
+            var formats = Localization::GetLongDateFormats(locale).CreateEnumerator();
+            formats.Next(); 
+            var format = cast string formats.Current;
+            return Localization::FormatDate(locale, format, date);
+          }
         ]]></ref.Members>
         <ref.Ctor><![CDATA[
           {
@@ -47,26 +77,18 @@
             self.iconOpen16 = cast (ImageData^) self.ResolveResource("res", "Open16.png", true);
             self.iconOpen32 = cast (ImageData^) self.ResolveResource("res", "Open32.png", true);
 
-            var locale = Application::GetApplication().Locale;
-            var formats = Localization::GetLongDateFormats(locale).CreateEnumerator();
-            formats.Next(); 
-            var format = cast string formats.Current;
 
             for (i in range [0, 24))
             {
-              var item = new ListViewItem^();
-              item.SmallImage = self.iconBook16;
-              item.LargeImage = self.iconBook32;
-              item.Text = Sys::LoremIpsumTitle(24);
-              item.SubItems.Add(Sys::LoremIpsumTitle(16));
-              item.SubItems.Add(Localization::FormatDate(locale, format, Sys::CreateDateTime(2010 + i / 3, 1 + i / 2, 1 + i)));
-              item.SubItems.Add(Sys::LoremIpsumSentence(64));
-              self.books.Add(Sys::LoremIpsumParagraph(512));
-              listView.Items.Add(item);
+              var book = new BookItem^();
+              book.DatePublished = Sys::CreateDateTime(2010 + i / 3, 1 + i / 2, 1 + i);
+              book.SmallImage = self.iconBook16;
+              book.LargeImage = self.iconBook32;
+              self.books.Add(book);
             }
           }
         ]]></ref.Ctor>
-        <Window ref.Name="self" Text="control_list_listview" ClientSize="x:640 y:480">
+        <Window ref.Name="self" Text="control_list_listview_bindable" ClientSize="x:640 y:480">
           <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
               <CellOption>composeType:MinSize</CellOption>
@@ -130,13 +152,16 @@
                 <ColumnSplitter ColumnsToTheLeft ="1"/>
 
                 <Cell Site="row:0 column:0 rowSpan:5">
-                  <ListView ref.Name="listView" View-bind="self.views[comboView.SelectedIndex]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                  <BindableListView ref.Name="listView" View-bind="self.views[comboView.SelectedIndex]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="sample::BookItem^" env.ItemName="item">
                     <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                    <att.ItemSource-eval>self.books</att.ItemSource-eval>
+                    <att.LargeImageProperty>SmallImage</att.LargeImageProperty>
+                    <att.SmallImageProperty>LargeImage</att.SmallImageProperty>
                     <att.Columns>
-                      <ListViewColumn Text="Title"/>
-                      <ListViewColumn Text="Author" SortingState="Ascending"/>
-                      <ListViewColumn Text="Date Published" SortingState="Descending"/>
-                      <ListViewColumn Text="Summary">
+                      <ListViewColumn Text="Title" TextProperty="Title"/>
+                      <ListViewColumn Text="Author" TextProperty="Author" SortingState="Ascending"/>
+                      <ListViewColumn Text="Date Published" TextProperty="self.FormatDate(item.DatePublished)" SortingState="Descending"/>
+                      <ListViewColumn Text="Summary" TextProperty="Summary">
                         <att.DropdownPopup>
                           <ToolstripMenu>
                             <MenuItemButton Text="Fake"/>
@@ -161,36 +186,20 @@
                         {
                           if (last != -1)
                           {
-                            listView.Items[last].SmallImage = self.iconBook16;
-                            listView.Items[last].LargeImage = self.iconBook32;
+                            self.books[last].SmallImage = self.iconBook16;
+                            self.books[last].LargeImage = self.iconBook32;
+                            self.books.ItemChanged(last, 1, 1);
                           }
                           if (current != -1)
                           {
-                            listView.Items[current].SmallImage = self.iconOpen16;
-                            listView.Items[current].LargeImage = self.iconOpen32;
-                          }
-
-                          if (current == -1)
-                          {
-                            doc1.Text = "";
-                            doc2.Text = "";
-                            doc3.Text = "";
-                            doc4.Text = "";
-                            docBook.Text = "";
-                          }
-                          else
-                          {
-                            var view = cast (IListViewItemView*) (listView.ItemProvider.RequestView(IListViewItemView::GetIdentifier()));
-                            doc1.Text = view.GetText(current);
-                            doc2.Text = view.GetSubItem(current, 0);
-                            doc3.Text = view.GetSubItem(current, 1);
-                            doc4.Text = view.GetSubItem(current, 2);
-                            docBook.Text = self.books[current];
+                            self.books[current].SmallImage = self.iconOpen16;
+                            self.books[current].LargeImage = self.iconOpen32;
+                            self.books.ItemChanged(current, 1, 1);
                           }
                         });
                       }
                     ]]></ev.SelectionChanged-eval>
-                  </ListView>
+                  </BindableListView>
                 </Cell>
 
                 <Cell Site="row:0 column:1">
@@ -207,27 +216,27 @@
                 </Cell>
 
                 <Cell Site="row:0 column:2">
-                  <DocumentTextBox ref.Name="doc1" EditMode="Selectable">
+                  <DocumentTextBox EditMode="Selectable" Text-bind="(cast (BookItem^) listView.SelectedItem).Title ?? ''">
                     <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                   </DocumentTextBox>
                 </Cell>
                 <Cell Site="row:1 column:2">
-                  <DocumentTextBox ref.Name="doc2" EditMode="Selectable">
+                  <DocumentTextBox EditMode="Selectable" Text-bind="(cast (BookItem^) listView.SelectedItem).Author ?? ''">
                     <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                   </DocumentTextBox>
                 </Cell>
                 <Cell Site="row:2 column:2">
-                  <DocumentTextBox ref.Name="doc3" EditMode="Selectable">
+                  <DocumentTextBox EditMode="Selectable" Text-bind="self.FormatDate((cast (BookItem^) listView.SelectedItem).DatePublished) ?? ''">
                     <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                   </DocumentTextBox>
                 </Cell>
                 <Cell Site="row:3 column:2">
-                  <DocumentTextBox ref.Name="doc4" EditMode="Selectable">
+                  <DocumentTextBox EditMode="Selectable" Text-bind="(cast (BookItem^) listView.SelectedItem).Summary ?? ''">
                     <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                   </DocumentTextBox>
                 </Cell>
                 <Cell Site="row:4 column:1 columnSpan:2">
-                  <DocumentViewer ref.Name="docBook" EditMode="Selectable" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                  <DocumentViewer EditMode="Selectable" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" Text-bind="(cast (BookItem^) listView.SelectedItem).Content ?? ''">
                     <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                   </DocumentViewer>
                 </Cell>
