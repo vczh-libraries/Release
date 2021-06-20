@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_list_treeview.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_list_treeview.bin</Text>
+    </Folder>
+  </Folder>
+  <Image content="File">First.png</Image>
+  <Image content="File">Second.png</Image>
+  <Image content="File">Third.png</Image>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <Window ref.Name="self" Text="control_list_treeview" ClientSize="x:480 y:320">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <Button Text="Add another sub tree">
+                <ev.Clicked-eval><![CDATA[
+                  {
+                    var firstImage = cast (ImageData^) self.ResolveResource("res", "First.png", true);
+                    var secondImage = cast (ImageData^) self.ResolveResource("res", "Second.png", true);
+                    var thirdImage = cast (ImageData^) self.ResolveResource("res", "Third.png", true);
+
+                    var first = new MemoryNodeProvider^(new TreeViewItem^(firstImage, Sys::LoremIpsumTitle(16)));
+                    for (i in range [0, 3))
+                    {
+                      var second = new MemoryNodeProvider^(new TreeViewItem^(secondImage, Sys::LoremIpsumTitle(32)));
+                      first.Children.Add(second);
+                      for (j in range [0, 3))
+                      {
+                        var third = new MemoryNodeProvider^(new TreeViewItem^(thirdImage, Sys::LoremIpsumTitle(48)));
+                        second.Children.Add(third);
+                      }
+                    }
+                    treeView.Nodes.GetMemoryNode(cast * treeView.Nodes.RootNode).Children.Add(first);
+                  }
+                ]]></ev.Clicked-eval>
+              </Button>
+            </Cell>
+
+            <Cell Site="row:1 column:0 columnSpan:2">
+              <TreeView ref.Name="treeView" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.Nodes>
+                  <TreeNode Image-uri="res://First.png" Text-eval="Sys::LoremIpsumTitle(16)">
+                    <TreeNode Image-uri="res://Second.png" Text-eval="Sys::LoremIpsumTitle(48)"/>
+                    <TreeNode Image-uri="res://Second.png" Text-eval="Sys::LoremIpsumTitle(48)"/>
+                    <TreeNode Image-uri="res://Second.png" Text-eval="Sys::LoremIpsumTitle(48)"/>
+                    <TreeNode Image-uri="res://Second.png" Text-eval="Sys::LoremIpsumTitle(48)"/>
+                    <TreeNode Image-uri="res://Second.png" Text-eval="Sys::LoremIpsumTitle(48)"/>
+                  </TreeNode>
+                </att.Nodes>
+              </TreeView>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
