@@ -120,7 +120,6 @@
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*">
         <sample:DataGridWindowBase ref.Name="self" Text="control_datagrid_editor" env.ItemType="sample::BookItem^">
-          <MessageDialog ref.Name="messageDialog" Title-bind="self.Text"/>
           <att.TitleColumn-set EditorFactory="sample::TextEditor"/>
           <att.AuthorColumn-set EditorFactory="sample::TextEditor"/>
           <att.DatePublishedColumn-set EditorFactory="sample::DateEditor"/>
