@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Xml name="Metadata">
+      <ResourceMetadata Name="DataGridSorter" Version="1.0">
+        <Dependencies>
+          <Resource Name="DataGridBase"/>
+        </Dependencies>
+      </ResourceMetadata>
+    </Xml>
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_datagrid_sorter.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_datagrid_sorter.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*">
+        <sample:DataGridWindowBase ref.Name="self" Text="control_datagrid_sorter" env.ItemType="sample::BookItem^">
+          <att.TitleColumn-set Sorter="[Sys::Compare($1.Title, $2.Title)]"/>
+          <att.AuthorColumn-set Sorter="[Sys::Compare($1.Author, $2.Author)]"/>
+          <att.DatePublishedColumn-set Sorter="[Sys::Compare($1.DatePublished, $2.DatePublished)]"/>
+        </sample:DataGridWindowBase>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>

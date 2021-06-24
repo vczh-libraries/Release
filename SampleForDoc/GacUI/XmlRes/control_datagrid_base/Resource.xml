@@ -54,6 +54,8 @@
           @cpp:Private
           var iconOpen32: ImageData^ = null;
 
+          prop TitleColumn : DataColumn^ = null {const, not observe}
+          prop AuthorColumn : DataColumn^ = null {const, not observe}
           prop DatePublishedColumn : DataColumn^ = null {const, not observe}
 
           func FormatDate(date: DateTime): string
@@ -81,6 +83,8 @@
               self.books.Add(book);
             }
 
+            SetTitleColumn(columnTitle);
+            SetAuthorColumn(columnAuthor);
             SetDatePublishedColumn(columnDatePublished);
           }
         ]]></ref.Ctor>
