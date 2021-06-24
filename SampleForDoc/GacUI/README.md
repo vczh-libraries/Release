@@ -24,4 +24,6 @@ http://vczh-libraries.github.io/doc/current/gacui/home.html
 - Open GacUI.sln
 - Build the solution
 - Run project `RunResource`
-  - If you want to load `XmlRes\kb_elements\Resource.xml`, set the command line arguments to `kb_elements`
+  - If you want to load `XmlRes\kb_elements\Resource.xml`, set the command line arguments to `kb_elements`.
+  - Multiple resource names are separated by `;`, not by multiple arguments. Resources will be loaded in the specified order.
+    - For example: `control_datagrid_base;control_datagrid_plaintext`.

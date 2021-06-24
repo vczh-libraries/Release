@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Xml name="Metadata">
+      <ResourceMetadata Name="DataGridPlainText" Version="1.0">
+        <Dependencies>
+          <Resource Name="DataGridBase"/>
+        </Dependencies>
+      </ResourceMetadata>
+    </Xml>
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_datagrid_plaintext.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_datagrid_plaintext.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*">
+        <sample:DataGridWindowBase ref.Name="self" Text="control_datagrid_plaintext">
+        </sample:DataGridWindowBase>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
