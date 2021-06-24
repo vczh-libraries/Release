@@ -42,7 +42,7 @@
             </Cell>
 
             <Cell Site="row:0 column:1">
-              <SolidLabel Text-bind="cast string self.CellValue ?? ''" Font-bind="self.Font" Color-bind="self.PrimaryTextColor" Ellipse="true"/>
+              <SolidLabel Text-bind="cast string self.CellValue ?? ''" Font-bind="self.Font" Color-bind="self.SecondaryTextColor" Ellipse="true"/>
             </Cell>
           </Table>
         </GridVisualizerTemplate>

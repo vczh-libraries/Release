@@ -7351,6 +7351,7 @@ DefaultDataGridItemTemplate
 						{
 							focusControl->SetFocus();
 						}
+						dataVisualizers[column]->GetTemplate()->SetVisible(false);
 					}
 				}
 
@@ -7358,6 +7359,10 @@ DefaultDataGridItemTemplate
 				{
 					if (currentEditor)
 					{
+						for (vint i = 0; i < dataVisualizers.Count(); i++)
+						{
+							dataVisualizers[i]->GetTemplate()->SetVisible(true);
+						}
 						auto composition = currentEditor->GetTemplate();
 						if (composition->GetParent())
 						{

@@ -39,8 +39,10 @@
     <Instance name="SummaryEditorResource">
       <Instance ref.CodeBehind="false" ref.Class="sample::SummaryEditor">
         <GridEditorTemplate ref.Name="self" FocusControl-ref="buttonEdit">
-          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+          <Table AlignmentToParent="left:10 top:0 right:10 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
             </att.Rows>
             <att.Columns>
@@ -48,11 +50,11 @@
               <CellOption>composeType:MinSize</CellOption>
             </att.Columns>
 
-            <Cell Site="row:0 column:0">
-              <SolidLabel Text-bind="cast string self.CellValue ?? ''" Font-bind="self.Font" Color-bind="self.PrimaryTextColor" Ellipse="true"/>
+            <Cell Site="row:0 column:0 rowSpan:3">
+              <SolidLabel Text-bind="cast string self.CellValue ?? ''" Font-bind="self.Font" Color-bind="self.PrimaryTextColor" Ellipse="true" VerticalAlignment="Center"/>
             </Cell>
 
-            <Cell Site="row:0 column:1">
+            <Cell Site="row:1 column:1">
               <Button ref.Name="buttonEdit" Text="..."/>
             </Cell>
           </Table>
