@@ -15,7 +15,40 @@
       <Text name="Resource">..\..\UIRes\64bits\control_datagrid_visualizer.bin</Text>
     </Folder>
   </Folder>
+  <Image content="File">Summary.png</Image>
   <Folder name="MainWindow">
+    <Instance name="SummaryVisualizerResource">
+      <Instance ref.CodeBehind="false" ref.Class="sample::SummaryVisualizer">
+        <GridVisualizerTemplate ref.Name="self">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <CustomControl TooltipWidth="240">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                  <ImageFrame Image-uri="res://Summary.png"/>
+                </Bounds>
+                <att.TooltipControl>
+                  <DocumentLabel Text-bind="self.Text"/>
+                </att.TooltipControl>
+              </CustomControl>
+            </Cell>
+
+            <Cell Site="row:0 column:1">
+              <SolidLabel Text-bind="cast string self.CellValue ?? ''" Font-bind="self.Font" Color-bind="self.PrimaryTextColor" Ellipse="true"/>
+            </Cell>
+          </Table>
+        </GridVisualizerTemplate>
+      </Instance>
+    </Instance>
+
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*">
         <sample:DataGridWindowBase ref.Name="self" Text="control_datagrid_visualizer" env.ItemType="sample::BookItem^">
@@ -26,7 +59,7 @@
                 var cell = self.DataGrid.SelectedCell;
                 if (cell.row != -1 and cell.column == 1)
                 {
-                  messageDialog.Text = (cast (BookItem^) self.DataGrid.SelectedRowValue).Author;
+                  messageDialog.Text = cast string self.DataGrid.SelectedCellValue;
                   messageDialog.ShowDialog();
                 }
               }
@@ -35,6 +68,9 @@
           <att.AuthorColumn-set>
             <att.VisualizerFactory>HyperlinkVisualizerTemplate;FocusRectangleVisualizerTemplate;CellBorderVisualizerTemplate</att.VisualizerFactory>
           </att.AuthorColumn-set>
+          <att.SummaryColumn-set>
+            <att.VisualizerFactory>sample:SummaryVisualizer;FocusRectangleVisualizerTemplate;CellBorderVisualizerTemplate</att.VisualizerFactory>
+          </att.SummaryColumn-set>
         </sample:DataGridWindowBase>
       </Instance>
     </Instance>

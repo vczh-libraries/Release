@@ -58,6 +58,7 @@
           prop TitleColumn : DataColumn^ = null {const, not observe}
           prop AuthorColumn : DataColumn^ = null {const, not observe}
           prop DatePublishedColumn : DataColumn^ = null {const, not observe}
+          prop SummaryColumn : DataColumn^ = null {const, not observe}
 
           func FormatDate(date: DateTime): string
           {
@@ -88,6 +89,7 @@
             SetTitleColumn(columnTitle);
             SetAuthorColumn(columnAuthor);
             SetDatePublishedColumn(columnDatePublished);
+            SetSummaryColumn(columnSummary);
           }
         ]]></ref.Ctor>
         <Window ref.Name="self" ClientSize="x:800 y:600">
@@ -114,10 +116,10 @@
                 <att.LargeImageProperty>SmallImage</att.LargeImageProperty>
                 <att.SmallImageProperty>LargeImage</att.SmallImageProperty>
                 <att.Columns>
-                  <DataColumn ref.Name="columnTitle" Text="Title" TextProperty="Title"/>
-                  <DataColumn ref.Name="columnAuthor" Text="Author" TextProperty="Author"/>
-                  <DataColumn ref.Name="columnDatePublished" Text="Date Published" TextProperty="self.FormatDate(item.DatePublished)"/>
-                  <DataColumn ref.Name="columnSummary" Text="Summary" TextProperty="Summary"/>
+                  <DataColumn ref.Name="columnTitle" Text="Title" TextProperty="Title" ValueProperty="Title"/>
+                  <DataColumn ref.Name="columnAuthor" Text="Author" TextProperty="Author" ValueProperty="Author"/>
+                  <DataColumn ref.Name="columnDatePublished" Text="Date Published" TextProperty="self.FormatDate(item.DatePublished)" ValueProperty="DatePublished"/>
+                  <DataColumn ref.Name="columnSummary" Text="Summary" TextProperty="Summary" ValueProperty="Summary"/>
                 </att.Columns>
                 <att.DataColumns>
                   <_>0</_>
