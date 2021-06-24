@@ -43,7 +43,7 @@
           @cpp:Private
           var books: observe BookItem^[] = {};
           @cpp:Private
-          var lastSelectedItem: int = -1;
+          var lastSelectedCell: GridPos = {row:-1 column:-1};
 
           @cpp:Private
           var iconBook16: ImageData^ = null;
@@ -69,7 +69,6 @@
             self.iconBook32 = cast (ImageData^) self.ResolveResource("res", "Book32.png", true);
             self.iconOpen16 = cast (ImageData^) self.ResolveResource("res", "Open16.png", true);
             self.iconOpen32 = cast (ImageData^) self.ResolveResource("res", "Open32.png", true);
-
 
             for (i in range [0, 24))
             {
@@ -115,29 +114,33 @@
                   <_>1</_>
                 </att.DataColumns>
 
-                <ev.SelectionChanged-eval><![CDATA[
+                <ev.SelectedCellChanged-eval><![CDATA[
                   {
-                    var last = self.lastSelectedItem;
-                    var current = datagrid.SelectedItemIndex;
-                    self.lastSelectedItem = current;
-
-                    Application::GetApplication().InvokeInMainThread(self, func():void
+                    var last = self.lastSelectedCell;
+                    var current = datagrid.SelectedCell;
+                    if (last.row != current.row)
                     {
-                      if (last != -1)
+                      self.lastSelectedCell = current;
+
+                      Application::GetApplication().InvokeInMainThread(self, func():void
                       {
-                        self.books[last].SmallImage = self.iconBook16;
-                        self.books[last].LargeImage = self.iconBook32;
-                        self.books.ItemChanged(last, 1, 1);
-                      }
-                      if (current != -1)
-                      {
-                        self.books[current].SmallImage = self.iconOpen16;
-                        self.books[current].LargeImage = self.iconOpen32;
-                        self.books.ItemChanged(current, 1, 1);
-                      }
-                    });
+                        if (last.row != -1)
+                        {
+                          self.books[last.row].SmallImage = self.iconBook16;
+                          self.books[last.row].LargeImage = self.iconBook32;
+                          self.books.ItemChanged(last.row, 1, 1);
+                        }
+                        if (current.row != -1)
+                        {
+                          self.books[current.row].SmallImage = self.iconOpen16;
+                          self.books[current.row].LargeImage = self.iconOpen32;
+                          self.books.ItemChanged(current.row, 1, 1);
+                        }
+                        self.datagrid.SelectCell(current, false);
+                      });
+                    }
                   }
-                ]]></ev.SelectionChanged-eval>
+                ]]></ev.SelectedCellChanged-eval>
               </BindableDataGrid>
             </Cell>
 
