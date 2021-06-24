@@ -54,6 +54,8 @@
           @cpp:Private
           var iconOpen32: ImageData^ = null;
 
+          prop DatePublishedColumn : DataColumn^ = null {const, not observe}
+
           func FormatDate(date: DateTime): string
           {
             var locale = Application::GetApplication().Locale;
@@ -78,6 +80,8 @@
               book.LargeImage = self.iconBook32;
               self.books.Add(book);
             }
+
+            SetDatePublishedColumn(columnDatePublished);
           }
         ]]></ref.Ctor>
         <Window ref.Name="self" ClientSize="x:800 y:600">

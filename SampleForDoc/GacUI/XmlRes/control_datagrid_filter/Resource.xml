@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Xml name="Metadata">
+      <ResourceMetadata Name="DataGridFilter" Version="1.0">
+        <Dependencies>
+          <Resource Name="DataGridBase"/>
+        </Dependencies>
+      </ResourceMetadata>
+    </Xml>
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_datagrid_filter.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_datagrid_filter.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="DateFilterResource">
+      <Instance ref.CodeBehind="false" ref.Class="sample::DateFilter">
+        <ref.Members><![CDATA[
+          @cpp:Private
+          var callback : IDataProcessorCallback* = null;
+          
+          @cpp:Private
+          func UpdateFilter() : void
+          {
+            if (callback is not null)
+            {
+              callback.OnProcessorChanged();
+            }
+          }
+
+          prop Filter : IDataFilter^ = null {const, not observe}
+        ]]></ref.Members>
+        <ref.Ctor><![CDATA[
+          SetFilter(
+            new IDataFilter^
+            {
+              override func SetCallback(value : IDataProcessorCallback*) : void
+              {
+                callback = value;
+              }
+            
+              override func Filter(row : object) : bool
+              {
+                var date = (cast (BookItem^) row).DatePublished;
+                if (checkFrom.Selected)
+                {
+                  if (Sys::Compare(date, dateFrom.SelectedDate) < 0)
+                  {
+                    return false;
+                  }
+                }
+                if (checkTo.Selected)
+                {
+                  if (Sys::Compare(date, dateTo.SelectedDate) > 0)
+                  {
+                    return false;
+                  }
+                }
+                return true;
+              }
+            }
+          );
+        ]]> </ref.Ctor>
+        <CustomControl ref.Name="self">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <_>composeType:MinSize</_>
+              <_>composeType:MinSize</_>
+            </att.Rows>
+            <att.Columns>
+              <_>composeType:MinSize</_>
+              <_>composeType:MinSize</_>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <CheckBox ref.Name="checkFrom" Text="From:" ev.SelectedChanged-eval="self.UpdateFilter();"/>
+            </Cell>
+            <Cell Site="row:0 column:1">
+              <DateComboBox ref.Name="dateFrom" Enabled-bind="checkFrom.Selected" SelectedDate="2010-01-01 00:00:00.000" ev.SelectedDateChanged-eval="self.UpdateFilter();">
+                <att.BoundsComposition-set PreferredMinSize="x:180"/>
+              </DateComboBox>
+            </Cell>
+
+            <Cell Site="row:1 column:0">
+              <CheckBox ref.Name="checkTo" Text="To:" ev.SelectedChanged-eval="self.UpdateFilter();"/>
+            </Cell>
+            <Cell Site="row:1 column:1">
+              <DateComboBox ref.Name="dateTo" Enabled-bind="checkTo.Selected" SelectedDate="2020-01-01 00:00:00.000" ev.SelectedDateChanged-eval="self.UpdateFilter();">
+                <att.BoundsComposition-set PreferredMinSize="x:180"/>
+              </DateComboBox>
+            </Cell>
+          </Table>
+        </CustomControl>
+      </Instance>
+    </Instance>
+
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*">
+        <sample:DataGridWindowBase ref.Name="self" Text="control_datagrid_filter">
+          <att.DatePublishedColumn-set>
+            <att.Filter-eval>dateFilter.Filter</att.Filter-eval>
+            <att.Popup>
+              <ToolstripMenu>
+                <sample:DateFilter ref.Name="dateFilter">
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                </sample:DateFilter>
+              </ToolstripMenu>
+            </att.Popup>
+          </att.DatePublishedColumn-set>
+        </sample:DataGridWindowBase>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
