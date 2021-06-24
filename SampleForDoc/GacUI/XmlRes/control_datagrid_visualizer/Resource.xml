@@ -18,7 +18,7 @@
   <Image content="File">Summary.png</Image>
   <Folder name="MainWindow">
     <Instance name="SummaryVisualizerResource">
-      <Instance ref.CodeBehind="false" ref.Class="sample::SummaryVisualizer">
+      <Instance ref.Class="sample::SummaryVisualizer">
         <GridVisualizerTemplate ref.Name="self">
           <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>

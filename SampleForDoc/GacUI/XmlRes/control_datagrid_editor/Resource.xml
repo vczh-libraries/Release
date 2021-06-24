@@ -17,7 +17,7 @@
   </Folder>
   <Folder name="MainWindow">
     <Instance name="TextEditorResource">
-      <Instance ref.CodeBehind="false" ref.Class="sample::TextEditor">
+      <Instance ref.Class="sample::TextEditor">
         <GridEditorTemplate ref.Name="self" CellValue-bind="textBox.Text" FocusControl-ref="textBox">
           <SinglelineTextBox ref.Name="textBox" Text-bind="(cast string self.CellValue) ?? ''">
             <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
@@ -27,7 +27,7 @@
     </Instance>
 
     <Instance name="DateEditorResource">
-      <Instance ref.CodeBehind="false" ref.Class="sample::DateEditor">
+      <Instance ref.Class="sample::DateEditor">
         <GridEditorTemplate ref.Name="self" CellValue-bind="comboBox.SelectedDate" FocusControl-ref="comboBox">
           <DateComboBox ref.Name="comboBox" SelectedDate-bind="(cast DateTime self.CellValue) ?? (cast DateTime '2000-01-01 00:00:00.000')">
             <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
@@ -36,8 +36,48 @@
       </Instance>
     </Instance>
 
+    <Instance name="SummaryEditorWindowResource">
+      <Instance ref.Class="sample::SummaryEditorWindow">
+        <ref.Members><![CDATA[
+          prop Summary : string = "" {}
+          prop Confirmed : bool = false {}
+        ]]></ref.Members>
+        <Window ref.Name="self" Text="Edit Summary" ClientSize="x:480 y:320">
+          <Table AlignmentToParent="left:10 top:0 right:10 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0 columnSpan:3">
+              <Label Text="Summary:"/>
+            </Cell>
+
+            <Cell Site="row:1 column:0 columnSpan:3">
+              <DocumentViewer ref.Name="documentViewer" Text-bind="self.Summary">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </DocumentViewer>
+            </Cell>
+
+            <Cell Site="row:2 column:1">
+              <Button Text="OK" ev.Clicked-eval="{ self.Summary = documentViewer.Text; self.Confirmed = true; self.Close(); }"/>
+            </Cell>
+            <Cell Site="row:2 column:1">
+              <Button Text="Cancel" ev.Clicked-eval="self.Close();"/>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+
     <Instance name="SummaryEditorResource">
-      <Instance ref.CodeBehind="false" ref.Class="sample::SummaryEditor">
+      <Instance ref.Class="sample::SummaryEditor">
         <GridEditorTemplate ref.Name="self" FocusControl-ref="buttonEdit">
           <Table AlignmentToParent="left:10 top:0 right:10 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
@@ -55,7 +95,21 @@
             </Cell>
 
             <Cell Site="row:1 column:1">
-              <Button ref.Name="buttonEdit" Text="..."/>
+              <Button ref.Name="buttonEdit" Text="...">
+                <ev.Clicked-eval><![CDATA[
+                  $Async{
+                    var mainWindow = cast (GuiWindow*) self.RelatedControlHost;
+                    var editorWindow = new SummaryEditorWindow*();
+                    editorWindow.MoveToScreenCenter(mainWindow.RelatedScreen);
+                    $Await editorWindow.ShowModalAsync(mainWindow);
+                    if (editorWindow.Confirmed)
+                    {
+                      self.CellValue = editorWindow.Summary;
+                    }
+                    delete editorWindow;
+                  }
+                ]]></ev.Clicked-eval>
+              </Button>
             </Cell>
           </Table>
         </GridEditorTemplate>

@@ -1,4 +1,4 @@
-<Instance ref.CodeBehind="false" ref.Class="sample::TabWindowTabHeaderTemplate">
+<Instance ref.Class="sample::TabWindowTabHeaderTemplate">
   <ref.Parameter Name="CurrentTabPage" Class="presentation::controls::GuiTabPage"/>
   <ref.Members>
     <![CDATA[

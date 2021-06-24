@@ -1,4 +1,4 @@
-<Instance ref.CodeBehind="false" ref.Class="sample::TabWindowTabHeaderButtonTemplate">
+<Instance ref.Class="sample::TabWindowTabHeaderButtonTemplate">
   <ref.Members>
     <![CDATA[
       prop TabFocused: bool = false {}

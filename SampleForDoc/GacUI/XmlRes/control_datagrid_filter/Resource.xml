@@ -17,7 +17,7 @@
   </Folder>
   <Folder name="MainWindow">
     <Instance name="DateFilterResource">
-      <Instance ref.CodeBehind="false" ref.Class="sample::DateFilter">
+      <Instance ref.Class="sample::DateFilter">
         <ref.Members><![CDATA[
           @cpp:Private
           var callback : IDataProcessorCallback* = null;

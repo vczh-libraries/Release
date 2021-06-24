@@ -1,4 +1,4 @@
-<Instance ref.CodeBehind="false" ref.Class="sample::TabWindowTabTemplate">
+<Instance ref.Class="sample::TabWindowTabTemplate">
   <ref.Members>
     <![CDATA[
       @cpp:Private
