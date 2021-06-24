@@ -26,10 +26,10 @@
         {
           class BookItem
           {
-            prop Title : string = Sys::LoremIpsumTitle(24) {not observe}
-            prop Author : string = Sys::LoremIpsumTitle(16) {not observe}
-            prop DatePublished : DateTime = {} {not observe}
-            prop Summary : string = Sys::LoremIpsumTitle(64) {not observe}
+            prop Title : string = Sys::LoremIpsumTitle(24) {}
+            prop Author : string = Sys::LoremIpsumTitle(16) {}
+            prop DatePublished : DateTime = {} {}
+            prop Summary : string = Sys::LoremIpsumTitle(64) {}
             prop Content : string = Sys::LoremIpsumTitle(512) {not observe}
             prop SmallImage : GuiImageData^ = null {not observe}
             prop LargeImage : GuiImageData^ = null {not observe}

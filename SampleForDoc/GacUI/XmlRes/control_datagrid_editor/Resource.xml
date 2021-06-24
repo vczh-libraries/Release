@@ -42,7 +42,7 @@
           prop Summary : string = "" {}
           prop Confirmed : bool = false {}
         ]]></ref.Members>
-        <Window ref.Name="self" Text="Edit Summary" ClientSize="x:480 y:320">
+        <Window ref.Name="self" Text="Edit Summary" ClientSize="x:480 y:320" ev.WindowOpened-eval="documentViewer.Text = self.Summary;">
           <Table AlignmentToParent="left:10 top:0 right:10 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
               <CellOption>composeType:MinSize</CellOption>
@@ -60,7 +60,7 @@
             </Cell>
 
             <Cell Site="row:1 column:0 columnSpan:3">
-              <DocumentViewer ref.Name="documentViewer" Text-bind="self.Summary">
+              <DocumentViewer ref.Name="documentViewer" EditMode="Editable" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </DocumentViewer>
             </Cell>
@@ -68,7 +68,7 @@
             <Cell Site="row:2 column:1">
               <Button Text="OK" ev.Clicked-eval="{ self.Summary = documentViewer.Text; self.Confirmed = true; self.Close(); }"/>
             </Cell>
-            <Cell Site="row:2 column:1">
+            <Cell Site="row:2 column:2">
               <Button Text="Cancel" ev.Clicked-eval="self.Close();"/>
             </Cell>
           </Table>
@@ -100,6 +100,7 @@
                   $Async{
                     var mainWindow = cast (GuiWindow*) self.RelatedControlHost;
                     var editorWindow = new SummaryEditorWindow*();
+                    editorWindow.Summary = cast string self.CellValue;
                     editorWindow.MoveToScreenCenter(mainWindow.RelatedScreen);
                     $Await editorWindow.ShowModalAsync(mainWindow);
                     if (editorWindow.Confirmed)
