@@ -54,6 +54,7 @@
           @cpp:Private
           var iconOpen32: ImageData^ = null;
 
+          prop DataGrid : BindableDataGrid* = null {const, not observe}
           prop TitleColumn : DataColumn^ = null {const, not observe}
           prop AuthorColumn : DataColumn^ = null {const, not observe}
           prop DatePublishedColumn : DataColumn^ = null {const, not observe}
@@ -83,6 +84,7 @@
               self.books.Add(book);
             }
 
+            SetDataGrid(datagrid);
             SetTitleColumn(columnTitle);
             SetAuthorColumn(columnAuthor);
             SetDatePublishedColumn(columnDatePublished);

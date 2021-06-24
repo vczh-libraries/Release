@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Xml name="Metadata">
+      <ResourceMetadata Name="DataGridVisualizer" Version="1.0">
+        <Dependencies>
+          <Resource Name="DataGridBase"/>
+        </Dependencies>
+      </ResourceMetadata>
+    </Xml>
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_datagrid_visualizer.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_datagrid_visualizer.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*">
+        <sample:DataGridWindowBase ref.Name="self" Text="control_datagrid_visualizer" env.ItemType="sample::BookItem^">
+          <MessageDialog ref.Name="messageDialog" Title-bind="self.Text"/>
+          <att.DataGrid-set>
+            <ev.ItemLeftButtonUp-eval><![CDATA[
+              {
+                var cell = self.DataGrid.SelectedCell;
+                if (cell.row != -1 and cell.column == 1)
+                {
+                  messageDialog.Text = (cast (BookItem^) self.DataGrid.SelectedRowValue).Author;
+                  messageDialog.ShowDialog();
+                }
+              }
+            ]]></ev.ItemLeftButtonUp-eval>
+          </att.DataGrid-set>
+          <att.AuthorColumn-set>
+            <att.VisualizerFactory>HyperlinkVisualizerTemplate;FocusRectangleVisualizerTemplate;CellBorderVisualizerTemplate</att.VisualizerFactory>
+          </att.AuthorColumn-set>
+        </sample:DataGridWindowBase>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
