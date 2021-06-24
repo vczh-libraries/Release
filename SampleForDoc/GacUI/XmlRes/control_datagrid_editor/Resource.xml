@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Xml name="Metadata">
+      <ResourceMetadata Name="DataGridEditor" Version="1.0">
+        <Dependencies>
+          <Resource Name="DataGridBase"/>
+        </Dependencies>
+      </ResourceMetadata>
+    </Xml>
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_datagrid_editor.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_datagrid_editor.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="TextEditorResource">
+      <Instance ref.CodeBehind="false" ref.Class="sample::TextEditor">
+        <GridEditorTemplate ref.Name="self" CellValue-bind="textBox.Text" FocusControl-ref="textBox">
+          <SinglelineTextBox ref.Name="textBox" Text-bind="(cast string self.CellValue) ?? ''">
+            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+          </SinglelineTextBox>
+        </GridEditorTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="DateEditorResource">
+      <Instance ref.CodeBehind="false" ref.Class="sample::DateEditor">
+        <GridEditorTemplate ref.Name="self" CellValue-bind="comboBox.SelectedDate" FocusControl-ref="comboBox">
+          <DateComboBox ref.Name="comboBox" SelectedDate-bind="(cast DateTime self.CellValue) ?? (cast DateTime '2000-01-01 00:00:00.000')">
+            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+          </DateComboBox>
+        </GridEditorTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="SummaryEditorResource">
+      <Instance ref.CodeBehind="false" ref.Class="sample::SummaryEditor">
+        <GridEditorTemplate ref.Name="self" FocusControl-ref="buttonEdit">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <SolidLabel Text-bind="cast string self.CellValue ?? ''" Font-bind="self.Font" Color-bind="self.PrimaryTextColor" Ellipse="true"/>
+            </Cell>
+
+            <Cell Site="row:0 column:1">
+              <Button ref.Name="buttonEdit" Text="..."/>
+            </Cell>
+          </Table>
+        </GridEditorTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*">
+        <sample:DataGridWindowBase ref.Name="self" Text="control_datagrid_editor" env.ItemType="sample::BookItem^">
+          <MessageDialog ref.Name="messageDialog" Title-bind="self.Text"/>
+          <att.TitleColumn-set EditorFactory="sample::TextEditor"/>
+          <att.AuthorColumn-set EditorFactory="sample::TextEditor"/>
+          <att.DatePublishedColumn-set EditorFactory="sample::DateEditor"/>
+          <att.SummaryColumn-set EditorFactory="sample::SummaryEditor"/>
+        </sample:DataGridWindowBase>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
