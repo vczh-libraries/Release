@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_toolstrip_button.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_toolstrip_button.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="Images" content="Link">Images\Folder.xml</Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <Window ref.Name="self" Text="control_toolstrip_button" ClientSize="x:480 y:320">
+
+          <ToolstripCommand ref.Name="commandFileNewText" Text="Text File" Image-uri="res://Images/NewText.png"/>
+          <ToolstripCommand ref.Name="commandFileNewXml" Text="Xml File" Image-uri="res://Images/NewXml.png"/>
+          <ToolstripCommand ref.Name="commandFileOpen" Text="Open ..." Image-uri="res://Images/Open.png" ShortcutBuilder="Ctrl+O"/>
+          <ToolstripCommand ref.Name="commandFileOpenText" Text="Text File ..." Image-uri="res://Images/NewText.png"/>
+          <ToolstripCommand ref.Name="commandFileOpenXml" Text="Xml File ..." Image-uri="res://Images/NewXml.png"/>
+          <ToolstripCommand ref.Name="commandFileSave" Text="Save" Image-uri="res://Images/Save.png" ShortcutBuilder="Ctrl+S"/>
+          <ToolstripCommand ref.Name="commandFileSaveAs" Text="Save As ..." Image-uri="res://Images/SaveAs.png"/>
+          <ToolstripCommand ref.Name="commandFileExit" Text="Exit"/>
+
+          <ToolstripCommand ref.Name="commandEditUndo" Text="Undo" Image-uri="res://Images/EditUndo.png" ShortcutBuilder="Ctrl+Z"/>
+          <ToolstripCommand ref.Name="commandEditRedo" Text="Redo" Image-uri="res://Images/EditRedo.png" ShortcutBuilder="Ctrl+Y"/>
+          <ToolstripCommand ref.Name="commandEditCut" Text="Cut" Image-uri="res://Images/EditCut.png" ShortcutBuilder="Ctrl+X" Enabled-bind="checkCut.Selected"/>
+          <ToolstripCommand ref.Name="commandEditCopy" Text="Copy" Image-uri="res://Images/EditCopy.png" ShortcutBuilder="Ctrl+C" Enabled-bind="checkCopy.Selected"/>
+          <ToolstripCommand ref.Name="commandEditPaste" Text="Paste" Image-uri="res://Images/EditPaste.png" ShortcutBuilder="Ctrl+V" Enabled-bind="checkPaste.Selected"/>
+          <ToolstripCommand ref.Name="commandEditDelete" Text="Delete" Image-uri="res://Images/EditDelete.png"/>
+          <ToolstripCommand ref.Name="commandEditSelect" Text="Select All" ShortcutBuilder="Ctrl+A"/>
+          <ToolstripCommand ref.Name="commandEditFind" Text="Find ..." Image-uri="res://Images/EditFind.png" ShortcutBuilder="Ctrl+F"/>
+
+          <ToolstripCommand ref.Name="commandAbout" Text="About TextEditor ..."/>
+
+          <ToolstripMenu ref.Name="editMenu">
+            <ToolstripGroupContainer>
+              <ToolstripGroup>
+                <MenuItemButton Command-ref="commandEditCut"/>
+                <MenuItemButton Command-ref="commandEditCopy"/>
+                <MenuItemButton Command-ref="commandEditPaste"/>
+              </ToolstripGroup>
+              <ToolstripGroup>
+                <MenuItemButton Command-ref="commandEditDelete"/>
+                <MenuItemButton Command-ref="commandEditSelect"/>
+              </ToolstripGroup>
+            </ToolstripGroupContainer>
+          </ToolstripMenu>
+
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="10" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0 columnSpan:2">
+              <ToolstripMenuBar>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+
+                <MenuBarButton Text="File" Alt="F">
+                  <att.SubMenu-set>
+                    <ToolstripGroupContainer>
+                      <ToolstripGroup>
+                        <MenuItemButton Text="New" Alt="N" Image-uri="res://Images/New.png">
+                          <att.SubMenu-set>
+                            <MenuItemButton Command-ref="commandFileNewText" Alt="T"/>
+                            <MenuItemButton Command-ref="commandFileNewXml" Alt="X"/>
+                          </att.SubMenu-set>
+                        </MenuItemButton>
+                        <MenuItemButton Command-ref="commandFileOpen" Alt="O"/>
+                        <MenuItemButton Command-ref="commandFileSave" Alt="S"/>
+                        <MenuItemButton Command-ref="commandFileSaveAs" Alt="A"/>
+                      </ToolstripGroup>
+                      <MenuItemButton Text="Recent Files">
+                        <att.SubMenu-set>
+                          <MenuItemButton Text="(Empty)" Enabled="false"/>
+                        </att.SubMenu-set>
+                      </MenuItemButton>
+                      <MenuItemButton Command-ref="commandFileExit" Alt="X"/>
+                    </ToolstripGroupContainer>
+                  </att.SubMenu-set>
+                </MenuBarButton>
+
+                <MenuBarButton Text="Edit" Alt="E">
+                  <att.SubMenu-set>
+                    <ToolstripGroupContainer>
+                      <ToolstripGroup>
+                        <MenuItemButton Command-ref="commandEditUndo" Alt="U"/>
+                        <MenuItemButton Command-ref="commandEditRedo" Alt="R"/>
+                      </ToolstripGroup>
+                      <ToolstripGroup>
+                        <MenuItemButton Command-ref="commandEditCut" Alt="X"/>
+                        <MenuItemButton Command-ref="commandEditCopy" Alt="C"/>
+                        <MenuItemButton Command-ref="commandEditPaste" Alt="V"/>
+                      </ToolstripGroup>
+                      <ToolstripGroup>
+                        <MenuItemButton Command-ref="commandEditDelete" Alt="D"/>
+                        <MenuItemButton Command-ref="commandEditSelect" Alt="A"/>
+                      </ToolstripGroup>
+                      <MenuItemButton Command-ref="commandEditFind" Alt="F"/>
+                    </ToolstripGroupContainer>
+                  </att.SubMenu-set>
+                </MenuBarButton>
+
+                <MenuBarButton Text="Help" Alt="H">
+                  <att.SubMenu-set>
+                    <MenuItemButton Command-ref="commandAbout" Alt="A"/>
+                  </att.SubMenu-set>
+                </MenuBarButton>
+              </ToolstripMenuBar>
+            </Cell>
+
+            <Cell Site="row:1 column:0 columnSpan:2">
+              <ToolstripToolBar>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <ToolstripGroupContainer>
+                  <ToolstripGroup>
+                    <ToolstripDropdownButton Image-uri="res://Images/New.png" Alt="N">
+                      <att.SubMenu-set>
+                        <MenuItemButton Command-ref="commandFileNewText" Alt="T"/>
+                        <MenuItemButton Command-ref="commandFileNewXml" Alt="X"/>
+                      </att.SubMenu-set>
+                    </ToolstripDropdownButton>
+                    <ToolstripSplitButton Command-ref="commandFileOpen" Alt="O">
+                      <att.SubMenu-set>
+                        <MenuItemButton Command-ref="commandFileOpenText" Alt="T"/>
+                        <MenuItemButton Command-ref="commandFileOpenXml" Alt="X"/>
+                      </att.SubMenu-set>
+                    </ToolstripSplitButton>
+                  </ToolstripGroup>
+                  <ToolstripGroup>
+                    <ToolstripButton Command-ref="commandFileSave" Alt="S"/>
+                    <ToolstripButton Command-ref="commandFileSaveAs" Alt="A"/>
+                  </ToolstripGroup>
+                  <ToolstripGroup>
+                    <ToolstripButton Command-ref="commandEditUndo" Alt="U"/>
+                    <ToolstripButton Command-ref="commandEditRedo" Alt="R"/>
+                  </ToolstripGroup>
+                  <ToolstripGroup>
+                    <ToolstripButton Command-ref="commandEditCut" Alt="X"/>
+                    <ToolstripButton Command-ref="commandEditCopy" Alt="C"/>
+                    <ToolstripButton Command-ref="commandEditPaste" Alt="V"/>
+                  </ToolstripGroup>
+                  <ToolstripButton Command-ref="commandEditDelete" Alt="D"/>
+                  <ToolstripButton Command-ref="commandEditFind" Alt="I"/>
+                </ToolstripGroupContainer>
+              </ToolstripToolBar>
+            </Cell>
+
+            <Cell Site="row:2 column:0">
+              <CheckBox ref.Name="checkCut" Selected="true" Text="commandEditCut.Enabled"/>
+            </Cell>
+            <Cell Site="row:3 column:0">
+              <CheckBox ref.Name="checkCopy" Selected="true" Text="commandEditCopy.Enabled"/>
+            </Cell>
+            <Cell Site="row:4 column:0">
+              <CheckBox ref.Name="checkPaste" Selected="true" Text="commandEditPaste.Enabled"/>
+            </Cell>
+
+            <Cell Site="row:2 column:1 rowSpan:4">
+              <ev.rightButtonUp-eval><![CDATA[
+                {
+                  var bounds = sender.GetGlobalBounds();
+                  var x = bounds.x1 + arguments.x;
+                  var y = bounds.y1 + arguments.y;
+                  editMenu.ShowPopup(self, {x:x y:y} of Point);
+                }
+              ]]></ev.rightButtonUp-eval>
+              <SolidBorder Color="#FFFF80"/>
+              <Bounds AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElementAndChildren">
+                <SolidLabel Text="Right click to show a &lt;ToolstripMenu/&gt;." Color="#FFFF80" HorizontalAlignment="Center" VerticalAlignment="Center">
+                  <att.Font-bind>{fontFamily:self.DisplayFont.fontFamily size:24}</att.Font-bind>
+                </SolidLabel>
+              </Bounds>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
