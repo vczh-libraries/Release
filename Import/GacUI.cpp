@@ -23595,6 +23595,7 @@ GuiToolstripCollection
 				:GuiToolstripCollectionBase(_contentCallback)
 				,stackComposition(_stackComposition)
 			{
+				stackComposition->SetPreferredMinSize(Size(1, 1));
 			}
 
 			GuiToolstripCollection::~GuiToolstripCollection()
