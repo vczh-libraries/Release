@@ -20546,7 +20546,7 @@ GuiMenu
 			{
 				auto size = preferredSize;
 				if (size.x < preferredMenuClientSize.x) size.x = preferredMenuClientSize.x;
-				if (size.y < preferredMenuClientSize.y) size.x = preferredMenuClientSize.y;
+				if (size.y < preferredMenuClientSize.y) size.y = preferredMenuClientSize.y;
 				GuiPopup::UpdateClientSizeAfterRendering(preferredSize, size);
 			}
 
@@ -32159,13 +32159,6 @@ GuiGraphicsHost
 					supressPaint = true;
 					hostRecord.renderTarget->StartRendering();
 					windowComposition->Render(Size());
-					{
-						auto bounds = windowComposition->GetBounds();
-						auto preferred = windowComposition->GetPreferredBounds();
-						auto width = bounds.Width() > preferred.Width() ? bounds.Width() : preferred.Width();
-						auto height = bounds.Height() > preferred.Height() ? bounds.Height() : preferred.Height();
-						controlHost->UpdateClientSizeAfterRendering(preferred.GetSize(), Size(width, height));
-					}
 					auto result = hostRecord.renderTarget->StopRendering();
 					hostRecord.nativeWindow->RedrawContent();
 					supressPaint = false;
@@ -32184,7 +32177,16 @@ GuiGraphicsHost
 							needRender = true;
 						}
 						break;
-					default:;
+					default:
+						{
+							supressPaint = true;
+							auto bounds = windowComposition->GetBounds();
+							auto preferred = windowComposition->GetPreferredBounds();
+							auto width = bounds.Width() > preferred.Width() ? bounds.Width() : preferred.Width();
+							auto height = bounds.Height() > preferred.Height() ? bounds.Height() : preferred.Height();
+							controlHost->UpdateClientSizeAfterRendering(preferred.GetSize(), Size(width, height));
+							supressPaint = false;
+						}
 					}
 				}
 
