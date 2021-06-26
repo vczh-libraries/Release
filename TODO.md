@@ -6,9 +6,6 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ### Bug
 
-- [ ] Demo `control_toolstrip_menu_binding`
-  - add 10 items -> open menu -> delete some items -> open menu
-  - the menu is too large
 - [ ] `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
 - [ ] `let X = Y in (F(X.a.b.c))` reports `X does not exist in the current scope` in binding property value
   - while `F((let X = Y.a.b).c)` works

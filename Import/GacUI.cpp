@@ -3763,9 +3763,13 @@ GuiControlHost
 				SetNativeWindow(nullptr);
 			}
 
-			void GuiControlHost::UpdateClientSizeAfterRendering(Size clientSize)
+			void GuiControlHost::UpdateClientSizeAfterRendering(Size preferredSize, Size clientSize)
 			{
-				SetClientSize(clientSize);
+				auto size = GetClientSize();
+				if (size != clientSize)
+				{
+					SetClientSize(clientSize);
+				}
 			}
 
 			GuiControlHost::GuiControlHost(theme::ThemeName themeName)
@@ -4465,11 +4469,11 @@ GuiWindow
 GuiPopup
 ***********************************************************************/
 
-			void GuiPopup::UpdateClientSizeAfterRendering(Size clientSize)
+			void GuiPopup::UpdateClientSizeAfterRendering(Size preferredSize, Size clientSize)
 			{
 				if (popupType == -1)
 				{
-					GuiWindow::UpdateClientSizeAfterRendering(clientSize);
+					GuiWindow::UpdateClientSizeAfterRendering(preferredSize, clientSize);
 				}
 				else
 				{
@@ -4480,7 +4484,10 @@ GuiPopup
 					auto offsetY = currentWindowSize.y - currentClientSize.y;
 					auto nativeClientSize = window->Convert(clientSize);
 					auto position = CalculatePopupPosition(NativeSize(nativeClientSize.x + offsetX, nativeClientSize.y + offsetY), popupType, popupInfo);
-					SetBounds(position, clientSize);
+					if (position != GetLocation() || clientSize != GetClientSize())
+					{
+						SetBounds(position, clientSize);
+					}
 				}
 			}
 
@@ -4612,7 +4619,8 @@ GuiPopup
 			void GuiPopup::ShowPopupInternal()
 			{
 				auto window = GetNativeWindow();
-				UpdateClientSizeAfterRendering(window->Convert(window->GetClientSize()));
+				auto clientSize = window->Convert(window->GetClientSize());
+				UpdateClientSizeAfterRendering(clientSize, clientSize);
 
 				INativeWindow* controlWindow = nullptr;
 				switch (popupType)
@@ -10173,6 +10181,7 @@ GuiSelectableListControl
 						shift = false;
 						ctrl = false;
 					}
+
 					if (shift)
 					{
 						if (!ctrl)
@@ -20533,6 +20542,14 @@ GuiMenu
 				Hide();
 			}
 
+			void GuiMenu::UpdateClientSizeAfterRendering(Size preferredSize, Size clientSize)
+			{
+				auto size = preferredSize;
+				if (size.x < preferredMenuClientSize.x) size.x = preferredMenuClientSize.x;
+				if (size.y < preferredMenuClientSize.y) size.x = preferredMenuClientSize.y;
+				GuiPopup::UpdateClientSizeAfterRendering(preferredSize, size);
+			}
+
 			void GuiMenu::OnWindowOpened(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
 			{
 				if(parentMenuService)
@@ -20604,6 +20621,16 @@ GuiMenu
 			void GuiMenu::SetHideOnDeactivateAltHost(bool value)
 			{
 				hideOnDeactivateAltHost = value;
+			}
+
+			Size GuiMenu::GetPreferredMenuClientSize()
+			{
+				return preferredMenuClientSize;
+			}
+
+			void GuiMenu::SetPreferredMenuClientSize(Size value)
+			{
+				preferredMenuClientSize = value;
 			}
 
 /***********************************************************************
@@ -20889,15 +20916,16 @@ GuiMenuButton
 
 			void GuiMenuButton::SetSubMenu(GuiMenu* value, bool owned)
 			{
-				if(subMenu)
+				if (subMenu)
 				{
 					DetachSubMenu();
 					subMenuDisposeFlag = nullptr;
 				}
-				subMenu=value;
-				ownedSubMenu=owned;
-				if(subMenu)
+				subMenu = value;
+				ownedSubMenu = owned;
+				if (subMenu)
 				{
+					subMenu->SetPreferredMenuClientSize(preferredMenuClientSize);
 					subMenuDisposeFlag = subMenu->GetDisposedFlag();
 					subMenuWindowOpenedHandler = subMenu->WindowOpened.AttachMethod(this, &GuiMenuButton::OnSubMenuWindowOpened);
 					subMenuWindowClosedHandler = subMenu->WindowClosed.AttachMethod(this, &GuiMenuButton::OnSubMenuWindowClosed);
@@ -20955,7 +20983,11 @@ GuiMenuButton
 
 			void GuiMenuButton::SetPreferredMenuClientSize(Size value)
 			{
-				preferredMenuClientSize=value;
+				preferredMenuClientSize = value;
+				if (subMenu)
+				{
+					subMenu->SetPreferredMenuClientSize(preferredMenuClientSize);
+				}
 			}
 
 			bool GuiMenuButton::GetCascadeAction()
@@ -32132,10 +32164,7 @@ GuiGraphicsHost
 						auto preferred = windowComposition->GetPreferredBounds();
 						auto width = bounds.Width() > preferred.Width() ? bounds.Width() : preferred.Width();
 						auto height = bounds.Height() > preferred.Height() ? bounds.Height() : preferred.Height();
-						if (width != bounds.Width() || height != bounds.Height())
-						{
-							controlHost->UpdateClientSizeAfterRendering(Size(width, height));
-						}
+						controlHost->UpdateClientSizeAfterRendering(preferred.GetSize(), Size(width, height));
 					}
 					auto result = hostRecord.renderTarget->StopRendering();
 					hostRecord.nativeWindow->RedrawContent();
