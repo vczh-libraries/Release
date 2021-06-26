@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_toolstrip_menu_binding.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_toolstrip_menu_binding.bin</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Script name="ViewModel">
+      <Workflow><![CDATA[
+        module viewmodel;
+        using system::*;
+        using presentation::controls::Gui*;
+
+        namespace sample
+        {
+          class ActionableItem
+          {
+            prop Name : string = "" {}
+
+            new(name: string)
+            {
+              Name = name;
+            }
+
+            func Execute(): void
+            {
+              var messageDialog = new MessageDialog*();
+              messageDialog.Title = Application::GetApplication().MainWindow.Text;
+              messageDialog.Text = $"You clicked $(Name)!";
+              messageDialog.ShowDialog();
+              delete messageDialog;
+            }
+          }
+        }
+      ]]></Workflow>
+    </Script>
+
+    <Instance name="ActionableItemTemplateResource">
+      <Instance ref.CodeBehind="false" ref.Class="sample::ActionItemTemplate">
+        <ref.Parameter Name="ViewModel" Class="sample::ActionableItem"/>
+        <ControlTemplate MinSizeLimitation="LimitToElementAndChildren">
+          <MenuItemButton Text-bind="ViewModel.Name" ev.Clicked-eval="ViewModel.Execute();">
+            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+          </MenuItemButton>
+        </ControlTemplate>
+      </Instance>
+    </Instance>
+    
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <ref.Members><![CDATA[
+          var items : observe ActionableItem^[] = {};
+        ]]></ref.Members>
+        <Window ref.Name="self" Text="control_toolstrip_menu_binding" ClientSize="x:480 y:320">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="10" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+              <CellOption>composeType:MinSize</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0 columnSpan:2">
+              <ToolstripMenuBar>
+                <MenuBarButton Text="Bindable Menu Items">
+                  <att.SubMenu-set>
+                    <MenuItemButton Text="(Empty)" Enabled="false" Visible-bind="self.items.observe as _(_.Count == 0 on _.ItemChanged)" />
+                    <CustomControl Visible-bind="self.items.observe as _(_.Count != 0 on _.ItemChanged)">
+                      <RepeatStack AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren" Direction="Vertical">
+                        <att.ItemSource-eval>self.items</att.ItemSource-eval>
+                        <att.ItemTemplate>sample::ActionItemTemplate</att.ItemTemplate>
+                      </RepeatStack>
+                    </CustomControl>
+                  </att.SubMenu-set>
+                </MenuBarButton>
+              </ToolstripMenuBar>
+            </Cell>
+
+            <Cell Site="row:1 column:1">
+              <Button Text="Add 10 Items">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <ev.Clicked-eval><![CDATA[
+                  {
+                    for (i in range [0, 10))
+                    {
+                      self.items.Add(new ActionableItem^(Sys::LoremIpsumTitle(16)));
+                    }
+                  }
+                ]]></ev.Clicked-eval>
+              </Button>
+            </Cell>
+            <Cell Site="row:2 column:1">
+              <Button Text="Remove Selected Items">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <ev.Clicked-eval><![CDATA[
+                  {
+                    var selectedItems: int[] = {};
+                    for (i in textList.SelectedItems)
+                    {
+                      selectedItems.Add(i);
+                    }
+                    for (i in reversed selectedItems)
+                    {
+                      self.items.RemoveAt(i);
+                    }
+                  }
+                ]]></ev.Clicked-eval>
+              </Button>
+            </Cell>
+
+            <Cell Site="row:1 column:0 rowSpan:3">
+              <BindableTextList ref.Name="textList" MultiSelect="true" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="sample::ActionableItem^">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.ItemSource-bind>self.items</att.ItemSource-bind>
+                <att.TextProperty>Name</att.TextProperty>
+              </BindableTextList>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
