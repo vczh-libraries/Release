@@ -25,3 +25,11 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
   - **GacUI_ControlTemplate** Demo how to create control templates (skin) for GacUI controls
   - **GacUI_Xml** Demo how to author GacUI XML resource file
   - **GacUI_Windows** Demo how to interact with native Windows OS features.
+
+## Creating a GacUI app using CMake
+
+Third party project for GacUI 1.0: https://github.com/mangosroom/GacUI-CMake-support
+
+This project is not maintained by members in **vczh-libraries** organization.
+In the future there could be some mismatch in the file list,
+which could be easily fixed.
