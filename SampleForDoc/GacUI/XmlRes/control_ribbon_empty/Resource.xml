@@ -66,7 +66,7 @@
                   <RibbonTabPage Text="Page One">
                     <att.ContainerComposition-set PreferredMinSize="y:110"/>
                     <att.Groups>
-                      <RibbonGroup Text="Group One" Expandable="true" ev.ExpandButtonClicked-eval="dialogMessage.ShowDialog();">
+                      <RibbonGroup Text="Group One" Expandable="true" LargeImage-uri="res://ToolbarImages/PasteLarge" ev.ExpandButtonClicked-eval="dialogMessage.ShowDialog();">
                         <att.Items>
                           <RibbonButtons MaxSize="Large" MinSize="Icon">
                             <att.Buttons>
