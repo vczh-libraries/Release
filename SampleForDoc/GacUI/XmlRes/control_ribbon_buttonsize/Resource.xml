@@ -43,18 +43,6 @@
             <Cell Site="row:0 column:0">
               <RibbonTab>
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-
-                <att.BeforeHeaders-set>
-                  <Button Text="BeforeHeaders">
-                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                  </Button>
-                </att.BeforeHeaders-set>
-                <att.AfterHeaders-set>
-                  <Button Text="AfterHeaders">
-                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                  </Button>
-                </att.AfterHeaders-set>
-
                 <att.Pages>
                   <RibbonTabPage Text="Large Size">
                     <att.ContainerComposition-set PreferredMinSize="y:110"/>
