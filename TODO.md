@@ -85,6 +85,7 @@ https://zhuanlan.zhihu.com/p/39369370
 
 - Use collection interfaces on function signatures.
 - UI Automation
+- Test Automation for `GacUISrc`
 
 ### Cross Platforms
 
