@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_ribbon_buttonsize2.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_ribbon_buttonsize2.bin</Text>
+    </Folder>
+  </Folder>
+
+  <Folder name="ToolbarImages">
+    <Image name="Undo" content="File">_Undo.png</Image>
+    <Image name="Redo" content="File">_Redo.png</Image>
+    <Image name="Copy" content="File">_Copy.png</Image>
+    <Image name="Cut" content="File">_Cut.png</Image>
+    <Image name="Paste" content="File">_Paste.png</Image>
+    <Image name="Delete" content="File">_Delete.png</Image>
+
+    <Image name="UndoLarge" content="File">L_Undo.png</Image>
+    <Image name="RedoLarge" content="File">L_Redo.png</Image>
+    <Image name="CopyLarge" content="File">L_Copy.png</Image>
+    <Image name="CutLarge" content="File">L_Cut.png</Image>
+    <Image name="PasteLarge" content="File">L_Paste.png</Image>
+    <Image name="DeleteLarge" content="File">L_Delete.png</Image>
+  </Folder>
+
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <Window ref.Name="self" Text="control_ribbon_buttonsize2" ClientSize="x:640 y:480">
+          <MessageDialog ref.Name="dialogMessage" Title="You Expanded a Group!" Text="GuiRibbonGroup::ExpandButtonClicked is executed!"/>
+
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <RibbonTab>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.Pages>
+                  <RibbonTabPage Text="Auto Size">
+                    <att.ContainerComposition-set PreferredMinSize="y:110"/>
+                    <att.Groups>
+                      <RibbonGroup Text="Something">
+                        <att.Items>
+                          <RibbonButtons MaxSize="Large" MinSize="Icon">
+                            <att.Buttons>
+                              <ToolstripButton LargeImage-uri="res://ToolbarImages/CutLarge" Image-uri="res://ToolbarImages/Cut" Text="Cut"/>
+                              <ToolstripButton LargeImage-uri="res://ToolbarImages/CopyLarge" Image-uri="res://ToolbarImages/Copy" Text="Copy"/>
+                              <ToolstripButton LargeImage-uri="res://ToolbarImages/PasteLarge" Image-uri="res://ToolbarImages/Paste" Text="Paste"/>
+                            </att.Buttons>
+                          </RibbonButtons>
+                          <RibbonSplitter/>
+                          <RibbonButtons MaxSize="Small" MinSize="Icon">
+                            <att.Buttons>
+                              <RibbonIconLabel Image-uri="res://ToolbarImages/Undo" Text="Undo">
+                                <Button Text="A Button"/>
+                              </RibbonIconLabel>
+                              <RibbonIconLabel Image-uri="res://ToolbarImages/Redo" Text="Redo">
+                                <SinglelineTextBox Text="A TextBox">
+                                  <att.BoundsComposition-set PreferredMinSize="x:100"/>
+                                </SinglelineTextBox>
+                              </RibbonIconLabel>
+                              <RibbonIconLabel Image-uri="res://ToolbarImages/Delete" Text="Delete">
+                                <ComboBox SelectedIndex="0">
+                                  <att.BoundsComposition-set PreferredMinSize="x:100"/>
+                                  <att.ListControl>
+                                    <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                                      <att.Items>
+                                        <_ Text="Item 1"/>
+                                        <_ Text="Item 2"/>
+                                        <_ Text="Item 3"/>
+                                      </att.Items>
+                                    </TextList>
+                                  </att.ListControl>
+                                </ComboBox>
+                              </RibbonIconLabel>
+                            </att.Buttons>
+                          </RibbonButtons>
+                        </att.Items>
+                      </RibbonGroup>
+                    </att.Groups>
+                  </RibbonTabPage>
+                </att.Pages>
+              </RibbonTab>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
