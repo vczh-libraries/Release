@@ -8213,24 +8213,24 @@ WindowsForm
 						}
 					}
 
-					if (wheelMessage)
+					if(wheelMessage)
 					{
-						info.wheel = GET_WHEEL_DELTA_WPARAM(wParam);
-						wParam = GET_KEYSTATE_WPARAM(wParam);
+						info.wheel=GET_WHEEL_DELTA_WPARAM(wParam);
+						wParam=GET_KEYSTATE_WPARAM(wParam);
 					}
 					else
 					{
-						info.wheel = 0;
+						info.wheel=0;
 					}
 
 					if (nonClient)
 					{
 						info.ctrl = WinIsKeyPressing(VKEY::_CONTROL);
 						info.shift = WinIsKeyPressing(VKEY::_SHIFT);
-						info.left = WinIsKeyPressing(VKEY::_LBUTTON);
-						info.middle = WinIsKeyPressing(VKEY::_MBUTTON);
+						info.left= WinIsKeyPressing(VKEY::_LBUTTON);
+						info.middle= WinIsKeyPressing(VKEY::_MBUTTON);
 						info.right = WinIsKeyPressing(VKEY::_RBUTTON);
-
+						
 						POINTS point = MAKEPOINTS(lParam);
 						NativePoint offset = GetClientBoundsInScreen().LeftTop();
 						info.x = point.x - offset.x.value;
@@ -8238,11 +8238,11 @@ WindowsForm
 					}
 					else
 					{
-						info.ctrl = (wParam & MK_CONTROL) != 0;
-						info.shift = (wParam & MK_SHIFT) != 0;
-						info.left = (wParam & MK_LBUTTON) != 0;
-						info.middle = (wParam & MK_MBUTTON) != 0;
-						info.right = (wParam & MK_RBUTTON) != 0;
+						info.ctrl=((VKEY)wParam & VKEY::_CONTROL)!=(VKEY)0;
+						info.shift=((VKEY)wParam & VKEY::_SHIFT)!= (VKEY)0;
+						info.left=((VKEY)wParam & VKEY::_LBUTTON)!= (VKEY)0;
+						info.middle=((VKEY)wParam & VKEY::_MBUTTON)!= (VKEY)0;
+						info.right=((VKEY)wParam & VKEY::_RBUTTON)!= (VKEY)0;
 
 						POINTS point = MAKEPOINTS(lParam);
 
