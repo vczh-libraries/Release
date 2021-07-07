@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_ribbon_toolstrip.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_ribbon_toolstrip.bin</Text>
+    </Folder>
+  </Folder>
+
+  <Folder name="ToolbarImages">
+    <Image name="Undo" content="File">_Undo.png</Image>
+    <Image name="Redo" content="File">_Redo.png</Image>
+    <Image name="Copy" content="File">_Copy.png</Image>
+    <Image name="Cut" content="File">_Cut.png</Image>
+    <Image name="Paste" content="File">_Paste.png</Image>
+    <Image name="Delete" content="File">_Delete.png</Image>
+    
+    <Image name="Bold" content="File">s_Bold.png</Image>
+    <Image name="Italic" content="File">s_Italic.png</Image>
+    <Image name="Underline" content="File">s_Underline.png</Image>
+    <Image name="Strike" content="File">s_Strike.png</Image>
+    <Image name="Color" content="File">s_Color.png</Image>
+    <Image name="BackColor" content="File">s_BackColor.png</Image>
+    <Image name="Font" content="File">s_Font.png</Image>
+
+    <Image name="Image" content="File">e_Image.png</Image>
+    <Image name="Link" content="File">e_Link.png</Image>
+    <Image name="RemoveLink" content="File">e_RemoveLink.png</Image>
+    
+    <Image name="TextAlignLeft" content="File">a_TextAlignLeft.png</Image>
+    <Image name="TextAlignCenter" content="File">a_TextAlignCenter.png</Image>
+    <Image name="TextAlignRight" content="File">a_TextAlignRight.png</Image>
+  </Folder>
+
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <Window ref.Name="self" Text="control_ribbon_toolstrip" ClientSize="x:640 y:480">
+          <MessageDialog ref.Name="dialogMessage" Title="You Expanded a Group!" Text="GuiRibbonGroup::ExpandButtonClicked is executed!"/>
+
+          <ToolstripCommand ref.Name="commandUndo" Image-uri="res://ToolbarImages/Undo"/>
+          <ToolstripCommand ref.Name="commandRedo" Image-uri="res://ToolbarImages/Redo"/>
+          <ToolstripCommand ref.Name="commandCut" Image-uri="res://ToolbarImages/Cut"/>
+          <ToolstripCommand ref.Name="commandCopy" Image-uri="res://ToolbarImages/Copy"/>
+          <ToolstripCommand ref.Name="commandPaste" Image-uri="res://ToolbarImages/Paste"/>
+          <ToolstripCommand ref.Name="commandDelete" Image-uri="res://ToolbarImages/Delete"/>
+          
+          <ToolstripCommand ref.Name="commandBold" Image-uri="res://ToolbarImages/Bold"/>
+          <ToolstripCommand ref.Name="commandItalic" Image-uri="res://ToolbarImages/Italic"/>
+          <ToolstripCommand ref.Name="commandUnderline" Image-uri="res://ToolbarImages/Underline"/>
+          <ToolstripCommand ref.Name="commandStrike" Image-uri="res://ToolbarImages/Strike"/>
+          <ToolstripCommand ref.Name="commandColor" Image-uri="res://ToolbarImages/Color"/>
+          <ToolstripCommand ref.Name="commandBackColor" Image-uri="res://ToolbarImages/BackColor"/>
+          <ToolstripCommand ref.Name="commandFont" Image-uri="res://ToolbarImages/Font"/>
+          
+          <ToolstripCommand ref.Name="commandInsert" Image-uri="res://ToolbarImages/Image"/>
+          <ToolstripCommand ref.Name="commandInsertImage" Image-uri="res://ToolbarImages/Image" Text="Insert Image" ev.Executed-eval="commandInsert.Image = commandInsertImage.Image;"/>
+          <ToolstripCommand ref.Name="commandInsertLink" Image-uri="res://ToolbarImages/Link" Text="Insert Link" ev.Executed-eval="commandInsert.Image = commandInsertLink.Image;"/>
+          <ToolstripCommand ref.Name="commandRemoveLink" Image-uri="res://ToolbarImages/RemoveLink" Text="Remove Link" ev.Executed-eval="commandInsert.Image = commandRemoveLink.Image;"/>
+          
+          <ToolstripCommand ref.Name="commandTextAlign" Image-uri="res://ToolbarImages/TextAlignLeft"/>
+          <ToolstripCommand ref.Name="commandTextAlignLeft" Image-uri="res://ToolbarImages/TextAlignLeft" Text="Left" ev.Executed-eval="commandTextAlign.Image = commandTextAlignLeft.Image;"/>
+          <ToolstripCommand ref.Name="commandTextAlignCenter" Image-uri="res://ToolbarImages/TextAlignCenter" Text="Center" ev.Executed-eval="commandTextAlign.Image = commandTextAlignCenter.Image;"/>
+          <ToolstripCommand ref.Name="commandTextAlignRight" Image-uri="res://ToolbarImages/TextAlignRight" Text="Right" ev.Executed-eval="commandTextAlign.Image = commandTextAlignRight.Image;"/>
+
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <RibbonTab>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.Pages>
+                  <RibbonTabPage Text="Toolstrips">
+                    <att.ContainerComposition-set PreferredMinSize="y:110"/>
+                    <att.Groups>
+                      <RibbonGroup Text="Something">
+                        <att.Items>
+                          <RibbonToolstrips>
+                            <att.Groups>
+                              <ToolstripGroup>
+                                <ToolstripButton Command-ref="commandUndo"/>
+                                <ToolstripButton Command-ref="commandRedo"/>
+                              </ToolstripGroup>
+                              <ToolstripGroup>
+                                <ToolstripButton Command-ref="commandCut"/>
+                                <ToolstripButton Command-ref="commandCopy"/>
+                                <ToolstripButton Command-ref="commandPaste"/>
+                              </ToolstripGroup>
+                              <ToolstripGroup>
+                                <ToolstripButton Command-ref="commandDelete"/>
+                              </ToolstripGroup>
+                              <ToolstripGroup>
+                                <ToolstripButton Command-ref="commandBold"/>
+                                <ToolstripButton Command-ref="commandItalic"/>
+                                <ToolstripButton Command-ref="commandUnderline"/>
+                                <ToolstripButton Command-ref="commandStrike"/>
+                              </ToolstripGroup>
+                              <ToolstripGroup>
+                                <ToolstripButton Command-ref="commandColor"/>
+                                <ToolstripButton Command-ref="commandBackColor"/>
+                                <ToolstripButton Command-ref="commandFont"/>
+                              </ToolstripGroup>
+                              <ToolstripGroup>
+                                <ToolstripDropdownButton Command-ref="commandInsert">
+                                  <att.SubMenu-set>
+                                    <MenuItemButton Command-ref="commandInsertImage"/>
+                                    <MenuItemButton Command-ref="commandInsertLink"/>
+                                    <MenuItemButton Command-ref="commandRemoveLink"/>
+                                  </att.SubMenu-set>
+                                </ToolstripDropdownButton>
+                                <ToolstripSplitButton Command-ref="commandTextAlign">
+                                  <att.SubMenu-set>
+                                    <MenuItemButton Command-ref="commandTextAlignLeft"/>
+                                    <MenuItemButton Command-ref="commandTextAlignCenter"/>
+                                    <MenuItemButton Command-ref="commandTextAlignRight"/>
+                                  </att.SubMenu-set>
+                                </ToolstripSplitButton>
+                              </ToolstripGroup>
+                            </att.Groups>
+                          </RibbonToolstrips>
+                        </att.Items>
+                      </RibbonGroup>
+                    </att.Groups>
+                  </RibbonTabPage>
+                </att.Pages>
+              </RibbonTab>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
