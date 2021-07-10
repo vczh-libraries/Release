@@ -7,6 +7,8 @@ https://zhuanlan.zhihu.com/p/39369370
 ### Bug
 
 - [ ] `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
+- [ ] Collection literal `{a b c}` should react to the "receiving type" if the receiving type is a known collection type.
+  - So that it is able to do `DealWithObservableList({1 2 3});`
 - [ ] `let X = Y in (F(X.a.b.c))` reports `X does not exist in the current scope` in binding property value
   - while `F((let X = Y.a.b).c)` works
 - [ ] GacGen reports only "error dumping resource file" while the resource file contains some syntax errors preventing GacGen from reading it

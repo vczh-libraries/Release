@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="ResX86">
+      <Text name="Resource">..\..\UIRes\32bits\control_ribbon_gallery.bin</Text>
+    </Folder>
+    <Folder name="ResX64">
+      <Text name="Resource">..\..\UIRes\64bits\control_ribbon_gallery.bin</Text>
+    </Folder>
+  </Folder>
+
+  <Folder name="ToolbarImages">
+    <Image name="Undo" content="File">_Undo.png</Image>
+    <Image name="Redo" content="File">_Redo.png</Image>
+    <Image name="Copy" content="File">_Copy.png</Image>
+    <Image name="Cut" content="File">_Cut.png</Image>
+    <Image name="Paste" content="File">_Paste.png</Image>
+    <Image name="Delete" content="File">_Delete.png</Image>
+    <Image name="PasteLarge" content="File">L_Paste.png</Image>
+  </Folder>
+
+  <Folder name="MainWindow">
+    <Script name="ViewModelResource">
+      <Workflow><![CDATA[
+        module viewmodel;
+        using system::*;
+        using presentation::*;
+
+        namespace sample
+        {
+          class ColorItem
+          {
+            prop IconColor : Color = (cast Color "#000000") {not observe}
+
+            new(color: Color) { IconColor = color; }
+          }
+
+          class ColorGroup
+          {
+            prop Items : observe ColorItem^[] = null {not observe}
+            prop Name : string = "" {not observe}
+
+            new(name: string, items: observe ColorItem^[]) { Name = name; Items = items; }
+          }
+        }
+      ]]></Workflow>
+    </Script>
+
+    <Instance name="ColorItemTemplateResource">
+      <Instance ref.CodeBehind="false" ref.Class="sample::ColorItemTemplate">
+        <ref.Parameter Name="ViewModel" Class="sample::ColorItem"/>
+        <TextListItemTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren" PreferredMinSize="x:72 y:72">
+          <Bounds AlignmentToParent="left:3 top:3 right:3 bottom:3">
+            <SolidBorder Color="#FFFFFF"/>
+            <Bounds AlignmentToParent="left:1 top:1 right:1 bottom:1">
+              <SolidBackground Color-eval="ViewModel.IconColor"/>
+            </Bounds>
+          </Bounds>
+        </TextListItemTemplate>
+      </Instance>
+    </Instance>
+
+    <Instance name="MainWindowResource">
+      <Instance ref.Class="sample::MainWindow">
+        <ref.Members><![CDATA[
+          var groups : observe ColorGroup^[] =
+          {
+            new ColorGroup^("Group One",
+            {
+              new sample::ColorItem^(cast Color "#000000");
+              new sample::ColorItem^(cast Color "#FFFFFF");
+            } as (observe sample::ColorItem^[]));
+            
+            new ColorGroup^("Group Two",
+            {
+              new sample::ColorItem^(cast Color "#FF0000");
+              new sample::ColorItem^(cast Color "#00FF00");
+              new sample::ColorItem^(cast Color "#0000FF");
+            } as (observe sample::ColorItem^[]));
+            
+            new ColorGroup^("Group Two",
+            {
+              new sample::ColorItem^(cast Color "#FFFF00");
+              new sample::ColorItem^(cast Color "#FF00FF");
+              new sample::ColorItem^(cast Color "#00FFFF");
+            } as (observe sample::ColorItem^[]));
+          };
+        ]]></ref.Members>
+        <Window ref.Name="self" Text="control_ribbon_gallery" ClientSize="x:640 y:480">
+          <MessageDialog ref.Name="dialogMessage" Title="You Expanded a Group!" Text="GuiRibbonGroup::ExpandButtonClicked is executed!"/>
+
+          <ToolstripCommand ref.Name="commandUndo" Image-uri="res://ToolbarImages/Undo" Text="Undo"/>
+          <ToolstripCommand ref.Name="commandRedo" Image-uri="res://ToolbarImages/Redo" Text="Redo"/>
+          <ToolstripCommand ref.Name="commandCut" Image-uri="res://ToolbarImages/Cut" Text="Cut"/>
+          <ToolstripCommand ref.Name="commandCopy" Image-uri="res://ToolbarImages/Copy" Text="Copy"/>
+          <ToolstripCommand ref.Name="commandPaste" Image-uri="res://ToolbarImages/Paste" Text="Paste"/>
+          <ToolstripCommand ref.Name="commandDelete" Image-uri="res://ToolbarImages/Delete" Text="Delete"/>
+
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Rows>
+            <att.Columns>
+              <CellOption>composeType:Percentage percentage:1.0</CellOption>
+            </att.Columns>
+
+            <Cell Site="row:0 column:0">
+              <RibbonTab>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.Pages>
+                  <RibbonTabPage Text="Toolstrips">
+                    <att.ContainerComposition-set PreferredMinSize="y:110"/>
+                    <att.Groups>
+                      <RibbonGroup Text="Something" LargeImage-uri="res://ToolbarImages/PasteLarge">
+                        <att.Items>
+                          <BindableRibbonGalleryList MinCount="2" MaxCount="5" VisibleItemCount="5" ItemTemplate="sample::ColorItemTemplate" env.ItemType="sample::ColorGroup^">
+                            <att.ItemSource-bind>self.groups</att.ItemSource-bind>
+                            <att.GroupTitleProperty>Name</att.GroupTitleProperty>
+                            <att.GroupChildrenProperty>Items</att.GroupChildrenProperty>
+                            <att.SubMenu-set>
+                              <ToolstripGroupContainer>
+                                <ToolstripGroup>
+                                  <RibbonToolstripHeader Text="Undo / Redo"/>
+                                  <ToolstripButton Command-ref="commandUndo"/>
+                                  <ToolstripButton Command-ref="commandRedo"/>
+                                </ToolstripGroup>
+                                <ToolstripGroup>
+                                  <RibbonToolstripHeader Text="Edit"/>
+                                  <ToolstripButton Command-ref="commandCut"/>
+                                  <ToolstripButton Command-ref="commandCopy"/>
+                                  <ToolstripButton Command-ref="commandPaste"/>
+                                </ToolstripGroup>
+                                <ToolstripGroup>
+                                  <RibbonToolstripHeader Text="Delete"/>
+                                  <ToolstripButton Command-ref="commandDelete"/>
+                                </ToolstripGroup>
+                              </ToolstripGroupContainer>
+                            </att.SubMenu-set>
+                          </BindableRibbonGalleryList>
+                        </att.Items>
+                      </RibbonGroup>
+                    </att.Groups>
+                  </RibbonTabPage>
+                </att.Pages>
+              </RibbonTab>
+            </Cell>
+          </Table>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>
