@@ -90,6 +90,16 @@
           }
 
           var colorGroups : observe ColorGroup^[] = CreateGroups();
+
+          func PrintLog(name:string, index: int): void
+          {
+            var pos = colorList.IndexToGalleryPos(index);
+            var item = self.colorGroups[pos.group].Items[pos.item];
+            var log = $"$(name): $(item.IconColor)\r\n";
+            textLog.Select({row:textLog.RowCount column:0}, {row:textLog.RowCount column:0});
+            textLog.SelectionText = log;
+            textLog.Select({row:textLog.RowCount column:0}, {row:textLog.RowCount column:0});
+          }
         ]]></ref.Members>
         <Window ref.Name="self" Text="control_ribbon_gallery" ClientSize="x:640 y:480">
           <MessageDialog ref.Name="dialogMessage" Title="You Expanded a Group!" Text="GuiRibbonGroup::ExpandButtonClicked is executed!"/>
@@ -101,8 +111,9 @@
           <ToolstripCommand ref.Name="commandPaste" Image-uri="res://ToolbarImages/Paste" Text="Paste"/>
           <ToolstripCommand ref.Name="commandDelete" Image-uri="res://ToolbarImages/Delete" Text="Delete"/>
 
-          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" BorderVisible="false" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
+              <CellOption>composeType:MinSize</CellOption>
               <CellOption>composeType:MinSize</CellOption>
               <CellOption>composeType:Percentage percentage:1.0</CellOption>
             </att.Rows>
@@ -119,7 +130,7 @@
                     <att.Groups>
                       <RibbonGroup Text="Something" LargeImage-uri="res://ToolbarImages/PasteLarge">
                         <att.Items>
-                          <BindableRibbonGalleryList MinCount="2" MaxCount="5" VisibleItemCount="5" ItemTemplate="sample::ColorItemTemplate" env.ItemType="sample::ColorGroup^">
+                          <BindableRibbonGalleryList ref.Name="colorList" MinCount="2" MaxCount="5" VisibleItemCount="5" ItemTemplate="sample::ColorItemTemplate" env.ItemType="sample::ColorGroup^">
                             <att.ItemSource-bind>self.colorGroups</att.ItemSource-bind>
                             <att.GroupTitleProperty>Name</att.GroupTitleProperty>
                             <att.GroupChildrenProperty>Items</att.GroupChildrenProperty>
@@ -142,6 +153,22 @@
                                 </ToolstripGroup>
                               </ToolstripGroupContainer>
                             </att.SubMenu-set>
+
+                            <ev.PreviewStarted-eval><![CDATA[
+                              {
+                                self.PrintLog("PreviewStarted", arguments.itemIndex);
+                              }
+                            ]]></ev.PreviewStarted-eval>
+                            <ev.PreviewStopped-eval><![CDATA[
+                              {
+                                self.PrintLog("PreviewStopped", arguments.itemIndex);
+                              }
+                            ]]></ev.PreviewStopped-eval>
+                            <ev.ItemApplied-eval><![CDATA[
+                              {
+                                self.PrintLog("ItemApplied", arguments.itemIndex);
+                              }
+                            ]]></ev.ItemApplied-eval>
                           </BindableRibbonGalleryList>
                         </att.Items>
                       </RibbonGroup>
@@ -149,6 +176,16 @@
                   </RibbonTabPage>
                 </att.Pages>
               </RibbonTab>
+            </Cell>
+
+            <Cell Site="row:1 column:0">
+              <Label Text="Event Logs:"/>
+            </Cell>
+
+            <Cell Site="row:2 column:0">
+              <MultilineTextBox ref.Name="textLog" Readonly="true" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="true">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </MultilineTextBox>
             </Cell>
           </Table>
         </Window>
