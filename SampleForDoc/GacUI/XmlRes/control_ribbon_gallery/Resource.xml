@@ -32,15 +32,15 @@
           {
             prop IconColor : Color = (cast Color "#000000") {not observe}
 
-            new(color: Color) { IconColor = color; }
+            new(color: Color) { this.IconColor = color; }
           }
 
           class ColorGroup
           {
-            prop Items : observe ColorItem^[] = null {not observe}
+            prop Items : observe ColorItem^[] = {} {not observe}
             prop Name : string = "" {not observe}
 
-            new(name: string, items: observe ColorItem^[]) { Name = name; Items = items; }
+            new(name: string) { this.Name = name; }
           }
         }
       ]]></Workflow>
@@ -63,28 +63,33 @@
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow">
         <ref.Members><![CDATA[
-          var groups : observe ColorGroup^[] =
+          static func CreateGroups(): (observe ColorGroup^[])
           {
-            new ColorGroup^("Group One",
+            var groups : observe ColorGroup^[] = {};
             {
-              new sample::ColorItem^(cast Color "#000000");
-              new sample::ColorItem^(cast Color "#FFFFFF");
-            } as (observe sample::ColorItem^[]));
-            
-            new ColorGroup^("Group Two",
+              var group = new ColorGroup^("Group One");
+              groups.Add(group);
+              group.Items.Add(new sample::ColorItem^(cast Color "#000000"));
+              group.Items.Add(new sample::ColorItem^(cast Color "#FFFFFF"));
+            }
             {
-              new sample::ColorItem^(cast Color "#FF0000");
-              new sample::ColorItem^(cast Color "#00FF00");
-              new sample::ColorItem^(cast Color "#0000FF");
-            } as (observe sample::ColorItem^[]));
-            
-            new ColorGroup^("Group Two",
+              var group = new ColorGroup^("Group Two");
+              groups.Add(group);
+              group.Items.Add(new sample::ColorItem^(cast Color "#FF0000"));
+              group.Items.Add(new sample::ColorItem^(cast Color "#00FF00"));
+              group.Items.Add(new sample::ColorItem^(cast Color "#0000FF"));
+            }
             {
-              new sample::ColorItem^(cast Color "#FFFF00");
-              new sample::ColorItem^(cast Color "#FF00FF");
-              new sample::ColorItem^(cast Color "#00FFFF");
-            } as (observe sample::ColorItem^[]));
-          };
+              var group = new ColorGroup^("Group Three");
+              groups.Add(group);
+              group.Items.Add(new sample::ColorItem^(cast Color "#FFFF00"));
+              group.Items.Add(new sample::ColorItem^(cast Color "#FF00FF"));
+              group.Items.Add(new sample::ColorItem^(cast Color "#00FFFF"));
+            }
+            return groups;
+          }
+
+          var colorGroups : observe ColorGroup^[] = CreateGroups();
         ]]></ref.Members>
         <Window ref.Name="self" Text="control_ribbon_gallery" ClientSize="x:640 y:480">
           <MessageDialog ref.Name="dialogMessage" Title="You Expanded a Group!" Text="GuiRibbonGroup::ExpandButtonClicked is executed!"/>
@@ -115,25 +120,25 @@
                       <RibbonGroup Text="Something" LargeImage-uri="res://ToolbarImages/PasteLarge">
                         <att.Items>
                           <BindableRibbonGalleryList MinCount="2" MaxCount="5" VisibleItemCount="5" ItemTemplate="sample::ColorItemTemplate" env.ItemType="sample::ColorGroup^">
-                            <att.ItemSource-bind>self.groups</att.ItemSource-bind>
+                            <att.ItemSource-bind>self.colorGroups</att.ItemSource-bind>
                             <att.GroupTitleProperty>Name</att.GroupTitleProperty>
                             <att.GroupChildrenProperty>Items</att.GroupChildrenProperty>
                             <att.SubMenu-set>
                               <ToolstripGroupContainer>
                                 <ToolstripGroup>
                                   <RibbonToolstripHeader Text="Undo / Redo"/>
-                                  <ToolstripButton Command-ref="commandUndo"/>
-                                  <ToolstripButton Command-ref="commandRedo"/>
+                                  <MenuItemButton Command-ref="commandUndo"/>
+                                  <MenuItemButton Command-ref="commandRedo"/>
                                 </ToolstripGroup>
                                 <ToolstripGroup>
                                   <RibbonToolstripHeader Text="Edit"/>
-                                  <ToolstripButton Command-ref="commandCut"/>
-                                  <ToolstripButton Command-ref="commandCopy"/>
-                                  <ToolstripButton Command-ref="commandPaste"/>
+                                  <MenuItemButton Command-ref="commandCut"/>
+                                  <MenuItemButton Command-ref="commandCopy"/>
+                                  <MenuItemButton Command-ref="commandPaste"/>
                                 </ToolstripGroup>
                                 <ToolstripGroup>
                                   <RibbonToolstripHeader Text="Delete"/>
-                                  <ToolstripButton Command-ref="commandDelete"/>
+                                  <MenuItemButton Command-ref="commandDelete"/>
                                 </ToolstripGroup>
                               </ToolstripGroupContainer>
                             </att.SubMenu-set>
