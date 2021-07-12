@@ -14,6 +14,8 @@ https://zhuanlan.zhihu.com/p/39369370
   - while `F((let X = Y.a.b).c)` works
 - [ ] GacGen reports only "error dumping resource file" while the resource file contains some syntax errors preventing GacGen from reading it
   - Unable to repro
+- [ ] In Linux, `DateTime::LocalTime` and `DateTime::UtcTime` call `time` followed by `gettimeofday` for the time part and the milliseconds part
+  - which is incorrect, because calling two time functions gets two different times, only one syscall should be called.
 
 ### Feature (not necessary 1.0)
 
