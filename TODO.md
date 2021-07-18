@@ -14,8 +14,6 @@ https://zhuanlan.zhihu.com/p/39369370
   - while `F((let X = Y.a.b).c)` works
 - [ ] GacGen reports only "error dumping resource file" while the resource file contains some syntax errors preventing GacGen from reading it
   - Unable to repro
-- [ ] In Linux, `DateTime::LocalTime` and `DateTime::UtcTime` call `time` followed by `gettimeofday` for the time part and the milliseconds part
-  - which is incorrect, because calling two time functions gets two different times, only one syscall should be called.
 
 ### Feature (not necessary 1.0)
 
@@ -56,9 +54,7 @@ https://zhuanlan.zhihu.com/p/39369370
   - All existing features and backward compatible interface design
 - Binary ITypeDescriptor provider format.
 - API to import and export fake types (ITypeDescriptor that cannot be executed)
-- Interfaces for collections types like `IReadableCollection<T>`
-  - or `IReadOnlyCollection`, `IWriteOnlyCollection`, `ICollection`
-  - `Slice`, `Concat` functions on interfaces
+- Add DisposedFlag to collections and all reflectable classes and interfaces
 - Reflectable interfaces like `IReflectableReadableCollection<T>`, inherits from `IReadableCollection<T>` and `IReadableCollection<Value>`
 - Remove `FOREACH` and `FOREACH_INDEXER`, replaced by range-based for loop
 - Fix `Linq` so that lambda parameters can be `auto`, instead of specified `types`
