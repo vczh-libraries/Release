@@ -59,6 +59,7 @@ https://zhuanlan.zhihu.com/p/39369370
 - Remove `FOREACH` and `FOREACH_INDEXER`, replaced by range-based for loop
 - Fix `Linq` so that lambda parameters can be `auto`, instead of specified `types`
 - Redesign `VCZH_MSVC` series macros
+  - Separate OS dependent implementations to different files for all repos, not only GacUI.
 
 ### Workflow
 
