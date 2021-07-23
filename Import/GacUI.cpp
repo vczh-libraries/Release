@@ -2590,8 +2590,8 @@ GuiDatePicker
 				, nestedAlt(_nestedAlt)
 			{
 				commandExecutor = new CommandExecutor(this);
-				SetDateLocale(Locale::UserDefault());
 				SetDate(DateTime::LocalTime());
+				SetDateLocale(Locale::UserDefault());
 				SetAltComposition(boundsComposition);
 				SetAltControl(this, false);
 
@@ -3616,7 +3616,7 @@ GuiControlHost
 
 			GuiControl* GuiControlHost::GetTooltipOwner(Point location)
 			{
-				GuiGraphicsComposition* composition=this->GetBoundsComposition()->FindComposition(location, false);
+				GuiGraphicsComposition* composition=this->GetBoundsComposition()->FindComposition(location, true);
 				if(composition)
 				{
 					GuiControl* control=composition->GetRelatedControl();
@@ -7277,10 +7277,12 @@ DefaultDataGridItemTemplate
 					SelectedChanged.AttachMethod(this, &DefaultDataGridItemTemplate::OnSelectedChanged);
 					FontChanged.AttachMethod(this, &DefaultDataGridItemTemplate::OnFontChanged);
 					ContextChanged.AttachMethod(this, &DefaultDataGridItemTemplate::OnContextChanged);
+					VisuallyEnabledChanged.AttachMethod(this, &DefaultDataGridItemTemplate::OnVisuallyEnabledChanged);
 
 					SelectedChanged.Execute(compositions::GuiEventArgs(this));
 					FontChanged.Execute(compositions::GuiEventArgs(this));
 					ContextChanged.Execute(compositions::GuiEventArgs(this));
+					VisuallyEnabledChanged.Execute(compositions::GuiEventArgs(this));
 				}
 
 				void DefaultDataGridItemTemplate::OnSelectedChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
@@ -7312,6 +7314,18 @@ DefaultDataGridItemTemplate
 					if (currentEditor)
 					{
 						currentEditor->GetTemplate()->SetContext(GetContext());
+					}
+				}
+
+				void DefaultDataGridItemTemplate::OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
+				{
+					FOREACH(Ptr<IDataVisualizer>, visualizer, dataVisualizers)
+					{
+						visualizer->GetTemplate()->SetVisuallyEnabled(GetVisuallyEnabled());
+					}
+					if (currentEditor)
+					{
+						currentEditor->GetTemplate()->SetVisuallyEnabled(GetVisuallyEnabled());
 					}
 				}
 
@@ -31787,7 +31801,7 @@ GuiGraphicsHost
 				NativeRect clientBounds = hostRecord.nativeWindow->GetClientBoundsInScreen();
 				NativePoint clientLocation(location.x + bounds.x1 - clientBounds.x1, location.y + bounds.y1 - clientBounds.y1);
 				auto point = hostRecord.nativeWindow->Convert(clientLocation);
-				GuiGraphicsComposition* hitComposition = windowComposition->FindComposition(point, false);
+				GuiGraphicsComposition* hitComposition = windowComposition->FindComposition(point, true);
 				while (hitComposition)
 				{
 					INativeWindowListener::HitTestResult result = hitComposition->GetAssociatedHitTestResult();
