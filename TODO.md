@@ -102,9 +102,9 @@ https://zhuanlan.zhihu.com/p/39369370
     - UWP (hosted mode + sync tree)
   - Linux
     - Ncurses on Ubuntu (hosted)
-    - xGac repo
+    - gGac repo: complete development process for release
   - macOS
-    - iGac repo
+    - iGac repo: complete development process for release
   - Web Assembly (hosted mode + sync tree)
     - Canvas?
     - DOM?
