@@ -26,6 +26,8 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
   - **GacUI_Xml** Demo how to author GacUI XML resource file
   - **GacUI_Windows** Demo how to interact with native Windows OS features.
 
+Image files are not owned by this repo or organization except for GacUI logos.
+
 ## Creating a GacUI app using CMake
 
 Third party project for GacUI 1.0: https://github.com/mangosroom/GacUI-CMake-support
