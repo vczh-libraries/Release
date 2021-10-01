@@ -7,6 +7,7 @@ https://zhuanlan.zhihu.com/p/39369370
 ### Bug
 
 - [ ] The dropdown menu for ribbon gallery cannot be properly resized by dragging the resize bar.
+- [ ] **ALT sequence** in ribbon is not displayed (DocumentEditorRibbon.exe)
 - [ ] `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
 - [ ] Collection literal `{a b c}` should react to the "receiving type" if the receiving type is a known collection type.
   - So that it is able to do `DealWithObservableList({1 2 3});`
