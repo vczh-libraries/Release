@@ -6,6 +6,7 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ### Bug
 
+- [ ] Update bash scripts to support VC++ Shared Items Project
 - [ ] The dropdown menu for ribbon gallery cannot be properly resized by dragging the resize bar.
 - [ ] **ALT sequence** in ribbon is not displayed (DocumentEditorRibbon.exe)
 - [ ] `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
