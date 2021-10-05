@@ -54,8 +54,6 @@ https://zhuanlan.zhihu.com/p/39369370
   - ToString with hints and custom options
   - Print diff when updating AST (for IDE)
   - All existing features and backward compatible interface design
-- Binary ITypeDescriptor provider format.
-- API to import and export fake types (ITypeDescriptor that cannot be executed)
 - Add DisposedFlag to collections and all reflectable classes and interfaces
 - Reflectable interfaces like `IReflectableReadableCollection<T>`, inherits from `IReadableCollection<T>` and `IReadableCollection<Value>`
 - Remove `FOREACH` and `FOREACH_INDEXER`, replaced by range-based for loop
