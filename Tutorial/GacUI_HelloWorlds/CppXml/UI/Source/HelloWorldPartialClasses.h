@@ -30,7 +30,7 @@ namespace helloworld
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
@@ -45,7 +45,7 @@ namespace helloworld
 	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::helloworld::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
 	{
 		friend class ::helloworld::MainWindowConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:

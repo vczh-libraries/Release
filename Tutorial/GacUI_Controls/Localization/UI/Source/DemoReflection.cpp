@@ -36,6 +36,7 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
 			IMPL_CPP_TYPE_INFO(demo::StringResource)
 
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
 			BEGIN_INTERFACE_MEMBER(::demo::IStringResourceStrings)
 				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
@@ -123,10 +124,11 @@ namespace vl
 				}
 			};
 #endif
+#endif
 
 			bool LoadDemoTypes()
 			{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 				if (auto manager = GetGlobalTypeManager())
 				{
 					return manager->AddTypeLoader(MakePtr<DemoTypeLoader>());

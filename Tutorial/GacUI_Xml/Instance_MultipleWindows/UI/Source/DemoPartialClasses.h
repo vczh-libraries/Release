@@ -37,7 +37,7 @@ namespace demo
 
 	class AnotherWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<AnotherWindowConstructor>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AnotherWindowConstructor>;
 #endif
 	protected:
@@ -52,7 +52,7 @@ namespace demo
 	class AnotherWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::AnotherWindowConstructor, public ::vl::reflection::Description<AnotherWindow>
 	{
 		friend class ::demo::AnotherWindowConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AnotherWindow>;
 #endif
 	public:
@@ -63,7 +63,7 @@ namespace demo
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
 		friend struct ::vl_workflow_global::__vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:

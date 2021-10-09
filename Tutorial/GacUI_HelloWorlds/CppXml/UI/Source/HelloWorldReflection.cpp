@@ -34,6 +34,7 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(helloworld::MainWindow)
 			IMPL_CPP_TYPE_INFO(helloworld::MainWindowConstructor)
 
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
 			BEGIN_CLASS_MEMBER(::helloworld::MainWindow)
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
@@ -65,10 +66,11 @@ namespace vl
 				}
 			};
 #endif
+#endif
 
 			bool LoadHelloWorldTypes()
 			{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 				if (auto manager = GetGlobalTypeManager())
 				{
 					return manager->AddTypeLoader(MakePtr<HelloWorldTypeLoader>());

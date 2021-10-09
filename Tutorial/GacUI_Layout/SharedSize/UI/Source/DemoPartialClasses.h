@@ -68,7 +68,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersControllerConstructor>;
 #endif
 	protected:
@@ -107,7 +107,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersController>;
 #endif
 	private:
@@ -129,7 +129,7 @@ namespace demo
 
 	class EnglishNumbersControllerTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<EnglishNumbersControllerTabPageConstructor>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersControllerTabPageConstructor>;
 #endif
 	protected:
@@ -147,7 +147,7 @@ namespace demo
 	class EnglishNumbersControllerTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::EnglishNumbersControllerTabPageConstructor, public ::vl::reflection::Description<EnglishNumbersControllerTabPage>
 	{
 		friend class ::demo::EnglishNumbersControllerTabPageConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersControllerTabPage>;
 #endif
 	public:
@@ -167,7 +167,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
@@ -196,7 +196,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
@@ -206,7 +206,7 @@ namespace demo
 
 	class MyTextItem : public ::vl::Object, public ::vl::reflection::Description<MyTextItem>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyTextItem>;
 #endif
 	private:
@@ -226,7 +226,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeItemTemplateConstructor>;
 #endif
 	protected:
@@ -245,7 +245,7 @@ namespace demo
 		friend class ::demo::SharedSizeItemTemplateConstructor;
 		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeItemTemplate>;
 #endif
 	public:
@@ -263,7 +263,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeTextItemTemplateConstructor>;
 #endif
 	protected:
@@ -285,7 +285,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeTextItemTemplate>;
 #endif
 	public:

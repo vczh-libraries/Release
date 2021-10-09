@@ -35,6 +35,7 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
 			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
 
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::Calculator)
 				CLASS_MEMBER_BASE(::vl::reflection::description::StateMachine)
@@ -141,10 +142,11 @@ namespace vl
 				}
 			};
 #endif
+#endif
 
 			bool LoadDemoTypes()
 			{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 				if (auto manager = GetGlobalTypeManager())
 				{
 					return manager->AddTypeLoader(MakePtr<DemoTypeLoader>());

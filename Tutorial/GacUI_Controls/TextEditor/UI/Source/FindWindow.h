@@ -30,7 +30,7 @@ namespace demo
 		friend class ::demo::FindWindowConstructor;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_FindWindowConstructor___vwsn_demo_FindWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_FindWindowConstructor___vwsn_demo_FindWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<FindWindow>;
 #endif
 	protected:

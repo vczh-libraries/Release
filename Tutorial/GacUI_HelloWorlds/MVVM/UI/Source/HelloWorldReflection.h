@@ -38,6 +38,8 @@ namespace vl
 			DECL_TYPE_INFO(::helloworld::MainWindowConstructor)
 			DECL_TYPE_INFO(::vm::IViewModel)
 
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
+
 			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::vm::IViewModel)
 				::vl::WString GetPassword() override
 				{
@@ -68,6 +70,7 @@ namespace vl
 					INVOKEGET_INTERFACE_PROXY_NOPARAMS(SignUp);
 				}
 			END_INTERFACE_PROXY(::vm::IViewModel)
+#endif
 #endif
 
 			extern bool LoadHelloWorldTypes();

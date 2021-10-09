@@ -82,7 +82,7 @@ namespace demo
 	{
 		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_AboutWindowConstructor___vwsn_demo_AboutWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsno1_Demo_demo_AboutWindowConstructor___vwsn_demo_AboutWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AboutWindowConstructor>;
 #endif
 	protected:
@@ -105,7 +105,7 @@ namespace demo
 	{
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_FindWindowConstructor___vwsn_demo_FindWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_FindWindowConstructor___vwsn_demo_FindWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<FindWindowConstructor>;
 #endif
 	protected:
@@ -181,7 +181,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsno7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsno8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsno9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
@@ -282,7 +282,7 @@ namespace demo
 
 	class RecentFileItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<RecentFileItemTemplateConstructor>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<RecentFileItemTemplateConstructor>;
 #endif
 	protected:
@@ -298,7 +298,7 @@ namespace demo
 	class RecentFileItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::RecentFileItemTemplateConstructor, public ::vl::reflection::Description<RecentFileItemTemplate>
 	{
 		friend class ::demo::RecentFileItemTemplateConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<RecentFileItemTemplate>;
 #endif
 	public:

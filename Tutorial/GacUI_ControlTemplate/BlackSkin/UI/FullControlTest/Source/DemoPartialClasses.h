@@ -524,7 +524,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf68_Demo_demo_AnimationTabPageConstructor___vwsn_demo_AnimationTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf69_Demo_demo_AnimationTabPageConstructor___vwsn_demo_AnimationTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf70_Demo_demo_AnimationTabPageConstructor___vwsn_demo_AnimationTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AnimationTabPageConstructor>;
 #endif
 	protected:
@@ -574,7 +574,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf68_Demo_demo_AnimationTabPageConstructor___vwsn_demo_AnimationTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf69_Demo_demo_AnimationTabPageConstructor___vwsn_demo_AnimationTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf70_Demo_demo_AnimationTabPageConstructor___vwsn_demo_AnimationTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AnimationTabPage>;
 #endif
 	private:
@@ -599,7 +599,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf86_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf87_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf88_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryDisplayerConstructor>;
 #endif
 	protected:
@@ -625,7 +625,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf86_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf87_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf88_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryDisplayer>;
 #endif
 	public:
@@ -645,7 +645,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf90_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf91_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf92_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryEditorConstructor>;
 #endif
 	protected:
@@ -667,7 +667,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf90_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf91_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf92_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryEditor>;
 #endif
 	public:
@@ -680,7 +680,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc27_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf93_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryItemTemplateConstructor>;
 #endif
 	protected:
@@ -698,7 +698,7 @@ namespace demo
 		friend class ::demo::CategoryItemTemplateConstructor;
 		friend class ::vl_workflow_global::__vwsnc27_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf93_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryItemTemplate>;
 #endif
 	public:
@@ -714,7 +714,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc29_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf94_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf95_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryVisualizerConstructor>;
 #endif
 	protected:
@@ -733,7 +733,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc29_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf94_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf95_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryVisualizer>;
 #endif
 	public:
@@ -745,7 +745,7 @@ namespace demo
 	{
 		friend struct ::vl_workflow_global::__vwsnf75_Demo_demo_ColorAnimation_CreateAnimation_;
 		friend struct ::vl_workflow_global::__vwsno74_Demo_demo_ColorAnimation_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorAnimation>;
 #endif
 	public:
@@ -774,7 +774,7 @@ namespace demo
 
 	class ColorDef : public ::vl::Object, public ::vl::reflection::Description<ColorDef>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorDef>;
 #endif
 	private:
@@ -847,7 +847,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsno21_Demo_demo_DataGridTabPageConstructor___vwsn_demo_DataGridTabPage_Initialize_Compare_;
 		friend struct ::vl_workflow_global::__vwsno28_Demo_demo_DataGridTabPageConstructor___vwsn_demo_DataGridTabPage_Initialize_Compare_;
 		friend struct ::vl_workflow_global::__vwsno3_Demo_demo_DataGridTabPageConstructor___vwsn_demo_DataGridTabPage_Initialize_Compare_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DataGridTabPageConstructor>;
 #endif
 	protected:
@@ -924,7 +924,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsno21_Demo_demo_DataGridTabPageConstructor___vwsn_demo_DataGridTabPage_Initialize_Compare_;
 		friend struct ::vl_workflow_global::__vwsno28_Demo_demo_DataGridTabPageConstructor___vwsn_demo_DataGridTabPage_Initialize_Compare_;
 		friend struct ::vl_workflow_global::__vwsno3_Demo_demo_DataGridTabPageConstructor___vwsn_demo_DataGridTabPage_Initialize_Compare_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DataGridTabPage>;
 #endif
 	public:
@@ -940,7 +940,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc16_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf76_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf77_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateEditorConstructor>;
 #endif
 	protected:
@@ -959,7 +959,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc16_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf76_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf77_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateEditor>;
 #endif
 	public:
@@ -977,7 +977,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf81_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf82_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf83_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateFilterConstructor>;
 #endif
 	protected:
@@ -1010,7 +1010,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf81_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf82_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf83_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateFilter>;
 #endif
 	private:
@@ -1043,7 +1043,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf107_Demo_demo_DatePickerTabPageConstructor___vwsn_demo_DatePickerTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf108_Demo_demo_DatePickerTabPageConstructor___vwsn_demo_DatePickerTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf109_Demo_demo_DatePickerTabPageConstructor___vwsn_demo_DatePickerTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DatePickerTabPageConstructor>;
 #endif
 	protected:
@@ -1095,7 +1095,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf107_Demo_demo_DatePickerTabPageConstructor___vwsn_demo_DatePickerTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf108_Demo_demo_DatePickerTabPageConstructor___vwsn_demo_DatePickerTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf109_Demo_demo_DatePickerTabPageConstructor___vwsn_demo_DatePickerTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DatePickerTabPage>;
 #endif
 	public:
@@ -1111,7 +1111,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf237_Demo_demo_DocumentBoxSubTabPageConstructor___vwsn_demo_DocumentBoxSubTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf238_Demo_demo_DocumentBoxSubTabPageConstructor___vwsn_demo_DocumentBoxSubTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf239_Demo_demo_DocumentBoxSubTabPageConstructor___vwsn_demo_DocumentBoxSubTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentBoxSubTabPageConstructor>;
 #endif
 	protected:
@@ -1140,7 +1140,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf237_Demo_demo_DocumentBoxSubTabPageConstructor___vwsn_demo_DocumentBoxSubTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf238_Demo_demo_DocumentBoxSubTabPageConstructor___vwsn_demo_DocumentBoxSubTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf239_Demo_demo_DocumentBoxSubTabPageConstructor___vwsn_demo_DocumentBoxSubTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentBoxSubTabPage>;
 #endif
 	public:
@@ -1243,7 +1243,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf168_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf169_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf170_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorBaseConstructor>;
 #endif
 	protected:
@@ -1320,7 +1320,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf183_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf184_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf185_Demo_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorRibbonConstructor>;
 #endif
 	protected:
@@ -1436,7 +1436,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc85_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf190_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf191_Demo_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorToolstripConstructor>;
 #endif
 	protected:
@@ -1525,7 +1525,7 @@ namespace demo
 
 	class ElementTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<ElementTabPageConstructor>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ElementTabPageConstructor>;
 #endif
 	protected:
@@ -1593,7 +1593,7 @@ namespace demo
 	class ElementTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::ElementTabPageConstructor, public ::vl::reflection::Description<ElementTabPage>
 	{
 		friend class ::demo::ElementTabPageConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ElementTabPage>;
 #endif
 	public:
@@ -1610,7 +1610,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf213_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf214_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf215_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersControllerConstructor>;
 #endif
 	protected:
@@ -1649,7 +1649,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf213_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf214_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf215_Demo_demo_EnglishNumbersControllerConstructor___vwsn_demo_EnglishNumbersController_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersController>;
 #endif
 	private:
@@ -1671,7 +1671,7 @@ namespace demo
 
 	class EnglishNumbersControllerTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<EnglishNumbersControllerTabPageConstructor>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersControllerTabPageConstructor>;
 #endif
 	protected:
@@ -1689,7 +1689,7 @@ namespace demo
 	class EnglishNumbersControllerTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::EnglishNumbersControllerTabPageConstructor, public ::vl::reflection::Description<EnglishNumbersControllerTabPage>
 	{
 		friend class ::demo::EnglishNumbersControllerTabPageConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<EnglishNumbersControllerTabPage>;
 #endif
 	public:
@@ -1708,7 +1708,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc30_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf96_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderDisplayerConstructor>;
 #endif
 	protected:
@@ -1725,7 +1725,7 @@ namespace demo
 		friend class ::demo::GenderDisplayerConstructor;
 		friend class ::vl_workflow_global::__vwsnc30_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf96_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderDisplayer>;
 #endif
 	public:
@@ -1745,7 +1745,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf97_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf98_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf99_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderEditorConstructor>;
 #endif
 	protected:
@@ -1767,7 +1767,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf97_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf98_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf99_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderEditor>;
 #endif
 	public:
@@ -1778,7 +1778,7 @@ namespace demo
 
 	class GenderItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<GenderItemTemplateConstructor>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderItemTemplateConstructor>;
 #endif
 	protected:
@@ -1794,7 +1794,7 @@ namespace demo
 	class GenderItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::GenderItemTemplateConstructor, public ::vl::reflection::Description<GenderItemTemplate>
 	{
 		friend class ::demo::GenderItemTemplateConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderItemTemplate>;
 #endif
 	public:
@@ -1808,7 +1808,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc33_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf101_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderVisualizerConstructor>;
 #endif
 	protected:
@@ -1825,7 +1825,7 @@ namespace demo
 		friend class ::demo::GenderVisualizerConstructor;
 		friend class ::vl_workflow_global::__vwsnc33_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf101_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderVisualizer>;
 #endif
 	public:
@@ -1837,7 +1837,7 @@ namespace demo
 	{
 		friend struct ::vl_workflow_global::__vwsnf110_Demo_demo_HyperlinkWindowConstructor___vwsn_demo_HyperlinkWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf111_Demo_demo_HyperlinkWindowConstructor___vwsn_demo_HyperlinkWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<HyperlinkWindowConstructor>;
 #endif
 	protected:
@@ -1867,7 +1867,7 @@ namespace demo
 		friend class ::demo::HyperlinkWindowConstructor;
 		friend struct ::vl_workflow_global::__vwsnf110_Demo_demo_HyperlinkWindowConstructor___vwsn_demo_HyperlinkWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf111_Demo_demo_HyperlinkWindowConstructor___vwsn_demo_HyperlinkWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<HyperlinkWindow>;
 #endif
 	public:
@@ -1881,7 +1881,7 @@ namespace demo
 
 	class IStringResourceStrings : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IStringResourceStrings>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IStringResourceStrings>;
 #endif
 	public:
@@ -1909,7 +1909,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf39_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf40_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf41_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ListViewTabPageConstructor>;
 #endif
 	protected:
@@ -1960,7 +1960,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf39_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf40_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf41_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ListViewTabPage>;
 #endif
 	public:
@@ -2007,7 +2007,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf207_Demo_demo_LocalizedStringsTabPageConstructor___vwsn_demo_LocalizedStringsTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf208_Demo_demo_LocalizedStringsTabPageConstructor___vwsn_demo_LocalizedStringsTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf209_Demo_demo_LocalizedStringsTabPageConstructor___vwsn_demo_LocalizedStringsTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<LocalizedStringsTabPageConstructor>;
 #endif
 	protected:
@@ -2079,7 +2079,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf207_Demo_demo_LocalizedStringsTabPageConstructor___vwsn_demo_LocalizedStringsTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf208_Demo_demo_LocalizedStringsTabPageConstructor___vwsn_demo_LocalizedStringsTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf209_Demo_demo_LocalizedStringsTabPageConstructor___vwsn_demo_LocalizedStringsTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<LocalizedStringsTabPage>;
 #endif
 	public:
@@ -2101,7 +2101,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf44_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf45_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
@@ -2145,7 +2145,7 @@ namespace demo
 
 	class MyDataItem : public ::vl::Object, public ::vl::reflection::Description<MyDataItem>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyDataItem>;
 #endif
 	private:
@@ -2189,7 +2189,7 @@ namespace demo
 
 	class MyTextItem : public ::vl::Object, public ::vl::reflection::Description<MyTextItem>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyTextItem>;
 #endif
 	private:
@@ -2209,7 +2209,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc104_Demo_demo_RepeatItemTemplateConstructor___vwsn_demo_RepeatItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf216_Demo_demo_RepeatItemTemplateConstructor___vwsn_demo_RepeatItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<RepeatItemTemplateConstructor>;
 #endif
 	protected:
@@ -2227,7 +2227,7 @@ namespace demo
 		friend class ::demo::RepeatItemTemplateConstructor;
 		friend class ::vl_workflow_global::__vwsnc104_Demo_demo_RepeatItemTemplateConstructor___vwsn_demo_RepeatItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf216_Demo_demo_RepeatItemTemplateConstructor___vwsn_demo_RepeatItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<RepeatItemTemplate>;
 #endif
 	public:
@@ -2246,7 +2246,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf49_Demo_demo_RepeatTabPageConstructor___vwsn_demo_RepeatTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf50_Demo_demo_RepeatTabPageConstructor___vwsn_demo_RepeatTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf51_Demo_demo_RepeatTabPageConstructor___vwsn_demo_RepeatTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<RepeatTabPageConstructor>;
 #endif
 	protected:
@@ -2306,7 +2306,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf49_Demo_demo_RepeatTabPageConstructor___vwsn_demo_RepeatTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf50_Demo_demo_RepeatTabPageConstructor___vwsn_demo_RepeatTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf51_Demo_demo_RepeatTabPageConstructor___vwsn_demo_RepeatTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<RepeatTabPage>;
 #endif
 	public:
@@ -2322,7 +2322,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf222_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf223_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf224_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveGroupControlConstructor>;
 #endif
 	protected:
@@ -2383,7 +2383,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf222_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf223_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf224_Demo_demo_ResponsiveGroupControlConstructor___vwsn_demo_ResponsiveGroupControl_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveGroupControl>;
 #endif
 	public:
@@ -2399,7 +2399,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf226_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf227_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf228_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveStackControlConstructor>;
 #endif
 	protected:
@@ -2460,7 +2460,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf226_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf227_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf228_Demo_demo_ResponsiveStackControlConstructor___vwsn_demo_ResponsiveStackControl_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveStackControl>;
 #endif
 	public:
@@ -2470,7 +2470,7 @@ namespace demo
 
 	class ResponsiveTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<ResponsiveTabPageConstructor>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveTabPageConstructor>;
 #endif
 	protected:
@@ -2499,7 +2499,7 @@ namespace demo
 	class ResponsiveTabPage : public ::vl::presentation::controls::GuiTabPage, public ::demo::ResponsiveTabPageConstructor, public ::vl::reflection::Description<ResponsiveTabPage>
 	{
 		friend class ::demo::ResponsiveTabPageConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveTabPage>;
 #endif
 	public:
@@ -2523,7 +2523,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf234_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf235_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf236_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveViewControlConstructor>;
 #endif
 	protected:
@@ -2588,7 +2588,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf234_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf235_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf236_Demo_demo_ResponsiveViewControlConstructor___vwsn_demo_ResponsiveViewControl_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ResponsiveViewControl>;
 #endif
 	public:
@@ -2600,7 +2600,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc105_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf217_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeItemTemplateConstructor>;
 #endif
 	protected:
@@ -2619,7 +2619,7 @@ namespace demo
 		friend class ::demo::SharedSizeItemTemplateConstructor;
 		friend class ::vl_workflow_global::__vwsnc105_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf217_Demo_demo_SharedSizeItemTemplateConstructor___vwsn_demo_SharedSizeItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeItemTemplate>;
 #endif
 	public:
@@ -2637,7 +2637,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf218_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf219_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf220_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeTextItemTemplateConstructor>;
 #endif
 	protected:
@@ -2659,7 +2659,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf218_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf219_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf220_Demo_demo_SharedSizeTextItemTemplateConstructor___vwsn_demo_SharedSizeTextItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeTextItemTemplate>;
 #endif
 	public:
@@ -2673,7 +2673,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc125_Demo_demo_StringResource_Get__demo_IStringResourceStrings;
 		friend class ::vl_workflow_global::__vwsnc126_Demo_demo_StringResource_Get__demo_IStringResourceStrings;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StringResource>;
 #endif
 	public:
@@ -2684,7 +2684,7 @@ namespace demo
 
 	class StyleGroup : public ::vl::Object, public ::vl::reflection::Description<StyleGroup>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StyleGroup>;
 #endif
 	public:
@@ -2695,7 +2695,7 @@ namespace demo
 
 	class StyleItem : public ::vl::Object, public ::vl::reflection::Description<StyleItem>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StyleItem>;
 #endif
 	public:
@@ -2712,7 +2712,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf187_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf188_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf189_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StyleItemTemplateConstructor>;
 #endif
 	protected:
@@ -2742,7 +2742,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf187_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf188_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf189_Demo_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StyleItemTemplate>;
 #endif
 	public:
@@ -2759,7 +2759,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc123_Demo_demo_TextBoxSubTabPageConstructor___vwsn_demo_TextBoxSubTabPage_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf240_Demo_demo_TextBoxSubTabPageConstructor___vwsn_demo_TextBoxSubTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf241_Demo_demo_TextBoxSubTabPageConstructor___vwsn_demo_TextBoxSubTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextBoxSubTabPageConstructor>;
 #endif
 	protected:
@@ -2783,7 +2783,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc123_Demo_demo_TextBoxSubTabPageConstructor___vwsn_demo_TextBoxSubTabPage_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf240_Demo_demo_TextBoxSubTabPageConstructor___vwsn_demo_TextBoxSubTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf241_Demo_demo_TextBoxSubTabPageConstructor___vwsn_demo_TextBoxSubTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextBoxSubTabPage>;
 #endif
 	public:
@@ -2803,7 +2803,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf244_Demo_demo_TextBoxTabPageConstructor___vwsn_demo_TextBoxTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf245_Demo_demo_TextBoxTabPageConstructor___vwsn_demo_TextBoxTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf246_Demo_demo_TextBoxTabPageConstructor___vwsn_demo_TextBoxTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextBoxTabPageConstructor>;
 #endif
 	protected:
@@ -2834,7 +2834,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf244_Demo_demo_TextBoxTabPageConstructor___vwsn_demo_TextBoxTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf245_Demo_demo_TextBoxTabPageConstructor___vwsn_demo_TextBoxTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf246_Demo_demo_TextBoxTabPageConstructor___vwsn_demo_TextBoxTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextBoxTabPage>;
 #endif
 	protected:
@@ -2855,7 +2855,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc21_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf84_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf85_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextEditorConstructor>;
 #endif
 	protected:
@@ -2874,7 +2874,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc21_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf84_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf85_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextEditor>;
 #endif
 	public:
@@ -2892,7 +2892,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf57_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf58_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf59_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextListTabPageConstructor>;
 #endif
 	protected:
@@ -2960,7 +2960,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf57_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf58_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf59_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextListTabPage>;
 #endif
 	public:
@@ -2976,7 +2976,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf61_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf62_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf63_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TreeViewTabPageConstructor>;
 #endif
 	protected:
@@ -3048,7 +3048,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf61_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf62_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf63_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TreeViewTabPage>;
 #endif
 	public:

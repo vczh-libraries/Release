@@ -90,7 +90,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountButtonTemplateConstructor>;
 #endif
 	protected:
@@ -128,7 +128,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountButtonTemplate>;
 #endif
 	public:
@@ -142,7 +142,7 @@ namespace demo
 
 	class AccountButtonViewModel : public ::vl::Object, public ::vl::reflection::Description<AccountButtonViewModel>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountButtonViewModel>;
 #endif
 	private:
@@ -169,7 +169,7 @@ namespace demo
 	class AccountItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<AccountItemTemplateConstructor>
 	{
 		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_AccountItemTemplateConstructor___vwsn_demo_AccountItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountItemTemplateConstructor>;
 #endif
 	protected:
@@ -186,7 +186,7 @@ namespace demo
 	{
 		friend class ::demo::AccountItemTemplateConstructor;
 		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_AccountItemTemplateConstructor___vwsn_demo_AccountItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountItemTemplate>;
 #endif
 	public:
@@ -200,7 +200,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_AccountMenuItemTemplateConstructor___vwsn_demo_AccountMenuItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_AccountMenuItemTemplateConstructor___vwsn_demo_AccountMenuItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountMenuItemTemplateConstructor>;
 #endif
 	protected:
@@ -218,7 +218,7 @@ namespace demo
 		friend class ::demo::AccountMenuItemTemplateConstructor;
 		friend class ::vl_workflow_global::__vwsnc8_Demo_demo_AccountMenuItemTemplateConstructor___vwsn_demo_AccountMenuItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_AccountMenuItemTemplateConstructor___vwsn_demo_AccountMenuItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountMenuItemTemplate>;
 #endif
 	public:
@@ -235,7 +235,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
@@ -274,7 +274,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
@@ -297,7 +297,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<VideoItemTemplateConstructor>;
 #endif
 	protected:
@@ -330,7 +330,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<VideoItemTemplate>;
 #endif
 	public:
@@ -342,7 +342,7 @@ namespace demo
 
 	class VideoViewModel : public ::vl::Object, public ::vl::reflection::Description<VideoViewModel>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<VideoViewModel>;
 #endif
 	private:

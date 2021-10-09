@@ -91,7 +91,7 @@ namespace demo
 
 	class ICategory : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<ICategory>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ICategory>;
 #endif
 	public:
@@ -104,7 +104,7 @@ namespace demo
 
 	class IContact : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IContact>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IContact>;
 #endif
 	public:
@@ -120,7 +120,7 @@ namespace demo
 
 	class IViewModel : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IViewModel>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IViewModel>;
 #endif
 	public:
@@ -182,7 +182,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
@@ -252,7 +252,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewContactWindowConstructor>;
 #endif
 	protected:
@@ -297,7 +297,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf32_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf33_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf34_Demo_demo_NewContactWindowConstructor___vwsn_demo_NewContactWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewContactWindow>;
 #endif
 	public:
@@ -318,7 +318,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewFolderWindowConstructor>;
 #endif
 	protected:
@@ -348,7 +348,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_NewFolderWindowConstructor___vwsn_demo_NewFolderWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<NewFolderWindow>;
 #endif
 	public:

@@ -38,12 +38,15 @@ namespace vl
 			DECL_TYPE_INFO(::demo::MainWindow)
 			DECL_TYPE_INFO(::demo::MainWindowConstructor)
 
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
+
 			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::demo::IViewModel)
 				void OpenUrl(const ::vl::WString& url) override
 				{
 					INVOKE_INTERFACE_PROXY(OpenUrl, url);
 				}
 			END_INTERFACE_PROXY(::demo::IViewModel)
+#endif
 #endif
 
 			extern bool LoadDemoTypes();

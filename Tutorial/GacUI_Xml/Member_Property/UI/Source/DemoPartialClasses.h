@@ -44,7 +44,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
@@ -62,7 +62,7 @@ namespace demo
 		friend class ::demo::MainWindowConstructor;
 		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
@@ -76,7 +76,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MyControlConstructor___vwsn_demo_MyControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MyControlConstructor___vwsn_demo_MyControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MyControlConstructor___vwsn_demo_MyControl_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyControlConstructor>;
 #endif
 	protected:
@@ -102,7 +102,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MyControlConstructor___vwsn_demo_MyControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MyControlConstructor___vwsn_demo_MyControl_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MyControlConstructor___vwsn_demo_MyControl_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyControl>;
 #endif
 	public:

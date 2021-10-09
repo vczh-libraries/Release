@@ -67,7 +67,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ListViewTabPageConstructor>;
 #endif
 	protected:
@@ -114,7 +114,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ListViewTabPage>;
 #endif
 	public:
@@ -125,7 +125,7 @@ namespace demo
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
@@ -144,7 +144,7 @@ namespace demo
 	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
 	{
 		friend class ::demo::MainWindowConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
@@ -154,7 +154,7 @@ namespace demo
 
 	class MyTextItem : public ::vl::Object, public ::vl::reflection::Description<MyTextItem>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyTextItem>;
 #endif
 	private:
@@ -179,7 +179,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextListTabPageConstructor>;
 #endif
 	protected:
@@ -227,7 +227,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextListTabPage>;
 #endif
 	public:
@@ -242,7 +242,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TreeViewTabPageConstructor>;
 #endif
 	protected:
@@ -310,7 +310,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TreeViewTabPage>;
 #endif
 	public:

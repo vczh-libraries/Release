@@ -40,6 +40,7 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(demo::StyleItemTemplate)
 			IMPL_CPP_TYPE_INFO(demo::StyleItemTemplateConstructor)
 
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::DocumentEditorRibbon)
 				CLASS_MEMBER_BASE(::demo::DocumentEditorBase)
@@ -255,10 +256,11 @@ namespace vl
 				}
 			};
 #endif
+#endif
 
 			bool LoadEditorRibbonTypes()
 			{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 				if (auto manager = GetGlobalTypeManager())
 				{
 					return manager->AddTypeLoader(MakePtr<EditorRibbonTypeLoader>());

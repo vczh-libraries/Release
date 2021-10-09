@@ -82,7 +82,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
@@ -107,7 +107,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
@@ -123,7 +123,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TriplePhaseButtonConstructor>;
 #endif
 	protected:
@@ -144,7 +144,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_TriplePhaseButtonConstructor___vwsn_demo_TriplePhaseButton_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TriplePhaseButton>;
 #endif
 	public:
@@ -180,7 +180,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_TriplePhaseImageButtonTemplateConstructor___vwsn_demo_TriplePhaseImageButtonTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_TriplePhaseImageButtonTemplateConstructor___vwsn_demo_TriplePhaseImageButtonTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_TriplePhaseImageButtonTemplateConstructor___vwsn_demo_TriplePhaseImageButtonTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TriplePhaseImageButtonTemplateConstructor>;
 #endif
 	protected:
@@ -214,7 +214,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf14_Demo_demo_TriplePhaseImageButtonTemplateConstructor___vwsn_demo_TriplePhaseImageButtonTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_TriplePhaseImageButtonTemplateConstructor___vwsn_demo_TriplePhaseImageButtonTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf9_Demo_demo_TriplePhaseImageButtonTemplateConstructor___vwsn_demo_TriplePhaseImageButtonTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TriplePhaseImageButtonTemplate>;
 #endif
 	public:

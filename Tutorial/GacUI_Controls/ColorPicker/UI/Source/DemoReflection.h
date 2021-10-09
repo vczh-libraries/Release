@@ -46,6 +46,8 @@ namespace vl
 			DECL_TYPE_INFO(::demo::MainWindow)
 			DECL_TYPE_INFO(::demo::MainWindowConstructor)
 
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
+
 			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::demo::IColorItem)
 				::vl::presentation::Color GetItemColor() override
 				{
@@ -63,6 +65,7 @@ namespace vl
 					INVOKEGET_INTERFACE_PROXY_NOPARAMS(GetColorItems);
 				}
 			END_INTERFACE_PROXY(::demo::IViewModel)
+#endif
 #endif
 
 			extern bool LoadDemoTypes();

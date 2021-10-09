@@ -47,6 +47,8 @@ namespace vl
 			DECL_TYPE_INFO(::demo::NewFolderWindow)
 			DECL_TYPE_INFO(::demo::NewFolderWindowConstructor)
 
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
+
 			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::demo::ICategory)
 				::vl::Ptr<::vl::reflection::description::IValueObservableList> GetContacts() override
 				{
@@ -147,6 +149,7 @@ namespace vl
 					INVOKE_INTERFACE_PROXY(SetSelectedContact, __vwsn_value_);
 				}
 			END_INTERFACE_PROXY(::demo::IViewModel)
+#endif
 #endif
 
 			extern bool LoadDemoTypes();

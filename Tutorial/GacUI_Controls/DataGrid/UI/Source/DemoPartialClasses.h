@@ -167,7 +167,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf40_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf41_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf42_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryDisplayerConstructor>;
 #endif
 	protected:
@@ -193,7 +193,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf40_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf41_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf42_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryDisplayer>;
 #endif
 	public:
@@ -213,7 +213,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf44_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf45_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf46_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryEditorConstructor>;
 #endif
 	protected:
@@ -235,7 +235,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf44_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf45_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf46_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryEditor>;
 #endif
 	public:
@@ -248,7 +248,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf47_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryItemTemplateConstructor>;
 #endif
 	protected:
@@ -266,7 +266,7 @@ namespace demo
 		friend class ::demo::CategoryItemTemplateConstructor;
 		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf47_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryItemTemplate>;
 #endif
 	public:
@@ -282,7 +282,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc20_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf48_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf49_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryVisualizerConstructor>;
 #endif
 	protected:
@@ -301,7 +301,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc20_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf48_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf49_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<CategoryVisualizer>;
 #endif
 	public:
@@ -315,7 +315,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf30_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf31_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateEditorConstructor>;
 #endif
 	protected:
@@ -334,7 +334,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc7_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf30_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf31_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateEditor>;
 #endif
 	public:
@@ -352,7 +352,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateFilterConstructor>;
 #endif
 	protected:
@@ -385,7 +385,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf35_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf36_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf37_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DateFilter>;
 #endif
 	private:
@@ -404,7 +404,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc21_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf50_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderDisplayerConstructor>;
 #endif
 	protected:
@@ -421,7 +421,7 @@ namespace demo
 		friend class ::demo::GenderDisplayerConstructor;
 		friend class ::vl_workflow_global::__vwsnc21_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf50_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderDisplayer>;
 #endif
 	public:
@@ -441,7 +441,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf52_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf53_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf54_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderEditorConstructor>;
 #endif
 	protected:
@@ -463,7 +463,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf52_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf53_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf54_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderEditor>;
 #endif
 	public:
@@ -474,7 +474,7 @@ namespace demo
 
 	class GenderItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<GenderItemTemplateConstructor>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderItemTemplateConstructor>;
 #endif
 	protected:
@@ -490,7 +490,7 @@ namespace demo
 	class GenderItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::GenderItemTemplateConstructor, public ::vl::reflection::Description<GenderItemTemplate>
 	{
 		friend class ::demo::GenderItemTemplateConstructor;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderItemTemplate>;
 #endif
 	public:
@@ -504,7 +504,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc24_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf55_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderVisualizerConstructor>;
 #endif
 	protected:
@@ -521,7 +521,7 @@ namespace demo
 		friend class ::demo::GenderVisualizerConstructor;
 		friend class ::vl_workflow_global::__vwsnc24_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf55_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<GenderVisualizer>;
 #endif
 	public:
@@ -565,7 +565,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
 		friend struct ::vl_workflow_global::__vwsno3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
 		friend struct ::vl_workflow_global::__vwsno9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
@@ -636,7 +636,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
 		friend struct ::vl_workflow_global::__vwsno3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
 		friend struct ::vl_workflow_global::__vwsno9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
@@ -647,7 +647,7 @@ namespace demo
 
 	class MyDataItem : public ::vl::Object, public ::vl::reflection::Description<MyDataItem>
 	{
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyDataItem>;
 #endif
 	private:
@@ -695,7 +695,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf38_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf39_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextEditorConstructor>;
 #endif
 	protected:
@@ -714,7 +714,7 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc12_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf38_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf39_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TextEditor>;
 #endif
 	public:

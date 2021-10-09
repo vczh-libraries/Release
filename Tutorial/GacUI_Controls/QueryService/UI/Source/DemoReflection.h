@@ -40,6 +40,8 @@ namespace vl
 			DECL_TYPE_INFO(::demo::MainWindow)
 			DECL_TYPE_INFO(::demo::MainWindowConstructor)
 
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
+
 			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::IDemoService)
 				::vl::WString GetName() override
 				{
@@ -50,6 +52,7 @@ namespace vl
 					INVOKE_INTERFACE_PROXY(SetName, __vwsn_value_);
 				}
 			END_INTERFACE_PROXY(::IDemoService)
+#endif
 #endif
 
 			extern bool LoadDemoTypes();

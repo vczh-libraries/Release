@@ -121,6 +121,8 @@ namespace vl
 			DECL_TYPE_INFO(::demo::TreeViewTabPage)
 			DECL_TYPE_INFO(::demo::TreeViewTabPageConstructor)
 
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
+
 			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::demo::IStringResourceStrings)
 				::vl::WString Currency(const ::vl::WString& __vwsn_ls_0) override
 				{
@@ -171,6 +173,7 @@ namespace vl
 					INVOKEGET_INTERFACE_PROXY(YearMonthDate, __vwsn_ls_0);
 				}
 			END_INTERFACE_PROXY(::demo::IStringResourceStrings)
+#endif
 #endif
 
 			extern bool LoadDemoTypes();
