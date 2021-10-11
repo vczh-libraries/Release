@@ -4,19 +4,34 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ## GacUI 1.0
 
-### Bug
+### Bugs
 
-- [ ] Update bash scripts to support VC++ Shared Items Project
-- [ ] The dropdown menu for ribbon gallery cannot be properly resized by dragging the resize bar.
-- [ ] **ALT sequence** in ribbon is not displayed (DocumentEditorRibbon.exe)
-- [ ] `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
-- [ ] Collection literal `{a b c}` should react to the "receiving type" if the receiving type is a known collection type.
+- **Windows**
+  - **WindowIcon**: Check and uncheck custom icon, the icon in the task bar doesn't come back.
+- **Controls**
+  - **DocumentEditor**: Doesn't prompt message box if closed unsaved.
+  - **DocumentEditor**: When a document's height is smaller than the control, the lower part cannot click to interact with the last line.
+  - **DocumentEditor**: In default font, the lower part of "g" in the last line is clipped, not rendered properly.
+  - **DocumentEditorRibbon**: The dropdown menu for ribbon gallery cannot be properly resized by dragging the resize bar.
+  - **DocumentEditorRibbon**: **ALT sequence** in ribbon is not displayed.
+
+- **Github Issues**
+  - https://github.com/vczh-libraries/GacUI/issues/66
+  - https://github.com/vczh-libraries/GacUI/issues/56
+    - `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
+  https://github.com/vczh-libraries/GacUI/issues/46
+
+### Workflow
+
+- Collection literal `{a b c}` should react to the "receiving type" if the receiving type is a known collection type.
   - So that it is able to do `DealWithObservableList({1 2 3});`
-- [ ] `new(name: string, items: observe X^[]) { this.Name = name; this.Items = items; }` doesn't work for `items`.
-- [ ] `let X = Y in (F(X.a.b.c))` reports `X does not exist in the current scope` in binding property value
+- `new(name: string, items: observe X^[]) { this.Name = name; this.Items = items; }` doesn't work for `items`.
+- `let X = Y in (F(X.a.b.c))` reports `X does not exist in the current scope` in binding property value
   - while `F((let X = Y.a.b).c)` works
-- [ ] GacGen reports only "error dumping resource file" while the resource file contains some syntax errors preventing GacGen from reading it
-  - Unable to repro
+
+### Other Issues
+
+- Update bash scripts to support VC++ Shared Items Project
 
 ### Feature (not necessary 1.0)
 
