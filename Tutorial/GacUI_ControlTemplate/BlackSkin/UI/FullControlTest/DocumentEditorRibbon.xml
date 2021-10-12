@@ -252,7 +252,7 @@
               <RibbonTabPage Text="Edit" Alt="E">
                 <att.ContainerComposition-set PreferredMinSize="y:110"/>
                 <att.Groups>
-                  <RibbonGroup Text="Alignment" Expandable="true" LargeImage-uri="res://ToolbarImages/EditableLarge">
+                  <RibbonGroup Text="Alignment" Expandable="true" LargeImage-uri="res://ToolbarImages/EditableLarge" Alt="A">
                     <ev.ExpandButtonClicked-eval>
                       <![CDATA[
                         {
@@ -280,7 +280,7 @@
                     </att.Items>
                   </RibbonGroup>
 
-                  <RibbonGroup Text="Edit" LargeImage-uri="res://ToolbarImages/PasteLarge">
+                  <RibbonGroup Text="Edit" LargeImage-uri="res://ToolbarImages/PasteLarge" Alt="E">
                     <att.Items>
                       <RibbonButtons MaxSize="Large" MinSize="Icon">
                         <att.Buttons>
@@ -301,7 +301,7 @@
                     </att.Items>
                   </RibbonGroup>
 
-                  <RibbonGroup Text="Text">
+                  <RibbonGroup Text="Text" Alt="T">
                     <att.Items>
                       <RibbonToolstrips>
                         <att.Groups>
@@ -327,7 +327,7 @@
                     </att.Items>
                   </RibbonGroup>
 
-                  <RibbonGroup Text="Icon Labels">
+                  <RibbonGroup Text="Icon Labels" Alt="I">
                     <att.Items>
                       <RibbonButtons MaxSize="Small" MinSize="Icon">
                         <att.Buttons>
@@ -371,7 +371,7 @@
                     </att.Items>
                   </RibbonGroup>
 
-                  <RibbonGroup Text="Style" LargeImage-uri="res://ToolbarImages/EditableLarge">
+                  <RibbonGroup Text="Style" LargeImage-uri="res://ToolbarImages/EditableLarge" Alt="S">
                     <att.Items>
                       <BindableRibbonGalleryList ref.Name="styleGallery" ItemTemplate="demo:StyleItemTemplate" MinCount="2" MaxCount="5" VisibleItemCount="5" env.ItemType="demo::StyleGroup^">
                         <att.ItemSource-bind>self.StyleGroups</att.ItemSource-bind>

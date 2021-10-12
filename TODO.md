@@ -12,7 +12,6 @@ https://zhuanlan.zhihu.com/p/39369370
   - **DocumentEditor**: When a document's height is smaller than the control, the lower part cannot click to interact with the last line.
   - **DocumentEditor**: In default font, the lower part of "g" in the last line is clipped, not rendered properly.
   - **DocumentEditorRibbon**: The dropdown menu for ribbon gallery cannot be properly resized by dragging the resize bar.
-  - **ALT Sequence** ribbon group needs to behave like menu item to implement `GetActivatingAltHost`.
 
 - **Github Issues**
   - https://github.com/vczh-libraries/GacUI/issues/66

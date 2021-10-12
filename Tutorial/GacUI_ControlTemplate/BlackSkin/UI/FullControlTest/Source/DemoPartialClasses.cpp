@@ -15267,6 +15267,9 @@ Class (::demo::DocumentEditorRibbonConstructor)
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_19));
 		}
 		{
+			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetAlt(::vl::WString(L"A", false));
+		}
+		{
 			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetText(::vl::WString(L"Alignment", false));
 		}
 		{
@@ -15363,6 +15366,9 @@ Class (::demo::DocumentEditorRibbonConstructor)
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_33));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_23)->SetAlt(::vl::WString(L"E", false));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_23)->SetText(::vl::WString(L"Edit", false));
@@ -15489,6 +15495,9 @@ Class (::demo::DocumentEditorRibbonConstructor)
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_34)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_35));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_34)->SetAlt(::vl::WString(L"T", false));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_34)->SetText(::vl::WString(L"Text", false));
@@ -15678,6 +15687,9 @@ Class (::demo::DocumentEditorRibbonConstructor)
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_61));
 		}
 		{
+			::vl::__vwsn::This(this->__vwsn_precompile_49)->SetAlt(::vl::WString(L"I", false));
+		}
+		{
 			::vl::__vwsn::This(this->__vwsn_precompile_49)->SetText(::vl::WString(L"Icon Labels", false));
 		}
 		{
@@ -15784,6 +15796,9 @@ Class (::demo::DocumentEditorRibbonConstructor)
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_71)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->styleGallery));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_71)->SetAlt(::vl::WString(L"S", false));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_71)->SetText(::vl::WString(L"Style", false));

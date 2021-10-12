@@ -1292,6 +1292,9 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetExpandable(true);
 		}
 		{
+			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetAlt(::vl::WString(L"A", false));
+		}
+		{
 			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetText(::vl::WString(L"Alignment", false));
 		}
 		{
@@ -1388,6 +1391,9 @@ namespace demo
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_32)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_42));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetAlt(::vl::WString(L"E", false));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetText(::vl::WString(L"Edit", false));
@@ -1514,6 +1520,9 @@ namespace demo
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_43)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_44));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_43)->SetAlt(::vl::WString(L"T", false));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_43)->SetText(::vl::WString(L"Text", false));
@@ -1703,6 +1712,9 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_70));
 		}
 		{
+			::vl::__vwsn::This(this->__vwsn_precompile_58)->SetAlt(::vl::WString(L"I", false));
+		}
+		{
 			::vl::__vwsn::This(this->__vwsn_precompile_58)->SetText(::vl::WString(L"Icon Labels", false));
 		}
 		{
@@ -1809,6 +1821,9 @@ namespace demo
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_80)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->styleGallery));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_80)->SetAlt(::vl::WString(L"S", false));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_80)->SetText(::vl::WString(L"Style", false));
