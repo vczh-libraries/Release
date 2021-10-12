@@ -6,8 +6,6 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ### Bugs
 
-- **Windows**
-  - **WindowIcon**: Check and uncheck custom icon, the icon in the task bar doesn't come back.
 - **Controls**
   - **DocumentEditor**: When a document's height is smaller than the control, the lower part cannot click to interact with the last line.
   - **DocumentEditor**: In default font, the lower part of "g" in the last line is clipped, not rendered properly.
