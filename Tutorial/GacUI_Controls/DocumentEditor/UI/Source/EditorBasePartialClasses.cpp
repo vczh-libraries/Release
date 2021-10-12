@@ -2956,6 +2956,32 @@ namespace demo
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogSaveDoc));
 		}
+		(this->dialogSaveDocPrivate = new ::vl::presentation::controls::GuiSaveFileDialog());
+		{
+			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetOptions(::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogPromptOverwriteFile);
+		}
+		{
+			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetFilter(::vl::WString(L"Private Format (*.bin)|*.bin", false));
+		}
+		{
+			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetTitle(::vl::WString(L"Save a GacUI Document", false));
+		}
+		{
+			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogSaveDocPrivate));
+		}
+		(this->dialogQueryClose = new ::vl::presentation::controls::GuiMessageDialog());
+		{
+			::vl::__vwsn::This(this->dialogQueryClose)->SetIcon(::vl::presentation::INativeDialogService::MessageBoxIcons::IconQuestion);
+		}
+		{
+			::vl::__vwsn::This(this->dialogQueryClose)->SetInput(::vl::presentation::INativeDialogService::MessageBoxButtonsInput::DisplayYesNoCancel);
+		}
+		{
+			::vl::__vwsn::This(this->dialogQueryClose)->SetText(::vl::WString(L"The document has been changed since the last time it was saved as a Private Format file. Do you want to save this file?", false));
+		}
+		{
+			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogQueryClose));
+		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -3254,6 +3280,9 @@ namespace demo
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc1_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf3_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			::vl::__vwsn::This(this->dialogQueryClose)->SetTitle(::vl::__vwsn::This(this->self)->GetText());
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf4_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this));
@@ -3658,6 +3687,8 @@ namespace demo
 		, dialogOpen(static_cast<::vl::presentation::controls::GuiOpenFileDialog*>(nullptr))
 		, dialogOpenDoc(static_cast<::vl::presentation::controls::GuiOpenFileDialog*>(nullptr))
 		, dialogSaveDoc(static_cast<::vl::presentation::controls::GuiSaveFileDialog*>(nullptr))
+		, dialogSaveDocPrivate(static_cast<::vl::presentation::controls::GuiSaveFileDialog*>(nullptr))
+		, dialogQueryClose(static_cast<::vl::presentation::controls::GuiMessageDialog*>(nullptr))
 		, menuContainer(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, toolstripContainer(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, document(static_cast<::vl::presentation::controls::GuiDocumentViewer*>(nullptr))

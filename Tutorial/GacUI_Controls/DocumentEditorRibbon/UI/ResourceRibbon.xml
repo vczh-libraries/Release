@@ -25,6 +25,11 @@
         <demo:DocumentEditorRibbon ref.Name="editor">
           <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
         </demo:DocumentEditorRibbon>
+        <ev.WindowClosing-eval>
+          <![CDATA[
+          arguments.cancel = editor.CancelWindowClose();
+        ]]>
+        </ev.WindowClosing-eval>
       </Window>
     </Instance>
   </Instance>

@@ -75,12 +75,24 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::__vwsnf2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
+	__vwsnf2_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::__vwsnf2_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf2_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiRequestEventArgs* arguments) const
+	{
+		(::vl::__vwsn::This(arguments)->cancel = ::vl::__vwsn::This(__vwsnthis_0->editor)->CancelWindowClose());
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::__vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
+	{
+	}
+
+	void __vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_44)->GetImage();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::presentation::GuiImageData>>(__vwsn_value_);
@@ -93,12 +105,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::__vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
+	__vwsnf4_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::__vwsnf4_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf4_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->buttonAlignment)->GetImage();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::presentation::GuiImageData>>(__vwsn_value_);
@@ -986,7 +998,7 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -1003,7 +1015,7 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf4_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -1180,6 +1192,10 @@ Class (::demo::MainWindowConstructor)
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc1_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf1_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf2_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_0)->WindowClosing, __vwsn_event_handler_);
 		}
 	}
 

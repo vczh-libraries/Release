@@ -26,8 +26,9 @@ https://github.com/vczh-libraries
 namespace vl_workflow_global
 {
 	struct __vwsnf1_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-	struct __vwsnf2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
+	struct __vwsnf2_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
+	struct __vwsnf4_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
 	class __vwsnc1_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
@@ -44,8 +45,8 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorToolstripConstructor>;
 #endif
@@ -138,8 +139,8 @@ namespace demo
 		friend class ::demo::DocumentEditorToolstripConstructor;
 		friend class ::vl_workflow_global::__vwsnc2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf4_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorToolstrip>;
 #endif
@@ -152,6 +153,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc1_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf1_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
@@ -169,6 +171,7 @@ namespace demo
 		friend class ::demo::MainWindowConstructor;
 		friend class ::vl_workflow_global::__vwsnc1_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf1_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
@@ -204,13 +207,13 @@ Closures
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_
+	struct __vwsnf2_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
-		::demo::DocumentEditorToolstripConstructor* __vwsnthis_0;
+		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf2_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
+		__vwsnf2_EditorToolstrip_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiRequestEventArgs* arguments) const;
 	};
 
 	struct __vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_
@@ -218,6 +221,15 @@ Closures
 		::demo::DocumentEditorToolstripConstructor* __vwsnthis_0;
 
 		__vwsnf3_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
+
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf4_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_
+	{
+		::demo::DocumentEditorToolstripConstructor* __vwsnthis_0;
+
+		__vwsnf4_EditorToolstrip_demo_DocumentEditorToolstripConstructor___vwsn_demo_DocumentEditorToolstrip_Initialize_(::demo::DocumentEditorToolstripConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};

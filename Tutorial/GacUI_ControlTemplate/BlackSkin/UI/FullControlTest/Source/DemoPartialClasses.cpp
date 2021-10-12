@@ -14318,6 +14318,32 @@ Class (::demo::DocumentEditorBaseConstructor)
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogSaveDoc));
 		}
+		(this->dialogSaveDocPrivate = new ::vl::presentation::controls::GuiSaveFileDialog());
+		{
+			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetOptions(::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogPromptOverwriteFile);
+		}
+		{
+			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetTitle(::vl::WString(L"Save a GacUI Document", false));
+		}
+		{
+			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetFilter(::vl::WString(L"Private Format (*.bin)|*.bin", false));
+		}
+		{
+			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogSaveDocPrivate));
+		}
+		(this->dialogQueryClose = new ::vl::presentation::controls::GuiMessageDialog());
+		{
+			::vl::__vwsn::This(this->dialogQueryClose)->SetIcon(::vl::presentation::INativeDialogService::MessageBoxIcons::IconQuestion);
+		}
+		{
+			::vl::__vwsn::This(this->dialogQueryClose)->SetInput(::vl::presentation::INativeDialogService::MessageBoxButtonsInput::DisplayYesNoCancel);
+		}
+		{
+			::vl::__vwsn::This(this->dialogQueryClose)->SetText(::vl::WString(L"The document has been changed since the last time it was saved as a Private Format file. Do you want to save this file?", false));
+		}
+		{
+			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogQueryClose));
+		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -14616,6 +14642,9 @@ Class (::demo::DocumentEditorBaseConstructor)
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc42_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf112_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			::vl::__vwsn::This(this->dialogQueryClose)->SetTitle(::vl::__vwsn::This(this->self)->GetText());
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf113_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this));
@@ -15020,6 +15049,8 @@ Class (::demo::DocumentEditorBaseConstructor)
 		, dialogOpen(static_cast<::vl::presentation::controls::GuiOpenFileDialog*>(nullptr))
 		, dialogOpenDoc(static_cast<::vl::presentation::controls::GuiOpenFileDialog*>(nullptr))
 		, dialogSaveDoc(static_cast<::vl::presentation::controls::GuiSaveFileDialog*>(nullptr))
+		, dialogSaveDocPrivate(static_cast<::vl::presentation::controls::GuiSaveFileDialog*>(nullptr))
+		, dialogQueryClose(static_cast<::vl::presentation::controls::GuiMessageDialog*>(nullptr))
 		, menuContainer(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, toolstripContainer(static_cast<::vl::presentation::compositions::GuiCellComposition*>(nullptr))
 		, document(static_cast<::vl::presentation::controls::GuiDocumentViewer*>(nullptr))
@@ -17902,40 +17933,40 @@ Class (::demo::EnglishNumbersController)
 	::vl::WString EnglishNumbersController::ToText_1to9(::vl::vint i)
 	{
 		{
-			auto __vwsn_switch_4 = i;
-			if ((__vwsn_switch_4 == static_cast<::vl::vint>(1)))
+			auto __vwsn_switch_5 = i;
+			if ((__vwsn_switch_5 == static_cast<::vl::vint>(1)))
 			{
 				return ::vl::WString(L"one", false);
 			}
-			else if ((__vwsn_switch_4 == static_cast<::vl::vint>(2)))
+			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(2)))
 			{
 				return ::vl::WString(L"two", false);
 			}
-			else if ((__vwsn_switch_4 == static_cast<::vl::vint>(3)))
+			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(3)))
 			{
 				return ::vl::WString(L"three", false);
 			}
-			else if ((__vwsn_switch_4 == static_cast<::vl::vint>(4)))
+			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(4)))
 			{
 				return ::vl::WString(L"four", false);
 			}
-			else if ((__vwsn_switch_4 == static_cast<::vl::vint>(5)))
+			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(5)))
 			{
 				return ::vl::WString(L"five", false);
 			}
-			else if ((__vwsn_switch_4 == static_cast<::vl::vint>(6)))
+			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(6)))
 			{
 				return ::vl::WString(L"six", false);
 			}
-			else if ((__vwsn_switch_4 == static_cast<::vl::vint>(7)))
+			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(7)))
 			{
 				return ::vl::WString(L"seven", false);
 			}
-			else if ((__vwsn_switch_4 == static_cast<::vl::vint>(8)))
+			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(8)))
 			{
 				return ::vl::WString(L"eight", false);
 			}
-			else if ((__vwsn_switch_4 == static_cast<::vl::vint>(9)))
+			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(9)))
 			{
 				return ::vl::WString(L"nine", false);
 			}
@@ -17946,40 +17977,40 @@ Class (::demo::EnglishNumbersController)
 	::vl::WString EnglishNumbersController::ToText_11to19(::vl::vint i)
 	{
 		{
-			auto __vwsn_switch_5 = i;
-			if ((__vwsn_switch_5 == static_cast<::vl::vint>(1)))
+			auto __vwsn_switch_6 = i;
+			if ((__vwsn_switch_6 == static_cast<::vl::vint>(1)))
 			{
 				return ::vl::WString(L"eleven", false);
 			}
-			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(2)))
+			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(2)))
 			{
 				return ::vl::WString(L"twelve", false);
 			}
-			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(3)))
+			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(3)))
 			{
 				return ::vl::WString(L"thirteen", false);
 			}
-			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(4)))
+			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(4)))
 			{
 				return ::vl::WString(L"fourteen", false);
 			}
-			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(5)))
+			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(5)))
 			{
 				return ::vl::WString(L"fifteen", false);
 			}
-			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(6)))
+			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(6)))
 			{
 				return ::vl::WString(L"sixteen", false);
 			}
-			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(7)))
+			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(7)))
 			{
 				return ::vl::WString(L"seventeen", false);
 			}
-			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(8)))
+			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(8)))
 			{
 				return ::vl::WString(L"eightteen", false);
 			}
-			else if ((__vwsn_switch_5 == static_cast<::vl::vint>(9)))
+			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(9)))
 			{
 				return ::vl::WString(L"nineteen", false);
 			}
@@ -17990,44 +18021,44 @@ Class (::demo::EnglishNumbersController)
 	::vl::WString EnglishNumbersController::NumberToText_1To99(::vl::vint i)
 	{
 		{
-			auto __vwsn_switch_6 = (i / static_cast<::vl::vint>(10));
-			if ((__vwsn_switch_6 == static_cast<::vl::vint>(0)))
+			auto __vwsn_switch_7 = (i / static_cast<::vl::vint>(10));
+			if ((__vwsn_switch_7 == static_cast<::vl::vint>(0)))
 			{
 				return this->ToText_1to9((i % static_cast<::vl::vint>(10)));
 			}
-			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(1)))
+			else if ((__vwsn_switch_7 == static_cast<::vl::vint>(1)))
 			{
 				return ((i == static_cast<::vl::vint>(10)) ? ::vl::WString(L"ten", false) : this->ToText_11to19((i % static_cast<::vl::vint>(10))));
 			}
-			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(2)))
+			else if ((__vwsn_switch_7 == static_cast<::vl::vint>(2)))
 			{
 				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"twenty", false) : (::vl::WString(L"twenty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
-			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(3)))
+			else if ((__vwsn_switch_7 == static_cast<::vl::vint>(3)))
 			{
 				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"thirty", false) : (::vl::WString(L"thirty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
-			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(4)))
+			else if ((__vwsn_switch_7 == static_cast<::vl::vint>(4)))
 			{
 				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"fourty", false) : (::vl::WString(L"fourty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
-			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(5)))
+			else if ((__vwsn_switch_7 == static_cast<::vl::vint>(5)))
 			{
 				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"fifty", false) : (::vl::WString(L"fifty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
-			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(6)))
+			else if ((__vwsn_switch_7 == static_cast<::vl::vint>(6)))
 			{
 				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"sixty", false) : (::vl::WString(L"sixty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
-			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(7)))
+			else if ((__vwsn_switch_7 == static_cast<::vl::vint>(7)))
 			{
 				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"seventy", false) : (::vl::WString(L"seventy-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
-			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(8)))
+			else if ((__vwsn_switch_7 == static_cast<::vl::vint>(8)))
 			{
 				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"eighty", false) : (::vl::WString(L"eighty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
-			else if ((__vwsn_switch_6 == static_cast<::vl::vint>(9)))
+			else if ((__vwsn_switch_7 == static_cast<::vl::vint>(9)))
 			{
 				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"ninety", false) : (::vl::WString(L"ninety-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}

@@ -32,12 +32,13 @@ namespace vl_workflow_global
 	struct __vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 	struct __vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 	struct __vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-	struct __vwsnf17_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__;
-	struct __vwsnf18_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+	struct __vwsnf17_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+	struct __vwsnf18_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__;
 	struct __vwsnf19_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 	struct __vwsnf1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf20_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
-	struct __vwsnf2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+	struct __vwsnf21_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+	struct __vwsnf2_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 	struct __vwsnf4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 	struct __vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
@@ -89,7 +90,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf17_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
@@ -209,7 +210,7 @@ namespace demo
 
 	class DocumentEditorRibbon : public ::demo::DocumentEditorBase, public ::demo::DocumentEditorRibbonConstructor, public ::vl::reflection::Description<DocumentEditorRibbon>
 	{
-		friend struct ::vl_workflow_global::__vwsnf17_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__;
+		friend struct ::vl_workflow_global::__vwsnf18_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__;
 		friend class ::demo::DocumentEditorRibbonConstructor;
 		friend class ::vl_workflow_global::__vwsnc10_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription;
@@ -227,7 +228,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf17_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_;
@@ -267,6 +268,7 @@ namespace demo
 	{
 		friend class ::vl_workflow_global::__vwsnc1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
@@ -284,6 +286,7 @@ namespace demo
 		friend class ::demo::MainWindowConstructor;
 		friend class ::vl_workflow_global::__vwsnc1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
@@ -319,9 +322,9 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc11_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc12_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc13_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf18_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf19_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf20_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf21_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StyleItemTemplateConstructor>;
 #endif
@@ -349,9 +352,9 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc11_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc12_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc13_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf18_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf19_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf20_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf21_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StyleItemTemplate>;
 #endif
@@ -423,7 +426,7 @@ Closures
 
 		__vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
@@ -432,7 +435,7 @@ Closures
 
 		__vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
@@ -441,25 +444,25 @@ Closures
 
 		__vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf17_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
+	{
+		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
+
+		__vwsnf17_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
+
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiItemEventArgs* arguments) const;
 	};
 
-	struct __vwsnf17_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__
+	struct __vwsnf18_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__
 	{
 		::demo::DocumentEditorRibbon* __vwsnthis_0;
 
-		__vwsnf17_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__(::demo::DocumentEditorRibbon* __vwsnctorthis_0);
+		__vwsnf18_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__(::demo::DocumentEditorRibbon* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
-	};
-
-	struct __vwsnf18_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_
-	{
-		::demo::StyleItemTemplateConstructor* __vwsnthis_0;
-
-		__vwsnf18_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf19_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_
@@ -489,13 +492,22 @@ Closures
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
+	struct __vwsnf21_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_
 	{
-		::demo::DocumentEditorRibbonConstructor* __vwsnthis_0;
+		::demo::StyleItemTemplateConstructor* __vwsnthis_0;
 
-		__vwsnf2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
+		__vwsnf21_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0);
 
-		::vl::Ptr<::vl::reflection::description::IValueEnumerable> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
+	struct __vwsnf2_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf2_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiRequestEventArgs* arguments) const;
 	};
 
 	struct __vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
@@ -504,7 +516,7 @@ Closures
 
 		__vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
+		::vl::Ptr<::vl::reflection::description::IValueEnumerable> operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
 	struct __vwsnf4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
@@ -513,7 +525,7 @@ Closures
 
 		__vwsnf4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		::vl::presentation::templates::GuiListItemTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
+		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
 	struct __vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
@@ -522,7 +534,7 @@ Closures
 
 		__vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		::vl::presentation::templates::GuiListItemTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
 	};
 
 	struct __vwsnf6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
@@ -549,7 +561,7 @@ Closures
 
 		__vwsnf8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	struct __vwsnf9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_
@@ -558,7 +570,7 @@ Closures
 
 		__vwsnf9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	class __vwsnc10_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription

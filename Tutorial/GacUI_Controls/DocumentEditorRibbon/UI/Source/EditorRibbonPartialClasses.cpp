@@ -64,6 +64,24 @@ Closures
 
 	void __vwsnf10_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_15.Obj())->GetFont();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::FontProperties>(__vwsn_value_);
+		if ((__vwsn_old_ == __vwsn_new_))
+		{
+			return;
+		}
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_15.Obj())->SetFont(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf11_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf11_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
+	{
+	}
+
+	void __vwsnf11_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_22)->GetLargeImage();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::presentation::GuiImageData>>(__vwsn_value_);
 		if ((__vwsn_old_.Obj() == __vwsn_new_.Obj()))
@@ -75,12 +93,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf11_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf11_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf12_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf12_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf11_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf12_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_29)->GetSelected();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
@@ -93,12 +111,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf12_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf12_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf13_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf13_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf12_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf13_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_30)->GetSelected();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
@@ -111,12 +129,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf13_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf13_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf13_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_31)->GetSelected();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
@@ -129,24 +147,24 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	void __vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		::vl::__vwsn::This(__vwsnthis_0->dialogMessage)->ShowDialog();
 	}
 
 	//-------------------------------------------------------------------
 
-	__vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->styleGallery)->GetItemSource();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::Ptr<::vl::reflection::description::IValueEnumerable>>(__vwsn_value_);
@@ -159,12 +177,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf17_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf17_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiItemEventArgs* arguments) const
+	void __vwsnf17_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiItemEventArgs* arguments) const
 	{
 		if ((::vl::__vwsn::This(arguments)->itemIndex != (- static_cast<::vl::vint>(1))))
 		{
@@ -176,32 +194,14 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf17_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__::__vwsnf17_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__(::demo::DocumentEditorRibbon* __vwsnctorthis_0)
+	__vwsnf18_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__::__vwsnf18_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__(::demo::DocumentEditorRibbon* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf17_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
+	void __vwsnf18_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
 		__vwsnthis_0->SelectStyleName(::vl::__vwsn::This(__vwsnthis_0->document)->SummarizeStyleName(::vl::__vwsn::This(__vwsnthis_0->document)->GetCaretBegin(), ::vl::__vwsn::This(__vwsnthis_0->document)->GetCaretEnd()));
-	}
-
-	//-------------------------------------------------------------------
-
-	__vwsnf18_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::__vwsnf18_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
-	{
-	}
-
-	void __vwsnf18_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
-	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->GetText();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::WString>(__vwsn_value_);
-		if ((__vwsn_old_ == __vwsn_new_))
-		{
-			return;
-		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->SetText(__vwsn_new_);
 	}
 
 	//-------------------------------------------------------------------
@@ -213,13 +213,13 @@ Closures
 
 	void __vwsnf19_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->GetColor();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::Color>(__vwsn_value_);
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->GetText();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::WString>(__vwsn_value_);
 		if ((__vwsn_old_ == __vwsn_new_))
 		{
 			return;
 		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->SetColor(__vwsn_new_);
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->SetText(__vwsn_new_);
 	}
 
 	//-------------------------------------------------------------------
@@ -249,6 +249,24 @@ Closures
 
 	void __vwsnf20_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->GetColor();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::Color>(__vwsn_value_);
+		if ((__vwsn_old_ == __vwsn_new_))
+		{
+			return;
+		}
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_3.Obj())->SetColor(__vwsn_new_);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf21_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::__vwsnf21_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(::demo::StyleItemTemplateConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
+	{
+	}
+
+	void __vwsnf21_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_7.Obj())->GetText();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::WString>(__vwsn_value_);
 		if ((__vwsn_old_ == __vwsn_new_))
@@ -260,15 +278,14 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf2_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::__vwsnf2_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	::vl::Ptr<::vl::reflection::description::IValueEnumerable> __vwsnf2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	void __vwsnf2_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiRequestEventArgs* arguments) const
 	{
-		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::StyleGroup>>(__vwsn_item_);
-		return ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(item.Obj())->Items);
+		(::vl::__vwsn::This(arguments)->cancel = ::vl::__vwsn::This(__vwsnthis_0->editor)->CancelWindowClose());
 	}
 
 	//-------------------------------------------------------------------
@@ -278,10 +295,10 @@ Closures
 	{
 	}
 
-	::vl::WString __vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	::vl::Ptr<::vl::reflection::description::IValueEnumerable> __vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
 	{
 		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::StyleGroup>>(__vwsn_item_);
-		return ::vl::__vwsn::This(item.Obj())->Name;
+		return ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(item.Obj())->Items);
 	}
 
 	//-------------------------------------------------------------------
@@ -291,7 +308,20 @@ Closures
 	{
 	}
 
-	::vl::presentation::templates::GuiListItemTemplate* __vwsnf4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const
+	::vl::WString __vwsnf4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_item_) const
+	{
+		auto item = ::vl::__vwsn::Unbox<::vl::Ptr<::demo::StyleGroup>>(__vwsn_item_);
+		return ::vl::__vwsn::This(item.Obj())->Name;
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
+	{
+	}
+
+	::vl::presentation::templates::GuiListItemTemplate* __vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const
 	{
 		{
 			if ([&](){ auto __vwsn_temp__ = __vwsn_viewModel_; return __vwsn_temp__.GetSharedPtr() && ::vl::__vwsn::RawPtrCast<::demo::StyleItem>(__vwsn_temp__.GetRawPtr()) != nullptr; }())
@@ -304,12 +334,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->self)->GetAlignLeftSelected();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
@@ -322,12 +352,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf7_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf7_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf7_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->self)->GetAlignCenterSelected();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
@@ -340,12 +370,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf7_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf7_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
+	__vwsnf8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf7_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
 		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->self)->GetAlignRightSelected();
 		auto __vwsn_new_ = ::vl::__vwsn::Unbox<bool>(__vwsn_value_);
@@ -358,32 +388,14 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
-		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
-	{
-	}
-
-	void __vwsnf8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
-	{
-		::vl::__vwsn::This(__vwsnthis_0->toolstripHome)->ShowPopup(static_cast<::vl::presentation::controls::GuiControl*>(__vwsnthis_0->buttonHome), true);
-	}
-
-	//-------------------------------------------------------------------
-
 	__vwsnf9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::__vwsnf9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(::demo::DocumentEditorRibbonConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
+	void __vwsnf9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_15.Obj())->GetFont();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::FontProperties>(__vwsn_value_);
-		if ((__vwsn_old_ == __vwsn_new_))
-		{
-			return;
-		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_15.Obj())->SetFont(__vwsn_new_);
+		::vl::__vwsn::This(__vwsnthis_0->toolstripHome)->ShowPopup(static_cast<::vl::presentation::controls::GuiControl*>(__vwsnthis_0->buttonHome), true);
 	}
 
 	//-------------------------------------------------------------------
@@ -1629,10 +1641,10 @@ namespace demo
 			(this->styleGallery = new ::vl::presentation::controls::GuiBindableRibbonGalleryList(::vl::presentation::theme::ThemeName::RibbonGalleryList));
 		}
 		{
-			::vl::__vwsn::This(this->styleGallery)->SetGroupChildrenProperty(LAMBDA(::vl_workflow_global::__vwsnf2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::This(this->styleGallery)->SetGroupChildrenProperty(LAMBDA(::vl_workflow_global::__vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->styleGallery)->SetGroupTitleProperty(LAMBDA(::vl_workflow_global::__vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::This(this->styleGallery)->SetGroupTitleProperty(LAMBDA(::vl_workflow_global::__vwsnf4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->styleGallery)->SetVisibleItemCount(static_cast<::vl::vint>(5));
@@ -1644,7 +1656,7 @@ namespace demo
 			::vl::__vwsn::This(this->styleGallery)->SetMinCount(static_cast<::vl::vint>(2));
 		}
 		{
-			::vl::__vwsn::This(this->styleGallery)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::This(this->styleGallery)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 		}
 		(this->__vwsn_precompile_81 = ::vl::__vwsn::This(this->styleGallery)->GetSubMenu());
 		{
@@ -1954,26 +1966,26 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc2_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
-			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
-		}
-		{
-			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
+			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf7_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this));
+			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc4_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->buttonHome)->Clicked, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc5_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf10_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -1990,7 +2002,7 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc6_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf10_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf11_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -1998,7 +2010,7 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc7_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf11_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf12_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -2006,7 +2018,7 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc8_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf12_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf13_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -2014,11 +2026,11 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc9_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf13_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf14_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_21)->ExpandButtonClicked, __vwsn_event_handler_);
 		}
 		{
@@ -2092,11 +2104,11 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc10_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf15_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf16_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this));
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf17_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->styleGallery)->ItemApplied, __vwsn_event_handler_);
 		}
 		{
@@ -2363,7 +2375,7 @@ Class (::demo::DocumentEditorRibbon)
 	void DocumentEditorRibbon::__vwsn_instance_ctor_()
 	{
 		this->SetStyleGroups(this->GenerateStyleGroups());
-		::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->document)->SelectionChanged, LAMBDA(::vl_workflow_global::__vwsnf17_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__(this)));
+		::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->document)->SelectionChanged, LAMBDA(::vl_workflow_global::__vwsnf18_EditorRibbon_demo_DocumentEditorRibbon___vwsn_instance_ctor__(this)));
 	}
 
 	DocumentEditorRibbon::~DocumentEditorRibbon()
@@ -2393,6 +2405,10 @@ Class (::demo::MainWindowConstructor)
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf1_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf2_EditorRibbon_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_0)->WindowClosing, __vwsn_event_handler_);
 		}
 	}
 
@@ -2562,12 +2578,12 @@ Class (::demo::StyleItemTemplateConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc11_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf18_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf19_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc12_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf19_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf20_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -2575,7 +2591,7 @@ Class (::demo::StyleItemTemplateConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc13_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf20_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf21_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{

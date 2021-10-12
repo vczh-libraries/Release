@@ -1253,6 +1253,8 @@ namespace demo
 		::vl::presentation::controls::GuiOpenFileDialog* dialogOpen;
 		::vl::presentation::controls::GuiOpenFileDialog* dialogOpenDoc;
 		::vl::presentation::controls::GuiSaveFileDialog* dialogSaveDoc;
+		::vl::presentation::controls::GuiSaveFileDialog* dialogSaveDocPrivate;
+		::vl::presentation::controls::GuiMessageDialog* dialogQueryClose;
 		::vl::presentation::compositions::GuiCellComposition* menuContainer;
 		::vl::presentation::compositions::GuiCellComposition* toolstripContainer;
 		::vl::presentation::controls::GuiDocumentViewer* document;

@@ -152,6 +152,7 @@ namespace demo
 	private:
 		void SaveDocument();
 	public:
+		bool CancelWindowClose();
 		DocumentEditorBase();
 		void __vwsn_instance_ctor_();
 		~DocumentEditorBase();

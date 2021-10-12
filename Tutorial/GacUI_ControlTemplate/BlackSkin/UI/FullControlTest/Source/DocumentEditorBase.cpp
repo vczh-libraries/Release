@@ -152,6 +152,7 @@ namespace demo
 				if ((__vwsn_switch_3 == static_cast<::vl::vint>(0)))
 				{
 					::vl::__vwsn::This(this->self)->SaveAsPrivateFormat(::vl::__vwsn::This(this->dialogSaveDoc)->GetFileName());
+					::vl::__vwsn::This(this->document)->NotifyModificationSaved();
 				}
 				else if ((__vwsn_switch_3 == static_cast<::vl::vint>(1)))
 				{
@@ -162,6 +163,40 @@ namespace demo
 					::vl::__vwsn::This(this->self)->SaveAsHTML(::vl::__vwsn::This(this->dialogSaveDoc)->GetFileName());
 				}
 			}
+		}
+	}
+
+	bool DocumentEditorBase::CancelWindowClose()
+	{
+		if (::vl::__vwsn::This(this->document)->GetModified())
+		{
+			{
+				auto __vwsn_switch_4 = ::vl::__vwsn::This(this->dialogQueryClose)->ShowDialog();
+				if ((__vwsn_switch_4 == ::vl::presentation::INativeDialogService::MessageBoxButtonsOutput::SelectYes))
+				{
+					if (::vl::__vwsn::This(this->dialogSaveDocPrivate)->ShowDialog())
+					{
+						::vl::__vwsn::This(this->self)->SaveAsPrivateFormat(::vl::__vwsn::This(this->dialogSaveDocPrivate)->GetFileName());
+						return false;
+					}
+					else
+					{
+						return true;
+					}
+				}
+				else if ((__vwsn_switch_4 == ::vl::presentation::INativeDialogService::MessageBoxButtonsOutput::SelectNo))
+				{
+					return false;
+				}
+				else
+				{
+					return true;
+				}
+			}
+		}
+		else
+		{
+			return false;
 		}
 	}
 
