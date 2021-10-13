@@ -7,15 +7,13 @@ https://zhuanlan.zhihu.com/p/39369370
 ### Bugs
 
 - **Controls**
-  - **DocumentEditor**: When a document's height is smaller than the control, the lower part cannot click to interact with the last line.
-  - **DocumentEditor**: In default font, the lower part of "g" in the last line is clipped, not rendered properly.
   - **DocumentEditorRibbon**: The dropdown menu for ribbon gallery cannot be properly resized by dragging the resize bar.
 
 - **Github Issues**
   - https://github.com/vczh-libraries/GacUI/issues/66
   - https://github.com/vczh-libraries/GacUI/issues/56
     - `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
-  https://github.com/vczh-libraries/GacUI/issues/46
+  - https://github.com/vczh-libraries/GacUI/issues/46
 
 ### Workflow
 
