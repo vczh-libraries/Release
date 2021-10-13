@@ -11,8 +11,6 @@ https://zhuanlan.zhihu.com/p/39369370
 
 - **Github Issues**
   - https://github.com/vczh-libraries/GacUI/issues/66
-  - https://github.com/vczh-libraries/GacUI/issues/56
-    - `GlobalStringKey` need to remember the `GlobalStringKeyManager` object, and if the global object is changed, it means this key becomes a wild pointer, it should crash.
 
 ### Workflow
 
