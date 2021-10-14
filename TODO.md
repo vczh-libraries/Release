@@ -6,9 +6,6 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ### Bugs
 
-- **Controls**
-  - **DocumentEditorRibbon**: The dropdown menu for ribbon gallery cannot be properly resized by dragging the resize bar.
-
 - **Github Issues**
   - https://github.com/vczh-libraries/GacUI/issues/66
 
