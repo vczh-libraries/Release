@@ -4,11 +4,6 @@ https://zhuanlan.zhihu.com/p/39369370
 
 ## GacUI 1.0
 
-### Bugs
-
-- **Github Issues**
-  - https://github.com/vczh-libraries/GacUI/issues/66
-
 ### Workflow
 
 - Collection literal `{a b c}` should react to the "receiving type" if the receiving type is a known collection type.
