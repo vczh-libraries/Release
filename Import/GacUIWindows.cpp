@@ -725,7 +725,7 @@ WindowsDirect2DParagraph (Formatting)
 				{
 					DWRITE_TEXT_METRICS metrics;
 					textLayout->GetMetrics(&metrics);
-					return (vint)metrics.height;
+					return (vint)ceil(metrics.height);
 				}
 
 /***********************************************************************
@@ -774,49 +774,106 @@ WindowsDirect2DParagraph (Rendering)
 					return true;
 				}
 
+				struct BackgroundRenderer
+				{
+					IWindowsDirect2DRenderTarget* renderTarget = nullptr;
+					ID2D1SolidColorBrush* lastBackgroundBrush = nullptr;
+					FLOAT lbx1, lby1, lbx2, lby2;
+
+					void RenderBackground()
+					{
+						if (lastBackgroundBrush)
+						{
+							renderTarget->GetDirect2DRenderTarget()->FillRectangle(
+								D2D1::RectF(lbx1, lby1, lbx2, lby2),
+								lastBackgroundBrush
+							);
+							lastBackgroundBrush = nullptr;
+						}
+					}
+
+					void SubmitBackground(ID2D1SolidColorBrush* brush, FLOAT x1, FLOAT y1, FLOAT x2, FLOAT y2)
+					{
+						if (lastBackgroundBrush)
+						{
+							if (lastBackgroundBrush != brush)
+							{
+								RenderBackground();
+							}
+							else
+							{
+								FLOAT yc = (y1 + y2) / 2;
+								if (yc<lby1 || yc>lby2)
+								{
+									RenderBackground();
+								}
+							}
+						}
+
+						if (lastBackgroundBrush)
+						{
+							if (lbx1 > x1) lbx1 = x1;
+							if (lby1 > y1) lby1 = y1;
+							if (lbx2 < x2) lbx2 = x2;
+							if (lby2 < y2) lby2 = y2;
+						}
+						else
+						{
+							lastBackgroundBrush = brush;
+							lbx1 = x1;
+							lby1 = y1;
+							lbx2 = x2;
+							lby2 = y2;
+						}
+					}
+				};
+
 				void Render(Rect bounds)override
 				{
 					paragraphOffset = bounds.LeftTop();
 					PrepareFormatData();
-					for(vint i=0;i<backgroundColors.Count();i++)
 					{
-						TextRange key=backgroundColors.Keys()[i];
-						Color color=backgroundColors.Values()[i];
-						if(color.a>0)
+						BackgroundRenderer backgroundRenderer;
+						backgroundRenderer.renderTarget = renderTarget;
+
+						for (vint i = 0; i < backgroundColors.Count(); i++)
 						{
-							ID2D1SolidColorBrush* brush=renderTarget->CreateDirect2DBrush(color);
-
-							vint start=key.start;
-							if(start<0)
+							TextRange key = backgroundColors.Keys()[i];
+							Color color = backgroundColors.Values()[i];
+							if (color.a > 0)
 							{
-								start=0;
+								ID2D1SolidColorBrush* brush = renderTarget->CreateDirect2DBrush(color);
+
+								vint start = key.start;
+								if (start < 0)
+								{
+									start = 0;
+								}
+
+								while (start < charHitTestMap.Count() && start < key.end)
+								{
+									vint index = charHitTestMap[start];
+									DWRITE_HIT_TEST_METRICS& hitTest = hitTestMetrics[index];
+
+									FLOAT x1 = hitTest.left + (FLOAT)bounds.x1;
+									FLOAT y1 = hitTest.top + (FLOAT)bounds.y1;
+									FLOAT x2 = x1 + hitTest.width;
+									FLOAT y2 = y1 + hitTest.height;
+
+									x1 -= 0.5f;
+									y1 -= 0.0f;
+									x2 += 0.5f;
+									y2 += 0.5f;
+
+									backgroundRenderer.SubmitBackground(brush, x1, y1, x2, y2);
+									start = hitTest.textPosition + hitTest.length;
+								}
+
+								renderTarget->DestroyDirect2DBrush(color);
 							}
-
-							while(start<charHitTestMap.Count() && start<key.end)
-							{
-								vint index=charHitTestMap[start];
-								DWRITE_HIT_TEST_METRICS& hitTest=hitTestMetrics[index];
-
-								FLOAT x1=hitTest.left+(FLOAT)bounds.x1;
-								FLOAT y1=hitTest.top+(FLOAT)bounds.y1;
-								FLOAT x2=x1+hitTest.width;
-								FLOAT y2=y1+hitTest.height;
-
-								x1-=0.5f;
-								y1-=0.0f;
-								x2+=0.5f;
-								y2+=0.5f;
-
-								renderTarget->GetDirect2DRenderTarget()->FillRectangle(
-									D2D1::RectF(x1, y1, x2, y2),
-									brush
-									);
-										
-								start=hitTest.textPosition+hitTest.length;
-							}
-
-							renderTarget->DestroyDirect2DBrush(color);
 						}
+
+						backgroundRenderer.RenderBackground();
 					}
 
 					renderTarget->GetDirect2DRenderTarget()->DrawTextLayout(
@@ -825,23 +882,23 @@ WindowsDirect2DParagraph (Rendering)
 						defaultTextColor,
 						D2D1_DRAW_TEXT_OPTIONS_NO_SNAP);
 
-					if(caret!=-1)
+					if (caret != -1)
 					{
-						Rect caretBounds=GetCaretBounds(caret, caretFrontSide);
-						vint x=caretBounds.x1+bounds.x1;
-						vint y1=caretBounds.y1+bounds.y1;
-						vint y2=y1+caretBounds.Height();
+						Rect caretBounds = GetCaretBounds(caret, caretFrontSide);
+						vint x = caretBounds.x1 + bounds.x1;
+						vint y1 = caretBounds.y1 + bounds.y1;
+						vint y2 = y1 + caretBounds.Height();
 
 						renderTarget->GetDirect2DRenderTarget()->DrawLine(
-							D2D1::Point2F((FLOAT)x-0.5f, (FLOAT)y1+0.5f),
-							D2D1::Point2F((FLOAT)x-0.5f, (FLOAT)y2+0.5f),
+							D2D1::Point2F((FLOAT)x - 0.5f, (FLOAT)y1 + 0.5f),
+							D2D1::Point2F((FLOAT)x - 0.5f, (FLOAT)y2 + 0.5f),
 							caretBrush
-							);
+						);
 						renderTarget->GetDirect2DRenderTarget()->DrawLine(
-							D2D1::Point2F((FLOAT)x+0.5f, (FLOAT)y1+0.5f),
-							D2D1::Point2F((FLOAT)x+0.5f, (FLOAT)y2+0.5f),
+							D2D1::Point2F((FLOAT)x + 0.5f, (FLOAT)y1 + 0.5f),
+							D2D1::Point2F((FLOAT)x + 0.5f, (FLOAT)y2 + 0.5f),
 							caretBrush
-							);
+						);
 					}
 				}
 
@@ -8306,17 +8363,49 @@ WindowsForm
 					ImmReleaseContext(handle, imc);
 				}
 
+				bool supressClosePopups = false;
+
+				static void ClosePopupsOf(WindowsForm* owner, SortedList<WindowsForm*>& exceptions)
+				{
+					for (vint i = 0; i < owner->childWindows.Count(); i++)
+					{
+						auto popup = owner->childWindows[i];
+						if (popup->windowMode != Normal && popup->IsVisible())
+						{
+							if (!exceptions.Contains(popup))
+							{
+								popup->Hide(false);
+							}
+						}
+						ClosePopupsOf(popup, exceptions);
+					}
+				}
+
 				bool HandleMessageInternal(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result)
 				{
-					// handling popup windows
+					if (!supressClosePopups)
 					{
-						bool closeChildPopups = false;
+						bool closePopups = false;
+						WindowsForm* activatedWindow = nullptr;
+						WindowsForm* rootWindow = nullptr;
+						SortedList<WindowsForm*> exceptions;
+
 						switch (uMsg)
 						{
-						case WM_ACTIVATE:
-							if (wParam == WA_INACTIVE && windowMode == Normal)
+						case WM_ACTIVATEAPP:
+							if (wParam == FALSE)
 							{
-								closeChildPopups = true;
+								closePopups = true;
+							}
+							break;
+						case WM_ACTIVATE:
+							switch (LOWORD(wParam))
+							{
+							case WA_ACTIVE:
+							case WA_CLICKACTIVE:
+								activatedWindow = this;
+								closePopups = true;
+								break;
 							}
 							break;
 						case WM_LBUTTONDOWN:
@@ -8325,29 +8414,32 @@ WindowsForm
 						case WM_NCLBUTTONDOWN:
 						case WM_NCMBUTTONDOWN:
 						case WM_NCRBUTTONDOWN:
-							closeChildPopups = true;
+							activatedWindow = this;
+							closePopups = true;
 							break;
 						}
 
-						if (closeChildPopups)
+						if (activatedWindow)
 						{
-							List<WindowsForm*> childPopups;
-							childPopups.Add(this);
-							for (vint i = 0; i < childPopups.Count(); i++)
+							rootWindow = activatedWindow;
+							exceptions.Add(rootWindow);
+							while (auto parentWindow = rootWindow->parentWindow)
 							{
-								auto popup = childPopups[i];
-								for (vint j = 0; j < popup->childWindows.Count(); j++)
-								{
-									auto childPopup = popup->childWindows[j];
-									if (childPopup->windowMode != Normal)
-									{
-										childPopups.Add(childPopup);
-									}
-								}
+								rootWindow = parentWindow;
+								exceptions.Add(parentWindow);
+							}
+						}
 
-								if (popup != this && popup->IsVisible())
+						if (closePopups)
+						{
+							List<IWindowsForm*> allRootWindows;
+							GetAllCreatedWindows(allRootWindows, true);
+
+							for (vint i = 0; i < allRootWindows.Count(); i++)
+							{
+								if (auto windowsForm = dynamic_cast<WindowsForm*>(allRootWindows[i]))
 								{
-									popup->Hide(false);
+									ClosePopupsOf(windowsForm, exceptions);
 								}
 							}
 						}
@@ -8364,7 +8456,7 @@ WindowsForm
 							NativeRect bounds(rawBounds->left, rawBounds->top, rawBounds->right, rawBounds->bottom);
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->Moving(bounds, false);
+								listeners[i]->Moving(bounds, false, (uMsg == WM_SIZING));
 							}
 							if(		rawBounds->left!=bounds.Left().value
 								||	rawBounds->top!=bounds.Top().value
@@ -9093,7 +9185,7 @@ WindowsForm
 					NativeRect newBounds=bounds;
 					for(vint i=0;i<listeners.Count();i++)
 					{
-						listeners[i]->Moving(newBounds, true);
+						listeners[i]->Moving(newBounds, true, false);
 					}
 					MoveWindow(handle, (int)newBounds.Left().value, (int)newBounds.Top().value, (int)newBounds.Width().value, (int)newBounds.Height().value, FALSE);
 				}
@@ -9730,6 +9822,24 @@ WindowsController
 					return windows.Values()[index];
 				}
 
+				void GetAllCreatedWindows(collections::List<IWindowsForm*>& createdWindows, bool rootWindowOnly)
+				{
+					if (rootWindowOnly)
+					{
+						FOREACH(WindowsForm*, window, windows.Values())
+						{
+							if (window->GetWindowMode() == INativeWindow::Normal)
+							{
+								createdWindows.Add(window);
+							}
+						}
+					}
+					else
+					{
+						CopyFrom(createdWindows, windows.Values());
+					}
+				}
+
 				bool HandleMessage(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result)
 				{
 					bool skipDefaultProcedure=false;
@@ -9970,12 +10080,21 @@ Windows Platform Native Controller
 				{
 					return controller->GetWindowsFormFromHandle(hwnd);
 				}
-				return 0;
+				return nullptr;
 			}
 
 			IWindowsForm* GetWindowsForm(INativeWindow* window)
 			{
 				return dynamic_cast<WindowsForm*>(window);
+			}
+
+			void GetAllCreatedWindows(collections::List<IWindowsForm*>& windows, bool rootWindowOnly)
+			{
+				auto controller = dynamic_cast<WindowsController*>(GetCurrentController());
+				if (controller)
+				{
+					controller->GetAllCreatedWindows(windows, rootWindowOnly);
+				}
 			}
 
 			void DestroyWindowsNativeController(INativeController* controller)

@@ -2414,8 +2414,9 @@ Native Window
 			/// Called when the window is moving.
 			/// </summary>
 			/// <param name="bounds">The bounds. Message handler can change the bounds.</param>
-			/// <param name="fixSizeOnly">True if the message raise only want the message handler to change the size.</param>
-			virtual void				Moving(NativeRect& bounds, bool fixSizeOnly);
+			/// <param name="fixSizeOnly">True if the message raise only want the message handler to change the size, and keep the position unchanged.</param>
+			/// <param name="draggingBorder">True if the message raise because the user is dragging the border to change the size.</param>
+			virtual void				Moving(NativeRect& bounds, bool fixSizeOnly, bool draggingBorder);
 			/// <summary>
 			/// Called when the window is moved.
 			/// </summary>
@@ -6243,7 +6244,7 @@ Host
 				
 			private:
 				INativeWindowListener::HitTestResult	HitTest(NativePoint location)override;
-				void									Moving(NativeRect& bounds, bool fixSizeOnly)override;
+				void									Moving(NativeRect& bounds, bool fixSizeOnly, bool draggingBorder)override;
 				void									Moved()override;
 				void									DpiChanged()override;
 				void									Paint()override;
@@ -14369,6 +14370,13 @@ GuiDocumentCommonInterface
 				GuiControl*									documentControl = nullptr;
 				elements::GuiDocumentElement*				documentElement = nullptr;
 				compositions::GuiBoundsComposition*			documentComposition = nullptr;
+
+				compositions::GuiGraphicsComposition*		documentMouseArea = nullptr;
+				Ptr<compositions::IGuiGraphicsEventHandler>	onMouseMoveHandler;
+				Ptr<compositions::IGuiGraphicsEventHandler>	onMouseDownHandler;
+				Ptr<compositions::IGuiGraphicsEventHandler>	onMouseUpHandler;
+				Ptr<compositions::IGuiGraphicsEventHandler>	onMouseLeaveHandler;
+
 				Ptr<DocumentHyperlinkRun::Package>			activeHyperlinks;
 				bool										dragging = false;
 				EditMode									editMode = EditMode::ViewOnly;
@@ -14380,9 +14388,18 @@ GuiDocumentCommonInterface
 				void										InvokeUndoRedoChanged();
 				void										InvokeModifiedChanged();
 				void										UpdateCaretPoint();
+				void										EnsureDocumentRectVisible(Rect bounds);
 				void										Move(TextPos caret, bool shift, bool frontSide);
 				bool										ProcessKey(VKEY code, bool shift, bool ctrl);
-				void										InstallDocumentViewer(GuiControl* _sender, compositions::GuiGraphicsComposition* _container, compositions::GuiGraphicsComposition* eventComposition, compositions::GuiGraphicsComposition* focusableComposition);
+				void										InstallDocumentViewer(
+																GuiControl* _sender,
+																compositions::GuiGraphicsComposition* _mouseArea,
+																compositions::GuiGraphicsComposition* _container,
+																compositions::GuiGraphicsComposition* eventComposition,
+																compositions::GuiGraphicsComposition* focusableComposition
+																);
+				void										ReplaceMouseArea(compositions::GuiGraphicsComposition* _mouseArea);
+
 				void										SetActiveHyperlink(Ptr<DocumentHyperlinkRun::Package> package);
 				void										ActivateActiveHyperlink(bool activate);
 				void										AddShortcutCommand(VKEY key, const Func<void()>& eventHandler);
@@ -14396,6 +14413,9 @@ GuiDocumentCommonInterface
 				void										OnLostFocus(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnKeyDown(compositions::GuiGraphicsComposition* sender, compositions::GuiKeyEventArgs& arguments);
 				void										OnCharInput(compositions::GuiGraphicsComposition* sender, compositions::GuiCharEventArgs& arguments);
+
+				void										UpdateCursor(INativeCursor* cursor);
+				Point										GetMouseOffset();
 				void										OnMouseMove(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 				void										OnMouseDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 				void										OnMouseUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
@@ -15760,6 +15780,7 @@ Menu
 			private:
 				IGuiMenuService*						parentMenuService = nullptr;
 				bool									hideOnDeactivateAltHost = true;
+				Size									preferredMenuClientSizeBeforeUpdating;
 				Size									preferredMenuClientSize;
 
 				IGuiMenuService*						GetParentMenuService()override;
@@ -15768,6 +15789,7 @@ Menu
 				bool									IsSubMenuActivatedByMouseDown()override;
 				void									MenuItemExecuted()override;
 
+				void									Moving(NativeRect& bounds, bool fixSizeOnly, bool draggingBorder)override;
 				void									UpdateClientSizeAfterRendering(Size preferredSize, Size clientSize)override;
 			protected:
 				GuiControl*								owner;

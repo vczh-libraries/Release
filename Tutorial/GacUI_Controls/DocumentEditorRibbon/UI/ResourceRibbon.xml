@@ -27,8 +27,8 @@
         </demo:DocumentEditorRibbon>
         <ev.WindowClosing-eval>
           <![CDATA[
-          arguments.cancel = editor.CancelWindowClose();
-        ]]>
+            arguments.cancel = editor.CancelWindowClose();
+          ]]>
         </ev.WindowClosing-eval>
       </Window>
     </Instance>
