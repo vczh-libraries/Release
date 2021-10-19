@@ -1,6 +1,5 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include "UI/Source/Demo.h"
-#include <Windows.h>
 
 using namespace vl::collections;
 using namespace vl::stream;
