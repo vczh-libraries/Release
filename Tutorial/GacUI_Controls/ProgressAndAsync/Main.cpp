@@ -12,7 +12,7 @@ using namespace vl::stream;
 class ViewModel : public Object, public demo::IViewModel
 {
 public:
-	void BeginDownload(const ::vl::Func<void(::vl::vint32_t)>& progress, const ::vl::Func<void(const ::vl::WString&)>& callback)override
+	void BeginDownload(const ::vl::Func<void(::vl::vint)>& progress, const ::vl::Func<void(const ::vl::WString&)>& callback)override
 	{
 		GetApplication()->InvokeAsync([=]()
 		{
@@ -36,7 +36,7 @@ public:
 			progress(1);
 			for (vint i = 2; i <= 10; i+=2)
 			{
-				Sleep(1000);
+				sleep(1000);
 				progress(i);
 			}
 
