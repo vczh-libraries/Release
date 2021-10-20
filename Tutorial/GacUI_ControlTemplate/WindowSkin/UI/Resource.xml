@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\WindowSkin.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="Name">Demo</Text>
+    </Folder>
+  </Folder>
+  <Folder name="MainWindow">
+    <Instance name="MainWindowResource">
+      <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
+        <Window Text="Hello, world!" ClientSize="x:480 y:320">
+          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <Label Text="Welcome to GacUI Library!">
+            <att.Font>fontFamily:"Segoe UI" size:32 antialias:true</att.Font>
+          </Label>
+        </Window>
+      </Instance>
+    </Instance>
+  </Folder>
+</Resource>

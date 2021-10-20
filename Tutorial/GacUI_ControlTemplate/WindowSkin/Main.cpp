@@ -1,4 +1,4 @@
-#include "UI/FullControlTest/Source/Demo.h"
+#include "UI/Source/Demo.h"
 
 using namespace vl;
 using namespace vl::stream;
@@ -10,7 +10,7 @@ using namespace vl::presentation::controls;
 void GuiMain()
 {
 	{
-		FileStream fileStream(L"../UIRes/BlackSkin.bin", FileStream::ReadOnly);
+		FileStream fileStream(L"../UIRes/WindowSkin.bin", FileStream::ReadOnly);
 		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
 	{
