@@ -35,6 +35,8 @@ namespace vl
 #ifndef VCZH_DEBUG_NO_REFLECTION
 			DECL_TYPE_INFO(::demo::MainWindow)
 			DECL_TYPE_INFO(::demo::MainWindowConstructor)
+			DECL_TYPE_INFO(::demo::SystemFrameWindowTemplate)
+			DECL_TYPE_INFO(::demo::SystemFrameWindowTemplateConstructor)
 #endif
 
 			extern bool LoadDemoTypes();

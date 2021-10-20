@@ -29,12 +29,33 @@ https://github.com/vczh-libraries
 #define GLOBAL_NAME ::vl_workflow_global::Demo::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::Demo::Instance()
 
+/* USER_CONTENT_BEGIN(custom global declarations) */
+/* USER_CONTENT_END() */
+
 /***********************************************************************
 Class (::demo::MainWindow)
 ***********************************************************************/
 
 namespace demo
 {
+	void MainWindow::checkFrame_SelectionChanged(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
+		if (checkFrame->GetSelected())
+		{
+			SetControlTemplate([](const vl::reflection::description::Value&)->vl::presentation::templates::GuiControlTemplate*
+			{
+				return new darkskin::WindowTemplate();
+			});
+		}
+		else
+		{
+			SetControlTemplate([](const vl::reflection::description::Value&)->vl::presentation::templates::GuiControlTemplate*
+			{
+				return new SystemFrameWindowTemplate();
+			});
+		}
+	}/* USER_CONTENT_END() */
+
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{

@@ -32,6 +32,8 @@ namespace vl
 #ifndef VCZH_DEBUG_NO_REFLECTION
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
 			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
+			IMPL_CPP_TYPE_INFO(demo::SystemFrameWindowTemplate)
+			IMPL_CPP_TYPE_INFO(demo::SystemFrameWindowTemplateConstructor)
 
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
@@ -39,6 +41,7 @@ namespace vl
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
+				CLASS_MEMBER_METHOD(checkFrame_SelectionChanged, { L"sender" _ L"arguments" })
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
@@ -63,6 +66,21 @@ namespace vl
 				CLASS_MEMBER_FIELD(self)
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
+			BEGIN_CLASS_MEMBER(::demo::SystemFrameWindowTemplate)
+				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiWindowTemplate)
+				CLASS_MEMBER_BASE(::demo::SystemFrameWindowTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::SystemFrameWindowTemplate*(), NO_PARAMETER)
+			END_CLASS_MEMBER(::demo::SystemFrameWindowTemplate)
+
+			BEGIN_CLASS_MEMBER(::demo::SystemFrameWindowTemplateConstructor)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::SystemFrameWindowTemplateConstructor>(), NO_PARAMETER)
+				CLASS_MEMBER_METHOD(__vwsn_demo_SystemFrameWindowTemplate_Initialize, { L"__vwsn_this_" })
+				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
+				CLASS_MEMBER_FIELD(container)
+			END_CLASS_MEMBER(::demo::SystemFrameWindowTemplateConstructor)
+
 #undef _
 			class DemoTypeLoader : public Object, public ITypeLoader
 			{
@@ -71,6 +89,8 @@ namespace vl
 				{
 					ADD_TYPE_INFO(::demo::MainWindow)
 					ADD_TYPE_INFO(::demo::MainWindowConstructor)
+					ADD_TYPE_INFO(::demo::SystemFrameWindowTemplate)
+					ADD_TYPE_INFO(::demo::SystemFrameWindowTemplateConstructor)
 				}
 
 				void Unload(ITypeManager* manager)
