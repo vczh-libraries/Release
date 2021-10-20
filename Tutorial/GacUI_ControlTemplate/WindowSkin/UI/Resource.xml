@@ -11,11 +11,24 @@
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
-        <Window Text="Hello, world!" ClientSize="x:480 y:320">
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
-          <Label Text="Welcome to GacUI Library!">
-            <att.Font>fontFamily:"Segoe UI" size:32 antialias:true</att.Font>
-          </Label>
+        <Window
+          ref.Name="self" Text="WindowSkin" ClientSize="x:480 y:320"
+          MaximizedBox-bind="checkMax.Selected"
+          MinimizedBox-bind="checkMin.Selected"
+          Border-bind="checkBorder.Selected"
+          SizeBox-bind="checkSizeBox.Selected"
+          IconVisible-bind="checkIcon.Selected"
+          TitleBar-bind="checkTitle.Selected"
+          >
+          <Stack Direction="Vertical" AlignmentToParent="left:5 top:5 right:5 bottom:5" Padding="5" MinSizeLimitation="LimitToElementAndChildren">
+            <StackItem><CheckBox Selected="true" ref.Name="checkFrame" Text="Customized Frame"/></StackItem>
+            <StackItem><CheckBox Selected="true" ref.Name="checkMax" Text="MaximizedBox"/></StackItem>
+            <StackItem><CheckBox Selected="true" ref.Name="checkMin" Text="MinimizedBox"/></StackItem>
+            <StackItem><CheckBox Selected="true" ref.Name="checkBorder" Text="Border"/></StackItem>
+            <StackItem><CheckBox Selected="true" ref.Name="checkSizeBox" Text="SizeBox"/></StackItem>
+            <StackItem><CheckBox Selected="true" ref.Name="checkIcon" Text="IconVisible"/></StackItem>
+            <StackItem><CheckBox Selected="true" ref.Name="checkTitle" Text="TitleBar"/></StackItem>
+          </Stack>
         </Window>
       </Instance>
     </Instance>
