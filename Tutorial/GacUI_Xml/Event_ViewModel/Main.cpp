@@ -7,7 +7,7 @@ using namespace vl::stream;
 class ViewModelImpl : public Object, public virtual demo::IViewModel
 {
 public:
-	vint32_t Add(vint32_t a, vint32_t b)override
+	vint Add(vint a, vint b)override
 	{
 		return a + b;
 	}

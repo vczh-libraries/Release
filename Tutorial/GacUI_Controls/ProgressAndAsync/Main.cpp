@@ -1,5 +1,10 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include "UI/Source/Demo.h"
+#if defined VCZH_MSVC
+#include <Windows.h>
+#elif defined VCZH_GCC
+#include <unistd.h>
+#endif
 
 using namespace vl::collections;
 using namespace vl::stream;
@@ -11,20 +16,32 @@ public:
 	{
 		GetApplication()->InvokeAsync([=]()
 		{
+			// This is a fake progress, it is just for demo
+#if defined VCZH_MSVC
 			HttpRequest request;
 			request.SetHost(L"http://www.microsoft.com/");
 
 			HttpResponse response;
 			HttpQuery(request, response);
 
-			// This is a fake progress, it is just for demo
 			progress(1);
 			for (vint i = 2; i <= 10; i++)
 			{
 				Sleep(500);
 				progress(i);
 			}
+
 			callback(response.GetBodyUtf8());
+#elif defined VCZH_GCC
+			progress(1);
+			for (vint i = 2; i <= 10; i+=2)
+			{
+				Sleep(1000);
+				progress(i);
+			}
+
+			callback(L"HttpQuery function only works on Windows.");
+#endif
 		});
 	}
 };
