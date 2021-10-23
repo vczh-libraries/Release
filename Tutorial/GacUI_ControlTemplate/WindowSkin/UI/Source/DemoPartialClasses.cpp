@@ -556,7 +556,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(480); __vwsn_temp__.y = static_cast<::vl::vint>(320); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"WindowSkin", false));
+			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"WindowSkin"));
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiStackComposition());
 		{
@@ -579,7 +579,7 @@ namespace demo
 			::vl::__vwsn::This(this->checkFrame)->SetSelected(true);
 		}
 		{
-			::vl::__vwsn::This(this->checkFrame)->SetText(::vl::WString(L"Customized Frame", false));
+			::vl::__vwsn::This(this->checkFrame)->SetText(::vl::WString::Unmanaged(L"Customized Frame"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkFrame)->GetBoundsComposition()));
@@ -595,7 +595,7 @@ namespace demo
 			::vl::__vwsn::This(this->checkMax)->SetSelected(true);
 		}
 		{
-			::vl::__vwsn::This(this->checkMax)->SetText(::vl::WString(L"MaximizedBox", false));
+			::vl::__vwsn::This(this->checkMax)->SetText(::vl::WString::Unmanaged(L"MaximizedBox"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkMax)->GetBoundsComposition()));
@@ -611,7 +611,7 @@ namespace demo
 			::vl::__vwsn::This(this->checkMin)->SetSelected(true);
 		}
 		{
-			::vl::__vwsn::This(this->checkMin)->SetText(::vl::WString(L"MinimizedBox", false));
+			::vl::__vwsn::This(this->checkMin)->SetText(::vl::WString::Unmanaged(L"MinimizedBox"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkMin)->GetBoundsComposition()));
@@ -627,7 +627,7 @@ namespace demo
 			::vl::__vwsn::This(this->checkBorder)->SetSelected(true);
 		}
 		{
-			::vl::__vwsn::This(this->checkBorder)->SetText(::vl::WString(L"Border", false));
+			::vl::__vwsn::This(this->checkBorder)->SetText(::vl::WString::Unmanaged(L"Border"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkBorder)->GetBoundsComposition()));
@@ -643,7 +643,7 @@ namespace demo
 			::vl::__vwsn::This(this->checkSizeBox)->SetSelected(true);
 		}
 		{
-			::vl::__vwsn::This(this->checkSizeBox)->SetText(::vl::WString(L"SizeBox", false));
+			::vl::__vwsn::This(this->checkSizeBox)->SetText(::vl::WString::Unmanaged(L"SizeBox"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_5)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkSizeBox)->GetBoundsComposition()));
@@ -659,7 +659,7 @@ namespace demo
 			::vl::__vwsn::This(this->checkIcon)->SetSelected(true);
 		}
 		{
-			::vl::__vwsn::This(this->checkIcon)->SetText(::vl::WString(L"IconVisible", false));
+			::vl::__vwsn::This(this->checkIcon)->SetText(::vl::WString::Unmanaged(L"IconVisible"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkIcon)->GetBoundsComposition()));
@@ -675,7 +675,7 @@ namespace demo
 			::vl::__vwsn::This(this->checkTitle)->SetSelected(true);
 		}
 		{
-			::vl::__vwsn::This(this->checkTitle)->SetText(::vl::WString(L"TitleBar", false));
+			::vl::__vwsn::This(this->checkTitle)->SetText(::vl::WString::Unmanaged(L"TitleBar"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkTitle)->GetBoundsComposition()));
@@ -756,7 +756,7 @@ Class (::demo::SystemFrameWindowTemplateConstructor)
 		}
 		(this->__vwsn_precompile_1 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidBackgroundElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#2D2D30", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#2D2D30")));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_1));
@@ -789,7 +789,7 @@ Class (::demo::SystemFrameWindowTemplate)
 
 	SystemFrameWindowTemplate::SystemFrameWindowTemplate()
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::SystemFrameWindowTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::SystemFrameWindowTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_SystemFrameWindowTemplate_Initialize(this);

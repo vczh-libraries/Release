@@ -81,7 +81,7 @@ Closures
 
 	void __vwsnf2_Demo_demo_MyControlConstructor___vwsn_demo_MyControl_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->SetSelectedOption(::vl::WString(L"A", false));
+		::vl::__vwsn::This(__vwsnthis_0->self)->SetSelectedOption(::vl::WString::Unmanaged(L"A"));
 	}
 
 	//-------------------------------------------------------------------
@@ -93,7 +93,7 @@ Closures
 
 	void __vwsnf3_Demo_demo_MyControlConstructor___vwsn_demo_MyControl_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->SetSelectedOption(::vl::WString(L"B", false));
+		::vl::__vwsn::This(__vwsnthis_0->self)->SetSelectedOption(::vl::WString::Unmanaged(L"B"));
 	}
 
 	//-------------------------------------------------------------------
@@ -127,7 +127,7 @@ Closures
 
 	void __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = (::vl::WString(L"Selected: ", false) + ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelectedOption());
+		auto __vwsn_bind_activator_result_ = (::vl::WString::Unmanaged(L"Selected: ") + ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelectedOption());
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -255,7 +255,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(480); __vwsn_temp__.y = static_cast<::vl::vint>(320); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString(L"Member_Property", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString::Unmanaged(L"Member_Property"));
 		}
 		(this->myControl = new ::demo::MyControl());
 		(this->__vwsn_precompile_1 = ::vl::__vwsn::This(this->myControl)->GetBoundsComposition());
@@ -287,7 +287,7 @@ Class (::demo::MainWindow)
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
@@ -341,7 +341,7 @@ Class (::demo::MyControlConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetSelected(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetText(::vl::WString(L"Option A", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetText(::vl::WString::Unmanaged(L"Option A"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetBoundsComposition()));
@@ -354,7 +354,7 @@ Class (::demo::MyControlConstructor)
 			(this->__vwsn_precompile_5 = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::RadioButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetText(::vl::WString(L"Option B", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetText(::vl::WString::Unmanaged(L"Option B"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_5)->GetBoundsComposition()));
@@ -422,9 +422,9 @@ Class (::demo::MyControl)
 
 	MyControl::MyControl()
 		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
-		, __vwsn_prop_SelectedOption(::vl::WString(L"A", false))
+		, __vwsn_prop_SelectedOption(::vl::WString::Unmanaged(L"A"))
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MyControl", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MyControl"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MyControl_Initialize(this);

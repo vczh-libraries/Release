@@ -250,7 +250,7 @@ Closures
 
 	__vwsnc3_Demo_demo_MainWindow__IDemoService::__vwsnc3_Demo_demo_MainWindow__IDemoService()
 	{
-		this->__vwsn_prop_Name = ::vl::WString(L"Name of MainWindow", false);
+		this->__vwsn_prop_Name = ::vl::WString::Unmanaged(L"Name of MainWindow");
 	}
 
 	::vl::WString __vwsnc3_Demo_demo_MainWindow__IDemoService::GetName()
@@ -274,7 +274,7 @@ Class (::IDemoService)
 
 ::vl::WString IDemoService::GetIdentifier()
 {
-	return ::vl::WString(L"IDemoService", false);
+	return ::vl::WString::Unmanaged(L"IDemoService");
 }
 
 /***********************************************************************
@@ -323,13 +323,13 @@ namespace demo
 		}
 		(this->__vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetText(::vl::WString(L"Type and change the title of the window.", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetText(::vl::WString::Unmanaged(L"Type and change the title of the window."));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_4));
@@ -374,7 +374,7 @@ Class (::demo::DemoServiceControl)
 		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
 		, demoService(static_cast<::IDemoService*>(nullptr))
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DemoServiceControl", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::DemoServiceControl"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_DemoServiceControl_Initialize(this);
@@ -456,7 +456,7 @@ Class (::demo::MainWindow)
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 		, demoService(::vl::Ptr<::IDemoService>(new ::vl_workflow_global::__vwsnc3_Demo_demo_MainWindow__IDemoService()))
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);

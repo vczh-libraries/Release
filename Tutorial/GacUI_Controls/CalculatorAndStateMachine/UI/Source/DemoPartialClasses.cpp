@@ -361,7 +361,7 @@ Closures
 	{
 		if ((this->GetStatus() != ::vl::reflection::description::CoroutineStatus::Waiting))
 		{
-			throw ::vl::Exception(::vl::WString(L"Resume should be called only when the coroutine is in the waiting status.", false));
+			throw ::vl::Exception(::vl::WString::Unmanaged(L"Resume should be called only when the coroutine is in the waiting status."));
 		}
 		this->SetStatus(::vl::reflection::description::CoroutineStatus::Executing);
 		try
@@ -574,7 +574,7 @@ Closures
 									{
 										(::vl::__vwsn::This(this->__vwsn_state_stateMachineObject)->stateMachineInput = (- static_cast<::vl::vint>(1)));
 										{
-											__vwsnthis_0->SetValue((__vwsnthis_0->GetValue() + ::vl::WString(L".", false)));
+											__vwsnthis_0->SetValue((__vwsnthis_0->GetValue() + ::vl::WString::Unmanaged(L".")));
 										}
 									}
 									(__vwsn_co_state_ = static_cast<::vl::vint>(12));
@@ -639,7 +639,7 @@ Closures
 										(::vl::__vwsn::This(this->__vwsn_state_stateMachineObject)->stateMachineInput = (- static_cast<::vl::vint>(1)));
 										{
 											__vwsnthis_0->Calculate();
-											(__vwsnthis_0->op = ::vl::WString(L"+", false));
+											(__vwsnthis_0->op = ::vl::WString::Unmanaged(L"+"));
 										}
 									}
 									else if ((__vwsn_switch_3 == static_cast<::vl::vint>(3)))
@@ -647,7 +647,7 @@ Closures
 										(::vl::__vwsn::This(this->__vwsn_state_stateMachineObject)->stateMachineInput = (- static_cast<::vl::vint>(1)));
 										{
 											__vwsnthis_0->Calculate();
-											(__vwsnthis_0->op = ::vl::WString(L"*", false));
+											(__vwsnthis_0->op = ::vl::WString::Unmanaged(L"*"));
 										}
 									}
 									else if ((__vwsn_switch_3 == static_cast<::vl::vint>(4)))
@@ -661,20 +661,20 @@ Closures
 									{
 										(::vl::__vwsn::This(this->__vwsn_state_stateMachineObject)->stateMachineInput = (- static_cast<::vl::vint>(1)));
 										{
-											(__vwsnthis_0->valueFirst = ::vl::WString(L"", false));
-											(__vwsnthis_0->op = ::vl::WString(L"", false));
-											__vwsnthis_0->SetValue(::vl::WString(L"0", false));
+											(__vwsnthis_0->valueFirst = ::vl::WString::Unmanaged(L""));
+											(__vwsnthis_0->op = ::vl::WString::Unmanaged(L""));
+											__vwsnthis_0->SetValue(::vl::WString::Unmanaged(L"0"));
 										}
 									}
 									else if ((__vwsn_switch_3 == static_cast<::vl::vint>(0)))
 									{
 										(::vl::__vwsn::This(this->__vwsn_state_stateMachineObject)->stateMachineInput = (- static_cast<::vl::vint>(1)));
-										throw ::vl::Exception(::vl::WString(L"Method \"Digit\" of class \"demo::Calculator\" cannot be called at this moment.", false));
+										throw ::vl::Exception(::vl::WString::Unmanaged(L"Method \"Digit\" of class \"demo::Calculator\" cannot be called at this moment."));
 									}
 									else if ((__vwsn_switch_3 == static_cast<::vl::vint>(1)))
 									{
 										(::vl::__vwsn::This(this->__vwsn_state_stateMachineObject)->stateMachineInput = (- static_cast<::vl::vint>(1)));
-										throw ::vl::Exception(::vl::WString(L"Method \"Dot\" of class \"demo::Calculator\" cannot be called at this moment.", false));
+										throw ::vl::Exception(::vl::WString::Unmanaged(L"Method \"Dot\" of class \"demo::Calculator\" cannot be called at this moment."));
 									}
 								}
 								(__vwsn_co8_state_state = static_cast<::vl::vint>(4));
@@ -755,21 +755,21 @@ namespace demo
 
 	void Calculator::Calculate()
 	{
-		if ((this->valueFirst == ::vl::WString(L"", false)))
+		if ((this->valueFirst == ::vl::WString::Unmanaged(L"")))
 		{
 			(this->valueFirst = this->GetValue());
 		}
-		else if ((this->op == ::vl::WString(L"+", false)))
+		else if ((this->op == ::vl::WString::Unmanaged(L"+")))
 		{
 			this->Update(::vl::__vwsn::ToString((::vl::__vwsn::Parse<double>(this->valueFirst) + ::vl::__vwsn::Parse<double>(this->GetValue()))));
 		}
-		else if ((this->op == ::vl::WString(L"*", false)))
+		else if ((this->op == ::vl::WString::Unmanaged(L"*")))
 		{
 			this->Update(::vl::__vwsn::ToString((::vl::__vwsn::Parse<double>(this->valueFirst) * ::vl::__vwsn::Parse<double>(this->GetValue()))));
 		}
 		else
 		{
-			throw ::vl::Exception((::vl::WString(L"Unrecognized operator: ", false) + this->op));
+			throw ::vl::Exception((::vl::WString::Unmanaged(L"Unrecognized operator: ") + this->op));
 		}
 	}
 
@@ -854,9 +854,9 @@ namespace demo
 	}
 
 	Calculator::Calculator()
-		: valueFirst(::vl::WString(L"", false))
-		, op(::vl::WString(L"", false))
-		, __vwsn_prop_Value(::vl::WString(L"0", false))
+		: valueFirst(::vl::WString::Unmanaged(L""))
+		, op(::vl::WString::Unmanaged(L""))
+		, __vwsn_prop_Value(::vl::WString::Unmanaged(L"0"))
 		, __vwsn_stateip_Digit_i(static_cast<::vl::vint>(0))
 		, __vwsn_statesp_Integer_newNumber(false)
 	{
@@ -878,7 +878,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_49)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(480); __vwsn_temp__.y = static_cast<::vl::vint>(320); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString(L"CalculatorAndStateMachine", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString::Unmanaged(L"CalculatorAndStateMachine"));
 		}
 		(this->__vwsn_precompile_1 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
@@ -905,7 +905,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_3 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
@@ -914,7 +914,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Right);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_3));
@@ -934,10 +934,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetText(::vl::WString(L"1", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetText(::vl::WString::Unmanaged(L"1"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_5)->GetBoundsComposition()));
@@ -957,10 +957,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetText(::vl::WString(L"2", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetText(::vl::WString::Unmanaged(L"2"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_8)->GetBoundsComposition()));
@@ -980,10 +980,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetText(::vl::WString(L"3", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetText(::vl::WString::Unmanaged(L"3"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_11)->GetBoundsComposition()));
@@ -1003,10 +1003,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetText(::vl::WString(L"4", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetText(::vl::WString::Unmanaged(L"4"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_13)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_14)->GetBoundsComposition()));
@@ -1026,10 +1026,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetText(::vl::WString(L"5", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetText(::vl::WString::Unmanaged(L"5"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_16)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_17)->GetBoundsComposition()));
@@ -1049,10 +1049,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetText(::vl::WString(L"6", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetText(::vl::WString::Unmanaged(L"6"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_19)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_20)->GetBoundsComposition()));
@@ -1072,10 +1072,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_24)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_23)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_23)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_23)->SetText(::vl::WString(L"7", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_23)->SetText(::vl::WString::Unmanaged(L"7"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_22)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_23)->GetBoundsComposition()));
@@ -1095,10 +1095,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_27)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_26)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_26)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_26)->SetText(::vl::WString(L"8", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_26)->SetText(::vl::WString::Unmanaged(L"8"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_25)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_26)->GetBoundsComposition()));
@@ -1118,10 +1118,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_29)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_29)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_29)->SetText(::vl::WString(L"9", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_29)->SetText(::vl::WString::Unmanaged(L"9"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_28)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_29)->GetBoundsComposition()));
@@ -1141,10 +1141,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_33)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetText(::vl::WString(L"0", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetText(::vl::WString::Unmanaged(L"0"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_31)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_32)->GetBoundsComposition()));
@@ -1164,10 +1164,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_36)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_35)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_35)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_35)->SetText(::vl::WString(L".", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_35)->SetText(::vl::WString::Unmanaged(L"."));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_34)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_35)->GetBoundsComposition()));
@@ -1187,10 +1187,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_39)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_38)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_38)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_38)->SetText(::vl::WString(L"=", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_38)->SetText(::vl::WString::Unmanaged(L"="));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_37)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_38)->GetBoundsComposition()));
@@ -1210,10 +1210,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_42)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_41)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_41)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_41)->SetText(::vl::WString(L"CE", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_41)->SetText(::vl::WString::Unmanaged(L"CE"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_40)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_41)->GetBoundsComposition()));
@@ -1233,10 +1233,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_45)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_44)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_44)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_44)->SetText(::vl::WString(L"*", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_44)->SetText(::vl::WString::Unmanaged(L"*"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_43)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_44)->GetBoundsComposition()));
@@ -1256,10 +1256,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_48)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_47)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
+			::vl::__vwsn::This(this->__vwsn_precompile_47)->SetFont(::vl::Nullable<::vl::presentation::FontProperties>([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(24); __vwsn_temp__.antialias = true; return __vwsn_temp__; }()));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_47)->SetText(::vl::WString(L"+", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_47)->SetText(::vl::WString::Unmanaged(L"+"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_46)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_47)->GetBoundsComposition()));
@@ -1406,7 +1406,7 @@ Class (::demo::MainWindow)
 		, __vwsn_parameter_calculator(::vl::Ptr<::demo::Calculator>())
 	{
 		(this->__vwsn_parameter_calculator = __vwsn_ctor_parameter_calculator);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);

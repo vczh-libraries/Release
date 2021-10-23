@@ -226,7 +226,7 @@ Closures
 
 	void __vwsnf20_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->document)->SetSelectionText(::vl::WString(L"", false));
+		::vl::__vwsn::This(__vwsnthis_0->document)->SetSelectionText(::vl::WString::Unmanaged(L""));
 	}
 
 	//-------------------------------------------------------------------
@@ -657,7 +657,7 @@ Closures
 		auto selectedColor = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->document)->SummarizeStyle(begin, end).Obj())->color;
 		if ((! static_cast<bool>(selectedColor)))
 		{
-			::vl::__vwsn::This(__vwsnthis_0->dialogColor)->SetSelectedColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#000000", false)));
+			::vl::__vwsn::This(__vwsnthis_0->dialogColor)->SetSelectedColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#000000")));
 		}
 		else
 		{
@@ -703,7 +703,7 @@ Closures
 		auto selectedColor = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->document)->SummarizeStyle(begin, end).Obj())->backgroundColor;
 		if ((! static_cast<bool>(selectedColor)))
 		{
-			::vl::__vwsn::This(__vwsnthis_0->dialogColor)->SetSelectedColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#000000", false)));
+			::vl::__vwsn::This(__vwsnthis_0->dialogColor)->SetSelectedColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#000000")));
 		}
 		else
 		{
@@ -1066,7 +1066,7 @@ Closures
 	{
 		if ((this->GetStatus() != ::vl::reflection::description::CoroutineStatus::Waiting))
 		{
-			throw ::vl::Exception(::vl::WString(L"Resume should be called only when the coroutine is in the waiting status.", false));
+			throw ::vl::Exception(::vl::WString::Unmanaged(L"Resume should be called only when the coroutine is in the waiting status."));
 		}
 		this->SetStatus(::vl::reflection::description::CoroutineStatus::Executing);
 		try
@@ -1114,7 +1114,7 @@ Closures
 							auto row = ::vl::__vwsn::This(__vwsnthis_0->document)->GetCaretBegin().row;
 							auto begin = ::vl::__vwsn::This(__vwsnthis_0->document)->GetCaretBegin().column;
 							auto end = ::vl::__vwsn::This(__vwsnthis_0->document)->GetCaretEnd().column;
-							::vl::__vwsn::This(__vwsnthis_0->document)->EditHyperlink(row, begin, end, ::vl::__vwsn::This(__vwsn_co1_window)->GetUrl().Value(), ::vl::WString(L"#NormalLink", false), ::vl::WString(L"#ActiveLink", false));
+							::vl::__vwsn::This(__vwsnthis_0->document)->EditHyperlink(row, begin, end, ::vl::__vwsn::This(__vwsn_co1_window)->GetUrl().Value(), ::vl::WString::Unmanaged(L"#NormalLink"), ::vl::WString::Unmanaged(L"#ActiveLink"));
 						}
 						::vl::__vwsn::This(__vwsn_co1_window)->Dispose(true);
 						this->SetStatus(::vl::reflection::description::CoroutineStatus::Stopped);
@@ -2900,11 +2900,11 @@ namespace demo
 	{
 		(this->self = __vwsn_this_);
 		{
-			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"Document Editor", false));
+			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"Document Editor"));
 		}
 		(this->dialogMessage = new ::vl::presentation::controls::GuiMessageDialog());
 		{
-			::vl::__vwsn::This(this->dialogMessage)->SetTitle(::vl::WString(L"You Clicked a Hyperlink!", false));
+			::vl::__vwsn::This(this->dialogMessage)->SetTitle(::vl::WString::Unmanaged(L"You Clicked a Hyperlink!"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogMessage));
@@ -2921,10 +2921,10 @@ namespace demo
 			::vl::__vwsn::This(this->dialogOpen)->SetEnabledPreview(true);
 		}
 		{
-			::vl::__vwsn::This(this->dialogOpen)->SetFilter(::vl::WString(L"Image Files (*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp", false));
+			::vl::__vwsn::This(this->dialogOpen)->SetFilter(::vl::WString::Unmanaged(L"Image Files (*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp"));
 		}
 		{
-			::vl::__vwsn::This(this->dialogOpen)->SetTitle(::vl::WString(L"Select an Image", false));
+			::vl::__vwsn::This(this->dialogOpen)->SetTitle(::vl::WString::Unmanaged(L"Select an Image"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogOpen));
@@ -2934,10 +2934,10 @@ namespace demo
 			::vl::__vwsn::This(this->dialogOpenDoc)->SetOptions((::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogFileMustExist | ::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogDereferenceLinks));
 		}
 		{
-			::vl::__vwsn::This(this->dialogOpenDoc)->SetFilter(::vl::WString(L"Private Format (*.bin)|*.bin", false));
+			::vl::__vwsn::This(this->dialogOpenDoc)->SetFilter(::vl::WString::Unmanaged(L"Private Format (*.bin)|*.bin"));
 		}
 		{
-			::vl::__vwsn::This(this->dialogOpenDoc)->SetTitle(::vl::WString(L"Load a GacUI Document", false));
+			::vl::__vwsn::This(this->dialogOpenDoc)->SetTitle(::vl::WString::Unmanaged(L"Load a GacUI Document"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogOpenDoc));
@@ -2947,10 +2947,10 @@ namespace demo
 			::vl::__vwsn::This(this->dialogSaveDoc)->SetOptions(::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogPromptOverwriteFile);
 		}
 		{
-			::vl::__vwsn::This(this->dialogSaveDoc)->SetFilter(::vl::WString(L"Private Format (*.bin)|*.bin|RTF Document (*.rtf)|*.rtf|HTML Document (*.html)|*.html", false));
+			::vl::__vwsn::This(this->dialogSaveDoc)->SetFilter(::vl::WString::Unmanaged(L"Private Format (*.bin)|*.bin|RTF Document (*.rtf)|*.rtf|HTML Document (*.html)|*.html"));
 		}
 		{
-			::vl::__vwsn::This(this->dialogSaveDoc)->SetTitle(::vl::WString(L"Save a GacUI Document", false));
+			::vl::__vwsn::This(this->dialogSaveDoc)->SetTitle(::vl::WString::Unmanaged(L"Save a GacUI Document"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogSaveDoc));
@@ -2960,10 +2960,10 @@ namespace demo
 			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetOptions(::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogPromptOverwriteFile);
 		}
 		{
-			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetFilter(::vl::WString(L"Private Format (*.bin)|*.bin", false));
+			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetFilter(::vl::WString::Unmanaged(L"Private Format (*.bin)|*.bin"));
 		}
 		{
-			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetTitle(::vl::WString(L"Save a GacUI Document", false));
+			::vl::__vwsn::This(this->dialogSaveDocPrivate)->SetTitle(::vl::WString::Unmanaged(L"Save a GacUI Document"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogSaveDocPrivate));
@@ -2976,7 +2976,7 @@ namespace demo
 			::vl::__vwsn::This(this->dialogQueryClose)->SetInput(::vl::presentation::INativeDialogService::MessageBoxButtonsInput::DisplayYesNoCancel);
 		}
 		{
-			::vl::__vwsn::This(this->dialogQueryClose)->SetText(::vl::WString(L"The document has been changed since the last time it was saved as a Private Format file. Do you want to save this file?", false));
+			::vl::__vwsn::This(this->dialogQueryClose)->SetText(::vl::WString::Unmanaged(L"The document has been changed since the last time it was saved as a Private Format file. Do you want to save this file?"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogQueryClose));
@@ -3014,7 +3014,7 @@ namespace demo
 			(this->document = new ::vl::presentation::controls::GuiDocumentViewer(::vl::presentation::theme::ThemeName::DocumentViewer));
 		}
 		{
-			::vl::__vwsn::This(this->document)->SetAlt(::vl::WString(L"D", false));
+			::vl::__vwsn::This(this->document)->SetAlt(::vl::WString::Unmanaged(L"D"));
 		}
 		{
 			::vl::__vwsn::This(this->document)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
@@ -3034,144 +3034,144 @@ namespace demo
 		}
 		(this->commandLoadPrivate = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandLoadPrivate)->SetText(::vl::WString(L"Load as Private Format", false));
+			::vl::__vwsn::This(this->commandLoadPrivate)->SetText(::vl::WString::Unmanaged(L"Load as Private Format"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandLoadPrivate));
 		}
 		(this->commandSavePrivate = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandSavePrivate)->SetText(::vl::WString(L"Save as Private Format", false));
+			::vl::__vwsn::This(this->commandSavePrivate)->SetText(::vl::WString::Unmanaged(L"Save as Private Format"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandSavePrivate));
 		}
 		(this->commandSaveRtf = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandSaveRtf)->SetText(::vl::WString(L"Save as RTF", false));
+			::vl::__vwsn::This(this->commandSaveRtf)->SetText(::vl::WString::Unmanaged(L"Save as RTF"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandSaveRtf));
 		}
 		(this->commandSaveHtml = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandSaveHtml)->SetText(::vl::WString(L"Save as HTML", false));
+			::vl::__vwsn::This(this->commandSaveHtml)->SetText(::vl::WString::Unmanaged(L"Save as HTML"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandSaveHtml));
 		}
 		(this->commandUndo = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandUndo)->SetShortcutBuilder(::vl::WString(L"Ctrl+Z", false));
+			::vl::__vwsn::This(this->commandUndo)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Z"));
 		}
 		{
-			::vl::__vwsn::This(this->commandUndo)->SetText(::vl::WString(L"Undo", false));
+			::vl::__vwsn::This(this->commandUndo)->SetText(::vl::WString::Unmanaged(L"Undo"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandUndo));
 		}
 		(this->commandRedo = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandRedo)->SetShortcutBuilder(::vl::WString(L"Ctrl+Y", false));
+			::vl::__vwsn::This(this->commandRedo)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Y"));
 		}
 		{
-			::vl::__vwsn::This(this->commandRedo)->SetText(::vl::WString(L"Redo", false));
+			::vl::__vwsn::This(this->commandRedo)->SetText(::vl::WString::Unmanaged(L"Redo"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandRedo));
 		}
 		(this->commandCopy = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandCopy)->SetShortcutBuilder(::vl::WString(L"Ctrl+C", false));
+			::vl::__vwsn::This(this->commandCopy)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+C"));
 		}
 		{
-			::vl::__vwsn::This(this->commandCopy)->SetText(::vl::WString(L"Copy", false));
+			::vl::__vwsn::This(this->commandCopy)->SetText(::vl::WString::Unmanaged(L"Copy"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandCopy));
 		}
 		(this->commandCut = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandCut)->SetShortcutBuilder(::vl::WString(L"Ctrl+X", false));
+			::vl::__vwsn::This(this->commandCut)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+X"));
 		}
 		{
-			::vl::__vwsn::This(this->commandCut)->SetText(::vl::WString(L"Cut", false));
+			::vl::__vwsn::This(this->commandCut)->SetText(::vl::WString::Unmanaged(L"Cut"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandCut));
 		}
 		(this->commandPaste = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandPaste)->SetShortcutBuilder(::vl::WString(L"Ctrl+V", false));
+			::vl::__vwsn::This(this->commandPaste)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+V"));
 		}
 		{
-			::vl::__vwsn::This(this->commandPaste)->SetText(::vl::WString(L"Paste", false));
+			::vl::__vwsn::This(this->commandPaste)->SetText(::vl::WString::Unmanaged(L"Paste"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandPaste));
 		}
 		(this->commandDelete = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandDelete)->SetText(::vl::WString(L"Delete", false));
+			::vl::__vwsn::This(this->commandDelete)->SetText(::vl::WString::Unmanaged(L"Delete"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandDelete));
 		}
 		(this->commandSelect = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandSelect)->SetShortcutBuilder(::vl::WString(L"Ctrl+A", false));
+			::vl::__vwsn::This(this->commandSelect)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+A"));
 		}
 		{
-			::vl::__vwsn::This(this->commandSelect)->SetText(::vl::WString(L"Select All", false));
+			::vl::__vwsn::This(this->commandSelect)->SetText(::vl::WString::Unmanaged(L"Select All"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandSelect));
 		}
 		(this->commandInsertImage = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandInsertImage)->SetText(::vl::WString(L"Insert Image ...", false));
+			::vl::__vwsn::This(this->commandInsertImage)->SetText(::vl::WString::Unmanaged(L"Insert Image ..."));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandInsertImage));
 		}
 		(this->commandEditHyperlink = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandEditHyperlink)->SetText(::vl::WString(L"Edit Hyperlink ...", false));
+			::vl::__vwsn::This(this->commandEditHyperlink)->SetText(::vl::WString::Unmanaged(L"Edit Hyperlink ..."));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditHyperlink));
 		}
 		(this->commandRemoveHyperlink = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandRemoveHyperlink)->SetText(::vl::WString(L"Remove Hyperlink", false));
+			::vl::__vwsn::This(this->commandRemoveHyperlink)->SetText(::vl::WString::Unmanaged(L"Remove Hyperlink"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandRemoveHyperlink));
 		}
 		(this->commandBold = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandBold)->SetText(::vl::WString(L"Bold", false));
+			::vl::__vwsn::This(this->commandBold)->SetText(::vl::WString::Unmanaged(L"Bold"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandBold));
 		}
 		(this->commandItalic = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandItalic)->SetText(::vl::WString(L"Italic", false));
+			::vl::__vwsn::This(this->commandItalic)->SetText(::vl::WString::Unmanaged(L"Italic"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandItalic));
 		}
 		(this->commandUnderline = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandUnderline)->SetText(::vl::WString(L"Underline", false));
+			::vl::__vwsn::This(this->commandUnderline)->SetText(::vl::WString::Unmanaged(L"Underline"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandUnderline));
 		}
 		(this->commandStrike = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandStrike)->SetText(::vl::WString(L"Strike", false));
+			::vl::__vwsn::This(this->commandStrike)->SetText(::vl::WString::Unmanaged(L"Strike"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandStrike));
@@ -3198,79 +3198,79 @@ namespace demo
 		}
 		(this->commandFont = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandFont)->SetText(::vl::WString(L"Set Font ...", false));
+			::vl::__vwsn::This(this->commandFont)->SetText(::vl::WString::Unmanaged(L"Set Font ..."));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandFont));
 		}
 		(this->commandColor = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandColor)->SetText(::vl::WString(L"Text Color ...", false));
+			::vl::__vwsn::This(this->commandColor)->SetText(::vl::WString::Unmanaged(L"Text Color ..."));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandColor));
 		}
 		(this->commandBackColor = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandBackColor)->SetText(::vl::WString(L"Background Color ...", false));
+			::vl::__vwsn::This(this->commandBackColor)->SetText(::vl::WString::Unmanaged(L"Background Color ..."));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandBackColor));
 		}
 		(this->commandViewOnly = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandViewOnly)->SetShortcutBuilder(::vl::WString(L"Ctrl+Shift+P", false));
+			::vl::__vwsn::This(this->commandViewOnly)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Shift+P"));
 		}
 		{
-			::vl::__vwsn::This(this->commandViewOnly)->SetText(::vl::WString(L"Preview", false));
+			::vl::__vwsn::This(this->commandViewOnly)->SetText(::vl::WString::Unmanaged(L"Preview"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandViewOnly));
 		}
 		(this->commandSelectable = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandSelectable)->SetShortcutBuilder(::vl::WString(L"Ctrl+Shift+S", false));
+			::vl::__vwsn::This(this->commandSelectable)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Shift+S"));
 		}
 		{
-			::vl::__vwsn::This(this->commandSelectable)->SetText(::vl::WString(L"Selectable", false));
+			::vl::__vwsn::This(this->commandSelectable)->SetText(::vl::WString::Unmanaged(L"Selectable"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandSelectable));
 		}
 		(this->commandEditable = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandEditable)->SetShortcutBuilder(::vl::WString(L"Ctrl+Shift+E", false));
+			::vl::__vwsn::This(this->commandEditable)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Shift+E"));
 		}
 		{
-			::vl::__vwsn::This(this->commandEditable)->SetText(::vl::WString(L"Editable", false));
+			::vl::__vwsn::This(this->commandEditable)->SetText(::vl::WString::Unmanaged(L"Editable"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditable));
 		}
 		(this->commandAlignDefault = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandAlignDefault)->SetText(::vl::WString(L"Set Alignment to Default (Left)", false));
+			::vl::__vwsn::This(this->commandAlignDefault)->SetText(::vl::WString::Unmanaged(L"Set Alignment to Default (Left)"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandAlignDefault));
 		}
 		(this->commandAlignLeft = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandAlignLeft)->SetText(::vl::WString(L"Left", false));
+			::vl::__vwsn::This(this->commandAlignLeft)->SetText(::vl::WString::Unmanaged(L"Left"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandAlignLeft));
 		}
 		(this->commandAlignCenter = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandAlignCenter)->SetText(::vl::WString(L"Center", false));
+			::vl::__vwsn::This(this->commandAlignCenter)->SetText(::vl::WString::Unmanaged(L"Center"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandAlignCenter));
 		}
 		(this->commandAlignRight = new ::vl::presentation::controls::GuiToolstripCommand());
 		{
-			::vl::__vwsn::This(this->commandAlignRight)->SetText(::vl::WString(L"Right", false));
+			::vl::__vwsn::This(this->commandAlignRight)->SetText(::vl::WString::Unmanaged(L"Right"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandAlignRight));
@@ -3288,50 +3288,50 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->document)->ActiveHyperlinkExecuted, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandLoadPrivate)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/FormatPrivate", false), true).Obj())));
+			::vl::__vwsn::This(this->commandLoadPrivate)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/FormatPrivate"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandLoadPrivate)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/FormatPrivateLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandLoadPrivate)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/FormatPrivateLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf5_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandLoadPrivate)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandSavePrivate)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/FormatPrivate", false), true).Obj())));
+			::vl::__vwsn::This(this->commandSavePrivate)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/FormatPrivate"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandSavePrivate)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/FormatPrivateLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandSavePrivate)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/FormatPrivateLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf6_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandSavePrivate)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandSaveRtf)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/FormatRtf", false), true).Obj())));
+			::vl::__vwsn::This(this->commandSaveRtf)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/FormatRtf"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandSaveRtf)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/FormatRtfLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandSaveRtf)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/FormatRtfLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf7_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandSaveRtf)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandSaveHtml)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/FormatHtml", false), true).Obj())));
+			::vl::__vwsn::This(this->commandSaveHtml)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/FormatHtml"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandSaveHtml)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/FormatHtmlLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandSaveHtml)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/FormatHtmlLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf8_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandSaveHtml)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandUndo)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Undo", false), true).Obj())));
+			::vl::__vwsn::This(this->commandUndo)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Undo"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandUndo)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/UndoLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandUndo)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/UndoLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc2_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3343,10 +3343,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandUndo)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandRedo)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Redo", false), true).Obj())));
+			::vl::__vwsn::This(this->commandRedo)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Redo"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandRedo)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/RedoLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandRedo)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/RedoLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc3_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3358,10 +3358,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandRedo)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandCopy)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Copy", false), true).Obj())));
+			::vl::__vwsn::This(this->commandCopy)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Copy"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandCopy)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/CopyLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandCopy)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/CopyLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc4_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3373,10 +3373,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandCopy)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandCut)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Cut", false), true).Obj())));
+			::vl::__vwsn::This(this->commandCut)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Cut"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandCut)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/CutLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandCut)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/CutLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc5_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3388,10 +3388,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandCut)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandPaste)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Paste", false), true).Obj())));
+			::vl::__vwsn::This(this->commandPaste)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Paste"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandPaste)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/PasteLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandPaste)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/PasteLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc6_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3403,10 +3403,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandPaste)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandDelete)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Delete", false), true).Obj())));
+			::vl::__vwsn::This(this->commandDelete)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Delete"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandDelete)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/RemoveLinkLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandDelete)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/RemoveLinkLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc7_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3422,10 +3422,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandSelect)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandInsertImage)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Image", false), true).Obj())));
+			::vl::__vwsn::This(this->commandInsertImage)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Image"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandInsertImage)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/ImageLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandInsertImage)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/ImageLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc8_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3437,10 +3437,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandInsertImage)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandEditHyperlink)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Link", false), true).Obj())));
+			::vl::__vwsn::This(this->commandEditHyperlink)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Link"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandEditHyperlink)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/LinkLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandEditHyperlink)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/LinkLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc9_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3452,10 +3452,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditHyperlink)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandRemoveHyperlink)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/RemoveLink", false), true).Obj())));
+			::vl::__vwsn::This(this->commandRemoveHyperlink)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/RemoveLink"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandRemoveHyperlink)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/RemoveLinkLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandRemoveHyperlink)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/RemoveLinkLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc11_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3467,7 +3467,7 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandRemoveHyperlink)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandBold)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Bold", false), true).Obj())));
+			::vl::__vwsn::This(this->commandBold)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Bold"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc12_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3484,7 +3484,7 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandBold)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandItalic)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Italic", false), true).Obj())));
+			::vl::__vwsn::This(this->commandItalic)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Italic"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc14_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3501,7 +3501,7 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandItalic)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandUnderline)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Underline", false), true).Obj())));
+			::vl::__vwsn::This(this->commandUnderline)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Underline"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc16_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3518,7 +3518,7 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandUnderline)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandStrike)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Strike", false), true).Obj())));
+			::vl::__vwsn::This(this->commandStrike)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Strike"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc18_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3535,7 +3535,7 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandStrike)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandFont)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Font", false), true).Obj())));
+			::vl::__vwsn::This(this->commandFont)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Font"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc20_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3547,7 +3547,7 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFont)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandColor)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Color", false), true).Obj())));
+			::vl::__vwsn::This(this->commandColor)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Color"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc21_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3559,7 +3559,7 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandColor)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandBackColor)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/BackColor", false), true).Obj())));
+			::vl::__vwsn::This(this->commandBackColor)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/BackColor"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc22_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3571,37 +3571,37 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandBackColor)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandViewOnly)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/ViewOnly", false), true).Obj())));
+			::vl::__vwsn::This(this->commandViewOnly)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/ViewOnly"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandViewOnly)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/ViewOnlyLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandViewOnly)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/ViewOnlyLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf47_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandViewOnly)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandSelectable)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Selectable", false), true).Obj())));
+			::vl::__vwsn::This(this->commandSelectable)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Selectable"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandSelectable)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/SelectableLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandSelectable)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/SelectableLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf48_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandSelectable)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandEditable)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/Editable", false), true).Obj())));
+			::vl::__vwsn::This(this->commandEditable)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/Editable"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandEditable)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/EditableLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandEditable)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/EditableLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf49_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditable)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandAlignDefault)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlign", false), true).Obj())));
+			::vl::__vwsn::This(this->commandAlignDefault)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlign"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc23_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3613,10 +3613,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandAlignDefault)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandAlignLeft)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignLeft", false), true).Obj())));
+			::vl::__vwsn::This(this->commandAlignLeft)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignLeft"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandAlignLeft)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignLeftLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandAlignLeft)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignLeftLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc24_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3633,10 +3633,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandAlignLeft)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandAlignCenter)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignCenter", false), true).Obj())));
+			::vl::__vwsn::This(this->commandAlignCenter)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignCenter"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandAlignCenter)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignCenterLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandAlignCenter)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignCenterLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc26_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3653,10 +3653,10 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandAlignCenter)->Executed, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->commandAlignRight)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignRight", false), true).Obj())));
+			::vl::__vwsn::This(this->commandAlignRight)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignRight"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->commandAlignRight)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignRightLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->commandAlignRight)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignRightLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc28_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -3754,7 +3754,7 @@ Class (::demo::HyperlinkWindowConstructor)
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(320); __vwsn_temp__.y = static_cast<::vl::vint>(80); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"Hyperlink", false));
+			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"Hyperlink"));
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
@@ -3802,7 +3802,7 @@ Class (::demo::HyperlinkWindowConstructor)
 			(this->__vwsn_precompile_4 = new ::vl::presentation::controls::GuiLabel(::vl::presentation::theme::ThemeName::Label));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetText(::vl::WString(L"Url: ", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetText(::vl::WString::Unmanaged(L"Url: "));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_4)->GetBoundsComposition()));
@@ -3845,7 +3845,7 @@ Class (::demo::HyperlinkWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(100); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetText(::vl::WString(L"OK", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetText(::vl::WString::Unmanaged(L"OK"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_8)->GetBoundsComposition()));
@@ -3865,7 +3865,7 @@ Class (::demo::HyperlinkWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(100); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetText(::vl::WString(L"Cancel", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetText(::vl::WString::Unmanaged(L"Cancel"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_11)->GetBoundsComposition()));
@@ -3927,7 +3927,7 @@ Class (::demo::HyperlinkWindow)
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 		, __vwsn_prop_Url(::vl::Nullable<::vl::WString>())
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::HyperlinkWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::HyperlinkWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_HyperlinkWindow_Initialize(this);

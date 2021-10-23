@@ -69,7 +69,7 @@ Closures
 				return static_cast<::vl::presentation::templates::GuiTemplate*>(new ::demo::VideoItemTemplate(::vl::__vwsn::Unbox<::vl::Ptr<::demo::VideoViewModel>>(__vwsn_viewModel_)));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"Cannot find a matched control template to create."));
 	}
 
 	//-------------------------------------------------------------------
@@ -87,7 +87,7 @@ Closures
 				return static_cast<::vl::presentation::templates::GuiTemplate*>(new ::demo::AccountItemTemplate(::vl::__vwsn::Unbox<::vl::Ptr<::demo::AccountButtonViewModel>>(__vwsn_viewModel_)));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"Cannot find a matched control template to create."));
 	}
 
 	//-------------------------------------------------------------------
@@ -105,7 +105,7 @@ Closures
 				return static_cast<::vl::presentation::templates::GuiTemplate*>(new ::demo::AccountMenuItemTemplate(::vl::__vwsn::Unbox<::vl::Ptr<::demo::AccountButtonViewModel>>(__vwsn_viewModel_)));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"Cannot find a matched control template to create."));
 	}
 
 	//-------------------------------------------------------------------
@@ -694,7 +694,7 @@ Closures
 
 	void __vwsnc1_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() ? ::vl::WString(L"#FFFFFF", false) : ((::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState() != ::vl::presentation::controls::ButtonState::Normal) ? ::vl::WString(L"#0000FF", false) : ::vl::WString(L"#00000000", false))));
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() ? ::vl::WString::Unmanaged(L"#FFFFFF") : ((::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState() != ::vl::presentation::controls::ButtonState::Normal) ? ::vl::WString::Unmanaged(L"#0000FF") : ::vl::WString::Unmanaged(L"#00000000"))));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -855,7 +855,7 @@ Closures
 
 	void __vwsnc3_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_1.Obj())->GetName(); } catch(...){ return ::vl::WString(L"", false); } }();
+		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::This(__vwsn_bind_cache_1.Obj())->GetName(); } catch(...){ return ::vl::WString::Unmanaged(L""); } }();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -937,7 +937,7 @@ Closures
 
 	void __vwsnc4_Demo_demo_AccountButtonTemplateConstructor___vwsn_demo_AccountButtonTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() ? ::vl::WString(L"#000000", false) : ::vl::WString(L"#FFFFFF", false)));
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() ? ::vl::WString::Unmanaged(L"#000000") : ::vl::WString::Unmanaged(L"#FFFFFF")));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -1263,7 +1263,7 @@ Closures
 
 	void __vwsnc9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = (::vl::WString(L"Welcome to GacUI Video, ", false) + ::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(16)));
+		auto __vwsn_bind_activator_result_ = (::vl::WString::Unmanaged(L"Welcome to GacUI Video, ") + ::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(16)));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -1469,7 +1469,7 @@ Class (::demo::AccountButtonTemplate)
 	AccountButtonTemplate::AccountButtonTemplate()
 		: __vwsn_prop_ViewModel(::vl::Ptr<::demo::AccountButtonViewModel>())
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::AccountButtonTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::AccountButtonTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_AccountButtonTemplate_Initialize(this);
@@ -1528,7 +1528,7 @@ Class (::demo::AccountButtonViewModel)
 
 	AccountButtonViewModel::AccountButtonViewModel()
 		: __vwsn_prop_Controller(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(nullptr))
-		, __vwsn_prop_Name(::vl::WString(L"", false))
+		, __vwsn_prop_Name(::vl::WString::Unmanaged(L""))
 		, __vwsn_prop_Image(::vl::Ptr<::vl::presentation::INativeImage>())
 	{
 	}
@@ -1589,7 +1589,7 @@ Class (::demo::AccountItemTemplate)
 		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::AccountButtonViewModel>())
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::AccountItemTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::AccountItemTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_AccountItemTemplate_Initialize(this);
@@ -1652,7 +1652,7 @@ Class (::demo::AccountMenuItemTemplate)
 		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::AccountButtonViewModel>())
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::AccountMenuItemTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::AccountMenuItemTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_AccountMenuItemTemplate_Initialize(this);
@@ -1816,7 +1816,7 @@ Class (::demo::MainWindowConstructor)
 			(this->__vwsn_precompile_12 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuBarButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetText(::vl::WString(L"Subscribed Accounts", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetText(::vl::WString::Unmanaged(L"Subscribed Accounts"));
 		}
 		(this->__vwsn_precompile_13 = ::vl::__vwsn::This(this->__vwsn_precompile_12)->EnsureToolstripSubMenu());
 		(this->__vwsn_precompile_14 = new ::vl::presentation::compositions::GuiRepeatStackComposition());
@@ -1934,7 +1934,7 @@ Class (::demo::MainWindow)
 		, accounts(::vl::reflection::description::IValueObservableList::Create())
 		, videos(::vl::reflection::description::IValueObservableList::Create())
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
@@ -1953,7 +1953,7 @@ Class (::demo::MainWindow)
 					auto item = ::vl::Ptr<::demo::AccountButtonViewModel>(new ::demo::AccountButtonViewModel());
 					::vl::__vwsn::This(item.Obj())->SetController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(::vl::__vwsn::This(this->self)->accountController));
 					::vl::__vwsn::This(item.Obj())->SetName(::vl::reflection::description::Sys::LoremIpsumTitle(static_cast<::vl::vint>(20)));
-					::vl::__vwsn::This(item.Obj())->SetImage(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(this->self)->ResolveResource(::vl::WString(L"res", false), (::vl::WString(L"Images/_", false) + ::vl::__vwsn::ToString(i)), true).Obj())).Obj())->GetImage());
+					::vl::__vwsn::This(item.Obj())->SetImage(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(this->self)->ResolveResource(::vl::WString::Unmanaged(L"res"), (::vl::WString::Unmanaged(L"Images/_") + ::vl::__vwsn::ToString(i)), true).Obj())).Obj())->GetImage());
 					::vl::__vwsn::This(::vl::__vwsn::This(this->self)->accounts.Obj())->Add(::vl::__vwsn::Box(item));
 				}
 				(i = (i + static_cast<::vl::vint>(1)));
@@ -2041,7 +2041,7 @@ Class (::demo::VideoItemTemplateConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetWrapLine(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_4));
@@ -2055,10 +2055,10 @@ Class (::demo::VideoItemTemplateConstructor)
 		}
 		(this->__vwsn_precompile_6 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#808080", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#808080")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetText(::vl::WString(L"by:", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetText(::vl::WString::Unmanaged(L"by:"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_6));
@@ -2072,7 +2072,7 @@ Class (::demo::VideoItemTemplateConstructor)
 		}
 		(this->__vwsn_precompile_8 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_8));
@@ -2084,7 +2084,7 @@ Class (::demo::VideoItemTemplateConstructor)
 			::vl::__vwsn::This(this->self)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetImage(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Video", false), true).Obj())).Obj())->GetImage());
+			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetImage(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/Video"), true).Obj())).Obj())->GetImage());
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc10_Demo_demo_VideoItemTemplateConstructor___vwsn_demo_VideoItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -2141,7 +2141,7 @@ Class (::demo::VideoItemTemplate)
 		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::VideoViewModel>())
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::VideoItemTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::VideoItemTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_VideoItemTemplate_Initialize(this);
@@ -2199,8 +2199,8 @@ Class (::demo::VideoViewModel)
 	}
 
 	VideoViewModel::VideoViewModel()
-		: __vwsn_prop_Author(::vl::WString(L"", false))
-		, __vwsn_prop_Title(::vl::WString(L"", false))
+		: __vwsn_prop_Author(::vl::WString::Unmanaged(L""))
+		, __vwsn_prop_Title(::vl::WString::Unmanaged(L""))
 		, __vwsn_prop_Font(::vl::presentation::FontProperties{})
 	{
 	}

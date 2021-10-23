@@ -319,7 +319,7 @@ Closures
 
 	void __vwsnc10_Demo_demo_TriplePhaseImageButtonTemplateConstructor___vwsn_demo_TriplePhaseImageButtonTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#6D6D6D", false) : ((state == ::vl::presentation::controls::ButtonState::Active) ? ::vl::WString(L"#F1F1F1", false) : ((state == ::vl::presentation::controls::ButtonState::Pressed) ? ::vl::WString(L"#FFFFFF", false) : ::vl::WString(L"#F1F1F1", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString::Unmanaged(L"#6D6D6D") : ((state == ::vl::presentation::controls::ButtonState::Active) ? ::vl::WString::Unmanaged(L"#F1F1F1") : ((state == ::vl::presentation::controls::ButtonState::Pressed) ? ::vl::WString::Unmanaged(L"#FFFFFF") : ::vl::WString::Unmanaged(L"#F1F1F1")))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -457,7 +457,7 @@ Closures
 
 	void __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState() == ::TripleState::Checked) ? ::vl::WString(L"Checked", false) : ((::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState() == ::TripleState::Partial) ? ::vl::WString(L"Partial", false) : ::vl::WString(L"Normal", false)));
+		auto __vwsn_bind_activator_result_ = ((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState() == ::TripleState::Checked) ? ::vl::WString::Unmanaged(L"Checked") : ((::vl::__vwsn::This(__vwsn_bind_cache_1)->GetState() == ::TripleState::Partial) ? ::vl::WString::Unmanaged(L"Partial") : ::vl::WString::Unmanaged(L"Normal")));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -532,7 +532,7 @@ Closures
 
 	void __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = (::vl::__vwsn::This(__vwsn_bind_cache_0)->GetEnabled() ? ::vl::WString(L"Disable", false) : ::vl::WString(L"Enable", false));
+		auto __vwsn_bind_activator_result_ = (::vl::__vwsn::This(__vwsn_bind_cache_0)->GetEnabled() ? ::vl::WString::Unmanaged(L"Disable") : ::vl::WString::Unmanaged(L"Enable"));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -717,7 +717,7 @@ Closures
 
 	void __vwsnc5_Demo_demo_TriplePhaseImageButtonTemplateConstructor___vwsn_demo_TriplePhaseImageButtonTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#252526", false) : ((state == ::vl::presentation::controls::ButtonState::Active) ? ::vl::WString(L"#54545C", false) : ((state == ::vl::presentation::controls::ButtonState::Pressed) ? ::vl::WString(L"#007ACC", false) : ::vl::WString(L"#3F3F46", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString::Unmanaged(L"#252526") : ((state == ::vl::presentation::controls::ButtonState::Active) ? ::vl::WString::Unmanaged(L"#54545C") : ((state == ::vl::presentation::controls::ButtonState::Pressed) ? ::vl::WString::Unmanaged(L"#007ACC") : ::vl::WString::Unmanaged(L"#3F3F46")))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -794,7 +794,7 @@ Closures
 
 	void __vwsnc6_Demo_demo_TriplePhaseImageButtonTemplateConstructor___vwsn_demo_TriplePhaseImageButtonTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString(L"#434346", false) : ((state == ::vl::presentation::controls::ButtonState::Active) ? ::vl::WString(L"#6A6A75", false) : ((state == ::vl::presentation::controls::ButtonState::Pressed) ? ::vl::WString(L"#1C97EA", false) : ::vl::WString(L"#54545C", false)))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>([&](auto state){ return ((! ::vl::__vwsn::This(__vwsn_bind_cache_1)->GetVisuallyEnabled()) ? ::vl::WString::Unmanaged(L"#434346") : ((state == ::vl::presentation::controls::ButtonState::Active) ? ::vl::WString::Unmanaged(L"#6A6A75") : ((state == ::vl::presentation::controls::ButtonState::Pressed) ? ::vl::WString::Unmanaged(L"#1C97EA") : ::vl::WString::Unmanaged(L"#54545C")))); }(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetState()));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -1134,7 +1134,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(640); __vwsn_temp__.y = static_cast<::vl::vint>(480); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString(L"TriplePhaseImageButton", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString::Unmanaged(L"TriplePhaseImageButton"));
 		}
 		(this->__vwsn_precompile_1 = new ::vl::presentation::compositions::GuiStackComposition());
 		{
@@ -1190,10 +1190,10 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->button)->SetCheckedImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Checked", false), true).Obj())));
+			::vl::__vwsn::This(this->button)->SetCheckedImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/Checked"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->button)->SetPartialImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Partial", false), true).Obj())));
+			::vl::__vwsn::This(this->button)->SetPartialImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/Partial"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -1225,7 +1225,7 @@ Class (::demo::MainWindow)
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
@@ -1331,7 +1331,7 @@ Class (::demo::TriplePhaseButton)
 		, __vwsn_prop_CheckedImage(::vl::Ptr<::vl::presentation::GuiImageData>())
 		, __vwsn_prop_PartialImage(::vl::Ptr<::vl::presentation::GuiImageData>())
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::TriplePhaseButton", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::TriplePhaseButton"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_TriplePhaseButton_Initialize(this);
@@ -1467,7 +1467,7 @@ Class (::demo::TriplePhaseImageButtonTemplate)
 
 	TriplePhaseImageButtonTemplate::TriplePhaseImageButtonTemplate()
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::TriplePhaseImageButtonTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::TriplePhaseImageButtonTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_TriplePhaseImageButtonTemplate_Initialize(this);

@@ -51,26 +51,26 @@ Global Functions
 			auto __vwsn_switch_0 = value;
 			if ((__vwsn_switch_0 == ::demo::MyCategory::Black))
 			{
-				return ::vl::WString(L"Black", false);
+				return ::vl::WString::Unmanaged(L"Black");
 			}
 			else if ((__vwsn_switch_0 == ::demo::MyCategory::Red))
 			{
-				return ::vl::WString(L"Red", false);
+				return ::vl::WString::Unmanaged(L"Red");
 			}
 			else if ((__vwsn_switch_0 == ::demo::MyCategory::Lime))
 			{
-				return ::vl::WString(L"Lime", false);
+				return ::vl::WString::Unmanaged(L"Lime");
 			}
 			else if ((__vwsn_switch_0 == ::demo::MyCategory::Blue))
 			{
-				return ::vl::WString(L"Blue", false);
+				return ::vl::WString::Unmanaged(L"Blue");
 			}
 			else if ((__vwsn_switch_0 == ::demo::MyCategory::White))
 			{
-				return ::vl::WString(L"White", false);
+				return ::vl::WString::Unmanaged(L"White");
 			}
 		}
-		return ::vl::WString(L"", false);
+		return ::vl::WString::Unmanaged(L"");
 	}
 
 	::vl::presentation::Color Demo::ToColor(::demo::MyCategory value)
@@ -79,22 +79,22 @@ Global Functions
 			auto __vwsn_switch_1 = value;
 			if ((__vwsn_switch_1 == ::demo::MyCategory::Red))
 			{
-				return ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FF0000", false));
+				return ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FF0000"));
 			}
 			else if ((__vwsn_switch_1 == ::demo::MyCategory::Lime))
 			{
-				return ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#00FF00", false));
+				return ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#00FF00"));
 			}
 			else if ((__vwsn_switch_1 == ::demo::MyCategory::Blue))
 			{
-				return ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#0000FF", false));
+				return ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#0000FF"));
 			}
 			else if ((__vwsn_switch_1 == ::demo::MyCategory::White))
 			{
-				return ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false));
+				return ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF"));
 			}
 		}
-		return ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#000000", false));
+		return ::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#000000"));
 	}
 
 	::vl::WString Demo::ToString(::demo::MyGender value)
@@ -103,19 +103,19 @@ Global Functions
 			auto __vwsn_switch_2 = value;
 			if ((__vwsn_switch_2 == ::demo::MyGender::Male))
 			{
-				return ::vl::WString(L"Male", false);
+				return ::vl::WString::Unmanaged(L"Male");
 			}
 			else if ((__vwsn_switch_2 == ::demo::MyGender::Female))
 			{
-				return ::vl::WString(L"Female", false);
+				return ::vl::WString::Unmanaged(L"Female");
 			}
 		}
-		return ::vl::WString(L"", false);
+		return ::vl::WString::Unmanaged(L"");
 	}
 
 	::vl::WString Demo::ToString(::vl::DateTime value)
 	{
-		return (((((::vl::WString(L"", false) + ::vl::__vwsn::ToString(value.month)) + ::vl::WString(L"/", false)) + ::vl::__vwsn::ToString(value.day)) + ::vl::WString(L"/", false)) + ::vl::__vwsn::ToString(value.year));
+		return (((((::vl::WString::Unmanaged(L"") + ::vl::__vwsn::ToString(value.month)) + ::vl::WString::Unmanaged(L"/")) + ::vl::__vwsn::ToString(value.day)) + ::vl::WString::Unmanaged(L"/")) + ::vl::__vwsn::ToString(value.year));
 	}
 
 	Demo& Demo::Instance()
@@ -668,7 +668,7 @@ Closures
 				return static_cast<::vl::presentation::templates::GuiListItemTemplate*>(new ::demo::CategoryItemTemplate(::vl::__vwsn::Unbox<::demo::MyCategory>(__vwsn_viewModel_)));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"Cannot find a matched control template to create."));
 	}
 
 	//-------------------------------------------------------------------
@@ -686,7 +686,7 @@ Closures
 				return static_cast<::vl::presentation::templates::GuiTemplate*>(new ::demo::CategoryItemTemplate(::vl::__vwsn::Unbox<::demo::MyCategory>(__vwsn_viewModel_)));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"Cannot find a matched control template to create."));
 	}
 
 	//-------------------------------------------------------------------
@@ -826,7 +826,7 @@ Closures
 				return static_cast<::vl::presentation::templates::GuiListItemTemplate*>(new ::demo::GenderItemTemplate(::vl::__vwsn::Unbox<::demo::MyGender>(__vwsn_viewModel_)));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"Cannot find a matched control template to create."));
 	}
 
 	//-------------------------------------------------------------------
@@ -844,7 +844,7 @@ Closures
 				return static_cast<::vl::presentation::templates::GuiTemplate*>(new ::demo::GenderItemTemplate(::vl::__vwsn::Unbox<::demo::MyGender>(__vwsn_viewModel_)));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"Cannot find a matched control template to create."));
 	}
 
 	//-------------------------------------------------------------------
@@ -1073,7 +1073,7 @@ Closures
 
 	void __vwsnc11_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::Unbox<::vl::WString>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetCellValue()); } catch(...){ return ::vl::WString(L"", false); } }();
+		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::Unbox<::vl::WString>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetCellValue()); } catch(...){ return ::vl::WString::Unmanaged(L""); } }();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -1699,7 +1699,7 @@ Closures
 
 	void __vwsnc21_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsnthis_0->self)->ResolveResource(::vl::WString(L"res", false), (::vl::WString(L"Images/", false) + GLOBAL_NAME ToString(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetGender())), true).Obj())).Obj())->GetImage();
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsnthis_0->self)->ResolveResource(::vl::WString::Unmanaged(L"res"), (::vl::WString::Unmanaged(L"Images/") + GLOBAL_NAME ToString(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetGender())), true).Obj())).Obj())->GetImage();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -2007,7 +2007,7 @@ Closures
 
 	void __vwsnc6_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::Unbox<::vl::DateTime>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetCellValue()); } catch(...){ return ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-01-01 00:00:00.000", false)); } }();
+		auto __vwsn_bind_activator_result_ = [&](){ try{ return ::vl::__vwsn::Unbox<::vl::DateTime>(::vl::__vwsn::This(__vwsn_bind_cache_0)->GetCellValue()); } catch(...){ return ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"2000-01-01 00:00:00.000")); } }();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -2272,7 +2272,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_2 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidBorderElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_2));
@@ -2300,7 +2300,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetEllipse(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
@@ -2367,7 +2367,7 @@ Class (::demo::CategoryDisplayer)
 		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
 		, __vwsn_prop_Category(::demo::MyCategory::Black)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryDisplayer", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::CategoryDisplayer"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_CategoryDisplayer_Initialize(this);
@@ -2440,7 +2440,7 @@ Class (::demo::CategoryEditor)
 	CategoryEditor::CategoryEditor()
 		: items((::vl::__vwsn::CreateList().Add(::demo::MyCategory::Black).Add(::demo::MyCategory::Red).Add(::demo::MyCategory::Lime).Add(::demo::MyCategory::Blue).Add(::demo::MyCategory::White)).list)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryEditor", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::CategoryEditor"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_CategoryEditor_Initialize(this);
@@ -2501,7 +2501,7 @@ Class (::demo::CategoryItemTemplate)
 		: __vwsn_parameter_SelectedCategory(static_cast<::demo::MyCategory>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0))))
 	{
 		(this->__vwsn_parameter_SelectedCategory = __vwsn_ctor_parameter_SelectedCategory);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryItemTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::CategoryItemTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_CategoryItemTemplate_Initialize(this);
@@ -2552,7 +2552,7 @@ Class (::demo::CategoryVisualizer)
 
 	CategoryVisualizer::CategoryVisualizer()
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::CategoryVisualizer", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::CategoryVisualizer"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_CategoryVisualizer_Initialize(this);
@@ -2608,7 +2608,7 @@ Class (::demo::DateEditor)
 
 	DateEditor::DateEditor()
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DateEditor", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::DateEditor"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_DateEditor_Initialize(this);
@@ -2651,7 +2651,7 @@ Class (::demo::DateFilterConstructor)
 			(this->checkFrom = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
 		}
 		{
-			::vl::__vwsn::This(this->checkFrom)->SetText(::vl::WString(L"From:", false));
+			::vl::__vwsn::This(this->checkFrom)->SetText(::vl::WString::Unmanaged(L"From:"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkFrom)->GetBoundsComposition()));
@@ -2667,7 +2667,7 @@ Class (::demo::DateFilterConstructor)
 			(this->dateFrom = new ::vl::presentation::controls::GuiDateComboBox(::vl::presentation::theme::ThemeName::DateComboBox));
 		}
 		{
-			::vl::__vwsn::This(this->dateFrom)->SetSelectedDate(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1988-01-01 00:00:00.000", false)));
+			::vl::__vwsn::This(this->dateFrom)->SetSelectedDate(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"1988-01-01 00:00:00.000")));
 		}
 		(this->__vwsn_precompile_3 = ::vl::__vwsn::This(this->dateFrom)->GetBoundsComposition());
 		{
@@ -2687,7 +2687,7 @@ Class (::demo::DateFilterConstructor)
 			(this->checkTo = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
 		}
 		{
-			::vl::__vwsn::This(this->checkTo)->SetText(::vl::WString(L"To:", false));
+			::vl::__vwsn::This(this->checkTo)->SetText(::vl::WString::Unmanaged(L"To:"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkTo)->GetBoundsComposition()));
@@ -2703,7 +2703,7 @@ Class (::demo::DateFilterConstructor)
 			(this->dateTo = new ::vl::presentation::controls::GuiDateComboBox(::vl::presentation::theme::ThemeName::DateComboBox));
 		}
 		{
-			::vl::__vwsn::This(this->dateTo)->SetSelectedDate(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-01-01 00:00:00.000", false)));
+			::vl::__vwsn::This(this->dateTo)->SetSelectedDate(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"2000-01-01 00:00:00.000")));
 		}
 		(this->__vwsn_precompile_6 = ::vl::__vwsn::This(this->dateTo)->GetBoundsComposition());
 		{
@@ -2788,7 +2788,7 @@ Class (::demo::DateFilter)
 		, callback(static_cast<::vl::presentation::controls::list::IDataProcessorCallback*>(nullptr))
 		, __vwsn_prop_Filter(::vl::Ptr<::vl::presentation::controls::list::IDataFilter>())
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DateFilter", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::DateFilter"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_DateFilter_Initialize(this);
@@ -2867,7 +2867,7 @@ Class (::demo::GenderDisplayer)
 		: ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl)
 		, __vwsn_prop_Gender(::demo::MyGender::Male)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderDisplayer", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::GenderDisplayer"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_GenderDisplayer_Initialize(this);
@@ -2940,7 +2940,7 @@ Class (::demo::GenderEditor)
 	GenderEditor::GenderEditor()
 		: items((::vl::__vwsn::CreateList().Add(::demo::MyGender::Male).Add(::demo::MyGender::Female)).list)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderEditor", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::GenderEditor"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_GenderEditor_Initialize(this);
@@ -2996,7 +2996,7 @@ Class (::demo::GenderItemTemplate)
 		: __vwsn_parameter_SelectedGender(static_cast<::demo::MyGender>(static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(0))))
 	{
 		(this->__vwsn_parameter_SelectedGender = __vwsn_ctor_parameter_SelectedGender);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderItemTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::GenderItemTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_GenderItemTemplate_Initialize(this);
@@ -3042,7 +3042,7 @@ Class (::demo::GenderVisualizer)
 
 	GenderVisualizer::GenderVisualizer()
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::GenderVisualizer", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::GenderVisualizer"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_GenderVisualizer_Initialize(this);
@@ -3068,7 +3068,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(640); __vwsn_temp__.y = static_cast<::vl::vint>(480); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"DataGrid", false));
+			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"DataGrid"));
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
@@ -3092,7 +3092,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_3 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetText(::vl::WString(L"BigIcon", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetText(::vl::WString::Unmanaged(L"BigIcon"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetItems());
@@ -3100,7 +3100,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetText(::vl::WString(L"SmallIcon", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetText(::vl::WString::Unmanaged(L"SmallIcon"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetItems());
@@ -3108,7 +3108,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_5 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->SetText(::vl::WString(L"List", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->SetText(::vl::WString::Unmanaged(L"List"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetItems());
@@ -3116,7 +3116,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_6 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetText(::vl::WString(L"Tile", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetText(::vl::WString::Unmanaged(L"Tile"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetItems());
@@ -3124,7 +3124,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_7 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_7.Obj())->SetText(::vl::WString(L"Information", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_7.Obj())->SetText(::vl::WString::Unmanaged(L"Information"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetItems());
@@ -3132,7 +3132,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_8 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetText(::vl::WString(L"Detail", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetText(::vl::WString::Unmanaged(L"Detail"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetItems());
@@ -3140,7 +3140,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_9 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->SetText(::vl::WString(L"DataGrid", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->SetText(::vl::WString::Unmanaged(L"DataGrid"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetItems());
@@ -3163,7 +3163,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->comboView)->SetSelectedIndex(static_cast<::vl::vint>(6));
 		}
 		{
-			::vl::__vwsn::This(this->comboView)->SetAlt(::vl::WString(L"V", false));
+			::vl::__vwsn::This(this->comboView)->SetAlt(::vl::WString::Unmanaged(L"V"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->comboView)->GetBoundsComposition()));
@@ -3199,7 +3199,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_19)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->dataGrid)->SetAlt(::vl::WString(L"L", false));
+			::vl::__vwsn::This(this->dataGrid)->SetAlt(::vl::WString::Unmanaged(L"L"));
 		}
 		(this->__vwsn_precompile_12 = ::vl::Ptr<::vl::presentation::controls::list::DataColumn>(new ::vl::presentation::controls::list::DataColumn()));
 		{
@@ -3218,7 +3218,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetSize(static_cast<::vl::vint>(120));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetText(::vl::WString(L"Name", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetText(::vl::WString::Unmanaged(L"Name"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->dataGrid)->GetColumns());
@@ -3244,7 +3244,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetSize(static_cast<::vl::vint>(80));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetText(::vl::WString(L"Gender", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetText(::vl::WString::Unmanaged(L"Gender"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->dataGrid)->GetColumns());
@@ -3270,7 +3270,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetSize(static_cast<::vl::vint>(80));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetText(::vl::WString(L"Category", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetText(::vl::WString::Unmanaged(L"Category"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->dataGrid)->GetColumns());
@@ -3307,7 +3307,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetSize(static_cast<::vl::vint>(80));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetText(::vl::WString(L"Birthday", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetText(::vl::WString::Unmanaged(L"Birthday"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->dataGrid)->GetColumns());
@@ -3333,7 +3333,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetSize(static_cast<::vl::vint>(160));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetText(::vl::WString(L"Website", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetText(::vl::WString::Unmanaged(L"Website"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->dataGrid)->GetColumns());
@@ -3393,7 +3393,7 @@ Class (::demo::MainWindow)
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
@@ -3402,9 +3402,9 @@ Class (::demo::MainWindow)
 
 	void MainWindow::__vwsn_instance_ctor_()
 	{
-		auto tempData = (::vl::__vwsn::CreateObservableList().Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"涼宮 春日", false), ::demo::MyGender::Female, ::demo::MyCategory::Lime, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1988-08-08 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"キョン", false), ::demo::MyGender::Male, ::demo::MyCategory::Black, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1988-08-08 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"长门 有希", false), ::demo::MyGender::Female, ::demo::MyCategory::White, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-08-06 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"朝比奈 实玖瑠", false), ::demo::MyGender::Female, ::demo::MyCategory::Red, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1987-08-30 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false)))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString(L"古泉 一树", false), ::demo::MyGender::Male, ::demo::MyCategory::Blue, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"1986-08-12 00:00:00.000", false)), ::vl::WString(L"http://www.haruhi.tv/", false))))).list;
-		auto largeImage = ::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(this->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Large", false), true).Obj()));
-		auto smallImage = ::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(this->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/Small", false), true).Obj()));
+		auto tempData = (::vl::__vwsn::CreateObservableList().Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString::Unmanaged(L"涼宮 春日"), ::demo::MyGender::Female, ::demo::MyCategory::Lime, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"1988-08-08 00:00:00.000")), ::vl::WString::Unmanaged(L"http://www.haruhi.tv/")))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString::Unmanaged(L"キョン"), ::demo::MyGender::Male, ::demo::MyCategory::Black, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"1988-08-08 00:00:00.000")), ::vl::WString::Unmanaged(L"http://www.haruhi.tv/")))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString::Unmanaged(L"长门 有希"), ::demo::MyGender::Female, ::demo::MyCategory::White, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"2000-08-06 00:00:00.000")), ::vl::WString::Unmanaged(L"http://www.haruhi.tv/")))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString::Unmanaged(L"朝比奈 实玖瑠"), ::demo::MyGender::Female, ::demo::MyCategory::Red, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"1987-08-30 00:00:00.000")), ::vl::WString::Unmanaged(L"http://www.haruhi.tv/")))).Add(::vl::Ptr<::demo::MyDataItem>(new ::demo::MyDataItem(::vl::WString::Unmanaged(L"古泉 一树"), ::demo::MyGender::Male, ::demo::MyCategory::Blue, ::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"1986-08-12 00:00:00.000")), ::vl::WString::Unmanaged(L"http://www.haruhi.tv/"))))).list;
+		auto largeImage = ::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(this->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/Large"), true).Obj()));
+		auto smallImage = ::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(this->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/Small"), true).Obj()));
 		{
 			auto __vwsn_for_enumerable_item = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(tempData);
 			auto __vwsn_for_enumerator_item = ::vl::__vwsn::This(__vwsn_for_enumerable_item.Obj())->CreateEnumerator();
@@ -3500,22 +3500,22 @@ Class (::demo::MyDataItem)
 	}
 
 	MyDataItem::MyDataItem()
-		: __vwsn_prop_Name(::vl::WString(L"", false))
+		: __vwsn_prop_Name(::vl::WString::Unmanaged(L""))
 		, __vwsn_prop_Gender(::demo::MyGender::Male)
 		, __vwsn_prop_Category(::demo::MyCategory::White)
-		, __vwsn_prop_Birthday(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-01-01 00:00:00.000", false)))
-		, __vwsn_prop_Website(::vl::WString(L"", false))
+		, __vwsn_prop_Birthday(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"2000-01-01 00:00:00.000")))
+		, __vwsn_prop_Website(::vl::WString::Unmanaged(L""))
 		, __vwsn_prop_LargeImage(::vl::Ptr<::vl::presentation::GuiImageData>())
 		, __vwsn_prop_SmallImage(::vl::Ptr<::vl::presentation::GuiImageData>())
 	{
 	}
 
 	MyDataItem::MyDataItem(const ::vl::WString& name, ::demo::MyGender gender, ::demo::MyCategory category, ::vl::DateTime birthday, const ::vl::WString& website)
-		: __vwsn_prop_Name(::vl::WString(L"", false))
+		: __vwsn_prop_Name(::vl::WString::Unmanaged(L""))
 		, __vwsn_prop_Gender(::demo::MyGender::Male)
 		, __vwsn_prop_Category(::demo::MyCategory::White)
-		, __vwsn_prop_Birthday(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString(L"2000-01-01 00:00:00.000", false)))
-		, __vwsn_prop_Website(::vl::WString(L"", false))
+		, __vwsn_prop_Birthday(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"2000-01-01 00:00:00.000")))
+		, __vwsn_prop_Website(::vl::WString::Unmanaged(L""))
 		, __vwsn_prop_LargeImage(::vl::Ptr<::vl::presentation::GuiImageData>())
 		, __vwsn_prop_SmallImage(::vl::Ptr<::vl::presentation::GuiImageData>())
 	{
@@ -3571,7 +3571,7 @@ Class (::demo::TextEditor)
 
 	TextEditor::TextEditor()
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::TextEditor", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::TextEditor"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_TextEditor_Initialize(this);

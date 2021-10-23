@@ -328,7 +328,7 @@ Closures
 				return static_cast<::vl::presentation::templates::GuiListItemTemplate*>(new ::demo::StyleItemTemplate(::vl::__vwsn::Unbox<::vl::Ptr<::demo::StyleItem>>(__vwsn_viewModel_)));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"Cannot find a matched control template to create."));
 	}
 
 	//-------------------------------------------------------------------
@@ -516,7 +516,7 @@ Closures
 
 	void __vwsnc12_EditorRibbon_demo_StyleItemTemplateConstructor___vwsn_demo_StyleItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() ? ::vl::WString(L"#FFFFFF", false) : ::vl::WString(L"#808080", false)));
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::Parse<::vl::presentation::Color>((::vl::__vwsn::This(__vwsn_bind_cache_0)->GetSelected() ? ::vl::WString::Unmanaged(L"#FFFFFF") : ::vl::WString::Unmanaged(L"#808080")));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -1206,17 +1206,17 @@ namespace demo
 			(this->__vwsn_precompile_22 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::RibbonLargeDropdownButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_22)->SetAlt(::vl::WString(L"E", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_22)->SetAlt(::vl::WString::Unmanaged(L"E"));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_22)->SetText(::vl::WString(L"Edit Mode", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_22)->SetText(::vl::WString::Unmanaged(L"Edit Mode"));
 		}
 		(this->__vwsn_precompile_23 = ::vl::__vwsn::This(this->__vwsn_precompile_22)->EnsureToolstripSubMenu());
 		{
 			(this->__vwsn_precompile_24 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_24)->SetAlt(::vl::WString(L"V", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_24)->SetAlt(::vl::WString::Unmanaged(L"V"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_24));
@@ -1225,7 +1225,7 @@ namespace demo
 			(this->__vwsn_precompile_25 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_25)->SetAlt(::vl::WString(L"S", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_25)->SetAlt(::vl::WString::Unmanaged(L"S"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_25));
@@ -1234,7 +1234,7 @@ namespace demo
 			(this->__vwsn_precompile_26 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_26)->SetAlt(::vl::WString(L"E", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_26)->SetAlt(::vl::WString::Unmanaged(L"E"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_26));
@@ -1257,7 +1257,7 @@ namespace demo
 			(this->__vwsn_precompile_29 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_29)->SetAlt(::vl::WString(L"L", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_29)->SetAlt(::vl::WString::Unmanaged(L"L"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_28)->GetButtons());
@@ -1267,7 +1267,7 @@ namespace demo
 			(this->__vwsn_precompile_30 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetAlt(::vl::WString(L"C", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_30)->SetAlt(::vl::WString::Unmanaged(L"C"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_28)->GetButtons());
@@ -1277,7 +1277,7 @@ namespace demo
 			(this->__vwsn_precompile_31 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_31)->SetAlt(::vl::WString(L"R", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_31)->SetAlt(::vl::WString::Unmanaged(L"R"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_28)->GetButtons());
@@ -1291,10 +1291,10 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetExpandable(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetAlt(::vl::WString(L"A", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetAlt(::vl::WString::Unmanaged(L"A"));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetText(::vl::WString(L"Alignment", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetText(::vl::WString::Unmanaged(L"Alignment"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_19)->GetGroups());
@@ -1310,7 +1310,7 @@ namespace demo
 			(this->__vwsn_precompile_34 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_34)->SetAlt(::vl::WString(L"U", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_34)->SetAlt(::vl::WString::Unmanaged(L"U"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_33)->GetButtons());
@@ -1320,7 +1320,7 @@ namespace demo
 			(this->__vwsn_precompile_35 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_35)->SetAlt(::vl::WString(L"R", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_35)->SetAlt(::vl::WString::Unmanaged(L"R"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_33)->GetButtons());
@@ -1344,7 +1344,7 @@ namespace demo
 			(this->__vwsn_precompile_38 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_38)->SetAlt(::vl::WString(L"C", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_38)->SetAlt(::vl::WString::Unmanaged(L"C"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_37)->GetButtons());
@@ -1354,7 +1354,7 @@ namespace demo
 			(this->__vwsn_precompile_39 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_39)->SetAlt(::vl::WString(L"X", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_39)->SetAlt(::vl::WString::Unmanaged(L"X"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_37)->GetButtons());
@@ -1364,7 +1364,7 @@ namespace demo
 			(this->__vwsn_precompile_40 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_40)->SetAlt(::vl::WString(L"P", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_40)->SetAlt(::vl::WString::Unmanaged(L"P"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_37)->GetButtons());
@@ -1385,17 +1385,17 @@ namespace demo
 			(this->__vwsn_precompile_42 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::RibbonLargeButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_42)->SetAlt(::vl::WString(L"D", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_42)->SetAlt(::vl::WString::Unmanaged(L"D"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_32)->GetItems());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_42));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetAlt(::vl::WString(L"E", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetAlt(::vl::WString::Unmanaged(L"E"));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetText(::vl::WString(L"Edit", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetText(::vl::WString::Unmanaged(L"Edit"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_19)->GetGroups());
@@ -1414,7 +1414,7 @@ namespace demo
 			(this->__vwsn_precompile_46 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_46)->SetAlt(::vl::WString(L"B", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_46)->SetAlt(::vl::WString::Unmanaged(L"B"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_46));
@@ -1423,7 +1423,7 @@ namespace demo
 			(this->__vwsn_precompile_47 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_47)->SetAlt(::vl::WString(L"I", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_47)->SetAlt(::vl::WString::Unmanaged(L"I"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_47));
@@ -1439,7 +1439,7 @@ namespace demo
 			(this->__vwsn_precompile_49 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_49)->SetAlt(::vl::WString(L"U", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_49)->SetAlt(::vl::WString::Unmanaged(L"U"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_48)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_49));
@@ -1448,7 +1448,7 @@ namespace demo
 			(this->__vwsn_precompile_50 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_50)->SetAlt(::vl::WString(L"S", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_50)->SetAlt(::vl::WString::Unmanaged(L"S"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_48)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_50));
@@ -1464,7 +1464,7 @@ namespace demo
 			(this->__vwsn_precompile_52 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_52)->SetAlt(::vl::WString(L"F", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_52)->SetAlt(::vl::WString::Unmanaged(L"F"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_51)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_52));
@@ -1473,7 +1473,7 @@ namespace demo
 			(this->__vwsn_precompile_53 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_53)->SetAlt(::vl::WString(L"C", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_53)->SetAlt(::vl::WString::Unmanaged(L"C"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_51)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_53));
@@ -1482,7 +1482,7 @@ namespace demo
 			(this->__vwsn_precompile_54 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_54)->SetAlt(::vl::WString(L"K", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_54)->SetAlt(::vl::WString::Unmanaged(L"K"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_51)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_54));
@@ -1498,7 +1498,7 @@ namespace demo
 			(this->__vwsn_precompile_56 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_56)->SetAlt(::vl::WString(L"L", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_56)->SetAlt(::vl::WString::Unmanaged(L"L"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_55)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_56));
@@ -1507,7 +1507,7 @@ namespace demo
 			(this->__vwsn_precompile_57 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_57)->SetAlt(::vl::WString(L"R", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_57)->SetAlt(::vl::WString::Unmanaged(L"R"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_55)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_57));
@@ -1521,10 +1521,10 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_44));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_43)->SetAlt(::vl::WString(L"T", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_43)->SetAlt(::vl::WString::Unmanaged(L"T"));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_43)->SetText(::vl::WString(L"Text", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_43)->SetText(::vl::WString::Unmanaged(L"Text"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_19)->GetGroups());
@@ -1540,13 +1540,13 @@ namespace demo
 			(this->__vwsn_precompile_60 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_60)->SetText(::vl::WString(L"Left", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_60)->SetText(::vl::WString::Unmanaged(L"Left"));
 		}
 		{
 			(this->__vwsn_precompile_61 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_61)->SetAlt(::vl::WString(L"L", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_61)->SetAlt(::vl::WString::Unmanaged(L"L"));
 		}
 		(this->__vwsn_precompile_62 = ::vl::__vwsn::This(this->__vwsn_precompile_61)->GetBoundsComposition());
 		{
@@ -1566,13 +1566,13 @@ namespace demo
 			(this->__vwsn_precompile_63 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_63)->SetText(::vl::WString(L"Center", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_63)->SetText(::vl::WString::Unmanaged(L"Center"));
 		}
 		{
 			(this->__vwsn_precompile_64 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_64)->SetAlt(::vl::WString(L"C", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_64)->SetAlt(::vl::WString::Unmanaged(L"C"));
 		}
 		(this->__vwsn_precompile_65 = ::vl::__vwsn::This(this->__vwsn_precompile_64)->GetBoundsComposition());
 		{
@@ -1592,13 +1592,13 @@ namespace demo
 			(this->__vwsn_precompile_66 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_66)->SetText(::vl::WString(L"Right", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_66)->SetText(::vl::WString::Unmanaged(L"Right"));
 		}
 		{
 			(this->__vwsn_precompile_67 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_67)->SetAlt(::vl::WString(L"R", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_67)->SetAlt(::vl::WString::Unmanaged(L"R"));
 		}
 		(this->__vwsn_precompile_68 = ::vl::__vwsn::This(this->__vwsn_precompile_67)->GetBoundsComposition());
 		{
@@ -1632,13 +1632,13 @@ namespace demo
 			(this->__vwsn_precompile_71 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_71)->SetText(::vl::WString(L"Left", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_71)->SetText(::vl::WString::Unmanaged(L"Left"));
 		}
 		{
 			(this->__vwsn_precompile_72 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_72)->SetAlt(::vl::WString(L"L", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_72)->SetAlt(::vl::WString::Unmanaged(L"L"));
 		}
 		(this->__vwsn_precompile_73 = ::vl::__vwsn::This(this->__vwsn_precompile_72)->GetBoundsComposition());
 		{
@@ -1658,13 +1658,13 @@ namespace demo
 			(this->__vwsn_precompile_74 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_74)->SetText(::vl::WString(L"Center", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_74)->SetText(::vl::WString::Unmanaged(L"Center"));
 		}
 		{
 			(this->__vwsn_precompile_75 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_75)->SetAlt(::vl::WString(L"C", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_75)->SetAlt(::vl::WString::Unmanaged(L"C"));
 		}
 		(this->__vwsn_precompile_76 = ::vl::__vwsn::This(this->__vwsn_precompile_75)->GetBoundsComposition());
 		{
@@ -1684,13 +1684,13 @@ namespace demo
 			(this->__vwsn_precompile_77 = new ::vl::presentation::controls::GuiRibbonIconLabel(::vl::presentation::theme::ThemeName::RibbonIconLabel));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_77)->SetText(::vl::WString(L"Right", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_77)->SetText(::vl::WString::Unmanaged(L"Right"));
 		}
 		{
 			(this->__vwsn_precompile_78 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_78)->SetAlt(::vl::WString(L"R", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_78)->SetAlt(::vl::WString::Unmanaged(L"R"));
 		}
 		(this->__vwsn_precompile_79 = ::vl::__vwsn::This(this->__vwsn_precompile_78)->GetBoundsComposition());
 		{
@@ -1711,10 +1711,10 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_70));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_58)->SetAlt(::vl::WString(L"I", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_58)->SetAlt(::vl::WString::Unmanaged(L"I"));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_58)->SetText(::vl::WString(L"Icon Labels", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_58)->SetText(::vl::WString::Unmanaged(L"Icon Labels"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_19)->GetGroups());
@@ -1749,7 +1749,7 @@ namespace demo
 			(this->__vwsn_precompile_82 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonToolstripHeader));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_82)->SetText(::vl::WString(L"Header A", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_82)->SetText(::vl::WString::Unmanaged(L"Header A"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_81)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_82));
@@ -1758,7 +1758,7 @@ namespace demo
 			(this->__vwsn_precompile_83 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_83)->SetText(::vl::WString(L"Item A1", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_83)->SetText(::vl::WString::Unmanaged(L"Item A1"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_81)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_83));
@@ -1767,7 +1767,7 @@ namespace demo
 			(this->__vwsn_precompile_84 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_84)->SetText(::vl::WString(L"Item A2", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_84)->SetText(::vl::WString::Unmanaged(L"Item A2"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_81)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_84));
@@ -1776,7 +1776,7 @@ namespace demo
 			(this->__vwsn_precompile_85 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_85)->SetText(::vl::WString(L"Item A3", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_85)->SetText(::vl::WString::Unmanaged(L"Item A3"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_81)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_85));
@@ -1785,7 +1785,7 @@ namespace demo
 			(this->__vwsn_precompile_86 = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::RibbonToolstripHeader));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_86)->SetText(::vl::WString(L"Header B", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_86)->SetText(::vl::WString::Unmanaged(L"Header B"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_81)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_86));
@@ -1794,7 +1794,7 @@ namespace demo
 			(this->__vwsn_precompile_87 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_87)->SetText(::vl::WString(L"Item B1", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_87)->SetText(::vl::WString::Unmanaged(L"Item B1"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_81)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_87));
@@ -1803,7 +1803,7 @@ namespace demo
 			(this->__vwsn_precompile_88 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_88)->SetText(::vl::WString(L"Item B2", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_88)->SetText(::vl::WString::Unmanaged(L"Item B2"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_81)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_88));
@@ -1812,7 +1812,7 @@ namespace demo
 			(this->__vwsn_precompile_89 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_89)->SetText(::vl::WString(L"Item B3", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_89)->SetText(::vl::WString::Unmanaged(L"Item B3"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_81)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_89));
@@ -1822,10 +1822,10 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->styleGallery));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_80)->SetAlt(::vl::WString(L"S", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_80)->SetAlt(::vl::WString::Unmanaged(L"S"));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_80)->SetText(::vl::WString(L"Style", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_80)->SetText(::vl::WString::Unmanaged(L"Style"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_19)->GetGroups());
@@ -1836,10 +1836,10 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.y = static_cast<::vl::vint>(110); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_19)->SetAlt(::vl::WString(L"E", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_19)->SetAlt(::vl::WString::Unmanaged(L"E"));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_19)->SetText(::vl::WString(L"Edit", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_19)->SetText(::vl::WString::Unmanaged(L"Edit"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueObservableList>(::vl::__vwsn::This(this->__vwsn_precompile_8)->GetPages());
@@ -1861,7 +1861,7 @@ namespace demo
 			(this->__vwsn_precompile_93 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_93)->SetAlt(::vl::WString(L"I", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_93)->SetAlt(::vl::WString::Unmanaged(L"I"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_92)->GetButtons());
@@ -1871,7 +1871,7 @@ namespace demo
 			(this->__vwsn_precompile_94 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_94)->SetAlt(::vl::WString(L"L", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_94)->SetAlt(::vl::WString::Unmanaged(L"L"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_92)->GetButtons());
@@ -1881,7 +1881,7 @@ namespace demo
 			(this->__vwsn_precompile_95 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_95)->SetAlt(::vl::WString(L"R", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_95)->SetAlt(::vl::WString::Unmanaged(L"R"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_92)->GetButtons());
@@ -1892,17 +1892,17 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_92));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_91)->SetText(::vl::WString(L"Object", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_91)->SetText(::vl::WString::Unmanaged(L"Object"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_90)->GetGroups());
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_91));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_90)->SetAlt(::vl::WString(L"I", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_90)->SetAlt(::vl::WString::Unmanaged(L"I"));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_90)->SetText(::vl::WString(L"Insert", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_90)->SetText(::vl::WString::Unmanaged(L"Insert"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueObservableList>(::vl::__vwsn::This(this->__vwsn_precompile_8)->GetPages());
@@ -1931,10 +1931,10 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetText(::vl::WString(L"Search:", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetText(::vl::WString::Unmanaged(L"Search:"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_15));
@@ -1947,7 +1947,7 @@ namespace demo
 			(this->__vwsn_precompile_17 = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetAlt(::vl::WString(L"S", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetAlt(::vl::WString::Unmanaged(L"S"));
 		}
 		(this->__vwsn_precompile_18 = ::vl::__vwsn::This(this->__vwsn_precompile_17)->GetBoundsComposition());
 		{
@@ -1974,7 +1974,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->buttonHome)->SetText(::vl::WString(L"  HOME  ", false));
+			::vl::__vwsn::This(this->buttonHome)->SetText(::vl::WString::Unmanaged(L"  HOME  "));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->buttonHome)->GetBoundsComposition()));
@@ -1987,14 +1987,14 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_8)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"Document Editor (Ribbon)", false));
+			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"Document Editor (Ribbon)"));
 		}
 		(this->dialogMessage = new ::vl::presentation::controls::GuiMessageDialog());
 		{
-			::vl::__vwsn::This(this->dialogMessage)->SetTitle(::vl::WString(L"You Expanded a Group!", false));
+			::vl::__vwsn::This(this->dialogMessage)->SetTitle(::vl::WString::Unmanaged(L"You Expanded a Group!"));
 		}
 		{
-			::vl::__vwsn::This(this->dialogMessage)->SetText(::vl::WString(L"GuiRibbonGroup::ExpandButtonClicked is executed!", false));
+			::vl::__vwsn::This(this->dialogMessage)->SetText(::vl::WString::Unmanaged(L"GuiRibbonGroup::ExpandButtonClicked is executed!"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogMessage));
@@ -2012,7 +2012,7 @@ namespace demo
 			(this->__vwsn_precompile_2 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetAlt(::vl::WString(L"O", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetAlt(::vl::WString::Unmanaged(L"O"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_2));
@@ -2027,7 +2027,7 @@ namespace demo
 			(this->__vwsn_precompile_4 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetAlt(::vl::WString(L"P", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetAlt(::vl::WString::Unmanaged(L"P"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_4));
@@ -2036,7 +2036,7 @@ namespace demo
 			(this->__vwsn_precompile_5 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetAlt(::vl::WString(L"R", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetAlt(::vl::WString::Unmanaged(L"R"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_5));
@@ -2045,7 +2045,7 @@ namespace demo
 			(this->__vwsn_precompile_6 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetAlt(::vl::WString(L"H", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetAlt(::vl::WString::Unmanaged(L"H"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_6));
@@ -2096,7 +2096,7 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/EditableLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/EditableLarge"), true).Obj())));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_24)->SetCommand(::vl::__vwsn::This(this->self)->commandViewOnly);
@@ -2141,7 +2141,7 @@ namespace demo
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_21)->ExpandButtonClicked, __vwsn_event_handler_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/PasteLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->__vwsn_precompile_32)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/PasteLarge"), true).Obj())));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_34)->SetCommand(::vl::__vwsn::This(this->self)->commandUndo);
@@ -2189,25 +2189,25 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_57)->SetCommand(::vl::__vwsn::This(this->self)->commandRemoveHyperlink);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_60)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignLeft", false), true).Obj())));
+			::vl::__vwsn::This(this->__vwsn_precompile_60)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignLeft"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_63)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignCenter", false), true).Obj())));
+			::vl::__vwsn::This(this->__vwsn_precompile_63)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignCenter"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_66)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignRight", false), true).Obj())));
+			::vl::__vwsn::This(this->__vwsn_precompile_66)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignRight"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_71)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignLeft", false), true).Obj())));
+			::vl::__vwsn::This(this->__vwsn_precompile_71)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignLeft"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_74)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignCenter", false), true).Obj())));
+			::vl::__vwsn::This(this->__vwsn_precompile_74)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignCenter"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_77)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/TextAlignRight", false), true).Obj())));
+			::vl::__vwsn::This(this->__vwsn_precompile_77)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/TextAlignRight"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_80)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"ToolbarImages/EditableLarge", false), true).Obj())));
+			::vl::__vwsn::This(this->__vwsn_precompile_80)->SetLargeImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"ToolbarImages/EditableLarge"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc10_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -2393,17 +2393,17 @@ Class (::demo::DocumentEditorRibbon)
 	::vl::Ptr<::vl::reflection::description::IValueList> DocumentEditorRibbon::GenerateStyleGroups()
 	{
 		auto group1 = ::vl::Ptr<::demo::StyleGroup>(new ::demo::StyleGroup());
-		(::vl::__vwsn::This(group1.Obj())->Name = ::vl::WString(L"Headers", false));
-		::vl::__vwsn::This(::vl::__vwsn::This(group1.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Header 1", false), [&](){ ::vl::presentation::DocumentFontSize __vwsn_temp__; __vwsn_temp__.size = static_cast<double>(2); __vwsn_temp__.relative = true; return __vwsn_temp__; }(), ::vl::Nullable<::vl::presentation::Color>(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FF8000", false))), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
-		::vl::__vwsn::This(::vl::__vwsn::This(group1.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Header 2", false), [&](){ ::vl::presentation::DocumentFontSize __vwsn_temp__; __vwsn_temp__.size = static_cast<double>(1.6); __vwsn_temp__.relative = true; return __vwsn_temp__; }(), ::vl::Nullable<::vl::presentation::Color>(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FF8000", false))), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
-		::vl::__vwsn::This(::vl::__vwsn::This(group1.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Header 3", false), [&](){ ::vl::presentation::DocumentFontSize __vwsn_temp__; __vwsn_temp__.size = static_cast<double>(1.3); __vwsn_temp__.relative = true; return __vwsn_temp__; }(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
+		(::vl::__vwsn::This(group1.Obj())->Name = ::vl::WString::Unmanaged(L"Headers"));
+		::vl::__vwsn::This(::vl::__vwsn::This(group1.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString::Unmanaged(L"Header 1"), [&](){ ::vl::presentation::DocumentFontSize __vwsn_temp__; __vwsn_temp__.size = static_cast<double>(2); __vwsn_temp__.relative = true; return __vwsn_temp__; }(), ::vl::Nullable<::vl::presentation::Color>(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FF8000"))), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group1.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString::Unmanaged(L"Header 2"), [&](){ ::vl::presentation::DocumentFontSize __vwsn_temp__; __vwsn_temp__.size = static_cast<double>(1.6); __vwsn_temp__.relative = true; return __vwsn_temp__; }(), ::vl::Nullable<::vl::presentation::Color>(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FF8000"))), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group1.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString::Unmanaged(L"Header 3"), [&](){ ::vl::presentation::DocumentFontSize __vwsn_temp__; __vwsn_temp__.size = static_cast<double>(1.3); __vwsn_temp__.relative = true; return __vwsn_temp__; }(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
 		auto group2 = ::vl::Ptr<::demo::StyleGroup>(new ::demo::StyleGroup());
-		(::vl::__vwsn::This(group2.Obj())->Name = ::vl::WString(L"Content", false));
-		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Strong", false), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
-		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Quote", false), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
-		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Emphasis", false), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>()))));
-		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Intense Emphasis", false), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#8080FF", false))), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>()))));
-		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString(L"Deleted", false), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true)))));
+		(::vl::__vwsn::This(group2.Obj())->Name = ::vl::WString::Unmanaged(L"Content"));
+		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString::Unmanaged(L"Strong"), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString::Unmanaged(L"Quote"), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString::Unmanaged(L"Emphasis"), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString::Unmanaged(L"Intense Emphasis"), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#8080FF"))), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>(true), ::vl::Nullable<bool>()))));
+		::vl::__vwsn::This(::vl::__vwsn::This(group2.Obj())->Items.Obj())->Add(::vl::__vwsn::Box(::vl::Ptr<::demo::StyleItem>(new ::demo::StyleItem(::vl::WString::Unmanaged(L"Deleted"), ::vl::Nullable<::vl::presentation::DocumentFontSize>(), ::vl::Nullable<::vl::presentation::Color>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(), ::vl::Nullable<bool>(true)))));
 		auto styles = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueDictionary>(::vl::__vwsn::This(::vl::__vwsn::This(this->document)->GetDocument().Obj())->styles);
 		{
 			auto __vwsn_for_enumerable_styleItem = ::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(group1.Obj())->Items);
@@ -2472,7 +2472,7 @@ Class (::demo::DocumentEditorRibbon)
 		, __vwsn_prop_AlignRightSelected(true)
 		, __vwsn_prop_StyleGroups(::vl::Ptr<::vl::reflection::description::IValueList>())
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::DocumentEditorRibbon", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::DocumentEditorRibbon"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_DocumentEditorRibbon_Initialize(this);
@@ -2533,7 +2533,7 @@ Class (::demo::MainWindow)
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
@@ -2549,7 +2549,7 @@ Class (::demo::StyleGroup)
 ***********************************************************************/
 
 	StyleGroup::StyleGroup()
-		: Name(::vl::WString(L"", false))
+		: Name(::vl::WString::Unmanaged(L""))
 		, Items(::vl::reflection::description::IValueObservableList::Create())
 	{
 	}
@@ -2559,12 +2559,12 @@ Class (::demo::StyleItem)
 ***********************************************************************/
 
 	StyleItem::StyleItem(const ::vl::WString& name, ::vl::Nullable<::vl::presentation::DocumentFontSize> size, ::vl::Nullable<::vl::presentation::Color> color, ::vl::Nullable<bool> bold, ::vl::Nullable<bool> italic, ::vl::Nullable<bool> underline, ::vl::Nullable<bool> strikeline)
-		: Name(::vl::WString(L"", false))
+		: Name(::vl::WString::Unmanaged(L""))
 		, Style(::vl::Ptr<::vl::presentation::DocumentStyle>())
 	{
 		(this->Name = name);
 		(this->Style = ::vl::Ptr<::vl::presentation::DocumentStyle>(new ::vl::presentation::DocumentStyle()));
-		(::vl::__vwsn::This(this->Style.Obj())->parentStyleName = ::vl::WString(L"#Context", false));
+		(::vl::__vwsn::This(this->Style.Obj())->parentStyleName = ::vl::WString::Unmanaged(L"#Context"));
 		(::vl::__vwsn::This(this->Style.Obj())->styles = ::vl::Ptr<::vl::presentation::DocumentStyleProperties>(new ::vl::presentation::DocumentStyleProperties()));
 		(::vl::__vwsn::This(::vl::__vwsn::This(this->Style.Obj())->styles.Obj())->size = size);
 		(::vl::__vwsn::This(::vl::__vwsn::This(this->Style.Obj())->styles.Obj())->color = color);
@@ -2603,7 +2603,7 @@ Class (::demo::StyleItemTemplateConstructor)
 		}
 		(this->__vwsn_precompile_7 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_7.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_7.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_7));
@@ -2646,13 +2646,13 @@ Class (::demo::StyleItemTemplateConstructor)
 			::vl::__vwsn::This(this->styleLabel.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->styleLabel.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFFFFF", false)));
+			::vl::__vwsn::This(this->styleLabel.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
 			::vl::__vwsn::This(this->styleLabel.Obj())->SetEllipse(true);
 		}
 		{
-			::vl::__vwsn::This(this->styleLabel.Obj())->SetText(::vl::WString(L"AaBbCc", false));
+			::vl::__vwsn::This(this->styleLabel.Obj())->SetText(::vl::WString::Unmanaged(L"AaBbCc"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->styleLabel));
@@ -2735,7 +2735,7 @@ Class (::demo::StyleItemTemplate)
 		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::StyleItem>())
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::StyleItemTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::StyleItemTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_StyleItemTemplate_Initialize(this);

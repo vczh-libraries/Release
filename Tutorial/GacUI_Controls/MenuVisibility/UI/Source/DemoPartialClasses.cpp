@@ -86,7 +86,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(640); __vwsn_temp__.y = static_cast<::vl::vint>(480); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"MenuVisibility", false));
+			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"MenuVisibility"));
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
@@ -113,14 +113,14 @@ namespace demo
 			(this->menuItems = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuBarButton));
 		}
 		{
-			::vl::__vwsn::This(this->menuItems)->SetText(::vl::WString(L"Items", false));
+			::vl::__vwsn::This(this->menuItems)->SetText(::vl::WString::Unmanaged(L"Items"));
 		}
 		(this->__vwsn_precompile_3 = ::vl::__vwsn::This(this->menuItems)->EnsureToolstripSubMenu());
 		{
 			(this->__vwsn_precompile_4 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetText(::vl::WString(L"Item 1", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetText(::vl::WString::Unmanaged(L"Item 1"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_4));
@@ -129,7 +129,7 @@ namespace demo
 			(this->__vwsn_precompile_5 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetText(::vl::WString(L"Item 2", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetText(::vl::WString::Unmanaged(L"Item 2"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_5));
@@ -138,7 +138,7 @@ namespace demo
 			(this->__vwsn_precompile_6 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetText(::vl::WString(L"Item 3", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetText(::vl::WString::Unmanaged(L"Item 3"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_6));
@@ -147,7 +147,7 @@ namespace demo
 			(this->__vwsn_precompile_7 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetText(::vl::WString(L"Item 4", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetText(::vl::WString::Unmanaged(L"Item 4"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_7));
@@ -156,7 +156,7 @@ namespace demo
 			(this->__vwsn_precompile_8 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetText(::vl::WString(L"Item 5", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetText(::vl::WString::Unmanaged(L"Item 5"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_8));
@@ -165,7 +165,7 @@ namespace demo
 			(this->__vwsn_precompile_9 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetText(::vl::WString(L"Item 6", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetText(::vl::WString::Unmanaged(L"Item 6"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_9));
@@ -174,7 +174,7 @@ namespace demo
 			(this->__vwsn_precompile_10 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetText(::vl::WString(L"Item 7", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetText(::vl::WString::Unmanaged(L"Item 7"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_10));
@@ -183,7 +183,7 @@ namespace demo
 			(this->__vwsn_precompile_11 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetText(::vl::WString(L"Item 8", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetText(::vl::WString::Unmanaged(L"Item 8"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_11));
@@ -192,7 +192,7 @@ namespace demo
 			(this->__vwsn_precompile_12 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetText(::vl::WString(L"Item 9", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetText(::vl::WString::Unmanaged(L"Item 9"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_12));
@@ -201,7 +201,7 @@ namespace demo
 			(this->__vwsn_precompile_13 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuItemButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetText(::vl::WString(L"Item 10", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetText(::vl::WString::Unmanaged(L"Item 10"));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetToolstripItems()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_13));
@@ -227,7 +227,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->SetChecked(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->SetText(::vl::WString(L"Item 1", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->SetText(::vl::WString::Unmanaged(L"Item 1"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->checkList)->GetItems());
@@ -238,7 +238,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetChecked(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetText(::vl::WString(L"Item 2", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetText(::vl::WString::Unmanaged(L"Item 2"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->checkList)->GetItems());
@@ -249,7 +249,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetChecked(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetText(::vl::WString(L"Item 3", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetText(::vl::WString::Unmanaged(L"Item 3"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->checkList)->GetItems());
@@ -260,7 +260,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->SetChecked(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->SetText(::vl::WString(L"Item 4", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->SetText(::vl::WString::Unmanaged(L"Item 4"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->checkList)->GetItems());
@@ -271,7 +271,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_21.Obj())->SetChecked(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_21.Obj())->SetText(::vl::WString(L"Item 5", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_21.Obj())->SetText(::vl::WString::Unmanaged(L"Item 5"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->checkList)->GetItems());
@@ -282,7 +282,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_22.Obj())->SetChecked(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_22.Obj())->SetText(::vl::WString(L"Item 6", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_22.Obj())->SetText(::vl::WString::Unmanaged(L"Item 6"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->checkList)->GetItems());
@@ -293,7 +293,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->SetChecked(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->SetText(::vl::WString(L"Item 7", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->SetText(::vl::WString::Unmanaged(L"Item 7"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->checkList)->GetItems());
@@ -304,7 +304,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_24.Obj())->SetChecked(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_24.Obj())->SetText(::vl::WString(L"Item 8", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_24.Obj())->SetText(::vl::WString::Unmanaged(L"Item 8"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->checkList)->GetItems());
@@ -315,7 +315,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_25.Obj())->SetChecked(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_25.Obj())->SetText(::vl::WString(L"Item 9", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_25.Obj())->SetText(::vl::WString::Unmanaged(L"Item 9"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->checkList)->GetItems());
@@ -326,7 +326,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->SetChecked(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->SetText(::vl::WString(L"Item 10", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->SetText(::vl::WString::Unmanaged(L"Item 10"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->checkList)->GetItems());
@@ -396,7 +396,7 @@ Class (::demo::MainWindow)
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);

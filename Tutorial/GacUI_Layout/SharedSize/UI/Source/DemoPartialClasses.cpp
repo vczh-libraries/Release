@@ -154,7 +154,7 @@ Closures
 				return static_cast<::vl::presentation::templates::GuiListItemTemplate*>(new ::demo::SharedSizeTextItemTemplate(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyTextItem>>(__vwsn_viewModel_)));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"Cannot find a matched control template to create."));
 	}
 
 	//-------------------------------------------------------------------
@@ -172,7 +172,7 @@ Closures
 				return static_cast<::vl::presentation::templates::GuiTemplate*>(new ::demo::SharedSizeItemTemplate(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyTextItem>>(__vwsn_viewModel_)));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"Cannot find a matched control template to create.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"Cannot find a matched control template to create."));
 	}
 
 	//-------------------------------------------------------------------
@@ -590,14 +590,14 @@ namespace demo
 			(this->__vwsn_precompile_3 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetAlt(::vl::WString(L"A", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetAlt(::vl::WString::Unmanaged(L"A"));
 		}
 		(this->__vwsn_precompile_4 = ::vl::__vwsn::This(this->__vwsn_precompile_3)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetText(::vl::WString(L"Add 10 items", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetText(::vl::WString::Unmanaged(L"Add 10 items"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetBoundsComposition()));
@@ -610,14 +610,14 @@ namespace demo
 			(this->__vwsn_precompile_6 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetAlt(::vl::WString(L"O", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetAlt(::vl::WString::Unmanaged(L"O"));
 		}
 		(this->__vwsn_precompile_7 = ::vl::__vwsn::This(this->__vwsn_precompile_6)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetText(::vl::WString(L"Remove odd items", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetText(::vl::WString::Unmanaged(L"Remove odd items"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_5)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_6)->GetBoundsComposition()));
@@ -630,14 +630,14 @@ namespace demo
 			(this->__vwsn_precompile_9 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetAlt(::vl::WString(L"E", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetAlt(::vl::WString::Unmanaged(L"E"));
 		}
 		(this->__vwsn_precompile_10 = ::vl::__vwsn::This(this->__vwsn_precompile_9)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetText(::vl::WString(L"Remove even items", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetText(::vl::WString::Unmanaged(L"Remove even items"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_8)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_9)->GetBoundsComposition()));
@@ -650,14 +650,14 @@ namespace demo
 			(this->__vwsn_precompile_12 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetAlt(::vl::WString(L"C", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetAlt(::vl::WString::Unmanaged(L"C"));
 		}
 		(this->__vwsn_precompile_13 = ::vl::__vwsn::This(this->__vwsn_precompile_12)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetText(::vl::WString(L"Clear", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetText(::vl::WString::Unmanaged(L"Clear"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_11)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_12)->GetBoundsComposition()));
@@ -670,14 +670,14 @@ namespace demo
 			(this->__vwsn_precompile_15 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetAlt(::vl::WString(L"R", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetAlt(::vl::WString::Unmanaged(L"R"));
 		}
 		(this->__vwsn_precompile_16 = ::vl::__vwsn::This(this->__vwsn_precompile_15)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetText(::vl::WString(L"Reset Counter", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetText(::vl::WString::Unmanaged(L"Reset Counter"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_14)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_15)->GetBoundsComposition()));
@@ -761,42 +761,42 @@ Class (::demo::EnglishNumbersController)
 			auto __vwsn_switch_0 = i;
 			if ((__vwsn_switch_0 == static_cast<::vl::vint>(1)))
 			{
-				return ::vl::WString(L"one", false);
+				return ::vl::WString::Unmanaged(L"one");
 			}
 			else if ((__vwsn_switch_0 == static_cast<::vl::vint>(2)))
 			{
-				return ::vl::WString(L"two", false);
+				return ::vl::WString::Unmanaged(L"two");
 			}
 			else if ((__vwsn_switch_0 == static_cast<::vl::vint>(3)))
 			{
-				return ::vl::WString(L"three", false);
+				return ::vl::WString::Unmanaged(L"three");
 			}
 			else if ((__vwsn_switch_0 == static_cast<::vl::vint>(4)))
 			{
-				return ::vl::WString(L"four", false);
+				return ::vl::WString::Unmanaged(L"four");
 			}
 			else if ((__vwsn_switch_0 == static_cast<::vl::vint>(5)))
 			{
-				return ::vl::WString(L"five", false);
+				return ::vl::WString::Unmanaged(L"five");
 			}
 			else if ((__vwsn_switch_0 == static_cast<::vl::vint>(6)))
 			{
-				return ::vl::WString(L"six", false);
+				return ::vl::WString::Unmanaged(L"six");
 			}
 			else if ((__vwsn_switch_0 == static_cast<::vl::vint>(7)))
 			{
-				return ::vl::WString(L"seven", false);
+				return ::vl::WString::Unmanaged(L"seven");
 			}
 			else if ((__vwsn_switch_0 == static_cast<::vl::vint>(8)))
 			{
-				return ::vl::WString(L"eight", false);
+				return ::vl::WString::Unmanaged(L"eight");
 			}
 			else if ((__vwsn_switch_0 == static_cast<::vl::vint>(9)))
 			{
-				return ::vl::WString(L"nine", false);
+				return ::vl::WString::Unmanaged(L"nine");
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"ToText_1to9: Number out of range.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"ToText_1to9: Number out of range."));
 	}
 
 	::vl::WString EnglishNumbersController::ToText_11to19(::vl::vint i)
@@ -805,42 +805,42 @@ Class (::demo::EnglishNumbersController)
 			auto __vwsn_switch_1 = i;
 			if ((__vwsn_switch_1 == static_cast<::vl::vint>(1)))
 			{
-				return ::vl::WString(L"eleven", false);
+				return ::vl::WString::Unmanaged(L"eleven");
 			}
 			else if ((__vwsn_switch_1 == static_cast<::vl::vint>(2)))
 			{
-				return ::vl::WString(L"twelve", false);
+				return ::vl::WString::Unmanaged(L"twelve");
 			}
 			else if ((__vwsn_switch_1 == static_cast<::vl::vint>(3)))
 			{
-				return ::vl::WString(L"thirteen", false);
+				return ::vl::WString::Unmanaged(L"thirteen");
 			}
 			else if ((__vwsn_switch_1 == static_cast<::vl::vint>(4)))
 			{
-				return ::vl::WString(L"fourteen", false);
+				return ::vl::WString::Unmanaged(L"fourteen");
 			}
 			else if ((__vwsn_switch_1 == static_cast<::vl::vint>(5)))
 			{
-				return ::vl::WString(L"fifteen", false);
+				return ::vl::WString::Unmanaged(L"fifteen");
 			}
 			else if ((__vwsn_switch_1 == static_cast<::vl::vint>(6)))
 			{
-				return ::vl::WString(L"sixteen", false);
+				return ::vl::WString::Unmanaged(L"sixteen");
 			}
 			else if ((__vwsn_switch_1 == static_cast<::vl::vint>(7)))
 			{
-				return ::vl::WString(L"seventeen", false);
+				return ::vl::WString::Unmanaged(L"seventeen");
 			}
 			else if ((__vwsn_switch_1 == static_cast<::vl::vint>(8)))
 			{
-				return ::vl::WString(L"eightteen", false);
+				return ::vl::WString::Unmanaged(L"eightteen");
 			}
 			else if ((__vwsn_switch_1 == static_cast<::vl::vint>(9)))
 			{
-				return ::vl::WString(L"nineteen", false);
+				return ::vl::WString::Unmanaged(L"nineteen");
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"ToText_11to19: Number out of range.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"ToText_11to19: Number out of range."));
 	}
 
 	::vl::WString EnglishNumbersController::NumberToText_1To99(::vl::vint i)
@@ -853,42 +853,42 @@ Class (::demo::EnglishNumbersController)
 			}
 			else if ((__vwsn_switch_2 == static_cast<::vl::vint>(1)))
 			{
-				return ((i == static_cast<::vl::vint>(10)) ? ::vl::WString(L"ten", false) : this->ToText_11to19((i % static_cast<::vl::vint>(10))));
+				return ((i == static_cast<::vl::vint>(10)) ? ::vl::WString::Unmanaged(L"ten") : this->ToText_11to19((i % static_cast<::vl::vint>(10))));
 			}
 			else if ((__vwsn_switch_2 == static_cast<::vl::vint>(2)))
 			{
-				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"twenty", false) : (::vl::WString(L"twenty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
+				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString::Unmanaged(L"twenty") : (::vl::WString::Unmanaged(L"twenty-") + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
 			else if ((__vwsn_switch_2 == static_cast<::vl::vint>(3)))
 			{
-				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"thirty", false) : (::vl::WString(L"thirty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
+				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString::Unmanaged(L"thirty") : (::vl::WString::Unmanaged(L"thirty-") + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
 			else if ((__vwsn_switch_2 == static_cast<::vl::vint>(4)))
 			{
-				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"fourty", false) : (::vl::WString(L"fourty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
+				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString::Unmanaged(L"fourty") : (::vl::WString::Unmanaged(L"fourty-") + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
 			else if ((__vwsn_switch_2 == static_cast<::vl::vint>(5)))
 			{
-				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"fifty", false) : (::vl::WString(L"fifty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
+				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString::Unmanaged(L"fifty") : (::vl::WString::Unmanaged(L"fifty-") + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
 			else if ((__vwsn_switch_2 == static_cast<::vl::vint>(6)))
 			{
-				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"sixty", false) : (::vl::WString(L"sixty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
+				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString::Unmanaged(L"sixty") : (::vl::WString::Unmanaged(L"sixty-") + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
 			else if ((__vwsn_switch_2 == static_cast<::vl::vint>(7)))
 			{
-				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"seventy", false) : (::vl::WString(L"seventy-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
+				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString::Unmanaged(L"seventy") : (::vl::WString::Unmanaged(L"seventy-") + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
 			else if ((__vwsn_switch_2 == static_cast<::vl::vint>(8)))
 			{
-				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"eighty", false) : (::vl::WString(L"eighty-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
+				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString::Unmanaged(L"eighty") : (::vl::WString::Unmanaged(L"eighty-") + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
 			else if ((__vwsn_switch_2 == static_cast<::vl::vint>(9)))
 			{
-				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"ninety", false) : (::vl::WString(L"ninety-", false) + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
+				return (((i % static_cast<::vl::vint>(10)) == static_cast<::vl::vint>(0)) ? ::vl::WString::Unmanaged(L"ninety") : (::vl::WString::Unmanaged(L"ninety-") + this->ToText_1to9((i % static_cast<::vl::vint>(10)))));
 			}
 		}
-		throw ::vl::Exception(::vl::WString(L"NumberToText_1To99: Number out of range.", false));
+		throw ::vl::Exception(::vl::WString::Unmanaged(L"NumberToText_1To99: Number out of range."));
 	}
 
 	::vl::WString EnglishNumbersController::NumberToText_0to999(::vl::vint i)
@@ -897,20 +897,20 @@ Class (::demo::EnglishNumbersController)
 		{
 			return this->NumberToText_1To99(i);
 		}
-		return ((this->ToText_1to9((i / static_cast<::vl::vint>(100))) + ::vl::WString(L" hundred", false)) + (((i % static_cast<::vl::vint>(100)) == static_cast<::vl::vint>(0)) ? ::vl::WString(L"", false) : (::vl::WString(L" and ", false) + this->NumberToText_1To99((i % static_cast<::vl::vint>(100))))));
+		return ((this->ToText_1to9((i / static_cast<::vl::vint>(100))) + ::vl::WString::Unmanaged(L" hundred")) + (((i % static_cast<::vl::vint>(100)) == static_cast<::vl::vint>(0)) ? ::vl::WString::Unmanaged(L"") : (::vl::WString::Unmanaged(L" and ") + this->NumberToText_1To99((i % static_cast<::vl::vint>(100))))));
 	}
 
 	::vl::WString EnglishNumbersController::NumberToText(::vl::vint i)
 	{
 		if ((i == static_cast<::vl::vint>(0)))
 		{
-			return ::vl::WString(L"zero", false);
+			return ::vl::WString::Unmanaged(L"zero");
 		}
 		if ((i < static_cast<::vl::vint>(1000)))
 		{
 			return this->NumberToText_0to999(i);
 		}
-		return (::vl::WString(L"Number too large: ", false) + ::vl::__vwsn::ToString(i));
+		return (::vl::WString::Unmanaged(L"Number too large: ") + ::vl::__vwsn::ToString(i));
 	}
 
 	EnglishNumbersController::EnglishNumbersController()
@@ -918,7 +918,7 @@ Class (::demo::EnglishNumbersController)
 		, counter(static_cast<::vl::vint>(0))
 		, __vwsn_prop_ItemsToBind(::vl::reflection::description::IValueObservableList::Create())
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::EnglishNumbersController", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::EnglishNumbersController"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_EnglishNumbersController_Initialize(this);
@@ -966,7 +966,7 @@ Class (::demo::EnglishNumbersControllerTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->controller)->SetText(::vl::WString(L"Operations", false));
+			::vl::__vwsn::This(this->controller)->SetText(::vl::WString::Unmanaged(L"Operations"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->controller)->GetBoundsComposition()));
@@ -1016,7 +1016,7 @@ Class (::demo::EnglishNumbersControllerTabPage)
 		, __vwsn_prop_ItemsToBind(::vl::reflection::description::IValueObservableList::Create())
 		, __vwsn_prop_ContentComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(nullptr))
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::EnglishNumbersControllerTabPage", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::EnglishNumbersControllerTabPage"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_EnglishNumbersControllerTabPage_Initialize(this);
@@ -1045,7 +1045,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(640); __vwsn_temp__.y = static_cast<::vl::vint>(480); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString(L"SharedSize", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString::Unmanaged(L"SharedSize"));
 		}
 		{
 			(this->__vwsn_precompile_1 = new ::vl::presentation::controls::GuiTab(::vl::presentation::theme::ThemeName::Tab));
@@ -1085,7 +1085,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_4));
 		}
 		{
-			::vl::__vwsn::This(this->sharedSizeListTabPage)->SetText(::vl::WString(L"SharedSize (TextList)", false));
+			::vl::__vwsn::This(this->sharedSizeListTabPage)->SetText(::vl::WString::Unmanaged(L"SharedSize (TextList)"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueObservableList>(::vl::__vwsn::This(this->__vwsn_precompile_1)->GetPages());
@@ -1142,7 +1142,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_8)->GetBoundsComposition()));
 		}
 		{
-			::vl::__vwsn::This(this->sharedSizeFlowTabPage)->SetText(::vl::WString(L"SharedSize (RepeatFlow)", false));
+			::vl::__vwsn::This(this->sharedSizeFlowTabPage)->SetText(::vl::WString::Unmanaged(L"SharedSize (RepeatFlow)"));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueObservableList>(::vl::__vwsn::This(this->__vwsn_precompile_1)->GetPages());
@@ -1188,7 +1188,7 @@ Class (::demo::MainWindow)
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);
@@ -1224,7 +1224,7 @@ Class (::demo::MyTextItem)
 	}
 
 	MyTextItem::MyTextItem()
-		: __vwsn_prop_Name(::vl::WString(L"", false))
+		: __vwsn_prop_Name(::vl::WString::Unmanaged(L""))
 		, __vwsn_prop_Checked(false)
 	{
 	}
@@ -1248,7 +1248,7 @@ Class (::demo::SharedSizeItemTemplateConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetSharedWidth(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetGroup(::vl::WString(L"EnglishNumber", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetGroup(::vl::WString::Unmanaged(L"EnglishNumber"));
 		}
 		{
 			(this->__vwsn_precompile_2 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
@@ -1292,7 +1292,7 @@ Class (::demo::SharedSizeItemTemplate)
 		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::MyTextItem>())
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::SharedSizeItemTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::SharedSizeItemTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_SharedSizeItemTemplate_Initialize(this);
@@ -1322,7 +1322,7 @@ Class (::demo::SharedSizeTextItemTemplateConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetSharedWidth(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetGroup(::vl::WString(L"EnglishNumber", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetGroup(::vl::WString::Unmanaged(L"EnglishNumber"));
 		}
 		(this->__vwsn_precompile_1 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
@@ -1369,7 +1369,7 @@ Class (::demo::SharedSizeTextItemTemplate)
 		: __vwsn_parameter_ViewModel(::vl::Ptr<::demo::MyTextItem>())
 	{
 		(this->__vwsn_parameter_ViewModel = __vwsn_ctor_parameter_ViewModel);
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::SharedSizeTextItemTemplate", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::SharedSizeTextItemTemplate"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_SharedSizeTextItemTemplate_Initialize(this);

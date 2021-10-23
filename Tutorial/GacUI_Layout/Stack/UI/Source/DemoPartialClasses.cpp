@@ -66,7 +66,7 @@ Closures
 		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
 		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			::vl::__vwsn::This(__vwsnthis_0->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
+			::vl::__vwsn::This(__vwsnthis_0->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"Horizontal")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"Vertical")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"ReversedHorizontal")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
 		}
 	}
 
@@ -82,7 +82,7 @@ Closures
 		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
 		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			::vl::__vwsn::This(__vwsnthis_0->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
+			::vl::__vwsn::This(__vwsnthis_0->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"Horizontal")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"Vertical")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"ReversedHorizontal")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
 		}
 	}
 
@@ -98,7 +98,7 @@ Closures
 		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
 		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			::vl::__vwsn::This(__vwsnthis_0->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
+			::vl::__vwsn::This(__vwsnthis_0->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"Horizontal")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"Vertical")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"ReversedHorizontal")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
 		}
 	}
 
@@ -114,7 +114,7 @@ Closures
 		auto radioButton = ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::vl::presentation::controls::GuiSelectableButton>(::vl::__vwsn::This(sender)->GetRelatedControl()));
 		if (::vl::__vwsn::This(radioButton)->GetSelected())
 		{
-			::vl::__vwsn::This(__vwsnthis_0->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Horizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"Vertical", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString(L"ReversedHorizontal", false)) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
+			::vl::__vwsn::This(__vwsnthis_0->stackLayout)->SetDirection(((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"Horizontal")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Horizontal : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"Vertical")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::Vertical : ((::vl::__vwsn::This(radioButton)->GetText() == ::vl::WString::Unmanaged(L"ReversedHorizontal")) ? ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedHorizontal : ::vl::presentation::compositions::GuiStackComposition::Direction::ReversedVertical))));
 		}
 	}
 
@@ -211,7 +211,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(480); __vwsn_temp__.y = static_cast<::vl::vint>(320); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString(L"Stack", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString::Unmanaged(L"Stack"));
 		}
 		(this->groupStackDirection = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
 		{
@@ -245,7 +245,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetSelected(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetText(::vl::WString(L"Horizontal", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetText(::vl::WString::Unmanaged(L"Horizontal"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetBoundsComposition()));
@@ -261,7 +261,7 @@ namespace demo
 			(this->__vwsn_precompile_5 = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::RadioButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetText(::vl::WString(L"Vertical", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetText(::vl::WString::Unmanaged(L"Vertical"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_5)->GetBoundsComposition()));
@@ -277,7 +277,7 @@ namespace demo
 			(this->__vwsn_precompile_7 = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::RadioButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetText(::vl::WString(L"ReversedHorizontal", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetText(::vl::WString::Unmanaged(L"ReversedHorizontal"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_7)->GetBoundsComposition()));
@@ -293,7 +293,7 @@ namespace demo
 			(this->__vwsn_precompile_9 = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::RadioButton));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetText(::vl::WString(L"ReversedVertical", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetText(::vl::WString::Unmanaged(L"ReversedVertical"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_8)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_9)->GetBoundsComposition()));
@@ -309,7 +309,7 @@ namespace demo
 			(this->__vwsn_precompile_11 = new ::vl::presentation::controls::GuiLabel(::vl::presentation::theme::ThemeName::Label));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetText(::vl::WString(L"Click any button in stack items to enlarge it.", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetText(::vl::WString::Unmanaged(L"Click any button in stack items to enlarge it."));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_11)->GetBoundsComposition()));
@@ -343,7 +343,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_15)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetText(::vl::WString(L"Large", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetText(::vl::WString::Unmanaged(L"Large"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_13)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_14)->GetBoundsComposition()));
@@ -363,7 +363,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetText(::vl::WString(L"Medium", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetText(::vl::WString::Unmanaged(L"Medium"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_16)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_17)->GetBoundsComposition()));
@@ -383,7 +383,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetText(::vl::WString(L"Small", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetText(::vl::WString::Unmanaged(L"Small"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_19)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_20)->GetBoundsComposition()));
@@ -478,7 +478,7 @@ Class (::demo::MainWindow)
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);

@@ -641,7 +641,7 @@ Closures
 	{
 		if ((this->GetStatus() != ::vl::reflection::description::CoroutineStatus::Waiting))
 		{
-			throw ::vl::Exception(::vl::WString(L"Resume should be called only when the coroutine is in the waiting status.", false));
+			throw ::vl::Exception(::vl::WString::Unmanaged(L"Resume should be called only when the coroutine is in the waiting status."));
 		}
 		this->SetStatus(::vl::reflection::description::CoroutineStatus::Executing);
 		try
@@ -767,7 +767,7 @@ Closures
 	{
 		if ((this->GetStatus() != ::vl::reflection::description::CoroutineStatus::Waiting))
 		{
-			throw ::vl::Exception(::vl::WString(L"Resume should be called only when the coroutine is in the waiting status.", false));
+			throw ::vl::Exception(::vl::WString::Unmanaged(L"Resume should be called only when the coroutine is in the waiting status."));
 		}
 		this->SetStatus(::vl::reflection::description::CoroutineStatus::Executing);
 		try
@@ -809,7 +809,7 @@ Closures
 									::vl::__vwsn::This(ball)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(16); __vwsn_temp__.y = static_cast<::vl::vint>(16); return __vwsn_temp__; }());
 									auto element = ::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidBackgroundElement>());
 									::vl::__vwsn::This(element.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::Ellipse; return __vwsn_temp__; }());
-									::vl::__vwsn::This(element.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#3F48CC", false)));
+									::vl::__vwsn::This(element.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#3F48CC")));
 									::vl::__vwsn::This(ball)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(element));
 									::vl::__vwsn::This(container)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(ball));
 								}
@@ -1173,8 +1173,8 @@ Class (::demo::ColorDef)
 	::vl::Ptr<::demo::ColorDef> ColorDef::Dark()
 	{
 		auto def = ::vl::Ptr<::demo::ColorDef>(new ::demo::ColorDef());
-		::vl::__vwsn::This(def.Obj())->SetTop(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#9999FF", false)));
-		::vl::__vwsn::This(def.Obj())->SetBottom(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#5555FF", false)));
+		::vl::__vwsn::This(def.Obj())->SetTop(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#9999FF")));
+		::vl::__vwsn::This(def.Obj())->SetBottom(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#5555FF")));
 		::vl::__vwsn::This(def.Obj())->SetThickness(static_cast<::vl::vint>(0));
 		return def;
 	}
@@ -1182,8 +1182,8 @@ Class (::demo::ColorDef)
 	::vl::Ptr<::demo::ColorDef> ColorDef::Light()
 	{
 		auto def = ::vl::Ptr<::demo::ColorDef>(new ::demo::ColorDef());
-		::vl::__vwsn::This(def.Obj())->SetTop(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#DDDDFF", false)));
-		::vl::__vwsn::This(def.Obj())->SetBottom(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#9999FF", false)));
+		::vl::__vwsn::This(def.Obj())->SetTop(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#DDDDFF")));
+		::vl::__vwsn::This(def.Obj())->SetBottom(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#9999FF")));
 		::vl::__vwsn::This(def.Obj())->SetThickness(static_cast<::vl::vint>(0));
 		return def;
 	}
@@ -1191,16 +1191,16 @@ Class (::demo::ColorDef)
 	::vl::Ptr<::demo::ColorDef> ColorDef::Sink()
 	{
 		auto def = ::vl::Ptr<::demo::ColorDef>(new ::demo::ColorDef());
-		::vl::__vwsn::This(def.Obj())->SetTop(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#5555FF", false)));
-		::vl::__vwsn::This(def.Obj())->SetBottom(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#0000FF", false)));
+		::vl::__vwsn::This(def.Obj())->SetTop(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#5555FF")));
+		::vl::__vwsn::This(def.Obj())->SetBottom(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#0000FF")));
 		::vl::__vwsn::This(def.Obj())->SetThickness(static_cast<::vl::vint>(10));
 		return def;
 	}
 
 	ColorDef::ColorDef()
-		: __vwsn_prop_Top(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#000000", false)))
-		, __vwsn_prop_Bottom(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#000000", false)))
-		, __vwsn_prop_Shadow(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#000000A0", false)))
+		: __vwsn_prop_Top(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#000000")))
+		, __vwsn_prop_Bottom(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#000000")))
+		, __vwsn_prop_Shadow(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#000000A0")))
 		, __vwsn_prop_Thickness(static_cast<::vl::vint>(0))
 	{
 	}
@@ -1220,7 +1220,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(640); __vwsn_temp__.y = static_cast<::vl::vint>(480); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"GacUI XML资源临时测试", false));
+			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"GacUI XML资源临时测试"));
 		}
 		{
 			(this->__vwsn_precompile_0 = new ::vl::presentation::controls::GuiTab(::vl::presentation::theme::ThemeName::Tab));
@@ -1229,7 +1229,7 @@ Class (::demo::MainWindowConstructor)
 			(this->__vwsn_precompile_2 = new ::vl::presentation::controls::GuiTabPage(::vl::presentation::theme::ThemeName::CustomControl));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetText(::vl::WString(L"Gradient Animation", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetText(::vl::WString::Unmanaged(L"Gradient Animation"));
 		}
 		(this->__vwsn_precompile_3 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
@@ -1292,7 +1292,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetText(::vl::WString(L"Dark", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetText(::vl::WString::Unmanaged(L"Dark"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_9)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_10)->GetBoundsComposition()));
@@ -1312,7 +1312,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetText(::vl::WString(L"Light", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetText(::vl::WString::Unmanaged(L"Light"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_12)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_13)->GetBoundsComposition()));
@@ -1332,7 +1332,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetText(::vl::WString(L"Sink", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetText(::vl::WString::Unmanaged(L"Sink"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_15)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_16)->GetBoundsComposition()));
@@ -1351,7 +1351,7 @@ Class (::demo::MainWindowConstructor)
 			(this->__vwsn_precompile_18 = new ::vl::presentation::controls::GuiTabPage(::vl::presentation::theme::ThemeName::CustomControl));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetText(::vl::WString(L"Complex Animation", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetText(::vl::WString::Unmanaged(L"Complex Animation"));
 		}
 		(this->animationBackground = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -1362,7 +1362,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_19 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidBackgroundElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FFC929", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFC929")));
 		}
 		{
 			::vl::__vwsn::This(this->animationBackground)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_19));
@@ -1474,7 +1474,7 @@ Class (::demo::MainWindow)
 		, lastGradientAnimation(::vl::Ptr<::vl::presentation::controls::IGuiAnimation>())
 		, counter(static_cast<::vl::vint>(0))
 	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString(L"demo::MainWindow", false));
+		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::MainWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
 		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
 		::vl::__vwsn::This(this)->__vwsn_demo_MainWindow_Initialize(this);

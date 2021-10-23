@@ -308,7 +308,7 @@ Closures
 
 	void __vwsnc3_HelloWorld_helloworld_MainWindowConstructor___vwsn_helloworld_MainWindow_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = (((! ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetHasLoggedIn()) && (::vl::__vwsn::This(__vwsn_bind_cache_1.Obj())->GetUserNameError() == ::vl::WString(L"", false))) && (::vl::__vwsn::This(__vwsn_bind_cache_2.Obj())->GetPasswordError() == ::vl::WString(L"", false)));
+		auto __vwsn_bind_activator_result_ = (((! ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetHasLoggedIn()) && (::vl::__vwsn::This(__vwsn_bind_cache_1.Obj())->GetUserNameError() == ::vl::WString::Unmanaged(L""))) && (::vl::__vwsn::This(__vwsn_bind_cache_2.Obj())->GetPasswordError() == ::vl::WString::Unmanaged(L"")));
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -527,7 +527,7 @@ namespace helloworld
 		}
 		(this->__vwsn_precompile_18 = ::vl::__vwsn::This(this->self)->GetViewModel());
 		{
-			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"Let\'s Sign Up!", false));
+			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"Let\'s Sign Up!"));
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
@@ -555,7 +555,7 @@ namespace helloworld
 		}
 		(this->__vwsn_precompile_2 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(40); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(40); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
@@ -564,7 +564,7 @@ namespace helloworld
 			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetText(::vl::WString(L"www.gaclib.net", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetText(::vl::WString::Unmanaged(L"www.gaclib.net"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_2));
@@ -578,13 +578,13 @@ namespace helloworld
 		}
 		(this->__vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(12); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(12); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetText(::vl::WString(L"Username: ", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetText(::vl::WString::Unmanaged(L"Username: "));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_4));
@@ -624,10 +624,10 @@ namespace helloworld
 			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetWrapLine(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FF0000", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FF0000")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(12); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(12); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_8));
@@ -641,13 +641,13 @@ namespace helloworld
 		}
 		(this->__vwsn_precompile_10 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_10.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(12); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_10.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(12); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_10.Obj())->SetText(::vl::WString(L"Password: ", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_10.Obj())->SetText(::vl::WString::Unmanaged(L"Password: "));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_10));
@@ -663,7 +663,7 @@ namespace helloworld
 			(this->textBoxPassword = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->textBoxPassword)->SetPasswordChar(::vl::__vwsn::Parse<wchar_t>(::vl::WString(L"*", false)));
+			::vl::__vwsn::This(this->textBoxPassword)->SetPasswordChar(::vl::__vwsn::Parse<wchar_t>(::vl::WString::Unmanaged(L"*")));
 		}
 		(this->__vwsn_precompile_12 = ::vl::__vwsn::This(this->textBoxPassword)->GetBoundsComposition());
 		{
@@ -690,10 +690,10 @@ namespace helloworld
 			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetWrapLine(true);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString(L"#FF0000", false)));
+			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FF0000")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString(L"Segoe UI", false); __vwsn_temp__.size = static_cast<::vl::vint>(12); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetFont([&](){ ::vl::presentation::FontProperties __vwsn_temp__; __vwsn_temp__.fontFamily = ::vl::WString::Unmanaged(L"Segoe UI"); __vwsn_temp__.size = static_cast<::vl::vint>(12); __vwsn_temp__.antialias = true; return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_14));
@@ -716,7 +716,7 @@ namespace helloworld
 			::vl::__vwsn::This(this->__vwsn_precompile_16)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = (- static_cast<::vl::vint>(1)); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->buttonSignUp)->SetText(::vl::WString(L"Sign Up!", false));
+			::vl::__vwsn::This(this->buttonSignUp)->SetText(::vl::WString::Unmanaged(L"Sign Up!"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_15)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->buttonSignUp)->GetBoundsComposition()));
@@ -732,7 +732,7 @@ namespace helloworld
 			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = (- static_cast<::vl::vint>(1)); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->buttonCancel)->SetText(::vl::WString(L"Close", false));
+			::vl::__vwsn::This(this->buttonCancel)->SetText(::vl::WString::Unmanaged(L"Close"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_15)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->buttonCancel)->GetBoundsComposition()));

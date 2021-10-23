@@ -269,7 +269,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(640); __vwsn_temp__.y = static_cast<::vl::vint>(480); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"WindowIcon", false));
+			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"WindowIcon"));
 		}
 		(this->__vwsn_precompile_0 = new ::vl::presentation::compositions::GuiStackComposition());
 		{
@@ -289,7 +289,7 @@ namespace demo
 			::vl::__vwsn::This(this->checkVisible)->SetSelected(true);
 		}
 		{
-			::vl::__vwsn::This(this->checkVisible)->SetText(::vl::WString(L"Icon Visible", false));
+			::vl::__vwsn::This(this->checkVisible)->SetText(::vl::WString::Unmanaged(L"Icon Visible"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkVisible)->GetBoundsComposition()));
@@ -305,7 +305,7 @@ namespace demo
 			::vl::__vwsn::This(this->checkCustom)->SetSelected(false);
 		}
 		{
-			::vl::__vwsn::This(this->checkCustom)->SetText(::vl::WString(L"Custom Icon", false));
+			::vl::__vwsn::This(this->checkCustom)->SetText(::vl::WString::Unmanaged(L"Custom Icon"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkCustom)->GetBoundsComposition()));
@@ -318,7 +318,7 @@ namespace demo
 			(this->__vwsn_precompile_4 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetText(::vl::WString(L"Create another copy", false));
+			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetText(::vl::WString::Unmanaged(L"Create another copy"));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_4)->GetBoundsComposition()));
@@ -344,7 +344,7 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetCustomIcon(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString(L"res", false), ::vl::WString(L"Images/CustomIcon", false), true).Obj())));
+			::vl::__vwsn::This(this->self)->SetCustomIcon(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/CustomIcon"), true).Obj())));
 		}
 	}
 

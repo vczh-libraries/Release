@@ -64,7 +64,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(800); __vwsn_temp__.y = static_cast<::vl::vint>(600); return __vwsn_temp__; }());
 		}
 		{
-			::vl::__vwsn::This(this->self)->SetText(::vl::WString(L"Direct2DClock", false));
+			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"Direct2DClock"));
 		}
 		(this->animationBounds = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
