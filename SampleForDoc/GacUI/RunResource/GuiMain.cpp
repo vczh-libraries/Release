@@ -41,7 +41,7 @@ void GuiMain()
 		RegexMatch::List names;
 		splitter.Split(resourceNameList, false, names);
 
-		FOREACH(RegexMatch::Ref, name, names)
+		for (auto name : names)
 		{
 			auto resourceName = name->Result().Value();
 #ifdef VCZH_64

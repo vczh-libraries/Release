@@ -39,7 +39,7 @@ namespace myapi
 
 		~App()
 		{
-			FOREACH(Ptr<IValueSubscription>, sub, subscriptions)
+			for (auto sub : subscriptions)
 			{
 				sub->Close();
 			}
