@@ -20,7 +20,6 @@ https://github.com/vczh-libraries
 #pragma warning(disable:4250)
 #elif defined(__GNUC__)
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wparentheses-equality"
 #elif defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wparentheses-equality"
@@ -64,7 +63,7 @@ Closures
 
 	void __vwsnc1_W05Script_myscript_MyApp_CreateScripting__myapi_IScripting::Execute(const ::vl::WString& name)
 	{
-		::myapi::App::Print(((::vl::WString(L"Hello, ", false) + name) + ::vl::WString(L"!", false)));
+		::myapi::App::Print(((::vl::WString::Unmanaged(L"Hello, ") + name) + ::vl::WString::Unmanaged(L"!")));
 	}
 
 }

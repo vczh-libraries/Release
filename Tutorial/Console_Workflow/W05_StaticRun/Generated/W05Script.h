@@ -18,7 +18,6 @@ https://github.com/vczh-libraries
 #pragma warning(disable:4250)
 #elif defined(__GNUC__)
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wparentheses-equality"
 #elif defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wparentheses-equality"
@@ -36,7 +35,7 @@ namespace myscript
 	class MyApp : public ::vl::Object, public ::vl::reflection::Description<MyApp>
 	{
 		friend class ::vl_workflow_global::__vwsnc1_W05Script_myscript_MyApp_CreateScripting__myapi_IScripting;
-#ifndef VCZH_DEBUG_NO_REFLECTION
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyApp>;
 #endif
 	public:

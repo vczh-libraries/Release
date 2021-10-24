@@ -123,7 +123,7 @@ int main()
 	{
 		// prepare Workflow script code
 		List<WString> codes;
-		codes.Add(WString(ScriptCode, false));
+		codes.Add(WString::Unmanaged(ScriptCode));
 
 		// compile code and get assemblies
 		List<Ptr<ParsingError>> errors;

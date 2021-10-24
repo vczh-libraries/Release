@@ -50,7 +50,7 @@ int wmain(int argc, const wchar_t* argv[])
 	{
 		// prepare Workflow script code
 		List<WString> codes;
-		codes.Add(WString(ScriptCode, false));
+		codes.Add(WString::Unmanaged(ScriptCode));
 
 		// compile code
 		// WfLexicalScopeManager is required because we produce assembly and C++ code at the same time
