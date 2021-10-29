@@ -46,12 +46,12 @@ public:
 
 	vl::Ptr<IValueObservableList> GetFolders()override
 	{
-		return folders.GetWrapper();
+		return UnboxValue<Ptr<IValueObservableList>>(BoxParameter(folders));
 	}
 
 	vl::Ptr<IValueObservableList> GetContacts()override
 	{
-		return contacts.GetWrapper();
+		return UnboxValue<Ptr<IValueObservableList>>(BoxParameter(contacts));
 	}
 };
 
@@ -169,7 +169,7 @@ public:
 
 	vl::Ptr<IValueObservableList> GetFolders()override
 	{
-		return folders.GetWrapper();
+		return UnboxValue<Ptr<IValueObservableList>>(BoxParameter(folders));
 	}
 
 	vl::Ptr<IValueObservableList> GetContacts()override
