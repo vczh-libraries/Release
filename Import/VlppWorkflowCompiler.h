@@ -5,8 +5,8 @@ DEVELOPER: Zihan Chen(vczh)
 #include "VlppWorkflowLibrary.h"
 #include "VlppWorkflowRuntime.h"
 #include "VlppReflection.h"
-#include "VlppOS.h"
 #include "Vlpp.h"
+#include "VlppOS.h"
 #include "VlppRegex.h"
 #include "VlppParser.h"
 
@@ -4267,7 +4267,7 @@ Type Analyzing
 
 			extern Ptr<reflection::description::ITypeInfo>	CreateTypeInfoFromMethodInfo(reflection::description::IMethodInfo* info);
 
-			extern bool										IsExpressionDependOnExpectedType(WfLexicalScopeManager* manager, Ptr<WfExpression> expression);
+			extern bool										IsExpressionDependOnExpectedType(WfLexicalScopeManager* manager, Ptr<WfExpression> expression, bool hasExpectedType);
 			extern WString									GetExpressionName(Ptr<WfExpression> expression);
 			extern void										SearchOrderedName(WfLexicalScope* scope, Ptr<WfExpression> expression, collections::SortedList<vint>& names);
 

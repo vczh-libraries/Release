@@ -1888,6 +1888,7 @@ namespace vl
 
 		namespace controls
 		{
+			using namespace reflection::description;
 
 /***********************************************************************
 GuiTabPage
@@ -2003,7 +2004,7 @@ GuiTab
 			{
 				auto ct = TypedControlTemplateObject(true);
 				ct->SetCommands(commandExecutor.Obj());
-				ct->SetTabPages(tabPages.GetWrapper());
+				ct->SetTabPages(UnboxValue<Ptr<IValueObservableList>>(BoxParameter(tabPages)));
 				ct->SetSelectedTabPage(selectedPage);
 			}
 
@@ -5471,6 +5472,11 @@ DataProvider
 
 				DataProvider::~DataProvider()
 				{
+					if (itemChangedEventHandler)
+					{
+						auto ol = itemSource.Cast<IValueObservableList>();
+						ol->ItemChanged.Remove(itemChangedEventHandler);
+					}
 				}
 
 				Ptr<IDataFilter> DataProvider::GetAdditionalFilter()
@@ -5828,7 +5834,11 @@ GuiBindableTextList::ItemSource
 
 			GuiBindableTextList::ItemSource::~ItemSource()
 			{
-				SetItemSource(nullptr);
+				if (itemChangedEventHandler)
+				{
+					auto ol = itemSource.Cast<IValueObservableList>();
+					ol->ItemChanged.Remove(itemChangedEventHandler);
+				}
 			}
 
 			Ptr<description::IValueEnumerable> GuiBindableTextList::ItemSource::GetItemSource()
@@ -6035,7 +6045,11 @@ GuiBindableListView::ItemSource
 
 			GuiBindableListView::ItemSource::~ItemSource()
 			{
-				SetItemSource(nullptr);
+				if (itemChangedEventHandler)
+				{
+					auto ol = itemSource.Cast<IValueObservableList>();
+					ol->ItemChanged.Remove(itemChangedEventHandler);
+				}
 			}
 
 			Ptr<description::IValueEnumerable> GuiBindableListView::ItemSource::GetItemSource()
@@ -6488,6 +6502,11 @@ GuiBindableTreeView::ItemSourceNode
 
 			GuiBindableTreeView::ItemSourceNode::~ItemSourceNode()
 			{
+				if (itemChangedEventHandler)
+				{
+					auto ol = childrenVirtualList.Cast<IValueObservableList>();
+					ol->ItemChanged.Remove(itemChangedEventHandler);
+				}
 			}
 
 			description::Value GuiBindableTreeView::ItemSourceNode::GetItemSource()
@@ -22432,12 +22451,14 @@ list::GroupedDataSource
 					GroupTitlePropertyChanged.SetAssociatedComposition(associatedComposition);
 					GroupChildrenPropertyChanged.SetAssociatedComposition(associatedComposition);
 
-					groupChangedHandler = groupedItemSource.GetWrapper()->ItemChanged.Add(this, &GroupedDataSource::OnGroupChanged);
+					auto vol = UnboxValue<Ptr<IValueObservableList>>(BoxParameter(groupedItemSource));
+					groupChangedHandler = vol->ItemChanged.Add(this, &GroupedDataSource::OnGroupChanged);
 				}
 
 				GroupedDataSource::~GroupedDataSource()
 				{
-					joinedItemSource.GetWrapper()->ItemChanged.Remove(groupChangedHandler);
+					auto vol = UnboxValue<Ptr<IValueObservableList>>(BoxParameter(joinedItemSource));
+					vol->ItemChanged.Remove(groupChangedHandler);
 				}
 
 				Ptr<IValueEnumerable> GroupedDataSource::GetItemSource()
@@ -22779,7 +22800,7 @@ GuiBindableRibbonGalleryList
 					itemList = new GuiBindableTextList(theme::ThemeName::RibbonGalleryItemList);
 					itemList->GetBoundsComposition()->SetAlignmentToParent(Margin(0, 0, 0, 0));
 					itemList->SetArranger(itemListArranger);
-					itemList->SetItemSource(joinedItemSource.GetWrapper());
+					itemList->SetItemSource(UnboxValue<Ptr<IValueObservableList>>(BoxParameter(joinedItemSource)));
 					itemList->SelectionChanged.AttachMethod(this, &GuiBindableRibbonGalleryList::OnItemListSelectionChanged);
 					itemList->ItemMouseEnter.AttachMethod(this, &GuiBindableRibbonGalleryList::OnItemListItemMouseEnter);
 					itemList->ItemMouseLeave.AttachMethod(this, &GuiBindableRibbonGalleryList::OnItemListItemMouseLeave);
@@ -22797,7 +22818,7 @@ GuiBindableRibbonGalleryList
 					groupStack->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
 					groupStack->SetAlignmentToParent(Margin(0, 0, 0, 0));
 					groupStack->SetDirection(GuiStackComposition::Vertical);
-					groupStack->SetItemSource(groupedItemSource.GetWrapper());
+					groupStack->SetItemSource(UnboxValue<Ptr<IValueObservableList>>(BoxParameter(groupedItemSource)));
 					groupContainer->GetContainerComposition()->AddChild(groupStack);
 					MenuResetGroupTemplate();
 				}
@@ -26081,6 +26102,10 @@ GuiRepeatCompositionBase
 
 			GuiRepeatCompositionBase::~GuiRepeatCompositionBase()
 			{
+				if (itemChangedHandler)
+				{
+					itemSource.Cast<IValueObservableList>()->ItemChanged.Remove(itemChangedHandler);
+				}
 			}
 
 			GuiRepeatCompositionBase::ItemStyleProperty GuiRepeatCompositionBase::GetItemTemplate()

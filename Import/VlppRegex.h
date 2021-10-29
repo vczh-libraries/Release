@@ -635,7 +635,7 @@ Tokenizer
 		///     }
 		/// }
 		/// ]]></example>
-		class RegexTokens : public Object, public collections::IEnumerable<RegexToken>
+		class RegexTokens : public collections::EnumerableBase<RegexToken>
 		{
 			friend class RegexLexer;
 		protected:
@@ -649,8 +649,8 @@ Tokenizer
 		public:
 			RegexTokens(const RegexTokens& tokens);
 			~RegexTokens();
-
-			collections::IEnumerator<RegexToken>*		CreateEnumerator()const;
+			
+			collections::IEnumerator<RegexToken>*		CreateEnumerator() const override;
 
 			/// <summary>Copy all tokens.</summary>
 			/// <param name="tokens">Returns all tokens.</param>
@@ -936,7 +936,7 @@ Tokenizer
 		///     RegexLexer lexer(tokenDefs, proc);
 		///     RegexLexerColorizer colorizer = lexer.Colorize();
 		/// 
-		///     ///     for (auto [line, index] : indexed(From(lines)))
+		///     for (auto [line, index] : indexed(From(lines)))
 		///     {
 		///         Console::WriteLine(L"Begin line " + itow(index));
 		///         argument.processingText = line;

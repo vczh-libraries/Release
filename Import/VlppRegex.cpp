@@ -585,7 +585,7 @@ RegexTokens
 		{
 		}
 
-		IEnumerator<RegexToken>* RegexTokens::CreateEnumerator()const
+		IEnumerator<RegexToken>* RegexTokens::CreateEnumerator() const
 		{
 			return new RegexTokenEnumerator(pure, stateTokens, code.Buffer(), codeIndex, proc);
 		}
