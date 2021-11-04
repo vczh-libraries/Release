@@ -7758,19 +7758,6 @@ namespace vl
 		const WString&				GetFunction()const;
 		const WString&				GetName()const;
 	};
-
-	class ParsingException : public Exception
-	{
-	protected:
-		vint						position;
-		WString						expression;
-
-	public:
-		ParsingException(const WString& _message, const WString& _expression, vint _position);
-
-		const WString&				GetExpression()const;
-		vint						GetPosition()const;
-	};
 }
 
 #endif
@@ -7933,6 +7920,12 @@ UtfConversion<T>
 Utfto32ReaderBase<T> and UtfFrom32ReaerBase<T>
 ***********************************************************************/
 
+		struct UtfCharCluster
+		{
+			vint		index;
+			vint		size;
+		};
+
 		template<typename T, typename TBase>
 		class UtfFrom32ReaderBase : public Object
 		{
@@ -7940,6 +7933,9 @@ Utfto32ReaderBase<T> and UtfFrom32ReaerBase<T>
 			vint					read = 0;
 			vint					available = 0;
 			T						buffer[BufferLength];
+
+			UtfCharCluster			sourceCluster = { 0,0 };
+			vint					readCounter = -1;
 			bool					error = false;
 		public:
 			T Read()
@@ -7952,15 +7948,31 @@ Utfto32ReaderBase<T> and UtfFrom32ReaerBase<T>
 					{
 						available = UtfConversion<T>::From32(c, buffer);
 						if (available == -1) return 0;
+						sourceCluster.index += sourceCluster.size;
+						sourceCluster.size = 1;
 					}
 					else
 					{
 						available = -1;
+						readCounter++;
+						sourceCluster.index += sourceCluster.size;
+						sourceCluster.size = 0;
 						return 0;
 					}
 					read = 0;
 				}
+				readCounter++;
 				return buffer[read++];
+			}
+
+			vint ReadingIndex() const
+			{
+				return readCounter;
+			}
+
+			UtfCharCluster SourceCluster() const
+			{
+				return sourceCluster;
 			}
 
 			bool HasIllegalChar() const
@@ -7975,6 +7987,9 @@ Utfto32ReaderBase<T> and UtfFrom32ReaerBase<T>
 			static const vint		BufferLength = UtfConversion<T>::BufferLength;
 			vint					available = 0;
 			T						buffer[BufferLength];
+
+			UtfCharCluster			sourceCluster = { 0,0 };
+			vint					readCounter = -1;
 			bool					error = false;
 		public:
 			char32_t Read()
@@ -7992,6 +8007,9 @@ Utfto32ReaderBase<T> and UtfFrom32ReaerBase<T>
 						if (available == 0)
 						{
 							available = -1;
+							readCounter++;
+							sourceCluster.index += sourceCluster.size;
+							sourceCluster.size = 0;
 							return 0;
 						}
 						break;
@@ -8010,7 +8028,20 @@ Utfto32ReaderBase<T> and UtfFrom32ReaerBase<T>
 				{
 					buffer[i] = buffer[i + result];
 				}
+				readCounter++;
+				sourceCluster.index += sourceCluster.size;
+				sourceCluster.size = result;
 				return dest;
+			}
+
+			vint ReadingIndex() const
+			{
+				return readCounter;
+			}
+
+			UtfCharCluster SourceCluster() const
+			{
+				return sourceCluster;
 			}
 
 			bool HasIllegalChar() const
@@ -8041,16 +8072,6 @@ UtfStringTo32Reader<T> and UtfStringFrom32Reader<T>
 				: starting(_starting)
 				, consuming(_starting)
 			{
-			}
-
-			const T* Starting() const
-			{
-				return starting;
-			}
-
-			const T* Current() const
-			{
-				return consuming;
 			}
 		};
 
@@ -8096,14 +8117,9 @@ UtfStringTo32Reader<T> and UtfStringFrom32Reader<T>
 			{
 			}
 
-			const TFrom* Starting() const
+			UtfCharCluster SourceCluster() const
 			{
-				return internalReader.Starting();
-			}
-
-			const TFrom* Current() const
-			{
-				return internalReader.Current();
+				return internalReader.SourceCluster();
 			}
 
 			bool HasIllegalChar() const
