@@ -178,9 +178,8 @@ int main()
 		// call MyApp
 		auto myapp = UnboxValue<Ptr<App>>(Value::Create(
 			L"myscript::MyApp",
-			(
-				Value_xs(), WString(L"vczh")
-			)));
+			(Array<Value>&)(Value_xs(), WString(L"vczh"))
+			));
 		myapp->SetName(L"Vczh Libraries++");
 		myapp->SetName(L"Workflow");
 		myapp->SetName(L"Gaclib");

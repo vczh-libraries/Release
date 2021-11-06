@@ -27,9 +27,6 @@
     <ClCompile Include="..\..\..\Import\GacUI.cpp">
       <Filter>Import</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Import\GacUIWindows.cpp">
-      <Filter>Import</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Import\Vlpp.cpp">
       <Filter>Import</Filter>
     </ClCompile>
@@ -54,12 +51,24 @@
     <ClCompile Include="..\..\..\Import\VlppParser.cpp">
       <Filter>Import</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Import\GacUI.Windows.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\Vlpp.Linux.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\Vlpp.Windows.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppOS.Linux.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppOS.Windows.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Import\GacUI.h">
-      <Filter>Import</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Import\GacUIWindows.h">
       <Filter>Import</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Import\Vlpp.h">
@@ -81,6 +90,9 @@
       <Filter>Import</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Import\VlppOS.h">
+      <Filter>Import</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\GacUI.Windows.h">
       <Filter>Import</Filter>
     </ClInclude>
   </ItemGroup>
