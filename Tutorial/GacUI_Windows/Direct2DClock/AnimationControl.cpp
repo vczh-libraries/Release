@@ -1,6 +1,6 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include "AnimationControl.h"
-#include <GacUIWindows.h>
+#include <GacUI.Windows.h>
 
 namespace demo
 {
