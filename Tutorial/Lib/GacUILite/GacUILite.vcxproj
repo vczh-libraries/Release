@@ -98,6 +98,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\Import\Vlpp.Windows.cpp" />
+    <ClCompile Include="..\..\..\Import\VlppGlrParser.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\..\Import\VlppOS.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
@@ -133,6 +137,7 @@
     <ClInclude Include="..\..\..\Import\GacUI.Windows.h" />
     <ClInclude Include="..\..\..\Import\Skins\DarkSkin\DarkSkin.h" />
     <ClInclude Include="..\..\..\Import\Vlpp.h" />
+    <ClInclude Include="..\..\..\Import\VlppGlrParser.h" />
     <ClInclude Include="..\..\..\Import\VlppOS.h" />
     <ClInclude Include="..\..\..\Import\VlppParser.h" />
     <ClInclude Include="..\..\..\Import\VlppReflection.h" />

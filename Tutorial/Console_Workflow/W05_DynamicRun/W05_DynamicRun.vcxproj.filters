@@ -24,9 +24,6 @@
     <ClCompile Include="..\..\..\Import\VlppOS.cpp">
       <Filter>Import</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Import\VlppParser.cpp">
-      <Filter>Import</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Import\VlppReflection.cpp">
       <Filter>Import</Filter>
     </ClCompile>
@@ -57,15 +54,15 @@
     <ClCompile Include="..\..\..\Import\VlppOS.Windows.cpp">
       <Filter>Import</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppGlrParser.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Import\Vlpp.h">
       <Filter>Import</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Import\VlppOS.h">
-      <Filter>Import</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Import\VlppParser.h">
       <Filter>Import</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Import\VlppReflection.h">
@@ -82,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="..\W05_Lib\W05_Lib.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppGlrParser.h">
+      <Filter>Import</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
