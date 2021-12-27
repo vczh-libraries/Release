@@ -4,7 +4,7 @@ DEVELOPER: Zihan Chen(vczh)
 ***********************************************************************/
 #include "GacUI.h"
 #include "VlppWorkflowCompiler.h"
-#include "VlppParser.h"
+#include "VlppGlrParser.h"
 #include "VlppWorkflowLibrary.h"
 #include "VlppReflection.h"
 #include "VlppOS.h"

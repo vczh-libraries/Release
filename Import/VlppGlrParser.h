@@ -1275,8 +1275,7 @@ ParserBase<TTokens, TStates, TReceiver, TStateTypes>
 		template<
 			typename TTokens,
 			typename TStates,
-			typename TReceiver,
-			template<TStates> class TStateTypes
+			typename TReceiver
 		>
 		class ParserBase : public Object
 		{
@@ -1329,12 +1328,13 @@ ParserBase<TTokens, TStates, TReceiver, TStateTypes>
 
 			void Tokenize(const WString& input, TokenList& tokens, vint codeIndex = -1) const
 			{
+				input.Buffer();
 				auto enumerable = lexer->Parse(input, {}, codeIndex);
 				Ptr<collections::IEnumerator<regex::RegexToken>> enumerator = enumerable.CreateEnumerator();
 				while (enumerator->Next())
 				{
 					auto&& token = enumerator->Current();
-					if (token.token == -1)
+					if (token.token == -1 || !token.completeToken)
 					{
 						auto args = ErrorArgs::UnrecognizedToken(token);
 						args.throwError = false;
@@ -1352,17 +1352,15 @@ ParserBase<TTokens, TStates, TReceiver, TStateTypes>
 			}
 
 		protected:
-			template<TStates State>
-			auto Parse(TokenList& tokens, const automaton::TraceManager::ITypeCallback* typeCallback, vint codeIndex) const -> Ptr<typename TStateTypes<State>::Type>
+			Ptr<ParsingAstBase> ParseInternal(TokenList& tokens, vint32_t state, automaton::TraceManager& tm, const automaton::TraceManager::ITypeCallback* typeCallback, vint codeIndex) const
 			{
-#define ERROR_MESSAGE_PREFIX L"vl::glr::ParserBase<...>::Parse<TStates>(List<RegexToken>&, TraceManager::ITypeCallback*)#"
+#define ERROR_MESSAGE_PREFIX L"vl::glr::ParserBase<...>::ParseInternal(List<RegexToken>&, vint32_t TraceManager::ITypeCallback*)#"
 				if (codeIndex == -1 && tokens.Count() > 0)
 				{
 					codeIndex = tokens[0].codeIndex;
 				}
 
-				automaton::TraceManager tm(*executable.Obj(), typeCallback);
-				tm.Initialize((vint32_t)State);
+				tm.Initialize(state);
 				for (vint32_t i = 0; i < tokens.Count(); i++)
 				{
 					auto&& token = tokens[i];
@@ -1394,27 +1392,35 @@ ParserBase<TTokens, TStates, TReceiver, TStateTypes>
 				}
 
 				TReceiver receiver;
-				auto ast = tm.ExecuteTrace(rootTrace, receiver, tokens);
-				auto typedAst = ast.Cast<typename TStateTypes<State>::Type>();
+				return tm.ExecuteTrace(rootTrace, receiver, tokens);
+
+#undef ERROR_MESSAGE_PREFIX
+			}
+
+			template<typename TAst, TStates State>
+			Ptr<TAst> ParseWithTokens(TokenList& tokens, const automaton::TraceManager::ITypeCallback* typeCallback, vint codeIndex) const
+			{
+#define ERROR_MESSAGE_PREFIX L"vl::glr::ParserBase<...>::Parse<TAst, TStates>(List<RegexToken>& TraceManager::ITypeCallback*)#"
+				automaton::TraceManager tm(*executable.Obj(), typeCallback);
+				auto ast = ParseInternal(tokens, (vint32_t)State, tm, typeCallback, codeIndex);
+				auto typedAst = ast.Cast<TAst>();
 
 				if (!typedAst)
 				{
 					auto args = ErrorArgs::UnexpectedAstType(tokens, *executable.Obj(), tm, ast);
 					OnError(args);
 					if (args.throwError) CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unexpected type of the created AST.");
-					return nullptr;
 				}
 				return typedAst;
-
 #undef ERROR_MESSAGE_PREFIX
 			}
 
-			template<TStates State>
-			auto Parse(const WString& input, const automaton::TraceManager::ITypeCallback* typeCallback, vint codeIndex) const
+			template<typename TAst, TStates State>
+			Ptr<TAst> ParseWithString(const WString& input, const automaton::TraceManager::ITypeCallback* typeCallback, vint codeIndex) const
 			{
 				TokenList tokens;
 				Tokenize(input, tokens, codeIndex);
-				return Parse<State>(tokens, typeCallback, codeIndex);
+				return ParseWithTokens<TAst, State>(tokens, typeCallback, codeIndex);
 			}
 		};
 	}
@@ -1999,16 +2005,12 @@ namespace vl
 				JRoot = 29,
 			};
 
-			template<ParserStates> struct ParserStateTypes;
-			template<> struct ParserStateTypes<ParserStates::JRoot> { using Type = vl::glr::json::JsonNode; };
-
 			const wchar_t* ParserRuleName(vl::vint index);
 			const wchar_t* ParserStateLabel(vl::vint index);
 			extern void JsonParserData(vl::stream::IStream& outputStream);
 
 			class Parser
-				: public vl::glr::ParserBase<JsonTokens, ParserStates, JsonAstInsReceiver, ParserStateTypes>
-				, protected vl::glr::automaton::TraceManager::ITypeCallback
+				: public vl::glr::ParserBase<JsonTokens, ParserStates, JsonAstInsReceiver>				, protected vl::glr::automaton::TraceManager::ITypeCallback
 			{
 			protected:
 				vl::vint32_t FindCommonBaseClass(vl::vint32_t class1, vl::vint32_t class2) const override;
@@ -2683,17 +2685,12 @@ namespace vl
 				XDocument = 40,
 			};
 
-			template<ParserStates> struct ParserStateTypes;
-			template<> struct ParserStateTypes<ParserStates::XElement> { using Type = vl::glr::xml::XmlElement; };
-			template<> struct ParserStateTypes<ParserStates::XDocument> { using Type = vl::glr::xml::XmlDocument; };
-
 			const wchar_t* ParserRuleName(vl::vint index);
 			const wchar_t* ParserStateLabel(vl::vint index);
 			extern void XmlParserData(vl::stream::IStream& outputStream);
 
 			class Parser
-				: public vl::glr::ParserBase<XmlTokens, ParserStates, XmlAstInsReceiver, ParserStateTypes>
-				, protected vl::glr::automaton::TraceManager::ITypeCallback
+				: public vl::glr::ParserBase<XmlTokens, ParserStates, XmlAstInsReceiver>				, protected vl::glr::automaton::TraceManager::ITypeCallback
 			{
 			protected:
 				vl::vint32_t FindCommonBaseClass(vl::vint32_t class1, vl::vint32_t class2) const override;

@@ -15,6 +15,14 @@ Licensed under https://github.com/vczh-libraries/License
 
 namespace vl
 {
+	namespace regex_internal
+	{
+		void ReadInt(stream::IStream& inputStream, vint& value);
+		void ReadInts(stream::IStream& inputStream, vint count, vint* values);
+		void WriteInt(stream::IStream& outputStream, vint value);
+		void WriteInts(stream::IStream& outputStream, vint count, vint* values);
+	}
+
 	namespace regex
 	{
 		using namespace collections;
@@ -916,6 +924,7 @@ RegexLexerBase_
 		template<typename T>
 		RegexTokens_<T> RegexLexerBase_::Parse(const ObjectString<T>& code, RegexProc_<T> proc, vint codeIndex)const
 		{
+			code.Buffer();
 			pure->PrepareForRelatedFinalStateTable();
 			return RegexTokens_<T>(pure, stateTokens, code, codeIndex, proc);
 		}
@@ -937,6 +946,34 @@ RegexLexerBase_
 		RegexLexerColorizer_<T> RegexLexerBase_::Colorize(RegexProc_<T> proc)const
 		{
 			return RegexLexerColorizer_<T>(Walk<T>(), proc);
+		}
+
+/***********************************************************************
+RegexLexer_<T> (Serialization)
+***********************************************************************/
+
+		template<typename T>
+		RegexLexer_<T>::RegexLexer_(stream::IStream& inputStream)
+		{
+			pure = new PureInterpretor(inputStream);
+			vint count = 0;
+			ReadInt(inputStream, count);
+			stateTokens.Resize(count);
+			if (count > 0)
+			{
+				ReadInts(inputStream, count, &stateTokens[0]);
+			}
+		}
+
+		template<typename T>
+		void RegexLexer_<T>::Serialize(stream::IStream& outputStream)
+		{
+			pure->Serialize(outputStream);
+			WriteInt(outputStream, stateTokens.Count());
+			if (stateTokens.Count() > 0)
+			{
+				WriteInts(outputStream, stateTokens.Count(), &stateTokens[0]);
+			}
 		}
 
 /***********************************************************************
@@ -990,8 +1027,8 @@ RegexLexer_<T>
 			Automaton::Ref bigEnfa = new Automaton;
 			for (vint i = 0; i < dfas.Count(); i++)
 			{
-				CopyFrom(bigEnfa->states, dfas[i]->states);
-				CopyFrom(bigEnfa->transitions, dfas[i]->transitions);
+				CopyFrom(bigEnfa->states, dfas[i]->states, true);
+				CopyFrom(bigEnfa->transitions, dfas[i]->transitions, true);
 			}
 			bigEnfa->startState = bigEnfa->NewState();
 			for (vint i = 0; i < dfas.Count(); i++)
@@ -1135,43 +1172,209 @@ namespace vl
 {
 	namespace regex_internal
 	{
+		using namespace collections;
+
+/***********************************************************************
+Read
+***********************************************************************/
+
+		void ReadInt(stream::IStream& inputStream, vint& value)
+		{
+#ifdef VCZH_64
+			vint32_t x = 0;
+			CHECK_ERROR(
+				inputStream.Read(&x, sizeof(vint32_t)) == sizeof(vint32_t),
+				L"Failed to deserialize RegexLexer."
+				);
+			value = (vint)x;
+#else
+			CHECK_ERROR(
+				inputStream.Read(&value, sizeof(vint32_t)) == sizeof(vint32_t),
+				L"Failed to deserialize RegexLexer."
+				);
+#endif
+		}
+
+		void ReadInts(stream::IStream& inputStream, vint count, vint* values)
+		{
+#ifdef VCZH_64
+			Array<vint32_t> xs(count);
+			CHECK_ERROR(
+				inputStream.Read(&xs[0], sizeof(vint32_t) * count) == sizeof(vint32_t) * count,
+				L"Failed to deserialize RegexLexer."
+				);
+			for (vint i = 0; i < count; i++)
+			{
+				values[i] = (vint)xs[i];
+			}
+#else
+			CHECK_ERROR(
+				inputStream.Read(values, sizeof(vint32_t) * count) == sizeof(vint32_t) * count,
+				L"Failed to deserialize RegexLexer."
+				);
+#endif
+		}
+
+		void ReadBools(stream::IStream& inputStream, vint count, bool* values)
+		{
+			Array<vuint8_t> bits((count + 7) / 8);
+			CHECK_ERROR(
+				inputStream.Read(&bits[0], sizeof(vuint8_t) * bits.Count()) == sizeof(vuint8_t) * bits.Count(),
+				L"Failed to deserialize RegexLexer."
+			);
+
+			for (vint i = 0; i < count; i++)
+			{
+				vint x = i / 8;
+				vint y = i % 8;
+				values[i] = ((bits[x] >> y) & 1) == 1;
+			}
+		}
+
+/***********************************************************************
+Write
+***********************************************************************/
+
+		void WriteInt(stream::IStream& outputStream, vint value)
+		{
+#ifdef VCZH_64
+			vint32_t x = (vint32_t)value;
+			CHECK_ERROR(
+				outputStream.Write(&x, sizeof(vint32_t)) == sizeof(vint32_t),
+				L"Failed to serialize RegexLexer."
+				);
+#else
+			CHECK_ERROR(
+				outputStream.Write(&value, sizeof(vint32_t)) == sizeof(vint32_t),
+				L"Failed to serialize RegexLexer."
+				);
+#endif
+		}
+
+		void WriteInts(stream::IStream& outputStream, vint count, vint* values)
+		{
+#ifdef VCZH_64
+			Array<vint32_t> xs(count);
+			for (vint i = 0; i < count; i++)
+			{
+				xs[i] = (vint32_t)values[i];
+			}
+			CHECK_ERROR(
+				outputStream.Write(&xs[0], sizeof(vint32_t) * count) == sizeof(vint32_t) * count,
+				L"Failed to serialize RegexLexer."
+				);
+#else
+			CHECK_ERROR(
+				outputStream.Write(values, sizeof(vint32_t) * count) == sizeof(vint32_t) * count,
+				L"Failed to serialize RegexLexer."
+				);
+#endif
+		}
+
+		void WriteBools(stream::IStream& outputStream, vint count, bool* values)
+		{
+			Array<vuint8_t> bits((count + 7) / 8);
+			memset(&bits[0], 0, sizeof(vuint8_t) * bits.Count());
+
+			for (vint i = 0; i < count; i++)
+			{
+				if (values[i])
+				{
+					vint x = i / 8;
+					vint y = i % 8;
+					bits[x] |= (vuint8_t)1 << y;
+				}
+			}
+
+			CHECK_ERROR(
+				outputStream.Write(&bits[0], sizeof(vuint8_t) * bits.Count()) == sizeof(vuint8_t) * bits.Count(),
+				L"Failed to serialize RegexLexer."
+				);
+		}
+
+/***********************************************************************
+PureInterpretor (Serialization)
+***********************************************************************/
+
+		PureInterpretor::PureInterpretor(stream::IStream& inputStream)
+		{
+			ReadInt(inputStream, stateCount);
+			ReadInt(inputStream, charSetCount);
+			ReadInt(inputStream, startState);
+			{
+				vint count = 0;
+				ReadInt(inputStream, count);
+				charRanges.Resize(count);
+				if (count > 0)
+				{
+					vint size = charRanges.Count() * sizeof(CharRange);
+					CHECK_ERROR(inputStream.Read(&charRanges[0], size) == size, L"Failed to serialize RegexLexer.");
+				}
+				ExpandCharRanges();
+			}
+
+			transitions = new vint[stateCount * charSetCount];
+			ReadInts(inputStream, stateCount * charSetCount, transitions);
+
+			finalState = new bool[stateCount];
+			ReadBools(inputStream, stateCount, finalState);
+		}
+
+		void PureInterpretor::Serialize(stream::IStream& outputStream)
+		{
+			WriteInt(outputStream, stateCount);
+			WriteInt(outputStream, charSetCount);
+			WriteInt(outputStream, startState);
+			{
+				WriteInt(outputStream, charRanges.Count());
+				if (charRanges.Count() > 0)
+				{
+					vint size = charRanges.Count() * sizeof(CharRange);
+					CHECK_ERROR(outputStream.Write(&charRanges[0], size) == size, L"Failed to serialize RegexLexer.");
+				}
+			}
+			WriteInts(outputStream, stateCount * charSetCount, transitions);
+			WriteBools(outputStream, stateCount, finalState);
+		}
 
 /***********************************************************************
 PureInterpretor
 ***********************************************************************/
 
-		PureInterpretor::PureInterpretor(Automaton::Ref dfa, CharRange::List& subsets)
-			:transition(0)
-			, finalState(0)
-			, relatedFinalState(0)
+		void PureInterpretor::ExpandCharRanges()
 		{
-			stateCount = dfa->states.Count();
-			charSetCount = subsets.Count() + 1;
-			startState = dfa->states.IndexOf(dfa->startState);
-
-			// Map char to input index (equivalent char class)
 			for (vint i = 0; i < SupportedCharCount; i++)
 			{
 				charMap[i] = charSetCount - 1;
 			}
-			for (vint i = 0; i < subsets.Count(); i++)
+			for (vint i = 0; i < charRanges.Count(); i++)
 			{
-				CharRange range = subsets[i];
+				CharRange range = charRanges[i];
 				for (char32_t j = range.begin; j <= range.end; j++)
 				{
 					if (j > MaxChar32) break;
 					charMap[j] = i;
 				}
 			}
+		}
+
+		PureInterpretor::PureInterpretor(Automaton::Ref dfa, CharRange::List& subsets)
+		{
+			stateCount = dfa->states.Count();
+			charSetCount = subsets.Count() + 1;
+			startState = dfa->states.IndexOf(dfa->startState);
+
+			// Map char to input index (equivalent char class)
+			CopyFrom(charRanges, subsets);
+			ExpandCharRanges();
 
 			// Create transitions from DFA, using input index to represent input char
-			transition = new vint * [stateCount];
+			transitions = new vint[stateCount * charSetCount];
 			for (vint i = 0; i < stateCount; i++)
 			{
-				transition[i] = new vint[charSetCount];
 				for (vint j = 0; j < charSetCount; j++)
 				{
-					transition[i][j] = -1;
+					transitions[i * charSetCount + j] = -1;
 				}
 
 				State* state = dfa->states[i].Obj();
@@ -1187,7 +1390,7 @@ PureInterpretor
 							{
 								CHECK_ERROR(false, L"PureInterpretor::PureInterpretor(Automaton::Ref, CharRange::List&)#Specified chars don't appear in the normalized char ranges.");
 							}
-							transition[i][index] = dfa->states.IndexOf(dfaTransition->target);
+							transitions[i * charSetCount + index] = dfa->states.IndexOf(dfaTransition->target);
 						}
 						break;
 					default:
@@ -1208,11 +1411,7 @@ PureInterpretor
 		{
 			if (relatedFinalState) delete[] relatedFinalState;
 			delete[] finalState;
-			for (vint i = 0; i < stateCount; i++)
-			{
-				delete[] transition[i];
-			}
-			delete[] transition;
+			delete[] transitions;
 		}
 
 		template<typename TChar>
@@ -1244,7 +1443,7 @@ PureInterpretor
 				if (c >= SupportedCharCount) break;
 
 				vint charIndex = charMap[c];
-				currentState = transition[currentState][charIndex];
+				currentState = transitions[currentState * charSetCount + charIndex];
 			}
 
 			if (result.finalState == -1)
@@ -1286,7 +1485,7 @@ PureInterpretor
 			if (0 <= state && state < stateCount && 0 <= input && input <= MaxChar32)
 			{
 				vint charIndex = charMap[input];
-				vint nextState = transition[state][charIndex];
+				vint nextState = transitions[state * charSetCount + charIndex];
 				return nextState;
 			}
 			else
@@ -1305,7 +1504,7 @@ PureInterpretor
 			if (state == -1) return true;
 			for (vint i = 0; i < charSetCount; i++)
 			{
-				if (transition[state][i] != -1)
+				if (transitions[state * charSetCount + i] != -1)
 				{
 					return false;
 				}
@@ -1332,7 +1531,7 @@ PureInterpretor
 							vint state = -1;
 							for (vint j = 0; j < charSetCount; j++)
 							{
-								vint nextState = transition[i][j];
+								vint nextState = transitions[i * charSetCount + j];
 								if (nextState != -1)
 								{
 									state = relatedFinalState[nextState];
@@ -1981,7 +2180,7 @@ MergeAlgorithm
 				}
 				else if (target->regex->definitions.Keys().Contains(expression->name))
 				{
-					target->definitions.Add(expression->name, 0);
+					target->definitions.Add(expression->name, nullptr);
 					Expression::Ref result = Invoke(target->regex->definitions[expression->name], target);
 					target->definitions.Set(expression->name, result);
 					return result;
@@ -4035,93 +4234,80 @@ Helpers
 		Automaton::Ref NfaToDfa(Automaton::Ref source, Group<State*, State*>& dfaStateMap)
 		{
 			Automaton::Ref target = new Automaton;
-			Group<Transition*, Transition*> nfaTransitions;
-			List<Transition*> transitionClasses; // Maintain order for nfaTransitions.Keys
-
 			CopyFrom(target->captureNames, source->captureNames);
 			State* startState = target->NewState();
 			target->startState = startState;
 			dfaStateMap.Add(startState, source->startState);
 
-			SortedList<State*> transitionTargets;
-			SortedList<State*> relativeStates;
-			transitionTargets.SetLessMemoryMode(false);
-			relativeStates.SetLessMemoryMode(false);
-
-			for (vint i = 0; i < target->states.Count(); i++)
+			for (auto currentState_ : target->states)
 			{
-				State* currentState = target->states[i].Obj();
-				nfaTransitions.Clear();
-				transitionClasses.Clear();
+				Group<Transition*, Transition*>			nfaClassToTransitions;
+				Dictionary<Transition*, Transition*>	nfaTransitionToClass;
+				List<Transition*>						orderedTransitionClasses;
+
+				State* currentState = currentState_.Obj();
 
 				// Iterate through all NFA states which represent the DFA state
-				const List<State*>& nfaStates = dfaStateMap[currentState];
-				for (vint j = 0; j < nfaStates.Count(); j++)
+				for (auto nfaState : dfaStateMap[currentState])
 				{
-					State* nfaState = nfaStates.Get(j);
 					// Iterate through all transitions from those NFA states
-					for (vint k = 0; k < nfaState->transitions.Count(); k++)
+					for (auto nfaTransition : nfaState->transitions)
 					{
-						Transition* nfaTransition = nfaState->transitions[k];
+						Transition* transitionClass = nullptr;
+
 						// Check if there is any key in nfaTransitions that has the same input as the current transition
-						Transition* transitionClass = 0;
-						for (vint l = 0; l < nfaTransitions.Keys().Count(); l++)
 						{
-							Transition* key = nfaTransitions.Keys()[l];
-							if (AreEqual(key, nfaTransition))
+							vint index = nfaTransitionToClass.Keys().IndexOf(nfaTransition);
+							if (index != -1) transitionClass = nfaTransitionToClass.Values()[index];
+						}
+
+						if (transitionClass == nullptr)
+						{
+							for (vint l = 0; l < orderedTransitionClasses.Count(); l++)
 							{
-								transitionClass = key;
-								break;
+								Transition* key = orderedTransitionClasses[l];
+								if (AreEqual(key, nfaTransition))
+								{
+									transitionClass = key;
+									break;
+								}
 							}
 						}
+
 						// Create a new key if not
-						if (transitionClass == 0)
+						if (transitionClass == nullptr)
 						{
 							transitionClass = nfaTransition;
-							transitionClasses.Add(transitionClass);
+							orderedTransitionClasses.Add(transitionClass);
 						}
 						// Group the transition
-						nfaTransitions.Add(transitionClass, nfaTransition);
+						nfaClassToTransitions.Add(transitionClass, nfaTransition);
+						nfaTransitionToClass.Add(nfaTransition, transitionClass);
 					}
 				}
 
 				// Iterate through all key transition that represent all existing transition inputs from the same state
-				for (vint j = 0; j < transitionClasses.Count(); j++)
+				for (auto transitionClass : orderedTransitionClasses)
 				{
-					const List<Transition*>& transitionSet = nfaTransitions[transitionClasses[j]];
+					auto&& equivalentTransitions = nfaClassToTransitions[transitionClass];
+
 					// Sort all target states and keep unique
-					transitionTargets.Clear();
-					for (vint l = 0; l < transitionSet.Count(); l++)
-					{
-						State* nfaState = transitionSet.Get(l)->target;
-						if (!transitionTargets.Contains(nfaState))
-						{
-							transitionTargets.Add(nfaState);
-						}
-					}
+					List<State*> transitionTargets;
+					CopyFrom(
+						transitionTargets,
+						From(equivalentTransitions)
+							.Select([](auto t) { return t->target; })
+							.Distinct()
+						);
+
 					// Check if these NFA states represent a created DFA state
 					State* dfaState = 0;
 					for (vint k = 0; k < dfaStateMap.Count(); k++)
 					{
-						// Sort NFA states for a certain DFA state
-						CopyFrom(relativeStates, dfaStateMap.GetByIndex(k));
 						// Compare two NFA states set
-						if (relativeStates.Count() == transitionTargets.Count())
+						if (CompareEnumerable(transitionTargets, dfaStateMap.GetByIndex(k)) == 0)
 						{
-							bool equal = true;
-							for (vint l = 0; l < relativeStates.Count(); l++)
-							{
-								if (relativeStates[l] != transitionTargets[l])
-								{
-									equal = false;
-									break;
-								}
-							}
-							if (equal)
-							{
-								dfaState = dfaStateMap.Keys()[k];
-								break;
-							}
+							dfaState = dfaStateMap.Keys()[k];
 						}
 					}
 					// Create a new DFA state if there is not
@@ -4138,7 +4324,6 @@ Helpers
 						}
 					}
 					// Create corresponding DFA transition
-					Transition* transitionClass = transitionClasses[j];
 					Transition* newTransition = target->NewTransition(currentState, dfaState);
 					newTransition->capture = transitionClass->capture;
 					newTransition->index = transitionClass->index;

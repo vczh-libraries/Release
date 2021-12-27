@@ -489,7 +489,7 @@ WindowsDirect2DParagraph (Initialization)
 						textLayout->SetMaxWidth(65536);
 						textLayout->SetWordWrapping(DWRITE_WORD_WRAPPING_WRAP);
 					}
-					graphicsElements.Add(TextRange(0, _text.Length()), 0);
+					graphicsElements.Add(TextRange(0, _text.Length()), nullptr);
 					backgroundColors.Add(TextRange(0, _text.Length()), Color(0, 0, 0, 0));
 
 					GetWindowsDirect2DResourceManager()->DestroyDirect2DTextFormat(defaultFont);
@@ -10719,7 +10719,9 @@ OS Supporting
 
 				IWindowsDirect2DRenderTarget* GetBindedRenderTarget(INativeWindow* window)override
 				{
-					return dynamic_cast<IWindowsDirect2DRenderTarget*>(vl::presentation::windows::GetWindowsForm(window)->GetGraphicsHandler());
+					auto windowsForm = vl::presentation::windows::GetWindowsForm(window);
+					auto graphicsHandler = windowsForm->GetGraphicsHandler();
+					return dynamic_cast<IWindowsDirect2DRenderTarget*>(graphicsHandler);
 				}
 
 				void SetBindedRenderTarget(INativeWindow* window, IWindowsDirect2DRenderTarget* renderTarget)override
@@ -13254,7 +13256,6 @@ namespace vl
 	{
 		namespace windows
 		{
-			using namespace parsing::xml;
 			using namespace collections;
 
 /***********************************************************************
