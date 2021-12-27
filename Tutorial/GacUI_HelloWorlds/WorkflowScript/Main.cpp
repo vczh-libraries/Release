@@ -1,7 +1,6 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include <GacUICompiler.h>
 
-using namespace vl::parsing;
 using namespace vl::collections;
 using namespace vl::workflow;
 using namespace vl::workflow::emitter;
@@ -37,11 +36,11 @@ void GuiMain()
 {
 	Ptr<WfRuntimeGlobalContext> globalContext;
 	{
-		List<Ptr<ParsingError>> errors;
+		List<glr::ParsingError> errors;
 		List<WString> codes;
 		codes.Add(WorkflowScript);
-		auto table = WfLoadTable();
-		auto assembly = Compile(table, codes, errors);
+		workflow::Parser workflowParser;
+		auto assembly = Compile(workflowParser, codes, errors);
 		globalContext = MakePtr<WfRuntimeGlobalContext>(assembly);
 		LoadFunction<void()>(globalContext, L"<initialize>")();
 	}
