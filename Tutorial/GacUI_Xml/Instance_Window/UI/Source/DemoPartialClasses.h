@@ -35,7 +35,7 @@ namespace demo
 	protected:
 		::demo::MainWindow* __vwsn_precompile_0;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_1;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_2;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

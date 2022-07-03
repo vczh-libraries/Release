@@ -93,7 +93,7 @@ namespace helloworld
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_16;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_17;
 		::vl::Ptr<::vm::IViewModel> __vwsn_precompile_18;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_19;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_19;
 		void __vwsn_helloworld_MainWindow_Initialize(::helloworld::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

@@ -40,8 +40,7 @@ namespace demo
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
 		::vl::presentation::controls::GuiButton* __vwsn_precompile_5;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_6;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_8;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_7;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

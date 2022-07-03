@@ -115,7 +115,6 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_7)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_70)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_71)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_72)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_8)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_9)
 				CLASS_MEMBER_FIELD(flowLayout)

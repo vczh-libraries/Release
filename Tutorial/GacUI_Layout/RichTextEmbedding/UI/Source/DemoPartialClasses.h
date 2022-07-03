@@ -102,8 +102,7 @@ namespace demo
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_48;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_49;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_50;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_51;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_52;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_51;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

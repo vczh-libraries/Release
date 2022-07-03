@@ -171,7 +171,7 @@ namespace demo
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_93;
 		::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement> __vwsn_precompile_94;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_95;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_96;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_96;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

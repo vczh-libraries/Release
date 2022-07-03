@@ -86,7 +86,7 @@ namespace demo
 		::demo::ResponsiveGroupControl* __vwsn_precompile_13;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_14;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_15;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_16;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_16;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

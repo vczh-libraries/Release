@@ -58,7 +58,7 @@ namespace demo
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_11;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_12;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_13;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_14;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_14;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

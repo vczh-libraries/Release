@@ -42,7 +42,7 @@ namespace demo
 	protected:
 		::demo::AnotherWindow* __vwsn_precompile_0;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_1;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_2;
 		void __vwsn_demo_AnotherWindow_Initialize(::demo::AnotherWindow* __vwsn_this_);
 	public:
 		AnotherWindowConstructor();
@@ -69,7 +69,7 @@ namespace demo
 		::demo::MainWindow* __vwsn_precompile_0;
 		::vl::presentation::controls::GuiButton* __vwsn_precompile_1;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_3;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
