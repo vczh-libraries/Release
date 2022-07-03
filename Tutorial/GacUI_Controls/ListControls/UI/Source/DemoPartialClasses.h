@@ -134,7 +134,7 @@ namespace demo
 		::demo::TextListTabPage* __vwsn_precompile_2;
 		::demo::ListViewTabPage* __vwsn_precompile_3;
 		::demo::TreeViewTabPage* __vwsn_precompile_4;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_5;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

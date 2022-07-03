@@ -78,7 +78,7 @@ namespace demo
 	void MainWindowConstructor::__vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_)
 	{
 		(this->self = __vwsn_this_);
-		(this->__vwsn_precompile_27 = ::vl::__vwsn::This(this->self)->GetBoundsComposition());
+		(this->__vwsn_precompile_27 = ::vl::__vwsn::This(this->self)->GetContainerComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_27)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(640); __vwsn_temp__.y = static_cast<::vl::vint>(480); return __vwsn_temp__; }());
 		}
@@ -385,7 +385,7 @@ namespace demo
 		, __vwsn_precompile_24(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
 		, __vwsn_precompile_25(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
 		, __vwsn_precompile_26(::vl::Ptr<::vl::presentation::controls::list::TextItem>())
-		, __vwsn_precompile_27(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_27(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(nullptr))
 	{
 	}
 

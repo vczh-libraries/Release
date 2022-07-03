@@ -137,7 +137,7 @@ namespace demo
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_19;
 		::vl::presentation::controls::GuiButton* __vwsn_precompile_20;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_21;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_22;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_22;
 		void __vwsn_demo_FindWindow_Initialize(::demo::FindWindow* __vwsn_this_);
 	public:
 		FindWindowConstructor();
@@ -273,7 +273,7 @@ namespace demo
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_62;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_63;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_64;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_65;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_65;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

@@ -56,7 +56,6 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_14)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_15)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_16)
-				CLASS_MEMBER_FIELD(__vwsn_precompile_17)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_4)

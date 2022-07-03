@@ -69,7 +69,7 @@ namespace demo
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_24;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_25;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_26;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_27;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_27;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
