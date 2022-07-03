@@ -204,7 +204,7 @@
         ]]>
       </ref.Ctor>
       <Window ref.Name="self" Text="GacUI XML资源临时测试" ClientSize="x:640 y:480">
-        <att.BoundsComposition-set PreferredMinSize="x:640 y:480"/>
+        <att.ContainerComposition-set PreferredMinSize="x:640 y:480"/>
 
         <Tab>
           <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>

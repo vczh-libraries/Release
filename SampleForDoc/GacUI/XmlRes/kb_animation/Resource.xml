@@ -220,7 +220,7 @@
       <Instance ref.Class="sample::MainWindow" ref.Styles="res://MainWindow/SharedStyle" xmlns:x="presentation::controls::GuiSelectableButton::*">
         <Window Text="kb_animation" IconVisible="true" ClientSize="x:480 y:320">
           <x:MutexGroupController ref.Name="groupDirection"/>
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
           <Table CellPadding="10" BorderVisible="true" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
             <att.Rows>
               <CellOption>composeType:Percentage percentage:0.5</CellOption>

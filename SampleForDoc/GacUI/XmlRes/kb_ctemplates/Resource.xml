@@ -122,7 +122,7 @@
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow" ref.Styles="res://MainWindow/SharedStyle" xmlns:x="presentation::controls::GuiSelectableButton::*">
         <Window Text="kb_ctemplates" IconVisible="true" ClientSize="x:640 y:480">
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
           <x:MutexGroupController ref.Name="groupDirection"/>
 
           <Tab>

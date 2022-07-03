@@ -12,7 +12,7 @@
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
         <Window Text="Binding_Format" ClientSize="x:480 y:320">
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
           <Table CellPadding="5" MinSizeLimitation="LimitToElementAndChildren" AlignmentToParent="left:0 top:0 right:0 bottom:0">
             <att.Rows>
               <CellOption>composeType:MinSize</CellOption>

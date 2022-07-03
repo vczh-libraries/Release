@@ -261,7 +261,7 @@
   <Instance name="MainWindowResource">
     <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow" xmlns:demo="demo::*">
       <Window ref.Name="self" Text="Responsive1 (manually control)" ClientSize="x:640 y:480">
-        <att.BoundsComposition-set PreferredMinSize="x:640 y:480"/>
+        <att.ContainerComposition-set PreferredMinSize="x:640 y:480"/>
         <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
           <att.Rows>
             <CellOption>composeType:MinSize</CellOption>

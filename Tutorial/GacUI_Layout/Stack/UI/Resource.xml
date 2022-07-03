@@ -50,7 +50,7 @@
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow" xmlns:x="presentation::controls::GuiSelectableButton::*" ref.Styles="res://MainWindow/MainWindowStyle">
         <Window Text="Stack" ClientSize="x:480 y:320">
           <x:MutexGroupController ref.Name="groupStackDirection"/>
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
           <Table AlignmentToParent="left:5 top:5 right:5 bottom:5" CellPadding="5">
             <att.Rows>
               <CellOption>composeType:MinSize</CellOption>

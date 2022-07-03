@@ -95,7 +95,7 @@
           ]]>
         </ref.Members>
         <Window ref.Name="self" Text="AddressBook" ClientSize="x:640 y:480">
-          <att.BoundsComposition-set PreferredMinSize="x:640 y:480"/>
+          <att.ContainerComposition-set PreferredMinSize="x:640 y:480"/>
 
           <att.ViewModel-set>
             <att.SelectedCategory-bind>treeViewFolders.SelectedItem as (demo::ICategory^)</att.SelectedCategory-bind>
@@ -309,7 +309,7 @@
           ]]>
         </ref.Members>
         <Window ref.Name="self" Text="New Folder" ClientSize="x:240 y:120" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
-          <att.BoundsComposition-set PreferredMinSize="x:240 y:120"/>
+          <att.ContainerComposition-set PreferredMinSize="x:240 y:120"/>
           <att.FolderName-bind>textBoxName.Text</att.FolderName-bind>
           
           <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0">

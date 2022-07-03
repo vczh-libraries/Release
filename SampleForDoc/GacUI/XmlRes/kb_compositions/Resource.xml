@@ -99,7 +99,7 @@
     <Instance name="MainWindowResource">
       <Instance ref.Class="sample::MainWindow" xmlns:sample="sample::*" ref.Styles="res://MainWindow/SharedStyle">
         <Window Text="kb_compositions" IconVisible="true" ClientSize="x:640 y:480">
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
           <Tab>
             <att.ControlTemplate>sample::LayoutTabTemplate</att.ControlTemplate>
             <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>

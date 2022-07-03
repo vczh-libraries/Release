@@ -12,7 +12,7 @@
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
         <Window Text="Binding_Eval" ClientSize="x:480 y:320">
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
           <Label Text-eval="'1+2+3+4+5+6+7+8+9+10 = ' &amp; (1+2+3+4+5+6+7+8+9+10)">
             <att.Font>fontFamily:"Segoe UI" size:32 antialias:true</att.Font>
           </Label>

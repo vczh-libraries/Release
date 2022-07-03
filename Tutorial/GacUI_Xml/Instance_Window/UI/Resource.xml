@@ -12,7 +12,7 @@
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
         <Window Text="Instance_Window" ClientSize="x:480 y:320">
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
           <Label Text="This is a window!">
             <att.Font>fontFamily:"Segoe UI" size:32 antialias:true</att.Font>
           </Label>

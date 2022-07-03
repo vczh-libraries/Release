@@ -147,7 +147,7 @@
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow" ref.Styles="res://Style">
         <ref.Parameter Name="calculator" Class="demo::Calculator"/>
         <Window Text="CalculatorAndStateMachine" ClientSize="x:480 y:320">
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
 
           <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
             <att.Rows>

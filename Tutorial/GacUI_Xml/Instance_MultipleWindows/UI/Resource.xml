@@ -12,7 +12,7 @@
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
         <Window Text="Instance_MultipleWindows" ClientSize="x:480 y:320">
-          <att.BoundsComposition-set PreferredMinSize="x:480 y:320"/>
+          <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
           <Button Text="Click me to show another window!" ev.Clicked="buttonShowWindow_Clicked">
             <att.BoundsComposition-set Margin="left:20 top:20 right:-1 bottom:-1"/>
           </Button>
@@ -23,7 +23,7 @@
     <Instance name="AnotherWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::AnotherWindow">
         <Window Text="Another Window" ClientSize="x:320 y:280">
-          <att.BoundsComposition-set PreferredMinSize="x:320 y:280"/>
+          <att.ContainerComposition-set PreferredMinSize="x:320 y:280"/>
           <Label Text="This is another window!">
             <att.Font>fontFamily:"Segoe UI" size:32 antialias:true</att.Font>
           </Label>
