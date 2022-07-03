@@ -12,8 +12,7 @@
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
         <Window Text="Alignment" ClientSize="x:480 y:320">
-          <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
-          <att.ContainerComposition-set InternalMargin="left:5 top:5 right:5 bottom:5"/>
+          <att.ContainerComposition-set PreferredMinSize="x:480 y:320" InternalMargin="left:5 top:5 right:5 bottom:5"/>
           <Button Text="Button">
             <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:-1 bottom:-1" PreferredMinSize="x:100 y:30"/>
           </Button>

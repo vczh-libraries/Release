@@ -51,11 +51,10 @@
           </ToolstripGroupContainer>
         </ToolstripMenu>
 
-        <att.ContainerComposition-set PreferredMinSize="x:320 y:240"/>
         <Label Font="fontFamily:'Segoe UI' size:24" Text="Right click to show the menu">
           <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
         </Label>
-        <att.ContainerComposition-set>
+        <att.ContainerComposition-set PreferredMinSize="x:320 y:240">
           <ev.rightButtonDown-eval>
             <![CDATA[
             {
