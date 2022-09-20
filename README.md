@@ -7,6 +7,10 @@ Release folder of all projects.
 
 Download code from [public releases](https://github.com/vczh-libraries/Release/releases) to get the latest stable release. Code from this repo is also usable but I don't make any promise. I will only make a new release when I think the code is ready to update.
 
+## vcpkg
+
+It looks like some people are maintaining a subset of this library in vcpkg, but after I review the configuration, it just doesn't work. I suggest that people still download this library as described above and follow the document. I don't have enough knowledge to fix it right now, people interested in doing that could co-op with me and make a solution.
+
 ## Content of This Project
 
 - **Import** Gaclib source code
