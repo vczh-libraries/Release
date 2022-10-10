@@ -2,6 +2,10 @@
 
 See `TODO.md` in each repos.
 
+## Known Issue
+
+- In order to support vcpkg in a better way, build script needs to write commit numbers of all repos to a file, e.g. `Import/Commits.txt`.
+
 ## Roadmap
 
 - Reimplement C++ parser in vczh-libraries/Document using this project.
