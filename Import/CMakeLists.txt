@@ -147,16 +147,16 @@ endif()
 # Install targets
 install(
   TARGETS ${EXPORT_TARGETS}
-  EXPORT unofficial-vlpp
+  EXPORT vlpp
   RUNTIME DESTINATION "bin"
   LIBRARY DESTINATION "lib"
   ARCHIVE DESTINATION "lib"
 )
 
-install(EXPORT unofficial-vlpp
-    NAMESPACE unofficial::vlpp::
-    FILE unofficial-vlppConfig.cmake
-    DESTINATION share/unofficial-vlpp
+install(EXPORT vlpp
+    NAMESPACE vlpp::
+    FILE vlppConfig.cmake
+    DESTINATION share/vlpp
 )
 
 # Header installations
