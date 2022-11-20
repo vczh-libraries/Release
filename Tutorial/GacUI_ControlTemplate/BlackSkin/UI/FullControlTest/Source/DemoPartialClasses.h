@@ -1857,7 +1857,7 @@ namespace demo
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_10;
 		::vl::presentation::controls::GuiButton* __vwsn_precompile_11;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_12;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_13;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_13;
 		void __vwsn_demo_HyperlinkWindow_Initialize(::demo::HyperlinkWindow* __vwsn_this_);
 	public:
 		HyperlinkWindowConstructor();
@@ -2138,7 +2138,7 @@ namespace demo
 		::demo::AnimationTabPage* __vwsn_precompile_26;
 		::demo::LocalizedStringsTabPage* __vwsn_precompile_27;
 		::demo::DatePickerTabPage* __vwsn_precompile_28;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_29;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_29;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
