@@ -7,6 +7,12 @@ Release folder of all projects.
 
 Download code from [public releases](https://github.com/vczh-libraries/Release/releases) to get the latest stable release. Code from this repo is also usable but I don't make any promise. I will only make a new release when I think the code is ready to update.
 
+## Visual Studio Extension
+
+Copy [Vlpp.natvis](https://github.com/vczh-libraries/Release/blob/master/Import/Vlpp.natvis) to Visual Studio's visualizers folder.
+
+For example, VS2019's default visualizers folder will be **C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Packages\Debugger\Visualizers**.
+
 ## Content of This Project
 
 - **Import** Gaclib source code

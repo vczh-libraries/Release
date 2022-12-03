@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+  <Type Name="vl::ObjectString&lt;wchar_t&gt;">
+    <DisplayString>{{ size={length}, buffer={buffer+start,su} }}</DisplayString>
+    <StringView>buffer+start,su</StringView>
+    <Expand>
+      <Item Name="[size]">length</Item>
+      <ArrayItems>
+        <Size>length</Size>
+        <ValuePointer>buffer+start</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+
+  <Type Name="vl::ObjectString&lt;char&gt;">
+    <DisplayString>{{ size={length}, buffer={buffer+start,s} }}</DisplayString>
+    <StringView>buffer+start,s</StringView>
+    <Expand>
+      <Item Name="[size]">length</Item>
+      <ArrayItems>
+        <Size>length</Size>
+        <ValuePointer>buffer+start</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+
+  <Type Name="vl::collections::List&lt;*&gt;">
+    <AlternativeType Name="vl::collections::SortedList&lt;*&gt;"/>
+    <AlternativeType Name="vl::collections::Array&lt;*&gt;"/>
+    <DisplayString>{{ size={count} }}</DisplayString>
+    <Expand>
+      <Item Name="[size]">count</Item>
+      <ArrayItems>
+        <Size>count</Size>
+        <ValuePointer>($T1*)buffer</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+
+  <Type Name="vl::collections::Dictionary&lt;*,*&gt;">
+    <AlternativeType Name="vl::collections::Group&lt;*,*&gt;"/>
+    <DisplayString>{{ size={keys.count} }}</DisplayString>
+    <Expand>
+      <Item Name="[size]">keys.count</Item>
+      <Item Name="Keys">keys</Item>
+      <Item Name="Values">values</Item>
+    </Expand>
+  </Type>
+
+  <Type Name="vl::Ptr&lt;*&gt;">
+    <AlternativeType Name="vl::ComPtr&lt;*&gt;"/>
+    <DisplayString Condition="reference == 0">[empty]</DisplayString>
+    <DisplayString Condition="reference != 0">{*reference}</DisplayString>
+    <Expand>
+      <ExpandedItem Condition="reference != 0">reference</ExpandedItem>
+    </Expand>
+  </Type>
+
+  <Type Name="vl::Lazy&lt;*&gt;">
+    <DisplayString Condition="internalValue.reference == 0">[empty]</DisplayString>
+    <DisplayString Condition="internalValue.reference != 0 &amp;&amp; internalValue.reference->evaluated == false">[not evaluated]</DisplayString>
+    <DisplayString Condition="internalValue.reference != 0 &amp;&amp; internalValue.reference->evaluated == true">{internalValue.reference->value}</DisplayString>
+    <Expand>
+      <ExpandedItem Condition="internalValue.reference != 0 &amp;&amp; internalValue.reference->evaluated == true">internalValue.reference->value</ExpandedItem>
+    </Expand>
+  </Type>
+
+  <Type Name="vl::ObjectBox&lt;*&gt;">
+    <DisplayString>{object}</DisplayString>
+    <Expand>
+      <ExpandedItem>object</ExpandedItem>
+    </Expand>
+  </Type>
+
+  <Type Name="vl::Nullable&lt;*&gt;">
+    <DisplayString Condition="object == 0">[empty]</DisplayString>
+    <DisplayString Condition="object != 0">{*object}</DisplayString>
+    <Expand>
+      <ExpandedItem Condition="object != 0">*object</ExpandedItem>
+    </Expand>
+  </Type>
+
+</AutoVisualizer>
