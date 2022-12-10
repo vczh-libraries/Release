@@ -81,7 +81,7 @@ void GuiMain()
 		FileStream fileStream(L"../UIRes/MVVM.bin", FileStream::ReadOnly);
 		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
-	auto viewModel = MakePtr<ViewModel>();
+	auto viewModel = Ptr(new ViewModel);
 	auto window = new helloworld::MainWindow(viewModel);
 	window->MoveToScreenCenter();
 	GetApplication()->Run(window);

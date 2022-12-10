@@ -298,7 +298,7 @@ namespace demo
 	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		if (!findWindow)
 		{
-			auto window = MakePtr<FindWindow>();
+			auto window = Ptr(new FindWindow);
 			window->textBox = textBox;
 			window->MoveToScreenCenter();
 			window->GetNativeWindow()->SetParent(GetNativeWindow());

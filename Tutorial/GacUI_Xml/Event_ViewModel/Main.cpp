@@ -24,7 +24,7 @@ void GuiMain()
 		FileStream fileStream(L"../UIRes/Event_ViewModel.bin", FileStream::ReadOnly);
 		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
-	demo::MainWindow window(new ViewModelImpl);
+	demo::MainWindow window(Ptr(new ViewModelImpl));
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }

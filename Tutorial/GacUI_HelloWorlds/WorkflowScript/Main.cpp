@@ -41,7 +41,7 @@ void GuiMain()
 		codes.Add(WorkflowScript);
 		workflow::Parser workflowParser;
 		auto assembly = Compile(workflowParser, codes, errors);
-		globalContext = MakePtr<WfRuntimeGlobalContext>(assembly);
+		globalContext = Ptr(new WfRuntimeGlobalContext(assembly));
 		LoadFunction<void()>(globalContext, L"<initialize>")();
 	}
 

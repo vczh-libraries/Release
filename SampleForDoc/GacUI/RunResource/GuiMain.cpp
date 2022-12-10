@@ -1,5 +1,5 @@
 #include <GacUIReflection.h>
-#include <GacUIWindows.h>
+#include <GacUI.Windows.h>
 #include "resource.h"
 
 using namespace vl;

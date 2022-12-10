@@ -112,5 +112,5 @@ public:
 
 void SetColorizer(GuiMultilineTextBox* textBox, bool forXml)
 {
-	textBox->SetColorizer(forXml ? new XmlColorizer : nullptr);
+	textBox->SetColorizer(forXml ? Ptr(new XmlColorizer) : nullptr);
 }

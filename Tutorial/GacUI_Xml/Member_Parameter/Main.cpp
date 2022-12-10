@@ -19,7 +19,7 @@ void GuiMain()
 		FileStream fileStream(L"../UIRes/Member_Parameter.bin", FileStream::ReadOnly);
 		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
-	demo::MainWindow window(new ViewModelImpl);
+	demo::MainWindow window(Ptr(new ViewModelImpl));
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }

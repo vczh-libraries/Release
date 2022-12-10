@@ -24,7 +24,7 @@ void GuiMain()
 		FileStream fileStream(L"../UIRes/RichTextEmbedding.bin", FileStream::ReadOnly);
 		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
-	demo::MainWindow window(new ViewModel);
+	demo::MainWindow window(Ptr(new ViewModel));
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }

@@ -149,7 +149,7 @@ protected:
 public:
 	RootCategory()
 	{
-		folders.Add(new StaticCategory);
+		folders.Add(Ptr(new StaticCategory));
 	}
 
 	ICategory* GetParent()override
@@ -188,7 +188,7 @@ protected:
 public:
 	ViewModel()
 	{
-		rootCategory = new RootCategory;
+		rootCategory = Ptr(new RootCategory);
 	}
 
 	vl::Ptr<ICategory> GetRootCategory()override
@@ -228,7 +228,7 @@ public:
 	{
 		if (auto current = dynamic_cast<Category*>(selectedCategory.Obj()))
 		{
-			auto category = new Category(current);
+			auto category = Ptr(new Category(current));
 			category->name = name;
 			current->folders.Add(category);
 		}
@@ -247,7 +247,7 @@ public:
 	{
 		if (auto category = dynamic_cast<Category*>(selectedCategory.Obj()))
 		{
-			auto contact = new Contact(category);
+			auto contact = Ptr(new Contact(category));
 			contact->Update(L"Mr. New Contact", DateTime::LocalTime(), L"(123)-456-7890", L"110 st, New York, NY 10118");
 			return contact;
 		}
@@ -280,7 +280,7 @@ void GuiMain()
 		contactBigImage = resource->GetImageByPath(L"Images/ContactBig");
 		contactSmallImage = resource->GetImageByPath(L"Images/ContactSmall");
 	}
-	MainWindow window(new ViewModel);
+	MainWindow window(Ptr(new ViewModel));
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 

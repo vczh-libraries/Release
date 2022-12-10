@@ -98,7 +98,7 @@ namespace demo
 
 	AnimationControl::AnimationControl()
 		:GuiControl(theme::ThemeName::CustomControl)
-		, members(MakePtr<AnimationControlMembers>())
+		, members(Ptr(new AnimationControlMembers))
 	{
 		element = D2DElement::Create();
 		element->BeforeRenderTargetChanged.AttachMethod(this, &AnimationControl::OnBeforeRenderTargetChanged);
@@ -107,7 +107,7 @@ namespace demo
 		{
 			auto bounds = new GuiBoundsComposition();
 			bounds->SetAlignmentToParent(Margin(0, 0, 0, 0));
-			bounds->SetOwnedElement(element);
+			bounds->SetOwnedElement(Ptr(element));
 			GetContainerComposition()->AddChild(bounds);
 		}
 

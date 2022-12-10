@@ -52,7 +52,7 @@ void GuiMain()
 		FileStream fileStream(L"../UIRes/ProgressAndAsync.bin", FileStream::ReadOnly);
 		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
-	demo::MainWindow window(new ViewModel);
+	demo::MainWindow window(Ptr(new ViewModel));
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }

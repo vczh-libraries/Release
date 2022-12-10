@@ -10,7 +10,7 @@ void GuiMain()
 		FileStream fileStream(L"../UIRes/CalculatorAndStateMachine.bin", FileStream::ReadOnly);
 		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
-	demo::MainWindow window(new demo::Calculator);
+	demo::MainWindow window(Ptr(new demo::Calculator));
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }
