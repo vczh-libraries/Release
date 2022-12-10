@@ -157,7 +157,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->AddChild(static_cast<::vl::presentation::controls::GuiControl*>(this->__vwsn_precompile_1));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_1)->Clicked, LAMBDA(::vl_workflow_global::__vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_1)->Clicked, vl::Func(::vl_workflow_global::__vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 	}
 

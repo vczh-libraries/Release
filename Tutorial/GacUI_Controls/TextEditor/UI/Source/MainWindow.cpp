@@ -205,7 +205,7 @@ namespace demo
 		}
 		auto command = new ::vl::presentation::controls::GuiToolstripCommand();
 		::vl::__vwsn::This(command)->SetText(path);
-		::vl::__vwsn::EventAttach(::vl::__vwsn::This(command)->Executed, LAMBDA(::vl_workflow_global::__vwsnf32_Demo_demo_MainWindow_AddRecentFile_(path, this)));
+		::vl::__vwsn::EventAttach(::vl::__vwsn::This(command)->Executed, vl::Func(::vl_workflow_global::__vwsnf32_Demo_demo_MainWindow_AddRecentFile_(path, this)));
 		::vl::__vwsn::This(this->recentFiles.Obj())->Insert(static_cast<::vl::vint>(0), ::vl::__vwsn::Box(command));
 	}
 

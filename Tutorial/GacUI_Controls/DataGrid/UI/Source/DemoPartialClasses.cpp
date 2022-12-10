@@ -1622,7 +1622,7 @@ Closures
 
 	::vl::vint __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter::Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_)
 	{
-		return LAMBDA(::vl_workflow_global::__vwsno3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_(this, __vwsnthis_0))(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row1_), ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row2_));
+		return vl::Func(::vl_workflow_global::__vwsno3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_(this, __vwsnthis_0))(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row1_), ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row2_));
 	}
 
 	//-------------------------------------------------------------------
@@ -1943,7 +1943,7 @@ Closures
 
 	::vl::vint __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter::Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_)
 	{
-		return LAMBDA(::vl_workflow_global::__vwsno9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_(this, __vwsnthis_0))(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row1_), ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row2_));
+		return vl::Func(::vl_workflow_global::__vwsno9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_(this, __vwsnthis_0))(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row1_), ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row2_));
 	}
 
 	//-------------------------------------------------------------------
@@ -1959,7 +1959,7 @@ Closures
 
 	::vl::vint __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter::Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_)
 	{
-		return LAMBDA(::vl_workflow_global::__vwsno15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_(this, __vwsnthis_0))(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row1_), ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row2_));
+		return vl::Func(::vl_workflow_global::__vwsno15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_(this, __vwsnthis_0))(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row1_), ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row2_));
 	}
 
 	//-------------------------------------------------------------------
@@ -1975,7 +1975,7 @@ Closures
 
 	::vl::vint __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter::Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_)
 	{
-		return LAMBDA(::vl_workflow_global::__vwsno19_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_(this, __vwsnthis_0))(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row1_), ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row2_));
+		return vl::Func(::vl_workflow_global::__vwsno19_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_(this, __vwsnthis_0))(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row1_), ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row2_));
 	}
 
 	//-------------------------------------------------------------------
@@ -1991,7 +1991,7 @@ Closures
 
 	::vl::vint __vwsnc5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter::Compare(const ::vl::reflection::description::Value& __vwsn_row1_, const ::vl::reflection::description::Value& __vwsn_row2_)
 	{
-		return LAMBDA(::vl_workflow_global::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_(this, __vwsnthis_0))(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row1_), ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row2_));
+		return vl::Func(::vl_workflow_global::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_Compare_(this, __vwsnthis_0))(::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row1_), ::vl::__vwsn::Unbox<::vl::Ptr<::demo::MyDataItem>>(__vwsn_row2_));
 	}
 
 	//-------------------------------------------------------------------
@@ -2319,17 +2319,17 @@ namespace demo
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc13_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf40_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf40_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc14_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf41_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf41_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc15_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf42_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf42_Demo_demo_CategoryDisplayerConstructor___vwsn_demo_CategoryDisplayer_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 	}
@@ -2389,7 +2389,7 @@ Class (::demo::CategoryEditorConstructor)
 			(this->__vwsn_precompile_0 = new ::vl::presentation::controls::GuiBindableTextList(::vl::presentation::theme::ThemeName::TextList));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf43_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetItemTemplate(vl::Func(::vl_workflow_global::__vwsnf43_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetVerticalAlwaysVisible(false);
@@ -2401,7 +2401,7 @@ Class (::demo::CategoryEditorConstructor)
 			(this->comboBox = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->__vwsn_precompile_0)));
 		}
 		{
-			::vl::__vwsn::This(this->comboBox)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf44_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_(this)));
+			::vl::__vwsn::This(this->comboBox)->SetItemTemplate(vl::Func(::vl_workflow_global::__vwsnf44_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_(this)));
 		}
 		(this->__vwsn_precompile_1 = ::vl::__vwsn::This(this->comboBox)->GetBoundsComposition());
 		{
@@ -2415,12 +2415,12 @@ Class (::demo::CategoryEditorConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc16_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf45_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf45_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc17_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf46_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf46_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 	}
@@ -2472,7 +2472,7 @@ Class (::demo::CategoryItemTemplateConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc18_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf47_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf47_Demo_demo_CategoryItemTemplateConstructor___vwsn_demo_CategoryItemTemplate_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -2529,12 +2529,12 @@ Class (::demo::CategoryVisualizerConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc19_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf48_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf48_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc20_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf49_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf49_Demo_demo_CategoryVisualizerConstructor___vwsn_demo_CategoryVisualizer_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 	}
@@ -2582,12 +2582,12 @@ Class (::demo::DateEditorConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc6_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf30_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf30_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc7_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf31_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf31_Demo_demo_DateEditorConstructor___vwsn_demo_DateEditor_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -2719,29 +2719,29 @@ Class (::demo::DateFilterConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf32_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf32_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->checkFrom)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc8_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf33_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf33_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf34_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf34_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->dateFrom)->SelectedDateChanged, __vwsn_event_handler_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf35_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf35_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->checkTo)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc9_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf36_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf36_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf37_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf37_Demo_demo_DateFilterConstructor___vwsn_demo_DateFilter_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->dateTo)->SelectedDateChanged, __vwsn_event_handler_);
 		}
 	}
@@ -2834,7 +2834,7 @@ Class (::demo::GenderDisplayerConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc21_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf50_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf50_Demo_demo_GenderDisplayerConstructor___vwsn_demo_GenderDisplayer_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 	}
@@ -2889,7 +2889,7 @@ Class (::demo::GenderEditorConstructor)
 			(this->__vwsn_precompile_0 = new ::vl::presentation::controls::GuiBindableTextList(::vl::presentation::theme::ThemeName::TextList));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf51_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetItemTemplate(vl::Func(::vl_workflow_global::__vwsnf51_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetVerticalAlwaysVisible(false);
@@ -2901,7 +2901,7 @@ Class (::demo::GenderEditorConstructor)
 			(this->comboBox = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->__vwsn_precompile_0)));
 		}
 		{
-			::vl::__vwsn::This(this->comboBox)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf52_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_(this)));
+			::vl::__vwsn::This(this->comboBox)->SetItemTemplate(vl::Func(::vl_workflow_global::__vwsnf52_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_(this)));
 		}
 		(this->__vwsn_precompile_1 = ::vl::__vwsn::This(this->comboBox)->GetBoundsComposition());
 		{
@@ -2915,12 +2915,12 @@ Class (::demo::GenderEditorConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc22_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf53_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf53_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc23_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf54_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf54_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 	}
@@ -3024,7 +3024,7 @@ Class (::demo::GenderVisualizerConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc24_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf55_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf55_Demo_demo_GenderVisualizerConstructor___vwsn_demo_GenderVisualizer_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 	}
@@ -3183,10 +3183,10 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(static_cast<::vl::vint>(0)));
 		}
 		{
-			::vl::__vwsn::This(this->dataGrid)->SetSmallImageProperty(LAMBDA(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->dataGrid)->SetSmallImageProperty(vl::Func(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->dataGrid)->SetLargeImageProperty(LAMBDA(::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->dataGrid)->SetLargeImageProperty(vl::Func(::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->dataGrid)->SetVerticalAlwaysVisible(false);
@@ -3206,13 +3206,13 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetSorter(::vl::Ptr<::vl::presentation::controls::list::IDataSorter>(new ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetEditorFactory(::vl::Ptr<::vl::presentation::controls::list::IDataEditorFactory>(::vl::Ptr<::vl::presentation::controls::list::DataEditorFactory>(new ::vl::presentation::controls::list::DataEditorFactory(LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this))))));
+			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetEditorFactory(::vl::Ptr<::vl::presentation::controls::list::IDataEditorFactory>(::vl::Ptr<::vl::presentation::controls::list::DataEditorFactory>(new ::vl::presentation::controls::list::DataEditorFactory(vl::Func(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this))))));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetValueProperty(LAMBDA(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetValueProperty(vl::Func(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetSize(static_cast<::vl::vint>(120));
@@ -3226,19 +3226,19 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_13 = ::vl::Ptr<::vl::presentation::controls::list::DataColumn>(new ::vl::presentation::controls::list::DataColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetVisualizerFactory(::vl::Ptr<::vl::presentation::controls::list::IDataVisualizerFactory>(::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>()))))));
+			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetVisualizerFactory(::vl::Ptr<::vl::presentation::controls::list::IDataVisualizerFactory>(::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(vl::Func(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(vl::Func(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>()))))));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetSorter(::vl::Ptr<::vl::presentation::controls::list::IDataSorter>(new ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetEditorFactory(::vl::Ptr<::vl::presentation::controls::list::IDataEditorFactory>(::vl::Ptr<::vl::presentation::controls::list::DataEditorFactory>(new ::vl::presentation::controls::list::DataEditorFactory(LAMBDA(::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this))))));
+			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetEditorFactory(::vl::Ptr<::vl::presentation::controls::list::IDataEditorFactory>(::vl::Ptr<::vl::presentation::controls::list::DataEditorFactory>(new ::vl::presentation::controls::list::DataEditorFactory(vl::Func(::vl_workflow_global::__vwsnf10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this))))));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetValueProperty(LAMBDA(::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetValueProperty(vl::Func(::vl_workflow_global::__vwsnf11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetSize(static_cast<::vl::vint>(80));
@@ -3252,19 +3252,19 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_14 = ::vl::Ptr<::vl::presentation::controls::list::DataColumn>(new ::vl::presentation::controls::list::DataColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetVisualizerFactory(::vl::Ptr<::vl::presentation::controls::list::IDataVisualizerFactory>(::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(LAMBDA(::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(LAMBDA(::vl_workflow_global::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>()))))));
+			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetVisualizerFactory(::vl::Ptr<::vl::presentation::controls::list::IDataVisualizerFactory>(::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(vl::Func(::vl_workflow_global::__vwsnf13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(vl::Func(::vl_workflow_global::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>()))))));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetSorter(::vl::Ptr<::vl::presentation::controls::list::IDataSorter>(new ::vl_workflow_global::__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetEditorFactory(::vl::Ptr<::vl::presentation::controls::list::IDataEditorFactory>(::vl::Ptr<::vl::presentation::controls::list::DataEditorFactory>(new ::vl::presentation::controls::list::DataEditorFactory(LAMBDA(::vl_workflow_global::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this))))));
+			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetEditorFactory(::vl::Ptr<::vl::presentation::controls::list::IDataEditorFactory>(::vl::Ptr<::vl::presentation::controls::list::DataEditorFactory>(new ::vl::presentation::controls::list::DataEditorFactory(vl::Func(::vl_workflow_global::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this))))));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetValueProperty(LAMBDA(::vl_workflow_global::__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetValueProperty(vl::Func(::vl_workflow_global::__vwsnf17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetSize(static_cast<::vl::vint>(80));
@@ -3295,13 +3295,13 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetSorter(::vl::Ptr<::vl::presentation::controls::list::IDataSorter>(new ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetEditorFactory(::vl::Ptr<::vl::presentation::controls::list::IDataEditorFactory>(::vl::Ptr<::vl::presentation::controls::list::DataEditorFactory>(new ::vl::presentation::controls::list::DataEditorFactory(LAMBDA(::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this))))));
+			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetEditorFactory(::vl::Ptr<::vl::presentation::controls::list::IDataEditorFactory>(::vl::Ptr<::vl::presentation::controls::list::DataEditorFactory>(new ::vl::presentation::controls::list::DataEditorFactory(vl::Func(::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this))))));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetValueProperty(LAMBDA(::vl_workflow_global::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetValueProperty(vl::Func(::vl_workflow_global::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetSize(static_cast<::vl::vint>(80));
@@ -3315,19 +3315,19 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_18 = ::vl::Ptr<::vl::presentation::controls::list::DataColumn>(new ::vl::presentation::controls::list::DataColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetVisualizerFactory(::vl::Ptr<::vl::presentation::controls::list::IDataVisualizerFactory>(::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(LAMBDA(::vl_workflow_global::__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(LAMBDA(::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>()))))));
+			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetVisualizerFactory(::vl::Ptr<::vl::presentation::controls::list::IDataVisualizerFactory>(::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(vl::Func(::vl_workflow_global::__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>(new ::vl::presentation::controls::list::DataVisualizerFactory(vl::Func(::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)), ::vl::Ptr<::vl::presentation::controls::list::DataVisualizerFactory>()))))));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetSorter(::vl::Ptr<::vl::presentation::controls::list::IDataSorter>(new ::vl_workflow_global::__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_presentation_controls_list_IDataSorter(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetEditorFactory(::vl::Ptr<::vl::presentation::controls::list::IDataEditorFactory>(::vl::Ptr<::vl::presentation::controls::list::DataEditorFactory>(new ::vl::presentation::controls::list::DataEditorFactory(LAMBDA(::vl_workflow_global::__vwsnf26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this))))));
+			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetEditorFactory(::vl::Ptr<::vl::presentation::controls::list::IDataEditorFactory>(::vl::Ptr<::vl::presentation::controls::list::DataEditorFactory>(new ::vl::presentation::controls::list::DataEditorFactory(vl::Func(::vl_workflow_global::__vwsnf26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this))))));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetValueProperty(LAMBDA(::vl_workflow_global::__vwsnf27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetValueProperty(vl::Func(::vl_workflow_global::__vwsnf27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetSize(static_cast<::vl::vint>(160));
@@ -3349,7 +3349,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->comboView)->SelectedIndexChanged, __vwsn_event_handler_);
 		}
 		{
@@ -3545,12 +3545,12 @@ Class (::demo::TextEditorConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc11_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf38_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf38_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc12_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf39_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf39_Demo_demo_TextEditorConstructor___vwsn_demo_TextEditor_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{

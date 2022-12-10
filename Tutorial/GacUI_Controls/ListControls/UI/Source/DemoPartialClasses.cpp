@@ -890,10 +890,10 @@ namespace demo
 			(this->bindableListView = new ::vl::presentation::controls::GuiBindableListView(::vl::presentation::theme::ThemeName::ListView));
 		}
 		{
-			::vl::__vwsn::This(this->bindableListView)->SetSmallImageProperty(LAMBDA(::vl_workflow_global::__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->bindableListView)->SetSmallImageProperty(vl::Func(::vl_workflow_global::__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->bindableListView)->SetLargeImageProperty(LAMBDA(::vl_workflow_global::__vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->bindableListView)->SetLargeImageProperty(vl::Func(::vl_workflow_global::__vwsnf2_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->bindableListView)->GetDataColumns());
@@ -922,7 +922,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_17 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf3_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->SetText(::vl::WString::Unmanaged(L"Id"));
@@ -933,7 +933,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_18 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf4_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetText(::vl::WString::Unmanaged(L"Category"));
@@ -944,7 +944,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_19 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf5_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetText(::vl::WString::Unmanaged(L"Size"));
@@ -955,7 +955,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_20 = ::vl::Ptr<::vl::presentation::controls::list::ListViewColumn>(new ::vl::presentation::controls::list::ListViewColumn()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf6_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->SetText(::vl::WString::Unmanaged(L"File"));
@@ -974,7 +974,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::This(this->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf7_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->comboView)->SelectedIndexChanged, __vwsn_event_handler_);
 		}
 	}
@@ -1025,9 +1025,9 @@ Class (::demo::ListViewTabPage)
 
 	void ListViewTabPage::__vwsn_instance_ctor_()
 	{
-		GLOBAL_NAME LoadListView(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this), LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(this)));
+		GLOBAL_NAME LoadListView(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this), vl::Func(::vl_workflow_global::__vwsnf8_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(this)));
 		auto itemsToBind = ::vl::reflection::description::IValueObservableList::Create();
-		GLOBAL_NAME LoadListView(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this), LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(itemsToBind, this)));
+		GLOBAL_NAME LoadListView(static_cast<::vl::presentation::controls::GuiInstanceRootObject*>(this), vl::Func(::vl_workflow_global::__vwsnf9_Demo_demo_ListViewTabPage___vwsn_instance_ctor__(itemsToBind, this)));
 		::vl::__vwsn::This(this->bindableListView)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(itemsToBind));
 	}
 
@@ -1366,10 +1366,10 @@ Class (::demo::TextListTabPageConstructor)
 			(this->bindableTextList = new ::vl::presentation::controls::GuiBindableTextList(::vl::presentation::theme::ThemeName::TextList));
 		}
 		{
-			::vl::__vwsn::This(this->bindableTextList)->SetCheckedProperty(LAMBDA(::vl_workflow_global::__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->bindableTextList)->SetCheckedProperty(vl::Func(::vl_workflow_global::__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->bindableTextList)->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->bindableTextList)->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf11_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->bindableTextList)->SetVerticalAlwaysVisible(false);
@@ -1394,23 +1394,23 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf12_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->comboView)->SelectedIndexChanged, __vwsn_event_handler_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf13_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_12)->Clicked, __vwsn_event_handler_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf14_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_15)->Clicked, __vwsn_event_handler_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf15_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_18)->Clicked, __vwsn_event_handler_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf16_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_21)->Clicked, __vwsn_event_handler_);
 		}
 		{
@@ -1708,13 +1708,13 @@ Class (::demo::TreeViewTabPageConstructor)
 			(this->bindableTreeView = new ::vl::presentation::controls::GuiBindableTreeView(::vl::presentation::theme::ThemeName::TreeView));
 		}
 		{
-			::vl::__vwsn::This(this->bindableTreeView)->SetChildrenProperty(LAMBDA(::vl_workflow_global::__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->bindableTreeView)->SetChildrenProperty(vl::Func(::vl_workflow_global::__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->bindableTreeView)->SetImageProperty(LAMBDA(::vl_workflow_global::__vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->bindableTreeView)->SetImageProperty(vl::Func(::vl_workflow_global::__vwsnf18_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->bindableTreeView)->SetTextProperty(LAMBDA(::vl_workflow_global::__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(this)));
+			::vl::__vwsn::This(this->bindableTreeView)->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf19_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->bindableTreeView)->SetVerticalAlwaysVisible(false);

@@ -193,7 +193,7 @@ namespace demo
 			(this->__vwsn_precompile_2 = new ::vl::presentation::controls::GuiToolstripToolBar(::vl::presentation::theme::ThemeName::ToolstripToolBar));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetControlTemplate(LAMBDA(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetControlTemplate(vl::Func(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
 			(this->__vwsn_precompile_3 = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripButton));
@@ -344,7 +344,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetCommand(this->commandExportHtml);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_16)->GetEventReceiver()->rightButtonDown, __vwsn_event_handler_);
 		}
 	}

@@ -1112,10 +1112,10 @@ namespace demo
 			::vl::__vwsn::This(this->documentLabel)->SetDocument(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::DocumentModel>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"AboutWindow/Description"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->documentLabel)->ActiveHyperlinkExecuted, LAMBDA(::vl_workflow_global::__vwsno1_Demo_demo_AboutWindowConstructor___vwsn_demo_AboutWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->documentLabel)->ActiveHyperlinkExecuted, vl::Func(::vl_workflow_global::__vwsno1_Demo_demo_AboutWindowConstructor___vwsn_demo_AboutWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf2_Demo_demo_AboutWindowConstructor___vwsn_demo_AboutWindow_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf2_Demo_demo_AboutWindowConstructor___vwsn_demo_AboutWindow_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_6)->Clicked, __vwsn_event_handler_);
 		}
 	}
@@ -1381,11 +1381,11 @@ Class (::demo::FindWindowConstructor)
 			::vl::__vwsn::This(this->radioDown)->SetGroupController(static_cast<::vl::presentation::controls::GuiSelectableButton::GroupController*>(this->groupDirection));
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_FindWindowConstructor___vwsn_demo_FindWindow_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf3_Demo_demo_FindWindowConstructor___vwsn_demo_FindWindow_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_17)->Clicked, __vwsn_event_handler_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_FindWindowConstructor___vwsn_demo_FindWindow_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf4_Demo_demo_FindWindowConstructor___vwsn_demo_FindWindow_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_20)->Clicked, __vwsn_event_handler_);
 		}
 	}
@@ -1778,7 +1778,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		(this->__vwsn_precompile_18 = new ::vl::presentation::compositions::GuiRepeatStackComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetItemTemplate(LAMBDA(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetItemTemplate(vl::Func(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -2164,124 +2164,124 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->commandFileNewText)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/NewText.png"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileNewText)->Executed, LAMBDA(::vl_workflow_global::__vwsno6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileNewText)->Executed, vl::Func(::vl_workflow_global::__vwsno6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandFileNewXml)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/NewXml.png"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileNewXml)->Executed, LAMBDA(::vl_workflow_global::__vwsno7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileNewXml)->Executed, vl::Func(::vl_workflow_global::__vwsno7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandFileOpen)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/Open.png"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileOpen)->Executed, LAMBDA(::vl_workflow_global::__vwsno8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileOpen)->Executed, vl::Func(::vl_workflow_global::__vwsno8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandFileOpenText)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/NewText.png"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileOpenText)->Executed, LAMBDA(::vl_workflow_global::__vwsno9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileOpenText)->Executed, vl::Func(::vl_workflow_global::__vwsno9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandFileOpenXml)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/NewXml.png"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileOpenXml)->Executed, LAMBDA(::vl_workflow_global::__vwsno10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileOpenXml)->Executed, vl::Func(::vl_workflow_global::__vwsno10_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandFileSave)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/Save.png"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileSave)->Executed, LAMBDA(::vl_workflow_global::__vwsno11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileSave)->Executed, vl::Func(::vl_workflow_global::__vwsno11_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandFileSaveAs)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/SaveAs.png"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileSaveAs)->Executed, LAMBDA(::vl_workflow_global::__vwsno12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileSaveAs)->Executed, vl::Func(::vl_workflow_global::__vwsno12_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileExit)->Executed, LAMBDA(::vl_workflow_global::__vwsno13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandFileExit)->Executed, vl::Func(::vl_workflow_global::__vwsno13_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandEditUndo)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/EditUndo.png"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf14_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditUndo)->Executed, LAMBDA(::vl_workflow_global::__vwsno15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditUndo)->Executed, vl::Func(::vl_workflow_global::__vwsno15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandEditRedo)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/EditRedo.png"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditRedo)->Executed, LAMBDA(::vl_workflow_global::__vwsno17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditRedo)->Executed, vl::Func(::vl_workflow_global::__vwsno17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandEditCut)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/EditCut.png"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf18_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditCut)->Executed, LAMBDA(::vl_workflow_global::__vwsno19_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditCut)->Executed, vl::Func(::vl_workflow_global::__vwsno19_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandEditCopy)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/EditCopy.png"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf20_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditCopy)->Executed, LAMBDA(::vl_workflow_global::__vwsno21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditCopy)->Executed, vl::Func(::vl_workflow_global::__vwsno21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandEditPaste)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/EditPaste.png"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditPaste)->Executed, LAMBDA(::vl_workflow_global::__vwsno23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditPaste)->Executed, vl::Func(::vl_workflow_global::__vwsno23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandEditDelete)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/EditDelete.png"), true).Obj())));
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditDelete)->Executed, LAMBDA(::vl_workflow_global::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditDelete)->Executed, vl::Func(::vl_workflow_global::__vwsno25_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditSelect)->Executed, LAMBDA(::vl_workflow_global::__vwsno26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditSelect)->Executed, vl::Func(::vl_workflow_global::__vwsno26_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->commandEditFind)->SetImage(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiImageData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Images/EditFind.png"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditFind)->Executed, LAMBDA(::vl_workflow_global::__vwsno27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandEditFind)->Executed, vl::Func(::vl_workflow_global::__vwsno27_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandAbout)->Executed, LAMBDA(::vl_workflow_global::__vwsno28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->commandAbout)->Executed, vl::Func(::vl_workflow_global::__vwsno28_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->dialogQueryClose)->SetTitle(::vl::__vwsn::This(this->self)->GetText());
@@ -2318,7 +2318,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf29_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -2326,7 +2326,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf30_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
@@ -2405,7 +2405,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_61)->SetCommand(this->commandEditFind);
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->self)->WindowClosing, LAMBDA(::vl_workflow_global::__vwsno31_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->self)->WindowClosing, vl::Func(::vl_workflow_global::__vwsno31_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 	}
 

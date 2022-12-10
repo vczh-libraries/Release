@@ -142,7 +142,7 @@ namespace demo
 			::vl::__vwsn::This(this->documentLabel)->SetDocument(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::DocumentModel>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Data/Document"), true).Obj())));
 		}
 		{
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->documentLabel)->ActiveHyperlinkExecuted, LAMBDA(::vl_workflow_global::__vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->documentLabel)->ActiveHyperlinkExecuted, vl::Func(::vl_workflow_global::__vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(__vwsn_this_, this)));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::__vwsn::This(::vl::__vwsn::Ensure(::vl::__vwsn::SharedPtrCast<::vl::presentation::GuiTextData>(::vl::__vwsn::This(__vwsn_this_)->ResolveResource(::vl::WString::Unmanaged(L"res"), ::vl::WString::Unmanaged(L"Data/Title"), true).Obj())).Obj())->GetText());

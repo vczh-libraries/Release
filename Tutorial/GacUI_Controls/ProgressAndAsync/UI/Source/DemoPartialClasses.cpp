@@ -63,7 +63,7 @@ Closures
 
 	void __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::reflection::description::AsyncCoroutine::CreateAndRun(LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__(__vwsnthis_0)));
+		::vl::reflection::description::AsyncCoroutine::CreateAndRun(vl::Func(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__(__vwsnthis_0)));
 	}
 
 	//-------------------------------------------------------------------
@@ -75,7 +75,7 @@ Closures
 
 	void __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__::operator()(::vl::vint progress) const
 	{
-		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(static_cast<::vl::presentation::controls::GuiControlHost*>(__vwsnthis_0->self), LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize___(progress, __vwsnthis_0)), (- static_cast<::vl::vint>(1)));
+		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(static_cast<::vl::presentation::controls::GuiControlHost*>(__vwsnthis_0->self), vl::Func(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize___(progress, __vwsnthis_0)), (- static_cast<::vl::vint>(1)));
 	}
 
 	//-------------------------------------------------------------------
@@ -112,7 +112,7 @@ Closures
 
 	void __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize___::operator()(::vl::vint progress) const
 	{
-		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(static_cast<::vl::presentation::controls::GuiControlHost*>(__vwsnthis_0->self), LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____(progress, __vwsnthis_0)), (- static_cast<::vl::vint>(1)));
+		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(static_cast<::vl::presentation::controls::GuiControlHost*>(__vwsnthis_0->self), vl::Func(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize____(progress, __vwsnthis_0)), (- static_cast<::vl::vint>(1)));
 	}
 
 	//-------------------------------------------------------------------
@@ -138,7 +138,7 @@ Closures
 
 	void __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize___Resume_::operator()(::vl::vint progress) const
 	{
-		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(static_cast<::vl::presentation::controls::GuiControlHost*>(__vwsnthis_1->self), LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize___Resume__(progress, __vwsnthis_0, __vwsnthis_1)), (- static_cast<::vl::vint>(1)));
+		::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThreadAndWait(static_cast<::vl::presentation::controls::GuiControlHost*>(__vwsnthis_1->self), vl::Func(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize___Resume__(progress, __vwsnthis_0, __vwsnthis_1)), (- static_cast<::vl::vint>(1)));
 	}
 
 	//-------------------------------------------------------------------
@@ -252,7 +252,7 @@ Closures
 						(__vwsn_co_state_before_pause_ = __vwsn_co_state_);
 						(__vwsn_co_state_ = static_cast<::vl::vint>(1));
 						{
-							::vl::reflection::description::AsyncCoroutine::AwaitAndRead(__vwsn_co_impl_, ::vl::Ptr<::vl::reflection::description::IAsync>(::demo::IViewModel::DownloadAsync(__vwsnthis_0->ViewModel, LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize___Resume_(this, __vwsnthis_0)))));
+							::vl::reflection::description::AsyncCoroutine::AwaitAndRead(__vwsn_co_impl_, ::vl::Ptr<::vl::reflection::description::IAsync>(::demo::IViewModel::DownloadAsync(__vwsnthis_0->ViewModel, vl::Func(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize___Resume_(this, __vwsnthis_0)))));
 						}
 						return;
 					}
@@ -316,7 +316,7 @@ Class (::demo::IViewModel)
 	{
 		auto future = ::vl::reflection::description::IFuture::Create();
 		auto promise = ::vl::__vwsn::This(future.Obj())->GetPromise();
-		::vl::__vwsn::This(viewModel.Obj())->BeginDownload(progress, LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_IViewModel_DownloadAsync_(promise)));
+		::vl::__vwsn::This(viewModel.Obj())->BeginDownload(progress, vl::Func(::vl_workflow_global::__vwsnf9_Demo_demo_IViewModel_DownloadAsync_(promise)));
 		return ::vl::Ptr<::demo::IStringAsync>(new ::vl_workflow_global::__vwsnc2_Demo_demo_IViewModel_DownloadAsync__demo_IStringAsync(future));
 	}
 
@@ -419,7 +419,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->buttonDownload)->Clicked, __vwsn_event_handler_);
 		}
 	}

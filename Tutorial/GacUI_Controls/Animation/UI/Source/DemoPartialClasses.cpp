@@ -1083,7 +1083,7 @@ namespace demo
 		::vl::__vwsn::This(this->GetBegin().Obj())->SetShadow(::vl::__vwsn::This(this->GetCurrent().Obj())->GetShadow());
 		::vl::__vwsn::This(this->GetBegin().Obj())->SetThickness(::vl::__vwsn::This(this->GetCurrent().Obj())->GetThickness());
 		this->SetEnd(__vwsn_ani_target);
-		return ::vl::presentation::controls::IGuiAnimation::CreateAnimation(LAMBDA(::vl_workflow_global::__vwsnf2_Demo_demo_ColorAnimation_CreateAnimation_(__vwsn_ani_time, this)), __vwsn_ani_time);
+		return ::vl::presentation::controls::IGuiAnimation::CreateAnimation(vl::Func(::vl_workflow_global::__vwsnf2_Demo_demo_ColorAnimation_CreateAnimation_(__vwsn_ani_time, this)), __vwsn_ani_time);
 	}
 
 	ColorAnimation::ColorAnimation(::vl::Ptr<::demo::ColorDef> __vwsn_ani_current)
@@ -1091,7 +1091,7 @@ namespace demo
 		, __vwsn_prop_End(::vl::Ptr<::demo::ColorDef>())
 		, __vwsn_prop_Current(::vl::Ptr<::demo::ColorDef>())
 		, __vwsn_ani_int_(::vl::Func<double(double)>(GLOBAL_OBJ, &GLOBAL_SYMBOL G))
-		, __vwsn_ani_int_Thickness(LAMBDA(::vl_workflow_global::__vwsno1_Demo_demo_ColorAnimation_()))
+		, __vwsn_ani_int_Thickness(vl::Func(::vl_workflow_global::__vwsno1_Demo_demo_ColorAnimation_()))
 	{
 		this->SetBegin(::vl::Ptr<::demo::ColorDef>(new ::demo::ColorDef()));
 		::vl::__vwsn::This(this->GetBegin().Obj())->SetTop(::vl::__vwsn::This(__vwsn_ani_current.Obj())->GetTop());
@@ -1383,34 +1383,34 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, LAMBDA(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_10)->Clicked, __vwsn_event_handler_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_13)->Clicked, __vwsn_event_handler_);
 		}
 		{
-			auto __vwsn_event_handler_ = LAMBDA(::vl_workflow_global::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf9_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_16)->Clicked, __vwsn_event_handler_);
 		}
 	}
@@ -1448,17 +1448,17 @@ Class (::demo::MainWindow)
 
 	::vl::Ptr<::vl::presentation::controls::IGuiAnimation> MainWindow::BallAnimation(::vl::presentation::compositions::GuiBoundsComposition* container, ::vl::presentation::compositions::GuiBoundsComposition* ball)
 	{
-		return ::vl::presentation::controls::IGuiAnimation::CreateAnimation(LAMBDA(::vl_workflow_global::__vwsnf10_Demo_demo_MainWindow_BallAnimation_(ball, container)), static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(2000)));
+		return ::vl::presentation::controls::IGuiAnimation::CreateAnimation(vl::Func(::vl_workflow_global::__vwsnf10_Demo_demo_MainWindow_BallAnimation_(ball, container)), static_cast<::vl::vuint64_t>(static_cast<::vl::vint>(2000)));
 	}
 
 	::vl::Ptr<::vl::presentation::controls::IGuiAnimation> MainWindow::BallAnimationWithDelay(::vl::presentation::compositions::GuiBoundsComposition* container, ::vl::presentation::compositions::GuiBoundsComposition* ball, ::vl::vint delay)
 	{
-		return ::vl::presentation::controls::IGuiAnimationCoroutine::Create(LAMBDA(::vl_workflow_global::__vwsnf11_Demo_demo_MainWindow_BallAnimationWithDelay_(ball, container, delay)));
+		return ::vl::presentation::controls::IGuiAnimationCoroutine::Create(vl::Func(::vl_workflow_global::__vwsnf11_Demo_demo_MainWindow_BallAnimationWithDelay_(ball, container, delay)));
 	}
 
 	::vl::Ptr<::vl::presentation::controls::IGuiAnimation> MainWindow::WaitingAnimation(::vl::presentation::compositions::GuiBoundsComposition* container)
 	{
-		return ::vl::presentation::controls::IGuiAnimationCoroutine::Create(LAMBDA(::vl_workflow_global::__vwsnf12_Demo_demo_MainWindow_WaitingAnimation_(container)));
+		return ::vl::presentation::controls::IGuiAnimationCoroutine::Create(vl::Func(::vl_workflow_global::__vwsnf12_Demo_demo_MainWindow_WaitingAnimation_(container)));
 	}
 
 	void MainWindow::PerformGradientAnimation(::vl::Ptr<::demo::ColorDef> target)

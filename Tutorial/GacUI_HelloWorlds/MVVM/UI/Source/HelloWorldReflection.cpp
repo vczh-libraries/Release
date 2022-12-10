@@ -123,7 +123,7 @@ namespace vl
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 				if (auto manager = GetGlobalTypeManager())
 				{
-					return manager->AddTypeLoader(MakePtr<HelloWorldTypeLoader>());
+					return manager->AddTypeLoader(Ptr(new HelloWorldTypeLoader));
 				}
 #endif
 				return false;
