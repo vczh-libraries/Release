@@ -7,6 +7,23 @@ Release folder of all projects.
 
 Download code from [public releases](https://github.com/vczh-libraries/Release/releases) to get the latest stable release. Code from this repo is also usable but I don't make any promise. I will only make a new release when I think the code is ready to update.
 
+## Release from other platforms
+
+- Release from the **GacUI** repo keeps using version number: `X.Y.Z.0`.
+- Both **iGac** and **gGac** repos imports source code from **Release** repo for development.
+  - Only commits for a published release could be used as dependency.
+- When **iGac** or **gGac** repos need to make a new release:
+  - Run **CodePack** and upload generated files to `platform_release` branch.
+  - Create release in the repo from `platform_release` branch.
+  - If it depends on a **Release** commit referenced by `X.Y.Z.0`, then the version number should be `X.Y.Z.W`.
+- When **iGac** and **gGac** releases depend on the same **Release** version, it will be updated below.
+
+## Synchronized latest releases from multiple platforms:
+
+- **GacUI**: Not specified yet
+- **iGac**: Not specified yet
+- **gGac**: Not specified yet
+
 ## Visual Studio Extension
 
 Copy [Vlpp.natvis](https://github.com/vczh-libraries/Release/blob/master/Import/vlpp.natvis) to Visual Studio's visualizers folder.
