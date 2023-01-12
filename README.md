@@ -53,13 +53,13 @@ Image files are not owned by this repo or organization except for GacUI logos.
 
 ## Creating a GacUI app using CMake
 
+**WARNING: it is not maintained by members in **vczh-libraries** organization, please check the version number before using.**
+
 Third party project for GacUI 1.0: https://github.com/mangosroom/GacUI-CMake-support
 
-This project is not maintained by members in **vczh-libraries** organization.
-In the future there could be some mismatch in the file list,
-which could be easily fixed.
-
 ## Building using vcpkg
+
+**WARNING: it is not maintained by members in **vczh-libraries** organization, please check the version number before using.**
 
 You can build and install vlpp using [vcpkg](https://github.com/Microsoft/vcpkg/) dependency manager:
 
