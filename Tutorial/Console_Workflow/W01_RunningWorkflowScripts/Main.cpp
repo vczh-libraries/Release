@@ -3,7 +3,6 @@
 using namespace vl;
 using namespace vl::console;
 using namespace vl::collections;
-using namespace vl::parsing;
 using namespace vl::reflection::description;
 using namespace vl::workflow;
 using namespace vl::workflow::emitter;
@@ -33,13 +32,13 @@ int main()
 		codes.Add(WString::Unmanaged(ScriptCode));
 
 		// compile code and get assemblies
-		List<Ptr<ParsingError>> errors;
-		auto table = WfLoadTable();
-		auto assembly = Compile(table, codes, errors);
+		List<glr::ParsingError> errors;
+		workflow::Parser parser;
+		auto assembly = Compile(parser, codes, errors);
 		CHECK_ERROR(assembly && errors.Count() == 0, L"Please check the 'errors' variable.");
 
 		// initialize the assembly
-		auto globalContext = MakePtr<WfRuntimeGlobalContext>(assembly);
+		auto globalContext = Ptr(new WfRuntimeGlobalContext(assembly));
 		auto initializeFunction = LoadFunction<void()>(globalContext, L"<initialize>");
 		initializeFunction();
 

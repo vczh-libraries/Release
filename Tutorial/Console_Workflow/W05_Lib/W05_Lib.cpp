@@ -72,7 +72,7 @@ namespace vl
 			void LoadMyApiTypes()
 			{
 #ifndef VCZH_DEBUG_NO_REFLECTION
-				GetGlobalTypeManager()->AddTypeLoader(new MyApiTypeLoader);
+				GetGlobalTypeManager()->AddTypeLoader(Ptr(new MyApiTypeLoader));
 #endif
 			}
 		}

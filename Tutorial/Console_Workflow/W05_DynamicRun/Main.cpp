@@ -2,7 +2,6 @@
 #include "../W05_Lib/W05_Lib.h"
 
 using namespace vl::stream;
-using namespace vl::parsing;
 using namespace vl::filesystem;
 using namespace vl::reflection::description;
 using namespace vl::workflow::runtime;
@@ -25,7 +24,7 @@ int wmain(int argc, const wchar_t* argv[])
 		auto assembly = WfAssembly::Deserialize(fileStream, errors);
 
 		// initialize the assembly
-		auto globalContext = MakePtr<WfRuntimeGlobalContext>(assembly);
+		auto globalContext = Ptr(new WfRuntimeGlobalContext(assembly));
 		auto initializeFunction = LoadFunction<void()>(globalContext, L"<initialize>");
 		initializeFunction();
 

@@ -3,7 +3,6 @@
 using namespace vl;
 using namespace vl::console;
 using namespace vl::collections;
-using namespace vl::parsing;
 using namespace vl::reflection;
 using namespace vl::reflection::description;
 using namespace vl::workflow;
@@ -112,7 +111,7 @@ int main()
 	// start reflection
 	LoadPredefinedTypes();
 	WfLoadLibraryTypes();
-	GetGlobalTypeManager()->AddTypeLoader(new MyApiTypeLoader);
+	GetGlobalTypeManager()->AddTypeLoader(Ptr(new MyApiTypeLoader));
 	GetGlobalTypeManager()->Load();
 
 	{
@@ -121,18 +120,18 @@ int main()
 		codes.Add(WString::Unmanaged(ScriptCode));
 
 		// compile code and get assemblies
-		List<Ptr<ParsingError>> errors;
-		auto table = WfLoadTable();
-		auto assembly = Compile(table, codes, errors);
+		List<glr::ParsingError> errors;
+		workflow::Parser parser;
+		auto assembly = Compile(parser, codes, errors);
 		CHECK_ERROR(assembly && errors.Count() == 0, L"Please check the 'errors' variable.");
 
 		// initialize the assembly
-		auto globalContext = MakePtr<WfRuntimeGlobalContext>(assembly);
+		auto globalContext = Ptr(new WfRuntimeGlobalContext(assembly));
 		auto initializeFunction = LoadFunction<void()>(globalContext, L"<initialize>");
 		initializeFunction();
 
 		// start debugging
-		auto debugger = MakePtr<MyDebugger>();
+		auto debugger = Ptr(new MyDebugger);
 		SetDebuggerForCurrentThread(debugger);
 
 		// break at App::Print(...);, which is at line 9 in file 0
