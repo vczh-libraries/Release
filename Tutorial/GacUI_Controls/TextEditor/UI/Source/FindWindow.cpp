@@ -88,7 +88,7 @@ namespace demo
 				}
 
 				textBox->Select(begin, end);
-				textBox->SetFocus();
+				textBox->SetFocused();
 				return true;
 			}
 		}

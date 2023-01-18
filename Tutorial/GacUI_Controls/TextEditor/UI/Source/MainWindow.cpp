@@ -68,7 +68,7 @@ namespace demo
 			stream::StreamReader reader(decoderStream);
 			textBox->SetText(reader.ReadToEnd());
 			textBox->Select(TextPos(), TextPos());
-			textBox->SetFocus();
+			textBox->SetFocused();
 			textBox->ClearUndoRedo();
 
 			fileName = dialogOpen->GetFileName();
