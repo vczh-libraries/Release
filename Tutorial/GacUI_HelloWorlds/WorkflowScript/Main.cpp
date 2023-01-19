@@ -40,7 +40,7 @@ void GuiMain()
 		List<WString> codes;
 		codes.Add(WorkflowScript);
 		workflow::Parser workflowParser;
-		auto assembly = Compile(workflowParser, codes, errors);
+		auto assembly = Compile(workflowParser, workflow::analyzer::WfCpuArchitecture::AsExecutable, codes, errors);
 		globalContext = Ptr(new WfRuntimeGlobalContext(assembly));
 		LoadFunction<void()>(globalContext, L"<initialize>")();
 	}

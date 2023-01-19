@@ -166,7 +166,7 @@ int main()
 		// compile code and get assemblies
 		List<glr::ParsingError> errors;
 		workflow::Parser parser;
-		auto assembly = Compile(parser, codes, errors);
+		auto assembly = Compile(parser, workflow::analyzer::WfCpuArchitecture::AsExecutable, codes, errors);
 		CHECK_ERROR(assembly && errors.Count() == 0, L"Please check the 'errors' variable.");
 
 		// initialize the assembly

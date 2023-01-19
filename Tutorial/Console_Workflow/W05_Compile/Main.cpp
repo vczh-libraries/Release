@@ -55,7 +55,7 @@ int wmain(int argc, const wchar_t* argv[])
 		// WfLexicalScopeManager is required because we produce assembly and C++ code at the same time
 		List<glr::ParsingError> errors;
 		workflow::Parser parser;
-		WfLexicalScopeManager manager(parser);
+		WfLexicalScopeManager manager(parser, workflow::analyzer::WfCpuArchitecture::AsExecutable);
 		auto assembly = Compile(&manager, codes, errors);
 		CHECK_ERROR(assembly && errors.Count() == 0, L"Please check the 'errors' variable.");
 
