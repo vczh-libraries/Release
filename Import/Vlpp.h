@@ -7080,36 +7080,90 @@ Quick Sort
 		template<typename T, typename F>
 		void SortLambda(T* items, vint length, F orderer)
 		{
-			if (length == 0) return;
-			vint pivot = 0;
-			vint left = 0;
-			vint right = 0;
-			bool flag = false;
-
-			while (left + right + 1 != length)
+			while (true)
 			{
-				vint& mine = (flag ? left : right);
-				vint& theirs = (flag ? right : left);
-				vint candidate = (flag ? left : length - right - 1);
-				vint factor = (flag ? -1 : 1);
+				if (length == 0) return;
+				vint pivot = 0;
+				vint left = 0;
+				vint right = 0;
 
-				if (orderer(items[pivot], items[candidate]) * factor <= 0)
 				{
-					mine++;
+					bool flag = false;
+					while (left + right + 1 != length)
+					{
+						vint& mine = (flag ? left : right);
+						vint& theirs = (flag ? right : left);
+						vint candidate = (flag ? left : length - right - 1);
+						vint factor = (flag ? -1 : 1);
+
+						if (orderer(items[pivot], items[candidate]) * factor <= 0)
+						{
+							mine++;
+						}
+						else
+						{
+							theirs++;
+							T temp = items[pivot];
+							items[pivot] = items[candidate];
+							items[candidate] = temp;
+							pivot = candidate;
+							flag = !flag;
+						}
+					}
+				}
+
+				{
+					vint reading = left - 1;
+					vint writing = reading;
+					while (reading >= 0)
+					{
+						if (orderer(items[pivot], items[reading]) == 0)
+						{
+							if (reading != writing)
+							{
+								T temp = items[reading];
+								items[reading] = items[writing];
+								items[writing] = temp;
+							}
+							writing--;
+						}
+						reading--;
+					}
+					left = writing + 1;
+				}
+
+				{
+					vint reading = length - right;
+					vint writing = reading;
+					while (reading < length)
+					{
+						if (orderer(items[pivot], items[reading]) == 0)
+						{
+							if (reading != writing)
+							{
+								T temp = items[reading];
+								items[reading] = items[writing];
+								items[writing] = temp;
+							}
+							writing++;
+						}
+						reading++;
+					}
+					right = length - writing;
+				}
+
+				if (left < right)
+				{
+					SortLambda(items, left, orderer);
+					items += length - right;
+					length = right;
 				}
 				else
 				{
-					theirs++;
-					T temp = items[pivot];
-					items[pivot] = items[candidate];
-					items[candidate] = temp;
-					pivot = candidate;
-					flag = !flag;
+					SortLambda(items + length - right, right, orderer);
+					length = left;
 				}
 			}
-
-			SortLambda(items, left, orderer);
-			SortLambda(items + left + 1, right, orderer);
 		}
 
 		/// <summary>Quick sort.</summary>
@@ -8502,6 +8556,13 @@ namespace vl
 	namespace unittest
 	{
 		using UnitTestFileProc = void(*)();
+		
+		struct UnitTestLink
+		{
+			const char*					fileName = nullptr;
+			UnitTestFileProc			testProc = nullptr;
+			UnitTestLink*				next = nullptr;
+		};
 
 		/// <summary>
 		/// <p>Unit test framework.</p>
@@ -8615,17 +8676,22 @@ namespace vl
 			/// <param name="argv">Accept the second argument of the main function.</param>
 			static int RunAndDisposeTests(int argc, char* argv[]);
 
-			static void RegisterTestFile(const char* fileName, UnitTestFileProc testProc);
+			static void RegisterTestFile(UnitTestLink* link);
 			static void RunCategoryOrCase(const WString& description, bool isCategory, Func<void()>&& callback);
 			static void EnsureLegalToAssert();
 		};
 
 		class UnitTestFile
 		{
+		protected:
+			UnitTestLink				link;
+
 		public:
 			UnitTestFile(const char* fileName, UnitTestFileProc testProc)
 			{
-				UnitTest::RegisterTestFile(fileName, testProc);
+				link.fileName = fileName;
+				link.testProc = testProc;
+				UnitTest::RegisterTestFile(&link);
 			}
 		};
 
