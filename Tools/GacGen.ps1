@@ -7,8 +7,8 @@ param (
 
 Write-Host "Compiling GacUI Resource: $FileName ..."
 Remove-Item -Path "$($FileName).log" -Recurse -ErrorAction Ignore | Out-Null
-Start-Process-And-Wait (,("$PSScriptRoot\GacGen32.exe", "/P $FileName $MappingFileName"))
-Start-Process-And-Wait (,("$PSScriptRoot\GacGen64.exe", "/P $FileName $MappingFileName"))
+Start-Process-And-Wait (,("$PSScriptRoot\GacGen.exe", "/P32 $FileName $MappingFileName"))
+Start-Process-And-Wait (,("$PSScriptRoot\GacGen.exe", "/P64 $FileName $MappingFileName"))
 
 if (Test-Path -Path "$($FileName).log\x32\Errors.txt") {
     Write-Host (Get-Content "$($FileName).log\x32\Errors.txt") -ForegroundColor Red -Separator "`r`n"
