@@ -1,0 +1,1 @@
+Copy-Item $PSScriptRoot\Executables\Release\*.exe $PSScriptRoot\
