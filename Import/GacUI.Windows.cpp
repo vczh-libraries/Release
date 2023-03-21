@@ -1822,9 +1822,9 @@ WindowsController
 				WindowsForm*						mainWindow = nullptr;
 				HWND								mainWindowHandle = 0;
 
-				WindowsCallbackService				callbackService;
-				WindowsResourceService				resourceService;
+				SharedCallbackService				callbackService;
 				SharedAsyncService					asyncService;
+				WindowsResourceService				resourceService;
 				WindowsClipboardService				clipboardService;
 				WindowsImageService					imageService;
 				WindowsScreenService				screenService;
@@ -1955,7 +1955,7 @@ WindowsController
 					windowsForm->InvokeDestroying();
 					if (windowsForm != 0 && windows.Keys().Contains(windowsForm->GetWindowHandle()))
 					{
-						callbackService.InvokeNativeWindowDestroyed(window);
+						callbackService.InvokeNativeWindowDestroying(window);
 						windows.Remove(windowsForm->GetWindowHandle());
 						if (mainWindow == windowsForm)
 						{
@@ -1970,19 +1970,28 @@ WindowsController
 					return mainWindow;
 				}
 
+				inline bool RunOneCycleInternal()
+				{
+					MSG message;
+					if (!GetMessage(&message, NULL, 0, 0)) return false;
+					TranslateMessage(&message);
+					DispatchMessage(&message);
+					asyncService.ExecuteAsyncTasks();
+					return true;
+				}
+
 				void Run(INativeWindow* window)override
 				{
 					mainWindow = dynamic_cast<WindowsForm*>(GetWindowsForm(window));
 					mainWindowHandle = mainWindow->GetWindowHandle();
 					mainWindow->SetIsMainWindow();
 					mainWindow->Show();
-					MSG message;
-					while(GetMessage(&message, NULL, 0, 0))
-					{
-						TranslateMessage(&message);
-						DispatchMessage(&message);
-						asyncService.ExecuteAsyncTasks();
-					}
+					while (RunOneCycleInternal());
+				}
+
+				bool RunOneCycle()override
+				{
+					return RunOneCycleInternal();
 				}
 
 				INativeWindow* GetWindow(NativePoint location)override
@@ -2807,7 +2816,7 @@ int SetupWindowsDirect2DRendererInternal(bool hosted)
 	StartWindowsNativeController(hInstance);
 	auto nativeController = GetWindowsNativeController();
 	if (hosted) hostedController = new GuiHostedController(nativeController);
-	SetCurrentController(hostedController ? hostedController : nativeController);
+	SetNativeController(hostedController ? hostedController : nativeController);
 
 	{
 		// install listener
@@ -2822,7 +2831,7 @@ int SetupWindowsDirect2DRendererInternal(bool hosted)
 	}
 
 	// destroy controller
-	SetCurrentController(nullptr);
+	SetNativeController(nullptr);
 	if (hostedController) delete hostedController;
 	StopWindowsNativeController();
 	return 0;
@@ -8398,8 +8407,7 @@ namespace vl
 					if (needPaintAfterResize)
 					{
 						needPaintAfterResize = false;
-						auto callbackService = GetWindowsNativeController()->CallbackService();
-						dynamic_cast<WindowsCallbackService*>(callbackService)->InvokeGlobalTimer();
+						GetWindowsNativeController()->CallbackService()->Invoker()->InvokeGlobalTimer();
 					}
 					IWindowsForm* form=GetWindowsForm(window);
 					WinControlDC controlDC(form->GetWindowHandle());
@@ -8534,7 +8542,7 @@ int SetupWindowsGDIRendererInternal(bool hosted)
 	StartWindowsNativeController(hInstance);
 	auto nativeController = GetWindowsNativeController();
 	if (hosted) hostedController = new GuiHostedController(nativeController);
-	SetCurrentController(hostedController ? hostedController : nativeController);
+	SetNativeController(hostedController ? hostedController : nativeController);
 
 	{
 		// install listener
@@ -8549,7 +8557,7 @@ int SetupWindowsGDIRendererInternal(bool hosted)
 	}
 
 	// destroy controller
-	SetCurrentController(nullptr);
+	SetNativeController(nullptr);
 	if (hostedController) delete hostedController;
 	StopWindowsNativeController();
 	return 0;
@@ -12967,86 +12975,6 @@ void RendererMainGDI(GuiHostedController* hostedController)
 }
 
 /***********************************************************************
-.\SERVICESIMPL\WINDOWSCALLBACKSERVICE.CPP
-***********************************************************************/
-
-namespace vl
-{
-	namespace presentation
-	{
-		namespace windows
-		{
-
-/***********************************************************************
-WindowsCallbackService
-***********************************************************************/
-
-			WindowsCallbackService::WindowsCallbackService()
-			{
-			}
-
-			bool WindowsCallbackService::InstallListener(INativeControllerListener* listener)
-			{
-				if(listeners.Contains(listener))
-				{
-					return false;
-				}
-				else
-				{
-					listeners.Add(listener);
-					return true;
-				}
-			}
-
-			bool WindowsCallbackService::UninstallListener(INativeControllerListener* listener)
-			{
-				if(listeners.Contains(listener))
-				{
-					listeners.Remove(listener);
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-
-			void WindowsCallbackService::InvokeGlobalTimer()
-			{
-				for(vint i=0;i<listeners.Count();i++)
-				{
-					listeners[i]->GlobalTimer();
-				}
-			}
-
-			void WindowsCallbackService::InvokeClipboardUpdated()
-			{
-				for(vint i=0;i<listeners.Count();i++)
-				{
-					listeners[i]->ClipboardUpdated();
-				}
-			}
-
-			void WindowsCallbackService::InvokeNativeWindowCreated(INativeWindow* window)
-			{
-				for(vint i=0;i<listeners.Count();i++)
-				{
-					listeners[i]->NativeWindowCreated(window);
-				}
-			}
-
-			void WindowsCallbackService::InvokeNativeWindowDestroyed(INativeWindow* window)
-			{
-				for(vint i=0;i<listeners.Count();i++)
-				{
-					listeners[i]->NativeWindowDestroying(window);
-				}
-			}
-		}
-	}
-}
-
-/***********************************************************************
 .\SERVICESIMPL\WINDOWSCLIPBOARDSERVICE.CPP
 ***********************************************************************/
 
@@ -14440,58 +14368,58 @@ WindowsCursor
 ***********************************************************************/
 
 			WindowsCursor::WindowsCursor(HCURSOR _handle)
-				:handle(_handle)
-				,isSystemCursor(false)
-				,systemCursorType(INativeCursor::Arrow)
+				: handle(_handle)
+				, isSystemCursor(false)
+				, systemCursorType(INativeCursor::Arrow)
 			{
 			}
 
 			WindowsCursor::WindowsCursor(SystemCursorType type)
 				:handle(NULL)
-				,isSystemCursor(true)
-				,systemCursorType(type)
+				, isSystemCursor(true)
+				, systemCursorType(type)
 			{
-				LPWSTR id=NULL;
-				switch(type)
+				LPWSTR id = NULL;
+				switch (type)
 				{
 				case SmallWaiting:
-					id=IDC_APPSTARTING;
+					id = IDC_APPSTARTING;
 					break;
 				case LargeWaiting:
-					id=IDC_WAIT;
+					id = IDC_WAIT;
 					break;
 				case Arrow:
-					id=IDC_ARROW;
+					id = IDC_ARROW;
 					break;
 				case Cross:
-					id=IDC_CROSS;
+					id = IDC_CROSS;
 					break;
 				case Hand:
-					id=IDC_HAND;
+					id = IDC_HAND;
 					break;
 				case Help:
-					id=IDC_HELP;
+					id = IDC_HELP;
 					break;
 				case IBeam:
-					id=IDC_IBEAM;
+					id = IDC_IBEAM;
 					break;
 				case SizeAll:
-					id=IDC_SIZEALL;
+					id = IDC_SIZEALL;
 					break;
 				case SizeNESW:
-					id=IDC_SIZENESW;
+					id = IDC_SIZENESW;
 					break;
 				case SizeNS:
-					id=IDC_SIZENS;
+					id = IDC_SIZENS;
 					break;
 				case SizeNWSE:
-					id=IDC_SIZENWSE;
+					id = IDC_SIZENWSE;
 					break;
 				case SizeWE:
-					id=IDC_SIZEWE;
+					id = IDC_SIZEWE;
 					break;
 				}
-				handle=(HCURSOR)LoadImage(NULL, id, IMAGE_CURSOR, 0, 0, LR_DEFAULTSIZE|LR_SHARED);
+				handle = (HCURSOR)LoadImage(NULL, id, IMAGE_CURSOR, 0, 0, LR_DEFAULTSIZE | LR_SHARED);
 			}
 				
 			bool WindowsCursor::IsSystemCursor()
@@ -14517,33 +14445,33 @@ WindowsResourceService
 			{
 				{
 					systemCursors.Resize(INativeCursor::SystemCursorCount);
-					for(vint i=0;i<systemCursors.Count();i++)
+					for (vint i = 0; i < systemCursors.Count(); i++)
 					{
-						systemCursors[i]=Ptr(new WindowsCursor((INativeCursor::SystemCursorType)i));
+						systemCursors[i] = Ptr(new WindowsCursor((INativeCursor::SystemCursorType)i));
 					}
 				}
 				{
 					NONCLIENTMETRICS metrics;
-					metrics.cbSize=sizeof(NONCLIENTMETRICS);
+					metrics.cbSize = sizeof(NONCLIENTMETRICS);
 					SystemParametersInfo(SPI_GETNONCLIENTMETRICS, metrics.cbSize, &metrics, 0);
-					if(!*metrics.lfMessageFont.lfFaceName)
+					if (!*metrics.lfMessageFont.lfFaceName)
 					{
-						metrics.cbSize=sizeof(NONCLIENTMETRICS)-sizeof(metrics.iPaddedBorderWidth);
+						metrics.cbSize = sizeof(NONCLIENTMETRICS) - sizeof(metrics.iPaddedBorderWidth);
 						SystemParametersInfo(SPI_GETNONCLIENTMETRICS, metrics.cbSize, &metrics, 0);
 					}
-					defaultFont.fontFamily=metrics.lfMessageFont.lfFaceName;
-					defaultFont.size=metrics.lfMessageFont.lfHeight;
-					if(defaultFont.size<0)
+					defaultFont.fontFamily = metrics.lfMessageFont.lfFaceName;
+					defaultFont.size = metrics.lfMessageFont.lfHeight;
+					if (defaultFont.size < 0)
 					{
-						defaultFont.size=-defaultFont.size;
+						defaultFont.size = -defaultFont.size;
 					}
 				}
 			}
 
 			INativeCursor* WindowsResourceService::GetSystemCursor(INativeCursor::SystemCursorType type)
 			{
-				vint index=(vint)type;
-				if(0<=index && index<systemCursors.Count())
+				vint index = (vint)type;
+				if (0 <= index && index < systemCursors.Count())
 				{
 					return systemCursors[index].Obj();
 				}
@@ -14565,7 +14493,21 @@ WindowsResourceService
 
 			void WindowsResourceService::SetDefaultFont(const FontProperties& value)
 			{
-				defaultFont=value;
+				defaultFont = value;
+			}
+
+			void WindowsResourceService::EnumerateFonts(collections::List<WString>& fonts)
+			{
+				auto proc = [](const LOGFONTW* lpelf, const TEXTMETRICW* lpntm, DWORD fontType, LPARAM lParam) -> int
+				{
+					auto&& fonts = *(collections::List<WString>*)lParam;
+					fonts.Add(lpelf->lfFaceName);
+					return 1;
+				};
+
+				HDC refHdc = GetDC(NULL);
+				EnumFontFamilies(refHdc, NULL, proc, (LPARAM)&fonts);
+				ReleaseDC(NULL, refHdc);
 			}
 		}
 	}
