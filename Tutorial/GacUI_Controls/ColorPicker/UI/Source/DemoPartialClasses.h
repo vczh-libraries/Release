@@ -25,14 +25,12 @@ https://github.com/vczh-libraries
 namespace vl_workflow_global
 {
 	struct __vwsnf1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
-	struct __vwsnf2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
-	struct __vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_;
+	struct __vwsnf2_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_;
+	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	class __vwsnc1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-	class __vwsnc2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-	class __vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc2_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 }
 
 namespace demo
@@ -49,9 +47,7 @@ namespace demo
 	class ColorComboItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<ColorComboItemTemplateConstructor>
 	{
 		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorComboItemTemplateConstructor>;
 #endif
@@ -72,17 +68,11 @@ namespace demo
 	{
 		friend class ::demo::ColorComboItemTemplateConstructor;
 		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorComboItemTemplate>;
 #endif
 	public:
-		::vl::presentation::Color __vwsn_prop_TextColor;
-		::vl::presentation::Color GetTextColor();
-		void SetTextColor(::vl::presentation::Color __vwsn_value_);
-		::vl::Event<void()> TextColorChanged;
 		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel;
 		::vl::Ptr<::demo::IColorItem> GetViewModel();
 		ColorComboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);
@@ -91,8 +81,8 @@ namespace demo
 
 	class ColorListItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<ColorListItemTemplateConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorListItemTemplateConstructor>;
 #endif
@@ -108,8 +98,8 @@ namespace demo
 	class ColorListItemTemplate : public ::vl::presentation::templates::GuiTextListItemTemplate, public ::demo::ColorListItemTemplateConstructor, public ::vl::reflection::Description<ColorListItemTemplate>
 	{
 		friend class ::demo::ColorListItemTemplateConstructor;
-		friend class ::vl_workflow_global::__vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorListItemTemplate>;
 #endif
@@ -141,9 +131,9 @@ namespace demo
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
@@ -166,9 +156,9 @@ namespace demo
 	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
 	{
 		friend class ::demo::MainWindowConstructor;
+		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
@@ -206,22 +196,22 @@ Closures
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_
+	struct __vwsnf2_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_
 	{
-		::demo::ColorComboItemTemplateConstructor* __vwsnthis_0;
+		::demo::ColorListItemTemplateConstructor* __vwsnthis_0;
 
-		__vwsnf2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_(::demo::ColorComboItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnf2_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_(::demo::ColorListItemTemplateConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_
+	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
-		::demo::ColorListItemTemplateConstructor* __vwsnthis_0;
+		::demo::MainWindowConstructor* __vwsnthis_0;
 
-		__vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_(::demo::ColorListItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
 	};
 
 	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
@@ -230,7 +220,7 @@ Closures
 
 		__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
-		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
+		::vl::presentation::templates::GuiListItemTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
 	};
 
 	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
@@ -238,15 +228,6 @@ Closures
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
 		__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::templates::GuiListItemTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
-	};
-
-	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		::vl::presentation::templates::GuiTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
 	};
@@ -263,36 +244,18 @@ Closures
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
-		void __vwsn_bind_callback_0_0();
-		bool Open() override;
-		bool Update() override;
-		bool Close() override;
-	};
-
-	class __vwsnc2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
-	{
-	public:
-		::demo::ColorComboItemTemplateConstructor* __vwsnthis_0;
-
-		__vwsnc2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::ColorComboItemTemplateConstructor* __vwsnctorthis_0);
-
-		::demo::ColorComboItemTemplate* __vwsn_bind_cache_0 = nullptr;
-		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
-		bool __vwsn_bind_opened_ = false;
-		bool __vwsn_bind_closed_ = false;
-		void __vwsn_bind_activator_();
 		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
 	};
 
-	class __vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc2_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
 		::demo::ColorListItemTemplateConstructor* __vwsnthis_0;
 
-		__vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::ColorListItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnc2_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::ColorListItemTemplateConstructor* __vwsnctorthis_0);
 
 		::demo::ColorListItemTemplate* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
