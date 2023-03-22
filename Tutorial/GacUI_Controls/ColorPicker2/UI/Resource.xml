@@ -3,7 +3,7 @@
   <Folder name="GacGenConfig">
     <Folder name="Cpp">
       <Text name="SourceFolder">Source</Text>
-      <Text name="Resource">..\..\UIRes\ColorPicker.bin</Text>
+      <Text name="Resource">..\..\UIRes\ColorPicker2.bin</Text>
       <Text name="NormalInclude">GacUI.h</Text>
       <Text name="ReflectionInclude">GacUIReflection.h</Text>
       <Text name="Name">Demo</Text>
