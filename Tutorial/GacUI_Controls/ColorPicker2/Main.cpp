@@ -7,12 +7,14 @@ using namespace vl::stream;
 class ColorItem : public Object, public demo::IColorItem
 {
 protected:
+	demo::IViewModel*			viewModel = nullptr;
 	WString						name;
 	Color						color;
 
 public:
-	ColorItem(WString _name, WString _color)
-		:name(_name)
+	ColorItem(demo::IViewModel* _viewModel, WString _name, WString _color)
+		: viewModel(_viewModel)
+		, name(_name)
 		, color(Color::Parse(_color))
 	{
 	}
@@ -26,6 +28,11 @@ public:
 	{
 		return color;
 	}
+
+	Ptr<demo::IViewModel> GetViewModel()override
+	{
+		return Ptr(viewModel);
+	}
 };
 
 class ViewModel : public Object, public demo::IViewModel
@@ -37,22 +44,22 @@ protected:
 public:
 	ViewModel()
 	{
-		items.Add(Ptr(new ColorItem(L"Black",   L"#000000")));
-		items.Add(Ptr(new ColorItem(L"Maroon",  L"#800000")));
-		items.Add(Ptr(new ColorItem(L"Green",   L"#008000")));
-		items.Add(Ptr(new ColorItem(L"Olive",   L"#808000")));
-		items.Add(Ptr(new ColorItem(L"Navy",    L"#000080")));
-		items.Add(Ptr(new ColorItem(L"Purble",  L"#800080")));
-		items.Add(Ptr(new ColorItem(L"Teal",    L"#008080")));
-		items.Add(Ptr(new ColorItem(L"Silver",  L"#C0C0C0")));
-		items.Add(Ptr(new ColorItem(L"Gray",    L"#808080")));
-		items.Add(Ptr(new ColorItem(L"Red",     L"#FF0000")));
-		items.Add(Ptr(new ColorItem(L"Lime",    L"#00FF00")));
-		items.Add(Ptr(new ColorItem(L"Yellow",  L"#FFFF00")));
-		items.Add(Ptr(new ColorItem(L"Blue",    L"#0000FF")));
-		items.Add(Ptr(new ColorItem(L"Fuchsia", L"#FF00FF")));
-		items.Add(Ptr(new ColorItem(L"Aqua",    L"#00FFFF")));
-		items.Add(Ptr(new ColorItem(L"White",   L"#FFFFFF")));
+		items.Add(Ptr(new ColorItem(this, L"Black",   L"#000000")));
+		items.Add(Ptr(new ColorItem(this, L"Maroon",  L"#800000")));
+		items.Add(Ptr(new ColorItem(this, L"Green",   L"#008000")));
+		items.Add(Ptr(new ColorItem(this, L"Olive",   L"#808000")));
+		items.Add(Ptr(new ColorItem(this, L"Navy",    L"#000080")));
+		items.Add(Ptr(new ColorItem(this, L"Purble",  L"#800080")));
+		items.Add(Ptr(new ColorItem(this, L"Teal",    L"#008080")));
+		items.Add(Ptr(new ColorItem(this, L"Silver",  L"#C0C0C0")));
+		items.Add(Ptr(new ColorItem(this, L"Gray",    L"#808080")));
+		items.Add(Ptr(new ColorItem(this, L"Red",     L"#FF0000")));
+		items.Add(Ptr(new ColorItem(this, L"Lime",    L"#00FF00")));
+		items.Add(Ptr(new ColorItem(this, L"Yellow",  L"#FFFF00")));
+		items.Add(Ptr(new ColorItem(this, L"Blue",    L"#0000FF")));
+		items.Add(Ptr(new ColorItem(this, L"Fuchsia", L"#FF00FF")));
+		items.Add(Ptr(new ColorItem(this, L"Aqua",    L"#00FFFF")));
+		items.Add(Ptr(new ColorItem(this, L"White",   L"#FFFFFF")));
 	}
 
 	Color GetSelectedColor()override
@@ -62,11 +69,8 @@ public:
 
 	void SetSelectedColor(Color value)override
 	{
-		if (selectedColor != value)
-		{
-			selectedColor = value;
-			SelectedColorChanged();
-		}
+		selectedColor = value;
+		SelectedColorChanged();
 	}
 
 	LazyList<Ptr<demo::IColorItem>> GetColorItems()override

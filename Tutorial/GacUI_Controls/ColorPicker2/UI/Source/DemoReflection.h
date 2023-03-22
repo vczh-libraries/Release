@@ -54,6 +54,10 @@ namespace vl
 				{
 					INVOKEGET_INTERFACE_PROXY_NOPARAMS(GetItemName);
 				}
+				::vl::Ptr<::demo::IViewModel> GetViewModel() override
+				{
+					INVOKEGET_INTERFACE_PROXY_NOPARAMS(GetViewModel);
+				}
 			END_INTERFACE_PROXY(::demo::IColorItem)
 
 			BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(::demo::IViewModel)

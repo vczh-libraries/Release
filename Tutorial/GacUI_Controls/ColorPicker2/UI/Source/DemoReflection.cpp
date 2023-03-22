@@ -68,8 +68,10 @@ namespace vl
 				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetItemColor, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetItemName, NO_PARAMETER)
+				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_PROPERTY_READONLY(ItemColor, GetItemColor)
 				CLASS_MEMBER_PROPERTY_READONLY(ItemName, GetItemName)
+				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
 			END_INTERFACE_MEMBER(::demo::IColorItem)
 
 			BEGIN_INTERFACE_MEMBER(::demo::IViewModel)
@@ -100,6 +102,7 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_11)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_12)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_13)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_4)

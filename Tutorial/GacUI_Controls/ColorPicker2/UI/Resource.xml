@@ -23,6 +23,7 @@
           {
             prop ItemName : string {const, not observe}
             prop ItemColor : Color {const, not observe}
+            prop ViewModel : IViewModel^ {const, not observe}
           }
           
           interface IViewModel
@@ -40,6 +41,13 @@
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
         <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
         <Window Text="ColorPicker2" ClientSize="x:360 y:120">
+          <att.ViewModel-set>
+            <ev.SelectedColorChanged-eval><![CDATA[
+              {
+                comboColor.SubMenuOpening = false;
+              }
+            ]]></ev.SelectedColorChanged-eval>
+          </att.ViewModel-set>
           <att.ContainerComposition-set PreferredMinSize="x:360 y:120"/>
           <Table CellPadding="10" AlignmentToParent="left:0 top:0 right:0 bottom:0">
             <att.Rows>
@@ -107,6 +115,12 @@
                   <SolidLabel Text-eval="ViewModel.ItemName" Font-bind="self.Font" Color="#FFFFFF" VerticalAlignment="Center"/>
                 </Cell>
               </Table>
+
+              <ev.Clicked-eval><![CDATA[
+                {
+                  ViewModel.ViewModel.SelectedColor = ViewModel.ItemColor;
+                }
+              ]]></ev.Clicked-eval>
             </Button>
           </SharedSizeItem>
         </ControlTemplate>
