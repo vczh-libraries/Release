@@ -30,8 +30,8 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
-			IMPL_CPP_TYPE_INFO(demo::ColorBomboItemTemplate)
-			IMPL_CPP_TYPE_INFO(demo::ColorBomboItemTemplateConstructor)
+			IMPL_CPP_TYPE_INFO(demo::ColorComboItemTemplate)
+			IMPL_CPP_TYPE_INFO(demo::ColorComboItemTemplateConstructor)
 			IMPL_CPP_TYPE_INFO(demo::ColorListItemTemplate)
 			IMPL_CPP_TYPE_INFO(demo::ColorListItemTemplateConstructor)
 			IMPL_CPP_TYPE_INFO(demo::IColorItem)
@@ -41,10 +41,10 @@ namespace vl
 
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
-			BEGIN_CLASS_MEMBER(::demo::ColorBomboItemTemplate)
+			BEGIN_CLASS_MEMBER(::demo::ColorComboItemTemplate)
 				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiControlTemplate)
-				CLASS_MEMBER_BASE(::demo::ColorBomboItemTemplateConstructor)
-				CLASS_MEMBER_CONSTRUCTOR(::demo::ColorBomboItemTemplate*(::vl::Ptr<::demo::IColorItem>), { L"__vwsn_ctor_parameter_ViewModel" })
+				CLASS_MEMBER_BASE(::demo::ColorComboItemTemplateConstructor)
+				CLASS_MEMBER_CONSTRUCTOR(::demo::ColorComboItemTemplate*(::vl::Ptr<::demo::IColorItem>), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(GetTextColor, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(SetTextColor, { L"__vwsn_value_" })
@@ -53,12 +53,12 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_prop_TextColor)
 				CLASS_MEMBER_PROPERTY_EVENT(TextColor, GetTextColor, SetTextColor, TextColorChanged)
 				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
-			END_CLASS_MEMBER(::demo::ColorBomboItemTemplate)
+			END_CLASS_MEMBER(::demo::ColorComboItemTemplate)
 
-			BEGIN_CLASS_MEMBER(::demo::ColorBomboItemTemplateConstructor)
+			BEGIN_CLASS_MEMBER(::demo::ColorComboItemTemplateConstructor)
 				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
-				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::ColorBomboItemTemplateConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_demo_ColorBomboItemTemplate_Initialize, { L"__vwsn_this_" })
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::ColorComboItemTemplateConstructor>(), NO_PARAMETER)
+				CLASS_MEMBER_METHOD(__vwsn_demo_ColorComboItemTemplate_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
@@ -66,7 +66,7 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_4)
 				CLASS_MEMBER_FIELD(ViewModel)
 				CLASS_MEMBER_FIELD(self)
-			END_CLASS_MEMBER(::demo::ColorBomboItemTemplateConstructor)
+			END_CLASS_MEMBER(::demo::ColorComboItemTemplateConstructor)
 
 			BEGIN_CLASS_MEMBER(::demo::ColorListItemTemplate)
 				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiTextListItemTemplate)
@@ -131,8 +131,8 @@ namespace vl
 			public:
 				void Load(ITypeManager* manager)
 				{
-					ADD_TYPE_INFO(::demo::ColorBomboItemTemplate)
-					ADD_TYPE_INFO(::demo::ColorBomboItemTemplateConstructor)
+					ADD_TYPE_INFO(::demo::ColorComboItemTemplate)
+					ADD_TYPE_INFO(::demo::ColorComboItemTemplateConstructor)
 					ADD_TYPE_INFO(::demo::ColorListItemTemplate)
 					ADD_TYPE_INFO(::demo::ColorListItemTemplateConstructor)
 					ADD_TYPE_INFO(::demo::IColorItem)

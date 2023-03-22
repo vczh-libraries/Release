@@ -24,21 +24,21 @@ https://github.com/vczh-libraries
 
 namespace vl_workflow_global
 {
-	struct __vwsnf1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
-	struct __vwsnf2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
+	struct __vwsnf1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
+	struct __vwsnf2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
 	struct __vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_;
 	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-	class __vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-	class __vwsnc2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 }
 
 namespace demo
 {
-	class ColorBomboItemTemplateConstructor;
-	class ColorBomboItemTemplate;
+	class ColorComboItemTemplateConstructor;
+	class ColorComboItemTemplate;
 	class ColorListItemTemplateConstructor;
 	class ColorListItemTemplate;
 	class IColorItem;
@@ -46,37 +46,37 @@ namespace demo
 	class MainWindowConstructor;
 	class MainWindow;
 
-	class ColorBomboItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<ColorBomboItemTemplateConstructor>
+	class ColorComboItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<ColorComboItemTemplateConstructor>
 	{
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorBomboItemTemplateConstructor>;
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorComboItemTemplateConstructor>;
 #endif
 	protected:
 		::vl::Ptr<::demo::IColorItem> ViewModel;
-		::demo::ColorBomboItemTemplate* self;
+		::demo::ColorComboItemTemplate* self;
 		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
 		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_2;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_3;
 		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_4;
-		void __vwsn_demo_ColorBomboItemTemplate_Initialize(::demo::ColorBomboItemTemplate* __vwsn_this_);
+		void __vwsn_demo_ColorComboItemTemplate_Initialize(::demo::ColorComboItemTemplate* __vwsn_this_);
 	public:
-		ColorBomboItemTemplateConstructor();
+		ColorComboItemTemplateConstructor();
 	};
 
-	class ColorBomboItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::ColorBomboItemTemplateConstructor, public ::vl::reflection::Description<ColorBomboItemTemplate>
+	class ColorComboItemTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::ColorComboItemTemplateConstructor, public ::vl::reflection::Description<ColorComboItemTemplate>
 	{
-		friend class ::demo::ColorBomboItemTemplateConstructor;
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
+		friend class ::demo::ColorComboItemTemplateConstructor;
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend class ::vl_workflow_global::__vwsnc2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorBomboItemTemplate>;
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorComboItemTemplate>;
 #endif
 	public:
 		::vl::presentation::Color __vwsn_prop_TextColor;
@@ -85,8 +85,8 @@ namespace demo
 		::vl::Event<void()> TextColorChanged;
 		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel;
 		::vl::Ptr<::demo::IColorItem> GetViewModel();
-		ColorBomboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);
-		~ColorBomboItemTemplate();
+		ColorComboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);
+		~ColorComboItemTemplate();
 	};
 
 	class ColorListItemTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<ColorListItemTemplateConstructor>
@@ -99,7 +99,7 @@ namespace demo
 	protected:
 		::vl::Ptr<::demo::IColorItem> ViewModel;
 		::demo::ColorListItemTemplate* self;
-		::demo::ColorBomboItemTemplate* __vwsn_precompile_0;
+		::demo::ColorComboItemTemplate* __vwsn_precompile_0;
 		void __vwsn_demo_ColorListItemTemplate_Initialize(::demo::ColorListItemTemplate* __vwsn_this_);
 	public:
 		ColorListItemTemplateConstructor();
@@ -197,20 +197,20 @@ namespace vl_workflow_global
 Closures
 ***********************************************************************/
 
-	struct __vwsnf1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_
+	struct __vwsnf1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_
 	{
-		::demo::ColorBomboItemTemplateConstructor* __vwsnthis_0;
+		::demo::ColorComboItemTemplateConstructor* __vwsnthis_0;
 
-		__vwsnf1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_(::demo::ColorBomboItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnf1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_(::demo::ColorComboItemTemplateConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
-	struct __vwsnf2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_
+	struct __vwsnf2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_
 	{
-		::demo::ColorBomboItemTemplateConstructor* __vwsnthis_0;
+		::demo::ColorComboItemTemplateConstructor* __vwsnthis_0;
 
-		__vwsnf2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_(::demo::ColorBomboItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnf2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize_(::demo::ColorComboItemTemplateConstructor* __vwsnctorthis_0);
 
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
@@ -251,14 +251,14 @@ Closures
 		::vl::presentation::templates::GuiTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
 	};
 
-	class __vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
-		::demo::ColorBomboItemTemplateConstructor* __vwsnthis_0;
+		::demo::ColorComboItemTemplateConstructor* __vwsnthis_0;
 
-		__vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::ColorBomboItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnc1_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::ColorComboItemTemplateConstructor* __vwsnctorthis_0);
 
-		::demo::ColorBomboItemTemplate* __vwsn_bind_cache_0 = nullptr;
+		::demo::ColorComboItemTemplate* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;
@@ -269,14 +269,14 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	class __vwsnc2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
 	{
 	public:
-		::demo::ColorBomboItemTemplateConstructor* __vwsnthis_0;
+		::demo::ColorComboItemTemplateConstructor* __vwsnthis_0;
 
-		__vwsnc2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::ColorBomboItemTemplateConstructor* __vwsnctorthis_0);
+		__vwsnc2_Demo_demo_ColorComboItemTemplateConstructor___vwsn_demo_ColorComboItemTemplate_Initialize__vl_reflection_description_IValueSubscription(::demo::ColorComboItemTemplateConstructor* __vwsnctorthis_0);
 
-		::demo::ColorBomboItemTemplate* __vwsn_bind_cache_0 = nullptr;
+		::demo::ColorComboItemTemplate* __vwsn_bind_cache_0 = nullptr;
 		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
 		bool __vwsn_bind_opened_ = false;
 		bool __vwsn_bind_closed_ = false;

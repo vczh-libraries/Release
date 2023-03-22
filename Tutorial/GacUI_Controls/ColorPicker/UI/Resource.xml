@@ -56,7 +56,7 @@
             </Cell>
             <Cell Site="row:1 column:0">
               <ComboBox SelectedIndex-eval="0">
-                <att.ItemTemplate>demo::ColorBomboItemTemplate</att.ItemTemplate>
+                <att.ItemTemplate>demo::ColorComboItemTemplate</att.ItemTemplate>
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                 <att.ListControl>
                   <BindableTextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IColorItem^">
@@ -72,8 +72,8 @@
       </Instance>
     </Instance>
 
-    <Instance name="ColorBomboItemTemplateResource">
-      <Instance ref.CodeBehind="false" ref.Class="demo::ColorBomboItemTemplate">
+    <Instance name="ColorComboItemTemplateResource">
+      <Instance ref.CodeBehind="false" ref.Class="demo::ColorComboItemTemplate">
         <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
         <ref.Members>
           <![CDATA[
@@ -109,7 +109,7 @@
       <Instance ref.CodeBehind="false" ref.Class="demo::ColorListItemTemplate" xmlns:x="demo::*">
         <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
         <TextListItemTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
-          <x:ColorBomboItemTemplate ViewModel-eval="ViewModel" Font-bind="self.Font" AlignmentToParent="left:6 top:6 right:6 bottom:6"/>
+          <x:ColorComboItemTemplate ViewModel-eval="ViewModel" Font-bind="self.Font" AlignmentToParent="left:6 top:6 right:6 bottom:6"/>
         </TextListItemTemplate>
       </Instance>
     </Instance>

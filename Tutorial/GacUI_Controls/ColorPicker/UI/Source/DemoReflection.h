@@ -36,8 +36,8 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::demo::ColorBomboItemTemplate)
-			DECL_TYPE_INFO(::demo::ColorBomboItemTemplateConstructor)
+			DECL_TYPE_INFO(::demo::ColorComboItemTemplate)
+			DECL_TYPE_INFO(::demo::ColorComboItemTemplateConstructor)
 			DECL_TYPE_INFO(::demo::ColorListItemTemplate)
 			DECL_TYPE_INFO(::demo::ColorListItemTemplateConstructor)
 			DECL_TYPE_INFO(::demo::IColorItem)
