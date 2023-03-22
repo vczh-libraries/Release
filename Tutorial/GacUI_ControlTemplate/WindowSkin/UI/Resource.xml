@@ -36,6 +36,7 @@
             <StackItem><CheckBox Selected="true" ref.Name="checkSizeBox" Text="SizeBox"/></StackItem>
             <StackItem><CheckBox Selected="true" ref.Name="checkIcon" Text="IconVisible"/></StackItem>
             <StackItem><CheckBox Selected="true" ref.Name="checkTitle" Text="TitleBar"/></StackItem>
+            <StackItem><Button ref.Name="buttonNewWindow" Text="Open New Window" ev.Clicked="buttonNewWindow_Clicked"/></StackItem>
           </Stack>
         </Window>
       </Instance>

@@ -24,13 +24,14 @@ https://github.com/vczh-libraries
 
 namespace vl_workflow_global
 {
-	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsno2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	class __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
@@ -54,13 +55,14 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf7_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsno2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
@@ -73,6 +75,7 @@ namespace demo
 		::vl::presentation::controls::GuiSelectableButton* checkSizeBox;
 		::vl::presentation::controls::GuiSelectableButton* checkIcon;
 		::vl::presentation::controls::GuiSelectableButton* checkTitle;
+		::vl::presentation::controls::GuiButton* buttonNewWindow;
 		::vl::presentation::compositions::GuiStackComposition* __vwsn_precompile_0;
 		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_1;
 		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_2;
@@ -81,6 +84,7 @@ namespace demo
 		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_5;
 		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_6;
 		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_7;
+		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_8;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -129,15 +133,6 @@ namespace vl_workflow_global
 Closures
 ***********************************************************************/
 
-	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
-	};
-
 	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindowConstructor* __vwsnthis_0;
@@ -183,12 +178,31 @@ Closures
 		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
+	struct __vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf8_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
+	};
+
 	struct __vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
 	{
 		::demo::MainWindow* __vwsn_this_;
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
 		__vwsno1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
+	};
+
+	struct __vwsno2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
+	{
+		::demo::MainWindow* __vwsn_this_;
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsno2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindow* __vwsnctor___vwsn_this_, ::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* __vwsno_1, ::vl::presentation::compositions::GuiEventArgs* __vwsno_2) const;
 	};

@@ -41,6 +41,7 @@ namespace vl
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
+				CLASS_MEMBER_METHOD(buttonNewWindow_Clicked, { L"sender" _ L"arguments" })
 				CLASS_MEMBER_METHOD(checkFrame_SelectionChanged, { L"sender" _ L"arguments" })
 			END_CLASS_MEMBER(::demo::MainWindow)
 
@@ -56,6 +57,8 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_5)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_6)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_7)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_8)
+				CLASS_MEMBER_FIELD(buttonNewWindow)
 				CLASS_MEMBER_FIELD(checkBorder)
 				CLASS_MEMBER_FIELD(checkFrame)
 				CLASS_MEMBER_FIELD(checkIcon)

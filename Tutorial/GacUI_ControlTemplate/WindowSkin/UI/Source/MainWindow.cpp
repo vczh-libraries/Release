@@ -56,6 +56,15 @@ namespace demo
 		}
 	}/* USER_CONTENT_END() */
 
+	void MainWindow::buttonNewWindow_Clicked(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments)
+	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
+		auto subWindow = vl::Ptr(new MainWindow);
+		subWindow->SetText(vl::reflection::description::Sys::LoremIpsumTitle(20));
+		subWindow->MoveToScreenCenter();
+		subWindow->ShowWithOwner(this);
+		openedWindows.Add(subWindow);
+	}/* USER_CONTENT_END() */
+
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
 	{

@@ -161,6 +161,9 @@
     <ClInclude Include="UI\Source\DemoPartialClasses.h" />
     <ClInclude Include="UI\Source\MainWindow.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="UI\Resource.xml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
