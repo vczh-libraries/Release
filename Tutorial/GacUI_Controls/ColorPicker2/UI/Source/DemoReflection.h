@@ -38,8 +38,6 @@ namespace vl
 #ifndef VCZH_DEBUG_NO_REFLECTION
 			DECL_TYPE_INFO(::demo::ColorBomboItemTemplate)
 			DECL_TYPE_INFO(::demo::ColorBomboItemTemplateConstructor)
-			DECL_TYPE_INFO(::demo::ColorListItemTemplate)
-			DECL_TYPE_INFO(::demo::ColorListItemTemplateConstructor)
 			DECL_TYPE_INFO(::demo::IColorItem)
 			DECL_TYPE_INFO(::demo::IViewModel)
 			DECL_TYPE_INFO(::demo::MainWindow)

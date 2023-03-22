@@ -65,6 +65,12 @@
                 </att.ContainerComposition-set>
                 <att.DropdownControl>
                   <GroupBox Text="Choose a Color:">
+                    <SharedSizeRoot AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                      <RepeatFlow AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElementAndChildren">
+                        <att.ItemTemplate>demo::ColorBomboItemTemplate</att.ItemTemplate>
+                        <att.ItemSource-eval>ViewModel.ColorItems</att.ItemSource-eval>
+                      </RepeatFlow>
+                    </SharedSizeRoot>
                   </GroupBox>
                 </att.DropdownControl>
               </ComboButton>
@@ -77,42 +83,33 @@
     <Instance name="ColorBomboItemTemplateResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::ColorBomboItemTemplate">
         <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
-        <ref.Members>
-          <![CDATA[
-            prop TextColor : Color = (cast Color "#FFFFFF") {}
-          ]]>
-        </ref.Members>
         <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
-          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-            <att.Rows>
-              <CellOption>composeType:Percentage percentage:1.0</CellOption>
-              <CellOption>composeType:Absolute absolute:16</CellOption>
-              <CellOption>composeType:Percentage percentage:1.0</CellOption>
-            </att.Rows>
-            <att.Columns>
-              <CellOption>composeType:Absolute absolute:16</CellOption>
-              <CellOption>composeType:Absolute absolute:3</CellOption>
-              <CellOption>composeType:Percentage percentage:1.0</CellOption>
-            </att.Columns>
+          <SharedSizeItem Group="ColorItem" SharedWidth="true" SharedHeight="false" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <Button>
+              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              <Table AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElementAndChildren">
+                <att.Rows>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                  <CellOption>composeType:Absolute absolute:16</CellOption>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                </att.Rows>
+                <att.Columns>
+                  <CellOption>composeType:Absolute absolute:16</CellOption>
+                  <CellOption>composeType:Absolute absolute:3</CellOption>
+                  <CellOption>composeType:Percentage percentage:1.0</CellOption>
+                </att.Columns>
 
-            <Cell Site="row:1 column:0">
-              <SolidBackground Color-eval="ViewModel.ItemColor"/>
-            </Cell>
+                <Cell Site="row:1 column:0">
+                  <SolidBackground Color-eval="ViewModel.ItemColor"/>
+                </Cell>
 
-            <Cell Site="row:0 column:2 rowSpan:3">
-              <SolidLabel Text-eval="ViewModel.ItemName" Font-bind="self.Font" Color-bind="self.TextColor" Ellipse="true" VerticalAlignment="Center"/>
-            </Cell>
-          </Table>
+                <Cell Site="row:0 column:2 rowSpan:3">
+                  <SolidLabel Text-eval="ViewModel.ItemName" Font-bind="self.Font" Color="#FFFFFF" Ellipse="true" VerticalAlignment="Center"/>
+                </Cell>
+              </Table>
+            </Button>
+          </SharedSizeItem>
         </ControlTemplate>
-      </Instance>
-    </Instance>
-
-    <Instance name="ColorListItemTemplateResource">
-      <Instance ref.CodeBehind="false" ref.Class="demo::ColorListItemTemplate" xmlns:x="demo::*">
-        <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
-        <TextListItemTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
-          <x:ColorBomboItemTemplate ViewModel-eval="ViewModel" Font-bind="self.Font" AlignmentToParent="left:6 top:6 right:6 bottom:6"/>
-        </TextListItemTemplate>
       </Instance>
     </Instance>
   </Folder>
