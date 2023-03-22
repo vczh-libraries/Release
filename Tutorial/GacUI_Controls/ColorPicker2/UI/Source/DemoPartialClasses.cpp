@@ -304,9 +304,6 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetEllipse(true);
-		}
-		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
@@ -452,6 +449,12 @@ Class (::demo::MainWindowConstructor)
 		(this->__vwsn_precompile_7 = new ::vl::presentation::compositions::GuiRepeatFlowComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetItemTemplate(vl::Func(::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetColumnPadding(static_cast<::vl::vint>(2));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetRowPadding(static_cast<::vl::vint>(2));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
