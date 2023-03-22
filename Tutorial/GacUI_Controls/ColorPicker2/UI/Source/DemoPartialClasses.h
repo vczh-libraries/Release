@@ -28,11 +28,10 @@ namespace vl_workflow_global
 	struct __vwsnf2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize_;
 	struct __vwsnf3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize_;
 	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	class __vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc2_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc3_Demo_demo_ColorListItemTemplateConstructor___vwsn_demo_ColorListItemTemplate_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 }
 
 namespace demo
@@ -136,28 +135,33 @@ namespace demo
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<IViewModel>;
 #endif
 	public:
+		virtual ::vl::presentation::Color GetSelectedColor() = 0;
+		virtual void SetSelectedColor(::vl::presentation::Color __vwsn_value_) = 0;
+		::vl::Event<void()> SelectedColorChanged;
 		virtual ::vl::collections::LazyList<::vl::Ptr<::demo::IColorItem>> GetColorItems() = 0;
 	};
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
+		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
 	protected:
 		::vl::Ptr<::demo::IViewModel> ViewModel;
+		::vl::presentation::controls::GuiComboButton* comboColor;
 		::demo::MainWindow* __vwsn_precompile_0;
 		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_1;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_2;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_3;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_4;
-		::vl::presentation::controls::GuiComboBoxListControl* __vwsn_precompile_5;
-		::vl::presentation::controls::GuiBindableTextList* __vwsn_precompile_6;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_8;
+		::vl::presentation::controls::GuiControl* __vwsn_precompile_5;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_7;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_8;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_9;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_10;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -166,9 +170,8 @@ namespace demo
 	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
 	{
 		friend class ::demo::MainWindowConstructor;
+		friend class ::vl_workflow_global::__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
@@ -230,25 +233,7 @@ Closures
 
 		__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
-		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsn_item_) const;
-	};
-
-	struct __vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf5_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::templates::GuiListItemTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
-	};
-
-	struct __vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf6_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::templates::GuiTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
+		void operator()(const ::vl::reflection::description::Value& __vwsn_value_) const;
 	};
 
 	class __vwsnc1_Demo_demo_ColorBomboItemTemplateConstructor___vwsn_demo_ColorBomboItemTemplate_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
@@ -300,6 +285,24 @@ Closures
 		bool __vwsn_bind_closed_ = false;
 		void __vwsn_bind_activator_();
 		void __vwsn_bind_callback_0_0(::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_bind_callback_argument_0, ::vl::presentation::compositions::GuiEventArgs* __vwsn_bind_callback_argument_1);
+		bool Open() override;
+		bool Update() override;
+		bool Close() override;
+	};
+
+	class __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription
+	{
+	public:
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		::vl::Ptr<::demo::IViewModel> __vwsn_bind_cache_0;
+		::vl::Ptr<::vl::reflection::description::IEventHandler> __vwsn_bind_handler_0_0;
+		bool __vwsn_bind_opened_ = false;
+		bool __vwsn_bind_closed_ = false;
+		void __vwsn_bind_activator_();
+		void __vwsn_bind_callback_0_0();
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;

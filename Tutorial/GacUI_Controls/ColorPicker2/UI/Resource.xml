@@ -27,6 +27,7 @@
           
           interface IViewModel
           {
+            prop SelectedColor : Color {}
             prop ColorItems : IColorItem^{} {const, not observe}
           }
         }
@@ -38,7 +39,7 @@
     <Instance name="MainWindowResource">
       <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
         <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
-        <Window Text="ColorPicker" ClientSize="x:360 y:120">
+        <Window Text="ColorPicker2" ClientSize="x:360 y:120">
           <att.ContainerComposition-set PreferredMinSize="x:360 y:120"/>
           <Table CellPadding="10" AlignmentToParent="left:0 top:0 right:0 bottom:0">
             <att.Rows>
@@ -52,20 +53,21 @@
             </att.Columns>
 
             <Cell Site="row:0 column:0">
-              <Label Text="ComboBox and BindableTextList using ItemTemplate:"/>
+              <Label Text="ComboButton using Custom Dropdown Control:"/>
             </Cell>
             <Cell Site="row:1 column:0">
-              <ComboBox SelectedIndex-eval="0">
-                <att.ItemTemplate>demo::ColorBomboItemTemplate</att.ItemTemplate>
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                <att.ListControl>
-                  <BindableTextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IColorItem^">
-                    <att.TextProperty>ItemName</att.TextProperty>
-                    <att.ItemSource-eval>ViewModel.ColorItems</att.ItemSource-eval>
-                    <att.ItemTemplate>demo::ColorListItemTemplate</att.ItemTemplate>
-                  </BindableTextList>
-                </att.ListControl>
-              </ComboBox>
+              <ComboButton ref.Name="comboColor" Alt="K">
+                <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5" PreferredMinSize="x:80 y:24"/>
+                <att.ContainerComposition-set>
+                  <Bounds AlignmentToParent="left:2 top:2 right:2 bottom:2">
+                    <SolidBackground Color-bind="ViewModel.SelectedColor"/>
+                  </Bounds>
+                </att.ContainerComposition-set>
+                <att.DropdownControl>
+                  <GroupBox Text="Choose a Color:">
+                  </GroupBox>
+                </att.DropdownControl>
+              </ComboButton>
             </Cell>
           </Table>
         </Window>

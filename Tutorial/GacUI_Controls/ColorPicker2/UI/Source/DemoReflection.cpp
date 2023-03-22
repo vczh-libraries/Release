@@ -97,7 +97,11 @@ namespace vl
 			BEGIN_INTERFACE_MEMBER(::demo::IViewModel)
 				CLASS_MEMBER_BASE(::vl::reflection::IDescriptable)
 				CLASS_MEMBER_METHOD(GetColorItems, NO_PARAMETER)
+				CLASS_MEMBER_METHOD(GetSelectedColor, NO_PARAMETER)
+				CLASS_MEMBER_METHOD(SetSelectedColor, { L"__vwsn_value_" })
+				CLASS_MEMBER_EVENT(SelectedColorChanged)
 				CLASS_MEMBER_PROPERTY_READONLY(ColorItems, GetColorItems)
+				CLASS_MEMBER_PROPERTY_EVENT(SelectedColor, GetSelectedColor, SetSelectedColor, SelectedColorChanged)
 			END_INTERFACE_MEMBER(::demo::IViewModel)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
@@ -115,6 +119,7 @@ namespace vl
 				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_10)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_4)
@@ -122,7 +127,9 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_6)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_7)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_8)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_9)
 				CLASS_MEMBER_FIELD(ViewModel)
+				CLASS_MEMBER_FIELD(comboColor)
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 #undef _

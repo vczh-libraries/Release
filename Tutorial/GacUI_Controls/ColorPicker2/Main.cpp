@@ -32,6 +32,7 @@ class ViewModel : public Object, public demo::IViewModel
 {
 protected:
 	List<Ptr<demo::IColorItem>>		items;
+	Color							selectedColor;
 
 public:
 	ViewModel()
@@ -52,6 +53,20 @@ public:
 		items.Add(Ptr(new ColorItem(L"Fuchsia", L"#FF00FF")));
 		items.Add(Ptr(new ColorItem(L"Aqua",    L"#00FFFF")));
 		items.Add(Ptr(new ColorItem(L"White",   L"#FFFFFF")));
+	}
+
+	Color GetSelectedColor()override
+	{
+		return selectedColor;
+	}
+
+	void SetSelectedColor(Color value)override
+	{
+		if (selectedColor != value)
+		{
+			selectedColor = value;
+			SelectedColorChanged();
+		}
 	}
 
 	LazyList<Ptr<demo::IColorItem>> GetColorItems()override

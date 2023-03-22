@@ -63,6 +63,14 @@ namespace vl
 				{
 					INVOKEGET_INTERFACE_PROXY_NOPARAMS(GetColorItems);
 				}
+				::vl::presentation::Color GetSelectedColor() override
+				{
+					INVOKEGET_INTERFACE_PROXY_NOPARAMS(GetSelectedColor);
+				}
+				void SetSelectedColor(::vl::presentation::Color __vwsn_value_) override
+				{
+					INVOKE_INTERFACE_PROXY(SetSelectedColor, __vwsn_value_);
+				}
 			END_INTERFACE_PROXY(::demo::IViewModel)
 #endif
 #endif
