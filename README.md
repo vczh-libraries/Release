@@ -22,9 +22,9 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ## Synchronized latest releases from multiple platforms:
 
-- **GacUI**: Not specified yet
+- **GacUI**: [1.2.4.0](https://github.com/vczh-libraries/Release/releases/tag/1.2.4.0)
 - **iGac**: Not specified yet
-- **gGac**: Not specified yet
+- **gGac**: [1.2.4.0](https://github.com/vczh-libraries/gGac/releases/tag/1.2.4.0)
 
 ## Visual Studio Extension
 
