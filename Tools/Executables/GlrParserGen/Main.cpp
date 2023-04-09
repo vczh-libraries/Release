@@ -321,39 +321,6 @@ int main(int argc, char* argv[])
 		syntaxManager.BuildAutomaton(lexerManager.Tokens().Count(), executable, metadata);
 		EXIT_IF_COMPILE_FAIL(global);
 
-		for (auto elementExport : XmlGetElements(elementSyntax, L"Export"))
-		{
-			WString rule;
-			READ_ATTRIBUTE(rule, elementExport, L"rule", L"/Parser/Syntax@file[@name=\"" + name + L"\"]/Export@rule");
-
-			vint index = syntaxManager.Rules().Keys().IndexOf(rule);
-			if (index == -1)
-			{
-				EXIT_ERROR(L"Rule \"" + rule + L"\" is not defined in the syntax.");
-			}
-
-			auto ruleSymbol = syntaxManager.Rules().Values()[index];
-			syntaxManager.parsableRules.Add(ruleSymbol);
-
-			if (auto attType = XmlGetAttribute(elementExport, L"type"))
-			{
-				syntaxManager.ruleTypes.Add(ruleSymbol, attType->value.value);
-			}
-			else
-			{
-				auto classSymbol = ruleSymbol->ruleType;
-				auto classFile = classSymbol->Owner();
-				auto type =
-					From(classFile->cppNss)
-						.Reverse()
-						.Aggregate(
-							classFile->classPrefix + classSymbol->Name(),
-							[](auto&& a, auto&& b) { return b + L"::" + a; }
-					);
-				syntaxManager.ruleTypes.Add(ruleSymbol, type);
-			}
-		}
-
 		GenerateSyntaxFileNames(syntaxManager, output);
 		WriteSyntaxFiles(syntaxManager, executable, metadata, output, files);
 	}

@@ -40,15 +40,15 @@ int main(int argc, char* argv[])
 		CopyFrom(
 			categorizedOutput,
 			XmlGetElements(XmlGetElement(config->rootElement, L"output"), L"codepair")
-				.Select([&](Ptr<XmlElement> e)->Pair<WString, Tuple<WString, bool>>
+				.Select([&](Ptr<XmlElement> e)
 				{
-					return {
+					return Pair(
 						XmlGetAttribute(e, L"category")->value.value,
-						{
+						Tuple(
 							XmlGetAttribute(e, L"filename")->value.value,
 							XmlGetAttribute(e, L"generate")->value.value == L"true"
-						}
-					};
+						)
+					);
 				})
 		);
 	}
@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
 	Dictionary<WString, FilePath> skippedImportFiles;				// file name -> file path
 	for (vint i = 0; i < categorizedOutput.Count(); i++)
 	{
-		if (!categorizedOutput.Values()[i].f1)
+		if (!categorizedOutput.Values()[i].get<1>())
 		{
 			auto category = categorizedOutput.Keys()[i];
 			for (auto skippedImportFile : categorizedHeaderFiles[category])
@@ -206,7 +206,7 @@ int main(int argc, char* argv[])
 		{
 			auto key = inputFileToCategories.Keys()[i];
 			auto value = inputFileToCategories.Values()[i];
-			inputFileToOutputFiles.Add(key, categorizedOutput[value].f0);
+			inputFileToOutputFiles.Add(key, categorizedOutput[value].get<0>());
 		}
 	}
 
@@ -233,7 +233,7 @@ int main(int argc, char* argv[])
 				})
 				.Select([&](vint nodeIndex)
 				{
-					return categorizedOutput[componentToCategoryNames[popCategories.nodes[nodeIndex].component][0]].f0 + L".h";
+					return categorizedOutput[componentToCategoryNames[popCategories.nodes[nodeIndex].component][0]].get<0>() + L".h";
 				})
 			);
 	}
@@ -243,13 +243,13 @@ int main(int argc, char* argv[])
 	for (vint i = 0; i < popCategories.components.Count(); i++)
 	{
 		auto categoryName = componentToCategoryNames[i][0];
-		auto outputPath = outputFolder / (categorizedOutput[categoryName].f0 + L".h");
-		auto outputIncludeOnlyPath = outputIncludeOnlyFolder / (categorizedOutput[categoryName].f0 + L".h");
+		auto outputPath = outputFolder / (categorizedOutput[categoryName].get<0>() + L".h");
+		auto outputIncludeOnlyPath = outputIncludeOnlyFolder / (categorizedOutput[categoryName].get<0>() + L".h");
 
 		auto systemIncludes = Ptr(new SortedList<WString>);
 		categorizedSystemIncludes.Add(categoryName, systemIncludes);
 
-		if (categorizedOutput[categoryName].f1)
+		if (categorizedOutput[categoryName].get<1>())
 		{
 			vint headerIndex = categorizedHeaderFiles.Keys().IndexOf(categoryName);
 			if (headerIndex == -1) continue;
@@ -272,13 +272,13 @@ int main(int argc, char* argv[])
 	for (vint i = 0; i < popCategories.components.Count(); i++)
 	{
 		auto categoryName = componentToCategoryNames[i][0];
-		if (categorizedOutput[categoryName].f1)
+		if (categorizedOutput[categoryName].get<1>())
 		{
-			WString outputHeader[] = { categorizedOutput[categoryName].f0 + L".h" };
+			WString outputHeader[] = { categorizedOutput[categoryName].get<0>() + L".h"};
 			vint headerIndex = categorizedHeaderFiles.Keys().IndexOf(categoryName);
 
-			auto outputPath = outputFolder / (categorizedOutput[categoryName].f0 + L".cpp");
-			auto outputIncludeOnlyPath = outputIncludeOnlyFolder / (categorizedOutput[categoryName].f0 + L".cpp");
+			auto outputPath = outputFolder / (categorizedOutput[categoryName].get<0>() + L".cpp");
+			auto outputIncludeOnlyPath = outputIncludeOnlyFolder / (categorizedOutput[categoryName].get<0>() + L".cpp");
 			Combine(
 				inputFileToOutputFiles,
 				skippedImportFiles,

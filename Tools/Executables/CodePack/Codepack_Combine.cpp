@@ -29,11 +29,9 @@ void CollectConditions(
 	vint index = conditions.Keys().IndexOf(file);
 	if (index != -1)
 	{
-		const auto& tuples = conditions.GetByIndex(index);
-		for (vint i = 0; i < tuples.Count(); i++)
+		for (auto [condition, path] : conditions.GetByIndex(index))
 		{
-			auto condition = tuples[i].f0;
-			auto includeFile = inputFileToOutputFiles[tuples[i].f1];
+			auto includeFile = inputFileToOutputFiles[path];
 			if (!categorizedConditions.Contains(condition, includeFile))
 			{
 				categorizedConditions.Add(condition, includeFile);
