@@ -50,8 +50,8 @@ namespace vl_workflow_global
 	class __vwsnc15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
-	class __vwsnc18_Demo_demo_StringResource_Get__demo_IStringResourceStrings;
-	class __vwsnc19_Demo_demo_StringResource_Get__demo_IStringResourceStrings;
+	class __vwsnc18_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings;
+	class __vwsnc19_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings;
 	class __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
@@ -217,13 +217,15 @@ namespace demo
 
 	class StringResource : public ::vl::Object, public ::vl::reflection::Description<StringResource>
 	{
-		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_StringResource_Get__demo_IStringResourceStrings;
-		friend class ::vl_workflow_global::__vwsnc19_Demo_demo_StringResource_Get__demo_IStringResourceStrings;
+		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings;
+		friend class ::vl_workflow_global::__vwsnc19_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StringResource>;
 #endif
 	public:
-		static ::vl::WString __vwsn_ls_First(const ::vl::collections::LazyList<::vl::WString>& __vwsn_ls_formats);
+		static ::vl::Ptr<::demo::IStringResourceStrings> __vwsn_ls_en_US_BuildStrings(::vl::Locale __vwsn_ls_locale);
+		static ::vl::Ptr<::demo::IStringResourceStrings> __vwsn_ls_zh_CN_BuildStrings(::vl::Locale __vwsn_ls_locale);
+		static void Install(::vl::Locale __vwsn_ls_locale, ::vl::Ptr<::demo::IStringResourceStrings> __vwsn_ls_impl);
 		static ::vl::Ptr<::demo::IStringResourceStrings> Get(::vl::Locale __vwsn_ls_locale);
 		StringResource();
 	};
@@ -238,6 +240,8 @@ namespace vl_workflow_global
 	class Demo
 	{
 	public:
+
+		::vl::Ptr<::vl::reflection::description::IValueDictionary> __vwsn_ls_StringResource;
 
 		static Demo& Instance();
 	};
@@ -558,12 +562,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc18_Demo_demo_StringResource_Get__demo_IStringResourceStrings : public ::vl::Object, public virtual ::demo::IStringResourceStrings
+	class __vwsnc18_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings : public ::vl::Object, public virtual ::demo::IStringResourceStrings
 	{
 	public:
 		::vl::Locale __vwsn_ls_locale;
 
-		__vwsnc18_Demo_demo_StringResource_Get__demo_IStringResourceStrings(::vl::Locale __vwsnctor___vwsn_ls_locale);
+		__vwsnc18_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings(::vl::Locale __vwsnctor___vwsn_ls_locale);
 
 		::vl::WString Currency(const ::vl::WString& __vwsn_ls_0) override;
 		::vl::WString DateFormat(::vl::DateTime __vwsn_ls_0) override;
@@ -579,12 +583,12 @@ Closures
 		::vl::WString YearMonthDate(::vl::DateTime __vwsn_ls_0) override;
 	};
 
-	class __vwsnc19_Demo_demo_StringResource_Get__demo_IStringResourceStrings : public ::vl::Object, public virtual ::demo::IStringResourceStrings
+	class __vwsnc19_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings : public ::vl::Object, public virtual ::demo::IStringResourceStrings
 	{
 	public:
 		::vl::Locale __vwsn_ls_locale;
 
-		__vwsnc19_Demo_demo_StringResource_Get__demo_IStringResourceStrings(::vl::Locale __vwsnctor___vwsn_ls_locale);
+		__vwsnc19_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings(::vl::Locale __vwsnctor___vwsn_ls_locale);
 
 		::vl::WString Currency(const ::vl::WString& __vwsn_ls_0) override;
 		::vl::WString DateFormat(::vl::DateTime __vwsn_ls_0) override;

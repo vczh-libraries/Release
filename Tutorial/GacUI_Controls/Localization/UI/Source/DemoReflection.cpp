@@ -102,8 +102,10 @@ namespace vl
 			BEGIN_CLASS_MEMBER(::demo::StringResource)
 				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::StringResource>(), NO_PARAMETER)
-				CLASS_MEMBER_STATIC_METHOD(__vwsn_ls_First, { L"__vwsn_ls_formats" })
+				CLASS_MEMBER_STATIC_METHOD(__vwsn_ls_en_US_BuildStrings, { L"__vwsn_ls_locale" })
+				CLASS_MEMBER_STATIC_METHOD(__vwsn_ls_zh_CN_BuildStrings, { L"__vwsn_ls_locale" })
 				CLASS_MEMBER_STATIC_METHOD(Get, { L"__vwsn_ls_locale" })
+				CLASS_MEMBER_STATIC_METHOD(Install, { L"__vwsn_ls_locale" _ L"__vwsn_ls_impl" })
 			END_CLASS_MEMBER(::demo::StringResource)
 
 #undef _
