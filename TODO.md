@@ -4,7 +4,6 @@ See `TODO.md` in each repos.
 
 ## Known Issue
 
-- In order to support vcpkg in a better way, build script needs to write commit numbers of all repos to a file, e.g. `Import/Commits.txt`.
 - Check if envvar "UseMultiToolTask" is "True" in Build.ps1
 
 ## Roadmap
@@ -16,4 +15,5 @@ See `TODO.md` in each repos.
 
 ## Ubuntu Development Environment
 
-- Consider recognize referenced projects automatically.
+- `vmake` recognizes referenced projects automatically.
+- `vmake` generates multiple targets to share libs.
