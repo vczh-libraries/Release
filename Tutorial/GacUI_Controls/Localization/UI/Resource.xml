@@ -17,8 +17,8 @@
         <String Name="YearMonthDate" Text="YearMonthDate: $(0:YearMonthDate)"/>
         <String Name="ShortTime" Text="ShortTime: $(0:ShortTime)"/>
         <String Name="LongTime" Text="LongTime: $(0:LongTime)"/>
-        <String Name="DateFormat" Text="DateFormat: $(0:Date:yyyy)"/>
-        <String Name="TimeFormat" Text="TimeFormat: $(0:Time:HH)"/>
+        <String Name="DateFormat" Text="CustomizedDateFormat(yyyy): $(0:Date:yyyy)"/>
+        <String Name="TimeFormat" Text="CustomizedTimeFormat(HH): $(0:Time:HH)"/>
         <String Name="Number" Text="Number: $(0:Number)"/>
         <String Name="Currency" Text="Currency: $(0:Currency)"/>
         <String Name="Sentence" Text="$($)Good morning, $(0)!$($)"/>
@@ -32,8 +32,8 @@
         <String Name="YearMonthDate" Text="年月：$(0:YearMonthDate)"/>
         <String Name="ShortTime" Text="短时间：$(0:ShortTime)"/>
         <String Name="LongTime" Text="长时间：$(0:LongTime)"/>
-        <String Name="DateFormat" Text="日期格式：$(0:Date:yyyy)"/>
-        <String Name="TimeFormat" Text="时间格式： $(0:Time:HH)"/>
+        <String Name="DateFormat" Text="自定义日期格式(yyyy)：$(0:Date:yyyy)"/>
+        <String Name="TimeFormat" Text="自定义时间格式(HH)： $(0:Time:HH)"/>
         <String Name="Number" Text="数字：$(0:Number)"/>
         <String Name="Currency" Text="货币：$(0:Currency)"/>
         <String Name="Sentence" Text="$($)$(0)，早上好！$($)"/>
@@ -41,6 +41,25 @@
         <String Name="Label" Text="语言设置："/>
       </Strings>
     </LocalizedStrings>
+  </LocalizedStrings>
+
+  <LocalizedStrings name="StringInjectionResource">
+    <LocalizedStringsInjection ref.Class="demo::StringInjectionResource" ref.InjectInto="demo::StringResource">
+      <Strings Locales="ja-JP">
+        <String Name="ShortDate" Text="短い形式の日付：$(0:ShortDate)"/>
+        <String Name="LongDate" Text="長い形式の日付：$(0:LongDate)"/>
+        <String Name="YearMonthDate" Text="年月：$(0:YearMonthDate)"/>
+        <String Name="ShortTime" Text="短い形式の時刻：$(0:ShortTime)"/>
+        <String Name="LongTime" Text="長い形式の時刻：$(0:LongTime)"/>
+        <String Name="DateFormat" Text="カスタム日付パターン(yyyy)：$(0:Date:yyyy)"/>
+        <String Name="TimeFormat" Text="カスタム時刻パターン(HH)：$(0:Time:HH)"/>
+        <String Name="Number" Text="数値：$(0:Number)"/>
+        <String Name="Currency" Text="通貨：$(0:Currency)"/>
+        <String Name="Sentence" Text="$($)おはよう、$(0)さん!$($)"/>
+        <String Name="Title" Text="ローカリゼーション"/>
+        <String Name="Label" Text="選択されたロケール："/>
+      </Strings>
+    </LocalizedStringsInjection>
   </LocalizedStrings>
   
   <Instance name="MainWindowResource">
@@ -102,6 +121,7 @@
                   <att.Items>
                     <_ Text="en-US"/>
                     <_ Text="zh-CN"/>
+                    <_ Text="ja-JP"/>
                   </att.Items>
                 </TextList>
               </att.ListControl>

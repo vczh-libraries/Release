@@ -39,6 +39,7 @@ namespace vl
 			DECL_TYPE_INFO(::demo::IStringResourceStrings)
 			DECL_TYPE_INFO(::demo::MainWindow)
 			DECL_TYPE_INFO(::demo::MainWindowConstructor)
+			DECL_TYPE_INFO(::demo::StringInjectionResource)
 			DECL_TYPE_INFO(::demo::StringResource)
 
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA

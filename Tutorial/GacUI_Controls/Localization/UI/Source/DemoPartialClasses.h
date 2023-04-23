@@ -50,9 +50,10 @@ namespace vl_workflow_global
 	class __vwsnc15_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc16_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc17_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
-	class __vwsnc18_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings;
-	class __vwsnc19_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings;
+	class __vwsnc18_Demo_demo_StringInjectionResource___vwsn_ls_ja_JP_BuildStrings__demo_IStringResourceStrings;
+	class __vwsnc19_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings;
 	class __vwsnc1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
+	class __vwsnc20_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings;
 	class __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
 	class __vwsnc4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription;
@@ -68,6 +69,7 @@ namespace demo
 	class IStringResourceStrings;
 	class MainWindowConstructor;
 	class MainWindow;
+	class StringInjectionResource;
 	class StringResource;
 
 	class IStringResourceStrings : public virtual ::vl::reflection::IDescriptable, public ::vl::reflection::Description<IStringResourceStrings>
@@ -140,11 +142,11 @@ namespace demo
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_3;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_4;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_5;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_6;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_7;
-		::vl::presentation::controls::GuiTextList* __vwsn_precompile_8;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_9;
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_10;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_8;
+		::vl::presentation::controls::GuiTextList* __vwsn_precompile_9;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_10;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_11;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_12;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_13;
@@ -156,6 +158,7 @@ namespace demo
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_19;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_20;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_21;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_22;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -215,10 +218,21 @@ namespace demo
 		~MainWindow();
 	};
 
+	class StringInjectionResource : public ::vl::Object, public ::vl::reflection::Description<StringInjectionResource>
+	{
+		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_StringInjectionResource___vwsn_ls_ja_JP_BuildStrings__demo_IStringResourceStrings;
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
+		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StringInjectionResource>;
+#endif
+	public:
+		static ::vl::Ptr<::demo::IStringResourceStrings> __vwsn_ls_ja_JP_BuildStrings(::vl::Locale __vwsn_ls_locale);
+		StringInjectionResource();
+	};
+
 	class StringResource : public ::vl::Object, public ::vl::reflection::Description<StringResource>
 	{
-		friend class ::vl_workflow_global::__vwsnc18_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings;
-		friend class ::vl_workflow_global::__vwsnc19_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings;
+		friend class ::vl_workflow_global::__vwsnc19_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings;
+		friend class ::vl_workflow_global::__vwsnc20_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StringResource>;
 #endif
@@ -562,12 +576,12 @@ Closures
 		bool Close() override;
 	};
 
-	class __vwsnc18_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings : public ::vl::Object, public virtual ::demo::IStringResourceStrings
+	class __vwsnc18_Demo_demo_StringInjectionResource___vwsn_ls_ja_JP_BuildStrings__demo_IStringResourceStrings : public ::vl::Object, public virtual ::demo::IStringResourceStrings
 	{
 	public:
 		::vl::Locale __vwsn_ls_locale;
 
-		__vwsnc18_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings(::vl::Locale __vwsnctor___vwsn_ls_locale);
+		__vwsnc18_Demo_demo_StringInjectionResource___vwsn_ls_ja_JP_BuildStrings__demo_IStringResourceStrings(::vl::Locale __vwsnctor___vwsn_ls_locale);
 
 		::vl::WString Currency(const ::vl::WString& __vwsn_ls_0) override;
 		::vl::WString DateFormat(::vl::DateTime __vwsn_ls_0) override;
@@ -583,12 +597,12 @@ Closures
 		::vl::WString YearMonthDate(::vl::DateTime __vwsn_ls_0) override;
 	};
 
-	class __vwsnc19_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings : public ::vl::Object, public virtual ::demo::IStringResourceStrings
+	class __vwsnc19_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings : public ::vl::Object, public virtual ::demo::IStringResourceStrings
 	{
 	public:
 		::vl::Locale __vwsn_ls_locale;
 
-		__vwsnc19_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings(::vl::Locale __vwsnctor___vwsn_ls_locale);
+		__vwsnc19_Demo_demo_StringResource___vwsn_ls_en_US_BuildStrings__demo_IStringResourceStrings(::vl::Locale __vwsnctor___vwsn_ls_locale);
 
 		::vl::WString Currency(const ::vl::WString& __vwsn_ls_0) override;
 		::vl::WString DateFormat(::vl::DateTime __vwsn_ls_0) override;
@@ -621,6 +635,27 @@ Closures
 		bool Open() override;
 		bool Update() override;
 		bool Close() override;
+	};
+
+	class __vwsnc20_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings : public ::vl::Object, public virtual ::demo::IStringResourceStrings
+	{
+	public:
+		::vl::Locale __vwsn_ls_locale;
+
+		__vwsnc20_Demo_demo_StringResource___vwsn_ls_zh_CN_BuildStrings__demo_IStringResourceStrings(::vl::Locale __vwsnctor___vwsn_ls_locale);
+
+		::vl::WString Currency(const ::vl::WString& __vwsn_ls_0) override;
+		::vl::WString DateFormat(::vl::DateTime __vwsn_ls_0) override;
+		::vl::WString Label() override;
+		::vl::WString LongDate(::vl::DateTime __vwsn_ls_0) override;
+		::vl::WString LongTime(::vl::DateTime __vwsn_ls_0) override;
+		::vl::WString Number(const ::vl::WString& __vwsn_ls_0) override;
+		::vl::WString Sentence(const ::vl::WString& __vwsn_ls_0) override;
+		::vl::WString ShortDate(::vl::DateTime __vwsn_ls_0) override;
+		::vl::WString ShortTime(::vl::DateTime __vwsn_ls_0) override;
+		::vl::WString TimeFormat(::vl::DateTime __vwsn_ls_0) override;
+		::vl::WString Title() override;
+		::vl::WString YearMonthDate(::vl::DateTime __vwsn_ls_0) override;
 	};
 
 	class __vwsnc2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize__vl_reflection_description_IValueSubscription : public ::vl::Object, public virtual ::vl::reflection::description::IValueSubscription

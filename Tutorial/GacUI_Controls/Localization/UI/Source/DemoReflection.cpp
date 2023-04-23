@@ -33,6 +33,7 @@ namespace vl
 			IMPL_CPP_TYPE_INFO(demo::IStringResourceStrings)
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
 			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
+			IMPL_CPP_TYPE_INFO(demo::StringInjectionResource)
 			IMPL_CPP_TYPE_INFO(demo::StringResource)
 
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
@@ -87,6 +88,7 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_20)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_21)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_22)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_4)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_5)
@@ -98,6 +100,12 @@ namespace vl
 				CLASS_MEMBER_FIELD(listLocales)
 				CLASS_MEMBER_FIELD(self)
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
+
+			BEGIN_CLASS_MEMBER(::demo::StringInjectionResource)
+				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
+				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::StringInjectionResource>(), NO_PARAMETER)
+				CLASS_MEMBER_STATIC_METHOD(__vwsn_ls_ja_JP_BuildStrings, { L"__vwsn_ls_locale" })
+			END_CLASS_MEMBER(::demo::StringInjectionResource)
 
 			BEGIN_CLASS_MEMBER(::demo::StringResource)
 				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
@@ -117,6 +125,7 @@ namespace vl
 					ADD_TYPE_INFO(::demo::IStringResourceStrings)
 					ADD_TYPE_INFO(::demo::MainWindow)
 					ADD_TYPE_INFO(::demo::MainWindowConstructor)
+					ADD_TYPE_INFO(::demo::StringInjectionResource)
 					ADD_TYPE_INFO(::demo::StringResource)
 				}
 
