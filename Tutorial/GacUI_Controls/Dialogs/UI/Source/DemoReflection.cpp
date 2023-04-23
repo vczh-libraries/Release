@@ -30,7 +30,6 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
-			IMPL_CPP_TYPE_INFO(demo::DialogStringsInjection)
 			IMPL_CPP_TYPE_INFO(demo::LocalizedColorDialogTabPage)
 			IMPL_CPP_TYPE_INFO(demo::LocalizedColorDialogTabPageConstructor)
 			IMPL_CPP_TYPE_INFO(demo::LocalizedFileDialogTabPage)
@@ -44,12 +43,6 @@ namespace vl
 
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
-			BEGIN_CLASS_MEMBER(::demo::DialogStringsInjection)
-				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
-				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::DialogStringsInjection>(), NO_PARAMETER)
-				CLASS_MEMBER_STATIC_METHOD(__vwsn_ls_zh_CN_BuildStrings, { L"__vwsn_ls_locale" })
-			END_CLASS_MEMBER(::demo::DialogStringsInjection)
-
 			BEGIN_CLASS_MEMBER(::demo::LocalizedColorDialogTabPage)
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiTabPage)
 				CLASS_MEMBER_BASE(::demo::LocalizedColorDialogTabPageConstructor)
@@ -254,7 +247,6 @@ namespace vl
 			public:
 				void Load(ITypeManager* manager)
 				{
-					ADD_TYPE_INFO(::demo::DialogStringsInjection)
 					ADD_TYPE_INFO(::demo::LocalizedColorDialogTabPage)
 					ADD_TYPE_INFO(::demo::LocalizedColorDialogTabPageConstructor)
 					ADD_TYPE_INFO(::demo::LocalizedFileDialogTabPage)

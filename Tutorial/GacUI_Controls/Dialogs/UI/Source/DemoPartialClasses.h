@@ -33,12 +33,10 @@ namespace vl_workflow_global
 	struct __vwsno6_Demo_demo_LocalizedMessageDialogTabPageConstructor___vwsn_demo_LocalizedMessageDialogTabPage_Initialize_;
 	struct __vwsno7_Demo_demo_LocalizedMessageDialogTabPageConstructor___vwsn_demo_LocalizedMessageDialogTabPage_Initialize_;
 	struct __vwsno8_Demo_demo_LocalizedMessageDialogTabPageConstructor___vwsn_demo_LocalizedMessageDialogTabPage_Initialize_;
-	class __vwsnc1_Demo_demo_DialogStringsInjection___vwsn_ls_zh_CN_BuildStrings__gaclib_controls_IDialogStringsStrings;
 }
 
 namespace demo
 {
-	class DialogStringsInjection;
 	class LocalizedColorDialogTabPageConstructor;
 	class LocalizedColorDialogTabPage;
 	class LocalizedFileDialogTabPageConstructor;
@@ -49,17 +47,6 @@ namespace demo
 	class LocalizedMessageDialogTabPage;
 	class MainWindowConstructor;
 	class MainWindow;
-
-	class DialogStringsInjection : public ::vl::Object, public ::vl::reflection::Description<DialogStringsInjection>
-	{
-		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_DialogStringsInjection___vwsn_ls_zh_CN_BuildStrings__gaclib_controls_IDialogStringsStrings;
-#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DialogStringsInjection>;
-#endif
-	public:
-		static ::vl::Ptr<::gaclib_controls::IDialogStringsStrings> __vwsn_ls_zh_CN_BuildStrings(::vl::Locale __vwsn_ls_locale);
-		DialogStringsInjection();
-	};
 
 	class LocalizedColorDialogTabPageConstructor : public ::vl::Object, public ::vl::reflection::Description<LocalizedColorDialogTabPageConstructor>
 	{
@@ -424,52 +411,6 @@ Closures
 		__vwsno8_Demo_demo_LocalizedMessageDialogTabPageConstructor___vwsn_demo_LocalizedMessageDialogTabPage_Initialize_(::demo::LocalizedMessageDialogTabPageConstructor* __vwsnctorthis_0);
 
 		::vl::WString operator()(const ::vl::reflection::description::Value& __vwsno_1) const;
-	};
-
-	class __vwsnc1_Demo_demo_DialogStringsInjection___vwsn_ls_zh_CN_BuildStrings__gaclib_controls_IDialogStringsStrings : public ::vl::Object, public virtual ::gaclib_controls::IDialogStringsStrings
-	{
-	public:
-		__vwsnc1_Demo_demo_DialogStringsInjection___vwsn_ls_zh_CN_BuildStrings__gaclib_controls_IDialogStringsStrings();
-
-		::vl::WString Abort() override;
-		::vl::WString Blue() override;
-		::vl::WString Bold() override;
-		::vl::WString Cancel() override;
-		::vl::WString Color() override;
-		::vl::WString ColorDialogTitle() override;
-		::vl::WString Continue() override;
-		::vl::WString FileDialogAskCreateFile() override;
-		::vl::WString FileDialogAskOverrideFile() override;
-		::vl::WString FileDialogErrorEmptySelection() override;
-		::vl::WString FileDialogErrorFileExpected() override;
-		::vl::WString FileDialogErrorFileNotExist() override;
-		::vl::WString FileDialogErrorFolderNotExist() override;
-		::vl::WString FileDialogErrorMultipleSelectionNotEnabled() override;
-		::vl::WString FileDialogFileName() override;
-		::vl::WString FileDialogOpen() override;
-		::vl::WString FileDialogSave() override;
-		::vl::WString FileDialogTextLoadingFiles() override;
-		::vl::WString FileDialogTextLoadingFolders() override;
-		::vl::WString FontColorGroup() override;
-		::vl::WString FontColorGroup2() override;
-		::vl::WString FontDialogTitle() override;
-		::vl::WString FontEffectGroup() override;
-		::vl::WString FontNameGroup() override;
-		::vl::WString FontPreviewGroup() override;
-		::vl::WString FontSizeGroup() override;
-		::vl::WString Green() override;
-		::vl::WString HAA() override;
-		::vl::WString Ignore() override;
-		::vl::WString Italic() override;
-		::vl::WString No() override;
-		::vl::WString OK() override;
-		::vl::WString Red() override;
-		::vl::WString Retry() override;
-		::vl::WString Strikeline() override;
-		::vl::WString TryAgain() override;
-		::vl::WString Underline() override;
-		::vl::WString VAA() override;
-		::vl::WString Yes() override;
 	};
 }
 

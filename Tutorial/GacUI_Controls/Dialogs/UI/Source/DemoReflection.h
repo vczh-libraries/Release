@@ -36,7 +36,6 @@ namespace vl
 		namespace description
 		{
 #ifndef VCZH_DEBUG_NO_REFLECTION
-			DECL_TYPE_INFO(::demo::DialogStringsInjection)
 			DECL_TYPE_INFO(::demo::LocalizedColorDialogTabPage)
 			DECL_TYPE_INFO(::demo::LocalizedColorDialogTabPageConstructor)
 			DECL_TYPE_INFO(::demo::LocalizedFileDialogTabPage)
