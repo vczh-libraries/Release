@@ -86,7 +86,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="UI\FullControlTest\Source\DemoPartialClasses.cpp" />
+    <ClCompile Include="UI\FullControlTest\Source\DemoPartialClasses.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="UI\FullControlTest\Source\DocumentEditorBase.cpp" />
     <ClCompile Include="UI\FullControlTest\Source\MainWindow.cpp" />
   </ItemGroup>

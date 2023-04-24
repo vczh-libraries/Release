@@ -42,17 +42,11 @@ namespace demo
 	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
 		if (checkFrame->GetSelected())
 		{
-			SetControlTemplate([](const vl::reflection::description::Value&)->vl::presentation::templates::GuiControlTemplate*
-			{
-				return new darkskin::WindowTemplate();
-			});
+			SetControlThemeName(vl::presentation::theme::ThemeName::CustomFrameWindow);
 		}
 		else
 		{
-			SetControlTemplate([](const vl::reflection::description::Value&)->vl::presentation::templates::GuiControlTemplate*
-			{
-				return new SystemFrameWindowTemplate();
-			});
+			SetControlThemeName(vl::presentation::theme::ThemeName::SystemFrameWindow);
 		}
 	}/* USER_CONTENT_END() */
 
