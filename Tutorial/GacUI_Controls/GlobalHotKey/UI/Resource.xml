@@ -1,0 +1,78 @@
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\GlobalHotkey.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="Name">Demo</Text>
+    </Folder>
+  </Folder>
+
+  <Instance name="MainWindowResource">
+    <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
+      <Window ref.Name="self" Text="GlobalHotkey" ClientSize="x:640 y:480">
+        <MessageDialog ref.Name="dialog" Title="Global Hotkey" Text="The global hotkey is activated!"/>
+        <ToolstripCommand ref.Name="commandGlobal" Text="Show Message Dialog" ShortcutBuilder="global:Ctrl+Shift+Alt+D">
+          <ev.Executed-eval><![CDATA[
+            {
+              GuiApplication::GetApplication().InvokeInMainThread(self, func():void
+              {
+                dialog.ShowDialog();-eval
+              });
+            }
+          ]]></ev.Executed-eval>
+        </ToolstripCommand>
+
+        <ToolstripMenu ref.Name="menuRightClick">
+          <ToolstripGroupContainer>
+            <ToolstripGroup>
+              <MenuItemButton Command-ref="commandGlobal"/>
+            </ToolstripGroup>
+          </ToolstripGroupContainer>
+        </ToolstripMenu>
+
+        <Table CellPadding="5" BorderVisible="true" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+          <att.Rows>
+            <_>composeType:MinSize</_>
+            <_>composeType:Percentage percentage:1.0</_>
+          </att.Rows>
+          <att.Columns>
+            <_>composeType:Percentage percentage:1.0</_>
+          </att.Columns>
+
+          <Cell Site="row:0 column:0">
+            <ToolstripMenuBar>
+              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              <MenuBarButton Text="A Menu" Alt="A">
+                <att.SubMenu-set>
+                  <ToolstripGroup>
+                    <MenuItemButton Command-ref="commandGlobal"/>
+                  </ToolstripGroup>
+                </att.SubMenu-set>
+              </MenuBarButton>
+            </ToolstripMenuBar>
+          </Cell>
+
+          <Cell Site="row:1 column:1">
+            <Label Font="fontFamily:'Segoe UI' size:24" Text="Right click to show the menu">
+              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+            </Label>
+          </Cell>
+        </Table>
+
+        <att.ContainerComposition-set PreferredMinSize="x:320 y:240">
+          <ev.rightButtonDown-eval><![CDATA[
+            {
+              var b = self.ContainerComposition.GlobalBounds;
+              var p: Point = {
+                x:(arguments.x+b.x1)
+                y:(arguments.y+b.y1)
+                };
+              menuRightClick.ShowPopup(self, p);
+            }
+          ]]></ev.rightButtonDown-eval>
+        </att.ContainerComposition-set>
+      </Window>
+    </Instance>
+  </Instance>
+</Resource>

@@ -45,6 +45,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ColorPicker2", "ColorPicker
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dialogs", "Dialogs\Dialogs.vcxproj", "{5D6CC27A-A227-4A12-B56E-827E671F1445}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlobalHotKey", "GlobalHotKey\GlobalHotKey.vcxproj", "{817507B6-7715-4C02-8DEA-28F55F8E6C03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -203,6 +205,14 @@ Global
 		{5D6CC27A-A227-4A12-B56E-827E671F1445}.Release|Win32.Build.0 = Release|Win32
 		{5D6CC27A-A227-4A12-B56E-827E671F1445}.Release|x64.ActiveCfg = Release|x64
 		{5D6CC27A-A227-4A12-B56E-827E671F1445}.Release|x64.Build.0 = Release|x64
+		{817507B6-7715-4C02-8DEA-28F55F8E6C03}.Debug|Win32.ActiveCfg = Debug|Win32
+		{817507B6-7715-4C02-8DEA-28F55F8E6C03}.Debug|Win32.Build.0 = Debug|Win32
+		{817507B6-7715-4C02-8DEA-28F55F8E6C03}.Debug|x64.ActiveCfg = Debug|x64
+		{817507B6-7715-4C02-8DEA-28F55F8E6C03}.Debug|x64.Build.0 = Debug|x64
+		{817507B6-7715-4C02-8DEA-28F55F8E6C03}.Release|Win32.ActiveCfg = Release|Win32
+		{817507B6-7715-4C02-8DEA-28F55F8E6C03}.Release|Win32.Build.0 = Release|Win32
+		{817507B6-7715-4C02-8DEA-28F55F8E6C03}.Release|x64.ActiveCfg = Release|x64
+		{817507B6-7715-4C02-8DEA-28F55F8E6C03}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
