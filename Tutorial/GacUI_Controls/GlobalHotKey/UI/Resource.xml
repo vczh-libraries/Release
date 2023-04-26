@@ -17,7 +17,7 @@
             {
               GuiApplication::GetApplication().InvokeInMainThread(self, func():void
               {
-                dialog.ShowDialog();-eval
+                dialog.ShowDialog();
               });
             }
           ]]></ev.Executed-eval>
@@ -31,7 +31,7 @@
           </ToolstripGroupContainer>
         </ToolstripMenu>
 
-        <Table CellPadding="5" BorderVisible="true" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+        <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
           <att.Rows>
             <_>composeType:MinSize</_>
             <_>composeType:Percentage percentage:1.0</_>
@@ -53,9 +53,9 @@
             </ToolstripMenuBar>
           </Cell>
 
-          <Cell Site="row:1 column:1">
+          <Cell Site="row:1 column:0">
             <Label Font="fontFamily:'Segoe UI' size:24" Text="Right click to show the menu">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              <att.BoundsComposition-set AlignmentToParent="left:5 top:0 right:5 bottom:0"/>
             </Label>
           </Cell>
         </Table>
