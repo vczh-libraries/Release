@@ -107,7 +107,7 @@ DescriptableObject
 			typedef collections::Dictionary<WString, Ptr<Object>>		InternalPropertyMap;
 			typedef bool(*DestructorProc)(DescriptableObject* obj, bool forceDisposing);
 		private:
-			volatile vint							referenceCounter;
+			atomic_vint								referenceCounter;
 
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 			size_t									objectSize;
@@ -180,6 +180,12 @@ DescriptableObject
 		public:
 			DescriptableObject();
 			virtual ~DescriptableObject();
+
+			// all fields are describing the object, it would be incorrect if they are copied from one to another.
+			DescriptableObject(const DescriptableObject&) : DescriptableObject() {}
+			DescriptableObject(DescriptableObject&&) : DescriptableObject() {}
+			DescriptableObject& operator=(const DescriptableObject&) { return *this; }
+			DescriptableObject& operator=(DescriptableObject&&) { return *this; }
 
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 			/// <summary>
@@ -680,7 +686,7 @@ ReferenceCounterOperator
 	template<typename T>
 	struct ReferenceCounterOperator<T, std::enable_if_t<std::is_convertible_v<T*, reflection::DescriptableObject*>>>
 	{
-		static __forceinline volatile vint* CreateCounter(T* reference)
+		static __forceinline atomic_vint* CreateCounter(T* reference)
 		{
 			reflection::DescriptableObject* obj=reference;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
@@ -695,7 +701,7 @@ ReferenceCounterOperator
 			return &obj->referenceCounter;
 		}
 
-		static __forceinline void DeleteReference(volatile vint* counter, void* reference)
+		static __forceinline void DeleteReference(atomic_vint* counter, void* reference)
 		{
 			reflection::DescriptableObject* obj=(T*)reference;
 			obj->Dispose(false);
@@ -1968,21 +1974,14 @@ ValueType
 					{
 						if (auto typedBox = boxedValue.Cast<TypedBox<T>>())
 						{
-							if constexpr (std::three_way_comparable<T, std::strong_ordering>)
+							auto r = value <=> typedBox->value;
+							if constexpr (std::is_same_v<decltype(r), std::partial_ordering>)
 							{
-								auto r = value <=> typedBox->value;
-								if (r < 0) return IBoxedValue::Smaller;
-								if (r > 0) return IBoxedValue::Greater;
-								return IBoxedValue::Equal;
-							}
-							else if constexpr (std::three_way_comparable<T, std::partial_ordering>)
-							{
-								auto r = value <=> typedBox->value;
 								if (r == std::partial_ordering::unordered) return IBoxedValue::NotComparable;
-								if (r < 0) return IBoxedValue::Smaller;
-								if (r > 0) return IBoxedValue::Greater;
-								return IBoxedValue::Equal;
 							}
+							if (r < 0) return IBoxedValue::Smaller;
+							if (r > 0) return IBoxedValue::Greater;
+							return IBoxedValue::Equal;
 						}
 						return IBoxedValue::NotComparable;
 					}
@@ -7269,40 +7268,20 @@ namespace vl
 
 				vint data[4];
 
-				static inline vint Compare(const MethodPointerBinaryData& a, const MethodPointerBinaryData& b)
+				friend std::strong_ordering operator<=>(const MethodPointerBinaryData& a, const MethodPointerBinaryData& b)
 				{
+					for (vint i = 0; i < sizeof(data) / sizeof(*data); i++)
 					{
-						auto result = a.data[0] - b.data[0];
+						auto result = a.data[i] <=> b.data[i];
 						if (result != 0) return result;
 					}
-					{
-						auto result = a.data[1] - b.data[1];
-						if (result != 0) return result;
-					}
-					{
-						auto result = a.data[2] - b.data[2];
-						if (result != 0) return result;
-					}
-					{
-						auto result = a.data[3] - b.data[3];
-						if (result != 0) return result;
-					}
-					return 0;
+					return std::strong_ordering::equal;
 				}
 
-#define COMPARE(OPERATOR)\
-				inline bool operator OPERATOR(const MethodPointerBinaryData& d)const\
-				{\
-					return Compare(*this, d) OPERATOR 0;\
+				friend bool operator==(const MethodPointerBinaryData& a, const MethodPointerBinaryData& b)
+				{
+					return (a <=> b) == 0;
 				}
-
-				COMPARE(<)
-				COMPARE(<=)
-				COMPARE(>)
-				COMPARE(>=)
-				COMPARE(==)
-				COMPARE(!=)
-#undef COMPARE
 			};
 
 			template<typename T>
