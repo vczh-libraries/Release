@@ -9,22 +9,15 @@ Executables in `Tools` are no longer committed to this repo. **Read [Tools/READM
 
 Download code from [public releases](https://github.com/vczh-libraries/Release/releases) to get the latest stable release. Code from this repo is also usable but I don't make any promise. I will only make a new release when I think the code is ready to update.
 
-## Release from other platforms
+## Synchronized latest releases:
 
-- Release from the **GacUI** repo keeps using version number: `X.Y.Z.0`.
-- Both **iGac** and **gGac** repos imports source code from **Release** repo for development.
-  - Only commits for a published release could be used as dependency.
-- When **iGac** or **gGac** repos need to make a new release:
-  - Run **CodePack** and upload generated files to `platform_release` branch.
-  - Create release in the repo from `platform_release` branch.
-  - If it depends on a **Release** commit referenced by `X.Y.Z.0`, then the version number should be `X.Y.Z.W`.
-- When **iGac** and **gGac** releases depend on the same **Release** version, it will be updated below.
-
-## Synchronized latest releases from multiple platforms:
-
-- **GacUI**: [1.2.4.0](https://github.com/vczh-libraries/Release/releases/tag/1.2.4.0)
+- **GacUI**: [1.2.6.0](https://github.com/vczh-libraries/Release/releases/tag/1.2.6.0)
 - **iGac**: Not specified yet
-- **gGac**: [1.2.4.0](https://github.com/vczh-libraries/gGac/releases/tag/1.2.4.0)
+- **gGac**: [1.2.6.0](https://github.com/vczh-libraries/gGac/releases/tag/1.2.6.0)
+
+When **iGac** and **gGac** targets on a certain **GacUI** version, **iGac** and **gGac** will use the same version number as a tag to the commits.
+  - A **GacUI** release will always be `X.Y.Z.0`.
+  - If **iGac** and **gGac** have multiple releases based on the same **GacUI** release, only the last digit will change.
 
 ## Visual Studio Extension
 
