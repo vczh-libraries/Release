@@ -14,7 +14,7 @@
         <Window Text="Member_Property" ClientSize="x:480 y:320">
           <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
           <x:MyControl ref.Name="myControl" Text-format="Selected: $(myControl.SelectedOption)">
-            <att.BoundsComposition-set Margin="left:10 top:10"/>
+            <att.BoundsComposition-set AlignmentToParent="left:10 top:10 right:-1 bottom:-1"/>
           </x:MyControl>
         </Window>
       </Instance>
@@ -31,8 +31,8 @@
           <x:MutexGroupController ref.Name="optionGroup"/>
           <att.ContainerComposition-set MinSizeLimitation="LimitToElementAndChildren"/>
           <GroupBox Text-bind="self.Text">
-            <att.ContainerComposition-set MinSizeLimitation="LimitToElementAndChildren"/>
-            <Stack Direction="Vertical" Margin="left:5 top:5 right:5 bottom:5" Padding="10" MinSizeLimitation="LimitToElementAndChildren">
+            <att.ContainerComposition-set MinSizeLimitation="LimitToElementAndChildren" InternalMargin="left:5 top:5 right:5 bottom:5"/>
+            <Stack Direction="Vertical" Padding="10" MinSizeLimitation="LimitToElementAndChildren">
               <StackItem>
                 <RadioButton Text="Option A" GroupController-ref="optionGroup" Selected="true">
                   <ev.SelectedChanged-eval>
