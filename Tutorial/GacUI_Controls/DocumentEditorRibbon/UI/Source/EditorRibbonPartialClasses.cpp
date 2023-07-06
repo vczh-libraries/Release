@@ -1920,9 +1920,6 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
 		}
 		(this->__vwsn_precompile_14 = new ::vl::presentation::compositions::GuiStackItemComposition());
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetInternalMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(10); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_15 = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
@@ -1934,7 +1931,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetText(::vl::WString::Unmanaged(L"Search:"));
+			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetText(::vl::WString::Unmanaged(L"Search: "));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_15));
