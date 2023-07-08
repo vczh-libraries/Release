@@ -62,7 +62,7 @@
         <ResponsiveView Direction="Horizontal" AlignmentToParent="left:0 top:0 right:0 bottom:0">
           <att.Views>
             <ResponsiveFixed>
-              <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
+              <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" MinSizeLimitation="LimitToElementAndChildren">
                 <att.Rows>
                   <CellOption>composeType:MinSize</CellOption>
                 </att.Rows>
@@ -230,7 +230,7 @@
 
                     <Cell Site="row:0 column:0">
                       <ToolstripMenuBar>
-                        <att.BoundsComposition-set  AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                         <MenuBarButton Text="Subscribed Accounts">
                           <att.SubMenu-set>
                             <RepeatStack Direction="Vertical">
