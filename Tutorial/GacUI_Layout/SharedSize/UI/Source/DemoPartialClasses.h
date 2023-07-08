@@ -90,7 +90,6 @@ namespace demo
 		::vl::presentation::controls::GuiButton* __vwsn_precompile_15;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_16;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_17;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_18;
 		void __vwsn_demo_EnglishNumbersController_Initialize(::demo::EnglishNumbersController* __vwsn_this_);
 	public:
 		EnglishNumbersControllerConstructor();

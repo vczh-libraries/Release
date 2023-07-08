@@ -209,9 +209,8 @@
             <Cell Site="row:0 column:0">
               <GroupBox Text="Categories">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                <att.ContainerComposition-set InternalMargin="left:3 top:3 right:3 bottom:3"/>
 
-                <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:0 top:0 right:0 bottom:0">
+                <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:3 top:3 right:3 bottom:3">
                   <att.Rows>
                     <CellOption>composeType:MinSize</CellOption>
                     <CellOption>composeType:Percentage percentage:1.0</CellOption>
@@ -244,9 +243,8 @@
             <Cell Site="row:0 column:1">
               <GroupBox Text="Contacts">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                <att.ContainerComposition-set InternalMargin="left:3 top:3 right:3 bottom:3"/>
 
-                <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:0 top:0 right:0 bottom:0">
+                <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:3 top:3 right:3 bottom:3">
                   <att.Rows>
                     <CellOption>composeType:MinSize</CellOption>
                     <CellOption>composeType:Percentage percentage:1.0</CellOption>

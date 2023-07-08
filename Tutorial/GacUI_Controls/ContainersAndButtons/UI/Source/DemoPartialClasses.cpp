@@ -380,6 +380,9 @@ namespace demo
 		}
 		(this->__vwsn_precompile_46 = new ::vl::presentation::compositions::GuiTableComposition());
 		{
+			::vl::__vwsn::This(this->__vwsn_precompile_46)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
+		}
+		{
 			::vl::__vwsn::This(this->__vwsn_precompile_46)->SetCellPadding(static_cast<::vl::vint>(10));
 		}
 		{

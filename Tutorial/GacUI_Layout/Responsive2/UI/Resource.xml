@@ -118,7 +118,7 @@
     <Instance ref.CodeBehind="false" ref.Class="demo::VideoItemTemplate">
       <ref.Parameter Name="ViewModel" Class="demo::VideoViewModel"/>
       <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
-        <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
+        <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5" MinSizeLimitation="LimitToElementAndChildren">
           <att.Rows>
             <CellOption>composeType:MinSize</CellOption>
             <CellOption>composeType:MinSize</CellOption>
