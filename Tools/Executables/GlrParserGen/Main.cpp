@@ -113,6 +113,9 @@ void PrintCompileErrors(ParserSymbolManager& global)
 	{
 		switch (error.location.type)
 		{
+		case ParserDefFileType::AstGroup:
+			Console::Write(L"[AstGroup:" + error.location.name + L"]");
+			break;
 		case ParserDefFileType::Ast:
 			Console::Write(L"[Ast:" + error.location.name + L"]");
 			break;
@@ -251,22 +254,33 @@ int main(int argc, char* argv[])
 
 		for (auto elementAst : asts)
 		{
-			WString name, file;
+			WString name;
 			READ_ATTRIBUTE(name, elementAst, L"name", L"/Parser/Asts/Ast@name");
-			READ_ATTRIBUTE(file, elementAst, L"file", L"/Parser/Asts/Ast@file[@name=\"" + name + L"\"]");
-			Console::WriteLine(L"Processing " + file + L" ...");
 
-			File astFile = workingDir / file;
-			if (!astFile.Exists()) EXIT_ERROR(L"Missing ast definition file: " + astFile.GetFilePath().GetFullPath());
-			auto astInput = astFile.ReadAllTextByBom();
-			auto ast = typeParser.ParseFile(astInput);
-			EXIT_IF_PARSER_FAIL(errors, L"Syntax errors found in file: " + astFile.GetFilePath().GetFullPath());
+			auto astDefFileGroup = astManager.CreateFileGroup(name);
+			READ_ELEMENT_ITEMS(astDefFileGroup->cppNss, regexNamespace, elementAst, L"CppNamespace", L"/Parser/Asts/Ast@file[@name=\"" + name + L"\"]/CppNamespace");
+			READ_ELEMENT_ITEMS(astDefFileGroup->refNss, regexNamespace, elementAst, L"ReflectionNamespace", L"/Parser/Asts/Ast@file[@name=\"" + name + L"\"]/ReflectionNamespace");
+			READ_ELEMENT(astDefFileGroup->classPrefix, elementAst, L"ClassPrefix", L"/Parser/Asts/Ast@file[@name=\"" + name + L"\"]/ClassPrefix");
 
-			auto astDefFile = astManager.CreateFile(name);
-			READ_ELEMENT_ITEMS(astDefFile->cppNss, regexNamespace, elementAst, L"CppNamespace", L"/Parser/Asts/Ast@file[@name=\"" + name + L"\"]/CppNamespace");
-			READ_ELEMENT_ITEMS(astDefFile->refNss, regexNamespace, elementAst, L"ReflectionNamespace", L"/Parser/Asts/Ast@file[@name=\"" + name + L"\"]/ReflectionNamespace");
-			READ_ELEMENT(astDefFile->classPrefix, elementAst, L"ClassPrefix", L"/Parser/Asts/Ast@file[@name=\"" + name + L"\"]/ClassPrefix");
-			CompileAst(astManager, astDefFile, ast);
+			List<Pair<AstDefFile*, Ptr<GlrAstFile>>> astFiles;
+			for (auto elementFile : XmlGetElements(elementAst, L"File"))
+			{
+				WString file;
+				READ_ATTRIBUTE(file, elementFile, L"file", L"/Parser/Asts/Ast/File@file");
+				Console::WriteLine(L"Processing " + file + L" ...");
+
+				File astFile = workingDir / file;
+				if (!astFile.Exists()) EXIT_ERROR(L"Missing ast definition file: " + astFile.GetFilePath().GetFullPath());
+				auto astInput = astFile.ReadAllTextByBom();
+				auto ast = typeParser.ParseFile(astInput);
+				EXIT_IF_PARSER_FAIL(errors, L"Syntax errors found in file: " + astFile.GetFilePath().GetFullPath());
+
+				auto astDefFile = astDefFileGroup->CreateFile(file);
+				astFiles.Add({ astDefFile,ast });
+			}
+
+			if (astFiles.Count() == 0) EXIT_ERROR(L"Missing /Parser/Asts/Ast/File");
+			CompileAst(astManager, astFiles);
 		}
 
 		EXIT_IF_COMPILE_FAIL(global);
@@ -293,24 +307,30 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		EXIT_ERROR(L"Missing /Parser/Asts");
+		EXIT_ERROR(L"Missing /Parser/Lexer");
 	}
 
 	if (auto elementSyntax = XmlGetElement(config->rootElement, L"Syntax"))
 	{
-		WString name, file;
+		WString name;
 		READ_ATTRIBUTE(name, elementSyntax, L"name", L"/Parser/Syntax@name");
-		READ_ATTRIBUTE(file, elementSyntax, L"file", L"/Parser/Syntax@file[@name=\"" + name + L"\"]");
-		Console::WriteLine(L"Processing " + file + L" ...");
-
-		File syntaxFile = workingDir / file;
-		auto syntaxInput = syntaxFile.ReadAllTextByBom();
-		auto syntax = ruleParser.ParseFile(syntaxInput);
-		EXIT_IF_PARSER_FAIL(errors, L"Syntax errors found in file: " + syntaxFile.GetFilePath().GetFullPath());
+		syntaxManager.name = name;
 
 		List<Ptr<GlrSyntaxFile>> syntaxFiles;
-		syntaxFiles.Add(syntax);
-		syntaxManager.name = name;
+		for (auto elementFile : XmlGetElements(elementSyntax, L"File"))
+		{
+			WString file;
+			READ_ATTRIBUTE(file, elementFile, L"file", L"/Parser/Syntax/File@file");
+			Console::WriteLine(L"Processing " + file + L" ...");
+
+			File syntaxFile = workingDir / file;
+			auto syntaxInput = syntaxFile.ReadAllTextByBom();
+			auto syntax = ruleParser.ParseFile(syntaxInput);
+			EXIT_IF_PARSER_FAIL(errors, L"Syntax errors found in file: " + syntaxFile.GetFilePath().GetFullPath());
+			syntaxFiles.Add(syntax);
+		}
+
+		if (syntaxFiles.Count() == 0) EXIT_ERROR(L"Missing /Parser/Syntax/File");
 		CompileSyntax(astManager, lexerManager, syntaxManager, output, syntaxFiles);
 		EXIT_IF_COMPILE_FAIL(global);
 
@@ -326,7 +346,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		EXIT_ERROR(L"Missing /Parser/Asts");
+		EXIT_ERROR(L"Missing /Parser/Syntax");
 	}
 
 	{
@@ -334,7 +354,7 @@ int main(int argc, char* argv[])
 		for (auto elementAst : XmlGetElements(elementAsts, L"Ast"))
 		{
 			auto name = XmlGetAttribute(elementAst, L"name")->value.value;
-			auto astOutput = output->astOutputs[astManager.Files()[name]];
+			auto astOutput = output->astOutputs[astManager.FileGroups()[name]];
 
 			if (auto elementBlocked = XmlGetElement(elementAst, L"BlockedUtilities"))
 			{
