@@ -3629,6 +3629,7 @@ GuiGraphicsComposition
 				if(!child) return false;
 				vint index=children.IndexOf(child);
 				if(index==-1) return false;
+				if(index==newIndex) return true;
 				children.RemoveAt(index);
 				children.Insert(newIndex, child);
 				InvokeOnCompositionStateChanged();
@@ -6801,6 +6802,7 @@ GuiScrollView
 
 			void GuiScrollView::SetViewPosition(Point value)
 			{
+				if (GetViewPosition() == value) return;
 				auto ct = TypedControlTemplateObject(true);
 				if (auto hScroll = ct->GetHorizontalScroll())
 				{
@@ -8188,14 +8190,26 @@ DataReverseSorter
 DataColumn
 ***********************************************************************/
 
-				void DataColumn::NotifyAllColumnsUpdate(bool affectItem)
+				void DataColumn::NotifyRebuilt()
 				{
 					if (dataProvider)
 					{
 						vint index = dataProvider->columns.IndexOf(this);
 						if (index != -1)
 						{
-							dataProvider->columns.NotifyColumnUpdated(index, affectItem);
+							dataProvider->columns.NotifyColumnRebuilt(index);
+						}
+					}
+				}
+
+				void DataColumn::NotifyChanged(bool needToRefreshItems)
+				{
+					if (dataProvider)
+					{
+						vint index = dataProvider->columns.IndexOf(this);
+						if (index != -1)
+						{
+							dataProvider->columns.NotifyColumnChanged(index, needToRefreshItems);
 						}
 					}
 				}
@@ -8222,7 +8236,7 @@ DataColumn
 					if (text != value)
 					{
 						text = value;
-						NotifyAllColumnsUpdate(false);
+						NotifyChanged(false);
 					}
 				}
 
@@ -8236,7 +8250,7 @@ DataColumn
 					if (size != value)
 					{
 						size = value;
-						NotifyAllColumnsUpdate(false);
+						NotifyChanged(true);
 					}
 				}
 
@@ -8260,7 +8274,7 @@ DataColumn
 					if (popup != value)
 					{
 						popup = value;
-						NotifyAllColumnsUpdate(false);
+						NotifyChanged(false);
 					}
 				}
 
@@ -8274,7 +8288,7 @@ DataColumn
 					if (associatedFilter) associatedFilter->SetCallback(nullptr);
 					associatedFilter = value;
 					if (associatedFilter) associatedFilter->SetCallback(dataProvider);
-					NotifyAllColumnsUpdate(false);
+					NotifyChanged(false);
 				}
 
 				Ptr<IDataSorter> DataColumn::GetSorter()
@@ -8287,7 +8301,7 @@ DataColumn
 					if (associatedSorter) associatedSorter->SetCallback(nullptr);
 					associatedSorter = value;
 					if (associatedSorter) associatedSorter->SetCallback(dataProvider);
-					NotifyAllColumnsUpdate(false);
+					NotifyChanged(false);
 				}
 
 				Ptr<IDataVisualizerFactory> DataColumn::GetVisualizerFactory()
@@ -8298,7 +8312,7 @@ DataColumn
 				void DataColumn::SetVisualizerFactory(Ptr<IDataVisualizerFactory> value)
 				{
 					visualizerFactory = value;
-					NotifyAllColumnsUpdate(true);
+					NotifyRebuilt();
 				}
 
 				Ptr<IDataEditorFactory> DataColumn::GetEditorFactory()
@@ -8309,7 +8323,7 @@ DataColumn
 				void DataColumn::SetEditorFactory(Ptr<IDataEditorFactory> value)
 				{
 					editorFactory = value;
-					NotifyAllColumnsUpdate(true);
+					NotifyRebuilt();
 				}
 
 				WString DataColumn::GetCellText(vint row)
@@ -8336,7 +8350,7 @@ DataColumn
 					{
 						auto rowValue = dataProvider->GetBindingValue(row);
 						WriteProperty(rowValue, valueProperty, value);
-						dataProvider->InvokeOnItemModified(row, 1, 1);
+						dataProvider->InvokeOnItemModified(row, 1, 1, false);
 					}
 				}
 
@@ -8350,7 +8364,7 @@ DataColumn
 					if (textProperty != value)
 					{
 						textProperty = value;
-						NotifyAllColumnsUpdate(true);
+						NotifyRebuilt();
 						compositions::GuiEventArgs arguments;
 						TextPropertyChanged.Execute(arguments);
 					}
@@ -8366,7 +8380,7 @@ DataColumn
 					if (valueProperty != value)
 					{
 						valueProperty = value;
-						NotifyAllColumnsUpdate(true);
+						NotifyRebuilt();
 						compositions::GuiEventArgs arguments;
 						ValuePropertyChanged.Execute(arguments);
 					}
@@ -8376,20 +8390,19 @@ DataColumn
 DataColumns
 ***********************************************************************/
 
-				void DataColumns::NotifyColumnUpdated(vint index, bool affectItem)
+				void DataColumns::NotifyColumnRebuilt(vint column)
 				{
-					affectItemFlag = affectItem;
-					NotifyUpdateInternal(index, 1, 1);
-					affectItemFlag = true;
+					NotifyUpdate(column, 1);
+				}
+
+				void DataColumns::NotifyColumnChanged(vint column, bool needToRefreshItems)
+				{
+					dataProvider->NotifyColumnChanged();
 				}
 
 				void DataColumns::NotifyUpdateInternal(vint start, vint count, vint newCount)
 				{
-					dataProvider->NotifyAllColumnsUpdate();
-					if (affectItemFlag)
-					{
-						dataProvider->NotifyAllItemsUpdate();
-					}
+					dataProvider->NotifyColumnRebuilt();
 				}
 
 				bool DataColumns::QueryInsert(vint index, const Ptr<DataColumn>& value)
@@ -8420,17 +8433,46 @@ DataColumns
 DataProvider
 ***********************************************************************/
 
-				void DataProvider::NotifyAllItemsUpdate()
+				bool DataProvider::NotifyUpdate(vint start, vint count, bool itemReferenceUpdated)
 				{
-					InvokeOnItemModified(0, Count(), Count());
+					if (!itemSource) return false;
+					if (start<0 || start >= itemSource->GetCount() || count <= 0 || start + count > itemSource->GetCount())
+					{
+						return false;
+					}
+					else
+					{
+						InvokeOnItemModified(start, count, count, itemReferenceUpdated);
+						return true;
+					}
 				}
 
-				void DataProvider::NotifyAllColumnsUpdate()
+				void DataProvider::RebuildAllItems()
 				{
-					if (columnItemViewCallback)
+					NotifyUpdate(0, Count(), true);
+				}
+
+				void DataProvider::RefreshAllItems()
+				{
+					NotifyUpdate(0, Count(), false);
+				}
+
+				void DataProvider::NotifyColumnRebuilt()
+				{
+					for (auto callback : columnItemViewCallbacks)
 					{
-						columnItemViewCallback->OnColumnChanged();
+						callback->OnColumnRebuilt();
 					}
+					RefreshAllItems();
+				}
+
+				void DataProvider::NotifyColumnChanged()
+				{
+					for (auto callback : columnItemViewCallbacks)
+					{
+						callback->OnColumnChanged(true);
+					}
+					RefreshAllItems();
 				}
 
 				GuiListControl::IItemProvider* DataProvider::GetItemProvider()
@@ -8448,7 +8490,7 @@ DataProvider
 				{
 					if (!currentSorter && !currentFilter && count == newCount)
 					{
-						InvokeOnItemModified(start, count, newCount);
+						InvokeOnItemModified(start, count, newCount, true);
 					}
 					else
 					{
@@ -8583,7 +8625,7 @@ DataProvider
 
 					if (invokeCallback)
 					{
-						NotifyAllItemsUpdate();
+						RefreshAllItems();
 					}
 				}
 
@@ -8708,16 +8750,29 @@ DataProvider
 
 				bool DataProvider::AttachCallback(ListViewColumnItemArranger::IColumnItemViewCallback* value)
 				{
-					if (columnItemViewCallback)return false;
-					columnItemViewCallback = value;
-					return true;
+					if (columnItemViewCallbacks.Contains(value))
+					{
+						return false;
+					}
+					else
+					{
+						columnItemViewCallbacks.Add(value);
+						return true;
+					}
 				}
 
 				bool DataProvider::DetachCallback(ListViewColumnItemArranger::IColumnItemViewCallback* value)
 				{
-					if (!columnItemViewCallback) return false;
-					columnItemViewCallback = nullptr;
-					return true;
+					vint index = columnItemViewCallbacks.IndexOf(value);
+					if (index == -1)
+					{
+						return false;
+					}
+					else
+					{
+						columnItemViewCallbacks.Remove(value);
+						return true;
+					}
 				}
 
 				vint DataProvider::GetColumnSize(vint index)
@@ -8781,7 +8836,7 @@ DataProvider
 							ColumnSortingState::Descending
 							;
 					}
-					NotifyAllColumnsUpdate();
+					NotifyColumnChanged();
 					ReorderRows(true);
 				}
 
@@ -8893,7 +8948,7 @@ GuiBindableDataGrid
 				if (dataProvider->largeImageProperty != value)
 				{
 					dataProvider->largeImageProperty = value;
-					dataProvider->NotifyAllItemsUpdate();
+					dataProvider->RefreshAllItems();
 					LargeImagePropertyChanged.Execute(GetNotifyEventArguments());
 				}
 			}
@@ -8908,7 +8963,7 @@ GuiBindableDataGrid
 				if (dataProvider->smallImageProperty != value)
 				{
 					dataProvider->smallImageProperty = value;
-					dataProvider->NotifyAllItemsUpdate();
+					dataProvider->RefreshAllItems();
 					SmallImagePropertyChanged.Execute(GetNotifyEventArguments());
 				}
 			}
@@ -8931,6 +8986,12 @@ GuiBindableDataGrid
 					return Value();
 				}
 				return dataProvider->GetColumns()[pos.column]->GetCellValue(pos.row);
+			}
+
+			bool GuiBindableDataGrid::NotifyItemDataModified(vint start, vint count)
+			{
+				StopEdit();
+				return dataProvider->NotifyUpdate(start, count, false);
 			}
 		}
 	}
@@ -8997,7 +9058,7 @@ GuiBindableTextList::ItemSource
 						itemSource = ol;
 						itemChangedEventHandler = ol->ItemChanged.Add([this](vint start, vint oldCount, vint newCount)
 						{
-							InvokeOnItemModified(start, oldCount, newCount);
+							InvokeOnItemModified(start, oldCount, newCount, true);
 						});
 					}
 					else if (auto rl = _itemSource.Cast<IValueReadonlyList>())
@@ -9010,7 +9071,7 @@ GuiBindableTextList::ItemSource
 					}
 				}
 
-				InvokeOnItemModified(0, oldCount, itemSource ? itemSource->GetCount() : 0);
+				InvokeOnItemModified(0, oldCount, itemSource ? itemSource->GetCount() : 0, true);
 			}
 
 			description::Value GuiBindableTextList::ItemSource::Get(vint index)
@@ -9021,9 +9082,23 @@ GuiBindableTextList::ItemSource
 
 			void GuiBindableTextList::ItemSource::UpdateBindingProperties()
 			{
-				InvokeOnItemModified(0, Count(), Count());
+				InvokeOnItemModified(0, Count(), Count(), false);
 			}
-					
+
+			bool GuiBindableTextList::ItemSource::NotifyUpdate(vint start, vint count, bool itemReferenceUpdated)
+			{
+				if (!itemSource) return false;
+				if (start<0 || start >= itemSource->GetCount() || count <= 0 || start + count > itemSource->GetCount())
+				{
+					return false;
+				}
+				else
+				{
+					InvokeOnItemModified(start, count, count, itemReferenceUpdated);
+					return true;
+				}
+			}
+
 			// ===================== GuiListControl::IItemProvider =====================
 			
 			vint GuiBindableTextList::ItemSource::Count()
@@ -9092,7 +9167,7 @@ GuiBindableTextList::ItemSource
 					{
 						auto thisValue = itemSource->Get(itemIndex);
 						WriteProperty(thisValue, checkedProperty, value);
-						InvokeOnItemModified(itemIndex, 1, 1);
+						InvokeOnItemModified(itemIndex, 1, 1, false);
 					}
 				}
 			}
@@ -9161,6 +9236,11 @@ GuiBindableTextList
 				return itemSource->Get(index);
 			}
 
+			bool GuiBindableTextList::NotifyItemDataModified(vint start, vint count)
+			{
+				return itemSource->NotifyUpdate(start, count, false);
+			}
+
 /***********************************************************************
 GuiBindableListView::ItemSource
 ***********************************************************************/
@@ -9208,7 +9288,7 @@ GuiBindableListView::ItemSource
 						itemSource = ol;
 						itemChangedEventHandler = ol->ItemChanged.Add([this](vint start, vint oldCount, vint newCount)
 						{
-							InvokeOnItemModified(start, oldCount, newCount);
+							InvokeOnItemModified(start, oldCount, newCount, true);
 						});
 					}
 					else if (auto rl = _itemSource.Cast<IValueReadonlyList>())
@@ -9221,7 +9301,7 @@ GuiBindableListView::ItemSource
 					}
 				}
 
-				InvokeOnItemModified(0, oldCount, itemSource ? itemSource->GetCount() : 0);
+				InvokeOnItemModified(0, oldCount, itemSource ? itemSource->GetCount() : 0, true);
 			}
 
 			description::Value GuiBindableListView::ItemSource::Get(vint index)
@@ -9232,10 +9312,10 @@ GuiBindableListView::ItemSource
 
 			void GuiBindableListView::ItemSource::UpdateBindingProperties()
 			{
-				InvokeOnItemModified(0, Count(), Count());
+				InvokeOnItemModified(0, Count(), Count(), false);
 			}
 
-			bool GuiBindableListView::ItemSource::NotifyUpdate(vint start, vint count)
+			bool GuiBindableListView::ItemSource::NotifyUpdate(vint start, vint count, bool itemReferenceUpdated)
 			{
 				if (!itemSource) return false;
 				if (start<0 || start >= itemSource->GetCount() || count <= 0 || start + count > itemSource->GetCount())
@@ -9244,7 +9324,7 @@ GuiBindableListView::ItemSource
 				}
 				else
 				{
-					InvokeOnItemModified(start, count, count);
+					InvokeOnItemModified(start, count, count, itemReferenceUpdated);
 					return true;
 				}
 			}
@@ -9261,18 +9341,32 @@ GuiBindableListView::ItemSource
 					
 			// ===================== list::IListViewItemProvider =====================
 
-			void GuiBindableListView::ItemSource::NotifyAllItemsUpdate()
+			void GuiBindableListView::ItemSource::RebuildAllItems()
 			{
-				NotifyUpdate(0, Count());
+				InvokeOnItemModified(0, Count(), Count(), true);
 			}
 
-			void GuiBindableListView::ItemSource::NotifyAllColumnsUpdate()
+			void GuiBindableListView::ItemSource::RefreshAllItems()
 			{
-				// TODO: (enumerable) foreach
-				for (vint i = 0; i < columnItemViewCallbacks.Count(); i++)
+				InvokeOnItemModified(0, Count(), Count(), false);
+			}
+
+			void GuiBindableListView::ItemSource::NotifyColumnRebuilt()
+			{
+				for (auto callback : columnItemViewCallbacks)
 				{
-					columnItemViewCallbacks[i]->OnColumnChanged();
+					callback->OnColumnRebuilt();
 				}
+				RebuildAllItems();
+			}
+
+			void GuiBindableListView::ItemSource::NotifyColumnChanged()
+			{
+				for (auto callback : columnItemViewCallbacks)
+				{
+					callback->OnColumnChanged(true);
+				}
+				RefreshAllItems();
 			}
 
 			// ===================== GuiListControl::IItemProvider =====================
@@ -9540,6 +9634,11 @@ GuiBindableListView
 				return itemSource->Get(index);
 			}
 
+			bool GuiBindableListView::NotifyItemDataModified(vint start, vint count)
+			{
+				return itemSource->NotifyUpdate(start, count, false);
+			}
+
 /***********************************************************************
 GuiBindableTreeView::ItemSourceNode
 ***********************************************************************/
@@ -9576,7 +9675,7 @@ GuiBindableTreeView::ItemSourceNode
 					{
 						itemChangedEventHandler = ol->ItemChanged.Add([this](vint start, vint oldCount, vint newCount)
 						{
-							callback->OnBeforeItemModified(this, start, oldCount, newCount);
+							callback->OnBeforeItemModified(this, start, oldCount, newCount, true);
 							children.RemoveRange(start, oldCount);
 							for (vint i = 0; i < newCount; i++)
 							{
@@ -9584,7 +9683,7 @@ GuiBindableTreeView::ItemSourceNode
 								auto node = Ptr(new ItemSourceNode(value, this));
 								children.Insert(start + i, node);
 							}
-							callback->OnAfterItemModified(this, start, oldCount, newCount);
+							callback->OnAfterItemModified(this, start, oldCount, newCount, true);
 						});
 					}
 
@@ -9614,12 +9713,37 @@ GuiBindableTreeView::ItemSourceNode
 				children.Clear();
 			}
 
+			void GuiBindableTreeView::ItemSourceNode::PrepareReverseMapping()
+			{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::controls::GuiBindableTreeView::ItemSourceNode::PrepareReverseMapping()#"
+				if (rootProvider->reverseMappingProperty && !itemSource.IsNull())
+				{
+					auto oldValue = ReadProperty(itemSource, rootProvider->reverseMappingProperty);
+					CHECK_ERROR(oldValue.IsNull(), ERROR_MESSAGE_PREFIX L"The reverse mapping property of an item has been unexpectedly changed.");
+					WriteProperty(itemSource, rootProvider->reverseMappingProperty, Value::From(this));
+				}
+#undef ERROR_MESSAGE_PREFIX
+			}
+
+			void GuiBindableTreeView::ItemSourceNode::UnprepareReverseMapping()
+			{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::controls::GuiBindableTreeView::ItemSourceNode::PrepareReverseMapping()#"
+				if (rootProvider->reverseMappingProperty && !itemSource.IsNull())
+				{
+					auto oldValue = ReadProperty(itemSource, rootProvider->reverseMappingProperty);
+					CHECK_ERROR(oldValue.GetRawPtr() == this, ERROR_MESSAGE_PREFIX L"The reverse mapping property of an item has been unexpectedly changed.");
+					WriteProperty(itemSource, rootProvider->reverseMappingProperty, {});
+				}
+#undef ERROR_MESSAGE_PREFIX
+			}
+
 			GuiBindableTreeView::ItemSourceNode::ItemSourceNode(const description::Value& _itemSource, ItemSourceNode* _parent)
 				:itemSource(_itemSource)
 				, rootProvider(_parent->rootProvider)
 				, parent(_parent)
 				, callback(_parent->callback)
 			{
+				PrepareReverseMapping();
 			}
 
 			GuiBindableTreeView::ItemSourceNode::ItemSourceNode(ItemSource* _rootProvider)
@@ -9631,6 +9755,7 @@ GuiBindableTreeView::ItemSourceNode
 
 			GuiBindableTreeView::ItemSourceNode::~ItemSourceNode()
 			{
+				UnprepareReverseMapping();
 				if (itemChangedEventHandler)
 				{
 					auto ol = childrenVirtualList.Cast<IValueObservableList>();
@@ -9649,11 +9774,13 @@ GuiBindableTreeView::ItemSourceNode
 				vint oldCount = childrenVirtualList ? childrenVirtualList->GetCount() : 0;
 				vint newCount = newVirtualList->GetCount();
 
-				callback->OnBeforeItemModified(this, 0, oldCount, newCount);
+				callback->OnBeforeItemModified(this, 0, oldCount, newCount, true);
 				UnprepareChildren();
+				UnprepareReverseMapping();
 				itemSource = _itemSource;
+				PrepareReverseMapping();
 				PrepareChildren(newVirtualList);
-				callback->OnAfterItemModified(this, 0, oldCount, newCount);
+				callback->OnAfterItemModified(this, 0, oldCount, newCount, true);
 			}
 
 			bool GuiBindableTreeView::ItemSourceNode::GetExpanding()
@@ -9694,6 +9821,16 @@ GuiBindableTreeView::ItemSourceNode
 					count += child->CalculateTotalVisibleNodes();
 				}
 				return count;
+			}
+
+			void GuiBindableTreeView::ItemSourceNode::NotifyDataModified()
+			{
+				if (parent)
+				{
+					vint index = parent->children.IndexOf(this);
+					callback->OnBeforeItemModified(parent, index, 1, 1, false);
+					callback->OnAfterItemModified(parent, index, 1, 1, false);
+				}
 			}
 
 			vint GuiBindableTreeView::ItemSourceNode::GetChildCount()
@@ -9754,8 +9891,8 @@ GuiBindableTreeView::ItemSource
 					rootNode->UnprepareChildren();
 				}
 				vint newCount = rootNode->GetChildCount();
-				OnBeforeItemModified(rootNode.Obj(), 0, oldCount, newCount);
-				OnAfterItemModified(rootNode.Obj(), 0, oldCount, newCount);
+				OnBeforeItemModified(rootNode.Obj(), 0, oldCount, newCount, updateChildrenProperty);
+				OnAfterItemModified(rootNode.Obj(), 0, oldCount, newCount, updateChildrenProperty);
 			}
 
 			// ===================== tree::INodeRootProvider =====================
@@ -9806,10 +9943,11 @@ GuiBindableTreeView::ItemSource
 GuiBindableTreeView
 ***********************************************************************/
 
-			GuiBindableTreeView::GuiBindableTreeView(theme::ThemeName themeName)
+			GuiBindableTreeView::GuiBindableTreeView(theme::ThemeName themeName, WritableItemProperty<description::Value> reverseMappingProperty)
 				:GuiVirtualTreeView(themeName, Ptr(new ItemSource))
 			{
 				itemSource = dynamic_cast<ItemSource*>(GetNodeRootProvider());
+				itemSource->reverseMappingProperty = reverseMappingProperty;
 
 				TextPropertyChanged.SetAssociatedComposition(boundsComposition);
 				ImagePropertyChanged.SetAssociatedComposition(boundsComposition);
@@ -9828,6 +9966,11 @@ GuiBindableTreeView
 			void GuiBindableTreeView::SetItemSource(description::Value _itemSource)
 			{
 				itemSource->SetItemSource(_itemSource);
+			}
+			
+			WritableItemProperty<description::Value> GuiBindableTreeView::GetReverseMappingProperty()
+			{
+				return itemSource->reverseMappingProperty;
 			}
 
 			ItemProperty<WString> GuiBindableTreeView::GetTextProperty()
@@ -9889,6 +10032,29 @@ GuiBindableTreeView
 					}
 				}
 				return result;
+			}
+
+			void GuiBindableTreeView::NotifyNodeDataModified(description::Value value)
+			{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::controls::GuiBindableTreeView::NotifyNodeDataModified(Value)#"
+
+				CHECK_ERROR(itemSource->reverseMappingProperty, ERROR_MESSAGE_PREFIX L"This function can only be called when the ReverseMappingProperty is in use.");
+				CHECK_ERROR(!value.IsNull(), ERROR_MESSAGE_PREFIX L"The item cannot be null.");
+				auto mapping = ReadProperty(value, itemSource->reverseMappingProperty);
+				auto node = dynamic_cast<tree::INodeProvider*>(mapping.GetRawPtr());
+				CHECK_ERROR(node, ERROR_MESSAGE_PREFIX L"The item is not binded to a GuiBindableTreeView control or its reverse mapping property has been unexpectedly changed.");
+
+				auto rootNode = node;
+				while (rootNode->GetParent())
+				{
+					rootNode = rootNode->GetParent().Obj();
+				}
+
+				CHECK_ERROR(rootNode == itemSource->rootNode.Obj(), ERROR_MESSAGE_PREFIX L"The item is not binded to this control.");
+				CHECK_ERROR(node != itemSource->rootNode.Obj(), ERROR_MESSAGE_PREFIX L"The item should not be the root item, which is the item source assigned to this control.");
+				node->NotifyDataModified();
+
+#undef ERROR_MESSAGE_PREFIX
 			}
 		}
 	}
@@ -10132,14 +10298,11 @@ GuiComboBoxListControl
 			{
 			}
 
-			void GuiComboBoxListControl::OnItemModified(vint start, vint count, vint newCount)
+			void GuiComboBoxListControl::OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)
 			{
-				if (count == newCount)
+				if (count == newCount && start <= selectedIndex && selectedIndex < start + count)
 				{
-					if (start <= selectedIndex && selectedIndex < start + count)
-					{
-						DisplaySelectedContent(selectedIndex);
-					}
+					DisplaySelectedContent(selectedIndex);
 				}
 				else
 				{
@@ -10378,34 +10541,58 @@ DefaultDataGridItemTemplate
 					}
 				}
 
-				void DefaultDataGridItemTemplate::OnColumnChanged()
+				void DefaultDataGridItemTemplate::DeleteAllVisualizers()
 				{
-					UpdateSubItemSize();
+					for (vint i = 0; i < dataVisualizers.Count(); i++)
+					{
+						DeleteVisualizer(i);
+					}
 				}
 
-				void DefaultDataGridItemTemplate::OnInitialize()
+				void DefaultDataGridItemTemplate::DeleteVisualizer(vint column)
 				{
-					DefaultListViewItemTemplate::OnInitialize();
+					auto visualizer = dataVisualizers[column];
+					auto composition = visualizer->GetTemplate();
+					visualizer->NotifyDeletedTemplate();
+					if (composition->GetParent())
 					{
-						textTable = new GuiTableComposition;
-						textTable->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
-						textTable->SetAlignmentToParent(Margin(0, 0, 0, 0));
-						textTable->SetRowsAndColumns(1, 1);
-						textTable->SetRowOption(0, GuiCellOption::MinSizeOption());
-						textTable->SetColumnOption(0, GuiCellOption::AbsoluteOption(0));
-						AddChild(textTable);
+						composition->GetParent()->RemoveChild(composition);
 					}
+					SafeDeleteComposition(composition);
+					dataVisualizers[column] = nullptr;
+				}
 
-					if (auto dataGrid = dynamic_cast<GuiVirtualDataGrid*>(listControl))
+				void DefaultDataGridItemTemplate::ResetDataTable(vint columnCount)
+				{
+					vint itemIndex = GetIndex();
+
+					if (dataVisualizers.Count() == columnCount)
 					{
-						vint columnCount = dataGrid->listViewItemView->GetColumnCount();
-						vint itemIndex = GetIndex();
-
-						dataVisualizers.Resize(columnCount);
-						for (vint i = 0; i < dataVisualizers.Count(); i++)
+						for (vint i = 0; i < columnCount; i++)
 						{
 							auto factory = GetDataVisualizerFactory(itemIndex, i);
-							dataVisualizers[i] = factory->CreateVisualizer(dataGrid);
+							if (dataVisualizerFactories[i] != factory)
+							{
+								DeleteVisualizer(i);
+								dataVisualizerFactories[i] = factory;
+							}
+						}
+					}
+					else
+					{
+						DeleteAllVisualizers();
+						dataVisualizerFactories.Resize(columnCount);
+						dataVisualizers.Resize(columnCount);
+
+						for (auto cell : dataCells)
+						{
+							SafeDeleteComposition(cell);
+						}
+						dataCells.Resize(columnCount);
+						
+						for (vint i = 0; i < columnCount; i++)
+						{
+							dataVisualizerFactories[i] = GetDataVisualizerFactory(itemIndex, i);
 						}
 
 						textTable->SetRowsAndColumns(1, columnCount);
@@ -10418,28 +10605,21 @@ DefaultDataGridItemTemplate
 							cell->GetEventReceiver()->rightButtonDown.AttachMethod(this, &DefaultDataGridItemTemplate::OnCellButtonDown);
 							cell->GetEventReceiver()->leftButtonUp.AttachMethod(this, &DefaultDataGridItemTemplate::OnCellLeftButtonUp);
 							cell->GetEventReceiver()->rightButtonUp.AttachMethod(this, &DefaultDataGridItemTemplate::OnCellRightButtonUp);
+							dataCells[i] = cell;
+						}
+					}
+				}
 
-							auto composition = dataVisualizers[i]->GetTemplate();
-							composition->SetAlignmentToParent(Margin(0, 0, 0, 0));
-							cell->AddChild(composition);
-						}
-
-						// TODO: (enumerable) foreach
-						for (vint i = 0; i < dataVisualizers.Count(); i++)
-						{
-							dataVisualizers[i]->BeforeVisualizeCell(dataGrid->GetItemProvider(), itemIndex, i);
-						}
-
-						GridPos selectedCell = dataGrid->GetSelectedCell();
-						if (selectedCell.row == itemIndex)
-						{
-							NotifySelectCell(selectedCell.column);
-						}
-						else
-						{
-							NotifySelectCell(-1);
-						}
-						UpdateSubItemSize();
+				void DefaultDataGridItemTemplate::OnInitialize()
+				{
+					{
+						textTable = new GuiTableComposition;
+						textTable->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
+						textTable->SetAlignmentToParent(Margin(0, 0, 0, 0));
+						textTable->SetRowsAndColumns(1, 1);
+						textTable->SetRowOption(0, GuiCellOption::MinSizeOption());
+						textTable->SetColumnOption(0, GuiCellOption::AbsoluteOption(0));
+						AddChild(textTable);
 					}
 
 					SelectedChanged.AttachMethod(this, &DefaultDataGridItemTemplate::OnSelectedChanged);
@@ -10451,6 +10631,44 @@ DefaultDataGridItemTemplate
 					FontChanged.Execute(compositions::GuiEventArgs(this));
 					ContextChanged.Execute(compositions::GuiEventArgs(this));
 					VisuallyEnabledChanged.Execute(compositions::GuiEventArgs(this));
+				}
+
+				void DefaultDataGridItemTemplate::OnRefresh()
+				{
+					if (auto dataGrid = dynamic_cast<GuiVirtualDataGrid*>(listControl))
+					{
+						vint columnCount = dataGrid->listViewItemView->GetColumnCount();
+						vint itemIndex = GetIndex();
+						ResetDataTable(columnCount);
+
+						for (vint i = 0; i < columnCount; i++)
+						{
+							auto& dataVisualizer = dataVisualizers[i];
+							if (!dataVisualizer)
+							{
+								dataVisualizer = dataVisualizerFactories[i]->CreateVisualizer(dataGrid);
+								dataVisualizer->GetTemplate()->SetFont(GetFont());
+								dataVisualizers[i] = dataVisualizer;
+
+								auto cell = dataCells[i];
+								auto composition = dataVisualizer->GetTemplate();
+								composition->SetAlignmentToParent(Margin(0, 0, 0, 0));
+								cell->AddChild(composition);
+							}
+							dataVisualizer->BeforeVisualizeCell(dataGrid->GetItemProvider(), itemIndex, i);
+						}
+
+						GridPos selectedCell = dataGrid->GetSelectedCell();
+						if (selectedCell.row == itemIndex)
+						{
+							NotifySelectCell(selectedCell.column);
+						}
+						else
+						{
+							NotifySelectCell(-1);
+						}
+					}
+					UpdateSubItemSize();
 				}
 
 				void DefaultDataGridItemTemplate::OnSelectedChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
@@ -10619,18 +10837,18 @@ GuiVirtualDataGrid (Editor)
 				return GuiVirtualListView::GetActivatingAltHost();
 			}
 
-			void GuiVirtualDataGrid::OnItemModified(vint start, vint count, vint newCount)
+			void GuiVirtualDataGrid::OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)
 			{
-				GuiVirtualListView::OnItemModified(start, count, newCount);
-				if(!GetItemProvider()->IsEditing())
+				GuiVirtualListView::OnItemModified(start, count, newCount, itemReferenceUpdated);
+				if (!GetItemProvider()->IsEditing())
 				{
 					StopEdit();
 				}
 			}
 
-			void GuiVirtualDataGrid::OnStyleInstalled(vint index, ItemStyle* style)
+			void GuiVirtualDataGrid::OnStyleInstalled(vint index, ItemStyle* style, bool refreshPropertiesOnly)
 			{
-				GuiVirtualListView::OnStyleInstalled(index, style);
+				GuiVirtualListView::OnStyleInstalled(index, style, refreshPropertiesOnly);
 				if (auto itemStyle = dynamic_cast<DefaultDataGridItemTemplate*>(style))
 				{
 					if (selectedCell.row == index && selectedCell.column != -1)
@@ -10740,6 +10958,7 @@ GuiVirtualDataGrid (IDataGridContext)
 
 			void GuiVirtualDataGrid::RequestSaveData()
 			{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::controls::list::DefaultTextListItemTemplate::OnBulletSelectedChanged(GuiGraphicsComposition*, GuiEventArgs&)#"
 				if (currentEditor && !currentEditorOpeningEditor)
 				{
 					GuiControl* focusedControl = nullptr;
@@ -10756,7 +10975,7 @@ GuiVirtualDataGrid (IDataGridContext)
 
 					GetItemProvider()->PushEditing();
 					dataGridView->SetBindingCellValue(currentEditorPos.row, currentEditorPos.column, currentEditor->GetTemplate()->GetCellValue());
-					GetItemProvider()->PopEditing();
+					CHECK_ERROR(GetItemProvider()->PopEditing(), ERROR_MESSAGE_PREFIX L"BeginEditListItem and EndEditListItem calls are not paired.");
 
 					auto style = GetArranger()->GetVisibleStyle(currentEditorPos.row);
 					if (auto itemStyle = dynamic_cast<DefaultDataGridItemTemplate*>(style))
@@ -10769,6 +10988,7 @@ GuiVirtualDataGrid (IDataGridContext)
 						focusedControl->SetFocused();
 					}
 				}
+#undef ERROR_MESSAGE_PREFIX
 			}
 
 /***********************************************************************
@@ -11312,7 +11532,6 @@ SubColumnVisualizerTemplate
 
 				void SubColumnVisualizerTemplate::Initialize(bool fixTextColor)
 				{
-
 					SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
 
 					auto textBounds = new GuiBoundsComposition;
@@ -11490,174 +11709,81 @@ namespace vl
 			{
 
 /***********************************************************************
+RangedItemArrangerBase (ItemSource)
+***********************************************************************/
+
+				class ArrangerItemSource : public Object, public virtual description::IValueObservableList
+				{
+				protected:
+					GuiListControl::IItemProvider*			itemProvider = nullptr;
+
+				public:
+					ArrangerItemSource(GuiListControl::IItemProvider* _itemProvider)
+						: itemProvider(_itemProvider)
+					{
+					}
+
+					vint GetCount() override
+					{
+						return itemProvider->Count();
+					}
+
+					description::Value Get(vint index) override
+					{
+						return itemProvider->GetBindingValue(index);
+					}
+
+					Ptr<description::IValueEnumerator>	CreateEnumerator()										override { CHECK_FAIL(L"ArrangerItemSource::CreateEnumerator should not be called."); }
+					bool								Contains(const description::Value& value)				override { CHECK_FAIL(L"ArrangerItemSource::Contains should not be called."); }
+					vint								IndexOf(const description::Value& value)				override { CHECK_FAIL(L"ArrangerItemSource::IndexOf should not be called."); }
+
+					void								Set(vint index, const description::Value& value)		override { CHECK_FAIL(L"ArrangerItemSource::Set should not be called."); }
+					vint								Add(const description::Value& value)					override { CHECK_FAIL(L"ArrangerItemSource::Add should not be called."); }
+					vint								Insert(vint index, const description::Value& value)		override { CHECK_FAIL(L"ArrangerItemSource::Insert should not be called."); }
+					bool								Remove(const description::Value& value)					override { CHECK_FAIL(L"ArrangerItemSource::Remove should not be called."); }
+					bool								RemoveAt(vint index)									override { CHECK_FAIL(L"ArrangerItemSource::RemoveAt should not be called."); }
+					void								Clear()													override { CHECK_FAIL(L"ArrangerItemSource::Clear should not be called."); }
+				};
+
+/***********************************************************************
 RangedItemArrangerBase
 ***********************************************************************/
 
-				void RangedItemArrangerBase::InvalidateAdoptedSize()
+				void RangedItemArrangerBase::OnViewLocationChanged(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments)
 				{
-					if (listControl)
-					{
-						listControl->AdoptedSizeInvalidated.Execute(listControl->GetNotifyEventArguments());
-					}
-				}
-
-				vint RangedItemArrangerBase::CalculateAdoptedSize(vint expectedSize, vint count, vint itemSize)
-				{
-					vint visibleCount = expectedSize / itemSize;
-					if (count < visibleCount)
-					{
-						visibleCount = count;
-					}
-					else if (count > visibleCount)
-					{
-						vint deltaA = expectedSize - count * itemSize;
-						vint deltaB = itemSize - deltaA;
-						if (deltaB < deltaA)
-						{
-							visibleCount++;
-						}
-					}
-					return visibleCount * itemSize;
-				}
-
-				RangedItemArrangerBase::ItemStyleRecord RangedItemArrangerBase::CreateStyle(vint index)
-				{
-					GuiSelectableButton* backgroundButton = nullptr;
-					if (listControl->GetDisplayItemBackground())
-					{
-						backgroundButton = new GuiSelectableButton(theme::ThemeName::ListItemBackground);
-						if (auto style = listControl->TypedControlTemplateObject(true)->GetBackgroundTemplate())
-						{
-							backgroundButton->SetControlTemplate(style);
-						}
-						backgroundButton->SetAutoFocus(false);
-						backgroundButton->SetAutoSelection(false);
-					}
-
-					auto itemStyle = callback->RequestItem(index, backgroundButton->GetBoundsComposition());
-					if (backgroundButton)
-					{
-						itemStyle->SetAlignmentToParent(Margin(0, 0, 0, 0));
-						itemStyle->SelectedChanged.AttachLambda([=](GuiGraphicsComposition* sender, GuiEventArgs& arguments)
-						{
-							backgroundButton->SetSelected(itemStyle->GetSelected());
-						});
-
-						backgroundButton->SetSelected(itemStyle->GetSelected());
-						backgroundButton->GetContainerComposition()->AddChild(itemStyle);
-					}
-					return { itemStyle, backgroundButton };
-				}
-
-				void RangedItemArrangerBase::DeleteStyle(ItemStyleRecord style)
-				{
-					callback->ReleaseItem(style.key);
-					if (style.value)
-					{
-						SafeDeleteControl(style.value);
-					}
-				}
-
-				compositions::GuiBoundsComposition* RangedItemArrangerBase::GetStyleBounds(ItemStyleRecord style)
-				{
-					return style.value ? style.value->GetBoundsComposition() : style.key;
-				}
-
-				void RangedItemArrangerBase::ClearStyles()
-				{
-					startIndex = 0;
 					if (callback)
 					{
-						// TODO: (enumerable) foreach
-						for (vint i = 0; i < visibleStyles.Count(); i++)
-						{
-							DeleteStyle(visibleStyles[i]);
-						}
+						callback->SetViewLocation(repeat->GetViewLocation());
 					}
-					visibleStyles.Clear();
-					viewBounds = Rect(0, 0, 0, 0);
-					InvalidateItemSizeCache();
-					InvalidateAdoptedSize();
 				}
 
-				void RangedItemArrangerBase::OnViewChangedInternal(Rect oldBounds, Rect newBounds)
+				void RangedItemArrangerBase::OnTotalSizeChanged(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments)
 				{
-					vint endIndex = startIndex + visibleStyles.Count() - 1;
-					vint newStartIndex = 0;
-					vint itemCount = itemProvider->Count();
-					BeginPlaceItem(true, newBounds, newStartIndex);
-					if (newStartIndex < 0) newStartIndex = 0;
-
-					StyleList newVisibleStyles;
-					for (vint i = newStartIndex; i < itemCount; i++)
-					{
-						bool reuseOldStyle = startIndex <= i && i <= endIndex;
-						auto style = reuseOldStyle ? visibleStyles[i - startIndex] : CreateStyle(i);
-						newVisibleStyles.Add(style);
-
-						Rect bounds;
-						Margin alignmentToParent;
-						PlaceItem(true, !reuseOldStyle, i, style, newBounds, bounds, alignmentToParent);
-						if (IsItemOutOfViewBounds(i, style, bounds, newBounds))
-						{
-							break;
-						}
-
-						bounds.x1 -= newBounds.x1;
-						bounds.x2 -= newBounds.x1;
-						bounds.y1 -= newBounds.y1;
-						bounds.y2 -= newBounds.y1;
-					}
-
-					vint newEndIndex = newStartIndex + newVisibleStyles.Count() - 1;
-					// TODO: (enumerable) foreach:indexed
-					for (vint i = 0; i < visibleStyles.Count(); i++)
-					{
-						vint index = startIndex + i;
-						if (index < newStartIndex || index > newEndIndex)
-						{
-							DeleteStyle(visibleStyles[i]);
-						}
-					}
-					CopyFrom(visibleStyles, newVisibleStyles);
-
-					if (EndPlaceItem(true, newBounds, newStartIndex))
+					if (callback)
 					{
 						callback->OnTotalSizeChanged();
-						InvalidateAdoptedSize();
 					}
-					startIndex = newStartIndex;
 				}
 
-				void RangedItemArrangerBase::RearrangeItemBounds()
+				void RangedItemArrangerBase::OnAdoptedSizeInvalidated(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments)
 				{
-					vint newStartIndex = startIndex;
-					BeginPlaceItem(false, viewBounds, newStartIndex);
-					// TODO: (enumerable) foreach
-					for (vint i = 0; i < visibleStyles.Count(); i++)
+					if (callback)
 					{
-						auto style = visibleStyles[i];
-						Rect bounds;
-						Margin alignmentToParent(-1, -1, -1, -1);
-						PlaceItem(false, false, startIndex + i, style, viewBounds, bounds, alignmentToParent);
-
-						bounds.x1 -= viewBounds.x1;
-						bounds.x2 -= viewBounds.x1;
-						bounds.y1 -= viewBounds.y1;
-						bounds.y2 -= viewBounds.y1;
-
-						callback->SetStyleAlignmentToParent(GetStyleBounds(style), alignmentToParent);
-						callback->SetStyleBounds(GetStyleBounds(style), bounds);
+						callback->OnAdoptedSizeChanged();
 					}
-					EndPlaceItem(false, viewBounds, startIndex);
 				}
 
-				RangedItemArrangerBase::RangedItemArrangerBase()
+				RangedItemArrangerBase::RangedItemArrangerBase(compositions::GuiVirtualRepeatCompositionBase* _repeat)
+					: repeat(_repeat)
 				{
+					repeat->ViewLocationChanged.AttachMethod(this, &RangedItemArrangerBase::OnViewLocationChanged);
+					repeat->TotalSizeChanged.AttachMethod(this, &RangedItemArrangerBase::OnTotalSizeChanged);
+					repeat->AdoptedSizeInvalidated.AttachMethod(this, &RangedItemArrangerBase::OnAdoptedSizeInvalidated);
 				}
 
 				RangedItemArrangerBase::~RangedItemArrangerBase()
 				{
+					SafeDeleteComposition(repeat);
 				}
 
 				void RangedItemArrangerBase::OnAttached(GuiListControl::IItemProvider* provider)
@@ -11665,89 +11791,34 @@ RangedItemArrangerBase
 					itemProvider = provider;
 					if (provider)
 					{
-						OnItemModified(0, 0, provider->Count());
+						itemSource = Ptr(new ArrangerItemSource(provider));
+						repeat->SetItemSource(itemSource);
+					}
+					else
+					{
+						repeat->SetItemSource(nullptr);
+						itemSource = nullptr;
 					}
 				}
 
-				void RangedItemArrangerBase::OnItemModified(vint start, vint count, vint newCount)
+				void RangedItemArrangerBase::OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)
 				{
-					if (callback && !itemProvider->IsEditing())
+					if (itemSource && itemReferenceUpdated)
 					{
-						suppressOnViewChanged = true;
-						{
-							vint visibleCount = visibleStyles.Count();
-							vint itemCount = itemProvider->Count();
-							SortedList<ItemStyleRecord> reusedStyles;
-							for (vint i = 0; i < visibleCount; i++)
-							{
-								vint index = startIndex + i;
-								if (index >= itemCount)
-								{
-									break;
-								}
-
-								vint oldIndex = -1;
-								if (index < start)
-								{
-									oldIndex = index;
-								}
-								else if (index >= start + newCount)
-								{
-									oldIndex = index - newCount + count;
-								}
-
-								if (oldIndex != -1)
-								{
-									if (oldIndex >= startIndex && oldIndex < startIndex + visibleCount)
-									{
-										auto style = visibleStyles[oldIndex - startIndex];
-										reusedStyles.Add(style);
-										visibleStyles.Add(style);
-									}
-									else
-									{
-										oldIndex = -1;
-									}
-								}
-								if (oldIndex == -1)
-								{
-									visibleStyles.Add(CreateStyle(index));
-								}
-							}
-
-							for (vint i = 0; i < visibleCount; i++)
-							{
-								auto style = visibleStyles[i];
-								if (!reusedStyles.Contains(style))
-								{
-									DeleteStyle(style);
-								}
-							}
-
-							visibleStyles.RemoveRange(0, visibleCount);
-							// TODO: (enumerable) foreach:indexed
-							for (vint i = 0; i < visibleStyles.Count(); i++)
-							{
-								visibleStyles[i].key->SetIndex(startIndex + i);
-							}
-						}
-						suppressOnViewChanged = false;
-
-						callback->OnTotalSizeChanged();
-						callback->SetViewLocation(viewBounds.LeftTop());
-						InvalidateAdoptedSize();
+						itemSource->ItemChanged(start, count, newCount);
 					}
 				}
 
 				void RangedItemArrangerBase::AttachListControl(GuiListControl* value)
 				{
 					listControl = value;
-					InvalidateAdoptedSize();
+					repeat->SetAxis(Ptr(listControl->GetAxis()));
 				}
 
 				void RangedItemArrangerBase::DetachListControl()
 				{
-					listControl = 0;
+					repeat->SetAxis(nullptr);
+					listControl = nullptr;
 				}
 
 				GuiListControl::IItemArrangerCallback* RangedItemArrangerBase::GetCallback()
@@ -11759,168 +11830,81 @@ RangedItemArrangerBase
 				{
 					if (callback != value)
 					{
-						ClearStyles();
+						if (callback)
+						{
+							repeat->GetParent()->RemoveChild(repeat);
+							repeat->SetItemTemplate({});
+						}
 						callback = value;
+						if (callback)
+						{
+							callback->GetContainerComposition()->AddChild(repeat);
+							repeat->SetItemTemplate([](const description::Value&)->templates::GuiTemplate*
+							{
+								CHECK_FAIL(L"This function should not be called, it is used to enable the virtual repeat composition.");
+							});
+						}
 					}
 				}
 
 				Size RangedItemArrangerBase::GetTotalSize()
 				{
-					if (callback)
+					if (callback && repeat)
 					{
-						return OnCalculateTotalSize();
+						return repeat->GetTotalSize();
 					}
-					else
-					{
-						return Size(0, 0);
-					}
+					return Size(0, 0);
 				}
 
 				GuiListControl::ItemStyle* RangedItemArrangerBase::GetVisibleStyle(vint itemIndex)
 				{
-					if (startIndex <= itemIndex && itemIndex < startIndex + visibleStyles.Count())
-					{
-						return visibleStyles[itemIndex - startIndex].key;
-					}
-					else
-					{
-						return nullptr;
-					}
+					auto bounds = repeat->GetVisibleStyle(itemIndex);
+					return bounds ? callback->GetItem(bounds) : nullptr;
 				}
 
 				vint RangedItemArrangerBase::GetVisibleIndex(GuiListControl::ItemStyle* style)
 				{
-					// TODO: (enumerable) foreach:indexed
-					for (vint i = 0; i < visibleStyles.Count(); i++)
-					{
-						if (visibleStyles[i].key == style)
-						{
-							return i + startIndex;
-						}
-					}
-					return -1;
+					auto bounds = callback->GetItemBounds(style);
+					return repeat->GetVisibleIndex(bounds);
 				}
 
 				void RangedItemArrangerBase::ReloadVisibleStyles()
 				{
-					ClearStyles();
+					if (repeat) repeat->ResetLayout(true);
 				}
 
 				void RangedItemArrangerBase::OnViewChanged(Rect bounds)
 				{
-					if (!suppressOnViewChanged)
+					repeat->SetViewLocation(bounds.LeftTop());
+					repeat->SetExpectedBounds(Rect({ 0,0 }, bounds.GetSize()));
+				}
+
+				vint RangedItemArrangerBase::FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)
+				{
+					return repeat->FindItemByVirtualKeyDirection(itemIndex, key);
+				}
+
+				GuiListControl::EnsureItemVisibleResult RangedItemArrangerBase::EnsureItemVisible(vint itemIndex)
+				{
+					switch (repeat->EnsureItemVisible(itemIndex))
 					{
-						suppressOnViewChanged = true;
-						Rect oldBounds = viewBounds;
-						viewBounds = bounds;
-						if (callback)
-						{
-							OnViewChangedInternal(oldBounds, viewBounds);
-							RearrangeItemBounds();
-						}
-						suppressOnViewChanged = false;
+					case VirtualRepeatEnsureItemVisibleResult::Moved:
+						return GuiListControl::EnsureItemVisibleResult::Moved;
+					case VirtualRepeatEnsureItemVisibleResult::NotMoved:
+						return GuiListControl::EnsureItemVisibleResult::NotMoved;
+					default:
+						return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
 					}
+				}
+
+				Size RangedItemArrangerBase::GetAdoptedSize(Size expectedSize)
+				{
+					return repeat->GetAdoptedSize(expectedSize);
 				}
 
 /***********************************************************************
-FreeHeightItemArranger
+VirtualRepeatRangedItemArrangerBase
 ***********************************************************************/
-
-				void FreeHeightItemArranger::EnsureOffsetForItem(vint itemIndex)
-				{
-					if (heights.Count() == 0) return;
-
-					if (availableOffsetCount == 0)
-					{
-						availableOffsetCount = 1;
-						offsets[0] = 0;
-					}
-
-					for (vint i = availableOffsetCount; i < itemIndex && i < heights.Count(); i++)
-					{
-						offsets[i] = offsets[i - 1] + heights[i - 1];
-					}
-				}
-
-				void FreeHeightItemArranger::BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)
-				{
-					pim_heightUpdated = false;
-					EnsureOffsetForItem(heights.Count() - 1);
-					if (forMoving)
-					{
-						// TODO: (enumerable) foreach:indexed
-						for (vint i = 0; i < heights.Count(); i++)
-						{
-							if (offsets[i] + heights[i] >= newBounds.Top())
-							{
-								newStartIndex = i;
-								break;
-							}
-						}
-					}
-				}
-
-				void FreeHeightItemArranger::PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
-				{
-					vint styleHeight = heights[index];
-					{
-						auto composition = GetStyleBounds(style);
-						auto currentBounds = callback->GetStyleBounds(composition);
-						callback->SetStyleBounds(composition, Rect(bounds.LeftTop(), Size(viewBounds.Width(), bounds.Height())));
-						vint newStyleHeight = callback->GetStylePreferredSize(composition).y;
-						callback->SetStyleBounds(composition, currentBounds);
-
-						if (!newCreatedStyle || styleHeight < newStyleHeight)
-						{
-							styleHeight = newStyleHeight;
-						}
-					}
-
-					if (heights[index] != styleHeight)
-					{
-						heights[index] = styleHeight;
-						pim_heightUpdated = true;
-					}
-
-					vint styleOffset = index == 0 ? 0 : offsets[index - 1] + heights[index - 1];
-					if (availableOffsetCount <= index || offsets[index] != styleOffset)
-					{
-						offsets[index] = styleOffset;
-						availableOffsetCount = index;
-					}
-
-					bounds = Rect(Point(0, offsets[index]), Size(viewBounds.Width(), heights[index]));
-				}
-
-				bool FreeHeightItemArranger::IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)
-				{
-					return bounds.Top() >= viewBounds.Bottom();
-				}
-
-				bool FreeHeightItemArranger::EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)
-				{
-					if (forMoving)
-					{
-						return pim_heightUpdated;
-					}
-					return false;
-				}
-
-				void FreeHeightItemArranger::InvalidateItemSizeCache()
-				{
-					availableOffsetCount = 0;
-					for (vint i = 0; i < heights.Count(); i++)
-					{
-						heights[i] = 1;
-					}
-				}
-
-				Size FreeHeightItemArranger::OnCalculateTotalSize()
-				{
-					if (heights.Count() == 0) return Size(0, 0);
-					EnsureOffsetForItem(heights.Count());
-					return Size(viewBounds.Width(), offsets[heights.Count() - 1] + heights[heights.Count() - 1]);
-				}
 
 				FreeHeightItemArranger::FreeHeightItemArranger()
 				{
@@ -11928,225 +11912,6 @@ FreeHeightItemArranger
 
 				FreeHeightItemArranger::~FreeHeightItemArranger()
 				{
-				}
-
-				void FreeHeightItemArranger::OnAttached(GuiListControl::IItemProvider* provider)
-				{
-					if (provider)
-					{
-						vint itemCount = provider->Count();
-						heights.Resize(itemCount);
-						offsets.Resize(itemCount);
-						for (vint i = 0; i < heights.Count(); i++)
-						{
-							heights[i] = 1;
-						}
-						availableOffsetCount = 0;
-					}
-					else
-					{
-						heights.Resize(0);
-						offsets.Resize(0);
-						availableOffsetCount = 0;
-					}
-					RangedItemArrangerBase::OnAttached(provider);
-				}
-
-				void FreeHeightItemArranger::OnItemModified(vint start, vint count, vint newCount)
-				{
-					availableOffsetCount = start;
-					vint itemCount = heights.Count() + newCount - count;
-
-					if (count < newCount)
-					{
-						heights.Resize(itemCount);
-						if (start + newCount < itemCount)
-						{
-							memmove(&heights[start + newCount], &heights[start + count], sizeof(vint) * (itemCount - start - newCount));
-						}
-					}
-					else if (count > newCount)
-					{
-						if (start + newCount < itemCount)
-						{
-							memmove(&heights[start + newCount], &heights[start + count], sizeof(vint) * (itemCount - start - newCount));
-						}
-						heights.Resize(itemCount);
-					}
-
-					for (vint i = 0; i < newCount; i++)
-					{
-						heights[start + i] = 1;
-					}
-					offsets.Resize(itemCount);
-
-					RangedItemArrangerBase::OnItemModified(start, count, newCount);
-				}
-
-				vint FreeHeightItemArranger::FindItem(vint itemIndex, compositions::KeyDirection key)
-				{
-					vint count = itemProvider->Count();
-					if (count == 0) return -1;
-					switch (key)
-					{
-					case KeyDirection::Up:
-						itemIndex--;
-						break;
-					case KeyDirection::Down:
-						itemIndex++;
-						break;
-					case KeyDirection::Home:
-						itemIndex = 0;
-						break;
-					case KeyDirection::End:
-						itemIndex = count;
-						break;
-					case KeyDirection::PageUp:
-						itemIndex -= visibleStyles.Count();
-						break;
-					case KeyDirection::PageDown:
-						itemIndex += visibleStyles.Count();
-						break;
-					default:
-						return -1;
-					}
-
-					if (itemIndex < 0) return 0;
-					else if (itemIndex >= count) return count - 1;
-					else return itemIndex;
-				}
-
-				GuiListControl::EnsureItemVisibleResult FreeHeightItemArranger::EnsureItemVisible(vint itemIndex)
-				{
-					if (callback)
-					{
-						bool moved = false;
-						while (true)
-						{
-							if (itemIndex < 0 || itemIndex >= itemProvider->Count())
-							{
-								return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
-							}
-
-							EnsureOffsetForItem(itemIndex);
-							vint offset = viewBounds.y1;
-							vint top = offsets[itemIndex];
-							vint bottom = top + heights[itemIndex];
-							vint height = viewBounds.Height();
-
-							Point location = viewBounds.LeftTop();
-
-							if (offset >= top && offset + height <= bottom)
-							{
-								break;
-							}
-							else if (offset > top)
-							{
-								location.y = top;
-							}
-							else if (offset < bottom - height)
-							{
-								location.y = bottom - height;
-							}
-							else
-							{
-								break;
-							}
-
-							auto oldLeftTop = viewBounds.LeftTop();
-							callback->SetViewLocation(location);
-							moved |= viewBounds.LeftTop() != oldLeftTop;
-							if (viewBounds.LeftTop() != location) break;
-						}
-						return moved ? GuiListControl::EnsureItemVisibleResult::Moved : GuiListControl::EnsureItemVisibleResult::NotMoved;
-					}
-					return GuiListControl::EnsureItemVisibleResult::NotMoved;
-				}
-
-				Size FreeHeightItemArranger::GetAdoptedSize(Size expectedSize)
-				{
-					vint h = expectedSize.x * 2;
-					if (expectedSize.y < h) expectedSize.y = h;
-					return expectedSize;
-				}
-
-/***********************************************************************
-FixedHeightItemArranger
-***********************************************************************/
-
-				vint FixedHeightItemArranger::GetWidth()
-				{
-					return -1;
-				}
-
-				vint FixedHeightItemArranger::GetYOffset()
-				{
-					return 0;
-				}
-
-				void FixedHeightItemArranger::BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)
-				{
-					pi_width = GetWidth();
-					if (forMoving)
-					{
-						pim_rowHeight = rowHeight;
-						newStartIndex = (newBounds.Top() - GetYOffset()) / rowHeight;
-					}
-				}
-
-				void FixedHeightItemArranger::PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
-				{
-					vint top = GetYOffset() + index * rowHeight;
-					if (pi_width == -1)
-					{
-						alignmentToParent = Margin(0, -1, 0, -1);
-						bounds = Rect(Point(0, top), Size(0, rowHeight));
-					}
-					else
-					{
-						alignmentToParent = Margin(-1, -1, -1, -1);
-						bounds = Rect(Point(0, top), Size(pi_width, rowHeight));
-					}
-					if (forMoving)
-					{
-						vint styleHeight = callback->GetStylePreferredSize(GetStyleBounds(style)).y;
-						if (pim_rowHeight < styleHeight)
-						{
-							pim_rowHeight = styleHeight;
-						}
-					}
-				}
-
-				bool FixedHeightItemArranger::IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)
-				{
-					return bounds.Top() >= viewBounds.Bottom();
-				}
-
-				bool FixedHeightItemArranger::EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)
-				{
-					if (forMoving)
-					{
-						if (pim_rowHeight != rowHeight)
-						{
-							vint offset = (pim_rowHeight - rowHeight) * newStartIndex;
-							rowHeight = pim_rowHeight;
-							callback->SetViewLocation(Point(0, newBounds.Top() + offset));
-							return true;
-						}
-					}
-					return false;
-				}
-
-				void FixedHeightItemArranger::InvalidateItemSizeCache()
-				{
-					rowHeight = 1;
-				}
-
-				Size FixedHeightItemArranger::OnCalculateTotalSize()
-				{
-					vint width = GetWidth();
-					if (width < 0) width = 0;
-					return Size(width, rowHeight * itemProvider->Count() + GetYOffset());
 				}
 
 				FixedHeightItemArranger::FixedHeightItemArranger()
@@ -12157,183 +11922,6 @@ FixedHeightItemArranger
 				{
 				}
 
-				vint FixedHeightItemArranger::FindItem(vint itemIndex, compositions::KeyDirection key)
-				{
-					vint count = itemProvider->Count();
-					if (count == 0) return -1;
-					vint groupCount = viewBounds.Height() / rowHeight;
-					if (groupCount == 0) groupCount = 1;
-					switch (key)
-					{
-					case KeyDirection::Up:
-						itemIndex--;
-						break;
-					case KeyDirection::Down:
-						itemIndex++;
-						break;
-					case KeyDirection::Home:
-						itemIndex = 0;
-						break;
-					case KeyDirection::End:
-						itemIndex = count;
-						break;
-					case KeyDirection::PageUp:
-						itemIndex -= groupCount;
-						break;
-					case KeyDirection::PageDown:
-						itemIndex += groupCount;
-						break;
-					default:
-						return -1;
-					}
-
-					if (itemIndex < 0) return 0;
-					else if (itemIndex >= count) return count - 1;
-					else return itemIndex;
-				}
-
-				GuiListControl::EnsureItemVisibleResult FixedHeightItemArranger::EnsureItemVisible(vint itemIndex)
-				{
-					if (callback)
-					{
-						if (itemIndex < 0 || itemIndex >= itemProvider->Count())
-						{
-							return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
-						}
-						bool moved = false;
-						while (true)
-						{
-							vint yOffset = GetYOffset();
-							vint top = itemIndex*rowHeight;
-							vint bottom = top + rowHeight + yOffset;
-
-							if (viewBounds.Height() < rowHeight)
-							{
-								if (viewBounds.Top() < bottom && top < viewBounds.Bottom())
-								{
-									break;
-								}
-							}
-
-							Point location = viewBounds.LeftTop();
-							if (viewBounds.y1 >= top && viewBounds.y2 <= bottom)
-							{
-								break;
-							}
-							else if (top < viewBounds.Top())
-							{
-								location.y = top;
-							}
-							else if (viewBounds.Bottom() < bottom)
-							{
-								location.y = bottom - viewBounds.Height();
-							}
-							else
-							{
-								break;
-							}
-
-							auto oldLeftTop = viewBounds.LeftTop();
-							callback->SetViewLocation(location);
-							moved |= viewBounds.LeftTop() != oldLeftTop;
-							if (viewBounds.LeftTop() != location) break;
-						}
-						return moved ? GuiListControl::EnsureItemVisibleResult::Moved : GuiListControl::EnsureItemVisibleResult::NotMoved;
-					}
-					return GuiListControl::EnsureItemVisibleResult::NotMoved;
-				}
-
-				Size FixedHeightItemArranger::GetAdoptedSize(Size expectedSize)
-				{
-					if (itemProvider)
-					{
-						vint yOffset = GetYOffset();
-						vint y = expectedSize.y - yOffset;
-						vint itemCount = itemProvider->Count();
-						return Size(expectedSize.x, yOffset + CalculateAdoptedSize(y, itemCount, rowHeight));
-					}
-					return expectedSize;
-				}
-
-/***********************************************************************
-FixedSizeMultiColumnItemArranger
-***********************************************************************/
-
-				void FixedSizeMultiColumnItemArranger::BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)
-				{
-					if (forMoving)
-					{
-						pim_itemSize = itemSize;
-						vint rows = newBounds.Top() / itemSize.y;
-						if (rows < 0) rows = 0;
-						vint cols = newBounds.Width() / itemSize.x;
-						if (cols < 1) cols = 1;
-						newStartIndex = rows * cols;
-					}
-				}
-
-				void FixedSizeMultiColumnItemArranger::PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
-				{
-					vint rowItems = viewBounds.Width() / itemSize.x;
-					if (rowItems < 1) rowItems = 1;
-
-					vint row = index / rowItems;
-					vint col = index % rowItems;
-					bounds = Rect(Point(col * itemSize.x, row * itemSize.y), itemSize);
-					if (forMoving)
-					{
-						Size styleSize = callback->GetStylePreferredSize(GetStyleBounds(style));
-						if (pim_itemSize.x < styleSize.x) pim_itemSize.x = styleSize.x;
-						if (pim_itemSize.y < styleSize.y) pim_itemSize.y = styleSize.y;
-					}
-				}
-
-				bool FixedSizeMultiColumnItemArranger::IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)
-				{
-					return bounds.Top() >= viewBounds.Bottom();
-				}
-
-				bool FixedSizeMultiColumnItemArranger::EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)
-				{
-					if (forMoving)
-					{
-						if (pim_itemSize != itemSize)
-						{
-							itemSize = pim_itemSize;
-							return true;
-						}
-					}
-					return false;
-				}
-
-				void FixedSizeMultiColumnItemArranger::CalculateRange(Size itemSize, Rect bounds, vint count, vint& start, vint& end)
-				{
-					vint startRow = bounds.Top() / itemSize.y;
-					if (startRow < 0) startRow = 0;
-					vint endRow = (bounds.Bottom() - 1) / itemSize.y;
-					vint cols = bounds.Width() / itemSize.x;
-					if (cols < 1) cols = 1;
-
-					start = startRow*cols;
-					end = (endRow + 1)*cols - 1;
-					if (end >= count) end = count - 1;
-				}
-
-				void FixedSizeMultiColumnItemArranger::InvalidateItemSizeCache()
-				{
-					itemSize = Size(1, 1);
-				}
-
-				Size FixedSizeMultiColumnItemArranger::OnCalculateTotalSize()
-				{
-					vint rowItems = viewBounds.Width() / itemSize.x;
-					if (rowItems < 1) rowItems = 1;
-					vint rows = itemProvider->Count() / rowItems;
-					if (itemProvider->Count() % rowItems) rows++;
-
-					return Size(itemSize.x * rowItems, itemSize.y*rows);
-				}
-
 				FixedSizeMultiColumnItemArranger::FixedSizeMultiColumnItemArranger()
 				{
 				}
@@ -12342,324 +11930,12 @@ FixedSizeMultiColumnItemArranger
 				{
 				}
 
-				vint FixedSizeMultiColumnItemArranger::FindItem(vint itemIndex, compositions::KeyDirection key)
-				{
-					vint count = itemProvider->Count();
-					vint columnCount = viewBounds.Width() / itemSize.x;
-					if (columnCount == 0) columnCount = 1;
-					vint rowCount = viewBounds.Height() / itemSize.y;
-					if (rowCount == 0) rowCount = 1;
-
-					switch (key)
-					{
-					case KeyDirection::Up:
-						itemIndex -= columnCount;
-						break;
-					case KeyDirection::Down:
-						itemIndex += columnCount;
-						break;
-					case KeyDirection::Left:
-						itemIndex--;
-						break;
-					case KeyDirection::Right:
-						itemIndex++;
-						break;
-					case KeyDirection::Home:
-						itemIndex = 0;
-						break;
-					case KeyDirection::End:
-						itemIndex = count;
-						break;
-					case KeyDirection::PageUp:
-						itemIndex -= columnCount*rowCount;
-						break;
-					case KeyDirection::PageDown:
-						itemIndex += columnCount*rowCount;
-						break;
-					case KeyDirection::PageLeft:
-						itemIndex -= itemIndex%columnCount;
-						break;
-					case KeyDirection::PageRight:
-						itemIndex += columnCount - itemIndex%columnCount - 1;
-						break;
-					default:
-						return -1;
-					}
-
-					if (itemIndex < 0) return 0;
-					else if (itemIndex >= count) return count - 1;
-					else return itemIndex;
-				}
-
-				GuiListControl::EnsureItemVisibleResult FixedSizeMultiColumnItemArranger::EnsureItemVisible(vint itemIndex)
-				{
-					if (callback)
-					{
-						if (itemIndex < 0 || itemIndex >= itemProvider->Count())
-						{
-							return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
-						}
-						bool moved = false;
-						while (true)
-						{
-							vint rowHeight = itemSize.y;
-							vint columnCount = viewBounds.Width() / itemSize.x;
-							if (columnCount == 0) columnCount = 1;
-							vint rowIndex = itemIndex / columnCount;
-
-							vint top = rowIndex*rowHeight;
-							vint bottom = top + rowHeight;
-
-							if (viewBounds.Height() < rowHeight)
-							{
-								if (viewBounds.Top() < bottom && top < viewBounds.Bottom())
-								{
-									break;
-								}
-							}
-
-							Point location = viewBounds.LeftTop();
-							if (top < viewBounds.Top())
-							{
-								location.y = top;
-							}
-							else if (viewBounds.Bottom() < bottom)
-							{
-								location.y = bottom - viewBounds.Height();
-							}
-							else
-							{
-								break;
-							}
-
-							auto oldLeftTop = viewBounds.LeftTop();
-							callback->SetViewLocation(location);
-							moved |= viewBounds.LeftTop() != oldLeftTop;
-							if (viewBounds.LeftTop() != location) break;
-						}
-						return moved ? GuiListControl::EnsureItemVisibleResult::Moved : GuiListControl::EnsureItemVisibleResult::NotMoved;
-					}
-					return GuiListControl::EnsureItemVisibleResult::NotMoved;
-				}
-
-				Size FixedSizeMultiColumnItemArranger::GetAdoptedSize(Size expectedSize)
-				{
-					if (itemProvider)
-					{
-						vint count = itemProvider->Count();
-						vint columnCount = viewBounds.Width() / itemSize.x;
-						vint rowCount = viewBounds.Height() / itemSize.y;
-						return Size(
-							CalculateAdoptedSize(expectedSize.x, columnCount, itemSize.x),
-							CalculateAdoptedSize(expectedSize.y, rowCount, itemSize.y)
-						);
-					}
-					return expectedSize;
-				}
-
-/***********************************************************************
-FixedHeightMultiColumnItemArranger
-***********************************************************************/
-
-				void FixedHeightMultiColumnItemArranger::CalculateRange(vint itemHeight, Rect bounds, vint& rows, vint& startColumn)
-				{
-					vint w = bounds.Width();
-					vint h = bounds.Height();
-					if (w <= 0) w = 1;
-
-					rows = h / itemHeight;
-					if (rows < 1) rows = 1;
-					startColumn = bounds.Left() / w;
-				}
-
-				void FixedHeightMultiColumnItemArranger::BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)
-				{
-					pi_currentWidth = 0;
-					pi_totalWidth = 0;
-					if (forMoving)
-					{
-						vint w = newBounds.Width();
-						vint h = newBounds.Height();
-						if (w <= 0) w = 1;
-
-						pim_itemHeight = itemHeight;
-						vint rows = h / itemHeight;
-						if (rows < 1) rows = 1;
-						vint columns = newBounds.Left() / w;
-						newStartIndex = rows * columns;
-					}
-				}
-
-				void FixedHeightMultiColumnItemArranger::PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
-				{
-					vint rows = viewBounds.Height() / itemHeight;
-					if (rows < 1) rows = 1;
-
-					vint row = index % rows;
-					if (row == 0)
-					{
-						pi_totalWidth += pi_currentWidth;
-						pi_currentWidth = 0;
-					}
-
-					Size styleSize = callback->GetStylePreferredSize(GetStyleBounds(style));
-					if (pi_currentWidth < styleSize.x) pi_currentWidth = styleSize.x;
-					bounds = Rect(Point(pi_totalWidth + viewBounds.Left(), itemHeight * row), Size(0, 0));
-					if (forMoving)
-					{
-						if (pim_itemHeight < styleSize.y) pim_itemHeight = styleSize.y;
-					}
-				}
-
-				bool FixedHeightMultiColumnItemArranger::IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)
-				{
-					return bounds.Left() >= viewBounds.Right();
-				}
-
-				bool FixedHeightMultiColumnItemArranger::EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)
-				{
-					if (forMoving)
-					{
-						if (pim_itemHeight != itemHeight)
-						{
-							itemHeight = pim_itemHeight;
-							return true;
-						}
-					}
-					return false;
-				}
-
-				void FixedHeightMultiColumnItemArranger::InvalidateItemSizeCache()
-				{
-					itemHeight = 1;
-				}
-
-				Size FixedHeightMultiColumnItemArranger::OnCalculateTotalSize()
-				{
-					vint rows = viewBounds.Height() / itemHeight;
-					if (rows < 1) rows = 1;
-					vint columns = itemProvider->Count() / rows;
-					if (itemProvider->Count() % rows) columns += 1;
-					return Size(viewBounds.Width() * columns, 0);
-				}
-
 				FixedHeightMultiColumnItemArranger::FixedHeightMultiColumnItemArranger()
 				{
 				}
 
 				FixedHeightMultiColumnItemArranger::~FixedHeightMultiColumnItemArranger()
 				{
-				}
-
-				vint FixedHeightMultiColumnItemArranger::FindItem(vint itemIndex, compositions::KeyDirection key)
-				{
-					vint count = itemProvider->Count();
-					vint groupCount = viewBounds.Height() / itemHeight;
-					if (groupCount == 0) groupCount = 1;
-					switch (key)
-					{
-					case KeyDirection::Up:
-						itemIndex--;
-						break;
-					case KeyDirection::Down:
-						itemIndex++;
-						break;
-					case KeyDirection::Left:
-						itemIndex -= groupCount;
-						break;
-					case KeyDirection::Right:
-						itemIndex += groupCount;
-						break;
-					case KeyDirection::Home:
-						itemIndex = 0;
-						break;
-					case KeyDirection::End:
-						itemIndex = count;
-						break;
-					case KeyDirection::PageUp:
-						itemIndex -= itemIndex%groupCount;
-						break;
-					case KeyDirection::PageDown:
-						itemIndex += groupCount - itemIndex%groupCount - 1;
-						break;
-					default:
-						return -1;
-					}
-
-					if (itemIndex < 0) return 0;
-					else if (itemIndex >= count) return count - 1;
-					else return itemIndex;
-				}
-
-				GuiListControl::EnsureItemVisibleResult FixedHeightMultiColumnItemArranger::EnsureItemVisible(vint itemIndex)
-				{
-					if (callback)
-					{
-						if (itemIndex < 0 || itemIndex >= itemProvider->Count())
-						{
-							return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
-						}
-						bool moved = false;
-						while (true)
-						{
-							vint rowCount = viewBounds.Height() / itemHeight;
-							if (rowCount == 0) rowCount = 1;
-							vint columnIndex = itemIndex / rowCount;
-							vint minIndex = startIndex;
-							vint maxIndex = startIndex + visibleStyles.Count() - 1;
-
-							Point location = viewBounds.LeftTop();
-							if (minIndex <= itemIndex && itemIndex <= maxIndex)
-							{
-								Rect bounds = callback->GetStyleBounds(GetStyleBounds(visibleStyles[itemIndex - startIndex]));
-								if (0 < bounds.Bottom() && bounds.Top() < viewBounds.Width() && bounds.Width() > viewBounds.Width())
-								{
-									break;
-								}
-								else if (bounds.Left() < 0)
-								{
-									location.x -= viewBounds.Width();
-								}
-								else if (bounds.Right() > viewBounds.Width())
-								{
-									location.x += viewBounds.Width();
-								}
-								else
-								{
-									break;
-								}
-							}
-							else if (columnIndex < minIndex / rowCount)
-							{
-								location.x -= viewBounds.Width();
-							}
-							else if (columnIndex >= maxIndex / rowCount)
-							{
-								location.x += viewBounds.Width();
-							}
-							else
-							{
-								break;
-							}
-
-							auto oldLeftTop = viewBounds.LeftTop();
-							callback->SetViewLocation(location);
-							moved |= viewBounds.LeftTop() != oldLeftTop;
-							if (viewBounds.LeftTop() != location) break;
-						}
-						return moved ? GuiListControl::EnsureItemVisibleResult::Moved : GuiListControl::EnsureItemVisibleResult::NotMoved;
-					}
-					return GuiListControl::EnsureItemVisibleResult::NotMoved;
-				}
-
-				Size FixedHeightMultiColumnItemArranger::GetAdoptedSize(Size expectedSize)
-				{
-					if (itemProvider)
-					{
-						vint count = itemProvider->Count();
-						return Size(expectedSize.x, CalculateAdoptedSize(expectedSize.y, count, itemHeight));
-					}
-					return expectedSize;
 				}
 			}
 		}
@@ -12684,27 +11960,44 @@ namespace vl
 GuiListControl::ItemCallback
 ***********************************************************************/
 
-			Ptr<GuiListControl::ItemCallback::BoundsChangedHandler> GuiListControl::ItemCallback::InstallStyle(ItemStyle* style, vint itemIndex, compositions::GuiBoundsComposition* itemComposition)
+			GuiListControl::ItemStyleRecord GuiListControl::ItemCallback::InstallStyle(ItemStyle* style, vint itemIndex)
 			{
-				auto handler = style->CachedBoundsChanged.AttachMethod(this, &ItemCallback::OnStyleCachedBoundsChanged);
-				listControl->GetContainerComposition()->AddChild(itemComposition ? itemComposition : style);
-				listControl->OnStyleInstalled(itemIndex, style);
-				return handler;
+				templates::GuiTemplate* bounds = style;
+				if (listControl->GetDisplayItemBackground())
+				{
+					style->SetAlignmentToParent(Margin(0, 0, 0, 0));
+
+					auto backgroundButton = new GuiSelectableButton(theme::ThemeName::ListItemBackground);
+					if (auto backgroundStyle = listControl->TypedControlTemplateObject(true)->GetBackgroundTemplate())
+					{
+						backgroundButton->SetControlTemplate(backgroundStyle);
+					}
+					backgroundButton->GetBoundsComposition()->SetAlignmentToParent(Margin(0, 0, 0, 0));
+					backgroundButton->SetAutoFocus(false);
+					backgroundButton->SetAutoSelection(false);
+					backgroundButton->SetSelected(style->GetSelected());
+					backgroundButton->GetContainerComposition()->AddChild(style);
+
+					bounds = new templates::GuiTemplate;
+					bounds->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
+					bounds->AddChild(backgroundButton->GetBoundsComposition());
+					
+					style->SelectedChanged.AttachLambda([=](GuiGraphicsComposition* sender, GuiEventArgs& arguments)
+					{
+						backgroundButton->SetSelected(style->GetSelected());
+					});
+				}
+
+				listControl->OnStyleInstalled(itemIndex, style, false);
+				return { style,bounds };
 			}
 
-			GuiListControl::ItemStyle* GuiListControl::ItemCallback::UninstallStyle(vint index)
+			GuiListControl::ItemStyleRecord GuiListControl::ItemCallback::UninstallStyle(vint index)
 			{
 				auto style = installedStyles.Keys()[index];
-				auto handler = installedStyles.Values()[index];
+				auto bounds = installedStyles.Values()[index];
 				listControl->OnStyleUninstalled(style);
-				listControl->GetContainerComposition()->RemoveChild(style);
-				style->CachedBoundsChanged.Detach(handler);
-				return style;
-			}
-
-			void GuiListControl::ItemCallback::OnStyleCachedBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
-			{
-				listControl->CalculateView();
+				return { style,bounds };
 			}
 
 			GuiListControl::ItemCallback::ItemCallback(GuiListControl* _listControl)
@@ -12722,8 +12015,8 @@ GuiListControl::ItemCallback
 				// TODO: (enumerable) foreach:indexed
 				for (vint i = 0; i < installedStyles.Count(); i++)
 				{
-					auto style = UninstallStyle(i);
-					SafeDeleteComposition(style);
+					auto [style, bounds] = UninstallStyle(i);
+					SafeDeleteComposition(bounds);
 				}
 				installedStyles.Clear();
 			}
@@ -12733,31 +12026,64 @@ GuiListControl::ItemCallback
 				itemProvider = provider;
 			}
 
-			void GuiListControl::ItemCallback::OnItemModified(vint start, vint count, vint newCount)
+			void GuiListControl::ItemCallback::OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)
 			{
-				listControl->OnItemModified(start, count, newCount);
+				listControl->OnItemModified(start, count, newCount, itemReferenceUpdated);
 			}
 
-			GuiListControl::ItemStyle* GuiListControl::ItemCallback::RequestItem(vint itemIndex, compositions::GuiBoundsComposition* itemComposition)
+			GuiListControl::ItemStyle* GuiListControl::ItemCallback::CreateItem(vint itemIndex)
 			{
-				CHECK_ERROR(0 <= itemIndex && itemIndex < itemProvider->Count(), L"GuiListControl::ItemCallback::RequestItem(vint)#Index out of range.");
-				CHECK_ERROR(listControl->itemStyleProperty, L"GuiListControl::ItemCallback::RequestItem(vint)#SetItemTemplate function should be called before adding items to the list control.");
+#define ERROR_MESSAGE_PREFIX L"GuiListControl::ItemCallback::RequestItem(vint)#"
+				CHECK_ERROR(0 <= itemIndex && itemIndex < itemProvider->Count(), ERROR_MESSAGE_PREFIX L"Index out of range.");
+				CHECK_ERROR(listControl->itemStyleProperty, ERROR_MESSAGE_PREFIX L"SetItemTemplate function should be called before adding items to the list control.");
 
 				auto style = listControl->itemStyleProperty(itemProvider->GetBindingValue(itemIndex));
-				auto handler = InstallStyle(style, itemIndex, itemComposition);
-				installedStyles.Add(style, handler);
+				auto record = InstallStyle(style, itemIndex);
+				installedStyles.Add(record);
 				return style;
+#undef ERROR_MESSAGE_PREFIX
+			}
+
+			GuiListControl::ItemStyleBounds* GuiListControl::ItemCallback::GetItemBounds(ItemStyle * style)
+			{
+#define ERROR_MESSAGE_PREFIX L"GuiListControl::ItemCallback::GetItemBounds(GuiListItemTemplate*)#The style is not created from CreateItem."
+				vint index = installedStyles.Keys().IndexOf(style);
+				CHECK_ERROR(index != -1, ERROR_MESSAGE_PREFIX);
+
+				return installedStyles.Values()[index];
+#undef ERROR_MESSAGE_PREFIX
+			}
+
+			GuiListControl::ItemStyle* GuiListControl::ItemCallback::GetItem(ItemStyleBounds* bounds)
+			{
+#define ERROR_MESSAGE_PREFIX L"GuiListControl::ItemCallback::GetItem(GuiTemplate*)#The bounds is not created from CreateItem."
+				auto style = dynamic_cast<ItemStyle*>(bounds);
+				if (style) return style;
+
+				CHECK_ERROR(bounds->Children().Count() == 1, ERROR_MESSAGE_PREFIX);
+				auto backgroundButton = dynamic_cast<GuiSelectableButton*>(bounds->Children()[0]->GetAssociatedControl());
+				CHECK_ERROR(backgroundButton != nullptr, ERROR_MESSAGE_PREFIX);
+				CHECK_ERROR(backgroundButton->GetContainerComposition()->Children().Count() == 1, ERROR_MESSAGE_PREFIX);
+				style = dynamic_cast<ItemStyle*>(backgroundButton->GetContainerComposition()->Children()[0]);
+				CHECK_ERROR(style != nullptr, ERROR_MESSAGE_PREFIX);
+
+				vint index = installedStyles.Keys().IndexOf(style);
+				CHECK_ERROR(index != -1, ERROR_MESSAGE_PREFIX);
+				CHECK_ERROR(installedStyles.Values()[index] == bounds, ERROR_MESSAGE_PREFIX);
+				return style;
+#undef ERROR_MESSAGE_PREFIX
 			}
 
 			void GuiListControl::ItemCallback::ReleaseItem(ItemStyle* style)
 			{
+#define ERROR_MESSAGE_PREFIX L"GuiListControl::ItemCallback::GetItemBounds(GuiListItemTemplate*)#The style is not created from CreateItem."
 				vint index = installedStyles.Keys().IndexOf(style);
-				if (index != -1)
-				{
-					auto style = UninstallStyle(index);
-					installedStyles.Remove(style);
-					SafeDeleteComposition(style);
-				}
+				CHECK_ERROR(index != -1, ERROR_MESSAGE_PREFIX);
+
+				auto bounds = UninstallStyle(index).value;
+				installedStyles.Remove(style);
+				SafeDeleteComposition(bounds);
+#undef ERROR_MESSAGE_PREFIX
 			}
 
 			void GuiListControl::ItemCallback::SetViewLocation(Point value)
@@ -12765,30 +12091,6 @@ GuiListControl::ItemCallback
 				Rect virtualRect(value, listControl->GetViewSize());
 				Rect realRect = listControl->axis->VirtualRectToRealRect(listControl->fullSize, virtualRect);
 				listControl->SetViewPosition(realRect.LeftTop());
-			}
-
-			Size GuiListControl::ItemCallback::GetStylePreferredSize(compositions::GuiBoundsComposition* style)
-			{
-				Size size = style->GetCachedMinSize();
-				return listControl->axis->RealSizeToVirtualSize(size);
-			}
-
-			void GuiListControl::ItemCallback::SetStyleAlignmentToParent(compositions::GuiBoundsComposition* style, Margin margin)
-			{
-				Margin newMargin = listControl->axis->VirtualMarginToRealMargin(margin);
-				style->SetAlignmentToParent(newMargin);
-			}
-
-			Rect GuiListControl::ItemCallback::GetStyleBounds(compositions::GuiBoundsComposition* style)
-			{
-				Rect bounds = style->GetCachedBounds();
-				return listControl->axis->RealRectToVirtualRect(listControl->GetViewSize(), bounds);
-			}
-
-			void GuiListControl::ItemCallback::SetStyleBounds(compositions::GuiBoundsComposition* style, Rect bounds)
-			{
-				Rect newBounds = listControl->axis->VirtualRectToRealRect(listControl->GetViewSize(), bounds);
-				return style->SetExpectedBounds(newBounds);
 			}
 
 			compositions::GuiGraphicsComposition* GuiListControl::ItemCallback::GetContainerComposition()
@@ -12799,6 +12101,11 @@ GuiListControl::ItemCallback
 			void GuiListControl::ItemCallback::OnTotalSizeChanged()
 			{
 				listControl->CalculateView();
+			}
+
+			void GuiListControl::ItemCallback::OnAdoptedSizeChanged()
+			{
+				listControl->AdoptedSizeInvalidated.Execute(listControl->GetNotifyEventArguments());
 			}
 
 /***********************************************************************
@@ -12818,11 +12125,27 @@ GuiListControl
 				}
 			}
 
-			void GuiListControl::OnItemModified(vint start, vint count, vint newCount)
+			void GuiListControl::OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)
 			{
+				// this function is executed before RangedItemArrangerBase::OnItemModified
+				// but we only handle itemReferenceUpdated==false
+				// so RangedItemArrangerBase::GetVisibleStyle is good here
+				// even it is possible that the style object will be replaced later
+				// OnStyleInstalled will be executed on affected style objects anyway
+				if (!itemReferenceUpdated && itemArranger && count == newCount)
+				{
+					for (vint i = 0; i < newCount; i++)
+					{
+						vint index = start + i;
+						if (auto style = itemArranger->GetVisibleStyle(index))
+						{
+							OnStyleInstalled(index, style, true);
+						}
+					}
+				}
 			}
 
-			void GuiListControl::OnStyleInstalled(vint itemIndex, ItemStyle* style)
+			void GuiListControl::OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly)
 			{
 				style->SetFont(GetDisplayFont());
 				style->SetContext(GetContext());
@@ -12830,8 +12153,12 @@ GuiListControl
 				style->SetVisuallyEnabled(GetVisuallyEnabled());
 				style->SetSelected(false);
 				style->SetIndex(itemIndex);
-				style->Initialize(this);
-				AttachItemEvents(style);
+				style->SetAssociatedListControl(this);
+
+				if (!refreshPropertiesOnly)
+				{
+					AttachItemEvents(style);
+				}
 			}
 
 			void GuiListControl::OnStyleUninstalled(ItemStyle* style)
@@ -13203,18 +12530,18 @@ GuiSelectableListControl
 				SelectionChanged.Execute(GetNotifyEventArguments());
 			}
 
-			void GuiSelectableListControl::OnItemModified(vint start, vint count, vint newCount)
+			void GuiSelectableListControl::OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)
 			{
-				GuiListControl::OnItemModified(start, count, newCount);
-				if(count!=newCount)
+				GuiListControl::OnItemModified(start, count, newCount, itemReferenceUpdated);
+				if (count != newCount)
 				{
 					ClearSelection();
 				}
 			}
 
-			void GuiSelectableListControl::OnStyleInstalled(vint itemIndex, ItemStyle* style)
+			void GuiSelectableListControl::OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly)
 			{
-				GuiListControl::OnStyleInstalled(itemIndex, style);
+				GuiListControl::OnStyleInstalled(itemIndex, style, refreshPropertiesOnly);
 				style->SetSelected(selectedItems.Contains(itemIndex));
 			}
 
@@ -13303,7 +12630,7 @@ GuiSelectableListControl
 
 			vint GuiSelectableListControl::FindItemByVirtualKeyDirection(vint index, compositions::KeyDirection keyDirection)
 			{
-				return GetArranger()->FindItem(selectedItemIndexEnd, keyDirection);
+				return GetArranger()->FindItemByVirtualKeyDirection(selectedItemIndexEnd, keyDirection);
 			}
 
 			GuiSelectableListControl::GuiSelectableListControl(theme::ThemeName themeName, IItemProvider* _itemProvider)
@@ -13521,14 +12848,14 @@ GuiSelectableListControl
 ItemProviderBase
 ***********************************************************************/
 
-				void ItemProviderBase::InvokeOnItemModified(vint start, vint count, vint newCount)
+				void ItemProviderBase::InvokeOnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)
 				{
 					CHECK_ERROR(!callingOnItemModified, L"ItemProviderBase::InvokeOnItemModified(vint, vint, vint)#Canning modify the observable data source during its item modified event, which will cause this event to be executed recursively.");
 					callingOnItemModified = true;
 					// TODO: (enumerable) foreach
 					for (vint i = 0; i < callbacks.Count(); i++)
 					{
-						callbacks[i]->OnItemModified(start, count, newCount);
+						callbacks[i]->OnItemModified(start, count, newCount, itemReferenceUpdated);
 					}
 					callingOnItemModified = false;
 				}
@@ -13692,16 +13019,37 @@ ListViewColumnItemArranger::ColumnItemViewCallback
 				{
 				}
 
-				void ListViewColumnItemArranger::ColumnItemViewCallback::OnColumnChanged()
+				void ListViewColumnItemArranger::ColumnItemViewCallback::OnColumnRebuilt()
 				{
 					arranger->RebuildColumns();
-					for (auto style : arranger->visibleStyles)
-					{
-						if (auto callback = dynamic_cast<IColumnItemViewCallback*>(style.key))
-						{
-							callback->OnColumnChanged();
-						}
-					}
+				}
+
+				void ListViewColumnItemArranger::ColumnItemViewCallback::OnColumnChanged(bool needToRefreshItems)
+				{
+					arranger->RefreshColumns();
+				}
+				
+/***********************************************************************
+ListViewColumnItemArranger::ColumnItemArrangerRepeatComposition
+***********************************************************************/
+
+				void ListViewColumnItemArranger::ColumnItemArrangerRepeatComposition::Layout_EndLayout(bool totalSizeUpdated)
+				{
+					TBase::ArrangerRepeatComposition::Layout_EndLayout(totalSizeUpdated);
+					arranger->FixColumnsAfterLayout();
+				}
+
+				Size ListViewColumnItemArranger::ColumnItemArrangerRepeatComposition::Layout_CalculateTotalSize()
+				{
+					auto size = TBase::ArrangerRepeatComposition::Layout_CalculateTotalSize();
+					size.x += arranger->SplitterWidth;
+					return size;
+				}
+
+				ListViewColumnItemArranger::ColumnItemArrangerRepeatComposition::ColumnItemArrangerRepeatComposition(ListViewColumnItemArranger* _arranger)
+					: TBase::ArrangerRepeatComposition(_arranger)
+					, arranger(_arranger)
+				{
 				}
 				
 /***********************************************************************
@@ -13709,6 +13057,11 @@ ListViewColumnItemArranger
 ***********************************************************************/
 
 				const wchar_t* const ListViewColumnItemArranger::IColumnItemView::Identifier = L"vl::presentation::controls::list::ListViewColumnItemArranger::IColumnItemView";
+
+				void ListViewColumnItemArranger::OnViewLocationChanged(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments)
+				{
+					FixColumnsAfterViewLocationChanged();
+				}
 
 				void ListViewColumnItemArranger::ColumnClicked(vint index, compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
 				{
@@ -13766,15 +13119,20 @@ ListViewColumnItemArranger
 					}
 				}
 
-				void ListViewColumnItemArranger::RearrangeItemBounds()
+				void ListViewColumnItemArranger::FixColumnsAfterViewLocationChanged()
 				{
-					FixedHeightItemArranger::RearrangeItemBounds();
-					vint count = columnHeaders->GetParent()->Children().Count();
-					columnHeaders->GetParent()->MoveChild(columnHeaders, count - 1);
-					columnHeaders->SetExpectedBounds(Rect(Point(-viewBounds.Left(), 0), Size(0, 0)));
+					vint x = GetRepeatComposition()->GetViewLocation().x;
+					columnHeaders->SetExpectedBounds(Rect(Point(-x, 0), Size(0, 0)));
 				}
 
-				vint ListViewColumnItemArranger::GetWidth()
+				void ListViewColumnItemArranger::FixColumnsAfterLayout()
+				{
+					vint count = columnHeaders->GetParent()->Children().Count();
+					columnHeaders->GetParent()->MoveChild(columnHeaders, count - 1);
+					FixColumnsAfterViewLocationChanged();
+				}
+
+				vint ListViewColumnItemArranger::GetColumnsWidth()
 				{
 					vint width=columnHeaders->GetCachedBounds().Width()-SplitterWidth;
 					if(width<SplitterWidth)
@@ -13784,16 +13142,9 @@ ListViewColumnItemArranger
 					return width;
 				}
 
-				vint ListViewColumnItemArranger::GetYOffset()
+				vint ListViewColumnItemArranger::GetColumnsYOffset()
 				{
 					return columnHeaders->GetCachedBounds().Height();
-				}
-
-				Size ListViewColumnItemArranger::OnCalculateTotalSize()
-				{
-					Size size=FixedHeightItemArranger::OnCalculateTotalSize();
-					size.x+=SplitterWidth;
-					return size;
 				}
 
 				void ListViewColumnItemArranger::DeleteColumnButtons()
@@ -13852,10 +13203,6 @@ ListViewColumnItemArranger
 								GuiListViewColumnHeader* button = new GuiListViewColumnHeader(theme::ThemeName::Unknown);
 								button->SetAutoFocus(false);
 								button->SetControlTemplate(listView->TypedControlTemplateObject(true)->GetColumnHeaderTemplate());
-								button->SetText(listViewItemView->GetColumnText(i));
-								button->SetSubMenu(columnItemView->GetDropdownPopup(i), false);
-								button->SetColumnSortingState(columnItemView->GetSortingState(i));
-								button->GetBoundsComposition()->SetExpectedBounds(Rect(Point(0, 0), Size(columnItemView->GetColumnSize(i), 0)));
 								button->Clicked.AttachLambda([this, i](GuiGraphicsComposition* sender, GuiEventArgs& args) { ColumnClicked(i, sender, args); });
 								button->GetBoundsComposition()->CachedBoundsChanged.AttachLambda([this, i](GuiGraphicsComposition* sender, GuiEventArgs& args) { ColumnCachedBoundsChanged(i, sender, args); });
 								columnHeaderButtons.Add(button);
@@ -13880,14 +13227,36 @@ ListViewColumnItemArranger
 							}
 						}
 					}
+
+					RefreshColumns();
 					callback->OnTotalSizeChanged();
 				}
 
+				void ListViewColumnItemArranger::RefreshColumns()
+				{
+					if (columnItemView && listViewItemView)
+					{
+						for (vint i = 0; i < listViewItemView->GetColumnCount(); i++)
+						{
+							auto button = columnHeaderButtons[i];
+							button->SetText(listViewItemView->GetColumnText(i));
+							button->SetSubMenu(columnItemView->GetDropdownPopup(i), false);
+							button->SetColumnSortingState(columnItemView->GetSortingState(i));
+							button->GetBoundsComposition()->SetExpectedBounds(Rect(Point(0, 0), Size(columnItemView->GetColumnSize(i), 0)));
+						}
+						columnHeaders->ForceCalculateSizeImmediately();
+						GetRepeatComposition()->SetItemWidth(GetColumnsWidth());
+						GetRepeatComposition()->SetItemYOffset(GetColumnsYOffset());
+					}
+				}
+
 				ListViewColumnItemArranger::ListViewColumnItemArranger()
+					: TBase(new TBase::ArrangerRepeatComposition(this))
 				{
 					columnHeaders = new GuiStackComposition;
 					columnHeaders->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
 					columnItemViewCallback = Ptr(new ColumnItemViewCallback(this));
+					GetRepeatComposition()->ViewLocationChanged.AttachMethod(this, &ListViewColumnItemArranger::OnViewLocationChanged);
 				}
 
 				ListViewColumnItemArranger::~ListViewColumnItemArranger()
@@ -13899,9 +13268,16 @@ ListViewColumnItemArranger
 					}
 				}
 
+				Size ListViewColumnItemArranger::GetTotalSize()
+				{
+					Size size = TBase::GetTotalSize();
+					size.x += SplitterWidth;
+					return size;
+				}
+
 				void ListViewColumnItemArranger::AttachListControl(GuiListControl* value)
 				{
-					FixedHeightItemArranger::AttachListControl(value);
+					TBase::AttachListControl(value);
 					listView = dynamic_cast<GuiListViewBase*>(value);
 					if (listView)
 					{
@@ -13929,7 +13305,7 @@ ListViewColumnItemArranger
 						listView->GetContainerComposition()->RemoveChild(columnHeaders);
 						listView = nullptr;
 					}
-					FixedHeightItemArranger::DetachListControl();
+					TBase::DetachListControl();
 				}
 
 /***********************************************************************
@@ -13950,7 +13326,7 @@ ListViewItem
 					if (owner)
 					{
 						vint index = owner->IndexOf(this);
-						owner->NotifyUpdateInternal(index, 1, 1);
+						owner->InvokeOnItemModified(index, 1, 1, false);
 					}
 				}
 
@@ -14013,12 +13389,27 @@ ListViewItem
 ListViewColumn
 ***********************************************************************/
 
-				void ListViewColumn::NotifyUpdate(bool affectItem)
+				void ListViewColumn::NotifyRebuilt()
 				{
 					if (owner)
 					{
 						vint index = owner->IndexOf(this);
-						owner->NotifyColumnUpdated(index, affectItem);
+						if (index != -1)
+						{
+							owner->NotifyColumnRebuilt(index);
+						}
+					}
+				}
+
+				void ListViewColumn::NotifyChanged(bool needToRefreshItems)
+				{
+					if (owner)
+					{
+						vint index = owner->IndexOf(this);
+						if (index != -1)
+						{
+							owner->NotifyColumnChanged(index, needToRefreshItems);
+						}
 					}
 				}
 
@@ -14046,7 +13437,7 @@ ListViewColumn
 					if (text != value)
 					{
 						text = value;
-						NotifyUpdate(false);
+						NotifyChanged(false);
 					}
 				}
 
@@ -14058,7 +13449,7 @@ ListViewColumn
 				void ListViewColumn::SetTextProperty(const ItemProperty<WString>& value)
 				{
 					textProperty = value;
-					NotifyUpdate(true);
+					NotifyChanged(true);
 				}
 
 				vint ListViewColumn::GetSize()
@@ -14071,7 +13462,7 @@ ListViewColumn
 					if (size != value)
 					{
 						size = value;
-						NotifyUpdate(false);
+						NotifyChanged(true);
 					}
 				}
 
@@ -14095,7 +13486,7 @@ ListViewColumn
 					if (dropdownPopup != value)
 					{
 						dropdownPopup = value;
-						NotifyUpdate(false);
+						NotifyChanged(false);
 					}
 				}
 
@@ -14109,7 +13500,7 @@ ListViewColumn
 					if (sortingState != value)
 					{
 						sortingState = value;
-						NotifyUpdate(false);
+						NotifyChanged(false);
 					}
 				}
 
@@ -14119,7 +13510,7 @@ ListViewDataColumns
 
 				void ListViewDataColumns::NotifyUpdateInternal(vint start, vint count, vint newCount)
 				{
-					itemProvider->NotifyAllItemsUpdate();
+					itemProvider->RefreshAllItems();
 				}
 
 				ListViewDataColumns::ListViewDataColumns(IListViewItemProvider* _itemProvider)
@@ -14135,11 +13526,14 @@ ListViewDataColumns
 ListViewColumns
 ***********************************************************************/
 
-				void ListViewColumns::NotifyColumnUpdated(vint column, bool affectItem)
+				void ListViewColumns::NotifyColumnRebuilt(vint column)
 				{
-					affectItemFlag = affectItem;
 					NotifyUpdate(column, 1);
-					affectItemFlag = true;
+				}
+
+				void ListViewColumns::NotifyColumnChanged(vint column, bool needToRefreshItems)
+				{
+					itemProvider->NotifyColumnChanged();
 				}
 
 				void ListViewColumns::AfterInsert(vint index, const Ptr<ListViewColumn>& value)
@@ -14156,11 +13550,7 @@ ListViewColumns
 
 				void ListViewColumns::NotifyUpdateInternal(vint start, vint count, vint newCount)
 				{
-					itemProvider->NotifyAllColumnsUpdate();
-					if (affectItemFlag)
-					{
-						itemProvider->NotifyAllItemsUpdate();
-					}
+					itemProvider->NotifyColumnRebuilt();
 				}
 
 				ListViewColumns::ListViewColumns(IListViewItemProvider* _itemProvider)
@@ -14188,17 +13578,67 @@ ListViewItemProvider
 					ListProvider<Ptr<ListViewItem>>::AfterInsert(index, value);
 				}
 
-				void ListViewItemProvider::NotifyAllItemsUpdate()
+				void ListViewItemProvider::RebuildAllItems()
 				{
-					NotifyUpdate(0, Count());
+					InvokeOnItemModified(0, Count(), Count(), true);
 				}
 
-				void ListViewItemProvider::NotifyAllColumnsUpdate()
+				void ListViewItemProvider::RefreshAllItems()
 				{
-					// TODO: (enumerable) foreach
-					for (vint i = 0; i < columnItemViewCallbacks.Count(); i++)
+					InvokeOnItemModified(0, Count(), Count(), false);
+				}
+
+				void ListViewItemProvider::NotifyColumnRebuilt()
+				{
+					for (auto callback : columnItemViewCallbacks)
 					{
-						columnItemViewCallbacks[i]->OnColumnChanged();
+						callback->OnColumnRebuilt();
+					}
+					RefreshAllItems();
+				}
+
+				void ListViewItemProvider::NotifyColumnChanged()
+				{
+					for (auto callback : columnItemViewCallbacks)
+					{
+						callback->OnColumnChanged(true);
+					}
+					RefreshAllItems();
+				}
+
+				ListViewItemProvider::ListViewItemProvider()
+					:columns(this)
+					, dataColumns(this)
+				{
+				}
+
+				ListViewItemProvider::~ListViewItemProvider()
+				{
+				}
+
+				WString ListViewItemProvider::GetTextValue(vint itemIndex)
+				{
+					return GetText(itemIndex);
+				}
+
+				description::Value ListViewItemProvider::GetBindingValue(vint itemIndex)
+				{
+					return Value::From(Get(itemIndex));
+				}
+
+				IDescriptable* ListViewItemProvider::RequestView(const WString& identifier)
+				{
+					if (identifier == IListViewItemView::Identifier)
+					{
+						return (IListViewItemView*)this;
+					}
+					else if (identifier == ListViewColumnItemArranger::IColumnItemView::Identifier)
+					{
+						return (ListViewColumnItemArranger::IColumnItemView*)this;
+					}
+					else
+					{
+						return 0;
 					}
 				}
 
@@ -14328,42 +13768,6 @@ ListViewItemProvider
 					}
 				}
 
-				WString ListViewItemProvider::GetTextValue(vint itemIndex)
-				{
-					return GetText(itemIndex);
-				}
-
-				description::Value ListViewItemProvider::GetBindingValue(vint itemIndex)
-				{
-					return Value::From(Get(itemIndex));
-				}
-
-				ListViewItemProvider::ListViewItemProvider()
-					:columns(this)
-					, dataColumns(this)
-				{
-				}
-
-				ListViewItemProvider::~ListViewItemProvider()
-				{
-				}
-
-				IDescriptable* ListViewItemProvider::RequestView(const WString& identifier)
-				{
-					if (identifier == IListViewItemView::Identifier)
-					{
-						return (IListViewItemView*)this;
-					}
-					else if (identifier == ListViewColumnItemArranger::IColumnItemView::Identifier)
-					{
-						return (ListViewColumnItemArranger::IColumnItemView*)this;
-					}
-					else
-					{
-						return 0;
-					}
-				}
-
 				ListViewDataColumns& ListViewItemProvider::GetDataColumns()
 				{
 					return dataColumns;
@@ -14379,9 +13783,16 @@ ListViewItemProvider
 GuiListView
 ***********************************************************************/
 
-			void GuiVirtualListView::OnStyleInstalled(vint itemIndex, ItemStyle* style)
+			void GuiVirtualListView::OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly)
 			{
-				GuiListViewBase::OnStyleInstalled(itemIndex, style);
+				GuiListViewBase::OnStyleInstalled(itemIndex, style, refreshPropertiesOnly);
+				if (refreshPropertiesOnly)
+				{
+					if (auto predefinedItemStyle = dynamic_cast<list::DefaultListViewItemTemplate*>(style))
+					{
+						predefinedItemStyle->RefreshItem();
+					}
+				}
 			}
 
 			void GuiVirtualListView::OnItemTemplateChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
@@ -14418,31 +13829,31 @@ GuiListView
 					SetStyleAndArranger(
 						[](const Value&) { return new list::SmallIconListViewItemTemplate; },
 						Ptr(new list::FixedSizeMultiColumnItemArranger)
-					);
+						);
 					break;
 				case ListViewView::List:
 					SetStyleAndArranger(
 						[](const Value&) { return new list::ListListViewItemTemplate; },
 						Ptr(new list::FixedHeightMultiColumnItemArranger)
-					);
+						);
 					break;
 				case ListViewView::Tile:
 					SetStyleAndArranger(
 						[](const Value&) { return new list::TileListViewItemTemplate; },
 						Ptr(new list::FixedSizeMultiColumnItemArranger)
-					);
+						);
 					break;
 				case ListViewView::Information:
 					SetStyleAndArranger(
 						[](const Value&) { return new list::InformationListViewItemTemplate; },
 						Ptr(new list::FixedHeightItemArranger)
-					);
+						);
 					break;
 				case ListViewView::Detail:
 					SetStyleAndArranger(
 						[](const Value&) { return new list::DetailListViewItemTemplate; },
 						Ptr(new list::ListViewColumnItemArranger)
-					);
+						);
 					break;
 				default:;
 				}
@@ -14525,7 +13936,6 @@ BigIconListViewItemTemplate
 
 				void BigIconListViewItemTemplate::OnInitialize()
 				{
-					DefaultListViewItemTemplate::OnInitialize();
 					{
 						auto table = new GuiTableComposition;
 						AddChild(table);
@@ -14563,6 +13973,12 @@ BigIconListViewItemTemplate
 						}
 					}
 
+					FontChanged.AttachMethod(this, &BigIconListViewItemTemplate::OnFontChanged);
+					FontChanged.Execute(compositions::GuiEventArgs(this));
+				}
+
+				void BigIconListViewItemTemplate::OnRefresh()
+				{
 					if (auto listView = dynamic_cast<GuiVirtualListView*>(listControl))
 					{
 						auto itemIndex = GetIndex();
@@ -14581,10 +13997,6 @@ BigIconListViewItemTemplate
 							text->SetColor(listView->TypedControlTemplateObject(true)->GetPrimaryTextColor());
 						}
 					}
-
-					FontChanged.AttachMethod(this, &BigIconListViewItemTemplate::OnFontChanged);
-
-					FontChanged.Execute(compositions::GuiEventArgs(this));
 				}
 
 				void BigIconListViewItemTemplate::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
@@ -14606,7 +14018,6 @@ SmallIconListViewItemTemplate
 
 				void SmallIconListViewItemTemplate::OnInitialize()
 				{
-					DefaultListViewItemTemplate::OnInitialize();
 					{
 						auto table = new GuiTableComposition;
 						AddChild(table);
@@ -14642,6 +14053,12 @@ SmallIconListViewItemTemplate
 						}
 					}
 
+					FontChanged.AttachMethod(this, &SmallIconListViewItemTemplate::OnFontChanged);
+					FontChanged.Execute(compositions::GuiEventArgs(this));
+				}
+
+				void SmallIconListViewItemTemplate::OnRefresh()
+				{
 					if (auto listView = dynamic_cast<GuiVirtualListView*>(listControl))
 					{
 						auto itemIndex = GetIndex();
@@ -14660,10 +14077,6 @@ SmallIconListViewItemTemplate
 							text->SetColor(listView->TypedControlTemplateObject(true)->GetPrimaryTextColor());
 						}
 					}
-
-					FontChanged.AttachMethod(this, &SmallIconListViewItemTemplate::OnFontChanged);
-
-					FontChanged.Execute(compositions::GuiEventArgs(this));
 				}
 
 				void SmallIconListViewItemTemplate::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
@@ -14685,7 +14098,6 @@ ListListViewItemTemplate
 
 				void ListListViewItemTemplate::OnInitialize()
 				{
-					DefaultListViewItemTemplate::OnInitialize();
 					{
 						auto table = new GuiTableComposition;
 						AddChild(table);
@@ -14724,6 +14136,12 @@ ListListViewItemTemplate
 						}
 					}
 
+					FontChanged.AttachMethod(this, &ListListViewItemTemplate::OnFontChanged);
+					FontChanged.Execute(compositions::GuiEventArgs(this));
+				}
+
+				void ListListViewItemTemplate::OnRefresh()
+				{
 					if (auto listView = dynamic_cast<GuiVirtualListView*>(listControl))
 					{
 						auto itemIndex = GetIndex();
@@ -14742,10 +14160,6 @@ ListListViewItemTemplate
 							text->SetColor(listView->TypedControlTemplateObject(true)->GetPrimaryTextColor());
 						}
 					}
-
-					FontChanged.AttachMethod(this, &ListListViewItemTemplate::OnFontChanged);
-
-					FontChanged.Execute(compositions::GuiEventArgs(this));
 				}
 
 				void ListListViewItemTemplate::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
@@ -14778,21 +14192,43 @@ TileListViewItemTemplate
 					return textElement.Obj();
 				}
 
-				void TileListViewItemTemplate::ResetTextTable(vint textRows)
+				void TileListViewItemTemplate::ResetTextTable(vint dataColumnCount)
 				{
-					textTable->SetRowsAndColumns(textRows + 2, 1);
-					textTable->SetRowOption(0, GuiCellOption::PercentageOption(0.5));
-					for (vint i = 0; i<textRows; i++)
+					if (dataTexts.Count() == dataColumnCount) return;
+					for (vint i = textTable->Children().Count() - 1; i >= 0; i--)
 					{
-						textTable->SetRowOption(i + 1, GuiCellOption::MinSizeOption());
+						if (auto cell = dynamic_cast<GuiCellComposition*>(textTable->Children()[i]))
+						{
+							SafeDeleteComposition(cell);
+						}
 					}
-					textTable->SetRowOption(textRows + 1, GuiCellOption::PercentageOption(0.5));
-					textTable->SetColumnOption(0, GuiCellOption::PercentageOption(1.0));
+
+					{
+						vint textRows = dataColumnCount + 1;
+						textTable->SetRowsAndColumns(textRows + 2, 1);
+						textTable->SetRowOption(0, GuiCellOption::PercentageOption(0.5));
+						for (vint i = 0; i < textRows; i++)
+						{
+							textTable->SetRowOption(i + 1, GuiCellOption::MinSizeOption());
+						}
+						textTable->SetRowOption(textRows + 1, GuiCellOption::PercentageOption(0.5));
+						textTable->SetColumnOption(0, GuiCellOption::PercentageOption(1.0));
+					}
+
+					text = CreateTextElement(0);
+					text->SetFont(GetFont());
+					{
+						dataTexts.Resize(dataColumnCount);
+						for (vint i = 0; i < dataColumnCount; i++)
+						{
+							dataTexts[i] = CreateTextElement(i + 1);
+							dataTexts[i]->SetFont(GetFont());
+						}
+					}
 				}
 
 				void TileListViewItemTemplate::OnInitialize()
 				{
-					DefaultListViewItemTemplate::OnInitialize();
 					{
 						auto table = new GuiTableComposition;
 						AddChild(table);
@@ -14824,15 +14260,18 @@ TileListViewItemTemplate
 							textTable = new GuiTableComposition;
 							textTable->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
 							textTable->SetCellPadding(1);
-							ResetTextTable(1);
 							textTable->SetAlignmentToParent(Margin(0, 0, 0, 0));
 							cell->AddChild(textTable);
-							{
-								text = CreateTextElement(0);
-							}
 						}
 					}
 
+					ResetTextTable(0);
+					FontChanged.AttachMethod(this, &TileListViewItemTemplate::OnFontChanged);
+					FontChanged.Execute(compositions::GuiEventArgs(this));
+				}
+
+				void TileListViewItemTemplate::OnRefresh()
+				{
 					if (auto listView = dynamic_cast<GuiVirtualListView*>(listControl))
 					{
 						auto itemIndex = GetIndex();
@@ -14847,36 +14286,30 @@ TileListViewItemTemplate
 							{
 								image->SetImage(nullptr);
 							}
+
+							vint subColumnCount = view->GetColumnCount() - 1;
+							vint dataColumnCount = view->GetDataColumnCount();
+							if (dataColumnCount > subColumnCount) dataColumnCount = subColumnCount;
+							if (dataColumnCount < 0) dataColumnCount = 0;
+							ResetTextTable(dataColumnCount);
+
 							text->SetText(view->GetText(itemIndex));
 							text->SetColor(listView->TypedControlTemplateObject(true)->GetPrimaryTextColor());
-
-							vint dataColumnCount = view->GetDataColumnCount();
-							ResetTextTable(dataColumnCount + 1);
-							dataTexts.Resize(dataColumnCount);
 							for (vint i = 0; i < dataColumnCount; i++)
 							{
-								dataTexts[i] = CreateTextElement(i + 1);
 								dataTexts[i]->SetText(view->GetSubItem(itemIndex, view->GetDataColumn(i)));
 								dataTexts[i]->SetColor(listView->TypedControlTemplateObject(true)->GetSecondaryTextColor());
 							}
 						}
 					}
-
-					FontChanged.AttachMethod(this, &TileListViewItemTemplate::OnFontChanged);
-
-					FontChanged.Execute(compositions::GuiEventArgs(this));
 				}
 
 				void TileListViewItemTemplate::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
 				{
-					text->SetFont(GetFont());
-					if (auto view = dynamic_cast<IListViewItemView*>(listControl->GetItemProvider()->RequestView(IListViewItemView::Identifier)))
+					if (text) text->SetFont(GetFont());
+					for (auto dataText : dataTexts)
 					{
-						vint dataColumnCount = view->GetDataColumnCount();
-						for (vint i = 0; i < dataColumnCount; i++)
-						{
-							dataTexts[i]->SetFont(GetFont());
-						}
+						dataText->SetFont(GetFont());
 					}
 				}
 
@@ -14892,9 +14325,69 @@ TileListViewItemTemplate
 InformationListViewItemTemplate
 ***********************************************************************/
 
+				void InformationListViewItemTemplate::ResetTextTable(vint dataColumnCount)
+				{
+					if (dataTexts.Count() == dataColumnCount) return;
+					for (vint i = textTable->Children().Count() - 1; i >= 0; i--)
+					{
+						if (auto cell = dynamic_cast<GuiCellComposition*>(textTable->Children()[i]))
+						{
+							SafeDeleteComposition(cell);
+						}
+					}
+
+					{
+						textTable->SetRowsAndColumns(dataColumnCount + 2, 1);
+						textTable->SetRowOption(0, GuiCellOption::PercentageOption(0.5));
+						for (vint i = 0; i < dataColumnCount; i++)
+						{
+							textTable->SetRowOption(i + 1, GuiCellOption::MinSizeOption());
+						}
+						textTable->SetRowOption(dataColumnCount + 1, GuiCellOption::PercentageOption(0.5));
+						textTable->SetColumnOption(0, GuiCellOption::PercentageOption(1.0));
+					}
+
+					columnTexts.Resize(dataColumnCount);
+					dataTexts.Resize(dataColumnCount);
+
+					for (vint i = 0; i < dataColumnCount; i++)
+					{
+						auto cell = new GuiCellComposition;
+						textTable->AddChild(cell);
+						cell->SetSite(i + 1, 0, 1, 1);
+
+						auto dataTable = new GuiTableComposition;
+						dataTable->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
+						dataTable->SetRowsAndColumns(1, 2);
+						dataTable->SetRowOption(0, GuiCellOption::MinSizeOption());
+						dataTable->SetColumnOption(0, GuiCellOption::MinSizeOption());
+						dataTable->SetColumnOption(1, GuiCellOption::PercentageOption(1.0));
+						dataTable->SetAlignmentToParent(Margin(0, 0, 0, 0));
+						cell->AddChild(dataTable);
+						{
+							auto cell = new GuiCellComposition;
+							dataTable->AddChild(cell);
+							cell->SetSite(0, 0, 1, 1);
+
+							columnTexts[i] = GuiSolidLabelElement::Create();
+							columnTexts[i]->SetFont(GetFont());
+							cell->SetOwnedElement(Ptr(columnTexts[i]));
+						}
+						{
+							auto cell = new GuiCellComposition;
+							dataTable->AddChild(cell);
+							cell->SetSite(0, 1, 1, 1);
+
+							dataTexts[i] = GuiSolidLabelElement::Create();
+							dataTexts[i]->SetFont(GetFont());
+							dataTexts[i]->SetEllipse(true);
+							cell->SetOwnedElement(Ptr(dataTexts[i]));
+						}
+					}
+				}
+
 				void InformationListViewItemTemplate::OnInitialize()
 				{
-					DefaultListViewItemTemplate::OnInitialize();
 					{
 						bottomLine = GuiSolidBackgroundElement::Create();
 						bottomLineComposition = new GuiBoundsComposition;
@@ -14948,6 +14441,12 @@ InformationListViewItemTemplate
 						}
 					}
 
+					FontChanged.AttachMethod(this, &InformationListViewItemTemplate::OnFontChanged);
+					FontChanged.Execute(compositions::GuiEventArgs(this));
+				}
+
+				void InformationListViewItemTemplate::OnRefresh()
+				{
 					if (auto listView = dynamic_cast<GuiVirtualListView*>(listControl))
 					{
 						auto itemIndex = GetIndex();
@@ -14966,61 +14465,24 @@ InformationListViewItemTemplate
 							text->SetColor(listView->TypedControlTemplateObject(true)->GetPrimaryTextColor());
 							bottomLine->SetColor(listView->TypedControlTemplateObject(true)->GetItemSeparatorColor());
 
+							vint subColumnCount = view->GetColumnCount() - 1;
 							vint dataColumnCount = view->GetDataColumnCount();
-							columnTexts.Resize(dataColumnCount);
-							dataTexts.Resize(dataColumnCount);
-
-							textTable->SetRowsAndColumns(dataColumnCount + 2, 1);
-							textTable->SetRowOption(0, GuiCellOption::PercentageOption(0.5));
+							if (dataColumnCount > subColumnCount) dataColumnCount = subColumnCount;
+							if (dataColumnCount < 0) dataColumnCount = 0;
+							ResetTextTable(dataColumnCount);
 							for (vint i = 0; i < dataColumnCount; i++)
 							{
-								textTable->SetRowOption(i + 1, GuiCellOption::MinSizeOption());
-							}
-							textTable->SetRowOption(dataColumnCount + 1, GuiCellOption::PercentageOption(0.5));
-							textTable->SetColumnOption(0, GuiCellOption::PercentageOption(1.0));
-
-							for (vint i = 0; i < dataColumnCount; i++)
-							{
-								auto cell = new GuiCellComposition;
-								textTable->AddChild(cell);
-								cell->SetSite(i + 1, 0, 1, 1);
-
-								auto dataTable = new GuiTableComposition;
-								dataTable->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
-								dataTable->SetRowsAndColumns(1, 2);
-								dataTable->SetRowOption(0, GuiCellOption::MinSizeOption());
-								dataTable->SetColumnOption(0, GuiCellOption::MinSizeOption());
-								dataTable->SetColumnOption(1, GuiCellOption::PercentageOption(1.0));
-								dataTable->SetAlignmentToParent(Margin(0, 0, 0, 0));
-								cell->AddChild(dataTable);
 								{
-									auto cell = new GuiCellComposition;
-									dataTable->AddChild(cell);
-									cell->SetSite(0, 0, 1, 1);
-
-									columnTexts[i] = GuiSolidLabelElement::Create();
 									columnTexts[i]->SetText(view->GetColumnText(view->GetDataColumn(i) + 1) + L": ");
 									columnTexts[i]->SetColor(listView->TypedControlTemplateObject(true)->GetSecondaryTextColor());
-									cell->SetOwnedElement(Ptr(columnTexts[i]));
 								}
 								{
-									auto cell = new GuiCellComposition;
-									dataTable->AddChild(cell);
-									cell->SetSite(0, 1, 1, 1);
-
-									dataTexts[i]= GuiSolidLabelElement::Create();
-									dataTexts[i]->SetEllipse(true);
 									dataTexts[i]->SetText(view->GetSubItem(itemIndex, view->GetDataColumn(i)));
 									dataTexts[i]->SetColor(listView->TypedControlTemplateObject(true)->GetPrimaryTextColor());
-									cell->SetOwnedElement(Ptr(dataTexts[i]));
 								}
 							}
 						}
 					}
-
-					FontChanged.AttachMethod(this, &InformationListViewItemTemplate::OnFontChanged);
-
-					FontChanged.Execute(compositions::GuiEventArgs(this));
 				}
 
 				void InformationListViewItemTemplate::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
@@ -15030,14 +14492,14 @@ InformationListViewItemTemplate
 						font.size = (vint)(font.size * 1.2);
 						text->SetFont(font);
 					}
-					if (auto view = dynamic_cast<IListViewItemView*>(listControl->GetItemProvider()->RequestView(IListViewItemView::Identifier)))
+
+					for (auto columnText : columnTexts)
 					{
-						vint dataColumnCount = view->GetDataColumnCount();
-						for (vint i = 0; i < dataColumnCount; i++)
-						{
-							columnTexts[i]->SetFont(GetFont());
-							dataTexts[i]->SetFont(GetFont());
-						}
+						columnText->SetFont(GetFont());
+					}
+					for (auto dataText : dataTexts)
+					{
+						dataText->SetFont(GetFont());
 					}
 				}
 
@@ -15053,9 +14515,61 @@ InformationListViewItemTemplate
 DetailListViewItemTemplate
 ***********************************************************************/
 
+				void DetailListViewItemTemplate::UpdateSubItemSize()
+				{
+					if (auto view = dynamic_cast<IListViewItemView*>(listControl->GetItemProvider()->RequestView(IListViewItemView::Identifier)))
+					{
+						if (columnItemView)
+						{
+							vint columnCount = view->GetColumnCount();
+							if (columnCount > textTable->GetColumns())
+							{
+								columnCount = textTable->GetColumns();
+							}
+							for (vint i = 0; i < columnCount; i++)
+							{
+								textTable->SetColumnOption(i, GuiCellOption::AbsoluteOption(columnItemView->GetColumnSize(i)));
+							}
+						}
+					}
+				}
+
+				void DetailListViewItemTemplate::ResetTextTable(vint subColumnCount)
+				{
+					if (subItemCells.Count() == subColumnCount) return;
+
+					for (auto cell : subItemCells)
+					{
+						SafeDeleteComposition(cell);
+					}
+					subItemCells.Resize(subColumnCount);
+					subItemTexts.Resize(subColumnCount);
+
+					textTable->SetRowsAndColumns(1, subColumnCount + 1);
+					for (vint i = 0; i < subColumnCount; i++)
+					{
+						auto cell = new GuiCellComposition;
+						textTable->AddChild(cell);
+						cell->SetSite(0, i + 1, 1, 1);
+
+						auto textBounds = new GuiBoundsComposition;
+						cell->AddChild(textBounds);
+						textBounds->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElement);
+						textBounds->SetAlignmentToParent(Margin(8, 0, 8, 0));
+
+						auto subText = GuiSolidLabelElement::Create();
+						subText->SetAlignments(Alignment::Left, Alignment::Center);
+						subText->SetFont(GetFont());
+						subText->SetEllipse(true);
+						textBounds->SetOwnedElement(Ptr(subText));
+
+						subItemCells[i] = cell;
+						subItemTexts[i] = subText;
+					}
+				}
+
 				void DetailListViewItemTemplate::OnInitialize()
 				{
-					DefaultListViewItemTemplate::OnInitialize();
 					columnItemView = dynamic_cast<ListViewColumnItemArranger::IColumnItemView*>(listControl->GetItemProvider()->RequestView(ListViewColumnItemArranger::IColumnItemView::Identifier));
 
 					{
@@ -15104,17 +14618,28 @@ DetailListViewItemTemplate
 
 								text = GuiSolidLabelElement::Create();
 								text->SetAlignments(Alignment::Left, Alignment::Center);
+								text->SetFont(GetFont());
 								text->SetEllipse(true);
 								textBounds->SetOwnedElement(Ptr(text));
 							}
 						}
 					}
 
+					FontChanged.AttachMethod(this, &DetailListViewItemTemplate::OnFontChanged);
+					FontChanged.Execute(compositions::GuiEventArgs(this));
+				}
+
+				void DetailListViewItemTemplate::OnRefresh()
+				{
 					if (auto listView = dynamic_cast<GuiVirtualListView*>(listControl))
 					{
 						auto itemIndex = GetIndex();
 						if (auto view = dynamic_cast<IListViewItemView*>(listView->GetItemProvider()->RequestView(IListViewItemView::Identifier)))
 						{
+							vint subColumnCount = view->GetColumnCount() - 1;
+							if (subColumnCount < 0) subColumnCount = 0;
+							ResetTextTable(subColumnCount);
+
 							auto imageData = view->GetSmallImage(itemIndex);
 							if (imageData)
 							{
@@ -15124,69 +14649,26 @@ DetailListViewItemTemplate
 							{
 								image->SetImage(0);
 							}
+
 							text->SetText(view->GetText(itemIndex));
 							text->SetColor(listView->TypedControlTemplateObject(true)->GetPrimaryTextColor());
 
-							vint columnCount = view->GetColumnCount() - 1;
-							subItems.Resize(columnCount);
-							textTable->SetRowsAndColumns(1, columnCount + 1);
-							for (vint i = 0; i < columnCount; i++)
+							for (vint i = 0; i < subColumnCount; i++)
 							{
-								auto cell = new GuiCellComposition;
-								textTable->AddChild(cell);
-								cell->SetSite(0, i + 1, 1, 1);
-
-								auto textBounds = new GuiBoundsComposition;
-								cell->AddChild(textBounds);
-								textBounds->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElement);
-								textBounds->SetAlignmentToParent(Margin(8, 0, 8, 0));
-
-								subItems[i] = GuiSolidLabelElement::Create();
-								subItems[i]->SetAlignments(Alignment::Left, Alignment::Center);
-								subItems[i]->SetFont(text->GetFont());
-								subItems[i]->SetEllipse(true);
-								subItems[i]->SetText(view->GetSubItem(itemIndex, i));
-								subItems[i]->SetColor(listView->TypedControlTemplateObject(true)->GetSecondaryTextColor());
-								textBounds->SetOwnedElement(Ptr(subItems[i]));
-							}
-							OnColumnChanged();
-						}
-					}
-
-					FontChanged.AttachMethod(this, &DetailListViewItemTemplate::OnFontChanged);
-
-					FontChanged.Execute(compositions::GuiEventArgs(this));
-				}
-
-				void DetailListViewItemTemplate::OnColumnChanged()
-				{
-					if (auto view = dynamic_cast<IListViewItemView*>(listControl->GetItemProvider()->RequestView(IListViewItemView::Identifier)))
-					{
-						if (columnItemView)
-						{
-							vint columnCount = view->GetColumnCount();
-							if (columnCount>textTable->GetColumns())
-							{
-								columnCount = textTable->GetColumns();
-							}
-							for (vint i = 0; i<columnCount; i++)
-							{
-								textTable->SetColumnOption(i, GuiCellOption::AbsoluteOption(columnItemView->GetColumnSize(i)));
+								subItemTexts[i]->SetText(view->GetSubItem(itemIndex, i));
+								subItemTexts[i]->SetColor(listView->TypedControlTemplateObject(true)->GetSecondaryTextColor());
 							}
 						}
 					}
+					UpdateSubItemSize();
 				}
 
 				void DetailListViewItemTemplate::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
 				{
 					text->SetFont(GetFont());
-					if (auto view = dynamic_cast<IListViewItemView*>(listControl->GetItemProvider()->RequestView(IListViewItemView::Identifier)))
+					for (auto subText : subItemTexts)
 					{
-						vint columnCount = view->GetColumnCount() - 1;
-						for (vint i = 0; i < columnCount; i++)
-						{
-							subItems[i]->SetFont(GetFont());
-						}
+						subText->SetFont(GetFont());
 					}
 				}
 
@@ -15288,6 +14770,10 @@ DefaultTextListItemTemplate
 					CheckedChanged.Execute(compositions::GuiEventArgs(this));
 				}
 
+				void DefaultTextListItemTemplate::OnRefresh()
+				{
+				}
+
 				void DefaultTextListItemTemplate::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
 				{
 					textElement->SetFont(GetFont());
@@ -15315,15 +14801,17 @@ DefaultTextListItemTemplate
 
 				void DefaultTextListItemTemplate::OnBulletSelectedChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
 				{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::controls::list::DefaultTextListItemTemplate::OnBulletSelectedChanged(GuiGraphicsComposition*, GuiEventArgs&)#"
 					if (!supressEdit)
 					{
 						if (auto textItemView = dynamic_cast<ITextItemView*>(listControl->GetItemProvider()->RequestView(ITextItemView::Identifier)))
 						{
-							BeginEditListItem();
+							listControl->GetItemProvider()->PushEditing();
 							textItemView->SetChecked(GetIndex(), bulletButton->GetSelected());
-							EndEditListItem();
+							CHECK_ERROR(listControl->GetItemProvider()->PopEditing(), ERROR_MESSAGE_PREFIX L"BeginEditListItem and EndEditListItem calls are not paired.");
 						}
 					}
+#undef ERROR_MESSAGE_PREFIX
 				}
 
 				DefaultTextListItemTemplate::DefaultTextListItemTemplate()
@@ -15366,6 +14854,22 @@ DefaultRadioTextListItemTemplate
 TextItem
 ***********************************************************************/
 
+				void TextItem::NotifyUpdate(bool raiseCheckEvent)
+				{
+					if (owner)
+					{
+						vint index = owner->IndexOf(this);
+						owner->InvokeOnItemModified(index, 1, 1, false);
+
+						if (raiseCheckEvent)
+						{
+							GuiItemEventArgs arguments;
+							arguments.itemIndex = index;
+							owner->listControl->ItemChecked.Execute(arguments);
+						}
+					}
+				}
+
 				TextItem::TextItem()
 					:owner(0)
 					, checked(false)
@@ -15393,11 +14897,7 @@ TextItem
 					if (text != value)
 					{
 						text = value;
-						if (owner)
-						{
-							vint index = owner->IndexOf(this);
-							owner->InvokeOnItemModified(index, 1, 1);
-						}
+						NotifyUpdate(false);
 					}
 				}
 
@@ -15411,15 +14911,7 @@ TextItem
 					if (checked != value)
 					{
 						checked = value;
-						if (owner)
-						{
-							vint index = owner->IndexOf(this);
-							owner->InvokeOnItemModified(index, 1, 1);
-
-							GuiItemEventArgs arguments;
-							arguments.itemIndex = index;
-							owner->listControl->ItemChecked.Execute(arguments);
-						}
+						NotifyUpdate(true);
 					}
 				}
 
@@ -15493,15 +14985,22 @@ GuiTextList
 			{
 			}
 
-			void GuiVirtualTextList::OnStyleInstalled(vint itemIndex, ItemStyle* style)
+			void GuiVirtualTextList::OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly)
 			{
-				GuiSelectableListControl::OnStyleInstalled(itemIndex, style);
+				GuiSelectableListControl::OnStyleInstalled(itemIndex, style, refreshPropertiesOnly);
 				if (auto textItemStyle = dynamic_cast<templates::GuiTextListItemTemplate*>(style))
 				{
 					textItemStyle->SetTextColor(TypedControlTemplateObject(true)->GetTextColor());
 					if (auto textItemView = dynamic_cast<list::ITextItemView*>(itemProvider->RequestView(list::ITextItemView::Identifier)))
 					{
 						textItemStyle->SetChecked(textItemView->GetChecked(itemIndex));
+					}
+				}
+				if (refreshPropertiesOnly)
+				{
+					if (auto predefinedItemStyle = dynamic_cast<list::DefaultTextListItemTemplate*>(style))
+					{
+						predefinedItemStyle->RefreshItem();
 					}
 				}
 			}
@@ -15637,7 +15136,7 @@ NodeItemProvider
 				{
 				}
 
-				void NodeItemProvider::OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount)
+				void NodeItemProvider::OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)
 				{
 					vint offset = 0;
 					vint base = CalculateNodeVisibilityIndexInternal(parentNode);
@@ -15652,7 +15151,7 @@ NodeItemProvider
 					offsetBeforeChildModifieds.Set(parentNode, offset);
 				}
 
-				void NodeItemProvider::OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount)
+				void NodeItemProvider::OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)
 				{
 					vint offsetBeforeChildModified = 0;
 					{
@@ -15698,7 +15197,7 @@ NodeItemProvider
 								firstChildStart += child->CalculateTotalVisibleNodes();
 							}
 						}
-						InvokeOnItemModified(firstChildStart, offsetBeforeChildModified, offset);
+						InvokeOnItemModified(firstChildStart, offsetBeforeChildModified, offset, itemReferenceUpdated);
 					}
 				}
 
@@ -15708,7 +15207,7 @@ NodeItemProvider
 					if (base != -2)
 					{
 						vint visibility = node->CalculateTotalVisibleNodes();
-						InvokeOnItemModified(base + 1, 0, visibility - 1);
+						InvokeOnItemModified(base + 1, 0, visibility - 1, true);
 					}
 				}
 
@@ -15724,7 +15223,7 @@ NodeItemProvider
 							auto child = node->GetChild(i);
 							visibility += child->CalculateTotalVisibleNodes();
 						}
-						InvokeOnItemModified(base + 1, visibility, 0);
+						InvokeOnItemModified(base + 1, visibility, 0, true);
 					}
 				}
 
@@ -15852,7 +15351,7 @@ MemoryNodeProvider::NodeCollection
 					INodeProviderCallback* proxy = ownerProvider->GetCallbackProxyInternal();
 					if (proxy)
 					{
-						proxy->OnBeforeItemModified(ownerProvider, start, count, newCount);
+						proxy->OnBeforeItemModified(ownerProvider, start, count, newCount, true);
 					}
 				}
 
@@ -15872,7 +15371,7 @@ MemoryNodeProvider::NodeCollection
 					INodeProviderCallback* proxy = ownerProvider->GetCallbackProxyInternal();
 					if (proxy)
 					{
-						proxy->OnAfterItemModified(ownerProvider, start, count, newCount);
+						proxy->OnAfterItemModified(ownerProvider, start, count, newCount, true);
 					}
 				}
 
@@ -15959,20 +15458,6 @@ MemoryNodeProvider
 					NotifyDataModified();
 				}
 
-				void MemoryNodeProvider::NotifyDataModified()
-				{
-					if(parent)
-					{
-						vint index=parent->children.IndexOf(this);
-						INodeProviderCallback* proxy=GetCallbackProxyInternal();
-						if(proxy)
-						{
-							proxy->OnBeforeItemModified(parent, index, 1, 1);
-							proxy->OnAfterItemModified(parent, index, 1, 1);
-						}
-					}
-				}
-
 				MemoryNodeProvider::NodeCollection& MemoryNodeProvider::Children()
 				{
 					return children;
@@ -16015,6 +15500,20 @@ MemoryNodeProvider
 					return totalVisibleNodeCount;
 				}
 
+				void MemoryNodeProvider::NotifyDataModified()
+				{
+					if (parent)
+					{
+						vint index = parent->children.IndexOf(this);
+						INodeProviderCallback* proxy = GetCallbackProxyInternal();
+						if (proxy)
+						{
+							proxy->OnBeforeItemModified(parent, index, 1, 1, false);
+							proxy->OnAfterItemModified(parent, index, 1, 1, false);
+						}
+					}
+				}
+
 				vint MemoryNodeProvider::GetChildCount()
 				{
 					return childCount;
@@ -16045,21 +15544,21 @@ NodeRootProviderBase
 				{
 				}
 
-				void NodeRootProviderBase::OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount)
+				void NodeRootProviderBase::OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)
 				{
 					// TODO: (enumerable) foreach
 					for(vint i=0;i<callbacks.Count();i++)
 					{
-						callbacks[i]->OnBeforeItemModified(parentNode, start, count, newCount);
+						callbacks[i]->OnBeforeItemModified(parentNode, start, count, newCount, itemReferenceUpdated);
 					}
 				}
 
-				void NodeRootProviderBase::OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount)
+				void NodeRootProviderBase::OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)
 				{
 					// TODO: (enumerable) foreach
 					for(vint i=0;i<callbacks.Count();i++)
 					{
-						callbacks[i]->OnAfterItemModified(parentNode, start, count, newCount);
+						callbacks[i]->OnAfterItemModified(parentNode, start, count, newCount, itemReferenceUpdated);
 					}
 				}
 
@@ -16178,11 +15677,11 @@ GuiVirtualTreeListControl
 			{
 			}
 
-			void GuiVirtualTreeListControl::OnBeforeItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount)
+			void GuiVirtualTreeListControl::OnBeforeItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)
 			{
 			}
 
-			void GuiVirtualTreeListControl::OnAfterItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount)
+			void GuiVirtualTreeListControl::OnAfterItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)
 			{
 			}
 
@@ -16483,9 +15982,9 @@ GuiVirtualTreeView
 				}
 			}
 
-			void GuiVirtualTreeView::OnAfterItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount)
+			void GuiVirtualTreeView::OnAfterItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)
 			{
-				GuiVirtualTreeListControl::OnAfterItemModified(parentNode, start, count, newCount);
+				GuiVirtualTreeListControl::OnAfterItemModified(parentNode, start, count, newCount, itemReferenceUpdated);
 				SetStyleExpandable(parentNode, parentNode->GetChildCount() > 0);
 			}
 
@@ -16501,9 +16000,9 @@ GuiVirtualTreeView
 				SetStyleExpanding(node, false);
 			}
 			
-			void GuiVirtualTreeView::OnStyleInstalled(vint itemIndex, ItemStyle* style)
+			void GuiVirtualTreeView::OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly)
 			{
-				GuiVirtualTreeListControl::OnStyleInstalled(itemIndex, style);
+				GuiVirtualTreeListControl::OnStyleInstalled(itemIndex, style, refreshPropertiesOnly);
 				if (auto treeItemStyle = dynamic_cast<templates::GuiTreeItemTemplate*>(style))
 				{
 					treeItemStyle->SetTextColor(TypedControlTemplateObject(true)->GetTextColor());
@@ -16526,6 +16025,13 @@ GuiVirtualTreeView
 								treeItemStyle->SetLevel(level);
 							}
 						}
+					}
+				}
+				if (refreshPropertiesOnly)
+				{
+					if (auto predefinedItemStyle = dynamic_cast<tree::DefaultTreeItemTemplate*>(style))
+					{
+						predefinedItemStyle->RefreshItem();
 					}
 				}
 			}
@@ -16589,7 +16095,6 @@ DefaultTreeItemTemplate
 
 				void DefaultTreeItemTemplate::OnInitialize()
 				{
-					templates::GuiTreeItemTemplate::OnInitialize();
 					SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
 
 					table = new GuiTableComposition;
@@ -16663,6 +16168,10 @@ DefaultTreeItemTemplate
 					ExpandableChanged.Execute(compositions::GuiEventArgs(this));
 					LevelChanged.Execute(compositions::GuiEventArgs(this));
 					ImageChanged.Execute(compositions::GuiEventArgs(this));
+				}
+
+				void DefaultTreeItemTemplate::OnRefresh()
+				{
 				}
 
 				void DefaultTreeItemTemplate::OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
@@ -17804,43 +17313,6 @@ namespace vl
 			using namespace controls;
 			using namespace compositions;
 			using namespace elements;
-
-/***********************************************************************
-Item GuiListItemTemplate
-***********************************************************************/
-
-			void GuiListItemTemplate::OnInitialize()
-			{
-			}
-
-			GuiListItemTemplate_PROPERTIES(GUI_TEMPLATE_PROPERTY_IMPL)
-
-			GuiListItemTemplate::GuiListItemTemplate()
-			{
-				GuiListItemTemplate_PROPERTIES(GUI_TEMPLATE_PROPERTY_EVENT_INIT)
-			}
-
-			GuiListItemTemplate::~GuiListItemTemplate()
-			{
-				FinalizeAggregation();
-			}
-
-			void GuiListItemTemplate::BeginEditListItem()
-			{
-				listControl->GetItemProvider()->PushEditing();
-			}
-
-			void GuiListItemTemplate::EndEditListItem()
-			{
-				CHECK_ERROR(listControl->GetItemProvider()->PopEditing(), L"GuiListItemTemplate::EndEditListItem()#BeginEditListItem and EndEditListItem calls are not paired.");
-			}
-
-			void GuiListItemTemplate::Initialize(controls::GuiListControl* _listControl)
-			{
-				CHECK_ERROR(listControl == nullptr, L"GuiListItemTemplate::Initialize(GuiListControl*)#This function can only be called once.");
-				listControl = _listControl;
-				OnInitialize();
-			}
 
 /***********************************************************************
 Template Declarations
@@ -25944,44 +25416,48 @@ namespace vl
 			using namespace compositions;
 
 /***********************************************************************
-GalleryItemArranger
+GalleryItemArrangerRepeatComposition
 ***********************************************************************/
 
 			namespace ribbon_impl
 			{
-				void GalleryItemArranger::BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)
+				void GalleryItemArrangerRepeatComposition::Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex)
 				{
-					if (forMoving)
+					if (firstPhase)
 					{
 						pim_itemWidth = itemWidth;
 						newStartIndex = firstIndex;
 					}
 				}
 
-				void GalleryItemArranger::PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
+				compositions::VirtualRepeatPlaceItemResult GalleryItemArrangerRepeatComposition::Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
 				{
 					alignmentToParent = Margin(-1, 0, -1, 0);
 					bounds = Rect(Point((index - firstIndex) * itemWidth, 0), Size(itemWidth, 0));
 
-					if (forMoving)
+					if (firstPhase)
 					{
-						vint styleWidth = callback->GetStylePreferredSize(GetStyleBounds(style)).x;
+						vint styleWidth = Layout_GetStylePreferredSize(style).x;
 						if (pim_itemWidth < styleWidth)
 						{
 							pim_itemWidth = styleWidth;
 						}
 					}
+
+					if (bounds.Right() + pim_itemWidth > viewBounds.Right())
+					{
+						return VirtualRepeatPlaceItemResult::HitLastItem;
+					}
+					else
+					{
+						return VirtualRepeatPlaceItemResult::None;
+					}
 				}
 
-				bool GalleryItemArranger::IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)
-				{
-					return bounds.Right() + pim_itemWidth > viewBounds.Right();
-				}
-
-				bool GalleryItemArranger::EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)
+				compositions::VirtualRepeatEndPlaceItemResult GalleryItemArrangerRepeatComposition::Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex)
 				{
 					bool result = false;
-					if (forMoving)
+					if (firstPhase)
 					{
 						if (pim_itemWidth != itemWidth)
 						{
@@ -25995,32 +25471,40 @@ GalleryItemArranger
 						UnblockScrollUpdate();
 					}
 
-					return result;
+					return result ?
+						VirtualRepeatEndPlaceItemResult::TotalSizeUpdated :
+						VirtualRepeatEndPlaceItemResult::None;
 				}
 
-				void GalleryItemArranger::InvalidateItemSizeCache()
+				void GalleryItemArrangerRepeatComposition::Layout_EndLayout(bool totalSizeUpdated)
+				{
+				}
+
+				void GalleryItemArrangerRepeatComposition::Layout_InvalidateItemSizeCache()
 				{
 					itemWidth = 1;
 				}
 
-				Size GalleryItemArranger::OnCalculateTotalSize()
+				Size GalleryItemArrangerRepeatComposition::Layout_CalculateTotalSize()
 				{
 					return Size(1, 1);
 				}
 
-				GalleryItemArranger::GalleryItemArranger(GuiBindableRibbonGalleryList* _owner)
+				GalleryItemArrangerRepeatComposition::GalleryItemArrangerRepeatComposition(GuiBindableRibbonGalleryList* _owner)
 					:owner(_owner)
 				{
 				}
 
-				GalleryItemArranger::~GalleryItemArranger()
+				GalleryItemArrangerRepeatComposition::~GalleryItemArrangerRepeatComposition()
 				{
 				}
 
-				vint GalleryItemArranger::FindItem(vint itemIndex, compositions::KeyDirection key)
+				vint GalleryItemArrangerRepeatComposition::FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)
 				{
-					vint count = itemProvider->Count();
+					vint count = itemSource->GetCount();
+					if (itemIndex < 0 || itemIndex >= count) return -1;
 					vint groupCount = viewBounds.Width() / itemWidth;
+					if (groupCount == 0) groupCount = 1;
 
 					switch (key)
 					{
@@ -26051,42 +25535,41 @@ GalleryItemArranger
 					else return itemIndex;
 				}
 
-				GuiListControl::EnsureItemVisibleResult GalleryItemArranger::EnsureItemVisible(vint itemIndex)
+				compositions::VirtualRepeatEnsureItemVisibleResult GalleryItemArrangerRepeatComposition::EnsureItemVisible(vint itemIndex)
 				{
-					if (callback)
+					if (!itemSource) return VirtualRepeatEnsureItemVisibleResult::NotMoved;
+					if (itemIndex < 0 || itemIndex >= itemSource->GetCount())
 					{
-						if (0 <= itemIndex && itemIndex < itemProvider->Count())
-						{
-							vint groupCount = viewBounds.Width() / itemWidth;
-							if (itemIndex < firstIndex)
-							{
-								firstIndex = itemIndex;
-								callback->OnTotalSizeChanged();
-							}
-							else if (itemIndex >= firstIndex + groupCount)
-							{
-								firstIndex = itemIndex - groupCount + 1;
-								callback->OnTotalSizeChanged();
-							}
-							return GuiListControl::EnsureItemVisibleResult::NotMoved;
-						}
-						else
-						{
-							return GuiListControl::EnsureItemVisibleResult::ItemNotExists;
-						}
+						return VirtualRepeatEnsureItemVisibleResult::ItemNotExists;
 					}
-					return GuiListControl::EnsureItemVisibleResult::NotMoved;
+
+					vint groupCount = viewBounds.Width() / itemWidth;
+					if (groupCount == 0) groupCount = 1;
+
+					if (itemIndex < firstIndex)
+					{
+						firstIndex = itemIndex;
+						InvalidateLayout();
+					}
+					else if (itemIndex >= firstIndex + groupCount)
+					{
+						firstIndex = itemIndex - groupCount + 1;
+						InvalidateLayout();
+					}
+					return VirtualRepeatEnsureItemVisibleResult::NotMoved;
 				}
 
-				Size GalleryItemArranger::GetAdoptedSize(Size expectedSize)
+				Size GalleryItemArrangerRepeatComposition::GetAdoptedSize(Size expectedSize)
 				{
 					return Size(1, 1);
 				}
 
-				void GalleryItemArranger::ScrollUp()
+				void GalleryItemArrangerRepeatComposition::ScrollUp()
 				{
-					vint count = itemProvider->Count();
+					vint count = itemSource->GetCount();
 					vint groupCount = viewBounds.Width() / itemWidth;
+					if (groupCount == 0) groupCount = 1;
+
 					if (count > groupCount)
 					{
 						firstIndex -= groupCount;
@@ -26094,18 +25577,16 @@ GalleryItemArranger
 						{
 							firstIndex = 0;
 						}
-
-						if (callback)
-						{
-							callback->OnTotalSizeChanged();
-						}
+						InvalidateLayout();
 					}
 				}
 
-				void GalleryItemArranger::ScrollDown()
+				void GalleryItemArrangerRepeatComposition::ScrollDown()
 				{
-					vint count = itemProvider->Count();
+					vint count = itemSource->GetCount();
 					vint groupCount = viewBounds.Width() / itemWidth;
+					if (groupCount == 0) groupCount = 1;
+
 					if (count > groupCount)
 					{
 						firstIndex += groupCount;
@@ -26113,20 +25594,18 @@ GalleryItemArranger
 						{
 							firstIndex = count - groupCount;
 						}
-
-						if (callback)
-						{
-							callback->OnTotalSizeChanged();
-						}
+						InvalidateLayout();
 					}
 				}
 
-				void GalleryItemArranger::UnblockScrollUpdate()
+				void GalleryItemArrangerRepeatComposition::UnblockScrollUpdate()
 				{
 					blockScrollUpdate = false;
 
-					vint count = itemProvider->Count();
+					vint count = itemSource->GetCount();
 					vint groupCount = viewBounds.Width() / pim_itemWidth;
+					if (groupCount == 0) groupCount = 1;
+
 					owner->SetScrollUpEnabled(firstIndex > 0);
 					owner->SetScrollDownEnabled(firstIndex + groupCount < count);
 					if (owner->layout->GetItemWidth() != pim_itemWidth)
@@ -26134,6 +25613,34 @@ GalleryItemArranger
 						owner->layout->SetItemWidth(pim_itemWidth);
 						owner->UpdateLayoutSizeOffset();
 					}
+				}
+
+/***********************************************************************
+GalleryItemArranger
+***********************************************************************/
+
+				GalleryItemArranger::GalleryItemArranger(GuiBindableRibbonGalleryList* _owner)
+					: TBase(new TBase::ArrangerRepeatComposition(this, _owner))
+				{
+				}
+
+				GalleryItemArranger::~GalleryItemArranger()
+				{
+				}
+				
+				void GalleryItemArranger::ScrollUp()
+				{
+					GetRepeatComposition()->ScrollUp();
+				}
+
+				void GalleryItemArranger::ScrollDown()
+				{
+					GetRepeatComposition()->ScrollDown();
+				}
+
+				void GalleryItemArranger::UnblockScrollUpdate()
+				{
+					GetRepeatComposition()->UnblockScrollUpdate();
 				}
 
 /***********************************************************************
@@ -27986,76 +27493,10 @@ namespace vl
 		namespace compositions
 		{
 			using namespace reflection::description;
-			using namespace collections;
-			using namespace controls;
-			using namespace elements;
 
 /***********************************************************************
 GuiRepeatCompositionBase
 ***********************************************************************/
-
-			void GuiRepeatCompositionBase::OnItemChanged(vint index, vint oldCount, vint newCount)
-			{
-				if (itemTemplate && itemSource)
-				{
-					for (vint i = oldCount - 1; i >= 0; i--)
-					{
-						RemoveItem(index + i);
-					}
-
-					for (vint i = 0; i < newCount; i++)
-					{
-						InstallItem(index + i);
-					}
-				}
-			}
-
-			void GuiRepeatCompositionBase::RemoveItem(vint index)
-			{
-				GuiItemEventArgs arguments(dynamic_cast<GuiGraphicsComposition*>(this));
-				arguments.itemIndex = index;
-				ItemRemoved.Execute(arguments);
-
-				auto item = RemoveRepeatComposition(index);
-				SafeDeleteComposition(item);
-			}
-
-			void GuiRepeatCompositionBase::InstallItem(vint index)
-			{
-				auto source = itemSource->Get(index);
-				auto templateItem = itemTemplate(source);
-				auto item = InsertRepeatComposition(index);
-
-				templateItem->SetAlignmentToParent(Margin(0, 0, 0, 0));
-				templateItem->SetContext(itemContext);
-				item->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
-				item->AddChild(templateItem);
-
-				GuiItemEventArgs arguments(dynamic_cast<GuiGraphicsComposition*>(this));
-				arguments.itemIndex = index;
-				ItemInserted.Execute(arguments);
-			}
-
-			void GuiRepeatCompositionBase::ClearItems()
-			{
-				vint count = GetRepeatCompositionCount();
-				for (vint i = count - 1; i >= 0; i--)
-				{
-					RemoveItem(i);
-				}
-			}
-
-			void GuiRepeatCompositionBase::InstallItems()
-			{
-				if (itemTemplate && itemSource)
-				{
-					vint count = itemSource->GetCount();
-					for (vint i = 0; i < count; i++)
-					{
-						InstallItem(i);
-					}
-				}
-			}
 
 			GuiRepeatCompositionBase::GuiRepeatCompositionBase()
 			{
@@ -28076,11 +27517,11 @@ GuiRepeatCompositionBase
 
 			void GuiRepeatCompositionBase::SetItemTemplate(ItemStyleProperty value)
 			{
-				ClearItems();
+				OnClearItems();
 				itemTemplate = value;
 				if (itemTemplate && itemSource)
 				{
-					InstallItems();
+					OnInstallItems();
 				}
 			}
 
@@ -28096,9 +27537,10 @@ GuiRepeatCompositionBase
 					if (itemChangedHandler)
 					{
 						itemSource.Cast<IValueObservableList>()->ItemChanged.Remove(itemChangedHandler);
+						itemChangedHandler = {};
 					}
 
-					ClearItems();
+					OnClearItems();
 					itemSource = value.Cast<IValueList>();
 					if (!itemSource && value)
 					{
@@ -28107,7 +27549,7 @@ GuiRepeatCompositionBase
 
 					if (itemTemplate && itemSource)
 					{
-						InstallItems();
+						OnInstallItems();
 					}
 					if (auto observable = itemSource.Cast<IValueObservableList>())
 					{
@@ -28126,17 +27568,111 @@ GuiRepeatCompositionBase
 				if (itemContext != value)
 				{
 					itemContext = value;
-					vint count = GetRepeatCompositionCount();
-					for (vint i = 0; i < count; i++)
-					{
-						auto rc = GetRepeatComposition(i);
-						auto it = dynamic_cast<templates::GuiTemplate*>(rc->Children()[0]);
-						it->SetContext(itemContext);
-					}
+					OnUpdateContext();
 
 					GuiEventArgs arguments(dynamic_cast<GuiGraphicsComposition*>(this));
 					ContextChanged.Execute(arguments);
 				}
+			}
+		}
+	}
+}
+
+/***********************************************************************
+.\GRAPHICSCOMPOSITION\GUIGRAPHICSREPEATCOMPOSITION_NONVIRTIAL.CPP
+***********************************************************************/
+
+namespace vl
+{
+	namespace presentation
+	{
+		namespace compositions
+		{
+
+/***********************************************************************
+GuiNonVirtialRepeatCompositionBase
+***********************************************************************/
+
+			void GuiNonVirtialRepeatCompositionBase::OnItemChanged(vint index, vint oldCount, vint newCount)
+			{
+				if (itemTemplate && itemSource)
+				{
+					for (vint i = oldCount - 1; i >= 0; i--)
+					{
+						RemoveItem(index + i);
+					}
+
+					for (vint i = 0; i < newCount; i++)
+					{
+						InstallItem(index + i);
+					}
+				}
+			}
+
+			void GuiNonVirtialRepeatCompositionBase::OnClearItems()
+			{
+				vint count = GetRepeatCompositionCount();
+				for (vint i = count - 1; i >= 0; i--)
+				{
+					RemoveItem(i);
+				}
+			}
+
+			void GuiNonVirtialRepeatCompositionBase::OnInstallItems()
+			{
+				if (itemTemplate && itemSource)
+				{
+					vint count = itemSource->GetCount();
+					for (vint i = 0; i < count; i++)
+					{
+						InstallItem(i);
+					}
+				}
+			}
+
+			void GuiNonVirtialRepeatCompositionBase::OnUpdateContext()
+			{
+				vint count = GetRepeatCompositionCount();
+				for (vint i = 0; i < count; i++)
+				{
+					auto rc = GetRepeatComposition(i);
+					auto it = dynamic_cast<templates::GuiTemplate*>(rc->Children()[0]);
+					it->SetContext(itemContext);
+				}
+			}
+
+			void GuiNonVirtialRepeatCompositionBase::RemoveItem(vint index)
+			{
+				GuiItemEventArgs arguments(dynamic_cast<GuiGraphicsComposition*>(this));
+				arguments.itemIndex = index;
+				ItemRemoved.Execute(arguments);
+
+				auto item = RemoveRepeatComposition(index);
+				SafeDeleteComposition(item);
+			}
+
+			void GuiNonVirtialRepeatCompositionBase::InstallItem(vint index)
+			{
+				auto source = itemSource->Get(index);
+				auto templateItem = itemTemplate(source);
+				auto item = InsertRepeatComposition(index);
+
+				templateItem->SetAlignmentToParent(Margin(0, 0, 0, 0));
+				templateItem->SetContext(itemContext);
+				item->SetMinSizeLimitation(GuiGraphicsComposition::LimitToElementAndChildren);
+				item->AddChild(templateItem);
+
+				GuiItemEventArgs arguments(dynamic_cast<GuiGraphicsComposition*>(this));
+				arguments.itemIndex = index;
+				ItemInserted.Execute(arguments);
+			}
+
+			GuiNonVirtialRepeatCompositionBase::GuiNonVirtialRepeatCompositionBase()
+			{
+			}
+
+			GuiNonVirtialRepeatCompositionBase::~GuiNonVirtialRepeatCompositionBase()
+			{
 			}
 
 /***********************************************************************
@@ -28217,6 +27753,1297 @@ GuiRepeatFlowComposition
 
 			GuiRepeatFlowComposition::~GuiRepeatFlowComposition()
 			{
+			}
+		}
+	}
+}
+
+/***********************************************************************
+.\GRAPHICSCOMPOSITION\GUIGRAPHICSREPEATCOMPOSITION_VIRTUAL.CPP
+***********************************************************************/
+
+namespace vl
+{
+	namespace presentation
+	{
+		namespace compositions
+		{
+			using namespace collections;
+
+/***********************************************************************
+GuiVirtualRepeatCompositionBase
+***********************************************************************/
+
+			void GuiVirtualRepeatCompositionBase::Layout_UpdateIndex(ItemStyleRecord style, vint index)
+			{
+			}
+
+			void GuiVirtualRepeatCompositionBase::Layout_UpdateViewBounds(Rect value, bool forceUpdateTotalSize)
+			{
+				auto old = GetViewLocation();
+				Rect oldBounds = viewBounds;
+				viewBounds = value;
+				OnViewChangedInternal(oldBounds, value, forceUpdateTotalSize);
+				if (old != GetViewLocation())
+				{
+					ViewLocationChanged.Execute(GuiEventArgs(this));
+				}
+			}
+
+			void GuiVirtualRepeatCompositionBase::Layout_UpdateViewLocation(Point value)
+			{
+				Layout_UpdateViewBounds(Rect(value, viewBounds.GetSize()), false);
+			}
+
+			Rect GuiVirtualRepeatCompositionBase::Layout_CalculateBounds(Size parentSize)
+			{
+				auto bounds = GuiBoundsComposition::Layout_CalculateBounds(parentSize);
+				auto size = axis->RealSizeToVirtualSize(bounds.GetSize());
+				if (size != viewBounds.GetSize() || itemSourceUpdated)
+				{
+					itemSourceUpdated = false;
+					Layout_UpdateViewBounds(Rect(viewBounds.LeftTop(), size), true);
+				}
+				return bounds;
+			}
+
+			void GuiVirtualRepeatCompositionBase::Layout_ResetLayout()
+			{
+				viewBounds = Rect({ 0,0 }, { 0,0 });
+				ViewLocationChanged.Execute(GuiEventArgs(this));
+				OnResetViewLocation();
+				itemSourceUpdated = true;
+				Layout_InvalidateItemSizeCache();
+				AdoptedSizeInvalidated.Execute(GuiEventArgs(this));
+			}
+
+			void GuiVirtualRepeatCompositionBase::Layout_SetStyleAlignmentToParent(ItemStyleRecord style, Margin value)
+			{
+				style->SetAlignmentToParent(axis->VirtualMarginToRealMargin(value));
+			}
+
+			Size GuiVirtualRepeatCompositionBase::Layout_GetStylePreferredSize(ItemStyleRecord style)
+			{
+				return axis->RealSizeToVirtualSize(style->GetCachedMinSize());
+			}
+
+			Rect GuiVirtualRepeatCompositionBase::Layout_GetStyleBounds(ItemStyleRecord style)
+			{
+				return axis->RealRectToVirtualRect(axis->VirtualSizeToRealSize(viewBounds.GetSize()), style->GetCachedBounds());
+			}
+
+			void GuiVirtualRepeatCompositionBase::Layout_SetStyleBounds(ItemStyleRecord style, Rect value)
+			{
+				return style->SetExpectedBounds(axis->VirtualRectToRealRect(axis->VirtualSizeToRealSize(viewBounds.GetSize()), value));
+			}
+
+			void GuiVirtualRepeatCompositionBase::OnItemChanged(vint start, vint oldCount, vint newCount)
+			{
+				itemSourceUpdated = true;
+
+				vint visibleCount = visibleStyles.Count();
+				vint itemCount = itemSource->GetCount();
+				SortedList<ItemStyleRecord> reusedStyles;
+				for (vint i = 0; i < visibleCount; i++)
+				{
+					vint index = startIndex + i;
+					if (index >= itemCount)
+					{
+						break;
+					}
+
+					vint oldIndex = -1;
+					if (index < start)
+					{
+						oldIndex = index;
+					}
+					else if (index >= start + newCount)
+					{
+						oldIndex = index - newCount + oldCount;
+					}
+
+					if (oldIndex != -1)
+					{
+						if (oldIndex >= startIndex && oldIndex < startIndex + visibleCount)
+						{
+							auto style = visibleStyles[oldIndex - startIndex];
+							reusedStyles.Add(style);
+							visibleStyles.Add(style);
+						}
+						else
+						{
+							oldIndex = -1;
+						}
+					}
+					if (oldIndex == -1)
+					{
+						visibleStyles.Add(CreateStyle(index));
+					}
+				}
+
+				for (vint i = 0; i < visibleCount; i++)
+				{
+					auto style = visibleStyles[i];
+					if (!reusedStyles.Contains(style))
+					{
+						DeleteStyle(style);
+					}
+				}
+
+				visibleStyles.RemoveRange(0, visibleCount);
+				for (auto [style, i] : indexed(visibleStyles))
+				{
+					Layout_UpdateIndex(style, startIndex + 1);
+				}
+			}
+
+			void GuiVirtualRepeatCompositionBase::OnClearItems()
+			{
+				startIndex = 0;
+				for (auto style : visibleStyles)
+				{
+					DeleteStyle(style);
+				}
+				visibleStyles.Clear();
+				Layout_ResetLayout();
+			}
+
+			void GuiVirtualRepeatCompositionBase::OnInstallItems()
+			{
+				// nothing needs to be done here
+				// visibleStyles will be recreated in the next round of layout
+			}
+
+			void GuiVirtualRepeatCompositionBase::OnUpdateContext()
+			{
+				for (auto style : visibleStyles)
+				{
+					style->SetContext(itemContext);
+				}
+			}
+
+			void GuiVirtualRepeatCompositionBase::OnResetViewLocation()
+			{
+			}
+
+			GuiVirtualRepeatCompositionBase::ItemStyleRecord GuiVirtualRepeatCompositionBase::CreateStyleInternal(vint index)
+			{
+				auto source = itemSource->Get(index);
+				auto itemStyle = itemTemplate(source);
+				itemStyle->SetContext(itemContext);
+				return itemStyle;
+			}
+
+			void GuiVirtualRepeatCompositionBase::DeleteStyleInternal(ItemStyleRecord style)
+			{
+				SafeDeleteComposition(style);
+			}
+
+			vint GuiVirtualRepeatCompositionBase::CalculateAdoptedSize(vint expectedSize, vint count, vint itemSize)
+			{
+				vint visibleCount = expectedSize / itemSize;
+				if (count < visibleCount)
+				{
+					visibleCount = count;
+				}
+				else if (count > visibleCount)
+				{
+					vint deltaA = expectedSize - count * itemSize;
+					vint deltaB = itemSize - deltaA;
+					if (deltaB < deltaA)
+					{
+						visibleCount++;
+					}
+				}
+				return visibleCount * itemSize;
+			}
+
+			GuiVirtualRepeatCompositionBase::ItemStyleRecord GuiVirtualRepeatCompositionBase::CreateStyle(vint index)
+			{
+				auto itemStyle = CreateStyleInternal(index);
+				AddChild(itemStyle);
+				itemStyle->ForceCalculateSizeImmediately();
+				return itemStyle;
+			}
+
+			void GuiVirtualRepeatCompositionBase::DeleteStyle(ItemStyleRecord style)
+			{
+				DeleteStyleInternal(style);
+			}
+
+			void GuiVirtualRepeatCompositionBase::OnViewChangedInternal(Rect oldBounds, Rect newBounds, bool forceUpdateTotalSize)
+			{
+				bool needToUpdateTotalSize = forceUpdateTotalSize;
+
+				if (itemTemplate && itemSource)
+				{
+					while (true)
+					{
+						bool needRestart = false;
+
+						vint endIndex = startIndex + visibleStyles.Count() - 1;
+						vint newStartIndex = 0;
+						vint itemCount = itemSource->GetCount();
+						Layout_BeginPlaceItem(true, newBounds, newStartIndex);
+						if (newStartIndex < 0) newStartIndex = 0;
+
+						StyleList newVisibleStyles;
+						for (vint i = newStartIndex; i < itemCount; i++)
+						{
+							bool reuseOldStyle = startIndex <= i && i <= endIndex;
+							auto style = reuseOldStyle ? visibleStyles[i - startIndex] : CreateStyle(i);
+							newVisibleStyles.Add(style);
+
+							Rect bounds;
+							Margin alignmentToParent;
+							auto placeItemResult = Layout_PlaceItem(true, !reuseOldStyle, i, style, newBounds, bounds, alignmentToParent);
+
+							if (placeItemResult != VirtualRepeatPlaceItemResult::None)
+							{
+								needRestart = placeItemResult == VirtualRepeatPlaceItemResult::Restart;
+								break;
+							}
+						}
+
+						vint newEndIndex = newStartIndex + newVisibleStyles.Count() - 1;
+						for (auto [style, i] : indexed(visibleStyles))
+						{
+							vint index = startIndex + i;
+							if (index < newStartIndex || index > newEndIndex)
+							{
+								DeleteStyle(visibleStyles[i]);
+							}
+						}
+						CopyFrom(visibleStyles, newVisibleStyles);
+
+						needToUpdateTotalSize = (Layout_EndPlaceItem(true, newBounds, newStartIndex) == VirtualRepeatEndPlaceItemResult::TotalSizeUpdated) || needToUpdateTotalSize;
+						startIndex = newStartIndex;
+
+						if (!needRestart) break;
+					}
+
+					{
+						vint newStartIndex = startIndex;
+						Layout_BeginPlaceItem(false, viewBounds, newStartIndex);
+
+						for (auto [style, i] : indexed(visibleStyles))
+						{
+							Rect bounds;
+							Margin alignmentToParent(-1, -1, -1, -1);
+							Layout_PlaceItem(false, false, startIndex + i, style, viewBounds, bounds, alignmentToParent);
+
+							bounds.x1 -= viewBounds.x1;
+							bounds.x2 -= viewBounds.x1;
+							bounds.y1 -= viewBounds.y1;
+							bounds.y2 -= viewBounds.y1;
+
+							Layout_SetStyleAlignmentToParent(style, alignmentToParent);
+							Layout_SetStyleBounds(style, bounds);
+						}
+
+						needToUpdateTotalSize = (Layout_EndPlaceItem(false, viewBounds, startIndex) == VirtualRepeatEndPlaceItemResult::TotalSizeUpdated) || needToUpdateTotalSize;
+					}
+				}
+
+				if (needToUpdateTotalSize)
+				{
+					realFullSize = axis->VirtualSizeToRealSize(Layout_CalculateTotalSize());
+					TotalSizeChanged.Execute(GuiEventArgs(this));
+					AdoptedSizeInvalidated.Execute(GuiEventArgs(this));
+				}
+				Layout_EndLayout(needToUpdateTotalSize);
+			}
+
+			GuiVirtualRepeatCompositionBase::GuiVirtualRepeatCompositionBase()
+			{
+				AxisChanged.SetAssociatedComposition(this);
+				TotalSizeChanged.SetAssociatedComposition(this);
+				ViewLocationChanged.SetAssociatedComposition(this);
+				AdoptedSizeInvalidated.SetAssociatedComposition(this);
+			}
+
+			GuiVirtualRepeatCompositionBase::~GuiVirtualRepeatCompositionBase()
+			{
+			}
+
+			Ptr<IGuiAxis> GuiVirtualRepeatCompositionBase::GetAxis()
+			{
+				return axis;
+			}
+
+			void GuiVirtualRepeatCompositionBase::SetAxis(Ptr<IGuiAxis> value)
+			{
+				if (axis != value)
+				{
+					OnClearItems();
+					if (!value) value = Ptr(new GuiDefaultAxis);
+					axis = value;
+					if (itemTemplate && itemSource)
+					{
+						OnInstallItems();
+					}
+					AxisChanged.Execute(GuiEventArgs(this));
+				}
+			}
+
+			Size GuiVirtualRepeatCompositionBase::GetTotalSize()
+			{
+				return realFullSize;
+			}
+
+			Point GuiVirtualRepeatCompositionBase::GetViewLocation()
+			{
+				return axis->VirtualRectToRealRect(realFullSize, viewBounds).LeftTop();
+			}
+
+			void GuiVirtualRepeatCompositionBase::SetViewLocation(Point value)
+			{
+				Size realSize = axis->VirtualSizeToRealSize(viewBounds.GetSize());
+				Rect realBounds = Rect(value, realSize);
+				Layout_UpdateViewBounds(axis->RealRectToVirtualRect(realFullSize, realBounds), false);
+				OnResetViewLocation();
+			}
+
+			GuiVirtualRepeatCompositionBase::ItemStyleRecord GuiVirtualRepeatCompositionBase::GetVisibleStyle(vint itemIndex)
+			{
+				if (startIndex <= itemIndex && itemIndex < startIndex + visibleStyles.Count())
+				{
+					return visibleStyles[itemIndex - startIndex];
+				}
+				else
+				{
+					return nullptr;
+				}
+			}
+
+			vint GuiVirtualRepeatCompositionBase::GetVisibleIndex(ItemStyleRecord style)
+			{
+				for (auto [s, i] : indexed(visibleStyles))
+				{
+					if (s == style)
+					{
+						return i + startIndex;
+					}
+				}
+				return -1;
+			}
+
+			void GuiVirtualRepeatCompositionBase::ResetLayout(bool recreateVisibleStyles)
+			{
+				if (recreateVisibleStyles)
+				{
+					OnClearItems();
+				}
+				else
+				{
+					Layout_ResetLayout();
+				}
+			}
+
+			void GuiVirtualRepeatCompositionBase::InvalidateLayout()
+			{
+				itemSourceUpdated = true;
+			}
+
+			vint GuiVirtualRepeatCompositionBase::FindItemByRealKeyDirection(vint itemIndex, compositions::KeyDirection key)
+			{
+				return FindItemByVirtualKeyDirection(itemIndex, axis->RealKeyDirectionToVirtualKeyDirection(key));
+			}
+
+/***********************************************************************
+GuiRepeatFreeHeightItemComposition
+***********************************************************************/
+
+			void GuiRepeatFreeHeightItemComposition::EnsureOffsetForItem(vint itemIndex)
+			{
+				if (heights.Count() == 0) return;
+
+				if (availableOffsetCount == 0)
+				{
+					availableOffsetCount = 1;
+					offsets[0] = 0;
+				}
+
+				for (vint i = availableOffsetCount; i < itemIndex && i < heights.Count(); i++)
+				{
+					offsets[i] = offsets[i - 1] + heights[i - 1];
+				}
+			}
+
+			void GuiRepeatFreeHeightItemComposition::Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex)
+			{
+				pi_heightUpdated = false;
+				EnsureOffsetForItem(heights.Count() - 1);
+				if (firstPhase)
+				{
+					// TODO: (enumerable) foreach:indexed
+					for (vint i = 0; i < heights.Count(); i++)
+					{
+						if (heights[i] == 1 && startIndex <= i && i < startIndex + visibleStyles.Count() && visibleStyles[i - startIndex])
+						{
+							vint h = visibleStyles[i - startIndex]->GetCachedMinSize().y;
+							if (h > 1)
+							{
+								heights[i] = h;
+							}
+						}
+						if (offsets[i] + heights[i] > newBounds.Top())
+						{
+							newStartIndex = i;
+							break;
+						}
+					}
+				}
+			}
+
+			VirtualRepeatPlaceItemResult GuiRepeatFreeHeightItemComposition::Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
+			{
+				vint styleHeight = heights[index];
+				{
+					vint newStyleHeight = Layout_GetStylePreferredSize(style).y;
+					if (!newCreatedStyle || styleHeight < newStyleHeight)
+					{
+						styleHeight = newStyleHeight;
+					}
+				}
+
+				if (heights[index] != styleHeight)
+				{
+					heights[index] = styleHeight;
+					pi_heightUpdated = true;
+				}
+
+				vint styleOffset = index == 0 ? 0 : offsets[index - 1] + heights[index - 1];
+				if (availableOffsetCount <= index || offsets[index] != styleOffset)
+				{
+					offsets[index] = styleOffset;
+					availableOffsetCount = index;
+				}
+
+				bounds = Rect(Point(0, offsets[index]), Size(viewBounds.Width(), heights[index]));
+
+				if (bounds.Bottom() >= viewBounds.Bottom())
+				{
+					return VirtualRepeatPlaceItemResult::HitLastItem;
+				}
+				else
+				{
+					return VirtualRepeatPlaceItemResult::None;
+				}
+			}
+
+			VirtualRepeatEndPlaceItemResult GuiRepeatFreeHeightItemComposition::Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex)
+			{
+				return pi_heightUpdated ? VirtualRepeatEndPlaceItemResult::TotalSizeUpdated : VirtualRepeatEndPlaceItemResult::None;
+			}
+
+			void GuiRepeatFreeHeightItemComposition::Layout_EndLayout(bool totalSizeUpdated)
+			{
+			}
+
+			void GuiRepeatFreeHeightItemComposition::Layout_InvalidateItemSizeCache()
+			{
+				availableOffsetCount = 0;
+				for (vint i = 0; i < heights.Count(); i++)
+				{
+					heights[i] = 1;
+				}
+			}
+
+			Size GuiRepeatFreeHeightItemComposition::Layout_CalculateTotalSize()
+			{
+				if (heights.Count() == 0) return Size(0, 0);
+				EnsureOffsetForItem(heights.Count());
+				return Size(viewBounds.Width(), offsets[heights.Count() - 1] + heights[heights.Count() - 1]);
+			}
+
+			void GuiRepeatFreeHeightItemComposition::OnItemChanged(vint start, vint oldCount, vint newCount)
+			{
+				availableOffsetCount = start;
+				vint itemCount = heights.Count() + newCount - oldCount;
+
+				if (oldCount < newCount)
+				{
+					heights.Resize(itemCount);
+					if (start + newCount < itemCount)
+					{
+						memmove(&heights[start + newCount], &heights[start + oldCount], sizeof(vint) * (itemCount - start - newCount));
+					}
+				}
+				else if (oldCount > newCount)
+				{
+					if (start + newCount < itemCount)
+					{
+						memmove(&heights[start + newCount], &heights[start + oldCount], sizeof(vint) * (itemCount - start - newCount));
+					}
+					heights.Resize(itemCount);
+				}
+
+				for (vint i = 0; i < newCount; i++)
+				{
+					heights[start + i] = 1;
+				}
+				offsets.Resize(itemCount);
+
+				GuiVirtualRepeatCompositionBase::OnItemChanged(start, oldCount, newCount);
+			}
+
+			void GuiRepeatFreeHeightItemComposition::OnInstallItems()
+			{
+				heights.Resize(itemSource->GetCount());
+				Layout_InvalidateItemSizeCache();
+
+				offsets.Resize(itemSource->GetCount());
+				EnsureOffsetForItem(heights.Count() - 1);
+
+				GuiVirtualRepeatCompositionBase::OnInstallItems();
+			}
+
+			vint GuiRepeatFreeHeightItemComposition::FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)
+			{
+				if (!itemSource) return -1;
+				vint count = itemSource->GetCount();
+				if (itemIndex < 0 || itemIndex >= count) return -1;
+
+				switch (key)
+				{
+				case KeyDirection::Up:
+					itemIndex--;
+					break;
+				case KeyDirection::Down:
+					itemIndex++;
+					break;
+				case KeyDirection::Home:
+					itemIndex = 0;
+					break;
+				case KeyDirection::End:
+					itemIndex = count - 1;
+					break;
+				case KeyDirection::PageUp:
+					itemIndex -= visibleStyles.Count();
+					break;
+				case KeyDirection::PageDown:
+					itemIndex += visibleStyles.Count();
+					break;
+				default:
+					return -1;
+				}
+
+				if (itemIndex < 0) return 0;
+				else if (itemIndex >= count) return count - 1;
+				else return itemIndex;
+			}
+
+			VirtualRepeatEnsureItemVisibleResult GuiRepeatFreeHeightItemComposition::EnsureItemVisible(vint itemIndex)
+			{
+				if (!itemSource) return VirtualRepeatEnsureItemVisibleResult::NotMoved;
+				bool moved = false;
+				while (true)
+				{
+					if (itemIndex < 0 || itemIndex >= itemSource->GetCount())
+					{
+						return VirtualRepeatEnsureItemVisibleResult::ItemNotExists;
+					}
+
+					EnsureOffsetForItem(itemIndex);
+					vint offset = viewBounds.y1;
+					vint top = offsets[itemIndex];
+					vint bottom = top + heights[itemIndex];
+					vint height = viewBounds.Height();
+
+					Point location = viewBounds.LeftTop();
+
+					if (offset >= top && offset + height <= bottom)
+					{
+						break;
+					}
+					else if (offset > top)
+					{
+						location.y = top;
+					}
+					else if (offset < bottom - height)
+					{
+						location.y = bottom - height;
+					}
+					else
+					{
+						break;
+					}
+
+					auto oldLeftTop = viewBounds.LeftTop();
+					Layout_UpdateViewLocation(location);
+					moved |= viewBounds.LeftTop() != oldLeftTop;
+					if (viewBounds.LeftTop() != location) break;
+				}
+				return moved ? VirtualRepeatEnsureItemVisibleResult::Moved : VirtualRepeatEnsureItemVisibleResult::NotMoved;
+			}
+
+			Size GuiRepeatFreeHeightItemComposition::GetAdoptedSize(Size expectedSize)
+			{
+				vint h = expectedSize.x * 2;
+				if (expectedSize.y < h) expectedSize.y = h;
+				return expectedSize;
+			}
+
+/***********************************************************************
+GuiRepeatFixedHeightItemComposition
+***********************************************************************/
+
+			void GuiRepeatFixedHeightItemComposition::Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex)
+			{
+				pi_width = itemWidth;
+				pi_yoffset = itemYOffset;
+				if (firstPhase)
+				{
+					pi_rowHeight = rowHeight;
+					newStartIndex = newBounds.Top() / pi_rowHeight;
+				}
+			}
+
+			VirtualRepeatPlaceItemResult GuiRepeatFixedHeightItemComposition::Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
+			{
+				if (firstPhase)
+				{
+					vint styleHeight = Layout_GetStylePreferredSize(style).y;
+					if (pi_rowHeight < styleHeight)
+					{
+						pi_rowHeight = styleHeight;
+					}
+				}
+
+				vint top = pi_yoffset + index * pi_rowHeight;
+				if (pi_width == -1)
+				{
+					alignmentToParent = Margin(0, -1, 0, -1);
+					bounds = Rect(Point(0, top), Size(0, pi_rowHeight));
+				}
+				else
+				{
+					alignmentToParent = Margin(-1, -1, -1, -1);
+					bounds = Rect(Point(0, top), Size(pi_width, pi_rowHeight));
+				}
+
+				if (bounds.Bottom() >= viewBounds.Bottom())
+				{
+					return VirtualRepeatPlaceItemResult::HitLastItem;
+				}
+				else
+				{
+					return VirtualRepeatPlaceItemResult::None;
+				}
+			}
+
+			VirtualRepeatEndPlaceItemResult GuiRepeatFixedHeightItemComposition::Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex)
+			{
+				if (firstPhase)
+				{
+					if (pi_rowHeight != rowHeight)
+					{
+						rowHeight = pi_rowHeight;
+						return VirtualRepeatEndPlaceItemResult::TotalSizeUpdated;
+					}
+				}
+				return VirtualRepeatEndPlaceItemResult::None;
+			}
+
+			void GuiRepeatFixedHeightItemComposition::Layout_EndLayout(bool totalSizeUpdated)
+			{
+			}
+
+			void GuiRepeatFixedHeightItemComposition::Layout_InvalidateItemSizeCache()
+			{
+				rowHeight = 1;
+			}
+
+			Size GuiRepeatFixedHeightItemComposition::Layout_CalculateTotalSize()
+			{
+				if (!itemSource || itemSource->GetCount() == 0) return Size(0, 0);
+
+				vint width = itemWidth;
+				if (width == -1) width = viewBounds.Width();
+				return Size(width, rowHeight * itemSource->GetCount() + itemYOffset);
+			}
+
+			vint GuiRepeatFixedHeightItemComposition::FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)
+			{
+				vint count = itemSource->GetCount();
+				if (itemIndex < 0 || itemIndex >= count) return -1;
+				vint groupCount = viewBounds.Height() / rowHeight;
+				if (groupCount == 0) groupCount = 1;
+
+				switch (key)
+				{
+				case KeyDirection::Up:
+					itemIndex--;
+					break;
+				case KeyDirection::Down:
+					itemIndex++;
+					break;
+				case KeyDirection::Home:
+					itemIndex = 0;
+					break;
+				case KeyDirection::End:
+					itemIndex = count;
+					break;
+				case KeyDirection::PageUp:
+					itemIndex -= groupCount;
+					break;
+				case KeyDirection::PageDown:
+					itemIndex += groupCount;
+					break;
+				default:
+					return -1;
+				}
+
+				if (itemIndex < 0) return 0;
+				else if (itemIndex >= count) return count - 1;
+				else return itemIndex;
+			}
+
+			VirtualRepeatEnsureItemVisibleResult GuiRepeatFixedHeightItemComposition::EnsureItemVisible(vint itemIndex)
+			{
+				if (!itemSource) return VirtualRepeatEnsureItemVisibleResult::NotMoved;
+				if (itemIndex < 0 || itemIndex >= itemSource->GetCount())
+				{
+					return VirtualRepeatEnsureItemVisibleResult::ItemNotExists;
+				}
+
+				vint viewY1 = viewBounds.y1 + itemYOffset;
+				vint viewY2 = viewBounds.y2;
+				vint itemY1 = itemIndex * rowHeight + itemYOffset;
+				vint itemY2 = itemY1 + rowHeight;
+
+				if (viewY2 - viewY1 < rowHeight)
+				{
+					if (itemY1 < viewY2 && itemY2 > viewY1)
+					{
+						return VirtualRepeatEnsureItemVisibleResult::NotMoved;
+					}
+				}
+				else
+				{
+					if (itemY1 >= viewY1 && itemY2 <= viewY2)
+					{
+						return VirtualRepeatEnsureItemVisibleResult::NotMoved;
+					}
+
+					if (itemY1 < viewY1 && itemY2 > viewY1)
+					{
+						Layout_UpdateViewLocation({ viewBounds.x1,viewBounds.y1 + itemY1 - viewY1 });
+						return VirtualRepeatEnsureItemVisibleResult::Moved;
+					}
+
+					if (itemY1 < viewY2 && itemY2 > viewY2)
+					{
+						Layout_UpdateViewLocation({ viewBounds.x1,viewBounds.y1 + itemY2 - viewY2 });
+						return VirtualRepeatEnsureItemVisibleResult::Moved;
+					}
+				}
+
+				bool up = itemY1 < viewY1;
+				while (true)
+				{
+					if (up)
+					{
+						if (itemY1 >= viewY1) break;
+						Layout_UpdateViewLocation({ viewBounds.x1,viewBounds.y1 + itemY1 - viewY1 });
+					}
+					else
+					{
+						if (itemY2 <= viewY2) break;
+						Layout_UpdateViewLocation({ viewBounds.x1,viewBounds.y1 + itemY2 - viewY2 });
+					}
+
+					viewY1 = viewBounds.y1 + itemYOffset;
+					viewY2 = viewBounds.y2;
+					itemY1 = itemIndex * rowHeight + itemYOffset;
+					itemY2 = itemY1 + rowHeight;
+				}
+
+				return VirtualRepeatEnsureItemVisibleResult::Moved;
+			}
+
+			Size GuiRepeatFixedHeightItemComposition::GetAdoptedSize(Size expectedSize)
+			{
+				if (!itemSource) return expectedSize;
+				vint y = expectedSize.y - itemYOffset;
+				vint itemCount = itemSource->GetCount();
+				return Size(expectedSize.x, itemYOffset + CalculateAdoptedSize(y, itemCount, rowHeight));
+			}
+
+			vint GuiRepeatFixedHeightItemComposition::GetItemWidth()
+			{
+				return itemWidth;
+			}
+
+			void GuiRepeatFixedHeightItemComposition::SetItemWidth(vint value)
+			{
+				if (value < -1) value = -1;
+				if (itemWidth != value)
+				{
+					itemWidth = value;
+					InvalidateLayout();
+				}
+			}
+
+			vint GuiRepeatFixedHeightItemComposition::GetItemYOffset()
+			{
+				return itemYOffset;
+			}
+
+			void GuiRepeatFixedHeightItemComposition::SetItemYOffset(vint value)
+			{
+				if (value < 0) value = 0;
+				if (itemYOffset != value)
+				{
+					itemYOffset = value;
+					InvalidateLayout();
+				}
+			}
+
+/***********************************************************************
+GuiRepeatFixedSizeMultiColumnItemComposition
+***********************************************************************/
+
+			void GuiRepeatFixedSizeMultiColumnItemComposition::Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex)
+			{
+				if (firstPhase)
+				{
+					pi_itemSize = itemSize;
+					vint rows = newBounds.Top() / pi_itemSize.y;
+					if (rows < 0) rows = 0;
+					vint cols = newBounds.Width() / pi_itemSize.x;
+					if (cols < 1) cols = 1;
+					newStartIndex = rows * cols;
+				}
+			}
+
+			VirtualRepeatPlaceItemResult GuiRepeatFixedSizeMultiColumnItemComposition::Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
+			{
+				if (firstPhase)
+				{
+					Size styleSize = Layout_GetStylePreferredSize(style);
+					if (pi_itemSize.x < styleSize.x) pi_itemSize.x = styleSize.x;
+					if (pi_itemSize.y < styleSize.y) pi_itemSize.y = styleSize.y;
+				}
+
+				vint rowItems = viewBounds.Width() / pi_itemSize.x;
+				if (rowItems < 1) rowItems = 1;
+
+				vint row = index / rowItems;
+				vint col = index % rowItems;
+				bounds = Rect(Point(col * pi_itemSize.x, row * pi_itemSize.y), pi_itemSize);
+
+				if (col == rowItems - 1 && bounds.Bottom() >= viewBounds.Bottom())
+				{
+					return VirtualRepeatPlaceItemResult::HitLastItem;
+				}
+				else
+				{
+					return VirtualRepeatPlaceItemResult::None;
+				}
+			}
+
+			VirtualRepeatEndPlaceItemResult GuiRepeatFixedSizeMultiColumnItemComposition::Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex)
+			{
+				if (firstPhase)
+				{
+					if (pi_itemSize != itemSize)
+					{
+						itemSize = pi_itemSize;
+						return VirtualRepeatEndPlaceItemResult::TotalSizeUpdated;
+					}
+				}
+				return VirtualRepeatEndPlaceItemResult::None;
+			}
+
+			void GuiRepeatFixedSizeMultiColumnItemComposition::Layout_EndLayout(bool totalSizeUpdated)
+			{
+			}
+
+			void GuiRepeatFixedSizeMultiColumnItemComposition::Layout_InvalidateItemSizeCache()
+			{
+				itemSize = Size(1, 1);
+			}
+
+			Size GuiRepeatFixedSizeMultiColumnItemComposition::Layout_CalculateTotalSize()
+			{
+				if (!itemSource || itemSource->GetCount() == 0) return Size(0, 0);
+
+				vint rowItems = viewBounds.Width() / itemSize.x;
+				if (rowItems < 1) rowItems = 1;
+				vint rows = itemSource->GetCount() / rowItems;
+				if (itemSource->GetCount() % rowItems) rows++;
+
+				return Size(itemSize.x * rowItems, itemSize.y * rows);
+			}
+
+			vint GuiRepeatFixedSizeMultiColumnItemComposition::FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)
+			{
+				vint count = itemSource->GetCount();
+				if (itemIndex < 0 || itemIndex >= count) return -1;
+				vint columnCount = viewBounds.Width() / itemSize.x;
+				if (columnCount == 0) columnCount = 1;
+				vint rowCount = viewBounds.Height() / itemSize.y;
+				if (rowCount == 0) rowCount = 1;
+
+				switch (key)
+				{
+				case KeyDirection::Up:
+					itemIndex -= columnCount;
+					break;
+				case KeyDirection::Down:
+					itemIndex += columnCount;
+					break;
+				case KeyDirection::Left:
+					itemIndex--;
+					break;
+				case KeyDirection::Right:
+					itemIndex++;
+					break;
+				case KeyDirection::Home:
+					itemIndex = 0;
+					break;
+				case KeyDirection::End:
+					itemIndex = count;
+					break;
+				case KeyDirection::PageUp:
+					itemIndex -= columnCount * rowCount;
+					break;
+				case KeyDirection::PageDown:
+					itemIndex += columnCount * rowCount;
+					break;
+				case KeyDirection::PageLeft:
+					itemIndex -= itemIndex % columnCount;
+					break;
+				case KeyDirection::PageRight:
+					itemIndex += columnCount - itemIndex % columnCount - 1;
+					break;
+				default:
+					return -1;
+				}
+
+				if (itemIndex < 0) return 0;
+				else if (itemIndex >= count) return count - 1;
+				else return itemIndex;
+			}
+
+			VirtualRepeatEnsureItemVisibleResult GuiRepeatFixedSizeMultiColumnItemComposition::EnsureItemVisible(vint itemIndex)
+			{
+				if (!itemSource) return VirtualRepeatEnsureItemVisibleResult::NotMoved;
+				if (itemIndex < 0 || itemIndex >= itemSource->GetCount())
+				{
+					return VirtualRepeatEnsureItemVisibleResult::ItemNotExists;
+				}
+				bool moved = false;
+				while (true)
+				{
+					vint rowHeight = itemSize.y;
+					vint columnCount = viewBounds.Width() / itemSize.x;
+					if (columnCount == 0) columnCount = 1;
+					vint rowIndex = itemIndex / columnCount;
+
+					vint top = rowIndex * rowHeight;
+					vint bottom = top + rowHeight;
+
+					if (viewBounds.Height() < rowHeight)
+					{
+						if (viewBounds.Top() < bottom && top < viewBounds.Bottom())
+						{
+							break;
+						}
+					}
+
+					Point location = viewBounds.LeftTop();
+					if (top < viewBounds.Top())
+					{
+						location.y = top;
+					}
+					else if (viewBounds.Bottom() < bottom)
+					{
+						location.y = bottom - viewBounds.Height();
+					}
+					else
+					{
+						break;
+					}
+
+					auto oldLeftTop = viewBounds.LeftTop();
+					Layout_UpdateViewLocation(location);
+					moved |= viewBounds.LeftTop() != oldLeftTop;
+					if (viewBounds.LeftTop() != location) break;
+				}
+				return moved ? VirtualRepeatEnsureItemVisibleResult::Moved : VirtualRepeatEnsureItemVisibleResult::NotMoved;
+			}
+
+			Size GuiRepeatFixedSizeMultiColumnItemComposition::GetAdoptedSize(Size expectedSize)
+			{
+				if (!itemSource) return expectedSize;
+				vint count = itemSource->GetCount();
+				vint columnCount = viewBounds.Width() / itemSize.x;
+				vint rowCount = viewBounds.Height() / itemSize.y;
+				return Size(
+					CalculateAdoptedSize(expectedSize.x, columnCount, itemSize.x),
+					CalculateAdoptedSize(expectedSize.y, rowCount, itemSize.y)
+				);
+			}
+
+/***********************************************************************
+GuiRepeatFixedHeightMultiColumnItemComposition
+***********************************************************************/
+
+			void GuiRepeatFixedHeightMultiColumnItemComposition::FixColumnWidth(vint index)
+			{
+				vint c = index / pi_rows - pi_firstColumn;
+				vint r = index % pi_rows;
+				vint w = pi_visibleItemWidths[index - pi_firstColumn * pi_rows];
+
+				if (r == 0)
+				{
+					while (pi_visibleColumnWidths.Count() <= c) pi_visibleColumnWidths.Add(0);
+					while (pi_visibleColumnOffsets.Count() <= c) pi_visibleColumnOffsets.Add(0);
+
+					pi_visibleColumnWidths[c] = w;
+					if (c == 0)
+					{
+						pi_visibleColumnOffsets[c] = 0;
+					}
+					else
+					{
+						pi_visibleColumnOffsets[c] = pi_visibleColumnOffsets[c - 1] + pi_visibleColumnWidths[c - 1];
+					}
+				}
+				else
+				{
+					if (pi_visibleColumnWidths[c] < w)
+					{
+						pi_visibleColumnWidths[c] = w;
+					}
+				}
+			}
+
+			void GuiRepeatFixedHeightMultiColumnItemComposition::Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex)
+			{
+				if (firstPhase)
+				{
+					pi_firstColumn = newBounds.Width() == 0 ? 0 : newBounds.x1 / newBounds.Width();
+					pi_itemHeight = itemHeight;
+
+					pi_visibleItemWidths.Clear();
+					pi_visibleColumnWidths.Clear();
+					pi_visibleColumnOffsets.Clear();
+					pi_rows = newBounds.Height() / itemHeight;
+					if (pi_rows < 1) pi_rows = 1;
+
+					if (pi_firstColumn < 0)
+					{
+						pi_firstColumn = 0;
+					}
+					else if (pi_firstColumn * pi_rows >= itemSource->GetCount())
+					{
+						pi_firstColumn = (itemSource->GetCount() + pi_rows - 1) / pi_rows - 1;
+					}
+
+					newStartIndex = pi_firstColumn * pi_rows;
+				}
+			}
+
+			VirtualRepeatPlaceItemResult GuiRepeatFixedHeightMultiColumnItemComposition::Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)
+			{
+#define ERROR_MESSAGE_INTERNAL_ERROR L"vl::presentation::compositions::GuiRepeatFixedHeightMultiColumnItemComposition::Layout_PlaceItem(...)#Internal error."
+
+				vint visibleColumn = index / pi_rows - pi_firstColumn;
+				vint visibleRow = index % pi_rows;
+
+				if (firstPhase)
+				{
+					Size styleSize = Layout_GetStylePreferredSize(style);
+					if (pi_itemHeight < styleSize.y)
+					{
+						pi_itemHeight = styleSize.y;
+						vint newRows = viewBounds.Height() / pi_itemHeight;
+						if (newRows != pi_rows)
+						{
+							CHECK_ERROR(newRows < pi_rows, ERROR_MESSAGE_INTERNAL_ERROR);
+							vint oldFirstIndex = pi_firstColumn * pi_rows;
+							pi_rows = newRows > 0 ? newRows : 1;
+							vint newFirstIndex = pi_firstColumn * pi_rows;
+
+							if (oldFirstIndex == newFirstIndex)
+							{
+								for (vint i = newFirstIndex; i < index; i++)
+								{
+									FixColumnWidth(i + newFirstIndex);
+								}
+							}
+							else
+							{
+								CHECK_ERROR(oldFirstIndex > newFirstIndex, ERROR_MESSAGE_INTERNAL_ERROR);
+								return VirtualRepeatPlaceItemResult::Restart;
+							}
+
+							visibleColumn = index / pi_rows - pi_firstColumn;
+							visibleRow = index % pi_rows;
+						}
+					}
+
+					pi_visibleItemWidths.Add(styleSize.x);
+					FixColumnWidth(index);
+				}
+
+				vint x = viewBounds.x1 + pi_visibleColumnOffsets[visibleColumn];
+				vint y = pi_itemHeight * visibleRow;
+				vint w = pi_visibleItemWidths[index - pi_firstColumn * pi_rows];
+				bounds = Rect({ x,y }, { w,pi_itemHeight });
+
+				if (visibleRow == pi_rows - 1 && pi_visibleColumnOffsets[visibleColumn] + pi_visibleColumnWidths[visibleColumn] >= viewBounds.Width())
+				{
+					return VirtualRepeatPlaceItemResult::HitLastItem;
+				}
+				else
+				{
+					return VirtualRepeatPlaceItemResult::None;
+				}
+#undef ERROR_MESSAGE_INTERNAL_ERROR
+			}
+
+			VirtualRepeatEndPlaceItemResult GuiRepeatFixedHeightMultiColumnItemComposition::Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex)
+			{
+				if (firstPhase)
+				{
+					bool itemHeightUpdated = pi_itemHeight != itemHeight;
+
+					firstColumn = pi_firstColumn;
+					itemHeight = pi_itemHeight;
+					if (pi_visibleColumnOffsets.Count() <= 1)
+					{
+						fullVisibleColumns = pi_visibleColumnOffsets.Count();
+					}
+					else
+					{
+						vint c = pi_visibleColumnOffsets.Count() - 1;
+						vint x = pi_visibleColumnOffsets[c] + pi_visibleColumnWidths[c];
+						if (x <= viewBounds.Width())
+						{
+							fullVisibleColumns = c + 1;
+						}
+						else
+						{
+							fullVisibleColumns = c;
+						}
+					}
+
+					if (itemHeightUpdated)
+					{
+						return VirtualRepeatEndPlaceItemResult::TotalSizeUpdated;
+					}
+				}
+				return VirtualRepeatEndPlaceItemResult::None;
+			}
+
+			void GuiRepeatFixedHeightMultiColumnItemComposition::Layout_EndLayout(bool totalSizeUpdated)
+			{
+			}
+
+			void GuiRepeatFixedHeightMultiColumnItemComposition::Layout_InvalidateItemSizeCache()
+			{
+				itemHeight = 1;
+			}
+
+			Size GuiRepeatFixedHeightMultiColumnItemComposition::Layout_CalculateTotalSize()
+			{
+				if (!itemSource || itemSource->GetCount() == 0) return Size(0, 0);
+
+				vint rows = viewBounds.Height() / itemHeight;
+				if (rows < 1) rows = 1;
+				vint columns = (itemSource->GetCount() + rows - 1) / rows;
+
+				return Size(viewBounds.Width() * (columns + 1), (rows * itemHeight));
+			}
+
+			vint GuiRepeatFixedHeightMultiColumnItemComposition::FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)
+			{
+				vint count = itemSource->GetCount();
+				if (itemIndex < 0 || itemIndex >= count) return -1;
+				vint rowCount = viewBounds.Height() / itemHeight;
+				if (rowCount == 0) rowCount = 1;
+
+				switch (key)
+				{
+				case KeyDirection::Up:
+					itemIndex--;
+					break;
+				case KeyDirection::Down:
+					itemIndex++;
+					break;
+				case KeyDirection::Left:
+					itemIndex -= rowCount;
+					break;
+				case KeyDirection::Right:
+					itemIndex += rowCount;
+					break;
+				case KeyDirection::Home:
+					itemIndex = 0;
+					break;
+				case KeyDirection::End:
+					itemIndex = count;
+					break;
+				case KeyDirection::PageUp:
+					itemIndex -= itemIndex % rowCount;
+					break;
+				case KeyDirection::PageDown:
+					itemIndex += rowCount - itemIndex % rowCount - 1;
+					break;
+				default:
+					return -1;
+				}
+
+				if (itemIndex < 0) return 0;
+				else if (itemIndex >= count) return count - 1;
+				else return itemIndex;
+			}
+
+			VirtualRepeatEnsureItemVisibleResult GuiRepeatFixedHeightMultiColumnItemComposition::EnsureItemVisible(vint itemIndex)
+			{
+				if (!itemSource) return VirtualRepeatEnsureItemVisibleResult::NotMoved;
+				if (itemIndex < 0 || itemIndex >= itemSource->GetCount())
+				{
+					return VirtualRepeatEnsureItemVisibleResult::ItemNotExists;
+				}
+				bool moved = false;
+				while (true)
+				{
+					vint rowCount = viewBounds.Height() / itemHeight;
+					if (rowCount == 0) rowCount = 1;
+					vint column = itemIndex / rowCount;
+					Point location = viewBounds.LeftTop();
+
+					if (column < firstColumn)
+					{
+						location.x = viewBounds.Width() * column;
+					}
+					else if (column >= firstColumn + fullVisibleColumns)
+					{
+						location.x = viewBounds.Width() * (column - fullVisibleColumns + 1);
+					}
+					else
+					{
+						break;
+					}
+
+					auto oldLeftTop = viewBounds.LeftTop();
+					Layout_UpdateViewLocation(location);
+					moved |= viewBounds.LeftTop() != oldLeftTop;
+					if (viewBounds.LeftTop() != location) break;
+				}
+				return moved ? VirtualRepeatEnsureItemVisibleResult::Moved : VirtualRepeatEnsureItemVisibleResult::NotMoved;
+			}
+
+			Size GuiRepeatFixedHeightMultiColumnItemComposition::GetAdoptedSize(Size expectedSize)
+			{
+				if (!itemSource) return expectedSize;
+				vint count = itemSource->GetCount();
+				return Size(expectedSize.x, CalculateAdoptedSize(expectedSize.y, count, itemHeight));
 			}
 		}
 	}

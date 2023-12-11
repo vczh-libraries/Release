@@ -5073,8 +5073,14 @@ namespace vl
 			class GuiSharedSizeRootComposition;
 
 			class GuiRepeatCompositionBase;
+			class GuiNonVirtialRepeatCompositionBase;
 			class GuiRepeatStackComposition;
 			class GuiRepeatFlowComposition;
+			class GuiVirtualRepeatCompositionBase;
+			class GuiRepeatFreeHeightItemComposition;
+			class GuiRepeatFixedHeightItemComposition;
+			class GuiRepeatFixedSizeMultiColumnItemComposition;
+			class GuiRepeatFixedHeightMultiColumnItemComposition;
 		}
 	}
 }
@@ -5940,25 +5946,15 @@ namespace vl
 				description::Value									itemContext;
 				Ptr<EventHandler>									itemChangedHandler;
 
-				virtual vint										GetRepeatCompositionCount() = 0;
-				virtual GuiGraphicsComposition*						GetRepeatComposition(vint index) = 0;
-				virtual GuiGraphicsComposition*						InsertRepeatComposition(vint index) = 0;
-				virtual GuiGraphicsComposition*						RemoveRepeatComposition(vint index) = 0;
-
-				void												OnItemChanged(vint index, vint oldCount, vint newCount);
-				void												RemoveItem(vint index);
-				void												InstallItem(vint index);
-				void												ClearItems();
-				void												InstallItems();
+				virtual void										OnItemChanged(vint index, vint oldCount, vint newCount) = 0;
+				virtual void										OnClearItems() = 0;
+				virtual void										OnInstallItems() = 0;
+				virtual void										OnUpdateContext() = 0;
 			public:
 				GuiRepeatCompositionBase();
 				~GuiRepeatCompositionBase();
 
-				/// <summary>An event called after a new item is inserted.</summary>
-				GuiItemNotifyEvent									ItemInserted;
-				/// <summary>An event called before a new item is removed.</summary>
-				GuiItemNotifyEvent									ItemRemoved;
-				/// <summary>Context changed event. This event raises when the font of the control is changed.</summary>
+				/// <summary>Context changed event. This event raises when the context of the composition is changed.</summary>
 				GuiNotifyEvent										ContextChanged;
 
 				/// <summary>Get the item style provider.</summary>
@@ -5983,8 +5979,39 @@ namespace vl
 				void												SetContext(const description::Value& value);
 			};
 
+/***********************************************************************
+GuiNonVirtialRepeatCompositionBase
+***********************************************************************/
+
+			/// <summary>A base class for all bindable repeat compositions.</summary>
+			class GuiNonVirtialRepeatCompositionBase : public GuiRepeatCompositionBase, public Description<GuiNonVirtialRepeatCompositionBase>
+			{
+			protected:
+
+				virtual vint										GetRepeatCompositionCount() = 0;
+				virtual GuiGraphicsComposition*						GetRepeatComposition(vint index) = 0;
+				virtual GuiGraphicsComposition*						InsertRepeatComposition(vint index) = 0;
+				virtual GuiGraphicsComposition*						RemoveRepeatComposition(vint index) = 0;
+
+				void												OnItemChanged(vint index, vint oldCount, vint newCount) override;
+				void												OnClearItems() override;
+				void												OnInstallItems() override;
+				void												OnUpdateContext() override;
+
+				void												RemoveItem(vint index);
+				void												InstallItem(vint index);
+			public:
+				GuiNonVirtialRepeatCompositionBase();
+				~GuiNonVirtialRepeatCompositionBase();
+
+				/// <summary>An event called after a new item is inserted.</summary>
+				GuiItemNotifyEvent									ItemInserted;
+				/// <summary>An event called before a new item is removed.</summary>
+				GuiItemNotifyEvent									ItemRemoved;
+			};
+
 			/// <summary>Bindable stack composition.</summary>
-			class GuiRepeatStackComposition : public GuiStackComposition, public GuiRepeatCompositionBase, public Description<GuiRepeatStackComposition>
+			class GuiRepeatStackComposition : public GuiStackComposition, public GuiNonVirtialRepeatCompositionBase, public Description<GuiRepeatStackComposition>
 			{
 			protected:
 				vint												GetRepeatCompositionCount()override;
@@ -5998,7 +6025,7 @@ namespace vl
 			};
 
 			/// <summary>Bindable flow composition.</summary>
-			class GuiRepeatFlowComposition : public GuiFlowComposition, public GuiRepeatCompositionBase, public Description<GuiRepeatFlowComposition>
+			class GuiRepeatFlowComposition : public GuiFlowComposition, public GuiNonVirtialRepeatCompositionBase, public Description<GuiRepeatFlowComposition>
 			{
 			protected:
 				vint												GetRepeatCompositionCount()override;
@@ -6009,6 +6036,239 @@ namespace vl
 			public:
 				GuiRepeatFlowComposition();
 				~GuiRepeatFlowComposition();
+			};
+
+/***********************************************************************
+GuiVirtualRepeatCompositionBase
+***********************************************************************/
+
+			/// <summary>Result for <see cref="GuiVirtualRepeatCompositionBase::EnsureItemVisible"/>.</summary>
+			enum class VirtualRepeatEnsureItemVisibleResult
+			{
+				/// <summary>The requested item does not exist.</summary>
+				ItemNotExists,
+				/// <summary>The view location is moved.</summary>
+				Moved,
+				/// <summary>The view location is not moved.</summary>
+				NotMoved,
+			};
+
+			enum class VirtualRepeatPlaceItemResult
+			{
+				None,
+				HitLastItem,
+				Restart,
+			};
+
+			enum class VirtualRepeatEndPlaceItemResult
+			{
+				None,
+				TotalSizeUpdated,
+			};
+
+			/// <summary>This composition implements most of the common functionality that display a continuing subset of items at a time.</summary>
+			class GuiVirtualRepeatCompositionBase : public GuiBoundsComposition, public GuiRepeatCompositionBase, public Description<GuiVirtualRepeatCompositionBase>
+			{
+			protected:
+				using ItemStyleRecord = templates::GuiTemplate*;
+				using StyleList = collections::List<ItemStyleRecord>;
+
+				Ptr<IGuiAxis>										axis = Ptr(new GuiDefaultAxis);
+				bool												itemSourceUpdated = false;
+				Size												realFullSize;
+				Rect												viewBounds;
+				vint												startIndex = 0;
+				StyleList											visibleStyles;
+
+				virtual void										Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex) = 0;
+				virtual VirtualRepeatPlaceItemResult				Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent) = 0;
+				virtual VirtualRepeatEndPlaceItemResult				Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex) = 0;
+				virtual void										Layout_EndLayout(bool totalSizeUpdated) = 0;
+				virtual void										Layout_InvalidateItemSizeCache() = 0;
+				virtual Size										Layout_CalculateTotalSize() = 0;
+
+				virtual void										Layout_UpdateIndex(ItemStyleRecord style, vint index);
+				void												Layout_UpdateViewBounds(Rect value, bool forceUpdateTotalSize);
+				void												Layout_UpdateViewLocation(Point value);
+				Rect												Layout_CalculateBounds(Size parentSize) override;
+				void												Layout_ResetLayout();
+
+				void												Layout_SetStyleAlignmentToParent(ItemStyleRecord style, Margin value);
+				Size												Layout_GetStylePreferredSize(ItemStyleRecord style);
+				Rect												Layout_GetStyleBounds(ItemStyleRecord style);
+				void												Layout_SetStyleBounds(ItemStyleRecord style, Rect value);
+
+				void												OnItemChanged(vint start, vint oldCount, vint newCount) override;
+				void												OnClearItems() override;
+				void												OnInstallItems() override;
+				void												OnUpdateContext() override;
+				virtual void										OnResetViewLocation();
+				virtual ItemStyleRecord								CreateStyleInternal(vint index);
+				virtual void										DeleteStyleInternal(ItemStyleRecord style);
+
+				vint												CalculateAdoptedSize(vint expectedSize, vint count, vint itemSize);
+				ItemStyleRecord										CreateStyle(vint index);
+				void												DeleteStyle(ItemStyleRecord style);
+				void												OnViewChangedInternal(Rect oldBounds, Rect newBounds, bool forceUpdateTotalSize);
+
+			public:
+				/// <summary>Create the arranger.</summary>
+				GuiVirtualRepeatCompositionBase();
+				~GuiVirtualRepeatCompositionBase();
+
+				/// <summary>Axis changed event.</summary>
+				GuiNotifyEvent										AxisChanged;
+
+				/// <summary>Total size changed event. This event raises when the total size of the content is changed.</summary>
+				GuiNotifyEvent										TotalSizeChanged;
+
+				/// <summary>View location changed event. This event raises when the view location of the content is changed.</summary>
+				GuiNotifyEvent										ViewLocationChanged;
+
+				/// <summary>This event raises when the adopted size of the content is potentially changed.</summary>
+				GuiNotifyEvent										AdoptedSizeInvalidated;
+
+				Ptr<IGuiAxis>										GetAxis();
+				void												SetAxis(Ptr<IGuiAxis> value);
+
+				Size												GetTotalSize();
+				Point												GetViewLocation();
+				void												SetViewLocation(Point value);
+
+				ItemStyleRecord										GetVisibleStyle(vint itemIndex);
+				vint												GetVisibleIndex(ItemStyleRecord style);
+				void												ResetLayout(bool recreateVisibleStyles);
+				void												InvalidateLayout();
+
+				vint												FindItemByRealKeyDirection(vint itemIndex, compositions::KeyDirection key);
+				virtual vint										FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key) = 0;
+				virtual VirtualRepeatEnsureItemVisibleResult		EnsureItemVisible(vint itemIndex) = 0;
+				virtual Size										GetAdoptedSize(Size expectedSize) = 0;
+			};
+
+			/// <summary>Free height repeat composition. This arranger will cache heights of all items.</summary>
+			class GuiRepeatFreeHeightItemComposition : public GuiVirtualRepeatCompositionBase, public Description<GuiRepeatFreeHeightItemComposition>
+			{
+			private:
+				bool												pi_heightUpdated = false;
+
+			protected:
+				collections::Array<vint>							heights;
+				collections::Array<vint>							offsets;
+				vint												availableOffsetCount = 0;
+
+				void												EnsureOffsetForItem(vint itemIndex);
+
+				void												Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex) override;
+				VirtualRepeatPlaceItemResult						Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent) override;
+				VirtualRepeatEndPlaceItemResult						Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex) override;
+				void												Layout_EndLayout(bool totalSizeUpdated) override;
+				void												Layout_InvalidateItemSizeCache() override;
+				Size												Layout_CalculateTotalSize() override;
+
+				void												OnItemChanged(vint start, vint oldCount, vint newCount) override;
+				void												OnInstallItems() override;
+			public:
+				/// <summary>Create the arranger.</summary>
+				GuiRepeatFreeHeightItemComposition() = default;
+				~GuiRepeatFreeHeightItemComposition() = default;
+
+				vint												FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key) override;
+				VirtualRepeatEnsureItemVisibleResult				EnsureItemVisible(vint itemIndex) override;
+				Size												GetAdoptedSize(Size expectedSize) override;
+			};
+				
+			/// <summary>Fixed height item arranger. This arranger lists all item with the same height value. This value is the maximum height of all minimum heights of displayed items.</summary>
+			class GuiRepeatFixedHeightItemComposition : public GuiVirtualRepeatCompositionBase, public Description<GuiRepeatFixedHeightItemComposition>
+			{
+			private:
+				vint												pi_width = 0;
+				vint												pi_yoffset = 0;
+				vint												pi_rowHeight = 0;
+
+			protected:
+				vint												rowHeight = 1;
+				vint												itemWidth = -1;
+				vint												itemYOffset = 0;
+
+				void												Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex)override;
+				VirtualRepeatPlaceItemResult						Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
+				VirtualRepeatEndPlaceItemResult						Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex)override;
+				void												Layout_EndLayout(bool totalSizeUpdated) override;
+				void												Layout_InvalidateItemSizeCache()override;
+				Size												Layout_CalculateTotalSize()override;
+			public:
+				/// <summary>Create the arranger.</summary>
+				GuiRepeatFixedHeightItemComposition() = default;
+				~GuiRepeatFixedHeightItemComposition() = default;
+
+				vint												FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)override;
+				VirtualRepeatEnsureItemVisibleResult				EnsureItemVisible(vint itemIndex)override;
+				Size												GetAdoptedSize(Size expectedSize)override;
+
+				vint												GetItemWidth();
+				void												SetItemWidth(vint value);
+				vint												GetItemYOffset();
+				void												SetItemYOffset(vint value);
+			};
+
+			/// <summary>Fixed size multiple columns item arranger. This arranger adjust all items in multiple lines with the same size. The width is the maximum width of all minimum widths of displayed items. The same to height.</summary>
+			class GuiRepeatFixedSizeMultiColumnItemComposition : public GuiVirtualRepeatCompositionBase, public Description<GuiRepeatFixedSizeMultiColumnItemComposition>
+			{
+			private:
+				Size												pi_itemSize;
+
+			protected:
+				Size												itemSize{ 1,1 };
+
+				void												Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex)override;
+				VirtualRepeatPlaceItemResult						Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
+				VirtualRepeatEndPlaceItemResult						Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex)override;
+				void												Layout_EndLayout(bool totalSizeUpdated) override;
+				void												Layout_InvalidateItemSizeCache()override;
+				Size												Layout_CalculateTotalSize()override;
+			public:
+				/// <summary>Create the arranger.</summary>
+				GuiRepeatFixedSizeMultiColumnItemComposition() = default;
+				~GuiRepeatFixedSizeMultiColumnItemComposition() = default;
+
+				vint												FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)override;
+				VirtualRepeatEnsureItemVisibleResult				EnsureItemVisible(vint itemIndex)override;
+				Size												GetAdoptedSize(Size expectedSize)override;
+			};
+			
+			/// <summary>Fixed size multiple columns item arranger. This arranger adjust all items in multiple columns with the same height. The height is the maximum width of all minimum height of displayed items. Each item will displayed using its minimum width.</summary>
+			class GuiRepeatFixedHeightMultiColumnItemComposition : public GuiVirtualRepeatCompositionBase, public Description<GuiRepeatFixedHeightMultiColumnItemComposition>
+			{
+			private:
+				collections::List<vint>								pi_visibleItemWidths;
+				collections::List<vint>								pi_visibleColumnWidths;
+				collections::List<vint>								pi_visibleColumnOffsets;
+				vint												pi_rows = 0;
+				vint												pi_firstColumn = 0;
+				vint												pi_itemHeight = 0;
+
+			protected:
+				vint												firstColumn = 0;
+				vint												fullVisibleColumns = 0;
+				vint												itemHeight = 1;
+
+				void												FixColumnWidth(vint index);
+
+				void												Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex)override;
+				VirtualRepeatPlaceItemResult						Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
+				VirtualRepeatEndPlaceItemResult						Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex)override;
+				void												Layout_EndLayout(bool totalSizeUpdated) override;
+				void												Layout_InvalidateItemSizeCache()override;
+				Size												Layout_CalculateTotalSize()override;
+			public:
+				/// <summary>Create the arranger.</summary>
+				GuiRepeatFixedHeightMultiColumnItemComposition() = default;
+				~GuiRepeatFixedHeightMultiColumnItemComposition() = default;
+
+				vint												FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)override;
+				VirtualRepeatEnsureItemVisibleResult				EnsureItemVisible(vint itemIndex)override;
+				Size												GetAdoptedSize(Size expectedSize)override;
 			};
 		}
 	}
@@ -12797,36 +13057,12 @@ Templates
 			F(GuiRibbonGalleryListTemplate,		GuiRibbonGalleryTemplate)	\
 
 #define GUI_ITEM_TEMPLATE_DECL(F)\
+			F(GuiListItemTemplate,				GuiTemplate)				\
 			F(GuiTextListItemTemplate,			GuiListItemTemplate)		\
 			F(GuiTreeItemTemplate,				GuiTextListItemTemplate)	\
 			F(GuiGridCellTemplate,				GuiControlTemplate)			\
 			F(GuiGridVisualizerTemplate,		GuiGridCellTemplate)		\
 			F(GuiGridEditorTemplate,			GuiGridCellTemplate)		\
-
-/***********************************************************************
-GuiListItemTemplate
-***********************************************************************/
-
-			class GuiListItemTemplate : public GuiTemplate, public AggregatableDescription<GuiListItemTemplate>
-			{
-			protected:
-				controls::GuiListControl*	listControl = nullptr;
-
-				virtual void				OnInitialize();
-			public:
-				GuiListItemTemplate();
-				~GuiListItemTemplate();
-
-#define GuiListItemTemplate_PROPERTIES(F)\
-				F(GuiListItemTemplate, bool, Selected, false)\
-				F(GuiListItemTemplate, vint, Index, 0)\
-
-				GuiListItemTemplate_PROPERTIES(GUI_TEMPLATE_PROPERTY_DECL)
-
-				void						BeginEditListItem();
-				void						EndEditListItem();
-				void						Initialize(controls::GuiListControl* _listControl);
-			};
 
 /***********************************************************************
 Control Template
@@ -12962,10 +13198,11 @@ Control Template
 /***********************************************************************
 Item Template
 ***********************************************************************/
-				
+
 #define GuiListItemTemplate_PROPERTIES(F)\
 				F(GuiListItemTemplate, bool, Selected, false)\
 				F(GuiListItemTemplate, vint, Index, 0)\
+				F(GuiListItemTemplate, controls::GuiListControl*, AssociatedListControl, nullptr)\
 
 #define GuiTextListItemTemplate_PROPERTIES(F)\
 				F(GuiTextListItemTemplate, Color, TextColor, {})\
@@ -13655,6 +13892,8 @@ List Control
 				class IItemProvider;
 
 				using ItemStyle = templates::GuiListItemTemplate;
+				using ItemStyleBounds = templates::GuiTemplate;
+				using ItemStyleRecord = collections::Pair<ItemStyle*, ItemStyleBounds*>;
 				using ItemStyleProperty = TemplateProperty<templates::GuiListItemTemplate>;
 
 				//-----------------------------------------------------------
@@ -13672,45 +13911,39 @@ List Control
 					/// <param name="start">The index of the first modified item.</param>
 					/// <param name="count">The number of all modified items.</param>
 					/// <param name="newCount">The number of new items. If items are inserted or removed, newCount may not equals to count.</param>
-					virtual void								OnItemModified(vint start, vint count, vint newCount)=0;
+					/// <param name="itemReferenceUpdated">True when items are replaced, false when only content in items are updated.</param>
+					virtual void								OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)=0;
 				};
 
 				/// <summary>Item arranger callback. Item arrangers use this interface to communicate with the list control. When setting positions for item controls, functions in this callback object is suggested to call because they use the result from the [T:vl.presentation.controls.compositions.IGuiAxis].</summary>
 				class IItemArrangerCallback : public virtual IDescriptable, public Description<IItemArrangerCallback>
 				{
 				public:
-					/// <summary>Request an item control representing an item in the item provider. This function is suggested to call when an item control gets into the visible area.</summary>
+					/// <summary>Create an item control representing an item in the item provider. This function is suggested to call when an item control gets into the visible area.</summary>
 					/// <returns>The item control.</returns>
 					/// <param name="itemIndex">The index of the item in the item provider.</param>
-					/// <param name="itemComposition">The composition that represents the item. Set to null if the item style is expected to be put directly into the list control.</param>
-					virtual ItemStyle*								RequestItem(vint itemIndex, compositions::GuiBoundsComposition* itemComposition)=0;
+					virtual ItemStyle*								CreateItem(vint itemIndex)=0;
+					/// <summary>Get the most outer bounds from an item control.</summary>
+					/// <returns>The most outer bounds. When <see cref="GuiListControl::GetDisplayItemBackground/> returns true, the item is wrapped in other compositions.</returns>
+					/// <param name="style">The item control.</param>
+					virtual ItemStyleBounds*						GetItemBounds(ItemStyle* style)=0;
+					/// <summary>Get the item control from its most outer bounds.</summary>
+					/// <returns>The item control.</returns>
+					/// <param name="style">The most outer bounds.</param>
+					virtual ItemStyle*								GetItem(ItemStyleBounds* bounds)=0;
 					/// <summary>Release an item control. This function is suggested to call when an item control gets out of the visible area.</summary>
 					/// <param name="style">The item control.</param>
 					virtual void									ReleaseItem(ItemStyle* style)=0;
 					/// <summary>Update the view location. The view location is the left-top position in the logic space of the list control.</summary>
 					/// <param name="value">The new view location.</param>
 					virtual void									SetViewLocation(Point value)=0;
-					/// <summary>Get the preferred size of an item control.</summary>
-					/// <returns>The preferred size of an item control.</returns>
-					/// <param name="style">The item control.</param>
-					virtual Size									GetStylePreferredSize(compositions::GuiBoundsComposition* style)=0;
-					/// <summary>Set the alignment of an item control.</summary>
-					/// <param name="style">The item control.</param>
-					/// <param name="margin">The new alignment.</param>
-					virtual void									SetStyleAlignmentToParent(compositions::GuiBoundsComposition* style, Margin margin)=0;
-					/// <summary>Get the bounds of an item control.</summary>
-					/// <returns>The bounds of an item control.</returns>
-					/// <param name="style">The item control.</param>
-					virtual Rect									GetStyleBounds(compositions::GuiBoundsComposition* style)=0;
-					/// <summary>Set the bounds of an item control.</summary>
-					/// <param name="style">The item control.</param>
-					/// <param name="bounds">The new bounds.</param>
-					virtual void									SetStyleBounds(compositions::GuiBoundsComposition* style, Rect bounds)=0;
 					/// <summary>Get the <see cref="compositions::GuiGraphicsComposition"/> that directly contains item controls.</summary>
 					/// <returns>The <see cref="compositions::GuiGraphicsComposition"/> that directly contains item controls.</returns>
 					virtual compositions::GuiGraphicsComposition*	GetContainerComposition()=0;
 					/// <summary>Notify the list control that the total size of all item controls are changed.</summary>
 					virtual void									OnTotalSizeChanged()=0;
+					/// <summary>Notify the list control that the adopted size of the list control is changed.</summary>
+					virtual void									OnAdoptedSizeChanged()=0;
 				};
 
 				//-----------------------------------------------------------
@@ -13806,7 +14039,7 @@ List Control
 					/// <returns>The item index that is found. Returns -1 if this operation failed.</returns>
 					/// <param name="itemIndex">The base item index.</param>
 					/// <param name="key">The key direction.</param>
-					virtual vint								FindItem(vint itemIndex, compositions::KeyDirection key) = 0;
+					virtual vint								FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key) = 0;
 					/// <summary>Adjust the view location to make an item visible.</summary>
 					/// <returns>Returns the result of this operation.</returns>
 					/// <param name="itemIndex">The item index of the item to be made visible.</param>
@@ -13825,17 +14058,14 @@ List Control
 
 				class ItemCallback : public IItemProviderCallback, public IItemArrangerCallback
 				{
-					typedef compositions::IGuiGraphicsEventHandler							BoundsChangedHandler;
-					typedef collections::List<ItemStyle*>									StyleList;
-					typedef collections::Dictionary<ItemStyle*, Ptr<BoundsChangedHandler>>	InstalledStyleMap;
+					typedef collections::Dictionary<ItemStyle*, templates::GuiTemplate*>	InstalledStyleMap;
 				protected:
 					GuiListControl*								listControl = nullptr;
 					IItemProvider*								itemProvider = nullptr;
 					InstalledStyleMap							installedStyles;
 
-					Ptr<BoundsChangedHandler>					InstallStyle(ItemStyle* style, vint itemIndex, compositions::GuiBoundsComposition* itemComposition);
-					ItemStyle*									UninstallStyle(vint index);
-					void										OnStyleCachedBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
+					ItemStyleRecord								InstallStyle(ItemStyle* style, vint itemIndex);
+					ItemStyleRecord								UninstallStyle(vint index);
 				public:
 					ItemCallback(GuiListControl* _listControl);
 					~ItemCallback();
@@ -13843,16 +14073,15 @@ List Control
 					void										ClearCache();
 
 					void										OnAttached(IItemProvider* provider)override;
-					void										OnItemModified(vint start, vint count, vint newCount)override;
-					ItemStyle*									RequestItem(vint itemIndex, compositions::GuiBoundsComposition* itemComposition)override;
+					void										OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+					ItemStyle*									CreateItem(vint itemIndex)override;
+					ItemStyleBounds*							GetItemBounds(ItemStyle* style)override;
+					ItemStyle*									GetItem(ItemStyleBounds* bounds)override;
 					void										ReleaseItem(ItemStyle* style)override;
 					void										SetViewLocation(Point value)override;
-					Size										GetStylePreferredSize(compositions::GuiBoundsComposition* style)override;
-					void										SetStyleAlignmentToParent(compositions::GuiBoundsComposition* style, Margin margin)override;
-					Rect										GetStyleBounds(compositions::GuiBoundsComposition* style)override;
-					void										SetStyleBounds(compositions::GuiBoundsComposition* style, Rect bounds)override;
 					compositions::GuiGraphicsComposition*		GetContainerComposition()override;
 					void										OnTotalSizeChanged()override;
+					void										OnAdoptedSizeChanged()override;
 				};
 
 				//-----------------------------------------------------------
@@ -13867,8 +14096,8 @@ List Control
 				Size											fullSize;
 				bool											displayItemBackground = true;
 
-				virtual void									OnItemModified(vint start, vint count, vint newCount);
-				virtual void									OnStyleInstalled(vint itemIndex, ItemStyle* style);
+				virtual void									OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated);
+				virtual void									OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly);
 				virtual void									OnStyleUninstalled(ItemStyle* style);
 				
 				void											OnRenderTargetChanged(elements::IGuiGraphicsRenderTarget* renderTarget)override;
@@ -14005,8 +14234,8 @@ Selectable List Control
 				vint											selectedItemIndexEnd;
 
 				void											NotifySelectionChanged();
-				void											OnItemModified(vint start, vint count, vint newCount)override;
-				void											OnStyleInstalled(vint itemIndex, ItemStyle* style)override;
+				void											OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+				void											OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly)override;
 				virtual void									OnItemSelectionChanged(vint itemIndex, bool value);
 				virtual void									OnItemSelectionCleared();
 				void											OnItemLeftButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiItemMouseEventArgs& arguments);
@@ -14083,7 +14312,7 @@ Predefined ItemProvider
 					vint														editingCounter = 0;
 					bool														callingOnItemModified = false;
 
-					virtual void								InvokeOnItemModified(vint start, vint count, vint newCount);
+					virtual void								InvokeOnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated);
 				public:
 					/// <summary>Create the item provider.</summary>
 					ItemProviderBase();
@@ -14102,12 +14331,45 @@ Predefined ItemProvider
 				protected:
 					void NotifyUpdateInternal(vint start, vint count, vint newCount)override
 					{
-						InvokeOnItemModified(start, count, newCount);
+						InvokeOnItemModified(start, count, newCount, true);
 					}
 				public:
 					vint Count()override
 					{
 						return this->items.Count();
+					}
+				};
+
+				template<typename TBase>
+				class PredefinedListItemTemplate : public TBase
+				{
+				protected:
+					GuiListControl*							listControl = nullptr;
+					virtual void							OnInitialize() = 0;
+					virtual void							OnRefresh() = 0;
+
+					void OnAssociatedListControlChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments)
+					{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::controls::list::PredefinedListItemTemplate<TBase>::OnAssociatedListControlChanged(GuiGraphicsComposition*, GuiEventArgs&)#"
+						auto value = this->GetAssociatedListControl();
+						CHECK_ERROR(value && (!listControl || listControl == value), ERROR_MESSAGE_PREFIX L"GuiListItemTemplate::SetAssociatedListControl cannot be invoked using a different list control instance.");
+						if (!listControl)
+						{
+							listControl = value;
+							OnInitialize();
+							OnRefresh();
+						}
+#undef ERROR_MESSAGE_PREFIX
+					}
+				public:
+					PredefinedListItemTemplate()
+					{
+						this->AssociatedListControlChanged.AttachMethod(this, &PredefinedListItemTemplate<TBase>::OnAssociatedListControlChanged);
+					}
+
+					void RefreshItem()
+					{
+						OnRefresh();
 					}
 				};
 			}
@@ -14146,7 +14408,6 @@ Predefined ItemArranger
 
 			namespace list
 			{
-
 				/// <summary>Ranged item arranger. This arranger implements most of the common functionality for those arrangers that display a continuing subset of item at a time.</summary>
 				class RangedItemArrangerBase : public Object, virtual public GuiListControl::IItemArranger, public Description<RangedItemArrangerBase>
 				{
@@ -14154,163 +14415,124 @@ Predefined ItemArranger
 					using ItemStyleRecord = collections::Pair<GuiListControl::ItemStyle*, GuiSelectableButton*>;
 					typedef collections::List<ItemStyleRecord>	StyleList;
 
-					GuiListControl*								listControl = nullptr;
-					GuiListControl::IItemArrangerCallback*		callback = nullptr;
-					GuiListControl::IItemProvider*				itemProvider = nullptr;
+					GuiListControl*									listControl = nullptr;
+					GuiListControl::IItemArrangerCallback*			callback = nullptr;
+					GuiListControl::IItemProvider*					itemProvider = nullptr;
+					Ptr<description::IValueObservableList>			itemSource;
+					compositions::GuiVirtualRepeatCompositionBase*	repeat = nullptr;
 
-					bool										suppressOnViewChanged = false;
-					Rect										viewBounds;
-					vint										startIndex = 0;
-					StyleList									visibleStyles;
-
-				protected:
-
-					void										InvalidateAdoptedSize();
-					vint										CalculateAdoptedSize(vint expectedSize, vint count, vint itemSize);
-					ItemStyleRecord								CreateStyle(vint index);
-					void										DeleteStyle(ItemStyleRecord style);
-					compositions::GuiBoundsComposition*			GetStyleBounds(ItemStyleRecord style);
-					void										ClearStyles();
-					void										OnViewChangedInternal(Rect oldBounds, Rect newBounds);
-					virtual void								RearrangeItemBounds();
-
-					virtual void								BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex) = 0;
-					virtual void								PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent) = 0;
-					virtual bool								IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds) = 0;
-					virtual bool								EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex) = 0;
-					virtual void								InvalidateItemSizeCache() = 0;
-					virtual Size								OnCalculateTotalSize() = 0;
+					void											OnViewLocationChanged(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments);
+					void											OnTotalSizeChanged(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments);
+					void											OnAdoptedSizeInvalidated(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments);
 				public:
 					/// <summary>Create the arranger.</summary>
-					RangedItemArrangerBase();
+					/// <param name="_repeat">A repeat composition to implement the item layout. It will be deleted when the item arranger is deleted.</param>
+					RangedItemArrangerBase(compositions::GuiVirtualRepeatCompositionBase* _repeat);
 					~RangedItemArrangerBase();
 
-					void										OnAttached(GuiListControl::IItemProvider* provider)override;
-					void										OnItemModified(vint start, vint count, vint newCount)override;
-					void										AttachListControl(GuiListControl* value)override;
-					void										DetachListControl()override;
-					GuiListControl::IItemArrangerCallback*		GetCallback()override;
-					void										SetCallback(GuiListControl::IItemArrangerCallback* value)override;
-					Size										GetTotalSize()override;
-					GuiListControl::ItemStyle*					GetVisibleStyle(vint itemIndex)override;
-					vint										GetVisibleIndex(GuiListControl::ItemStyle* style)override;
-					void										ReloadVisibleStyles()override;
-					void										OnViewChanged(Rect bounds)override;
+					void											OnAttached(GuiListControl::IItemProvider* provider)override;
+					void											OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+					void											AttachListControl(GuiListControl* value)override;
+					void											DetachListControl()override;
+					GuiListControl::IItemArrangerCallback*			GetCallback()override;
+					void											SetCallback(GuiListControl::IItemArrangerCallback* value)override;
+					Size											GetTotalSize()override;
+					GuiListControl::ItemStyle*						GetVisibleStyle(vint itemIndex)override;
+					vint											GetVisibleIndex(GuiListControl::ItemStyle* style)override;
+					void											ReloadVisibleStyles()override;
+					void											OnViewChanged(Rect bounds)override;
+					vint											FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key) override;
+					GuiListControl::EnsureItemVisibleResult			EnsureItemVisible(vint itemIndex) override;
+					Size											GetAdoptedSize(Size expectedSize) override;
 				};
-				/// <summary>Free height item arranger. This arranger will cache heights of all items.</summary>
-				class FreeHeightItemArranger : public RangedItemArrangerBase, public Description<FreeHeightItemArranger>
+
+				template<typename TVirtualRepeatComposition>
+				class VirtualRepeatRangedItemArrangerBase : public RangedItemArrangerBase
 				{
-				private:
-					bool										pim_heightUpdated = false;
+					using TArranger = VirtualRepeatRangedItemArrangerBase<TVirtualRepeatComposition>;
+				protected:
+					class ArrangerRepeatComposition : public TVirtualRepeatComposition
+					{
+					protected:
+						TArranger*								arranger = nullptr;
+
+						void Layout_UpdateIndex(templates::GuiTemplate* style, vint index) override
+						{
+							auto itemStyle = arranger->callback->GetItem(style);
+							itemStyle->SetIndex(index);
+						}
+
+						templates::GuiTemplate* CreateStyleInternal(vint index) override
+						{
+							auto itemStyle = arranger->callback->CreateItem(index);
+							return arranger->callback->GetItemBounds(itemStyle);
+						}
+
+						void DeleteStyleInternal(templates::GuiTemplate* style) override
+						{
+							auto itemStyle = arranger->callback->GetItem(style);
+							arranger->callback->ReleaseItem(itemStyle);
+						}
+					public:
+						template<typename ...TArgs>
+						ArrangerRepeatComposition(TArranger* _arranger, TArgs&& ...args)
+							: TVirtualRepeatComposition(std::forward<TArgs&&>(args)...)
+							, arranger(_arranger)
+						{
+						}
+					};
+
+					TVirtualRepeatComposition* GetRepeatComposition()
+					{
+						return dynamic_cast<TVirtualRepeatComposition*>(repeat);
+					}
 
 				protected:
-					collections::Array<vint>					heights;
-					collections::Array<vint>					offsets;
-					vint										availableOffsetCount = 0;
+					VirtualRepeatRangedItemArrangerBase()
+						: RangedItemArrangerBase(new ArrangerRepeatComposition(this))
+					{
+					}
 
-					void										EnsureOffsetForItem(vint itemIndex);
+					VirtualRepeatRangedItemArrangerBase(ArrangerRepeatComposition* _repeat)
+						: RangedItemArrangerBase(_repeat)
+					{
+					}
+				};
 
-					void										BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)override;
-					void										PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
-					bool										IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)override;
-					bool										EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)override;
-					void										InvalidateItemSizeCache()override;
-					Size										OnCalculateTotalSize()override;
+				/// <summary>Free height item arranger. This arranger will cache heights of all items.</summary>
+				class FreeHeightItemArranger : public VirtualRepeatRangedItemArrangerBase<compositions::GuiRepeatFreeHeightItemComposition>, public Description<FreeHeightItemArranger>
+				{
 				public:
 					/// <summary>Create the arranger.</summary>
 					FreeHeightItemArranger();
 					~FreeHeightItemArranger();
-
-					void										OnAttached(GuiListControl::IItemProvider* provider)override;
-					void										OnItemModified(vint start, vint count, vint newCount)override;
-					vint										FindItem(vint itemIndex, compositions::KeyDirection key)override;
-					GuiListControl::EnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
-					Size										GetAdoptedSize(Size expectedSize)override;
 				};
 				
 				/// <summary>Fixed height item arranger. This arranger lists all item with the same height value. This value is the maximum height of all minimum heights of displayed items.</summary>
-				class FixedHeightItemArranger : public RangedItemArrangerBase, public Description<FixedHeightItemArranger>
+				class FixedHeightItemArranger : public VirtualRepeatRangedItemArrangerBase<compositions::GuiRepeatFixedHeightItemComposition>, public Description<FixedHeightItemArranger>
 				{
-				private:
-					vint										pi_width = 0;
-					vint										pim_rowHeight = 0;
-
-				protected:
-					vint										rowHeight = 1;
-
-					virtual vint								GetWidth();
-					virtual vint								GetYOffset();
-
-					void										BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)override;
-					void										PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
-					bool										IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)override;
-					bool										EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)override;
-					void										InvalidateItemSizeCache()override;
-					Size										OnCalculateTotalSize()override;
 				public:
 					/// <summary>Create the arranger.</summary>
 					FixedHeightItemArranger();
 					~FixedHeightItemArranger();
-
-					vint										FindItem(vint itemIndex, compositions::KeyDirection key)override;
-					GuiListControl::EnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
-					Size										GetAdoptedSize(Size expectedSize)override;
 				};
 
 				/// <summary>Fixed size multiple columns item arranger. This arranger adjust all items in multiple lines with the same size. The width is the maximum width of all minimum widths of displayed items. The same to height.</summary>
-				class FixedSizeMultiColumnItemArranger : public RangedItemArrangerBase, public Description<FixedSizeMultiColumnItemArranger>
+				class FixedSizeMultiColumnItemArranger : public VirtualRepeatRangedItemArrangerBase<compositions::GuiRepeatFixedSizeMultiColumnItemComposition>, public Description<FixedSizeMultiColumnItemArranger>
 				{
-				private:
-					Size										pim_itemSize;
-
-				protected:
-					Size										itemSize{ 1,1 };
-
-					void										CalculateRange(Size itemSize, Rect bounds, vint count, vint& start, vint& end);
-
-					void										BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)override;
-					void										PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
-					bool										IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)override;
-					bool										EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)override;
-					void										InvalidateItemSizeCache()override;
-					Size										OnCalculateTotalSize()override;
 				public:
 					/// <summary>Create the arranger.</summary>
 					FixedSizeMultiColumnItemArranger();
 					~FixedSizeMultiColumnItemArranger();
-
-					vint										FindItem(vint itemIndex, compositions::KeyDirection key)override;
-					GuiListControl::EnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
-					Size										GetAdoptedSize(Size expectedSize)override;
 				};
 				
 				/// <summary>Fixed size multiple columns item arranger. This arranger adjust all items in multiple columns with the same height. The height is the maximum width of all minimum height of displayed items. Each item will displayed using its minimum width.</summary>
-				class FixedHeightMultiColumnItemArranger : public RangedItemArrangerBase, public Description<FixedHeightMultiColumnItemArranger>
+				class FixedHeightMultiColumnItemArranger : public VirtualRepeatRangedItemArrangerBase<compositions::GuiRepeatFixedHeightMultiColumnItemComposition>, public Description<FixedHeightMultiColumnItemArranger>
 				{
-				private:
-					vint										pi_currentWidth = 0;
-					vint										pi_totalWidth = 0;
-					vint										pim_itemHeight = 0;
-
-				protected:
-					vint										itemHeight = 1;
-
-					void										CalculateRange(vint itemHeight, Rect bounds, vint& rows, vint& startColumn);
-
-					void										BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)override;
-					void										PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
-					bool										IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)override;
-					bool										EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)override;
-					void										InvalidateItemSizeCache()override;
-					Size										OnCalculateTotalSize()override;
 				public:
 					/// <summary>Create the arranger.</summary>
 					FixedHeightMultiColumnItemArranger();
 					~FixedHeightMultiColumnItemArranger();
-
-					vint										FindItem(vint itemIndex, compositions::KeyDirection key)override;
-					GuiListControl::EnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
-					Size										GetAdoptedSize(Size expectedSize)override;
 				};
 			}
 		}
@@ -14368,7 +14590,7 @@ DefaultTextListItemTemplate
 					virtual void							SetChecked(vint itemIndex, bool value) = 0;
 				};
 
-				class DefaultTextListItemTemplate : public templates::GuiTextListItemTemplate
+				class DefaultTextListItemTemplate : public PredefinedListItemTemplate<templates::GuiTextListItemTemplate>
 				{
 				protected:
 					using BulletStyle = templates::GuiControlTemplate;
@@ -14379,6 +14601,7 @@ DefaultTextListItemTemplate
 
 					virtual TemplateProperty<BulletStyle>	CreateBulletStyle();
 					void									OnInitialize()override;
+					void									OnRefresh()override;
 					void									OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 					void									OnTextChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 					void									OnTextColorChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
@@ -14418,6 +14641,7 @@ TextItemProvider
 					WString										text;
 					bool										checked;
 
+					void										NotifyUpdate(bool raiseCheckEvent);
 				public:
 					/// <summary>Create an empty text item.</summary>
 					TextItem();
@@ -14490,7 +14714,7 @@ GuiVirtualTextList
 			protected:
 				TextListView											view = TextListView::Unknown;
 
-				void													OnStyleInstalled(vint itemIndex, ItemStyle* style)override;
+				void													OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly)override;
 				void													OnItemTemplateChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 			public:
 				/// <summary>Create a Text list control in virtual mode.</summary>
@@ -14586,13 +14810,15 @@ NodeItemProvider
 					/// <param name="start">The index of the first sub item.</param>
 					/// <param name="count">The number of sub items to be modified.</param>
 					/// <param name="newCount">The new number of modified sub items.</param>
-					virtual void					OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount)=0;
+					/// <param name="itemReferenceUpdated">True when items are replaced, false when only content in items are updated.</param>
+					virtual void					OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)=0;
 					/// <summary>Called after sub items of a node are modified.</summary>
 					/// <param name="parentNode">The node containing modified sub items.</param>
 					/// <param name="start">The index of the first sub item.</param>
 					/// <param name="count">The number of sub items to be modified.</param>
 					/// <param name="newCount">The new number of modified sub items.</param>
-					virtual void					OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount)=0;
+					/// <param name="itemReferenceUpdated">True when items are replaced, false when only content in items are updated.</param>
+					virtual void					OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)=0;
 					/// <summary>Called when a node is expanded.</summary>
 					/// <param name="node">The node.</param>
 					virtual void					OnItemExpanded(INodeProvider* node)=0;
@@ -14618,6 +14844,8 @@ NodeItemProvider
 					/// <summary>Calculate the number of total visible nodes of this node. The number of total visible nodes includes the node itself, and all total visible nodes of all visible sub nodes. If this node is collapsed, this number will be 1.</summary>
 					/// <returns>The number of total visible nodes.</returns>
 					virtual vint					CalculateTotalVisibleNodes()=0;
+					/// <summary>Notify that the state in the binded data object is modified.</summary>
+					virtual void					NotifyDataModified()=0;
 
 					/// <summary>Get the number of all sub nodes.</summary>
 					/// <returns>The number of all sub nodes.</returns>
@@ -14706,8 +14934,8 @@ NodeItemProvider
 
 					Ptr<INodeProvider>				GetNodeByOffset(Ptr<INodeProvider> provider, vint offset);
 					void							OnAttached(INodeRootProvider* provider)override;
-					void							OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount)override;
-					void							OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount)override;
+					void							OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+					void							OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
 					void							OnItemExpanded(INodeProvider* node)override;
 					void							OnItemCollapsed(INodeProvider* node)override;
 					vint							CalculateNodeVisibilityIndexInternal(INodeProvider* node);
@@ -14788,8 +15016,6 @@ MemoryNodeProvider
 					/// <summary>Set the data object.</summary>
 					/// <param name="value">The data object.</param>
 					void							SetData(const Ptr<DescriptableObject>& value);
-					/// <summary>Notify that the state in the binded data object is modified.</summary>
-					void							NotifyDataModified();
 					/// <summary>Get all sub nodes.</summary>
 					/// <returns>All sub nodes.</returns>
 					NodeCollection&					Children();
@@ -14797,6 +15023,7 @@ MemoryNodeProvider
 					bool							GetExpanding()override;
 					void							SetExpanding(bool value)override;
 					vint							CalculateTotalVisibleNodes()override;
+					void							NotifyDataModified()override;
 
 					vint							GetChildCount()override;
 					Ptr<INodeProvider>				GetParent()override;
@@ -14809,8 +15036,8 @@ MemoryNodeProvider
 					collections::List<INodeProviderCallback*>			callbacks;
 				protected:
 					void							OnAttached(INodeRootProvider* provider)override;
-					void							OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount)override;
-					void							OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount)override;
+					void							OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+					void							OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
 					void							OnItemExpanded(INodeProvider* node)override;
 					void							OnItemCollapsed(INodeProvider* node)override;
 				public:
@@ -14856,8 +15083,8 @@ GuiVirtualTreeListControl
 				GUI_SPECIFY_CONTROL_TEMPLATE_TYPE(TreeViewTemplate, GuiSelectableListControl)
 			protected:
 				void								OnAttached(tree::INodeRootProvider* provider)override;
-				void								OnBeforeItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount)override;
-				void								OnAfterItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount)override;
+				void								OnBeforeItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+				void								OnAfterItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
 				void								OnItemExpanded(tree::INodeProvider* node)override;
 				void								OnItemCollapsed(tree::INodeProvider* node)override;
 
@@ -14996,10 +15223,10 @@ GuiVirtualTreeView
 				templates::GuiTreeItemTemplate*							GetStyleFromNode(tree::INodeProvider* node);
 				void													SetStyleExpanding(tree::INodeProvider* node, bool expanding);
 				void													SetStyleExpandable(tree::INodeProvider* node, bool expandable);
-				void													OnAfterItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount)override;
+				void													OnAfterItemModified(tree::INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
 				void													OnItemExpanded(tree::INodeProvider* node)override;
 				void													OnItemCollapsed(tree::INodeProvider* node)override;
-				void													OnStyleInstalled(vint itemIndex, ItemStyle* style)override;
+				void													OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly)override;
 			public:
 				/// <summary>Create a tree view control in virtual mode.</summary>
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
@@ -15038,7 +15265,7 @@ DefaultTreeItemTemplate
 
 			namespace tree
 			{
-				class DefaultTreeItemTemplate : public templates::GuiTreeItemTemplate
+				class DefaultTreeItemTemplate : public list::PredefinedListItemTemplate<templates::GuiTreeItemTemplate>
 				{
 				protected:
 					GuiSelectableButton*					expandingButton = nullptr;
@@ -15047,6 +15274,7 @@ DefaultTreeItemTemplate
 					elements::GuiSolidLabelElement*			textElement = nullptr;
 
 					void									OnInitialize()override;
+					void									OnRefresh()override;
 					void									OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 					void									OnTextChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 					void									OnTextColorChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
@@ -17653,7 +17881,7 @@ ComboBox with GuiListControl
 				// ===================== GuiListControl::IItemProviderCallback =====================
 
 				void										OnAttached(GuiListControl::IItemProvider* provider)override;
-				void										OnItemModified(vint start, vint count, vint newCount)override;
+				void										OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
 			public:
 				/// <summary>Create a control with a specified default theme and a list control that will be put in the popup control to show all items.</summary>
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
@@ -17948,19 +18176,23 @@ ListViewColumnItemArranger
 ***********************************************************************/
 
 				/// <summary>List view column item arranger. This arranger contains column headers. When an column header is resized, all items will be notified via the [T:vl.presentation.controls.list.ListViewColumnItemArranger.IColumnItemView] for <see cref="GuiListControl::IItemProvider"/>.</summary>
-				class ListViewColumnItemArranger : public FixedHeightItemArranger, public Description<ListViewColumnItemArranger>
+				class ListViewColumnItemArranger : public VirtualRepeatRangedItemArrangerBase<compositions::GuiRepeatFixedHeightItemComposition>, public Description<ListViewColumnItemArranger>
 				{
+					using TBase = VirtualRepeatRangedItemArrangerBase<compositions::GuiRepeatFixedHeightItemComposition>;
 					typedef collections::List<GuiListViewColumnHeader*>					ColumnHeaderButtonList;
 					typedef collections::List<compositions::GuiBoundsComposition*>		ColumnHeaderSplitterList;
 				public:
-					static const vint							SplitterWidth=8;
+					static const vint							SplitterWidth = 8;
 					
 					/// <summary>Callback for [T:vl.presentation.controls.list.ListViewColumnItemArranger.IColumnItemView]. Column item view use this interface to notify column related modification.</summary>
 					class IColumnItemViewCallback : public virtual IDescriptable, public Description<IColumnItemViewCallback>
 					{
 					public:
-						/// <summary>Called when any column is changed (inserted, removed, text changed, etc.).</summary>
-						virtual void							OnColumnChanged()=0;
+						/// <summary>Called when any column object is changed (inserted, removed, updated binding, etc.).</summary>
+						virtual void							OnColumnRebuilt()=0;
+
+						/// <summary>Called when any property of a column is changed (size changed, text changed, etc.).</summary>
+						virtual void							OnColumnChanged(bool needToRefreshItems)=0;
 					};
 					
 					/// <summary>The required <see cref="GuiListControl::IItemProvider"/> view for <see cref="ListViewColumnItemArranger"/>.</summary>
@@ -18001,12 +18233,25 @@ ListViewColumnItemArranger
 					class ColumnItemViewCallback : public Object, public virtual IColumnItemViewCallback
 					{
 					protected:
-						ListViewColumnItemArranger*				arranger;
+						ListViewColumnItemArranger*				arranger = nullptr;
+
 					public:
 						ColumnItemViewCallback(ListViewColumnItemArranger* _arranger);
 						~ColumnItemViewCallback();
 
-						void									OnColumnChanged();
+						void									OnColumnRebuilt() override;
+						void									OnColumnChanged(bool needToRefreshItems) override;
+					};
+
+					class ColumnItemArrangerRepeatComposition : public TBase::ArrangerRepeatComposition
+					{
+					protected:
+						ListViewColumnItemArranger*				arranger = nullptr;
+
+						void									Layout_EndLayout(bool totalSizeUpdated) override;
+						Size									Layout_CalculateTotalSize() override;
+					public:
+						ColumnItemArrangerRepeatComposition(ListViewColumnItemArranger* _arranger);
 					};
 
 					GuiListViewBase*							listView = nullptr;
@@ -18019,22 +18264,25 @@ ListViewColumnItemArranger
 					bool										splitterDragging = false;
 					vint										splitterLatestX = 0;
 
+					void										OnViewLocationChanged(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments);
 					void										ColumnClicked(vint index, compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 					void										ColumnCachedBoundsChanged(vint index, compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 					void										ColumnHeaderSplitterLeftButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 					void										ColumnHeaderSplitterLeftButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 					void										ColumnHeaderSplitterMouseMove(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 
-					void										RearrangeItemBounds()override;
-					vint										GetWidth()override;
-					vint										GetYOffset()override;
-					Size										OnCalculateTotalSize()override;
+					void										FixColumnsAfterViewLocationChanged();
+					void										FixColumnsAfterLayout();
+					vint										GetColumnsWidth();
+					vint										GetColumnsYOffset();
 					void										DeleteColumnButtons();
 					void										RebuildColumns();
+					void										RefreshColumns();
 				public:
 					ListViewColumnItemArranger();
 					~ListViewColumnItemArranger();
 
+					Size										GetTotalSize()override;
 					void										AttachListControl(GuiListControl* value)override;
 					void										DetachListControl()override;
 				};
@@ -18122,7 +18370,8 @@ ListViewItemProvider
 					GuiMenu*										dropdownPopup = nullptr;
 					ColumnSortingState								sortingState = ColumnSortingState::NotSorted;
 					
-					void											NotifyUpdate(bool affectItem);
+					void											NotifyRebuilt();
+					void											NotifyChanged(bool needToRefreshItems);
 				public:
 					/// <summary>Create a column with the specified text and size.</summary>
 					/// <param name="_text">The specified text.</param>
@@ -18171,8 +18420,10 @@ ListViewItemProvider
 				class IListViewItemProvider : public virtual Interface
 				{
 				public:
-					virtual void									NotifyAllItemsUpdate() = 0;
-					virtual void									NotifyAllColumnsUpdate() = 0;
+					virtual void									RebuildAllItems() = 0;
+					virtual void									RefreshAllItems() = 0;
+					virtual void									NotifyColumnRebuilt() = 0;
+					virtual void									NotifyColumnChanged() = 0;
 				};
 
 				/// <summary>List view data column container.</summary>
@@ -18197,7 +18448,8 @@ ListViewItemProvider
 					IListViewItemProvider*							itemProvider;
 					bool											affectItemFlag = true;
 
-					void											NotifyColumnUpdated(vint column, bool affectItem);
+					void											NotifyColumnRebuilt(vint column);
+					void											NotifyColumnChanged(vint column, bool needToRefreshItems);
 					void											AfterInsert(vint index, const Ptr<ListViewColumn>& value)override;
 					void											BeforeRemove(vint index, const Ptr<ListViewColumn>& value)override;
 					void											NotifyUpdateInternal(vint start, vint count, vint newCount)override;
@@ -18228,8 +18480,24 @@ ListViewItemProvider
 					void												AfterInsert(vint index, const Ptr<ListViewItem>& value)override;
 					void												BeforeRemove(vint index, const Ptr<ListViewItem>& value)override;
 
-					void												NotifyAllItemsUpdate()override;
-					void												NotifyAllColumnsUpdate()override;
+					// ===================== list::IListViewItemProvider =====================
+
+					void												RebuildAllItems() override;
+					void												RefreshAllItems() override;
+					void												NotifyColumnRebuilt() override;
+					void												NotifyColumnChanged() override;
+
+				public:
+					ListViewItemProvider();
+					~ListViewItemProvider();
+
+					// ===================== GuiListControl::IItemProvider =====================
+
+					WString												GetTextValue(vint itemIndex)override;
+					description::Value									GetBindingValue(vint itemIndex)override;
+					IDescriptable*										RequestView(const WString& identifier)override;
+
+					// ===================== list::ListViewItemStyleProvider::IListViewItemView =====================
 
 					Ptr<GuiImageData>									GetSmallImage(vint itemIndex)override;
 					Ptr<GuiImageData>									GetLargeImage(vint itemIndex)override;
@@ -18238,7 +18506,9 @@ ListViewItemProvider
 					vint												GetDataColumnCount()override;
 					vint												GetDataColumn(vint index)override;
 					vint												GetColumnCount()override;
-					WString												GetColumnText(vint index)override;;
+					WString												GetColumnText(vint index)override;
+
+					// ===================== list::ListViewColumnItemArranger::IColumnItemView =====================
 
 					bool												AttachCallback(ListViewColumnItemArranger::IColumnItemViewCallback* value)override;
 					bool												DetachCallback(ListViewColumnItemArranger::IColumnItemViewCallback* value)override;
@@ -18246,14 +18516,6 @@ ListViewItemProvider
 					void												SetColumnSize(vint index, vint value)override;
 					GuiMenu*											GetDropdownPopup(vint index)override;
 					ColumnSortingState									GetSortingState(vint index)override;
-
-					WString												GetTextValue(vint itemIndex)override;
-					description::Value									GetBindingValue(vint itemIndex)override;
-				public:
-					ListViewItemProvider();
-					~ListViewItemProvider();
-
-					IDescriptable*										RequestView(const WString& identifier)override;
 
 					/// <summary>Get all data columns indices in columns.</summary>
 					/// <returns>All data columns indices in columns.</returns>
@@ -18285,7 +18547,7 @@ GuiVirtualListView
 			protected:
 				ListViewView											view = ListViewView::Unknown;
 
-				void													OnStyleInstalled(vint itemIndex, ItemStyle* style)override;
+				void													OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly)override;
 				void													OnItemTemplateChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 			public:
 				/// <summary>Create a list view control in virtual mode.</summary>
@@ -18450,6 +18712,7 @@ GuiBindableTextList
 
 					description::Value								Get(vint index);
 					void											UpdateBindingProperties();
+					bool											NotifyUpdate(vint start, vint count, bool itemReferenceUpdated);
 					
 					// ===================== GuiListControl::IItemProvider =====================
 
@@ -18502,6 +18765,12 @@ GuiBindableTextList
 				/// <summary>Get the selected item.</summary>
 				/// <returns>Returns the selected item. If there are multiple selected items, or there is no selected item, null will be returned.</returns>
 				description::Value									GetSelectedItem();
+
+				/// <summary>Notify the control that data in some items are modified.</summary>
+				/// <param name="start">The index of the first item.</param>
+				/// <param name="count">The number of items</param>
+				/// <returns>Returns true if this operation succeeded.</returns>
+				bool												NotifyItemDataModified(vint start, vint count);
 			};
 
 /***********************************************************************
@@ -18539,14 +18808,16 @@ GuiBindableListView
 					
 					description::Value								Get(vint index);
 					void											UpdateBindingProperties();
-					bool											NotifyUpdate(vint start, vint count);
+					bool											NotifyUpdate(vint start, vint count, bool itemReferenceUpdated);
 					list::ListViewDataColumns&						GetDataColumns();
 					list::ListViewColumns&							GetColumns();
 					
 					// ===================== list::IListViewItemProvider =====================
 
-					void											NotifyAllItemsUpdate()override;
-					void											NotifyAllColumnsUpdate()override;
+					void											RebuildAllItems() override;
+					void											RefreshAllItems() override;
+					void											NotifyColumnRebuilt() override;
+					void											NotifyColumnChanged() override;
 					
 					// ===================== GuiListControl::IItemProvider =====================
 
@@ -18621,6 +18892,12 @@ GuiBindableListView
 				/// <summary>Get the selected item.</summary>
 				/// <returns>Returns the selected item. If there are multiple selected items, or there is no selected item, null will be returned.</returns>
 				description::Value									GetSelectedItem();
+
+				/// <summary>Notify the control that data in some items are modified.</summary>
+				/// <param name="start">The index of the first item.</param>
+				/// <param name="count">The number of items</param>
+				/// <returns>Returns true if this operation succeeded.</returns>
+				bool												NotifyItemDataModified(vint start, vint count);
 			};
 
 /***********************************************************************
@@ -18654,6 +18931,8 @@ GuiBindableTreeView
 					Ptr<description::IValueReadonlyList>			PrepareValueList(const description::Value& inputItemSource);
 					void											PrepareChildren(Ptr<description::IValueReadonlyList> newValueList);
 					void											UnprepareChildren();
+					void											PrepareReverseMapping();
+					void											UnprepareReverseMapping();
 				public:
 					ItemSourceNode(const description::Value& _itemSource, ItemSourceNode* _parent);
 					ItemSourceNode(ItemSource* _rootProvider);
@@ -18667,6 +18946,7 @@ GuiBindableTreeView
 					bool											GetExpanding()override;
 					void											SetExpanding(bool value)override;
 					vint											CalculateTotalVisibleNodes()override;
+					void											NotifyDataModified()override;
 
 					vint											GetChildCount()override;
 					Ptr<tree::INodeProvider>						GetParent()override;
@@ -18679,6 +18959,7 @@ GuiBindableTreeView
 				{
 					friend class ItemSourceNode;
 				public:
+					WritableItemProperty<description::Value>		reverseMappingProperty;
 					ItemProperty<WString>							textProperty;
 					ItemProperty<Ptr<GuiImageData>>					imageProperty;
 					ItemProperty<Ptr<IValueEnumerable>>				childrenProperty;
@@ -18700,7 +18981,6 @@ GuiBindableTreeView
 					description::Value								GetBindingValue(tree::INodeProvider* node)override;
 					IDescriptable*									RequestView(const WString& identifier)override;
 
-
 					// ===================== tree::ITreeViewItemView =====================
 
 					Ptr<GuiImageData>								GetNodeImage(tree::INodeProvider* node)override;
@@ -18712,7 +18992,8 @@ GuiBindableTreeView
 			public:
 				/// <summary>Create a bindable Tree view control.</summary>
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
-				GuiBindableTreeView(theme::ThemeName themeName);
+				/// <param name="reverseMappingProperty">(Optional): The value of <see cref="GuiBindableTreeView::GetReverseMappingProperty"/>.</param>
+				GuiBindableTreeView(theme::ThemeName themeName, WritableItemProperty<description::Value> reverseMappingProperty = {});
 				~GuiBindableTreeView();
 				
 				/// <summary>Text property name changed event.</summary>
@@ -18728,6 +19009,15 @@ GuiBindableTreeView
 				/// <summary>Set the item source.</summary>
 				/// <param name="_itemSource">The item source. Null is acceptable if you want to clear all data.</param>
 				void												SetItemSource(description::Value _itemSource);
+
+				/// <summary>
+				/// Get the reverse mapping property name to store the internal tree view node for an item.
+				/// The value is set in the constructor.
+				/// Using this property makes items in item source exclusive to a treeview control.
+				/// Sharing such item in different treeview controls causes exceptions.
+				/// </summary>
+				/// <returns>The reverse mapping property name.</returns>
+				WritableItemProperty<description::Value>			GetReverseMappingProperty();
 				
 				/// <summary>Get the text property name to get the item text from an item.</summary>
 				/// <returns>The text property name.</returns>
@@ -18753,6 +19043,11 @@ GuiBindableTreeView
 				/// <summary>Get the selected item.</summary>
 				/// <returns>Returns the selected item. If there are multiple selected items, or there is no selected item, null will be returned.</returns>
 				description::Value									GetSelectedItem();
+
+				/// <summary>Notify the control that data in an item is modified. Child nodes are not notified.</summary>
+				/// <param name="value">The item from the item source.</param>
+				/// <returns>Returns true if this operation succeeded.</returns>
+				void												NotifyNodeDataModified(description::Value value);
 			};
 		}
 	}
@@ -19131,7 +19426,7 @@ namespace vl
 		{
 			namespace list
 			{
-				class DefaultListViewItemTemplate : public templates::GuiListItemTemplate
+				class DefaultListViewItemTemplate : public PredefinedListItemTemplate<templates::GuiListItemTemplate>
 				{
 				public:
 					DefaultListViewItemTemplate();
@@ -19145,6 +19440,7 @@ namespace vl
 					elements::GuiSolidLabelElement*			text = nullptr;
 
 					void									OnInitialize()override;
+					void									OnRefresh()override;
 					void									OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				public:
 					BigIconListViewItemTemplate();
@@ -19158,6 +19454,7 @@ namespace vl
 					elements::GuiSolidLabelElement*			text = nullptr;
 
 					void									OnInitialize()override;
+					void									OnRefresh()override;
 					void									OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				public:
 					SmallIconListViewItemTemplate();
@@ -19171,6 +19468,7 @@ namespace vl
 					elements::GuiSolidLabelElement*			text = nullptr;
 
 					void									OnInitialize()override;
+					void									OnRefresh()override;
 					void									OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				public:
 					ListListViewItemTemplate();
@@ -19187,8 +19485,9 @@ namespace vl
 					DataTextElementArray					dataTexts;
 
 					elements::GuiSolidLabelElement*			CreateTextElement(vint textRow);
-					void									ResetTextTable(vint textRows);
+					void									ResetTextTable(vint dataColumnCount);
 					void									OnInitialize()override;
+					void									OnRefresh()override;
 					void									OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				public:
 					TileListViewItemTemplate();
@@ -19207,7 +19506,9 @@ namespace vl
 					elements::GuiSolidBackgroundElement*	bottomLine = nullptr;
 					compositions::GuiBoundsComposition*		bottomLineComposition = nullptr;
 
+					void									ResetTextTable(vint dataColumnCount);
 					void									OnInitialize()override;
+					void									OnRefresh()override;
 					void									OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				public:
 					InformationListViewItemTemplate();
@@ -19216,19 +19517,22 @@ namespace vl
 
 				class DetailListViewItemTemplate
 					: public DefaultListViewItemTemplate
-					, public virtual ListViewColumnItemArranger::IColumnItemViewCallback
 				{
-					typedef collections::Array<elements::GuiSolidLabelElement*>		SubItemList;
+					typedef collections::Array<compositions::GuiCellComposition*>	SubItemCellList;
+					typedef collections::Array<elements::GuiSolidLabelElement*>		SubItemTestList;
 					typedef ListViewColumnItemArranger::IColumnItemView				IColumnItemView;
 				protected:
 					IColumnItemView*						columnItemView = nullptr;
 					elements::GuiImageFrameElement*			image = nullptr;
 					elements::GuiSolidLabelElement*			text = nullptr;
 					compositions::GuiTableComposition*		textTable = nullptr;
-					SubItemList								subItems;
+					SubItemCellList							subItemCells;
+					SubItemTestList							subItemTexts;
 
+					void									UpdateSubItemSize();
+					void									ResetTextTable(vint subColumnCount);
 					void									OnInitialize()override;
-					void									OnColumnChanged()override;
+					void									OnRefresh()override;
 					void									OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				public:
 					DetailListViewItemTemplate();
@@ -19273,37 +19577,41 @@ DefaultDataGridItemTemplate
 
 				class DefaultDataGridItemTemplate
 					: public DefaultListViewItemTemplate
-					, public ListViewColumnItemArranger::IColumnItemViewCallback
 				{
 				protected:
-					compositions::GuiTableComposition*					textTable = nullptr;
-					collections::Array<Ptr<IDataVisualizer>>			dataVisualizers;
-					IDataEditor*										currentEditor = nullptr;
+					compositions::GuiTableComposition*						textTable = nullptr;
+					collections::Array<IDataVisualizerFactory*>				dataVisualizerFactories;
+					collections::Array<Ptr<IDataVisualizer>>				dataVisualizers;
+					collections::Array<compositions::GuiCellComposition*>	dataCells;
+					IDataEditor*											currentEditor = nullptr;
 
-					IDataVisualizerFactory*								GetDataVisualizerFactory(vint row, vint column);
-					IDataEditorFactory*									GetDataEditorFactory(vint row, vint column);
-					vint												GetCellColumnIndex(compositions::GuiGraphicsComposition* composition);
-					bool												IsInEditor(GuiVirtualDataGrid* dataGrid, compositions::GuiMouseEventArgs& arguments);
-					void												OnCellButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
-					void												OnCellLeftButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
-					void												OnCellRightButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+					IDataVisualizerFactory*									GetDataVisualizerFactory(vint row, vint column);
+					IDataEditorFactory*										GetDataEditorFactory(vint row, vint column);
+					vint													GetCellColumnIndex(compositions::GuiGraphicsComposition* composition);
+					bool													IsInEditor(GuiVirtualDataGrid* dataGrid, compositions::GuiMouseEventArgs& arguments);
+					void													OnCellButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+					void													OnCellLeftButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+					void													OnCellRightButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 
-					void												OnColumnChanged()override;
-					void												OnInitialize()override;
-					void												OnSelectedChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
-					void												OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
-					void												OnContextChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
-					void												OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
+					void													DeleteAllVisualizers();
+					void													DeleteVisualizer(vint column);
+					void													ResetDataTable(vint columnCount);
+					void													OnInitialize()override;
+					void													OnRefresh()override;
+					void													OnSelectedChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
+					void													OnFontChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
+					void													OnContextChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
+					void													OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				public:
 					DefaultDataGridItemTemplate();
 					~DefaultDataGridItemTemplate();
 
-					void												UpdateSubItemSize();
-					bool												IsEditorOpened();
-					void												NotifyOpenEditor(vint column, IDataEditor* editor);
-					void												NotifyCloseEditor();
-					void												NotifySelectCell(vint column);
-					void												NotifyCellEdited();
+					void													UpdateSubItemSize();
+					bool													IsEditorOpened();
+					void													NotifyOpenEditor(vint column, IDataEditor* editor);
+					void													NotifyCloseEditor();
+					void													NotifySelectCell(vint column);
+					void													NotifyCellEdited();
 				};
 			}
 
@@ -19333,8 +19641,8 @@ GuiVirtualDataGrid
 				bool													currentEditorOpeningEditor = false;
 
 				compositions::IGuiAltActionHost*						GetActivatingAltHost()override;
-				void													OnItemModified(vint start, vint count, vint newCount)override;
-				void													OnStyleInstalled(vint index, ItemStyle* style)override;
+				void													OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+				void													OnStyleInstalled(vint index, ItemStyle* style, bool refreshPropertiesOnly)override;
 				void													OnStyleUninstalled(ItemStyle* style)override;
 
 				void													NotifyCloseEditor();
@@ -19591,7 +19899,8 @@ DataColumn
 					Ptr<IDataVisualizerFactory>							visualizerFactory;
 					Ptr<IDataEditorFactory>								editorFactory;
 
-					void												NotifyAllColumnsUpdate(bool affectItem);
+					void												NotifyRebuilt();
+					void												NotifyChanged(bool needToRefreshItems);
 				public:
 					DataColumn();
 					~DataColumn();
@@ -19692,7 +20001,8 @@ DataColumn
 					DataProvider*										dataProvider = nullptr;
 					bool												affectItemFlag = true;
 
-					void												NotifyColumnUpdated(vint index, bool affectItem);
+					void												NotifyColumnRebuilt(vint column);
+					void												NotifyColumnChanged(vint column, bool needToRefreshItems);
 					void												NotifyUpdateInternal(vint start, vint count, vint newCount)override;
 					bool												QueryInsert(vint index, const Ptr<DataColumn>& value)override;
 					void												AfterInsert(vint index, const Ptr<DataColumn>& value)override;
@@ -19718,10 +20028,11 @@ DataProvider
 					friend class DataColumn;
 					friend class DataColumns;
 					friend class controls::GuiBindableDataGrid;
+					typedef collections::List<ListViewColumnItemArranger::IColumnItemViewCallback*>		ColumnItemViewCallbackList;
 				protected:
 					ListViewDataColumns										dataColumns;
 					DataColumns												columns;
-					ListViewColumnItemArranger::IColumnItemViewCallback*	columnItemViewCallback = nullptr;
+					ColumnItemViewCallbackList								columnItemViewCallbacks;
 					Ptr<description::IValueReadonlyList>					itemSource;
 					Ptr<EventHandler>										itemChangedEventHandler;
 
@@ -19730,8 +20041,11 @@ DataProvider
 					Ptr<IDataSorter>										currentSorter;
 					collections::List<vint>									virtualRowToSourceRow;
 
-					void													NotifyAllItemsUpdate()override;
-					void													NotifyAllColumnsUpdate()override;
+					bool													NotifyUpdate(vint start, vint count, bool itemReferenceUpdated);
+					void													RebuildAllItems() override;
+					void													RefreshAllItems() override;
+					void													NotifyColumnRebuilt() override;
+					void													NotifyColumnChanged() override;
 					GuiListControl::IItemProvider*							GetItemProvider()override;
 
 					void													OnProcessorChanged()override;
@@ -19863,6 +20177,12 @@ GuiBindableDataGrid
 				/// <summary>Get the selected cell.</summary>
 				/// <returns>Returns the selected item. If there are multiple selected items, or there is no selected item, null will be returned.</returns>
 				description::Value									GetSelectedCellValue();
+
+				/// <summary>Notify the control that data in some items are modified.</summary>
+				/// <param name="start">The index of the first item.</param>
+				/// <param name="count">The number of items</param>
+				/// <returns>Returns true if this operation succeeded.</returns>
+				bool												NotifyItemDataModified(vint start, vint count);
 			};
 		}
 	}
@@ -19900,30 +20220,42 @@ GalleryItemArranger
 
 			namespace ribbon_impl
 			{
-				class GalleryItemArranger : public list::RangedItemArrangerBase, public Description<GalleryItemArranger>
+				class GalleryItemArrangerRepeatComposition : public compositions::GuiVirtualRepeatCompositionBase, public Description<GalleryItemArrangerRepeatComposition>
 				{
 				private:
-					vint										pim_itemWidth = 0;
-					bool										blockScrollUpdate = true;
+					vint													pim_itemWidth = 0;
+					bool													blockScrollUpdate = true;
 
 				protected:
-					GuiBindableRibbonGalleryList*				owner;
-					vint										itemWidth = 1;
-					vint										firstIndex = 0;
+					GuiBindableRibbonGalleryList*							owner;
+					vint													itemWidth = 1;
+					vint													firstIndex = 0;
 
-					void										BeginPlaceItem(bool forMoving, Rect newBounds, vint& newStartIndex)override;
-					void										PlaceItem(bool forMoving, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
-					bool										IsItemOutOfViewBounds(vint index, ItemStyleRecord style, Rect bounds, Rect viewBounds)override;
-					bool										EndPlaceItem(bool forMoving, Rect newBounds, vint newStartIndex)override;
-					void										InvalidateItemSizeCache()override;
-					Size										OnCalculateTotalSize()override;
+					void													Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex)override;
+					compositions::VirtualRepeatPlaceItemResult				Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent)override;
+					compositions::VirtualRepeatEndPlaceItemResult			Layout_EndPlaceItem(bool firstPhase, Rect newBounds, vint newStartIndex)override;
+					void													Layout_EndLayout(bool totalSizeUpdated) override;
+					void													Layout_InvalidateItemSizeCache()override;
+					Size													Layout_CalculateTotalSize()override;
+				public:
+					GalleryItemArrangerRepeatComposition(GuiBindableRibbonGalleryList* _owner);
+					~GalleryItemArrangerRepeatComposition();
+
+					vint													FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)override;
+					compositions::VirtualRepeatEnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
+					Size													GetAdoptedSize(Size expectedSize)override;
+
+					void													ScrollUp();
+					void													ScrollDown();
+					void													UnblockScrollUpdate();
+				};
+
+				class GalleryItemArranger : public list::VirtualRepeatRangedItemArrangerBase<GalleryItemArrangerRepeatComposition>, public Description<GalleryItemArranger>
+				{
+					using TBase = list::VirtualRepeatRangedItemArrangerBase<GalleryItemArrangerRepeatComposition>;
 				public:
 					GalleryItemArranger(GuiBindableRibbonGalleryList* _owner);
 					~GalleryItemArranger();
-
-					vint										FindItem(vint itemIndex, compositions::KeyDirection key)override;
-					GuiListControl::EnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
-					Size										GetAdoptedSize(Size expectedSize)override;
 
 					void										ScrollUp();
 					void										ScrollDown();
@@ -20788,6 +21120,7 @@ Ribbon Gallery List
 
 			namespace ribbon_impl
 			{
+				class GalleryItemArrangerRepeatComposition;
 				class GalleryItemArranger;
 				class GalleryResponsiveLayout;
 			}
@@ -20795,7 +21128,7 @@ Ribbon Gallery List
 			/// <summary>Auto resizable ribbon gallyer list.</summary>
 			class GuiBindableRibbonGalleryList : public GuiRibbonGallery, public list::GroupedDataSource, private IGuiMenuDropdownProvider, public Description<GuiBindableRibbonGalleryList>
 			{
-				friend class ribbon_impl::GalleryItemArranger;
+				friend class ribbon_impl::GalleryItemArrangerRepeatComposition;
 
 				using IValueEnumerable = reflection::description::IValueEnumerable;
 				using IValueObservableList = reflection::description::IValueObservableList;

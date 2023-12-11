@@ -261,6 +261,7 @@ Type List (Compositions)
 			F(presentation::compositions::IGuiAltActionHost)\
 			F(presentation::compositions::IGuiTabAction)\
 			F(presentation::compositions::GuiRepeatCompositionBase)\
+			F(presentation::compositions::VirtualRepeatEnsureItemVisibleResult)\
 
 #define GUIREFLECTIONCOMPOSITION_CLASS_TYPELIST(F)\
 			F(presentation::compositions::GuiGraphicsComposition)\
@@ -279,8 +280,14 @@ Type List (Compositions)
 			F(presentation::compositions::GuiPartialViewComposition)\
 			F(presentation::compositions::GuiSharedSizeItemComposition)\
 			F(presentation::compositions::GuiSharedSizeRootComposition)\
+			F(presentation::compositions::GuiNonVirtialRepeatCompositionBase)\
 			F(presentation::compositions::GuiRepeatStackComposition)\
 			F(presentation::compositions::GuiRepeatFlowComposition)\
+			F(presentation::compositions::GuiVirtualRepeatCompositionBase)\
+			F(presentation::compositions::GuiRepeatFreeHeightItemComposition)\
+			F(presentation::compositions::GuiRepeatFixedHeightItemComposition)\
+			F(presentation::compositions::GuiRepeatFixedSizeMultiColumnItemComposition)\
+			F(presentation::compositions::GuiRepeatFixedHeightMultiColumnItemComposition)\
 			F(presentation::compositions::GuiResponsiveCompositionBase)\
 			F(presentation::compositions::GuiResponsiveSharedComposition)\
 			F(presentation::compositions::GuiResponsiveViewComposition)\
@@ -333,7 +340,6 @@ Type List (Templates)
 
 #define GUIREFLECTIONTEMPLATES_CLASS_TYPELIST(F)\
 			F(presentation::templates::GuiTemplate)\
-			F(presentation::templates::GuiListItemTemplate)\
 			F(presentation::templates::GuiCommonDatePickerLook)\
 			F(presentation::templates::GuiCommonScrollViewLook)\
 			GUI_CORE_CONTROL_TEMPLATE_DECL(GUIREFLECTIONTEMPLATES_##F)\
@@ -785,9 +791,9 @@ Interface Proxy (Controls)
 					INVOKE_INTERFACE_PROXY(OnAttached, provider);
 				}
 
-				void OnItemModified(vint start, vint count, vint newCount)override
+				void OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override
 				{
-					INVOKE_INTERFACE_PROXY(OnItemModified, start, count, newCount);
+					INVOKE_INTERFACE_PROXY(OnItemModified, start, count, newCount, itemReferenceUpdated);
 				}
 			END_INTERFACE_PROXY(presentation::controls::GuiListControl::IItemProviderCallback)
 
@@ -888,9 +894,9 @@ Interface Proxy (Controls)
 					INVOKE_INTERFACE_PROXY(OnViewChanged, bounds);
 				}
 
-				vint FindItem(vint itemIndex, presentation::compositions::KeyDirection key)override
+				vint FindItemByVirtualKeyDirection(vint itemIndex, presentation::compositions::KeyDirection key)override
 				{
-					INVOKEGET_INTERFACE_PROXY(FindItem, itemIndex, key);
+					INVOKEGET_INTERFACE_PROXY(FindItemByVirtualKeyDirection, itemIndex, key);
 				}
 
 				presentation::controls::GuiListControl::EnsureItemVisibleResult EnsureItemVisible(vint itemIndex)override
@@ -1008,6 +1014,11 @@ Interface Proxy (Controls)
 				vint CalculateTotalVisibleNodes()override
 				{
 					INVOKEGET_INTERFACE_PROXY_NOPARAMS(CalculateTotalVisibleNodes);
+				}
+
+				void NotifyDataModified()override
+				{
+					INVOKE_INTERFACE_PROXY_NOPARAMS(NotifyDataModified);
 				}
 
 				vint GetChildCount()override
