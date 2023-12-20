@@ -33,10 +33,10 @@
             var oIde = new IDE^();
             for (att in xIde.attributes)
             {
-              switch (att.name)
+              switch (att.name.value)
               {
-                case "name": { oIde.Name = att.value; }
-                case "dev": { oIde.Developer = att.value; }
+                case "name": { oIde.Name = att.value.value; }
+                case "dev": { oIde.Developer = att.value.value; }
               }
             }
             ides.Add(oIde);

@@ -154,7 +154,7 @@
               bottom:0
               right:(
                 cast int Math::Round(
-                  (1 - self.animationBuilder.Current.Length) * (self.boundary.Bounds.x2 - self.boundary.Bounds.x1 - 10)
+                  (1 - self.animationBuilder.Current.Length) * (self.boundary.CachedBounds.x2 - self.boundary.CachedBounds.x1 - 10)
                 )
               )
             };
@@ -162,10 +162,10 @@
         ]]></ref.Members>
         <SelectableButtonTemplate ref.Name="self" ContainerComposition-ref="container" MinSizeLimitation="LimitToElementAndChildren">
           <Bounds ref.Name="boundary" AlignmentToParent="left:0 top:0 right:0 bottom:0">
-            <Bounds AlignmentToParent-bind="self.observe as _ (_.GetAlignment() on _.boundary.BoundsChanged, _.animationBuilder.Current.LengthChanged)">
+            <Bounds AlignmentToParent-bind="self.observe as _ (_.GetAlignment() on _.boundary.CachedBoundsChanged, _.animationBuilder.Current.LengthChanged)">
               <SolidBorder Color-bind="self.animationBuilder.Current.Border" Shape="shapeType:RoundRect radiusX:5 radiusY:5"/>
             </Bounds>
-            <Bounds AlignmentToParent-bind="self.observe as _ (_.GetAlignment() on _.boundary.BoundsChanged, _.animationBuilder.Current.LengthChanged)">
+            <Bounds AlignmentToParent-bind="self.observe as _ (_.GetAlignment() on _.boundary.CachedBoundsChanged, _.animationBuilder.Current.LengthChanged)">
               <SolidBackground Color-bind="self.animationBuilder.Current.Background" Shape="shapeType:RoundRect radiusX:5 radiusY:5"/>
             </Bounds>
           </Bounds>

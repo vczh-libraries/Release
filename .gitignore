@@ -7,6 +7,9 @@ Tools/*.exe
 #Vczh Libraries
 *.xml.log/
 
+#SampleForDoc Binaries
+SampleForDoc/GacUI/UIRes/*/*.bin
+
 # User-specific files
 */**/.vs/
 *.suo
