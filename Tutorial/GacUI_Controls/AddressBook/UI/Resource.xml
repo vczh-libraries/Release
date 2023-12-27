@@ -160,6 +160,11 @@
                   window.MoveToScreenCenter();
                   window.SetContact(ViewModel.SelectedContact);
                   $Await window.ShowModalAsync(self);
+                  
+                  if (window.Ready)
+                  {
+                    listViewContacts.NotifyItemDataModified(listViewContacts.SelectedItemIndex, 1);
+                  }
                   delete window;
                 }
               ]]>

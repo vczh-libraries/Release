@@ -122,12 +122,6 @@ public:
 		birthday = _birthday;
 		phone = _phone;
 		address = _address;
-
-		vint index = category->contacts.IndexOf(this);
-		if (index != -1)
-		{
-			category->contacts.NotifyUpdate(index, 1);
-		}
 	}
 };
 
