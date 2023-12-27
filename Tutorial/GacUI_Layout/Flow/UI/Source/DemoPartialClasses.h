@@ -39,6 +39,7 @@ namespace vl_workflow_global
 	struct __vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+	struct __vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 	struct __vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
@@ -71,6 +72,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
@@ -118,48 +120,50 @@ namespace demo
 		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_27;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_28;
 		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_29;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_30;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_31;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_32;
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_33;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_30;
+		::vl::presentation::controls::GuiSelectableButton* __vwsn_precompile_31;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_32;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_33;
 		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_34;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_35;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_36;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_37;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_38;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_39;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_40;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_41;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_42;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_43;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_44;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_45;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_46;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_47;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_48;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_49;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_50;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_51;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_52;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_53;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_54;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_55;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_56;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_57;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_58;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_59;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_60;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_61;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_62;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_63;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_64;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_65;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_66;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_67;
-		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_68;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_69;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_70;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_71;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_35;
+		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_36;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_37;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_38;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_39;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_40;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_41;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_42;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_43;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_44;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_45;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_46;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_47;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_48;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_49;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_50;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_51;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_52;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_53;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_54;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_55;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_56;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_57;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_58;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_59;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_60;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_61;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_62;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_63;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_64;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_65;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_66;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_67;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_68;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_69;
+		::vl::presentation::compositions::GuiFlowItemComposition* __vwsn_precompile_70;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_71;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_72;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_73;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -183,6 +187,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf21_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf22_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf3_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf4_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
@@ -348,6 +353,15 @@ Closures
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
 		__vwsnf23_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
+
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
+	};
+
+	struct __vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
+	{
+		::demo::MainWindowConstructor* __vwsnthis_0;
+
+		__vwsnf24_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};

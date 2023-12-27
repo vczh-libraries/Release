@@ -44,6 +44,7 @@
                 flowLayout.Alignment =
                   radioButton.Text == "Left"   ? Left :
                   radioButton.Text == "Center" ? Center :
+                  radioButton.Text == "Right"  ? Right :
                   Extend;
               }
             }
@@ -144,6 +145,7 @@
                     <CellOption>composeType:MinSize</CellOption>
                     <CellOption>composeType:MinSize</CellOption>
                     <CellOption>composeType:MinSize</CellOption>
+                    <CellOption>composeType:MinSize</CellOption>
                   </att.Rows>
                   <att.Columns>
                     <CellOption>composeType:MinSize</CellOption>
@@ -156,6 +158,9 @@
                     <RadioButton Text="Center" GroupController-ref="groupAlignment"/>
                   </Cell>
                   <Cell Site="row:2 column:0">
+                    <RadioButton Text="Right" GroupController-ref="groupAlignment"/>
+                  </Cell>
+                  <Cell Site="row:3 column:0">
                     <RadioButton Text="Extend" GroupController-ref="groupAlignment"/>
                   </Cell>
                 </Table>
