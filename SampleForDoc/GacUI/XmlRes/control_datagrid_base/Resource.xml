@@ -140,13 +140,13 @@
                         {
                           self.books[last.row].SmallImage = self.iconBook16;
                           self.books[last.row].LargeImage = self.iconBook32;
-                          self.books.ItemChanged(last.row, 1, 1);
+                          datagrid.NotifyItemDataModified(last.row, 1);
                         }
                         if (current.row != -1)
                         {
                           self.books[current.row].SmallImage = self.iconOpen16;
                           self.books[current.row].LargeImage = self.iconOpen32;
-                          self.books.ItemChanged(current.row, 1, 1);
+                          datagrid.NotifyItemDataModified(current.row, 1);
                         }
                         self.datagrid.SelectCell(current, false);
                       });

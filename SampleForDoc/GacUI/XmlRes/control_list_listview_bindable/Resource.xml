@@ -155,8 +155,8 @@
                   <BindableListView ref.Name="listView" View-bind="self.views[comboView.SelectedIndex]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="sample::BookItem^" env.ItemName="item">
                     <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                     <att.ItemSource-eval>self.books</att.ItemSource-eval>
-                    <att.LargeImageProperty>SmallImage</att.LargeImageProperty>
-                    <att.SmallImageProperty>LargeImage</att.SmallImageProperty>
+                    <att.LargeImageProperty>LargeImage</att.LargeImageProperty>
+                    <att.SmallImageProperty>SmallImage</att.SmallImageProperty>
                     <att.Columns>
                       <ListViewColumn Text="Title" TextProperty="Title"/>
                       <ListViewColumn Text="Author" TextProperty="Author" SortingState="Ascending"/>
@@ -188,13 +188,13 @@
                           {
                             self.books[last].SmallImage = self.iconBook16;
                             self.books[last].LargeImage = self.iconBook32;
-                            self.books.ItemChanged(last, 1, 1);
+                            listView.NotifyItemDataModified(last, 1);
                           }
                           if (current != -1)
                           {
                             self.books[current].SmallImage = self.iconOpen16;
                             self.books[current].LargeImage = self.iconOpen32;
-                            self.books.ItemChanged(current, 1, 1);
+                            listView.NotifyItemDataModified(current, 1);
                           }
                         });
                       }
