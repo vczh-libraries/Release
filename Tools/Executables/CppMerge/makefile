@@ -16,7 +16,7 @@ clean:
 
 all:pre-build ./Bin/CppMerge
 
-./Bin/CppMerge:./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppRegex.o ./Obj/Main.o ./Obj/WfMergeCpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppOS.Linux.o
+./Bin/CppMerge:./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppRegex.o ./Obj/Main.o ./Obj/WfMergeCpp.o
 	$(CPP_LINK)
 
 ./Obj/Vlpp.o: ../../../Import/Vlpp.cpp ../../../Import/Vlpp.h
@@ -38,10 +38,4 @@ all:pre-build ./Bin/CppMerge
 	$(CPP_COMPILE)
 
 ./Obj/WfMergeCpp.o: WfMergeCpp.cpp WfMergeCpp.h ../../../Import/VlppOS.h ../../../Import/Vlpp.h ../../../Import/VlppRegex.h
-	$(CPP_COMPILE)
-
-./Obj/Vlpp.Linux.o: ../../../Import/Vlpp.Linux.cpp ../../../Import/Vlpp.h
-	$(CPP_COMPILE)
-
-./Obj/VlppOS.Linux.o: ../../../Import/VlppOS.Linux.cpp ../../../Import/VlppOS.h ../../../Import/Vlpp.h
 	$(CPP_COMPILE)

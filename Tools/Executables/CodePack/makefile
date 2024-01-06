@@ -16,7 +16,7 @@ clean:
 
 all:pre-build ./Bin/CodePack
 
-./Bin/CodePack:./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppGlrParser.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppReflection.o ./Obj/VlppRegex.o ./Obj/Codepack_CategorizeCodeFiles.o ./Obj/Codepack_Combine.o ./Obj/Codepack_GetFiles.o ./Obj/Codepack_GetIncludeFiles.o ./Obj/Main.o ./Obj/Vlpp.Linux.o ./Obj/VlppOS.Linux.o
+./Bin/CodePack:./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppGlrParser.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppReflection.o ./Obj/VlppRegex.o ./Obj/Codepack_CategorizeCodeFiles.o ./Obj/Codepack_Combine.o ./Obj/Codepack_GetFiles.o ./Obj/Codepack_GetIncludeFiles.o ./Obj/Main.o
 	$(CPP_LINK)
 
 ./Obj/Vlpp.o: ../../../Import/Vlpp.cpp ../../../Import/Vlpp.h
@@ -53,10 +53,4 @@ all:pre-build ./Bin/CodePack
 	$(CPP_COMPILE)
 
 ./Obj/Main.o: Main.cpp Codepack.h ../../../Import/VlppGlrParser.h ../../../Import/VlppReflection.h ../../../Import/VlppOS.h ../../../Import/Vlpp.h ../../../Import/VlppRegex.h
-	$(CPP_COMPILE)
-
-./Obj/Vlpp.Linux.o: ../../../Import/Vlpp.Linux.cpp ../../../Import/Vlpp.h
-	$(CPP_COMPILE)
-
-./Obj/VlppOS.Linux.o: ../../../Import/VlppOS.Linux.cpp ../../../Import/VlppOS.h ../../../Import/Vlpp.h
 	$(CPP_COMPILE)
