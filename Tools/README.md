@@ -19,6 +19,8 @@
   - GacGen
   - GlrParserGen
 
+**NOTE** Optimization is not turned on at this moment, tool performance could be slow especially for GacGen. You could change the makefile if you need to.
+
 ## macOS
 
 (editing...)
