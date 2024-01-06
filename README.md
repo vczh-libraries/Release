@@ -11,9 +11,9 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ## Synchronized latest releases:
 
-- **GacUI**: [1.2.6.0](https://github.com/vczh-libraries/Release/releases/tag/1.2.7.0)
+- **GacUI**: [1.2.7.0](https://github.com/vczh-libraries/Release/releases/tag/1.2.7.0)
 - **iGac**: Not specified yet
-- **gGac**: [1.2.6.0](https://github.com/vczh-libraries/gGac/releases/tag/1.2.7.0)
+- **gGac**: [1.2.7.0](https://github.com/vczh-libraries/gGac/releases/tag/1.2.7.0)
 
 When **iGac** and **gGac** targets on a certain **GacUI** version, **iGac** and **gGac** will use the same version number as a tag to the commits.
   - A **GacUI** release will always be `X.Y.Z.0`.
