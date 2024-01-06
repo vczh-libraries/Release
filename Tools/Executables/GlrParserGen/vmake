@@ -1,0 +1,17 @@
+<#
+CPP_TARGET=./Bin/GlrParserGen
+CPP_VCXPROJS=(
+    "GlrParserGen.vcxproj"
+    )
+CPP_ADDS=(
+    "../../../Import/Vlpp.Linux.cpp"
+    "../../../Import/VlppOS.Linux.cpp"
+    )
+CPP_REMOVES=(
+    "../../../Import/Vlpp.Windows.cpp"
+    "../../../Import/VlppOS.Windows.cpp"
+    )
+TARGETS=("${CPP_TARGET}")
+CPP_COMPILE_OPTIONS="-I ../../../Import -DVCZH_DEBUG_NO_REFLECTION"
+#>
+<#@ include "${VCPROOT}/vl/vmake-cpp" #>
