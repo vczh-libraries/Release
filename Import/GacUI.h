@@ -6075,6 +6075,7 @@ GuiVirtualRepeatCompositionBase
 
 				Ptr<IGuiAxis>										axis = Ptr(new GuiDefaultAxis);
 				bool												itemSourceUpdated = false;
+				bool												useMinimumFullSize = false;
 				Size												realFullSize;
 				Rect												viewBounds;
 				vint												startIndex = 0;
@@ -6131,6 +6132,8 @@ GuiVirtualRepeatCompositionBase
 				Ptr<IGuiAxis>										GetAxis();
 				void												SetAxis(Ptr<IGuiAxis> value);
 
+				bool												GetUseMinimumTotalSize();
+				void												SetUseMinimumTotalSize(bool value);
 				Size												GetTotalSize();
 				Point												GetViewLocation();
 				void												SetViewLocation(Point value);
@@ -9012,6 +9015,9 @@ Theme Builders
 #define GUI_TEMPLATE_PROPERTY_EVENT_INIT(CLASS, TYPE, NAME, VALUE)\
 			NAME##Changed.SetAssociatedComposition(this);
 
+#define GUI_TEMPLATE_CLASS_FORWARD_DECL(CLASS, BASE)\
+			class CLASS;\
+
 #define GUI_TEMPLATE_CLASS_DECL(CLASS, BASE)\
 			class CLASS : public BASE, public AggregatableDescription<CLASS>\
 			{\
@@ -9144,6 +9150,7 @@ Theme Names
 			F(ControlTemplate,				ToolstripSplitter)			\
 			F(RibbonTabTemplate,			RibbonTab)					\
 			F(RibbonGroupTemplate,			RibbonGroup)				\
+			F(RibbonGroupMenuTemplate,		RibbonGroupMenu)			\
 			F(RibbonIconLabelTemplate,		RibbonIconLabel)			\
 			F(RibbonIconLabelTemplate,		RibbonSmallIconLabel)		\
 			F(RibbonButtonsTemplate,		RibbonButtons)				\
@@ -10349,11 +10356,16 @@ Application
 				/// <param name="proc">The specified function.</param>
 				/// <param name="milliseconds">Time to delay.</param>
 				Ptr<INativeDelay>								DelayExecuteInMainThread(const Func<void()>& proc, vint milliseconds);
-				/// <summary>Run the specified function in the main thread. If the caller is in the main thread, then run the specified function directly.</summary>
+				/// <summary>Run the specified function in the main thread and wait until it finishes. If the caller is in the main thread, then run the specified function directly.</summary>
 				/// <param name="controlHost">A control host to access the corressponding main thread.</param>
 				/// <param name="proc">The specified function.</param>
 				void											RunGuiTask(GuiControlHost* controlHost, const Func<void()>& proc);
 
+				/// <summary>Run the specified function in the main thread and wait until it finishes. If the caller is in the main thread, then run the specified function directly.</summary>
+				/// <typeparam name="T">The return value of the function</typeparam>
+				/// <param name="controlHost">A control host to access the corressponding main thread.</param>
+				/// <param name="proc">The specified function.</param>
+				/// <returns>The result of the function.</returns>
 				template<typename T>
 				T RunGuiValue(GuiControlHost* controlHost, const Func<T()>& proc)
 				{
@@ -10363,18 +10375,6 @@ Application
 						result=proc();
 					});
 					return result;
-				}
-
-				template<typename T>
-				void InvokeLambdaInMainThread(GuiControlHost* controlHost, const T& proc)
-				{
-					InvokeInMainThread(controlHost, Func<void()>(proc));
-				}
-				
-				template<typename T>
-				bool InvokeLambdaInMainThreadAndWait(GuiControlHost* controlHost, const T& proc, vint milliseconds=-1)
-				{
-					return InvokeInMainThreadAndWait(controlHost, Func<void()>(proc), milliseconds);
 				}
 			};
 
@@ -13049,6 +13049,7 @@ Templates
 			F(GuiDateComboBoxTemplate,			GuiComboBoxTemplate)		\
 			F(GuiRibbonTabTemplate,				GuiTabTemplate)				\
 			F(GuiRibbonGroupTemplate,			GuiControlTemplate)			\
+			F(GuiRibbonGroupMenuTemplate,		GuiMenuTemplate)			\
 			F(GuiRibbonIconLabelTemplate,		GuiControlTemplate)			\
 			F(GuiRibbonButtonsTemplate,			GuiControlTemplate)			\
 			F(GuiRibbonToolstripsTemplate,		GuiControlTemplate)			\
@@ -13159,7 +13160,11 @@ Control Template
 				F(GuiRibbonGroupTemplate, bool, Expandable, false)\
 				F(GuiRibbonGroupTemplate, bool, Collapsed, false)\
 				F(GuiRibbonGroupTemplate, TemplateProperty<GuiToolstripButtonTemplate>, LargeDropdownButtonTemplate, {})\
-				F(GuiRibbonGroupTemplate, TemplateProperty<GuiMenuTemplate>, SubMenuTemplate, {})\
+				F(GuiRibbonGroupTemplate, TemplateProperty<GuiRibbonGroupMenuTemplate>, SubMenuTemplate, {})\
+
+#define GuiRibbonGroupMenuTemplate_PROPERTIES(F)\
+				F(GuiRibbonGroupMenuTemplate, controls::IRibbonGroupCommandExecutor*, Commands, nullptr)\
+				F(GuiRibbonGroupMenuTemplate, bool, Expandable, false)\
 
 #define GuiRibbonIconLabelTemplate_PROPERTIES(F)\
 				F(GuiRibbonIconLabelTemplate, Ptr<GuiImageData>, Image, {})\
@@ -13235,6 +13240,9 @@ Item Template
 /***********************************************************************
 Template Declarations
 ***********************************************************************/
+
+			GUI_CONTROL_TEMPLATE_DECL(GUI_TEMPLATE_CLASS_FORWARD_DECL)
+			GUI_ITEM_TEMPLATE_DECL(GUI_TEMPLATE_CLASS_FORWARD_DECL)
 
 			GUI_CONTROL_TEMPLATE_DECL(GUI_TEMPLATE_CLASS_DECL)
 			GUI_ITEM_TEMPLATE_DECL(GUI_TEMPLATE_CLASS_DECL)
@@ -14095,6 +14103,8 @@ List Control
 				Ptr<IItemArranger>								itemArranger;
 				Ptr<compositions::IGuiAxis>						axis;
 				Size											fullSize;
+				Size											adoptedSizeDiffWithScroll = { -1,-1 };
+				Size											adoptedSizeDiffWithoutScroll = { -1,-1 };
 				bool											displayItemBackground = true;
 
 				virtual void									OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated);
@@ -14134,7 +14144,6 @@ List Control
 				collections::Dictionary<ItemStyle*, Ptr<VisibleStyleHelper>>		visibleStyles;
 
 				void											UpdateDisplayFont()override;
-				void											OnClientCachedBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void											OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void											OnContextChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void											OnItemMouseEvent(compositions::GuiItemMouseEvent& itemEvent, ItemStyle* style, compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
@@ -14480,6 +14489,7 @@ Predefined ItemArranger
 							: TVirtualRepeatComposition(std::forward<TArgs&&>(args)...)
 							, arranger(_arranger)
 						{
+							this->SetUseMinimumTotalSize(true);
 						}
 					};
 
@@ -17874,7 +17884,6 @@ ComboBox with GuiListControl
 				void										OnVisuallyEnabledChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnAfterSubMenuOpening(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnListControlAdoptedSizeInvalidated(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
-				void										OnListControlCachedBoundsChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnListControlItemMouseDown(compositions::GuiGraphicsComposition* sender, compositions::GuiItemMouseEventArgs& arguments);
 				void										OnKeyDown(compositions::GuiGraphicsComposition* sender, compositions::GuiKeyEventArgs& arguments);
 
@@ -20601,13 +20610,12 @@ namespace vl
 	{
 		namespace controls
 		{
-
-/***********************************************************************
-Ribbon Containers
-***********************************************************************/
-
 			class GuiRibbonTabPage;
 			class GuiRibbonGroup;
+
+/***********************************************************************
+Ribbon Tab
+***********************************************************************/
 
 			/// <summary>Ribbon tab control, for displaying ribbon tab pages.</summary>
 			class GuiRibbonTab : public GuiTab, public Description<GuiRibbonTab>
@@ -20675,6 +20683,10 @@ Ribbon Containers
 				/// <returns>The collection of ribbon groups.</returns>
 				collections::ObservableListBase<GuiRibbonGroup*>&	GetGroups();
 			};
+
+/***********************************************************************
+Ribbon Group
+***********************************************************************/
 
 			class GuiRibbonGroupItemCollection : public collections::ObservableListBase<GuiControl*>
 			{
