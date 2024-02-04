@@ -648,7 +648,7 @@ Resources
 Keys
 ***********************************************************************/
 
-#define GUI_DEFINE_KEYBOARD_CODE(ITEM)											\
+#define GUI_DEFINE_KEYBOARD_CODE_BASIC(ITEM)									\
 /*																				\
  * Virtual Keys, Standard Set													\
  */																				\
@@ -670,7 +670,6 @@ ITEM(CAPITAL,             0x14)													\
 ITEM(KANA_HANGUL,         0x15)													\
 ITEM(JUNJA,               0x17)													\
 ITEM(FINAL,               0x18)													\
-ITEM(HANJA,               0x19)													\
 ITEM(KANJI,               0x19)													\
 ITEM(ESCAPE,              0x1B)													\
 ITEM(CONVERT,             0x1C)													\
@@ -780,10 +779,6 @@ ITEM(F24,                 0x87)													\
 ITEM(NUMLOCK,             0x90)													\
 ITEM(SCROLL,              0x91)													\
 /*																				\
- * NEC PC-9800 kbd definitions													\
- */																				\
-ITEM(OEM_NEC_EQUAL,       0x92)		/* '=' key on numpad */						\
-/*																				\
  * Fujitsu/OASYS kbd definitions												\
  */																				\
 ITEM(OEM_FJ_JISHO,        0x92)		/* 'Dictionary' key */						\
@@ -820,17 +815,10 @@ ITEM(LAUNCH_MAIL,         0xB4)													\
 ITEM(LAUNCH_MEDIA_SELECT, 0xB5)													\
 ITEM(LAUNCH_APP1,         0xB6)													\
 ITEM(LAUNCH_APP2,         0xB7)													\
-ITEM(OEM_1,               0xBA)		/* ';:' for US */							\
 ITEM(OEM_PLUS,            0xBB)		/* '+' any country */						\
 ITEM(OEM_COMMA,           0xBC)		/* ',' any country */						\
 ITEM(OEM_MINUS,           0xBD)		/* '-' any country */						\
 ITEM(OEM_PERIOD,          0xBE)		/* '.' any country */						\
-ITEM(OEM_2,               0xBF)		/* '/?' for US */							\
-ITEM(OEM_3,               0xC0)		/* '`~' for US */							\
-ITEM(OEM_4,               0xDB)		/* '[{' for US */							\
-ITEM(OEM_5,               0xDC)		/* '\|' for US */							\
-ITEM(OEM_6,               0xDD)		/* ']}' for US */							\
-ITEM(OEM_7,               0xDE)		/* ''"' for US */							\
 ITEM(OEM_8,               0xDF)													\
 /*																				\
  * Various extended or enhanced keyboards										\
@@ -878,19 +866,142 @@ ITEM(BACKSLASH,           0xDC)		/* OEM_5 */									\
 ITEM(LEFT_BRACKET,        0xDD)		/* OEM_6 */									\
 ITEM(APOSTROPHE,          0xDE)		/* OEM_7 */									\
 
+#define GUI_DEFINE_KEYBOARD_CODE_ADDITIONAL(ITEM)								\
+ITEM(OEM_1,               0xBA)		/* ';:' for US */							\
+ITEM(OEM_2,               0xBF)		/* '/?' for US */							\
+ITEM(OEM_3,               0xC0)		/* '`~' for US */							\
+ITEM(OEM_4,               0xDB)		/* '[{' for US */							\
+ITEM(OEM_5,               0xDC)		/* '\|' for US */							\
+ITEM(OEM_6,               0xDD)		/* ']}' for US */							\
+ITEM(OEM_7,               0xDE)		/* ''"' for US */							\
+ITEM(HANJA,               0x19)													\
+/*																				\
+ * NEC PC-9800 kbd definitions													\
+ */																				\
+ITEM(OEM_NEC_EQUAL,       0x92)		/* '=' key on numpad */						\
+
+#define GUI_DEFINE_KEYBOARD_CODE(ITEM)											\
+			GUI_DEFINE_KEYBOARD_CODE_BASIC(ITEM)								\
+			GUI_DEFINE_KEYBOARD_CODE_ADDITIONAL(ITEM)							\
+
+
+#define GUI_DEFINE_KEYBOARD_WINDOWS_NAME(ITEM)									\
+ITEM(BACK,					L"Backspace")\
+ITEM(TAB,					L"Tab")\
+ITEM(RETURN,				L"Enter")\
+ITEM(SHIFT,					L"Shift")\
+ITEM(CONTROL,				L"Ctrl")\
+ITEM(MENU,					L"Alt")\
+ITEM(CAPITAL,				L"Caps Lock")\
+ITEM(ESCAPE,				L"Esc")\
+ITEM(SPACE,					L"Space")\
+ITEM(PRIOR,					L"Page Up")\
+ITEM(NEXT,					L"Page Down")\
+ITEM(END,					L"End")\
+ITEM(HOME,					L"Home")\
+ITEM(LEFT,					L"Left")\
+ITEM(UP,					L"Up")\
+ITEM(RIGHT,					L"Right")\
+ITEM(DOWN,					L"Down")\
+ITEM(SNAPSHOT,				L"Sys Req")\
+ITEM(INSERT,				L"Insert")\
+ITEM(DELETE,				L"Delete")\
+ITEM(0,						L"0")\
+ITEM(1,						L"1")\
+ITEM(2,						L"2")\
+ITEM(3,						L"3")\
+ITEM(4,						L"4")\
+ITEM(5,						L"5")\
+ITEM(6,						L"6")\
+ITEM(7,						L"7")\
+ITEM(8,						L"8")\
+ITEM(9,						L"9")\
+ITEM(A,						L"A")\
+ITEM(B,						L"B")\
+ITEM(C,						L"C")\
+ITEM(D,						L"D")\
+ITEM(E,						L"E")\
+ITEM(F,						L"F")\
+ITEM(G,						L"G")\
+ITEM(H,						L"H")\
+ITEM(I,						L"I")\
+ITEM(J,						L"J")\
+ITEM(K,						L"K")\
+ITEM(L,						L"L")\
+ITEM(M,						L"M")\
+ITEM(N,						L"N")\
+ITEM(O,						L"O")\
+ITEM(P,						L"P")\
+ITEM(Q,						L"Q")\
+ITEM(R,						L"R")\
+ITEM(S,						L"S")\
+ITEM(T,						L"T")\
+ITEM(U,						L"U")\
+ITEM(V,						L"V")\
+ITEM(W,						L"W")\
+ITEM(X,						L"X")\
+ITEM(Y,						L"Y")\
+ITEM(Z,						L"Z")\
+ITEM(NUMPAD0,				L"Num 0")\
+ITEM(NUMPAD1,				L"Num 1")\
+ITEM(NUMPAD2,				L"Num 2")\
+ITEM(NUMPAD3,				L"Num 3")\
+ITEM(NUMPAD4,				L"Num 4")\
+ITEM(NUMPAD5,				L"Num 5")\
+ITEM(NUMPAD6,				L"Num 6")\
+ITEM(NUMPAD7,				L"Num 7")\
+ITEM(NUMPAD8,				L"Num 8")\
+ITEM(NUMPAD9,				L"Num 9")\
+ITEM(MULTIPLY,				L"Num *")\
+ITEM(ADD,					L"Num +")\
+ITEM(SUBTRACT,				L"Num -")\
+ITEM(DECIMAL,				L"Num Del")\
+ITEM(DIVIDE,				L"/")\
+ITEM(F1,					L"F1")\
+ITEM(F2,					L"F2")\
+ITEM(F3,					L"F3")\
+ITEM(F4,					L"F4")\
+ITEM(F5,					L"F5")\
+ITEM(F6,					L"F6")\
+ITEM(F7,					L"F7")\
+ITEM(F8,					L"F8")\
+ITEM(F9,					L"F9")\
+ITEM(F10,					L"F10")\
+ITEM(F11,					L"F11")\
+ITEM(F12,					L"F12")\
+ITEM(NUMLOCK,				L"Pause")\
+ITEM(SCROLL,				L"Scroll Lock")\
+ITEM(BROWSER_HOME,			L"M")\
+ITEM(VOLUME_MUTE,			L"D")\
+ITEM(VOLUME_DOWN,			L"C")\
+ITEM(VOLUME_UP,				L"B")\
+ITEM(MEDIA_NEXT_TRACK,		L"P")\
+ITEM(MEDIA_PREV_TRACK,		L"Q")\
+ITEM(MEDIA_STOP,			L"J")\
+ITEM(MEDIA_PLAY_PAUSE,		L"G")\
+ITEM(LAUNCH_APP2,			L"F")\
+ITEM(OEM_PLUS,				L"=")\
+ITEM(OEM_COMMA,				L",")\
+ITEM(OEM_MINUS,				L"-")\
+ITEM(OEM_PERIOD,			L".")\
+ITEM(OEM_102,				L"\\")\
+ITEM(SEMICOLON,				L";")\
+ITEM(SLASH,					L"/")\
+ITEM(GRAVE_ACCENT,			L"`")\
+ITEM(RIGHT_BRACKET,			L"[")\
+ITEM(BACKSLASH,				L"\\")\
+ITEM(LEFT_BRACKET,			L"]")\
+ITEM(APOSTROPHE,			L"'")\
+
 #define GUI_DEFINE_KEYBOARD_CODE_ENUM_ITEM(NAME, CODE) KEY_##NAME = CODE,
 		enum class VKEY
 		{
 			KEY_UNKNOWN = -1,
+			KEY_MAXIMUM = 255,
 			GUI_DEFINE_KEYBOARD_CODE(GUI_DEFINE_KEYBOARD_CODE_ENUM_ITEM)
 		};
 #undef GUI_DEFINE_KEYBOARD_CODE_ENUM_ITEM
-		static bool operator == (VKEY a, VKEY b) { return (vint)a == (vint)b; }
-		static bool operator != (VKEY a, VKEY b) { return (vint)a != (vint)b; }
-		static bool operator <  (VKEY a, VKEY b) { return (vint)a <  (vint)b; }
-		static bool operator <= (VKEY a, VKEY b) { return (vint)a <= (vint)b; }
-		static bool operator >  (VKEY a, VKEY b) { return (vint)a >  (vint)b; }
-		static bool operator >= (VKEY a, VKEY b) { return (vint)a >= (vint)b; }
+		static auto operator <=> (VKEY a, VKEY b) { return (vint)a <=> (vint)b; }
 		static VKEY operator &  (VKEY a, VKEY b) { return (VKEY)((vint)a & (vint)b); }
 		static VKEY operator |  (VKEY a, VKEY b) { return (VKEY)((vint)a | (vint)b); }
 
@@ -6987,8 +7098,8 @@ Interfaces:
 
 ***********************************************************************/
 
-#ifndef VCZH_PRESENTATION_GUIHOSTEDGRAPHICS
-#define VCZH_PRESENTATION_GUIHOSTEDGRAPHICS
+#ifndef VCZH_PRESENTATION_GUIHOSTEDCONTROLLER_GUIHOSTEDGRAPHICS
+#define VCZH_PRESENTATION_GUIHOSTEDCONTROLLER_GUIHOSTEDGRAPHICS
 
 
 namespace vl
@@ -7043,8 +7154,8 @@ Interfaces:
 
 ***********************************************************************/
 
-#ifndef VCZH_PRESENTATION_GUIHOSTEDWINDOWMANAGER
-#define VCZH_PRESENTATION_GUIHOSTEDWINDOWMANAGER
+#ifndef VCZH_PRESENTATION_GUIHOSTEDCONTROLLER_GUIHOSTEDWINDOWMANAGER
+#define VCZH_PRESENTATION_GUIHOSTEDCONTROLLER_GUIHOSTEDWINDOWMANAGER
 
 
 namespace vl
@@ -7530,13 +7641,13 @@ Window
 						{
 							current = current->parent;
 						}
+						windowManager->activeWindow = current;
+						windowManager->needRefresh = true;
 						if (current)
 						{
 							current->active = true;
 							windowManager->OnGotFocus(current);
 						}
-						windowManager->activeWindow = current;
-						windowManager->needRefresh = true;
 					}
 #undef ERROR_MESSAGE_PREFIX
 				}
@@ -7703,8 +7814,8 @@ Interfaces:
 
 ***********************************************************************/
 
-#ifndef VCZH_PRESENTATION_GUIHOSTEDWINDOW
-#define VCZH_PRESENTATION_GUIHOSTEDWINDOW
+#ifndef VCZH_PRESENTATION_GUIHOSTEDCONTROLLER_GUIHOSTEDWINDOW
+#define VCZH_PRESENTATION_GUIHOSTEDCONTROLLER_GUIHOSTEDWINDOW
 
 
 namespace vl
@@ -7786,7 +7897,7 @@ Proxy
 
 		extern Ptr<IGuiHostedWindowProxy>		CreatePlaceholderHostedWindowProxy(GuiHostedWindowData* data);
 		extern Ptr<IGuiHostedWindowProxy>		CreateMainHostedWindowProxy(GuiHostedWindowData* data, INativeWindow* nativeWindow);
-		extern Ptr<IGuiHostedWindowProxy>		CreateNonMainHostedWindowProxy(GuiHostedWindowData* data);
+		extern Ptr<IGuiHostedWindowProxy>		CreateNonMainHostedWindowProxy(GuiHostedWindowData* data, INativeWindow* nativeWindow);
 
 /***********************************************************************
 GuiHostedWindow
@@ -7811,7 +7922,7 @@ GuiHostedWindow
 			~GuiHostedWindow();
 
 			// =============================================================
-			// INativeWindowListener
+			// INativeWindow
 			// =============================================================
 
 			bool							IsActivelyRefreshing() override;
@@ -7885,6 +7996,439 @@ GuiHostedWindow
 			void							RedrawContent() override;
 		};
 	}
+}
+
+#endif
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEGRAPHICS.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Remote Window
+
+Interfaces:
+  GuiRemoteController
+
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_GUIREMOTEGRAPHICS
+#define VCZH_PRESENTATION_GUIREMOTEGRAPHICS
+
+
+namespace vl::presentation
+{
+	class GuiRemoteController;
+
+	namespace elements
+	{
+/***********************************************************************
+GuiRemoteGraphicsRenderTarget
+***********************************************************************/
+
+		class GuiRemoteGraphicsRenderTarget : public GuiGraphicsRenderTarget
+		{
+		protected:
+			GuiRemoteController*				remote;
+			NativeSize							canvasSize;
+
+			void								StartRenderingOnNativeWindow() override;
+			RenderTargetFailure					StopRenderingOnNativeWindow() override;
+
+			Size								GetCanvasSize() override;
+			void								AfterPushedClipper(Rect clipper, Rect validArea) override;
+			void								AfterPushedClipperAndBecameInvalid(Rect clipper) override;
+			void								AfterPoppedClipperAndBecameValid(Rect validArea, bool clipperExists) override;
+			void								AfterPoppedClipper(Rect validArea, bool clipperExists) override;
+		public:
+			GuiRemoteGraphicsRenderTarget(GuiRemoteController* _remote);
+			~GuiRemoteGraphicsRenderTarget();
+		};
+
+/***********************************************************************
+GuiRemoteGraphicsResourceManager
+***********************************************************************/
+
+		class GuiRemoteGraphicsResourceManager : public GuiGraphicsResourceManager
+		{
+		protected:
+			GuiRemoteController*				remote;
+			GuiRemoteGraphicsRenderTarget		renderTarget;
+
+		public:
+			GuiRemoteGraphicsResourceManager(GuiRemoteController* _remote);
+			~GuiRemoteGraphicsResourceManager();
+
+			// =============================================================
+			// IGuiGraphicsResourceManager
+			// =============================================================
+
+			IGuiGraphicsRenderTarget*			GetRenderTarget(INativeWindow* window) override;
+			void								RecreateRenderTarget(INativeWindow* window) override;
+			void								ResizeRenderTarget(INativeWindow* window) override;
+			IGuiGraphicsLayoutProvider*			GetLayoutProvider() override;
+		};
+	}
+}
+
+#endif
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEPROTOCOLSCHEMASHARED.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Remote Window
+
+Interfaces:
+  IGuiRemoteProtocol
+
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_GUIREMOTECONTROLLER_REMOTEPROTOCOLSCHEMASHARED
+#define VCZH_PRESENTATION_GUIREMOTECONTROLLER_REMOTEPROTOCOLSCHEMASHARED
+
+
+namespace vl::presentation::remoteprotocol
+{
+	template<typename T>
+	struct JsonHelper
+	{
+		static Ptr<glr::json::JsonNode> ToJson(const T& value);
+		static void ConvertJsonToCustomType(Ptr<glr::json::JsonNode> node, T& value);
+	};
+
+	template<typename T>
+	Ptr<glr::json::JsonNode> ConvertCustomTypeToJson(const T& value)
+	{
+		return JsonHelper<T>::ToJson(value);
+	}
+
+	template<> Ptr<glr::json::JsonNode> ConvertCustomTypeToJson<bool>(const bool& value);
+	template<> Ptr<glr::json::JsonNode> ConvertCustomTypeToJson<vint>(const vint& value);
+	template<> Ptr<glr::json::JsonNode> ConvertCustomTypeToJson<float>(const float& value);
+	template<> Ptr<glr::json::JsonNode> ConvertCustomTypeToJson<double>(const double& value);
+	template<> Ptr<glr::json::JsonNode> ConvertCustomTypeToJson<WString>(const WString& value);
+	template<> Ptr<glr::json::JsonNode> ConvertCustomTypeToJson<wchar_t>(const wchar_t& value);
+	template<> Ptr<glr::json::JsonNode> ConvertCustomTypeToJson<VKEY>(const VKEY& value);
+
+	template<typename T>
+	void ConvertJsonToCustomType(Ptr<glr::json::JsonNode> node, T& value)
+	{
+		return JsonHelper<T>::FromJson(node, value);
+	}
+
+	template<> void ConvertJsonToCustomType<bool>(Ptr<glr::json::JsonNode> node, bool& value);
+	template<> void ConvertJsonToCustomType<vint>(Ptr<glr::json::JsonNode> node, vint& value);
+	template<> void ConvertJsonToCustomType<float>(Ptr<glr::json::JsonNode> node, float& value);
+	template<> void ConvertJsonToCustomType<double>(Ptr<glr::json::JsonNode> node, double& value);
+	template<> void ConvertJsonToCustomType<WString>(Ptr<glr::json::JsonNode> node, WString& value);
+	template<> void ConvertJsonToCustomType<wchar_t>(Ptr<glr::json::JsonNode> node, wchar_t& value);
+	template<> void ConvertJsonToCustomType<VKEY>(Ptr<glr::json::JsonNode> node, VKEY& value);
+
+	template<typename T>
+	void ConvertCustomTypeToJsonField(Ptr<glr::json::JsonObject> node, const wchar_t* name, const T& value)
+	{
+		auto field = Ptr(new glr::json::JsonObjectField);
+		field->name.value = WString::Unmanaged(name);
+		field->value = ConvertCustomTypeToJson(value);
+		node->fields.Add(field);
+	}
+
+	template<typename T>
+	struct JsonHelper<Ptr<collections::List<T>>>
+	{
+		static Ptr<glr::json::JsonNode> ToJson(const Ptr<collections::List<T>>& value)
+		{
+			if (!value)
+			{
+				auto node = Ptr(new glr::json::JsonLiteral);
+				node->value = glr::json::JsonLiteralValue::Null;
+				return node;
+			}
+			else
+			{
+				auto node = Ptr(new glr::json::JsonArray);
+				for (auto&& item : *value.Obj())
+				{
+					node->items.Add(ConvertCustomTypeToJson(item));
+				}
+				return node;
+			}
+		}
+
+		static void FromJson(Ptr<glr::json::JsonNode> node, Ptr<collections::List<T>>& value)
+		{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<T>(Ptr<JsonNode>, Ptr<List<T>>&)#"
+			if (auto jsonLiteral = node.Cast<glr::json::JsonLiteral>())
+			{
+				if (jsonLiteral->value == glr::json::JsonLiteralValue::Null)
+				{
+					value = {};
+					return;
+				}
+			}
+			else if (auto jsonArray = node.Cast<glr::json::JsonArray>())
+			{
+				value = Ptr(new collections::List<T>);
+				for (auto jsonItem : jsonArray->items)
+				{
+					T item;
+					ConvertJsonToCustomType(jsonItem, item);
+					value->Add(std::move(item));
+				}
+				return;
+			}
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+#undef ERROR_MESSAGE_PREFIX
+		}
+	};
+}
+
+#endif
+
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\PROTOCOL\GENERATED\GUIREMOTEPROTOCOLSCHEMA.H
+***********************************************************************/
+/***********************************************************************
+This file is generated by : Vczh GacUI Remote Protocol Generator
+Licensed under https ://github.com/vczh-libraries/License
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_GUIREMOTECONTROLLER_REMOTEPROTOCOLSCHEMA
+#define VCZH_PRESENTATION_GUIREMOTECONTROLLER_REMOTEPROTOCOLSCHEMA
+
+
+namespace vl::presentation::remoteprotocol
+{
+	enum class IOMouseButton
+	{
+		Left,
+		Middle,
+		Right,
+	};
+
+	struct FontConfig
+	{
+		::vl::presentation::FontProperties defaultFont;
+		::vl::Ptr<::vl::collections::List<::vl::WString>> supportedFonts;
+	};
+
+	struct ScreenConfig
+	{
+		::vl::presentation::NativeRect bounds;
+		::vl::presentation::NativeRect clientBounds;
+		double scalingX;
+		double scalingY;
+	};
+
+	struct IOMouseInfoWithButton
+	{
+		vl::presentation::remoteprotocol::IOMouseButton button;
+		::vl::presentation::NativeWindowMouseInfo info;
+	};
+
+	struct GlobalShortcutKey
+	{
+		::vl::vint id;
+		bool ctrl;
+		bool shift;
+		bool alt;
+		::vl::presentation::VKEY code;
+	};
+
+	struct WindowSizingConfig
+	{
+		::vl::presentation::NativeRect bounds;
+		::vl::presentation::NativeRect clientBounds;
+		::vl::presentation::INativeWindow::WindowSizeState sizeState;
+		::vl::presentation::NativeMargin customFramePadding;
+	};
+
+	struct WindowShowing
+	{
+		bool activate;
+		::vl::presentation::INativeWindow::WindowSizeState sizeState;
+	};
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<vl::presentation::remoteprotocol::IOMouseButton>(const vl::presentation::remoteprotocol::IOMouseButton & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::INativeWindow::WindowSizeState>(const ::vl::presentation::INativeWindow::WindowSizeState & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeCoordinate>(const ::vl::presentation::NativeCoordinate & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativePoint>(const ::vl::presentation::NativePoint & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeSize>(const ::vl::presentation::NativeSize & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeRect>(const ::vl::presentation::NativeRect & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeMargin>(const ::vl::presentation::NativeMargin & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::FontProperties>(const ::vl::presentation::FontProperties & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<vl::presentation::remoteprotocol::FontConfig>(const vl::presentation::remoteprotocol::FontConfig & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<vl::presentation::remoteprotocol::ScreenConfig>(const vl::presentation::remoteprotocol::ScreenConfig & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeWindowMouseInfo>(const ::vl::presentation::NativeWindowMouseInfo & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<vl::presentation::remoteprotocol::IOMouseInfoWithButton>(const vl::presentation::remoteprotocol::IOMouseInfoWithButton & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeWindowKeyInfo>(const ::vl::presentation::NativeWindowKeyInfo & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeWindowCharInfo>(const ::vl::presentation::NativeWindowCharInfo & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<vl::presentation::remoteprotocol::GlobalShortcutKey>(const vl::presentation::remoteprotocol::GlobalShortcutKey & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<vl::presentation::remoteprotocol::WindowSizingConfig>(const vl::presentation::remoteprotocol::WindowSizingConfig & value);
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<vl::presentation::remoteprotocol::WindowShowing>(const vl::presentation::remoteprotocol::WindowShowing & value);
+
+	template<> void ConvertJsonToCustomType<vl::presentation::remoteprotocol::IOMouseButton>(vl::Ptr<vl::glr::json::JsonNode> node, vl::presentation::remoteprotocol::IOMouseButton& value);
+	template<> void ConvertJsonToCustomType<::vl::presentation::INativeWindow::WindowSizeState>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::INativeWindow::WindowSizeState& value);
+	template<> void ConvertJsonToCustomType<::vl::presentation::NativeCoordinate>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeCoordinate& value);
+	template<> void ConvertJsonToCustomType<::vl::presentation::NativePoint>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativePoint& value);
+	template<> void ConvertJsonToCustomType<::vl::presentation::NativeSize>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeSize& value);
+	template<> void ConvertJsonToCustomType<::vl::presentation::NativeRect>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeRect& value);
+	template<> void ConvertJsonToCustomType<::vl::presentation::NativeMargin>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeMargin& value);
+	template<> void ConvertJsonToCustomType<::vl::presentation::FontProperties>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::FontProperties& value);
+	template<> void ConvertJsonToCustomType<vl::presentation::remoteprotocol::FontConfig>(vl::Ptr<vl::glr::json::JsonNode> node, vl::presentation::remoteprotocol::FontConfig& value);
+	template<> void ConvertJsonToCustomType<vl::presentation::remoteprotocol::ScreenConfig>(vl::Ptr<vl::glr::json::JsonNode> node, vl::presentation::remoteprotocol::ScreenConfig& value);
+	template<> void ConvertJsonToCustomType<::vl::presentation::NativeWindowMouseInfo>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeWindowMouseInfo& value);
+	template<> void ConvertJsonToCustomType<vl::presentation::remoteprotocol::IOMouseInfoWithButton>(vl::Ptr<vl::glr::json::JsonNode> node, vl::presentation::remoteprotocol::IOMouseInfoWithButton& value);
+	template<> void ConvertJsonToCustomType<::vl::presentation::NativeWindowKeyInfo>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeWindowKeyInfo& value);
+	template<> void ConvertJsonToCustomType<::vl::presentation::NativeWindowCharInfo>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeWindowCharInfo& value);
+	template<> void ConvertJsonToCustomType<vl::presentation::remoteprotocol::GlobalShortcutKey>(vl::Ptr<vl::glr::json::JsonNode> node, vl::presentation::remoteprotocol::GlobalShortcutKey& value);
+	template<> void ConvertJsonToCustomType<vl::presentation::remoteprotocol::WindowSizingConfig>(vl::Ptr<vl::glr::json::JsonNode> node, vl::presentation::remoteprotocol::WindowSizingConfig& value);
+	template<> void ConvertJsonToCustomType<vl::presentation::remoteprotocol::WindowShowing>(vl::Ptr<vl::glr::json::JsonNode> node, vl::presentation::remoteprotocol::WindowShowing& value);
+
+#define GACUI_REMOTEPROTOCOL_MESSAGES(HANDLER)\
+	HANDLER(ControllerGetFontConfig, void, vl::presentation::remoteprotocol::FontConfig, NOREQ, RES, NODROP)\
+	HANDLER(ControllerGetScreenConfig, void, vl::presentation::remoteprotocol::ScreenConfig, NOREQ, RES, NODROP)\
+	HANDLER(ControllerConnectionEstablished, void, void, NOREQ, NORES, NODROP)\
+	HANDLER(ControllerConnectionStopped, void, void, NOREQ, NORES, NODROP)\
+	HANDLER(IOUpdateGlobalShortcutKey, ::vl::Ptr<::vl::collections::List<vl::presentation::remoteprotocol::GlobalShortcutKey>>, void, REQ, NORES, NODROP)\
+	HANDLER(IORequireCapture, void, void, NOREQ, NORES, NODROP)\
+	HANDLER(IOReleaseCapture, void, void, NOREQ, NORES, NODROP)\
+	HANDLER(IOIsKeyPressing, ::vl::presentation::VKEY, bool, REQ, RES, NODROP)\
+	HANDLER(IOIsKeyToggled, ::vl::presentation::VKEY, bool, REQ, RES, NODROP)\
+	HANDLER(WindowGetBounds, void, vl::presentation::remoteprotocol::WindowSizingConfig, NOREQ, RES, NODROP)\
+	HANDLER(WindowNotifySetTitle, ::vl::WString, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetEnabled, bool, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetTopMost, bool, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetShowInTaskBar, bool, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetCustomFrameMode, bool, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetMaximizedBox, bool, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetMinimizedBox, bool, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetBorder, bool, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetSizeBox, bool, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetIconVisible, bool, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetTitleBar, bool, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetBounds, ::vl::presentation::NativeRect, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifySetClientSize, ::vl::presentation::NativeSize, void, REQ, NORES, DROPREP)\
+	HANDLER(WindowNotifyActivate, void, void, NOREQ, NORES, DROPREP)\
+	HANDLER(WindowNotifyShow, vl::presentation::remoteprotocol::WindowShowing, void, REQ, NORES, DROPREP)\
+
+#define GACUI_REMOTEPROTOCOL_EVENTS(HANDLER)\
+	HANDLER(ControllerConnect, void, NOREQ, NODROP)\
+	HANDLER(ControllerDisconnect, void, NOREQ, NODROP)\
+	HANDLER(ControllerRequestExit, void, NOREQ, NODROP)\
+	HANDLER(ControllerForceExit, void, NOREQ, NODROP)\
+	HANDLER(ControllerScreenUpdated, vl::presentation::remoteprotocol::ScreenConfig, REQ, DROPREP)\
+	HANDLER(IOGlobalShortcutKey, ::vl::vint, REQ, NODROP)\
+	HANDLER(IOButtonDown, vl::presentation::remoteprotocol::IOMouseInfoWithButton, REQ, NODROP)\
+	HANDLER(IOButtonDoubleClick, vl::presentation::remoteprotocol::IOMouseInfoWithButton, REQ, NODROP)\
+	HANDLER(IOButtonUp, vl::presentation::remoteprotocol::IOMouseInfoWithButton, REQ, NODROP)\
+	HANDLER(IOHWheel, ::vl::presentation::NativeWindowMouseInfo, REQ, NODROP)\
+	HANDLER(IOVWheel, ::vl::presentation::NativeWindowMouseInfo, REQ, NODROP)\
+	HANDLER(IOMouseMoving, ::vl::presentation::NativeWindowMouseInfo, REQ, DROPCON)\
+	HANDLER(IOMouseEntered, void, NOREQ, NODROP)\
+	HANDLER(IOMouseLeaved, void, NOREQ, NODROP)\
+	HANDLER(IOKeyDown, ::vl::presentation::NativeWindowKeyInfo, REQ, NODROP)\
+	HANDLER(IOKeyUp, ::vl::presentation::NativeWindowKeyInfo, REQ, NODROP)\
+	HANDLER(IOChar, ::vl::presentation::NativeWindowCharInfo, REQ, NODROP)\
+	HANDLER(WindowBoundsUpdated, vl::presentation::remoteprotocol::WindowSizingConfig, REQ, DROPREP)\
+	HANDLER(WindowActivatedUpdated, bool, REQ, DROPREP)\
+
+}
+
+#endif
+
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEPROTOCOL.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Remote Window
+
+Interfaces:
+  IGuiRemoteProtocol
+
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_GUIREMOTECONTROLLER_GUIREMOTEPROTOCOL
+#define VCZH_PRESENTATION_GUIREMOTECONTROLLER_GUIREMOTEPROTOCOL
+
+
+namespace vl::presentation
+{
+/***********************************************************************
+IGuiRemoteProtocolEvents
+***********************************************************************/
+
+	class IGuiRemoteProtocolEvents : public virtual Interface
+	{
+	public:
+#define EVENT_NOREQ(NAME, REQUEST)					virtual void On ## NAME() = 0;
+#define EVENT_REQ(NAME, REQUEST)					virtual void On ## NAME(const REQUEST& arguments) = 0;
+#define EVENT_HANDLER(NAME, REQUEST, REQTAG, ...)	EVENT_ ## REQTAG(NAME, REQUEST)
+		GACUI_REMOTEPROTOCOL_EVENTS(EVENT_HANDLER)
+#undef EVENT_HANDLER
+#undef EVENT_REQ
+#undef EVENT_NOREQ
+
+#define MESSAGE_NORES(NAME, RESPONSE)
+#define MESSAGE_RES(NAME, RESPONSE)										virtual void Respond ## NAME(vint id, const RESPONSE& arguments) = 0;
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_RES
+#undef MESSAGE_NORES
+	};
+
+/***********************************************************************
+IGuiRemoteProtocolMessages
+***********************************************************************/
+
+	class IGuiRemoteProtocolMessages : public virtual Interface
+	{
+	public:
+#define MESSAGE_NOREQ_NORES(NAME, REQUEST, RESPONSE)					virtual void Request ## NAME() = 0;
+#define MESSAGE_NOREQ_RES(NAME, REQUEST, RESPONSE)						virtual void Request ## NAME(vint id) = 0;
+#define MESSAGE_REQ_NORES(NAME, REQUEST, RESPONSE)						virtual void Request ## NAME(const REQUEST& arguments) = 0;
+#define MESSAGE_REQ_RES(NAME, REQUEST, RESPONSE)						virtual void Request ## NAME(vint id, const REQUEST& arguments) = 0;
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## REQTAG ## _ ## RESTAG(NAME, REQUEST, RESPONSE)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_REQ_RES
+#undef MESSAGE_REQ_NORES
+#undef MESSAGE_NOREQ_RES
+#undef MESSAGE_NOREQ_NORES
+	};
+
+/***********************************************************************
+IGuiRemoteProtocolConfig
+***********************************************************************/
+
+	class IGuiRemoteProtocolConfig : public virtual Interface
+	{
+	public:
+		virtual WString			GetExecutablePath() = 0;
+	};
+
+/***********************************************************************
+IGuiRemoteProtocol
+***********************************************************************/
+
+	class IGuiRemoteProtocol
+		: public virtual IGuiRemoteProtocolConfig
+		, public virtual IGuiRemoteProtocolMessages
+	{
+	public:
+		virtual void			Initialize(IGuiRemoteProtocolEvents* events) = 0;
+		virtual void			Submit() = 0;
+		virtual void			ProcessRemoteEvents() = 0;
+	};
 }
 
 #endif
@@ -22294,6 +22838,13 @@ using namespace vl::presentation::templates;
 // GacUI Compiler
 extern int SetupGacGenNativeController();
 
+// Remote
+namespace vl::presentation
+{
+	class IGuiRemoteProtocol;
+}
+extern int SetupRemoteNativeController(vl::presentation::IGuiRemoteProtocol* protocol);
+
 // Windows
 extern int SetupWindowsGDIRenderer();
 extern int SetupWindowsDirect2DRenderer();
@@ -25809,6 +26360,443 @@ GuiHostedController
 			INativeWindowService*			WindowService() override;
 		};
 	}
+}
+
+#endif
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEEVENTS.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Remote Window
+
+Interfaces:
+  GuiRemoteEvent
+
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_GUIREMOTECONTROLLER_GUIREMOTEEVENT
+#define VCZH_PRESENTATION_GUIREMOTECONTROLLER_GUIREMOTEEVENT
+
+
+namespace vl::presentation
+{
+	class GuiRemoteController;
+
+/***********************************************************************
+GuiRemoteMessages
+***********************************************************************/
+
+	class GuiRemoteMessages : public Object
+	{
+	protected:
+		GuiRemoteController*						remote;
+		vint										id = 0;
+
+#define MESSAGE_NORES(NAME, RESPONSE)
+#define MESSAGE_RES(NAME, RESPONSE)										collections::Dictionary<vint, RESPONSE> response ## NAME;
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_RES
+#undef MESSAGE_NORES
+
+	public:
+		GuiRemoteMessages(GuiRemoteController* _remote);
+		~GuiRemoteMessages();
+
+		void	Submit();
+		void	ClearResponses();
+
+		// messages
+
+#define MESSAGE_NOREQ_NORES(NAME, REQUEST, RESPONSE)					void Request ## NAME();
+#define MESSAGE_NOREQ_RES(NAME, REQUEST, RESPONSE)						vint Request ## NAME();
+#define MESSAGE_REQ_NORES(NAME, REQUEST, RESPONSE)						void Request ## NAME(const REQUEST& arguments);
+#define MESSAGE_REQ_RES(NAME, REQUEST, RESPONSE)						vint Request ## NAME(const REQUEST& arguments);
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## REQTAG ## _ ## RESTAG(NAME, REQUEST, RESPONSE)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_REQ_RES
+#undef MESSAGE_REQ_NORES
+#undef MESSAGE_NOREQ_RES
+#undef MESSAGE_NOREQ_NORES
+
+#define MESSAGE_NORES(NAME, RESPONSE)
+#define MESSAGE_RES(NAME, RESPONSE)\
+		void Respond ## NAME(vint id, const RESPONSE& arguments);\
+		const RESPONSE& Retrieve ## NAME(vint id);\
+
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
+			GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_RES
+#undef MESSAGE_NORES
+	};
+
+/***********************************************************************
+GuiRemoteEvents
+***********************************************************************/
+
+	class GuiRemoteEvents : public Object, public virtual IGuiRemoteProtocolEvents
+	{
+	protected:
+		GuiRemoteController*						remote;
+
+	public:
+		GuiRemoteEvents(GuiRemoteController* _remote);
+		~GuiRemoteEvents();
+
+		// =============================================================
+		// IGuiRemoteProtocolEvents
+		// =============================================================
+
+		// messages
+
+#define MESSAGE_NORES(NAME, RESPONSE)
+#define MESSAGE_RES(NAME, RESPONSE)										void Respond ## NAME(vint id, const RESPONSE& arguments) override;
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_RES
+#undef MESSAGE_NORES
+
+		void	ClearResponses();
+
+		// events
+
+#define EVENT_NOREQ(NAME, REQUEST)					void On ## NAME() override;
+#define EVENT_REQ(NAME, REQUEST)					void On ## NAME(const REQUEST& arguments) override;
+#define EVENT_HANDLER(NAME, REQUEST, REQTAG, ...)	EVENT_ ## REQTAG(NAME, REQUEST)
+		GACUI_REMOTEPROTOCOL_EVENTS(EVENT_HANDLER)
+#undef EVENT_HANDLER
+#undef EVENT_REQ
+#undef EVENT_NOREQ
+	};
+}
+
+#endif
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEWINDOW.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Remote Window
+
+Interfaces:
+  GuiRemoteController
+
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_GUIREMOTECONTROLLER_GUIREMOTEWINDOW
+#define VCZH_PRESENTATION_GUIREMOTECONTROLLER_GUIREMOTEWINDOW
+
+
+namespace vl::presentation
+{
+	class GuiRemoteController;
+
+/***********************************************************************
+GuiRemoteWindow
+***********************************************************************/
+
+	class GuiRemoteWindow : public Object, public virtual INativeWindow
+	{
+		friend class GuiRemoteEvents;
+		friend class GuiRemoteController;
+	protected:
+		GuiRemoteController*								remote;
+		GuiRemoteMessages&									remoteMessages;
+		GuiRemoteEvents&									remoteEvents;
+		collections::List<INativeWindowListener*>			listeners;
+		INativeWindow::WindowMode							windowMode = INativeWindow::Normal;
+
+		bool												disconnected = false;
+		remoteprotocol::WindowSizingConfig					remoteWindowSizingConfig;
+		bool												sizingConfigInvalidated = false;
+		double												scalingX = 1;
+		double												scalingY = 1;
+
+		WString							styleTitle;
+		INativeCursor*					styleCursor = nullptr;
+		NativePoint						styleCaret;
+		Ptr<GuiImageData>				styleIcon;
+		bool							styleEnabled = true;
+		bool							styleTopMost = false;
+
+		bool							styleMaximizedBox = true;
+		bool							styleMinimizedBox = true;
+		bool							styleBorder = true;
+		bool							styleSizeBox = true;
+		bool							styleIconVisible = true;
+		bool							styleTitleBar = true;
+		bool							styleShowInTaskBar = true;
+		bool							styleCustomFrameMode = false;
+		
+		bool							statusVisible = false;
+		bool							statusActivated = false;
+		bool							statusCapturing = false;
+
+		void							RequestGetBounds();
+		void							Opened();
+		void							SetActivated(bool activated);
+		void							ShowWithSizeState(bool activate, INativeWindow::WindowSizeState sizeState);
+
+		// =============================================================
+		// Events
+		// =============================================================
+
+		void							OnControllerConnect();
+		void							OnControllerDisconnect();
+		void							OnControllerScreenUpdated(const remoteprotocol::ScreenConfig& arguments);
+		void							OnWindowBoundsUpdated(const remoteprotocol::WindowSizingConfig& arguments);
+		void							OnWindowActivatedUpdated(bool activated);
+
+	public:
+		GuiRemoteWindow(GuiRemoteController* _remote);
+		~GuiRemoteWindow();
+
+		// =============================================================
+		// INativeWindow
+		// =============================================================
+
+		bool							IsActivelyRefreshing() override;
+		NativeSize						GetRenderingOffset() override;
+		Point							Convert(NativePoint value) override;
+		NativePoint						Convert(Point value) override;
+		Size							Convert(NativeSize value) override;
+		NativeSize						Convert(Size value) override;
+		Margin							Convert(NativeMargin value) override;
+		NativeMargin					Convert(Margin value) override;
+		NativeRect						GetBounds() override;
+		void							SetBounds(const NativeRect& bounds) override;
+		NativeSize						GetClientSize() override;
+		void							SetClientSize(NativeSize size) override;
+		NativeRect						GetClientBoundsInScreen() override;
+		WString							GetTitle() override;
+		void							SetTitle(const WString& title) override;
+		INativeCursor*					GetWindowCursor() override;
+		void							SetWindowCursor(INativeCursor* cursor) override;
+		NativePoint						GetCaretPoint() override;
+		void							SetCaretPoint(NativePoint point) override;
+		INativeWindow*					GetParent() override;
+		void							SetParent(INativeWindow* parent) override;
+		WindowMode						GetWindowMode() override;
+		void							EnableCustomFrameMode() override;
+		void							DisableCustomFrameMode() override;
+		bool							IsCustomFrameModeEnabled() override;
+		NativeMargin					GetCustomFramePadding() override;
+		Ptr<GuiImageData>				GetIcon() override;
+		void							SetIcon(Ptr<GuiImageData> icon) override;
+		WindowSizeState					GetSizeState() override;
+		void							Show() override;
+		void							ShowDeactivated() override;
+		void							ShowRestored() override;
+		void							ShowMaximized() override;
+		void							ShowMinimized() override;
+		void							Hide(bool closeWindow) override;
+		bool							IsVisible() override;
+		void							Enable() override;
+		void							Disable() override;
+		bool							IsEnabled() override;
+		void							SetActivate() override;
+		bool							IsActivated() override;
+		bool							IsRenderingAsActivated() override;
+		void							ShowInTaskBar() override;
+		void							HideInTaskBar() override;
+		bool							IsAppearedInTaskBar() override;
+		void							EnableActivate() override;
+		void							DisableActivate() override;
+		bool							IsEnabledActivate() override;
+		bool							RequireCapture() override;
+		bool							ReleaseCapture() override;
+		bool							IsCapturing() override;
+		bool							GetMaximizedBox() override;
+		void							SetMaximizedBox(bool visible) override;
+		bool							GetMinimizedBox() override;
+		void							SetMinimizedBox(bool visible) override;
+		bool							GetBorder() override;
+		void							SetBorder(bool visible) override;
+		bool							GetSizeBox() override;
+		void							SetSizeBox(bool visible) override;
+		bool							GetIconVisible() override;
+		void							SetIconVisible(bool visible) override;
+		bool							GetTitleBar() override;
+		void							SetTitleBar(bool visible) override;
+		bool							GetTopMost() override;
+		void							SetTopMost(bool topmost) override;
+		void							SupressAlt() override;
+		bool							InstallListener(INativeWindowListener* listener) override;
+		bool							UninstallListener(INativeWindowListener* listener) override;
+		void							RedrawContent() override;
+	};
+}
+
+#endif
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTECONTROLLER.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Remote Window
+
+Interfaces:
+  GuiRemoteController
+
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_GUIREMOTECONTROLLER
+#define VCZH_PRESENTATION_GUIREMOTECONTROLLER
+
+
+namespace vl::presentation
+{
+/***********************************************************************
+GuiRemoteController
+***********************************************************************/
+
+	class GuiRemoteController
+		: public Object
+		, public INativeController
+		, protected INativeResourceService
+		, protected INativeInputService
+		, protected INativeScreenService
+		, protected INativeScreen
+		, protected INativeWindowService
+	{
+		friend class GuiRemoteMessages;
+		friend class GuiRemoteEvents;
+		friend class GuiRemoteWindow;
+		friend class elements::GuiRemoteGraphicsRenderTarget;
+		friend class elements::GuiRemoteGraphicsResourceManager;
+		using CursorMap = collections::Dictionary<INativeCursor::SystemCursorType, Ptr<INativeCursor>>;
+		using HotKeyEntry = Tuple<bool, bool, bool, VKEY>;
+		using HotKeySet = collections::SortedList<HotKeyEntry>;
+		using HotKeyIds = collections::Dictionary<vint, HotKeyEntry>;
+	protected:
+		IGuiRemoteProtocol*				remoteProtocol;
+		GuiRemoteMessages				remoteMessages;
+		GuiRemoteEvents					remoteEvents;
+		GuiRemoteWindow					remoteWindow;
+		SharedCallbackService			callbackService;
+		SharedAsyncService				asyncService;
+		bool							applicationRunning = false;
+		bool							connectionForcedToStop = false;
+		bool							connectionStopped = false;
+
+		remoteprotocol::FontConfig		remoteFontConfig;
+		remoteprotocol::ScreenConfig	remoteScreenConfig;
+
+		vint							usedHotKeys = (vint)NativeGlobalShortcutKeyResult::ValidIdBegins;
+		HotKeySet						hotKeySet;
+		HotKeyIds						hotKeyIds;
+
+		CursorMap						cursors;
+		bool							timerEnabled = false;
+		bool							windowCreated = false;
+		bool							windowDestroyed = false;
+
+		collections::Dictionary<VKEY, WString>		keyNames;
+		collections::Dictionary<WString, VKEY>		keyCodes;
+		bool										keyInitialized = false;
+
+		// =============================================================
+		// INativeResourceService
+		// =============================================================
+
+		INativeCursor*					GetSystemCursor(INativeCursor::SystemCursorType type) override;
+		INativeCursor*					GetDefaultSystemCursor() override;
+		FontProperties					GetDefaultFont() override;
+		void							SetDefaultFont(const FontProperties& value) override;
+		void							EnumerateFonts(collections::List<WString>& fonts) override;
+
+		// =============================================================
+		// INativeInputService
+		// =============================================================
+
+		void							StartTimer() override;
+		void							StopTimer() override;
+		bool							IsTimerEnabled() override;
+		bool							IsKeyPressing(VKEY code) override;
+		bool							IsKeyToggled(VKEY code) override;
+		void							EnsureKeyInitialized();
+		WString							GetKeyName(VKEY code) override;
+		VKEY							GetKey(const WString& name) override;
+		void							UpdateGlobalShortcutKey();
+		vint							RegisterGlobalShortcutKey(bool ctrl, bool shift, bool alt, VKEY key) override;
+		bool							UnregisterGlobalShortcutKey(vint id) override;
+
+		// =============================================================
+		// INativeScreenService
+		// =============================================================
+
+		vint							GetScreenCount() override;
+		INativeScreen*					GetScreen(vint index) override;
+		INativeScreen*					GetScreen(INativeWindow* window) override;
+
+		// =============================================================
+		// INativeScreen
+		// =============================================================
+
+		NativeRect						GetBounds() override;
+		NativeRect						GetClientBounds() override;
+		WString							GetName() override;
+		bool							IsPrimary() override;
+		double							GetScalingX() override;
+		double							GetScalingY() override;
+
+		// =============================================================
+		// INativeWindowService
+		// =============================================================
+			
+		const NativeWindowFrameConfig&	GetMainWindowFrameConfig() override;
+		const NativeWindowFrameConfig&	GetNonMainWindowFrameConfig() override;
+		INativeWindow*					CreateNativeWindow(INativeWindow::WindowMode windowMode) override;
+		void							DestroyNativeWindow(INativeWindow* window) override;
+		INativeWindow*					GetMainWindow() override;
+		INativeWindow*					GetWindow(NativePoint location) override;
+		void							Run(INativeWindow* window) override;
+		bool							RunOneCycle() override;
+
+		// =============================================================
+		// Events
+		// =============================================================
+
+		void							OnControllerConnect();
+		void							OnControllerDisconnect();
+		void							OnControllerRequestExit();
+		void							OnControllerForceExit();
+		void							OnControllerScreenUpdated(const remoteprotocol::ScreenConfig& arguments);
+
+	public:
+		GuiRemoteController(IGuiRemoteProtocol* _remoteProtocol);
+		~GuiRemoteController();
+
+		void							Initialize();
+		void							Finalize();
+
+		// =============================================================
+		// INativeController
+		// =============================================================
+
+		INativeCallbackService*			CallbackService() override;
+		INativeResourceService*			ResourceService() override;
+		INativeAsyncService*			AsyncService() override;
+		INativeClipboardService*		ClipboardService() override;
+		INativeImageService*			ImageService() override;
+		INativeInputService*			InputService() override;
+		INativeDialogService*			DialogService() override;
+		WString							GetExecutablePath() override;
+			
+		INativeScreenService*			ScreenService() override;
+		INativeWindowService*			WindowService() override;
+	};
 }
 
 #endif

@@ -10462,6 +10462,1825 @@ namespace vl::presentation::instancequery
 
 
 /***********************************************************************
+.\REMOTEPROTOCOL\GUIREMOTEPROTOCOLCOMPILER.CPP
+***********************************************************************/
+
+namespace vl::presentation
+{
+	using namespace collections;
+	using namespace remoteprotocol;
+
+/***********************************************************************
+CheckRemoteProtocolSchema
+***********************************************************************/
+
+	class GuiRpCheckSchemaVisitor
+		: public Object
+		, public GuiRpType::IVisitor
+		, public GuiRpDeclaration::IVisitor
+	{
+	protected:
+		Ptr<GuiRpSymbols>			symbols;
+		List<GuiRpError>&			errors;
+
+	public:
+		GuiRpCheckSchemaVisitor(Ptr<GuiRpSymbols> _symbols, List<GuiRpError>& _errors)
+			: symbols(_symbols)
+			, errors(_errors)
+		{
+		}
+
+		// GuiRpType::IVisitor
+
+		void Visit(GuiRpPrimitiveType* node) override
+		{
+		}
+
+		void Visit(GuiRpReferenceType* node) override
+		{
+			if (!symbols->enumDecls.Keys().Contains(node->name.value) && !symbols->structDecls.Keys().Contains(node->name.value))
+			{
+				errors.Add({ node->name.codeRange,L"Custom type \"" + node->name.value + L"\" not found." });
+			}
+		}
+
+		void Visit(GuiRpArrayType* node) override
+		{
+			node->element->Accept(this);
+		}
+
+		// GuiRpDeclaration::IVisitor
+
+		bool EnsureTypeUndefined(const glr::ParsingToken& name)
+		{
+			if (symbols->enumDecls.Keys().Contains(name.value))
+			{
+				errors.Add({ name.codeRange,L"Enum \"" + name.value + L"\" already defined." });
+				return false;
+			}
+			if (symbols->structDecls.Keys().Contains(name.value))
+			{
+				errors.Add({ name.codeRange,L"Struct \"" + name.value + L"\" already defined." });
+				return false;
+			}
+			return true;
+		}
+
+		void Visit(GuiRpEnumDecl* node) override
+		{
+			if (!EnsureTypeUndefined(node->name)) return;
+
+			SortedList<WString> memberNames;
+			for (auto member : node->members)
+			{
+				if (memberNames.Contains(member->name.value))
+				{
+					errors.Add({ member->name.codeRange,L"Enum member \"" + node->name.value + L"::" + member->name.value + L"\" already exists." });
+				}
+				else
+				{
+					memberNames.Add(member->name.value);
+				}
+			}
+
+			for (auto att : node->attributes)
+			{
+				if (att->name.value == L"@Cpp")
+				{
+					if (!att->cppType)
+					{
+						errors.Add({ att->name.codeRange,L"Missing parameter for attribute: \"" + att->name.value + L"\"." });
+					}
+					else
+					{
+						symbols->cppMapping.Add(node->name.value, att->cppType.value);
+					}
+				}
+				else
+				{
+					errors.Add({ att->name.codeRange,L"Unsupported attribute: \"" + att->name.value + L"\" on enum \"" + node->name.value + L"\"." });
+				}
+			}
+			symbols->enumDecls.Add(node->name.value, node);
+		}
+
+		void Visit(GuiRpStructDecl* node) override
+		{
+			if (!EnsureTypeUndefined(node->name)) return;
+
+			SortedList<WString> memberNames;
+			for (auto member : node->members)
+			{
+				if (memberNames.Contains(member->name.value))
+				{
+					errors.Add({ member->name.codeRange,L"Struct member \"" + node->name.value + L"::" + member->name.value + L"\" already exists." });
+				}
+				else
+				{
+					memberNames.Add(member->name.value);
+				}
+				member->type->Accept(this);
+			}
+
+			for (auto att : node->attributes)
+			{
+				if (att->name.value == L"@Cpp")
+				{
+					if (!att->cppType)
+					{
+						errors.Add({ att->name.codeRange,L"Missing parameter for attribute: \"" + att->name.value + L"\"." });
+					}
+					else if (symbols->cppMapping.Keys().Contains(node->name.value))
+					{
+						errors.Add({ att->name.codeRange,L"Too many attributes: \"" + att->name.value + L"\"." });
+					}
+					else
+					{
+						symbols->cppMapping.Add(node->name.value, att->cppType.value);
+					}
+				}
+				else
+				{
+					errors.Add({ att->name.codeRange,L"Unsupported attribute: \"" + att->name.value + L"\" on struct \"" + node->name.value + L"\"." });
+				}
+			}
+			symbols->structDecls.Add(node->name.value, node);
+		}
+
+		void VisitDropAttribute(Ptr<remoteprotocol::GuiRpAttribute> att, const WString& name, SortedList<WString>& names)
+		{
+			if (names.Contains(name))
+			{
+				errors.Add({ att->name.codeRange,L"Too many attributes: \"" + att->name.value + L"\"." });
+			}
+			else
+			{
+				names.Add(name);
+			}
+		}
+
+		void Visit(GuiRpMessageDecl* node) override
+		{
+			if (symbols->messageDecls.Keys().Contains(node->name.value))
+			{
+				errors.Add({ node->name.codeRange,L"Message \"" + node->name.value + L"\" already exists." });
+				return;
+			}
+
+			if (node->request)
+			{
+				node->request->type->Accept(this);
+			}
+
+			if (node->response)
+			{
+				node->response->type->Accept(this);
+			}
+
+			for (auto att : node->attributes)
+			{
+				if (att->name.value == L"@DropRepeat")
+				{
+					if (node->response)
+					{
+						errors.Add({ node->name.codeRange,L"@DropRepeat cannot be used on message \"" + node->name.value + L"\" since it has response." });
+					}
+					VisitDropAttribute(att, node->name.value, symbols->dropRepeatDeclNames);
+				}
+				else
+				{
+					errors.Add({ att->name.codeRange,L"Unsupported attribute: \"" + att->name.value + L"\" on message \"" + node->name.value + L"\"." });
+				}
+			}
+			symbols->messageDecls.Add(node->name.value, node);
+		}
+
+		void Visit(GuiRpEventDecl* node) override
+		{
+			if (symbols->eventDecls.Keys().Contains(node->name.value))
+			{
+				errors.Add({ node->name.codeRange,L"Event \"" + node->name.value + L"\" already exists." });
+				return;
+			}
+
+			if (node->request)
+			{
+				node->request->type->Accept(this);
+			}
+
+			for (auto att : node->attributes)
+			{
+				if (att->name.value == L"@DropRepeat")
+				{
+					VisitDropAttribute(att, node->name.value, symbols->dropRepeatDeclNames);
+				}
+				else if (att->name.value == L"@DropConsecutive")
+				{
+					VisitDropAttribute(att, node->name.value, symbols->dropConsecutiveDeclNames);
+				}
+				else
+				{
+					errors.Add({ att->name.codeRange,L"Unsupported attribute: \"" + att->name.value + L"\" on event \"" + node->name.value + L"\"." });
+				}
+			}
+
+			if (symbols->dropRepeatDeclNames.Contains(node->name.value) && symbols->dropConsecutiveDeclNames.Contains(node->name.value))
+			{
+				errors.Add({ node->name.codeRange,L"@DropRepeat and @DropConsecutive cannot be used together on event \"" + node->name.value + L"\"." });
+			}
+			symbols->eventDecls.Add(node->name.value, node);
+		}
+	};
+
+	Ptr<GuiRpSymbols> CheckRemoteProtocolSchema(Ptr<GuiRpSchema> schema, collections::List<GuiRpError>& errors)
+	{
+		auto symbols = Ptr(new GuiRpSymbols);
+		GuiRpCheckSchemaVisitor visitor(symbols, errors);
+		for (auto decl : schema->declarations)
+		{
+			decl->Accept(&visitor);
+		}
+		return symbols;
+	}
+
+/***********************************************************************
+GenerateRemoteProtocolHeaderFile
+***********************************************************************/
+
+	class GuiRpPrintTypeVisitor : public Object, public GuiRpType::IVisitor
+	{
+	protected:
+		Ptr<GuiRpSymbols>			symbols;
+		GuiRpCppConfig&				config;
+		stream::TextWriter&			writer;
+
+	public:
+		GuiRpPrintTypeVisitor(Ptr<GuiRpSymbols> _symbols, GuiRpCppConfig& _config, stream::TextWriter& _writer)
+			: symbols(_symbols)
+			, config(_config)
+			, writer(_writer)
+		{
+		}
+
+		// GuiRpType::IVisitor
+
+		void Visit(GuiRpPrimitiveType* node) override
+		{
+			switch (node->type)
+			{
+			case GuiRpPrimitiveTypes::Boolean:
+				writer.WriteString(L"bool");
+				break;
+			case GuiRpPrimitiveTypes::Integer:
+				writer.WriteString(L"::vl::vint");
+				break;
+			case GuiRpPrimitiveTypes::Float:
+				writer.WriteString(L"float");
+				break;
+			case GuiRpPrimitiveTypes::Double:
+				writer.WriteString(L"double");
+				break;
+			case GuiRpPrimitiveTypes::String:
+				writer.WriteString(L"::vl::WString");
+				break;
+			case GuiRpPrimitiveTypes::Char:
+				writer.WriteString(L"wchar_t");
+				break;
+			case GuiRpPrimitiveTypes::Key:
+				writer.WriteString(L"::vl::presentation::VKEY");
+				break;
+			default:
+				CHECK_FAIL(L"Unrecognized type");
+			}
+		}
+
+		static WString GetCppType(const WString& type, Ptr<GuiRpSymbols> symbols, GuiRpCppConfig& config)
+		{
+			vint index = symbols->cppMapping.Keys().IndexOf(type);
+			if (index == -1)
+			{
+				return config.cppNamespace + L"::" + type;
+			}
+			else
+			{
+				return symbols->cppMapping.Values()[index];
+			}
+		}
+
+		void Visit(GuiRpReferenceType* node) override
+		{
+			writer.WriteString(GetCppType(node->name.value, symbols, config));
+		}
+
+		void Visit(GuiRpArrayType* node) override
+		{
+			writer.WriteString(L"::vl::Ptr<::vl::collections::List<");
+			node->element->Accept(this);
+			writer.WriteString(L">>");
+		}
+	};
+
+	void GenerateSerializerFunctionHeader(const WString& type, bool semicolon, stream::TextWriter& writer)
+	{
+		writer.WriteString(L"\ttemplate<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<" + type + L">(const " + type + L" & value)");
+		writer.WriteLine(semicolon ? L";" : L"");
+	}
+
+	void GenerateDeserializerFunctionHeader(const WString& type, bool semicolon, stream::TextWriter& writer)
+	{
+		writer.WriteString(L"\ttemplate<> void ConvertJsonToCustomType<" + type + L">(vl::Ptr<vl::glr::json::JsonNode> node, " + type + L"& value)");
+		writer.WriteLine(semicolon ? L";" : L"");
+	}
+
+	void GenerateRemoteProtocolHeaderFile(Ptr<GuiRpSchema> schema, Ptr<GuiRpSymbols> symbols, GuiRpCppConfig& config, stream::TextWriter& writer)
+	{
+		writer.WriteLine(L"/***********************************************************************");
+		writer.WriteLine(L"This file is generated by : Vczh GacUI Remote Protocol Generator");
+		writer.WriteLine(L"Licensed under https ://github.com/vczh-libraries/License");
+		writer.WriteLine(L"***********************************************************************/");
+		writer.WriteLine(L"");
+		writer.WriteLine(L"#ifndef " + config.headerGuard);
+		writer.WriteLine(L"#define " + config.headerGuard);
+		writer.WriteLine(L"");
+		writer.WriteLine(L"#include \"" + config.headerInclude + L"\"");
+		writer.WriteLine(L"");
+		writer.WriteLine(L"namespace " + config.cppNamespace);
+		writer.WriteLine(L"{");
+
+		GuiRpPrintTypeVisitor printTypeVisitor(symbols, config, writer);
+
+		for (auto enumDecl : From(schema->declarations).FindType<GuiRpEnumDecl>())
+		{
+			if (!symbols->cppMapping.Keys().Contains(enumDecl->name.value))
+			{
+				writer.WriteLine(L"\tenum class " + enumDecl->name.value);
+				writer.WriteLine(L"\t{");
+				for (auto member : enumDecl->members)
+				{
+					writer.WriteLine(L"\t\t" + member->name.value + L",");
+				}
+				writer.WriteLine(L"\t};");
+				writer.WriteLine(L"");
+			}
+		}
+
+		for (auto structDecl : From(schema->declarations).FindType<GuiRpStructDecl>())
+		{
+			if (!symbols->cppMapping.Keys().Contains(structDecl->name.value))
+			{
+				writer.WriteLine(L"\tstruct " + structDecl->name.value);
+				writer.WriteLine(L"\t{");
+				for (auto member : structDecl->members)
+				{
+					writer.WriteString(L"\t\t");
+					member->type->Accept(&printTypeVisitor);
+					writer.WriteLine(L" " + member->name.value + L";");
+				}
+				writer.WriteLine(L"\t};");
+				writer.WriteLine(L"");
+			}
+		}
+
+		for (auto enumDecl : From(schema->declarations).FindType<GuiRpEnumDecl>())
+		{
+			GenerateSerializerFunctionHeader(GuiRpPrintTypeVisitor::GetCppType(enumDecl->name.value, symbols, config), true, writer);
+		}
+		for (auto structDecl : From(schema->declarations).FindType<GuiRpStructDecl>())
+		{
+			GenerateSerializerFunctionHeader(GuiRpPrintTypeVisitor::GetCppType(structDecl->name.value, symbols, config), true, writer);
+		}
+		writer.WriteLine(L"");
+
+		for (auto enumDecl : From(schema->declarations).FindType<GuiRpEnumDecl>())
+		{
+			GenerateDeserializerFunctionHeader(GuiRpPrintTypeVisitor::GetCppType(enumDecl->name.value, symbols, config), true, writer);
+		}
+		for (auto structDecl : From(schema->declarations).FindType<GuiRpStructDecl>())
+		{
+			GenerateDeserializerFunctionHeader(GuiRpPrintTypeVisitor::GetCppType(structDecl->name.value, symbols, config), true, writer);
+		}
+		writer.WriteLine(L"");
+
+		writer.WriteLine(L"#define " + config.builderMacroPrefix + L"_MESSAGES(HANDLER)\\");
+		for (auto messageDecl : From(schema->declarations).FindType<GuiRpMessageDecl>())
+		{
+			writer.WriteString(L"\tHANDLER(" + messageDecl->name.value);
+
+			writer.WriteString(L", ");
+			if (messageDecl->request)
+			{
+				messageDecl->request->type->Accept(&printTypeVisitor);
+			}
+			else
+			{
+				writer.WriteString(L"void");
+			}
+
+			writer.WriteString(L", ");
+			if (messageDecl->response)
+			{
+				messageDecl->response->type->Accept(&printTypeVisitor);
+			}
+			else
+			{
+				writer.WriteString(L"void");
+			}
+
+			writer.WriteString(messageDecl->request ? L", REQ" : L", NOREQ");
+			writer.WriteString(messageDecl->response ? L", RES" : L", NORES");
+			writer.WriteString(symbols->dropRepeatDeclNames.Contains(messageDecl->name.value) ? L", DROPREP" : L", NODROP");
+			writer.WriteLine(L")\\");
+		}
+		writer.WriteLine(L"");
+
+		writer.WriteLine(L"#define " + config.builderMacroPrefix + L"_EVENTS(HANDLER)\\");
+		for (auto eventDecl : From(schema->declarations).FindType<GuiRpEventDecl>())
+		{
+			writer.WriteString(L"\tHANDLER(" + eventDecl->name.value);
+
+			writer.WriteString(L", ");
+			if (eventDecl->request)
+			{
+				eventDecl->request->type->Accept(&printTypeVisitor);
+			}
+			else
+			{
+				writer.WriteString(L"void");
+			}
+
+			writer.WriteString(eventDecl->request ? L", REQ" : L", NOREQ");
+			writer.WriteString(
+				symbols->dropRepeatDeclNames.Contains(eventDecl->name.value) ? L", DROPREP" :
+				symbols->dropConsecutiveDeclNames.Contains(eventDecl->name.value) ? L", DROPCON" :
+				L", NODROP");
+			writer.WriteLine(L")\\");
+		}
+		writer.WriteLine(L"");
+
+		writer.WriteLine(L"}");
+		writer.WriteLine(L"");
+		writer.WriteLine(L"#endif");
+	}
+
+/***********************************************************************
+GenerateRemoteProtocolCppFile
+***********************************************************************/
+
+	void GenerateEnumSerializerFunctionImpl(Ptr<GuiRpEnumDecl> enumDecl, Ptr<GuiRpSymbols> symbols, GuiRpCppConfig& config, stream::TextWriter& writer)
+	{
+		WString cppName = GuiRpPrintTypeVisitor::GetCppType(enumDecl->name.value, symbols, config);
+		GenerateSerializerFunctionHeader(cppName, false, writer);
+		writer.WriteLine(L"\t{");
+		writer.WriteLine(L"#define ERROR_MESSAGE_PREFIX L\"vl::presentation::remoteprotocol::ConvertCustomTypeToJson<" + cppName + L">(const " + cppName + L"&)#\"");
+		writer.WriteLine(L"\t\tauto node = Ptr(new glr::json::JsonString);");
+		writer.WriteLine(L"\t\tswitch (value)");
+		writer.WriteLine(L"\t\t{");
+		for (auto member : enumDecl->members)
+		{
+			writer.WriteLine(L"\t\tcase " + cppName + L"::" + member->name.value + L": node->content.value = L\"" + member->name.value + L"\"; break;");
+		}
+		writer.WriteLine(L"\t\tdefault: CHECK_FAIL(ERROR_MESSAGE_PREFIX L\"Unsupported enum value.\");");
+		writer.WriteLine(L"\t\t}");
+		writer.WriteLine(L"\t\treturn node;");
+		writer.WriteLine(L"#undef ERROR_MESSAGE_PREFIX");
+		writer.WriteLine(L"\t}");
+		writer.WriteLine(L"");
+	}
+
+	void GenerateStructSerializerFunctionImpl(Ptr<GuiRpStructDecl> structDecl, Ptr<GuiRpSymbols> symbols, GuiRpCppConfig& config, stream::TextWriter& writer)
+	{
+		WString cppName = GuiRpPrintTypeVisitor::GetCppType(structDecl->name.value, symbols, config);
+		GenerateSerializerFunctionHeader(cppName, false, writer);
+		writer.WriteLine(L"\t{");
+		writer.WriteLine(L"\t\tauto node = Ptr(new glr::json::JsonObject);");
+		for (auto member : structDecl->members)
+		{
+			writer.WriteLine(L"\t\tConvertCustomTypeToJsonField(node, L\"" + member->name.value + L"\", value." + member->name.value + L");");
+		}
+		writer.WriteLine(L"\t\treturn node;");
+		writer.WriteLine(L"\t}");
+		writer.WriteLine(L"");
+	}
+
+	void GenerateEnumDeserializerFunctionImpl(Ptr<GuiRpEnumDecl> enumDecl, Ptr<GuiRpSymbols> symbols, GuiRpCppConfig& config, stream::TextWriter& writer)
+	{
+		WString cppName = GuiRpPrintTypeVisitor::GetCppType(enumDecl->name.value, symbols, config);
+		GenerateDeserializerFunctionHeader(cppName, false, writer);
+		writer.WriteLine(L"\t{");
+		writer.WriteLine(L"#define ERROR_MESSAGE_PREFIX L\"vl::presentation::remoteprotocol::ConvertJsonToCustomType<" + cppName + L">(Ptr<JsonNode>, " + cppName + L"&)#\"");
+		writer.WriteLine(L"\t\tauto jsonNode = node.Cast<glr::json::JsonString>();");
+		writer.WriteLine(L"\t\tCHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L\"Json node does not match the expected type.\");");
+		for (auto member : enumDecl->members)
+		{
+			writer.WriteLine(L"\t\tif (jsonNode->content.value == L\"" + member->name.value + L"\") value = " + cppName + L"::" + member->name.value + L"; else");
+		}
+		writer.WriteLine(L"\t\tCHECK_FAIL(ERROR_MESSAGE_PREFIX L\"Unsupported enum value.\");");
+		writer.WriteLine(L"#undef ERROR_MESSAGE_PREFIX");
+		writer.WriteLine(L"\t}");
+		writer.WriteLine(L"");
+	}
+
+	void GenerateStructDeserializerFunctionImpl(Ptr<GuiRpStructDecl> structDecl, Ptr<GuiRpSymbols> symbols, GuiRpCppConfig& config, stream::TextWriter& writer)
+	{
+		WString cppName = GuiRpPrintTypeVisitor::GetCppType(structDecl->name.value, symbols, config);
+		GenerateDeserializerFunctionHeader(cppName, false, writer);
+		writer.WriteLine(L"\t{");
+		writer.WriteLine(L"#define ERROR_MESSAGE_PREFIX L\"vl::presentation::remoteprotocol::ConvertJsonToCustomType<" + cppName + L">(Ptr<JsonNode>, " + cppName + L"&)#\"");
+		writer.WriteLine(L"\t\tauto jsonNode = node.Cast<glr::json::JsonObject>();");
+		writer.WriteLine(L"\t\tCHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L\"Json node does not match the expected type.\");");
+		writer.WriteLine(L"\t\tfor (auto field : jsonNode->fields)");
+		writer.WriteLine(L"\t\t{");
+		for (auto member : structDecl->members)
+		{
+			writer.WriteLine(L"\t\t\tif (field->name.value == L\"" + member->name.value + L"\") ConvertJsonToCustomType(field->value, value." + member->name.value + L"); else");
+		}
+		writer.WriteLine(L"\t\t\tCHECK_FAIL(ERROR_MESSAGE_PREFIX L\"Unsupported struct member.\");");
+		writer.WriteLine(L"\t\t}");
+		writer.WriteLine(L"#undef ERROR_MESSAGE_PREFIX");
+		writer.WriteLine(L"\t}");
+		writer.WriteLine(L"");
+	}
+
+	void GenerateRemoteProtocolCppFile(Ptr<GuiRpSchema> schema, Ptr<GuiRpSymbols> symbols, GuiRpCppConfig& config, stream::TextWriter& writer)
+	{
+		writer.WriteLine(L"/***********************************************************************");
+		writer.WriteLine(L"This file is generated by : Vczh GacUI Remote Protocol Generator");
+		writer.WriteLine(L"Licensed under https ://github.com/vczh-libraries/License");
+		writer.WriteLine(L"***********************************************************************/");
+		writer.WriteLine(L"");
+		writer.WriteLine(L"#include \"" + config.headerFileName + L"\"");
+		writer.WriteLine(L"");
+		writer.WriteLine(L"namespace " + config.cppNamespace);
+		writer.WriteLine(L"{");
+
+		for (auto enumDecl : From(schema->declarations).FindType<GuiRpEnumDecl>())
+		{
+			GenerateEnumSerializerFunctionImpl(enumDecl, symbols, config, writer);
+		}
+		for (auto structDecl : From(schema->declarations).FindType<GuiRpStructDecl>())
+		{
+			GenerateStructSerializerFunctionImpl(structDecl, symbols, config, writer);
+		}
+
+		for (auto enumDecl : From(schema->declarations).FindType<GuiRpEnumDecl>())
+		{
+			GenerateEnumDeserializerFunctionImpl(enumDecl, symbols, config, writer);
+		}
+		for (auto structDecl : From(schema->declarations).FindType<GuiRpStructDecl>())
+		{
+			GenerateStructDeserializerFunctionImpl(structDecl, symbols, config, writer);
+		}
+		writer.WriteLine(L"}");
+	}
+}
+
+
+/***********************************************************************
+.\REMOTEPROTOCOL\GENERATED\GUIREMOTEPROTOCOLAST.CPP
+***********************************************************************/
+/***********************************************************************
+This file is generated by: Vczh Parser Generator
+From parser definition:Ast
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+
+namespace vl::presentation::remoteprotocol
+{
+/***********************************************************************
+Visitor Pattern Implementation
+***********************************************************************/
+
+	void GuiRpPrimitiveType::Accept(GuiRpType::IVisitor* visitor)
+	{
+		visitor->Visit(this);
+	}
+
+	void GuiRpReferenceType::Accept(GuiRpType::IVisitor* visitor)
+	{
+		visitor->Visit(this);
+	}
+
+	void GuiRpArrayType::Accept(GuiRpType::IVisitor* visitor)
+	{
+		visitor->Visit(this);
+	}
+
+	void GuiRpEnumDecl::Accept(GuiRpDeclaration::IVisitor* visitor)
+	{
+		visitor->Visit(this);
+	}
+
+	void GuiRpStructDecl::Accept(GuiRpDeclaration::IVisitor* visitor)
+	{
+		visitor->Visit(this);
+	}
+
+	void GuiRpMessageDecl::Accept(GuiRpDeclaration::IVisitor* visitor)
+	{
+		visitor->Visit(this);
+	}
+
+	void GuiRpEventDecl::Accept(GuiRpDeclaration::IVisitor* visitor)
+	{
+		visitor->Visit(this);
+	}
+}
+namespace vl::reflection::description
+{
+#ifndef VCZH_DEBUG_NO_REFLECTION
+
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpType, presentation::remoteprotocol::GuiRpType)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpType::IVisitor, presentation::remoteprotocol::GuiRpType::IVisitor)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpPrimitiveTypes, presentation::remoteprotocol::GuiRpPrimitiveTypes)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpPrimitiveType, presentation::remoteprotocol::GuiRpPrimitiveType)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpReferenceType, presentation::remoteprotocol::GuiRpReferenceType)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpArrayType, presentation::remoteprotocol::GuiRpArrayType)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpAttribute, presentation::remoteprotocol::GuiRpAttribute)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpDeclaration, presentation::remoteprotocol::GuiRpDeclaration)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpDeclaration::IVisitor, presentation::remoteprotocol::GuiRpDeclaration::IVisitor)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpEnumMember, presentation::remoteprotocol::GuiRpEnumMember)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpEnumDecl, presentation::remoteprotocol::GuiRpEnumDecl)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpStructMember, presentation::remoteprotocol::GuiRpStructMember)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpStructDecl, presentation::remoteprotocol::GuiRpStructDecl)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpMessageRequest, presentation::remoteprotocol::GuiRpMessageRequest)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpMessageResponse, presentation::remoteprotocol::GuiRpMessageResponse)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpMessageDecl, presentation::remoteprotocol::GuiRpMessageDecl)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpEventRequest, presentation::remoteprotocol::GuiRpEventRequest)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpEventDecl, presentation::remoteprotocol::GuiRpEventDecl)
+	IMPL_TYPE_INFO_RENAME(vl::presentation::remoteprotocol::GuiRpSchema, presentation::remoteprotocol::GuiRpSchema)
+
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpType)
+		CLASS_MEMBER_BASE(vl::glr::ParsingAstBase)
+
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpType)
+
+	BEGIN_ENUM_ITEM(vl::presentation::remoteprotocol::GuiRpPrimitiveTypes)
+		ENUM_ITEM_NAMESPACE(vl::presentation::remoteprotocol::GuiRpPrimitiveTypes)
+		ENUM_NAMESPACE_ITEM(Boolean)
+		ENUM_NAMESPACE_ITEM(Integer)
+		ENUM_NAMESPACE_ITEM(Float)
+		ENUM_NAMESPACE_ITEM(Double)
+		ENUM_NAMESPACE_ITEM(String)
+		ENUM_NAMESPACE_ITEM(Char)
+		ENUM_NAMESPACE_ITEM(Key)
+	END_ENUM_ITEM(vl::presentation::remoteprotocol::GuiRpPrimitiveTypes)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpPrimitiveType)
+		CLASS_MEMBER_BASE(vl::presentation::remoteprotocol::GuiRpType)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpPrimitiveType>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(type)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpPrimitiveType)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpReferenceType)
+		CLASS_MEMBER_BASE(vl::presentation::remoteprotocol::GuiRpType)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpReferenceType>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(name)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpReferenceType)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpArrayType)
+		CLASS_MEMBER_BASE(vl::presentation::remoteprotocol::GuiRpType)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpArrayType>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(element)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpArrayType)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpAttribute)
+		CLASS_MEMBER_BASE(vl::glr::ParsingAstBase)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpAttribute>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(name)
+		CLASS_MEMBER_FIELD(cppType)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpAttribute)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpDeclaration)
+		CLASS_MEMBER_BASE(vl::glr::ParsingAstBase)
+
+		CLASS_MEMBER_FIELD(attributes)
+		CLASS_MEMBER_FIELD(name)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpDeclaration)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpEnumMember)
+		CLASS_MEMBER_BASE(vl::glr::ParsingAstBase)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpEnumMember>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(name)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpEnumMember)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpEnumDecl)
+		CLASS_MEMBER_BASE(vl::presentation::remoteprotocol::GuiRpDeclaration)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpEnumDecl>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(members)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpEnumDecl)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpStructMember)
+		CLASS_MEMBER_BASE(vl::glr::ParsingAstBase)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpStructMember>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(name)
+		CLASS_MEMBER_FIELD(type)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpStructMember)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpStructDecl)
+		CLASS_MEMBER_BASE(vl::presentation::remoteprotocol::GuiRpDeclaration)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpStructDecl>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(members)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpStructDecl)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpMessageRequest)
+		CLASS_MEMBER_BASE(vl::glr::ParsingAstBase)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpMessageRequest>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(type)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpMessageRequest)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpMessageResponse)
+		CLASS_MEMBER_BASE(vl::glr::ParsingAstBase)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpMessageResponse>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(type)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpMessageResponse)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpMessageDecl)
+		CLASS_MEMBER_BASE(vl::presentation::remoteprotocol::GuiRpDeclaration)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpMessageDecl>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(request)
+		CLASS_MEMBER_FIELD(response)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpMessageDecl)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpEventRequest)
+		CLASS_MEMBER_BASE(vl::glr::ParsingAstBase)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpEventRequest>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(type)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpEventRequest)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpEventDecl)
+		CLASS_MEMBER_BASE(vl::presentation::remoteprotocol::GuiRpDeclaration)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpEventDecl>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(request)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpEventDecl)
+
+	BEGIN_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpSchema)
+		CLASS_MEMBER_BASE(vl::glr::ParsingAstBase)
+
+		CLASS_MEMBER_CONSTRUCTOR(vl::Ptr<vl::presentation::remoteprotocol::GuiRpSchema>(), NO_PARAMETER)
+
+		CLASS_MEMBER_FIELD(declarations)
+	END_CLASS_MEMBER(vl::presentation::remoteprotocol::GuiRpSchema)
+
+	BEGIN_INTERFACE_MEMBER(vl::presentation::remoteprotocol::GuiRpType::IVisitor)
+		CLASS_MEMBER_METHOD_OVERLOAD(Visit, {L"node"}, void(vl::presentation::remoteprotocol::GuiRpType::IVisitor::*)(vl::presentation::remoteprotocol::GuiRpPrimitiveType* node))
+		CLASS_MEMBER_METHOD_OVERLOAD(Visit, {L"node"}, void(vl::presentation::remoteprotocol::GuiRpType::IVisitor::*)(vl::presentation::remoteprotocol::GuiRpReferenceType* node))
+		CLASS_MEMBER_METHOD_OVERLOAD(Visit, {L"node"}, void(vl::presentation::remoteprotocol::GuiRpType::IVisitor::*)(vl::presentation::remoteprotocol::GuiRpArrayType* node))
+	END_INTERFACE_MEMBER(vl::presentation::remoteprotocol::GuiRpType)
+
+	BEGIN_INTERFACE_MEMBER(vl::presentation::remoteprotocol::GuiRpDeclaration::IVisitor)
+		CLASS_MEMBER_METHOD_OVERLOAD(Visit, {L"node"}, void(vl::presentation::remoteprotocol::GuiRpDeclaration::IVisitor::*)(vl::presentation::remoteprotocol::GuiRpEnumDecl* node))
+		CLASS_MEMBER_METHOD_OVERLOAD(Visit, {L"node"}, void(vl::presentation::remoteprotocol::GuiRpDeclaration::IVisitor::*)(vl::presentation::remoteprotocol::GuiRpStructDecl* node))
+		CLASS_MEMBER_METHOD_OVERLOAD(Visit, {L"node"}, void(vl::presentation::remoteprotocol::GuiRpDeclaration::IVisitor::*)(vl::presentation::remoteprotocol::GuiRpMessageDecl* node))
+		CLASS_MEMBER_METHOD_OVERLOAD(Visit, {L"node"}, void(vl::presentation::remoteprotocol::GuiRpDeclaration::IVisitor::*)(vl::presentation::remoteprotocol::GuiRpEventDecl* node))
+	END_INTERFACE_MEMBER(vl::presentation::remoteprotocol::GuiRpDeclaration)
+
+#endif
+
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
+	class GuiRemoteProtocolAstTypeLoader : public vl::Object, public ITypeLoader
+	{
+	public:
+		void Load(ITypeManager* manager)
+		{
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpType)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpType::IVisitor)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpPrimitiveTypes)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpPrimitiveType)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpReferenceType)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpArrayType)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpAttribute)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpDeclaration)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpDeclaration::IVisitor)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpEnumMember)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpEnumDecl)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpStructMember)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpStructDecl)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpMessageRequest)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpMessageResponse)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpMessageDecl)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpEventRequest)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpEventDecl)
+			ADD_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpSchema)
+		}
+
+		void Unload(ITypeManager* manager)
+		{
+		}
+	};
+#endif
+#endif
+
+	bool GuiRemoteProtocolAstLoadTypes()
+	{
+#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
+		if (auto manager = GetGlobalTypeManager())
+		{
+			auto loader = Ptr(new GuiRemoteProtocolAstTypeLoader);
+			return manager->AddTypeLoader(loader);
+		}
+#endif
+		return false;
+	}
+}
+
+
+/***********************************************************************
+.\REMOTEPROTOCOL\GENERATED\GUIREMOTEPROTOCOLAST_JSON.CPP
+***********************************************************************/
+/***********************************************************************
+This file is generated by: Vczh Parser Generator
+From parser definition:Ast
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+
+namespace vl::presentation::remoteprotocol::json_visitor
+{
+	void AstVisitor::PrintFields(GuiRpArrayType* node)
+	{
+		BeginField(L"element");
+		Print(node->element.Obj());
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpAttribute* node)
+	{
+		BeginField(L"cppType");
+		WriteToken(node->cppType);
+		EndField();
+		BeginField(L"name");
+		WriteToken(node->name);
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpDeclaration* node)
+	{
+		BeginField(L"attributes");
+		BeginArray();
+		for (auto&& listItem : node->attributes)
+		{
+			BeginArrayItem();
+			Print(listItem.Obj());
+			EndArrayItem();
+		}
+		EndArray();
+		EndField();
+		BeginField(L"name");
+		WriteToken(node->name);
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpEnumDecl* node)
+	{
+		BeginField(L"members");
+		BeginArray();
+		for (auto&& listItem : node->members)
+		{
+			BeginArrayItem();
+			Print(listItem.Obj());
+			EndArrayItem();
+		}
+		EndArray();
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpEnumMember* node)
+	{
+		BeginField(L"name");
+		WriteToken(node->name);
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpEventDecl* node)
+	{
+		BeginField(L"request");
+		Print(node->request.Obj());
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpEventRequest* node)
+	{
+		BeginField(L"type");
+		Print(node->type.Obj());
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpMessageDecl* node)
+	{
+		BeginField(L"request");
+		Print(node->request.Obj());
+		EndField();
+		BeginField(L"response");
+		Print(node->response.Obj());
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpMessageRequest* node)
+	{
+		BeginField(L"type");
+		Print(node->type.Obj());
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpMessageResponse* node)
+	{
+		BeginField(L"type");
+		Print(node->type.Obj());
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpPrimitiveType* node)
+	{
+		BeginField(L"type");
+		switch (node->type)
+		{
+		case vl::presentation::remoteprotocol::GuiRpPrimitiveTypes::Boolean:
+			WriteString(L"Boolean");
+			break;
+		case vl::presentation::remoteprotocol::GuiRpPrimitiveTypes::Char:
+			WriteString(L"Char");
+			break;
+		case vl::presentation::remoteprotocol::GuiRpPrimitiveTypes::Double:
+			WriteString(L"Double");
+			break;
+		case vl::presentation::remoteprotocol::GuiRpPrimitiveTypes::Float:
+			WriteString(L"Float");
+			break;
+		case vl::presentation::remoteprotocol::GuiRpPrimitiveTypes::Integer:
+			WriteString(L"Integer");
+			break;
+		case vl::presentation::remoteprotocol::GuiRpPrimitiveTypes::Key:
+			WriteString(L"Key");
+			break;
+		case vl::presentation::remoteprotocol::GuiRpPrimitiveTypes::String:
+			WriteString(L"String");
+			break;
+		default:
+			WriteNull();
+		}
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpReferenceType* node)
+	{
+		BeginField(L"name");
+		WriteToken(node->name);
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpSchema* node)
+	{
+		BeginField(L"declarations");
+		BeginArray();
+		for (auto&& listItem : node->declarations)
+		{
+			BeginArrayItem();
+			Print(listItem.Obj());
+			EndArrayItem();
+		}
+		EndArray();
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpStructDecl* node)
+	{
+		BeginField(L"members");
+		BeginArray();
+		for (auto&& listItem : node->members)
+		{
+			BeginArrayItem();
+			Print(listItem.Obj());
+			EndArrayItem();
+		}
+		EndArray();
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpStructMember* node)
+	{
+		BeginField(L"name");
+		WriteToken(node->name);
+		EndField();
+		BeginField(L"type");
+		Print(node->type.Obj());
+		EndField();
+	}
+	void AstVisitor::PrintFields(GuiRpType* node)
+	{
+	}
+
+	void AstVisitor::Visit(GuiRpPrimitiveType* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"PrimitiveType", node);
+		PrintFields(static_cast<GuiRpType*>(node));
+		PrintFields(static_cast<GuiRpPrimitiveType*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Visit(GuiRpReferenceType* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"ReferenceType", node);
+		PrintFields(static_cast<GuiRpType*>(node));
+		PrintFields(static_cast<GuiRpReferenceType*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Visit(GuiRpArrayType* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"ArrayType", node);
+		PrintFields(static_cast<GuiRpType*>(node));
+		PrintFields(static_cast<GuiRpArrayType*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Visit(GuiRpEnumDecl* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"EnumDecl", node);
+		PrintFields(static_cast<GuiRpDeclaration*>(node));
+		PrintFields(static_cast<GuiRpEnumDecl*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Visit(GuiRpStructDecl* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"StructDecl", node);
+		PrintFields(static_cast<GuiRpDeclaration*>(node));
+		PrintFields(static_cast<GuiRpStructDecl*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Visit(GuiRpMessageDecl* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"MessageDecl", node);
+		PrintFields(static_cast<GuiRpDeclaration*>(node));
+		PrintFields(static_cast<GuiRpMessageDecl*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Visit(GuiRpEventDecl* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"EventDecl", node);
+		PrintFields(static_cast<GuiRpDeclaration*>(node));
+		PrintFields(static_cast<GuiRpEventDecl*>(node));
+		EndObject();
+	}
+
+	AstVisitor::AstVisitor(vl::stream::StreamWriter& _writer)
+		: vl::glr::JsonVisitorBase(_writer)
+	{
+	}
+
+	void AstVisitor::Print(GuiRpType* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		node->Accept(static_cast<GuiRpType::IVisitor*>(this));
+	}
+
+	void AstVisitor::Print(GuiRpDeclaration* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		node->Accept(static_cast<GuiRpDeclaration::IVisitor*>(this));
+	}
+
+	void AstVisitor::Print(GuiRpAttribute* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"Attribute", node);
+		PrintFields(static_cast<GuiRpAttribute*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Print(GuiRpEnumMember* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"EnumMember", node);
+		PrintFields(static_cast<GuiRpEnumMember*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Print(GuiRpStructMember* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"StructMember", node);
+		PrintFields(static_cast<GuiRpStructMember*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Print(GuiRpMessageRequest* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"MessageRequest", node);
+		PrintFields(static_cast<GuiRpMessageRequest*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Print(GuiRpMessageResponse* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"MessageResponse", node);
+		PrintFields(static_cast<GuiRpMessageResponse*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Print(GuiRpEventRequest* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"EventRequest", node);
+		PrintFields(static_cast<GuiRpEventRequest*>(node));
+		EndObject();
+	}
+
+	void AstVisitor::Print(GuiRpSchema* node)
+	{
+		if (!node)
+		{
+			WriteNull();
+			return;
+		}
+		BeginObject();
+		WriteType(L"Schema", node);
+		PrintFields(static_cast<GuiRpSchema*>(node));
+		EndObject();
+	}
+
+}
+
+
+/***********************************************************************
+.\REMOTEPROTOCOL\GENERATED\GUIREMOTEPROTOCOLPARSER.CPP
+***********************************************************************/
+/***********************************************************************
+This file is generated by: Vczh Parser Generator
+From parser definition:GuiRemoteProtocol
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+
+namespace vl::presentation::remoteprotocol
+{
+	void GuiRemoteProtocolParserData(vl::stream::IStream& outputStream)
+	{
+		static const vl::vint dataLength = 5216; // 69320 bytes before compressing
+		static const vl::vint dataBlock = 256;
+		static const vl::vint dataRemain = 96;
+		static const vl::vint dataSolidRows = 20;
+		static const vl::vint dataRows = 21;
+		static const char* compressed[] = {
+			"\xC8\x0E\x01\x00\x58\x14\x00\x00\x1B\x00\x01\x82\x80\x0F\x03\x82\x81\x82\x06\x89\x82\x8D\x0A\x80\x0A\x84\x0C\x0A\x9C\x0A\x83\x1A\x82\x16\x85\x18\x0A\xB7\x0A\x9D\x1A\x85\x22\x85\x25\x0A\xD2\x0A\x98\x2A\x84\x2E\x84\x70\x0A\x09\xBF\x6B\x9C\x93\x96\x84\x00\x2D\xAD\xAF\x91\x9C\x93\x98\x9B\x7F\x36\xB4\xB9\x91\x9B\x9A\x9A\x85\x9B\x38\xBF\xB7\x8F\x9F\x91\x02\x84\xA3\x09\xC8\x86\x82\x07\xA2\x87\x01\xA6\x09\x84\x10\xA6\x85\x03\xAB\x80\x03\x56\x82\x80\xBD\x95\x9A\x87\x03\xAC\x01\xDB\x82\xBA\x93\xB4\x9D\xB2\x9F\x2A\xC3\xA7\xBD\xA9\xB4\xB1\xB6\xB3\x6F\xE8\x86\x82\xB1\xBC\xB7\xB8\xB5\x75\xAE\xAB\xBA\xB9\xB9\xA1\xBE\xAE\x7C\xF7\xAE\xA2\xC0\xBC\xC2\xB9\x81\x74\x86\xF6\xA8\xC8\xBA\xC5\xC0\xC6\x83\x90\xC5\xD2\xC7\xC2\xAD\xC6\xCA\x8B\x96\xD1\xDA\xC3\xCC\xCD\xCB\xB0\x97\x9E\xD9\xC0\xDB\xCC\xD1\xCE\xD3\x9F\xB0\xA1\xC8\xD3\xD0\x00\x04\xB0\x00\x09\x30\xC9\xC8\xCF\xC6\xD0\xDB\xAC\xB8\xEA\xC5\xDB\xDF\xD1\xDF\xD4\xB4\xB7\xFE\xAE\xC3\xE5\xD9\xE2\xE1\x80\xC7\xF9\xCA\xEF\xDD\xD5\xE1\xE5\xC9\xD1\xFB\xAC\xEF\xE5\xE6\xDD\xEA\xD8\xAB\xD6\xF4",
+			"\xEA\xE9\x95\xA4\x85\x0B\x33\xDA\xF9\xEC\xDC\xF2\xDE\xF3\xC0\xE3\xEA\xE5\xFB\xF7\xF1\xF7\xF4\xEC\xF1\xEE\xF2\xF0\xFB\xFA\xFB\xFA\xF8\xCE\xEF\xFA\xFC\xDC\x04\xD8\x86\xDF\x7F\x53\x76\x74\x02\x85\x84\x70\x81\x07\x83\x8A\x82\x81\xC6\x48\x8D\x83\x82\x09\x8C\x88\x70\x84\x0F\x92\x80\x74\x85\x13\x96\x8B\x76\x83\x02\x4E\x00\x6C\x42\x06\x4A\x55\x85\x84\x24\xA3\x86\x89\x86\x25\xA8\x87\x8B\x85\x1A\xA8\x7C\x7F\x7D\x2F\xB9\x77\x77\x7E\x33\xB4\x71\x8F\x8D\x35\xB0\x89\x8E\x8C\xCC\x4E\x41\x82\x41\x11\x22\x76\x8F\x8E\x38\x9C\x73\x92\x91\x3A\x88\x9C\x8C\x87\x2C\xA9\x8D\x93\x8A\x1B\x98\x8F\x92\x8A\x54\x93\x96\x95\x94\x2D\xB4\x8A\x91\x6B\x12\x30\x63\x06\x90\x49\x8C\x98\x96\x93\x63\x90\x9E\x88\x91\x68\x9B\x99\x9A\x98\x67\xAA\x9E\x98\x9B\x5A\xB0\x97\x92\x9C\x61\x8A\x44\x04\x6C\x15\x20\x9B\x92\x94\x65\x95\x9D\x9F\x95\x6D\xB4\x9B\x9D\x96\x73\xBC\x91\xA2\xA1\x71\x88\xA5\xA0\xA1\x75\x89\x46\x04\x6C\x17\x3A\x95\x92\xA0\x93\x8A\xAD\xA0\x99\x87\x8C\xA3\xA0\xA6\x89\x9A\xA5\xA6\xA7\x6B\x96\xAB\xA4\x94\x10\x7F\x83\x41\x06\x92\xA1\xA0\xAB\x9B",
+			"\xA2\x9F\xAC\xA7\xA2\xAF\x97\xA6\x99\xA7\xB1\xA3\xAE\x9D\xA6\xB5\xAE\xA3\xAC\xAC\xBB\xB2\xA7\xAC\xAD\xBD\xB6\xA0\xA0\xB0\xBF\xBC\xA5\xB2\xAF\xC3\xBC\x6A\x05\xAA\xAC\xAB\xA4\xA6\xAA\xB9\x90\xB1\xB2\xAE\xC7\x82\xBF\x9F\xB5\xB8\x93\xB2\xB5\xB5\xD4\x97\x90\x42\xA9\xDC\x9B\xB9\xB0\xB2\xD8\x84\xB3\xBA\xB5\xD9\xA1\xBD\xB1\xB4\xEB\x9A\xBD\xBA\x40\x12\x60\xB7\xB9\xB7\xE5\x86\xB3\xBE\xB8\xF5\xA4\xB9\xBB\xBD\xEF\xBC\xBF\xB1\xBF\xF9\xA8\xB6\xB9\xC0\xF4\xBB\xB4\xC0\xBE\x06\xC9\xC3\xC1\x07\xCC\xBF\xBE\xC1\xAB\x08\xC3\xCA\xC2\xBD\x07\xC0\xC3\xC6\xBE\x12\xD9\xC4\xC7\xC5\x02\xDB\xCA\xC4\xC6\x1E\xE1\xC0\xCB\xC8\x1D\xE4\xBE\x05\xC3\x10\xD6\xCF\xC5\xC9\x2C\xC5\xCB\xCA\xCB\x22\xED\xC1\xC5\xCC\x30\xE4\xC5\xCE\xCC\x2A\xF4\xC3\xCE\xCD\x3B\xF8\xCF\xC2\xB3\x29\xFF\xC6\x43\x07\x28\xC0\xD6\xD0\xBB\x42\xEE\xB9\xD2\xBA\x4B\xFE\xB1\xD3\xD3\x47\xCA\xD0\xD4\xD2\x53\xC3\x40\x08\x6C\x21\x05\xD4\xD5\xD4\x4C\xD5\xDD\xD4\xD7\x4E\xE0\xD5\xC5\xD3\x00\x22\x0A\xD6\xD4\x62\xDC\xC7\xCF\xDA\x3D\xEC\xD9\xCC\xCF\x6F\xFE\xCE\xD5\xD8\x5B\xF5\xD8\xDA\x41\x14",
+			"\x72\xB3\xDB\xDC\x7B\xC9\x44\x0B\xD9\x5F\xF6\xD1\xE3\xDD\x84\xC3\xE6\xE0\xDD\x85\xC8\xE7\xE1\xDF\x82\xCA\xEE\xE0\xE3\x89\xD0\xEB\xE2\xDA\x6D\xD5\xE1\xDE\xDB\x64\xE5\x00\xE3\xE3\x94\xD7\xE6\xE4\xD9\x9D\xE0\xEF\xCB\xE7\x0A\x66\x0B\xE6\xE4\x9C\xE3\xEE\xE7\xEA\xA2\xFA\xCC\xE8\xDF\xA1\xF0\xEA\xE9\xEB\x70\xF4\xE2\xDD\x42\x27\x27\xE1\xED\xDA\xB3\xF2\xEE\xEA\xED\x98\xFE\xE5\xEE\xF0\xB7\xCD\xE8\xEB\xF1\xBB\xC6\xF9\xF1\xE4\xCB\xD3\xED\xEE\xD8\x28\x3A\xEF\xF2\x41\x29\x12\xFF\xEC\xF1\xC1\xFC\xE7\xF6\xF6\xC3\xDC\xF5\xF0\xF3\xD3\xE0\xFB\xF6\xF2\xE1\xCE\xF3\xFA\xF8\xDD\xE4\xF7\xFA\xF9\xE9\xE8\xFF\xF4\xFB\xEF\xE9\xEC\x6E\x45\x7A\xCD\xF2\xFD\xFB\xF0\xD9\xFA\xF8\xFE\xF7\xF1\xF8\xF1\xF9\x01\x2B\x07\xE9\x2C\x06\x7A\xFE\x7F\x7B\x7D\xFD\x7A\x7E\xFB\x0A\x89\x7E\xD2\x62\x6D\x05\xA7\x6E\x05\x01\xFE\x76\x7F\x6B\x6F\x03\x82\x0C\x89\x82\x03\xFB\x74\x82\x00\x87\x86\x80\x15\x81\x86\x07\xA2\x88\x81\x0F\x9D\x85\x84\x06\x70\x04\x06\x9B\x8B\x80\x16\x8B\x70\x23\xF5\x63\x86\x0C\xA8\x83\x86\x10\xB5\x87\x84\x36\x94\x86\x0E\xB9\x8C\x86\x1C\xBE\x81",
+			"\x83\x26\x80\x88\x09\xBD\x82\x89\x1B\x85\x8B\x87\x3F\x98\x5E\x0C\x2B\x8F\x74\xEF\x47\x8C\x88\x2E\x9A\x80\xC0\x33\x00\x36\x1A\x30\x35\x06\xB0\x36\x04\x6C\x1A\x2A\x6E\x1C\x30\x31\x07\x4C\x8F\x26\x0E\x61\x88\x7B\x28\x81\x8A\x37\x3B\x04\x8E\x13\xE6\x83\x89\x24\x8D\x8C\x83\x4F\x8E\x8C\xF0\x6C\x86\x88\x3A\x88\x89\x8E\x78\x96\x8C\x14\xEF\x83\x20\x1E\x2A\x88\x8E\x7A\x92\x8D\x19\xFC\x8D\x80\x42\x92\x8B\x8E\xCC\x3C\x21\x0C\xF7\x81\x91\xD6\x3E\x07\x8F\x2D\x86\x93\x19\x92\x9D\x8D\x3C\x94\x95\x8E\x97\x8C\x91\x26\xFB\x88\x91\x4E\x83\x96\x93\x6B\x9B\x92\x20\xA1\x90\x94\x40\xA2\x94\x5E\x3F\x10\x91\x21\xA5\x91\x92\x31\x40\x0A\x95\x87\x9F\x92\x2C\xA4\x93\x96\x83\x01\x08\x96\x93\x8C\x97\xE2\x42\x08\x97\x4A\x8D\x97\x97\xA7\x86\x8F\x10\x3D\x98\x92\xB2\x44\x0C\x98\x9A\x9A\x95\x2C\xB4\x9C\x98\x53\x8A\x99\x97\xB5\x8D\x95\x34\xAB\x93\x9B\x65\x86\x7E\x23\x8B\x9C\x91\x35\xD0\x9D\x99\xC8\x46\x08\x99\xDA\x9D\x98\x35\xE2\x96\x9A\x69\xA4\x9C\x9B\xCE\x9B\x9A\x2F\xC1\x9C\x9D\x67\xAB\x9E\x9D\xC5\x9B\x9B\x11\x30\x38\x08\xD8\x09\x08\x36\x4A\x10",
+			"\x34\x48\x7A\x6C\x08\xD8\x0D\x08\x97\x4E\x00\x9F\x28\xE9\x9A\x43\x27\x02\xA6\x92\xF0\x89\x9A\x3A\xF1\x97\x9D\x77\x8B\xA2\xA1\x0D\xAC\xA0\x41\x93\xA6\x9C\x8A\xBE\x48\x0A\x07\xA0\x99\x42\xE1\x96\xA3\x72\xA3\x9D\xA3\xC7\x71\x09\x46\xED\x9F\xA0\xDF\x22\x21\x9B\x03\xB5\xA2\x4A\x9F\xAB\xA4\x8F\xAE\xA0\x9D\x2D\xB0\xA4\x4B\xB3\xAF\xA4\x87\x91\xA0\xA2\x20\xB6\xA4\x99\x53\x00\x36\x2A\x30\x35\x0A\xB0\x36\x08\x6C\x57\x00\x36\x92\x3A\x69\x0B\xB8\x9A\x0B\x48\x9B\xA9\xA4\x81\x1B\x0B\xA9\x25\xAD\xA9\x4D\x92\xA1\xA6\x9D\x95\xAC\xAA\x34\xB2\xA7\x54\xB8\xA7\xAA\xAE\x99\xAE\x24\x28\xA8\xA1\x54\xE2\xA7\xA6\x8E\x9D\xAE\xAC\x8B\x7D\x08\x54\xE5\xA6\x5A\x2F\x2B\xA9\xA7\x58\xBB\xA8\x5A\xF2\xA2\xAA\xAD\xB6\xAE\xAA\x59\xB8\xAC\x5D\xE4\xA0\xAE\xAF\xBB\xAA\xA3\x63\xA0\xB2\x86\x5F\x0F\xAD\xB3\xB5\xAA\xAF\xC7\x60\x0C\x6C\x61\x05\xB1\xBC\xB1\xAF\x78\x62\x0D\xB3\x5F\xA4\xAC\xAC\x7A\x63\x0A\xB2\x77\xAF\xB2\xC1\x64\x08\xB2\xC4\x9E\xB2\xB3\xA0\xBE\xAD\x66\x94\x65\x0D\xCE\xA1\xB6\x37\x66\x06\xB6\x68\x9F\xBB\xB5\xD3\x87\xB6\xB5\x7C\xA6\xB1\x6C\x8E",
+			"\xBD\xB4\x8A\x67\x0A\xB5\x73\xA3\xB5\x6E\xD5\x38\x0C\xDC\xAF\xB5\xB6\xBB\xB0\xB6\x60\xFD\xA1\xB8\xE0\xBF\xB5\xB8\xC8\xA7\xBA\x72\xB3\xBF\x71\x34\x30\x32\x0D\xB0\x2B\x0C\x6C\x6C\x00\x37\x36\x30\x36\x0D\xB0\x2F\x0C\x2E\xF0\x0E\xB6\xE6\xB6\xA9\x0E\xDD\xA3\xBA\x6C\xE2\xB4\xB7\xE4\x9E\xBC\xB5\xE6\xA4\xBF\x64\xCC\xA7\xBC\xE1\x80\x62\x0E\xE1\xB4\xB0\x71\xCB\xBA\xBC\xDD\xB4\xB8\x60\x73\x11\xBC\x7B\xF5\xB4\x0E\xFD\x81\xB2\xBE\xE3\xA0\xC1\x79\xF7\xBB\xBE\x01\xEB\xBF\xBF\x05\xC9\xC0\x82\x8B\xC5\xB3\xFA\x95\x85\x0E\xFE\xAD\xC2\x81\xF6\xB4\x5E\x3B\x11\xC3\xBE\xED\xB4\x63\x1D\x17\xC1\xC0\x05\xD2\xC6\xC3\x18\xCE\xC2\x76\x78\x0C\xC3\x01\xED\x31\x0F\x25\xC7\xC3\x87\x8C\xC1\xC5\x09\xE8\xBC\xC0\x2C\xDD\xC1\x8C\xD9\xAA\x0F\x14\xD4\xC2\xC4\xBC\x3B\x0C\x6C\x7C\x00\x37\x3E\x38\x96\x0F\x36\xCF\xC5\x86\xE9\xBE\xC4\xF7\xA0\xC2\xC6\x2B\xC9\xC9\x8B\xC7\xC2\x21\x3F\x01\xCE\xC8\x33\xCA\xC7\x92\xD1\xC6\xAE\x40\x0F\xCE\xB8\x43\xD0\xC6\x92\xC8\xC0\xA5\x40\x17\xCC\xC8\x4C\xD2\xC8\x97\xE3\xC9\xAA\x41\x1F\xCA\xCB\x53\xDB\xCA\x89\xB8\xC0\xCC\xBE",
+			"\x43\x10\x36\x84\x10\x35\x21\x38\x96\x11\x33\xD9\xCE\xBB\x87\x16\xCC\x9B\xE8\xC4\xCC\x31\xEB\xCD\xC8\x58\xDB\xCC\x10\x88\x10\x37\x44\x30\x32\x11\xB8\x8B\x12\x9E\x80\xD9\xB6\x46\x0B\xD4\x6C\x8D\x0F\xD0\x95\xC2\xC2\xD1\x4A\xCC\xD4\xCF\x7E\x4E\x10\x6C\x0F\x10\x36\x48\x38\x91\x12\x92\xCA\xCF\x4B\x92\x11\xD5\x34\xE6\xD5\xCF\x37\xD7\xD3\x9D\x96\xDF\x99\x49\x38\x94\x12\xB0\x35\x10\x6C\x16\x18\x97\x4B\x25\xD0\xD5\x15\x98\x13\xAD\x8B\x79\x12\x5C\x9A\x10\x36\x9B\x10\x34\x27\x38\x9D\x13\x5D\xFE\xCF\xA5\x9E\x06\xDB\xF1\x22\x02\x45\x80\x0C\x29\x21\xDE\x24\x3B\xB3\x86\x21\xDA\xE3\x13\xDB\x20\xD5\xC2\x3B\xB5\x82\x29\xDB\xE5\x1B\xD9\x20\xDD\xDB\x3B\xB7\x80\x01\xDC\xA0\x23\xDD\xDC\x37\x23\xDD\x78\x2B\x50\x28\xD9\x09\x26\x43\x7D\x2D\xD8\x51\x5B\x3E\xDC\x83\x00\x44\x38\x55\x3D\x2C\x50\x72\xD4\x29\x76\xCA\x27\xDE\xC6\x39\xDC\x71\x40\x2F\x2A\x7D\xE9\xDB\xDE\xC4\x2F\x36\xC1\xB4\x25\xDE\x84\xDB\x3C\xDF\x02\xE6\x39\xC3\x8B\x23\x3B\x88\xC2\x3B\xDF\x0A\x36\xE3\x72\x13\xE1\x20\x80\xC2\x3A\xE3\xDB\x24\xE3\x74\x66\xDE\xE0\xE1\x0A\xE3\xE0",
+			"\x37\x3C\xE1\xBF\xB7\x2C\xDF\xA7\x3D\x2A\xE5\x1E\xEB\x38\xC8\xC0\x28\xE3\x84\x2E\xE4\x38\x30\xF5\xE3\xC8\xB7\x25\xE0\x94\xF4\x23\xDC\xC9\x27\xE6\x71\x7E\xD5\xE5\x87\xCA\x23\xDC\x44\xF6\xDE\xCE\x8B\xE1\x26\x7E\xC8\xE9\xE5\xFF\xCB\xEA\xCF\xB1\x2D\xE7\xA1\xC7\xE5\xE8\x40\x22\xEB\xC5\xD0\xE8\xEA\x96\xCC\x59\xE7\x7D\x33\xE4\xCD\xB4\x2C\xDE\x7E\xC9\xEB\x20\x31\xFB\x3A\xD8\xE3\xED\x25\xAA\xDB\xEF\xE7\x45\xFB\x3A\xD6\xCB\x37\xEC\x84\xF5\xE6\x20\x58\x2F\xE5\xD4\xE1\xEB\xE6\xB2\xCA\x21\xEF\x38\xFB\xEC\xBE\xFD\xE4\xEA\xC2\xED\x20\xE8\xD3\x33\xED\xC8\xDC\xE5\xE5\xBB\xC3\x22\x2A\x7A\xE9\x21\xDA\xC0\x2B\xEC\xB6\xEB\x24\xDF\x90\xE1\xF2\xE4\xD2\xE6\xEA\x9A\x2E\xEC\xEE\x57\xED\xF3\x4D\x0A\xF6\xF3\x96\x2A\xE1\x39\x95\xF6\xF1\xEA\xEC\xEF\xF3\xC5\xF0\xED\xEB\x34\x24\xF5\xE9\xAB\x27\xF4\xCE\xEF\xE9\x26\xAB\xE3\xED\xEB\xB3\xFB\x24\xC4\xFD\x2A\xF6\xB3\xF5\xF4\xBB\x8C\xF3\x20\xB3\xE1\xF5\xF8\x29\x75\xEE\xB3\xC9\xF4\xF8\x81\x06\xFC\x26\xB9\xF4\xE7\xB8\x99\xFE\x5C\xE5\xC0\x00\xF0\x01\xE6\xF0\x4B\x63\xD7\xE7\xEA\xCD\xF9\x20\xD4\xFA\xDA",
+			"\x42\x61\xFC\x5E\xEB\xD8\xFA\xFC\x51\x2C\xF8\xC3\xFF\xE6\xF6\xD0\xEF\xF6\x20\xF0\xCC\x5E\xF5\xC1\x4D\x2F\x73\xD3\x3E\xFE\xF5\xEA\x20\xBA\xEF\xF8\xDB\xFB\xFA\xFE\xFF\xD0\x60\x80\xD4\x62\x80\x03\x1B\x6E\xF2\x7F\x7D\x00\x01\x7F\xD9\x7C\x74\x87\x72\x78\xDE\x7B\x7E\xE9\x79\x7F\xEF\x64\x80\x1D\x2D\x7E\xAE\x71\x13\xE3\x60\x7C\x18\x8F\x7F\x12\x83\x80\x1D\x8D\x7F\x1F\x8C\x6D\x14\x80\x6E\x23\x84\x6E\x25\x8B\x7F\x1B\x89\x10\x06\x8F\x80\x31\x1A\x72\x0A\x8F\x71\xDA\x7D\x7B\x0A\x1A\x72\x24\x71\x80\x21\x84\x82\x37\x86\x82\x39\x88\x82\x0D\x86\x83\xD2\x6C\x81\x3F\x8E\x83\xD6\x60\x1E\xEA\x7D\x82\x0A\x1F\x82\x32\x71\x83\xFF\x03\x6E\xBB\x7A\x25\xD6\x74\x7E\xE2\x6A\x10\x1A\x8D\x83\x06\x14\x83\xC7\x72\x10\x56\x80\x7D\x4A\x83\x6E\xE7\x7E\x6D\x40\x83\x84\x42\x88\x7E\x1E\x81\x84\x63\x80\x86\x65\x82\x86\x20\x84\x86\x69\x86\x86\x05\x85\x84\xA6\x77\x84\x16\x8C\x7B\x4B\x89\x71\x6E\x8C\x12\x2A\x70\x85\x35\x88\x77\x71\x8C\x7B\xDD\x77\x7B\x54\x83\x10\x7D\x8B\x1C\x81\x87\x81\x7F\x84\x71\x7D\x13\x88\x72\x8C\x84\xD3\x18\x88\xBC\x73\x6E\xD1\x78",
+			"\x87\xBC\x71\x7D\x40\x10\x89\xB3\x72\x89\x37\x14\x89\xA5\x76\x89\x34\x18\x89\xAA\x7A\x84\x8C\x83\x7B\x9F\x85\x7A\xDC\x7B\x88\x9E\x8B\x85\x0E\x82\x1C\xA1\x86\x79\xA9\x8C\x76\x8A\x87\x88\xA5\x8C\x80\xDB\x74\x87\xAE\x80\x8B\x32\x81\x56\x2B\x1B\x8A\x63\x73\x8A\xB3\x83\x75\x85\x8D\x71\xA4\x84\x8B\x73\x89\x10\x4D\x84\x13\xB8\x82\x7D\xB2\x8A\x86\xCE\x7B\x87\xB3\x73\x6E\xFE\x1B\x8B\x9D\x71\x13\xC5\x89\x87\x80\x85\x82\xCD\x84\x1C\xD1\x87\x13\xD7\x8C\x7F\x86\x88\x8C\x01\x15\x8D\xC6\x19\x8D\xD0\x86\x8A\xC2\x84\x8D\xBF\x8C\x8B\x2C\x10\x8E\xBD\x80\x00\xD1\x7C\x8C\xE5\x8F\x8C\xE9\x8F\x7C\xB8\x7F\x8A\xE6\x87\x8B\xE2\x86\x10\xC5\x88\x8E\xE7\x85\x8F\x68\x7D\x8E\x7E\x89\x8F\xC0\x8D\x8A\xD6\x82\x8F\xEE\x81\x8B\x09\x11\x7D\xF8\x85\x8B\x21\x2A\x8C\xA5\x77\x90\xFF\x0C\x90\xBA\x81\x90\xC0\x8E\x90\xA7\x82\x88\x02\x9D\x8F\x08\x93\x10\xC3\x81\x8E\x11\x9A\x8F\x02\x16\x90\x1C\x91\x10\xF0\x8F\x86\x05\x93\x1D\x2A\x71\x7D\x2A\x7D\x25\x91\x76\x10\x3E\x2A\x79\x2A\x94\x92\x44\x89\x92\x03\x1E\x8D\xC2\x1A\x72\x59\x86\x84\x61\x8B\x71\x5F\x83\x93",
+			"\x52\x8E\x92\xE3\x8D\x17\x9C\x8C\x76\x2A\x75\x8C\x3F\x93\x76\x41\x9C\x93\x06\x10\x22\x12\x7A\x10\x48\x9A\x93\x09\x1B\x94\xCB\x1E\x5C\x45\x7E\x74\x4E\x13\x95\x36\x74\x95\xF6\x86\x95\xD3\x85\x95\x11\x84\x15\xEC\x79\x10\x5D\x87\x7D\x5D\x9A\x87\x5E\x91\x96\x57\x1E\x15\x66\x9D\x93\x06\x1D\x7A\x6A\x97\x96\x69\x9B\x93\x09\x1A\x72\xE1\x6B\x82\x02\x12\x97\x01\x14\x97\x00\x06\x97\x78\x9F\x92\x06\x16\x97\x32\x9E\x8B\x13\x8D\x94\x0D\x1A\x10\xF4\x7A\x74\x09\x13\x98\x03\x18\x84\x00\x06\x98\x07\x12\x98\x81\x99\x10\x28\x96\x10\x5F\x2B\x79\x09\x11\x99\xF0\x7A\x10\x94\x93\x10\x4E\x90\x00\x97\x92\x10\x2B\x93\x10\x77\x29\x10\x79\x25\x98\x13\x90\x00\xA1\x90\x24\x70\x80\x9A\x8C\x90\x98\xA8\x92\x9A\x09\x1D\x99\x02\x15\x9A\x03\x1F\x98\x03\x1F\x28\xAC\x94\x98\x06\x14\x9B\xA6\x9F\x97\xB7\x99\x9A\x47\x9A\x10\xB8\x93\x10\x8A\x91\x10\xAE\x91\x10\xBF\x92\x10\xB2\x92\x10\x91\x25\x9B\xFB\x89\x10\xC9\x99\x9B\x95\x9C\x9C\xBC\x98\x99\x0A\x1D\x9C\xC0\x9D\x98\x06\x14\x9D\xC6\x9F\x10\x90\x21\x77\x21\x9D\x1A\x83\x87\x35\x71\x7A\x94\xF2\x6D\x72\x0A",
+			"\x10\x9E\xE1\x9A\x92\xE3\x91\x77\xD1\x37\x9E\x40\x29\x9E\x23\x99\x10\x12\x4C\x9E\xB1\x9E\x9E\x5C\x90\x9F\xF2\x93\x10\x13\x04\x9F\x0E\x78\x45\xF7\x91\x10\x14\x0A\x9F\x08\x79\x46\xFD\x94\x9A\x00\xA1\x10\xAD\x77\x4B\x03\xA6\x01\x05\xAE\x1A\x0A\x1C\x4B\x03\xA7\x01\x0B\xAA\x78\x0E\xAD\x9F\x18\x0B\xA0\x2F\x17\x4F\x03\xA9\x01\x0B\xA1\x6E\x06\x53\xA0\x1A\x0B\xA0\x50\x8E\x53\x45\x75\x8C\x2F\x1F\x95\x44\x53\xA2\x7C\x2A\x72\x42\x58\xA2\x1A\x26\x97\x40\x5C\xA2\x64\x2D\x97\x00\x0F\x54\x30\xA3\x10\x1B\x0B\xA0\xE3\x6A\x54\x03\xAC\x01\x0B\xA2\xA3\x34\xA5\x72\x83\x8D\x01\x38\xAA\x10\x3A\xAD\x9F\x1E\x0B\xA0\x69\x7E\x56\x03\xAF\x01\x48\xAA\x10\x84\x53\xA0\x20\x0D\xA4\x09\x1F\xA4\xFD\x91\x02\x0B\xAF\x09\x71\x7F\x74\xBC\x11\x9E\xDD\x98\x2F\x25\xAC\x27\x45\x18\x4B\x2F\x11\x7D\xE1\x93\x6E\x5D\xA0\x30\x2F\x13\x94\xCC\x1F\x12\x83\x87\xA6\x62\x2F\x12\x53\x8D\x1A\x69\xA2\xA6\x58\x9E\x27\x63\xA4\xA7\x68\x90\x25\x5F\xA6\x8B\x68\xA3\x83\x60\xAC\x96\xC8\x79\x10\x8A\x7A\xA5\xBE\x16\xA6\x7F\xA7\x93\x00\x04\xA2\x7C\x2C\x8E\x1A\x2F\x12\x69\x7F",
+			"\x95\x9B\x90\x92\x7C\x2D\xA6\x87\xA6\x10\x9F\x97\x95\x62\x33\x88\x32\xA5\x1D\x2F\x18\x9D\x01\x1F\x95\x0C\x3C\xA7\x73\xA2\xAA\x71\x77\x32\x5A\x96\x3C\x50\x8B\xA9\xDA\x1F\x12\x59\x33\x96\xB8\x37\x3A\x20\x7E\xA6\xEA\x95\xA7\x8F\x30\x72\xAA\xAB\xA5\x0A\x12\x40\xAE\xA6\x10\x30\x49\x90\x1A\x2F\x95\xB2\xA5\x74\x4B\x47\xAA\x91\x3F\x95\xB7\xAE\x1B\x2F\x1C\x9F\x62\x96\x10\x02\xAE\xAB\x64\x2D\x7A\xC1\xA5\x72\x7E\x44\xAC\x8B\x3D\x7A\xC7\xA9\x1A\x2F\x19\x4A\xBB\xA3\x10\xD8\x4E\xAC\x50\x2A\x78\xD1\xAE\x70\xDF\x44\xAD\x8F\x3A\x78\xD7\xA2\xA7\x0A\x18\xA1\xCB\xA3\x10\x1D\xAE\xAD\x7E\x2A\x72\xE1\xA8\x70\x18\x54\xAA\x1A\x2A\x72\xE7\xAA\x1B\x2F\x12\x52\x5B\x93\x10\x2F\xAE\xAE\x57\x21\x6E\xF1\xA3\x6F\x2B\xAE\xAF\xC7\x31\x6E\xF7\xAB\xA6\x0A\x17\xA2\x06\x10\x85\x3F\xA1\xA8\x64\x26\x97\x3C\x88\xAE\xE7\x42\xA3\x76\x9C\xA9\xDB\x49\x76\x99\x96\xB1\x1A\x20\x56\x4B\x1C\x27\x99\x98\x98\x1A\xB0\x52\xC3\x90\x00\xC7\x97\x25\x2F\x1A\xA4\x04\xB6\x30\x25\xBA\x99\x95\xA0\x25\x54\xA3\x10\x84\xA9\x1A\x91\xA0\x00\xC5\x96\xB2\xDB\x43\xB3\x97\xAA\xA7",
+			"\xDB\x49\xB3\x8B\x9D\xA8\x7C\x2C\x58\x09\x1E\x7B\x04\xB0\x9B\x02\x15\xB3\xD7\x2F\x4C\x46\xB1\x9C\x47\xBA\x10\x97\x54\xAF\x64\x2E\xA9\xA4\x9D\xB2\x59\x55\x2A\x06\x1F\x2D\x64\x2F\x12\x9C\x5A\x37\xA5\x51\xB4\x7C\x2B\x2C\x09\x18\x2A\x3E\xB9\x10\xB7\x5E\xB4\x50\x26\xB5\x03\x1E\xB5\x57\xBB\x4D\xF1\x26\x10\xA6\xA9\xB6\x09\x1D\x5B\x64\xBE\x27\x6D\xB3\x10\x66\x31\xB6\x64\x20\x95\x1D\xBA\x21\x44\x39\x10\x66\xB6\xA7\x0A\x12\x5D\x7A\x34\x5D\x5C\xBA\x37\xFC\x6B\xB7\x06\x1D\xAA\x6E\xB0\x52\xE6\x96\xA3\x52\xB1\x10\xD8\x5A\x37\xDA\x53\xB8\x79\xB4\xB0\x8B\xB2\x10\x88\xBA\xB3\xE7\x47\xB9\x02\x11\xAA\x89\xB3\x10\xE0\x51\xB7\x57\x25\xB7\x43\x3D\xB8\x76\x59\x37\x06\x1A\x39\x76\xB3\x10\xF0\x50\xBA\xD7\x28\xBA\xD4\x34\xBA\xD5\x19\x5F\x92\xB0\x25\xA6\x33\xBB\x7E\xB9\x10\x10\x6C\xBA\x94\xA9\x10\xB5\xBB\xAE\xB7\xB6\x10\x16\x6C\xBA\x50\x8C\x6F\xBD\xB3\x10\x64\xA1\x77\x1B\x6C\xBA\xB1\xA5\x3A\xE3\x74\xBA\x24\x6C\xBA\xC0\xAC\xBC\x82\xA4\xBA\x28\x6C\xBA\xD0\xA2\xBD\x98\xAD\xB9\x02\x15\x63\xAC\xB0\xAE\xD8\xB8\x91\xA4\xBA\x63\xAC\xB0\xAF\xDF",
+			"\xB8\x85\xA4\xBC\x63\x7A\x3E\x63\xB6\xB8\x83\x04\xB9\x3B\x7E\x34\xBA\x4E\x6C\xBA\xD5\x1B\x9E\x06\x1E\xBE\xDA\xBF\x52\xD5\x3C\xBB\xB0\xBE\x41\xF4\x36\x10\x04\x49\xBA\x02\x16\x65\xF2\xBA\x1D\xFF\xB6\x10\x2A\x40\xC0\x57\x2E\x65\xEB\xB7\x2D\x10\x49\x10\xAE\xB8\xB9\x06\x1F\x66\xAC\xB6\x97\xFC\x6D\xC0\x06\x17\x41\x08\xC6\x57\xF1\x97\xBA\xA4\xB1\x67\xAC\xB2\xA3\xFC\x6B\xC1\x03\x18\xC1\xF7\xB6\x57\x24\xC3\x10\xBA\xA5\xC2\x73\x63\xC0\xBC\x17\xC0\x06\x16\xC1\x10\xC1\x53\xBD\xA3\x10\x5A\x49\xC1\x75\x6C\xC2\xBE\x14\x45\x0B\xC1\xB2\x03\x19\x67\xAC\xB9\x76\xFC\x6A\xC3\xBE\xB6\xB3\x09\x14\x68\xAC\xB8\x98\x41\xC7\x8C\x31\xC2\x10\x86\x6C\xBA\x99\x99\xC4\xFB\xAF\xBB\x03\x18\x68\xAC\xB3\xB2\x50\xC6\x10\x71\xA8\xAF\x0A\x1A\x68\xAC\xBA\xB4\x57\xC9\x95\x25\xCE\x68\xAC\xBB\xB2\x5F\xC2\x10\x19\x98\xAD\x0A\x11\x69\xAC\xB3\xB3\x65\xC1\x10\x35\x98\xC6\x09\x1A\x69\x7A\x3C\x69\x0B\xCC\xB3\x92\xA9\x10\x56\x49\x10\xC3\xA5\xC2\xA0\x68\xC3\xA9\x1A\xAC\x03\x19\xC7\x25\xC5\x41\x35\xC6\x10\x42\xCB\xC4\x2F\x5C\x45\x06\x13\xAD\x25\xC4\x6A\x7E\xCD",
+			"\x1A\x60\x4B\xC3\xAB\xAA\x10\xAE\x6C\xBA\x44\xB7\xC7\x06\x11\xC9\x43\xCB\xB4\x09\x10\x6B\xAC\xB6\xB4\xFC\x6A\xC9\xC6\xB4\xBA\xB2\x6C\xBA\x50\xB1\xCA\xCD\xB9\xC1\xB4\x6C\xBA\x54\xBE\xB0\x03\x12\xCA\x02\x19\xC5\x08\xB9\x10\xB6\x6C\xBA\x60\xB4\xB0\xB0\xC1\x10\x8A\xA5\x74\xBA\x6C\xBA\x68\xBE\xCA\x02\x19\xCB\x00\x07\xC6\x12\xB6\x10\xBD\x6C\xBA\x7D\xB8\xC9\xAF\xCE\xA7\x19\xCF\x6B\x7A\x31\x6C\x0B\xCB\xB6\xC0\xC1\x10\x63\x49\x10\x5E\x49\xC1\xC5\x6F\xC8\x68\x4A\x10\xD5\xC3\xC8\x1E\x4C\xC8\xCB\xC9\xC1\x15\x4A\x48\x06\x1A\xAD\x25\xC9\x6C\xDA\xCC\x1C\xE6\xC3\x10\xC7\x42\xCE\xDA\x18\xA5\x92\xCC\x1B\xAF\x49\x10\x85\xC8\xC8\x00\x01\x0A\xA7\x3C\xB9\xD3\xC0\x00\xF3\xCB\xC8\xA4\xB2\x0A\xA7\x33\xB7\xC9\x89\x10\xFD\xC3\x10\xC3\x4E\xCE\x25\x48\xA0\xFE\xC9\xC1\xA3\x07\x3A\x86\xBB\xCF\x0A\xD6\xD0\xFB\xB5\x42\x13\xA2\xD1\x08\xD6\x40\x07\xD6\x10\x8F\x49\xC1\xA4\x08\x4B\xED\xC6\x10\x05\xD2\xC5\x59\x5D\xAD\x03\x19\x4F\x19\xC5\x0A\xB8\x43\x4F\xF1\xC8\xAC\x0A\x16\x0A\xA7\x35\xB9\xCA\xC2\x10\x2A\xDB\xC9\x3C\xC2\x10\xA7\x07\x3A\x9A\xB1\xD3",
+			"\x01\x13\xD3\xA3\xC9\xC1\xA8\x07\x3A\xA2\xBB\xCF\x3C\xD2\x10\x6A\xA1\x9E\xA9\x07\x3A\xA6\xB2\xD4\x6E\x95\xC2\xAA\x07\x3A\x7F\x3A\x37\x43\xDA\xCB\xA4\xBB\x0A\xA7\x3F\xC0\x03\xD6\x10\x51\xD3\xCC\xA4\xBC\x0A\xA7\x35\xBC\x57\xD3\x10\x59\xDF\xC6\xC5\xC3\x10\xAD\x00\x1B\xAE\x07\x74\x0A\x16\xBF\xFB\xC5\x4F\x09\x13\xAE\x25\xC0\x0B\xB8\x4A\xAE\x03\x1C\xD6\xDE\xC5\x42\x26\xD8\xD5\x13\xD6\x40\xFB\x46\x10\xFF\x49\xC1\xB1\x08\x4B\x7D\xD6\x10\xFA\xA5\xD7\xBE\x12\x0B\x68\xDA\x21\x01\x59\x10\x77\xD6\xCF\xB4\x07\x3A\xF4\xBB\xCF\x89\xD6\x10\xF3\xA4\xD8\xFE\x3D\xAE\x03\x13\xD9\xF6\xC5\x41\x98\xD2\x10\xFD\x49\xC1\xB5\x08\x4B\x83\xD3\x10\x91\xD9\xD9\x1E\x47\x52\x6C\xB4\xBA\xB6\x07\xD8\x64\x29\xBF\x04\xB6\xDA\x03\x15\xC0\xF6\xC8\x0B\xAA\xD0\x25\xFD\xBB\xCF\xAE\xD2\x10\xEB\xC2\xD2\x01\x1A\x0B\xB3\xDE\x27\x29\xC6\xDB\x0A\x11\xD8\xF6\xCC\x0B\xBD\xD7\x25\xB0\xDF\xD5\x02\x12\xA2\x06\x1C\x53\x19\xCE\x0B\xC5\xD7\x3C\xFD\xA3\x10\xCC\xD5\xC2\xC0\x0F\xDC\x06\x33\xB0\xD2\xD4\xBA\xC2\x06\xDD\x03\x3A\xB0\xD9\xD9\xC1\xC4\x0C\xDD\x14\x36\x54\xA7",
+			"\xD9\xC1\xC6\x04\xAB\x0C\xCF\xDC\xE4\xDF\xDA\xA4\xB9\x0C\xE8\xD5\x1D\x27\xC2\x10\xE3\x6B\xDE\xB8\xD4\xBA\xCC\x0F\xDE\xDA\x13\xC3\xF2\xD3\x12\xC1\xD4\xBA\xCF\x08\xDF\xBC\x17\xC8\xFB\xD9\x10\xF4\xD1\x10\x2B\xB5\xD3\x01\x12\x0D\xE2\xDE\x1B\x80\xC8\xDC\x01\x15\xA4\x03\x12\xD0\x44\xC6\x10\xD4\x0B\xE0\xA9\x15\xCF\x03\xE6\x10\x10\xE2\x10\xC7\xD3\xE1\x03\x16\x0D\x16\xED\x1A\xD7\xC3\xB9\x03\x1B\xE1\x01\x19\xDB\x1E\xE2\x10\xD8\x01\xE2\xBA\x1D\xCD\x30\xB4\xA4\xFD\xD9\xC1\xDA\x0C\xE2\xCC\x10\xCE\x19\xE5\xE2\x0A\x17\xE0\x93\xC9\x10\xDC\x07\x3A\x1B\xD4\xB0\x0D\xB2\x10\x48\x59\xC1\xDD\x08\x4B\x1C\xB1\xE1\xA4\xBE\x0D\xA9\xC4\x26\x28\xE9\xA8\x25\x1A\x10\x1D\xEC\xC9\x06\x12\x0E\x4B\xE0\x25\x15\xD2\x10\x83\x87\xE4\xF5\xD9\xC1\xE6\x05\xE5\x7E\x24\xD2\x58\xEF\xE4\x09\x12\xDC\xBA\xD0\x00\xEA\x0E\xE5\x57\x24\xD7\x60\xC3\x10\x5A\xE6\xE0\xA4\xBE\x0E\x00\xEE\x1B\x7B\xDF\xE2\x09\x18\xB2\x03\x1A\x56\x19\xC1\x0F\xB8\x46\xE7\x02\x12\xE1\x52\xE3\x10\xF2\x01\xE7\xA9\x14\xE6\x52\xD5\xE7\x50\xE4\xBA\xF5\x02\xE8\xAD\x1B\xD9\x85\xE6\x10\x7C\xE7",
+			"\xE2\xA4\xB8\x0F\x8A\xEA\x1B\xD3\xDB\xE6\x02\x1F\xE8\x00\x04\xE8\x7F\xE2\x10\xFB\x03\xE9\xCC\x18\xDD\x61\xE6\xE8\x8E\x94\xBA\xFE\x04\xE3\x2F\x13\xE4\x24\xE2\x10\x2F\xB2\x10\x78\xE5\xC2\x00\x0B\xA0\x06\x3B\xEA\x01\x1E\xE7\x08\xEF\xEA\xF2\x6B\xCB\x06\x11\xE4\x8D\xE3\x10\xB2\xE0\x00\x51\xE5\xEB\x04\x07\xEB\x7C\x28\xE9\x83\x8D\xEB\x4D\xE5\xEB\x07\x02\xEC\x1A\x20\xB4\xD9\xBC\xEB\x31\xE5\xC2\x0A\x0A\xEC\x64\x29\xB5\xCD\xEA\xEA\x39\xE4\xBA\x0D\x02\x6F\x31\xBD\x1A\x63\xB9\xEA\x01\x1A\x58\xB0\x78\xAC\x34\x73\xA0\x1D\x91\x9E\x83\x84\x14\x42\xB4\xB0\x44\x1F\x95\x44\x10\x85\x44\x1D\x7A\x44\x1A\x78\xF1\xE1\x9E\xF2\xEE\xA6\x67\xAF\x0F\xFC\x68\xEE\x03\x2B\xED\x04\x95\x74\xE9\xE4\xE7\xFE\xE5\xA6\x02\xF1\x77\x24\xA1\x8D\xE7\xEC\xA6\xE1\x95\xD4\x6A\xAF\x0F\xEE\xE3\xAA\x45\x7D\xF0\x68\xE3\x6F\x10\xFF\x9E\x07\x22\x89\x20\x74\x14\x17\xF7\xA7\x71\x79\xF1\x4A\xCE\x70\x5F\x9B\x15\x1F\xF0\x14\xEC\xEB\xA7\x45\x73\xF2\x64\x9E\xF1\xE1\x94\xCC\x2E\x1A\xF2\x2B\x10\xEF\x2F\x1E\xF2\x80\xAE\x70\x30\xF3\xBD\x7F\x12\xCB\xFF\x02\xEF\x70\xA4\xEF",
+			"\x3A\xF1\x77\x62\xDE\x12\x3D\xF4\x7B\xE1\x92\x7C\x6F\x91\xF4\x44\xFC\xF3\xE1\x91\xB1\x2E\x18\xF4\x2B\x11\x6E\x44\x1C\xF4\x2F\x1E\xF4\x39\x98\x70\x15\xB3\x14\x53\xF7\x13\x76\x94\x14\x57\xFF\x12\x59\xFA\x97\x25\x7B\xF5\x09\x17\xB0\x00\x07\xB0\xFF\x02\xA3\x44\x12\xA3\xE7\xE2\xA3\x40\x70\xC2\x8E\xA3\x20\x93\x70\x14\x69\x74\x14\x6F\xFF\x12\x20\xB3\x14\x73\xF7\x13\x88\x94\x14\x77\xF1\x9E",
+		};
+		vl::glr::DecompressSerializedData(compressed, true, dataSolidRows, dataRows, dataBlock, dataRemain, outputStream);
+	}
+
+	const wchar_t* ParserRuleName(vl::vint index)
+	{
+		static const wchar_t* results[] = {
+			L"RType",
+			L"RAttributeParameter",
+			L"RAttribute",
+			L"REnumMember",
+			L"REnum",
+			L"RStructMember",
+			L"RStruct",
+			L"RMessageRequest",
+			L"RMessageResponse",
+			L"RMessage",
+			L"REventRequest",
+			L"REvent",
+			L"RDeclDetail",
+			L"RDecl",
+			L"Schema",
+		};
+		return results[index];
+	}
+
+	const wchar_t* ParserStateLabel(vl::vint index)
+	{
+		static const wchar_t* results[] = {
+			L"[0][RType] BEGIN ",
+			L"[1][RType] END [ENDING]",
+			L"[2][RType]< \"bool\" @ >",
+			L"[3][RType]< \"char\" @ >",
+			L"[4][RType]< \"double\" @ >",
+			L"[5][RType]< \"float\" @ >",
+			L"[6][RType]< \"int\" @ >",
+			L"[7][RType]< \"key\" @ >",
+			L"[8][RType]< \"string\" @ >",
+			L"[9][RType]< NAME @ >",
+			L"[10][RType]< RType \"[\" \"]\" @ >",
+			L"[11][RType]< RType \"[\" @ \"]\" >",
+			L"[12][RType]< RType @ \"[\" \"]\" >",
+			L"[13][RAttributeParameter] BEGIN ",
+			L"[14][RAttributeParameter] END [ENDING]",
+			L"[15][RAttributeParameter]CPP_NAME @",
+			L"[16][RAttribute] BEGIN ",
+			L"[17][RAttribute] END [ENDING]",
+			L"[18][RAttribute]< \"[\" @ ATT_NAME [ \"(\" RAttributeParameter \")\" ] \"]\" >",
+			L"[19][RAttribute]< \"[\" ATT_NAME @ [ \"(\" RAttributeParameter \")\" ] \"]\" >",
+			L"[20][RAttribute]< \"[\" ATT_NAME [ \"(\" @ RAttributeParameter \")\" ] \"]\" >",
+			L"[21][RAttribute]< \"[\" ATT_NAME [ \"(\" RAttributeParameter \")\" @ ] \"]\" >",
+			L"[22][RAttribute]< \"[\" ATT_NAME [ \"(\" RAttributeParameter \")\" ] \"]\" @ >",
+			L"[23][RAttribute]< \"[\" ATT_NAME [ \"(\" RAttributeParameter @ \")\" ] \"]\" >",
+			L"[24][REnumMember] BEGIN ",
+			L"[25][REnumMember] END [ENDING]",
+			L"[26][REnumMember]< NAME \",\" @ >",
+			L"[27][REnumMember]< NAME @ \",\" >",
+			L"[28][REnum] BEGIN ",
+			L"[29][REnum] END [ENDING]",
+			L"[30][REnum]< \"enum\" @ NAME \"{\" { REnumMember } \"}\" >",
+			L"[31][REnum]< \"enum\" NAME \"{\" @ { REnumMember } \"}\" >",
+			L"[32][REnum]< \"enum\" NAME \"{\" { REnumMember @ } \"}\" >",
+			L"[33][REnum]< \"enum\" NAME \"{\" { REnumMember } \"}\" @ >",
+			L"[34][REnum]< \"enum\" NAME @ \"{\" { REnumMember } \"}\" >",
+			L"[35][RStructMember] BEGIN ",
+			L"[36][RStructMember] END [ENDING]",
+			L"[37][RStructMember]< \"var\" @ NAME \":\" RType \";\" >",
+			L"[38][RStructMember]< \"var\" NAME \":\" @ RType \";\" >",
+			L"[39][RStructMember]< \"var\" NAME \":\" RType \";\" @ >",
+			L"[40][RStructMember]< \"var\" NAME \":\" RType @ \";\" >",
+			L"[41][RStructMember]< \"var\" NAME @ \":\" RType \";\" >",
+			L"[42][RStruct] BEGIN ",
+			L"[43][RStruct] END [ENDING]",
+			L"[44][RStruct]< \"struct\" @ NAME \"{\" { RStructMember } \"}\" >",
+			L"[45][RStruct]< \"struct\" NAME \"{\" @ { RStructMember } \"}\" >",
+			L"[46][RStruct]< \"struct\" NAME \"{\" { RStructMember @ } \"}\" >",
+			L"[47][RStruct]< \"struct\" NAME \"{\" { RStructMember } \"}\" @ >",
+			L"[48][RStruct]< \"struct\" NAME @ \"{\" { RStructMember } \"}\" >",
+			L"[49][RMessageRequest] BEGIN ",
+			L"[50][RMessageRequest] END [ENDING]",
+			L"[51][RMessageRequest]< \"request\" \":\" @ RType \";\" >",
+			L"[52][RMessageRequest]< \"request\" \":\" RType \";\" @ >",
+			L"[53][RMessageRequest]< \"request\" \":\" RType @ \";\" >",
+			L"[54][RMessageRequest]< \"request\" @ \":\" RType \";\" >",
+			L"[55][RMessageResponse] BEGIN ",
+			L"[56][RMessageResponse] END [ENDING]",
+			L"[57][RMessageResponse]< \"response\" \":\" @ RType \";\" >",
+			L"[58][RMessageResponse]< \"response\" \":\" RType \";\" @ >",
+			L"[59][RMessageResponse]< \"response\" \":\" RType @ \";\" >",
+			L"[60][RMessageResponse]< \"response\" @ \":\" RType \";\" >",
+			L"[61][RMessage] BEGIN ",
+			L"[62][RMessage] END [ENDING]",
+			L"[63][RMessage]< \"message\" @ NAME \"{\" [ RMessageRequest ] [ RMessageResponse ] \"}\" >",
+			L"[64][RMessage]< \"message\" NAME \"{\" @ [ RMessageRequest ] [ RMessageResponse ] \"}\" >",
+			L"[65][RMessage]< \"message\" NAME \"{\" [ RMessageRequest @ ] [ RMessageResponse ] \"}\" >",
+			L"[66][RMessage]< \"message\" NAME \"{\" [ RMessageRequest ] [ RMessageResponse @ ] \"}\" >",
+			L"[67][RMessage]< \"message\" NAME \"{\" [ RMessageRequest ] [ RMessageResponse ] \"}\" @ >",
+			L"[68][RMessage]< \"message\" NAME @ \"{\" [ RMessageRequest ] [ RMessageResponse ] \"}\" >",
+			L"[69][REventRequest] BEGIN ",
+			L"[70][REventRequest] END [ENDING]",
+			L"[71][REventRequest]< \"request\" \":\" @ RType \";\" >",
+			L"[72][REventRequest]< \"request\" \":\" RType \";\" @ >",
+			L"[73][REventRequest]< \"request\" \":\" RType @ \";\" >",
+			L"[74][REventRequest]< \"request\" @ \":\" RType \";\" >",
+			L"[75][REvent] BEGIN ",
+			L"[76][REvent] END [ENDING]",
+			L"[77][REvent]< \"event\" @ NAME \"{\" [ REventRequest ] \"}\" >",
+			L"[78][REvent]< \"event\" NAME \"{\" @ [ REventRequest ] \"}\" >",
+			L"[79][REvent]< \"event\" NAME \"{\" [ REventRequest @ ] \"}\" >",
+			L"[80][REvent]< \"event\" NAME \"{\" [ REventRequest ] \"}\" @ >",
+			L"[81][REvent]< \"event\" NAME @ \"{\" [ REventRequest ] \"}\" >",
+			L"[82][RDeclDetail] BEGIN ",
+			L"[83][RDeclDetail] END [ENDING]",
+			L"[84][RDeclDetail]<< !REnum @ >>",
+			L"[85][RDeclDetail]<< !REvent @ >>",
+			L"[86][RDeclDetail]<< !RMessage @ >>",
+			L"[87][RDeclDetail]<< !RStruct @ >>",
+			L"[88][RDecl] BEGIN ",
+			L"[89][RDecl] END [ENDING]",
+			L"[90][RDecl]<< { RAttribute @ } !RDeclDetail >>",
+			L"[91][RDecl]<< { RAttribute } !RDeclDetail @ >>",
+			L"[92][Schema] BEGIN ",
+			L"[93][Schema] END [ENDING]",
+			L"[94][Schema]< RDecl @ { RDecl } >",
+			L"[95][Schema]< RDecl { RDecl @ } >",
+		};
+		return results[index];
+	}
+
+	Parser::Parser()
+		: vl::glr::ParserBase<GuiRemoteProtocolTokens, ParserStates, GuiRemoteProtocolAstInsReceiver>(&GuiRemoteProtocolTokenDeleter, &GuiRemoteProtocolLexerData, &GuiRemoteProtocolParserData)
+	{
+	}
+
+	vl::WString Parser::GetClassName(vl::vint32_t classIndex) const
+	{
+		return vl::WString::Unmanaged(GuiRemoteProtocolTypeName((GuiRemoteProtocolClasses)classIndex));
+	}
+
+	vl::vint32_t Parser::FindCommonBaseClass(vl::vint32_t class1, vl::vint32_t class2) const
+	{
+		return -1;
+	}
+
+	vl::Ptr<vl::presentation::remoteprotocol::GuiRpSchema> Parser::ParseSchema(const vl::WString& input, vl::vint codeIndex) const
+	{
+		 return ParseWithString<vl::presentation::remoteprotocol::GuiRpSchema, ParserStates::Schema>(input, this, codeIndex);
+	}
+
+	vl::Ptr<vl::presentation::remoteprotocol::GuiRpSchema> Parser::ParseSchema(vl::collections::List<vl::regex::RegexToken>& tokens, vl::vint codeIndex) const
+	{
+		 return ParseWithTokens<vl::presentation::remoteprotocol::GuiRpSchema, ParserStates::Schema>(tokens, this, codeIndex);
+	}
+}
+
+
+/***********************************************************************
+.\REMOTEPROTOCOL\GENERATED\GUIREMOTEPROTOCOL_ASSEMBLER.CPP
+***********************************************************************/
+/***********************************************************************
+This file is generated by: Vczh Parser Generator
+From parser definition:GuiRemoteProtocol
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+
+namespace vl::presentation::remoteprotocol
+{
+
+/***********************************************************************
+GuiRemoteProtocolAstInsReceiver : public vl::glr::AstInsReceiverBase
+***********************************************************************/
+
+	vl::Ptr<vl::glr::ParsingAstBase> GuiRemoteProtocolAstInsReceiver::CreateAstNode(vl::vint32_t type)
+	{
+		auto cppTypeName = GuiRemoteProtocolCppTypeName((GuiRemoteProtocolClasses)type);
+		switch((GuiRemoteProtocolClasses)type)
+		{
+		case GuiRemoteProtocolClasses::ArrayType:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpArrayType);
+		case GuiRemoteProtocolClasses::Attribute:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpAttribute);
+		case GuiRemoteProtocolClasses::EnumDecl:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpEnumDecl);
+		case GuiRemoteProtocolClasses::EnumMember:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpEnumMember);
+		case GuiRemoteProtocolClasses::EventDecl:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpEventDecl);
+		case GuiRemoteProtocolClasses::EventRequest:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpEventRequest);
+		case GuiRemoteProtocolClasses::MessageDecl:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpMessageDecl);
+		case GuiRemoteProtocolClasses::MessageRequest:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpMessageRequest);
+		case GuiRemoteProtocolClasses::MessageResponse:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpMessageResponse);
+		case GuiRemoteProtocolClasses::PrimitiveType:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpPrimitiveType);
+		case GuiRemoteProtocolClasses::ReferenceType:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpReferenceType);
+		case GuiRemoteProtocolClasses::Schema:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpSchema);
+		case GuiRemoteProtocolClasses::StructDecl:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpStructDecl);
+		case GuiRemoteProtocolClasses::StructMember:
+			return vl::Ptr(new vl::presentation::remoteprotocol::GuiRpStructMember);
+		default:
+			return vl::glr::AssemblyThrowCannotCreateAbstractType(type, cppTypeName);
+		}
+	}
+
+	void GuiRemoteProtocolAstInsReceiver::SetField(vl::glr::ParsingAstBase* object, vl::vint32_t field, vl::Ptr<vl::glr::ParsingAstBase> value)
+	{
+		auto cppFieldName = GuiRemoteProtocolCppFieldName((GuiRemoteProtocolFields)field);
+		switch((GuiRemoteProtocolFields)field)
+		{
+		case GuiRemoteProtocolFields::ArrayType_element:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpArrayType::element, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::Declaration_attributes:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpDeclaration::attributes, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::EnumDecl_members:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpEnumDecl::members, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::EventDecl_request:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpEventDecl::request, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::EventRequest_type:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpEventRequest::type, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::MessageDecl_request:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpMessageDecl::request, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::MessageDecl_response:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpMessageDecl::response, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::MessageRequest_type:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpMessageRequest::type, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::MessageResponse_type:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpMessageResponse::type, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::Schema_declarations:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpSchema::declarations, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::StructDecl_members:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpStructDecl::members, object, field, value, cppFieldName);
+		case GuiRemoteProtocolFields::StructMember_type:
+			return vl::glr::AssemblerSetObjectField(&vl::presentation::remoteprotocol::GuiRpStructMember::type, object, field, value, cppFieldName);
+		default:
+			return vl::glr::AssemblyThrowFieldNotObject(field, cppFieldName);
+		}
+	}
+
+	void GuiRemoteProtocolAstInsReceiver::SetField(vl::glr::ParsingAstBase* object, vl::vint32_t field, const vl::regex::RegexToken& token, vl::vint32_t tokenIndex)
+	{
+		auto cppFieldName = GuiRemoteProtocolCppFieldName((GuiRemoteProtocolFields)field);
+		switch((GuiRemoteProtocolFields)field)
+		{
+		case GuiRemoteProtocolFields::Attribute_cppType:
+			return vl::glr::AssemblerSetTokenField(&vl::presentation::remoteprotocol::GuiRpAttribute::cppType, object, field, token, tokenIndex, cppFieldName);
+		case GuiRemoteProtocolFields::Attribute_name:
+			return vl::glr::AssemblerSetTokenField(&vl::presentation::remoteprotocol::GuiRpAttribute::name, object, field, token, tokenIndex, cppFieldName);
+		case GuiRemoteProtocolFields::Declaration_name:
+			return vl::glr::AssemblerSetTokenField(&vl::presentation::remoteprotocol::GuiRpDeclaration::name, object, field, token, tokenIndex, cppFieldName);
+		case GuiRemoteProtocolFields::EnumMember_name:
+			return vl::glr::AssemblerSetTokenField(&vl::presentation::remoteprotocol::GuiRpEnumMember::name, object, field, token, tokenIndex, cppFieldName);
+		case GuiRemoteProtocolFields::ReferenceType_name:
+			return vl::glr::AssemblerSetTokenField(&vl::presentation::remoteprotocol::GuiRpReferenceType::name, object, field, token, tokenIndex, cppFieldName);
+		case GuiRemoteProtocolFields::StructMember_name:
+			return vl::glr::AssemblerSetTokenField(&vl::presentation::remoteprotocol::GuiRpStructMember::name, object, field, token, tokenIndex, cppFieldName);
+		default:
+			return vl::glr::AssemblyThrowFieldNotToken(field, cppFieldName);
+		}
+	}
+
+	void GuiRemoteProtocolAstInsReceiver::SetField(vl::glr::ParsingAstBase* object, vl::vint32_t field, vl::vint32_t enumItem, bool weakAssignment)
+	{
+		auto cppFieldName = GuiRemoteProtocolCppFieldName((GuiRemoteProtocolFields)field);
+		switch((GuiRemoteProtocolFields)field)
+		{
+		case GuiRemoteProtocolFields::PrimitiveType_type:
+			return vl::glr::AssemblerSetEnumField(&vl::presentation::remoteprotocol::GuiRpPrimitiveType::type, object, field, enumItem, weakAssignment, cppFieldName);
+		default:
+			return vl::glr::AssemblyThrowFieldNotEnum(field, cppFieldName);
+		}
+	}
+
+	const wchar_t* GuiRemoteProtocolTypeName(GuiRemoteProtocolClasses type)
+	{
+		const wchar_t* results[] = {
+			L"ArrayType",
+			L"Attribute",
+			L"Declaration",
+			L"EnumDecl",
+			L"EnumMember",
+			L"EventDecl",
+			L"EventRequest",
+			L"MessageDecl",
+			L"MessageRequest",
+			L"MessageResponse",
+			L"PrimitiveType",
+			L"ReferenceType",
+			L"Schema",
+			L"StructDecl",
+			L"StructMember",
+			L"Type",
+		};
+		vl::vint index = (vl::vint)type;
+		return 0 <= index && index < 16 ? results[index] : nullptr;
+	}
+
+	const wchar_t* GuiRemoteProtocolCppTypeName(GuiRemoteProtocolClasses type)
+	{
+		const wchar_t* results[] = {
+			L"vl::presentation::remoteprotocol::GuiRpArrayType",
+			L"vl::presentation::remoteprotocol::GuiRpAttribute",
+			L"vl::presentation::remoteprotocol::GuiRpDeclaration",
+			L"vl::presentation::remoteprotocol::GuiRpEnumDecl",
+			L"vl::presentation::remoteprotocol::GuiRpEnumMember",
+			L"vl::presentation::remoteprotocol::GuiRpEventDecl",
+			L"vl::presentation::remoteprotocol::GuiRpEventRequest",
+			L"vl::presentation::remoteprotocol::GuiRpMessageDecl",
+			L"vl::presentation::remoteprotocol::GuiRpMessageRequest",
+			L"vl::presentation::remoteprotocol::GuiRpMessageResponse",
+			L"vl::presentation::remoteprotocol::GuiRpPrimitiveType",
+			L"vl::presentation::remoteprotocol::GuiRpReferenceType",
+			L"vl::presentation::remoteprotocol::GuiRpSchema",
+			L"vl::presentation::remoteprotocol::GuiRpStructDecl",
+			L"vl::presentation::remoteprotocol::GuiRpStructMember",
+			L"vl::presentation::remoteprotocol::GuiRpType",
+		};
+		vl::vint index = (vl::vint)type;
+		return 0 <= index && index < 16 ? results[index] : nullptr;
+	}
+
+	const wchar_t* GuiRemoteProtocolFieldName(GuiRemoteProtocolFields field)
+	{
+		const wchar_t* results[] = {
+			L"ArrayType::element",
+			L"Attribute::cppType",
+			L"Attribute::name",
+			L"Declaration::attributes",
+			L"Declaration::name",
+			L"EnumDecl::members",
+			L"EnumMember::name",
+			L"EventDecl::request",
+			L"EventRequest::type",
+			L"MessageDecl::request",
+			L"MessageDecl::response",
+			L"MessageRequest::type",
+			L"MessageResponse::type",
+			L"PrimitiveType::type",
+			L"ReferenceType::name",
+			L"Schema::declarations",
+			L"StructDecl::members",
+			L"StructMember::name",
+			L"StructMember::type",
+		};
+		vl::vint index = (vl::vint)field;
+		return 0 <= index && index < 19 ? results[index] : nullptr;
+	}
+
+	const wchar_t* GuiRemoteProtocolCppFieldName(GuiRemoteProtocolFields field)
+	{
+		const wchar_t* results[] = {
+			L"vl::presentation::remoteprotocol::GuiRpArrayType::element",
+			L"vl::presentation::remoteprotocol::GuiRpAttribute::cppType",
+			L"vl::presentation::remoteprotocol::GuiRpAttribute::name",
+			L"vl::presentation::remoteprotocol::GuiRpDeclaration::attributes",
+			L"vl::presentation::remoteprotocol::GuiRpDeclaration::name",
+			L"vl::presentation::remoteprotocol::GuiRpEnumDecl::members",
+			L"vl::presentation::remoteprotocol::GuiRpEnumMember::name",
+			L"vl::presentation::remoteprotocol::GuiRpEventDecl::request",
+			L"vl::presentation::remoteprotocol::GuiRpEventRequest::type",
+			L"vl::presentation::remoteprotocol::GuiRpMessageDecl::request",
+			L"vl::presentation::remoteprotocol::GuiRpMessageDecl::response",
+			L"vl::presentation::remoteprotocol::GuiRpMessageRequest::type",
+			L"vl::presentation::remoteprotocol::GuiRpMessageResponse::type",
+			L"vl::presentation::remoteprotocol::GuiRpPrimitiveType::type",
+			L"vl::presentation::remoteprotocol::GuiRpReferenceType::name",
+			L"vl::presentation::remoteprotocol::GuiRpSchema::declarations",
+			L"vl::presentation::remoteprotocol::GuiRpStructDecl::members",
+			L"vl::presentation::remoteprotocol::GuiRpStructMember::name",
+			L"vl::presentation::remoteprotocol::GuiRpStructMember::type",
+		};
+		vl::vint index = (vl::vint)field;
+		return 0 <= index && index < 19 ? results[index] : nullptr;
+	}
+
+	vl::Ptr<vl::glr::ParsingAstBase> GuiRemoteProtocolAstInsReceiver::ResolveAmbiguity(vl::vint32_t type, vl::collections::Array<vl::Ptr<vl::glr::ParsingAstBase>>& candidates)
+	{
+		auto cppTypeName = GuiRemoteProtocolCppTypeName((GuiRemoteProtocolClasses)type);
+		return vl::glr::AssemblyThrowTypeNotAllowAmbiguity(type, cppTypeName);
+	}
+}
+
+
+/***********************************************************************
+.\REMOTEPROTOCOL\GENERATED\GUIREMOTEPROTOCOL_LEXER.CPP
+***********************************************************************/
+/***********************************************************************
+This file is generated by: Vczh Parser Generator
+From parser definition:GuiRemoteProtocol
+Licensed under https://github.com/vczh-libraries/License
+***********************************************************************/
+
+
+namespace vl::presentation::remoteprotocol
+{
+	bool GuiRemoteProtocolTokenDeleter(vl::vint token)
+	{
+		switch((GuiRemoteProtocolTokens)token)
+		{
+		case GuiRemoteProtocolTokens::SPACE:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	const wchar_t* GuiRemoteProtocolTokenId(GuiRemoteProtocolTokens token)
+	{
+		static const wchar_t* results[] = {
+			L"VAR",
+			L"ENUM",
+			L"STRUCT",
+			L"MESSAGE",
+			L"REQUEST",
+			L"RESPONSE",
+			L"EVENT",
+			L"BOOLEAN",
+			L"INTEGER",
+			L"FLOAT",
+			L"DOUBLE",
+			L"STRING",
+			L"CHAR",
+			L"KEY",
+			L"CPP_NAME",
+			L"ATT_NAME",
+			L"NAME",
+			L"OPEN_BRACE",
+			L"CLOSE_BRACE",
+			L"OPEN_ARRAY",
+			L"CLOSE_ARRAY",
+			L"OPEN",
+			L"CLOSE",
+			L"COLON",
+			L"SEMICOLON",
+			L"COMMA",
+			L"SPACE",
+		};
+		vl::vint index = (vl::vint)token;
+		return 0 <= index && index < GuiRemoteProtocolTokenCount ? results[index] : nullptr;
+	}
+
+	const wchar_t* GuiRemoteProtocolTokenDisplayText(GuiRemoteProtocolTokens token)
+	{
+		static const wchar_t* results[] = {
+			L"var",
+			L"enum",
+			L"struct",
+			L"message",
+			L"request",
+			L"response",
+			L"event",
+			L"bool",
+			L"int",
+			L"float",
+			L"double",
+			L"string",
+			L"char",
+			L"key",
+			nullptr,
+			nullptr,
+			nullptr,
+			L"{",
+			L"}",
+			L"[",
+			L"]",
+			L"(",
+			L")",
+			L":",
+			L";",
+			L",",
+			nullptr,
+		};
+		vl::vint index = (vl::vint)token;
+		return 0 <= index && index < GuiRemoteProtocolTokenCount ? results[index] : nullptr;
+	}
+
+	const wchar_t* GuiRemoteProtocolTokenRegex(GuiRemoteProtocolTokens token)
+	{
+		static const wchar_t* results[] = {
+			L"var",
+			L"enum",
+			L"struct",
+			L"message",
+			L"request",
+			L"response",
+			L"event",
+			L"bool",
+			L"int",
+			L"float",
+			L"double",
+			L"string",
+			L"char",
+			L"key",
+			L"(::[a-zA-Z_][a-zA-Z0-9<>]*){1,}",
+			L"@[a-zA-Z_][a-zA-Z0-9]*",
+			L"[a-zA-Z_][a-zA-Z0-9]*",
+			L"/{",
+			L"/}",
+			L"/[",
+			L"/]",
+			L"/(",
+			L"/)",
+			L":",
+			L";",
+			L",",
+			L"/s+",
+		};
+		vl::vint index = (vl::vint)token;
+		return 0 <= index && index < GuiRemoteProtocolTokenCount ? results[index] : nullptr;
+	}
+
+	void GuiRemoteProtocolLexerData(vl::stream::IStream& outputStream)
+	{
+		static const vl::vint dataLength = 1555; // 16760 bytes before compressing
+		static const vl::vint dataBlock = 256;
+		static const vl::vint dataRemain = 19;
+		static const vl::vint dataSolidRows = 6;
+		static const vl::vint dataRows = 7;
+		static const char* compressed[] = {
+			"\x78\x41\x00\x00\x0B\x06\x00\x00\x59\x00\x01\xAD\x01\x84\x81\x80\x16\x82\x09\x08\x84\x8A\x0B\x84\x81\x06\x87\x04\xA0\x11\x84\x88\x14\x88\x83\x14\x17\x84\x87\x86\x84\x80\x18\x83\x1C\x04\xBA\x21\x84\x8B\x1C\x90\x82\x1E\x27\x84\xBE\x0A\x94\x80\x21\x96\x82\x41\x04\x9A\x24\x8B\x2C\x98\x83\x2E\x37\x84\x9F\x3A\x94\x81\x31\x9E\x82\x62\x40\x84\x83\x33\xA4\x80\x32\xA3\x04\xE5\x09\xA4\x86\x34\xA4\x83\x33\x4F\x84\xA8\x32\xA4\x81\x35\xAA\x82\x6A\x58\x84\x8B\x3B\xAC\x80\x36\xAF\x04\xED\x21\xA4\x8E\x34\xB0\x83\x37\x67\x84\xB0\x2A\xB4\x81\x39\xB6\x82\x72\x70\x84\x93\x33\xBC\x80\x3A\xBB\x04\xF5\x39\xA4\x86\x3C\xBC\x83\x3B\x04\xF8\x04\x99\x33\xC4\x82\x3C\xC3\x04\xFB\x09\xC4\x8D\x3C\xC4\x83\x0B\x8F\x91\xC1\x90\xC1\x83\x08\x82\x0A\x04\x96\x04\x9F\x7C\xCF\x7C\x06\x82\x15\x1B\xDD\xC3\xDF\x81\x82\x06\x82\x11\x04\x92\x04\x87\xD6\xD0\x82\x03\x0D\x81\x89\x81\x82\x04\x80\x04\xD6\xB8\x81\x87\x19\xD0\x03\x04\xDE\x02\xBC\xAD\xC0\x02\xE2\xE5\x00\x83\x01\xC1\x84\x81\x09\xEE\xD1\x83\x06\x82\x10\x22\xE3\xD3\xE4\xED\xEA\xEB\x0C\xD2\xD6\xDA\xF8",
+			"\xE1\x82\xED\xCE\x0C\x04\xDC\xC0\x02\xF4\xF1\xF2\xF3\x80\xE5\xE8\xE7\xE3\xFB\xF1\xF4\xF6\xF5\xF0\xEF\xF2\xEE\xF4\xF9\xEE\xEF\xFB\xF8\x9D\xE2\xF9\xF5\xEB\xFF\xFB\xFA\xF1\x40\x83\x7D\x7B\x04\x81\x4A\x05\x81\x03\x81\x8B\x7B\x06\x08\xBE\x7C\x7F\x83\xDB\x76\x7F\x82\x83\x11\x8A\x86\x85\x82\x18\x82\x8A\x85\x83\x04\x5C\x0C\x87\x85\x10\xA1\x8D\x7E\x84\xFC\x54\x87\x77\x87\x00\x1D\x08\x8B\x86\x17\xAC\x89\x87\x8A\x24\xA2\x83\x85\x8C\xF8\x66\x83\x89\x8B\x04\x5E\x00\x8C\x8E\x3C\xAF\x8D\x8E\x8B\x32\x81\x9F\x3E\x8D\x25\xB4\x8A\x7F\x8E\x3E\x89\x92\x83\x07\x48\xAE\x8E\x7A\x90\x32\x84\x99\x7E\x94\xA3\x4E\x9D\x90\x8A\x12\x7F\x87\x94\x88\x50\xA1\x84\x97\x7F\x46\x9C\x66\x96\x96\x17\xA1\x0B\x96\x92\x48\x9D\x9E\x95\x98\x15\x80\x05\x8F\x99\x63\x89\x92\x08\x9C\x69\xAA\x93\x8D\x77\x51\xAC\x91\x9E\x7B\x23\x34\x94\x98\x9A\x3D\xB6\x97\x9E\x9B\x79\xB8\x9E\x76\x8B\x24\x3E\x90\xA3\xA2\x7B\xAC\x92\xA0\x75\x25\x0E\xAF\xA3\xA4\x94\x95\xA6\xA7\xA5\xD4\x66\x01\x8E\xA6\x01\x5C\xA0\x02\xA7\xA0\x84\x41\xA9\xA7\xA2\xA5\xA4\xAB\xA9\x9F\xA6\xA9\xA8\xAA",
+			"\xA3\xAB\xAE\xA9\xAB\xB0\xAA\xA8\xA7\x8D\x84\xA2\x8F\x96\x98\x8A\x8D\xAF\x9E\xAE\x18\xB3\xAE\xAF\xAF\xC0\x81\xB2\xB3\xB0\xC4\x85\xB6\xB3\xB1\xC8\x89\xBA\xB3\xB2\xCC\x8D\xBE\xB3\xB3\xD0\x91\xB2\xB7\xB4\xD4\x95\xB6\xB7\xB5\xD8\x99\xB7\xB7\x09\x04\x5C\xB1\x42\xB7\x00\x20\xBA\xB7\xB8\xE4\xB7\xAD\x9B\x9B\xBB\xB9\xA8\x91\x45\xE9\x9C\x91\xB2\xB9\x27\x86\xAD\x98\xAF\xF4\xAA\xBF\x9F\xB0\xF0\xB4\xA8\xB8\xA3\xF6\xBC\xB7\x84\x46\xF7\x82\xB9\xBC\x75\xE6\xAE\x8A\x09\xBF\xF5\xAD\xB2\x7C\xBE\x92\x84\xCA\x9C\xC2\x10\xC1\x4B\x09\xBF\x0C\xF2\xB0\x85\xC1\x11\xFE\xBB\xA3\x46\x1A\xC3\xC6\x9E\xC7\x55\x8F\xCA\xC1\xC2\x49\x83\x41\x7E\x0B\x8A\x95\xC5\xAF\x9A\x16\xF4\xA4\xC8\xAF\x2F\x19\xCF\x92\xC0\x0D\xD3\x78\xC7\xC8\x32\xE8\x8E\x46\xC2\x2A\xC1\x97\xCD\xC7\xFD\xB1\x09\xCD\x7C\x3D\xC5\xAB\xC9\xBC\x40\xF8\xCA\xD2\x7C\x32\x35\x9F\xB9\xCD\x21\xED\xC4\x77\x0C\x43\xC9\xD6\xD6\x80\x45\xF6\xA2\xCB\xD5\x55\xFC\xA4\x0F\x7A\xE3\xB5\x01\x8E\xD8\x01\x64\xD0\x02\xD9\x68\xC4\x49\xD9\xD9\x6A\xED\xDC\xDB\xDB\x67\xEE\xD1\xDC\xDC\x6B\xF3\xD6\xDD\xDD\x78",
+			"\xF2\xD3\xB2\x0D\x50\xDD\x6C\xDE\xD4\xD3\x7F\xD0\x02\xE0\x84\xC4\x45\xE1\x40\x87\xC3\xE6\xE3\xE2\x88\xCC\xEA\xE1\xE3\x90\xCF\xE2\xE5\xE2\x94\xCE\xE2\xE0\x7E\xE0\x99\xED\xB5\xDF\xE4\x9D\xE6\xB0\xC8\x47\x80\xE1\xD4\xD7\x4B\xEF\xC8\x89\xD6\x2C\xC7\xDE\xC9\xD7\x04\x77\x0C\xEA\xBB\xC0\xA0\xE8\xAE\xE8\xA1\xE4\xEA\xC4\x0E\xAF\xCB\xC4\xCC\xED\x87\x9B\xD4\xCA\x48\xA5\xC8\x90\x49\xC0\x4F\xFC\xE7\xB8\x98\xC1\xC9\xF9\x91\x49\x4B\xE8\xE7\xC6\xEF\xB9\xE6\xE1\x40\x4A\xC4\xF1\xEC\xE7\x90\xD0\xCA\xFC\xAD\x0F\x55\xCE\xF3\xA3\xBE\xD2\xD8\x8B\x4A\xF6\x67\x9E\xF5\x92\xF1\xE1\xE9\xF9\xC6\xF9\x53\xAC\x9F\x0D\xF4\xF0\xF0\xEF\xAE\xEC\xD8\xE8\xFF\x48\xF9\xF8\xF6\xEC\xFB\xBE\xE0\xF1\xFB\xA1\x4C\xCA\x7B\x7C\xF2\x2A\x7E\x61\xFC\x6A\x79\x80\xC2\x42\x08\x41\x43\x09\x3A\x05\x81\x26\x81\x2B\x70\x80\x7E\x10\x84\x82\x82\x15\x87\x81\x16\x99\x80\x06\x9B\x80\x01\x0B\x9D\x82\x83\x1F\x9C\x82\x07\xA3\x80\x84\x12\x86\x7B\x52\x97\x72\x45\x0A\xDE\x35\x73\xC8\x6D\x83\x72\x96\x71\x86\x0B\xB2\x80\x87\x19\xB6\x85\x86\x04\x98\x50\xFD\x3F\x67\x80\xDB\x61\x7A",
+			"\x80\xBD\x76\x7E\x01\xD5\x64\x09\xF2\x7B\x71\x87\xFC\x63\x82\x78\x45\x0E\x7F\x1E\xB3\x65\x78\x48\x83\x81\xFF\x43\x87\x42\x23\x3E\x78\x88\xC7\x7E\x3B\x11\x4D\x8C\x8B\x13\x8F\x53\x87\xD9\x78\x40\x12\x5D\x8E\x87\xEB\x7E\x67\x7A\x3C\x84\x8D\x12\x39\x78\x8A\xA4\x53\x8D\x8C\x54\x96\x69\x1B\xFA\x5A\x88\x32\xB1\x4A\x09\x46\x90\x8B\x19\xC2\x80\x8E\x0C\x4B\x0E\x8E\x66\x86\x6B\x1E\xD1\x83\x77\x3E\x8E\x89\x65\x09\x8B\x81\x03\xA0\x83\x34\x09\xB7\x3E\x84\x21\x91\x90\x24\x93\x95\x85\x4A\xA2\x86\x92\x92\x98\x92\x23\xC5\x5C\x09\x40\x9E\x77\x93\xDF\x62\x91\x1D\xF1\x87\x91\xEA\x73\x78\x8D\x61\x85\x96\xED\x4D\x09\x8E\xEB\x5E\x8D\x80\x84\x95\x7E\xC6\x4E\x00\x90\x9E\x47\x8B\x90\x6F\x8E\x47\x13\x35\x9A\x63\x39\xB0\x91\x97\xBC\x8E\x3C\x14\x08\x9A\x8E\x51\x81\x8E\x90\x28\x51\x0B\x15\xB7\x96\x99\x79\x41\x9D\x7B\xCC\x9A\x68\x1F\x82\x42\x0B\x67\x8D\x7A\x5B\x53\x11\x45\x36\x81\x2B\x9A\x00\x1D\x9F\x9B\x04\x20\x9C\x37\xE1\x94\x9D\x71\xA6\x9E\x9B\xE5\x88\x9F\x39\xE2\x9A\x9D\x76\xAC\x9F\x9D\xE9\x9E\x96\xCD\x29\x96\x9B\x3E\xB2\x9B\x74\xC0\x84",
+			"\x94\x19\xF7\x95\x77\x7C\xB2\x3C\x0A\xF5\x9C\x54\x3F\x85\x9E\x9E\x55\xBC\x55\x0A\xAD\x87\x97\x2B\xF3\x93\x9B\x80\xAB\x3E\x0A\xC4\x8E\x95\x2C\xEE\x83\x94\x64\xBA\x9E\x94\xBE\x57\x0A\x22\xF2\x5A\xA3\x80\x1D\xA3\x65\x1F\xB8\x3F\x47\xA3\xA4\x20\x92\x9E\xA5\xA4\x28\xA7\xA6\x4A\x80\x06\xA4\x96\xA9\xA6\xA5\x2B\xAD\xA6\x4C\xAF\xA3\xA7\x85\xAA\x48\x8C\x0D\xB7\xA2\x45\x8B\x53\xA0\x59\x85\xA6\xA1\xD7\x85\x9A\x34\xB1\x9E\x44\x2C\x00\xAD\x97\xC2\x5F\xA0\x03\x9C\xAF\xA5\xD1\x21\xA7\x3E\x35\xB0\xA6\x54\xD1\xA4\xAA\x9A\x96\xA9\xA6\x57\xB3\xA9\x56\xCF\xA2\xA9\xD4\x7F\xA2\xA7\x06\xAC\x4E\x3F\x5F\x1C\x32\xB2\x9C\x37\x1E\xEF\x1F\x1D\x00\x00\x25\x21\x80\x11\x3E\xAD\xD0\x31\xAC\x5C\xF3\xA0\x01\xB7\xB5\xAA\xAE\x77\xB4\xAC\x65\x00\x0C\x40\xBA\xA9\x31\x20\xAB\x35\x33\x65\x20\x39\x32\x82\x20\x39\x3E\x07\x54\xAE\x5D\x8B\xB8\xAE\xC6\x8A\xB5\xB1\x90\xA1\x21\x5F\x80\x0F\x38\x03\x6D\xAF\xB1\x98\xB9\xAE\x66\xF6\xA7\x37\xCC\xB6\xAD\x34\xC3\x24\x21\x65\x80\x0B\x38\xCF\x91\xB2\xB3\xBB\x39\xB3\x67\x4D\x3C\xAF\xD7\x27\xB6\xB1\x9A\xB3\x36\x66\x93",
+			"\xB5\x37\x80\x3E\x36\xB4\x01\x2C\x20\x6B\xC8\x31\x20\xE0\x34\xAD\x38\x04\x20",
+		};
+		vl::glr::DecompressSerializedData(compressed, true, dataSolidRows, dataRows, dataBlock, dataRemain, outputStream);
+	}
+}
+
+
+/***********************************************************************
 .\WORKFLOWCODEGEN\GUIINSTANCELOADER_WORKFLOWCODEGEN.CPP
 ***********************************************************************/
 
