@@ -21053,7 +21053,7 @@ Class (::demo::ElementTabPageConstructor)
 		}
 		(this->__vwsn_precompile_6 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidBorderElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint32_t>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint32_t>(5); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint>(5); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFF00")));
@@ -21101,7 +21101,7 @@ Class (::demo::ElementTabPageConstructor)
 		}
 		(this->__vwsn_precompile_12 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidBackgroundElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint32_t>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint32_t>(5); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint>(5); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFF00")));
@@ -21296,7 +21296,7 @@ Class (::demo::ElementTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_30.Obj())->SetColor1(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFF00")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_30.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint32_t>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint32_t>(5); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_30.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint>(5); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_30.Obj())->SetDirection(::vl::presentation::elements::GuiGradientBackgroundElement::Direction::Horizontal);
@@ -21319,7 +21319,7 @@ Class (::demo::ElementTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_32.Obj())->SetColor1(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFF00")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_32.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint32_t>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint32_t>(5); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_32.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint>(5); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_32.Obj())->SetDirection(::vl::presentation::elements::GuiGradientBackgroundElement::Direction::Vertical);
@@ -21342,7 +21342,7 @@ Class (::demo::ElementTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_34.Obj())->SetColor1(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFF00")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_34.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint32_t>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint32_t>(5); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_34.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint>(5); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_34.Obj())->SetDirection(::vl::presentation::elements::GuiGradientBackgroundElement::Direction::Slash);
@@ -21365,7 +21365,7 @@ Class (::demo::ElementTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_36.Obj())->SetColor1(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFF00")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_36.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint32_t>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint32_t>(5); return __vwsn_temp__; }());
+			::vl::__vwsn::This(this->__vwsn_precompile_36.Obj())->SetShape([&](){ ::vl::presentation::elements::ElementShape __vwsn_temp__; __vwsn_temp__.shapeType = ::vl::presentation::elements::ElementShapeType::RoundRect; __vwsn_temp__.radiusX = static_cast<::vl::vint>(10); __vwsn_temp__.radiusY = static_cast<::vl::vint>(5); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_36.Obj())->SetDirection(::vl::presentation::elements::GuiGradientBackgroundElement::Direction::Backslash);
