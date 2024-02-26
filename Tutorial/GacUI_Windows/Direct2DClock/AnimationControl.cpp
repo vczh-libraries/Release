@@ -17,7 +17,7 @@ namespace demo
 	void AnimationControl::GlobalTimer()
 	{
 		auto time = DateTime::LocalTime();
-		if (time.totalMilliseconds - members->lastUpdateTime.totalMilliseconds >= 100)
+		if (time.osMilliseconds - members->lastUpdateTime.osMilliseconds >= 100)
 		{
 			members->lastUpdateTime = time;
 			if (auto renderer = element->GetRenderer())
