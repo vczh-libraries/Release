@@ -970,10 +970,6 @@ Metadata
 Serialization
 ***********************************************************************/
 
-			SERIALIZE_ENUM(reflection::description::ITypeInfo::Decorator)
-			SERIALIZE_ENUM(reflection::description::TypeInfoHint)
-			SERIALIZE_ENUM(reflection::description::TypeDescriptorFlags)
-
 			BEGIN_SERIALIZATION(reflection::description::IdRange)
 				SERIALIZE(start)
 				SERIALIZE(count)
@@ -4728,8 +4724,8 @@ LoadPredefinedTypes
 				STRUCT_MEMBER(minute)
 				STRUCT_MEMBER(second)
 				STRUCT_MEMBER(milliseconds)
-				STRUCT_MEMBER(totalMilliseconds)
-				STRUCT_MEMBER(filetime)
+				STRUCT_MEMBER(osMilliseconds)
+				STRUCT_MEMBER(osInternal)
 			END_STRUCT_MEMBER(DateTime)
 
 			BEGIN_INTERFACE_MEMBER(IValueEnumerator)

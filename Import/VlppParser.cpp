@@ -6681,7 +6681,7 @@ Logger (ParsingTable)
 					writer.WriteLine(L"");
 				}
 
-				writer.WriteMonospacedEnglishTable(stringTable, rows, columns);
+				WriteMonospacedEnglishTable(writer, stringTable, rows, columns);
 				writer.WriteLine(L"");
 
 				writer.WriteLine(L"Metadata(Tokens):");
@@ -8043,8 +8043,6 @@ ParsingTable (Serialization)
 				SERIALIZE(value)
 				SERIALIZE(creatorRule)
 			END_SERIALIZATION
-
-			SERIALIZE_ENUM(ParsingTable::Instruction::InstructionType)
 
 			BEGIN_SERIALIZATION(ParsingTable::LookAheadInfo)
 				SERIALIZE(tokens)

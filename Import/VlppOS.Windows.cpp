@@ -625,7 +625,19 @@ namespace vl
 {
 	using namespace collections;
 
-	extern SYSTEMTIME DateTimeToSystemTime(const DateTime& dateTime);
+	SYSTEMTIME DateTimeToSystemTime(const DateTime& dateTime)
+	{
+		SYSTEMTIME systemTime;
+		systemTime.wYear = (WORD)dateTime.year;
+		systemTime.wMonth = (WORD)dateTime.month;
+		systemTime.wDayOfWeek = (WORD)dateTime.dayOfWeek;
+		systemTime.wDay = (WORD)dateTime.day;
+		systemTime.wHour = (WORD)dateTime.hour;
+		systemTime.wMinute = (WORD)dateTime.minute;
+		systemTime.wSecond = (WORD)dateTime.second;
+		systemTime.wMilliseconds = (WORD)dateTime.milliseconds;
+		return systemTime;
+	}
 
 	BOOL CALLBACK Locale_EnumLocalesProcEx(
 		_In_  LPWSTR lpLocaleString,
@@ -1748,7 +1760,7 @@ ThreadLocalStorage
 
 
 /***********************************************************************
-.\STREAM\CHARFORMAT.WINDOWS.CPP
+.\ENCODING\CHARFORMAT\CHARFORMAT.WINDOWS.CPP
 ***********************************************************************/
 /***********************************************************************
 Author: Zihan Chen (vczh)
@@ -1770,11 +1782,16 @@ namespace vl
 			return IsDBCSLeadByte(c);
 		}
 
+		void MbcsToWChar(wchar_t* wideBuffer, vint wideChars, vint wideReaded, char* mbcsBuffer, vint mbcsChars)
+		{
+			MultiByteToWideChar(CP_THREAD_ACP, 0, mbcsBuffer, (int)mbcsChars, wideBuffer, (int)wideChars);
+		}
+
 /***********************************************************************
-Mbcs
+MbcsEncoder
 ***********************************************************************/
 
-		vint MbcsEncoder::WriteString(wchar_t* _buffer, vint chars, bool freeToUpdate)
+		vint MbcsEncoder::WriteString(wchar_t* _buffer, vint chars)
 		{
 			vint length = WideCharToMultiByte(CP_THREAD_ACP, 0, _buffer, (int)chars, NULL, NULL, NULL, NULL);
 			char* mbcs = new char[length];
@@ -1790,50 +1807,6 @@ Mbcs
 			return chars;
 		}
 
-		void MbcsToWChar(wchar_t* wideBuffer, vint wideChars, vint wideReaded, char* mbcsBuffer, vint mbcsChars)
-		{
-			MultiByteToWideChar(CP_THREAD_ACP, 0, mbcsBuffer, (int)mbcsChars, wideBuffer, (int)wideChars);
-		}
-
-/***********************************************************************
-Utf8
-***********************************************************************/
-
-		vint Utf8Encoder::WriteString(wchar_t* _buffer, vint chars, bool freeToUpdate)
-		{
-			vint length = WideCharToMultiByte(CP_UTF8, 0, _buffer, (int)chars, NULL, NULL, NULL, NULL);
-			char* mbcs = new char[length];
-			WideCharToMultiByte(CP_UTF8, 0, _buffer, (int)chars, mbcs, (int)length, NULL, NULL);
-			vint result = stream->Write(mbcs, length);
-			delete[] mbcs;
-			if (result != length)
-			{
-				Close();
-				return 0;
-			}
-			return chars;
-		}
-	}
-}
-
-
-/***********************************************************************
-.\STREAM\CHARFORMAT_TESTENCODING.WINDOWS.CPP
-***********************************************************************/
-/***********************************************************************
-Author: Zihan Chen (vczh)
-Licensed under https://github.com/vczh-libraries/License
-***********************************************************************/
-
-
-#ifndef VCZH_MSVC
-static_assert(false, "Do not build this file for non-Windows applications.");
-#endif
-
-namespace vl
-{
-	namespace stream
-	{
 /***********************************************************************
 Helper Functions
 ***********************************************************************/
