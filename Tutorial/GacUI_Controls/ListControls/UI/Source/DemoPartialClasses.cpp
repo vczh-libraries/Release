@@ -795,6 +795,7 @@ namespace demo
 		}
 		{
 			(this->comboView = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->__vwsn_precompile_2)));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"comboView"), ::vl::__vwsn::Box(this->comboView));
 		}
 		{
 			::vl::__vwsn::This(this->comboView)->SetSelectedIndex(static_cast<::vl::vint>(5));
@@ -818,6 +819,7 @@ namespace demo
 		}
 		{
 			(this->listView = new ::vl::presentation::controls::GuiListView(::vl::presentation::theme::ThemeName::ListView));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"listView"), ::vl::__vwsn::Box(this->listView));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->listView)->GetDataColumns());
@@ -888,6 +890,7 @@ namespace demo
 		}
 		{
 			(this->bindableListView = new ::vl::presentation::controls::GuiBindableListView(::vl::presentation::theme::ThemeName::ListView));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"bindableListView"), ::vl::__vwsn::Box(this->bindableListView));
 		}
 		{
 			::vl::__vwsn::This(this->bindableListView)->SetSmallImageProperty(vl::Func(::vl_workflow_global::__vwsnf1_Demo_demo_ListViewTabPageConstructor___vwsn_demo_ListViewTabPage_Initialize_(this)));
@@ -1212,6 +1215,7 @@ Class (::demo::TextListTabPageConstructor)
 		}
 		{
 			(this->comboView = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->__vwsn_precompile_2)));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"comboView"), ::vl::__vwsn::Box(this->comboView));
 		}
 		{
 			::vl::__vwsn::This(this->comboView)->SetSelectedIndex(static_cast<::vl::vint>(0));
@@ -1235,6 +1239,7 @@ Class (::demo::TextListTabPageConstructor)
 		}
 		{
 			(this->textList = new ::vl::presentation::controls::GuiTextList(::vl::presentation::theme::ThemeName::TextList));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textList"), ::vl::__vwsn::Box(this->textList));
 		}
 		{
 			::vl::__vwsn::This(this->textList)->SetVerticalAlwaysVisible(false);
@@ -1364,6 +1369,7 @@ Class (::demo::TextListTabPageConstructor)
 		}
 		{
 			(this->bindableTextList = new ::vl::presentation::controls::GuiBindableTextList(::vl::presentation::theme::ThemeName::TextList));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"bindableTextList"), ::vl::__vwsn::Box(this->bindableTextList));
 		}
 		{
 			::vl::__vwsn::This(this->bindableTextList)->SetCheckedProperty(vl::Func(::vl_workflow_global::__vwsnf10_Demo_demo_TextListTabPageConstructor___vwsn_demo_TextListTabPage_Initialize_(this)));
@@ -1592,6 +1598,7 @@ Class (::demo::TreeViewTabPageConstructor)
 		}
 		{
 			(this->treeView = new ::vl::presentation::controls::GuiTreeView(::vl::presentation::theme::ThemeName::TreeView));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"treeView"), ::vl::__vwsn::Box(this->treeView));
 		}
 		{
 			::vl::__vwsn::This(this->treeView)->SetVerticalAlwaysVisible(false);
@@ -1706,6 +1713,7 @@ Class (::demo::TreeViewTabPageConstructor)
 		}
 		{
 			(this->bindableTreeView = new ::vl::presentation::controls::GuiBindableTreeView(::vl::presentation::theme::ThemeName::TreeView));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"bindableTreeView"), ::vl::__vwsn::Box(this->bindableTreeView));
 		}
 		{
 			::vl::__vwsn::This(this->bindableTreeView)->SetChildrenProperty(vl::Func(::vl_workflow_global::__vwsnf17_Demo_demo_TreeViewTabPageConstructor___vwsn_demo_TreeViewTabPage_Initialize_(this)));

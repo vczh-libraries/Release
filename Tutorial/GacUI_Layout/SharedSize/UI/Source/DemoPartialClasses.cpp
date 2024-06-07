@@ -945,6 +945,7 @@ Class (::demo::EnglishNumbersControllerTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetColumnOption(static_cast<::vl::vint>(1), [&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
 		}
 		(this->content = new ::vl::presentation::compositions::GuiCellComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"content"), ::vl::__vwsn::Box(this->content));
 		{
 			::vl::__vwsn::This(this->content)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
@@ -956,6 +957,7 @@ Class (::demo::EnglishNumbersControllerTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		(this->controller = new ::demo::EnglishNumbersController());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"controller"), ::vl::__vwsn::Box(this->controller));
 		(this->__vwsn_precompile_3 = ::vl::__vwsn::This(this->controller)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -1046,6 +1048,7 @@ Class (::demo::MainWindowConstructor)
 			(this->__vwsn_precompile_1 = new ::vl::presentation::controls::GuiTab(::vl::presentation::theme::ThemeName::Tab));
 		}
 		(this->sharedSizeListTabPage = new ::demo::EnglishNumbersControllerTabPage());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"sharedSizeListTabPage"), ::vl::__vwsn::Box(this->sharedSizeListTabPage));
 		(this->__vwsn_precompile_3 = ::vl::__vwsn::This(this->sharedSizeListTabPage)->GetContentComposition());
 		(this->__vwsn_precompile_4 = new ::vl::presentation::compositions::GuiSharedSizeRootComposition());
 		{
@@ -1087,6 +1090,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(__vwsn_collection_.Obj())->Add(::vl::__vwsn::Box(this->sharedSizeListTabPage));
 		}
 		(this->sharedSizeFlowTabPage = new ::demo::EnglishNumbersControllerTabPage());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"sharedSizeFlowTabPage"), ::vl::__vwsn::Box(this->sharedSizeFlowTabPage));
 		(this->__vwsn_precompile_7 = ::vl::__vwsn::This(this->sharedSizeFlowTabPage)->GetContentComposition());
 		{
 			(this->__vwsn_precompile_8 = new ::vl::presentation::controls::GuiScrollContainer(::vl::presentation::theme::ThemeName::ScrollView));

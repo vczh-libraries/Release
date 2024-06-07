@@ -1571,38 +1571,47 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"AddressBook"));
 		}
 		(this->commandNewFolder = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandNewFolder"), ::vl::__vwsn::Box(this->commandNewFolder));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandNewFolder));
 		}
 		(this->commandDeleteFolder = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandDeleteFolder"), ::vl::__vwsn::Box(this->commandDeleteFolder));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandDeleteFolder));
 		}
 		(this->commandNewContact = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandNewContact"), ::vl::__vwsn::Box(this->commandNewContact));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandNewContact));
 		}
 		(this->commandEditContact = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandEditContact"), ::vl::__vwsn::Box(this->commandEditContact));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditContact));
 		}
 		(this->commandDeleteContact = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandDeleteContact"), ::vl::__vwsn::Box(this->commandDeleteContact));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandDeleteContact));
 		}
 		(this->commandBigIcon = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandBigIcon"), ::vl::__vwsn::Box(this->commandBigIcon));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandBigIcon));
 		}
 		(this->commandSmallIcon = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandSmallIcon"), ::vl::__vwsn::Box(this->commandSmallIcon));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandSmallIcon));
 		}
 		(this->commandList = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandList"), ::vl::__vwsn::Box(this->commandList));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandList));
 		}
 		(this->commandDetail = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandDetail"), ::vl::__vwsn::Box(this->commandDetail));
 		{
 			::vl::__vwsn::This(this->commandDetail)->SetSelected(true);
 		}
@@ -1610,10 +1619,12 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandDetail));
 		}
 		(this->commandTile = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandTile"), ::vl::__vwsn::Box(this->commandTile));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandTile));
 		}
 		(this->commandInformation = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandInformation"), ::vl::__vwsn::Box(this->commandInformation));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandInformation));
 		}
@@ -1705,6 +1716,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->treeViewFolders = new ::vl::presentation::controls::GuiBindableTreeView(::vl::presentation::theme::ThemeName::TreeView));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"treeViewFolders"), ::vl::__vwsn::Box(this->treeViewFolders));
 		}
 		{
 			::vl::__vwsn::This(this->treeViewFolders)->SetChildrenProperty(vl::Func(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this)));
@@ -1853,6 +1865,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->listViewContacts = new ::vl::presentation::controls::GuiBindableListView(::vl::presentation::theme::ThemeName::ListView));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"listViewContacts"), ::vl::__vwsn::Box(this->listViewContacts));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->listViewContacts)->GetDataColumns());
@@ -2235,6 +2248,7 @@ Class (::demo::NewContactWindowConstructor)
 		}
 		{
 			(this->textBoxName = new ::vl::presentation::controls::GuiDocumentLabel(::vl::presentation::theme::ThemeName::DocumentTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxName"), ::vl::__vwsn::Box(this->textBoxName));
 		}
 		{
 			::vl::__vwsn::This(this->textBoxName)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
@@ -2274,6 +2288,7 @@ Class (::demo::NewContactWindowConstructor)
 		}
 		{
 			(this->textBoxPhone = new ::vl::presentation::controls::GuiDocumentLabel(::vl::presentation::theme::ThemeName::DocumentTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxPhone"), ::vl::__vwsn::Box(this->textBoxPhone));
 		}
 		{
 			::vl::__vwsn::This(this->textBoxPhone)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
@@ -2313,6 +2328,7 @@ Class (::demo::NewContactWindowConstructor)
 		}
 		{
 			(this->textBoxAddress = new ::vl::presentation::controls::GuiDocumentLabel(::vl::presentation::theme::ThemeName::DocumentTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxAddress"), ::vl::__vwsn::Box(this->textBoxAddress));
 		}
 		{
 			::vl::__vwsn::This(this->textBoxAddress)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
@@ -2352,6 +2368,7 @@ Class (::demo::NewContactWindowConstructor)
 		}
 		{
 			(this->datePickerBirthday = new ::vl::presentation::controls::GuiDatePicker(::vl::presentation::theme::ThemeName::DatePicker));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"datePickerBirthday"), ::vl::__vwsn::Box(this->datePickerBirthday));
 		}
 		(this->__vwsn_precompile_16 = ::vl::__vwsn::This(this->datePickerBirthday)->GetBoundsComposition());
 		{
@@ -2571,6 +2588,7 @@ Class (::demo::NewFolderWindowConstructor)
 		}
 		{
 			(this->textBoxName = new ::vl::presentation::controls::GuiDocumentLabel(::vl::presentation::theme::ThemeName::DocumentTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxName"), ::vl::__vwsn::Box(this->textBoxName));
 		}
 		{
 			::vl::__vwsn::This(this->textBoxName)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);

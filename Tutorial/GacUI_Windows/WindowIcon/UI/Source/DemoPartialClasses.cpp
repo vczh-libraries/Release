@@ -284,6 +284,7 @@ namespace demo
 		(this->__vwsn_precompile_1 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkVisible = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkVisible"), ::vl::__vwsn::Box(this->checkVisible));
 		}
 		{
 			::vl::__vwsn::This(this->checkVisible)->SetSelected(true);
@@ -300,6 +301,7 @@ namespace demo
 		(this->__vwsn_precompile_2 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkCustom = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkCustom"), ::vl::__vwsn::Box(this->checkCustom));
 		}
 		{
 			::vl::__vwsn::This(this->checkCustom)->SetSelected(false);

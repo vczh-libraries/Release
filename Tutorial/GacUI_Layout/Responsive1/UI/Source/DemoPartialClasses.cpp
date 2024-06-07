@@ -1130,6 +1130,7 @@ Class (::demo::ResponsiveGroupControlConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_3));
 		}
 		(this->responsive = new ::vl::presentation::compositions::GuiResponsiveGroupComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"responsive"), ::vl::__vwsn::Box(this->responsive));
 		(this->__vwsn_precompile_4 = new ::vl::presentation::compositions::GuiStackComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetPadding(static_cast<::vl::vint>(10));
@@ -1522,6 +1523,7 @@ Class (::demo::ResponsiveStackControlConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_3));
 		}
 		(this->responsive = new ::vl::presentation::compositions::GuiResponsiveStackComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"responsive"), ::vl::__vwsn::Box(this->responsive));
 		(this->__vwsn_precompile_4 = new ::vl::presentation::compositions::GuiStackComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetPadding(static_cast<::vl::vint>(10));
@@ -1914,6 +1916,7 @@ Class (::demo::ResponsiveViewControlConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_3));
 		}
 		(this->responsive = new ::vl::presentation::compositions::GuiResponsiveViewComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"responsive"), ::vl::__vwsn::Box(this->responsive));
 		(this->__vwsn_precompile_4 = new ::vl::presentation::compositions::GuiResponsiveFixedComposition());
 		(this->__vwsn_precompile_5 = new ::vl::presentation::compositions::GuiStackComposition());
 		{
@@ -2084,6 +2087,7 @@ Class (::demo::ResponsiveViewControlConstructor)
 		}
 		{
 			(this->documentBox = new ::vl::presentation::controls::GuiDocumentLabel(::vl::presentation::theme::ThemeName::DocumentTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"documentBox"), ::vl::__vwsn::Box(this->documentBox));
 		}
 		{
 			::vl::__vwsn::This(this->documentBox)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);

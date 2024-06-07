@@ -306,6 +306,7 @@ namespace demo
 		}
 		{
 			(this->textBox = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBox"), ::vl::__vwsn::Box(this->textBox));
 		}
 		(this->__vwsn_precompile_2 = ::vl::__vwsn::This(this->textBox)->GetBoundsComposition());
 		{

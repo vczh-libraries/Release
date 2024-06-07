@@ -2399,6 +2399,7 @@ Class (::demo::CategoryEditorConstructor)
 		}
 		{
 			(this->comboBox = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->__vwsn_precompile_0)));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"comboBox"), ::vl::__vwsn::Box(this->comboBox));
 		}
 		{
 			::vl::__vwsn::This(this->comboBox)->SetItemTemplate(vl::Func(::vl_workflow_global::__vwsnf44_Demo_demo_CategoryEditorConstructor___vwsn_demo_CategoryEditor_Initialize_(this)));
@@ -2572,6 +2573,7 @@ Class (::demo::DateEditorConstructor)
 		(this->self = __vwsn_this_);
 		{
 			(this->comboBox = new ::vl::presentation::controls::GuiDateComboBox(::vl::presentation::theme::ThemeName::DateComboBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"comboBox"), ::vl::__vwsn::Box(this->comboBox));
 		}
 		(this->__vwsn_precompile_0 = ::vl::__vwsn::This(this->comboBox)->GetBoundsComposition());
 		{
@@ -2649,6 +2651,7 @@ Class (::demo::DateFilterConstructor)
 		}
 		{
 			(this->checkFrom = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkFrom"), ::vl::__vwsn::Box(this->checkFrom));
 		}
 		{
 			::vl::__vwsn::This(this->checkFrom)->SetText(::vl::WString::Unmanaged(L"From:"));
@@ -2665,6 +2668,7 @@ Class (::demo::DateFilterConstructor)
 		}
 		{
 			(this->dateFrom = new ::vl::presentation::controls::GuiDateComboBox(::vl::presentation::theme::ThemeName::DateComboBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dateFrom"), ::vl::__vwsn::Box(this->dateFrom));
 		}
 		{
 			::vl::__vwsn::This(this->dateFrom)->SetSelectedDate(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"1988-01-01 00:00:00.000")));
@@ -2685,6 +2689,7 @@ Class (::demo::DateFilterConstructor)
 		}
 		{
 			(this->checkTo = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkTo"), ::vl::__vwsn::Box(this->checkTo));
 		}
 		{
 			::vl::__vwsn::This(this->checkTo)->SetText(::vl::WString::Unmanaged(L"To:"));
@@ -2701,6 +2706,7 @@ Class (::demo::DateFilterConstructor)
 		}
 		{
 			(this->dateTo = new ::vl::presentation::controls::GuiDateComboBox(::vl::presentation::theme::ThemeName::DateComboBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dateTo"), ::vl::__vwsn::Box(this->dateTo));
 		}
 		{
 			::vl::__vwsn::This(this->dateTo)->SetSelectedDate(::vl::__vwsn::Parse<::vl::DateTime>(::vl::WString::Unmanaged(L"2000-01-01 00:00:00.000")));
@@ -2899,6 +2905,7 @@ Class (::demo::GenderEditorConstructor)
 		}
 		{
 			(this->comboBox = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->__vwsn_precompile_0)));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"comboBox"), ::vl::__vwsn::Box(this->comboBox));
 		}
 		{
 			::vl::__vwsn::This(this->comboBox)->SetItemTemplate(vl::Func(::vl_workflow_global::__vwsnf52_Demo_demo_GenderEditorConstructor___vwsn_demo_GenderEditor_Initialize_(this)));
@@ -3154,6 +3161,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->comboView = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->__vwsn_precompile_2)));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"comboView"), ::vl::__vwsn::Box(this->comboView));
 		}
 		(this->__vwsn_precompile_10 = ::vl::__vwsn::This(this->comboView)->GetBoundsComposition());
 		{
@@ -3177,6 +3185,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->dataGrid = new ::vl::presentation::controls::GuiBindableDataGrid(::vl::presentation::theme::ThemeName::ListView));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dataGrid"), ::vl::__vwsn::Box(this->dataGrid));
 		}
 		{
 			auto __vwsn_collection_ = ::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->dataGrid)->GetDataColumns());
@@ -3281,6 +3290,7 @@ Class (::demo::MainWindowConstructor)
 			(this->__vwsn_precompile_16 = new ::vl::presentation::controls::GuiToolstripMenu(::vl::presentation::theme::ThemeName::Menu, static_cast<::vl::presentation::controls::GuiControl*>(nullptr)));
 		}
 		(this->dateFilter = new ::demo::DateFilter());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dateFilter"), ::vl::__vwsn::Box(this->dateFilter));
 		(this->__vwsn_precompile_17 = ::vl::__vwsn::This(this->dateFilter)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_17)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -3535,6 +3545,7 @@ Class (::demo::TextEditorConstructor)
 		(this->self = __vwsn_this_);
 		{
 			(this->textBox = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBox"), ::vl::__vwsn::Box(this->textBox));
 		}
 		(this->__vwsn_precompile_0 = ::vl::__vwsn::This(this->textBox)->GetBoundsComposition());
 		{

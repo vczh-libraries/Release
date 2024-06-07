@@ -359,6 +359,7 @@ Class (::demo::MainWindowConstructor)
 		{
 			(this->progressBar = new ::vl::presentation::controls::GuiScroll(::vl::presentation::theme::ThemeName::ProgressBar));
 			::vl::__vwsn::This(this->progressBar)->SetPageSize(static_cast<::vl::vint>(0));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"progressBar"), ::vl::__vwsn::Box(this->progressBar));
 		}
 		(this->__vwsn_precompile_2 = ::vl::__vwsn::This(this->progressBar)->GetBoundsComposition());
 		{
@@ -379,6 +380,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->buttonDownload = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"buttonDownload"), ::vl::__vwsn::Box(this->buttonDownload));
 		}
 		{
 			::vl::__vwsn::This(this->buttonDownload)->SetText(::vl::WString::Unmanaged(L"Begin Download!"));
@@ -395,6 +397,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->textResult = new ::vl::presentation::controls::GuiMultilineTextBox(::vl::presentation::theme::ThemeName::MultilineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textResult"), ::vl::__vwsn::Box(this->textResult));
 		}
 		{
 			::vl::__vwsn::This(this->textResult)->SetReadonly(true);

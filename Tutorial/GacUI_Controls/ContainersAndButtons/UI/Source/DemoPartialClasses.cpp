@@ -71,6 +71,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString::Unmanaged(L"ContainersAndButtons"));
 		}
 		(this->radioGroup = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"radioGroup"), ::vl::__vwsn::Box(this->radioGroup));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->radioGroup));
 		}

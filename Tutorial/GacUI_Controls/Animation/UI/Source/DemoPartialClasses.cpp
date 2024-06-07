@@ -1354,6 +1354,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_18)->SetText(::vl::WString::Unmanaged(L"Complex Animation"));
 		}
 		(this->animationBackground = new ::vl::presentation::compositions::GuiBoundsComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"animationBackground"), ::vl::__vwsn::Box(this->animationBackground));
 		{
 			::vl::__vwsn::This(this->animationBackground)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(200); __vwsn_temp__.y = static_cast<::vl::vint>(200); return __vwsn_temp__; }());
 		}

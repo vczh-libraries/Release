@@ -258,6 +258,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString::Unmanaged(L"Member_Property"));
 		}
 		(this->myControl = new ::demo::MyControl());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"myControl"), ::vl::__vwsn::Box(this->myControl));
 		(this->__vwsn_precompile_1 = ::vl::__vwsn::This(this->myControl)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(10); __vwsn_temp__.top = static_cast<::vl::vint>(10); __vwsn_temp__.right = (- static_cast<::vl::vint>(1)); __vwsn_temp__.bottom = (- static_cast<::vl::vint>(1)); return __vwsn_temp__; }());
@@ -310,6 +311,7 @@ Class (::demo::MyControlConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
 		}
 		(this->optionGroup = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"optionGroup"), ::vl::__vwsn::Box(this->optionGroup));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->optionGroup));
 		}

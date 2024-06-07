@@ -103,6 +103,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"Win11ToolstripMenu"));
 		}
 		(this->commandCut = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandCut"), ::vl::__vwsn::Box(this->commandCut));
 		{
 			::vl::__vwsn::This(this->commandCut)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+X"));
 		}
@@ -113,6 +114,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandCut));
 		}
 		(this->commandCopy = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandCopy"), ::vl::__vwsn::Box(this->commandCopy));
 		{
 			::vl::__vwsn::This(this->commandCopy)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+C"));
 		}
@@ -123,6 +125,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandCopy));
 		}
 		(this->commandPaste = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandPaste"), ::vl::__vwsn::Box(this->commandPaste));
 		{
 			::vl::__vwsn::This(this->commandPaste)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+V"));
 		}
@@ -133,6 +136,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandPaste));
 		}
 		(this->commandDelete = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandDelete"), ::vl::__vwsn::Box(this->commandDelete));
 		{
 			::vl::__vwsn::This(this->commandDelete)->SetText(::vl::WString::Unmanaged(L"Delete"));
 		}
@@ -140,6 +144,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandDelete));
 		}
 		(this->commandUndo = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandUndo"), ::vl::__vwsn::Box(this->commandUndo));
 		{
 			::vl::__vwsn::This(this->commandUndo)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Z"));
 		}
@@ -150,6 +155,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandUndo));
 		}
 		(this->commandRedo = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandRedo"), ::vl::__vwsn::Box(this->commandRedo));
 		{
 			::vl::__vwsn::This(this->commandRedo)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Y"));
 		}
@@ -160,6 +166,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandRedo));
 		}
 		(this->commandExportPrivate = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandExportPrivate"), ::vl::__vwsn::Box(this->commandExportPrivate));
 		{
 			::vl::__vwsn::This(this->commandExportPrivate)->SetText(::vl::WString::Unmanaged(L"Export as Private Format"));
 		}
@@ -167,6 +174,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandExportPrivate));
 		}
 		(this->commandExportRtf = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandExportRtf"), ::vl::__vwsn::Box(this->commandExportRtf));
 		{
 			::vl::__vwsn::This(this->commandExportRtf)->SetText(::vl::WString::Unmanaged(L"Export as Rich Text Format"));
 		}
@@ -174,6 +182,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandExportRtf));
 		}
 		(this->commandExportHtml = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandExportHtml"), ::vl::__vwsn::Box(this->commandExportHtml));
 		{
 			::vl::__vwsn::This(this->commandExportHtml)->SetText(::vl::WString::Unmanaged(L"Export as HTML"));
 		}
@@ -182,6 +191,7 @@ namespace demo
 		}
 		{
 			(this->menuEdit = new ::vl::presentation::controls::GuiToolstripMenu(::vl::presentation::theme::ThemeName::Menu, static_cast<::vl::presentation::controls::GuiControl*>(nullptr)));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"menuEdit"), ::vl::__vwsn::Box(this->menuEdit));
 		}
 		{
 			(this->__vwsn_precompile_0 = new ::vl::presentation::controls::GuiToolstripGroupContainer(::vl::presentation::theme::ThemeName::CustomControl));

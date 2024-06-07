@@ -1731,6 +1731,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->listLocales = new ::vl::presentation::controls::GuiTextList(::vl::presentation::theme::ThemeName::TextList));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"listLocales"), ::vl::__vwsn::Box(this->listLocales));
 		}
 		(this->__vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{
@@ -1764,6 +1765,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->comboLocales = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->listLocales)));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"comboLocales"), ::vl::__vwsn::Box(this->comboLocales));
 		}
 		(this->__vwsn_precompile_7 = ::vl::__vwsn::This(this->comboLocales)->GetBoundsComposition());
 		{

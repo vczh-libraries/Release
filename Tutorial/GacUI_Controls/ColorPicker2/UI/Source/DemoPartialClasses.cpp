@@ -499,6 +499,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->comboColor = new ::vl::presentation::controls::GuiComboButton(::vl::presentation::theme::ThemeName::ComboBox, this->__vwsn_precompile_5));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"comboColor"), ::vl::__vwsn::Box(this->comboColor));
 		}
 		(this->__vwsn_precompile_9 = ::vl::__vwsn::This(this->comboColor)->GetContainerComposition());
 		(this->__vwsn_precompile_10 = new ::vl::presentation::compositions::GuiBoundsComposition());

@@ -67,6 +67,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"Direct2DClock"));
 		}
 		(this->animationBounds = new ::vl::presentation::compositions::GuiBoundsComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"animationBounds"), ::vl::__vwsn::Box(this->animationBounds));
 		{
 			::vl::__vwsn::This(this->animationBounds)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(5); __vwsn_temp__.top = static_cast<::vl::vint>(5); __vwsn_temp__.right = (- static_cast<::vl::vint>(1)); __vwsn_temp__.bottom = (- static_cast<::vl::vint>(1)); return __vwsn_temp__; }());
 		}

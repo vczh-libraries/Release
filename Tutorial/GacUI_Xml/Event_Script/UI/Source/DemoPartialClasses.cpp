@@ -135,6 +135,7 @@ namespace demo
 		}
 		{
 			(this->textBoxA = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxA"), ::vl::__vwsn::Box(this->textBoxA));
 		}
 		(this->__vwsn_precompile_5 = ::vl::__vwsn::This(this->textBoxA)->GetBoundsComposition());
 		{
@@ -174,6 +175,7 @@ namespace demo
 		}
 		{
 			(this->textBoxB = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxB"), ::vl::__vwsn::Box(this->textBoxB));
 		}
 		(this->__vwsn_precompile_9 = ::vl::__vwsn::This(this->textBoxB)->GetBoundsComposition());
 		{
@@ -213,6 +215,7 @@ namespace demo
 		}
 		{
 			(this->textBoxC = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxC"), ::vl::__vwsn::Box(this->textBoxC));
 		}
 		{
 			::vl::__vwsn::This(this->textBoxC)->SetReadonly(true);

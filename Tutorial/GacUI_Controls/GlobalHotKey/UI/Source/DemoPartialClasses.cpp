@@ -113,6 +113,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"GlobalHotkey"));
 		}
 		(this->dialog = new ::vl::presentation::controls::GuiMessageDialog());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dialog"), ::vl::__vwsn::Box(this->dialog));
 		{
 			::vl::__vwsn::This(this->dialog)->SetTitle(::vl::WString::Unmanaged(L"Global Hotkey"));
 		}
@@ -123,6 +124,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialog));
 		}
 		(this->commandGlobal = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandGlobal"), ::vl::__vwsn::Box(this->commandGlobal));
 		{
 			::vl::__vwsn::This(this->commandGlobal)->SetShortcutBuilder(::vl::WString::Unmanaged(L"global:Ctrl+Shift+Alt+D"));
 		}
@@ -134,6 +136,7 @@ namespace demo
 		}
 		{
 			(this->menuRightClick = new ::vl::presentation::controls::GuiToolstripMenu(::vl::presentation::theme::ThemeName::Menu, static_cast<::vl::presentation::controls::GuiControl*>(nullptr)));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"menuRightClick"), ::vl::__vwsn::Box(this->menuRightClick));
 		}
 		{
 			(this->__vwsn_precompile_0 = new ::vl::presentation::controls::GuiToolstripGroupContainer(::vl::presentation::theme::ThemeName::CustomControl));

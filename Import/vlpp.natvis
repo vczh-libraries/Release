@@ -2,7 +2,32 @@
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
 
   <Type Name="vl::ObjectString&lt;wchar_t&gt;">
+    <AlternativeType Name="vl::ObjectString&lt;char16_t&gt;"/>
     <DisplayString>{{ size={length}, buffer={buffer+start,su} }}</DisplayString>
+    <StringView>buffer+start,su</StringView>
+    <Expand>
+      <Item Name="[size]">length</Item>
+      <ArrayItems>
+        <Size>length</Size>
+        <ValuePointer>buffer+start</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+
+  <Type Name="vl::ObjectString&lt;char8_t&gt;">
+    <DisplayString>{{ size={length}, buffer={buffer+start,s8} }}</DisplayString>
+    <StringView>buffer+start,su</StringView>
+    <Expand>
+      <Item Name="[size]">length</Item>
+      <ArrayItems>
+        <Size>length</Size>
+        <ValuePointer>buffer+start</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+
+  <Type Name="vl::ObjectString&lt;char32_t&gt;">
+    <DisplayString>{{ size={length}, buffer={buffer+start,s32} }}</DisplayString>
     <StringView>buffer+start,su</StringView>
     <Expand>
       <Item Name="[size]">length</Item>
@@ -57,27 +82,49 @@
     </Expand>
   </Type>
 
-  <Type Name="vl::Lazy&lt;*&gt;">
-    <DisplayString Condition="internalValue.reference == 0">[empty]</DisplayString>
-    <DisplayString Condition="internalValue.reference != 0 &amp;&amp; internalValue.reference->evaluated == false">[not evaluated]</DisplayString>
-    <DisplayString Condition="internalValue.reference != 0 &amp;&amp; internalValue.reference->evaluated == true">{internalValue.reference->value}</DisplayString>
-    <Expand>
-      <ExpandedItem Condition="internalValue.reference != 0 &amp;&amp; internalValue.reference->evaluated == true">internalValue.reference->value</ExpandedItem>
-    </Expand>
-  </Type>
-
-  <Type Name="vl::ObjectBox&lt;*&gt;">
-    <DisplayString>{object}</DisplayString>
-    <Expand>
-      <ExpandedItem>object</ExpandedItem>
-    </Expand>
-  </Type>
-
   <Type Name="vl::Nullable&lt;*&gt;">
-    <DisplayString Condition="object == 0">[empty]</DisplayString>
-    <DisplayString Condition="object != 0">{*object}</DisplayString>
+    <DisplayString Condition="!initialized">[empty]</DisplayString>
+    <DisplayString Condition="initialized">{object}</DisplayString>
     <Expand>
-      <ExpandedItem Condition="object != 0">*object</ExpandedItem>
+      <ExpandedItem Condition="initialized">object</ExpandedItem>
+    </Expand>
+  </Type>
+
+  <Type Name="vl::Variant&lt;*&gt;">
+    <DisplayString Optional="true" Condition="index == -1">[invalid]</DisplayString>
+    <DisplayString Optional="true" Condition="index == 0">{{ index=0, value={*($T1*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 1">{{ index=1, value={*($T2*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 2">{{ index=2, value={*($T3*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 3">{{ index=3, value={*($T4*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 4">{{ index=4, value={*($T5*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 5">{{ index=5, value={*($T6*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 6">{{ index=6, value={*($T7*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 7">{{ index=7, value={*($T8*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 8">{{ index=8, value={*($T9*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 9">{{ index=9, value={*($T10*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 10">{{ index=10, value={*($T11*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 11">{{ index=11, value={*($T12*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 12">{{ index=12, value={*($T13*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 13">{{ index=13, value={*($T14*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 14">{{ index=14, value={*($T15*)buffer} }}</DisplayString>
+    <DisplayString Optional="true" Condition="index == 15">{{ index=15, value={*($T16*)buffer} }}</DisplayString>
+    <Expand>
+      <ExpandedItem Optional="true" Condition="index == 0">*($T1*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 1">*($T2*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 2">*($T3*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 3">*($T4*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 4">*($T5*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 5">*($T6*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 6">*($T7*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 7">*($T8*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 8">*($T9*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 9">*($T10*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 10">*($T11*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 11">*($T12*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 12">*($T13*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 13">*($T14*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 14">*($T15*)buffer</ExpandedItem>
+      <ExpandedItem Optional="true" Condition="index == 15">*($T16*)buffer</ExpandedItem>
     </Expand>
   </Type>
 

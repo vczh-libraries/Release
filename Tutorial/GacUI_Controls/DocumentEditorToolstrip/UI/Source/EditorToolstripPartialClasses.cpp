@@ -390,6 +390,7 @@ namespace demo
 		}
 		{
 			(this->buttonAlignment = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::ToolstripDropdownButton));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"buttonAlignment"), ::vl::__vwsn::Box(this->buttonAlignment));
 		}
 		{
 			::vl::__vwsn::This(this->buttonAlignment)->SetAlt(::vl::WString::Unmanaged(L"P"));
@@ -1180,6 +1181,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(800); __vwsn_temp__.y = static_cast<::vl::vint>(600); return __vwsn_temp__; }());
 		}
 		(this->editor = new ::demo::DocumentEditorToolstrip());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"editor"), ::vl::__vwsn::Box(this->editor));
 		(this->__vwsn_precompile_1 = ::vl::__vwsn::This(this->editor)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());

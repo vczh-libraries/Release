@@ -615,7 +615,11 @@ GuiApplicationMain
 #ifndef VCZH_DEBUG_NO_REFLECTION
 					GetGlobalTypeManager()->Load();
 #endif
-					GetPluginManager()->Load();
+					GetPluginManager()->Load(true, true);
+				}
+				else
+				{
+					GetPluginManager()->Load(false, true);
 				}
 
 				GetCurrentController()->InputService()->StartTimer();
@@ -637,11 +641,17 @@ GuiApplicationMain
 
 				if (!GACUI_UNITTEST_ONLY_SKIP_TYPE_AND_PLUGIN_LOAD_UNLOAD)
 				{
+					GetPluginManager()->Unload(true, true);
 					DestroyPluginManager();
 #ifndef VCZH_DEBUG_NO_REFLECTION
 					ResetGlobalTypeManager();
 #endif
 				}
+				else
+				{
+					GetPluginManager()->Unload(false, true);
+				}
+
 				if (!GACUI_UNITTEST_ONLY_SKIP_THREAD_LOCAL_STORAGE_DISPOSE_STORAGES)
 				{
 					ThreadLocalStorage::DisposeStorages();
@@ -1765,6 +1775,24 @@ GuiInstanceRootObject
 				}
 				return false;
 			}
+
+			reflection::description::Value GuiInstanceRootObject::GetNamedObject(const WString& name)
+			{
+				vint index = namedObjects.Keys().IndexOf(name);
+				if (index == -1)
+				{
+					return {};
+				}
+				else
+				{
+					return namedObjects.Values()[index];
+				}
+			}
+
+			void GuiInstanceRootObject::SetNamedObject(const WString& name, const reflection::description::Value& namedObject)
+			{
+				namedObjects.Set(name, namedObject);
+			}
 		}
 	}
 }
@@ -2556,6 +2584,19 @@ GuiWindow
 				}
 			}
 
+			bool GuiWindow::IsRenderedAsMaximized()
+			{
+				auto nativeWindow = GetNativeWindow();
+				if (nativeWindow && GetApplication()->GetMainWindow() == this)
+				{
+					if (auto hostedApp = GetHostedApplication())
+					{
+						nativeWindow = hostedApp->GetNativeWindowHost();
+					}
+				}
+				return nativeWindow ? nativeWindow->GetSizeState() == INativeWindow::Maximized : false;
+			}
+
 			void GuiWindow::SetControlTemplateProperties()
 			{
 				if (auto ct = TypedControlTemplateObject(false))
@@ -2566,7 +2607,7 @@ GuiWindow
 					ct->SetSizeBox(hasSizeBox);
 					ct->SetIconVisible(isIconVisible);
 					ct->SetTitleBar(hasTitleBar);
-					ct->SetMaximized(GetNativeWindow()->GetSizeState() != INativeWindow::Maximized);
+					ct->SetMaximized(IsRenderedAsMaximized());
 					ct->SetActivated(GetRenderingAsActivated());
 				}
 			}
@@ -2657,7 +2698,7 @@ GuiWindow
 			void GuiWindow::Moved()
 			{
 				GuiControlHost::Moved();
-				TypedControlTemplateObject(true)->SetMaximized(GetNativeWindow()->GetSizeState() != INativeWindow::Maximized);
+				TypedControlTemplateObject(true)->SetMaximized(IsRenderedAsMaximized());
 			}
 
 			void GuiWindow::Opened()
@@ -3546,10 +3587,10 @@ GuiGraphicsComposition
 				}
 			}
 
-			void GuiGraphicsComposition::InvokeOnCompositionStateChanged()
+			void GuiGraphicsComposition::InvokeOnCompositionStateChanged(bool forceRequestRender)
 			{
 				OnCompositionStateChanged();
-				if (relatedHostRecord && GetEventuallyVisible())
+				if (relatedHostRecord && (forceRequestRender || GetEventuallyVisible()))
 				{
 					relatedHostRecord->host->RequestRender();
 				}
@@ -3693,7 +3734,7 @@ GuiGraphicsComposition
 				if (visible != value)
 				{
 					visible = value;
-					InvokeOnCompositionStateChanged();
+					InvokeOnCompositionStateChanged(true);
 				}
 			}
 
@@ -3750,7 +3791,7 @@ GuiGraphicsComposition
 							}
 						}
 
-						if (children.Count() > 0 || associatedHitTestResult != INativeWindowListener::NoDecision)
+						if (children.Count() > 0 || associatedHitTestResult != INativeWindowListener::NoDecision || associatedCursor)
 						{
 							renderTarget->PushClipper(bounds, this);
 							if (!renderTarget->IsClipperCoverWholeTarget())
@@ -12598,6 +12639,17 @@ GuiSelectableListControl
 				if (count != newCount)
 				{
 					ClearSelection();
+				}
+				else if (itemReferenceUpdated && selectedItems.Count() > 0)
+				{
+					vint cmin = start;
+					vint cmax = start + count - 1;
+					vint smin = selectedItems[0];
+					vint smax = selectedItems[selectedItems.Count() - 1];
+					if (cmin <= smax && smin <= cmax)
+					{
+						ClearSelection();
+					}
 				}
 			}
 
@@ -26186,13 +26238,16 @@ GuiToolstripCommandPlugin
 					GUI_PLUGIN_DEPEND(GacUI_Parser);
 				}
 				
-				void Load()override
+				void Load(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 				{
-					IGuiParserManager* manager=GetParserManager();
-					manager->SetParser(L"SHORTCUT", Ptr(new GuiToolstripCommandShortcutParser));
+					if (controllerUnrelatedPlugins)
+					{
+						IGuiParserManager* manager = GetParserManager();
+						manager->SetParser(L"SHORTCUT", Ptr(new GuiToolstripCommandShortcutParser));
+					}
 				}
 
-				void Unload()override
+				void Unload(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 				{
 				}
 			};
@@ -33675,14 +33730,7 @@ GuiGraphicsRenderTarget
 				}
 				else
 				{
-					Rect previousClipper = GetClipper();
-					Rect currentClipper;
-
-					currentClipper.x1 = (previousClipper.x1 > clipper.x1 ? previousClipper.x1 : clipper.x1);
-					currentClipper.y1 = (previousClipper.y1 > clipper.y1 ? previousClipper.y1 : clipper.y1);
-					currentClipper.x2 = (previousClipper.x2 < clipper.x2 ? previousClipper.x2 : clipper.x2);
-					currentClipper.y2 = (previousClipper.y2 < clipper.y2 ? previousClipper.y2 : clipper.y2);
-
+					Rect currentClipper = GetClipper().Intersect(clipper);
 					if (currentClipper.x1 < currentClipper.x2 && currentClipper.y1 < currentClipper.y2)
 					{
 						clippers.Add(currentClipper);
@@ -35028,6 +35076,54 @@ Native Window Provider
 Helper Functions
 ***********************************************************************/
 
+		NativeImageFrameBase::NativeImageFrameBase()
+		{
+		}
+
+		NativeImageFrameBase::~NativeImageFrameBase()
+		{
+			// TODO: (enumerable) foreach
+			for (vint i = 0; i < caches.Count(); i++)
+			{
+				caches.Values().Get(i)->OnDetach(this);
+			}
+		}
+
+		bool NativeImageFrameBase::SetCache(void* key, Ptr<INativeImageFrameCache> cache)
+		{
+			vint index = caches.Keys().IndexOf(key);
+			if (index != -1)
+			{
+				return false;
+			}
+			caches.Add(key, cache);
+			cache->OnAttach(this);
+			return true;
+		}
+
+		Ptr<INativeImageFrameCache> NativeImageFrameBase::GetCache(void* key)
+		{
+			vint index = caches.Keys().IndexOf(key);
+			return index == -1 ? nullptr : caches.Values().Get(index);
+		}
+
+		Ptr<INativeImageFrameCache> NativeImageFrameBase::RemoveCache(void* key)
+		{
+			vint index = caches.Keys().IndexOf(key);
+			if (index == -1)
+			{
+				return 0;
+			}
+			Ptr<INativeImageFrameCache> cache = caches.Values().Get(index);
+			cache->OnDetach(this);
+			caches.Remove(key);
+			return cache;
+		}
+
+/***********************************************************************
+Helper Functions
+***********************************************************************/
+
 		INativeCursor* GetCursorFromHitTest(INativeWindowListener::HitTestResult hitTestResult, INativeResourceService* resourceService)
 		{
 			switch (hitTestResult)
@@ -35216,7 +35312,8 @@ public:
 		void SaveToStream(stream::IStream& imageStream, FormatType formatType) override
 		{
 			CHECK_ERROR(formatType == FormatType::Unknown, L"Not Implemented!");
-			CopyStream(imageStream, memoryStream);
+			memoryStream.SeekFromBegin(0);
+			CopyStream(memoryStream, imageStream);
 		}
 	};
 
@@ -35295,6 +35392,35 @@ int SetupGacGenNativeController()
 	GuiApplicationMain();
 	SetNativeController(nullptr);
 	return 0;
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\HOSTED\GUIHOSTEDAPPLICATION.CPP
+***********************************************************************/
+
+namespace vl::presentation
+{
+	IGuiHostedApplication* hostedApplication = nullptr;
+
+	IGuiHostedApplication* GetHostedApplication()
+	{
+		return hostedApplication;
+	}
+
+	void SetHostedApplication(IGuiHostedApplication* _hostedApp)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::SetHostedApplication(IGuiHostedApplication*)#"
+		if (_hostedApp)
+		{
+			CHECK_ERROR(!hostedApplication, ERROR_MESSAGE_PREFIX L"IGuiHostedApplication instance already exists during initializing.");
+		}
+		else
+		{
+			CHECK_ERROR(hostedApplication, ERROR_MESSAGE_PREFIX L"IGuiHostedApplication instance does not exist during finalizing.");
+		}
+		hostedApplication = _hostedApp;
+#undef ERROR_MESSAGE_PREFIX
+	}
 }
 
 /***********************************************************************
@@ -36321,6 +36447,15 @@ GuiHostedController::INativeWindowService
 		}
 
 /***********************************************************************
+GuiHostedController::IGuiHostedApplication
+***********************************************************************/
+
+		INativeWindow* GuiHostedController::GetNativeWindowHost()
+		{
+			return nativeWindow;
+		}
+
+/***********************************************************************
 GuiHostedController
 ***********************************************************************/
 
@@ -36333,6 +36468,11 @@ GuiHostedController
 
 		GuiHostedController::~GuiHostedController()
 		{
+		}
+
+		IGuiHostedApplication* GuiHostedController::GetHostedApplication()
+		{
+			return this;
 		}
 
 		void GuiHostedController::Initialize()
@@ -37680,7 +37820,6 @@ GuiRemoteController::INativeInputService
 		vint idIsKeyPressing = remoteMessages.RequestIOIsKeyPressing(code);
 		remoteMessages.Submit();
 		bool result = remoteMessages.RetrieveIOIsKeyPressing(idIsKeyPressing);
-		remoteMessages.ClearResponses();
 		return result;
 	}
 
@@ -37689,7 +37828,6 @@ GuiRemoteController::INativeInputService
 		vint idIsKeyToggled = remoteMessages.RequestIOIsKeyToggled(code);
 		remoteMessages.Submit();
 		bool result = remoteMessages.RetrieveIOIsKeyToggled(idIsKeyToggled);
-		remoteMessages.ClearResponses();
 		return result;
 	}
 
@@ -37884,6 +38022,7 @@ GuiRemoteController::INativeWindowService
 			{
 				callbackService.InvokeGlobalTimer();
 			}
+			asyncService.ExecuteAsyncTasks();
 		}
 		return !connectionStopped;
 	}
@@ -37900,14 +38039,15 @@ GuiRemoteController (events)
 		remoteMessages.Submit();
 		remoteFontConfig = remoteMessages.RetrieveControllerGetFontConfig(idGetFontConfig);
 		remoteScreenConfig = remoteMessages.RetrieveControllerGetScreenConfig(idGetScreenConfig);
-		remoteMessages.ClearResponses();
 		remoteWindow.OnControllerConnect();
+		imageService.OnControllerConnect();
 		resourceManager->OnControllerConnect();
 	}
 
 	void GuiRemoteController::OnControllerDisconnect()
 	{
 		remoteWindow.OnControllerDisconnect();
+		imageService.OnControllerDisconnect();
 		resourceManager->OnControllerDisconnect();
 	}
 
@@ -37936,6 +38076,7 @@ GuiRemoteController
 		, remoteMessages(this)
 		, remoteEvents(this)
 		, remoteWindow(this)
+		, imageService(this)
 	{
 	}
 
@@ -37946,10 +38087,12 @@ GuiRemoteController
 	void GuiRemoteController::Initialize()
 	{
 		remoteProtocol->Initialize(&remoteEvents);
+		imageService.Initialize();
 	}
 
 	void GuiRemoteController::Finalize()
 	{
+		imageService.Finalize();
 		remoteMessages.RequestControllerConnectionStopped();
 		remoteMessages.Submit();
 	}
@@ -37980,7 +38123,7 @@ GuiRemoteController (INativeController)
 
 	INativeImageService* GuiRemoteController::ImageService()
 	{
-		CHECK_FAIL(L"Not Implemented!");
+		return &imageService;
 	}
 
 	INativeInputService* GuiRemoteController::InputService()
@@ -38034,6 +38177,7 @@ int SetupRemoteNativeController(vl::presentation::IGuiRemoteProtocol* protocol)
 
 	SetNativeController(&hostedController);
 	SetGuiGraphicsResourceManager(&hostedResourceManager);
+	SetHostedApplication(hostedController.GetHostedApplication());
 
 	remoteController.Initialize();
 	remoteResourceManager.Initialize();
@@ -38043,6 +38187,7 @@ int SetupRemoteNativeController(vl::presentation::IGuiRemoteProtocol* protocol)
 	remoteResourceManager.Finalize();
 	remoteController.Finalize();
 
+	SetHostedApplication(nullptr);
 	SetGuiGraphicsResourceManager(nullptr);
 	SetNativeController(nullptr);
 	return 0;
@@ -38071,17 +38216,6 @@ GuiRemoteMessages
 	void GuiRemoteMessages::Submit()
 	{
 		remote->remoteProtocol->Submit();
-	}
-
-	void GuiRemoteMessages::ClearResponses()
-	{
-#define MESSAGE_NORES(NAME, RESPONSE)
-#define MESSAGE_RES(NAME, RESPONSE)			response ## NAME.Clear();
-#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
-		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
-#undef MESSAGE_HANDLER
-#undef MESSAGE_RES
-#undef MESSAGE_NORES
 	}
 
 /***********************************************************************
@@ -38130,9 +38264,11 @@ GuiRemoteMessages (messages)
 	{\
 		response ## NAME.Add(id, arguments);\
 	}\
-	const RESPONSE& GuiRemoteMessages::Retrieve ## NAME(vint id)\
+	RESPONSE GuiRemoteMessages::Retrieve ## NAME(vint id)\
 	{\
-		return response ## NAME[id];\
+		RESPONSE response = response ## NAME[id];\
+		response ## NAME.Remove(id);\
+		return response;\
 	}\
 
 #define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
@@ -38177,8 +38313,8 @@ GuiRemoteEvents (events)
 
 	void GuiRemoteEvents::OnControllerConnect()
 	{
-		remote->OnControllerConnect();
 		remote->remoteMessages.RequestControllerConnectionEstablished();
+		remote->OnControllerConnect();
 		remote->remoteMessages.Submit();
 	}
 
@@ -38347,6 +38483,27 @@ GuiRemoteGraphicsRenderTarget
 		return INativeWindowListener::NoDecision;
 	}
 
+	Nullable<GuiRemoteGraphicsRenderTarget::SystemCursorType> GuiRemoteGraphicsRenderTarget::GetCursorFromGenerator(reflection::DescriptableObject* generator)
+	{
+		if (auto composition = dynamic_cast<GuiGraphicsComposition*>(generator))
+		{
+			if (auto cursor = composition->GetAssociatedCursor())
+			{
+				if (auto graphicsHost = composition->GetRelatedGraphicsHost())
+				{
+					if (auto nativeWindow = graphicsHost->GetNativeWindow())
+					{
+						if (nativeWindow == GetCurrentController()->WindowService()->GetMainWindow())
+						{
+							return cursor->GetSystemCursorType();
+						}
+					}
+				}
+			}
+		}
+		return {};
+	}
+
 	void GuiRemoteGraphicsRenderTarget::StartRenderingOnNativeWindow()
 	{
 		CHECK_ERROR(hitTestResults.Count() == 0, L"vl::presentation::elements::GuiRemoteGraphicsRenderTarget::StartRenderingOnNativeWindow()#Internal error: hit test result stack is not cleared.");
@@ -38389,7 +38546,11 @@ GuiRemoteGraphicsRenderTarget
 			}
 		}
 
-		remote->remoteMessages.RequestRendererBeginRendering();
+		{
+			remoteprotocol::ElementBeginRendering arguments;
+			arguments.frameId = ++usedFrameIds;
+			remote->remoteMessages.RequestRendererBeginRendering(arguments);
+		}
 	}
 
 	RenderTargetFailure GuiRemoteGraphicsRenderTarget::StopRenderingOnNativeWindow()
@@ -38398,7 +38559,6 @@ GuiRemoteGraphicsRenderTarget
 		vint idRendering = remote->remoteMessages.RequestRendererEndRendering();
 		remote->remoteMessages.Submit();
 		auto measuring = remote->remoteMessages.RetrieveRendererEndRendering(idRendering);
-		remote->remoteMessages.ClearResponses();
 
 		bool minSizeChanged = false;
 
@@ -38427,6 +38587,15 @@ GuiRemoteGraphicsRenderTarget
 				{
 					renderersAskingForCache.RemoveAt(i);
 				}
+			}
+		}
+
+		if (measuring.createdImages)
+		{
+			for (auto&& imageMetadata : *measuring.createdImages.Obj())
+			{
+				auto image = remote->imageService.GetImage(imageMetadata.id);
+				image->UpdateFromImageMetadata(imageMetadata);
 			}
 		}
 
@@ -38472,17 +38641,31 @@ GuiRemoteGraphicsRenderTarget
 	{
 		clipperValidArea = validArea;
 		auto hitTestResult = GetHitTestResultFromGenerator(generator);
+		auto cursor = GetCursorFromGenerator(generator);
+
+		remoteprotocol::ElementBoundary arguments;
 		if (hitTestResult != INativeWindowListener::NoDecision)
 		{
 			if (hitTestResults.Count() == 0 || hitTestResults[hitTestResults.Count() - 1] != hitTestResult)
 			{
-				remoteprotocol::ElementBoundary arguments;
 				arguments.hitTestResult = hitTestResult;
-				arguments.bounds = clipper;
-				arguments.clipper = validArea;
-				remote->remoteMessages.RequestRendererBeginBoundary(arguments);
 			}
 			hitTestResults.Add(hitTestResult);
+		}
+		if (cursor)
+		{
+			if (cursors.Count() == 0 || cursors[cursors.Count() - 1] != cursor.Value())
+			{
+				arguments.cursor = cursor.Value();
+			}
+			cursors.Add(cursor.Value());
+		}
+
+		if (arguments.hitTestResult || arguments.cursor)
+		{
+			arguments.bounds = clipper;
+			arguments.areaClippedBySelf = validArea;
+			remote->remoteMessages.RequestRendererBeginBoundary(arguments);
 		}
 	}
 
@@ -38500,13 +38683,29 @@ GuiRemoteGraphicsRenderTarget
 	{
 		clipperValidArea = validArea;
 		auto hitTestResult = GetHitTestResultFromGenerator(generator);
+		auto cursor = GetCursorFromGenerator(generator);
+		bool needEndBoundary = false;
+
 		if (hitTestResult != INativeWindowListener::NoDecision)
 		{
 			hitTestResults.RemoveAt(hitTestResults.Count() - 1);
 			if (hitTestResults.Count() == 0 || hitTestResults[hitTestResults.Count() - 1] != hitTestResult)
 			{
-				remote->remoteMessages.RequestRendererEndBoundary();
+				needEndBoundary = true;
 			}
+		}
+		if (cursor)
+		{
+			cursors.RemoveAt(cursors.Count() - 1);
+			if (cursors.Count() == 0 || cursors[cursors.Count() - 1] != cursor.Value())
+			{
+				needEndBoundary = true;
+			}
+		}
+
+		if (needEndBoundary)
+		{
+			remote->remoteMessages.RequestRendererEndBoundary();
 		}
 	}
 
@@ -38779,7 +38978,7 @@ GuiSolidBorderElementRenderer
 		remoteprotocol::ElementRendering arguments;
 		arguments.id = id;
 		arguments.bounds = bounds;
-		arguments.clipper = this->renderTarget->GetClipperValidArea();
+		arguments.areaClippedByParent = this->renderTarget->GetClipperValidArea();
 		this->renderTarget->GetRemoteMessages().RequestRendererRenderElement(arguments);
 		renderingBatchId = this->renderTarget->renderingBatchId;
 	}
@@ -38934,27 +39133,17 @@ GuiSolidLabelElementRenderer
 
 	GuiSolidLabelElementRenderer::MeasuringRequest GuiSolidLabelElementRenderer::GetMeasuringRequest()
 	{
-		if (element->GetWrapLine())
+		if (element->GetEllipse())
 		{
-			if (element->GetWrapLineHeightCalculation())
-			{
-				return ElementSolidLabelMeasuringRequest::TotalSize;
-			}
-			else
-			{
-				return {};
-			}
+			return ElementSolidLabelMeasuringRequest::FontHeight;
+		}
+		else if (element->GetWrapLine() && !element->GetWrapLineHeightCalculation())
+		{
+			return {};
 		}
 		else
 		{
-			if (element->GetEllipse())
-			{
-				return ElementSolidLabelMeasuringRequest::FontHeight;
-			}
-			else
-			{
-				return ElementSolidLabelMeasuringRequest::TotalSize;
-			}
+			return ElementSolidLabelMeasuringRequest::TotalSize;
 		}
 	}
 
@@ -38965,6 +39154,7 @@ GuiSolidLabelElementRenderer
 
 	GuiSolidLabelElementRenderer::GuiSolidLabelElementRenderer()
 	{
+		minSize = { 1,1 };
 	}
 
 	bool GuiSolidLabelElementRenderer::NeedUpdateMinSizeFromCache()
@@ -38980,7 +39170,8 @@ GuiSolidLabelElementRenderer
 			if (index != -1)
 			{
 				needFontHeight = false;
-				minSize = { 0,renderTarget->fontHeights.Values()[index] };
+				vint size = renderTarget->fontHeights.Values()[index];
+				UpdateMinSize({ size,size });
 			}
 		}
 	}
@@ -38988,6 +39179,8 @@ GuiSolidLabelElementRenderer
 	void GuiSolidLabelElementRenderer::UpdateMinSize(Size size)
 	{
 		minSize = size;
+		if (minSize.x < 1)minSize.x = 1;
+		if (minSize.y < 1)minSize.y = 1;
 	}
 
 	void GuiSolidLabelElementRenderer::NotifyMinSizeCacheInvalidated()
@@ -39067,20 +39260,116 @@ GuiSolidLabelElementRenderer
 GuiImageFrameElementRenderer
 ***********************************************************************/
 
+	GuiRemoteGraphicsImage* GuiImageFrameElementRenderer::GetRemoteImage()
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::elements_remoteprotocol::GuiImageFrameElementRenderer::GetRemoteImage()#"
+		if (element && element->GetImage())
+		{
+			auto image = dynamic_cast<GuiRemoteGraphicsImage*>(element->GetImage().Obj());
+			CHECK_ERROR(image, ERROR_MESSAGE_PREFIX L"Only INativeImage that created from GetCurrentController()->ImageService() is supported.");
+			return image;
+		}
+		return nullptr;
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void GuiImageFrameElementRenderer::UpdateMinSizeFromImage(GuiRemoteGraphicsImage* image)
+	{
+		needUpdateSize = true;
+		if (!image || element->GetStretch())
+		{
+			minSize = { 0,0 };
+			needUpdateSize = false;
+		}
+		else if (image->status == GuiRemoteGraphicsImage::MetadataStatus::Retrived)
+		{
+			if (0 <= element->GetFrameIndex() && element->GetFrameIndex() < image->GetFrameCount())
+			{
+				minSize = image->GetFrame(element->GetFrameIndex())->GetSize();
+			}
+			else
+			{
+				minSize = { 0,0 };
+			}
+			needUpdateSize = false;
+		}
+	}
+
 	GuiImageFrameElementRenderer::GuiImageFrameElementRenderer()
 	{
 	}
 
+	bool GuiImageFrameElementRenderer::NeedUpdateMinSizeFromCache()
+	{
+		return needUpdateSize;
+	}
+
+	void GuiImageFrameElementRenderer::TryFetchMinSizeFromCache()
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::elements_remoteprotocol::GuiImageFrameElementRenderer::TryFetchMinSizeFromCache()#"
+		auto image = GetRemoteImage();
+		if (image)
+		{
+			CHECK_ERROR(image->status == GuiRemoteGraphicsImage::MetadataStatus::Retrived, ERROR_MESSAGE_PREFIX L"The expected metadata of an image does not exist.");
+		}
+		UpdateMinSizeFromImage(image);
+		needUpdateSize = false;
+#undef ERROR_MESSAGE_PREFIX
+	}
+
 	void GuiImageFrameElementRenderer::SendUpdateElementMessages(bool fullContent)
 	{
-		// Image
-		// FrameIndex
-		// HorizontalAlignment
-		// VerticalAlignment
-		// Stretch
-		// Enabled
-		// UpdateMinSize(Stretch ? {0,0} : frame->GetSize())
-		CHECK_FAIL(L"Not Implemented!");
+		auto image = GetRemoteImage();
+		if (image)
+		{
+			needUpdateSize = true;
+			if (fullContent && image->status == GuiRemoteGraphicsImage::MetadataStatus::Retrived)
+			{
+				image->status = GuiRemoteGraphicsImage::MetadataStatus::Uninitialized;
+			}
+			if (image->status == GuiRemoteGraphicsImage::MetadataStatus::Retrived)
+			{
+				UpdateMinSizeFromImage(image);
+			}
+		}
+
+		remoteprotocol::ElementDesc_ImageFrame arguments;
+		arguments.id = id;
+		if (image) arguments.imageId = image->id;
+		arguments.imageFrame = element->GetFrameIndex();
+		arguments.stretch = element->GetStretch();
+		arguments.enabled = element->GetEnabled();
+
+		switch (element->GetHorizontalAlignment())
+		{
+		case Alignment::Left:
+			arguments.horizontalAlignment = ElementHorizontalAlignment::Left;
+			break;
+		case Alignment::Right:
+			arguments.horizontalAlignment = ElementHorizontalAlignment::Right;
+			break;
+		default:
+			arguments.horizontalAlignment = ElementHorizontalAlignment::Center;
+		}
+
+		switch (element->GetVerticalAlignment())
+		{
+		case Alignment::Top:
+			arguments.verticalAlignment = ElementVerticalAlignment::Top;
+			break;
+		case Alignment::Bottom:
+			arguments.verticalAlignment = ElementVerticalAlignment::Bottom;
+			break;
+		default:
+			arguments.verticalAlignment = ElementVerticalAlignment::Center;
+		}
+
+		if (needUpdateSize && image)
+		{
+			arguments.imageCreation = image->GenerateImageCreation();
+		}
+
+		renderTarget->GetRemoteMessages().RequestRendererUpdateElement_ImageFrame(arguments);
 	}
 
 /***********************************************************************
@@ -39156,6 +39445,242 @@ GuiColorizedTextElementRenderer
 }
 
 /***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEGRAPHICS_IMAGESERVICE.CPP
+***********************************************************************/
+
+namespace vl::presentation
+{
+/***********************************************************************
+GuiRemoteGraphicsImageFrame
+***********************************************************************/
+
+	GuiRemoteGraphicsImageFrame::GuiRemoteGraphicsImageFrame(GuiRemoteGraphicsImage* _image)
+		: image(_image)
+	{
+	}
+
+	GuiRemoteGraphicsImageFrame::~GuiRemoteGraphicsImageFrame()
+	{
+	}
+
+	INativeImage* GuiRemoteGraphicsImageFrame::GetImage()
+	{
+		return image;
+	}
+
+	Size GuiRemoteGraphicsImageFrame::GetSize()
+	{
+		return size;
+	}
+
+/***********************************************************************
+GuiRemoteGraphicsImage
+***********************************************************************/
+
+	void GuiRemoteGraphicsImage::EnsureMetadata()
+	{
+		if (status == MetadataStatus::Retrived) return;
+		auto arguments = GenerateImageCreation();
+
+		vint idImageCreated = remote->remoteMessages.RequestImageCreated(arguments);
+		remote->remoteMessages.Submit();
+		auto imageMetadata = remote->remoteMessages.RetrieveImageCreated(idImageCreated);
+		UpdateFromImageMetadata(imageMetadata);
+	}
+
+	GuiRemoteGraphicsImage::GuiRemoteGraphicsImage(GuiRemoteController* _remote, vint _id, Ptr<stream::MemoryStream> _binary)
+		: remote(_remote)
+		, id(_id)
+		, binary(_binary)
+	{
+		remote->imageService.images.Add(id, this);
+	}
+
+	GuiRemoteGraphicsImage::~GuiRemoteGraphicsImage()
+	{
+		if (remote)
+		{
+			if (status == MetadataStatus::Retrived)
+			{
+				remote->remoteMessages.RequestImageDestroyed(id);
+			}
+			remote->imageService.images.Remove(id);
+		}
+	}
+
+	remoteprotocol::ImageCreation GuiRemoteGraphicsImage::GenerateImageCreation()
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::GuiRemoteGraphicsImage::GenerateImageCreation()#"
+		CHECK_ERROR(status != MetadataStatus::Retrived, L"Cannot call this function when status is Retrived.");
+
+		remoteprotocol::ImageCreation arguments;
+		arguments.id = id;
+		if (status == MetadataStatus::Uninitialized)
+		{
+			arguments.imageData = binary;
+			arguments.imageDataOmitted = false;
+			status = MetadataStatus::Requested;
+		}
+		else
+		{
+			arguments.imageDataOmitted = true;
+		}
+
+		return arguments;
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void GuiRemoteGraphicsImage::UpdateFromImageMetadata(const remoteprotocol::ImageMetadata& imageMetadata)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::GuiRemoteGraphicsImage::UpdateFromImageMetadata(const remoteprotocol::ImageMetadata&)#"
+
+		CHECK_ERROR(id == imageMetadata.id, L"Wrong image metadata id specified.");
+
+		format = imageMetadata.format;
+		if (imageMetadata.frames)
+		{
+			if (frames.Count() > 0)
+			{
+				CHECK_ERROR(frames.Count() == imageMetadata.frames, L"New metadata should be identical to the last one.");
+				for (auto [imageFrameMetadata, index] : indexed(*imageMetadata.frames.Obj()))
+				{
+					CHECK_ERROR(frames[index]->size == imageFrameMetadata.size, L"New metadata should be identical to the last one.");
+				}
+			}
+			else
+			{
+				for (auto imageFrameMetadata : *imageMetadata.frames.Obj())
+				{
+					auto frame = Ptr(new GuiRemoteGraphicsImageFrame(this));
+					frame->size = imageFrameMetadata.size;
+					frames.Add(frame);
+				}
+			}
+		}
+		else
+		{
+			CHECK_ERROR(frames.Count() == 0, L"New metadata should be identical to the last one.");
+		}
+
+		status = MetadataStatus::Retrived;
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	INativeImageService* GuiRemoteGraphicsImage::GetImageService()
+	{
+		return remote->ImageService();
+	}
+
+	INativeImage::FormatType GuiRemoteGraphicsImage::GetFormat()
+	{
+		EnsureMetadata();
+		return format;
+	}
+
+	vint GuiRemoteGraphicsImage::GetFrameCount()
+	{
+		EnsureMetadata();
+		return frames.Count();
+	}
+
+	INativeImageFrame* GuiRemoteGraphicsImage::GetFrame(vint index)
+	{
+		EnsureMetadata();
+		return frames[index].Obj();
+	}
+
+	void GuiRemoteGraphicsImage::SaveToStream(stream::IStream& imageStream, FormatType formatType)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::GuiRemoteGraphicsImage::SaveToStream(IStream&, INativeImage::FormatType)#"
+		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"This function should not be called.");
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+/***********************************************************************
+GuiRemoteGraphicsImageService
+***********************************************************************/
+
+	Ptr<GuiRemoteGraphicsImage> GuiRemoteGraphicsImageService::CreateImage(Ptr<stream::MemoryStream> binary)
+	{
+		return Ptr(new GuiRemoteGraphicsImage(remote, ++usedImageIds, binary));
+	}
+
+	GuiRemoteGraphicsImageService::GuiRemoteGraphicsImageService(GuiRemoteController* _remote)
+		: remote(_remote)
+	{
+	}
+
+	GuiRemoteGraphicsImageService::~GuiRemoteGraphicsImageService()
+	{
+	}
+
+	void GuiRemoteGraphicsImageService::OnControllerConnect()
+	{
+		for (auto image : images.Values())
+		{
+			image->status = GuiRemoteGraphicsImage::MetadataStatus::Uninitialized;
+		}
+	}
+
+	void GuiRemoteGraphicsImageService::OnControllerDisconnect()
+	{
+	}
+
+	void GuiRemoteGraphicsImageService::Initialize()
+	{
+	}
+
+	void GuiRemoteGraphicsImageService::Finalize()
+	{
+		// TODO: (enumerable) foreach:reversed
+		for (vint i = images.Count() - 1; i >= 0; i--)
+		{
+			images.Values()[i]->remote = nullptr;
+		}
+		images.Clear();
+	}
+
+	GuiRemoteGraphicsImage* GuiRemoteGraphicsImageService::GetImage(vint id)
+	{
+		return images[id];
+	}
+
+	Ptr<INativeImage> GuiRemoteGraphicsImageService::CreateImageFromFile(const WString& path)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::GuiRemoteGraphicsImageService::CreateImageFromFile(const WString&)#"
+		CHECK_ERROR(remote, ERROR_MESSAGE_PREFIX L"This function cannot be called when GuiRemoteController is shut down.");
+		stream::FileStream fileStream(path, stream::FileStream::ReadOnly);
+		CHECK_ERROR(fileStream.IsAvailable(), ERROR_MESSAGE_PREFIX L"Unable to open file.");
+
+		auto memoryStream = Ptr(new stream::MemoryStream((vint)fileStream.Size()));
+		CopyStream(fileStream, *memoryStream.Obj());
+		return CreateImage(memoryStream);
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	Ptr<INativeImage> GuiRemoteGraphicsImageService::CreateImageFromMemory(void* buffer, vint length)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::GuiRemoteGraphicsImageService::CreateImageFromMemory(void*, vint)#"
+		CHECK_ERROR(remote, ERROR_MESSAGE_PREFIX L"This function cannot be called when GuiRemoteController is shut down.");
+		auto memoryStream = Ptr(new stream::MemoryStream(length));
+		memoryStream->Write(buffer, length);
+		return CreateImage(memoryStream);
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	Ptr<INativeImage> GuiRemoteGraphicsImageService::CreateImageFromStream(stream::IStream& imageStream)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::GuiRemoteGraphicsImageService::CreateImageFromStream(IStream&)#"
+		CHECK_ERROR(remote, ERROR_MESSAGE_PREFIX L"This function cannot be called when GuiRemoteController is shut down.");
+		auto memoryStream = Ptr(new stream::MemoryStream(imageStream.IsLimited() ? (vint)imageStream.Size() : 65536));
+		imageStream.SeekFromBegin(0);
+		CopyStream(imageStream, *memoryStream.Obj());
+		return CreateImage(memoryStream);
+#undef ERROR_MESSAGE_PREFIX
+	}
+}
+
+/***********************************************************************
 .\PLATFORMPROVIDERS\REMOTE\GUIREMOTEPROTOCOLSCHEMASHARED.CPP
 ***********************************************************************/
 
@@ -39209,6 +39734,31 @@ namespace vl::presentation::remoteprotocol
 	template<> Ptr<glr::json::JsonNode> ConvertCustomTypeToJson<Color>(const Color& value)
 	{
 		return ConvertCustomTypeToJson(value.ToString());
+	}
+
+	template<> Ptr<glr::json::JsonNode> ConvertCustomTypeToJson<Ptr<stream::MemoryStream>>(const Ptr<stream::MemoryStream>& value)
+	{
+		if (!value)
+		{
+			auto node = Ptr(new glr::json::JsonLiteral);
+			node->value = glr::json::JsonLiteralValue::Null;
+			return node;
+		}
+
+		stream::MemoryStream base64WStringStream;
+		{
+			stream::UtfGeneralEncoder<wchar_t, char8_t> utf8ToWCharEncoder;
+			stream::EncoderStream utf8ToWCharStream(base64WStringStream, utf8ToWCharEncoder);
+			stream::Utf8Base64Encoder binaryToBase64Utf8Encoder;
+			stream::EncoderStream binaryToBase64Utf8Stream(utf8ToWCharStream, binaryToBase64Utf8Encoder);
+			value->SeekFromBegin(0);
+			stream::CopyStream(*value.Obj(), binaryToBase64Utf8Stream);
+		}
+		{
+			base64WStringStream.SeekFromBegin(0);
+			stream::StreamReader reader(base64WStringStream);
+			return ConvertCustomTypeToJson(reader.ReadToEnd());
+		}
 	}
 
 	template<> void ConvertJsonToCustomType<bool>(Ptr<glr::json::JsonNode> node, bool& value)
@@ -39284,6 +39834,33 @@ namespace vl::presentation::remoteprotocol
 		ConvertJsonToCustomType(node, strValue);
 		value = Color::Parse(strValue);
 	}
+
+	template<> void ConvertJsonToCustomType<Ptr<stream::MemoryStream>>(Ptr<glr::json::JsonNode> node, Ptr<stream::MemoryStream>& value)
+	{
+		if (auto jsonLiteral = node.Cast<glr::json::JsonLiteral>())
+		{
+			if (jsonLiteral->value == glr::json::JsonLiteralValue::Null)
+			{
+				value = {};
+				return;
+			}
+		}
+		else
+		{
+			WString base64;
+			ConvertJsonToCustomType(node, base64);
+
+			value = Ptr(new stream::MemoryStream);
+
+			stream::MemoryWrapperStream base64WStringStream((void*)base64.Buffer(), base64.Length() * sizeof(wchar_t));
+			stream::UtfGeneralDecoder<wchar_t, char8_t> wcharToUtf8Decoder;
+			stream::DecoderStream wcharToUtf8Stream(base64WStringStream, wcharToUtf8Decoder);
+			stream::Utf8Base64Decoder base64Utf8ToBinaryDecoder;
+			stream::DecoderStream base64Utf8ToBinaryStream(wcharToUtf8Stream, base64Utf8ToBinaryDecoder);
+
+			stream::CopyStream(base64Utf8ToBinaryStream, *value.Obj());
+		}
+	}
 }
 
 
@@ -39318,7 +39895,6 @@ GuiRemoteWindow
 		vint idGetBounds = remoteMessages.RequestWindowGetBounds();
 		remoteMessages.Submit();
 		OnWindowBoundsUpdated(remoteMessages.RetrieveWindowGetBounds(idGetBounds));
-		remoteMessages.ClearResponses();
 	}
 
 	void GuiRemoteWindow::Opened()
@@ -39903,21 +40479,6 @@ Licensed under https ://github.com/vczh-libraries/License
 
 namespace vl::presentation::remoteprotocol
 {
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::IOMouseButton>(const ::vl::presentation::remoteprotocol::IOMouseButton & value)
-	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::IOMouseButton>(const ::vl::presentation::remoteprotocol::IOMouseButton&)#"
-		auto node = Ptr(new glr::json::JsonString);
-		switch (value)
-		{
-		case ::vl::presentation::remoteprotocol::IOMouseButton::Left: node->content.value = WString::Unmanaged(L"Left"); break;
-		case ::vl::presentation::remoteprotocol::IOMouseButton::Middle: node->content.value = WString::Unmanaged(L"Middle"); break;
-		case ::vl::presentation::remoteprotocol::IOMouseButton::Right: node->content.value = WString::Unmanaged(L"Right"); break;
-		default: CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
-		}
-		return node;
-#undef ERROR_MESSAGE_PREFIX
-	}
-
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::INativeWindowListener::HitTestResult>(const ::vl::presentation::INativeWindowListener::HitTestResult & value)
 	{
 #define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertCustomTypeToJson<::vl::presentation::INativeWindowListener::HitTestResult>(const ::vl::presentation::INativeWindowListener::HitTestResult&)#"
@@ -39985,24 +40546,15 @@ namespace vl::presentation::remoteprotocol
 #undef ERROR_MESSAGE_PREFIX
 	}
 
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RendererType>(const ::vl::presentation::remoteprotocol::RendererType & value)
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::IOMouseButton>(const ::vl::presentation::remoteprotocol::IOMouseButton & value)
 	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RendererType>(const ::vl::presentation::remoteprotocol::RendererType&)#"
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::IOMouseButton>(const ::vl::presentation::remoteprotocol::IOMouseButton&)#"
 		auto node = Ptr(new glr::json::JsonString);
 		switch (value)
 		{
-		case ::vl::presentation::remoteprotocol::RendererType::FocusRectangle: node->content.value = WString::Unmanaged(L"FocusRectangle"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::SolidBorder: node->content.value = WString::Unmanaged(L"SolidBorder"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::SinkBorder: node->content.value = WString::Unmanaged(L"SinkBorder"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::SinkSplitter: node->content.value = WString::Unmanaged(L"SinkSplitter"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::SolidBackground: node->content.value = WString::Unmanaged(L"SolidBackground"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::GradientBackground: node->content.value = WString::Unmanaged(L"GradientBackground"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::InnerShadow: node->content.value = WString::Unmanaged(L"InnerShadow"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::SolidLabel: node->content.value = WString::Unmanaged(L"SolidLabel"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::Polygon: node->content.value = WString::Unmanaged(L"Polygon"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::UnsupportedImageFrame: node->content.value = WString::Unmanaged(L"UnsupportedImageFrame"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::UnsupportedColorizedText: node->content.value = WString::Unmanaged(L"UnsupportedColorizedText"); break;
-		case ::vl::presentation::remoteprotocol::RendererType::UnsupportedDocument: node->content.value = WString::Unmanaged(L"UnsupportedDocument"); break;
+		case ::vl::presentation::remoteprotocol::IOMouseButton::Left: node->content.value = WString::Unmanaged(L"Left"); break;
+		case ::vl::presentation::remoteprotocol::IOMouseButton::Middle: node->content.value = WString::Unmanaged(L"Middle"); break;
+		case ::vl::presentation::remoteprotocol::IOMouseButton::Right: node->content.value = WString::Unmanaged(L"Right"); break;
 		default: CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
 		}
 		return node;
@@ -40092,6 +40644,50 @@ namespace vl::presentation::remoteprotocol
 		{
 		case ::vl::presentation::remoteprotocol::ElementSolidLabelMeasuringRequest::FontHeight: node->content.value = WString::Unmanaged(L"FontHeight"); break;
 		case ::vl::presentation::remoteprotocol::ElementSolidLabelMeasuringRequest::TotalSize: node->content.value = WString::Unmanaged(L"TotalSize"); break;
+		default: CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
+		}
+		return node;
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::INativeImage::FormatType>(const ::vl::presentation::INativeImage::FormatType & value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertCustomTypeToJson<::vl::presentation::INativeImage::FormatType>(const ::vl::presentation::INativeImage::FormatType&)#"
+		auto node = Ptr(new glr::json::JsonString);
+		switch (value)
+		{
+		case ::vl::presentation::INativeImage::Bmp: node->content.value = WString::Unmanaged(L"Bmp"); break;
+		case ::vl::presentation::INativeImage::Gif: node->content.value = WString::Unmanaged(L"Gif"); break;
+		case ::vl::presentation::INativeImage::Icon: node->content.value = WString::Unmanaged(L"Icon"); break;
+		case ::vl::presentation::INativeImage::Jpeg: node->content.value = WString::Unmanaged(L"Jpeg"); break;
+		case ::vl::presentation::INativeImage::Png: node->content.value = WString::Unmanaged(L"Png"); break;
+		case ::vl::presentation::INativeImage::Tiff: node->content.value = WString::Unmanaged(L"Tiff"); break;
+		case ::vl::presentation::INativeImage::Wmp: node->content.value = WString::Unmanaged(L"Wmp"); break;
+		case ::vl::presentation::INativeImage::Unknown: node->content.value = WString::Unmanaged(L"Unknown"); break;
+		default: CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
+		}
+		return node;
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RendererType>(const ::vl::presentation::remoteprotocol::RendererType & value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RendererType>(const ::vl::presentation::remoteprotocol::RendererType&)#"
+		auto node = Ptr(new glr::json::JsonString);
+		switch (value)
+		{
+		case ::vl::presentation::remoteprotocol::RendererType::FocusRectangle: node->content.value = WString::Unmanaged(L"FocusRectangle"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::SolidBorder: node->content.value = WString::Unmanaged(L"SolidBorder"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::SinkBorder: node->content.value = WString::Unmanaged(L"SinkBorder"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::SinkSplitter: node->content.value = WString::Unmanaged(L"SinkSplitter"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::SolidBackground: node->content.value = WString::Unmanaged(L"SolidBackground"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::GradientBackground: node->content.value = WString::Unmanaged(L"GradientBackground"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::InnerShadow: node->content.value = WString::Unmanaged(L"InnerShadow"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::SolidLabel: node->content.value = WString::Unmanaged(L"SolidLabel"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::Polygon: node->content.value = WString::Unmanaged(L"Polygon"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::ImageFrame: node->content.value = WString::Unmanaged(L"ImageFrame"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::UnsupportedColorizedText: node->content.value = WString::Unmanaged(L"UnsupportedColorizedText"); break;
+		case ::vl::presentation::remoteprotocol::RendererType::UnsupportedDocument: node->content.value = WString::Unmanaged(L"UnsupportedDocument"); break;
 		default: CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
 		}
 		return node;
@@ -40199,6 +40795,24 @@ namespace vl::presentation::remoteprotocol
 		return node;
 	}
 
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::WindowSizingConfig>(const ::vl::presentation::remoteprotocol::WindowSizingConfig & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"bounds", value.bounds);
+		ConvertCustomTypeToJsonField(node, L"clientBounds", value.clientBounds);
+		ConvertCustomTypeToJsonField(node, L"sizeState", value.sizeState);
+		ConvertCustomTypeToJsonField(node, L"customFramePadding", value.customFramePadding);
+		return node;
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::WindowShowing>(const ::vl::presentation::remoteprotocol::WindowShowing & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"activate", value.activate);
+		ConvertCustomTypeToJsonField(node, L"sizeState", value.sizeState);
+		return node;
+	}
+
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeWindowMouseInfo>(const ::vl::presentation::NativeWindowMouseInfo & value)
 	{
 		auto node = Ptr(new glr::json::JsonObject);
@@ -40253,24 +40867,6 @@ namespace vl::presentation::remoteprotocol
 		ConvertCustomTypeToJsonField(node, L"shift", value.shift);
 		ConvertCustomTypeToJsonField(node, L"alt", value.alt);
 		ConvertCustomTypeToJsonField(node, L"code", value.code);
-		return node;
-	}
-
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::WindowSizingConfig>(const ::vl::presentation::remoteprotocol::WindowSizingConfig & value)
-	{
-		auto node = Ptr(new glr::json::JsonObject);
-		ConvertCustomTypeToJsonField(node, L"bounds", value.bounds);
-		ConvertCustomTypeToJsonField(node, L"clientBounds", value.clientBounds);
-		ConvertCustomTypeToJsonField(node, L"sizeState", value.sizeState);
-		ConvertCustomTypeToJsonField(node, L"customFramePadding", value.customFramePadding);
-		return node;
-	}
-
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::WindowShowing>(const ::vl::presentation::remoteprotocol::WindowShowing & value)
-	{
-		auto node = Ptr(new glr::json::JsonObject);
-		ConvertCustomTypeToJsonField(node, L"activate", value.activate);
-		ConvertCustomTypeToJsonField(node, L"sizeState", value.sizeState);
 		return node;
 	}
 
@@ -40368,6 +40964,45 @@ namespace vl::presentation::remoteprotocol
 		return node;
 	}
 
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::ImageCreation>(const ::vl::presentation::remoteprotocol::ImageCreation & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"id", value.id);
+		ConvertCustomTypeToJsonField(node, L"imageData", value.imageData);
+		ConvertCustomTypeToJsonField(node, L"imageDataOmitted", value.imageDataOmitted);
+		return node;
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::ImageFrameMetadata>(const ::vl::presentation::remoteprotocol::ImageFrameMetadata & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"size", value.size);
+		return node;
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::ImageMetadata>(const ::vl::presentation::remoteprotocol::ImageMetadata & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"id", value.id);
+		ConvertCustomTypeToJsonField(node, L"format", value.format);
+		ConvertCustomTypeToJsonField(node, L"frames", value.frames);
+		return node;
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::ElementDesc_ImageFrame>(const ::vl::presentation::remoteprotocol::ElementDesc_ImageFrame & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"id", value.id);
+		ConvertCustomTypeToJsonField(node, L"imageId", value.imageId);
+		ConvertCustomTypeToJsonField(node, L"imageFrame", value.imageFrame);
+		ConvertCustomTypeToJsonField(node, L"horizontalAlignment", value.horizontalAlignment);
+		ConvertCustomTypeToJsonField(node, L"verticalAlignment", value.verticalAlignment);
+		ConvertCustomTypeToJsonField(node, L"stretch", value.stretch);
+		ConvertCustomTypeToJsonField(node, L"enabled", value.enabled);
+		ConvertCustomTypeToJsonField(node, L"imageCreation", value.imageCreation);
+		return node;
+	}
+
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RendererCreation>(const ::vl::presentation::remoteprotocol::RendererCreation & value)
 	{
 		auto node = Ptr(new glr::json::JsonObject);
@@ -40376,12 +41011,19 @@ namespace vl::presentation::remoteprotocol
 		return node;
 	}
 
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::ElementBeginRendering>(const ::vl::presentation::remoteprotocol::ElementBeginRendering & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"frameId", value.frameId);
+		return node;
+	}
+
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::ElementRendering>(const ::vl::presentation::remoteprotocol::ElementRendering & value)
 	{
 		auto node = Ptr(new glr::json::JsonObject);
 		ConvertCustomTypeToJsonField(node, L"id", value.id);
 		ConvertCustomTypeToJsonField(node, L"bounds", value.bounds);
-		ConvertCustomTypeToJsonField(node, L"clipper", value.clipper);
+		ConvertCustomTypeToJsonField(node, L"areaClippedByParent", value.areaClippedByParent);
 		return node;
 	}
 
@@ -40389,8 +41031,9 @@ namespace vl::presentation::remoteprotocol
 	{
 		auto node = Ptr(new glr::json::JsonObject);
 		ConvertCustomTypeToJsonField(node, L"hitTestResult", value.hitTestResult);
+		ConvertCustomTypeToJsonField(node, L"cursor", value.cursor);
 		ConvertCustomTypeToJsonField(node, L"bounds", value.bounds);
-		ConvertCustomTypeToJsonField(node, L"clipper", value.clipper);
+		ConvertCustomTypeToJsonField(node, L"areaClippedBySelf", value.areaClippedBySelf);
 		return node;
 	}
 
@@ -40416,19 +41059,62 @@ namespace vl::presentation::remoteprotocol
 		auto node = Ptr(new glr::json::JsonObject);
 		ConvertCustomTypeToJsonField(node, L"fontHeights", value.fontHeights);
 		ConvertCustomTypeToJsonField(node, L"minSizes", value.minSizes);
+		ConvertCustomTypeToJsonField(node, L"createdImages", value.createdImages);
 		return node;
 	}
 
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::IOMouseButton>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::IOMouseButton& value)
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingDom>(const ::vl::presentation::remoteprotocol::RenderingDom & value)
 	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::IOMouseButton>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::IOMouseButton&)#"
-		auto jsonNode = node.Cast<glr::json::JsonString>();
-		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
-		if (jsonNode->content.value == L"Left") value = ::vl::presentation::remoteprotocol::IOMouseButton::Left; else
-		if (jsonNode->content.value == L"Middle") value = ::vl::presentation::remoteprotocol::IOMouseButton::Middle; else
-		if (jsonNode->content.value == L"Right") value = ::vl::presentation::remoteprotocol::IOMouseButton::Right; else
-		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
-#undef ERROR_MESSAGE_PREFIX
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"hitTestResult", value.hitTestResult);
+		ConvertCustomTypeToJsonField(node, L"cursor", value.cursor);
+		ConvertCustomTypeToJsonField(node, L"element", value.element);
+		ConvertCustomTypeToJsonField(node, L"bounds", value.bounds);
+		ConvertCustomTypeToJsonField(node, L"validArea", value.validArea);
+		ConvertCustomTypeToJsonField(node, L"children", value.children);
+		return node;
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary>(const ::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"boundary", value.boundary);
+		return node;
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary>(const ::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		return node;
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingCommand_Element>(const ::vl::presentation::remoteprotocol::RenderingCommand_Element & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"rendering", value.rendering);
+		ConvertCustomTypeToJsonField(node, L"element", value.element);
+		return node;
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingFrame>(const ::vl::presentation::remoteprotocol::RenderingFrame & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"frameId", value.frameId);
+		ConvertCustomTypeToJsonField(node, L"frameName", value.frameName);
+		ConvertCustomTypeToJsonField(node, L"windowSize", value.windowSize);
+		ConvertCustomTypeToJsonField(node, L"elements", value.elements);
+		ConvertCustomTypeToJsonField(node, L"commands", value.commands);
+		ConvertCustomTypeToJsonField(node, L"root", value.root);
+		return node;
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingTrace>(const ::vl::presentation::remoteprotocol::RenderingTrace & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"createdElements", value.createdElements);
+		ConvertCustomTypeToJsonField(node, L"createdImages", value.createdImages);
+		ConvertCustomTypeToJsonField(node, L"frames", value.frames);
+		return node;
 	}
 
 	template<> void ConvertJsonToCustomType<::vl::presentation::INativeWindowListener::HitTestResult>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::INativeWindowListener::HitTestResult& value)
@@ -40489,23 +41175,14 @@ namespace vl::presentation::remoteprotocol
 #undef ERROR_MESSAGE_PREFIX
 	}
 
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RendererType>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RendererType& value)
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::IOMouseButton>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::IOMouseButton& value)
 	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RendererType>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RendererType&)#"
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::IOMouseButton>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::IOMouseButton&)#"
 		auto jsonNode = node.Cast<glr::json::JsonString>();
 		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
-		if (jsonNode->content.value == L"FocusRectangle") value = ::vl::presentation::remoteprotocol::RendererType::FocusRectangle; else
-		if (jsonNode->content.value == L"SolidBorder") value = ::vl::presentation::remoteprotocol::RendererType::SolidBorder; else
-		if (jsonNode->content.value == L"SinkBorder") value = ::vl::presentation::remoteprotocol::RendererType::SinkBorder; else
-		if (jsonNode->content.value == L"SinkSplitter") value = ::vl::presentation::remoteprotocol::RendererType::SinkSplitter; else
-		if (jsonNode->content.value == L"SolidBackground") value = ::vl::presentation::remoteprotocol::RendererType::SolidBackground; else
-		if (jsonNode->content.value == L"GradientBackground") value = ::vl::presentation::remoteprotocol::RendererType::GradientBackground; else
-		if (jsonNode->content.value == L"InnerShadow") value = ::vl::presentation::remoteprotocol::RendererType::InnerShadow; else
-		if (jsonNode->content.value == L"SolidLabel") value = ::vl::presentation::remoteprotocol::RendererType::SolidLabel; else
-		if (jsonNode->content.value == L"Polygon") value = ::vl::presentation::remoteprotocol::RendererType::Polygon; else
-		if (jsonNode->content.value == L"UnsupportedImageFrame") value = ::vl::presentation::remoteprotocol::RendererType::UnsupportedImageFrame; else
-		if (jsonNode->content.value == L"UnsupportedColorizedText") value = ::vl::presentation::remoteprotocol::RendererType::UnsupportedColorizedText; else
-		if (jsonNode->content.value == L"UnsupportedDocument") value = ::vl::presentation::remoteprotocol::RendererType::UnsupportedDocument; else
+		if (jsonNode->content.value == L"Left") value = ::vl::presentation::remoteprotocol::IOMouseButton::Left; else
+		if (jsonNode->content.value == L"Middle") value = ::vl::presentation::remoteprotocol::IOMouseButton::Middle; else
+		if (jsonNode->content.value == L"Right") value = ::vl::presentation::remoteprotocol::IOMouseButton::Right; else
 		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
 #undef ERROR_MESSAGE_PREFIX
 	}
@@ -40577,6 +41254,44 @@ namespace vl::presentation::remoteprotocol
 		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
 		if (jsonNode->content.value == L"FontHeight") value = ::vl::presentation::remoteprotocol::ElementSolidLabelMeasuringRequest::FontHeight; else
 		if (jsonNode->content.value == L"TotalSize") value = ::vl::presentation::remoteprotocol::ElementSolidLabelMeasuringRequest::TotalSize; else
+		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::INativeImage::FormatType>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::INativeImage::FormatType& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::INativeImage::FormatType>(Ptr<JsonNode>, ::vl::presentation::INativeImage::FormatType&)#"
+		auto jsonNode = node.Cast<glr::json::JsonString>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		if (jsonNode->content.value == L"Bmp") value = ::vl::presentation::INativeImage::Bmp; else
+		if (jsonNode->content.value == L"Gif") value = ::vl::presentation::INativeImage::Gif; else
+		if (jsonNode->content.value == L"Icon") value = ::vl::presentation::INativeImage::Icon; else
+		if (jsonNode->content.value == L"Jpeg") value = ::vl::presentation::INativeImage::Jpeg; else
+		if (jsonNode->content.value == L"Png") value = ::vl::presentation::INativeImage::Png; else
+		if (jsonNode->content.value == L"Tiff") value = ::vl::presentation::INativeImage::Tiff; else
+		if (jsonNode->content.value == L"Wmp") value = ::vl::presentation::INativeImage::Wmp; else
+		if (jsonNode->content.value == L"Unknown") value = ::vl::presentation::INativeImage::Unknown; else
+		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RendererType>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RendererType& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RendererType>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RendererType&)#"
+		auto jsonNode = node.Cast<glr::json::JsonString>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		if (jsonNode->content.value == L"FocusRectangle") value = ::vl::presentation::remoteprotocol::RendererType::FocusRectangle; else
+		if (jsonNode->content.value == L"SolidBorder") value = ::vl::presentation::remoteprotocol::RendererType::SolidBorder; else
+		if (jsonNode->content.value == L"SinkBorder") value = ::vl::presentation::remoteprotocol::RendererType::SinkBorder; else
+		if (jsonNode->content.value == L"SinkSplitter") value = ::vl::presentation::remoteprotocol::RendererType::SinkSplitter; else
+		if (jsonNode->content.value == L"SolidBackground") value = ::vl::presentation::remoteprotocol::RendererType::SolidBackground; else
+		if (jsonNode->content.value == L"GradientBackground") value = ::vl::presentation::remoteprotocol::RendererType::GradientBackground; else
+		if (jsonNode->content.value == L"InnerShadow") value = ::vl::presentation::remoteprotocol::RendererType::InnerShadow; else
+		if (jsonNode->content.value == L"SolidLabel") value = ::vl::presentation::remoteprotocol::RendererType::SolidLabel; else
+		if (jsonNode->content.value == L"Polygon") value = ::vl::presentation::remoteprotocol::RendererType::Polygon; else
+		if (jsonNode->content.value == L"ImageFrame") value = ::vl::presentation::remoteprotocol::RendererType::ImageFrame; else
+		if (jsonNode->content.value == L"UnsupportedColorizedText") value = ::vl::presentation::remoteprotocol::RendererType::UnsupportedColorizedText; else
+		if (jsonNode->content.value == L"UnsupportedDocument") value = ::vl::presentation::remoteprotocol::RendererType::UnsupportedDocument; else
 		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
 #undef ERROR_MESSAGE_PREFIX
 	}
@@ -40748,6 +41463,36 @@ namespace vl::presentation::remoteprotocol
 #undef ERROR_MESSAGE_PREFIX
 	}
 
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::WindowSizingConfig>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::WindowSizingConfig& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::WindowSizingConfig>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::WindowSizingConfig&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"bounds") ConvertJsonToCustomType(field->value, value.bounds); else
+			if (field->name.value == L"clientBounds") ConvertJsonToCustomType(field->value, value.clientBounds); else
+			if (field->name.value == L"sizeState") ConvertJsonToCustomType(field->value, value.sizeState); else
+			if (field->name.value == L"customFramePadding") ConvertJsonToCustomType(field->value, value.customFramePadding); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::WindowShowing>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::WindowShowing& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::WindowShowing>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::WindowShowing&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"activate") ConvertJsonToCustomType(field->value, value.activate); else
+			if (field->name.value == L"sizeState") ConvertJsonToCustomType(field->value, value.sizeState); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
 	template<> void ConvertJsonToCustomType<::vl::presentation::NativeWindowMouseInfo>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeWindowMouseInfo& value)
 	{
 #define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::NativeWindowMouseInfo>(Ptr<JsonNode>, ::vl::presentation::NativeWindowMouseInfo&)#"
@@ -40830,36 +41575,6 @@ namespace vl::presentation::remoteprotocol
 			if (field->name.value == L"shift") ConvertJsonToCustomType(field->value, value.shift); else
 			if (field->name.value == L"alt") ConvertJsonToCustomType(field->value, value.alt); else
 			if (field->name.value == L"code") ConvertJsonToCustomType(field->value, value.code); else
-			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
-		}
-#undef ERROR_MESSAGE_PREFIX
-	}
-
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::WindowSizingConfig>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::WindowSizingConfig& value)
-	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::WindowSizingConfig>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::WindowSizingConfig&)#"
-		auto jsonNode = node.Cast<glr::json::JsonObject>();
-		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
-		for (auto field : jsonNode->fields)
-		{
-			if (field->name.value == L"bounds") ConvertJsonToCustomType(field->value, value.bounds); else
-			if (field->name.value == L"clientBounds") ConvertJsonToCustomType(field->value, value.clientBounds); else
-			if (field->name.value == L"sizeState") ConvertJsonToCustomType(field->value, value.sizeState); else
-			if (field->name.value == L"customFramePadding") ConvertJsonToCustomType(field->value, value.customFramePadding); else
-			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
-		}
-#undef ERROR_MESSAGE_PREFIX
-	}
-
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::WindowShowing>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::WindowShowing& value)
-	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::WindowShowing>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::WindowShowing&)#"
-		auto jsonNode = node.Cast<glr::json::JsonObject>();
-		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
-		for (auto field : jsonNode->fields)
-		{
-			if (field->name.value == L"activate") ConvertJsonToCustomType(field->value, value.activate); else
-			if (field->name.value == L"sizeState") ConvertJsonToCustomType(field->value, value.sizeState); else
 			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
 		}
 #undef ERROR_MESSAGE_PREFIX
@@ -41013,6 +41728,69 @@ namespace vl::presentation::remoteprotocol
 #undef ERROR_MESSAGE_PREFIX
 	}
 
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ImageCreation>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::ImageCreation& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ImageCreation>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::ImageCreation&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"id") ConvertJsonToCustomType(field->value, value.id); else
+			if (field->name.value == L"imageData") ConvertJsonToCustomType(field->value, value.imageData); else
+			if (field->name.value == L"imageDataOmitted") ConvertJsonToCustomType(field->value, value.imageDataOmitted); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ImageFrameMetadata>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::ImageFrameMetadata& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ImageFrameMetadata>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::ImageFrameMetadata&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"size") ConvertJsonToCustomType(field->value, value.size); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ImageMetadata>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::ImageMetadata& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ImageMetadata>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::ImageMetadata&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"id") ConvertJsonToCustomType(field->value, value.id); else
+			if (field->name.value == L"format") ConvertJsonToCustomType(field->value, value.format); else
+			if (field->name.value == L"frames") ConvertJsonToCustomType(field->value, value.frames); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ElementDesc_ImageFrame>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::ElementDesc_ImageFrame& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ElementDesc_ImageFrame>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::ElementDesc_ImageFrame&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"id") ConvertJsonToCustomType(field->value, value.id); else
+			if (field->name.value == L"imageId") ConvertJsonToCustomType(field->value, value.imageId); else
+			if (field->name.value == L"imageFrame") ConvertJsonToCustomType(field->value, value.imageFrame); else
+			if (field->name.value == L"horizontalAlignment") ConvertJsonToCustomType(field->value, value.horizontalAlignment); else
+			if (field->name.value == L"verticalAlignment") ConvertJsonToCustomType(field->value, value.verticalAlignment); else
+			if (field->name.value == L"stretch") ConvertJsonToCustomType(field->value, value.stretch); else
+			if (field->name.value == L"enabled") ConvertJsonToCustomType(field->value, value.enabled); else
+			if (field->name.value == L"imageCreation") ConvertJsonToCustomType(field->value, value.imageCreation); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
 	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RendererCreation>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RendererCreation& value)
 	{
 #define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RendererCreation>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RendererCreation&)#"
@@ -41027,6 +41805,19 @@ namespace vl::presentation::remoteprotocol
 #undef ERROR_MESSAGE_PREFIX
 	}
 
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ElementBeginRendering>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::ElementBeginRendering& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ElementBeginRendering>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::ElementBeginRendering&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"frameId") ConvertJsonToCustomType(field->value, value.frameId); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
 	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ElementRendering>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::ElementRendering& value)
 	{
 #define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::ElementRendering>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::ElementRendering&)#"
@@ -41036,7 +41827,7 @@ namespace vl::presentation::remoteprotocol
 		{
 			if (field->name.value == L"id") ConvertJsonToCustomType(field->value, value.id); else
 			if (field->name.value == L"bounds") ConvertJsonToCustomType(field->value, value.bounds); else
-			if (field->name.value == L"clipper") ConvertJsonToCustomType(field->value, value.clipper); else
+			if (field->name.value == L"areaClippedByParent") ConvertJsonToCustomType(field->value, value.areaClippedByParent); else
 			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
 		}
 #undef ERROR_MESSAGE_PREFIX
@@ -41050,8 +41841,9 @@ namespace vl::presentation::remoteprotocol
 		for (auto field : jsonNode->fields)
 		{
 			if (field->name.value == L"hitTestResult") ConvertJsonToCustomType(field->value, value.hitTestResult); else
+			if (field->name.value == L"cursor") ConvertJsonToCustomType(field->value, value.cursor); else
 			if (field->name.value == L"bounds") ConvertJsonToCustomType(field->value, value.bounds); else
-			if (field->name.value == L"clipper") ConvertJsonToCustomType(field->value, value.clipper); else
+			if (field->name.value == L"areaClippedBySelf") ConvertJsonToCustomType(field->value, value.areaClippedBySelf); else
 			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
 		}
 #undef ERROR_MESSAGE_PREFIX
@@ -41095,6 +41887,97 @@ namespace vl::presentation::remoteprotocol
 		{
 			if (field->name.value == L"fontHeights") ConvertJsonToCustomType(field->value, value.fontHeights); else
 			if (field->name.value == L"minSizes") ConvertJsonToCustomType(field->value, value.minSizes); else
+			if (field->name.value == L"createdImages") ConvertJsonToCustomType(field->value, value.createdImages); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingDom& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingDom&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"hitTestResult") ConvertJsonToCustomType(field->value, value.hitTestResult); else
+			if (field->name.value == L"cursor") ConvertJsonToCustomType(field->value, value.cursor); else
+			if (field->name.value == L"element") ConvertJsonToCustomType(field->value, value.element); else
+			if (field->name.value == L"bounds") ConvertJsonToCustomType(field->value, value.bounds); else
+			if (field->name.value == L"validArea") ConvertJsonToCustomType(field->value, value.validArea); else
+			if (field->name.value == L"children") ConvertJsonToCustomType(field->value, value.children); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"boundary") ConvertJsonToCustomType(field->value, value.boundary); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_Element>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingCommand_Element& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_Element>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingCommand_Element&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"rendering") ConvertJsonToCustomType(field->value, value.rendering); else
+			if (field->name.value == L"element") ConvertJsonToCustomType(field->value, value.element); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingFrame>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingFrame& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingFrame>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingFrame&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"frameId") ConvertJsonToCustomType(field->value, value.frameId); else
+			if (field->name.value == L"frameName") ConvertJsonToCustomType(field->value, value.frameName); else
+			if (field->name.value == L"windowSize") ConvertJsonToCustomType(field->value, value.windowSize); else
+			if (field->name.value == L"elements") ConvertJsonToCustomType(field->value, value.elements); else
+			if (field->name.value == L"commands") ConvertJsonToCustomType(field->value, value.commands); else
+			if (field->name.value == L"root") ConvertJsonToCustomType(field->value, value.root); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingTrace>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingTrace& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingTrace>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingTrace&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"createdElements") ConvertJsonToCustomType(field->value, value.createdElements); else
+			if (field->name.value == L"createdImages") ConvertJsonToCustomType(field->value, value.createdImages); else
+			if (field->name.value == L"frames") ConvertJsonToCustomType(field->value, value.frames); else
 			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
 		}
 #undef ERROR_MESSAGE_PREFIX
@@ -46048,16 +46931,22 @@ IGuiParserManager
 			{
 			}
 
-			void Load()override
+			void Load(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 			{
-				parserManager = this;
-				SetParser(L"XML", Ptr(new GuiParser_Xml()));
-				SetParser(L"JSON", Ptr(new GuiParser_Json()));
+				if (controllerUnrelatedPlugins)
+				{
+					parserManager = this;
+					SetParser(L"XML", Ptr(new GuiParser_Xml()));
+					SetParser(L"JSON", Ptr(new GuiParser_Json()));
+				}
 			}
 
-			void Unload()override
+			void Unload(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 			{
-				parserManager=0;
+				if (controllerUnrelatedPlugins)
+				{
+					parserManager = nullptr;
+				}
 			}
 
 			Ptr<IGuiGeneralParser> GetParser(const WString& name)override
@@ -46095,36 +46984,48 @@ GuiPluginManager
 		{
 		protected:
 			List<Ptr<IGuiPlugin>>				plugins;
-			bool								loaded;
+			bool								controllerRelatedLoaded = false;
+			bool								controllerUnrelatedLoaded = false;
 		public:
 			GuiPluginManager()
-				:loaded(false)
 			{
 			}
 
 			~GuiPluginManager()
 			{
-				Unload();
 			}
 
 			void AddPlugin(Ptr<IGuiPlugin> plugin)override
 			{
-				CHECK_ERROR(!loaded, L"GuiPluginManager::AddPlugin(Ptr<IGuiPlugin>)#Load function has already been executed.");
+#define ERROR_MESSAGE_PREFIX L"GuiPluginManager::AddPlugin(Ptr<IGuiPlugin>)#"
+				CHECK_ERROR(!controllerUnrelatedLoaded, ERROR_MESSAGE_PREFIX L"Load function has already been executed.");
 				auto name = plugin->GetName();
 				if (name != L"")
 				{
 					for (auto plugin : plugins)
 					{
-						CHECK_ERROR(plugin->GetName() != name, L"GuiPluginManager::AddPlugin(Ptr<IGuiPlugin>)#Duplicated plugin name.");
+						CHECK_ERROR(plugin->GetName() != name, ERROR_MESSAGE_PREFIX L"Duplicated plugin name.");
 					}
 				}
 				plugins.Add(plugin);
+#undef ERROR_MESSAGE_PREFIX
 			}
 
-			void Load()override
+			void Load(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 			{
-				CHECK_ERROR(!loaded, L"GuiPluginManager::AddPlugin(Ptr<IGuiPlugin>)#Load function has already been executed.");
-				loaded=true;
+#define ERROR_MESSAGE_PREFIX L"GuiPluginManager::Load(bool, bool)#"
+				CHECK_ERROR(controllerUnrelatedPlugins || controllerRelatedPlugins, L"At least one of the parameters should be true.");
+				if (controllerUnrelatedPlugins)
+				{
+					CHECK_ERROR(!controllerUnrelatedLoaded, ERROR_MESSAGE_PREFIX L"A second Load(true, *) could only be called after Unload(true, *).");
+					controllerUnrelatedLoaded = true;
+				}
+				if (controllerRelatedPlugins)
+				{
+					CHECK_ERROR(controllerUnrelatedLoaded, ERROR_MESSAGE_PREFIX L"Load(*, true) could only be called between Load(true, *) and Unload(true, *).");
+					CHECK_ERROR(!controllerRelatedLoaded, ERROR_MESSAGE_PREFIX L"A second Load(*, true) could only be called after Unload(*, true).");
+					controllerRelatedLoaded = true;
+				}
 
 				SortedList<WString> loaded;
 				Group<WString, WString> loading;
@@ -46159,7 +47060,7 @@ GuiPluginManager
 
 								auto plugin = pluginsToLoad.Values()[index];
 								pluginsToLoad.Remove(name);
-								plugin->Load();
+								plugin->Load(controllerUnrelatedPlugins, controllerRelatedPlugins);
 								break;
 							}
 						}
@@ -46185,21 +47086,41 @@ GuiPluginManager
 						throw Exception(message);
 					}
 				}
+#undef ERROR_MESSAGE_PREFIX
 			}
 
-			void Unload()override
+			void Unload(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 			{
-				CHECK_ERROR(loaded, L"GuiPluginManager::AddPlugin(Ptr<IGuiPlugin>)#Load function has not been executed.");
-				loaded=false;
+#define ERROR_MESSAGE_PREFIX L"GuiPluginManager::Unload(bool, bool)#"
+				CHECK_ERROR(controllerUnrelatedPlugins || controllerRelatedPlugins, L"At least one of the parameters should be true.");
+				if (controllerRelatedPlugins)
+				{
+					CHECK_ERROR(controllerUnrelatedLoaded, ERROR_MESSAGE_PREFIX L"Unload(*, true) could only be called between Load(true, *) and Unload(true, *).");
+					CHECK_ERROR(controllerRelatedLoaded, ERROR_MESSAGE_PREFIX L"Unload(*, true) could only be called after Load(*, true).");
+					controllerRelatedLoaded = false;
+				}
+				if (controllerUnrelatedPlugins)
+				{
+					CHECK_ERROR(controllerUnrelatedLoaded, ERROR_MESSAGE_PREFIX L"Unload(true, *) could only be called after Load(true, *).");
+					CHECK_ERROR(!controllerRelatedLoaded, ERROR_MESSAGE_PREFIX L"Unload(true, *) could only be called after Load(*, true).");
+					controllerUnrelatedLoaded = false;
+				}
+
 				for (auto plugin : plugins)
 				{
-					plugin->Unload();
+					plugin->Unload(controllerUnrelatedPlugins, controllerRelatedPlugins);
 				}
+#undef ERROR_MESSAGE_PREFIX
 			}
 
-			bool IsLoaded()override
+			bool IsControllerRelatedPluginsLoaded()override
 			{
-				return loaded;
+				return controllerRelatedLoaded;
+			}
+
+			bool IsControllerUnrelatedPluginsLoaded()override
+			{
+				return controllerUnrelatedLoaded;
 			}
 		};
 
@@ -46238,6 +47159,9 @@ Helpers
 		{
 			if (pluginManager)
 			{
+				CHECK_ERROR(
+					!pluginManager->IsControllerRelatedPluginsLoaded() && !pluginManager->IsControllerUnrelatedPluginsLoaded(),
+					L"vl::presentation::DestroyPluginManager()#Plugins have not been unloaded.");
 				delete pluginManager;
 				pluginManager = nullptr;
 			}
@@ -47540,7 +48464,7 @@ GuiResource
 		GuiResource::GuiResource()
 		{
 			metadata = Ptr(new GuiResourceMetadata);
-			metadata->version = CurrentVersionString;
+			metadata->version = WString::Unmanaged(CurrentVersionString);
 		}
 
 		GuiResource::~GuiResource()
@@ -47619,7 +48543,7 @@ GuiResource
 
 				if (resource->metadata->version != CurrentVersionString)
 				{
-					errors.Add(GuiResourceError({ resource }, L"Only resource binary of version \"" + WString(CurrentVersionString) + L"\" is accepted. Please recompile the resource before loading it."));
+					errors.Add(GuiResourceError({ resource }, L"Only resource binary of version \"" + WString::Unmanaged(CurrentVersionString) + L"\" is accepted. Please recompile the resource before loading it."));
 					return nullptr;
 				}
 			}
@@ -47940,21 +48864,27 @@ IGuiResourceResolverManager
 			{
 			}
 
-			void Load()override
+			void Load(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 			{
-				globalStringKeyManager = new GlobalStringKeyManager();
-				globalStringKeyManager->InitializeConstants();
+				if (controllerUnrelatedPlugins)
+				{
+					globalStringKeyManager = new GlobalStringKeyManager();
+					globalStringKeyManager->InitializeConstants();
 
-				resourceResolverManager = this;
-				SetPathResolverFactory(Ptr(new GuiResourcePathResResolver::Factory));
-				SetPathResolverFactory(Ptr(new GuiImportResourcePathResResolver::Factory));
+					resourceResolverManager = this;
+					SetPathResolverFactory(Ptr(new GuiResourcePathResResolver::Factory));
+					SetPathResolverFactory(Ptr(new GuiImportResourcePathResResolver::Factory));
+				}
 			}
 
-			void Unload()override
+			void Unload(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 			{
-				delete globalStringKeyManager;
-				globalStringKeyManager = 0;
-				resourceResolverManager = 0;
+				if (controllerUnrelatedPlugins)
+				{
+					delete globalStringKeyManager;
+					globalStringKeyManager = nullptr;
+					resourceResolverManager = nullptr;
+				}
 			}
 
 			IGuiResourcePathResolverFactory* GetPathResolverFactory(const WString& protocol)override
@@ -48158,16 +49088,25 @@ IGuiInstanceResourceManager
 				GUI_PLUGIN_DEPEND(GacUI_Res_ResourceResolver);
 			}
 
-			void Load()override
+			void Load(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 			{
-				resourceManager = this;
-				IGuiResourceResolverManager* manager = GetResourceResolverManager();
-				manager->SetTypeResolver(Ptr(new GuiResourceClassNameRecordTypeResolver));
+				if (controllerRelatedPlugins)
+				{
+					resourceManager = this;
+					IGuiResourceResolverManager* manager = GetResourceResolverManager();
+					manager->SetTypeResolver(Ptr(new GuiResourceClassNameRecordTypeResolver));
+				}
 			}
 
-			void Unload()override
+			void Unload(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 			{
-				resourceManager = nullptr;
+				if (controllerRelatedPlugins)
+				{
+					anonymousResources.Clear();
+					resources.Clear();
+					instanceResources.Clear();
+					resourceManager = nullptr;
+				}
 			}
 
 			void SetResource(Ptr<GuiResource> resource, GuiResourceError::List& errors, GuiResourceUsage usage)override
@@ -48228,7 +49167,8 @@ IGuiInstanceResourceManager
 			Ptr<GuiResource> GetResource(const WString& name)override
 			{
 				vint index = resources.Keys().IndexOf(name);
-				return index == -1 ? nullptr : resources.Values()[index];
+				if (index == -1) return nullptr;
+				return resources.Values()[index];
 			}
 
 			Ptr<GuiResource> GetResourceFromClassName(const WString& classFullName)override
@@ -48238,22 +49178,48 @@ IGuiInstanceResourceManager
 				return instanceResources.Values()[index];
 			}
 
-			void UnloadResource(const WString& name)override
+			LazyList<Ptr<GuiResource>> GetLoadedResources()override
 			{
-				vint index = resources.Keys().IndexOf(name);
-				if (index != -1)
+				return From(anonymousResources).Concat(resources.Values());
+			}
+
+			bool UnloadResource(const WString& name)override
+			{
+				return UnloadResource(GetResource(name));
+			}
+
+			bool UnloadResource(Ptr<GuiResource> resource)override
+			{
+				if (!resource) return false;
+
+				WString name;
+				if (auto metadata = resource->GetMetadata())
 				{
+					name = metadata->name;
+				}
+
+				if (name == WString::Empty)
+				{
+					vint index = anonymousResources.IndexOf(resource.Obj());
+					if (index == -1) return false;
+					anonymousResources.RemoveAt(index);
+				}
+				else
+				{
+					vint index = resources.Keys().IndexOf(name);
+					if (index == -1) return false;
 					auto resource = resources.Values()[index];
 					resources.Remove(name);
+				}
 
-					if (auto record = resource->GetValueByPath(L"Precompiled/ClassNameRecord").Cast<GuiResourceClassNameRecord>())
+				if (auto record = resource->GetValueByPath(L"Precompiled/ClassNameRecord").Cast<GuiResourceClassNameRecord>())
+				{
+					for (auto className : record->classNames)
 					{
-						for (auto className : record->classNames)
-						{
-							instanceResources.Remove(className);
-						}
+						instanceResources.Remove(className);
 					}
 				}
+				return true;
 			}
 
 			void LoadResourceOrPending(stream::IStream& resourceStream, GuiResourceError::List& errors, GuiResourceUsage usage)override
@@ -48677,16 +49643,19 @@ Type Resolver Plugin
 				GUI_PLUGIN_DEPEND(GacUI_Res_ResourceResolver);
 			}
 
-			void Load()override
+			void Load(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 			{
-				IGuiResourceResolverManager* manager=GetResourceResolverManager();
-				manager->SetTypeResolver(Ptr(new GuiResourceImageTypeResolver));
-				manager->SetTypeResolver(Ptr(new GuiResourceTextTypeResolver));
-				manager->SetTypeResolver(Ptr(new GuiResourceXmlTypeResolver));
-				manager->SetTypeResolver(Ptr(new GuiResourceDocTypeResolver));
+				if (controllerUnrelatedPlugins)
+				{
+					IGuiResourceResolverManager* manager = GetResourceResolverManager();
+					manager->SetTypeResolver(Ptr(new GuiResourceImageTypeResolver));
+					manager->SetTypeResolver(Ptr(new GuiResourceTextTypeResolver));
+					manager->SetTypeResolver(Ptr(new GuiResourceXmlTypeResolver));
+					manager->SetTypeResolver(Ptr(new GuiResourceDocTypeResolver));
+				}
 			}
 
-			void Unload()override
+			void Unload(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 			{
 			}
 		};
@@ -50179,7 +51148,7 @@ FakeDialogService
 /***********************************************************************
 !!!!!! DO NOT MODIFY !!!!!!
 
-GacGen.exe Resource.xml
+Source: GacUI FakeDialogServiceUI
 
 This file is generated by Workflow compiler
 https://github.com/vczh-libraries
@@ -55721,6 +56690,7 @@ namespace gaclib_controls
 		}
 		{
 			(this->textBox = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBox"), ::vl::__vwsn::Box(this->textBox));
 		}
 		(this->__vwsn_precompile_2 = ::vl::__vwsn::This(this->textBox)->GetBoundsComposition());
 		{
@@ -55739,6 +56709,7 @@ namespace gaclib_controls
 		{
 			(this->tracker = new ::vl::presentation::controls::GuiScroll(::vl::presentation::theme::ThemeName::HTracker));
 			::vl::__vwsn::This(this->tracker)->SetPageSize(static_cast<::vl::vint>(0));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"tracker"), ::vl::__vwsn::Box(this->tracker));
 		}
 		{
 			::vl::__vwsn::This(this->tracker)->SetBigMove(static_cast<::vl::vint>(16));
@@ -55931,6 +56902,7 @@ Class (::gaclib_controls::ColorDialogControlConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_9)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		(this->colorRed = new ::gaclib_controls::ColorComponentControl());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"colorRed"), ::vl::__vwsn::Box(this->colorRed));
 		{
 			::vl::__vwsn::This(this->colorRed)->SetTextBoxAlt(::vl::WString::Unmanaged(L"R"));
 		}
@@ -55949,6 +56921,7 @@ Class (::gaclib_controls::ColorDialogControlConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_11)->SetSite(static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		(this->colorGreen = new ::gaclib_controls::ColorComponentControl());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"colorGreen"), ::vl::__vwsn::Box(this->colorGreen));
 		{
 			::vl::__vwsn::This(this->colorGreen)->SetTextBoxAlt(::vl::WString::Unmanaged(L"G"));
 		}
@@ -55967,6 +56940,7 @@ Class (::gaclib_controls::ColorDialogControlConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_13)->SetSite(static_cast<::vl::vint>(2), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		(this->colorBlue = new ::gaclib_controls::ColorComponentControl());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"colorBlue"), ::vl::__vwsn::Box(this->colorBlue));
 		{
 			::vl::__vwsn::This(this->colorBlue)->SetTextBoxAlt(::vl::WString::Unmanaged(L"B"));
 		}
@@ -56176,6 +57150,7 @@ Class (::gaclib_controls::ColorDialogWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(3));
 		}
 		(this->colorControl = new ::gaclib_controls::ColorDialogControl(this->ViewModel));
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"colorControl"), ::vl::__vwsn::Box(this->colorControl));
 		(this->__vwsn_precompile_2 = ::vl::__vwsn::This(this->colorControl)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -56400,6 +57375,7 @@ Class (::gaclib_controls::FileDialogWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(3));
 		}
 		(this->filePickerControl = new ::gaclib_controls::FilePickerControl(this->ViewModel));
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"filePickerControl"), ::vl::__vwsn::Box(this->filePickerControl));
 		(this->__vwsn_precompile_2 = ::vl::__vwsn::This(this->filePickerControl)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -56416,6 +57392,7 @@ Class (::gaclib_controls::FileDialogWindowConstructor)
 		}
 		{
 			(this->buttonOK = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"buttonOK"), ::vl::__vwsn::Box(this->buttonOK));
 		}
 		(this->__vwsn_precompile_4 = ::vl::__vwsn::This(this->buttonOK)->GetBoundsComposition());
 		{
@@ -56644,6 +57621,7 @@ Class (::gaclib_controls::FilePickerControlConstructor)
 		}
 		{
 			(this->treeView = new ::vl::presentation::controls::GuiBindableTreeView(::vl::presentation::theme::ThemeName::TreeView));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"treeView"), ::vl::__vwsn::Box(this->treeView));
 		}
 		{
 			::vl::__vwsn::This(this->treeView)->SetChildrenProperty(vl::Func(::vl_workflow_global::__vwsnf26_GuiFakeDialogServiceUI_gaclib_controls_FilePickerControlConstructor___vwsn_gaclib_controls_FilePickerControl_Initialize_(this)));
@@ -56676,6 +57654,7 @@ Class (::gaclib_controls::FilePickerControlConstructor)
 		}
 		{
 			(this->dataGrid = new ::vl::presentation::controls::GuiBindableDataGrid(::vl::presentation::theme::ThemeName::ListView));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dataGrid"), ::vl::__vwsn::Box(this->dataGrid));
 		}
 		(this->__vwsn_precompile_12 = ::vl::__vwsn::This(this->dataGrid)->GetFocusableComposition());
 		{
@@ -56764,6 +57743,7 @@ Class (::gaclib_controls::FilePickerControlConstructor)
 		}
 		{
 			(this->textBox = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBox"), ::vl::__vwsn::Box(this->textBox));
 		}
 		(this->__vwsn_precompile_20 = ::vl::__vwsn::This(this->textBox)->GetFocusableComposition());
 		(this->__vwsn_precompile_19 = ::vl::__vwsn::This(this->textBox)->GetBoundsComposition());
@@ -56797,6 +57777,7 @@ Class (::gaclib_controls::FilePickerControlConstructor)
 		}
 		{
 			(this->comboBox = new ::vl::presentation::controls::GuiComboBoxListControl(::vl::presentation::theme::ThemeName::ComboBox, static_cast<::vl::presentation::controls::GuiSelectableListControl*>(this->__vwsn_precompile_22)));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"comboBox"), ::vl::__vwsn::Box(this->comboBox));
 		}
 		(this->__vwsn_precompile_23 = ::vl::__vwsn::This(this->comboBox)->GetBoundsComposition());
 		{
@@ -57069,6 +58050,7 @@ Class (::gaclib_controls::FontNameControlConstructor)
 		}
 		{
 			(this->textBox = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBox"), ::vl::__vwsn::Box(this->textBox));
 		}
 		(this->__vwsn_precompile_3 = ::vl::__vwsn::This(this->textBox)->GetBoundsComposition());
 		{
@@ -57089,6 +58071,7 @@ Class (::gaclib_controls::FontNameControlConstructor)
 		}
 		{
 			(this->textList = new ::vl::presentation::controls::GuiBindableTextList(::vl::presentation::theme::ThemeName::TextList));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textList"), ::vl::__vwsn::Box(this->textList));
 		}
 		{
 			::vl::__vwsn::This(this->textList)->SetHorizontalAlwaysVisible(false);
@@ -57292,6 +58275,7 @@ Class (::gaclib_controls::FontSizeControlConstructor)
 		}
 		{
 			(this->textBox = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBox"), ::vl::__vwsn::Box(this->textBox));
 		}
 		(this->__vwsn_precompile_3 = ::vl::__vwsn::This(this->textBox)->GetBoundsComposition());
 		{
@@ -57312,6 +58296,7 @@ Class (::gaclib_controls::FontSizeControlConstructor)
 		}
 		{
 			(this->textList = new ::vl::presentation::controls::GuiBindableTextList(::vl::presentation::theme::ThemeName::TextList));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textList"), ::vl::__vwsn::Box(this->textList));
 		}
 		{
 			::vl::__vwsn::This(this->textList)->SetHorizontalAlwaysVisible(false);
@@ -57550,6 +58535,7 @@ Class (::gaclib_controls::FullFontDialogWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(0), static_cast<::vl::vint>(3), static_cast<::vl::vint>(1));
 		}
 		(this->nameControl = new ::gaclib_controls::FontNameControl(::vl::Ptr<::vl::presentation::ICommonFontDialogViewModel>(this->ViewModel)));
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"nameControl"), ::vl::__vwsn::Box(this->nameControl));
 		(this->__vwsn_precompile_4 = ::vl::__vwsn::This(this->nameControl)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -57565,6 +58551,7 @@ Class (::gaclib_controls::FullFontDialogWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		(this->sizeControl = new ::gaclib_controls::FontSizeControl());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"sizeControl"), ::vl::__vwsn::Box(this->sizeControl));
 		(this->__vwsn_precompile_6 = ::vl::__vwsn::This(this->sizeControl)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -57599,6 +58586,7 @@ Class (::gaclib_controls::FullFontDialogWindowConstructor)
 		(this->__vwsn_precompile_10 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkBold = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkBold"), ::vl::__vwsn::Box(this->checkBold));
 		}
 		{
 			::vl::__vwsn::This(this->checkBold)->SetAlt(::vl::WString::Unmanaged(L"B"));
@@ -57612,6 +58600,7 @@ Class (::gaclib_controls::FullFontDialogWindowConstructor)
 		(this->__vwsn_precompile_11 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkItalic = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkItalic"), ::vl::__vwsn::Box(this->checkItalic));
 		}
 		{
 			::vl::__vwsn::This(this->checkItalic)->SetAlt(::vl::WString::Unmanaged(L"I"));
@@ -57625,6 +58614,7 @@ Class (::gaclib_controls::FullFontDialogWindowConstructor)
 		(this->__vwsn_precompile_12 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkUnderline = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkUnderline"), ::vl::__vwsn::Box(this->checkUnderline));
 		}
 		{
 			::vl::__vwsn::This(this->checkUnderline)->SetAlt(::vl::WString::Unmanaged(L"U"));
@@ -57638,6 +58628,7 @@ Class (::gaclib_controls::FullFontDialogWindowConstructor)
 		(this->__vwsn_precompile_13 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkStrikeline = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkStrikeline"), ::vl::__vwsn::Box(this->checkStrikeline));
 		}
 		{
 			::vl::__vwsn::This(this->checkStrikeline)->SetAlt(::vl::WString::Unmanaged(L"U"));
@@ -57651,6 +58642,7 @@ Class (::gaclib_controls::FullFontDialogWindowConstructor)
 		(this->__vwsn_precompile_14 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkHAA = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkHAA"), ::vl::__vwsn::Box(this->checkHAA));
 		}
 		{
 			::vl::__vwsn::This(this->checkHAA)->SetAlt(::vl::WString::Unmanaged(L"H"));
@@ -57664,6 +58656,7 @@ Class (::gaclib_controls::FullFontDialogWindowConstructor)
 		(this->__vwsn_precompile_15 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkVAA = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkVAA"), ::vl::__vwsn::Box(this->checkVAA));
 		}
 		{
 			::vl::__vwsn::This(this->checkVAA)->SetAlt(::vl::WString::Unmanaged(L"V"));
@@ -57695,6 +58688,7 @@ Class (::gaclib_controls::FullFontDialogWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_21)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		(this->colorBounds = new ::vl::presentation::compositions::GuiBoundsComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"colorBounds"), ::vl::__vwsn::Box(this->colorBounds));
 		{
 			::vl::__vwsn::This(this->colorBounds)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.y = static_cast<::vl::vint>(20); return __vwsn_temp__; }());
 		}
@@ -57716,6 +58710,7 @@ Class (::gaclib_controls::FullFontDialogWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(1); __vwsn_temp__.top = static_cast<::vl::vint>(1); __vwsn_temp__.right = static_cast<::vl::vint>(1); __vwsn_temp__.bottom = static_cast<::vl::vint>(1); return __vwsn_temp__; }());
 		}
 		(this->colorBackground = ::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidBackgroundElement>()));
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"colorBackground"), ::vl::__vwsn::Box(this->colorBackground));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_20)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->colorBackground));
 		}
@@ -58063,6 +59058,7 @@ Class (::gaclib_controls::MessageBoxButtonTemplateConstructor)
 		}
 		{
 			(this->buttonControl = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"buttonControl"), ::vl::__vwsn::Box(this->buttonControl));
 		}
 		(this->__vwsn_precompile_0 = ::vl::__vwsn::This(this->buttonControl)->GetBoundsComposition());
 		{
@@ -58431,6 +59427,7 @@ Class (::gaclib_controls::MessageBoxWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		(this->buttonStack = new ::vl::presentation::compositions::GuiRepeatStackComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"buttonStack"), ::vl::__vwsn::Box(this->buttonStack));
 		{
 			::vl::__vwsn::This(this->buttonStack)->SetItemTemplate(vl::Func(::vl_workflow_global::__vwsnf89_GuiFakeDialogServiceUI_gaclib_controls_MessageBoxWindowConstructor___vwsn_gaclib_controls_MessageBoxWindow_Initialize_(this)));
 		}
@@ -58628,6 +59625,7 @@ Class (::gaclib_controls::SimpleFontDialogWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		(this->nameControl = new ::gaclib_controls::FontNameControl(::vl::Ptr<::vl::presentation::ICommonFontDialogViewModel>(this->ViewModel)));
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"nameControl"), ::vl::__vwsn::Box(this->nameControl));
 		(this->__vwsn_precompile_4 = ::vl::__vwsn::This(this->nameControl)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -58643,6 +59641,7 @@ Class (::gaclib_controls::SimpleFontDialogWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		(this->sizeControl = new ::gaclib_controls::FontSizeControl());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"sizeControl"), ::vl::__vwsn::Box(this->sizeControl));
 		(this->__vwsn_precompile_6 = ::vl::__vwsn::This(this->sizeControl)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -58981,16 +59980,19 @@ namespace vl
 #endif
 				}
 
-				void Load()override
+				void Load(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 				{
-					List<GuiResourceError> errors;
-					MemoryStream resourceStream;
-					GuiFakeDialogServiceUIResourceReader::ReadToStream(resourceStream);
-					resourceStream.SeekFromBegin(0);
-					GetResourceManager()->LoadResourceOrPending(resourceStream, GuiResourceUsage::InstanceClass);
+					if (controllerRelatedPlugins)
+					{
+						List<GuiResourceError> errors;
+						MemoryStream resourceStream;
+						GuiFakeDialogServiceUIResourceReader::ReadToStream(resourceStream);
+						resourceStream.SeekFromBegin(0);
+						GetResourceManager()->LoadResourceOrPending(resourceStream, GuiResourceUsage::InstanceClass);
+					}
 				}
 
-				void Unload()override
+				void Unload(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 				{
 				}
 			};

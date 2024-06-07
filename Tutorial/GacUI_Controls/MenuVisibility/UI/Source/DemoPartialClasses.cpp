@@ -111,6 +111,7 @@ namespace demo
 		}
 		{
 			(this->menuItems = new ::vl::presentation::controls::GuiToolstripButton(::vl::presentation::theme::ThemeName::MenuBarButton));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"menuItems"), ::vl::__vwsn::Box(this->menuItems));
 		}
 		{
 			::vl::__vwsn::This(this->menuItems)->SetText(::vl::WString::Unmanaged(L"Items"));
@@ -221,6 +222,7 @@ namespace demo
 		}
 		{
 			(this->checkList = new ::vl::presentation::controls::GuiTextList(::vl::presentation::theme::ThemeName::TextList));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkList"), ::vl::__vwsn::Box(this->checkList));
 		}
 		(this->__vwsn_precompile_17 = ::vl::Ptr<::vl::presentation::controls::list::TextItem>(new ::vl::presentation::controls::list::TextItem()));
 		{

@@ -214,6 +214,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString::Unmanaged(L"Stack"));
 		}
 		(this->groupStackDirection = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"groupStackDirection"), ::vl::__vwsn::Box(this->groupStackDirection));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->groupStackDirection));
 		}
@@ -322,6 +323,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_12)->SetSite(static_cast<::vl::vint>(5), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		(this->stackLayout = new ::vl::presentation::compositions::GuiStackComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"stackLayout"), ::vl::__vwsn::Box(this->stackLayout));
 		{
 			::vl::__vwsn::This(this->stackLayout)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(10); __vwsn_temp__.top = static_cast<::vl::vint>(10); __vwsn_temp__.right = static_cast<::vl::vint>(10); __vwsn_temp__.bottom = static_cast<::vl::vint>(10); return __vwsn_temp__; }());
 		}

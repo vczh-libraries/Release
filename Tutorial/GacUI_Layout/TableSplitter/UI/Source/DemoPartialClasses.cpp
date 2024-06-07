@@ -805,6 +805,7 @@ namespace demo
 		}
 		{
 			(this->checkBorder = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkBorder"), ::vl::__vwsn::Box(this->checkBorder));
 		}
 		{
 			::vl::__vwsn::This(this->checkBorder)->SetSelected(true);
@@ -844,6 +845,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_6));
 		}
 		(this->table = new ::vl::presentation::compositions::GuiTableComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"table"), ::vl::__vwsn::Box(this->table));
 		{
 			::vl::__vwsn::This(this->table)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}

@@ -598,6 +598,7 @@ namespace helloworld
 		}
 		{
 			(this->textBoxUserName = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxUserName"), ::vl::__vwsn::Box(this->textBoxUserName));
 		}
 		(this->__vwsn_precompile_6 = ::vl::__vwsn::This(this->textBoxUserName)->GetBoundsComposition());
 		{
@@ -661,6 +662,7 @@ namespace helloworld
 		}
 		{
 			(this->textBoxPassword = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxPassword"), ::vl::__vwsn::Box(this->textBoxPassword));
 		}
 		{
 			::vl::__vwsn::This(this->textBoxPassword)->SetPasswordChar(::vl::__vwsn::Parse<wchar_t>(::vl::WString::Unmanaged(L"*")));
@@ -707,6 +709,7 @@ namespace helloworld
 		}
 		{
 			(this->buttonSignUp = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"buttonSignUp"), ::vl::__vwsn::Box(this->buttonSignUp));
 		}
 		(this->__vwsn_precompile_16 = ::vl::__vwsn::This(this->buttonSignUp)->GetBoundsComposition());
 		{
@@ -723,6 +726,7 @@ namespace helloworld
 		}
 		{
 			(this->buttonCancel = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"buttonCancel"), ::vl::__vwsn::Box(this->buttonCancel));
 		}
 		(this->__vwsn_precompile_17 = ::vl::__vwsn::This(this->buttonCancel)->GetBoundsComposition());
 		{

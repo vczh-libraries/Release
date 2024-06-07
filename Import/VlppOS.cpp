@@ -1947,7 +1947,8 @@ UtfGeneralEncoder
 						CHECK_FAIL(L"UtfGeneralEncoder<T>::Write(void*, vint)#Failed to write a complete string.");
 					}
 				}
-				availableChars = reader.SourceCluster().index;
+				auto cluster = reader.SourceCluster();
+				availableChars = cluster.index + cluster.size;
 				availableBytes = availableChars * sizeof(TExpect);
 			}
 
@@ -2010,13 +2011,13 @@ UtfGeneralDecoder
 				{
 					TExpect c = reader.Read();
 					if (!c) break;
-					((TExpect*)_buffer)[i] = c;
+					*((TExpect*)writing) = c;
+					writing += sizeof(TExpect);
 					readBytes += sizeof(TExpect);
 				}
 				if (readBytes == 0) break;
 				filledBytes += readBytes;
 				_size -= readBytes;
-				writing += readBytes;
 			}
 
 			// cache the remaining TExpect

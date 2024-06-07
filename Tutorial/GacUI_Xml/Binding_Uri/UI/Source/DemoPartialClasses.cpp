@@ -116,6 +116,7 @@ namespace demo
 		}
 		{
 			(this->documentLabel = new ::vl::presentation::controls::GuiDocumentLabel(::vl::presentation::theme::ThemeName::DocumentLabel));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"documentLabel"), ::vl::__vwsn::Box(this->documentLabel));
 		}
 		(this->__vwsn_precompile_7 = ::vl::__vwsn::This(this->documentLabel)->GetBoundsComposition());
 		{

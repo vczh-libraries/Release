@@ -1143,6 +1143,7 @@ namespace demo
 		(this->__vwsn_precompile_1 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkFrame = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkFrame"), ::vl::__vwsn::Box(this->checkFrame));
 		}
 		{
 			::vl::__vwsn::This(this->checkFrame)->SetText(::vl::WString::Unmanaged(L"Customized Frame"));
@@ -1156,6 +1157,7 @@ namespace demo
 		(this->__vwsn_precompile_2 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkMax = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkMax"), ::vl::__vwsn::Box(this->checkMax));
 		}
 		{
 			::vl::__vwsn::This(this->checkMax)->SetText(::vl::WString::Unmanaged(L"MaximizedBox"));
@@ -1169,6 +1171,7 @@ namespace demo
 		(this->__vwsn_precompile_3 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkMin = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkMin"), ::vl::__vwsn::Box(this->checkMin));
 		}
 		{
 			::vl::__vwsn::This(this->checkMin)->SetText(::vl::WString::Unmanaged(L"MinimizedBox"));
@@ -1182,6 +1185,7 @@ namespace demo
 		(this->__vwsn_precompile_4 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkBorder = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkBorder"), ::vl::__vwsn::Box(this->checkBorder));
 		}
 		{
 			::vl::__vwsn::This(this->checkBorder)->SetText(::vl::WString::Unmanaged(L"Border"));
@@ -1195,6 +1199,7 @@ namespace demo
 		(this->__vwsn_precompile_5 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkSizeBox = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkSizeBox"), ::vl::__vwsn::Box(this->checkSizeBox));
 		}
 		{
 			::vl::__vwsn::This(this->checkSizeBox)->SetText(::vl::WString::Unmanaged(L"SizeBox"));
@@ -1208,6 +1213,7 @@ namespace demo
 		(this->__vwsn_precompile_6 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkIcon = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkIcon"), ::vl::__vwsn::Box(this->checkIcon));
 		}
 		{
 			::vl::__vwsn::This(this->checkIcon)->SetText(::vl::WString::Unmanaged(L"IconVisible"));
@@ -1221,6 +1227,7 @@ namespace demo
 		(this->__vwsn_precompile_7 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkTitle = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkTitle"), ::vl::__vwsn::Box(this->checkTitle));
 		}
 		{
 			::vl::__vwsn::This(this->checkTitle)->SetText(::vl::WString::Unmanaged(L"TitleBar"));
@@ -1234,6 +1241,7 @@ namespace demo
 		(this->__vwsn_precompile_8 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->buttonNewWindow = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"buttonNewWindow"), ::vl::__vwsn::Box(this->buttonNewWindow));
 		}
 		{
 			::vl::__vwsn::This(this->buttonNewWindow)->SetText(::vl::WString::Unmanaged(L"Open New Window"));

@@ -1677,6 +1677,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(800); __vwsn_temp__.y = static_cast<::vl::vint>(600); return __vwsn_temp__; }());
 		}
 		(this->accountController = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"accountController"), ::vl::__vwsn::Box(this->accountController));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->accountController));
 		}
@@ -1684,6 +1685,7 @@ Class (::demo::MainWindowConstructor)
 		(this->__vwsn_precompile_1 = new ::vl::presentation::compositions::GuiResponsiveViewComposition());
 		{
 			(this->videoContainer = new ::vl::presentation::controls::GuiScrollContainer(::vl::presentation::theme::ThemeName::ScrollView));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"videoContainer"), ::vl::__vwsn::Box(this->videoContainer));
 		}
 		{
 			::vl::__vwsn::This(this->videoContainer)->SetHorizontalAlwaysVisible(false);

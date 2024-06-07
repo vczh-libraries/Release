@@ -1725,6 +1725,7 @@ namespace demo
 		}
 		{
 			(this->styleGallery = new ::vl::presentation::controls::GuiBindableRibbonGalleryList(::vl::presentation::theme::ThemeName::RibbonGalleryList));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"styleGallery"), ::vl::__vwsn::Box(this->styleGallery));
 		}
 		{
 			::vl::__vwsn::This(this->styleGallery)->SetGroupChildrenProperty(vl::Func(::vl_workflow_global::__vwsnf3_EditorRibbon_demo_DocumentEditorRibbonConstructor___vwsn_demo_DocumentEditorRibbon_Initialize_(this)));
@@ -1965,6 +1966,7 @@ namespace demo
 		(this->__vwsn_precompile_10 = ::vl::__vwsn::This(this->__vwsn_precompile_8)->GetBeforeHeaders());
 		{
 			(this->buttonHome = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"buttonHome"), ::vl::__vwsn::Box(this->buttonHome));
 		}
 		(this->__vwsn_precompile_11 = ::vl::__vwsn::This(this->buttonHome)->GetBoundsComposition());
 		{
@@ -1987,6 +1989,7 @@ namespace demo
 			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"Document Editor (Ribbon)"));
 		}
 		(this->dialogMessage = new ::vl::presentation::controls::GuiMessageDialog());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dialogMessage"), ::vl::__vwsn::Box(this->dialogMessage));
 		{
 			::vl::__vwsn::This(this->dialogMessage)->SetTitle(::vl::WString::Unmanaged(L"You Expanded a Group!"));
 		}
@@ -1998,6 +2001,7 @@ namespace demo
 		}
 		{
 			(this->toolstripHome = new ::vl::presentation::controls::GuiToolstripMenu(::vl::presentation::theme::ThemeName::Menu, static_cast<::vl::presentation::controls::GuiControl*>(nullptr)));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"toolstripHome"), ::vl::__vwsn::Box(this->toolstripHome));
 		}
 		{
 			(this->__vwsn_precompile_0 = new ::vl::presentation::controls::GuiToolstripGroupContainer(::vl::presentation::theme::ThemeName::CustomControl));
@@ -2498,6 +2502,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetClientSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(800); __vwsn_temp__.y = static_cast<::vl::vint>(600); return __vwsn_temp__; }());
 		}
 		(this->editor = new ::demo::DocumentEditorRibbon());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"editor"), ::vl::__vwsn::Box(this->editor));
 		(this->__vwsn_precompile_1 = ::vl::__vwsn::This(this->editor)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
@@ -2587,6 +2592,7 @@ Class (::demo::StyleItemTemplateConstructor)
 		}
 		{
 			(this->containerControl = new ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"containerControl"), ::vl::__vwsn::Box(this->containerControl));
 		}
 		{
 			(this->__vwsn_precompile_5 = new ::vl::presentation::controls::GuiCustomControl(::vl::presentation::theme::ThemeName::CustomControl));
@@ -2636,6 +2642,7 @@ Class (::demo::StyleItemTemplateConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_1)->SetSite(static_cast<::vl::vint>(0), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(1));
 		}
 		(this->styleLabel = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"styleLabel"), ::vl::__vwsn::Box(this->styleLabel));
 		{
 			::vl::__vwsn::This(this->styleLabel.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
 		}

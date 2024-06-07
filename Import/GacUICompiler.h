@@ -1072,6 +1072,7 @@ Licensed under https://github.com/vczh-libraries/License
 
 namespace vl::presentation::remoteprotocol
 {
+	class GuiRpArrayMapType;
 	class GuiRpArrayType;
 	class GuiRpAttribute;
 	class GuiRpDeclaration;
@@ -1079,6 +1080,7 @@ namespace vl::presentation::remoteprotocol
 	class GuiRpEnumMember;
 	class GuiRpEventDecl;
 	class GuiRpEventRequest;
+	class GuiRpMapType;
 	class GuiRpMessageDecl;
 	class GuiRpMessageRequest;
 	class GuiRpMessageResponse;
@@ -1089,6 +1091,8 @@ namespace vl::presentation::remoteprotocol
 	class GuiRpStructDecl;
 	class GuiRpStructMember;
 	class GuiRpType;
+	class GuiRpUnionDecl;
+	class GuiRpUnionMember;
 
 	enum class GuiRpPrimitiveTypes
 	{
@@ -1101,6 +1105,14 @@ namespace vl::presentation::remoteprotocol
 		Char = 5,
 		Key = 6,
 		Color = 7,
+		Binary = 8,
+	};
+
+	enum class GuiRpStructType
+	{
+		UNDEFINED_ENUM_ITEM_VALUE = -1,
+		Struct = 0,
+		Class = 1,
 	};
 
 	class GuiRpType abstract : public vl::glr::ParsingAstBase, vl::reflection::Description<GuiRpType>
@@ -1113,6 +1125,8 @@ namespace vl::presentation::remoteprotocol
 			virtual void Visit(GuiRpReferenceType* node) = 0;
 			virtual void Visit(GuiRpOptionalType* node) = 0;
 			virtual void Visit(GuiRpArrayType* node) = 0;
+			virtual void Visit(GuiRpArrayMapType* node) = 0;
+			virtual void Visit(GuiRpMapType* node) = 0;
 		};
 
 		virtual void Accept(GuiRpType::IVisitor* visitor) = 0;
@@ -1151,6 +1165,24 @@ namespace vl::presentation::remoteprotocol
 		void Accept(GuiRpType::IVisitor* visitor) override;
 	};
 
+	class GuiRpArrayMapType : public GuiRpType, vl::reflection::Description<GuiRpArrayMapType>
+	{
+	public:
+		vl::glr::ParsingToken element;
+		vl::glr::ParsingToken keyField;
+
+		void Accept(GuiRpType::IVisitor* visitor) override;
+	};
+
+	class GuiRpMapType : public GuiRpType, vl::reflection::Description<GuiRpMapType>
+	{
+	public:
+		vl::Ptr<GuiRpType> element;
+		vl::Ptr<GuiRpType> keyType;
+
+		void Accept(GuiRpType::IVisitor* visitor) override;
+	};
+
 	class GuiRpAttribute : public vl::glr::ParsingAstBase, vl::reflection::Description<GuiRpAttribute>
 	{
 	public:
@@ -1165,6 +1197,7 @@ namespace vl::presentation::remoteprotocol
 		{
 		public:
 			virtual void Visit(GuiRpEnumDecl* node) = 0;
+			virtual void Visit(GuiRpUnionDecl* node) = 0;
 			virtual void Visit(GuiRpStructDecl* node) = 0;
 			virtual void Visit(GuiRpMessageDecl* node) = 0;
 			virtual void Visit(GuiRpEventDecl* node) = 0;
@@ -1190,6 +1223,20 @@ namespace vl::presentation::remoteprotocol
 		void Accept(GuiRpDeclaration::IVisitor* visitor) override;
 	};
 
+	class GuiRpUnionMember : public vl::glr::ParsingAstBase, vl::reflection::Description<GuiRpUnionMember>
+	{
+	public:
+		vl::glr::ParsingToken name;
+	};
+
+	class GuiRpUnionDecl : public GuiRpDeclaration, vl::reflection::Description<GuiRpUnionDecl>
+	{
+	public:
+		vl::collections::List<vl::Ptr<GuiRpUnionMember>> members;
+
+		void Accept(GuiRpDeclaration::IVisitor* visitor) override;
+	};
+
 	class GuiRpStructMember : public vl::glr::ParsingAstBase, vl::reflection::Description<GuiRpStructMember>
 	{
 	public:
@@ -1200,6 +1247,7 @@ namespace vl::presentation::remoteprotocol
 	class GuiRpStructDecl : public GuiRpDeclaration, vl::reflection::Description<GuiRpStructDecl>
 	{
 	public:
+		GuiRpStructType type = GuiRpStructType::UNDEFINED_ENUM_ITEM_VALUE;
 		vl::collections::List<vl::Ptr<GuiRpStructMember>> members;
 
 		void Accept(GuiRpDeclaration::IVisitor* visitor) override;
@@ -1256,12 +1304,17 @@ namespace vl::reflection::description
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpReferenceType)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpOptionalType)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpArrayType)
+	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpArrayMapType)
+	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpMapType)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpAttribute)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpDeclaration)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpDeclaration::IVisitor)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpEnumMember)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpEnumDecl)
+	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpUnionMember)
+	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpUnionDecl)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpStructMember)
+	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpStructType)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpStructDecl)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpMessageRequest)
 	DECL_TYPE_INFO(vl::presentation::remoteprotocol::GuiRpMessageResponse)
@@ -1293,10 +1346,25 @@ namespace vl::reflection::description
 			INVOKE_INTERFACE_PROXY(Visit, node);
 		}
 
+		void Visit(vl::presentation::remoteprotocol::GuiRpArrayMapType* node) override
+		{
+			INVOKE_INTERFACE_PROXY(Visit, node);
+		}
+
+		void Visit(vl::presentation::remoteprotocol::GuiRpMapType* node) override
+		{
+			INVOKE_INTERFACE_PROXY(Visit, node);
+		}
+
 	END_INTERFACE_PROXY(vl::presentation::remoteprotocol::GuiRpType::IVisitor)
 
 	BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(vl::presentation::remoteprotocol::GuiRpDeclaration::IVisitor)
 		void Visit(vl::presentation::remoteprotocol::GuiRpEnumDecl* node) override
+		{
+			INVOKE_INTERFACE_PROXY(Visit, node);
+		}
+
+		void Visit(vl::presentation::remoteprotocol::GuiRpUnionDecl* node) override
 		{
 			INVOKE_INTERFACE_PROXY(Visit, node);
 		}
@@ -1348,6 +1416,7 @@ namespace vl::presentation::remoteprotocol::json_visitor
 		, protected virtual GuiRpDeclaration::IVisitor
 	{
 	protected:
+		virtual void PrintFields(GuiRpArrayMapType* node);
 		virtual void PrintFields(GuiRpArrayType* node);
 		virtual void PrintFields(GuiRpAttribute* node);
 		virtual void PrintFields(GuiRpDeclaration* node);
@@ -1355,6 +1424,7 @@ namespace vl::presentation::remoteprotocol::json_visitor
 		virtual void PrintFields(GuiRpEnumMember* node);
 		virtual void PrintFields(GuiRpEventDecl* node);
 		virtual void PrintFields(GuiRpEventRequest* node);
+		virtual void PrintFields(GuiRpMapType* node);
 		virtual void PrintFields(GuiRpMessageDecl* node);
 		virtual void PrintFields(GuiRpMessageRequest* node);
 		virtual void PrintFields(GuiRpMessageResponse* node);
@@ -1365,14 +1435,19 @@ namespace vl::presentation::remoteprotocol::json_visitor
 		virtual void PrintFields(GuiRpStructDecl* node);
 		virtual void PrintFields(GuiRpStructMember* node);
 		virtual void PrintFields(GuiRpType* node);
+		virtual void PrintFields(GuiRpUnionDecl* node);
+		virtual void PrintFields(GuiRpUnionMember* node);
 
 	protected:
 		void Visit(GuiRpPrimitiveType* node) override;
 		void Visit(GuiRpReferenceType* node) override;
 		void Visit(GuiRpOptionalType* node) override;
 		void Visit(GuiRpArrayType* node) override;
+		void Visit(GuiRpArrayMapType* node) override;
+		void Visit(GuiRpMapType* node) override;
 
 		void Visit(GuiRpEnumDecl* node) override;
+		void Visit(GuiRpUnionDecl* node) override;
 		void Visit(GuiRpStructDecl* node) override;
 		void Visit(GuiRpMessageDecl* node) override;
 		void Visit(GuiRpEventDecl* node) override;
@@ -1384,6 +1459,7 @@ namespace vl::presentation::remoteprotocol::json_visitor
 		void Print(GuiRpDeclaration* node);
 		void Print(GuiRpAttribute* node);
 		void Print(GuiRpEnumMember* node);
+		void Print(GuiRpUnionMember* node);
 		void Print(GuiRpStructMember* node);
 		void Print(GuiRpMessageRequest* node);
 		void Print(GuiRpMessageResponse* node);
@@ -1410,47 +1486,58 @@ namespace vl::presentation::remoteprotocol
 {
 	enum class GuiRemoteProtocolClasses : vl::vint32_t
 	{
-		ArrayType = 0,
-		Attribute = 1,
-		Declaration = 2,
-		EnumDecl = 3,
-		EnumMember = 4,
-		EventDecl = 5,
-		EventRequest = 6,
-		MessageDecl = 7,
-		MessageRequest = 8,
-		MessageResponse = 9,
-		OptionalType = 10,
-		PrimitiveType = 11,
-		ReferenceType = 12,
-		Schema = 13,
-		StructDecl = 14,
-		StructMember = 15,
-		Type = 16,
+		ArrayMapType = 0,
+		ArrayType = 1,
+		Attribute = 2,
+		Declaration = 3,
+		EnumDecl = 4,
+		EnumMember = 5,
+		EventDecl = 6,
+		EventRequest = 7,
+		MapType = 8,
+		MessageDecl = 9,
+		MessageRequest = 10,
+		MessageResponse = 11,
+		OptionalType = 12,
+		PrimitiveType = 13,
+		ReferenceType = 14,
+		Schema = 15,
+		StructDecl = 16,
+		StructMember = 17,
+		Type = 18,
+		UnionDecl = 19,
+		UnionMember = 20,
 	};
 
 	enum class GuiRemoteProtocolFields : vl::vint32_t
 	{
-		ArrayType_element = 0,
-		Attribute_cppType = 1,
-		Attribute_name = 2,
-		Declaration_attributes = 3,
-		Declaration_name = 4,
-		EnumDecl_members = 5,
-		EnumMember_name = 6,
-		EventDecl_request = 7,
-		EventRequest_type = 8,
-		MessageDecl_request = 9,
-		MessageDecl_response = 10,
-		MessageRequest_type = 11,
-		MessageResponse_type = 12,
-		OptionalType_element = 13,
-		PrimitiveType_type = 14,
-		ReferenceType_name = 15,
-		Schema_declarations = 16,
-		StructDecl_members = 17,
-		StructMember_name = 18,
-		StructMember_type = 19,
+		ArrayMapType_element = 0,
+		ArrayMapType_keyField = 1,
+		ArrayType_element = 2,
+		Attribute_cppType = 3,
+		Attribute_name = 4,
+		Declaration_attributes = 5,
+		Declaration_name = 6,
+		EnumDecl_members = 7,
+		EnumMember_name = 8,
+		EventDecl_request = 9,
+		EventRequest_type = 10,
+		MapType_element = 11,
+		MapType_keyType = 12,
+		MessageDecl_request = 13,
+		MessageDecl_response = 14,
+		MessageRequest_type = 15,
+		MessageResponse_type = 16,
+		OptionalType_element = 17,
+		PrimitiveType_type = 18,
+		ReferenceType_name = 19,
+		Schema_declarations = 20,
+		StructDecl_members = 21,
+		StructDecl_type = 22,
+		StructMember_name = 23,
+		StructMember_type = 24,
+		UnionDecl_members = 25,
+		UnionMember_name = 26,
 	};
 
 	extern const wchar_t* GuiRemoteProtocolTypeName(GuiRemoteProtocolClasses type);
@@ -1489,36 +1576,40 @@ namespace vl::presentation::remoteprotocol
 	{
 		VAR = 0,
 		ENUM = 1,
-		STRUCT = 2,
-		MESSAGE = 3,
-		REQUEST = 4,
-		RESPONSE = 5,
-		EVENT = 6,
-		BOOLEAN = 7,
-		INTEGER = 8,
-		FLOAT = 9,
-		DOUBLE = 10,
-		STRING = 11,
-		CHAR = 12,
-		KEY = 13,
-		COLOR = 14,
-		CPP_NAME = 15,
-		ATT_NAME = 16,
-		NAME = 17,
-		OPEN_BRACE = 18,
-		CLOSE_BRACE = 19,
-		OPEN_ARRAY = 20,
-		CLOSE_ARRAY = 21,
-		OPEN = 22,
-		CLOSE = 23,
-		COLON = 24,
-		SEMICOLON = 25,
-		COMMA = 26,
-		QUESTION = 27,
-		SPACE = 28,
+		UNION = 2,
+		STRUCT = 3,
+		CLASS = 4,
+		MESSAGE = 5,
+		REQUEST = 6,
+		RESPONSE = 7,
+		EVENT = 8,
+		BOOLEAN = 9,
+		INTEGER = 10,
+		FLOAT = 11,
+		DOUBLE = 12,
+		STRING = 13,
+		CHAR = 14,
+		KEY = 15,
+		COLOR = 16,
+		BINARY = 17,
+		CPP_NAME = 18,
+		ATT_NAME = 19,
+		NAME = 20,
+		OPEN_BRACE = 21,
+		CLOSE_BRACE = 22,
+		OPEN_ARRAY = 23,
+		CLOSE_ARRAY = 24,
+		OPEN = 25,
+		CLOSE = 26,
+		COLON = 27,
+		SEMICOLON = 28,
+		COMMA = 29,
+		DOT = 30,
+		QUESTION = 31,
+		SPACE = 32,
 	};
 
-	constexpr vl::vint GuiRemoteProtocolTokenCount = 29;
+	constexpr vl::vint GuiRemoteProtocolTokenCount = 33;
 	extern bool GuiRemoteProtocolTokenDeleter(vl::vint token);
 	extern const wchar_t* GuiRemoteProtocolTokenId(GuiRemoteProtocolTokens token);
 	extern const wchar_t* GuiRemoteProtocolTokenDisplayText(GuiRemoteProtocolTokens token);
@@ -1545,20 +1636,23 @@ namespace vl::presentation::remoteprotocol
 	enum class ParserStates
 	{
 		RType = 0,
-		RAttributeParameter = 16,
-		RAttribute = 19,
-		REnumMember = 27,
-		REnum = 31,
-		RStructMember = 38,
-		RStruct = 45,
-		RMessageRequest = 52,
-		RMessageResponse = 58,
-		RMessage = 64,
-		REventRequest = 72,
-		REvent = 78,
-		RDeclDetail = 85,
-		RDecl = 91,
-		Schema = 95,
+		RAttributeParameter = 26,
+		RAttribute = 29,
+		REnumMember = 37,
+		REnum = 41,
+		RUnionMember = 48,
+		RUnion = 52,
+		RStructMember = 59,
+		RStructBody = 66,
+		RStruct = 72,
+		RMessageRequest = 78,
+		RMessageResponse = 84,
+		RMessage = 90,
+		REventRequest = 98,
+		REvent = 104,
+		RDeclDetail = 111,
+		RDecl = 118,
+		Schema = 122,
 	};
 
 	const wchar_t* ParserRuleName(vl::vint index);
@@ -1611,6 +1705,7 @@ namespace vl::presentation
 		collections::SortedList<WString>										dropRepeatDeclNames;
 		collections::SortedList<WString>										dropConsecutiveDeclNames;
 		collections::Dictionary<WString, remoteprotocol::GuiRpEnumDecl*>		enumDecls;
+		collections::Dictionary<WString, remoteprotocol::GuiRpUnionDecl*>		unionDecls;
 		collections::Dictionary<WString, remoteprotocol::GuiRpStructDecl*>		structDecls;
 		collections::Dictionary<WString, remoteprotocol::GuiRpMessageDecl*>		messageDecls;
 		collections::Dictionary<WString, remoteprotocol::GuiRpEventDecl*>		eventDecls;

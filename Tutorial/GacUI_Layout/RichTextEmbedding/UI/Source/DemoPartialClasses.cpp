@@ -96,6 +96,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->documentViewer = new ::vl::presentation::controls::GuiDocumentViewer(::vl::presentation::theme::ThemeName::DocumentViewer));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"documentViewer"), ::vl::__vwsn::Box(this->documentViewer));
 		}
 		(this->__vwsn_precompile_50 = ::vl::__vwsn::This(this->documentViewer)->GetBoundsComposition());
 		{

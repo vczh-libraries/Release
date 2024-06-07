@@ -1151,6 +1151,7 @@ namespace demo
 		}
 		(this->__vwsn_precompile_2 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		(this->button = new ::demo::TriplePhaseButton());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"button"), ::vl::__vwsn::Box(this->button));
 		(this->__vwsn_precompile_3 = ::vl::__vwsn::This(this->button)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.x = static_cast<::vl::vint>(120); __vwsn_temp__.y = static_cast<::vl::vint>(40); return __vwsn_temp__; }());

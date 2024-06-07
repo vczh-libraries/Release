@@ -586,10 +586,12 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetText(::vl::WString::Unmanaged(L"Flow"));
 		}
 		(this->groupAxis = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"groupAxis"), ::vl::__vwsn::Box(this->groupAxis));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->groupAxis));
 		}
 		(this->groupAlignment = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"groupAlignment"), ::vl::__vwsn::Box(this->groupAlignment));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->groupAlignment));
 		}
@@ -618,6 +620,7 @@ namespace demo
 		}
 		{
 			(this->groupBoxAxis = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::GroupBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"groupBoxAxis"), ::vl::__vwsn::Box(this->groupBoxAxis));
 		}
 		(this->__vwsn_precompile_21 = ::vl::__vwsn::This(this->groupBoxAxis)->GetContainerComposition());
 		{
@@ -794,6 +797,7 @@ namespace demo
 		}
 		{
 			(this->groupBoxAlignment = new ::vl::presentation::controls::GuiControl(::vl::presentation::theme::ThemeName::GroupBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"groupBoxAlignment"), ::vl::__vwsn::Box(this->groupBoxAlignment));
 		}
 		(this->__vwsn_precompile_33 = ::vl::__vwsn::This(this->groupBoxAlignment)->GetContainerComposition());
 		{
@@ -918,6 +922,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_36)->SetSite(static_cast<::vl::vint>(2), static_cast<::vl::vint>(0), static_cast<::vl::vint>(1), static_cast<::vl::vint>(3));
 		}
 		(this->flowLayout = new ::vl::presentation::compositions::GuiFlowComposition());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"flowLayout"), ::vl::__vwsn::Box(this->flowLayout));
 		{
 			::vl::__vwsn::This(this->flowLayout)->SetExtraMargin([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(10); __vwsn_temp__.top = static_cast<::vl::vint>(10); __vwsn_temp__.right = static_cast<::vl::vint>(10); __vwsn_temp__.bottom = static_cast<::vl::vint>(10); return __vwsn_temp__; }());
 		}

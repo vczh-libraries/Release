@@ -204,6 +204,7 @@ namespace demo
 		}
 		{
 			(this->textBoxA = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxA"), ::vl::__vwsn::Box(this->textBoxA));
 		}
 		(this->__vwsn_precompile_2 = ::vl::__vwsn::This(this->textBoxA)->GetBoundsComposition());
 		{
@@ -244,6 +245,7 @@ namespace demo
 		}
 		{
 			(this->textBoxB = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxB"), ::vl::__vwsn::Box(this->textBoxB));
 		}
 		(this->__vwsn_precompile_7 = ::vl::__vwsn::This(this->textBoxB)->GetBoundsComposition());
 		{

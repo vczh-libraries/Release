@@ -1068,6 +1068,7 @@ namespace demo
 		}
 		{
 			(this->documentLabel = new ::vl::presentation::controls::GuiDocumentLabel(::vl::presentation::theme::ThemeName::DocumentLabel));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"documentLabel"), ::vl::__vwsn::Box(this->documentLabel));
 		}
 		(this->__vwsn_precompile_4 = ::vl::__vwsn::This(this->documentLabel)->GetBoundsComposition());
 		{
@@ -1158,10 +1159,12 @@ Class (::demo::FindWindowConstructor)
 			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"Find"));
 		}
 		(this->groupDirection = new ::vl::presentation::controls::GuiSelectableButton::MutexGroupController());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"groupDirection"), ::vl::__vwsn::Box(this->groupDirection));
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->groupDirection));
 		}
 		(this->dialogContentNotFound = new ::vl::presentation::controls::GuiMessageDialog());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dialogContentNotFound"), ::vl::__vwsn::Box(this->dialogContentNotFound));
 		{
 			::vl::__vwsn::This(this->dialogContentNotFound)->SetInput(::vl::presentation::INativeDialogService::MessageBoxButtonsInput::DisplayOK);
 		}
@@ -1215,6 +1218,7 @@ Class (::demo::FindWindowConstructor)
 		}
 		{
 			(this->textFind = new ::vl::presentation::controls::GuiSinglelineTextBox(::vl::presentation::theme::ThemeName::SinglelineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textFind"), ::vl::__vwsn::Box(this->textFind));
 		}
 		(this->__vwsn_precompile_5 = ::vl::__vwsn::This(this->textFind)->GetBoundsComposition());
 		{
@@ -1246,6 +1250,7 @@ Class (::demo::FindWindowConstructor)
 		(this->__vwsn_precompile_8 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->checkCase = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"checkCase"), ::vl::__vwsn::Box(this->checkCase));
 		}
 		{
 			::vl::__vwsn::This(this->checkCase)->SetText(::vl::WString::Unmanaged(L"Case Sensitive"));
@@ -1287,6 +1292,7 @@ Class (::demo::FindWindowConstructor)
 		(this->__vwsn_precompile_12 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->radioUp = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::RadioButton));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"radioUp"), ::vl::__vwsn::Box(this->radioUp));
 		}
 		{
 			::vl::__vwsn::This(this->radioUp)->SetText(::vl::WString::Unmanaged(L"Up"));
@@ -1300,6 +1306,7 @@ Class (::demo::FindWindowConstructor)
 		(this->__vwsn_precompile_13 = new ::vl::presentation::compositions::GuiStackItemComposition());
 		{
 			(this->radioDown = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::RadioButton));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"radioDown"), ::vl::__vwsn::Box(this->radioDown));
 		}
 		{
 			::vl::__vwsn::This(this->radioDown)->SetSelected(true);
@@ -1442,6 +1449,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->SetText(::vl::WString::Unmanaged(L"TextEditor"));
 		}
 		(this->commandFileNewText = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandFileNewText"), ::vl::__vwsn::Box(this->commandFileNewText));
 		{
 			::vl::__vwsn::This(this->commandFileNewText)->SetText(::vl::WString::Unmanaged(L"Text File"));
 		}
@@ -1449,6 +1457,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandFileNewText));
 		}
 		(this->commandFileNewXml = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandFileNewXml"), ::vl::__vwsn::Box(this->commandFileNewXml));
 		{
 			::vl::__vwsn::This(this->commandFileNewXml)->SetText(::vl::WString::Unmanaged(L"Xml File"));
 		}
@@ -1456,6 +1465,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandFileNewXml));
 		}
 		(this->commandFileOpen = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandFileOpen"), ::vl::__vwsn::Box(this->commandFileOpen));
 		{
 			::vl::__vwsn::This(this->commandFileOpen)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+O"));
 		}
@@ -1466,6 +1476,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandFileOpen));
 		}
 		(this->commandFileOpenText = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandFileOpenText"), ::vl::__vwsn::Box(this->commandFileOpenText));
 		{
 			::vl::__vwsn::This(this->commandFileOpenText)->SetText(::vl::WString::Unmanaged(L"Text File ..."));
 		}
@@ -1473,6 +1484,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandFileOpenText));
 		}
 		(this->commandFileOpenXml = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandFileOpenXml"), ::vl::__vwsn::Box(this->commandFileOpenXml));
 		{
 			::vl::__vwsn::This(this->commandFileOpenXml)->SetText(::vl::WString::Unmanaged(L"Xml File ..."));
 		}
@@ -1480,6 +1492,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandFileOpenXml));
 		}
 		(this->commandFileSave = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandFileSave"), ::vl::__vwsn::Box(this->commandFileSave));
 		{
 			::vl::__vwsn::This(this->commandFileSave)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+S"));
 		}
@@ -1490,6 +1503,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandFileSave));
 		}
 		(this->commandFileSaveAs = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandFileSaveAs"), ::vl::__vwsn::Box(this->commandFileSaveAs));
 		{
 			::vl::__vwsn::This(this->commandFileSaveAs)->SetText(::vl::WString::Unmanaged(L"Save As ..."));
 		}
@@ -1497,6 +1511,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandFileSaveAs));
 		}
 		(this->commandFileExit = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandFileExit"), ::vl::__vwsn::Box(this->commandFileExit));
 		{
 			::vl::__vwsn::This(this->commandFileExit)->SetText(::vl::WString::Unmanaged(L"Exit"));
 		}
@@ -1504,6 +1519,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandFileExit));
 		}
 		(this->commandEditUndo = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandEditUndo"), ::vl::__vwsn::Box(this->commandEditUndo));
 		{
 			::vl::__vwsn::This(this->commandEditUndo)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Z"));
 		}
@@ -1514,6 +1530,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditUndo));
 		}
 		(this->commandEditRedo = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandEditRedo"), ::vl::__vwsn::Box(this->commandEditRedo));
 		{
 			::vl::__vwsn::This(this->commandEditRedo)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Y"));
 		}
@@ -1524,6 +1541,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditRedo));
 		}
 		(this->commandEditCut = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandEditCut"), ::vl::__vwsn::Box(this->commandEditCut));
 		{
 			::vl::__vwsn::This(this->commandEditCut)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+X"));
 		}
@@ -1534,6 +1552,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditCut));
 		}
 		(this->commandEditCopy = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandEditCopy"), ::vl::__vwsn::Box(this->commandEditCopy));
 		{
 			::vl::__vwsn::This(this->commandEditCopy)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+C"));
 		}
@@ -1544,6 +1563,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditCopy));
 		}
 		(this->commandEditPaste = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandEditPaste"), ::vl::__vwsn::Box(this->commandEditPaste));
 		{
 			::vl::__vwsn::This(this->commandEditPaste)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+V"));
 		}
@@ -1554,6 +1574,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditPaste));
 		}
 		(this->commandEditDelete = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandEditDelete"), ::vl::__vwsn::Box(this->commandEditDelete));
 		{
 			::vl::__vwsn::This(this->commandEditDelete)->SetText(::vl::WString::Unmanaged(L"Delete"));
 		}
@@ -1561,6 +1582,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditDelete));
 		}
 		(this->commandEditSelect = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandEditSelect"), ::vl::__vwsn::Box(this->commandEditSelect));
 		{
 			::vl::__vwsn::This(this->commandEditSelect)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+A"));
 		}
@@ -1571,6 +1593,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditSelect));
 		}
 		(this->commandEditFind = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandEditFind"), ::vl::__vwsn::Box(this->commandEditFind));
 		{
 			::vl::__vwsn::This(this->commandEditFind)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+F"));
 		}
@@ -1581,6 +1604,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandEditFind));
 		}
 		(this->commandAbout = new ::vl::presentation::controls::GuiToolstripCommand());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandAbout"), ::vl::__vwsn::Box(this->commandAbout));
 		{
 			::vl::__vwsn::This(this->commandAbout)->SetText(::vl::WString::Unmanaged(L"About TextEditor ..."));
 		}
@@ -1588,6 +1612,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandAbout));
 		}
 		(this->dialogQueryClose = new ::vl::presentation::controls::GuiMessageDialog());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dialogQueryClose"), ::vl::__vwsn::Box(this->dialogQueryClose));
 		{
 			::vl::__vwsn::This(this->dialogQueryClose)->SetIcon(::vl::presentation::INativeDialogService::MessageBoxIcons::IconQuestion);
 		}
@@ -1601,6 +1626,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogQueryClose));
 		}
 		(this->dialogCannotOpen = new ::vl::presentation::controls::GuiMessageDialog());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dialogCannotOpen"), ::vl::__vwsn::Box(this->dialogCannotOpen));
 		{
 			::vl::__vwsn::This(this->dialogCannotOpen)->SetIcon(::vl::presentation::INativeDialogService::MessageBoxIcons::IconError);
 		}
@@ -1614,6 +1640,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogCannotOpen));
 		}
 		(this->dialogCannotSave = new ::vl::presentation::controls::GuiMessageDialog());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dialogCannotSave"), ::vl::__vwsn::Box(this->dialogCannotSave));
 		{
 			::vl::__vwsn::This(this->dialogCannotSave)->SetIcon(::vl::presentation::INativeDialogService::MessageBoxIcons::IconError);
 		}
@@ -1627,6 +1654,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogCannotSave));
 		}
 		(this->dialogOpen = new ::vl::presentation::controls::GuiOpenFileDialog());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dialogOpen"), ::vl::__vwsn::Box(this->dialogOpen));
 		{
 			::vl::__vwsn::This(this->dialogOpen)->SetOptions((::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogFileMustExist | ::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogDereferenceLinks));
 		}
@@ -1640,6 +1668,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogOpen));
 		}
 		(this->dialogSave = new ::vl::presentation::controls::GuiSaveFileDialog());
+		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dialogSave"), ::vl::__vwsn::Box(this->dialogSave));
 		{
 			::vl::__vwsn::This(this->dialogSave)->SetOptions((((::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogPromptCreateFile | ::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogPromptOverwriteFile) | ::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogDirectoryMustExist) | ::vl::presentation::INativeDialogService::FileDialogOptions::FileDialogAddToRecent));
 		}
@@ -2140,6 +2169,7 @@ Class (::demo::MainWindowConstructor)
 		}
 		{
 			(this->textBox = new ::vl::presentation::controls::GuiMultilineTextBox(::vl::presentation::theme::ThemeName::MultilineTextBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBox"), ::vl::__vwsn::Box(this->textBox));
 		}
 		{
 			::vl::__vwsn::This(this->textBox)->SetVerticalAlwaysVisible(false);
