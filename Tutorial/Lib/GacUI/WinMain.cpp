@@ -12,12 +12,12 @@ public:
 		GUI_PLUGIN_DEPEND(GacGen_DarkSkinResourceLoader);
 	}
 
-	void Load()override
+	void Load(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 	{
 		RegisterTheme(Ptr(new darkskin::Theme));
 	}
 
-	void Unload()override
+	void Unload(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 	{
 	}
 };
