@@ -16,11 +16,13 @@ set(CORE_HDRS
     Vlpp.h
     VlppOS.h
     VlppRegex.h
+    VlppReflection.h
 )
 set(CORE_SRCS
     Vlpp.cpp
     VlppOS.cpp
     VlppRegex.cpp
+    VlppReflection.cpp
 )
 
 if (WIN32)
@@ -47,25 +49,13 @@ endif()
 target_include_directories(vlpp INTERFACE $<INSTALL_INTERFACE:include>)
 
 list(APPEND EXPORT_TARGETS vlpp)
-
-# Reflection
-if (REFLECTION)
-    list(APPEND REFLECTION_HDRS VlppReflection.h)
-    list(APPEND REFLECTION_SRCS VlppReflection.cpp)
-
-    add_library(reflection INTERFACE ${REFLECTION_SRCS} ${REFLECTION_HDRS})
-    target_link_libraries(reflection INTERFACE vlpp)
-
-    list(APPEND EXPORT_TARGETS reflection)
-endif()
-
 # Glr parser
 if (GLR_PARSER)
     list(APPEND GLR_PARSER_HDRS VlppGlrParser.h)
     list(APPEND GLR_PARSER_SRCS VlppGlrParser.cpp)
 
     add_library(glr_parser INTERFACE ${GLR_PARSER_SRCS} ${GLR_PARSER_HDRS})
-    target_link_libraries(glr_parser INTERFACE reflection)
+    target_link_libraries(glr_parser INTERFACE vlpp)
 
     list(APPEND EXPORT_TARGETS glr_parser)
 endif()
@@ -76,7 +66,7 @@ if (WORKFLOW_LIBRARY)
     list(APPEND WORKFLOW_LIBRARY_SRCS VlppWorkflowLibrary.cpp)
 
     add_library(workflow_library INTERFACE ${WORKFLOW_LIBRARY_SRCS} ${WORKFLOW_LIBRARY_HDRS})
-    target_link_libraries(workflow_library INTERFACE reflection)
+    target_link_libraries(workflow_library INTERFACE vlpp)
 
     list(APPEND EXPORT_TARGETS workflow_library)
 endif()
@@ -105,11 +95,11 @@ endif()
 
 # GacUI core
 if (GACUI_CORE)
-    list(APPEND GACUI_CORE_HDRS GacUI.h Skins/DarkSkin/DarkSkin.h)
+    list(APPEND GACUI_CORE_HDRS VlppParser.h GacUI.h GacUI.UnitTest.h GacUI.UnitTest.UI.h Skins/DarkSkin/DarkSkin.h)
     if (WIN32)
         list(APPEND GACUI_CORE_HDRS GacUI.Windows.h)
     endif()
-    list(APPEND GACUI_CORE_SRCS GacUI.cpp Skins/DarkSkin/DarkSkin.cpp)
+    list(APPEND GACUI_CORE_SRCS VlppParser.cpp GacUI.cpp GacUI.UnitTest.cpp GacUI.UnitTest.UI.cpp Skins/DarkSkin/DarkSkin.cpp)
     if (WIN32)
         list(APPEND GACUI_CORE_SRCS GacUI.Windows.cpp)
     endif()
@@ -118,11 +108,11 @@ if (GACUI_CORE)
     target_link_libraries(gacui_core INTERFACE glr_parser workflow_library)
 
     if (GACUI_REFLECTION)
-        list(APPEND GACUI_REFLECTION_HDRS GacUIReflection.h Skins/DarkSkin/DarkSkinReflection.h)
-        list(APPEND GACUI_REFLECTION_SRCS GacUIReflection.cpp Skins/DarkSkin/DarkSkinReflection.cpp)
+        list(APPEND GACUI_REFLECTION_HDRS GacUIReflection.h GacUI.UnitTest.UIReflection.h Skins/DarkSkin/DarkSkinReflection.h)
+        list(APPEND GACUI_REFLECTION_SRCS GacUIReflection.cpp GacUI.UnitTest.UIReflection.cpp Skins/DarkSkin/DarkSkinReflection.cpp)
 
         add_library(gacui_reflection INTERFACE ${GACUI_REFLECTION_SRCS} ${GACUI_REFLECTION_HDRS})
-        target_link_libraries(gacui_reflection INTERFACE gacui_core workflow_runtime reflection)
+        target_link_libraries(gacui_reflection INTERFACE gacui_core workflow_runtime vlpp)
 
         list(APPEND EXPORT_TARGETS gacui_reflection)
     else()
@@ -134,7 +124,7 @@ if (GACUI_CORE)
         list(APPEND GACUI_COMPILER_SRCS GacUICompiler.cpp)
 
         add_library(gacui_compiler INTERFACE ${GACUI_COMPILER_SRCS} ${GACUI_COMPILER_HDRS})
-        target_link_libraries(gacui_compiler INTERFACE reflection workflow_compiler)
+        target_link_libraries(gacui_compiler INTERFACE vlpp workflow_compiler)
 
         list(APPEND EXPORT_TARGETS gacui_compiler)
     endif()
@@ -163,10 +153,6 @@ install(EXPORT vlpp
 
 install(FILES ${CORE_HDRS} DESTINATION include)
 
-if (REFLECTION)
-    install(FILES ${REFLECTION_HDRS} DESTINATION include)
-endif()
-
 if (GLR_PARSER)
     install(FILES ${GLR_PARSER_HDRS} DESTINATION include)
 endif()
@@ -184,11 +170,15 @@ if (WORKFLOW_COMPILER)
 endif()
 
 if (GACUI_CORE)
+    install(FILES VlppParser.h DESTINATION include)
     install(FILES GacUI.h DESTINATION include)
+    install(FILES GacUI.UnitTest.h DESTINATION include)
+    install(FILES GacUI.UnitTest.UI.h DESTINATION include)
     install(FILES Skins/DarkSkin/DarkSkin.h DESTINATION include/Skins/DarkSkin)
 
     if (GACUI_REFLECTION)
         install(FILES GacUIReflection.h DESTINATION include)
+        install(FILES GacUIR.UnitTest.UIReflection.h DESTINATION include)
         install(FILES Skins/DarkSkin/DarkSkinReflection.h DESTINATION include/Skins/DarkSkin)
     endif()
     
