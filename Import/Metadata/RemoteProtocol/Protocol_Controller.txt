@@ -1,0 +1,107 @@
+[@Cpp(::vl::presentation::NativeCoordinate)]
+struct NativeCoordinate
+{
+    var value : int;
+}
+
+[@Cpp(::vl::presentation::NativePoint)]
+struct NativePoint
+{
+    var x : NativeCoordinate;
+    var y : NativeCoordinate;
+}
+
+[@Cpp(::vl::presentation::NativeSize)]
+struct NativeSize
+{
+    var x : NativeCoordinate;
+    var y : NativeCoordinate;
+}
+
+[@Cpp(::vl::presentation::NativeRect)]
+struct NativeRect
+{
+    var x1 : NativeCoordinate;
+    var y1 : NativeCoordinate;
+    var x2 : NativeCoordinate;
+    var y2 : NativeCoordinate;
+}
+
+[@Cpp(::vl::presentation::NativeMargin)]
+struct NativeMargin
+{
+    var left : NativeCoordinate;
+    var top : NativeCoordinate;
+    var right : NativeCoordinate;
+    var bottom : NativeCoordinate;
+}
+
+[@Cpp(::vl::presentation::Point)]
+struct Point
+{
+    var x : int;
+    var y : int;
+}
+
+[@Cpp(::vl::presentation::Size)]
+struct Size
+{
+    var x : int;
+    var y : int;
+}
+
+[@Cpp(::vl::presentation::Rect)]
+struct Rect
+{
+    var x1 : int;
+    var y1 : int;
+    var x2 : int;
+    var y2 : int;
+}
+
+[@Cpp(::vl::presentation::FontProperties)]
+struct FontProperties
+{
+    var fontFamily : string;
+    var size : int;
+    var bold : bool;
+    var italic : bool;
+    var underline : bool;
+    var strikeline : bool;
+    var antialias : bool;
+    var verticalAntialias : bool;
+}
+
+struct FontConfig
+{
+    var defaultFont : FontProperties;
+    var supportedFonts : string[];
+}
+
+message ControllerGetFontConfig
+{
+    response: FontConfig;
+}
+
+struct ScreenConfig
+{
+    var bounds : NativeRect;
+    var clientBounds : NativeRect;
+    var scalingX : double;
+    var scalingY : double;
+}
+
+message ControllerGetScreenConfig
+{
+    response: ScreenConfig;
+}
+
+message ControllerConnectionEstablished {}
+message ControllerConnectionStopped     {}
+
+event ControllerConnect         {}
+event ControllerDisconnect      {}
+event ControllerRequestExit     {}
+event ControllerForceExit       {}
+
+[@DropRepeat] event ControllerScreenUpdated     { request: ScreenConfig; }

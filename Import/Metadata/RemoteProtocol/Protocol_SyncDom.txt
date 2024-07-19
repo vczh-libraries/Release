@@ -1,0 +1,62 @@
+union ElementDescVariant
+{
+    ElementDesc_SolidBorder,
+    ElementDesc_SinkBorder,
+    ElementDesc_SinkSplitter,
+    ElementDesc_SolidBackground,
+    ElementDesc_GradientBackground,
+    ElementDesc_InnerShadow,
+    ElementDesc_Polygon,
+    ElementDesc_SolidLabel,
+    ElementDesc_ImageFrame,
+}
+
+class RenderingDom
+{
+    var hitTestResult: WindowHitTestResult?;
+    var cursor: WindowSystemCursorType?;
+    var element: int?;
+    var bounds: Rect;
+    var validArea: Rect;
+    var children: RenderingDom[];
+}
+
+struct RenderingCommand_BeginBoundary
+{
+    var boundary: ElementBoundary;
+}
+
+struct RenderingCommand_EndBoundary
+{
+}
+
+struct RenderingCommand_Element
+{
+    var rendering: ElementRendering;
+    var element: int?;
+}
+
+union RenderingCommand
+{
+    RenderingCommand_BeginBoundary,
+    RenderingCommand_EndBoundary,
+    RenderingCommand_Element,
+}
+
+struct RenderingFrame
+{
+    var frameId : int;
+    var frameName : string?;
+    var windowSize: WindowSizingConfig;
+    var elements: ElementDescVariant[int];
+    var commands: RenderingCommand[];
+    var root: RenderingDom;
+}
+
+struct RenderingTrace
+{
+    var createdElements: RendererType[int];
+    var imageCreations: ImageCreation[.id];
+    var imageMetadatas: ImageMetadata[.id];
+    var frames: RenderingFrame[];
+}

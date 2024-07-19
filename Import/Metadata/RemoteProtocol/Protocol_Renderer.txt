@@ -1,0 +1,70 @@
+enum RendererType
+{
+    FocusRectangle,
+    SolidBorder,
+    SinkBorder,
+    SinkSplitter,
+    SolidBackground,
+    GradientBackground,
+    InnerShadow,
+    SolidLabel,
+    Polygon,
+    ImageFrame,
+    UnsupportedColorizedText,
+    UnsupportedDocument,
+}
+
+struct RendererCreation
+{
+    var id : int;
+    var type : RendererType;
+}
+
+message RendererCreated                             { request: RendererCreation[]; }
+message RendererDestroyed                           { request: int[]; }
+
+struct ElementBeginRendering
+{
+    var frameId : int;
+}
+
+struct ElementRendering
+{
+    var id : int;
+    var bounds : Rect;
+    var areaClippedByParent : Rect;
+}
+
+struct ElementBoundary
+{
+    var hitTestResult : WindowHitTestResult?;
+    var cursor: WindowSystemCursorType?;
+    var bounds : Rect;
+    var areaClippedBySelf : Rect;
+}
+
+struct ElementMeasuring_FontHeight
+{
+    var fontFamily : string;
+    var fontSize : int;
+    var height : int;
+}
+
+struct ElementMeasuring_ElementMinSize
+{
+    var id : int;
+    var minSize : Size;
+}
+
+struct ElementMeasurings
+{
+    var fontHeights : ElementMeasuring_FontHeight[];
+    var minSizes : ElementMeasuring_ElementMinSize[];
+    var createdImages : ImageMetadata[];
+}
+
+message RendererBeginRendering                      { request: ElementBeginRendering; }
+message RendererBeginBoundary                       { request: ElementBoundary; }
+message RendererRenderElement                       { request: ElementRendering; }
+message RendererEndBoundary                         {}
+message RendererEndRendering                        { response: ElementMeasurings; }
