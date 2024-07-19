@@ -357,8 +357,9 @@ namespace demo
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<StyleItemTemplate>;
 #endif
-	public:
+	private:
 		::vl::Ptr<::demo::StyleItem> __vwsn_parameter_ViewModel;
+	public:
 		::vl::Ptr<::demo::StyleItem> GetViewModel();
 		StyleItemTemplate(::vl::Ptr<::demo::StyleItem> __vwsn_ctor_parameter_ViewModel);
 		void __vwsn_instance_ctor_();

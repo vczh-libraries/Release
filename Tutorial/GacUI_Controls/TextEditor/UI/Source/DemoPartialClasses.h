@@ -300,8 +300,9 @@ namespace demo
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<RecentFileItemTemplate>;
 #endif
-	public:
+	private:
 		::vl::presentation::controls::GuiToolstripCommand* __vwsn_parameter_ViewModel;
+	public:
 		::vl::presentation::controls::GuiToolstripCommand* GetViewModel();
 		RecentFileItemTemplate(::vl::presentation::controls::GuiToolstripCommand* __vwsn_ctor_parameter_ViewModel);
 		~RecentFileItemTemplate();

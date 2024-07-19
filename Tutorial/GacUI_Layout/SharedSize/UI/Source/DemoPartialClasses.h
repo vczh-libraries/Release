@@ -246,8 +246,9 @@ namespace demo
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeItemTemplate>;
 #endif
-	public:
+	private:
 		::vl::Ptr<::demo::MyTextItem> __vwsn_parameter_ViewModel;
+	public:
 		::vl::Ptr<::demo::MyTextItem> GetViewModel();
 		SharedSizeItemTemplate(::vl::Ptr<::demo::MyTextItem> __vwsn_ctor_parameter_ViewModel);
 		~SharedSizeItemTemplate();
@@ -286,8 +287,9 @@ namespace demo
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<SharedSizeTextItemTemplate>;
 #endif
-	public:
+	private:
 		::vl::Ptr<::demo::MyTextItem> __vwsn_parameter_ViewModel;
+	public:
 		::vl::Ptr<::demo::MyTextItem> GetViewModel();
 		SharedSizeTextItemTemplate(::vl::Ptr<::demo::MyTextItem> __vwsn_ctor_parameter_ViewModel);
 		~SharedSizeTextItemTemplate();

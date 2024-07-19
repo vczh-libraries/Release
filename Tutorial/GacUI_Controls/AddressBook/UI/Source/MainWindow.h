@@ -74,7 +74,9 @@ namespace demo
 #endif
 	public:
 		void ClearViewSelection();
+	private:
 		::vl::Ptr<::demo::IViewModel> __vwsn_parameter_ViewModel;
+	public:
 		::vl::Ptr<::demo::IViewModel> GetViewModel();
 		MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel);
 		~MainWindow();

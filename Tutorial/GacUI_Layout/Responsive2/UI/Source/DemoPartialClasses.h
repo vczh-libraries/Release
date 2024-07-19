@@ -188,8 +188,9 @@ namespace demo
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountItemTemplate>;
 #endif
-	public:
+	private:
 		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_parameter_ViewModel;
+	public:
 		::vl::Ptr<::demo::AccountButtonViewModel> GetViewModel();
 		AccountItemTemplate(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_ctor_parameter_ViewModel);
 		~AccountItemTemplate();
@@ -220,8 +221,9 @@ namespace demo
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<AccountMenuItemTemplate>;
 #endif
-	public:
+	private:
 		::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_parameter_ViewModel;
+	public:
 		::vl::Ptr<::demo::AccountButtonViewModel> GetViewModel();
 		AccountMenuItemTemplate(::vl::Ptr<::demo::AccountButtonViewModel> __vwsn_ctor_parameter_ViewModel);
 		~AccountMenuItemTemplate();
@@ -332,8 +334,9 @@ namespace demo
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<VideoItemTemplate>;
 #endif
-	public:
+	private:
 		::vl::Ptr<::demo::VideoViewModel> __vwsn_parameter_ViewModel;
+	public:
 		::vl::Ptr<::demo::VideoViewModel> GetViewModel();
 		VideoItemTemplate(::vl::Ptr<::demo::VideoViewModel> __vwsn_ctor_parameter_ViewModel);
 		~VideoItemTemplate();

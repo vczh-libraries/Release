@@ -47,7 +47,9 @@ namespace helloworld
 		bool GetHasLoggedIn();
 		void SetHasLoggedIn(bool __vwsn_value_);
 		::vl::Event<void()> HasLoggedInChanged;
+	private:
 		::vl::Ptr<::vm::IViewModel> __vwsn_parameter_ViewModel;
+	public:
 		::vl::Ptr<::vm::IViewModel> GetViewModel();
 	protected:
 		void buttonSignUp_Clicked(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments);

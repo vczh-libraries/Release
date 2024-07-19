@@ -75,8 +75,9 @@ namespace demo
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<ColorBomboItemTemplate>;
 #endif
-	public:
+	private:
 		::vl::Ptr<::demo::IColorItem> __vwsn_parameter_ViewModel;
+	public:
 		::vl::Ptr<::demo::IColorItem> GetViewModel();
 		ColorBomboItemTemplate(::vl::Ptr<::demo::IColorItem> __vwsn_ctor_parameter_ViewModel);
 		~ColorBomboItemTemplate();
@@ -146,8 +147,9 @@ namespace demo
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
-	public:
+	private:
 		::vl::Ptr<::demo::IViewModel> __vwsn_parameter_ViewModel;
+	public:
 		::vl::Ptr<::demo::IViewModel> GetViewModel();
 		MainWindow(::vl::Ptr<::demo::IViewModel> __vwsn_ctor_parameter_ViewModel);
 		~MainWindow();

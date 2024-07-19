@@ -185,8 +185,9 @@ namespace demo
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
-	public:
+	private:
 		::vl::Ptr<::demo::Calculator> __vwsn_parameter_calculator;
+	public:
 		::vl::Ptr<::demo::Calculator> Getcalculator();
 		MainWindow(::vl::Ptr<::demo::Calculator> __vwsn_ctor_parameter_calculator);
 		~MainWindow();
