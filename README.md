@@ -11,12 +11,12 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ## Synchronized latest releases:
 
-- **GacUI**: [1.2.10.0](https://github.com/vczh-libraries/Release/releases/tag/1.2.10.0)
+- **GacUI**: [1.2.10.1](https://github.com/vczh-libraries/Release/releases/tag/1.2.10.1)
 - **iGac**: Not specified yet
 - **gGac**: [1.2.10.0](https://github.com/vczh-libraries/gGac/releases/tag/1.2.10.0)
 
 When **iGac** and **gGac** targets on a certain **GacUI** version, **iGac** and **gGac** will use the same version number as a tag to the commits.
-  - A **GacUI** release will always be `X.Y.Z.0`.
+  - A **GacUI** release will always be `X.Y.Z.0`, the last digit increases when only small bug fixing is introduced.
   - If **iGac** and **gGac** have multiple releases based on the same **GacUI** release, only the last digit will change.
 
 ## Visual Studio Extension
