@@ -1026,6 +1026,506 @@ ITEM(APOSTROPHE,			L"'")\
 #endif
 
 /***********************************************************************
+.\CONTROLS\LISTCONTROLPACKAGE\DATASOURCE_IITEMPROVIDER.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Control System
+
+Interfaces:
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_CONTROLS_DATASOURCE_IITEMPROVIDER
+#define VCZH_PRESENTATION_CONTROLS_DATASOURCE_IITEMPROVIDER
+
+
+namespace vl::presentation::controls::list
+{
+	class IItemProvider;
+
+/***********************************************************************
+IItemProviderCallback
+***********************************************************************/
+
+	/// <summary>Item provider callback. Item providers use this interface to notify item modification.</summary>
+	class IItemProviderCallback : public virtual IDescriptable, public Description<IItemProviderCallback>
+	{
+	public:
+		/// <summary>Called when an item provider callback object is attached to an item provider.</summary>
+		/// <param name="provider">The item provider.</param>
+		virtual void								OnAttached(IItemProvider* provider)=0;
+		/// <summary>Called when items in the item provider is modified.</summary>
+		/// <param name="start">The index of the first modified item.</param>
+		/// <param name="count">The number of all modified items.</param>
+		/// <param name="newCount">The number of new items. If items are inserted or removed, newCount may not equals to count.</param>
+		/// <param name="itemReferenceUpdated">True when items are replaced, false when only content in items are updated.</param>
+		virtual void								OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)=0;
+	};
+
+/***********************************************************************
+IItemProviderCallback
+***********************************************************************/
+
+	/// <summary>Item provider for a <see cref="GuiListControl"/>.</summary>
+	class IItemProvider : public virtual IDescriptable, public Description<IItemProvider>
+	{
+	public:
+		/// <summary>Attach an item provider callback to this item provider.</summary>
+		/// <returns>Returns true if this operation succeeded.</returns>
+		/// <param name="value">The item provider callback.</param>
+		virtual bool								AttachCallback(IItemProviderCallback* value) = 0;
+		/// <summary>Detach an item provider callback from this item provider.</summary>
+		/// <returns>Returns true if this operation succeeded.</returns>
+		/// <param name="value">The item provider callback.</param>
+		virtual bool								DetachCallback(IItemProviderCallback* value) = 0;
+		/// <summary>Increase the editing counter indicating that an [T:vl.presentation.templates.GuiListItemTemplate] is editing an item.</summary>
+		virtual void								PushEditing() = 0;
+		/// <summary>Decrease the editing counter indicating that an [T:vl.presentation.templates.GuiListItemTemplate] has stopped editing an item.</summary>
+		/// <returns>Returns false if there is no supression before calling this function.</returns>
+		virtual bool								PopEditing() = 0;
+		/// <summary>Test if an [T:vl.presentation.templates.GuiListItemTemplate] is editing an item.</summary>
+		/// <returns>Returns false if there is no editing.</returns>
+		virtual bool								IsEditing() = 0;
+		/// <summary>Get the number of items in this item proivder.</summary>
+		/// <returns>The number of items in this item proivder.</returns>
+		virtual vint								Count() = 0;
+
+		/// <summary>Get the text representation of an item.</summary>
+		/// <returns>The text representation of an item.</returns>
+		/// <param name="itemIndex">The index of the item.</param>
+		virtual WString								GetTextValue(vint itemIndex) = 0;
+		/// <summary>Get the binding value of an item.</summary>
+		/// <returns>The binding value of an item.</returns>
+		/// <param name="itemIndex">The index of the item.</param>
+		virtual description::Value					GetBindingValue(vint itemIndex) = 0;
+
+		/// <summary>Request a view for this item provider. If the specified view is not supported, it returns null. If you want to get a view of type IXXX, use IXXX::Identifier as the identifier.</summary>
+		/// <returns>The view object.</returns>
+		/// <param name="identifier">The identifier for the requested view.</param>
+		virtual IDescriptable*						RequestView(const WString& identifier) = 0;
+	};
+}
+
+#endif
+
+
+/***********************************************************************
+.\CONTROLS\LISTCONTROLPACKAGE\DATASOURCEIMPL_IITEMPROVIDER_ITEMPROVIDERBASE.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Control System
+
+Interfaces:
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_CONTROLS_DATASOURCEIMPL_IITEMPROVIDER_ITEMPROVIDERBASE
+#define VCZH_PRESENTATION_CONTROLS_DATASOURCEIMPL_IITEMPROVIDER_ITEMPROVIDERBASE
+
+
+namespace vl::presentation::controls::list
+{
+/***********************************************************************
+ItemProviderBase
+***********************************************************************/
+
+	/// <summary>Item provider base. This class provider common functionalities for item providers.</summary>
+	class ItemProviderBase : public Object, public virtual IItemProvider, public Description<ItemProviderBase>
+	{
+	protected:
+		collections::List<IItemProviderCallback*>	callbacks;
+		vint										editingCounter = 0;
+		bool										callingOnItemModified = false;
+
+		virtual void								InvokeOnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated);
+	public:
+		/// <summary>Create the item provider.</summary>
+		ItemProviderBase();
+		~ItemProviderBase();
+
+		bool										AttachCallback(IItemProviderCallback* value)override;
+		bool										DetachCallback(IItemProviderCallback* value)override;
+		void										PushEditing()override;
+		bool										PopEditing()override;
+		bool										IsEditing()override;
+	};
+
+/***********************************************************************
+ListProvider<T>
+***********************************************************************/
+
+	template<typename T>
+	class ListProvider : public ItemProviderBase, public collections::ObservableListBase<T>
+	{
+	protected:
+		void NotifyUpdateInternal(vint start, vint count, vint newCount)override
+		{
+			InvokeOnItemModified(start, count, newCount, true);
+		}
+	public:
+		vint Count()override
+		{
+			return this->items.Count();
+		}
+	};
+}
+
+#endif
+
+
+/***********************************************************************
+.\CONTROLS\LISTCONTROLPACKAGE\DATASOURCE_INODEPROVIDER.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Control System
+
+Interfaces:
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_CONTROLS_DATASOURCE_INODEPROVIDER
+#define VCZH_PRESENTATION_CONTROLS_DATASOURCE_INODEPROVIDER
+
+
+namespace vl::presentation::controls::tree
+{
+	class INodeProvider;
+	class INodeRootProvider;
+
+/***********************************************************************
+INodeProviderCallback
+***********************************************************************/
+
+	/// <summary>Callback object for <see cref="INodeProvider"/>. A node will invoke this callback to notify any content modification.</summary>
+	class INodeProviderCallback : public virtual IDescriptable, public Description<INodeProviderCallback>
+	{
+	public:
+		/// <summary>Called when this callback is attached to a node root.</summary>
+		/// <param name="provider">The root node.</param>
+		virtual void					OnAttached(INodeRootProvider* provider)=0;
+		/// <summary>Called before sub items of a node are modified.</summary>
+		/// <param name="parentNode">The node containing modified sub items.</param>
+		/// <param name="start">The index of the first sub item.</param>
+		/// <param name="count">The number of sub items to be modified.</param>
+		/// <param name="newCount">The new number of modified sub items.</param>
+		/// <param name="itemReferenceUpdated">True when items are replaced, false when only content in items are updated.</param>
+		virtual void					OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)=0;
+		/// <summary>Called after sub items of a node are modified.</summary>
+		/// <param name="parentNode">The node containing modified sub items.</param>
+		/// <param name="start">The index of the first sub item.</param>
+		/// <param name="count">The number of sub items to be modified.</param>
+		/// <param name="newCount">The new number of modified sub items.</param>
+		/// <param name="itemReferenceUpdated">True when items are replaced, false when only content in items are updated.</param>
+		virtual void					OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)=0;
+		/// <summary>Called when a node is expanded.</summary>
+		/// <param name="node">The node.</param>
+		virtual void					OnItemExpanded(INodeProvider* node)=0;
+		/// <summary>Called when a node is collapsed.</summary>
+		/// <param name="node">The node.</param>
+		virtual void					OnItemCollapsed(INodeProvider* node)=0;
+	};
+
+/***********************************************************************
+INodeProvider
+***********************************************************************/
+
+	/// <summary>Represents a node.</summary>
+	class INodeProvider : public virtual IDescriptable, public Description<INodeProvider>
+	{
+	public:
+		/// <summary>Get the expanding state of this node.</summary>
+		/// <returns>Returns true if this node is expanded.</returns>
+		virtual bool					GetExpanding()=0;
+		/// <summary>Set the expanding state of this node.</summary>
+		/// <param name="value">Set to true to expand this node.</param>
+		virtual void					SetExpanding(bool value)=0;
+		/// <summary>Calculate the number of total visible nodes of this node. The number of total visible nodes includes the node itself, and all total visible nodes of all visible sub nodes. If this node is collapsed, this number will be 1.</summary>
+		/// <returns>The number of total visible nodes.</returns>
+		virtual vint					CalculateTotalVisibleNodes()=0;
+		/// <summary>Notify that the state in the binded data object is modified.</summary>
+		virtual void					NotifyDataModified()=0;
+
+		/// <summary>Get the number of all sub nodes.</summary>
+		/// <returns>The number of all sub nodes.</returns>
+		virtual vint					GetChildCount()=0;
+		/// <summary>Get the parent node.</summary>
+		/// <returns>The parent node.</returns>
+		virtual Ptr<INodeProvider>		GetParent()=0;
+		/// <summary>Get the instance of a specified sub node.</summary>
+		/// <returns>The instance of a specified sub node.</returns>
+		/// <param name="index">The index of the sub node.</param>
+		virtual Ptr<INodeProvider>		GetChild(vint index)=0;
+	};
+
+/***********************************************************************
+INodeRootProvider
+***********************************************************************/
+				
+	/// <summary>Represents a root node provider.</summary>
+	class INodeRootProvider : public virtual IDescriptable, public Description<INodeRootProvider>
+	{
+	public:
+		/// <summary>Get the instance of the root node.</summary>
+		/// <returns>Returns the instance of the root node.</returns>
+		virtual Ptr<INodeProvider>		GetRootNode()=0;
+		/// <summary>Test does the provider provided an optimized algorithm to get an instance of a node by the index of all visible nodes. If this function returns true, [M:vl.presentation.controls.tree.INodeRootProvider.GetNodeByVisibleIndex] can be used.</summary>
+		/// <returns>Returns true if such an algorithm is provided.</returns>
+		virtual bool					CanGetNodeByVisibleIndex()=0;
+		/// <summary>Get a node by the index in all visible nodes. This requires [M:vl.presentation.controls.tree.INodeRootProvider.CanGetNodeByVisibleIndex] returning true.</summary>
+		/// <returns>The node for the index in all visible nodes.</returns>
+		/// <param name="index">The index in all visible nodes.</param>
+		virtual Ptr<INodeProvider>		GetNodeByVisibleIndex(vint index)=0;
+		/// <summary>Attach an node provider callback to this node provider.</summary>
+		/// <returns>Returns true if this operation succeeded.</returns>
+		/// <param name="value">The node provider callback.</param>
+		virtual bool					AttachCallback(INodeProviderCallback* value)=0;
+		/// <summary>Detach an node provider callback from this node provider.</summary>
+		/// <returns>Returns true if this operation succeeded.</returns>
+		/// <param name="value">The node provider callback.</param>
+		virtual bool					DetachCallback(INodeProviderCallback* value)=0;
+		/// <summary>Get the primary text of a node.</summary>
+		/// <returns>The primary text of a node.</returns>
+		/// <param name="node">The node.</param>
+		virtual WString					GetTextValue(INodeProvider* node) = 0;
+		/// <summary>Get the binding value of a node.</summary>
+		/// <returns>The binding value of a node.</returns>
+		/// <param name="node">The node.</param>
+		virtual description::Value		GetBindingValue(INodeProvider* node) = 0;
+		/// <summary>Request a view for this node provider. If the specified view is not supported, it returns null. If you want to get a view of type IXXX, use IXXX::Identifier as the identifier.</summary>
+		/// <returns>The view object.</returns>
+		/// <param name="identifier">The identifier for the requested view.</param>
+		virtual IDescriptable*			RequestView(const WString& identifier)=0;
+	};
+}
+
+#endif
+
+/***********************************************************************
+.\CONTROLS\LISTCONTROLPACKAGE\DATASOURCEIMPL_IITEMPROVIDER_NODEITEMPROVIDER.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Control System
+
+Interfaces:
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_CONTROLS_DATASOURCEIMPL_IITEMPROVIDER_NODEITEMPROVIDER
+#define VCZH_PRESENTATION_CONTROLS_DATASOURCEIMPL_IITEMPROVIDER_NODEITEMPROVIDER
+
+
+namespace vl::presentation::controls::tree
+{
+/***********************************************************************
+INodeItemView
+***********************************************************************/
+
+	/// <summary>The required <see cref="GuiListControl::IItemProvider"/> view for [T:vl.presentation.controls.tree.GuiVirtualTreeView]. [T:vl.presentation.controls.tree.NodeItemProvider] provides this view. In most of the cases, the NodeItemProvider class and this view is not required users to create, or even to touch. [T:vl.presentation.controls.GuiVirtualTreeListControl] already handled all of this.</summary>
+	class INodeItemView : public virtual IDescriptable, public Description<INodeItemView>
+	{
+	public:
+		/// <summary>The identifier of this view.</summary>
+		static const wchar_t* const		Identifier;
+
+		/// <summary>Get an instance of a node by the index in all visible nodes.</summary>
+		/// <returns>The instance of a node by the index in all visible nodes.</returns>
+		/// <param name="index">The index in all visible nodes.</param>
+		virtual Ptr<INodeProvider>		RequestNode(vint index)=0;
+		/// <summary>Get the index in all visible nodes of a node.</summary>
+		/// <returns>The index in all visible nodes of a node.</returns>
+		/// <param name="node">The node to calculate the index.</param>
+		virtual vint					CalculateNodeVisibilityIndex(INodeProvider* node)=0;
+	};
+
+/***********************************************************************
+NodeItemProvider
+***********************************************************************/
+
+	/// <summary>This is a general implementation to convert an <see cref="INodeRootProvider"/> to a <see cref="GuiListControl::IItemProvider"/>.</summary>
+	class NodeItemProvider
+		: public list::ItemProviderBase
+		, protected virtual INodeProviderCallback
+		, public virtual INodeItemView
+		, public Description<NodeItemProvider>
+	{
+		typedef collections::Dictionary<INodeProvider*, vint>			NodeIntMap;
+	protected:
+		Ptr<INodeRootProvider>			root;
+		NodeIntMap						offsetBeforeChildModifieds;
+
+		Ptr<INodeProvider>				GetNodeByOffset(Ptr<INodeProvider> provider, vint offset);
+		void							OnAttached(INodeRootProvider* provider)override;
+		void							OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+		void							OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+		void							OnItemExpanded(INodeProvider* node)override;
+		void							OnItemCollapsed(INodeProvider* node)override;
+		vint							CalculateNodeVisibilityIndexInternal(INodeProvider* node);
+		vint							CalculateNodeVisibilityIndex(INodeProvider* node)override;
+		
+		Ptr<INodeProvider>				RequestNode(vint index)override;
+	public:
+		/// <summary>Create an item provider using a node root provider.</summary>
+		/// <param name="_root">The node root provider.</param>
+		NodeItemProvider(Ptr<INodeRootProvider> _root);
+		~NodeItemProvider();
+		
+		/// <summary>Get the owned node root provider.</summary>
+		/// <returns>The node root provider.</returns>
+		Ptr<INodeRootProvider>			GetRoot();
+		vint							Count()override;
+		WString							GetTextValue(vint itemIndex)override;
+		description::Value				GetBindingValue(vint itemIndex)override;
+		IDescriptable*					RequestView(const WString& identifier)override;
+	};
+}
+
+#endif
+
+/***********************************************************************
+.\CONTROLS\LISTCONTROLPACKAGE\DATASOURCEIMPL_INODEPROVIDER_MEMORYNODEPROVIDER.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+GacUI::Control System
+
+Interfaces:
+***********************************************************************/
+
+#ifndef VCZH_PRESENTATION_CONTROLS_DATASOURCEIMPL_INODEPROVIDER_MEMORYNODEPROVIDER
+#define VCZH_PRESENTATION_CONTROLS_DATASOURCEIMPL_INODEPROVIDER_MEMORYNODEPROVIDER
+
+
+namespace vl::presentation::controls::tree
+{
+/***********************************************************************
+MemoryNodeProvider
+***********************************************************************/
+
+	/// <summary>An in-memory <see cref="INodeProvider"/> implementation.</summary>
+	class MemoryNodeProvider
+		: public Object
+		, public virtual INodeProvider
+		, public Description<MemoryNodeProvider>
+	{
+		typedef collections::List<Ptr<MemoryNodeProvider>> ChildList;
+		typedef collections::IEnumerator<Ptr<MemoryNodeProvider>> ChildListEnumerator;
+
+	public:
+		class NodeCollection : public collections::ObservableListBase<Ptr<MemoryNodeProvider>>
+		{
+			friend class MemoryNodeProvider;
+		protected:
+			vint						offsetBeforeChildModified = 0;
+			MemoryNodeProvider*			ownerProvider;
+
+			void						OnBeforeChildModified(vint start, vint count, vint newCount);
+			void						OnAfterChildModified(vint start, vint count, vint newCount);
+			bool						QueryInsert(vint index, Ptr<MemoryNodeProvider> const& child)override;
+			bool						QueryRemove(vint index, Ptr<MemoryNodeProvider> const& child)override;
+			void						BeforeInsert(vint index, Ptr<MemoryNodeProvider> const& child)override;
+			void						BeforeRemove(vint index, Ptr<MemoryNodeProvider> const& child)override;
+			void						AfterInsert(vint index, Ptr<MemoryNodeProvider> const& child)override;
+			void						AfterRemove(vint index, vint count)override;
+
+			NodeCollection();
+		public:
+		};
+
+	protected:
+		MemoryNodeProvider*				parent = nullptr;
+		bool							expanding = false;
+		vint							childCount = 0;
+		vint							totalVisibleNodeCount = 1;
+		Ptr<DescriptableObject>			data;
+		NodeCollection					children;
+
+		virtual INodeProviderCallback*	GetCallbackProxyInternal();
+		void							OnChildTotalVisibleNodesChanged(vint offset);
+	public:
+		/// <summary>Create a node provider with a data object.</summary>
+		/// <param name="_data">The data object.</param>
+		MemoryNodeProvider(Ptr<DescriptableObject> _data = nullptr);
+		~MemoryNodeProvider();
+
+		/// <summary>Get the data object.</summary>
+		/// <returns>The data object.</returns>
+		Ptr<DescriptableObject>			GetData();
+		/// <summary>Set the data object.</summary>
+		/// <param name="value">The data object.</param>
+		void							SetData(const Ptr<DescriptableObject>& value);
+		/// <summary>Get all sub nodes.</summary>
+		/// <returns>All sub nodes.</returns>
+		NodeCollection&					Children();
+
+		bool							GetExpanding()override;
+		void							SetExpanding(bool value)override;
+		vint							CalculateTotalVisibleNodes()override;
+		void							NotifyDataModified()override;
+
+		vint							GetChildCount()override;
+		Ptr<INodeProvider>				GetParent()override;
+		Ptr<INodeProvider>				GetChild(vint index)override;
+	};
+
+/***********************************************************************
+NodeRootProviderBase
+***********************************************************************/
+
+	/// <summary>A general implementation for <see cref="INodeRootProvider"/>.</summary>
+	class NodeRootProviderBase : public virtual INodeRootProvider, protected virtual INodeProviderCallback, public Description<NodeRootProviderBase>
+	{
+		collections::List<INodeProviderCallback*>			callbacks;
+	protected:
+		void							OnAttached(INodeRootProvider* provider)override;
+		void							OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+		void							OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
+		void							OnItemExpanded(INodeProvider* node)override;
+		void							OnItemCollapsed(INodeProvider* node)override;
+	public:
+		/// <summary>Create a node root provider.</summary>
+		NodeRootProviderBase();
+		~NodeRootProviderBase();
+		
+		bool							CanGetNodeByVisibleIndex()override;
+		Ptr<INodeProvider>				GetNodeByVisibleIndex(vint index)override;
+		bool							AttachCallback(INodeProviderCallback* value)override;
+		bool							DetachCallback(INodeProviderCallback* value)override;
+		IDescriptable*					RequestView(const WString& identifier)override;
+	};
+
+/***********************************************************************
+MemoryNodeRootProvider
+***********************************************************************/
+				
+	/// <summary>An in-memory <see cref="INodeRootProvider"/> implementation.</summary>
+	class MemoryNodeRootProvider
+		: public MemoryNodeProvider
+		, public NodeRootProviderBase
+		, public Description<MemoryNodeRootProvider>
+	{
+	protected:
+		INodeProviderCallback*			GetCallbackProxyInternal()override;
+	public:
+		/// <summary>Create a node root provider.</summary>
+		MemoryNodeRootProvider();
+		~MemoryNodeRootProvider();
+
+		Ptr<INodeProvider>				GetRootNode()override;
+		/// <summary>Get the <see cref="MemoryNodeProvider"/> object from an <see cref="INodeProvider"/> object.</summary>
+		/// <returns>The corresponding <see cref="MemoryNodeProvider"/> object.</returns>
+		/// <param name="node">The node to get the memory node.</param>
+		MemoryNodeProvider*				GetMemoryNode(INodeProvider* node);
+	};
+}
+
+#endif
+
+/***********************************************************************
 .\GRAPHICSCOMPOSITION\GUIGRAPHICSAXIS.H
 ***********************************************************************/
 /***********************************************************************
@@ -5079,6 +5579,7 @@ Host
 				CompositionList							mouseEnterCompositions;
 				void									RefreshRelatedHostRecord(INativeWindow* nativeWindow);
 
+				void									SetFocusInternal(GuiGraphicsComposition* composition);
 				void									DisconnectCompositionInternal(GuiGraphicsComposition* composition);
 				void									MouseCapture(const NativeWindowMouseInfo& info);
 				void									MouseUncapture(const NativeWindowMouseInfo& info);
@@ -5157,6 +5658,9 @@ Host
 				/// <returns>Returns true if this operation succeeded.</returns>
 				/// <param name="composition">The composition to set focus. This composition should be or in the main composition.</param>
 				bool									SetFocus(GuiGraphicsComposition* composition);
+				/// <summary>Unset the focus composition. There will be no focus composition.</summary>
+				/// <returns>Returns true if this operation succeeded.</returns>
+				bool									ClearFocus();
 				/// <summary>Get the focus composition. A focused composition will receive keyboard messages.</summary>
 				/// <returns>The focus composition.</returns>
 				GuiGraphicsComposition*					GetFocusedComposition();
@@ -6229,6 +6733,7 @@ GuiVirtualRepeatCompositionBase
 			protected:
 				using ItemStyleRecord = templates::GuiTemplate*;
 				using StyleList = collections::List<ItemStyleRecord>;
+				using StyleEventHandlerMap = collections::Dictionary<GuiGraphicsComposition*, Ptr<IGuiGraphicsEventHandler>>;
 
 				Ptr<IGuiAxis>										axis = Ptr(new GuiDefaultAxis);
 				bool												itemSourceUpdated = false;
@@ -6238,6 +6743,7 @@ GuiVirtualRepeatCompositionBase
 				Rect												viewBounds;
 				vint												startIndex = 0;
 				StyleList											visibleStyles;
+				StyleEventHandlerMap								eventHandlers;
 
 				virtual void										Layout_BeginPlaceItem(bool firstPhase, Rect newBounds, vint& newStartIndex) = 0;
 				virtual VirtualRepeatPlaceItemResult				Layout_PlaceItem(bool firstPhase, bool newCreatedStyle, vint index, ItemStyleRecord style, Rect viewBounds, Rect& bounds, Margin& alignmentToParent) = 0;
@@ -6245,6 +6751,7 @@ GuiVirtualRepeatCompositionBase
 				virtual void										Layout_EndLayout(bool totalSizeUpdated) = 0;
 				virtual void										Layout_InvalidateItemSizeCache() = 0;
 				virtual void										Layout_CalculateTotalSize(Size& full, Size& minimum) = 0;
+				virtual Size										Layout_GetAdoptedSize(Size expected) = 0;
 
 				virtual void										Layout_UpdateIndex(ItemStyleRecord style, vint index);
 				void												Layout_UpdateViewBounds(Rect value, bool forceUpdateTotalSize);
@@ -6256,6 +6763,11 @@ GuiVirtualRepeatCompositionBase
 				Size												Layout_GetStylePreferredSize(ItemStyleRecord style);
 				Rect												Layout_GetStyleBounds(ItemStyleRecord style);
 				void												Layout_SetStyleBounds(ItemStyleRecord style, Rect value);
+
+				void												OnStyleCachedMinSizeChanged(GuiGraphicsComposition* sender, GuiEventArgs& arguments);
+				void												AttachEventHandler(GuiGraphicsComposition* itemStyle);
+				void												DetachEventHandler(GuiGraphicsComposition* itemStyle);
+				void												OnChildRemoved(GuiGraphicsComposition* child)override;
 
 				void												OnItemChanged(vint start, vint oldCount, vint newCount) override;
 				void												OnClearItems() override;
@@ -6302,10 +6814,10 @@ GuiVirtualRepeatCompositionBase
 				void												ResetLayout(bool recreateVisibleStyles);
 				void												InvalidateLayout();
 
+				Size												GetAdoptedSize(Size expectedSize);
 				vint												FindItemByRealKeyDirection(vint itemIndex, compositions::KeyDirection key);
 				virtual vint										FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key) = 0;
 				virtual VirtualRepeatEnsureItemVisibleResult		EnsureItemVisible(vint itemIndex) = 0;
-				virtual Size										GetAdoptedSize(Size expectedSize) = 0;
 			};
 
 			/// <summary>Free height repeat composition. This arranger will cache heights of all items.</summary>
@@ -6327,6 +6839,7 @@ GuiVirtualRepeatCompositionBase
 				void												Layout_EndLayout(bool totalSizeUpdated) override;
 				void												Layout_InvalidateItemSizeCache() override;
 				void												Layout_CalculateTotalSize(Size& full, Size& minimum) override;
+				Size												Layout_GetAdoptedSize(Size expectedSize) override;
 
 				void												OnItemChanged(vint start, vint oldCount, vint newCount) override;
 				void												OnInstallItems() override;
@@ -6337,7 +6850,6 @@ GuiVirtualRepeatCompositionBase
 
 				vint												FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key) override;
 				VirtualRepeatEnsureItemVisibleResult				EnsureItemVisible(vint itemIndex) override;
-				Size												GetAdoptedSize(Size expectedSize) override;
 			};
 				
 			/// <summary>Fixed height item arranger. This arranger lists all item with the same height value. This value is the maximum height of all minimum heights of displayed items.</summary>
@@ -6359,6 +6871,7 @@ GuiVirtualRepeatCompositionBase
 				void												Layout_EndLayout(bool totalSizeUpdated) override;
 				void												Layout_InvalidateItemSizeCache()override;
 				void												Layout_CalculateTotalSize(Size& full, Size& minimum)override;
+				Size												Layout_GetAdoptedSize(Size expectedSize) override;
 			public:
 				/// <summary>Create the arranger.</summary>
 				GuiRepeatFixedHeightItemComposition() = default;
@@ -6366,7 +6879,6 @@ GuiVirtualRepeatCompositionBase
 
 				vint												FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)override;
 				VirtualRepeatEnsureItemVisibleResult				EnsureItemVisible(vint itemIndex)override;
-				Size												GetAdoptedSize(Size expectedSize)override;
 
 				vint												GetItemWidth();
 				void												SetItemWidth(vint value);
@@ -6389,6 +6901,7 @@ GuiVirtualRepeatCompositionBase
 				void												Layout_EndLayout(bool totalSizeUpdated) override;
 				void												Layout_InvalidateItemSizeCache()override;
 				void												Layout_CalculateTotalSize(Size& full, Size& minimum)override;
+				Size												Layout_GetAdoptedSize(Size expectedSize) override;
 			public:
 				/// <summary>Create the arranger.</summary>
 				GuiRepeatFixedSizeMultiColumnItemComposition() = default;
@@ -6396,7 +6909,6 @@ GuiVirtualRepeatCompositionBase
 
 				vint												FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)override;
 				VirtualRepeatEnsureItemVisibleResult				EnsureItemVisible(vint itemIndex)override;
-				Size												GetAdoptedSize(Size expectedSize)override;
 			};
 			
 			/// <summary>Fixed size multiple columns item arranger. This arranger adjust all items in multiple columns with the same height. The height is the maximum width of all minimum height of displayed items. Each item will displayed using its minimum width.</summary>
@@ -6423,6 +6935,7 @@ GuiVirtualRepeatCompositionBase
 				void												Layout_EndLayout(bool totalSizeUpdated) override;
 				void												Layout_InvalidateItemSizeCache()override;
 				void												Layout_CalculateTotalSize(Size& full, Size& minimum)override;
+				Size												Layout_GetAdoptedSize(Size expectedSize) override;
 			public:
 				/// <summary>Create the arranger.</summary>
 				GuiRepeatFixedHeightMultiColumnItemComposition() = default;
@@ -6430,7 +6943,6 @@ GuiVirtualRepeatCompositionBase
 
 				vint												FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)override;
 				VirtualRepeatEnsureItemVisibleResult				EnsureItemVisible(vint itemIndex)override;
-				Size												GetAdoptedSize(Size expectedSize)override;
 			};
 		}
 	}
@@ -9384,10 +9896,12 @@ Theme Names
 			F(ToolstripButtonTemplate,		MenuBarButton)				\
 			F(ToolstripButtonTemplate,		MenuItemButton)				\
 			F(ControlTemplate,				ToolstripToolBar)			\
+			F(ControlTemplate,				ToolstripToolBarInMenu)		\
 			F(ToolstripButtonTemplate,		ToolstripButton)			\
 			F(ToolstripButtonTemplate,		ToolstripDropdownButton)	\
 			F(ToolstripButtonTemplate,		ToolstripSplitButton)		\
 			F(ControlTemplate,				ToolstripSplitter)			\
+			F(ControlTemplate,				ToolstripSplitterInMenu)	\
 			F(RibbonTabTemplate,			RibbonTab)					\
 			F(RibbonGroupTemplate,			RibbonGroup)				\
 			F(RibbonGroupMenuTemplate,		RibbonGroupMenu)			\
@@ -13385,7 +13899,7 @@ Templates
 #define GUI_ITEM_TEMPLATE_DECL(F)\
 			F(GuiListItemTemplate,				GuiTemplate)				\
 			F(GuiTextListItemTemplate,			GuiListItemTemplate)		\
-			F(GuiTreeItemTemplate,				GuiTextListItemTemplate)	\
+			F(GuiTreeItemTemplate,				GuiListItemTemplate)		\
 			F(GuiGridCellTemplate,				GuiControlTemplate)			\
 			F(GuiGridVisualizerTemplate,		GuiGridCellTemplate)		\
 			F(GuiGridEditorTemplate,			GuiGridCellTemplate)		\
@@ -13539,6 +14053,7 @@ Item Template
 				F(GuiTextListItemTemplate, bool, Checked, false)\
 				
 #define GuiTreeItemTemplate_PROPERTIES(F)\
+				F(GuiTreeItemTemplate, Color, TextColor, {})\
 				F(GuiTreeItemTemplate, bool, Expanding, false)\
 				F(GuiTreeItemTemplate, bool, Expandable, false)\
 				F(GuiTreeItemTemplate, vint, Level, 0)\
@@ -13612,7 +14127,8 @@ Buttons
 				bool									ignoreChildControlMouseEvents = true;
 				bool									autoFocus = true;
 				bool									keyPressing = false;
-				bool									mousePressing = false;
+				bool									mousePressingDirect = false;
+				bool									mousePressingIndirect = false;
 				bool									mouseHoving = false;
 				ButtonState								controlState = ButtonState::Normal;
 
@@ -13620,7 +14136,7 @@ Buttons
 				void									OnActiveAlt()override;
 				bool									IsTabAvailable()override;
 				void									UpdateControlState();
-				void									CheckAndClick(compositions::GuiEventArgs& arguments);
+				void									CheckAndClick(bool skipChecking, compositions::GuiEventArgs& arguments);
 				void									OnLeftButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 				void									OnLeftButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 				void									OnMouseEnter(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
@@ -14223,31 +14739,14 @@ List Control
 			{
 				GUI_SPECIFY_CONTROL_TEMPLATE_TYPE(ListControlTemplate, GuiScrollView)
 			public:
-				class IItemProvider;
-
 				using ItemStyle = templates::GuiListItemTemplate;
 				using ItemStyleBounds = templates::GuiTemplate;
 				using ItemStyleRecord = collections::Pair<ItemStyle*, ItemStyleBounds*>;
 				using ItemStyleProperty = TemplateProperty<templates::GuiListItemTemplate>;
 
 				//-----------------------------------------------------------
-				// Callback Interfaces
+				// IItemArrangerCallback
 				//-----------------------------------------------------------
-
-				/// <summary>Item provider callback. Item providers use this interface to notify item modification.</summary>
-				class IItemProviderCallback : public virtual IDescriptable, public Description<IItemProviderCallback>
-				{
-				public:
-					/// <summary>Called when an item provider callback object is attached to an item provider.</summary>
-					/// <param name="provider">The item provider.</param>
-					virtual void								OnAttached(IItemProvider* provider)=0;
-					/// <summary>Called when items in the item provider is modified.</summary>
-					/// <param name="start">The index of the first modified item.</param>
-					/// <param name="count">The number of all modified items.</param>
-					/// <param name="newCount">The number of new items. If items are inserted or removed, newCount may not equals to count.</param>
-					/// <param name="itemReferenceUpdated">True when items are replaced, false when only content in items are updated.</param>
-					virtual void								OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)=0;
-				};
 
 				/// <summary>Item arranger callback. Item arrangers use this interface to communicate with the list control. When setting positions for item controls, functions in this callback object is suggested to call because they use the result from the [T:vl.presentation.controls.compositions.IGuiAxis].</summary>
 				class IItemArrangerCallback : public virtual IDescriptable, public Description<IItemArrangerCallback>
@@ -14281,50 +14780,7 @@ List Control
 				};
 
 				//-----------------------------------------------------------
-				// Data Source Interfaces
-				//-----------------------------------------------------------
-
-				/// <summary>Item provider for a <see cref="GuiListControl"/>.</summary>
-				class IItemProvider : public virtual IDescriptable, public Description<IItemProvider>
-				{
-				public:
-					/// <summary>Attach an item provider callback to this item provider.</summary>
-					/// <returns>Returns true if this operation succeeded.</returns>
-					/// <param name="value">The item provider callback.</param>
-					virtual bool								AttachCallback(IItemProviderCallback* value) = 0;
-					/// <summary>Detach an item provider callback from this item provider.</summary>
-					/// <returns>Returns true if this operation succeeded.</returns>
-					/// <param name="value">The item provider callback.</param>
-					virtual bool								DetachCallback(IItemProviderCallback* value) = 0;
-					/// <summary>Increase the editing counter indicating that an [T:vl.presentation.templates.GuiListItemTemplate] is editing an item.</summary>
-					virtual void								PushEditing() = 0;
-					/// <summary>Decrease the editing counter indicating that an [T:vl.presentation.templates.GuiListItemTemplate] has stopped editing an item.</summary>
-					/// <returns>Returns false if there is no supression before calling this function.</returns>
-					virtual bool								PopEditing() = 0;
-					/// <summary>Test if an [T:vl.presentation.templates.GuiListItemTemplate] is editing an item.</summary>
-					/// <returns>Returns false if there is no editing.</returns>
-					virtual bool								IsEditing() = 0;
-					/// <summary>Get the number of items in this item proivder.</summary>
-					/// <returns>The number of items in this item proivder.</returns>
-					virtual vint								Count() = 0;
-
-					/// <summary>Get the text representation of an item.</summary>
-					/// <returns>The text representation of an item.</returns>
-					/// <param name="itemIndex">The index of the item.</param>
-					virtual WString								GetTextValue(vint itemIndex) = 0;
-					/// <summary>Get the binding value of an item.</summary>
-					/// <returns>The binding value of an item.</returns>
-					/// <param name="itemIndex">The index of the item.</param>
-					virtual description::Value					GetBindingValue(vint itemIndex) = 0;
-
-					/// <summary>Request a view for this item provider. If the specified view is not supported, it returns null. If you want to get a view of type IXXX, use IXXX::Identifier as the identifier.</summary>
-					/// <returns>The view object.</returns>
-					/// <param name="identifier">The identifier for the requested view.</param>
-					virtual IDescriptable*						RequestView(const WString& identifier) = 0;
-				};
-
-				//-----------------------------------------------------------
-				// Item Layout Interfaces
+				// IItemArranger
 				//-----------------------------------------------------------
 
 				/// <summary>EnsureItemVisible result for item arranger.</summary>
@@ -14339,7 +14795,7 @@ List Control
 				};
 				
 				/// <summary>Item arranger for a <see cref="GuiListControl"/>. Item arranger decides how to arrange and item controls. When implementing an item arranger, <see cref="IItemArrangerCallback"/> is suggested to use when calculating locations and sizes for item controls.</summary>
-				class IItemArranger : public virtual IItemProviderCallback, public Description<IItemArranger>
+				class IItemArranger : public virtual list::IItemProviderCallback, public Description<IItemArranger>
 				{
 				public:
 					/// <summary>Called when an item arranger in installed to a <see cref="GuiListControl"/>.</summary>
@@ -14390,12 +14846,12 @@ List Control
 				// ItemCallback
 				//-----------------------------------------------------------
 
-				class ItemCallback : public IItemProviderCallback, public IItemArrangerCallback
+				class ItemCallback : public list::IItemProviderCallback, public IItemArrangerCallback
 				{
 					typedef collections::Dictionary<ItemStyle*, templates::GuiTemplate*>	InstalledStyleMap;
 				protected:
 					GuiListControl*								listControl = nullptr;
-					IItemProvider*								itemProvider = nullptr;
+					list::IItemProvider*						itemProvider = nullptr;
 					InstalledStyleMap							installedStyles;
 
 					ItemStyleRecord								InstallStyle(ItemStyle* style, vint itemIndex);
@@ -14406,7 +14862,7 @@ List Control
 
 					void										ClearCache();
 
-					void										OnAttached(IItemProvider* provider)override;
+					void										OnAttached(list::IItemProvider* provider)override;
 					void										OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
 					ItemStyle*									CreateItem(vint itemIndex)override;
 					ItemStyleBounds*							GetItemBounds(ItemStyle* style)override;
@@ -14423,7 +14879,7 @@ List Control
 				//-----------------------------------------------------------
 
 				Ptr<ItemCallback>								callback;
-				Ptr<IItemProvider>								itemProvider;
+				Ptr<list::IItemProvider>						itemProvider;
 				ItemStyleProperty								itemStyleProperty;
 				Ptr<IItemArranger>								itemArranger;
 				Ptr<compositions::IGuiAxis>						axis;
@@ -14480,7 +14936,7 @@ List Control
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
 				/// <param name="_itemProvider">The item provider as a data source.</param>
 				/// <param name="acceptFocus">Set to true if the list control is allowed to have a keyboard focus.</param>
-				GuiListControl(theme::ThemeName themeName, IItemProvider* _itemProvider, bool acceptFocus=false);
+				GuiListControl(theme::ThemeName themeName, list::IItemProvider* _itemProvider, bool acceptFocus=false);
 				~GuiListControl();
 
 				/// <summary>Style provider changed event.</summary>
@@ -14519,7 +14975,7 @@ List Control
 
 				/// <summary>Get the item provider.</summary>
 				/// <returns>The item provider.</returns>
-				virtual IItemProvider*							GetItemProvider();
+				virtual list::IItemProvider*					GetItemProvider();
 				/// <summary>Get the item style provider.</summary>
 				/// <returns>The item style provider.</returns>
 				virtual ItemStyleProperty						GetItemTemplate();
@@ -14568,7 +15024,7 @@ Selectable List Control
 				vint											selectedItemIndexStart;
 				vint											selectedItemIndexEnd;
 
-				void											NotifySelectionChanged();
+				virtual void									NotifySelectionChanged(bool triggeredByItemContentModified);
 				void											OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
 				void											OnStyleInstalled(vint itemIndex, ItemStyle* style, bool refreshPropertiesOnly)override;
 				virtual void									OnItemSelectionChanged(vint itemIndex, bool value);
@@ -14585,7 +15041,7 @@ Selectable List Control
 				/// <summary>Create a control with a specified style provider.</summary>
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
 				/// <param name="_itemProvider">The item provider as a data source.</param>
-				GuiSelectableListControl(theme::ThemeName themeName, IItemProvider* _itemProvider);
+				GuiSelectableListControl(theme::ThemeName themeName, list::IItemProvider* _itemProvider);
 				~GuiSelectableListControl();
 
 				/// <summary>Selection changed event.</summary>
@@ -14639,42 +15095,6 @@ Predefined ItemProvider
 
 			namespace list
 			{
-				/// <summary>Item provider base. This class provider common functionalities for item providers.</summary>
-				class ItemProviderBase : public Object, public virtual GuiListControl::IItemProvider, public Description<ItemProviderBase>
-				{
-				protected:
-					collections::List<GuiListControl::IItemProviderCallback*>	callbacks;
-					vint														editingCounter = 0;
-					bool														callingOnItemModified = false;
-
-					virtual void								InvokeOnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated);
-				public:
-					/// <summary>Create the item provider.</summary>
-					ItemProviderBase();
-					~ItemProviderBase();
-
-					bool										AttachCallback(GuiListControl::IItemProviderCallback* value)override;
-					bool										DetachCallback(GuiListControl::IItemProviderCallback* value)override;
-					void										PushEditing()override;
-					bool										PopEditing()override;
-					bool										IsEditing()override;
-				};
-
-				template<typename T>
-				class ListProvider : public ItemProviderBase, public collections::ObservableListBase<T>
-				{
-				protected:
-					void NotifyUpdateInternal(vint start, vint count, vint newCount)override
-					{
-						InvokeOnItemModified(start, count, newCount, true);
-					}
-				public:
-					vint Count()override
-					{
-						return this->items.Count();
-					}
-				};
-
 				template<typename TBase>
 				class PredefinedListItemTemplate : public TBase
 				{
@@ -14752,7 +15172,7 @@ Predefined ItemArranger
 
 					GuiListControl*									listControl = nullptr;
 					GuiListControl::IItemArrangerCallback*			callback = nullptr;
-					GuiListControl::IItemProvider*					itemProvider = nullptr;
+					list::IItemProvider*							itemProvider = nullptr;
 					Ptr<description::IValueObservableList>			itemSource;
 					compositions::GuiVirtualRepeatCompositionBase*	repeat = nullptr;
 
@@ -14765,7 +15185,7 @@ Predefined ItemArranger
 					RangedItemArrangerBase(compositions::GuiVirtualRepeatCompositionBase* _repeat);
 					~RangedItemArrangerBase();
 
-					void											OnAttached(GuiListControl::IItemProvider* provider)override;
+					void											OnAttached(list::IItemProvider* provider)override;
 					void											OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
 					void											AttachListControl(GuiListControl* value)override;
 					void											DetachListControl()override;
@@ -15056,7 +15476,7 @@ GuiVirtualTextList
 				/// <summary>Create a Text list control in virtual mode.</summary>
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
 				/// <param name="_itemProvider">The item provider for this control.</param>
-				GuiVirtualTextList(theme::ThemeName themeName, GuiListControl::IItemProvider* _itemProvider);
+				GuiVirtualTextList(theme::ThemeName themeName, list::IItemProvider* _itemProvider);
 				~GuiVirtualTextList();
 
 				/// <summary>Item checked changed event.</summary>
@@ -15120,295 +15540,6 @@ namespace vl
 	{
 		namespace controls
 		{
-
-/***********************************************************************
-NodeItemProvider
-***********************************************************************/
-
-			namespace tree
-			{
-				class INodeProvider;
-				class INodeRootProvider;
-
-				//-----------------------------------------------------------
-				// Callback Interfaces
-				//-----------------------------------------------------------
-
-				/// <summary>Callback object for <see cref="INodeProvider"/>. A node will invoke this callback to notify any content modification.</summary>
-				class INodeProviderCallback : public virtual IDescriptable, public Description<INodeProviderCallback>
-				{
-				public:
-					/// <summary>Called when this callback is attached to a node root.</summary>
-					/// <param name="provider">The root node.</param>
-					virtual void					OnAttached(INodeRootProvider* provider)=0;
-					/// <summary>Called before sub items of a node are modified.</summary>
-					/// <param name="parentNode">The node containing modified sub items.</param>
-					/// <param name="start">The index of the first sub item.</param>
-					/// <param name="count">The number of sub items to be modified.</param>
-					/// <param name="newCount">The new number of modified sub items.</param>
-					/// <param name="itemReferenceUpdated">True when items are replaced, false when only content in items are updated.</param>
-					virtual void					OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)=0;
-					/// <summary>Called after sub items of a node are modified.</summary>
-					/// <param name="parentNode">The node containing modified sub items.</param>
-					/// <param name="start">The index of the first sub item.</param>
-					/// <param name="count">The number of sub items to be modified.</param>
-					/// <param name="newCount">The new number of modified sub items.</param>
-					/// <param name="itemReferenceUpdated">True when items are replaced, false when only content in items are updated.</param>
-					virtual void					OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)=0;
-					/// <summary>Called when a node is expanded.</summary>
-					/// <param name="node">The node.</param>
-					virtual void					OnItemExpanded(INodeProvider* node)=0;
-					/// <summary>Called when a node is collapsed.</summary>
-					/// <param name="node">The node.</param>
-					virtual void					OnItemCollapsed(INodeProvider* node)=0;
-				};
-
-				//-----------------------------------------------------------
-				// Provider Interfaces
-				//-----------------------------------------------------------
-
-				/// <summary>Represents a node.</summary>
-				class INodeProvider : public virtual IDescriptable, public Description<INodeProvider>
-				{
-				public:
-					/// <summary>Get the expanding state of this node.</summary>
-					/// <returns>Returns true if this node is expanded.</returns>
-					virtual bool					GetExpanding()=0;
-					/// <summary>Set the expanding state of this node.</summary>
-					/// <param name="value">Set to true to expand this node.</param>
-					virtual void					SetExpanding(bool value)=0;
-					/// <summary>Calculate the number of total visible nodes of this node. The number of total visible nodes includes the node itself, and all total visible nodes of all visible sub nodes. If this node is collapsed, this number will be 1.</summary>
-					/// <returns>The number of total visible nodes.</returns>
-					virtual vint					CalculateTotalVisibleNodes()=0;
-					/// <summary>Notify that the state in the binded data object is modified.</summary>
-					virtual void					NotifyDataModified()=0;
-
-					/// <summary>Get the number of all sub nodes.</summary>
-					/// <returns>The number of all sub nodes.</returns>
-					virtual vint					GetChildCount()=0;
-					/// <summary>Get the parent node.</summary>
-					/// <returns>The parent node.</returns>
-					virtual Ptr<INodeProvider>		GetParent()=0;
-					/// <summary>Get the instance of a specified sub node.</summary>
-					/// <returns>The instance of a specified sub node.</returns>
-					/// <param name="index">The index of the sub node.</param>
-					virtual Ptr<INodeProvider>		GetChild(vint index)=0;
-				};
-				
-				/// <summary>Represents a root node provider.</summary>
-				class INodeRootProvider : public virtual IDescriptable, public Description<INodeRootProvider>
-				{
-				public:
-					/// <summary>Get the instance of the root node.</summary>
-					/// <returns>Returns the instance of the root node.</returns>
-					virtual Ptr<INodeProvider>		GetRootNode()=0;
-					/// <summary>Test does the provider provided an optimized algorithm to get an instance of a node by the index of all visible nodes. If this function returns true, [M:vl.presentation.controls.tree.INodeRootProvider.GetNodeByVisibleIndex] can be used.</summary>
-					/// <returns>Returns true if such an algorithm is provided.</returns>
-					virtual bool					CanGetNodeByVisibleIndex()=0;
-					/// <summary>Get a node by the index in all visible nodes. This requires [M:vl.presentation.controls.tree.INodeRootProvider.CanGetNodeByVisibleIndex] returning true.</summary>
-					/// <returns>The node for the index in all visible nodes.</returns>
-					/// <param name="index">The index in all visible nodes.</param>
-					virtual Ptr<INodeProvider>		GetNodeByVisibleIndex(vint index)=0;
-					/// <summary>Attach an node provider callback to this node provider.</summary>
-					/// <returns>Returns true if this operation succeeded.</returns>
-					/// <param name="value">The node provider callback.</param>
-					virtual bool					AttachCallback(INodeProviderCallback* value)=0;
-					/// <summary>Detach an node provider callback from this node provider.</summary>
-					/// <returns>Returns true if this operation succeeded.</returns>
-					/// <param name="value">The node provider callback.</param>
-					virtual bool					DetachCallback(INodeProviderCallback* value)=0;
-					/// <summary>Get the primary text of a node.</summary>
-					/// <returns>The primary text of a node.</returns>
-					/// <param name="node">The node.</param>
-					virtual WString					GetTextValue(INodeProvider* node) = 0;
-					/// <summary>Get the binding value of a node.</summary>
-					/// <returns>The binding value of a node.</returns>
-					/// <param name="node">The node.</param>
-					virtual description::Value		GetBindingValue(INodeProvider* node) = 0;
-					/// <summary>Request a view for this node provider. If the specified view is not supported, it returns null. If you want to get a view of type IXXX, use IXXX::Identifier as the identifier.</summary>
-					/// <returns>The view object.</returns>
-					/// <param name="identifier">The identifier for the requested view.</param>
-					virtual IDescriptable*			RequestView(const WString& identifier)=0;
-				};
-			}
-
-			namespace tree
-			{
-				//-----------------------------------------------------------
-				// Tree to ListControl (IItemProvider)
-				//-----------------------------------------------------------
-
-				/// <summary>The required <see cref="GuiListControl::IItemProvider"/> view for [T:vl.presentation.controls.tree.GuiVirtualTreeView]. [T:vl.presentation.controls.tree.NodeItemProvider] provides this view. In most of the cases, the NodeItemProvider class and this view is not required users to create, or even to touch. [T:vl.presentation.controls.GuiVirtualTreeListControl] already handled all of this.</summary>
-				class INodeItemView : public virtual IDescriptable, public Description<INodeItemView>
-				{
-				public:
-					/// <summary>The identifier of this view.</summary>
-					static const wchar_t* const		Identifier;
-
-					/// <summary>Get an instance of a node by the index in all visible nodes.</summary>
-					/// <returns>The instance of a node by the index in all visible nodes.</returns>
-					/// <param name="index">The index in all visible nodes.</param>
-					virtual Ptr<INodeProvider>		RequestNode(vint index)=0;
-					/// <summary>Get the index in all visible nodes of a node.</summary>
-					/// <returns>The index in all visible nodes of a node.</returns>
-					/// <param name="node">The node to calculate the index.</param>
-					virtual vint					CalculateNodeVisibilityIndex(INodeProvider* node)=0;
-				};
-
-				/// <summary>This is a general implementation to convert an <see cref="INodeRootProvider"/> to a <see cref="GuiListControl::IItemProvider"/>.</summary>
-				class NodeItemProvider
-					: public list::ItemProviderBase
-					, protected virtual INodeProviderCallback
-					, public virtual INodeItemView
-					, public Description<NodeItemProvider>
-				{
-					typedef collections::Dictionary<INodeProvider*, vint>			NodeIntMap;
-				protected:
-					Ptr<INodeRootProvider>			root;
-					NodeIntMap						offsetBeforeChildModifieds;
-					
-
-					Ptr<INodeProvider>				GetNodeByOffset(Ptr<INodeProvider> provider, vint offset);
-					void							OnAttached(INodeRootProvider* provider)override;
-					void							OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
-					void							OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
-					void							OnItemExpanded(INodeProvider* node)override;
-					void							OnItemCollapsed(INodeProvider* node)override;
-					vint							CalculateNodeVisibilityIndexInternal(INodeProvider* node);
-					vint							CalculateNodeVisibilityIndex(INodeProvider* node)override;
-					
-					Ptr<INodeProvider>				RequestNode(vint index)override;
-				public:
-					/// <summary>Create an item provider using a node root provider.</summary>
-					/// <param name="_root">The node root provider.</param>
-					NodeItemProvider(Ptr<INodeRootProvider> _root);
-					~NodeItemProvider();
-					
-					/// <summary>Get the owned node root provider.</summary>
-					/// <returns>The node root provider.</returns>
-					Ptr<INodeRootProvider>			GetRoot();
-					vint							Count()override;
-					WString							GetTextValue(vint itemIndex)override;
-					description::Value				GetBindingValue(vint itemIndex)override;
-					IDescriptable*					RequestView(const WString& identifier)override;
-				};
-			}
-
-/***********************************************************************
-MemoryNodeProvider
-***********************************************************************/
-
-			namespace tree
-			{
-				/// <summary>An in-memory <see cref="INodeProvider"/> implementation.</summary>
-				class MemoryNodeProvider
-					: public Object
-					, public virtual INodeProvider
-					, public Description<MemoryNodeProvider>
-				{
-					typedef collections::List<Ptr<MemoryNodeProvider>> ChildList;
-					typedef collections::IEnumerator<Ptr<MemoryNodeProvider>> ChildListEnumerator;
-
-				public:
-					class NodeCollection : public collections::ObservableListBase<Ptr<MemoryNodeProvider>>
-					{
-						friend class MemoryNodeProvider;
-					protected:
-						vint						offsetBeforeChildModified = 0;
-						MemoryNodeProvider*			ownerProvider;
-
-						void						OnBeforeChildModified(vint start, vint count, vint newCount);
-						void						OnAfterChildModified(vint start, vint count, vint newCount);
-						bool						QueryInsert(vint index, Ptr<MemoryNodeProvider> const& child)override;
-						bool						QueryRemove(vint index, Ptr<MemoryNodeProvider> const& child)override;
-						void						BeforeInsert(vint index, Ptr<MemoryNodeProvider> const& child)override;
-						void						BeforeRemove(vint index, Ptr<MemoryNodeProvider> const& child)override;
-						void						AfterInsert(vint index, Ptr<MemoryNodeProvider> const& child)override;
-						void						AfterRemove(vint index, vint count)override;
-
-						NodeCollection();
-					public:
-					};
-
-				protected:
-					MemoryNodeProvider*				parent = nullptr;
-					bool							expanding = false;
-					vint							childCount = 0;
-					vint							totalVisibleNodeCount = 1;
-					Ptr<DescriptableObject>			data;
-					NodeCollection					children;
-
-					virtual INodeProviderCallback*	GetCallbackProxyInternal();
-					void							OnChildTotalVisibleNodesChanged(vint offset);
-				public:
-					/// <summary>Create a node provider with a data object.</summary>
-					/// <param name="_data">The data object.</param>
-					MemoryNodeProvider(Ptr<DescriptableObject> _data = nullptr);
-					~MemoryNodeProvider();
-
-					/// <summary>Get the data object.</summary>
-					/// <returns>The data object.</returns>
-					Ptr<DescriptableObject>			GetData();
-					/// <summary>Set the data object.</summary>
-					/// <param name="value">The data object.</param>
-					void							SetData(const Ptr<DescriptableObject>& value);
-					/// <summary>Get all sub nodes.</summary>
-					/// <returns>All sub nodes.</returns>
-					NodeCollection&					Children();
-
-					bool							GetExpanding()override;
-					void							SetExpanding(bool value)override;
-					vint							CalculateTotalVisibleNodes()override;
-					void							NotifyDataModified()override;
-
-					vint							GetChildCount()override;
-					Ptr<INodeProvider>				GetParent()override;
-					Ptr<INodeProvider>				GetChild(vint index)override;
-				};
-
-				/// <summary>A general implementation for <see cref="INodeRootProvider"/>.</summary>
-				class NodeRootProviderBase : public virtual INodeRootProvider, protected virtual INodeProviderCallback, public Description<NodeRootProviderBase>
-				{
-					collections::List<INodeProviderCallback*>			callbacks;
-				protected:
-					void							OnAttached(INodeRootProvider* provider)override;
-					void							OnBeforeItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
-					void							OnAfterItemModified(INodeProvider* parentNode, vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
-					void							OnItemExpanded(INodeProvider* node)override;
-					void							OnItemCollapsed(INodeProvider* node)override;
-				public:
-					/// <summary>Create a node root provider.</summary>
-					NodeRootProviderBase();
-					~NodeRootProviderBase();
-					
-					bool							CanGetNodeByVisibleIndex()override;
-					Ptr<INodeProvider>				GetNodeByVisibleIndex(vint index)override;
-					bool							AttachCallback(INodeProviderCallback* value)override;
-					bool							DetachCallback(INodeProviderCallback* value)override;
-					IDescriptable*					RequestView(const WString& identifier)override;
-				};
-				
-				/// <summary>An in-memory <see cref="INodeRootProvider"/> implementation.</summary>
-				class MemoryNodeRootProvider
-					: public MemoryNodeProvider
-					, public NodeRootProviderBase
-					, public Description<MemoryNodeRootProvider>
-				{
-				protected:
-					INodeProviderCallback*			GetCallbackProxyInternal()override;
-				public:
-					/// <summary>Create a node root provider.</summary>
-					MemoryNodeRootProvider();
-					~MemoryNodeRootProvider();
-
-					Ptr<INodeProvider>				GetRootNode()override;
-					/// <summary>Get the <see cref="MemoryNodeProvider"/> object from an <see cref="INodeProvider"/> object.</summary>
-					/// <returns>The corresponding <see cref="MemoryNodeProvider"/> object.</returns>
-					/// <param name="node">The node to get the memory node.</param>
-					MemoryNodeProvider*				GetMemoryNode(INodeProvider* node);
-				};
-			}
-
 /***********************************************************************
 GuiVirtualTreeListControl
 ***********************************************************************/
@@ -15731,6 +15862,13 @@ GuiCommonDatePickerLook
 				void												SetDate(const DateTime& value);
 				const FontProperties&								GetFont();
 				void												SetFont(const FontProperties& value);
+
+				controls::GuiComboBoxListControl*					GetYearCombo();
+				controls::GuiComboBoxListControl*					GetMonthCombo();
+				vint												GetDayRows();
+				vint												GetDayColumns();
+				controls::GuiSelectableButton*						GetDayButton(vint row, vint column);
+				DateTime											GetDateOfDayButton(vint row, vint column);
 			};
 
 /***********************************************************************
@@ -17884,6 +18022,9 @@ Menu Service
 				/// <summary>Get the preferred direction to open the sub menu.</summary>
 				/// <returns>The preferred direction to open the sub menu.</returns>
 				virtual Direction						GetPreferredDirection()=0;
+				/// <summary>Get the theme name of the host control.</summary>
+				/// <returns>The theme name of the host control.</returns>
+				virtual theme::ThemeName				GetHostThemeName() = 0;
 				/// <summary>Test is this menu is active. When an menu is active, the sub menu is automatically opened when the corresponding menu item is opened.</summary>
 				/// <returns>Returns true if this menu is active.</returns>
 				virtual bool							IsActiveState()=0;
@@ -17932,6 +18073,7 @@ Menu
 
 				IGuiMenuService*						GetParentMenuService()override;
 				Direction								GetPreferredDirection()override;
+				theme::ThemeName						GetHostThemeName()override;
 				bool									IsActiveState()override;
 				bool									IsSubMenuActivatedByMouseDown()override;
 				void									MenuItemExecuted()override;
@@ -17976,6 +18118,7 @@ Menu
 			private:
 				IGuiMenuService*						GetParentMenuService()override;
 				Direction								GetPreferredDirection()override;
+				theme::ThemeName						GetHostThemeName()override;
 				bool									IsActiveState()override;
 				bool									IsSubMenuActivatedByMouseDown()override;
 
@@ -18184,7 +18327,7 @@ ComboBox with GuiListControl
 			/// <summary>Combo box list control. This control is a combo box with a list control in its popup.</summary>
 			class GuiComboBoxListControl
 				: public GuiComboBoxBase
-				, private GuiListControl::IItemProviderCallback
+				, private list::IItemProviderCallback
 				, public Description<GuiComboBoxListControl>
 			{
 			public:
@@ -18215,7 +18358,7 @@ ComboBox with GuiListControl
 			private:
 				// ===================== GuiListControl::IItemProviderCallback =====================
 
-				void										OnAttached(GuiListControl::IItemProvider* provider)override;
+				void										OnAttached(list::IItemProvider* provider)override;
 				void										OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
 			public:
 				/// <summary>Create a control with a specified default theme and a list control that will be put in the popup control to show all items.</summary>
@@ -18252,7 +18395,7 @@ ComboBox with GuiListControl
 				description::Value							GetSelectedItem();
 				/// <summary>Get the item provider in the list control.</summary>
 				/// <returns>The item provider in the list control.</returns>
-				GuiListControl::IItemProvider*				GetItemProvider();
+				list::IItemProvider*						GetItemProvider();
 			};
 		}
 	}
@@ -18451,7 +18594,7 @@ namespace vl
 				/// <summary>Create a list view base control.</summary>
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
 				/// <param name="_itemProvider">The item provider for this control.</param>
-				GuiListViewBase(theme::ThemeName themeName, GuiListControl::IItemProvider* _itemProvider);
+				GuiListViewBase(theme::ThemeName themeName, list::IItemProvider* _itemProvider);
 				~GuiListViewBase();
 
 				/// <summary>Column clicked event.</summary>
@@ -18605,6 +18748,7 @@ ListViewColumnItemArranger
 					void										ColumnHeaderSplitterLeftButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 					void										ColumnHeaderSplitterLeftButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 					void										ColumnHeaderSplitterMouseMove(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+					void										ColumnHeadersCachedBoundsChanged(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments);
 
 					void										FixColumnsAfterViewLocationChanged();
 					void										FixColumnsAfterLayout();
@@ -18612,6 +18756,7 @@ ListViewColumnItemArranger
 					vint										GetColumnsYOffset();
 					void										DeleteColumnButtons();
 					void										RebuildColumns();
+					void										UpdateRepeatConfig();
 					void										RefreshColumns();
 				public:
 					ListViewColumnItemArranger();
@@ -18888,7 +19033,7 @@ GuiVirtualListView
 				/// <summary>Create a list view control in virtual mode.</summary>
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
 				/// <param name="_itemProvider">The item provider for this control.</param>
-				GuiVirtualListView(theme::ThemeName themeName, GuiListControl::IItemProvider* _itemProvider);
+				GuiVirtualListView(theme::ThemeName themeName, list::IItemProvider* _itemProvider);
 				~GuiVirtualListView();
 
 				/// <summary>Get the current view.</summary>
@@ -19025,10 +19170,11 @@ GuiBindableTextList
 			/// <summary>A bindable Text list control.</summary>
 			class GuiBindableTextList : public GuiVirtualTextList, public Description<GuiBindableTextList>
 			{
-			protected:
+			public:
 				class ItemSource
 					: public list::ItemProviderBase
 					, protected list::ITextItemView
+					, public Description<ItemSource>
 				{
 				protected:
 					Ptr<EventHandler>								itemChangedEventHandler;
@@ -19115,12 +19261,13 @@ GuiBindableListView
 			/// <summary>A bindable List view control.</summary>
 			class GuiBindableListView : public GuiVirtualListView, public Description<GuiBindableListView>
 			{
-			protected:
+			public:
 				class ItemSource
 					: public list::ItemProviderBase
 					, protected virtual list::IListViewItemProvider
 					, public virtual list::IListViewItemView
 					, public virtual list::ListViewColumnItemArranger::IColumnItemView
+					, public Description<ItemSource>
 				{
 					typedef collections::List<list::ListViewColumnItemArranger::IColumnItemViewCallback*>		ColumnItemViewCallbackList;
 				protected:
@@ -19243,7 +19390,7 @@ GuiBindableTreeView
 			class GuiBindableTreeView : public GuiVirtualTreeView, public Description<GuiBindableTreeView>
 			{
 				using IValueEnumerable = reflection::description::IValueEnumerable;
-			protected:
+			public:
 				class ItemSource;
 
 				class ItemSourceNode
@@ -19291,6 +19438,7 @@ GuiBindableTreeView
 				class ItemSource
 					: public tree::NodeRootProviderBase
 					, public virtual tree::ITreeViewItemView
+					, public Description<ItemSource>
 				{
 					friend class ItemSourceNode;
 				public:
@@ -19426,7 +19574,7 @@ Datagrid Interfaces
 				class IDataGridContext : public virtual IDescriptable, public Description<IDataGridContext>
 				{
 				public:
-					virtual GuiListControl::IItemProvider*				GetItemProvider() = 0;
+					virtual list::IItemProvider*						GetItemProvider() = 0;
 					virtual templates::GuiListViewTemplate*				GetListViewControlTemplate() = 0;
 					virtual void										RequestSaveData() = 0;
 				};
@@ -19459,7 +19607,7 @@ Datagrid Interfaces
 					/// <param name="itemProvider">The item provider.</param>
 					/// <param name="row">The row number of the cell.</param>
 					/// <param name="column">The column number of the cell.</param>
-					virtual void										BeforeVisualizeCell(GuiListControl::IItemProvider* itemProvider, vint row, vint column) = 0;
+					virtual void										BeforeVisualizeCell(list::IItemProvider* itemProvider, vint row, vint column) = 0;
 
 					/// <summary>Set the selected state.</summary>
 					/// <param name="value">Set to true to make this data visualizer looks selected.</param>
@@ -19494,7 +19642,7 @@ Datagrid Interfaces
 					/// <param name="itemProvider">The item provider.</param>
 					/// <param name="row">The row number of the cell.</param>
 					/// <param name="column">The column number of the cell.</param>
-					virtual void										BeforeEditCell(GuiListControl::IItemProvider* itemProvider, vint row, vint column) = 0;
+					virtual void										BeforeEditCell(list::IItemProvider* itemProvider, vint row, vint column) = 0;
 
 					/// <summary>Test if the edit has saved the data.</summary>
 					/// <returns>Returns true if the data is saved.</returns>
@@ -19606,7 +19754,7 @@ Extension Bases
 					IDataVisualizerFactory*								GetFactory()override;
 					templates::GuiGridVisualizerTemplate*				GetTemplate()override;
 					void												NotifyDeletedTemplate()override;
-					void												BeforeVisualizeCell(GuiListControl::IItemProvider* itemProvider, vint row, vint column)override;
+					void												BeforeVisualizeCell(list::IItemProvider* itemProvider, vint row, vint column)override;
 					void												SetSelected(bool value)override;
 				};
 				
@@ -19644,7 +19792,7 @@ Extension Bases
 					IDataEditorFactory*									GetFactory()override;
 					templates::GuiGridEditorTemplate*					GetTemplate()override;
 					void												NotifyDeletedTemplate()override;
-					void												BeforeEditCell(GuiListControl::IItemProvider* itemProvider, vint row, vint column)override;
+					void												BeforeEditCell(list::IItemProvider* itemProvider, vint row, vint column)override;
 					bool												GetCellValueSaved()override;
 				};
 				
@@ -19976,6 +20124,7 @@ GuiVirtualDataGrid
 				bool													currentEditorOpeningEditor = false;
 
 				compositions::IGuiAltActionHost*						GetActivatingAltHost()override;
+				void													NotifySelectionChanged(bool triggeredByItemContentModified)override;
 				void													OnItemModified(vint start, vint count, vint newCount, bool itemReferenceUpdated)override;
 				void													OnStyleInstalled(vint index, ItemStyle* style, bool refreshPropertiesOnly)override;
 				void													OnStyleUninstalled(ItemStyle* style)override;
@@ -19985,7 +20134,6 @@ GuiVirtualDataGrid
 				bool													StartEdit(vint row, vint column);
 				void													StopEdit();
 				void													OnColumnClicked(compositions::GuiGraphicsComposition* sender, compositions::GuiItemEventArgs& arguments);
-				void													OnSelectionChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void													OnKeyDown(compositions::GuiGraphicsComposition* sender, compositions::GuiKeyEventArgs& arguments);
 				void													OnKeyUp(compositions::GuiGraphicsComposition* sender, compositions::GuiKeyEventArgs& arguments);
 
@@ -19997,13 +20145,13 @@ GuiVirtualDataGrid
 				/// <summary>Create a data grid control in virtual mode.</summary>
 				/// <param name="themeName">The theme name for retriving a default control template.</param>
 				/// <param name="_itemProvider">The item provider for this control.</param>
-				GuiVirtualDataGrid(theme::ThemeName themeName, GuiListControl::IItemProvider* _itemProvider);
+				GuiVirtualDataGrid(theme::ThemeName themeName, list::IItemProvider* _itemProvider);
 				~GuiVirtualDataGrid();
 
 				/// <summary>Selected cell changed event.</summary>
 				compositions::GuiNotifyEvent							SelectedCellChanged;
 
-				IItemProvider*											GetItemProvider()override;
+				list::IItemProvider*									GetItemProvider()override;
 
 				/// <summary>Change the view to data grid's default view.</summary>
 				void													SetViewToDefault();
@@ -20058,7 +20206,7 @@ Interfaces
 				class IDataProcessorCallback : public virtual IDescriptable, public Description<IDataProcessorCallback>
 				{
 				public:
-					virtual GuiListControl::IItemProvider*				GetItemProvider() = 0;
+					virtual list::IItemProvider*						GetItemProvider() = 0;
 					virtual void										OnProcessorChanged() = 0;
 				};
 
@@ -20381,7 +20529,7 @@ DataProvider
 					void													RefreshAllItems() override;
 					void													NotifyColumnRebuilt() override;
 					void													NotifyColumnChanged() override;
-					GuiListControl::IItemProvider*							GetItemProvider()override;
+					list::IItemProvider*									GetItemProvider()override;
 
 					void													OnProcessorChanged()override;
 					void													OnItemSourceModified(vint start, vint count, vint newCount);
@@ -20572,13 +20720,13 @@ GalleryItemArranger
 					void													Layout_EndLayout(bool totalSizeUpdated) override;
 					void													Layout_InvalidateItemSizeCache()override;
 					void													Layout_CalculateTotalSize(Size& full, Size& minimum)override;
+					Size													Layout_GetAdoptedSize(Size expectedSize)override;
 				public:
 					GalleryItemArrangerRepeatComposition(GuiBindableRibbonGalleryList* _owner);
 					~GalleryItemArrangerRepeatComposition();
 
 					vint													FindItemByVirtualKeyDirection(vint itemIndex, compositions::KeyDirection key)override;
 					compositions::VirtualRepeatEnsureItemVisibleResult		EnsureItemVisible(vint itemIndex)override;
-					Size													GetAdoptedSize(Size expectedSize)override;
 
 					void													ScrollUp();
 					void													ScrollDown();
@@ -20758,11 +20906,18 @@ Toolstrip Container
 			};
 
 			/// <summary>Toolstrip tool bar.</summary>
-			class GuiToolstripToolBar : public GuiControl, public Description<GuiToolstripToolBar>
+			class GuiToolstripToolBar : public GuiControl, protected IGuiMenuService, public Description<GuiToolstripToolBar>
 			{
 			protected:
 				compositions::GuiStackComposition*				stackComposition;
 				Ptr<GuiToolstripCollection>						toolstripItems;
+
+			private:
+				IGuiMenuService*								GetParentMenuService()override;
+				Direction										GetPreferredDirection()override;
+				theme::ThemeName								GetHostThemeName()override;
+				bool											IsActiveState()override;
+				bool											IsSubMenuActivatedByMouseDown()override;
 
 			public:
 				/// <summary>Create a control with a specified default theme.</summary>
@@ -20773,6 +20928,8 @@ Toolstrip Container
 				/// <summary>Get all managed child controls ordered by their positions.</summary>
 				/// <returns>All managed child controls.</returns>
 				collections::ObservableListBase<GuiControl*>&	GetToolstripItems();
+				
+				IDescriptable*									QueryService(const WString& identifier)override;
 			};
 
 /***********************************************************************
