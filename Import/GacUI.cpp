@@ -2726,15 +2726,6 @@ GuiWindow
 				TypedControlTemplateObject(true)->SetMaximized(IsRenderedAsMaximized());
 			}
 
-			void GuiWindow::Opened()
-			{
-				GuiControlHost::Opened();
-				if (auto ct = TypedControlTemplateObject(false))
-				{
-					UpdateIcon(GetNativeWindow(), ct);
-				}
-			}
-
 			void GuiWindow::DpiChanged(bool preparing)
 			{
 				if (!preparing)
@@ -2744,6 +2735,54 @@ GuiWindow
 						UpdateCustomFramePadding(GetNativeWindow(), ct);
 					}
 				}
+			}
+
+			void GuiWindow::Opened()
+			{
+				GuiControlHost::Opened();
+				if (auto ct = TypedControlTemplateObject(false))
+				{
+					UpdateIcon(GetNativeWindow(), ct);
+				}
+			}
+
+			void GuiWindow::BeforeClosing(bool& cancel)
+			{
+				if (GetHostedApplication() && this == GetApplication()->GetMainWindow())
+				{
+					GuiWindow* pickedWindow = nullptr;
+
+					if (showModalRecord)
+					{
+						pickedWindow = showModalRecord->current;
+					}
+					else
+					{
+						for (auto window : From(GetApplication()->GetWindows()))
+						{
+							if (window->GetVisible() && window->showModalRecord)
+							{
+								pickedWindow = window->showModalRecord->current;
+								break;
+							}
+						}
+					}
+
+					if (pickedWindow && pickedWindow != this)
+					{
+						if (pickedWindow->GetFocused())
+						{
+							pickedWindow->Hide();
+						}
+						else
+						{
+							pickedWindow->SetFocused();
+						}
+						cancel = true;
+						return;
+					}
+				}
+				GuiControlHost::BeforeClosing(cancel);
 			}
 
 			void GuiWindow::AssignFrameConfig(const NativeWindowFrameConfig& config)
@@ -2915,7 +2954,6 @@ GuiWindow
 
 			void GuiWindow::ShowWithOwner(GuiWindow* owner)
 			{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::controls::GuiWindow::ShowWithOwner(GuiWindow*)#"
 				auto ownerNativeWindow = owner->GetNativeWindow();
 				auto nativeWindow = GetNativeWindow();
 				auto previousParent = nativeWindow->GetParent();
@@ -2928,21 +2966,40 @@ GuiWindow
 					});
 				}
 				Show();
-#undef ERROR_MESSAGE_PREFIX
 			}
 
 			void GuiWindow::ShowModal(GuiWindow* owner, const Func<void()>& callback)
 			{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::controls::GuiWindow::ShowModal(GuiWindow*, const Func<void()>&)#"
+				CHECK_ERROR(!showModalRecord, ERROR_MESSAGE_PREFIX L"Cannot call this function nestedly.");
+				CHECK_ERROR(owner && owner->GetEnabled(), ERROR_MESSAGE_PREFIX L"The owner should not have been disabled.");
+
+				if (!owner->showModalRecord)
+				{
+					owner->showModalRecord = Ptr(new ShowModalRecord{ owner,owner });
+				}
+
+				showModalRecord = owner->showModalRecord;
+				showModalRecord->current = this;
 				owner->SetEnabled(false);
 				GetNativeWindow()->SetParent(owner->GetNativeWindow());
+
 				auto container = Ptr(new IGuiGraphicsEventHandler::Container);
 				auto disposeFlag = GetDisposedFlag();
 				container->handler = WindowReadyToClose.AttachLambda([=](GuiGraphicsComposition* sender, GuiEventArgs& arguments)
 				{
-					GetNativeWindow()->SetParent(nullptr);
 					callback();
+
+					GetNativeWindow()->SetParent(nullptr);
 					owner->SetEnabled(true);
 					owner->SetFocused();
+					showModalRecord = nullptr;
+					owner->showModalRecord->current = owner;
+					if (owner->showModalRecord->current == owner->showModalRecord->origin)
+					{
+						owner->showModalRecord = nullptr;
+					}
+
 					GetApplication()->InvokeInMainThread(this, [=]()
 					{
 						if (!disposeFlag->IsDisposed())
@@ -2953,6 +3010,7 @@ GuiWindow
 					});
 				});
 				Show();
+#undef ERROR_MESSAGE_PREFIX
 			}
 
 			void GuiWindow::ShowModalAndDelete(GuiWindow* owner, const Func<void()>& callback)
@@ -7328,6 +7386,7 @@ GuiDateComboBox
 			void GuiDateComboBox::SetSelectedDate(const DateTime& value)
 			{
 				selectedDate=value;
+				datePicker->SetDate(selectedDate);
 				NotifyUpdateSelectedDate();
 			}
 
@@ -9099,10 +9158,23 @@ DataColumn
 
 				void DataColumn::SetFilter(Ptr<IDataFilter> value)
 				{
-					if (associatedFilter) associatedFilter->SetCallback(nullptr);
-					associatedFilter = value;
-					if (associatedFilter) associatedFilter->SetCallback(dataProvider);
-					NotifyChanged(false);
+					if (associatedFilter != value)
+					{
+						if (associatedFilter) associatedFilter->SetCallback(nullptr);
+						associatedFilter = value;
+						if (associatedFilter) associatedFilter->SetCallback(dataProvider);
+
+						if (dataProvider)
+						{
+							vint index = dataProvider->columns.IndexOf(this);
+							if (index != -1)
+							{
+								dataProvider->OnProcessorChanged();
+								return;
+							}
+						}
+						NotifyChanged(false);
+					}
 				}
 
 				Ptr<IDataSorter> DataColumn::GetSorter()
@@ -9112,10 +9184,23 @@ DataColumn
 
 				void DataColumn::SetSorter(Ptr<IDataSorter> value)
 				{
-					if (associatedSorter) associatedSorter->SetCallback(nullptr);
-					associatedSorter = value;
-					if (associatedSorter) associatedSorter->SetCallback(dataProvider);
-					NotifyChanged(false);
+					if (associatedSorter != value)
+					{
+						if (associatedSorter) associatedSorter->SetCallback(nullptr);
+						associatedSorter = value;
+						if (associatedSorter) associatedSorter->SetCallback(dataProvider);
+
+						if (dataProvider)
+						{
+							vint index = dataProvider->columns.IndexOf(this);
+							if (index == dataProvider->GetSortedColumn())
+							{
+								dataProvider->SortByColumn(index, sortingState == ColumnSortingState::Ascending);
+								return;
+							}
+						}
+						NotifyChanged(false);
+					}
 				}
 
 				Ptr<IDataVisualizerFactory> DataColumn::GetVisualizerFactory()
@@ -9403,43 +9488,47 @@ DataProvider
 
 				void DataProvider::ReorderRows(bool invokeCallback)
 				{
-					vint oldRowCount = virtualRowToSourceRow.Count();
-					virtualRowToSourceRow.Clear();
+					vint oldRowCount = Count();
 					vint rowCount = itemSource ? itemSource->GetCount() : 0;
+					virtualRowToSourceRow = nullptr;
 
 					if (currentFilter)
 					{
+						virtualRowToSourceRow = Ptr(new List<vint>);
 						for (vint i = 0; i < rowCount; i++)
 						{
 							if (currentFilter->Filter(itemSource->Get(i)))
 							{
-								virtualRowToSourceRow.Add(i);
+								virtualRowToSourceRow->Add(i);
 							}
 						}
 					}
-					else
+					else if (currentSorter)
 					{
+						virtualRowToSourceRow = Ptr(new List<vint>);
 						for (vint i = 0; i < rowCount; i++)
 						{
-							virtualRowToSourceRow.Add(i);
+							virtualRowToSourceRow->Add(i);
 						}
 					}
 
-					if (currentSorter && virtualRowToSourceRow.Count() > 0)
+					if (currentSorter && virtualRowToSourceRow->Count() > 0)
 					{
 						IDataSorter* sorter = currentSorter.Obj();
 						SortLambda(
-							&virtualRowToSourceRow[0],
-							virtualRowToSourceRow.Count(),
+							&virtualRowToSourceRow->operator[](0),
+							virtualRowToSourceRow->Count(),
 							[=](vint a, vint b)
 							{
-								return sorter->Compare(itemSource->Get(a), itemSource->Get(b)) <=> 0;
+								auto ordering = sorter->Compare(itemSource->Get(a), itemSource->Get(b)) <=> 0;
+								return ordering == 0 ? a <=> b : ordering;
 							});
 					}
 
 					if (invokeCallback)
 					{
-						RebuildAllItems();
+						vint newRowCount = Count();
+						InvokeOnItemModified(0, oldRowCount, newRowCount, true);
 					}
 				}
 
@@ -9468,15 +9557,28 @@ DataProvider
 				void DataProvider::SetAdditionalFilter(Ptr<IDataFilter> value)
 				{
 					additionalFilter = value;
-					RebuildFilter();
-					ReorderRows(true);
+					OnProcessorChanged();
 				}
 
 				// ===================== GuiListControl::IItemProvider =====================
 
 				vint DataProvider::Count()
 				{
-					return virtualRowToSourceRow.Count();
+					if (itemSource)
+					{
+						if (virtualRowToSourceRow)
+						{
+							return virtualRowToSourceRow->Count();
+						}
+						else
+						{
+							return itemSource->GetCount();
+						}
+					}
+					else
+					{
+						return 0;
+					}
 				}
 
 				WString DataProvider::GetTextValue(vint itemIndex)
@@ -9486,7 +9588,21 @@ DataProvider
 
 				description::Value DataProvider::GetBindingValue(vint itemIndex)
 				{
-					return itemSource ? itemSource->Get(virtualRowToSourceRow[itemIndex]) : Value();
+					if (itemSource)
+					{
+						if (virtualRowToSourceRow)
+						{
+							return itemSource->Get(virtualRowToSourceRow->Get(itemIndex));
+						}
+						else
+						{
+							return itemSource->Get(itemIndex);
+						}
+					}
+					else
+					{
+						return Value();
+					}
 				}
 
 				IDescriptable* DataProvider::RequestView(const WString& identifier)
@@ -11642,7 +11758,11 @@ GuiVirtualDataGrid (Editor)
 				if (!skipOnSelectionChanged && !triggeredByItemContentModified)
 				{
 					vint row = GetSelectedItemIndex();
-					if (row != -1)
+					if (row == selectedCell.row)
+					{
+						// do nothing
+					}
+					else if (row != -1)
 					{
 						if (selectedCell.row != row && selectedCell.column != -1)
 						{
@@ -11956,6 +12076,11 @@ GuiVirtualDataGrid
 				return selectedCell;
 			}
 
+			Ptr<list::IDataEditor> GuiVirtualDataGrid::GetOpenedEditor()
+			{
+				return currentEditor;
+			}
+
 			bool GuiVirtualDataGrid::SelectCell(const GridPos& value, bool openEditor)
 			{
 				bool validPos = 0 <= value.row && value.row < GetItemProvider()->Count() && 0 <= value.column && value.column < listViewItemView->GetColumnCount();
@@ -11984,10 +12109,12 @@ GuiVirtualDataGrid
 						{
 							ClearSelection();
 						}
-
-						skipOnSelectionChanged = true;
-						SetSelected(value.row, true);
-						skipOnSelectionChanged = false;
+					}
+					skipOnSelectionChanged = true;
+					SetSelected(value.row, true);
+					skipOnSelectionChanged = false;
+					if (openEditor)
+					{
 						return StartEdit(value.row, value.column);
 					}
 				}
@@ -13521,27 +13648,32 @@ GuiSelectableListControl
 
 			void GuiSelectableListControl::SetSelected(vint itemIndex, bool value)
 			{
-				if(value)
+				if (0 <= itemIndex && itemIndex < itemProvider->Count())
 				{
-					if(!selectedItems.Contains(itemIndex))
+					if (value)
 					{
-						if(!multiSelect)
+						if (!selectedItems.Contains(itemIndex))
 						{
-							selectedItems.Clear();
-							OnItemSelectionCleared();
+							if (!multiSelect)
+							{
+								selectedItems.Clear();
+								OnItemSelectionCleared();
+							}
+							selectedItems.Add(itemIndex);
+							OnItemSelectionChanged(itemIndex, value);
+							NotifySelectionChanged(false);
 						}
-						selectedItems.Add(itemIndex);
-						OnItemSelectionChanged(itemIndex, value);
-						NotifySelectionChanged(false);
 					}
-				}
-				else
-				{
-					if(selectedItems.Remove(itemIndex))
+					else
 					{
-						OnItemSelectionChanged(itemIndex, value);
-						NotifySelectionChanged(false);
+						if (selectedItems.Remove(itemIndex))
+						{
+							OnItemSelectionChanged(itemIndex, value);
+							NotifySelectionChanged(false);
+						}
 					}
+					selectedItemIndexStart = itemIndex;
+					selectedItemIndexEnd = itemIndex;
 				}
 			}
 
@@ -14066,6 +14198,16 @@ ListViewColumnItemArranger
 						listView = nullptr;
 					}
 					TBase::DetachListControl();
+				}
+
+				const ListViewColumnItemArranger::ColumnHeaderButtonList& ListViewColumnItemArranger::GetColumnButtons()
+				{
+					return columnHeaderButtons;
+				}
+
+				const ListViewColumnItemArranger::ColumnHeaderSplitterList& ListViewColumnItemArranger::GetColumnSplitters()
+				{
+					return columnHeaderSplitters;
 				}
 
 /***********************************************************************
@@ -23509,12 +23651,6 @@ GuiMenuButton
 				hostMouseEnterHandler = host->GetBoundsComposition()->GetEventReceiver()->mouseEnter.AttachMethod(this, &GuiMenuButton::OnMouseEnter);
 			}
 
-			GuiButton* GuiMenuButton::GetSubMenuHost()
-			{
-				GuiButton* button = TypedControlTemplateObject(true)->GetSubMenuHost();
-				return button ? button : this;
-			}
-
 			bool GuiMenuButton::OpenSubMenuInternal()
 			{
 				if (!GetSubMenuOpening())
@@ -23648,6 +23784,12 @@ GuiMenuButton
 				{
 					DetachSubMenu();
 				}
+			}
+
+			GuiButton* GuiMenuButton::GetSubMenuHost()
+			{
+				GuiButton* button = TypedControlTemplateObject(true)->GetSubMenuHost();
+				return button ? button : this;
 			}
 
 			Ptr<GuiImageData> GuiMenuButton::GetLargeImage()
@@ -51280,7 +51422,7 @@ View Model (IMessageBoxDialogViewModel)
 FakeDialogServiceBase
 ***********************************************************************/
 
-		FakeDialogServiceBase::MessageBoxButtonsOutput	FakeDialogServiceBase::ShowMessageBox(
+		FakeDialogServiceBase::MessageBoxButtonsOutput FakeDialogServiceBase::ShowMessageBox(
 			INativeWindow* window,
 			const WString& text,
 			const WString& title,
