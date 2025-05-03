@@ -999,13 +999,14 @@ WindowsForm
 								return true;
 							}
 							break;
+						case WM_NCLBUTTONUP:
 						case WM_LBUTTONUP:
 							{
-								POINTS location = MAKEPOINTS(lParam);
+								NativeWindowMouseInfo info = ConvertMouse(wParam, lParam, false, nonClient);
 								// TODO: (enumerable) this for-loop needs to be removed, because it is not looping, just leave the body
 								for (vint i = 0; i < listeners.Count(); i++)
 								{
-									switch (PerformHitTest(From(listeners), { location.x,location.y }))
+									switch (PerformHitTest(From(listeners), { info.x,info.y }))
 									{
 									case INativeWindowListener::ButtonMinimum:
 										ShowMinimized();
@@ -2867,7 +2868,7 @@ using namespace vl::presentation;
 using namespace vl::presentation::windows;
 using namespace vl::presentation::elements_windows_d2d;
 
-int SetupWindowsDirect2DRendererInternal(bool hosted)
+int SetupWindowsDirect2DRendererInternal(bool hosted, bool raw)
 {
 	InitDpiAwareness(true);
 	CoInitializeEx(NULL, COINIT_MULTITHREADED);
@@ -2897,7 +2898,7 @@ int SetupWindowsDirect2DRendererInternal(bool hosted)
 		nativeController->CallbackService()->InstallListener(&listener);
 		direct2DListener = &listener;
 		// main
-		RendererMainDirect2D(hostedController);
+		RendererMainDirect2D(hostedController, raw);
 		// uninstall listener
 		direct2DListener = nullptr;
 		nativeController->CallbackService()->UninstallListener(&listener);
@@ -2916,12 +2917,17 @@ int SetupWindowsDirect2DRendererInternal(bool hosted)
 
 int SetupWindowsDirect2DRenderer()
 {
-	return SetupWindowsDirect2DRendererInternal(false);
+	return SetupWindowsDirect2DRendererInternal(false, false);
 }
 
 int SetupHostedWindowsDirect2DRenderer()
 {
-	return SetupWindowsDirect2DRendererInternal(true);
+	return SetupWindowsDirect2DRendererInternal(true, false);
+}
+
+int SetupRawWindowsDirect2DRenderer()
+{
+	return SetupWindowsDirect2DRendererInternal(false, true);
 }
 
 /***********************************************************************
@@ -5127,24 +5133,27 @@ GuiImageFrameElementRenderer
 
 			void GuiImageFrameElementRenderer::UpdateBitmap(IWindowsDirect2DRenderTarget* renderTarget)
 			{
-				if(renderTarget && element->GetImage())
+				if (element->GetImage() && 0 <= element->GetFrameIndex() && element->GetFrameIndex() < element->GetImage()->GetFrameCount())
 				{
-					INativeImageFrame* frame=element->GetImage()->GetFrame(element->GetFrameIndex());
-					bitmap=renderTarget->GetBitmap(frame, element->GetEnabled());
+					INativeImageFrame* frame = element->GetImage()->GetFrame(element->GetFrameIndex());
+					if (renderTarget)
+					{
+						bitmap = renderTarget->GetBitmap(frame, element->GetEnabled());
+					}
 
 					if (element->GetStretch())
 					{
-						minSize=Size(0,0);
+						minSize = Size(0, 0);
 					}
 					else
 					{
-						minSize=frame->GetSize();
+						minSize = frame->GetSize();
 					}
 				}
 				else
 				{
-					bitmap=nullptr;
-					minSize=Size(0, 0);
+					bitmap = nullptr;
+					minSize = Size(0, 0);
 				}
 			}
 
@@ -6439,9 +6448,11 @@ NativeMain
 using namespace vl::presentation;
 using namespace vl::presentation::elements;
 
+
+extern void GuiRawMain();
 extern void GuiApplicationMain();
 
-void RendererMainDirect2D(GuiHostedController* hostedController)
+void RendererMainDirect2D(GuiHostedController* hostedController, bool raw)
 {
 	elements_windows_d2d::WindowsDirect2DResourceManager resourceManager;
 	elements_windows_d2d::SetWindowsDirect2DResourceManager(&resourceManager);
@@ -6470,7 +6481,14 @@ void RendererMainDirect2D(GuiHostedController* hostedController)
 		elements::GuiDocumentElement::GuiDocumentElementRenderer::Register();
 
 		if (hostedController) hostedController->Initialize();
-		GuiApplicationMain();
+		if (raw)
+		{
+			GuiRawMain();
+		}
+		else
+		{
+			GuiApplicationMain();
+		}
 		if (hostedController) hostedController->Finalize();
 	}
 
@@ -8627,7 +8645,7 @@ using namespace vl::presentation;
 using namespace vl::presentation::windows;
 using namespace vl::presentation::elements_windows_gdi;
 
-int SetupWindowsGDIRendererInternal(bool hosted)
+int SetupWindowsGDIRendererInternal(bool hosted, bool raw)
 {
 	InitDpiAwareness(false);
 	CoInitializeEx(NULL, COINIT_MULTITHREADED);
@@ -8657,7 +8675,7 @@ int SetupWindowsGDIRendererInternal(bool hosted)
 		nativeController->CallbackService()->InstallListener(&listener);
 		gdiListener = &listener;
 		// main
-		RendererMainGDI(hostedController);
+		RendererMainGDI(hostedController, raw);
 		// uninstall listener
 		gdiListener = nullptr;
 		nativeController->CallbackService()->UninstallListener(&listener);
@@ -8676,12 +8694,17 @@ int SetupWindowsGDIRendererInternal(bool hosted)
 
 int SetupWindowsGDIRenderer()
 {
-	return SetupWindowsGDIRendererInternal(false);
+	return SetupWindowsGDIRendererInternal(false, false);
 }
 
 int SetupHostedWindowsGDIRenderer()
 {
-	return SetupWindowsGDIRendererInternal(true);
+	return SetupWindowsGDIRendererInternal(true, false);
+}
+
+int SetupRawWindowsGDIRenderer()
+{
+	return SetupWindowsGDIRendererInternal(false, true);
 }
 
 /***********************************************************************
@@ -9658,25 +9681,25 @@ GuiImageFrameElementRenderer
 
 			void GuiImageFrameElementRenderer::UpdateBitmap()
 			{
-				if(element->GetImage())
+				if (element->GetImage() && 0 <= element->GetFrameIndex() && element->GetFrameIndex() < element->GetImage()->GetFrameCount())
 				{
-					auto resourceManager=GetWindowsGDIResourceManager();
-					INativeImageFrame* frame=element->GetImage()->GetFrame(element->GetFrameIndex());
-					bitmap=resourceManager->GetBitmap(frame, element->GetEnabled());
+					auto resourceManager = GetWindowsGDIResourceManager();
+					INativeImageFrame* frame = element->GetImage()->GetFrame(element->GetFrameIndex());
+					bitmap = resourceManager->GetBitmap(frame, element->GetEnabled());
 
 					if (element->GetStretch())
 					{
-						minSize=Size(0,0);
+						minSize = Size(0, 0);
 					}
 					else
 					{
-						minSize=frame->GetSize();
+						minSize = frame->GetSize();
 					}
 				}
 				else
 				{
-					bitmap=0;
-					minSize=Size(0, 0);
+					bitmap = nullptr;
+					minSize = Size(0, 0);
 				}
 			}
 
@@ -9740,7 +9763,7 @@ GuiImageFrameElementRenderer
 						}
 						destination=Rect(x, y, x+minSize.x, y+minSize.y);
 					}
-					if(element->GetImage()->GetFormat()==INativeImage::Gif &&  element->GetFrameIndex()>0)
+					if(element->GetImage()->GetFormat()==INativeImage::Gif && element->GetFrameIndex()>0)
 					{
 						auto resourceManager=GetWindowsGDIResourceManager();
 						vint max=element->GetFrameIndex();
@@ -13041,9 +13064,10 @@ NativeMain
 using namespace vl::presentation;
 using namespace vl::presentation::elements;
 
+extern void GuiRawMain();
 extern void GuiApplicationMain();
 
-void RendererMainGDI(GuiHostedController* hostedController)
+void RendererMainGDI(GuiHostedController* hostedController, bool raw)
 {
 	elements_windows_gdi::WindowsGDIResourceManager resourceManager;
 	elements_windows_gdi::SetWindowsGDIResourceManager(&resourceManager);
@@ -13072,7 +13096,14 @@ void RendererMainGDI(GuiHostedController* hostedController)
 		elements::GuiDocumentElement::GuiDocumentElementRenderer::Register();
 
 		if (hostedController) hostedController->Initialize();
-		GuiApplicationMain();
+		if (raw)
+		{
+			GuiRawMain();
+		}
+		else
+		{
+			GuiApplicationMain();
+		}
 		if (hostedController) hostedController->Finalize();
 	}
 

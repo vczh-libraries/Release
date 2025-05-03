@@ -1,62 +1,39 @@
-union ElementDescVariant
-{
-    ElementDesc_SolidBorder,
-    ElementDesc_SinkBorder,
-    ElementDesc_SinkSplitter,
-    ElementDesc_SolidBackground,
-    ElementDesc_GradientBackground,
-    ElementDesc_InnerShadow,
-    ElementDesc_Polygon,
-    ElementDesc_SolidLabel,
-    ElementDesc_ImageFrame,
-}
-
-class RenderingDom
+struct RenderingDomContent
 {
     var hitTestResult: WindowHitTestResult?;
     var cursor: WindowSystemCursorType?;
     var element: int?;
     var bounds: Rect;
     var validArea: Rect;
+}
+
+class RenderingDom
+{
+    var id: int;
+    var content: RenderingDomContent;
     var children: RenderingDom[];
 }
 
-struct RenderingCommand_BeginBoundary
+enum RenderingDom_DiffType
 {
-    var boundary: ElementBoundary;
+    Deleted,
+    Created,
+    Modified,
 }
 
-struct RenderingCommand_EndBoundary
+struct RenderingDom_Diff
 {
+    var id: int;
+    var diffType: RenderingDom_DiffType;
+    var content: RenderingDomContent?;
+    var children: int[];
 }
 
-struct RenderingCommand_Element
+struct RenderingDom_DiffsInOrder
 {
-    var rendering: ElementRendering;
-    var element: int?;
+    var diffsInOrder: RenderingDom_Diff[];
 }
 
-union RenderingCommand
-{
-    RenderingCommand_BeginBoundary,
-    RenderingCommand_EndBoundary,
-    RenderingCommand_Element,
-}
 
-struct RenderingFrame
-{
-    var frameId : int;
-    var frameName : string?;
-    var windowSize: WindowSizingConfig;
-    var elements: ElementDescVariant[int];
-    var commands: RenderingCommand[];
-    var root: RenderingDom;
-}
-
-struct RenderingTrace
-{
-    var createdElements: RendererType[int];
-    var imageCreations: ImageCreation[.id];
-    var imageMetadatas: ImageMetadata[.id];
-    var frames: RenderingFrame[];
-}
+message RendererRenderDom                      { request: RenderingDom; }
+message RendererRenderDomDiff                  { request: RenderingDom_DiffsInOrder; }

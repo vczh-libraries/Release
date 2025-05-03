@@ -2212,6 +2212,13 @@
         "name": "ElementBoundary",
         "members": [{
             "$ast": "StructMember",
+            "name": "id",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Integer"
+            }
+        }, {
+            "$ast": "StructMember",
             "name": "hitTestResult",
             "type": {
                 "$ast": "OptionalType",
@@ -2384,41 +2391,9 @@
             }
         }
     }, {
-        "$ast": "UnionDecl",
-        "attributes": [],
-        "name": "ElementDescVariant",
-        "members": [{
-            "$ast": "UnionMember",
-            "name": "ElementDesc_SolidBorder"
-        }, {
-            "$ast": "UnionMember",
-            "name": "ElementDesc_SinkBorder"
-        }, {
-            "$ast": "UnionMember",
-            "name": "ElementDesc_SinkSplitter"
-        }, {
-            "$ast": "UnionMember",
-            "name": "ElementDesc_SolidBackground"
-        }, {
-            "$ast": "UnionMember",
-            "name": "ElementDesc_GradientBackground"
-        }, {
-            "$ast": "UnionMember",
-            "name": "ElementDesc_InnerShadow"
-        }, {
-            "$ast": "UnionMember",
-            "name": "ElementDesc_Polygon"
-        }, {
-            "$ast": "UnionMember",
-            "name": "ElementDesc_SolidLabel"
-        }, {
-            "$ast": "UnionMember",
-            "name": "ElementDesc_ImageFrame"
-        }]
-    }, {
         "$ast": "StructDecl",
         "attributes": [],
-        "name": "RenderingDom",
+        "name": "RenderingDomContent",
         "members": [{
             "$ast": "StructMember",
             "name": "hitTestResult",
@@ -2463,6 +2438,26 @@
                 "$ast": "ReferenceType",
                 "name": "Rect"
             }
+        }],
+        "type": "Struct"
+    }, {
+        "$ast": "StructDecl",
+        "attributes": [],
+        "name": "RenderingDom",
+        "members": [{
+            "$ast": "StructMember",
+            "name": "id",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Integer"
+            }
+        }, {
+            "$ast": "StructMember",
+            "name": "content",
+            "type": {
+                "$ast": "ReferenceType",
+                "name": "RenderingDomContent"
+            }
         }, {
             "$ast": "StructMember",
             "name": "children",
@@ -2476,40 +2471,52 @@
         }],
         "type": "Class"
     }, {
-        "$ast": "StructDecl",
+        "$ast": "EnumDecl",
         "attributes": [],
-        "name": "RenderingCommand_BeginBoundary",
+        "name": "RenderingDom_DiffType",
         "members": [{
-            "$ast": "StructMember",
-            "name": "boundary",
-            "type": {
-                "$ast": "ReferenceType",
-                "name": "ElementBoundary"
-            }
-        }],
-        "type": "Struct"
+            "$ast": "EnumMember",
+            "name": "Deleted"
+        }, {
+            "$ast": "EnumMember",
+            "name": "Created"
+        }, {
+            "$ast": "EnumMember",
+            "name": "Modified"
+        }]
     }, {
         "$ast": "StructDecl",
         "attributes": [],
-        "name": "RenderingCommand_EndBoundary",
-        "members": [],
-        "type": "Struct"
-    }, {
-        "$ast": "StructDecl",
-        "attributes": [],
-        "name": "RenderingCommand_Element",
+        "name": "RenderingDom_Diff",
         "members": [{
             "$ast": "StructMember",
-            "name": "rendering",
+            "name": "id",
             "type": {
-                "$ast": "ReferenceType",
-                "name": "ElementRendering"
+                "$ast": "PrimitiveType",
+                "type": "Integer"
             }
         }, {
             "$ast": "StructMember",
-            "name": "element",
+            "name": "diffType",
+            "type": {
+                "$ast": "ReferenceType",
+                "name": "RenderingDom_DiffType"
+            }
+        }, {
+            "$ast": "StructMember",
+            "name": "content",
             "type": {
                 "$ast": "OptionalType",
+                "element": {
+                    "$ast": "ReferenceType",
+                    "name": "RenderingDomContent"
+                }
+            }
+        }, {
+            "$ast": "StructMember",
+            "name": "children",
+            "type": {
+                "$ast": "ArrayType",
                 "element": {
                     "$ast": "PrimitiveType",
                     "type": "Integer"
@@ -2518,23 +2525,81 @@
         }],
         "type": "Struct"
     }, {
+        "$ast": "StructDecl",
+        "attributes": [],
+        "name": "RenderingDom_DiffsInOrder",
+        "members": [{
+            "$ast": "StructMember",
+            "name": "diffsInOrder",
+            "type": {
+                "$ast": "ArrayType",
+                "element": {
+                    "$ast": "ReferenceType",
+                    "name": "RenderingDom_Diff"
+                }
+            }
+        }],
+        "type": "Struct"
+    }, {
+        "$ast": "MessageDecl",
+        "attributes": [],
+        "name": "RendererRenderDom",
+        "request": {
+            "$ast": "MessageRequest",
+            "type": {
+                "$ast": "ReferenceType",
+                "name": "RenderingDom"
+            }
+        },
+        "response": null
+    }, {
+        "$ast": "MessageDecl",
+        "attributes": [],
+        "name": "RendererRenderDomDiff",
+        "request": {
+            "$ast": "MessageRequest",
+            "type": {
+                "$ast": "ReferenceType",
+                "name": "RenderingDom_DiffsInOrder"
+            }
+        },
+        "response": null
+    }, {
         "$ast": "UnionDecl",
         "attributes": [],
-        "name": "RenderingCommand",
+        "name": "UnitTest_ElementDescVariant",
         "members": [{
             "$ast": "UnionMember",
-            "name": "RenderingCommand_BeginBoundary"
+            "name": "ElementDesc_SolidBorder"
         }, {
             "$ast": "UnionMember",
-            "name": "RenderingCommand_EndBoundary"
+            "name": "ElementDesc_SinkBorder"
         }, {
             "$ast": "UnionMember",
-            "name": "RenderingCommand_Element"
+            "name": "ElementDesc_SinkSplitter"
+        }, {
+            "$ast": "UnionMember",
+            "name": "ElementDesc_SolidBackground"
+        }, {
+            "$ast": "UnionMember",
+            "name": "ElementDesc_GradientBackground"
+        }, {
+            "$ast": "UnionMember",
+            "name": "ElementDesc_InnerShadow"
+        }, {
+            "$ast": "UnionMember",
+            "name": "ElementDesc_Polygon"
+        }, {
+            "$ast": "UnionMember",
+            "name": "ElementDesc_SolidLabel"
+        }, {
+            "$ast": "UnionMember",
+            "name": "ElementDesc_ImageFrame"
         }]
     }, {
         "$ast": "StructDecl",
         "attributes": [],
-        "name": "RenderingFrame",
+        "name": "UnitTest_RenderingFrame",
         "members": [{
             "$ast": "StructMember",
             "name": "frameId",
@@ -2566,21 +2631,11 @@
                 "$ast": "MapType",
                 "element": {
                     "$ast": "ReferenceType",
-                    "name": "ElementDescVariant"
+                    "name": "UnitTest_ElementDescVariant"
                 },
                 "keyType": {
                     "$ast": "PrimitiveType",
                     "type": "Integer"
-                }
-            }
-        }, {
-            "$ast": "StructMember",
-            "name": "commands",
-            "type": {
-                "$ast": "ArrayType",
-                "element": {
-                    "$ast": "ReferenceType",
-                    "name": "RenderingCommand"
                 }
             }
         }, {
@@ -2595,7 +2650,7 @@
     }, {
         "$ast": "StructDecl",
         "attributes": [],
-        "name": "RenderingTrace",
+        "name": "UnitTest_RenderingTrace",
         "members": [{
             "$ast": "StructMember",
             "name": "createdElements",
@@ -2633,7 +2688,7 @@
                 "$ast": "ArrayType",
                 "element": {
                     "$ast": "ReferenceType",
-                    "name": "RenderingFrame"
+                    "name": "UnitTest_RenderingFrame"
                 }
             }
         }],

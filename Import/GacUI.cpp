@@ -657,8 +657,57 @@ GuiApplicationMain
 					ThreadLocalStorage::DisposeStorages();
 				}
 			}
+
+			void GuiRawInitialize()
+			{
+				if (!GACUI_UNITTEST_ONLY_SKIP_TYPE_AND_PLUGIN_LOAD_UNLOAD)
+				{
+#ifndef VCZH_DEBUG_NO_REFLECTION
+					GetGlobalTypeManager()->Load();
+#endif
+					GetPluginManager()->Load(true, true);
+				}
+				else
+				{
+					GetPluginManager()->Load(false, true);
+				}
+
+				GetCurrentController()->InputService()->StartTimer();
+				{
+					IAsyncScheduler::RegisterSchedulerForCurrentThread(Ptr(new UIThreadAsyncScheduler));
+					IAsyncScheduler::RegisterDefaultScheduler(Ptr(new OtherThreadAsyncScheduler));
+					GuiMain();
+					IAsyncScheduler::UnregisterDefaultScheduler();
+					IAsyncScheduler::UnregisterSchedulerForCurrentThread();
+				}
+				GetCurrentController()->InputService()->StopTimer();
+				FinalizeGlobalStorage();
+
+				if (!GACUI_UNITTEST_ONLY_SKIP_TYPE_AND_PLUGIN_LOAD_UNLOAD)
+				{
+					GetPluginManager()->Unload(true, true);
+					DestroyPluginManager();
+#ifndef VCZH_DEBUG_NO_REFLECTION
+					ResetGlobalTypeManager();
+#endif
+				}
+				else
+				{
+					GetPluginManager()->Unload(false, true);
+				}
+
+				if (!GACUI_UNITTEST_ONLY_SKIP_THREAD_LOCAL_STORAGE_DISPOSE_STORAGES)
+				{
+					ThreadLocalStorage::DisposeStorages();
+				}
+			}
 		}
 	}
+}
+
+void GuiRawMain()
+{
+	vl::presentation::controls::GuiRawInitialize();
 }
 
 void GuiApplicationMain()
@@ -2533,9 +2582,9 @@ GuiControlHost
 
 			void GuiControlHost::Hide()
 			{
-				if(host->GetNativeWindow())
+				if (auto window = host->GetNativeWindow())
 				{
-					host->GetNativeWindow()->Hide(false);
+					window->Hide(false);
 				}
 			}
 
@@ -2543,16 +2592,17 @@ GuiControlHost
 			{
 				if (auto window = host->GetNativeWindow())
 				{
-					auto mainWindow = GetCurrentController()->WindowService()->GetMainWindow();
-					if (mainWindow == window)
-					{
-						SetNativeWindow(nullptr);
-						GetCurrentController()->WindowService()->DestroyNativeWindow(window);
-					}
-					else
-					{
-						window->Hide(true);
-					}
+					window->Hide(true);
+					// auto mainWindow = GetCurrentController()->WindowService()->GetMainWindow();
+					// if (mainWindow == window)
+					// {
+					// 	SetNativeWindow(nullptr);
+					// 	GetCurrentController()->WindowService()->DestroyNativeWindow(window);
+					// }
+					// else
+					// {
+					// 	window->Hide(true);
+					// }
 				}
 			}
 
@@ -33845,11 +33895,11 @@ GuiImageFrameElement
 ***********************************************************************/
 
 			GuiImageFrameElement::GuiImageFrameElement()
-				:frameIndex(0)
-				,hAlignment(Alignment::Left)
-				,vAlignment(Alignment::Top)
-				,stretch(false)
-				,enabled(true)
+				: frameIndex(0)
+				, hAlignment(Alignment::Left)
+				, vAlignment(Alignment::Top)
+				, stretch(false)
+				, enabled(true)
 			{
 			}
 
@@ -33875,17 +33925,19 @@ GuiImageFrameElement
 
 			void GuiImageFrameElement::SetImage(Ptr<INativeImage> _image, vint _frameIndex)
 			{
-				if(image!=_image || frameIndex!=_frameIndex)
+				if (image != _image || frameIndex != _frameIndex)
 				{
-					if(!_image)
+					if (!_image)
 					{
-						image=0;
-						frameIndex=0;
+						image = nullptr;
+						frameIndex = 0;
 					}
-					else if(0<=_frameIndex && _frameIndex<_image->GetFrameCount())
+					else if (0 <= _frameIndex)
 					{
-						image=_image;
-						frameIndex=_frameIndex;
+						// do not check frame count because
+						// on remote protocol metadata could have not been loaded yet
+						image = _image;
+						frameIndex = _frameIndex;
 					}
 					InvokeOnElementStateChanged();
 				}
@@ -33913,10 +33965,10 @@ GuiImageFrameElement
 
 			void GuiImageFrameElement::SetAlignments(Alignment horizontal, Alignment vertical)
 			{
-				if(hAlignment!=horizontal || vAlignment!=vertical)
+				if (hAlignment != horizontal || vAlignment != vertical)
 				{
-					hAlignment=horizontal;
-					vAlignment=vertical;
+					hAlignment = horizontal;
+					vAlignment = vertical;
 					InvokeOnElementStateChanged();
 				}
 			}
@@ -33928,9 +33980,9 @@ GuiImageFrameElement
 
 			void GuiImageFrameElement::SetStretch(bool value)
 			{
-				if(stretch!=value)
+				if (stretch != value)
 				{
-					stretch=value;
+					stretch = value;
 					InvokeOnElementStateChanged();
 				}
 			}
@@ -33942,9 +33994,9 @@ GuiImageFrameElement
 
 			void GuiImageFrameElement::SetEnabled(bool value)
 			{
-				if(enabled!=value)
+				if (enabled != value)
 				{
-					enabled=value;
+					enabled = value;
 					InvokeOnElementStateChanged();
 				}
 			}
@@ -36816,7 +36868,33 @@ GuiHostedController::INativeWindowService
 
 			SettingHostedWindowsBeforeRunning();
 			wmManager->needRefresh = true;
-			nativeController->WindowService()->Run(nativeWindow);
+			try
+			{
+				nativeController->WindowService()->Run(nativeWindow);
+			}
+			catch (const Exception& e)
+			{
+				(void)e;
+				DestroyHostedWindowsAfterRunning();
+				throw;
+			}
+			catch (const Error& e)
+			{
+				(void)e;
+				DestroyHostedWindowsAfterRunning();
+				throw;
+			}
+			catch (const unittest::UnitTestAssertError& e)
+			{
+				(void)e;
+				DestroyHostedWindowsAfterRunning();
+				throw;
+			}
+			catch (...)
+			{
+				DestroyHostedWindowsAfterRunning();
+				throw;
+			}
 			CHECK_ERROR((nativeWindow == nullptr) == (mainWindow == nullptr), ERROR_MESSAGE_PREFIX L"Hosted windows should have been destroyed if the native windows is destroyed.");
 			DestroyHostedWindowsAfterRunning();
 #undef ERROR_MESSAGE_PREFIX
@@ -37270,7 +37348,9 @@ GuiHostedWindow
 
 			if (this != controller->mainWindow)
 			{
-				// for main window, the underlying INativeWindow will run the process
+				// when the main window is being closed
+				// the underlying INativeWindow will run the process
+				// so we don't need to worry about it here
 				bool cancel = false;
 				for (auto listener : listeners)
 				{
@@ -38199,7 +38279,9 @@ GuiRemoteController::INativeInputService
 	bool GuiRemoteController::IsKeyPressing(VKEY code)
 	{
 		vint idIsKeyPressing = remoteMessages.RequestIOIsKeyPressing(code);
-		remoteMessages.Submit();
+		bool disconnected = false;
+		remoteMessages.Submit(disconnected);
+		if (disconnected) return false;
 		bool result = remoteMessages.RetrieveIOIsKeyPressing(idIsKeyPressing);
 		return result;
 	}
@@ -38207,7 +38289,9 @@ GuiRemoteController::INativeInputService
 	bool GuiRemoteController::IsKeyToggled(VKEY code)
 	{
 		vint idIsKeyToggled = remoteMessages.RequestIOIsKeyToggled(code);
-		remoteMessages.Submit();
+		bool disconnected = false;
+		remoteMessages.Submit(disconnected);
+		if (disconnected) return false;
 		bool result = remoteMessages.RetrieveIOIsKeyToggled(idIsKeyToggled);
 		return result;
 	}
@@ -38265,7 +38349,9 @@ GuiRemoteController::INativeInputService
 		hotKeyIds.Add(id, entry);
 
 		UpdateGlobalShortcutKey();
-		remoteMessages.Submit();
+		bool disconnected = false;
+		remoteMessages.Submit(disconnected);
+		// there is no result from this request, assuming succeeded
 
 		return id;
 	}
@@ -38280,7 +38366,9 @@ GuiRemoteController::INativeInputService
 		hotKeySet.Remove(entry);
 
 		UpdateGlobalShortcutKey();
-		remoteMessages.Submit();
+		bool disconnected = false;
+		remoteMessages.Submit(disconnected);
+		// there is no result from this request, assuming succeeded
 
 		return true;
 	}
@@ -38390,6 +38478,7 @@ GuiRemoteController::INativeWindowService
 		applicationRunning = true;
 		window->Show();
 		while (RunOneCycle());
+		asyncService.ExecuteAsyncTasks();
 		applicationRunning = false;
 	}
 
@@ -38398,8 +38487,9 @@ GuiRemoteController::INativeWindowService
 		if (!connectionStopped)
 		{
 			remoteProtocol->ProcessRemoteEvents();
-			remoteMessages.Submit();
-			if (timerEnabled)
+			bool disconnected = false;
+			remoteMessages.Submit(disconnected);
+			if (timerEnabled && !disconnected)
 			{
 				callbackService.InvokeGlobalTimer();
 			}
@@ -38417,7 +38507,9 @@ GuiRemoteController (events)
 		UpdateGlobalShortcutKey();
 		vint idGetFontConfig = remoteMessages.RequestControllerGetFontConfig();
 		vint idGetScreenConfig = remoteMessages.RequestControllerGetScreenConfig();
-		remoteMessages.Submit();
+		bool disconnected = false;
+		remoteMessages.Submit(disconnected);
+		if (disconnected) return;
 		remoteFontConfig = remoteMessages.RetrieveControllerGetFontConfig(idGetFontConfig);
 		remoteScreenConfig = remoteMessages.RetrieveControllerGetScreenConfig(idGetScreenConfig);
 		remoteWindow.OnControllerConnect();
@@ -38446,6 +38538,7 @@ GuiRemoteController (events)
 	void GuiRemoteController::OnControllerScreenUpdated(const remoteprotocol::ScreenConfig& arguments)
 	{
 		remoteScreenConfig = arguments;
+		remoteWindow.OnControllerScreenUpdated(arguments);
 	}
 
 /***********************************************************************
@@ -38475,7 +38568,9 @@ GuiRemoteController
 	{
 		imageService.Finalize();
 		remoteMessages.RequestControllerConnectionStopped();
-		remoteMessages.Submit();
+		bool disconnected = false;
+		remoteMessages.Submit(disconnected);
+		// there is no result from this request, assuming succeeded
 	}
 
 /***********************************************************************
@@ -38594,9 +38689,9 @@ GuiRemoteMessages
 	{
 	}
 
-	void GuiRemoteMessages::Submit()
+	void GuiRemoteMessages::Submit(bool& disconnected)
 	{
-		remote->remoteProtocol->Submit();
+		remote->remoteProtocol->Submit(disconnected);
 	}
 
 /***********************************************************************
@@ -38696,7 +38791,10 @@ GuiRemoteEvents (events)
 	{
 		remote->remoteMessages.RequestControllerConnectionEstablished();
 		remote->OnControllerConnect();
-		remote->remoteMessages.Submit();
+		bool disconnected = false;
+		remote->remoteMessages.Submit(disconnected);
+		// there is no result from this request, assuming succeeded
+		// if disconnected, OnControllerDisconnect will be called
 	}
 
 	void GuiRemoteEvents::OnControllerDisconnect()
@@ -38938,7 +39036,9 @@ GuiRemoteGraphicsRenderTarget
 	{
 		CHECK_ERROR(hitTestResults.Count() == 0, L"vl::presentation::elements::GuiRemoteGraphicsRenderTarget::StartRenderingOnNativeWindow()#Internal error: hit test result stack is not cleared.");
 		vint idRendering = remote->remoteMessages.RequestRendererEndRendering();
-		remote->remoteMessages.Submit();
+		bool disconnected = false;
+		remote->remoteMessages.Submit(disconnected);
+		if (disconnected) return RenderTargetFailure::None;
 		auto measuring = remote->remoteMessages.RetrieveRendererEndRendering(idRendering);
 
 		bool minSizeChanged = false;
@@ -39044,6 +39144,13 @@ GuiRemoteGraphicsRenderTarget
 
 		if (arguments.hitTestResult || arguments.cursor)
 		{
+			// GetHitTestResultFromGenerator or GetCursorFromGenerator ensures generator must be a composition
+			auto composition = dynamic_cast<GuiGraphicsComposition*>(generator);
+			if (composition->remoteId == -1)
+			{
+				composition->remoteId = ++usedCompositionIds;
+			}
+			arguments.id = composition->remoteId;
 			arguments.bounds = clipper;
 			arguments.areaClippedBySelf = validArea;
 			remote->remoteMessages.RequestRendererBeginBoundary(arguments);
@@ -39291,6 +39398,8 @@ GuiSolidBorderElementRenderer
 		{
 			id = newRenderTarget->AllocateNewElementId();
 			newRenderTarget->RegisterRenderer(this);
+			updated = true;
+			renderTargetChanged = true;
 		}
 	}
 
@@ -39322,6 +39431,7 @@ GuiSolidBorderElementRenderer
 	void RENDERER_CLASS_TYPE::ResetUpdated()
 	{
 		updated = false;
+		renderTargetChanged = false;
 	}
 
 	RENDERER_TEMPLATE_HEADER
@@ -39612,12 +39722,12 @@ GuiSolidLabelElementRenderer
 			elementFont = GetCurrentController()->ResourceService()->GetDefaultFont();
 		}
 
-		if (fullContent || lastFont != elementFont)
+		if (renderTargetChanged || fullContent || lastFont != elementFont)
 		{
 			arguments.font = elementFont;
 		}
 
-		if (fullContent || lastText != elementText)
+		if (renderTargetChanged || fullContent || lastText != elementText)
 		{
 			arguments.text = elementText;
 		}
@@ -39630,7 +39740,7 @@ GuiSolidLabelElementRenderer
 			TryFetchMinSizeFromCache();
 			if (!needFontHeight)
 			{
-				arguments.measuringRequest = {};
+				arguments.measuringRequest.Reset();
 			}
 		}
 
@@ -39689,9 +39799,9 @@ GuiImageFrameElementRenderer
 	{
 #define ERROR_MESSAGE_PREFIX L"vl::presentation::elements_remoteprotocol::GuiImageFrameElementRenderer::TryFetchMinSizeFromCache()#"
 		auto image = GetRemoteImage();
-		if (image)
+		if (!image || image->status != GuiRemoteGraphicsImage::MetadataStatus::Retrived)
 		{
-			CHECK_ERROR(image->status == GuiRemoteGraphicsImage::MetadataStatus::Retrived, ERROR_MESSAGE_PREFIX L"The expected metadata of an image does not exist.");
+			return;
 		}
 		UpdateMinSizeFromImage(image);
 		needUpdateSize = false;
@@ -39704,13 +39814,24 @@ GuiImageFrameElementRenderer
 		if (image)
 		{
 			needUpdateSize = true;
-			if (fullContent && image->status == GuiRemoteGraphicsImage::MetadataStatus::Retrived)
+			if (fullContent)
 			{
-				image->status = GuiRemoteGraphicsImage::MetadataStatus::Uninitialized;
+				if (fullContent && image->status == GuiRemoteGraphicsImage::MetadataStatus::Retrived)
+				{
+					image->status = GuiRemoteGraphicsImage::MetadataStatus::Uninitialized;
+				}
+			}
+			else
+			{
+				if (image->status == GuiRemoteGraphicsImage::MetadataStatus::Uninitialized)
+				{
+					image->EnsureMetadata();
+				}
 			}
 			if (image->status == GuiRemoteGraphicsImage::MetadataStatus::Retrived)
 			{
 				UpdateMinSizeFromImage(image);
+				renderTargetChanged = false;
 			}
 		}
 
@@ -39745,7 +39866,7 @@ GuiImageFrameElementRenderer
 			arguments.verticalAlignment = ElementVerticalAlignment::Center;
 		}
 
-		if (needUpdateSize && image)
+		if ((renderTargetChanged || needUpdateSize) && image)
 		{
 			arguments.imageCreation = image->GenerateImageCreation();
 		}
@@ -39864,7 +39985,9 @@ GuiRemoteGraphicsImage
 		auto arguments = GenerateImageCreation();
 
 		vint idImageCreated = remote->remoteMessages.RequestImageCreated(arguments);
-		remote->remoteMessages.Submit();
+		bool disconnected = false;
+		remote->remoteMessages.Submit(disconnected);
+		if (disconnected) return;
 		auto imageMetadata = remote->remoteMessages.RetrieveImageCreated(idImageCreated);
 		UpdateFromImageMetadata(imageMetadata);
 	}
@@ -40000,12 +40123,17 @@ GuiRemoteGraphicsImageService
 	{
 	}
 
-	void GuiRemoteGraphicsImageService::OnControllerConnect()
+	void GuiRemoteGraphicsImageService::ResetImageMetadata()
 	{
 		for (auto image : images.Values())
 		{
 			image->status = GuiRemoteGraphicsImage::MetadataStatus::Uninitialized;
 		}
+	}
+
+	void GuiRemoteGraphicsImageService::OnControllerConnect()
+	{
+		ResetImageMetadata();
 	}
 
 	void GuiRemoteGraphicsImageService::OnControllerDisconnect()
@@ -40251,6 +40379,1152 @@ namespace vl::presentation::remoteprotocol
 
 
 /***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEPROTOCOL_CHANNEL_ASYNC.CPP
+***********************************************************************/
+
+namespace vl::presentation::remoteprotocol::channeling
+{
+	using namespace vl::collections;
+
+/***********************************************************************
+GuiRemoteProtocolAsyncChannelSerializerBase
+***********************************************************************/
+
+	void GuiRemoteProtocolAsyncChannelSerializerBase::QueueTask(SpinLock& lock, collections::List<TTaskProc>& tasks, TTaskProc task, EventObject* signalAfterQueue)
+	{
+		SPIN_LOCK(lock)
+		{
+			tasks.Add(task);
+		}
+
+		if (signalAfterQueue)
+		{
+			signalAfterQueue->Signal();
+		}
+	}
+
+	void GuiRemoteProtocolAsyncChannelSerializerBase::QueueTaskAndWait(SpinLock& lock, collections::List<TTaskProc>& tasks, TTaskProc task, EventObject* signalAfterQueue)
+	{
+		auto taskEvent = Ptr(new vl::EventObject);
+		taskEvent->CreateAutoUnsignal(false);
+		auto taskWithEvent = [=]()
+		{
+			task();
+			taskEvent->Signal();
+		};
+
+		QueueTask(lock, tasks, taskWithEvent, signalAfterQueue);
+		taskEvent->Wait();
+	}
+
+	void GuiRemoteProtocolAsyncChannelSerializerBase::FetchTasks(SpinLock& lock, collections::List<TTaskProc>& tasks, collections::List<TTaskProc>& results)
+	{
+		SPIN_LOCK(lock)
+		{
+			results = std::move(tasks);
+		}
+	}
+
+	void GuiRemoteProtocolAsyncChannelSerializerBase::FetchAndExecuteTasks(SpinLock& lock, collections::List<TTaskProc>& tasks)
+	{
+		List<TTaskProc> results;
+		FetchTasks(lock, tasks, results);
+		for (auto&& task : results)
+		{
+			task();
+		}
+	}
+
+	void GuiRemoteProtocolAsyncChannelSerializerBase::FetchAndExecuteChannelTasks()
+	{
+		FetchAndExecuteTasks(channelThreadLock, channelThreadTasks);
+	}
+
+	void GuiRemoteProtocolAsyncChannelSerializerBase::FetchAndExecuteUITasks()
+	{
+		FetchAndExecuteTasks(uiThreadLock, uiThreadTasks);
+	}
+
+	GuiRemoteProtocolAsyncChannelSerializerBase::GuiRemoteProtocolAsyncChannelSerializerBase()
+	{
+	}
+
+	GuiRemoteProtocolAsyncChannelSerializerBase::~GuiRemoteProtocolAsyncChannelSerializerBase()
+	{
+	}
+
+	void GuiRemoteProtocolAsyncChannelSerializerBase::QueueToChannelThread(TTaskProc task, EventObject* signalAfterQueue)
+	{
+		QueueTask(channelThreadLock, channelThreadTasks, task, signalAfterQueue);
+	}
+
+	void GuiRemoteProtocolAsyncChannelSerializerBase::QueueToChannelThreadAndWait(TTaskProc task, EventObject* signalAfterQueue)
+	{
+		QueueTaskAndWait(channelThreadLock, channelThreadTasks, task, signalAfterQueue);
+	}
+
+	void GuiRemoteProtocolAsyncChannelSerializerBase::QueueToUIThread(TTaskProc task, EventObject* signalAfterQueue)
+	{
+		QueueTask(uiThreadLock, uiThreadTasks, task, signalAfterQueue);
+	}
+
+	void GuiRemoteProtocolAsyncChannelSerializerBase::QueueToUIThreadAndWait(TTaskProc task, EventObject* signalAfterQueue)
+	{
+		QueueTaskAndWait(uiThreadLock, uiThreadTasks, task, signalAfterQueue);
+	}
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEPROTOCOL_CHANNEL_JSON.CPP
+***********************************************************************/
+
+namespace vl::presentation::remoteprotocol::channeling
+{
+/***********************************************************************
+ChannelPackageSemantic
+***********************************************************************/
+
+	void JsonChannelPack(ChannelPackageSemantic semantic, vint id, const WString& name, Ptr<glr::json::JsonNode> arguments, Ptr<glr::json::JsonObject>& package)
+	{
+		package = Ptr(new glr::json::JsonObject);
+
+		{
+			auto value = Ptr(new glr::json::JsonString);
+			switch (semantic)
+			{
+			case ChannelPackageSemantic::Message:
+				value->content.value = WString::Unmanaged(L"Message");
+				break;
+			case ChannelPackageSemantic::Request:
+				value->content.value = WString::Unmanaged(L"Request");
+				break;
+			case ChannelPackageSemantic::Response:
+				value->content.value = WString::Unmanaged(L"Response");
+				break;
+			case ChannelPackageSemantic::Event:
+				value->content.value = WString::Unmanaged(L"Event");
+				break;
+			default:
+				value->content.value = WString::Unmanaged(L"Unknown");
+			}
+
+			auto field = Ptr(new glr::json::JsonObjectField);
+			field->name.value = WString::Unmanaged(L"semantic");
+			field->value = value;
+			package->fields.Add(field);
+		}
+
+		if (id != -1)
+		{
+			auto value = Ptr(new glr::json::JsonNumber);
+			value->content.value = itow(id);
+
+			auto field = Ptr(new glr::json::JsonObjectField);
+			field->name.value = WString::Unmanaged(L"id");
+			field->value = value;
+			package->fields.Add(field);
+		}
+
+		{
+			auto value = Ptr(new glr::json::JsonString);
+			value->content.value = name;
+
+			auto field = Ptr(new glr::json::JsonObjectField);
+			field->name.value = WString::Unmanaged(L"name");
+			field->value = value;
+			package->fields.Add(field);
+		}
+
+		if (arguments)
+		{
+			auto field = Ptr(new glr::json::JsonObjectField);
+			field->name.value = WString::Unmanaged(L"arguments");
+			field->value = arguments;
+			package->fields.Add(field);
+		}
+	}
+
+	void JsonChannelUnpack(Ptr<glr::json::JsonObject> package, ChannelPackageSemantic& semantic, vint& id, WString& name, Ptr<glr::json::JsonNode>& arguments)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::channeling::JsonChannelPack(Ptr<JsonObject>, ProtocolSemantic&, vint&, WString&, Ptr<JsonNode>&)#"
+
+		for (auto&& field : package->fields)
+		{
+			if (field->name.value == L"semantic")
+			{
+				auto value = field->value.Cast<glr::json::JsonString>();
+				CHECK_ERROR(value, ERROR_MESSAGE_PREFIX L"The semantic field should be a string.");
+
+				if (value->content.value == L"Message")
+				{
+					semantic = ChannelPackageSemantic::Message;
+				}
+				else if (value->content.value == L"Request")
+				{
+					semantic = ChannelPackageSemantic::Request;
+				}
+				else if (value->content.value == L"Response")
+				{
+					semantic = ChannelPackageSemantic::Response;
+				}
+				else if (value->content.value == L"Event")
+				{
+					semantic = ChannelPackageSemantic::Event;
+				}
+			}
+			else if (field->name.value == L"id")
+			{
+				auto value = field->value.Cast<glr::json::JsonNumber>();
+				CHECK_ERROR(value, ERROR_MESSAGE_PREFIX L"The id field should be a number.");
+
+				id = wtoi(value->content.value);
+			}
+			else if (field->name.value == L"name")
+			{
+				auto value = field->value.Cast<glr::json::JsonString>();
+				CHECK_ERROR(value, ERROR_MESSAGE_PREFIX L"The name field should be a string.");
+
+				name = value->content.value;
+			}
+			else if (field->name.value == L"arguments")
+			{
+				arguments = field->value;
+			}
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void ChannelPackageSemanticUnpack(Ptr<glr::json::JsonObject> package, ChannelPackageSemantic& semantic, vint& id, WString& name)
+	{
+		Ptr<glr::json::JsonNode> arguments;
+		JsonChannelUnpack(package, semantic, id, name, arguments);
+	}
+
+/***********************************************************************
+GuiRemoteProtocolFromJsonChannel
+***********************************************************************/
+
+	void GuiRemoteProtocolFromJsonChannel::OnReceive(const Ptr<glr::json::JsonObject>& package)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::channeling::GuiRemoteProtocolFromJsonChannel::OnReceive(const Ptr<JsonNode>&)#"
+
+		auto semantic = ChannelPackageSemantic::Unknown;
+		vint id = -1;
+		WString name;
+		Ptr<glr::json::JsonNode> jsonArguments;
+		JsonChannelUnpack(package, semantic, id, name, jsonArguments);
+
+#define EVENT_NOREQ(NAME, REQUEST)\
+		if (name == L ## #NAME)\
+		{\
+			events->On ## NAME();\
+		} else\
+
+#define EVENT_REQ(NAME, REQUEST)\
+		if (name == L ## #NAME)\
+		{\
+			REQUEST arguments;\
+			ConvertJsonToCustomType(jsonArguments, arguments);\
+			events->On ## NAME(arguments);\
+		} else\
+
+#define EVENT_HANDLER(NAME, REQUEST, REQTAG, ...)	EVENT_ ## REQTAG(NAME, REQUEST)
+		if (semantic == ChannelPackageSemantic::Event)
+		{
+			GACUI_REMOTEPROTOCOL_EVENTS(EVENT_HANDLER)
+			{
+				CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unrecognized event name");
+			}
+		}
+		else
+#undef EVENT_HANDLER
+#undef EVENT_REQ
+#undef EVENT_NOREQ
+
+#define MESSAGE_NORES(NAME, RESPONSE)
+#define MESSAGE_RES(NAME, RESPONSE)\
+		if (name == L ## #NAME)\
+		{\
+			RESPONSE arguments;\
+			ConvertJsonToCustomType(jsonArguments, arguments);\
+			events->Respond ## NAME(id, arguments);\
+		} else\
+
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
+		if (semantic == ChannelPackageSemantic::Response)
+		{
+			GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+			{
+				CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unrecognized response name");
+			}
+		} else
+#undef MESSAGE_HANDLER
+#undef MESSAGE_RES
+#undef MESSAGE_NORES
+
+		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unrecognized category name");
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+#define MESSAGE_NOREQ_NORES(NAME, REQUEST, RESPONSE)\
+	void GuiRemoteProtocolFromJsonChannel::Request ## NAME()\
+	{\
+		Ptr<glr::json::JsonObject> package;\
+		JsonChannelPack(ChannelPackageSemantic::Message, -1, WString::Unmanaged(L ## #NAME), {}, package);\
+		channel->Write(package);\
+	}\
+
+#define MESSAGE_NOREQ_RES(NAME, REQUEST, RESPONSE)\
+	void GuiRemoteProtocolFromJsonChannel::Request ## NAME(vint id)\
+	{\
+		Ptr<glr::json::JsonObject> package;\
+		JsonChannelPack(ChannelPackageSemantic::Request, id, WString::Unmanaged(L ## #NAME), {}, package);\
+		channel->Write(package);\
+	}\
+
+#define MESSAGE_REQ_NORES(NAME, REQUEST, RESPONSE)\
+	void GuiRemoteProtocolFromJsonChannel::Request ## NAME(const REQUEST& arguments)\
+	{\
+		Ptr<glr::json::JsonObject> package;\
+		JsonChannelPack(ChannelPackageSemantic::Message, -1, WString::Unmanaged(L ## #NAME), ConvertCustomTypeToJson(arguments), package);\
+		channel->Write(package);\
+	}\
+
+#define MESSAGE_REQ_RES(NAME, REQUEST, RESPONSE)\
+	void GuiRemoteProtocolFromJsonChannel::Request ## NAME(vint id, const REQUEST& arguments)\
+	{\
+		Ptr<glr::json::JsonObject> package;\
+		JsonChannelPack(ChannelPackageSemantic::Request, id, WString::Unmanaged(L ## #NAME), ConvertCustomTypeToJson(arguments), package);\
+		channel->Write(package);\
+	}\
+
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## REQTAG ## _ ## RESTAG(NAME, REQUEST, RESPONSE)
+	GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_REQ_RES
+#undef MESSAGE_REQ_NORES
+#undef MESSAGE_NOREQ_RES
+#undef MESSAGE_NOREQ_NORES
+
+	GuiRemoteProtocolFromJsonChannel::GuiRemoteProtocolFromJsonChannel(IJsonChannel* _channel)
+		: channel(_channel)
+	{
+	}
+
+	GuiRemoteProtocolFromJsonChannel::~GuiRemoteProtocolFromJsonChannel()
+	{
+	}
+
+	void GuiRemoteProtocolFromJsonChannel::Initialize(IGuiRemoteProtocolEvents* _events)
+	{
+		events = _events;
+		channel->Initialize(this);
+	}
+
+	WString GuiRemoteProtocolFromJsonChannel::GetExecutablePath()
+	{
+		return channel->GetExecutablePath();
+	}
+	
+	void GuiRemoteProtocolFromJsonChannel::Submit(bool& disconnected)
+	{
+		channel->Submit(disconnected);
+	}
+
+	void GuiRemoteProtocolFromJsonChannel::ProcessRemoteEvents()
+	{
+		channel->ProcessRemoteEvents();
+	}
+
+/***********************************************************************
+GuiRemoteJsonChannelFromProtocol
+***********************************************************************/
+
+#define EVENT_NOREQ(NAME, REQUEST)\
+	void GuiRemoteJsonChannelFromProtocol::On ## NAME()\
+	{\
+		Ptr<glr::json::JsonObject> package;\
+		JsonChannelPack(ChannelPackageSemantic::Event, -1, WString::Unmanaged(L ## #NAME), {}, package);\
+		receiver->OnReceive(package);\
+	}\
+
+#define EVENT_REQ(NAME, REQUEST)\
+	void GuiRemoteJsonChannelFromProtocol::On ## NAME(const REQUEST& arguments)\
+	{\
+		Ptr<glr::json::JsonObject> package;\
+		JsonChannelPack(ChannelPackageSemantic::Event, -1, WString::Unmanaged(L ## #NAME), ConvertCustomTypeToJson(arguments), package);\
+		receiver->OnReceive(package);\
+	}\
+
+#define EVENT_HANDLER(NAME, REQUEST, REQTAG, ...)						EVENT_ ## REQTAG(NAME, REQUEST)
+	GACUI_REMOTEPROTOCOL_EVENTS(EVENT_HANDLER)
+#undef EVENT_HANDLER
+#undef EVENT_REQ
+#undef EVENT_NOREQ
+
+#define MESSAGE_NORES(NAME, RESPONSE)
+#define MESSAGE_RES(NAME, RESPONSE)\
+	void GuiRemoteJsonChannelFromProtocol::Respond ## NAME(vint id, const RESPONSE& arguments)\
+	{\
+		Ptr<glr::json::JsonObject> package;\
+		JsonChannelPack(ChannelPackageSemantic::Response, id, WString::Unmanaged(L ## #NAME), ConvertCustomTypeToJson(arguments), package);\
+		receiver->OnReceive(package);\
+	}\
+
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_RES
+#undef MESSAGE_NORES
+
+	GuiRemoteJsonChannelFromProtocol::GuiRemoteJsonChannelFromProtocol(IGuiRemoteProtocol* _protocol)
+		: protocol(_protocol)
+	{
+	}
+
+	GuiRemoteJsonChannelFromProtocol::~GuiRemoteJsonChannelFromProtocol()
+	{
+	}
+
+	void GuiRemoteJsonChannelFromProtocol::Initialize(IJsonChannelReceiver* _receiver)
+	{
+		receiver = _receiver;
+		protocol->Initialize(this);
+	}
+
+	IJsonChannelReceiver* GuiRemoteJsonChannelFromProtocol::GetReceiver()
+	{
+		return receiver;
+	}
+
+	void GuiRemoteJsonChannelFromProtocol::Write(const Ptr<glr::json::JsonObject>& package)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::channeling::GuiRemoteJsonChannelFromProtocol::Write(const Ptr<JsonNode>&)#"
+
+		auto semantic = ChannelPackageSemantic::Unknown;
+		vint id = -1;
+		WString name;
+		Ptr<glr::json::JsonNode> jsonArguments;
+		JsonChannelUnpack(package, semantic, id, name, jsonArguments);
+
+#define MESSAGE_NOREQ_NORES(NAME, REQUEST, RESPONSE)\
+		if (name == L ## #NAME)\
+		{\
+			protocol->Request ## NAME();\
+		} else\
+
+#define MESSAGE_NOREQ_RES(NAME, REQUEST, RESPONSE)\
+		if (name == L ## #NAME)\
+		{\
+			protocol->Request ## NAME(id);\
+		} else\
+
+#define MESSAGE_REQ_NORES(NAME, REQUEST, RESPONSE)\
+		if (name == L ## #NAME)\
+		{\
+			REQUEST arguments;\
+			ConvertJsonToCustomType(jsonArguments, arguments);\
+			protocol->Request ## NAME(arguments);\
+		} else\
+
+#define MESSAGE_REQ_RES(NAME, REQUEST, RESPONSE)\
+		if (name == L ## #NAME)\
+		{\
+			REQUEST arguments;\
+			ConvertJsonToCustomType(jsonArguments, arguments);\
+			protocol->Request ## NAME(id, arguments);\
+		} else\
+
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## REQTAG ## _ ## RESTAG(NAME, REQUEST, RESPONSE)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+		{
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unrecognized request name");
+		}
+#undef MESSAGE_HANDLER
+#undef MESSAGE_REQ_RES
+#undef MESSAGE_REQ_NORES
+#undef MESSAGE_NOREQ_RES
+#undef MESSAGE_NOREQ_NORES
+
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	WString GuiRemoteJsonChannelFromProtocol::GetExecutablePath()
+	{
+		return protocol->GetExecutablePath();
+	}
+
+	void GuiRemoteJsonChannelFromProtocol::Submit(bool& disconnected)
+	{
+		protocol->Submit(disconnected);
+	}
+
+	void GuiRemoteJsonChannelFromProtocol::ProcessRemoteEvents()
+	{
+		protocol->ProcessRemoteEvents();
+	}
+
+/***********************************************************************
+JsonToStringSerializer
+***********************************************************************/
+
+	void JsonToStringSerializer::Serialize(Ptr<glr::json::Parser> parser, const SourceType& source, DestType& dest)
+	{
+		glr::json::JsonFormatting formatting;
+		formatting.spaceAfterColon = false;
+		formatting.spaceAfterComma = false;
+		formatting.crlf = false;
+		formatting.compact = true;
+		dest = glr::json::JsonToString(source, formatting);
+	}
+
+	void JsonToStringSerializer::Deserialize(Ptr<glr::json::Parser> parser, const DestType& source, SourceType& dest)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::channeling::GuiRemoteJsonChannelFromProtocol::Write(const Ptr<JsonNode>&)#"
+		auto value = glr::json::JsonParse(source, *parser.Obj());
+		dest = value.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(dest, ERROR_MESSAGE_PREFIX L"JSON parssing between the channel should be JsonObject.");
+#undef ERROR_MESSAGE_PREFIX
+	}
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEPROTOCOL_DOMDIFF.CPP
+***********************************************************************/
+
+namespace vl::presentation::remoteprotocol
+{
+
+/***********************************************************************
+GuiRemoteEventDomDiffConverter
+***********************************************************************/
+
+	GuiRemoteEventDomDiffConverter::GuiRemoteEventDomDiffConverter()
+	{
+	}
+
+	GuiRemoteEventDomDiffConverter::~GuiRemoteEventDomDiffConverter()
+	{
+	}
+
+	void GuiRemoteEventDomDiffConverter::OnControllerConnect()
+	{
+		lastDom = {};
+		TBase::OnControllerConnect();
+	}
+
+/***********************************************************************
+GuiRemoteProtocolDomDiffConverter
+***********************************************************************/
+
+	GuiRemoteProtocolDomDiffConverter::GuiRemoteProtocolDomDiffConverter(IGuiRemoteProtocol* _protocol)
+		: TBase(_protocol)
+	{
+	}
+
+	GuiRemoteProtocolDomDiffConverter::~GuiRemoteProtocolDomDiffConverter()
+	{
+	}
+
+	void GuiRemoteProtocolDomDiffConverter::RequestRendererBeginRendering(const remoteprotocol::ElementBeginRendering& arguments)
+	{
+		renderingDomBuilder.RequestRendererBeginRendering();
+		TBase::RequestRendererBeginRendering(arguments);
+	}
+
+	void GuiRemoteProtocolDomDiffConverter::RequestRendererEndRendering(vint id)
+	{
+		auto dom = renderingDomBuilder.RequestRendererEndRendering();
+		DomIndex domIndex;
+		BuildDomIndex(dom, domIndex);
+
+		if (eventCombinator.lastDom)
+		{
+			RenderingDom_DiffsInOrder diffs;
+			DiffDom(eventCombinator.lastDom, eventCombinator.lastDomIndex, dom, domIndex, diffs);
+			targetProtocol->RequestRendererRenderDomDiff(diffs);
+		}
+		else
+		{
+			targetProtocol->RequestRendererRenderDom(dom);
+		}
+
+		eventCombinator.lastDom = dom;
+		eventCombinator.lastDomIndex = std::move(domIndex);
+		TBase::RequestRendererEndRendering(id);
+	}
+
+	void GuiRemoteProtocolDomDiffConverter::RequestRendererBeginBoundary(const remoteprotocol::ElementBoundary& arguments)
+	{
+		renderingDomBuilder.RequestRendererBeginBoundary(arguments);
+	}
+
+	void GuiRemoteProtocolDomDiffConverter::RequestRendererEndBoundary()
+	{
+		renderingDomBuilder.RequestRendererEndBoundary();
+	}
+
+	void GuiRemoteProtocolDomDiffConverter::RequestRendererRenderElement(const remoteprotocol::ElementRendering& arguments)
+	{
+		renderingDomBuilder.RequestRendererRenderElement(arguments);
+	}
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEPROTOCOL_FILTER.CPP
+***********************************************************************/
+
+namespace vl::presentation::remoteprotocol::repeatfiltering
+{
+
+/***********************************************************************
+GuiRemoteEventFilter
+***********************************************************************/
+
+	GuiRemoteEventFilter::GuiRemoteEventFilter()
+	{
+	}
+
+	GuiRemoteEventFilter::~GuiRemoteEventFilter()
+	{
+	}
+
+	void GuiRemoteEventFilter::ProcessResponses()
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::repeatfiltering::GuiRemoteProtocolFilter::ProcessResponses()#"
+		for (auto&& response : filteredResponses)
+		{
+#define MESSAGE_NORES(NAME, RESPONSE)
+#define MESSAGE_RES(NAME, RESPONSE)\
+			case FilteredResponseNames::NAME:\
+				targetEvents->Respond ## NAME(response.id, response.arguments.Get<RESPONSE>());\
+				break;\
+	
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
+			switch (response.name)
+			{
+			GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+			default:
+				CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unrecognized response.");
+			}
+#undef MESSAGE_HANDLER
+#undef MESSAGE_RES
+#undef MESSAGE_NORES
+		}
+
+		CHECK_ERROR(responseIds.Count() == 0, ERROR_MESSAGE_PREFIX L"Messages sending to IGuiRemoteProtocol should be all responded.");
+		filteredResponses.Clear();
+#undef ERROR_MESSAGE_PREFIX
+	}
+	
+	void GuiRemoteEventFilter::ProcessEvents()
+	{
+#define EVENT_NODROP(NAME)
+#define EVENT_DROPREP(NAME)									lastDropRepeatEvent ## NAME = -1;
+#define EVENT_DROPCON(NAME)									lastDropConsecutiveEvent ## NAME = -1;
+#define EVENT_HANDLER(NAME, REQUEST, REQTAG, DROPTAG, ...)	EVENT_ ## DROPTAG(NAME)
+		GACUI_REMOTEPROTOCOL_EVENTS(EVENT_HANDLER)
+#undef EVENT_HANDLER
+#undef EVENT_DROPCON
+#undef EVENT_DROPREP
+#undef EVENT_NODROP
+	
+		collections::List<FilteredEvent> events(std::move(filteredEvents));
+	
+		for (auto&& event : events)
+		{
+			if (event.dropped)
+			{
+				continue;
+			}
+	
+#define EVENT_NOREQ(NAME, REQUEST)\
+			case FilteredEventNames::NAME:\
+				targetEvents->On ## NAME();\
+				break;\
+	
+#define EVENT_REQ(NAME, REQUEST)\
+			case FilteredEventNames::NAME:\
+				targetEvents->On ## NAME(event.arguments.Get<REQUEST>());\
+				break;\
+	
+#define EVENT_HANDLER(NAME, REQUEST, REQTAG, ...)	EVENT_ ## REQTAG(NAME, REQUEST)
+			switch (event.name)
+			{
+			GACUI_REMOTEPROTOCOL_EVENTS(EVENT_HANDLER)
+			default:
+				CHECK_FAIL(L"vl::presentation::remoteprotocol::GuiRemoteEventFilter::ProcessEvents()#Unrecognized event.");
+			}
+#undef EVENT_HANDLER
+#undef EVENT_REQ
+#undef EVENT_NOREQ
+		}
+	}
+
+	// responses
+
+#define MESSAGE_NORES(NAME, RESPONSE)
+#define MESSAGE_RES(NAME, RESPONSE)\
+	void GuiRemoteEventFilter::Respond ## NAME(vint id, const RESPONSE& arguments)\
+	{\
+		CHECK_ERROR(\
+			responseIds[id] == FilteredResponseNames::NAME,\
+			L"vl::presentation::remoteprotocol::GuiRemoteEventFilter::"\
+			L"Respond" L ## #NAME L"()#"\
+			L"Messages sending to IGuiRemoteProtocol should be responded by calling the correct function.");\
+		responseIds.Remove(id);\
+		FilteredResponse response;\
+		response.id = id;\
+		response.name = FilteredResponseNames::NAME;\
+		response.arguments = arguments;\
+		filteredResponses.Add(response);\
+	}\
+	
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_RES
+#undef MESSAGE_NORES
+
+	// events
+	
+#define EVENT_NODROP(NAME)
+	
+#define EVENT_DROPREP(NAME)\
+		if (lastDropRepeatEvent ## NAME != -1)\
+		{\
+			filteredEvents[lastDropRepeatEvent ## NAME].dropped = true;\
+		}\
+		lastDropRepeatEvent ## NAME = filteredEvents.Count() - 1\
+	
+#define EVENT_DROPCON(NAME)\
+		if (lastDropConsecutiveEvent ## NAME != -1 && lastDropConsecutiveEvent ## NAME == filteredEvents.Count() - 1)\
+		{\
+			filteredEvents[lastDropConsecutiveEvent ## NAME].dropped = true;\
+		}\
+		lastDropConsecutiveEvent ## NAME = filteredEvents.Count() - 1\
+	
+#define EVENT_NOREQ(NAME, REQUEST, DROPTAG)\
+	void GuiRemoteEventFilter::On ## NAME()\
+	{\
+		if (submitting)\
+		{\
+			EVENT_ ## DROPTAG(NAME);\
+			FilteredEvent event;\
+			event.name = FilteredEventNames::NAME;\
+			filteredEvents.Add(event);\
+		}\
+		else\
+		{\
+			targetEvents->On ## NAME();\
+		}\
+	}\
+	
+#define EVENT_REQ(NAME, REQUEST, DROPTAG)\
+	void GuiRemoteEventFilter::On ## NAME(const REQUEST& arguments)\
+	{\
+		if (submitting)\
+		{\
+			EVENT_ ## DROPTAG(NAME);\
+			FilteredEvent event;\
+			event.name = FilteredEventNames::NAME;\
+			event.arguments = arguments;\
+			filteredEvents.Add(event);\
+		}\
+		else\
+		{\
+			targetEvents->On ## NAME(arguments);\
+		}\
+	}\
+	
+#define EVENT_HANDLER(NAME, REQUEST, REQTAG, DROPTAG, ...)	EVENT_ ## REQTAG(NAME, REQUEST, DROPTAG)
+	GACUI_REMOTEPROTOCOL_EVENTS(EVENT_HANDLER)
+#undef EVENT_HANDLER
+#undef EVENT_REQ
+#undef EVENT_NOREQ
+#undef EVENT_DROPCON
+#undef EVENT_DROPREP
+#undef EVENT_NOREP
+
+/***********************************************************************
+GuiRemoteProtocolFilter
+***********************************************************************/
+
+	void GuiRemoteProtocolFilter::ProcessRequests()
+	{
+#define MESSAGE_NODROP(NAME)
+#define MESSAGE_DROPREP(NAME)												lastDropRepeatRequest ## NAME = -1;
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, DROPTAG)	MESSAGE_ ## DROPTAG(NAME)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_DROPREP
+#undef MESSAGE_NODROP
+	
+		for (auto&& request : filteredRequests)
+		{
+			CHECK_ERROR(\
+				!request.dropped || request.id == -1,\
+				L"vl::presentation::remoteprotocol::GuiRemoteProtocolFilter::ProcessRequests()#"\
+				L"Messages with id cannot be dropped.");\
+			if (request.dropped)
+			{
+				continue;
+			}
+	
+#define MESSAGE_NOREQ_NORES(NAME, REQUEST, RESPONSE)\
+			case FilteredRequestNames::NAME:\
+				targetProtocol->Request ## NAME();\
+				break;\
+	
+#define MESSAGE_NOREQ_RES(NAME, REQUEST, RESPONSE)\
+			case FilteredRequestNames::NAME:\
+				targetProtocol->Request ## NAME(request.id);\
+				break;\
+	
+#define MESSAGE_REQ_NORES(NAME, REQUEST, RESPONSE)\
+			case FilteredRequestNames::NAME:\
+				targetProtocol->Request ## NAME(request.arguments.Get<REQUEST>());\
+				break;\
+	
+#define MESSAGE_REQ_RES(NAME, REQUEST, RESPONSE)\
+			case FilteredRequestNames::NAME:\
+				targetProtocol->Request ## NAME(request.id, request.arguments.Get<REQUEST>());\
+				break;\
+	
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## REQTAG ## _ ## RESTAG(NAME, REQUEST, RESPONSE)
+			switch (request.name)
+			{
+			GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+			default:
+				CHECK_FAIL(L"vl::presentation::remoteprotocol::GuiRemoteProtocolFilter::ProcessRequests()#Unrecognized request.");
+			}
+#undef MESSAGE_HANDLER
+#undef MESSAGE_REQ_RES
+#undef MESSAGE_REQ_NORES
+#undef MESSAGE_NOREQ_RES
+#undef MESSAGE_NOREQ_NORES
+		}
+	
+		filteredRequests.Clear();
+	}
+
+	GuiRemoteProtocolFilter::GuiRemoteProtocolFilter(IGuiRemoteProtocol* _protocol)
+		: GuiRemoteProtocolCombinator<GuiRemoteEventFilter>(_protocol)
+	{
+	}
+
+	GuiRemoteProtocolFilter::~GuiRemoteProtocolFilter()
+	{
+	}
+	
+	// messages
+	
+#define MESSAGE_NODROP(NAME)
+	
+#define MESSAGE_DROPREP(NAME)\
+		if (lastDropRepeatRequest ## NAME != -1)\
+		{\
+			filteredRequests[lastDropRepeatRequest ## NAME].dropped = true;\
+		}\
+		lastDropRepeatRequest ## NAME = filteredRequests.Count()\
+	
+#define MESSAGE_NOREQ_NORES(NAME, REQUEST, RESPONSE, DROPTAG)\
+	void GuiRemoteProtocolFilter::Request ## NAME()\
+	{\
+		MESSAGE_ ## DROPTAG(NAME);\
+		FilteredRequest request;\
+		request.name = FilteredRequestNames::NAME;\
+		filteredRequests.Add(request);\
+	}\
+	
+#define MESSAGE_NOREQ_RES(NAME, REQUEST, RESPONSE, DROPTAG)\
+	void GuiRemoteProtocolFilter::Request ## NAME(vint id)\
+	{\
+		MESSAGE_ ## DROPTAG(NAME);\
+		CHECK_ERROR(\
+			lastRequestId < id,\
+			L"vl::presentation::remoteprotocol::GuiRemoteProtocolFilter::"\
+			L"Request" L ## #NAME L"()#"\
+			L"Id of a message sending to IGuiRemoteProtocol should be increasing.");\
+		lastRequestId = id;\
+		FilteredRequest request;\
+		request.id = id;\
+		request.name = FilteredRequestNames::NAME;\
+		filteredRequests.Add(request);\
+		eventCombinator.responseIds.Add(id, FilteredResponseNames::NAME);\
+	}\
+	
+#define MESSAGE_REQ_NORES(NAME, REQUEST, RESPONSE, DROPTAG)\
+	void GuiRemoteProtocolFilter::Request ## NAME(const REQUEST& arguments)\
+	{\
+		MESSAGE_ ## DROPTAG(NAME);\
+		FilteredRequest request;\
+		request.name = FilteredRequestNames::NAME;\
+		request.arguments = arguments;\
+		filteredRequests.Add(request);\
+	}\
+	
+#define MESSAGE_REQ_RES(NAME, REQUEST, RESPONSE, DROPTAG)\
+	void GuiRemoteProtocolFilter::Request ## NAME(vint id, const REQUEST& arguments)\
+	{\
+		MESSAGE_ ## DROPTAG(NAME);\
+		CHECK_ERROR(\
+			lastRequestId < id,\
+			L"vl::presentation::remoteprotocol::GuiRemoteProtocolFilter::"\
+			L"Request" L ## #NAME L"()#"\
+			L"Id of a message sending to IGuiRemoteProtocol should be increasing.");\
+		lastRequestId = id;\
+		FilteredRequest request;\
+		request.id = id;\
+		request.name = FilteredRequestNames::NAME;\
+		request.arguments = arguments;\
+		filteredRequests.Add(request);\
+		eventCombinator.responseIds.Add(id, FilteredResponseNames::NAME);\
+	}\
+	
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, DROPTAG, ...)	MESSAGE_ ## REQTAG ## _ ## RESTAG(NAME, REQUEST, RESPONSE, DROPTAG)
+	GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_REQ_RES
+#undef MESSAGE_REQ_NORES
+#undef MESSAGE_NOREQ_RES
+#undef MESSAGE_NOREQ_NORES
+#undef MESSAGE_DROPREP
+#undef MESSAGE_NODROP
+	
+	// protocol
+	
+	void GuiRemoteProtocolFilter::Initialize(IGuiRemoteProtocolEvents* _events)
+	{
+		if (auto verifierProtocol = dynamic_cast<GuiRemoteProtocolFilterVerifier*>(targetProtocol))
+		{
+			verifierProtocol->targetProtocol->Initialize(&eventCombinator);
+			eventCombinator.targetEvents = &verifierProtocol->eventCombinator;
+			verifierProtocol->eventCombinator.targetEvents = _events;
+		}
+		else
+		{
+			GuiRemoteProtocolCombinator<GuiRemoteEventFilter>::Initialize(_events);
+		}
+	}
+	
+	void GuiRemoteProtocolFilter::Submit(bool& disconnected)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::repeatfiltering::GuiRemoteProtocolFilter::Submit()#"
+		CHECK_ERROR(!eventCombinator.submitting, ERROR_MESSAGE_PREFIX L"This function is not allowed to be called recursively.");
+		eventCombinator.submitting = true;
+		ProcessRequests();
+		GuiRemoteProtocolCombinator<GuiRemoteEventFilter>::Submit(disconnected);
+		if (disconnected)
+		{
+			eventCombinator.responseIds.Clear();
+		}
+		else
+		{
+			eventCombinator.ProcessResponses();
+		}
+		eventCombinator.submitting = false;
+		eventCombinator.ProcessEvents();
+#undef ERROR_MESSAGE_PREFIX
+	}
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\GUIREMOTEPROTOCOL_FILTERVERIFIER.CPP
+***********************************************************************/
+
+namespace vl::presentation::remoteprotocol::repeatfiltering
+{
+/***********************************************************************
+GuiRemoteEventFilterVerifier
+***********************************************************************/
+
+	GuiRemoteEventFilterVerifier::GuiRemoteEventFilterVerifier()
+	{
+	}
+
+	GuiRemoteEventFilterVerifier::~GuiRemoteEventFilterVerifier()
+	{
+	}
+
+	void GuiRemoteEventFilterVerifier::ClearDropRepeatMasks()
+	{
+#define EVENT_NODROP(NAME)
+#define EVENT_DROPREP(NAME)									lastDropRepeatEvent ## NAME = false;
+#define EVENT_DROPCON(NAME)
+#define EVENT_HANDLER(NAME, REQUEST, REQTAG, DROPTAG, ...)	EVENT_ ## DROPTAG(NAME)
+		GACUI_REMOTEPROTOCOL_EVENTS(EVENT_HANDLER)
+#undef EVENT_HANDLER
+#undef EVENT_DROPCON
+#undef EVENT_DROPREP
+#undef EVENT_NODROP
+	}
+
+	void GuiRemoteEventFilterVerifier::ClearDropConsecutiveMasks()
+	{
+#define EVENT_NODROP(NAME)
+#define EVENT_DROPREP(NAME)
+#define EVENT_DROPCON(NAME)									lastDropConsecutiveEvent ## NAME = false;
+#define EVENT_HANDLER(NAME, REQUEST, REQTAG, DROPTAG, ...)	EVENT_ ## DROPTAG(NAME)
+		GACUI_REMOTEPROTOCOL_EVENTS(EVENT_HANDLER)
+#undef EVENT_HANDLER
+#undef EVENT_DROPCON
+#undef EVENT_DROPREP
+#undef EVENT_NODROP
+	}
+
+	// responses
+
+#define MESSAGE_NORES(NAME, RESPONSE)
+#define MESSAGE_RES(NAME, RESPONSE)\
+	void GuiRemoteEventFilterVerifier::Respond ## NAME(vint id, const RESPONSE& arguments)\
+	{\
+		targetEvents->Respond ## NAME(id, arguments);\
+	}\
+	
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, ...)	MESSAGE_ ## RESTAG(NAME, RESPONSE)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_RES
+#undef MESSAGE_NORES
+
+	// events
+	
+#define EVENT_NODROP(NAME)
+	
+#define EVENT_DROPREP(NAME)\
+		CHECK_ERROR(!lastDropRepeatEvent ## NAME, L"vl::presentation::remoteprotocol::GuiRemoteEventFilterVerifier::On" L ## #NAME L"(...)#[@DropRepeat] event repeated.");\
+		lastDropRepeatEvent ## NAME = true;\
+	
+#define EVENT_DROPCON(NAME)\
+		CHECK_ERROR(!lastDropConsecutiveEvent ## NAME, L"vl::presentation::remoteprotocol::GuiRemoteEventFilterVerifier::On" L ## #NAME L"(...)#[@DropConsecutive] event repeated.");\
+		ClearDropConsecutiveMasks();\
+		lastDropConsecutiveEvent ## NAME = true;\
+	
+#define EVENT_NOREQ(NAME, REQUEST, DROPTAG)\
+	void GuiRemoteEventFilterVerifier::On ## NAME()\
+	{\
+		if (submitting)\
+		{\
+			EVENT_ ## DROPTAG(NAME);\
+			targetEvents->On ## NAME();\
+		}\
+		else\
+		{\
+			targetEvents->On ## NAME();\
+		}\
+	}\
+	
+#define EVENT_REQ(NAME, REQUEST, DROPTAG)\
+	void GuiRemoteEventFilterVerifier::On ## NAME(const REQUEST& arguments)\
+	{\
+		if (submitting)\
+		{\
+			EVENT_ ## DROPTAG(NAME);\
+			targetEvents->On ## NAME(arguments);\
+		}\
+		else\
+		{\
+			targetEvents->On ## NAME(arguments);\
+		}\
+	}\
+	
+#define EVENT_HANDLER(NAME, REQUEST, REQTAG, DROPTAG, ...)	EVENT_ ## REQTAG(NAME, REQUEST, DROPTAG)
+	GACUI_REMOTEPROTOCOL_EVENTS(EVENT_HANDLER)
+#undef EVENT_HANDLER
+#undef EVENT_REQ
+#undef EVENT_NOREQ
+#undef EVENT_DROPCON
+#undef EVENT_DROPREP
+#undef EVENT_NOREP
+
+/***********************************************************************
+GuiRemoteProtocolFilterVerifier
+***********************************************************************/
+
+	void GuiRemoteProtocolFilterVerifier::ClearDropRepeatMasks()
+	{
+#define MESSAGE_NODROP(NAME)
+#define MESSAGE_DROPREP(NAME)												lastDropRepeatRequest ## NAME = false;
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, DROPTAG)	MESSAGE_ ## DROPTAG(NAME)
+		GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_DROPREP
+#undef MESSAGE_NODROP
+	}
+
+	GuiRemoteProtocolFilterVerifier::GuiRemoteProtocolFilterVerifier(IGuiRemoteProtocol* _protocol)
+		: GuiRemoteProtocolCombinator<GuiRemoteEventFilterVerifier>(_protocol)
+	{
+	}
+
+	GuiRemoteProtocolFilterVerifier::~GuiRemoteProtocolFilterVerifier()
+	{
+	}
+	
+	// messages
+	
+#define MESSAGE_NODROP(NAME)
+	
+#define MESSAGE_DROPREP(NAME)\
+		CHECK_ERROR(!lastDropRepeatRequest ## NAME, L"vl::presentation::remoteprotocol::GuiRemoteProtocolFilterVerifier::Request" L ## #NAME L"(...)#[@DropRepeat] message repeated.");\
+		lastDropRepeatRequest ## NAME = true;\
+	
+#define MESSAGE_NOREQ_NORES(NAME, REQUEST, RESPONSE, DROPTAG)\
+	void GuiRemoteProtocolFilterVerifier::Request ## NAME()\
+	{\
+		MESSAGE_ ## DROPTAG(NAME);\
+		targetProtocol->Request ## NAME();\
+	}\
+	
+#define MESSAGE_NOREQ_RES(NAME, REQUEST, RESPONSE, DROPTAG)\
+	void GuiRemoteProtocolFilterVerifier::Request ## NAME(vint id)\
+	{\
+		MESSAGE_ ## DROPTAG(NAME);\
+		targetProtocol->Request ## NAME(id);\
+	}\
+	
+#define MESSAGE_REQ_NORES(NAME, REQUEST, RESPONSE, DROPTAG)\
+	void GuiRemoteProtocolFilterVerifier::Request ## NAME(const REQUEST& arguments)\
+	{\
+		MESSAGE_ ## DROPTAG(NAME);\
+		targetProtocol->Request ## NAME(arguments);\
+	}\
+	
+#define MESSAGE_REQ_RES(NAME, REQUEST, RESPONSE, DROPTAG)\
+	void GuiRemoteProtocolFilterVerifier::Request ## NAME(vint id, const REQUEST& arguments)\
+	{\
+		MESSAGE_ ## DROPTAG(NAME);\
+		targetProtocol->Request ## NAME(id, arguments);\
+	}\
+	
+#define MESSAGE_HANDLER(NAME, REQUEST, RESPONSE, REQTAG, RESTAG, DROPTAG, ...)	MESSAGE_ ## REQTAG ## _ ## RESTAG(NAME, REQUEST, RESPONSE, DROPTAG)
+	GACUI_REMOTEPROTOCOL_MESSAGES(MESSAGE_HANDLER)
+#undef MESSAGE_HANDLER
+#undef MESSAGE_REQ_RES
+#undef MESSAGE_REQ_NORES
+#undef MESSAGE_NOREQ_RES
+#undef MESSAGE_NOREQ_NORES
+#undef MESSAGE_DROPREP
+#undef MESSAGE_NODROP
+	
+	// protocol
+	
+	void GuiRemoteProtocolFilterVerifier::Submit(bool& disconnected)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::repeatfiltering::GuiRemoteProtocolFilterVerifier::Submit()#"
+		CHECK_ERROR(!eventCombinator.submitting, ERROR_MESSAGE_PREFIX L"This function is not allowed to be called recursively.");
+		eventCombinator.submitting = true;
+		GuiRemoteProtocolCombinator<GuiRemoteEventFilterVerifier>::Submit(disconnected);
+		ClearDropRepeatMasks();
+		eventCombinator.ClearDropRepeatMasks();
+		eventCombinator.ClearDropConsecutiveMasks();
+		eventCombinator.submitting = false;
+#undef ERROR_MESSAGE_PREFIX
+	}
+}
+
+/***********************************************************************
 .\PLATFORMPROVIDERS\REMOTE\GUIREMOTEWINDOW.CPP
 ***********************************************************************/
 
@@ -40277,9 +41551,11 @@ GuiRemoteWindow
 
 	void GuiRemoteWindow::RequestGetBounds()
 	{
-		sizingConfigInvalidated = false;
 		vint idGetBounds = remoteMessages.RequestWindowGetBounds();
-		remoteMessages.Submit();
+		bool disconnected = false;
+		remoteMessages.Submit(disconnected);
+		if (disconnected) return;
+		sizingConfigInvalidated = false;
 		OnWindowBoundsUpdated(remoteMessages.RetrieveWindowGetBounds(idGetBounds));
 	}
 
@@ -40318,7 +41594,9 @@ GuiRemoteWindow
 			windowShowing.activate = activate;
 			windowShowing.sizeState = sizeState;
 			remoteMessages.RequestWindowNotifyShow(windowShowing);
-			remoteMessages.Submit();
+			bool disconnected = false;
+			remoteMessages.Submit(disconnected);
+			// there is no result from this request, assuming succeeded
 
 			remoteWindowSizingConfig.sizeState = sizeState;
 			Opened();
@@ -40342,7 +41620,14 @@ GuiRemoteWindow (events)
 		}
 
 		sizingConfigInvalidated = true;
+		remoteMessages.RequestWindowNotifySetBounds(remoteWindowSizingConfig.bounds);
 		RequestGetBounds();
+
+		// TODO:
+		//   This is a workaround to call GuiWindow::UpdateCustomFramePadding
+		//   Refactor to make it more elegant.
+		for (auto l : listeners) l->DpiChanged(true);
+		for (auto l : listeners) l->DpiChanged(false);
 
 		if (remote->applicationRunning)
 		{
@@ -40365,7 +41650,9 @@ GuiRemoteWindow (events)
 			{
 				remoteMessages.RequestIOReleaseCapture();
 			}
-			remoteMessages.Submit();
+			bool disconnected = false;
+			remoteMessages.Submit(disconnected);
+			// there is no result from this request, assuming succeeded
 		}
 	}
 
@@ -40486,6 +41773,17 @@ GuiRemoteWindow (INativeWindow)
 	{
 		if (remoteWindowSizingConfig.bounds != bounds)
 		{
+			auto x1 = remoteWindowSizingConfig.clientBounds.x1 - remoteWindowSizingConfig.bounds.x1;
+			auto y1 = remoteWindowSizingConfig.clientBounds.y1 - remoteWindowSizingConfig.bounds.y1;
+			auto x2 = remoteWindowSizingConfig.clientBounds.x2 - remoteWindowSizingConfig.bounds.x2;
+			auto y2 = remoteWindowSizingConfig.clientBounds.y2 - remoteWindowSizingConfig.bounds.y2;
+			remoteWindowSizingConfig.bounds = bounds;
+			remoteWindowSizingConfig.clientBounds = {
+				x1 + remoteWindowSizingConfig.bounds.x1,
+				y1 + remoteWindowSizingConfig.bounds.y1,
+				x2 + remoteWindowSizingConfig.bounds.x2,
+				y2 + remoteWindowSizingConfig.bounds.y2
+			};
 			remoteMessages.RequestWindowNotifySetBounds(bounds);
 			sizingConfigInvalidated = true;
 		}
@@ -40501,6 +41799,17 @@ GuiRemoteWindow (INativeWindow)
 	{
 		if (remoteWindowSizingConfig.clientBounds.GetSize() != size)
 		{
+			auto x1 = remoteWindowSizingConfig.bounds.x1 - remoteWindowSizingConfig.clientBounds.x1;
+			auto y1 = remoteWindowSizingConfig.bounds.y1 - remoteWindowSizingConfig.clientBounds.y1;
+			auto x2 = remoteWindowSizingConfig.bounds.x2 - remoteWindowSizingConfig.clientBounds.x2;
+			auto y2 = remoteWindowSizingConfig.bounds.y2 - remoteWindowSizingConfig.clientBounds.y2;
+			remoteWindowSizingConfig.clientBounds = { remoteWindowSizingConfig.clientBounds.LeftTop(),size };
+			remoteWindowSizingConfig.bounds = {
+				x1 + remoteWindowSizingConfig.clientBounds.x1,
+				y1 + remoteWindowSizingConfig.clientBounds.y1,
+				x2 + remoteWindowSizingConfig.clientBounds.x2,
+				y2 + remoteWindowSizingConfig.clientBounds.y2
+			};
 			remoteMessages.RequestWindowNotifySetClientSize(size);
 			sizingConfigInvalidated = true;
 		}
@@ -40725,7 +42034,9 @@ GuiRemoteWindow (INativeWindow)
 		{
 			statusCapturing = true;
 			remoteMessages.RequestIORequireCapture();
-			remoteMessages.Submit();
+			bool disconnected = false;
+			remoteMessages.Submit(disconnected);
+			// there is no result from this request, assuming succeeded
 		}
 		return true;
 	}
@@ -40736,7 +42047,9 @@ GuiRemoteWindow (INativeWindow)
 		{
 			statusCapturing = false;
 			remoteMessages.RequestIOReleaseCapture();
-			remoteMessages.Submit();
+			bool disconnected = false;
+			remoteMessages.Submit(disconnected);
+			// there is no result from this request, assuming succeeded
 		}
 		return true;
 	}
@@ -40852,6 +42165,605 @@ GuiRemoteWindow (INativeWindow)
 
 #undef SET_REMOTE_WINDOW_STYLE_INVALIDATE
 #undef SET_REMOTE_WINDOW_STYLE
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\PROTOCOL\FRAMEOPERATIONS\GUIREMOTEPROTOCOLSCHEMA_BUILDFRAME.CPP
+***********************************************************************/
+
+namespace vl::presentation::remoteprotocol
+{
+	vint RenderingDomBuilder::GetCurrentBoundary()
+	{
+		if (domBoundaries.Count() > 0)
+		{
+			return domBoundaries[domBoundaries.Count() - 1];
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	vint RenderingDomBuilder::Push(RenderingResultRef ref)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::RenderingDomBuilder::Push(RenderingResultRef)#"
+		CHECK_ERROR(ref, ERROR_MESSAGE_PREFIX L"Cannot push a null dom object.");
+		vint index = domStack.Add(ref);
+		if (!domCurrent->children) domCurrent->children = Ptr(new RenderingResultRefList);
+		domCurrent->children->Add(ref);
+		domCurrent = ref;
+		return index;
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void RenderingDomBuilder::PopTo(vint index)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::RenderingDomBuilder::PopTo(vint)#"
+		if (index == domStack.Count() - 1) return;
+		CHECK_ERROR(0 <= index && index < domStack.Count(), ERROR_MESSAGE_PREFIX L"Cannot pop to an invalid position.");
+		CHECK_ERROR(index >= GetCurrentBoundary(), ERROR_MESSAGE_PREFIX L"Cannot pop across a boundary.");
+		while (domStack.Count() - 1 > index)
+		{
+			domStack.RemoveAt(domStack.Count() - 1);
+		}
+		domCurrent = domStack[index];
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void RenderingDomBuilder::Pop()
+	{
+		PopTo(domStack.Count() - 2);
+	}
+
+	void RenderingDomBuilder::PopBoundary()
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::RenderingDomBuilder::PopBoundary()#"
+		CHECK_ERROR(domBoundaries.Count() > 0, ERROR_MESSAGE_PREFIX L"Cannot pop a boundary when none is in the stack.");
+		auto boundaryIndex = domBoundaries.Count() - 1;
+		auto boundary = domBoundaries[boundaryIndex];
+		domBoundaries.RemoveAt(boundaryIndex);
+		PopTo(boundary - 1);
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+
+	template<typename TCallback>
+	void RenderingDomBuilder::PrepareParentFromCommand(Rect commandBounds, Rect commandValidArea, vint newDomId, TCallback&& calculateValidAreaFromDom)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::RenderingDomBuilder::PrepareParentFromCommand(Rect, Rect, vint, auto&&)#"
+		vint min = GetCurrentBoundary();
+		bool found = false;
+		if (commandValidArea.Contains(commandBounds))
+		{
+			// if the command is not clipped
+			for (vint i = domStack.Count() - 1; i >= min; i--)
+			{
+				if (domStack[i]->content.validArea.Contains(commandBounds) || i == 0)
+				{
+					// find the deepest node that could contain the command
+					PopTo(i);
+					found = true;
+					break;
+				}
+			}
+		}
+		else
+		{
+			// otherwise, a parent node causing such clipping should be found or created
+			for (vint i = domStack.Count() - 1; i >= min; i--)
+			{
+				auto domValidArea = calculateValidAreaFromDom(domStack[i]);
+				if (domValidArea == commandValidArea)
+				{
+					// if there is a node who clips command's bound to its valid area
+					// that is the parent node of the command
+					PopTo(i);
+					found = true;
+					break;
+				}
+				else if (domValidArea.Contains(commandValidArea) || i == 0)
+				{
+					// otherwise find a deepest node who could visually contain the command
+					// create a virtual node to satisfy the clipper
+					PopTo(i);
+					auto parent = Ptr(new RenderingDom);
+					parent->id = newDomId;
+					parent->content.bounds = commandValidArea;
+					parent->content.validArea = commandValidArea;
+					Push(parent);
+					found = true;
+					break;
+				}
+			}
+		}
+
+		// if the new boundary could not fit in the current boundary
+		// there must be something wrong
+		CHECK_ERROR(found, ERROR_MESSAGE_PREFIX L"Incorrect valid area of dom.");
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void RenderingDomBuilder::RequestRendererBeginRendering()
+	{
+		domStack.Clear();
+		domBoundaries.Clear();
+		domRoot = Ptr(new RenderingDom);
+		domRoot->id = -1;
+		domCurrent = domRoot;
+		domStack.Add(domRoot);
+	}
+
+	void RenderingDomBuilder::RequestRendererBeginBoundary(const remoteprotocol::ElementBoundary& arguments)
+	{
+		// a new boundary should be a new node covering existing nodes
+		// the valid area of boundary is clipped by its bounds
+		// so the valid area to compare from its potential parent dom needs to clipped by its bounds
+		PrepareParentFromCommand(
+			arguments.bounds,
+			arguments.areaClippedBySelf,
+			(arguments.id << 2) + 3,
+			[&](auto&& dom) { return dom->content.validArea.Intersect(arguments.bounds); }
+			);
+
+		auto dom = Ptr(new RenderingDom);
+		dom->id = (arguments.id << 2) + 2;
+		dom->content.hitTestResult = arguments.hitTestResult;
+		dom->content.cursor = arguments.cursor;
+		dom->content.bounds = arguments.bounds;
+		dom->content.validArea = arguments.areaClippedBySelf;
+		domBoundaries.Add(Push(dom));
+	}
+
+	void RenderingDomBuilder::RequestRendererEndBoundary()
+	{
+		PopBoundary();
+	}
+
+	void RenderingDomBuilder::RequestRendererRenderElement(const remoteprotocol::ElementRendering& arguments)
+	{
+		// a new element should be a new node covering existing nodes
+		// the valid area of boundary is clipped by its parent
+		// so the valid area to compare from its potential parent dom is its valid area
+		PrepareParentFromCommand(
+			arguments.bounds,
+			arguments.areaClippedByParent,
+			(arguments.id << 2) + 1,
+			[&](auto&& dom) { return dom->content.validArea; }
+			);
+
+		auto dom = Ptr(new RenderingDom);
+		dom->id = (arguments.id << 2) + 0;
+		dom->content.element = arguments.id;
+		dom->content.bounds = arguments.bounds;
+		dom->content.validArea = arguments.bounds.Intersect(arguments.areaClippedByParent);
+		Push(dom);
+	}
+
+	Ptr<RenderingDom> RenderingDomBuilder::RequestRendererEndRendering()
+	{
+		return domRoot;
+	}
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\PROTOCOL\FRAMEOPERATIONS\GUIREMOTEPROTOCOLSCHEMA_COPYDOM.CPP
+***********************************************************************/
+
+namespace vl::presentation::remoteprotocol
+{
+	using namespace collections;
+
+	Ptr<RenderingDom> CopyDom(Ptr<RenderingDom> root)
+	{
+		auto newRoot = Ptr(new RenderingDom);
+		newRoot->id = root->id;
+		newRoot->content = root->content;
+		if (root->children)
+		{
+			newRoot->children = Ptr(new List<Ptr<RenderingDom>>);
+			for (auto child : *root->children.Obj())
+			{
+				newRoot->children->Add(CopyDom(child));
+			}
+		}
+		return newRoot;
+	}
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTE\PROTOCOL\FRAMEOPERATIONS\GUIREMOTEPROTOCOLSCHEMA_DIFFFRAME.CPP
+***********************************************************************/
+
+namespace vl::presentation::remoteprotocol
+{
+	using namespace collections;
+
+	vint CountDomIndex(Ptr<RenderingDom> root)
+	{
+		vint counter = 1;
+		if (root->children)
+		{
+			for (auto child : *root->children.Obj())
+			{
+				counter += CountDomIndex(child);
+			} 
+		}
+		return counter;
+	}
+
+	void BuildDomIndexInternal(Ptr<RenderingDom> dom, vint parentId, DomIndex& index, vint& writing)
+	{
+		index[writing++] = { dom->id,parentId,dom };
+		if (dom->children)
+		{
+			for (auto child : *dom->children.Obj())
+			{
+				BuildDomIndexInternal(child, dom->id, index, writing);
+			}
+		}
+	}
+
+	void SortDomIndex(DomIndex& index)
+	{
+		if (index.Count() > 0)
+		{
+			SortLambda(&index[0], index.Count(), [](const DomIndexItem& a, const DomIndexItem& b)
+			{
+				return a.id <=> b.id;
+			});
+		}
+	}
+
+	void BuildDomIndex(Ptr<RenderingDom> root, DomIndex& index)
+	{
+		vint count = CountDomIndex(root);
+		vint writing = 0;
+		index.Resize(count);
+		if (count > 0)
+		{
+			BuildDomIndexInternal(root, -1, index, writing);
+			SortDomIndex(index);
+		}
+	}
+
+	void UpdateDomInplace(Ptr<RenderingDom> root, DomIndex& index, const RenderingDom_DiffsInOrder& diffs)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::UpdateDomInplace(Ptr<RenderingDom>, DomIndex&, const RenderingDom_DiffsInOrder&)#"
+		CHECK_ERROR(root && root->id == -1, ERROR_MESSAGE_PREFIX L"Roots of a DOM must have ID -1.");
+
+		vint createdCount = 0;
+
+		// creating
+		{
+			vint readingFrom = 0;
+			vint readingTo = 0;
+
+			auto markCreated = [&]()
+			{
+				auto&& to = diffs.diffsInOrder->Get(readingTo++);
+				CHECK_ERROR(to.diffType == RenderingDom_DiffType::Created, ERROR_MESSAGE_PREFIX L"Diff of unexisting node must have diffType == Created.");
+				createdCount++;
+			};
+
+			while (diffs.diffsInOrder && readingTo < diffs.diffsInOrder->Count())
+			{
+				if (readingFrom < index.Count())
+				{
+					auto&& from = index[readingFrom];
+					auto&& to = diffs.diffsInOrder->Get(readingTo);
+					if (from.id < to.id)
+					{
+						// Nothing happened to this DOM node
+						readingFrom++;
+					}
+					else if (from.id > to.id)
+					{
+						markCreated();
+					}
+					else
+					{
+						// Modified will be delayed and processed together with Created 
+						readingFrom++;
+						readingTo++;
+						CHECK_ERROR(to.diffType != RenderingDom_DiffType::Created, ERROR_MESSAGE_PREFIX L"Diff of existing node must have diffType != Created.");
+					}
+				}
+				else
+				{
+					markCreated();
+				}
+			}
+		}
+
+		{
+			vint writing = index.Count();
+			index.Resize(index.Count() + createdCount);
+			if (diffs.diffsInOrder)
+			{
+
+				for (auto&& to : *diffs.diffsInOrder.Obj())
+				{
+					if (to.diffType == RenderingDom_DiffType::Created)
+					{
+						// parentId will be filled later
+						auto dom = Ptr(new RenderingDom);
+						dom->id = to.id;
+						index[writing++] = { to.id,-1,dom };
+					}
+				}
+			}
+			SortDomIndex(index);
+		}
+
+		// modifying
+		{
+			vint readingFrom = 0;
+			vint readingTo = 0;
+
+			while (readingFrom < index.Count() && (diffs.diffsInOrder && readingTo < diffs.diffsInOrder->Count()))
+			{
+				bool hasFrom = readingFrom < index.Count();
+				bool hasTo = diffs.diffsInOrder && readingTo < diffs.diffsInOrder->Count();
+
+				auto&& from = index[readingFrom];
+				auto&& to = diffs.diffsInOrder->Get(readingTo);
+				if (from.id < to.id)
+				{
+					readingFrom++;
+				}
+				else if (from.id > to.id)
+				{
+					readingTo++;
+				}
+				else
+				{
+					readingFrom++;
+					readingTo++;
+
+					if (to.diffType != RenderingDom_DiffType::Deleted)
+					{
+						if (to.content)
+						{
+							from.dom->content = to.content.Value();
+						}
+
+						if (to.children)
+						{
+							if (to.children->Count() == 0)
+							{
+								from.dom->children = nullptr;
+							}
+							else
+							{
+								from.dom->children = Ptr(new List<Ptr<RenderingDom>>);
+								for (vint childId : *to.children.Obj())
+								{
+									// Binary search in index for childId
+									vint start = 0;
+									vint end = index.Count() - 1;
+									bool found = false;
+									while (start <= end)
+									{
+										vint mid = (start + end) / 2;
+										vint midId = index[mid].id;
+										if (childId < midId)
+										{
+											end = mid - 1;
+										}
+										else if (childId > midId)
+										{
+											start = mid + 1;
+										}
+										else
+										{
+											// Fill parentId of the new DOM node
+											index[mid].parentId = from.id;
+											from.dom->children->Add(index[mid].dom);
+											found = true;
+											break;
+										}
+									}
+									CHECK_ERROR(found, ERROR_MESSAGE_PREFIX L"Unknown DOM id in diff.");
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// deleting
+		{
+			vint readingFrom = 0;
+			vint readingTo = 0;
+			List<vint> deleteIndices;
+
+			while (diffs.diffsInOrder && readingTo < diffs.diffsInOrder->Count())
+			{
+				if (readingFrom < index.Count())
+				{
+					auto&& from = index[readingFrom];
+					auto&& to = diffs.diffsInOrder->Get(readingTo);
+					if (from.id < to.id)
+					{
+						readingFrom++;
+					}
+					else if (from.id > to.id)
+					{
+						readingTo++;
+					}
+					else
+					{
+						if (to.diffType == RenderingDom_DiffType::Deleted)
+						{
+							deleteIndices.Add(readingFrom);
+						}
+						readingFrom++;
+						readingTo++;
+					}
+				}
+				else
+				{
+					CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Nodes to be deleted must should appear in the index before modification");
+				}
+			}
+
+			vint reading = 0;
+			vint writing = 0;
+			vint testing = 0;
+
+			while (reading < index.Count())
+			{
+				if (testing < deleteIndices.Count() && deleteIndices[testing] == reading)
+				{
+					// A node to delete is found, mark and skip
+					testing++;
+					reading++;
+				}
+				else
+				{
+					if (reading != writing)
+					{
+						// Compact index by removing deleted entries
+						index[writing] = index[reading];
+					}
+					reading++;
+					writing++;
+				}
+			}
+			index.Resize(index.Count() - deleteIndices.Count());
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void DiffDom(Ptr<RenderingDom> domFrom, DomIndex& indexFrom, Ptr<RenderingDom> domTo, DomIndex& indexTo, RenderingDom_DiffsInOrder& diffs)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::DiffDom(Ptr<RenderingDom>, DomIndex&, Ptr<RenderingDom>, DomIndex&, RenderingDom_DiffsInOrder&)#"
+		CHECK_ERROR(domFrom && domTo && domFrom->id == domTo->id, ERROR_MESSAGE_PREFIX L"Roots of two DOMs tree must have the same ID.");
+		diffs.diffsInOrder = Ptr(new List<RenderingDom_Diff>);
+
+		vint readingFrom = 0;
+		vint readingTo = 0;
+
+		auto pushDeleted = [&]()
+		{
+			auto&& dom = indexFrom[readingFrom++].dom;
+			RenderingDom_Diff diff;
+
+			diff.id = dom->id;
+			diff.diffType = RenderingDom_DiffType::Deleted;
+			diffs.diffsInOrder->Add(diff);
+		};
+
+		auto pushCreated = [&]()
+		{
+			auto&& dom = indexTo[readingTo++].dom;
+			RenderingDom_Diff diff;
+			diff.id = dom->id;
+			diff.diffType = RenderingDom_DiffType::Created;
+
+			diff.content = dom->content;
+			if (dom->children && dom->children->Count() > 0)
+			{
+				diff.children = Ptr(new List<vint>);
+				CopyFrom(
+					*diff.children.Obj(),
+					From(*dom->children.Obj())
+						.Select([](Ptr<RenderingDom> child) { return child->id; })
+					);
+			}
+			diffs.diffsInOrder->Add(diff);
+		};
+
+		auto pushModified = [&]()
+		{
+			auto&& domFrom = indexFrom[readingFrom++].dom;
+			auto&& domTo = indexTo[readingTo++].dom;
+			RenderingDom_Diff diff;
+			diff.id = domFrom->id;
+			diff.diffType = RenderingDom_DiffType::Modified;
+
+			if (
+				domFrom->content.hitTestResult != domTo->content.hitTestResult ||
+				domFrom->content.cursor != domTo->content.cursor ||
+				domFrom->content.element != domTo->content.element ||
+				domFrom->content.bounds != domTo->content.bounds ||
+				domFrom->content.validArea != domTo->content.validArea
+				)
+			{
+				diff.content = domTo->content;
+			}
+
+			bool fromHasChild = domFrom->children && domFrom->children->Count() > 0;
+			bool toHasChild = domTo->children && domTo->children->Count() > 0;
+			bool childDifferent = false;
+
+			if (fromHasChild != toHasChild)
+			{
+				childDifferent = true;
+			}
+			else if (fromHasChild && toHasChild)
+			{
+				auto fromIds = From(*domFrom->children.Obj())
+					.Select([](Ptr<RenderingDom> child) { return child->id; });
+				auto toIds = From(*domTo->children.Obj())
+					.Select([](Ptr<RenderingDom> child) { return child->id; });
+				childDifferent = CompareEnumerable(fromIds, toIds) != 0;
+			}
+
+			if (childDifferent)
+			{
+				diff.children = Ptr(new List<vint>);
+				if (toHasChild)
+				{
+					CopyFrom(
+						*diff.children.Obj(),
+						From(*domTo->children.Obj())
+							.Select([](Ptr<RenderingDom> child) { return child->id; })
+						);
+				}
+			}
+
+			if (diff.content || diff.children)
+			{
+				diffs.diffsInOrder->Add(diff);
+			}
+		};
+
+		while (true)
+		{
+			if (readingFrom < indexFrom.Count() && readingTo < indexTo.Count())
+			{
+				if (indexFrom[readingFrom].id < indexTo[readingTo].id)
+				{
+					pushDeleted();
+				}
+				else if (indexFrom[readingFrom].id > indexTo[readingTo].id)
+				{
+					pushCreated();
+				}
+				else
+				{
+					pushModified();
+				}
+			}
+			else if (readingFrom < indexFrom.Count())
+			{
+				pushDeleted();
+			}
+			else if (readingTo < indexTo.Count())
+			{
+				pushCreated();
+			}
+			else
+			{
+				break;
+			}
+		}
+
+#undef ERROR_MESSAGE_PREFIX
+	}
 }
 
 /***********************************************************************
@@ -41074,6 +42986,21 @@ namespace vl::presentation::remoteprotocol
 		case ::vl::presentation::remoteprotocol::RendererType::ImageFrame: node->content.value = WString::Unmanaged(L"ImageFrame"); break;
 		case ::vl::presentation::remoteprotocol::RendererType::UnsupportedColorizedText: node->content.value = WString::Unmanaged(L"UnsupportedColorizedText"); break;
 		case ::vl::presentation::remoteprotocol::RendererType::UnsupportedDocument: node->content.value = WString::Unmanaged(L"UnsupportedDocument"); break;
+		default: CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
+		}
+		return node;
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingDom_DiffType>(const ::vl::presentation::remoteprotocol::RenderingDom_DiffType & value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingDom_DiffType>(const ::vl::presentation::remoteprotocol::RenderingDom_DiffType&)#"
+		auto node = Ptr(new glr::json::JsonString);
+		switch (value)
+		{
+		case ::vl::presentation::remoteprotocol::RenderingDom_DiffType::Deleted: node->content.value = WString::Unmanaged(L"Deleted"); break;
+		case ::vl::presentation::remoteprotocol::RenderingDom_DiffType::Created: node->content.value = WString::Unmanaged(L"Created"); break;
+		case ::vl::presentation::remoteprotocol::RenderingDom_DiffType::Modified: node->content.value = WString::Unmanaged(L"Modified"); break;
 		default: CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
 		}
 		return node;
@@ -41416,6 +43343,7 @@ namespace vl::presentation::remoteprotocol
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::ElementBoundary>(const ::vl::presentation::remoteprotocol::ElementBoundary & value)
 	{
 		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"id", value.id);
 		ConvertCustomTypeToJsonField(node, L"hitTestResult", value.hitTestResult);
 		ConvertCustomTypeToJsonField(node, L"cursor", value.cursor);
 		ConvertCustomTypeToJsonField(node, L"bounds", value.bounds);
@@ -41449,7 +43377,7 @@ namespace vl::presentation::remoteprotocol
 		return node;
 	}
 
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingDom>(const ::vl::presentation::remoteprotocol::RenderingDom & value)
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingDomContent>(const ::vl::presentation::remoteprotocol::RenderingDomContent & value)
 	{
 		auto node = Ptr(new glr::json::JsonObject);
 		ConvertCustomTypeToJsonField(node, L"hitTestResult", value.hitTestResult);
@@ -41457,44 +43385,47 @@ namespace vl::presentation::remoteprotocol
 		ConvertCustomTypeToJsonField(node, L"element", value.element);
 		ConvertCustomTypeToJsonField(node, L"bounds", value.bounds);
 		ConvertCustomTypeToJsonField(node, L"validArea", value.validArea);
+		return node;
+	}
+
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingDom>(const ::vl::presentation::remoteprotocol::RenderingDom & value)
+	{
+		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"id", value.id);
+		ConvertCustomTypeToJsonField(node, L"content", value.content);
 		ConvertCustomTypeToJsonField(node, L"children", value.children);
 		return node;
 	}
 
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary>(const ::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary & value)
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingDom_Diff>(const ::vl::presentation::remoteprotocol::RenderingDom_Diff & value)
 	{
 		auto node = Ptr(new glr::json::JsonObject);
-		ConvertCustomTypeToJsonField(node, L"boundary", value.boundary);
+		ConvertCustomTypeToJsonField(node, L"id", value.id);
+		ConvertCustomTypeToJsonField(node, L"diffType", value.diffType);
+		ConvertCustomTypeToJsonField(node, L"content", value.content);
+		ConvertCustomTypeToJsonField(node, L"children", value.children);
 		return node;
 	}
 
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary>(const ::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary & value)
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingDom_DiffsInOrder>(const ::vl::presentation::remoteprotocol::RenderingDom_DiffsInOrder & value)
 	{
 		auto node = Ptr(new glr::json::JsonObject);
+		ConvertCustomTypeToJsonField(node, L"diffsInOrder", value.diffsInOrder);
 		return node;
 	}
 
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingCommand_Element>(const ::vl::presentation::remoteprotocol::RenderingCommand_Element & value)
-	{
-		auto node = Ptr(new glr::json::JsonObject);
-		ConvertCustomTypeToJsonField(node, L"rendering", value.rendering);
-		ConvertCustomTypeToJsonField(node, L"element", value.element);
-		return node;
-	}
-
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingFrame>(const ::vl::presentation::remoteprotocol::RenderingFrame & value)
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::UnitTest_RenderingFrame>(const ::vl::presentation::remoteprotocol::UnitTest_RenderingFrame & value)
 	{
 		auto node = Ptr(new glr::json::JsonObject);
 		ConvertCustomTypeToJsonField(node, L"frameId", value.frameId);
 		ConvertCustomTypeToJsonField(node, L"frameName", value.frameName);
 		ConvertCustomTypeToJsonField(node, L"windowSize", value.windowSize);
 		ConvertCustomTypeToJsonField(node, L"elements", value.elements);
-		ConvertCustomTypeToJsonField(node, L"commands", value.commands);
 		ConvertCustomTypeToJsonField(node, L"root", value.root);
 		return node;
 	}
 
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::RenderingTrace>(const ::vl::presentation::remoteprotocol::RenderingTrace & value)
+	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::UnitTest_RenderingTrace>(const ::vl::presentation::remoteprotocol::UnitTest_RenderingTrace & value)
 	{
 		auto node = Ptr(new glr::json::JsonObject);
 		ConvertCustomTypeToJsonField(node, L"createdElements", value.createdElements);
@@ -41679,6 +43610,18 @@ namespace vl::presentation::remoteprotocol
 		if (jsonNode->content.value == L"ImageFrame") value = ::vl::presentation::remoteprotocol::RendererType::ImageFrame; else
 		if (jsonNode->content.value == L"UnsupportedColorizedText") value = ::vl::presentation::remoteprotocol::RendererType::UnsupportedColorizedText; else
 		if (jsonNode->content.value == L"UnsupportedDocument") value = ::vl::presentation::remoteprotocol::RendererType::UnsupportedDocument; else
+		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom_DiffType>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingDom_DiffType& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom_DiffType>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingDom_DiffType&)#"
+		auto jsonNode = node.Cast<glr::json::JsonString>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		if (jsonNode->content.value == L"Deleted") value = ::vl::presentation::remoteprotocol::RenderingDom_DiffType::Deleted; else
+		if (jsonNode->content.value == L"Created") value = ::vl::presentation::remoteprotocol::RenderingDom_DiffType::Created; else
+		if (jsonNode->content.value == L"Modified") value = ::vl::presentation::remoteprotocol::RenderingDom_DiffType::Modified; else
 		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported enum value.");
 #undef ERROR_MESSAGE_PREFIX
 	}
@@ -42227,6 +44170,7 @@ namespace vl::presentation::remoteprotocol
 		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
 		for (auto field : jsonNode->fields)
 		{
+			if (field->name.value == L"id") ConvertJsonToCustomType(field->value, value.id); else
 			if (field->name.value == L"hitTestResult") ConvertJsonToCustomType(field->value, value.hitTestResult); else
 			if (field->name.value == L"cursor") ConvertJsonToCustomType(field->value, value.cursor); else
 			if (field->name.value == L"bounds") ConvertJsonToCustomType(field->value, value.bounds); else
@@ -42280,9 +44224,9 @@ namespace vl::presentation::remoteprotocol
 #undef ERROR_MESSAGE_PREFIX
 	}
 
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingDom& value)
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDomContent>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingDomContent& value)
 	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingDom&)#"
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDomContent>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingDomContent&)#"
 		auto jsonNode = node.Cast<glr::json::JsonObject>();
 		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
 		for (auto field : jsonNode->fields)
@@ -42292,54 +44236,58 @@ namespace vl::presentation::remoteprotocol
 			if (field->name.value == L"element") ConvertJsonToCustomType(field->value, value.element); else
 			if (field->name.value == L"bounds") ConvertJsonToCustomType(field->value, value.bounds); else
 			if (field->name.value == L"validArea") ConvertJsonToCustomType(field->value, value.validArea); else
+			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingDom& value)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingDom&)#"
+		auto jsonNode = node.Cast<glr::json::JsonObject>();
+		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
+		for (auto field : jsonNode->fields)
+		{
+			if (field->name.value == L"id") ConvertJsonToCustomType(field->value, value.id); else
+			if (field->name.value == L"content") ConvertJsonToCustomType(field->value, value.content); else
 			if (field->name.value == L"children") ConvertJsonToCustomType(field->value, value.children); else
 			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
 		}
 #undef ERROR_MESSAGE_PREFIX
 	}
 
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary& value)
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom_Diff>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingDom_Diff& value)
 	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingCommand_BeginBoundary&)#"
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom_Diff>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingDom_Diff&)#"
 		auto jsonNode = node.Cast<glr::json::JsonObject>();
 		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
 		for (auto field : jsonNode->fields)
 		{
-			if (field->name.value == L"boundary") ConvertJsonToCustomType(field->value, value.boundary); else
+			if (field->name.value == L"id") ConvertJsonToCustomType(field->value, value.id); else
+			if (field->name.value == L"diffType") ConvertJsonToCustomType(field->value, value.diffType); else
+			if (field->name.value == L"content") ConvertJsonToCustomType(field->value, value.content); else
+			if (field->name.value == L"children") ConvertJsonToCustomType(field->value, value.children); else
 			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
 		}
 #undef ERROR_MESSAGE_PREFIX
 	}
 
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary& value)
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom_DiffsInOrder>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingDom_DiffsInOrder& value)
 	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingCommand_EndBoundary&)#"
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingDom_DiffsInOrder>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingDom_DiffsInOrder&)#"
 		auto jsonNode = node.Cast<glr::json::JsonObject>();
 		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
 		for (auto field : jsonNode->fields)
 		{
+			if (field->name.value == L"diffsInOrder") ConvertJsonToCustomType(field->value, value.diffsInOrder); else
 			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
 		}
 #undef ERROR_MESSAGE_PREFIX
 	}
 
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_Element>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingCommand_Element& value)
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::UnitTest_RenderingFrame>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::UnitTest_RenderingFrame& value)
 	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingCommand_Element>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingCommand_Element&)#"
-		auto jsonNode = node.Cast<glr::json::JsonObject>();
-		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
-		for (auto field : jsonNode->fields)
-		{
-			if (field->name.value == L"rendering") ConvertJsonToCustomType(field->value, value.rendering); else
-			if (field->name.value == L"element") ConvertJsonToCustomType(field->value, value.element); else
-			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
-		}
-#undef ERROR_MESSAGE_PREFIX
-	}
-
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingFrame>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingFrame& value)
-	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingFrame>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingFrame&)#"
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::UnitTest_RenderingFrame>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::UnitTest_RenderingFrame&)#"
 		auto jsonNode = node.Cast<glr::json::JsonObject>();
 		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
 		for (auto field : jsonNode->fields)
@@ -42348,16 +44296,15 @@ namespace vl::presentation::remoteprotocol
 			if (field->name.value == L"frameName") ConvertJsonToCustomType(field->value, value.frameName); else
 			if (field->name.value == L"windowSize") ConvertJsonToCustomType(field->value, value.windowSize); else
 			if (field->name.value == L"elements") ConvertJsonToCustomType(field->value, value.elements); else
-			if (field->name.value == L"commands") ConvertJsonToCustomType(field->value, value.commands); else
 			if (field->name.value == L"root") ConvertJsonToCustomType(field->value, value.root); else
 			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
 		}
 #undef ERROR_MESSAGE_PREFIX
 	}
 
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingTrace>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::RenderingTrace& value)
+	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::UnitTest_RenderingTrace>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::UnitTest_RenderingTrace& value)
 	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::RenderingTrace>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::RenderingTrace&)#"
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::UnitTest_RenderingTrace>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::UnitTest_RenderingTrace&)#"
 		auto jsonNode = node.Cast<glr::json::JsonObject>();
 		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
 		for (auto field : jsonNode->fields)
@@ -42373,6 +44320,1139 @@ namespace vl::presentation::remoteprotocol
 
 }
 
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTERENDERER\GUIREMOTERENDERERSINGLE.CPP
+***********************************************************************/
+
+namespace vl::presentation::remote_renderer
+{
+	using namespace elements;
+	using namespace remoteprotocol;
+
+	remoteprotocol::ScreenConfig GuiRemoteRendererSingle::GetScreenConfig(INativeScreen* screen)
+	{
+		ScreenConfig response;
+		response.bounds = screen->GetBounds();
+		response.clientBounds = screen->GetClientBounds();
+		response.scalingX = screen->GetScalingX();
+		response.scalingY = screen->GetScalingY();
+		return response;
+	}
+
+	remoteprotocol::WindowSizingConfig GuiRemoteRendererSingle::GetWindowSizingConfig()
+	{
+		WindowSizingConfig response;
+		response.bounds = window->GetBounds();
+		response.clientBounds = window->GetClientBoundsInScreen();
+		response.sizeState = window->GetSizeState();
+		response.customFramePadding = window->GetCustomFramePadding();
+		return response;
+	}
+
+	void GuiRemoteRendererSingle::UpdateConfigsIfNecessary()
+	{
+		if (screen)
+		{
+			auto currentScreen = GetCurrentController()->ScreenService()->GetScreen(window);
+			if (screen != currentScreen)
+			{
+				screen = currentScreen;
+				events->OnControllerScreenUpdated(GetScreenConfig(screen));
+			}
+
+			auto newWindowSizingConfig = GetWindowSizingConfig();
+			if (
+				newWindowSizingConfig.bounds != windowSizingConfig.bounds ||
+				newWindowSizingConfig.clientBounds != windowSizingConfig.clientBounds)
+			{
+				windowSizingConfig = newWindowSizingConfig;
+				if (!updatingBounds)
+				{
+					events->OnWindowBoundsUpdated(windowSizingConfig);
+				}
+			}
+			else if (
+				newWindowSizingConfig.sizeState != windowSizingConfig.sizeState ||
+				newWindowSizingConfig.customFramePadding != windowSizingConfig.customFramePadding)
+			{
+				windowSizingConfig = newWindowSizingConfig;
+				events->OnWindowBoundsUpdated(windowSizingConfig);
+			}
+		}
+	}
+
+	void GuiRemoteRendererSingle::NativeWindowDestroying(INativeWindow* _window)
+	{
+		if (window == _window)
+		{
+			window->UninstallListener(this);
+			window = nullptr;
+		}
+	}
+
+	void GuiRemoteRendererSingle::Opened()
+	{
+		events->OnControllerConnect();
+	}
+
+	void GuiRemoteRendererSingle::BeforeClosing(bool& cancel)
+	{
+		if (!disconnectingFromCore)
+		{
+			cancel = true;
+			events->OnControllerRequestExit();
+		}
+	}
+
+	void GuiRemoteRendererSingle::AfterClosing()
+	{
+		renderingDom = nullptr;
+		availableElements.Clear();
+		availableImages.Clear();
+	}
+
+	void GuiRemoteRendererSingle::Closed()
+	{
+	}
+
+	void GuiRemoteRendererSingle::Moved()
+	{
+		UpdateConfigsIfNecessary();
+	}
+
+	void GuiRemoteRendererSingle::DpiChanged(bool preparing)
+	{
+		if (preparing)
+		{
+			UpdateRenderTarget(nullptr);
+		}
+		else
+		{
+			GetGuiGraphicsResourceManager()->RecreateRenderTarget(window);
+			UpdateRenderTarget(GetGuiGraphicsResourceManager()->GetRenderTarget(window));
+			UpdateConfigsIfNecessary();
+		}
+	}
+
+	void GuiRemoteRendererSingle::RenderingAsActivated()
+	{
+		if (disconnectingFromCore) return;
+		events->OnWindowActivatedUpdated(true);
+	}
+
+	void GuiRemoteRendererSingle::RenderingAsDeactivated()
+	{
+		if (disconnectingFromCore) return;
+		events->OnWindowActivatedUpdated(false);
+	}
+
+	GuiRemoteRendererSingle::GuiRemoteRendererSingle()
+	{
+	}
+
+	GuiRemoteRendererSingle::~GuiRemoteRendererSingle()
+	{
+	}
+
+	void GuiRemoteRendererSingle::RegisterMainWindow(INativeWindow* _window)
+	{
+		window = _window;
+		window->InstallListener(this);
+		GetCurrentController()->CallbackService()->InstallListener(this);
+	}
+
+	void GuiRemoteRendererSingle::UnregisterMainWindow()
+	{
+		GetCurrentController()->CallbackService()->UninstallListener(this);
+	}
+
+	void GuiRemoteRendererSingle::ForceExitByFatelError()
+	{
+		if (window)
+		{
+			disconnectingFromCore = true;
+			window->Hide(true);
+		}
+	}
+
+	WString GuiRemoteRendererSingle::GetExecutablePath()
+	{
+		CHECK_FAIL(L"This function should not be called!");
+	}
+
+	void GuiRemoteRendererSingle::Initialize(IGuiRemoteProtocolEvents* _events)
+	{
+		events = _events;
+	}
+
+	void GuiRemoteRendererSingle::Submit(bool& disconnected)
+	{
+		CHECK_FAIL(L"This function should not be called!");
+	}
+
+	void GuiRemoteRendererSingle::ProcessRemoteEvents()
+	{
+		CHECK_FAIL(L"This function should not be called!");
+	}
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTERENDERER\GUIREMOTERENDERERSINGLE_CONTROLLER.CPP
+***********************************************************************/
+
+namespace vl::presentation::remote_renderer
+{
+	using namespace collections;
+	using namespace remoteprotocol;
+
+	void GuiRemoteRendererSingle::RequestControllerGetFontConfig(vint id)
+	{
+		FontConfig response;
+		auto rs = GetCurrentController()->ResourceService();
+		response.defaultFont = rs->GetDefaultFont();
+		response.supportedFonts = Ptr(new List<WString>);
+		rs->EnumerateFonts(*response.supportedFonts.Obj());
+		events->RespondControllerGetFontConfig(id, response);
+	}
+
+	void GuiRemoteRendererSingle::RequestControllerGetScreenConfig(vint id)
+	{
+		auto primary = screen ? screen : GetCurrentController()->ScreenService()->GetScreen((vint)0);
+		events->RespondControllerGetScreenConfig(id, GetScreenConfig(primary));
+	}
+
+	void GuiRemoteRendererSingle::RequestControllerConnectionEstablished()
+	{
+	}
+
+	void GuiRemoteRendererSingle::RequestControllerConnectionStopped()
+	{
+		if (window)
+		{
+			disconnectingFromCore = true;
+			window->ReleaseCapture();
+			window->Hide(true);
+		}
+	}
+}
+
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTERENDERER\GUIREMOTERENDERERSINGLE_IO.CPP
+***********************************************************************/
+
+namespace vl::presentation::remote_renderer
+{
+	using namespace remoteprotocol;
+
+/***********************************************************************
+* Rendering (Commands)
+***********************************************************************/
+
+	void GuiRemoteRendererSingle::RequestIOUpdateGlobalShortcutKey(const Ptr<collections::List<remoteprotocol::GlobalShortcutKey>>& arguments)
+	{
+		CHECK_ERROR(arguments->Count() == 0, L"Not Implemented");
+	}
+
+	void GuiRemoteRendererSingle::RequestIORequireCapture()
+	{
+		window->RequireCapture();
+	}
+
+	void GuiRemoteRendererSingle::RequestIOReleaseCapture()
+	{
+		window->ReleaseCapture();
+	}
+
+	void GuiRemoteRendererSingle::RequestIOIsKeyPressing(vint id, const VKEY& arguments)
+	{
+		CHECK_FAIL(L"Not Implemented");
+	}
+
+	void GuiRemoteRendererSingle::RequestIOIsKeyToggled(vint id, const VKEY& arguments)
+	{
+		CHECK_FAIL(L"Not Implemented");
+	}
+
+/***********************************************************************
+* Rendering (INativeWindow)
+***********************************************************************/
+
+	void GuiRemoteRendererSingle::LeftButtonDown(const NativeWindowMouseInfo& info)
+	{
+		IOMouseInfoWithButton arguments;
+		arguments.button = IOMouseButton::Left;
+		arguments.info = info;
+		events->OnIOButtonDown(arguments);
+	}
+
+	void GuiRemoteRendererSingle::LeftButtonUp(const NativeWindowMouseInfo& info)
+	{
+		IOMouseInfoWithButton arguments;
+		arguments.button = IOMouseButton::Left;
+		arguments.info = info;
+		events->OnIOButtonUp(arguments);
+	}
+
+	void GuiRemoteRendererSingle::LeftButtonDoubleClick(const NativeWindowMouseInfo& info)
+	{
+		IOMouseInfoWithButton arguments;
+		arguments.button = IOMouseButton::Left;
+		arguments.info = info;
+		events->OnIOButtonDoubleClick(arguments);
+	}
+
+	void GuiRemoteRendererSingle::RightButtonDown(const NativeWindowMouseInfo& info)
+	{
+		IOMouseInfoWithButton arguments;
+		arguments.button = IOMouseButton::Right;
+		arguments.info = info;
+		events->OnIOButtonDown(arguments);
+	}
+
+	void GuiRemoteRendererSingle::RightButtonUp(const NativeWindowMouseInfo& info)
+	{
+		IOMouseInfoWithButton arguments;
+		arguments.button = IOMouseButton::Right;
+		arguments.info = info;
+		events->OnIOButtonUp(arguments);
+	}
+
+	void GuiRemoteRendererSingle::RightButtonDoubleClick(const NativeWindowMouseInfo& info)
+	{
+		IOMouseInfoWithButton arguments;
+		arguments.button = IOMouseButton::Right;
+		arguments.info = info;
+		events->OnIOButtonDoubleClick(arguments);
+	}
+
+	void GuiRemoteRendererSingle::MiddleButtonDown(const NativeWindowMouseInfo& info)
+	{
+		IOMouseInfoWithButton arguments;
+		arguments.button = IOMouseButton::Middle;
+		arguments.info = info;
+		events->OnIOButtonDown(arguments);
+	}
+
+	void GuiRemoteRendererSingle::MiddleButtonUp(const NativeWindowMouseInfo& info)
+	{
+		IOMouseInfoWithButton arguments;
+		arguments.button = IOMouseButton::Middle;
+		arguments.info = info;
+		events->OnIOButtonUp(arguments);
+	}
+
+	void GuiRemoteRendererSingle::MiddleButtonDoubleClick(const NativeWindowMouseInfo& info)
+	{
+		IOMouseInfoWithButton arguments;
+		arguments.button = IOMouseButton::Middle;
+		arguments.info = info;
+		events->OnIOButtonDoubleClick(arguments);
+	}
+
+	void GuiRemoteRendererSingle::HorizontalWheel(const NativeWindowMouseInfo& info)
+	{
+	}
+
+	void GuiRemoteRendererSingle::VerticalWheel(const NativeWindowMouseInfo& info)
+	{
+	}
+
+	void GuiRemoteRendererSingle::MouseMoving(const NativeWindowMouseInfo& info)
+	{
+		if (renderingDom)
+		{
+			INativeWindowListener::HitTestResult hitTestResult = INativeWindowListener::NoDecision;
+			INativeCursor* cursor = nullptr;
+			HitTest(renderingDom, window->Convert(NativePoint{ info.x,info.y }), hitTestResult, cursor);
+			window->SetWindowCursor(cursor);
+		}
+		events->OnIOMouseMoving(info);
+	}
+
+	void GuiRemoteRendererSingle::MouseEntered()
+	{
+		events->OnIOMouseEntered();
+	}
+
+	void GuiRemoteRendererSingle::MouseLeaved()
+	{
+		events->OnIOMouseLeaved();
+	}
+
+	void GuiRemoteRendererSingle::KeyDown(const NativeWindowKeyInfo& info)
+	{
+		events->OnIOKeyDown(info);
+	}
+
+	void GuiRemoteRendererSingle::KeyUp(const NativeWindowKeyInfo& info)
+	{
+		if (!info.ctrl && !info.shift && info.code == VKEY::KEY_MENU)
+		{
+			window->SupressAlt();
+		}
+		events->OnIOKeyUp(info);
+	}
+
+	void GuiRemoteRendererSingle::Char(const NativeWindowCharInfo& info)
+	{
+		events->OnIOChar(info);
+	}
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTERENDERER\GUIREMOTERENDERERSINGLE_MAINWINDOW.CPP
+***********************************************************************/
+
+namespace vl::presentation::remote_renderer
+{
+	using namespace remoteprotocol;
+
+	void GuiRemoteRendererSingle::RequestWindowGetBounds(vint id)
+	{
+		events->RespondWindowGetBounds(id, GetWindowSizingConfig());
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetBounds(const NativeRect& arguments)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remote_renderer::GuiRemoteRendererSingle::RequestWindowNotifySetBounds(const NativeRect&)#"
+		CHECK_ERROR(!updatingBounds, ERROR_MESSAGE_PREFIX L"This function cannot be called recursively.");
+
+		updatingBounds = true;
+		if (!screen)
+		{
+			auto primary = GetCurrentController()->ScreenService()->GetScreen((vint)0);
+			NativeRect screenBounds = primary->GetBounds();
+			NativeRect windowBounds = arguments;
+			windowBounds.x1 = (screenBounds.Width() - windowBounds.Width()) / 2;
+			windowBounds.y1 = (screenBounds.Height() - windowBounds.Height()) / 2;
+			window->SetBounds(windowBounds);
+
+			screen = primary;
+			windowSizingConfig = GetWindowSizingConfig();
+		}
+		else
+		{
+			window->SetBounds(arguments);
+		}
+		updatingBounds = false;
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetTitle(const WString& arguments)
+	{
+		window->SetTitle(arguments);
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetEnabled(const bool& arguments)
+	{
+		if (arguments)
+		{
+			window->Enable();
+		}
+		else
+		{
+			window->Disable();
+		}
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetTopMost(const bool& arguments)
+	{
+		window->SetTopMost(arguments);
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetShowInTaskBar(const bool& arguments)
+	{
+		if (arguments)
+		{
+			window->ShowInTaskBar();
+		}
+		else
+		{
+			window->HideInTaskBar();
+		}
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetClientSize(const NativeSize& arguments)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remote_renderer::GuiRemoteRendererSingle::RequestWindowNotifySetClientSize(const NativeSize&)#"
+		CHECK_ERROR(screen, ERROR_MESSAGE_PREFIX L"This function cannot be called before RequestWindowNotifySetBounds.");
+
+		window->SetClientSize(arguments);
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetCustomFrameMode(const bool& arguments)
+	{
+		if (window->IsCustomFrameModeEnabled() != arguments)
+		{
+			if (arguments)
+			{
+				window->EnableCustomFrameMode();
+			}
+			else
+			{
+				window->DisableCustomFrameMode();
+			}
+			UpdateConfigsIfNecessary();
+		}
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetMaximizedBox(const bool& arguments)
+	{
+		window->SetMaximizedBox(arguments);
+		UpdateConfigsIfNecessary();
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetMinimizedBox(const bool& arguments)
+	{
+		window->SetMinimizedBox(arguments);
+		UpdateConfigsIfNecessary();
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetBorder(const bool& arguments)
+	{
+		window->SetBorder(arguments);
+		UpdateConfigsIfNecessary();
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetSizeBox(const bool& arguments)
+	{
+		window->SetSizeBox(arguments);
+		UpdateConfigsIfNecessary();
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetIconVisible(const bool& arguments)
+	{
+		window->SetIconVisible(arguments);
+		UpdateConfigsIfNecessary();
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifySetTitleBar(const bool& arguments)
+	{
+		window->SetTitleBar(arguments);
+		UpdateConfigsIfNecessary();
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifyActivate()
+	{
+		window->SetActivate();
+	}
+
+	void GuiRemoteRendererSingle::RequestWindowNotifyShow(const remoteprotocol::WindowShowing& arguments)
+	{
+		if (arguments.sizeState != window->GetSizeState())
+		{
+			if (arguments.activate)
+			{
+				window->SetActivate();
+			}
+			switch (arguments.sizeState)
+			{
+			case INativeWindow::Minimized:
+				window->ShowMinimized();
+				break;
+			case INativeWindow::Restored:
+				window->ShowRestored();
+				break;
+			case INativeWindow::Maximized:
+				window->ShowMaximized();
+				break;
+			}
+		}
+	}
+}
+
+/***********************************************************************
+.\PLATFORMPROVIDERS\REMOTERENDERER\GUIREMOTERENDERERSINGLE_RENDERING.CPP
+***********************************************************************/
+
+namespace vl::presentation::remote_renderer
+{
+	using namespace collections;
+	using namespace elements;
+	using namespace remoteprotocol;
+
+	Alignment GuiRemoteRendererSingle::GetAlignment(remoteprotocol::ElementHorizontalAlignment alignment)
+	{
+		switch (alignment)
+		{
+		case remoteprotocol::ElementHorizontalAlignment::Left: return Alignment::Left;
+		case remoteprotocol::ElementHorizontalAlignment::Right: return Alignment::Right;
+		default: return Alignment::Center;
+		}
+	}
+
+	Alignment GuiRemoteRendererSingle::GetAlignment(remoteprotocol::ElementVerticalAlignment alignment)
+	{
+		switch (alignment)
+		{
+		case remoteprotocol::ElementVerticalAlignment::Top: return Alignment::Top;
+		case remoteprotocol::ElementVerticalAlignment::Bottom: return Alignment::Bottom;
+		default: return Alignment::Center;
+		}
+	}
+
+/***********************************************************************
+* Rendering
+***********************************************************************/
+
+	void GuiRemoteRendererSingle::RequestRendererCreated(const Ptr<collections::List<remoteprotocol::RendererCreation>>& arguments)
+	{
+		if (arguments)
+		{
+			for (auto&& rc : *arguments.Obj())
+			{
+				Ptr<IGuiGraphicsElement> element;
+				switch (rc.type)
+				{
+				case RendererType::FocusRectangle:
+					element = Ptr(GuiFocusRectangleElement::Create());
+					break;
+				case RendererType::SolidBorder:
+					element = Ptr(GuiSolidBorderElement::Create());
+					break;
+				case RendererType::SinkBorder:
+					element = Ptr(Gui3DBorderElement::Create());
+					break;
+				case RendererType::SinkSplitter:
+					element = Ptr(Gui3DSplitterElement::Create());
+					break;
+				case RendererType::SolidBackground:
+					element = Ptr(GuiSolidBackgroundElement::Create());
+					break;
+				case RendererType::GradientBackground:
+					element = Ptr(GuiGradientBackgroundElement::Create());
+					break;
+				case RendererType::InnerShadow:
+					element = Ptr(GuiInnerShadowElement::Create());
+					break;
+				case RendererType::SolidLabel:
+					element = Ptr(GuiSolidLabelElement::Create());
+					break;
+				case RendererType::Polygon:
+					element = Ptr(GuiPolygonElement::Create());
+					break;
+				case RendererType::ImageFrame:
+					element = Ptr(GuiImageFrameElement::Create());
+					break;
+				default:;
+				}
+
+				element->GetRenderer()->SetRenderTarget(GetGuiGraphicsResourceManager()->GetRenderTarget(window));
+
+				if (availableElements.Keys().Contains(rc.id))
+				{
+					availableElements.Set(rc.id, element);
+				}
+				else
+				{
+					availableElements.Add(rc.id, element);
+				}
+			}
+		}
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererDestroyed(const Ptr<collections::List<vint>>& arguments)
+	{
+		if (arguments)
+		{
+			for (auto id : *arguments.Obj())
+			{
+				availableElements.Remove(id);
+				solidLabelMeasurings.Remove(id);
+			}
+		}
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererBeginRendering(const remoteprotocol::ElementBeginRendering& arguments)
+	{
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererEndRendering(vint id)
+	{
+		events->RespondRendererEndRendering(id, elementMeasurings);
+		elementMeasurings = {};
+		fontHeightMeasurings.Clear();
+	}
+
+/***********************************************************************
+* Rendering (Elemnents)
+***********************************************************************/
+
+	void GuiRemoteRendererSingle::RequestRendererUpdateElement_SolidBorder(const remoteprotocol::ElementDesc_SolidBorder& arguments)
+	{
+		vint index = availableElements.Keys().IndexOf(arguments.id);
+		if (index == -1) return;
+		auto element = availableElements.Values()[index].Cast<GuiSolidBorderElement>();
+		if (!element) return;
+
+		element->SetColor(arguments.borderColor);
+		element->SetShape(arguments.shape);
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererUpdateElement_SinkBorder(const remoteprotocol::ElementDesc_SinkBorder& arguments)
+	{
+		vint index = availableElements.Keys().IndexOf(arguments.id);
+		if (index == -1) return;
+		auto element = availableElements.Values()[index].Cast<Gui3DBorderElement>();
+		if (!element) return;
+
+		element->SetColors(arguments.leftTopColor, arguments.rightBottomColor);
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererUpdateElement_SinkSplitter(const remoteprotocol::ElementDesc_SinkSplitter& arguments)
+	{
+		vint index = availableElements.Keys().IndexOf(arguments.id);
+		if (index == -1) return;
+		auto element = availableElements.Values()[index].Cast<Gui3DSplitterElement>();
+		if (!element) return;
+
+		element->SetColors(arguments.leftTopColor, arguments.rightBottomColor);
+		element->SetDirection(arguments.direction);
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererUpdateElement_SolidBackground(const remoteprotocol::ElementDesc_SolidBackground& arguments)
+	{
+		vint index = availableElements.Keys().IndexOf(arguments.id);
+		if (index == -1) return;
+		auto element = availableElements.Values()[index].Cast<GuiSolidBackgroundElement>();
+		if (!element) return;
+
+		element->SetColor(arguments.backgroundColor);
+		element->SetShape(arguments.shape);
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererUpdateElement_GradientBackground(const remoteprotocol::ElementDesc_GradientBackground& arguments)
+	{
+		vint index = availableElements.Keys().IndexOf(arguments.id);
+		if (index == -1) return;
+		auto element = availableElements.Values()[index].Cast<GuiGradientBackgroundElement>();
+		if (!element) return;
+
+		element->SetColors(arguments.leftTopColor, arguments.rightBottomColor);
+		element->SetDirection(arguments.direction);
+		element->SetShape(arguments.shape);
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererUpdateElement_InnerShadow(const remoteprotocol::ElementDesc_InnerShadow& arguments)
+	{
+		vint index = availableElements.Keys().IndexOf(arguments.id);
+		if (index == -1) return;
+		auto element = availableElements.Values()[index].Cast<GuiInnerShadowElement>();
+		if (!element) return;
+
+		element->SetColor(arguments.shadowColor);
+		element->SetThickness(arguments.thickness);
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererUpdateElement_Polygon(const remoteprotocol::ElementDesc_Polygon& arguments)
+	{
+		vint index = availableElements.Keys().IndexOf(arguments.id);
+		if (index == -1) return;
+		auto element = availableElements.Values()[index].Cast<GuiPolygonElement>();
+		if (!element) return;
+
+		element->SetSize(arguments.size);
+		element->SetBorderColor(arguments.borderColor);
+		element->SetBackgroundColor(arguments.backgroundColor);
+
+		if (arguments.points && arguments.points->Count() > 0)
+		{
+			element->SetPoints(&arguments.points->Get(0), arguments.points->Count());
+		}
+	}
+
+/***********************************************************************
+* Rendering (Elemnents -- Label)
+***********************************************************************/
+
+	void GuiRemoteRendererSingle::StoreLabelMeasuring(vint id, remoteprotocol::ElementSolidLabelMeasuringRequest request, Ptr<elements::GuiSolidLabelElement> solidLabel, Size minSize)
+	{
+		switch (request)
+		{
+		case ElementSolidLabelMeasuringRequest::FontHeight:
+			{
+				Pair<WString, vint> key = { solidLabel->GetFont().fontFamily,solidLabel->GetFont().size };
+				if (fontHeightMeasurings.Contains(key)) return;
+				fontHeightMeasurings.Add(key);
+
+				ElementMeasuring_FontHeight response;
+				response.fontFamily = key.key;
+				response.fontSize = key.value;
+				response.height = minSize.y;
+
+				if (!elementMeasurings.fontHeights)
+				{
+					elementMeasurings.fontHeights = Ptr(new List<ElementMeasuring_FontHeight>);
+				}
+				elementMeasurings.fontHeights->Add(response);
+			}
+			break;
+		case ElementSolidLabelMeasuringRequest::TotalSize:
+			{
+				ElementMeasuring_ElementMinSize response;
+				response.id = id;
+				response.minSize = minSize;
+
+				if (!elementMeasurings.minSizes)
+				{
+					elementMeasurings.minSizes = Ptr(new List<ElementMeasuring_ElementMinSize>);
+				}
+				elementMeasurings.minSizes->Add(response);
+			}
+			break;
+		}
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererUpdateElement_SolidLabel(const remoteprotocol::ElementDesc_SolidLabel& arguments)
+	{
+		vint index = availableElements.Keys().IndexOf(arguments.id);
+		if (index == -1) return;
+		auto element = availableElements.Values()[index].Cast<GuiSolidLabelElement>();
+		if (!element) return;
+
+		element->SetColor(arguments.textColor);
+		element->SetAlignments(GetAlignment(arguments.horizontalAlignment), GetAlignment(arguments.verticalAlignment));
+		element->SetWrapLine(arguments.wrapLine);
+		element->SetWrapLineHeightCalculation(arguments.wrapLineHeightCalculation);
+		element->SetEllipse(arguments.ellipse);
+		element->SetMultiline(arguments.multiline);
+
+		if (arguments.font)
+		{
+			element->SetFont(arguments.font.Value());
+		}
+		if (arguments.text)
+		{
+			element->SetText(arguments.text.Value());
+		}
+
+		if (arguments.measuringRequest)
+		{
+			SolidLabelMeasuring measuring;
+			measuring.request = arguments.measuringRequest.Value();
+			index = solidLabelMeasurings.Keys().IndexOf(arguments.id);
+			if (solidLabelMeasurings.Keys().Contains(arguments.id))
+			{
+				solidLabelMeasurings.Set(arguments.id, measuring);
+			}
+			else
+			{
+				solidLabelMeasurings.Add(arguments.id, measuring);
+			}
+
+			StoreLabelMeasuring(arguments.id, measuring.request, element, element->GetRenderer()->GetMinSize());
+		}
+	}
+
+/***********************************************************************
+* Rendering (Elements -- Image)
+***********************************************************************/
+
+	remoteprotocol::ImageMetadata GuiRemoteRendererSingle::CreateImageMetadata(vint id, INativeImage* image)
+	{
+		ImageMetadata response;
+		response.id = id;
+		response.format = image->GetFormat();
+		response.frames = Ptr(new List<ImageFrameMetadata>);
+		for (vint i = 0; i < image->GetFrameCount(); i++)
+		{
+			auto frame = image->GetFrame(i);
+			response.frames->Add({ frame->GetSize() });
+		}
+
+		return response;
+	}
+
+	remoteprotocol::ImageMetadata GuiRemoteRendererSingle::CreateImage(const remoteprotocol::ImageCreation& arguments)
+	{
+		arguments.imageData->SeekFromBegin(0);
+		auto image = GetCurrentController()->ImageService()->CreateImageFromStream(*arguments.imageData.Obj());
+		if (availableImages.Keys().Contains(arguments.id))
+		{
+			availableImages.Set(arguments.id, image);
+		}
+		else
+		{
+			availableImages.Add(arguments.id, image);
+		}
+		return CreateImageMetadata(arguments.id, image.Obj());
+	}
+	
+	void GuiRemoteRendererSingle::RequestImageCreated(vint id, const remoteprotocol::ImageCreation& arguments)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remote_renderer::GuiRemoteRendererSingle::RequestImageCreated(const ImageCreation&)#"
+		CHECK_ERROR(!arguments.imageDataOmitted && arguments.imageData, ERROR_MESSAGE_PREFIX L"Binary content of the image is missing.");
+
+		events->RespondImageCreated(id, CreateImage(arguments));
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void GuiRemoteRendererSingle::RequestImageDestroyed(const vint& arguments)
+	{
+		availableImages.Remove(arguments);
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererUpdateElement_ImageFrame(const remoteprotocol::ElementDesc_ImageFrame& arguments)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remote_renderer::GuiRemoteRendererSingle::RequestRendererUpdateElement_ImageFrame(const arguments&)#"
+
+		vint index = availableElements.Keys().IndexOf(arguments.id);
+		if (index == -1) return;
+		auto element = availableElements.Values()[index].Cast<GuiImageFrameElement>();
+		if (!element) return;
+
+		element->SetAlignments(GetAlignment(arguments.horizontalAlignment), GetAlignment(arguments.verticalAlignment));
+		element->SetStretch(arguments.stretch);
+		element->SetEnabled(arguments.enabled);
+
+		if (arguments.imageId && arguments.imageCreation)
+		{
+			CHECK_ERROR(arguments.imageId.Value() == arguments.imageCreation.Value().id, ERROR_MESSAGE_PREFIX L"imageId and imageCreation.id must be identical.");
+		}
+
+		if (arguments.imageId)
+		{
+			if (arguments.imageCreation && !elementMeasurings.createdImages)
+			{
+				elementMeasurings.createdImages = Ptr(new List<ImageMetadata>);
+			}
+
+			vint index = availableImages.Keys().IndexOf(arguments.imageId.Value());
+			if (index == -1)
+			{
+				CHECK_ERROR(arguments.imageCreation && !arguments.imageCreation.Value().imageDataOmitted && arguments.imageCreation.Value().imageData, ERROR_MESSAGE_PREFIX L"Binary content of the image is missing.");
+
+				auto response = CreateImage(arguments.imageCreation.Value());
+				element->SetImage(availableImages[response.id], arguments.imageFrame);
+				elementMeasurings.createdImages->Add(response);
+			}
+			else
+			{
+				auto image = availableImages.Values()[index];
+				element->SetImage(image, arguments.imageFrame);
+				if (arguments.imageCreation)
+				{
+					elementMeasurings.createdImages->Add(CreateImageMetadata(arguments.imageId.Value(), image.Obj()));
+				}
+			}
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+/***********************************************************************
+* Rendering (Dom)
+***********************************************************************/
+
+	void GuiRemoteRendererSingle::CheckDom()
+	{
+		needRefresh = true;
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererRenderDom(const Ptr<remoteprotocol::RenderingDom>& arguments)
+	{
+		renderingDom = arguments;
+		if (renderingDom)
+		{
+			BuildDomIndex(renderingDom, renderingDomIndex);
+		}
+		CheckDom();
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererRenderDomDiff(const remoteprotocol::RenderingDom_DiffsInOrder& arguments)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remote_renderer::GuiRemoteRendererSingle::RequestRendererRenderDomDiff(const RenderingDom_DiffsInOrder&)#"
+		CHECK_ERROR(renderingDom, ERROR_MESSAGE_PREFIX L"This function must be called after RequestRendererRenderDom.");
+
+		UpdateDomInplace(renderingDom, renderingDomIndex, arguments);
+		CheckDom();
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+/***********************************************************************
+* Rendering (Commands)
+***********************************************************************/
+
+	void GuiRemoteRendererSingle::RequestRendererBeginBoundary(const remoteprotocol::ElementBoundary& arguments)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remote_renderer::GuiRemoteRendererSingle::RequestRendererBeginBoundary(const ElementBoundary&)#"
+		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"The current implementation require dom-diff enabled in core side.");
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererEndBoundary()
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remote_renderer::GuiRemoteRendererSingle::RequestRendererEndBoundary()#"
+		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"The current implementation require dom-diff enabled in core side.");
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	void GuiRemoteRendererSingle::RequestRendererRenderElement(const remoteprotocol::ElementRendering& arguments)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remote_renderer::GuiRemoteRendererSingle::RequestRendererRenderElement(const ElementRendering&)#"
+		CHECK_FAIL(ERROR_MESSAGE_PREFIX L"The current implementation require dom-diff enabled in core side.");
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+/***********************************************************************
+* Rendering (INativeWindow)
+***********************************************************************/
+
+	void GuiRemoteRendererSingle::UpdateRenderTarget(elements::IGuiGraphicsRenderTarget* rt)
+	{
+		for (auto element : availableElements.Values())
+		{
+			element->GetRenderer()->SetRenderTarget(rt);
+		}
+	}
+
+	void GuiRemoteRendererSingle::Render(Ptr<remoteprotocol::RenderingDom> dom, elements::IGuiGraphicsRenderTarget* rt)
+	{
+		if (dom->content.element)
+		{
+			vint index = availableElements.Keys().IndexOf(dom->content.element.Value());
+			if (index != -1)
+			{
+				auto element = availableElements.Values()[index];
+				rt->PushClipper(dom->content.validArea, nullptr);
+				element->GetRenderer()->Render(dom->content.bounds);
+				rt->PopClipper(nullptr);
+
+				if (auto solidLabel = element.Cast<GuiSolidLabelElement>())
+				{
+					index = solidLabelMeasurings.Keys().IndexOf(dom->content.element.Value());
+					if (index != -1)
+					{
+						auto& measuring = const_cast<SolidLabelMeasuring&>(solidLabelMeasurings.Values()[index]);
+						auto minSize = element->GetRenderer()->GetMinSize();
+
+						bool measuringChanged = false;
+						if (!measuring.minSize)
+						{
+							measuringChanged = true;
+						}
+						else switch (measuring.request)
+						{
+						case ElementSolidLabelMeasuringRequest::FontHeight:
+							if (measuring.minSize.Value().y != minSize.y)
+							{
+								measuringChanged = true;
+							}
+							break;
+						case ElementSolidLabelMeasuringRequest::TotalSize:
+							if (measuring.minSize.Value() != minSize)
+							{
+								measuringChanged = true;
+							}
+							break;
+						}
+
+						measuring.minSize = minSize;
+						if (measuringChanged)
+						{
+							StoreLabelMeasuring(dom->content.element.Value(), measuring.request, solidLabel, minSize);
+						}
+					}
+				}
+			}
+		}
+
+		if (dom->children)
+		{
+			for (auto child : *dom->children.Obj())
+			{
+				if (child->content.validArea.Width() > 0 && child->content.validArea.Height()> 0)
+				{
+					Render(child, rt);
+				}
+			}
+		}
+	}
+
+	void GuiRemoteRendererSingle::HitTestInternal(Ptr<remoteprotocol::RenderingDom> dom, Point location, Nullable<INativeWindowListener::HitTestResult>& hitTestResult, Nullable<INativeCursor::SystemCursorType>& cursorType)
+	{
+		if (dom->children)
+		{
+			for (auto child : *dom->children.Obj())
+			{
+				if (child->content.validArea.Contains(location))
+				{
+					HitTestInternal(child, location, hitTestResult, cursorType);
+
+					if (!hitTestResult && child->content.hitTestResult)
+					{
+						hitTestResult = child->content.hitTestResult;
+					}
+					if (!cursorType && child->content.cursor)
+					{
+						cursorType = child->content.cursor;
+					}
+				}
+			}
+		}
+	}
+
+	void GuiRemoteRendererSingle::HitTest(Ptr<remoteprotocol::RenderingDom> dom, Point location, INativeWindowListener::HitTestResult& hitTestResult, INativeCursor*& cursor)
+	{
+		Nullable<INativeWindowListener::HitTestResult> hitTestResultNullable;
+		Nullable<INativeCursor::SystemCursorType> cursorTypeNullable;
+		HitTestInternal(dom, location, hitTestResultNullable, cursorTypeNullable);
+		hitTestResult = hitTestResultNullable ? hitTestResultNullable.Value() : INativeWindowListener::NoDecision;
+		cursor = cursorTypeNullable ? GetCurrentController()->ResourceService()->GetSystemCursor(cursorTypeNullable.Value()) : GetCurrentController()->ResourceService()->GetDefaultSystemCursor();
+	}
+
+	void GuiRemoteRendererSingle::GlobalTimer()
+	{
+		if (!needRefresh) return;
+		needRefresh = false;
+		if (!window) return;
+		if (!renderingDom) return;
+
+		supressPaint = true;
+		auto rt = GetGuiGraphicsResourceManager()->GetRenderTarget(window);
+		rt->StartRendering();
+		Render(renderingDom, rt);
+		auto result = rt->StopRendering();
+		window->RedrawContent();
+		supressPaint = false;
+
+		switch (result)
+		{
+		case RenderTargetFailure::ResizeWhileRendering:
+			GetGuiGraphicsResourceManager()->ResizeRenderTarget(window);
+			needRefresh = true;
+			break;
+		case RenderTargetFailure::LostDevice:
+			UpdateRenderTarget(nullptr);
+			GetGuiGraphicsResourceManager()->RecreateRenderTarget(window);
+			UpdateRenderTarget(GetGuiGraphicsResourceManager()->GetRenderTarget(window));
+			needRefresh = true;
+			break;
+		default:;
+		}
+	}
+
+	void GuiRemoteRendererSingle::Paint()
+	{
+		if (!supressPaint)
+		{
+			needRefresh = true;
+		}
+	}
+
+	INativeWindowListener::HitTestResult GuiRemoteRendererSingle::HitTest(NativePoint location)
+	{
+		INativeWindowListener::HitTestResult hitTestResult = INativeWindowListener::NoDecision;
+		INativeCursor* cursor = nullptr;
+		if (renderingDom)
+		{
+			HitTest(renderingDom, window->Convert(location), hitTestResult, cursor);
+		}
+		return hitTestResult;
+	}
+}
 
 /***********************************************************************
 .\RESOURCES\GUIDOCUMENT.CPP

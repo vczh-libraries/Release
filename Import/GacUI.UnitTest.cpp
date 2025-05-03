@@ -146,9 +146,167 @@ File GacUIUnitTest_PrepareSnapshotFile(const WString& appName, const WString& ex
 #undef ERROR_MESSAGE_PREFIX
 }
 
+void GacUIUnitTest_WriteSnapshotFileIfChanged(File& snapshotFile, const WString& textLog)
+{
+#define ERROR_MESSAGE_PREFIX L"GacUIUnitTest_WriteSnapshotFileIfChanged(File&, const WString&)#"
+	bool skipWriting = false;
+	if (snapshotFile.Exists())
+	{
+		auto previousLog = snapshotFile.ReadAllTextByBom();
+		if (previousLog == textLog)
+		{
+			skipWriting = true;
+		}
+	}
+	if (!skipWriting)
+	{
+		bool succeeded = snapshotFile.WriteAllText(textLog, true, stream::BomEncoder::Utf8);
+		CHECK_ERROR(succeeded, ERROR_MESSAGE_PREFIX L"Failed to write the snapshot file.");
+	}
+#undef ERROR_MESSAGE_PREFIX
+}
+
+void GacUIUnitTest_LogUI(const WString& appName, UnitTestRemoteProtocol& unitTestProtocol)
+{
+#define ERROR_MESSAGE_PREFIX L"GacUIUnitTest_LogUI(const WString&, UnitTestRemoteProtocol&)#"
+	File snapshotFile = GacUIUnitTest_PrepareSnapshotFile(appName, WString::Unmanaged(L".json"));
+
+	JsonFormatting formatting;
+	formatting.spaceAfterColon = true;
+	formatting.spaceAfterComma = true;
+	formatting.crlf = true;
+	formatting.compact = true;
+
+	auto jsonLog = remoteprotocol::ConvertCustomTypeToJson(unitTestProtocol.GetLoggedTrace());
+	auto textLog = JsonToString(jsonLog, formatting);
+	{
+		remoteprotocol::UnitTest_RenderingTrace deserialized;
+		remoteprotocol::ConvertJsonToCustomType(jsonLog, deserialized);
+		auto jsonLog2 = remoteprotocol::ConvertCustomTypeToJson(deserialized);
+		auto textLog2 = JsonToString(jsonLog2, formatting);
+		CHECK_ERROR(textLog == textLog2, ERROR_MESSAGE_PREFIX L"Serialization and deserialization doesn't match.");
+	}
+
+	GacUIUnitTest_WriteSnapshotFileIfChanged(snapshotFile, textLog);
+#undef ERROR_MESSAGE_PREFIX
+}
+
+void GacUIUnitTest_LogCommands(const WString& appName, UnitTestRemoteProtocol& unitTestProtocol)
+{
+	File snapshotFile = GacUIUnitTest_PrepareSnapshotFile(appName, WString::Unmanaged(L"[commands].txt"));
+
+	JsonFormatting formatting;
+	formatting.spaceAfterColon = true;
+	formatting.spaceAfterComma = true;
+	formatting.crlf = false;
+	formatting.compact = true;
+
+	auto textLog = stream::GenerateToStream([&unitTestProtocol, &formatting](stream::TextWriter& writer)
+	{
+		auto&& loggedFrames = unitTestProtocol.GetLoggedFrames();
+		for (auto loggedFrame : loggedFrames)
+		{
+			writer.WriteLine(L"========================================");
+			writer.WriteLine(itow(loggedFrame->frameId));
+			writer.WriteLine(L"========================================");
+			for (auto&& commandLog : loggedFrame->renderingCommandsLog)
+			{
+				writer.WriteLine(commandLog);
+			}
+		};
+	});
+
+	GacUIUnitTest_WriteSnapshotFileIfChanged(snapshotFile, textLog);
+}
+
+void GacUIUnitTest_LogDiffs(const WString& appName, UnitTestRemoteProtocol& unitTestProtocol)
+{
+	File snapshotFile = GacUIUnitTest_PrepareSnapshotFile(appName, WString::Unmanaged(L"[diffs].txt"));
+
+	JsonFormatting formatting;
+	formatting.spaceAfterColon = true;
+	formatting.spaceAfterComma = true;
+	formatting.crlf = false;
+	formatting.compact = true;
+
+	auto textLog = stream::GenerateToStream([&unitTestProtocol, &formatting](stream::TextWriter& writer)
+	{
+		Ptr<RenderingDom> dom;
+		DomIndex domIndex;
+		auto&& loggedFrames = unitTestProtocol.GetLoggedFrames();
+		for (auto loggedFrame : loggedFrames)
+		{
+			writer.WriteLine(L"========================================");
+			writer.WriteLine(itow(loggedFrame->frameId));
+			writer.WriteLine(L"========================================");
+
+			if (!dom)
+			{
+				dom = loggedFrame->renderingDom;
+				BuildDomIndex(dom, domIndex);
+
+				List<Pair<vint, Ptr<RenderingDom>>> lines;
+				lines.Add({ 0,dom });
+				for (vint i = 0; i < lines.Count(); i++)
+				{
+					for (vint j = 0; j < lines[i].key; j++)
+					{
+						writer.WriteString(L"  ");
+					}
+
+					auto line = lines[i].value;
+					writer.WriteString(itow(line->id));
+					writer.WriteString(L": ");
+
+					auto jsonLog = remoteprotocol::ConvertCustomTypeToJson(line->content);
+					writer.WriteLine(JsonToString(jsonLog, formatting));
+
+					if (line->children)
+					{
+						for (auto child : *line->children.Obj())
+						{
+							lines.Add({ lines[i].key + 1,child });
+						}
+					}
+				}
+			}
+			else
+			{
+				DomIndex nextDomIndex;
+				BuildDomIndex(loggedFrame->renderingDom, nextDomIndex);
+
+				Ptr<List<RenderingDom_Diff>> diffList;
+				if (loggedFrame->renderingDiffs)
+				{
+					diffList = loggedFrame->renderingDiffs.Value().diffsInOrder;
+				}
+				else
+				{
+					RenderingDom_DiffsInOrder diffs;
+					DiffDom(dom, domIndex, loggedFrame->renderingDom, nextDomIndex, diffs);
+					diffList = diffs.diffsInOrder;
+				}
+
+				if (diffList)
+				{
+					for (auto&& diff : *diffList.Obj())
+					{
+						auto jsonLog = remoteprotocol::ConvertCustomTypeToJson(diff);
+						writer.WriteLine(JsonToString(jsonLog, formatting));
+					}
+				}
+
+				dom = loggedFrame->renderingDom;
+				domIndex = std::move(nextDomIndex);
+			}
+		};
+	});
+
+	GacUIUnitTest_WriteSnapshotFileIfChanged(snapshotFile, textLog);
+}
+
 void GacUIUnitTest_Start(const WString& appName, Nullable<UnitTestScreenConfig> config)
 {
-#define ERROR_MESSAGE_PREFIX L"GacUIUnitTest_Start(const WString&, Nullable<UnitTestScreenConfig>)#"
 	UnitTestScreenConfig globalConfig;
 	if (config)
 	{
@@ -159,50 +317,131 @@ void GacUIUnitTest_Start(const WString& appName, Nullable<UnitTestScreenConfig> 
 		globalConfig.FastInitialize(1024, 768);
 	}
 
+	// Renderer
 	UnitTestRemoteProtocol unitTestProtocol(appName, globalConfig);
-	repeatfiltering::GuiRemoteProtocolFilterVerifier verifierProtocol(unitTestProtocol.GetProtocol());
+	auto jsonParser = Ptr(new glr::json::Parser);
+
+	// Data Processing in Renderer
+	channeling::GuiRemoteJsonChannelFromProtocol channelReceiver(unitTestProtocol.GetProtocol());
+	channeling::GuiRemoteJsonChannelStringDeserializer channelJsonDeserializer(&channelReceiver, jsonParser);
+	channeling::GuiRemoteUtfStringChannelDeserializer<wchar_t, char8_t> channelUtf8Deserializer(&channelJsonDeserializer);
+
+	// Boundary between Binaries
+
+	// Data Processing in Core
+	channeling::GuiRemoteUtfStringChannelSerializer<wchar_t, char8_t> channelUtf8Serializer(&channelUtf8Deserializer);
+	channeling::GuiRemoteJsonChannelStringSerializer channelJsonSerializer(&channelUtf8Serializer, jsonParser);
+
+	// Boundary between threads
+
+	channeling::GuiRemoteProtocolFromJsonChannel channelSender(&channelJsonSerializer);
+
+	// Core
+	repeatfiltering::GuiRemoteProtocolFilterVerifier verifierProtocol(
+		globalConfig.useChannel == UnitTestRemoteChannel::None
+		? unitTestProtocol.GetProtocol()
+		: &channelSender
+		);
 	repeatfiltering::GuiRemoteProtocolFilter filteredProtocol(&verifierProtocol);
+	GuiRemoteProtocolDomDiffConverter diffConverterProtocol(&filteredProtocol);
 
 	UnitTestContextImpl unitTestContext(&unitTestProtocol);
 	guiMainUnitTestContext = &unitTestContext;
-	SetupRemoteNativeController(&filteredProtocol);
+	SetupRemoteNativeController(
+		globalConfig.useDomDiff
+		? static_cast<IGuiRemoteProtocol*>(&diffConverterProtocol)
+		: &filteredProtocol
+		);
 	GacUIUnitTest_SetGuiMainProxy({});
 
+	GacUIUnitTest_LogUI(appName, unitTestProtocol);
+	if (!globalConfig.useDomDiff)
 	{
-		File snapshotFile = GacUIUnitTest_PrepareSnapshotFile(appName, WString::Unmanaged(L".json"));
-
-		JsonFormatting formatting;
-		formatting.spaceAfterColon = true;
-		formatting.spaceAfterComma = true;
-		formatting.crlf = true;
-		formatting.compact = true;
-
-		auto jsonLog = remoteprotocol::ConvertCustomTypeToJson(unitTestProtocol.GetLoggedTrace());
-		auto textLog = JsonToString(jsonLog, formatting);
-		{
-			remoteprotocol::RenderingTrace deserialized;
-			remoteprotocol::ConvertJsonToCustomType(jsonLog, deserialized);
-			auto jsonLog2 = remoteprotocol::ConvertCustomTypeToJson(deserialized);
-			auto textLog2 = JsonToString(jsonLog2, formatting);
-			CHECK_ERROR(textLog == textLog2, ERROR_MESSAGE_PREFIX L"Serialization and deserialization doesn't match.");
-		}
-
-		bool skipWriting = false;
-		if (snapshotFile.Exists())
-		{
-			auto previousLog = snapshotFile.ReadAllTextByBom();
-			if (previousLog == textLog)
-			{
-				skipWriting = true;
-			}
-		}
-		if (!skipWriting)
-		{
-			bool succeeded = snapshotFile.WriteAllText(textLog, true, stream::BomEncoder::Utf8);
-			CHECK_ERROR(succeeded, ERROR_MESSAGE_PREFIX L"Failed to write the snapshot file.");
-		}
+		GacUIUnitTest_LogCommands(appName, unitTestProtocol);
 	}
-#undef ERROR_MESSAGE_PREFIX
+	GacUIUnitTest_LogDiffs(appName, unitTestProtocol);
+}
+
+template<typename T>
+void RunInNewThread(T&& threadProc)
+{
+	Thread::CreateAndStart([threadProc]()
+	{
+		try
+		{
+			threadProc();
+		}
+		catch (const Exception& e)
+		{
+			(void)e;
+			throw;
+		}
+		catch (const Error& e)
+		{
+			(void)e;
+			throw;
+		}
+	});
+}
+
+void GacUIUnitTest_StartAsync(const WString& appName, Nullable<UnitTestScreenConfig> config)
+{
+	TEST_ASSERT(config && config.Value().useChannel == UnitTestRemoteChannel::Async);
+
+	// Renderer
+	UnitTestRemoteProtocol unitTestProtocol(appName, config.Value());
+	auto jsonParser = Ptr(new glr::json::Parser);
+
+	// Data Processing in Renderer
+	channeling::GuiRemoteJsonChannelFromProtocol channelReceiver(unitTestProtocol.GetProtocol());
+	channeling::GuiRemoteJsonChannelStringDeserializer channelJsonDeserializer(&channelReceiver, jsonParser);
+	channeling::GuiRemoteUtfStringChannelDeserializer<wchar_t, char8_t> channelUtf8Deserializer(&channelJsonDeserializer);
+
+	// Boundary between Binaries
+
+	// Data Processing in Core
+	channeling::GuiRemoteUtfStringChannelSerializer<wchar_t, char8_t> channelUtf8Serializer(&channelUtf8Deserializer);
+	channeling::GuiRemoteJsonChannelStringSerializer channelJsonSerializer(&channelUtf8Serializer, jsonParser);
+
+	// Boundary between threads
+
+	channeling::GuiRemoteProtocolAsyncJsonChannelSerializer asyncChannelSender;
+	asyncChannelSender.Start(
+		&channelJsonSerializer,
+		[&unitTestProtocol, config](channeling::GuiRemoteProtocolAsyncJsonChannelSerializer* channel)
+		{
+			channeling::GuiRemoteProtocolFromJsonChannel channelSender(channel);
+
+			// Core
+			repeatfiltering::GuiRemoteProtocolFilterVerifier verifierProtocol(&channelSender);
+			repeatfiltering::GuiRemoteProtocolFilter filteredProtocol(&verifierProtocol);
+			GuiRemoteProtocolDomDiffConverter diffConverterProtocol(&filteredProtocol);
+
+			UnitTestContextImpl unitTestContext(&unitTestProtocol);
+			guiMainUnitTestContext = &unitTestContext;
+			SetupRemoteNativeController(
+				config.Value().useDomDiff
+				? static_cast<IGuiRemoteProtocol*>(&diffConverterProtocol)
+				: &filteredProtocol
+				);
+			GacUIUnitTest_SetGuiMainProxy({});
+		},
+		[](
+			channeling::GuiRemoteProtocolAsyncJsonChannelSerializer::TChannelThreadProc channelThreadProc,
+			channeling::GuiRemoteProtocolAsyncJsonChannelSerializer::TUIThreadProc uiThreadProc
+			)
+		{
+			RunInNewThread(channelThreadProc);
+			RunInNewThread(uiThreadProc);
+		});
+
+	asyncChannelSender.WaitForStopped();
+	GacUIUnitTest_LogUI(appName, unitTestProtocol);
+	if (!config.Value().useDomDiff)
+	{
+		GacUIUnitTest_LogCommands(appName, unitTestProtocol);
+	}
+	GacUIUnitTest_LogDiffs(appName, unitTestProtocol);
 }
 
 void GacUIUnitTest_Start_WithResourceAsText(const WString& appName, Nullable<UnitTestScreenConfig> config, const WString& resourceText)
@@ -240,7 +479,15 @@ void GacUIUnitTest_Start_WithResourceAsText(const WString& appName, Nullable<Uni
 		}
 		previousMainProxy(protocol, context);
 	});
-	GacUIUnitTest_Start(appName, config);
+
+	if (config && config.Value().useChannel == UnitTestRemoteChannel::Async)
+	{
+		GacUIUnitTest_StartAsync(appName, config);
+	}
+	else
+	{
+		GacUIUnitTest_Start(appName, config);
+	}
 #undef ERROR_MESSAGE_PREFIX
 }
 
