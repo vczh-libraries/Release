@@ -2639,7 +2639,7 @@ INativeWindow
 			T							x;
 			/// <summary>The mouse position of y dimension.</summary>
 			T							y;
-			/// <summary>The delta of the wheel.</summary>
+			/// <summary>The delta of the wheel. 120 for every tick, position for up/right, negative for down/left</summary>
 			vint						wheel;
 			/// <summary>True if the mouse is in the non-client area.</summary>
 			bool						nonClient;
@@ -10098,6 +10098,8 @@ Basic Construction
 				virtual void							CheckAndStoreControlTemplate(templates::GuiControlTemplate* value);
 				virtual void							EnsureControlTemplateExists();
 				virtual void							RebuildControlTemplate();
+				virtual void							FixingMissingControlTemplateCallback(templates::GuiControlTemplate* value);
+				virtual void							CallFixingMissingControlTemplateCallback();
 				virtual void							OnChildInserted(GuiControl* control);
 				virtual void							OnChildRemoved(GuiControl* control);
 				virtual void							OnParentChanged(GuiControl* oldParent, GuiControl* newParent);
@@ -10389,6 +10391,17 @@ Basic Construction
 					CHECK_ERROR(ct, L"The assigned control template is not vl::presentation::templates::Gui" L ## # TEMPLATE L"."); \
 					NAME = ct; \
 					BASE_TYPE::CheckAndStoreControlTemplate(value); \
+				} \
+				void FixingMissingControlTemplateCallback(templates::GuiControlTemplate* value)override \
+				{ \
+					BASE_TYPE::FixingMissingControlTemplateCallback(value); \
+					if (!NAME) \
+					{ \
+						auto ct = dynamic_cast<templates::Gui##TEMPLATE*>(value); \
+						CHECK_ERROR(ct, L"The assigned control template is not vl::presentation::templates::Gui" L ## # TEMPLATE L"."); \
+						NAME = ct; \
+						AfterControlTemplateInstalled_(true); \
+					} \
 				} \
 			public: \
 				templates::Gui##TEMPLATE* TypedControlTemplateObject(bool ensureExists) \
@@ -21756,6 +21769,10 @@ Ribbon Gallery List
 				/// <summary>Set minimum items visible in the drop down menu.</summary>
 				/// <param name="value">The minimum items visible in the drop down menu.</param>
 				void													SetVisibleItemCount(vint value);
+
+				/// <summary>Get the list control in the dropdown menu.</summary>
+				/// <returns>The list control in the dropdown menu.</returns>
+				GuiSelectableListControl*								GetListControlInDropdown();
 
 				/// <summary>Get the dropdown menu.</summary>
 				/// <returns>The dropdown menu.</returns>
