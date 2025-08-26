@@ -32,8 +32,6 @@ namespace vl
 #ifndef VCZH_DEBUG_NO_REFLECTION
 			IMPL_CPP_TYPE_INFO(demo::MainWindow)
 			IMPL_CPP_TYPE_INFO(demo::MainWindowConstructor)
-			IMPL_CPP_TYPE_INFO(demo::MenuToolBarControlTemplate)
-			IMPL_CPP_TYPE_INFO(demo::MenuToolBarControlTemplateConstructor)
 
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
@@ -56,6 +54,7 @@ namespace vl
 				CLASS_MEMBER_FIELD(__vwsn_precompile_14)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_15)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_16)
+				CLASS_MEMBER_FIELD(__vwsn_precompile_17)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_4)
@@ -77,19 +76,6 @@ namespace vl
 				CLASS_MEMBER_FIELD(self)
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
-			BEGIN_CLASS_MEMBER(::demo::MenuToolBarControlTemplate)
-				CLASS_MEMBER_BASE(::vl::presentation::templates::GuiControlTemplate)
-				CLASS_MEMBER_BASE(::demo::MenuToolBarControlTemplateConstructor)
-				CLASS_MEMBER_CONSTRUCTOR(::demo::MenuToolBarControlTemplate*(), NO_PARAMETER)
-			END_CLASS_MEMBER(::demo::MenuToolBarControlTemplate)
-
-			BEGIN_CLASS_MEMBER(::demo::MenuToolBarControlTemplateConstructor)
-				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
-				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MenuToolBarControlTemplateConstructor>(), NO_PARAMETER)
-				CLASS_MEMBER_METHOD(__vwsn_demo_MenuToolBarControlTemplate_Initialize, { L"__vwsn_this_" })
-				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
-			END_CLASS_MEMBER(::demo::MenuToolBarControlTemplateConstructor)
-
 #undef _
 			class DemoTypeLoader : public Object, public ITypeLoader
 			{
@@ -98,8 +84,6 @@ namespace vl
 				{
 					ADD_TYPE_INFO(::demo::MainWindow)
 					ADD_TYPE_INFO(::demo::MainWindowConstructor)
-					ADD_TYPE_INFO(::demo::MenuToolBarControlTemplate)
-					ADD_TYPE_INFO(::demo::MenuToolBarControlTemplateConstructor)
 				}
 
 				void Unload(ITypeManager* manager)

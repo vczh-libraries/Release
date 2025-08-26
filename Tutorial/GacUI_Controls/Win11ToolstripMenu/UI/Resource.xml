@@ -10,12 +10,6 @@
 
   <Folder name="Images" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/ToolbarImages/Images.xml</Folder>
 
-  <Instance name="MenuToolBarControlTemplateResource">
-    <Instance ref.CodeBehind="false" ref.Class="demo::MenuToolBarControlTemplate">
-      <ControlTemplate MinSizeLimitation="LimitToElementAndChildren"/>
-    </Instance>
-  </Instance>
-
   <Instance name="MainWindowResource">
     <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow">
       <Window ref.Name="self" Text="Win11ToolstripMenu" ClientSize="x:640 y:480">
@@ -32,12 +26,13 @@
         <ToolstripMenu ref.Name="menuEdit">
           <ToolstripGroupContainer>
             <ToolstripGroup>
-              <ToolstripToolBar ControlTemplate="demo::MenuToolBarControlTemplate">
+              <ToolstripToolBarInMenu>
                 <ToolstripButton Command-ref="commandCut"/>
                 <ToolstripButton Command-ref="commandCopy"/>
                 <ToolstripButton Command-ref="commandPaste"/>
+                <ToolstripSplitterInMenu/>
                 <ToolstripButton Command-ref="commandDelete"/>
-              </ToolstripToolBar>
+              </ToolstripToolBarInMenu>
             </ToolstripGroup>
             <ToolstripGroup>
               <MenuItemButton Command-ref="commandUndo"/>

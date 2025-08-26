@@ -25,20 +25,16 @@ https://github.com/vczh-libraries
 namespace vl_workflow_global
 {
 	struct __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 }
 
 namespace demo
 {
 	class MainWindowConstructor;
 	class MainWindow;
-	class MenuToolBarControlTemplateConstructor;
-	class MenuToolBarControlTemplate;
 
 	class MainWindowConstructor : public ::vl::Object, public ::vl::reflection::Description<MainWindowConstructor>
 	{
 		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindowConstructor>;
 #endif
@@ -60,17 +56,18 @@ namespace demo
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_3;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_4;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_5;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_6;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_7;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_8;
+		::vl::presentation::controls::GuiControl* __vwsn_precompile_6;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_7;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_8;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_9;
-		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_10;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_11;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_10;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_11;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_12;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_13;
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_14;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_15;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_16;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_14;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_15;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_16;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_17;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -80,36 +77,12 @@ namespace demo
 	{
 		friend class ::demo::MainWindowConstructor;
 		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
 	public:
 		MainWindow();
 		~MainWindow();
-	};
-
-	class MenuToolBarControlTemplateConstructor : public ::vl::Object, public ::vl::reflection::Description<MenuToolBarControlTemplateConstructor>
-	{
-#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MenuToolBarControlTemplateConstructor>;
-#endif
-	protected:
-		::demo::MenuToolBarControlTemplate* __vwsn_precompile_0;
-		void __vwsn_demo_MenuToolBarControlTemplate_Initialize(::demo::MenuToolBarControlTemplate* __vwsn_this_);
-	public:
-		MenuToolBarControlTemplateConstructor();
-	};
-
-	class MenuToolBarControlTemplate : public ::vl::presentation::templates::GuiControlTemplate, public ::demo::MenuToolBarControlTemplateConstructor, public ::vl::reflection::Description<MenuToolBarControlTemplate>
-	{
-		friend class ::demo::MenuToolBarControlTemplateConstructor;
-#ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
-		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MenuToolBarControlTemplate>;
-#endif
-	public:
-		MenuToolBarControlTemplate();
-		~MenuToolBarControlTemplate();
 	};
 
 }
@@ -135,15 +108,6 @@ Closures
 		::demo::MainWindowConstructor* __vwsnthis_0;
 
 		__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
-
-		::vl::presentation::templates::GuiControlTemplate* operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const;
-	};
-
-	struct __vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_
-	{
-		::demo::MainWindowConstructor* __vwsnthis_0;
-
-		__vwsnf2_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(::demo::MainWindowConstructor* __vwsnctorthis_0);
 
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiMouseEventArgs* arguments) const;
 	};
