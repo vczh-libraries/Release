@@ -726,7 +726,7 @@ Closures
 
 	void __vwsnf47_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::ViewOnly);
+		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::ViewOnly);
 	}
 
 	//-------------------------------------------------------------------
@@ -738,7 +738,7 @@ Closures
 
 	void __vwsnf48_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Selectable);
+		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Selectable);
 	}
 
 	//-------------------------------------------------------------------
@@ -750,7 +750,7 @@ Closures
 
 	void __vwsnf49_EditorBase_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 	}
 
 	//-------------------------------------------------------------------
@@ -3030,7 +3030,7 @@ namespace demo
 			::vl::__vwsn::This(this->document)->SetAlt(::vl::WString::Unmanaged(L"D"));
 		}
 		{
-			::vl::__vwsn::This(this->document)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->document)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		(this->__vwsn_precompile_2 = ::vl::__vwsn::This(this->document)->GetBoundsComposition());
 		{

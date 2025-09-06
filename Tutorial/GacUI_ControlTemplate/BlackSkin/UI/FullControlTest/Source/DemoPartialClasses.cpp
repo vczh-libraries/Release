@@ -2096,7 +2096,7 @@ Closures
 
 	void __vwsnf192_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::ViewOnly);
+		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::ViewOnly);
 	}
 
 	//-------------------------------------------------------------------
@@ -2108,7 +2108,7 @@ Closures
 
 	void __vwsnf193_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Selectable);
+		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Selectable);
 	}
 
 	//-------------------------------------------------------------------
@@ -2120,7 +2120,7 @@ Closures
 
 	void __vwsnf194_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+		::vl::__vwsn::This(__vwsnthis_0->self)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 	}
 
 	//-------------------------------------------------------------------
@@ -17949,7 +17949,7 @@ Class (::demo::DocumentBoxSubTabPageConstructor)
 			(this->__vwsn_precompile_2 = new ::vl::presentation::controls::GuiDocumentLabel(::vl::presentation::theme::ThemeName::DocumentTextBox));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->SetAlt(::vl::WString::Unmanaged(L"T"));
@@ -17975,7 +17975,7 @@ Class (::demo::DocumentBoxSubTabPageConstructor)
 			(this->__vwsn_precompile_5 = new ::vl::presentation::controls::GuiDocumentViewer(::vl::presentation::theme::ThemeName::DocumentViewer));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetAlt(::vl::WString::Unmanaged(L"V"));
@@ -17998,7 +17998,7 @@ Class (::demo::DocumentBoxSubTabPageConstructor)
 			(this->__vwsn_precompile_8 = new ::vl::presentation::controls::GuiDocumentLabel(::vl::presentation::theme::ThemeName::DocumentLabel));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetAlt(::vl::WString::Unmanaged(L"L"));
@@ -18221,7 +18221,7 @@ Class (::demo::DocumentEditorBaseConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"document"), ::vl::__vwsn::Box(this->document));
 		}
 		{
-			::vl::__vwsn::This(this->document)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->document)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		{
 			::vl::__vwsn::This(this->document)->SetAlt(::vl::WString::Unmanaged(L"D"));
@@ -29585,7 +29585,7 @@ Class (::demo::ResponsiveViewControlConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"documentBox"), ::vl::__vwsn::Box(this->documentBox));
 		}
 		{
-			::vl::__vwsn::This(this->documentBox)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->documentBox)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		{
 			::vl::__vwsn::This(this->documentBox)->SetText(::vl::WString::Unmanaged(L"Edit me!"));

@@ -2090,7 +2090,7 @@ Class (::demo::ResponsiveViewControlConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"documentBox"), ::vl::__vwsn::Box(this->documentBox));
 		}
 		{
-			::vl::__vwsn::This(this->documentBox)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->documentBox)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		{
 			::vl::__vwsn::This(this->documentBox)->SetText(::vl::WString::Unmanaged(L"Edit me!"));

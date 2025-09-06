@@ -2251,7 +2251,7 @@ Class (::demo::NewContactWindowConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxName"), ::vl::__vwsn::Box(this->textBoxName));
 		}
 		{
-			::vl::__vwsn::This(this->textBoxName)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->textBoxName)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		(this->__vwsn_precompile_4 = ::vl::__vwsn::This(this->textBoxName)->GetBoundsComposition());
 		{
@@ -2291,7 +2291,7 @@ Class (::demo::NewContactWindowConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxPhone"), ::vl::__vwsn::Box(this->textBoxPhone));
 		}
 		{
-			::vl::__vwsn::This(this->textBoxPhone)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->textBoxPhone)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		(this->__vwsn_precompile_8 = ::vl::__vwsn::This(this->textBoxPhone)->GetBoundsComposition());
 		{
@@ -2331,7 +2331,7 @@ Class (::demo::NewContactWindowConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxAddress"), ::vl::__vwsn::Box(this->textBoxAddress));
 		}
 		{
-			::vl::__vwsn::This(this->textBoxAddress)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->textBoxAddress)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		(this->__vwsn_precompile_12 = ::vl::__vwsn::This(this->textBoxAddress)->GetBoundsComposition());
 		{
@@ -2591,7 +2591,7 @@ Class (::demo::NewFolderWindowConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxName"), ::vl::__vwsn::Box(this->textBoxName));
 		}
 		{
-			::vl::__vwsn::This(this->textBoxName)->SetEditMode(::vl::presentation::controls::GuiDocumentCommonInterface::EditMode::Editable);
+			::vl::__vwsn::This(this->textBoxName)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Editable);
 		}
 		(this->__vwsn_precompile_4 = ::vl::__vwsn::This(this->textBoxName)->GetBoundsComposition());
 		{
