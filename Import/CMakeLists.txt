@@ -95,11 +95,11 @@ endif()
 
 # GacUI core
 if (GACUI_CORE)
-    list(APPEND GACUI_CORE_HDRS VlppParser.h GacUI.h GacUI.UnitTest.h GacUI.UnitTest.UI.h Skins/DarkSkin/DarkSkin.h)
+    list(APPEND GACUI_CORE_HDRS GacUI.h GacUI.UnitTest.h GacUI.UnitTest.UI.h Skins/DarkSkin/DarkSkin.h)
     if (WIN32)
         list(APPEND GACUI_CORE_HDRS GacUI.Windows.h)
     endif()
-    list(APPEND GACUI_CORE_SRCS VlppParser.cpp GacUI.cpp GacUI.UnitTest.cpp GacUI.UnitTest.UI.cpp Skins/DarkSkin/DarkSkin.cpp)
+    list(APPEND GACUI_CORE_SRCS GacUI.cpp GacUI.UnitTest.cpp GacUI.UnitTest.UI.cpp Skins/DarkSkin/DarkSkin.cpp)
     if (WIN32)
         list(APPEND GACUI_CORE_SRCS GacUI.Windows.cpp)
     endif()
