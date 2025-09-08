@@ -170,7 +170,6 @@ if (WORKFLOW_COMPILER)
 endif()
 
 if (GACUI_CORE)
-    install(FILES VlppParser.h DESTINATION include)
     install(FILES GacUI.h DESTINATION include)
     install(FILES GacUI.UnitTest.h DESTINATION include)
     install(FILES GacUI.UnitTest.UI.h DESTINATION include)
