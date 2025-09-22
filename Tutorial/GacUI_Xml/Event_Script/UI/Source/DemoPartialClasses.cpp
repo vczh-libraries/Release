@@ -218,7 +218,7 @@ namespace demo
 			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textBoxC"), ::vl::__vwsn::Box(this->textBoxC));
 		}
 		{
-			::vl::__vwsn::This(this->textBoxC)->SetReadonly(true);
+			::vl::__vwsn::This(this->textBoxC)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Selectable);
 		}
 		(this->__vwsn_precompile_13 = ::vl::__vwsn::This(this->textBoxC)->GetBoundsComposition());
 		{

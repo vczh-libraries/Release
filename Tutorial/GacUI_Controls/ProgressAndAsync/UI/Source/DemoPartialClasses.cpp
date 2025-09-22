@@ -242,7 +242,7 @@ Closures
 						}
 						(__vwsn_co0_text = ::demo::IStringAsync::CastResult(::vl::__vwsn::This(__vwsn_co_result_.Obj())->GetResult()));
 						::vl::__vwsn::This(__vwsnthis_0->textResult)->SetText(__vwsn_co0_text);
-						::vl::__vwsn::This(__vwsnthis_0->textResult)->Select([&](){ ::vl::presentation::TextPos __vwsn_temp__; __vwsn_temp__.row = static_cast<::vl::vint>(0); __vwsn_temp__.column = static_cast<::vl::vint>(0); return __vwsn_temp__; }(), [&](){ ::vl::presentation::TextPos __vwsn_temp__; __vwsn_temp__.row = static_cast<::vl::vint>(0); __vwsn_temp__.column = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+						::vl::__vwsn::This(__vwsnthis_0->textResult)->SetCaret([&](){ ::vl::presentation::TextPos __vwsn_temp__; __vwsn_temp__.row = static_cast<::vl::vint>(0); __vwsn_temp__.column = static_cast<::vl::vint>(0); return __vwsn_temp__; }(), [&](){ ::vl::presentation::TextPos __vwsn_temp__; __vwsn_temp__.row = static_cast<::vl::vint>(0); __vwsn_temp__.column = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 						this->SetStatus(::vl::reflection::description::CoroutineStatus::Stopped);
 						return;
 					}
@@ -400,7 +400,7 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"textResult"), ::vl::__vwsn::Box(this->textResult));
 		}
 		{
-			::vl::__vwsn::This(this->textResult)->SetReadonly(true);
+			::vl::__vwsn::This(this->textResult)->SetEditMode(::vl::presentation::controls::GuiDocumentEditMode::Selectable);
 		}
 		{
 			::vl::__vwsn::This(this->textResult)->SetVerticalAlwaysVisible(false);

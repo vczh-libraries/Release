@@ -49,7 +49,7 @@
               <Label Text="A + B = : "/>
             </Cell>
             <Cell Site="row:2 column:1">
-              <SinglelineTextBox ref.Name="textBoxC" Readonly="true">
+              <SinglelineTextBox ref.Name="textBoxC" EditMode="Selectable">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </SinglelineTextBox>
             </Cell>

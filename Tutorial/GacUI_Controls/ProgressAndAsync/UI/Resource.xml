@@ -73,7 +73,7 @@
                         }, -1);
                       });
                       textResult.Text = text;
-                      textResult.Select({row:0 column:0}, {row:0 column:0});
+                      textResult.SetCaret({row:0 column:0}, {row:0 column:0});
                     }
                   ]]>
                 </ev.Clicked-eval>
@@ -81,7 +81,7 @@
             </Cell>
 
             <Cell Site="row:1 column:0 columnSpan:2">
-              <MultilineTextBox ref.Name="textResult" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" Readonly="true">
+              <MultilineTextBox ref.Name="textResult" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" EditMode="Selectable">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </MultilineTextBox>
             </Cell>

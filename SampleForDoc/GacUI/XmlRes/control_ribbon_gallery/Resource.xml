@@ -96,9 +96,11 @@
             var pos = colorList.IndexToGalleryPos(index);
             var item = self.colorGroups[pos.group].Items[pos.item];
             var log = $"$(name): $(item.IconColor)\r\n";
-            textLog.Select({row:textLog.RowCount column:0}, {row:textLog.RowCount column:0});
+            var rowCount = textLog.Document.paragraphs.GetCount();
+            var start : TextPos = {row:rowCount column:0};
+            textLog.SetCaret(start, start);
             textLog.SelectionText = log;
-            textLog.Select({row:textLog.RowCount column:0}, {row:textLog.RowCount column:0});
+            textLog.SetCaret(start, start);
           }
         ]]></ref.Members>
         <Window ref.Name="self" Text="control_ribbon_gallery" ClientSize="x:640 y:480">
@@ -183,7 +185,7 @@
             </Cell>
 
             <Cell Site="row:2 column:0">
-              <MultilineTextBox ref.Name="textLog" Readonly="true" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="true">
+              <MultilineTextBox ref.Name="textLog" EditMode="Selectable" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="true">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               </MultilineTextBox>
             </Cell>
