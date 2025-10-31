@@ -27,6 +27,36 @@ Copy [Vlpp.natvis](https://github.com/vczh-libraries/Release/blob/master/Import/
 
 For example, VS2022's default visualizers folder will be **C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Packages\Debugger\Visualizers**.
 
+## Github Copilot with Visual Studio Code
+
+The `prompts` folder copies all task in Visual Studio github copilot recognized format.
+- [0-scrum.prompt.md](.github/prompts/win-0-scrum.prompt.md) creates `Copilot_Scrum.md`.
+  - Use `# Problem` for the problem.
+  - Convert your feature request to multiple tasks.
+- [1-design.prompt.md](.github/prompts/win-1-design.prompt.md) creates `Copilot_Task.md`.
+  - Use `# Problem` for the problem. It will find the first unfinished task in `Copilot_Scrum.md`.
+  - Create a more detailed design for the task.
+- [2-planning.prompt.md](.github/prompts/win-2-planning.prompt.md) creates `Copilot_Planning.md`.
+  - Propose actual code change from the detailed design.
+- [3-summarizing.prompt.md](.github/prompts/win-3-summarizing.prompt.md) creates `Copilot_Execution.md`.
+  - Extract proposed code change.
+- [4-execution.prompt.md](.github/prompts/win-3-execution.prompt.md) edit source files according to `Copilot_Execution.md`.
+  - Apply proposed code change, ensure it compiles.
+- [5-verifying.prompt.md](.github/prompts/win-5-verifying.prompt.md) compiles and runs unit test.
+  - Ensure passing all test cases.
+- You can always use `# Update` in any phrase for adjustment.
+
+Example:
+```markdown
+#win-0-scrum.prompt.md <-- vscode will convert it to a #file tag, otherwise you are not typing it correctly
+I would like to do this feature. Here are proposed task splitting:
+- Complete the source code
+- Complete unit test
+```
+
+You can copy the whole `.github` folder to your own repo.
+`.vscode/tasks.json` needs to be ready, see [tasks-example.json](.vscode/tasks-example.json) for details.
+
 ## Content of This Project
 
 - **Import** Gaclib source code
