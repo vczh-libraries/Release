@@ -35,6 +35,7 @@
   - Add an empty `# UPDATES` section after `# PROBLEM DESCRIPTION`.
 - If there is an `# Update` section: it means I am going to propose some change to `Copilot_Task.md`.
   - Copy precisely my problem description in `# Update` from the LATEST chat message to the `# PROBLEM DESCRIPTION` section, with a new sub-section `## UPDATE`.
+  - The new `## UPDATE` should be appended to the end of the existing `# UPDATES` section (aka before `# INSIGHTS AND REASONING`).
   - Follow my update to change the design document.
 - If there is nothing: it means you are accidentally stopped. Please continue your work.
   - Read `Copilot_Task.md` througly, it is highly possibly that you were working on the request described in the last section in `# PROBLEM DESCRIPTION`.
@@ -60,37 +61,12 @@
 # External Tools Environment and Context
 
 - You are on Windows running in Visual Studio Code.
-- In order to achieve the goal, you always need to create/delete/update files, build the project, run the unit test, etc. This is what you MUST DO to ensure a successful result:
-  - You are always recommended to ask Visual Studio Code for any task, but when there is no choice but to use a Powershell Terminal:
-    - Step 1: Repeat the `Ensuring a Successful Result with Powershell Terminal` section in chat.
-    - Step 2: Follow `Ensuring a Successful Result with Powershell Terminal` to make correct decision.
-
-## Ensuring a Successful Result with Powershell Terminal
-
-- DO NOT run multiple commands at the same time, except they are connected with pipe (`|`).
-- DO NOT call `msbuild` or other executable files by yourself.
-- DO NOT create any new file unless explicitly directed.
-- MUST run any powershell script in this format: `& absolute-path.ps1 parameters...`.
-- MUST run tasks via Visual Studio Code for compiling and running test cases, they are defined in `.vscode/tasks.json`, DO NOT change this file.
-- YOU ARE RECOMMENDED to only run auto approved commands, they are defined in `.vscode/settings.json`, DO NOT change this file.
-
-# General Instructions
-
-- Find out the `Accessing the Knowledge Base` section, read `Index.md` of `KnowledgeBase` project in the current solution.
-- Before generating any code, if the file is changed, read it. Not all changes come from you, I will edit the file too. Do not generate code based on out-dated version in your memory.
-- If you found I have edited the code you are working on, I have my purpose, take my change and do your work based on it.
-- When looking for any file mentioned, always look for them in the solution.
-  - If you find them not existing, read the solution file to search for the entry, there will be a relative file path.
-- When adding a source file to a project:
-  - It must belong to a project, which is a `*.vcxproj` or `*.vcxitems` file.
-  - It is an XML file.
-  - Edit that project file to include the source file.
-- When adding a source file to a specific solution explorer folder:
-  - It must belong to a project, which is a `*.vcxproj` or `*.vcxitems` file.
-  - Find the `*.filters` file with the same name, it is an XML file.
-  - Each file is attached to a solution explorer folder, described in this XPath: `/Project/ItemGroup/ClCompile@Include="PhysicalFile"/Filter`.
-  - In side the `Filter` tag there is the solution explorer folder.
-  - Edit that `*.filters` file to include the source file.
+- Submitting CLI commands is not recommended unless you have no choice.
+- There is some rules to follow to submit correct powershell commands:
+  - DO NOT call `msbuild` or other executable files by yourself.
+  - DO NOT create or delete any file unless explicitly directed.
+  - MUST run any powershell script in this format: `& absolute-path.ps1 parameters...`.
+  - MUST run tasks via Cursor for compiling and running test cases.
 
 # Accessing Log Files and PowerShell Scripts
 
@@ -103,13 +79,16 @@ This guidance is for accessing following files mentioned in this instruction:
 - `copilotPrepare.ps1`
 - `copilotBuild.ps1`
 - `copilotExecute.ps1`
+- `Build.log`
+- `Execute.log`
 
-If you are running in Visual Studio, you will find the `TaskLogs` project in the current solution.
-Otherwise, locate the `TaskLogs` project in `REPO-ROOT/.github/TaskLogs/TaskLogs.vcxitems`.
+They are in the `REPO-ROOT/.github/TaskLogs` folder.
+
 `REPO-ROOT` is the root folder of the repo.
 
-`TaskLogs.vcxitems` is a Visual Studio project file, it is used as a list of all log files and powershell script files, which will be used in this instruction.
-You need to locate listed files in `TaskLogs.vcxitems`.
+## If you are running in Visual Studio
+
+You will find the `TaskLogs` project in the current solution, which should contain these files.
 
 ## Important Rules for Markdown Document or Log
 

@@ -36,8 +36,10 @@
   - Add an empty `# UPDATES` section after `# DESIGN REQUEST`.
 - If there is an `# Update` section: it means I am going to propose some change to `Copilot_Scrum.md`.
   - Copy precisely my problem description in `# Update` from the LATEST chat message to the `# DESIGN REQUEST` section, with a new sub-section `## UPDATE`.
+  - The new `## UPDATE` should be appended to the end of the existing `# UPDATES` section (aka before `# TASKS`).
   - Follow my update to change the design document.
-- If there is a `# Learn` section: it means I made important updates during the execution of the last task, you should apply them smart enough to future tasks. Find the `Optional Step for Learning` section for more instruction.
+  - Find the `(Optional) Step 5. Verify the Document` section to verify the whole document after applying the update.
+- If there is a `# Learn` section: it means I made important updates during the execution of the last task, you should apply them smart enough to future tasks. Find the `(Optional) Step 7. Learning` section for more instruction.
 - If there is nothing: it means you are accidentally stopped. Please continue your work.
 
 ## Step 2. Understand the Goal and Quality Requirement
@@ -80,20 +82,22 @@
   - Keep the knowledge base to only guidelines and design insights will have you find correct piece of code to read.
 - It is fine that you find nothing to change or add to the knowledge base.
 
-## Step 5. Mark the Completion
+## (Optional) Step 5. Verify the Document (only when # Update appears in the LATEST chat message)
+
+- Verify the content of the whole document again. Make sure when you changing, adding, removing, splitting tasks content being replaced are removed properly.
+
+## Step 6. Mark the Completion
 
 - Ensure there is a `# !!!FINISHED!!!` mark at the end of `Copilot_Scrum.md` to indicate the document reaches the end.
 
-## (Optional) Step 6. Learning (only when # Learn appears in the LATEST chat message)
-
+## (Optional) Step 7. Learning (only when # Learn appears in the LATEST chat message)
 - Ignore this section if there is no `# Learn` in the LATEST chat message
 
-### Step 6.1
+### Step 7.1
 
 - Identify the last completed task.
 
-### Step 6.2
-
+### Step 7.2
 - Read through `Copilot_Execution.md`. There may be some fixing attempts, that were done by you.
 - Compare existing source code with `Copilot_Execution.md`, finding what is changed.
   - During comparing, you need to take into consideration of the fixing attempts, as sometimes you didn't update the main content of the document.
@@ -109,47 +113,26 @@
 - Add your finding to `Copilot_Execution.md` at the very end with the topic `# Comparing to User Edit`.
   - If every changes are ignored by the rule above, or if you can't find any user edit, just write `No user edit found`.
 
-### Step 6.3
+### Step 7.3
 
 - There will be multiple `# UPDATES` or `# FIXING ATTEMPTS` or `# Comparing to User Edit` sections in `Copilot_Task.md`, `Copilot_Planning.md` and `Copilot_Execution.md`.
 - These 3 files recorded how you interpreted the last completed task, and how I wanted you to adjust  your understanding.
 - Find out what you can learn from the updates, about my philosophy and preferences.
 - Check all future tasks, apply what you have learned, and adjust your approach accordingly.
 
+### Step 7.4
+
+- Find and execute `copilotPrepare.ps1 -Backup`. You MUST use the `-Backup` parameter.
+
 # External Tools Environment and Context
 
 - You are on Windows running in Visual Studio Code.
-- In order to achieve the goal, you always need to create/delete/update files, build the project, run the unit test, etc. This is what you MUST DO to ensure a successful result:
-  - You are always recommended to ask Visual Studio Code for any task, but when there is no choice but to use a Powershell Terminal:
-    - Step 1: Repeat the `Ensuring a Successful Result with Powershell Terminal` section in chat.
-    - Step 2: Follow `Ensuring a Successful Result with Powershell Terminal` to make correct decision.
-
-## Ensuring a Successful Result with Powershell Terminal
-
-- DO NOT run multiple commands at the same time, except they are connected with pipe (`|`).
-- DO NOT call `msbuild` or other executable files by yourself.
-- DO NOT create any new file unless explicitly directed.
-- MUST run any powershell script in this format: `& absolute-path.ps1 parameters...`.
-- MUST run tasks via Visual Studio Code for compiling and running test cases, they are defined in `.vscode/tasks.json`, DO NOT change this file.
-- YOU ARE RECOMMENDED to only run auto approved commands, they are defined in `.vscode/settings.json`, DO NOT change this file.
-
-# General Instructions
-
-- Find out the `Accessing the Knowledge Base` section, read `Index.md` of `KnowledgeBase` project in the current solution.
-- Before generating any code, if the file is changed, read it. Not all changes come from you, I will edit the file too. Do not generate code based on out-dated version in your memory.
-- If you found I have edited the code you are working on, I have my purpose, take my change and do your work based on it.
-- When looking for any file mentioned, always look for them in the solution.
-  - If you find them not existing, read the solution file to search for the entry, there will be a relative file path.
-- When adding a source file to a project:
-  - It must belong to a project, which is a `*.vcxproj` or `*.vcxitems` file.
-  - It is an XML file.
-  - Edit that project file to include the source file.
-- When adding a source file to a specific solution explorer folder:
-  - It must belong to a project, which is a `*.vcxproj` or `*.vcxitems` file.
-  - Find the `*.filters` file with the same name, it is an XML file.
-  - Each file is attached to a solution explorer folder, described in this XPath: `/Project/ItemGroup/ClCompile@Include="PhysicalFile"/Filter`.
-  - In side the `Filter` tag there is the solution explorer folder.
-  - Edit that `*.filters` file to include the source file.
+- Submitting CLI commands is not recommended unless you have no choice.
+- There is some rules to follow to submit correct powershell commands:
+  - DO NOT call `msbuild` or other executable files by yourself.
+  - DO NOT create or delete any file unless explicitly directed.
+  - MUST run any powershell script in this format: `& absolute-path.ps1 parameters...`.
+  - MUST run tasks via Cursor for compiling and running test cases.
 
 # Accessing Log Files and PowerShell Scripts
 
@@ -162,13 +145,16 @@ This guidance is for accessing following files mentioned in this instruction:
 - `copilotPrepare.ps1`
 - `copilotBuild.ps1`
 - `copilotExecute.ps1`
+- `Build.log`
+- `Execute.log`
 
-If you are running in Visual Studio, you will find the `TaskLogs` project in the current solution.
-Otherwise, locate the `TaskLogs` project in `REPO-ROOT/.github/TaskLogs/TaskLogs.vcxitems`.
+They are in the `REPO-ROOT/.github/TaskLogs` folder.
+
 `REPO-ROOT` is the root folder of the repo.
 
-`TaskLogs.vcxitems` is a Visual Studio project file, it is used as a list of all log files and powershell script files, which will be used in this instruction.
-You need to locate listed files in `TaskLogs.vcxitems`.
+## If you are running in Visual Studio
+
+You will find the `TaskLogs` project in the current solution, which should contain these files.
 
 ## Important Rules for Markdown Document or Log
 
