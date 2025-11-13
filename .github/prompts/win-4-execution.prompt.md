@@ -22,14 +22,27 @@
   - Follow my update to change the execution document and the source code.
 - If there is nothing:
   - Apply all code changes in `Copilot_Execution.md` to the source code.
+    - Make sure indentation and line breaks are applied correctly, following the same style in the target file.
   - After applying each step in `Copilot_Execution.md`, mark the step as completed by appending `[DONE]` after the step title. This allow you to find where you are if you are interrupted.
 
 ## Step 2. Make Sure the Code Compiles but DO NOT Run Unit Test
 
 - Check out `Compile the Solution` for details about compiling the solution but DO NOT run unit test.
   - `Compile the Solution` is the only way to build the project. DO NOT call any other tools or scripts.
+  - Each attempt of build-fix process should be executed in a sub agent.
+    - One build-fix process includes one attempt following `Build Unit Test` and `Fix Compile Errors`.
+    - The main agent should call different sub agent for each build-fix process.
+    - Do not build and retrieve build results in the main agent.
+
+### Use a sub agent to run the following instructions (`Build Unit Test` and `Fix Compile Errors`)
+
+#### Build Unit Test
+
 - Find out if there is any warning or error.
   - `Compile the Solution` has the instruction about how to check compile result.
+
+#### Fix Compile Errors
+
 - If there is any compilation error, address all of them:
   - If there is any compile warning, only fix warnings that caused by your code change. Do no fix any other warnings.
   - If there is any compile error, you need to carefully identify, is the issue in the callee side or the caller side. Check out similar code before making a decision.
@@ -38,9 +51,17 @@
     - Explain what you need to do.
     - Explain why you think it would solve the build break.
     - Log these in `Copilot_Execution.md`, with section `## Fixing attempt No.<attempt_number>` in `# FIXING ATTEMPTS`.
-  - Go back to `Step 2. Make Sure the Code Compiles but DO NOT Run Unit Test`.
+- After finishing fixing, exit and tell the main agent to go back to `Step 2. Make Sure the Code Compiles but DO NOT Run Unit Test`.
 - When the code compiles:
   - DO NOT run any tests, the code will be verified in future tasks.
+
+# Step 3. Verify Coding Style
+
+- Code changes in `Copilot_Execution.md` may not consider about indentation and coding style.
+  - Go over each code change and ensure:
+    - Indentation is correct and consistent with the surrounding code.
+    - Coding style especially line breaks follows the same conventions as the surrounding code.
+- Ensure any empty line does not contain spaces or tabs.
 
 # External Tools Environment and Context
 

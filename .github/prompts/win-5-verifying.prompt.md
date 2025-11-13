@@ -20,8 +20,20 @@
 
 - Check out `Compile the Solution` for details about compiling the solution but DO NOT run unit test yet.
   - `Compile the Solution` is the only way to build the project. DO NOT call any other tools or scripts.
+  - Each attempt of build-fix process should be executed in a sub agent.
+    - One build-fix process includes one attempt following `Build Unit Test` and `Fix Compile Errors`.
+    - The main agent should call different sub agent for each build-fix process.
+    - Do not build and retrieve build results in the main agent.
+
+### Use a sub agent to run the following instructions (`Build Unit Test` and `Fix Compile Errors`)
+
+#### Build Unit Test
+
 - Find out if there is any warning or error.
   - `Compile the Solution` has the instruction about how to check compile result.
+
+#### Fix Compile Errors
+
 - If there is any compilation error, address all of them:
   - If there is any compile warning, only fix warnings that caused by your code change. Do no fix any other warnings.
   - If there is any compile error, you need to carefully identify, is the issue in the callee side or the caller side. Check out similar code before making a decision.
@@ -30,12 +42,21 @@
     - Explain what you need to do.
     - Explain why you think it would solve the build break or test break.
     - Log these in `Copilot_Execution.md`, with section `## Fixing attempt No.<attempt_number>` in `# FIXING ATTEMPTS`.
-  - Go back to `Step 2. Compile`
+- After finishing fixing, exit and tell the main agent to go back to `Step 2. Compile`
 
 ## Step 3. Run Unit Test
 
 - Check out `Executing Unit Test` for details about running unit test projects.
   - `Executing Unit Test` is the only way to run the unit test. DO NOT call any other tools or scripts.
+  - Each attempt of test-fix process should be executed in a sub agent.
+    - One test-fix process includes one attempt following `Execute Unit Test` and `Fix Failed Test Cases`.
+    - The main agent should call different sub agent for each test-fix process.
+    - Do not test and retrieve test results in the main agent.
+
+### Use a sub agent to run the following instructions (`Execute Unit Test` and `Fix Failed Test Cases`)
+
+#### Execute Unit Test
+
 - Run the unit test and see if they passed. If anything is good, you will only see test files and test cases that are executed.
   - Make sure added test cases are actually executed.
   - If any test case fails on a test assertion, the content of `TEST_ASSERT` or other macros will be printed to the output.
@@ -44,7 +65,7 @@
     - In other source code, `vl::console::Console::WriteLine` would help. In `Vlpp` project, you should `#include` `Console.h`. In other projects, the `Console` class should just be available.
     - When added logging are not longer necessary, you should remove all of them.
 
-## Step 4. Fix Failed Test Cases
+#### Fix Failed Test Cases
 
 - If there are failed test cases, fix the code to make it work.
   - If your change did not change the test result, make sure you followed `Step 2. Compile` to compile the code.
@@ -57,8 +78,9 @@
   - Explain what you need to do.
   - Explain why you think it would solve the build break or test break.
   - Log these in `Copilot_Execution.md`, with section `## Fixing attempt No.<attempt_number>` in `# FIXING ATTEMPTS`.
+- After finishing fixing, exit and tell the main agent to go back to `Step 2. Compile`
 
-## Step 5. Check it Again
+## Step 4. Check it Again
 
 - Go back to `Step 2. Compile`, follow all instructions and all steps again.
 
