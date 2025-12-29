@@ -13,9 +13,13 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ## Synchronized latest releases:
 
-- **GacUI**: [1.2.11.0](https://github.com/vczh-libraries/Release/releases/tag/1.2.11.0)
+- Windows
+  - **GacUI**: [1.3.0.0](https://github.com/vczh-libraries/Release/releases/tag/1.3.0.0)
+  - **GacUI**: [1.2.11.0](https://github.com/vczh-libraries/Release/releases/tag/1.2.11.0)
+- Linux
+  - XWindow **gGac**: [1.2.11.0](https://github.com/vczh-libraries/gGac/commit/5a6dc87d03d0616080d38dd344d13b1d423b0127)
+  - Wayland **wGac**: [1.3.0.0](https://github.com/roodkcab/wGac/commit/c1d32b7bf447460a273a426fccce914d0a652107)
 - **iGac**: Not specified yet
-- **gGac**: [1.2.11.0](https://github.com/vczh-libraries/gGac/commit/5a6dc87d03d0616080d38dd344d13b1d423b0127)
 
 When **iGac** and **gGac** targets on a certain **GacUI** version, **iGac** and **gGac** will use the same version number as a tag to the commits.
   - A **GacUI** release will always be `X.Y.Z.0`, the last digit increases when only small bug fixing is introduced.
