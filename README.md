@@ -21,7 +21,7 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ### 1.2.11.0
 
-- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.3.0.0)
+- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.2.11.0)
 - [Linux XWindow](https://github.com/vczh-libraries/gGac/commit/5a6dc87d03d0616080d38dd344d13b1d423b0127)
   - XWindow version is likely not being maintained in the near future. Please use Wayland version if possible.
 
