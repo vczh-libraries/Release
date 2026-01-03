@@ -13,17 +13,17 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ## Synchronized latest releases:
 
-- Windows
-  - **GacUI**: [1.3.0.0](https://github.com/vczh-libraries/Release/releases/tag/1.3.0.0)
-  - **GacUI**: [1.2.11.0](https://github.com/vczh-libraries/Release/releases/tag/1.2.11.0)
-- Linux
-  - XWindow **gGac**: [1.2.11.0](https://github.com/vczh-libraries/gGac/commit/5a6dc87d03d0616080d38dd344d13b1d423b0127)
-  - Wayland **wGac**: [1.3.0.0](https://github.com/roodkcab/wGac/commit/c1d32b7bf447460a273a426fccce914d0a652107)
-- **iGac**: Not specified yet
+### 1.3.0.0
 
-When **iGac** and **gGac** targets on a certain **GacUI** version, **iGac** and **gGac** will use the same version number as a tag to the commits.
-  - A **GacUI** release will always be `X.Y.Z.0`, the last digit increases when only small bug fixing is introduced.
-  - If **iGac** and **gGac** have multiple releases based on the same **GacUI** release, only the last digit will change.
+- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.3.0.0)
+- [Linux Wayland](https://github.com/roodkcab/wGac/commit/c1d32b7bf447460a273a426fccce914d0a652107)
+- [macOS](https://github.com/vczh-libraries/iGac/commit/5076a33a731523bd74d6ac922a370b3a515931a4)
+
+### 1.2.11.0
+
+- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.3.0.0)
+- [Linux XWindow](https://github.com/vczh-libraries/gGac/commit/5a6dc87d03d0616080d38dd344d13b1d423b0127)
+  - XWindow version is likely not being maintained in the near future. Please use Wayland version if possible.
 
 ## Visual Studio Extension
 
