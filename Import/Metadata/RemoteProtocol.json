@@ -2364,6 +2364,33 @@
         }],
         "type": "Struct"
     }, {
+        "$ast": "StructDecl",
+        "attributes": [],
+        "name": "UpdateElement_DocumentParagraphResponse",
+        "members": [{
+            "$ast": "StructMember",
+            "name": "documentSize",
+            "type": {
+                "$ast": "ReferenceType",
+                "name": "Size"
+            }
+        }, {
+            "$ast": "StructMember",
+            "name": "inlineObjectBounds",
+            "type": {
+                "$ast": "MapType",
+                "element": {
+                    "$ast": "ReferenceType",
+                    "name": "Rect"
+                },
+                "keyType": {
+                    "$ast": "PrimitiveType",
+                    "type": "Integer"
+                }
+            }
+        }],
+        "type": "Struct"
+    }, {
         "$ast": "MessageDecl",
         "attributes": [],
         "name": "RendererUpdateElement_DocumentParagraph",
@@ -2378,7 +2405,7 @@
             "$ast": "MessageResponse",
             "type": {
                 "$ast": "ReferenceType",
-                "name": "Size"
+                "name": "UpdateElement_DocumentParagraphResponse"
             }
         }
     }, {
@@ -2386,6 +2413,13 @@
         "attributes": [],
         "name": "GetCaretRequest",
         "members": [{
+            "$ast": "StructMember",
+            "name": "id",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Integer"
+            }
+        }, {
             "$ast": "StructMember",
             "name": "caret",
             "type": {
@@ -2427,6 +2461,13 @@
         "name": "GetCaretBoundsRequest",
         "members": [{
             "$ast": "StructMember",
+            "name": "id",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Integer"
+            }
+        }, {
+            "$ast": "StructMember",
             "name": "caret",
             "type": {
                 "$ast": "PrimitiveType",
@@ -2444,8 +2485,55 @@
     }, {
         "$ast": "StructDecl",
         "attributes": [],
+        "name": "GetInlineObjectFromPointRequest",
+        "members": [{
+            "$ast": "StructMember",
+            "name": "id",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Integer"
+            }
+        }, {
+            "$ast": "StructMember",
+            "name": "point",
+            "type": {
+                "$ast": "ReferenceType",
+                "name": "Point"
+            }
+        }],
+        "type": "Struct"
+    }, {
+        "$ast": "StructDecl",
+        "attributes": [],
+        "name": "IsValidCaretRequest",
+        "members": [{
+            "$ast": "StructMember",
+            "name": "id",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Integer"
+            }
+        }, {
+            "$ast": "StructMember",
+            "name": "caret",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Integer"
+            }
+        }],
+        "type": "Struct"
+    }, {
+        "$ast": "StructDecl",
+        "attributes": [],
         "name": "OpenCaretRequest",
         "members": [{
+            "$ast": "StructMember",
+            "name": "id",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Integer"
+            }
+        }, {
             "$ast": "StructMember",
             "name": "caret",
             "type": {
@@ -2512,7 +2600,7 @@
             "$ast": "MessageRequest",
             "type": {
                 "$ast": "ReferenceType",
-                "name": "Point"
+                "name": "GetInlineObjectFromPointRequest"
             }
         },
         "response": {
@@ -2550,8 +2638,8 @@
         "request": {
             "$ast": "MessageRequest",
             "type": {
-                "$ast": "PrimitiveType",
-                "type": "Integer"
+                "$ast": "ReferenceType",
+                "name": "IsValidCaretRequest"
             }
         },
         "response": {
@@ -2577,7 +2665,13 @@
         "$ast": "MessageDecl",
         "attributes": [],
         "name": "DocumentParagraph_CloseCaret",
-        "request": null,
+        "request": {
+            "$ast": "MessageRequest",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Integer"
+            }
+        },
         "response": null
     }, {
         "$ast": "StructDecl",
@@ -2599,20 +2693,6 @@
             }
         }],
         "type": "Struct"
-    }, {
-        "$ast": "EventDecl",
-        "attributes": [],
-        "name": "DocumentParagraph_RenderInlineObjects",
-        "request": {
-            "$ast": "EventRequest",
-            "type": {
-                "$ast": "ArrayType",
-                "element": {
-                    "$ast": "ReferenceType",
-                    "name": "RenderInlineObjectRequest"
-                }
-            }
-        }
     }, {
         "$ast": "EnumDecl",
         "attributes": [],
@@ -3103,6 +3183,29 @@
         },
         "response": null
     }, {
+        "$ast": "StructDecl",
+        "attributes": [],
+        "name": "ElementDesc_DocumentParagraphFull",
+        "members": [{
+            "$ast": "StructMember",
+            "name": "paragraph",
+            "type": {
+                "$ast": "ReferenceType",
+                "name": "ElementDesc_DocumentParagraph"
+            }
+        }, {
+            "$ast": "StructMember",
+            "name": "caret",
+            "type": {
+                "$ast": "OptionalType",
+                "element": {
+                    "$ast": "ReferenceType",
+                    "name": "OpenCaretRequest"
+                }
+            }
+        }],
+        "type": "Struct"
+    }, {
         "$ast": "UnionDecl",
         "attributes": [],
         "name": "UnitTest_ElementDescVariant",
@@ -3135,7 +3238,7 @@
             "name": "ElementDesc_ImageFrame"
         }, {
             "$ast": "UnionMember",
-            "name": "ElementDesc_DocumentParagraph"
+            "name": "ElementDesc_DocumentParagraphFull"
         }]
     }, {
         "$ast": "StructDecl",
