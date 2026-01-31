@@ -13932,7 +13932,16 @@ WindowsInputService
 					return L"?";
 				}
 				GetKeyNameText((int)scanCode, name, sizeof(name)/sizeof(*name));
-				return name[0]?name:L"?";
+				if (name[0])
+				{
+					WString result = name;
+					vint index = predefinedKeys.Keys().IndexOf(result);
+					if (index != -1 && predefinedKeys.Values()[index] == code)
+					{
+						return result;
+					}
+				}
+				return WString::Unmanaged(L"?");
 			}
 
 			void WindowsInputService::InitializeKeyNames()
@@ -13952,6 +13961,13 @@ WindowsInputService
 				,isTimerEnabled(false)
 				,keyNames((vint)VKEY::KEY_MAXIMUM)
 			{
+#define INITIALIZE_KEY_NAME(NAME, TEXT)\
+				keyNames[(vint)VKEY::KEY_ ## NAME] = WString::Unmanaged(TEXT);\
+				if (!predefinedKeys.Keys().Contains(WString::Unmanaged(TEXT))) predefinedKeys.Add(WString::Unmanaged(TEXT), VKEY::KEY_ ## NAME);\
+
+				GUI_DEFINE_KEYBOARD_WINDOWS_NAME(INITIALIZE_KEY_NAME)
+#undef INITIALIZE_KEY_NAME
+
 				InitializeKeyNames();
 			}
 
