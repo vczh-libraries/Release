@@ -1,20 +1,15 @@
+. $PSScriptRoot\copilotShared.ps1
+
+# Remove log file if it exists
+$logFile = "$PSScriptRoot\Build.log"
+if (Test-Path $logFile) {
+    Remove-Item $logFile -Force
+    Write-Host "Removed existing log file: $logFile"
+}
+
 # Find the solution folder by looking for *.sln files
-$currentDir = Get-Location
-$solutionFile = $null
-
-while ($currentDir -ne $null) {
-    $solutionFiles = Get-ChildItem -Path $currentDir.Path -Filter "*.sln" -ErrorAction SilentlyContinue
-    if ($solutionFiles.Count -gt 0) {
-        $solutionFile = "$($currentDir.Path)\$($solutionFiles[0])"
-        Write-Host "Found solution file: $solutionFile"
-        break
-    }
-    $currentDir = $currentDir.Parent
-}
-
-if ($solutionFile -eq $null) {
-    throw "Could not find a solution file (*.sln file) in current directory or any parent directories."
-}
+$solutionFolder = GetSolutionDir
+$solutionFile = "$solutionFolder\$((Get-ChildItem -Path $solutionFolder -Filter "*.sln" -ErrorAction SilentlyContinue)[0])"
 
 $vsdevcmd = $env:VLPP_VSDEVCMD_PATH
 if ($vsdevcmd -eq $null) {
@@ -28,12 +23,10 @@ $Platform = "x64"
 $msbuild_arguments = "MSBUILD `"$solutionFile`" /m:8 $rebuildControl /p:Configuration=`"$Configuration`";Platform=`"$Platform`""
 $cmd_arguments = "`"`"$vsdevcmd`" & $msbuild_arguments"
 
-# Execute msbuild
+# Execute msbuild with output to both console and log file
+$logFile = "$PSScriptRoot\Build.log"
 $commandLine = "/c $cmd_arguments"
-$startInfo = New-Object System.Diagnostics.ProcessStartInfo
-$startInfo.FileName = $env:ComSpec
-$startInfo.Arguments = $commandLine
-$startInfo.UseShellExecute = $false
-$process = [System.Diagnostics.Process]::Start($startInfo)
-$process.WaitForExit()
-exit $process.ExitCode
+$logFileUnfinished = "$logFile.unfinished"
+& $env:ComSpec $commandLine 2>&1 | Tee-Object -FilePath $logFileUnfinished
+Rename-Item -Path $logFileUnfinished -NewName $logFile -Force
+exit $LASTEXITCODE
