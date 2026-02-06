@@ -31,7 +31,7 @@ Copy [Vlpp.natvis](https://github.com/vczh-libraries/Release/blob/master/Import/
 
 For example, VS2022's default visualizers folder will be **C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Packages\Debugger\Visualizers**.
 
-## Github Copilot with Visual Studio Code
+## Using Coding Agents
 
 Both `AGENTS.md` and `CLAUDE.md` are prepared so that copilot/codex/claude coding agent follow the same instruction.
 
@@ -48,12 +48,13 @@ The follow keywords maintain design documents in `.github/TaskLogs`, anything ex
 - More use cases in `AGENTS.md`.
 
 You can copy the whole `.github` folder to your own repo.
-- These prompts tells the coding agent how to work with msbuild. 
+- `.github/KnowledgeBase` contains detailed documentation for the library, they will be read without having to being explicitly mentioned.
+- Prompt files tell the coding agent how to work with msbuild. 
   - You need to prepare `VLPP_VSDEVCMD_PATH` and `CDBPATH` environment variable
   - Search in `.github/Scripts` and read comments about them.
-- `.vscode/tasks.json` needs to be ready, see [tasks.example.json](.vscode/tasks.example.json) for details.
+- Find `settings.example.json` and `tasks.example.json` for references, but prompts do not use `vstaskscode.json`.
 - Update `.github/Project.md` to describe where the source code is.
-- `.github/copilot-instructions.md` and detailed guidelines follow the pattern in all repos in this github organization, feel free to change.
+- `.github/copilot-instructions.md` and `.github/Guidelines` follow the pattern in all repos in this github organization, feel free to change.
 
 ## Content of This Project
 
