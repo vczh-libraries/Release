@@ -56,6 +56,8 @@ You can copy the whole `.github` folder to your own repo.
 - Update `.github/Project.md` to describe where the source code is.
 - `.github/copilot-instructions.md` and `.github/Guidelines` follow the pattern in all repos in this github organization, feel free to change.
 
+**NOTICE**: The guideline about running your vcxproj is customized for the unit test framework in GacUI, a more general version is comming. Feel free to change.
+
 ## Content of This Project
 
 - **Import** Gaclib source code
