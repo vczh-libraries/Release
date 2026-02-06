@@ -49,7 +49,7 @@ The follow keywords maintain design documents in `.github/TaskLogs`, anything ex
 
 You can copy the whole `.github` folder to your own repo.
 - `.github/KnowledgeBase` contains detailed documentation for the library, they will be read without having to being explicitly mentioned.
-- Prompt files tell the coding agent how to work with msbuild. 
+- Prompt files tell the coding agent how to work with `msbuild` and `cdb` (the CLI version of WinDBG). 
   - You need to prepare `VLPP_VSDEVCMD_PATH` and `CDBPATH` environment variable
   - Search in `.github/Scripts` and read comments about them.
   - Building/testing/debugging is doable.
