@@ -52,6 +52,7 @@ You can copy the whole `.github` folder to your own repo.
 - Prompt files tell the coding agent how to work with msbuild. 
   - You need to prepare `VLPP_VSDEVCMD_PATH` and `CDBPATH` environment variable
   - Search in `.github/Scripts` and read comments about them.
+  - Building/testing/debugging is doable.
 - Find `settings.example.json` and `tasks.example.json` for references, but prompts do not use `tasks.json`.
 - Update `.github/Project.md` to describe where the source code is.
 - `.github/copilot-instructions.md` and `.github/Guidelines` follow the pattern in all repos in this github organization, feel free to change.
