@@ -33,33 +33,29 @@ For example, VS2022's default visualizers folder will be **C:\Program Files\Micr
 
 ## Github Copilot with Visual Studio Code
 
-The `prompts` folder copies all task in Visual Studio github copilot recognized format.
-- [0-scrum.prompt.md](.github/prompts/win-0-scrum.prompt.md) creates `Copilot_Scrum.md`.
-  - Use `# Problem` for the problem.
-  - Convert your feature request to multiple tasks.
-- [1-design.prompt.md](.github/prompts/win-1-design.prompt.md) creates `Copilot_Task.md`.
-  - Use `# Problem` for the problem. It will find the first unfinished task in `Copilot_Scrum.md`.
-  - Create a more detailed design for the task.
-- [2-planning.prompt.md](.github/prompts/win-2-planning.prompt.md) creates `Copilot_Planning.md`.
-  - Propose actual code change from the detailed design.
-- [3-summarizing.prompt.md](.github/prompts/win-3-summarizing.prompt.md) creates `Copilot_Execution.md`.
-  - Extract proposed code change.
-- [4-execution.prompt.md](.github/prompts/win-3-execution.prompt.md) edit source files according to `Copilot_Execution.md`.
-  - Apply proposed code change, ensure it compiles.
-- [5-verifying.prompt.md](.github/prompts/win-5-verifying.prompt.md) compiles and runs unit test.
-  - Ensure passing all test cases.
-- You can always use `# Update` in any phrase for adjustment.
+Both `AGENTS.md` and `CLAUDE.md` are prepared so that copilot/codex/claude coding agent follow the same instruction.
 
-Example:
-```markdown
-#win-0-scrum.prompt.md <-- vscode will convert it to a #file tag, otherwise you are not typing it correctly
-I would like to do this feature. Here are proposed task splitting:
-- Complete the source code
-- Complete unit test
-```
+The follow keywords maintain design documents in `.github/TaskLogs`, anything except `Copilot_Scrum.md` is not tracked by git, you can change the `.gitignore` in that folder if you like.
+- Use `scrum problem ...` to start a new scrum, `scrum update ...` to update the scrum.
+- Use `design problem next` to fetch one task from the scrum.
+- Use `design update ...` to update the design.
+- Use `plan problem` to make detailed plan from the design.
+- Use `plan update ...` to update the plan.
+- Use `summary problem` to summary all code changes from the plan and ready to execute.
+- Use `summary update ...` if the summarization has tiny mistakes, you could revert the summariziation completely and do `plan update ...` again.
+- Use `execute` to execute the summarization and build your project.
+- Use `verify` to build and test your project.
+- Use `ask ...` to answer your question.
+- Use `code ...` to code, build and test your project, without walking through all design documents.
+- More use case in `AGENTS.md`.
 
 You can copy the whole `.github` folder to your own repo.
-`.vscode/tasks.json` needs to be ready, see [tasks-example.json](.vscode/tasks-example.json) for details.
+- These prompts tells the coding agent how to work with msbuild. 
+  - You need to prepare `VLPP_VSDEVCMD_PATH` and `CDBPATH` environment variable
+  - Search in `.github/Scripts` and read comments about them.
+- `.vscode/tasks.json` needs to be ready, see [tasks.example.json](.vscode/tasks.example.json) for details.
+- Update `.github/Project.md` to describe where the source code is.
+- `.github/copilot-instructions.md` and detailed guidelines follow the pattern in all repos in this github organization, feel free to change.
 
 ## Content of This Project
 
