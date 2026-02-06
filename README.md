@@ -36,18 +36,16 @@ For example, VS2022's default visualizers folder will be **C:\Program Files\Micr
 Both `AGENTS.md` and `CLAUDE.md` are prepared so that copilot/codex/claude coding agent follow the same instruction.
 
 The follow keywords maintain design documents in `.github/TaskLogs`, anything except `Copilot_Scrum.md` is not tracked by git, you can change the `.gitignore` in that folder if you like.
-- Use `scrum problem ...` to start a new scrum, `scrum update ...` to update the scrum.
-- Use `design problem next` to fetch one task from the scrum.
-- Use `design update ...` to update the design.
-- Use `plan problem` to make detailed plan from the design.
-- Use `plan update ...` to update the plan.
-- Use `summary problem` to summary all code changes from the plan and ready to execute.
-- Use `summary update ...` if the summarization has tiny mistakes, you could revert the summariziation completely and do `plan update ...` again.
-- Use `execute` to execute the summarization and build your project.
+- Use `scrum problem ...` to start a new `Copilot_Scrum.md`, `scrum update ...` to update the.
+- Use `design problem next` to fetch one task from the scrum and finish `Copilot_Task.md`, `design update ...` to update.
+- Use `plan problem` to make detailed plan from the design and finish `Copilot_Planning.md`, `plan update ...` to update.
+- Use `summary problem` to summary all code changes from the plan in `Copilot_Execution.md`.
+- Use `summary update ...` if `Copilot_Execution.md` has tiny mistakes, you could revert it completely and do `plan update ...` again.
+- Use `execute` to execute `Copilot_Execution.md` and build your project.
 - Use `verify` to build and test your project.
 - Use `ask ...` to answer your question.
-- Use `code ...` to code, build and test your project, without walking through all design documents.
-- More use case in `AGENTS.md`.
+- Use anything else to raise a feature request, it will code, build and test your project automatically, without walking through all design documents.
+- More use cases in `AGENTS.md`.
 
 You can copy the whole `.github` folder to your own repo.
 - These prompts tells the coding agent how to work with msbuild. 
