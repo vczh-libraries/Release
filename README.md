@@ -36,11 +36,11 @@ For example, VS2022's default visualizers folder will be **C:\Program Files\Micr
 Both `AGENTS.md` and `CLAUDE.md` are prepared so that copilot/codex/claude coding agent follow the same instruction.
 
 The follow keywords maintain design documents in `.github/TaskLogs`, anything except `Copilot_Scrum.md` is not tracked by git, you can change the `.gitignore` in that folder if you like.
-- Use `scrum problem ...` to start a new `Copilot_Scrum.md`, `scrum update ...` to update the.
+- Use `scrum problem ...` to start a new scrum backlog `Copilot_Scrum.md` with multiple tasks, `scrum update ...` to update.
 - Use `design problem next` to fetch one task from the scrum and finish `Copilot_Task.md`, `design update ...` to update.
 - Use `plan problem` to make detailed plan from the design and finish `Copilot_Planning.md`, `plan update ...` to update.
 - Use `summary problem` to summary all code changes from the plan in `Copilot_Execution.md`.
-- Use `summary update ...` if `Copilot_Execution.md` has tiny mistakes, you could revert it completely and do `plan update ...` again.
+- Use `summary update ...` if `Copilot_Execution.md` has tiny mistakes. To make a complex update, it is recommended to revert `Copilot_Execution.md` completely and do `plan update ...` again.
 - Use `execute` to execute `Copilot_Execution.md` and build your project.
 - Use `verify` to build and test your project.
 - Use `ask ...` to answer your question.
