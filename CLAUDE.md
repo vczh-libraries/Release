@@ -15,6 +15,8 @@ Read the first word of the request, and read an additional instruction file when
 - "verify": REPO-ROOT/.github/prompts/5-verifying.prompt.md
 - "ask": REPO-ROOT/.github/prompts/ask.prompt.md
 - "code": REPO-ROOT/.github/prompts/code.prompt.md
+- "refine": REPO-ROOT/.github/prompts/refine.prompt.md
+- "review": REPO-ROOT/.github/prompts/review.prompt.md
 
 ### Exceptions
 
@@ -25,7 +27,14 @@ Read the first word of the request, and read an additional instruction file when
 
 ## Step 2
 
-Read the second word if it exists, convert it to a title `# THE-WORD`.
+- Only applies when the first word is:
+  - "scrum"
+  - "design"
+  - "plan"
+  - "summary"
+  - "execute"
+  - "review"
+- Read the second word if it exists, convert it to a title `# THE-WORD`.
 
 ## Step 3
 
