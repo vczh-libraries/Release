@@ -1,6 +1,6 @@
 # Review
 
-- Check out `Accessing Task Documents` for context about mentioned `*.md` files.
+- Check out `Accessing Task Documents` in `REPO-ROOT/.github/copilot-instructions.md` for context about mentioned `*.md` files.
 - All `*.md` and `*.ps1` files should exist; you should not create any new files unless explicitly instructed.
 - Following `Leveraging the Knowledge Base` in `REPO-ROOT/.github/copilot-instructions.md`, find knowledge and documents for this project in `REPO-ROOT/.github/KnowledgeBase/Index.md`.
 
@@ -36,18 +36,14 @@
 
 ## Step 2. Determine the Current Round Index
 
-- Look for existing `Copilot_Review_*_*.md` files. The file name stands for `Copilot_Review_{RoundIndex}_{FileNameFragment}.md`.
-- If no review files exist, the current round index is `1`.
-- Otherwise find the highest `RoundIndex`:
-  - Here are a list of review files from the previous round:
-    - `Copilot_Review_*_GPT.md`
-    - `Copilot_Review_*_Opus.md`
-    - `Copilot_Review_*_Grok.md`
-    - `Copilot_Review_*_Gemini.md`
-  - If all files exist, the current round index is `RoundIndex + 1`.
-  - Otherwise, the current round index is that `RoundIndex`.
-- If your file for the current round already exists, report that you have already completed this round and stop.
-- You must be aware of that, some model may already started the current round, so this is a way to determine the round index without race condition.
+- Look for your own `Copilot_Review_PREVIOUSINDEX_{YourFileNameFragment}.md` file.
+  - If it exists, the current round index is biggest `PREVIOUSINDEX` + 1.
+  - If none exists, the current round index is `1`.
+- If the current round index is greater that 1, here are a list of review files from the previous round:
+  - `Copilot_Review_PREVIOUSINDEX_GPT.md`
+  - `Copilot_Review_PREVIOUSINDEX_Opus.md`
+  - `Copilot_Review_PREVIOUSINDEX_Grok.md`
+  - `Copilot_Review_PREVIOUSINDEX_Gemini.md`
 
 ## Step 3. Read Context
 
@@ -68,8 +64,9 @@
     - Your complete summarized feedback and suggestions for the target document.
     - You should not omit anything what is in any documents in the previous round, this is what complete means.
   - `## Replies`: this section exists only when the current round index is greater than `1`.
-    - `### Reply to {ModelName}`: Reply to the `## Opinion` of `Copilot_Review_{RoundIndex-1}_{ModelName}.md`.
-      - If you totally agree with their opinion, the title should be `### AGREE with {ModelName}` with no content. If you have anything to add, put them in your own `## Opinion`.
+    - Find `## Opinion` in every `Copilot_Review_{RoundIndex-1}_{ModelName}.md` except yours.
+    - If you totally agree with a model, add this section: `### AGREE with {ModelName}` with no content. If you have anything to add, put them in your own `## Opinion`.
+    - If you partially or totally disagree with a model, add this section: `### DISAGREE with {ModelName}` and explain why you disagree and what you think is correct.
 - The following sections are about what you need to pay attention to when reviewing the target document.
 - After finishing the review document, stops.
 
@@ -145,16 +142,13 @@ Ignore this section if there is no `# Final` in the LATEST chat message.
 
 ### Step F3. Create the Summary
 
-- Read the `## Optnion` section from each review file from the last round.
+- Read the `## Opinion` section from each review file from the last round.
 - Consolidate all options into a single review opinion.
 - Write the review opinion to `Copilot_Review.md` as a cohesive set of actionable feedback.
   - The only title in this file should be `# Review Target: {TargetDocumentName}`.
   - The content should not contain any title.
   - DO NOT mention which model offers which opinion, the review opinion should be a cohesive whole, not a collection of separate opinions.
-
-### Step F4. Clean Up
-
-- Delete all `Copilot_Review_*_*.md` files.
+  - Ignore any comments against `# !!!SOMETHING!!!`.
 - Stops.
 
 ## Apply Review (only when `# Apply` appears in the LATEST chat message)
@@ -165,10 +159,10 @@ Ignore this section if there is no `# Apply` in the LATEST chat message.
 
 - The title of `Copilot_Review.md` is `# Review Target: {TargetDocumentName}`. This is the target document to apply the review opinion.
 - According to the target document, follow one of the instruction files:
-  - For `Copilot_Scrum.md`, follow `REPO-ROOT/.github/0-scrum.prompt.md`.
-  - For `Copilot_Task.md`, follow `REPO-ROOT/.github/1-design.prompt.md`.
-  - For `Copilot_Planning.md`, follow `REPO-ROOT/.github/2-planning.prompt.md`.
-  - For `Copilot_Execution.md`, follow `REPO-ROOT/.github/4-execution.prompt.md`.
+  - For `Copilot_Scrum.md`, follow `REPO-ROOT/.github/prompts/0-scrum.prompt.md`.
+  - For `Copilot_Task.md`, follow `REPO-ROOT/.github/prompts/1-design.prompt.md`.
+  - For `Copilot_Planning.md`, follow `REPO-ROOT/.github/prompts/2-planning.prompt.md`.
+  - For `Copilot_Execution.md`, follow `REPO-ROOT/.github/prompts/4-execution.prompt.md`.
 
 ### Step A2. Apply the Review
 
@@ -179,5 +173,6 @@ Ignore this section if there is no `# Apply` in the LATEST chat message.
 
 ### Step A3. Clean Up
 
+- Delete all `Copilot_Review_*_*.md` files.
 - Delete `Copilot_Review.md`.
 - Stops.
