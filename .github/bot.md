@@ -12,6 +12,9 @@
 
 ## New Job
 
+**NOTICE** `Model` here only affects the `Start` button which opens a chat session for a coding agent.
+All jobs have multiple models assigned to complete different works in [jobsData.ts](./Agent/packages/CopilotPortal/src/jobsData.ts).
+
 ![](./Agent_Index.png)
 
 ## Selection
