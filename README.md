@@ -33,6 +33,11 @@ For example, VS2022's default visualizers folder will be **C:\Program Files\Micr
 
 ## Using Coding Agents
 
+[bot.ps1](./.github/bot.ps1) can automate the process:
+- It starts a tool based on copilot sdk.
+- `nodejs 24 LTS`, `yarn`, `copilot cli`, `powershell 7` are required.
+- It starts a server with a [website portal](./.github/bot.md).
+
 Both `AGENTS.md` and `CLAUDE.md` are prepared so that copilot/codex/claude coding agent follow the same instruction.
 
 The follow keywords maintain design documents in `.github/TaskLogs`, anything except `Copilot_Scrum.md` is not tracked by git, you can change the `.gitignore` in that folder if you like.
