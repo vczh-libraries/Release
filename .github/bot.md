@@ -1,5 +1,7 @@
 # .github/bot.ps1 (ALPHA VERSION)
 
+**IMPORTANT**: You'd better upgrade both copilot cli and sdk to the latest version before using it.
+
 - Run [bot.ps1](./bot.ps1) to start a bot.
 - The default location would be the root of this repo.
   - You can change it to any repo.
