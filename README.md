@@ -13,6 +13,11 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ## Synchronized latest releases:
 
+### 1.3.1.0
+
+- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.3.1.0)
+- [macOS](https://github.com/vczh-libraries/iGac/commit/e64f6a13b435aab5ec3398d9eb4d6a686b358278)
+
 ### 1.3.0.0
 
 - [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.3.0.0)
