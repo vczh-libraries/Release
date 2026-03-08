@@ -2,7 +2,7 @@
 
 - `REPO-ROOT` refers to the root directory of the repository.
 - `SOLUTION-ROOT` refers to the root directory of a solution (`*.sln` or `*.slnx`).
-- Solutions and projects you need to work on could be found in `REPO-ROOT/.github/Project.md`.
+- Solutions and projects you need to work on could be found in `REPO-ROOT/Project.md`.
 - Following `Leveraging the Knowledge Base`, find knowledge and documents for this project in `REPO-ROOT/.github/KnowledgeBase/Index.md`.
 - Before writing to a source file, read it again and make sure you respect my parallel editing.
 - If any `*.prompt.md` file is referenced, take immediate action following the instructions in that file.
@@ -44,7 +44,7 @@ otherwise it won't work properly.
 - Building a Solution: `REPO-ROOT/.github/Guidelines/Building.md`
 - Running a Project:
   - Unit Test: `REPO-ROOT/.github/Guidelines/Running-UnitTest.md`
-  - CLI Application: `REPO-ROOT/.github/Guidelines/Running-CLI.md` (to edit ...)
+  - CLI Application: `REPO-ROOT/.github/Guidelines/Running-CLI.md`
   - GacUI Application: `REPO-ROOT/.github/Guidelines/Running-GacUI.md` (to edit ...)
 - Debugging a Project: `REPO-ROOT/.github/Guidelines/Debugging.md`
 - Using Unit Test Framework: `REPO-ROOT/.github/KnowledgeBase/manual/unittest/vlpp.md`
