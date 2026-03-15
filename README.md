@@ -16,8 +16,9 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 ### 1.3.1.0
 
 - [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.3.1.0)
-- [Linux Wayland](https://github.com/vczh-libraries/wGac/commit/e59fa84dae30549f52e0ccb79095477705c6395e)
-- [macOS](https://github.com/vczh-libraries/iGac/commit/e64f6a13b435aab5ec3398d9eb4d6a686b358278)
+- [Linux Wayland](https://github.com/vczh-libraries/releases/tag/1.3.1.0)
+- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.3.1.0)
+- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.3.1.0)
 
 ### 1.2.11.0
 
