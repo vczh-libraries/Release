@@ -1,4 +1,5 @@
 # Release
+
 Release folder of all projects.
 
 **Read the [LICENSE](https://github.com/vczh-libraries/Release/blob/master/LICENSE.md) first.**
@@ -25,6 +26,23 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 - [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.2.11.0)
 - [Linux XWindow](https://github.com/vczh-libraries/gGac/commit/5a6dc87d03d0616080d38dd344d13b1d423b0127)
   - XWindow version is likely not being maintained in the near future. Please use Wayland version if possible.
+
+# GacUI
+
+GPU Accelerated C++ User Interface, with:
+- Cross-platform supports (Windows, Linux, macos, HTML5)
+  - Native Renderers
+  - Hosted Mode to render all windows in one native window (optional)
+  - Core/Renderer cross-process separation (optional)
+- Built-in powerful text processing libraries
+- Built-in data binding and MVVM features
+- XML UI description embedding Workflow script language
+  - Dynamic loading with C++ dynamic reflection opt-in
+    - Allow loading foreign UI with complex behavior in runtime
+  - Generate XML and Workflow to C++ source files for static linking (recommended)
+    - Allow C++ dyanmic reflection opt-out to significantly improve performance and reduce binary size
+- FFI Integration with other programming languages (under development)
+- Toolkit for developing with coding agents
 
 ## Visual Studio Extension
 
@@ -63,8 +81,6 @@ You can copy the whole `.github` folder to your own repo.
 - Update `.github/Project.md` to describe where the source code is.
 - `.github/copilot-instructions.md` and `.github/Guidelines` follow the pattern in all repos in this github organization, feel free to change.
 
-**NOTICE**: The guideline about running your vcxproj is customized for the unit test framework in GacUI, a more general version is comming. Feel free to change.
-
 ## Content of This Project
 
 - **Import** Gaclib source code
@@ -91,7 +107,7 @@ Image files are not owned by this repo or organization except for GacUI logos.
 
 **WARNING: it is not maintained by members in **vczh-libraries** organization, please check the version number before using.**
 
-Third party project for GacUI 1.0: https://github.com/mangosroom/GacUI-CMake-support
+Third party project for GacUI: https://github.com/mangosroom/GacUI-CMake-support
 
 ## Building using vcpkg
 
