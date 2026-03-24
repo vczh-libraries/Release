@@ -241,8 +241,8 @@ Closures
 							throw ::vl::Exception(::vl::__vwsn::This(::vl::__vwsn::This(__vwsn_co_result_.Obj())->GetFailure().Obj())->GetMessage());
 						}
 						(__vwsn_co0_text = ::demo::IStringAsync::CastResult(::vl::__vwsn::This(__vwsn_co_result_.Obj())->GetResult()));
-						::vl::__vwsn::This(__vwsnthis_0->textResult)->SetText(__vwsn_co0_text);
-						::vl::__vwsn::This(__vwsnthis_0->textResult)->SetCaret([&](){ ::vl::presentation::TextPos __vwsn_temp__; __vwsn_temp__.row = static_cast<::vl::vint>(0); __vwsn_temp__.column = static_cast<::vl::vint>(0); return __vwsn_temp__; }(), [&](){ ::vl::presentation::TextPos __vwsn_temp__; __vwsn_temp__.row = static_cast<::vl::vint>(0); __vwsn_temp__.column = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
+						::vl::__vwsn::This(__vwsnthis_0->textResult)->LoadTextAndClearUndoRedo(__vwsn_co0_text);
+						::vl::__vwsn::This(__vwsnthis_0->textResult)->SetFocused();
 						this->SetStatus(::vl::reflection::description::CoroutineStatus::Stopped);
 						return;
 					}

@@ -72,8 +72,8 @@
                           progressBar.Position = progress;
                         }, -1);
                       });
-                      textResult.Text = text;
-                      textResult.SetCaret({row:0 column:0}, {row:0 column:0});
+                      textResult.LoadTextAndClearUndoRedo(text);
+                      textResult.SetFocused();
                     }
                   ]]>
                 </ev.Clicked-eval>
