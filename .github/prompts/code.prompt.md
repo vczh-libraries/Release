@@ -26,6 +26,8 @@
 #### Build the Solution
 
 - Check out `REPO-ROOT/Project.md` to find out what solutions you need to build.
+  - Pay attention to the `Code Generation Projects` section.
+  - Projects you need to run may dynamically changing according to what you have done.
 - Find out if there is any warning or error.
   - `External Tools Environment and Context` in `REPO-ROOT/.github/copilot-instructions.md` has the instruction about how to check compile result.
 
@@ -39,6 +41,7 @@
 ### Code Generation
 
 - Check out `## Projects for Verification` in `REPO-ROOT/Project.md`.
+  - Pay attention to the `### Code Generation Projects` section, `code generation projects` below references this section.
 - Find out if any code generation is necessary.
   - If there is no need to run any code generation, you can skip this step.
   - Otherwise, pay attention to:
@@ -47,8 +50,6 @@
     - It is possible that a project needs to be executed multiple times in different configuration.
     - It is possible that building is required between two runs of code generation projects.
       - The building and future code generation project execution should be handled by the next sub agent.
-- If a unit test project is also a code generation project, execute it accordingly.
-- If a unit test project is not a code generation project, DO NOT execute it. Pure unit test projects will be executed in the future.
 
 ### Finishing Code Change
 
@@ -89,6 +90,7 @@
   - You must stop the debugger after you finish debugging.
 - When you have made a few guesses but did not progress, you are recommended to debug the unit test directly.
   - Break-points are very useful to ensure the expected code path is executed, and you can inspect variable values.
+- Even when a failure is not related to your change, you should take care of it.
 
 #### Fix Failed Test Cases
 
