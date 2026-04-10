@@ -3,6 +3,7 @@
 **IMPORTANT**: You'd better upgrade both copilot cli and sdk to the latest version before using it.
 
 - Run [bot.ps1](./bot.ps1) to start a bot.
+- **CAUTION** It starts an http server listening to `http://*:9999`, anyone will be able to use it if they could reach your computer. You should be responsible for your own security.
 - The default location would be the root of this repo.
   - You can change it to any repo.
   - Predefine jobs are designed for all prompts in `.github/prompts`.
