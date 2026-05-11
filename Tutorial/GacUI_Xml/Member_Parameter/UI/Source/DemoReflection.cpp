@@ -42,11 +42,13 @@ namespace vl
 			END_INTERFACE_MEMBER(::demo::IViewModel)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				ATTRIBUTE_TYPE(::vl::__vwsn::att_cpp_Friend, ::vl::reflection::description::GetTypeDescriptor(::vl::WString::Unmanaged(L"demo::MainWindowConstructor")))
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(::vl::Ptr<::demo::IViewModel>), { L"__vwsn_ctor_parameter_ViewModel" })
 				CLASS_MEMBER_METHOD(GetViewModel, NO_PARAMETER)
 				CLASS_MEMBER_FIELD(__vwsn_parameter_ViewModel)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Private)
 				CLASS_MEMBER_PROPERTY_READONLY(ViewModel, GetViewModel)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
@@ -54,10 +56,15 @@ namespace vl
 				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(ViewModel)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 #undef _

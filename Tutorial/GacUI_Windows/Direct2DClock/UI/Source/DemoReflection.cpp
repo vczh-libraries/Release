@@ -36,19 +36,26 @@ namespace vl
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				ATTRIBUTE_TYPE(::vl::__vwsn::att_cpp_File, ::vl::WString::Unmanaged(L"MainWindow"))
+				ATTRIBUTE_TYPE(::vl::__vwsn::att_cpp_Friend, ::vl::reflection::description::GetTypeDescriptor(::vl::WString::Unmanaged(L"demo::MainWindowConstructor")))
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_instance_ctor_, NO_PARAMETER)
 				CLASS_MEMBER_METHOD(InstallAnimationControl, NO_PARAMETER)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_UserImpl)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Private)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
 			BEGIN_CLASS_MEMBER(::demo::MainWindowConstructor)
 				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(animationBounds)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(self)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 #undef _

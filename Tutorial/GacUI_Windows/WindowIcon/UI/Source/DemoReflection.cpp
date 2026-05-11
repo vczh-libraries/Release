@@ -36,6 +36,8 @@ namespace vl
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
 			BEGIN_CLASS_MEMBER(::demo::MainWindow)
+				ATTRIBUTE_TYPE(::vl::__vwsn::att_cpp_File, ::vl::WString::Unmanaged(L"MainWindow"))
+				ATTRIBUTE_TYPE(::vl::__vwsn::att_cpp_Friend, ::vl::reflection::description::GetTypeDescriptor(::vl::WString::Unmanaged(L"demo::MainWindowConstructor")))
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_BASE(::demo::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::demo::MainWindow*(), NO_PARAMETER)
@@ -43,6 +45,7 @@ namespace vl
 				CLASS_MEMBER_METHOD(SetCustomIcon, { L"__vwsn_value_" })
 				CLASS_MEMBER_EVENT(CustomIconChanged)
 				CLASS_MEMBER_FIELD(__vwsn_prop_CustomIcon)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Private)
 				CLASS_MEMBER_PROPERTY_EVENT(CustomIcon, GetCustomIcon, SetCustomIcon, CustomIconChanged)
 			END_CLASS_MEMBER(::demo::MainWindow)
 
@@ -50,14 +53,23 @@ namespace vl
 				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::demo::MainWindowConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_demo_MainWindow_Initialize, { L"__vwsn_this_" })
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_3)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_4)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(checkCustom)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(checkVisible)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(self)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 			END_CLASS_MEMBER(::demo::MainWindowConstructor)
 
 #undef _

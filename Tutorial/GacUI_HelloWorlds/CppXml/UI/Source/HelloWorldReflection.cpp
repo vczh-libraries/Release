@@ -36,6 +36,7 @@ namespace vl
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 #define _ ,
 			BEGIN_CLASS_MEMBER(::helloworld::MainWindow)
+				ATTRIBUTE_TYPE(::vl::__vwsn::att_cpp_Friend, ::vl::reflection::description::GetTypeDescriptor(::vl::WString::Unmanaged(L"helloworld::MainWindowConstructor")))
 				CLASS_MEMBER_BASE(::vl::presentation::controls::GuiWindow)
 				CLASS_MEMBER_BASE(::helloworld::MainWindowConstructor)
 				CLASS_MEMBER_CONSTRUCTOR(::helloworld::MainWindow*(), NO_PARAMETER)
@@ -45,9 +46,13 @@ namespace vl
 				CLASS_MEMBER_BASE(::vl::reflection::DescriptableObject)
 				CLASS_MEMBER_CONSTRUCTOR(::vl::Ptr<::helloworld::MainWindowConstructor>(), NO_PARAMETER)
 				CLASS_MEMBER_METHOD(__vwsn_helloworld_MainWindow_Initialize, { L"__vwsn_this_" })
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_0)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_1)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 				CLASS_MEMBER_FIELD(__vwsn_precompile_2)
+				ATTRIBUTE_MEMBER(::vl::__vwsn::att_cpp_Protected)
 			END_CLASS_MEMBER(::helloworld::MainWindowConstructor)
 
 #undef _

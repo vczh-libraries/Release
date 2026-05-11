@@ -380,6 +380,7 @@ int main(int argc, char* argv[])
 					{
 						files.Remove(astOutput->jsonH);
 						files.Remove(astOutput->jsonCpp);
+						files.Remove(astOutput->jsonDts);
 					}
 					else if (utility == L"Builder")
 					{
