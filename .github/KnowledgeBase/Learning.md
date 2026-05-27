@@ -2,24 +2,24 @@
 
 # Orders
 
-- Process staged tasks one by one with verification [13]
+- Process staged tasks one by one with verification [15]
 - Crash early instead of adding error-tolerance fallbacks [6]
+- Make `Stop()` drain asynchronous work before returning [5]
 - Use `WString::IndexOf` with `wchar_t` (not `const wchar_t*`) [4]
 - Use `collections::BinarySearchLambda` on contiguous buffers (guard empty) [4]
+- Port fixes from imports to source repositories [3]
 - Capture dependent lambdas explicitly [2]
 - Don't assume observable changes are batched [2]
+- Do not assume async callback owners are heap allocated [2]
+- Extract abstractions only for real shared behavior [2]
 - Use `ERROR_MESSAGE_PREFIX` for meaningful `CHECK_ERROR` / `CHECK_FAIL` messages [2]
 - Prefer simple calls before interface casts [2]
 - Validate expectations against implementation and existing tests [2]
 - Use `vl::Exception` for expected semantic failures and `CHECK_ERROR` for invariants [2]
-- Port fixes from imports to source repositories [2]
-- Do not assume async callback owners are heap allocated [1]
-- Extract abstractions only for real shared behavior [1]
-- Make `Stop()` drain asynchronous work before returning [1]
+- Treat Debug memory leak dumps as required failures [2]
 - Prefer well-defined tests over ambiguous edge cases [1]
 - Prefer `operator<=> = default` for lexicographic key structs [1]
 - Prefer two-pointer merge for sorted range maps [1]
-- Treat Debug memory leak dumps as required failures [1]
 - Use named sentinel constants instead of raw values [1]
 - Use `Variant<T...>::Index()` to check active alternative [1]
 - Avoid references into containers when mutating them [1]
@@ -31,6 +31,7 @@
 - Dereference `Ptr<T>` via `.Obj()` (not `*ptr`) [1]
 - `vl::regex` separator regex: `L"[\\/\\\\]+"` [1]
 - Use 2-space indentation in embedded XML/JSON literals [1]
+- Verify generated artifacts with downstream consumer checks [1]
 - `collections::List` has deleted copy constructor; use `std::move()` for structs with `List` members [1]
 
 # Refinements
@@ -71,19 +72,29 @@ When a scenario’s expected behavior is unclear or undocumented (e.g. calling a
 
 Asynchronous callbacks and handle-close paths must not rely on the owning object being allocated with `new` or outliving callbacks by convention. Track active operations explicitly and make shutdown drain or detach every callback path that can reference the object.
 
+When registered waits or async request callbacks can race with `Stop()`, give each wait/request its own context and use atomics to transfer ownership between registration, callback execution, and stop. Do not close handles or buffers until the owner path has either unregistered a not-yet-started callback or waited for a started callback to finish.
+
 ## Extract abstractions only for real shared behavior
 
 When refactoring client/server or similar paired implementations, extract common state and helper behavior only when it genuinely simplifies both sides. Preserve intentional differences in small derived redirects or callbacks instead of forcing an abstraction just to increase reuse.
 
+For role-specific implementations, extract a base that contains only truly shared state and operations. Keep transport-only or role-only members in the concrete subtype so no implementation inherits fields that do not apply to it.
+
 ## Make `Stop()` drain asynchronous work before returning
 
 If an API exposes `Stop()`, callers should be able to rely on it as the shutdown boundary: after it returns, no pending action, wait callback, overlapped I/O, or async completion should still touch the object. Do not paper over a broken `Stop()` with sleeps in tests; fix the stop path.
+
+Use the platform's final callback boundary when available. For WinHTTP async requests, `WINHTTP_CALLBACK_STATUS_HANDLE_CLOSING` is the point to release pending request tracking for successfully submitted requests; release immediately only for failures before submission. For registered wait handles, `Stop()` should unregister not-started waits or wait for active callbacks, then close dependent handles and state.
+
+Renderer clients should explicitly stop their network transport before stack-owned channel wrappers are destroyed, so callback shutdown completes before local wrapper storage goes out of scope.
 
 ## Port fixes from imports to source repositories
 
 Do not treat files copied into `Import` or generated release files as the source of truth. When a fix affects imported `Vlpp` files, make the upstream change in `Vlpp`, regenerate its release output, and then copy the generated files downstream. When a `.github` instruction or script fix is needed, port it through `Tools/Copilot`.
 
 When a downstream repo such as `GacUI` exposes a bug in imported `VlppOS` inter-process code, fix and verify it in `VlppOS`, regenerate `VlppOS\Release`, and then import the generated release files downstream.
+
+When validating GacUI remoting reveals a transport issue, keep the same source-of-truth rule: fix `VlppOS`, regenerate its release, copy the generated output into `GacUI\Import`, then validate the downstream scenario again.
 
 ## Validate expectations against implementation and existing tests
 
@@ -112,6 +123,8 @@ When combining or diffing two maps that are already sorted by range keys, iterat
 ## Treat Debug memory leak dumps as required failures
 
 On Windows Debug unit-test runs with memory leak checking enabled, a test can pass all assertions and still fail engineering acceptance if the final execution log contains a CRT leak dump. Read the end of the log after tests pass and fix leaks instead of ignoring the appended report.
+
+GacUI helper threads and stack-allocated callbacks are common sources of these post-pass leak dumps. Join helper threads and detach callbacks before scope exit instead of treating the final leak report as unrelated noise.
 
 ## Use named sentinel constants instead of raw values
 
@@ -156,6 +169,10 @@ Objects that dispatch asynchronous callbacks should not begin listening or queue
 ## Use 2-space indentation in embedded XML/JSON literals
 
 When writing XML or JSON inside a C++ string literal (e.g. `LR"GacUISrc(... )GacUISrc"` resources), indent the XML/JSON with 2 spaces (not tabs) to match the repo’s formatting rules for embedded structured text.
+
+## Verify generated artifacts with downstream consumer checks
+
+When a generator produces artifacts for another language or toolchain, validate the generated output with that downstream consumer instead of only checking that the generator runs. For example, generated TypeScript declarations for JSON output should be type-checked against real generated JSON examples with `tsc --noEmit`.
 
 ## `vl::regex` separator regex: `L"[\\/\\\\]+"`
 
