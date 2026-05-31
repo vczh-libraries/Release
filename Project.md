@@ -1,4 +1,3 @@
 # Projects to Work on
 
-You are working on the solution `REPO-ROOT\Test\UnitTest\UnitTest.sln`, therefore `SOLUTION-ROOT` is `REPO-ROOT\Test\UnitTest`.
-The `REPO-ROOT\Test\UnitTest\UnitTest\UnitTest.vcxproj` is the unit test project.
+Take a look at [the GacUI repo example](https://github.com/vczh-libraries/GacUI/blob/master/Project.md) for better understanding about how to prepare this file.

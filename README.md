@@ -48,13 +48,20 @@ GPU Accelerated C++ User Interface, with:
   - Generate XML and Workflow to C++ source files for static linking (recommended)
     - Allow C++ dyanmic reflection opt-out to significantly improve performance and reduce binary size
 - FFI Integration with other programming languages (under development)
-- Toolkit for developing with coding agents
 
-## Visual Studio Extension
+## Coding Agent Supports
 
-Copy [Vlpp.natvis](https://github.com/vczh-libraries/Release/blob/master/Import/vlpp.natvis) to Visual Studio's visualizers folder.
+- Rich context, instructions and documentation for developing with coding agents
+- GacUI applications UI can be understand and operated by coding agents meanwhile:
+  - Works even when the screen is locked.
+  - Does not block you from using the computer.
 
-For example, VS2022's default visualizers folder will be **C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Packages\Debugger\Visualizers**.
+## Visual Studio and WinDBG/CDB Extension
+
+Copy [Vlpp.natvis](https://github.com/vczh-libraries/Release/blob/master/Import/vlpp.natvis) to Visual Studio's visualizers folder:
+- VS2022 `C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Packages\Debugger\Visualizers`
+- VS2026 `C:\Program Files\Microsoft Visual Studio\18\Community\Common7\Packages\Debugger\Visualizers`
+`.nvload` this file in WinDBG/CDB for better rendering of data structures, which is already embedded in `copilotDebug_Start.ps1`.
 
 ## Using Coding Agents
 
@@ -70,9 +77,8 @@ You can copy the whole `.github` folder to your own repo.
 - `.github/KnowledgeBase` contains detailed documentation for the library, they will be read without having to being explicitly mentioned.
 - Prompt files tell the coding agent how to work with `msbuild` and `cdb` (the CLI version of WinDBG). 
   - You need to prepare `VLPP_VSDEVCMD_PATH` and `CDBPATH` environment variable
-  - Search in `.github/Scripts` and read comments about them.
-  - Building/testing/debugging is doable.
-  - Update `Project.md` to describe where the source code is.
+  - Building/testing/debugging is doable, for unit test, CLI or GacUI Applications.
+  - Update `Project.md` to describe where the source code is ([Example](https://github.com/vczh-libraries/GacUI/blob/master/Project.md)).
 - `.github/copilot-instructions.md` and `.github/Guidelines` follow the pattern in all repos in this github organization, feel free to change.
 
 ## Content of This Project
@@ -86,6 +92,8 @@ You can copy the whole `.github` folder to your own repo.
   - **CodePack.exe** Merge a group of C++ source files into multiple pairs of .h/.cpp big files
   - **GacBuild.ps1** Do everything for you if you don't want to understand build steps. This one builds multiple resource xml files at the same time. Read the comment for more information.
   - **GacClear.ps1** Force `GacBuild.ps1` rebuilding all resource xml files for the next time.
+  - **CopyExecutables.ps1** Copy executables to the current folder after building `Tools/Executables/Executables.sln`.
+  - **BuildExecutables.sh** Build script for Linux.
 - **Tutorial** Sample code
   - **Lib** Static library projects for all tutorials
   - **GacUI_HelloWorlds** Different ways to create a GacUI hello world project
