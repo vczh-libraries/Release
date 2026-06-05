@@ -1,6 +1,7 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include "UI/Source/Demo.h"
 #ifdef VCZH_MSVC
+#define _WINSOCKAPI_
 #include <Windows.h>
 #endif
 

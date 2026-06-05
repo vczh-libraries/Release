@@ -1,6 +1,7 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include <GacUI.h>
 #include <Skins\DarkSkin\DarkSkin.h>
+#define _WINSOCKAPI_
 #include <Windows.h>
 
 class DefaultSkinPlugin : public Object, public IGuiPlugin
