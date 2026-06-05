@@ -2110,9 +2110,9 @@ void GacUIUnitTest_Start(const WString& appName, Nullable<UnitTestScreenConfig> 
 }
 
 template<typename T>
-void RunInNewThread(T&& threadProc)
+Thread* RunInNewThread(T&& threadProc)
 {
-	Thread::CreateAndStart([threadProc]()
+	return Thread::CreateAndStart([threadProc]()
 	{
 		try
 		{
@@ -2128,7 +2128,7 @@ void RunInNewThread(T&& threadProc)
 			(void)e;
 			throw;
 		}
-	});
+	}, false);
 }
 
 void GacUIUnitTest_StartAsync(const WString& appName, Nullable<UnitTestScreenConfig> config)
@@ -2147,11 +2147,11 @@ void GacUIUnitTest_StartAsync(const WString& appName, Nullable<UnitTestScreenCon
 	TEST_ASSERT(channelServer->ConnectLocalClient(rendererClient) > 0);
 
 	channeling::GuiRemoteProtocolRendererChannel rendererChannel(rendererClient.Obj(), rendererClient->GetProtocolChannel(), unitTestProtocol.GetProtocol());
-	channeling::GuiRemoteProtocolAsyncJsonChannelSerializer asyncChannelSender(coreClient->GetProtocolChannel(), unitTestProtocol.GetRemoteEventProcessor());
+	channeling::GuiRemoteProtocolJsonChannelRenderer_Async asyncChannelSender(coreClient->GetProtocolChannel(), unitTestProtocol.GetRemoteEventProcessor());
 
 	EventObject eventStopped;
 	TEST_ASSERT(eventStopped.CreateManualUnsignal(false));
-	RunInNewThread([&]()
+	auto coreThread = RunInNewThread([&]()
 	{
 		channeling::GuiRemoteProtocolCoreChannel channelSender(coreClient.Obj(), &asyncChannelSender, config.Value().executablePath, asyncChannelSender.GetRemoteEventProcessor());
 
@@ -2171,6 +2171,8 @@ void GacUIUnitTest_StartAsync(const WString& appName, Nullable<UnitTestScreenCon
 		eventStopped.Signal();
 	});
 	eventStopped.Wait();
+	coreThread->Wait();
+	delete coreThread;
 	TEST_ASSERT(!ExceptionOccuredUnderUnitTestReleaseMode());
 
 	GacUIUnitTest_LogUI(appName, unitTestProtocol);

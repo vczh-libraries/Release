@@ -1,13 +1,16 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include "UI/Source/Demo.h"
 #if defined VCZH_MSVC
-#include <Windows.h>
+#include <VlppOS.Windows.h>
 #elif defined VCZH_GCC
 #include <unistd.h>
 #endif
 
 using namespace vl::collections;
 using namespace vl::stream;
+#if defined VCZH_MSVC
+using namespace vl::inter_process;
+#endif
 
 class ViewModel : public Object, public demo::IViewModel
 {
@@ -19,10 +22,26 @@ public:
 			// This is a fake progress, it is just for demo
 #if defined VCZH_MSVC
 			HttpRequest request;
-			request.SetHost(L"http://www.microsoft.com/");
+			request.query = L"/";
 
-			HttpResponse response;
-			HttpQuery(request, response);
+			WString responseText;
+			EventObject completed;
+			completed.CreateManualUnsignal(false);
+			HttpClientApi client(L"www.microsoft.com", 80);
+			client.HttpQuery(request, [&](Variant<HttpResponse, HttpError> result)
+			{
+				if (auto error = result.TryGet<HttpError>())
+				{
+					responseText = error->message;
+				}
+				else
+				{
+					responseText = result.Get<HttpResponse>().GetBodyUtf8();
+				}
+				completed.Signal();
+			});
+			completed.Wait();
+			client.Stop();
 
 			progress(1);
 			for (vint i = 2; i <= 10; i++)
@@ -31,7 +50,7 @@ public:
 				progress(i);
 			}
 
-			callback(response.GetBodyUtf8());
+			callback(responseText);
 #elif defined VCZH_GCC
 			progress(1);
 			for (vint i = 2; i <= 10; i+=2)
