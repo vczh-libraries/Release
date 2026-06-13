@@ -22822,6 +22822,7 @@ namespace vl::presentation::remoteprotocol::channeling
 	using IJsonChannel = inter_process::IChannel<JsonPackage>;
 	using IJsonChannelClient = inter_process::IChannelClient<JsonPackage>;
 	using IJsonChannelServer = inter_process::IChannelServer<JsonPackage>;
+	using IJsonLocalChannelServer = inter_process::INetworkProtocolLocalChannelServer<JsonPackage, glr::json::JsonNodeListSerializer>;
 
 /***********************************************************************
 ChannelPackageSemantic
@@ -22847,7 +22848,39 @@ ChannelPackageSemantic
 	extern void						JsonChannelUnpack(Ptr<glr::json::JsonObject> package, ChannelPackageInfo& info, Ptr<glr::json::JsonNode>& arguments);
 	extern void						JsonChannelUnpack(Ptr<glr::json::JsonNode> package, ChannelPackageInfo& info, Ptr<glr::json::JsonNode>& arguments);
 
-	using GuiRemoteProtocolChannelServer = inter_process::NetworkProtocolChannelServer<JsonPackage, glr::json::JsonNodeListSerializer>;
+	class GuiRemoteProtocolLocalChannelServerBase
+		: public Object
+		, public virtual inter_process::INetworkProtocolServer
+	{
+	private:
+		bool stopped = true;
+
+	public:
+		inter_process::WaitForClientResult OnClientConnected(inter_process::INetworkProtocolConnection* connection) override
+		{
+			return inter_process::WaitForClientResult::Reject;
+		}
+
+		void Start() override
+		{
+			stopped = false;
+		}
+
+		void Stop() override
+		{
+			stopped = true;
+		}
+
+		bool IsStopped() override
+		{
+			return stopped;
+		}
+	};
+
+	template<typename TServerBase>
+	using GuiRemoteProtocolNetworkChannelServer = inter_process::NetworkProtocolChannelServer<JsonPackage, glr::json::JsonNodeListSerializer, TServerBase>;
+
+	using GuiRemoteProtocolChannelServer = GuiRemoteProtocolNetworkChannelServer<GuiRemoteProtocolLocalChannelServerBase>;
 
 	class GuiRemoteProtocolChannelClient
 		: public inter_process::NetworkProtocolChannelClient<JsonPackage, glr::json::JsonNodeListSerializer>
@@ -23052,8 +23085,8 @@ GuiRemoteProtocolJsonChannelRenderer_Async
 	protected:
 		struct QueuedPackage
 		{
-			vint											senderClientId = -1;
 			Nullable<vint>									receiverClientId;
+			Ptr<collections::List<vint>>						blockedReceivers;
 			JsonPackage										package;
 		};
 
@@ -23104,8 +23137,9 @@ GuiRemoteProtocolJsonChannelRenderer_Async
 		const WString&										GetChannelName() override;
 		IJsonChannelReader*								GetReader() override;
 		void												Initialize(IJsonChannelReader* _reader) override;
-		void												SendToClient(vint senderClientId, vint receiverClientId, const JsonPackage& package) override;
-		void												BroadcastFromClient(vint senderClientId, const JsonPackage& package) override;
+		void												SendToClient(vint receiverClientId, const JsonPackage& package) override;
+		void												BroadcastFromClient(const JsonPackage& package) override;
+		void												BroadcastFromClient(const JsonPackage& package, const collections::List<vint>& blockedReceivers) override;
 		void												BatchWrite(bool& disconnected) override;
 
 		IGuiRemoteEventProcessor*							GetRemoteEventProcessor();
@@ -23185,8 +23219,9 @@ GuiRemoteProtocolAsyncJsonChannelRenderer
 		const WString&										GetChannelName() override;
 		IJsonChannelReader*								GetReader() override;
 		void												Initialize(IJsonChannelReader* _reader) override;
-		void												SendToClient(vint senderClientId, vint receiverClientId, const JsonPackage& package) override;
-		void												BroadcastFromClient(vint senderClientId, const JsonPackage& package) override;
+		void												SendToClient(vint receiverClientId, const JsonPackage& package) override;
+		void												BroadcastFromClient(const JsonPackage& package) override;
+		void												BroadcastFromClient(const JsonPackage& package, const collections::List<vint>& blockedReceivers) override;
 		void												BatchWrite(bool& disconnected) override;
 
 		void												SetInvokeInMainThread(IGuiRemoteProtocolAsyncRendererInvoker* _invokeInMainThread);
