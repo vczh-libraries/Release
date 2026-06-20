@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 	}
 
 	// load configuration
-	auto workingDir = FilePath(atow(argv[1])).GetFolder();
+	auto workingDir = NormalizePathForFileSystem(atow(argv[1])).GetFolder();
 	Ptr<XmlDocument> config;
 	{
 		Parser parser;
@@ -213,9 +213,10 @@ int main(int argc, char* argv[])
 	// prepare output folder
 	auto outputFolder = workingDir / (XmlGetAttribute(XmlGetElement(config->rootElement, L"output"), L"path")->value.value);
 	auto outputIncludeOnlyFolder = outputFolder / L"IncludeOnly";
-	if (!Folder(outputIncludeOnlyFolder).Exists())
+	auto outputIncludeOnlyFolderForIO = NormalizePathForFileSystem(outputIncludeOnlyFolder);
+	if (!Folder(outputIncludeOnlyFolderForIO).Exists())
 	{
-		Folder(outputIncludeOnlyFolder).Create(true);
+		Folder(outputIncludeOnlyFolderForIO).Create(true);
 	}
 
 	// generate categorized header dependencies

@@ -27,7 +27,7 @@ void CategorizeCodeFiles(
 			filterFiles,
 			From(files).Where([&](const FilePath& f)
 				{
-					auto path = f.GetFullPath();
+					auto path = GetCodePackPath(f.GetFullPath());
 					return INVLOC.FindFirst(path, pattern, Locale::IgnoreCase).key != -1
 						&& From(exceptions).All([&](const WString& ex)
 						{

@@ -18,12 +18,51 @@ extern const vint systemInclude_path;
 extern const vint instruction_name;
 extern const vint instruction_param;
 
+inline WString ConvertPathDelimiters(const WString& path, wchar_t delimiter)
+{
+	if (path.Length() == 0) return path;
+
+	Array<wchar_t> buffer(path.Length() + 1);
+	for (vint i = 0; i < path.Length(); i++)
+	{
+		auto c = path[i];
+		buffer[i] = (c == L'/' || c == L'\\') ? delimiter : c;
+	}
+	buffer[path.Length()] = 0;
+	return &buffer[0];
+}
+
+inline FilePath NormalizePathForFileSystem(const WString& path)
+{
+	return FilePath(ConvertPathDelimiters(path, FilePath::GetPathDelimiter()));
+}
+
+inline FilePath NormalizePathForFileSystem(const FilePath& path)
+{
+	return NormalizePathForFileSystem(path.GetFullPath());
+}
+
+inline WString GetCodePackPath(const WString& path)
+{
+	return ConvertPathDelimiters(path, L'\\');
+}
+
+inline WString GetCodePackCommentPath(const WString& path)
+{
+	auto codePackPath = GetCodePackPath(path);
+	if (codePackPath.Length() == 0 || codePackPath[0] == L'.')
+	{
+		return codePackPath;
+	}
+	return L".\\" + codePackPath;
+}
+
 inline WString ReadFile(const FilePath& path)
 {
 	WString text;
 	BomEncoder::Encoding encoding;
 	bool containsBom;
-	File(path).ReadAllTextWithEncodingTesting(text, encoding, containsBom);
+	File(NormalizePathForFileSystem(path)).ReadAllTextWithEncodingTesting(text, encoding, containsBom);
 	return text;
 }
 

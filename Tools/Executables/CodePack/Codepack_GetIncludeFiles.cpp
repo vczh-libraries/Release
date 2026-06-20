@@ -69,7 +69,7 @@ LazyList<FilePath> GetIncludedFiles(
 			{
 				if (params && params->Count() == 2)
 				{
-					conditionOns.Add(codeFile, { params->Get(0).Value(),codeFile.GetFolder() / params->Get(1).Value() });
+					conditionOns.Add(codeFile, { params->Get(0).Value(),NormalizePathForFileSystem(codeFile.GetFolder() / params->Get(1).Value()) });
 					continue;
 				}
 			}
@@ -77,7 +77,7 @@ LazyList<FilePath> GetIncludedFiles(
 			{
 				if (params && params->Count() == 2)
 				{
-					conditionOffs.Add(codeFile, { params->Get(0).Value(),codeFile.GetFolder() / params->Get(1).Value() });
+					conditionOffs.Add(codeFile, { params->Get(0).Value(),NormalizePathForFileSystem(codeFile.GetFolder() / params->Get(1).Value()) });
 					continue;
 				}
 			}
@@ -89,7 +89,7 @@ LazyList<FilePath> GetIncludedFiles(
 		{
 			if (!skip)
 			{
-				auto path = codeFile.GetFolder() / match->Groups()[include_path][0].Value();
+				auto path = NormalizePathForFileSystem(codeFile.GetFolder() / match->Groups()[include_path][0].Value());
 				if (!includes.Contains(path))
 				{
 					includes.Add(path);
