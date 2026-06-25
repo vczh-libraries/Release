@@ -65,6 +65,8 @@ Copy [Vlpp.natvis](https://github.com/vczh-libraries/Release/blob/master/Import/
 
 ## Using Coding Agents
 
+Follow [the guidance](https://vczh-libraries.github.io/doc/current/coding-agent/home.html) and here is a simplified summarization.
+
 Both `AGENTS.md` and `CLAUDE.md` are prepared so that copilot/codex/claude coding agent follow the same instruction.
 
 The follow keywords maintain design documents in `.github/TaskLogs`, anything except `Copilot_Scrum.md` is not tracked by git, you can change the `.gitignore` in that folder if you like.
