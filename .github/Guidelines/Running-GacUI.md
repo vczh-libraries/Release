@@ -1,12 +1,17 @@
 # Running a GacUI Application Project
 
 - Go to `Windows Specific` section if you are on Windows.
-- Go to `Linux Specific` section if you are on Linux or macOS.
+- Go to `Linux Specific` section if you are on Linux.
+- Go to `macOS Specific` section if you are on macOS.
 
 ## Windows Specific
 
-You are strongly recommended to attach a debugger when running any GacUI application.
-Because some runtime exceptions are silently consumed by Windows causing the application not to crash, covering issues if no debugger is attached.
+- You are strongly recommended to attach a debugger when running any GacUI application.
+- Because some runtime exceptions are silently consumed by Windows causing the application not to crash, covering issues if no debugger is attached.
+- GacUI applications could end up in dead loop or dead locks, so DO NOT JUST wait for the process to exit.
+  - When it is crashed, sometimes (but not always) a native dialog would show and block the process.
+  - Native dialogs could be proactivately called from a GacUI application, even when `FakeDialogService` is not used.
+  - If you believe the processing is blocked or is running too long, you are going to check out `Running-ComputerUse.md` and deal with it.
 
 ### Automation Service via HTTP
 
@@ -40,6 +45,12 @@ When remote protocol is in use:
 
 GacUI does not support UI Automation so far, but this situation will be changed very soon.
 
+UI Automation does not work when the screen is locked. Calling any UIA tools in this case will just fail.
+
 ## Linux Specific
 
-NOT SUPPORTED
+(to be editing...)
+
+## macOS Specific
+
+(to be editing...)

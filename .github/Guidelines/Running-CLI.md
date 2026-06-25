@@ -1,12 +1,16 @@
 # Running a CLI Application Project
 
 - Go to `Windows Specific` section if you are on Windows.
-- Go to `Linux Specific` section if you are on Linux or macOS.
+- Go to `Linux Specific` section if you are on Linux.
+- Go to `macOS Specific` section if you are on macOS.
 
 ## Windows Specific
 
 - Only run `copilotExecute.ps1` to run a CLI application project.
 - DO NOT call executables or scripts yourself.
+- CLI applications are interactable, or could end up in dead loop or dead locks so DO NOT JUST wait for the process to exit.
+  - When it is crashed, sometimes (but not always) a native dialog would show and block the process.
+  - If you believe the processing is blocked or is running too long, you are going to check out `Running-ComputerUse.md` and deal with it.
 
 ### Executing copilotExecute.ps1
 
@@ -44,3 +48,7 @@ Compiled binary might have a bug causing it to trap in a dead loop. DO NOT just 
 If this seems suspicious, you are recommended to kill the process and run it again with the debugger.
 
 Only the "debug x64" configuration is supported on Linux. If you are instructed to build and run other configuration, ignore it.
+
+## macOS Specific
+
+(to be editing...)
