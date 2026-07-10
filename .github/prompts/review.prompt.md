@@ -52,7 +52,8 @@ I will put my reply here
   - I agree with your comment, which points out missing details in the task. Or I disagree with your comment. Or I provide detailed explanation:
     - If you agree with my reply:
       - Keep the comment and the reply, as this will be taken as important hints when executing the task.
-      - Append `[CLOSED]` after the specific comment section, so you don't need to process them the next time.
+      - Append `[CLOSED]` after the title of the specific comment section, so you don't need to process them the next time.
+      - Update the content of the task file or source code accordingly, if necessary, based on the reply.
     - If you have further comments:
       - Put new comments.
       - DO NOT tag it with `[CLOSED]`.
@@ -68,4 +69,10 @@ I will put my reply here
     - Potential error handling issues.
     - Potential synchronization and multi-threading issues.
     - Potential performance issues.
+  - You should de-ambiguous proactively, if there is an obvious best answer to the review comment, you should also propose your solution:
+    - You can find my preference in `REPO-ROOT/.github/Guidelines/Coding.md`.
 - Take into accounts of my replies to all review comments.
+- Expand missing details:
+  - Verification would be the most important part of the task. If the original task do not have, or only has a simple verification step, you need to add detailes to the `## VERIFICATION` before `## REVIEW COMMENTS`.
+  - If you find the task is not detailed enough, add your finding to the `## DETAILS` section before `## REVIEW COMMENTS`.
+  - If the original task is organized in a multi-task form, `## DETAILS` and `## VERIFICATION` would become `### DETAILS` and `### VERIFICATION` at the end of every separated tasks.
