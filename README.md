@@ -14,11 +14,11 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ## Synchronized latest releases:
 
-### 1.3.2.0
+### 1.4.0.0
 
-- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.3.2.0)
-- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.3.2.0)
-- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.3.2.0)
+- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.4.0.0)
+- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.4.0.0)
+- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.4.0.0)
 
 ### 1.3.1.0
 
