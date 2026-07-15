@@ -11,6 +11,24 @@ void CategorizeCodeFiles(
 	{
 		auto name = XmlGetAttribute(e, L"name")->value.value;
 		auto pattern = wupper(XmlGetAttribute(e, L"pattern")->value.value);
+		List<WString> patterns;
+		while (true)
+		{
+			auto index = pattern.IndexOf(L';');
+			if (index == -1)
+			{
+				if (pattern.Length() > 0)
+				{
+					patterns.Add(pattern);
+				}
+				break;
+			}
+			if (index > 0)
+			{
+				patterns.Add(pattern.Left(index));
+			}
+			pattern = pattern.Right(pattern.Length() - index - 1);
+		}
 
 		List<WString> exceptions;
 		CopyFrom(
@@ -28,7 +46,10 @@ void CategorizeCodeFiles(
 			From(files).Where([&](const FilePath& f)
 				{
 					auto path = GetCodePackPath(f.GetFullPath());
-					return INVLOC.FindFirst(path, pattern, Locale::IgnoreCase).key != -1
+					return From(patterns).Any([&](const WString& pattern)
+						{
+							return INVLOC.FindFirst(path, pattern, Locale::IgnoreCase).key != -1;
+						})
 						&& From(exceptions).All([&](const WString& ex)
 						{
 							return INVLOC.FindFirst(path, ex, Locale::IgnoreCase).key == -1;

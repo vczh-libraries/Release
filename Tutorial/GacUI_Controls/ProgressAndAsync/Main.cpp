@@ -9,7 +9,7 @@
 using namespace vl::collections;
 using namespace vl::stream;
 #if defined VCZH_MSVC
-using namespace vl::inter_process;
+using namespace vl::inter_process::windows_http;
 #endif
 
 class ViewModel : public Object, public demo::IViewModel
