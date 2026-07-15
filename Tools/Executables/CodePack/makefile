@@ -19,38 +19,38 @@ all:pre-build ./Bin/CodePack
 ./Bin/CodePack:./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppGlrParser.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppReflection.o ./Obj/VlppRegex.o ./Obj/Codepack_CategorizeCodeFiles.o ./Obj/Codepack_Combine.o ./Obj/Codepack_GetFiles.o ./Obj/Codepack_GetIncludeFiles.o ./Obj/Main.o
 	$(CPP_LINK)
 
-./Obj/Vlpp.o: ../../../Import/Vlpp.cpp ../../../Import/Vlpp.h
+./Obj/Vlpp.o: ../../../Import/Vlpp.cpp
 	$(CPP_COMPILE)
 
-./Obj/Vlpp.Linux.o: ../../../Import/Vlpp.Linux.cpp ../../../Import/Vlpp.h
+./Obj/Vlpp.Linux.o: ../../../Import/Vlpp.Linux.cpp
 	$(CPP_COMPILE)
 
-./Obj/VlppGlrParser.o: ../../../Import/VlppGlrParser.cpp ../../../Import/VlppGlrParser.h ../../../Import/VlppReflection.h ../../../Import/VlppOS.h ../../../Import/Vlpp.h ../../../Import/VlppRegex.h
+./Obj/VlppGlrParser.o: ../../../Import/VlppGlrParser.cpp
 	$(CPP_COMPILE)
 
-./Obj/VlppOS.o: ../../../Import/VlppOS.cpp ../../../Import/VlppOS.h ../../../Import/Vlpp.h
+./Obj/VlppOS.o: ../../../Import/VlppOS.cpp
 	$(CPP_COMPILE)
 
-./Obj/VlppOS.Linux.o: ../../../Import/VlppOS.Linux.cpp ../../../Import/VlppOS.h ../../../Import/Vlpp.h
+./Obj/VlppOS.Linux.o: ../../../Import/VlppOS.Linux.cpp
 	$(CPP_COMPILE)
 
-./Obj/VlppReflection.o: ../../../Import/VlppReflection.cpp ../../../Import/VlppReflection.h ../../../Import/VlppOS.h ../../../Import/Vlpp.h ../../../Import/VlppRegex.h
+./Obj/VlppReflection.o: ../../../Import/VlppReflection.cpp
 	$(CPP_COMPILE)
 
-./Obj/VlppRegex.o: ../../../Import/VlppRegex.cpp ../../../Import/VlppRegex.h ../../../Import/Vlpp.h ../../../Import/VlppOS.h
+./Obj/VlppRegex.o: ../../../Import/VlppRegex.cpp
 	$(CPP_COMPILE)
 
-./Obj/Codepack_CategorizeCodeFiles.o: Codepack_CategorizeCodeFiles.cpp Codepack.h ../../../Import/VlppGlrParser.h ../../../Import/VlppReflection.h ../../../Import/VlppOS.h ../../../Import/Vlpp.h ../../../Import/VlppRegex.h
+./Obj/Codepack_CategorizeCodeFiles.o: Codepack_CategorizeCodeFiles.cpp
 	$(CPP_COMPILE)
 
-./Obj/Codepack_Combine.o: Codepack_Combine.cpp Codepack.h ../../../Import/VlppGlrParser.h ../../../Import/VlppReflection.h ../../../Import/VlppOS.h ../../../Import/Vlpp.h ../../../Import/VlppRegex.h
+./Obj/Codepack_Combine.o: Codepack_Combine.cpp
 	$(CPP_COMPILE)
 
-./Obj/Codepack_GetFiles.o: Codepack_GetFiles.cpp Codepack.h ../../../Import/VlppGlrParser.h ../../../Import/VlppReflection.h ../../../Import/VlppOS.h ../../../Import/Vlpp.h ../../../Import/VlppRegex.h
+./Obj/Codepack_GetFiles.o: Codepack_GetFiles.cpp
 	$(CPP_COMPILE)
 
-./Obj/Codepack_GetIncludeFiles.o: Codepack_GetIncludeFiles.cpp Codepack.h ../../../Import/VlppGlrParser.h ../../../Import/VlppReflection.h ../../../Import/VlppOS.h ../../../Import/Vlpp.h ../../../Import/VlppRegex.h
+./Obj/Codepack_GetIncludeFiles.o: Codepack_GetIncludeFiles.cpp
 	$(CPP_COMPILE)
 
-./Obj/Main.o: Main.cpp Codepack.h ../../../Import/VlppGlrParser.h ../../../Import/VlppReflection.h ../../../Import/VlppOS.h ../../../Import/Vlpp.h ../../../Import/VlppRegex.h
+./Obj/Main.o: Main.cpp
 	$(CPP_COMPILE)
