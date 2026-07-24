@@ -8,12 +8,12 @@
 - Crash early instead of adding error-tolerance fallbacks [9]
 - Keep design documentation aligned with code after refactoring [8]
 - Proactively remove code made redundant by refactoring [8]
+- Fix behavior at the owning state instead of patching symptoms [7]
 - Make `Stop()` drain asynchronous work before returning [6]
 - Validate expectations against implementation and existing tests [5]
-- Fix behavior at the owning state instead of patching symptoms [5]
 - Use `WString::IndexOf` with `wchar_t` (not `const wchar_t*`) [4]
 - Use `collections::BinarySearchLambda` on contiguous buffers (guard empty) [4]
-- Verify and localize portability on every target OS [3]
+- Verify and localize portability on every target OS [4]
 - Use `vl::Exception` for expected semantic failures and `CHECK_ERROR` for invariants [3]
 - Extract abstractions only for real shared behavior [3]
 - Do not assume async callback owners are heap allocated [3]
@@ -45,6 +45,8 @@
 - Use Win32 messages for native dialogs when UIA is unavailable [1]
 - Keep generated makefiles platform-invariant [1]
 - Group non-template C++ implementations by class in `.cpp` files [1]
+- Use reentrant POSIX date-time conversions [1]
+- Treat environment correlation as evidence, not a cause [1]
 
 # Refinements
 
@@ -296,9 +298,17 @@ When shared code and tests pass on other platforms but fail on one target, fix t
 
 When a layered transport needs a stricter response policy than its general parser, enforce that policy in the object that owns the physical connection. Keep the lower parser reusable, and let the connection owner classify the response, report a structured failure, and stop or retry the transport as appropriate.
 
+## Treat environment correlation as evidence, not a cause
+
+When a bug reproduces on one machine but not another, do not assume hardware speed or timing is causal merely because the machines differ. Reproduce the smallest differing state or response shape deterministically, then identify the missing transition or dependency that the other environment happens to mask.
+
 ## Verify and localize portability on every target OS
 
 Run the relevant tests on every target operating system whose behavior is being claimed, and report only the platforms actually exercised. Use contrasts between passing and failing platforms to narrow investigation toward the failing platform's implementation before changing shared code, while retaining cross-platform regression verification.
+
+## Use reentrant POSIX date-time conversions
+
+On POSIX platforms, never retain pointers returned by `localtime()` or `gmtime()` across calls or threads because both may share process-wide `tm` storage. Use caller-owned stack values populated by `localtime_r()` and `gmtime_r()` instead, with separate values for simultaneous local and UTC conversions.
 
 ## Keep generated makefiles platform-invariant
 
