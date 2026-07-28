@@ -14,24 +14,18 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ## Synchronized latest releases:
 
-### 1.4.0.0
+### 1.4.0.1
 
-- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.4.0.0)
-- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.4.0.0)
-- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.4.0.0)
-
-### 1.3.1.0
-
-- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.3.1.0)
-- [Linux Wayland](https://github.com/vczh-libraries/wGac/releases/tag/1.3.1.0)
-- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.3.1.0)
-- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.3.1.0)
+- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.4.0.1)
+- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.4.0.1)
+- [Linux Wayland](https://github.com/vczh-libraries/wGac/releases/tag/1.4.0.1)
+- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.4.0.1)
 
 ### 1.2.11.0
 
 - [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.2.11.0)
 - [Linux XWindow](https://github.com/vczh-libraries/gGac/commit/5a6dc87d03d0616080d38dd344d13b1d423b0127)
-  - XWindow version is likely not being maintained in the near future. Please use Wayland version if possible.
+  - XWindow version is stopped maintaining. Please use `Linux Wayland` instead.
 
 # GacUI
 
@@ -72,7 +66,8 @@ Both `AGENTS.md` and `CLAUDE.md` are prepared so that copilot/codex/claude codin
 The follow keywords maintain design documents in `.github/TaskLogs`, anything except `Copilot_Scrum.md` is not tracked by git, you can change the `.gitignore` in that folder if you like.
 
 - Use `ask ...` to answer your question.
-- Use `investigate repro ...` for coding works or bug fixing.
+- Use `review <file>` for reviewing a task in a file.
+- Use `investigate repro ...|<file>` for coding works or bug fixing.
 - More use cases in `AGENTS.md`.
 
 You can copy the whole `.github` folder to your own repo.
