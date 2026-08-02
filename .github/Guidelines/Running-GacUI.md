@@ -13,8 +13,6 @@ When the model `gpt-5.3-codex-spark` is available:
 
 ## Windows Specific
 
-- You are strongly recommended to attach a debugger when running any GacUI application.
-- Because some runtime exceptions are silently consumed by Windows causing the application not to crash, covering issues if no debugger is attached.
 - GacUI applications could end up in dead loop or dead locks, so DO NOT JUST wait for the process to exit.
   - When it is crashed, sometimes (but not always) a native dialog would show and block the process.
   - Native dialogs could be proactivately called from a GacUI application, even when `FakeDialogService` is not used.
@@ -24,6 +22,12 @@ When the model `gpt-5.3-codex-spark` is available:
 
 This is a very useful way for coding agent to debug GacUI applications.
 Computer use via UI Automation may not work when the computer screen is locked.
+
+Automation is composed explicitly by each application:
+- Construct the concrete automation service that matches the active controller: `WindowsAutomationService` for an ordinary Windows app, `WindowsAutomationServiceHosted` for hosted mode, `WindowsAutomationServiceRenderer` for a Windows remote renderer, `RemoteProtocolAutomationService` for a remote core, or the platform renderer service on Linux/macOS.
+- Substitute that service with `GetNativeServiceSubstitution()->Substitute` before starting an endpoint.
+- Start either the Windows HTTP endpoint or the MiniHTTP endpoint, run the application, then stop the endpoint, call `Stop` on the service, and unsubstitute it in that order.
+- Endpoint selection changes the transport only. Windows HTTP and MiniHTTP expose the same `Controls`, `Dom`, and `IO` contract described below.
 
 When `StartWindowsHttpAutomationService` is used during startup up a GacUI application:
 - It listens to `http://localhost:<port>/Automation/<applicationName>/...`.
