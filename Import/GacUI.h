@@ -9077,6 +9077,7 @@ Resource Type Resolver
 		///			Pass  5: Compile
 		///			Pass  6: Generate instance types with everything to InstanceCtor				/ Compile animation types / Compile localized strings injection
 		///			Pass  7: Compile
+		///			Pass  8: Generate RPC metadata
 		/// </summary>
 		class IGuiResourceTypeResolver_Precompile : public virtual IDescriptable, public Description<IGuiResourceTypeResolver_Precompile>
 		{
@@ -9093,7 +9094,8 @@ Resource Type Resolver
 				Instance_CompileEventHandlers		= 5,
 				Instance_GenerateInstanceClass		= 6,
 				Instance_CompileInstanceClass		= 7,
-				Instance_Max						= Instance_CompileInstanceClass,
+				Instance_GenerateRpcMetadata		= 8,
+				Instance_Max						= Instance_GenerateRpcMetadata,
 
 				Everything_Max						= Instance_Max,
 			};
@@ -22952,6 +22954,7 @@ GuiRemoteProtocolCoreChannel
 		void						Write(Ptr<glr::json::JsonObject> package);
 		void						SetRendererClientId(vint clientId);
 		vint						GetRendererClientId();
+		virtual bool				IsCorrectRendererClientId(vint clientId);
 		void						OnRead(vint senderClientId, const JsonPackage& package) override;
 
 	public:
@@ -23183,26 +23186,35 @@ GuiRemoteProtocolAsyncJsonChannelRenderer
 		, protected virtual IJsonChannelReader
 	{
 	protected:
-		struct ReceivedPackage
+		class CallbackState : public Object
+		{
+		public:
+			SpinLock										lockOwner;
+			GuiRemoteProtocolAsyncJsonChannelRenderer*		owner = nullptr;
+		};
+
+		struct PendingMessage
 		{
 			vint											senderClientId = -1;
 			vint											messageVersion = -1;
 			JsonPackage										package;
+			Func<void()>									mainThreadTask;
 		};
 
 		IJsonChannel*										channel = nullptr;
 		IJsonChannelReader*									reader = nullptr;
 
-		// Covers invokeInMainThread, queuedMessages and uiTaskQueued.
+		// Covers reader, invokeInMainThread, queuedMessages, messageVersion, channelInitialized and uiTaskQueued.
 		SpinLock											lockMessages;
-		IGuiRemoteProtocolAsyncRendererInvoker*				invokeInMainThread = nullptr;
-		collections::List<ReceivedPackage>					queuedMessages;
+		Ptr<IGuiRemoteProtocolAsyncRendererInvoker>			invokeInMainThread;
+		Ptr<CallbackState>									callbackState;
+		collections::List<PendingMessage>					queuedMessages;
 		vint												messageVersion = 0;
 		bool												channelInitialized = false;
 		bool												uiTaskQueued = false;
+		bool												processingMessages = false;
 
-		void												ScheduleProcessRemoteMessages();
-		void												ProcessRemoteMessages();
+		void												ScheduleProcessPendingMessages();
 
 		void												OnRead(vint senderClientId, const JsonPackage& package) override;
 
@@ -23218,7 +23230,9 @@ GuiRemoteProtocolAsyncJsonChannelRenderer
 		void												BroadcastFromClient(const JsonPackage& package, const collections::List<vint>& blockedReceivers) override;
 		void												BatchWrite(bool& disconnected) override;
 
-		void												SetInvokeInMainThread(IGuiRemoteProtocolAsyncRendererInvoker* _invokeInMainThread);
+		void												SetInvokeInMainThread(Ptr<IGuiRemoteProtocolAsyncRendererInvoker> _invokeInMainThread);
+		void												QueueMainThreadTask(const Func<void()>& task);
+		void												ProcessPendingMessages();
 		void												Detach();
 	};
 }
@@ -29354,6 +29368,25 @@ GuiRemoteController
 		INativeScreenService*			ScreenService() override;
 		INativeWindowService*			WindowService() override;
 	};
+}
+
+#endif
+
+
+/***********************************************************************
+.\UTILITIES\AUTOMATIONSERVICE\MINIHTTPAUTOMATIONSERVICE.H
+***********************************************************************/
+#ifndef VCZH_PRESENTATION_REMOTING_MINIHTTPAUTOMATIONSERVICE
+#define VCZH_PRESENTATION_REMOTING_MINIHTTPAUTOMATIONSERVICE
+
+
+namespace vl::presentation::remoting
+{
+	extern void StartMiniHttpAutomationService(
+		Ptr<inter_process::async_tcp_socket::IAsyncSocketServer> socketServer,
+		const WString& applicationName
+		);
+	extern void StopMiniHttpAutomationService();
 }
 
 #endif

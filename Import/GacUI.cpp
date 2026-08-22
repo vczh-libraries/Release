@@ -39312,93 +39312,137 @@ namespace vl::presentation::remoteprotocol::channeling
 GuiRemoteProtocolAsyncJsonChannelRenderer
 ***********************************************************************/
 
-	void GuiRemoteProtocolAsyncJsonChannelRenderer::ScheduleProcessRemoteMessages()
+	void GuiRemoteProtocolAsyncJsonChannelRenderer::ScheduleProcessPendingMessages()
 	{
-		IGuiRemoteProtocolAsyncRendererInvoker* invoker = nullptr;
+		Ptr<IGuiRemoteProtocolAsyncRendererInvoker> invoker;
+		Ptr<CallbackState> state;
 		SPIN_LOCK(lockMessages)
 		{
 			if (invokeInMainThread && !uiTaskQueued && queuedMessages.Count() > 0)
 			{
 				uiTaskQueued = true;
 				invoker = invokeInMainThread;
+				state = callbackState;
 			}
 		}
 
 		if (invoker)
 		{
-			invoker->InvokeInMainThread([this]()
+			invoker->InvokeInMainThread([state]()
 			{
-				ProcessRemoteMessages();
+				SPIN_LOCK(state->lockOwner)
+				{
+					if (state->owner)
+					{
+						state->owner->ProcessPendingMessages();
+					}
+				}
 			});
 		}
 	}
 
-	void GuiRemoteProtocolAsyncJsonChannelRenderer::ProcessRemoteMessages()
+	void GuiRemoteProtocolAsyncJsonChannelRenderer::ProcessPendingMessages()
 	{
-		while (true)
+		SPIN_LOCK(lockMessages)
 		{
-			IJsonChannelReader* currentReader = nullptr;
-			vint currentMessageVersion = -1;
-			List<ReceivedPackage> messages;
-			SPIN_LOCK(lockMessages)
+			if (processingMessages)
 			{
-				currentReader = reader;
-				currentMessageVersion = messageVersion;
-				if (!currentReader)
-				{
-					queuedMessages.Clear();
-					uiTaskQueued = false;
-					return;
-				}
-
-				messages = std::move(queuedMessages);
-				if (messages.Count() == 0)
-				{
-					uiTaskQueued = false;
-					return;
-				}
+				return;
 			}
+			processingMessages = true;
+		}
 
-			for (auto&& message : messages)
+		try
+		{
+			while (true)
 			{
-				bool shouldProcess = false;
+				IJsonChannelReader* currentReader = nullptr;
+				vint currentMessageVersion = -1;
+				List<PendingMessage> messages;
 				SPIN_LOCK(lockMessages)
 				{
-					shouldProcess = reader == currentReader && message.messageVersion == currentMessageVersion;
+					currentReader = reader;
+					currentMessageVersion = messageVersion;
+					if (!currentReader)
+					{
+						queuedMessages.Clear();
+						uiTaskQueued = false;
+						processingMessages = false;
+						return;
+					}
+
+					messages = std::move(queuedMessages);
+					if (messages.Count() == 0)
+					{
+						uiTaskQueued = false;
+						processingMessages = false;
+						return;
+					}
 				}
 
-				if (shouldProcess)
+				for (auto&& message : messages)
 				{
-					currentReader->OnRead(message.senderClientId, message.package);
+					bool shouldProcess = false;
+					SPIN_LOCK(lockMessages)
+					{
+						shouldProcess = reader == currentReader && message.messageVersion == currentMessageVersion;
+					}
+
+					if (shouldProcess)
+					{
+						if (message.mainThreadTask)
+						{
+							message.mainThreadTask();
+						}
+						else
+						{
+							currentReader->OnRead(message.senderClientId, message.package);
+						}
+					}
 				}
 			}
+		}
+		catch (...)
+		{
+			SPIN_LOCK(lockMessages)
+			{
+				uiTaskQueued = false;
+				processingMessages = false;
+			}
+			throw;
 		}
 	}
 
 	void GuiRemoteProtocolAsyncJsonChannelRenderer::OnRead(vint senderClientId, const JsonPackage& package)
 	{
-		ReceivedPackage receivedPackage;
-		receivedPackage.senderClientId = senderClientId;
-		receivedPackage.package = package;
+		PendingMessage pendingMessage;
+		pendingMessage.senderClientId = senderClientId;
+		pendingMessage.package = package;
 		SPIN_LOCK(lockMessages)
 		{
 			if (!reader)
 			{
 				return;
 			}
-			receivedPackage.messageVersion = messageVersion;
-			queuedMessages.Add(std::move(receivedPackage));
+			pendingMessage.messageVersion = messageVersion;
+			queuedMessages.Add(std::move(pendingMessage));
 		}
-		ScheduleProcessRemoteMessages();
+		ScheduleProcessPendingMessages();
 	}
 
 	GuiRemoteProtocolAsyncJsonChannelRenderer::GuiRemoteProtocolAsyncJsonChannelRenderer(IJsonChannel* _channel)
 		: channel(_channel)
 	{
+		callbackState = Ptr(new CallbackState);
+		callbackState->owner = this;
 	}
 
 	GuiRemoteProtocolAsyncJsonChannelRenderer::~GuiRemoteProtocolAsyncJsonChannelRenderer()
 	{
+		SPIN_LOCK(callbackState->lockOwner)
+		{
+			callbackState->owner = nullptr;
+		}
 		SPIN_LOCK(lockMessages)
 		{
 			invokeInMainThread = nullptr;
@@ -39414,7 +39458,12 @@ GuiRemoteProtocolAsyncJsonChannelRenderer
 
 	IJsonChannelReader* GuiRemoteProtocolAsyncJsonChannelRenderer::GetReader()
 	{
-		return reader;
+		IJsonChannelReader* currentReader = nullptr;
+		SPIN_LOCK(lockMessages)
+		{
+			currentReader = reader;
+		}
+		return currentReader;
 	}
 
 	void GuiRemoteProtocolAsyncJsonChannelRenderer::Initialize(IJsonChannelReader* _reader)
@@ -39458,13 +39507,32 @@ GuiRemoteProtocolAsyncJsonChannelRenderer
 		channel->BatchWrite(disconnected);
 	}
 
-	void GuiRemoteProtocolAsyncJsonChannelRenderer::SetInvokeInMainThread(IGuiRemoteProtocolAsyncRendererInvoker* _invokeInMainThread)
+	void GuiRemoteProtocolAsyncJsonChannelRenderer::SetInvokeInMainThread(Ptr<IGuiRemoteProtocolAsyncRendererInvoker> _invokeInMainThread)
 	{
 		SPIN_LOCK(lockMessages)
 		{
 			invokeInMainThread = _invokeInMainThread;
 		}
-		ScheduleProcessRemoteMessages();
+		ScheduleProcessPendingMessages();
+	}
+
+	void GuiRemoteProtocolAsyncJsonChannelRenderer::QueueMainThreadTask(const Func<void()>& task)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::channeling::GuiRemoteProtocolAsyncJsonChannelRenderer::QueueMainThreadTask(const Func<void()>&)#"
+		CHECK_ERROR(task, ERROR_MESSAGE_PREFIX L"The task must not be empty.");
+		PendingMessage pendingMessage;
+		pendingMessage.mainThreadTask = task;
+		SPIN_LOCK(lockMessages)
+		{
+			if (!reader)
+			{
+				return;
+			}
+			pendingMessage.messageVersion = messageVersion;
+			queuedMessages.Add(std::move(pendingMessage));
+		}
+		ScheduleProcessPendingMessages();
+#undef ERROR_MESSAGE_PREFIX
 	}
 
 	void GuiRemoteProtocolAsyncJsonChannelRenderer::Detach()
@@ -39890,6 +39958,11 @@ GuiRemoteProtocolCoreChannel
 	{
 		return executablePath;
 	}
+
+	bool GuiRemoteProtocolCoreChannel::IsCorrectRendererClientId(vint)
+	{
+		return true;
+	}
 	
 	void GuiRemoteProtocolCoreChannel::Submit(bool& disconnected)
 	{
@@ -39900,6 +39973,11 @@ GuiRemoteProtocolCoreChannel
 			packages = std::move(packagesBeforeRenderer);
 		}
 
+		if (!IsCorrectRendererClientId(receiverClientId))
+		{
+			disconnected = true;
+			return;
+		}
 		if (receiverClientId == -1)
 		{
 			disconnected = false;
@@ -44342,6 +44420,7 @@ namespace vl::presentation::remote_renderer
 
 	void GuiRemoteRendererSingle::RequestControllerConnectionStopped()
 	{
+		if (stoppedByFatalError) return;
 		if (window)
 		{
 			DisconnectFromCore();
@@ -54381,6 +54460,67 @@ View Model (IFileDialogFilter)
 		};
 
 /***********************************************************************
+FileDialogTaskQueue
+***********************************************************************/
+
+		class FileDialogTaskQueue
+			: public Object
+			, public Description<FileDialogTaskQueue>
+		{
+		protected:
+			SpinLock						lock;
+			List<Func<void()>>				tasks;
+			bool							executing = false;
+
+			void Execute()
+			{
+				auto self = Ptr(this);
+				GetApplication()->InvokeAsync([self]()
+				{
+					while (true)
+					{
+						Func<void()> task;
+						bool completed = false;
+						SPIN_LOCK(self->lock)
+						{
+							if (self->tasks.Count() == 0)
+							{
+								self->executing = false;
+								completed = true;
+							}
+							else
+							{
+								task = self->tasks[0];
+								self->tasks.RemoveAt(0);
+							}
+						}
+						if (completed) return;
+						task();
+					}
+				});
+			}
+
+		public:
+			void Queue(const Func<void()>& task)
+			{
+				bool execute = false;
+				SPIN_LOCK(lock)
+				{
+					tasks.Add(task);
+					if (!executing)
+					{
+						executing = true;
+						execute = true;
+					}
+				}
+				if (execute)
+				{
+					Execute();
+				}
+			}
+		};
+
+/***********************************************************************
 View Model (IFileDialogFolder)
 ***********************************************************************/
 
@@ -54388,6 +54528,7 @@ View Model (IFileDialogFolder)
 		{
 			using FolderMap = Dictionary<WString, Ptr<FileDialogFolder>>;
 		protected:
+			Ptr<FileDialogTaskQueue>		taskQueue;
 			vint						taskId = 0;
 			bool						taskFired = false;
 
@@ -54424,7 +54565,7 @@ View Model (IFileDialogFolder)
 			{
 				if (HasPlaceholderChild()) return;
 				CHECK_ERROR(textLoadingFolders.Length() > 0, L"vl::presentation::FileDialogFolder::AddPlaceholderChild()#textLoadingFolders is not initialized.");
-				auto child = Ptr(new FileDialogFolder);
+				auto child = Ptr(new FileDialogFolder(taskQueue));
 				child->name = textLoadingFolders;
 				AddChild(child);
 			}
@@ -54437,10 +54578,14 @@ View Model (IFileDialogFolder)
 				}
 			}
 
-			FileDialogFolder() = default;
+			FileDialogFolder(Ptr<FileDialogTaskQueue> _taskQueue)
+				: taskQueue(_taskQueue)
+			{
+			}
 
-			FileDialogFolder(const filesystem::Folder& _folder)
-				: type(FileDialogFolderType::Folder)
+			FileDialogFolder(const filesystem::Folder& _folder, Ptr<FileDialogTaskQueue> _taskQueue)
+				: taskQueue(_taskQueue)
+				, type(FileDialogFolderType::Folder)
 				, folder(_folder)
 				, name(_folder.GetFilePath().GetName())
 			{
@@ -54458,7 +54603,7 @@ View Model (IFileDialogFolder)
 					taskFired = true;
 					auto taskFolder = Ptr(parent);
 					vint taskFolderId = ++taskFolder->taskId;
-					GetApplication()->InvokeAsync([taskFolder, taskFolderId]()
+					taskQueue->Queue([taskFolder, taskFolderId]()
 					{
 						auto subFolders = Ptr(new List<filesystem::Folder>);
 						if (!taskFolder->folder.GetFolders(*subFolders.Obj()))
@@ -54475,7 +54620,7 @@ View Model (IFileDialogFolder)
 								{
 									if (!taskFolder->childrenByName.Keys().Contains(subFolder.GetFilePath().GetName()))
 									{
-										auto child = Ptr(new FileDialogFolder(subFolder));
+										auto child = Ptr(new FileDialogFolder(subFolder, taskFolder->taskQueue));
 										taskFolder->AddChild(child);
 										child->AddPlaceholderChild();
 									}
@@ -54565,8 +54710,15 @@ View Model (IFileDialogViewModel)
 			vint						loadingTaskId = 0;
 			Files						files;
 			Regex						regexDisplayString{ L";" };
+			Ptr<FileDialogTaskQueue>		taskQueue = Ptr(new FileDialogTaskQueue);
 
 		public:
+			FileDialogViewModel()
+			{
+				rootFolder = Ptr(new FileDialogFolder(taskQueue));
+				rootFolder->type = FileDialogFolderType::Root;
+			}
+
 			FakeDialogServiceBase*      dialogService = nullptr;
 
 			bool						selectToSave = false;
@@ -54669,7 +54821,7 @@ View Model (IFileDialogViewModel)
 					vint index = folder->childrenByName.Keys().IndexOf(fragment.GetName());
 					if (index == -1)
 					{
-						auto child = Ptr(new FileDialogFolder(fragment));
+						auto child = Ptr(new FileDialogFolder(fragment, taskQueue));
 						folder->AddChild(child);
 						child->AddPlaceholderChild();
 						folder = child;
@@ -54719,7 +54871,7 @@ View Model (IFileDialogViewModel)
 				}
 
 				auto vm = Ptr(this);
-				GetApplication()->InvokeAsync([taskId, taskFolder, taskPath, vm]()
+				taskQueue->Queue([taskId, taskFolder, taskPath, vm]()
 				{
 					auto folders = Ptr(new List<filesystem::Folder>);
 					auto files = Ptr(new List<filesystem::File>);
@@ -54745,7 +54897,7 @@ View Model (IFileDialogViewModel)
 								vint index = taskFolder->childrenByName.Keys().IndexOf(item->name);
 								if (index == -1)
 								{
-									auto associatedFolder = Ptr(new FileDialogFolder(folder));
+									auto associatedFolder = Ptr(new FileDialogFolder(folder, vm->taskQueue));
 									taskFolder->AddChild(associatedFolder);
 									associatedFolder->AddPlaceholderChild();
 									item->associatedFolder = associatedFolder;
@@ -55273,8 +55425,6 @@ FakeDialogServiceBase
 			}
 
 			vm->initialDirectory = initialDirectory;
-			vm->rootFolder = Ptr(new FileDialogFolder);
-			vm->rootFolder->type = FileDialogFolderType::Root;
 
 			switch (dialogType)
 			{
@@ -66219,3 +66369,190 @@ SharedCallbackService
 		}
 	}
 }
+
+/***********************************************************************
+.\UTILITIES\AUTOMATIONSERVICE\MINIHTTPAUTOMATIONSERVICE.CPP
+***********************************************************************/
+
+namespace vl::presentation::remoting
+{
+	using namespace inter_process::async_tcp_socket;
+
+	namespace
+	{
+		constexpr const wchar_t* HttpNetworkProtocolContentType = L"application/json; charset=utf8";
+
+		bool IsValidWindowId(const WString& windowId)
+		{
+			if (windowId.Length() == 0)
+			{
+				return false;
+			}
+			for (vint i = 0; i < windowId.Length(); i++)
+			{
+				if (windowId[i] < L'0' || windowId[i] > L'9')
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		class MiniHttpAutomationService : public SocketHttpServerApi
+		{
+		private:
+			void DumpTreeAsync(
+				Ptr<SocketHttpRequestContext> context,
+				INativeWindow* mainWindow,
+				INativeAsyncService* asyncService,
+				INativeAutomationService* automationService,
+				bool dumpControlTree
+				)
+			{
+				asyncService->InvokeInMainThread(mainWindow, [context, automationService, dumpControlTree]()
+				{
+					try
+					{
+						auto response = dumpControlTree
+							? automationService->DumpControlTree()
+							: automationService->DumpDomTree();
+						context->RespondUtf8(
+							200,
+							WString::Unmanaged(L"OK"),
+							WString::Unmanaged(HttpNetworkProtocolContentType),
+							response
+							);
+					}
+					catch (...)
+					{
+						std::terminate();
+					}
+				});
+			}
+
+			bool TryGetBodyUtf8(Ptr<SocketHttpRequestContext> context, WString& body)
+			{
+				auto request = context->GetRequest();
+				auto contentType = FindHttpField(request->headers, WString::Unmanaged(L"content-type"));
+				if (
+					CountHttpFields(request->headers, WString::Unmanaged(L"content-type")) != 1 ||
+					!contentType ||
+					!HttpFieldValueEqualsAscii(contentType->value, WString::Unmanaged(HttpNetworkProtocolContentType))
+					)
+				{
+					return false;
+				}
+				return context->TryGetBodyUtf8(body) && body.Length() > 0;
+			}
+
+			void ProcessHttpRequest(Ptr<SocketHttpRequestContext> context)
+			{
+				auto mainWindow = GetCurrentController()->WindowService()->GetMainWindow();
+				auto asyncService = GetCurrentController()->AsyncService();
+				auto automationService = GetCurrentController()->AutomationService();
+				auto request = context->GetRequest();
+				auto relativePath = context->GetRelativePath();
+				if (request->method == L"GET")
+				{
+					if (relativePath == L"/Controls" && automationService->CanDumpControlTree())
+					{
+						DumpTreeAsync(context, mainWindow, asyncService, automationService, true);
+						return;
+					}
+					if (relativePath == L"/Dom" && automationService->CanDumpDomTree())
+					{
+						DumpTreeAsync(context, mainWindow, asyncService, automationService, false);
+						return;
+					}
+				}
+				else if (request->method == L"POST")
+				{
+					Nullable<WString> windowId;
+					if (relativePath == L"/IO")
+					{
+					}
+					else if (relativePath.Length() >= 4 && relativePath.Left(4) == L"/IO/")
+					{
+						auto id = relativePath.Right(relativePath.Length() - 4);
+						if (!IsValidWindowId(id))
+						{
+							context->RespondStatus(404, WString::Unmanaged(L"Not Found"));
+							return;
+						}
+						windowId = id;
+					}
+					else
+					{
+						context->RespondStatus(404, WString::Unmanaged(L"Not Found"));
+						return;
+					}
+
+					if (automationService->CanRunIOCommands() != INativeAutomationService::IOCommandAvailability::Disabled)
+					{
+						WString body;
+						if (TryGetBodyUtf8(context, body))
+						{
+							context->RespondUtf8(
+								200,
+								WString::Unmanaged(L"OK"),
+								WString::Unmanaged(HttpNetworkProtocolContentType),
+								automationService->RunIOCommand(windowId, body)
+								);
+							return;
+						}
+					}
+				}
+				context->RespondStatus(404, WString::Unmanaged(L"Not Found"));
+			}
+
+		protected:
+			void OnHttpRequestReceived(Ptr<SocketHttpRequestContext> context) override
+			{
+				try
+				{
+					ProcessHttpRequest(context);
+				}
+				catch (...)
+				{
+					std::terminate();
+				}
+			}
+
+		public:
+			MiniHttpAutomationService(Ptr<IAsyncSocketServer> socketServer, const WString& urlPrefix)
+				: SocketHttpServerApi(socketServer, urlPrefix)
+			{
+			}
+		};
+
+		MiniHttpAutomationService* miniHttpAutomationService = nullptr;
+	}
+
+	void StartMiniHttpAutomationService(Ptr<IAsyncSocketServer> socketServer, const WString& applicationName)
+	{
+		auto automationService = GetCurrentController()->AutomationService();
+		CHECK_ERROR(automationService->Available(), L"vl::presentation::remoting::StartMiniHttpAutomationService(...)#The automation service is unavailable.");
+		CHECK_ERROR(!miniHttpAutomationService, L"vl::presentation::remoting::StartMiniHttpAutomationService(...)#The MiniHTTP automation service has already been started.");
+
+		auto canDumpControlTree = automationService->CanDumpControlTree();
+		auto canDumpDomTree = automationService->CanDumpDomTree();
+		CHECK_ERROR(
+			canDumpControlTree != canDumpDomTree,
+			L"vl::presentation::remoting::StartMiniHttpAutomationService(...)#The automation service should provide either the control tree or the DOM tree."
+			);
+
+		auto urlPrefix = WString::Unmanaged(L"/Automation/") + applicationName;
+		auto service = new MiniHttpAutomationService(socketServer, urlPrefix);
+		service->Start();
+		miniHttpAutomationService = service;
+	}
+
+	void StopMiniHttpAutomationService()
+	{
+		CHECK_ERROR(miniHttpAutomationService, L"vl::presentation::remoting::StopMiniHttpAutomationService()#The MiniHTTP automation service has not been started.");
+		miniHttpAutomationService->Stop();
+		delete miniHttpAutomationService;
+		miniHttpAutomationService = nullptr;
+	}
+}
+

@@ -3648,11 +3648,18 @@ void HttpClient::RaiseLocalError(WString errorMessage, bool fatal)
 {
 	if (callback)
 	{
-		callback->OnLocalError(errorMessage, fatal);
+		fatal = callback->OnLocalError(errorMessage, fatal) || fatal;
 	}
 	if (fatal)
 	{
-		Stop();
+		// HttpClientApi::Stop waits for WinHTTP callbacks and cannot run from
+		// this completion callback. Publishing Stopping suppresses every retry;
+		// an explicit or owning Stop drains the physical API after unwinding.
+		SPIN_LOCK(lockState)
+		{
+			state = State::Stopping;
+		}
+		eventWaitForServer.Signal();
 	}
 }
 
@@ -3852,7 +3859,11 @@ void HttpClient::OnHttpRequestFailed(HttpRequestType requestType, const WString&
 		}
 		break;
 	case HttpRequestType::Request:
-		SendHttpRequest(HttpRequestType::Request, urlRequest, WString::Empty, attempt + 1);
+		RaiseLocalError(errorMessage, false);
+		if (!IsStopping())
+		{
+			SendHttpRequest(HttpRequestType::Request, urlRequest, WString::Empty, attempt + 1);
+		}
 		break;
 	case HttpRequestType::Response:
 		{
@@ -4717,17 +4728,139 @@ void HttpServerConnection::OnCancelCurrentHttpRequestForPendingRequest()
 	}
 }
 
-void HttpServerConnection::OnNewHttpRequestForPendingRequest(HTTP_REQUEST_ID httpRequestId)
+void HttpServerConnection::ArmPollAcknowledgementTimeoutUnsafe()
 {
-	OnCancelCurrentHttpRequestForPendingRequest();
-	httpPendingRequestId = httpRequestId;
-	if (pendingRequestsToSend.Count() > 0)
+	pollAcknowledgementPending = true;
+	pollAcknowledgementTimeout->Arm(
+		HttpNetworkProtocolPollAcknowledgementTimeout,
+		Func<void()>([this]() { OnPollAcknowledgementTimeout(); })
+		);
+}
+
+bool HttpServerConnection::SendPendingRequestUnsafe(const WString& str)
+{
+	auto result = HttpServerApi::SendResponse(
+		server->GetHttpRequestQueue(),
+		httpPendingRequestId,
+		{ 200, L"OK", str, HttpNetworkProtocolContentType }
+		);
+	httpPendingRequestId = HTTP_NULL_ID;
+	if (result == NO_ERROR)
 	{
-		auto pendingRequest = pendingRequestsToSend[0];
-		pendingRequestsToSend.RemoveAt(0);
-		HttpServerApi::SendResponseUtf8(server->GetHttpRequestQueue(), httpPendingRequestId, pendingRequest);
-		httpPendingRequestId = HTTP_NULL_ID;
+		ArmPollAcknowledgementTimeoutUnsafe();
+		return false;
 	}
+	if (result == ERROR_CONNECTION_INVALID || result == ERROR_OPERATION_ABORTED)
+	{
+		pendingRequestsToSend.Add(str);
+		return true;
+	}
+	CHECK_FAIL(L"HttpSendHttpResponse failed for responding /Request.");
+	return false;
+}
+
+void HttpServerConnection::ReportPollingError(const WString& error)
+{
+	if (!callback) return;
+	try
+	{
+		if (callback->OnLocalError(error, false))
+		{
+			Stop();
+		}
+	}
+	catch (...)
+	{
+		Stop();
+		throw;
+	}
+}
+
+void HttpServerConnection::OnPollAcknowledgementTimeout()
+{
+	auto holding = RetainFromServer();
+	if (!holding) return;
+	bool report = false;
+	SPIN_LOCK(pendingRequestLock)
+	{
+		if (pollAcknowledgementPending && !stopped)
+		{
+			pollAcknowledgementPending = false;
+			pollAcknowledgementReporting = true;
+			report = true;
+		}
+	}
+	if (!report) return;
+	try
+	{
+		ReportPollingError(L"HttpServerConnection did not receive the replacement /Request after delivering a server message.");
+	}
+	catch (...)
+	{
+		SPIN_LOCK(pendingRequestLock)
+		{
+			pollAcknowledgementReporting = false;
+		}
+		throw;
+	}
+	SPIN_LOCK(pendingRequestLock)
+	{
+		pollAcknowledgementReporting = false;
+	}
+}
+
+Ptr<HttpServerConnection> HttpServerConnection::RetainFromServer()
+{
+	HttpServer* currentServer = nullptr;
+	SPIN_LOCK(pendingRequestLock)
+	{
+		currentServer = server;
+	}
+	if (!currentServer) return {};
+
+	SPIN_LOCK(currentServer->lockConnections)
+	{
+		auto index = currentServer->connections.Keys().IndexOf(guid);
+		if (index != -1 && currentServer->connections.Values()[index].Obj() == this)
+		{
+			return currentServer->connections.Values()[index];
+		}
+	}
+	return {};
+}
+
+bool HttpServerConnection::OnNewHttpRequestForPendingRequest(HTTP_REQUEST_ID httpRequestId)
+{
+	bool cancelAcknowledgement = false;
+	SPIN_LOCK(pendingRequestLock)
+	{
+		if (stopped) return false;
+		cancelAcknowledgement = pollAcknowledgementPending || pollAcknowledgementReporting;
+		pollAcknowledgementPending = false;
+	}
+	if (cancelAcknowledgement)
+	{
+		pollAcknowledgementTimeout->CancelAndWait();
+	}
+
+	bool reportLostPoll = false;
+	SPIN_LOCK(pendingRequestLock)
+	{
+		if (stopped) return false;
+		OnCancelCurrentHttpRequestForPendingRequest();
+		httpPendingRequestId = httpRequestId;
+		if (pendingRequestsToSend.Count() > 0)
+		{
+			auto pendingRequest = pendingRequestsToSend[0];
+			pendingRequestsToSend.RemoveAt(0);
+			reportLostPoll = SendPendingRequestUnsafe(pendingRequest);
+		}
+	}
+	if (reportLostPoll)
+	{
+		ReportPollingError(L"HttpServerConnection failed to respond to /Request because the polling connection was lost.");
+	}
+	return true;
 }
 
 WString HttpServerConnection::SubmitResponse(PHTTP_REQUEST pRequest)
@@ -4814,48 +4947,53 @@ void HttpServerConnection::BeginReadingLoopUnsafe()
 
 void HttpServerConnection::SendString(const WString& str)
 {
+	bool reportLostPoll = false;
 	SPIN_LOCK(pendingRequestLock)
 	{
+		CHECK_ERROR(!stopped, L"HttpServerConnection::SendString cannot send on a stopped connection.");
 		if (submittingResponse)
 		{
 			responsesToSubmit.Add(str);
 		}
 		else if (httpPendingRequestId != HTTP_NULL_ID)
 		{
-			ULONG result = HttpServerApi::SendResponse(server->GetHttpRequestQueue(), httpPendingRequestId, { 200, L"OK", str, HttpNetworkProtocolContentType });
-			if (result == NO_ERROR)
-			{
-				httpPendingRequestId = HTTP_NULL_ID;
-			}
-			else if (result == ERROR_CONNECTION_INVALID || result == ERROR_OPERATION_ABORTED)
-			{
-				httpPendingRequestId = HTTP_NULL_ID;
-				pendingRequestsToSend.Add(str);
-			}
-			else
-			{
-				CHECK_FAIL(L"HttpSendHttpResponse failed for responding /Request.");
-			}
+			reportLostPoll = SendPendingRequestUnsafe(str);
 		}
 		else
 		{
 			pendingRequestsToSend.Add(str);
 		}
 	}
+	if (reportLostPoll)
+	{
+		ReportPollingError(L"HttpServerConnection failed to respond to /Request because the polling connection was lost.");
+	}
 }
 
 void HttpServerConnection::Stop()
 {
-	auto holding = Ptr(this);
-	if (server)
+	auto holding = RetainFromServer();
+	HttpServer* stoppingServer = nullptr;
+	bool first = false;
+	SPIN_LOCK(pendingRequestLock)
 	{
-		SPIN_LOCK(server->lockConnections)
+		if (!stopped)
 		{
-			server->connections.Remove(guid);
-		}
-		SPIN_LOCK(pendingRequestLock)
-		{
+			first = true;
+			stopped = true;
+			pollAcknowledgementPending = false;
 			OnCancelCurrentHttpRequestForPendingRequest();
+			stoppingServer = server;
+			server = nullptr;
+		}
+	}
+	if (!first) return;
+	pollAcknowledgementTimeout->CancelAndWait();
+	if (stoppingServer)
+	{
+		SPIN_LOCK(stoppingServer->lockConnections)
+		{
+			stoppingServer->connections.Remove(guid);
 		}
 		if (callback)
 		{
@@ -4939,9 +5077,9 @@ void HttpServer::OnHttpRequestReceived(PHTTP_REQUEST pRequest)
 		auto guid = WString::Unmanaged(pRequest->CookedUrl.pAbsPath + urlRequestPrefix.Length());
 		if (auto connection = FindExistingConnection(guid))
 		{
-			SPIN_LOCK(connection->pendingRequestLock)
+			if (!connection->OnNewHttpRequestForPendingRequest(pRequest->RequestId))
 			{
-				connection->OnNewHttpRequestForPendingRequest(pRequest->RequestId);
+				HttpServerApi::SendResponse(GetHttpRequestQueue(), pRequest->RequestId, { 404, L"Connection stopped" });
 			}
 		}
 	}
@@ -4973,22 +5111,10 @@ void HttpServer::OnHttpServerStopping()
 		{
 			stoppingConnections.Add(connection);
 		}
-		connections.Clear();
 	}
 	for (auto connection : stoppingConnections)
 	{
-		SPIN_LOCK(connection->pendingRequestLock)
-		{
-			connection->OnCancelCurrentHttpRequestForPendingRequest();
-		}
-		connection->server = nullptr;
-	}
-	for (auto connection : stoppingConnections)
-	{
-		if (connection->callback)
-		{
-			connection->callback->OnDisconnected();
-		}
+		connection->Stop();
 	}
 }
 
@@ -6997,4 +7123,252 @@ namespace vl
 		}
 	}
 }
+
+
+/***********************************************************************
+.\INTERPROCESS\STDIOREDIRECTION\STDIOREDIRECTION.WINDOWS.CPP
+***********************************************************************/
+
+#ifdef VCZH_MSVC
+
+#define _WINSOCKAPI_
+
+namespace vl::inter_process::stdio_redirection
+{
+	class WindowsStdioRedirectionProcess : public Object, public virtual IStdioRedirectionProcess
+	{
+	private:
+		HANDLE									input = INVALID_HANDLE_VALUE;
+		HANDLE									output = INVALID_HANDLE_VALUE;
+		HANDLE									process = INVALID_HANDLE_VALUE;
+		CriticalSection							lockHandles;
+		bool									waited = false;
+
+		void CloseHandleIfNeeded(HANDLE& handle)
+		{
+			if (handle != INVALID_HANDLE_VALUE && handle != NULL)
+			{
+				CloseHandle(handle);
+				handle = INVALID_HANDLE_VALUE;
+			}
+		}
+
+	public:
+		WindowsStdioRedirectionProcess(HANDLE _input, HANDLE _output, HANDLE _process)
+			: input(_input)
+			, output(_output)
+			, process(_process)
+		{
+		}
+
+		~WindowsStdioRedirectionProcess()
+		{
+			CloseInput();
+			CloseOutput();
+			CS_LOCK(lockHandles)
+			{
+				CloseHandleIfNeeded(process);
+			}
+		}
+
+		vint Read(vuint8_t* buffer, vint size, WString& errorMessage) override
+		{
+			HANDLE reading = INVALID_HANDLE_VALUE;
+			CS_LOCK(lockHandles)
+			{
+				reading = output;
+			}
+			if (reading == INVALID_HANDLE_VALUE)
+			{
+				return 0;
+			}
+			DWORD read = 0;
+			if (!ReadFile(reading, buffer, (DWORD)size, &read, nullptr))
+			{
+				auto error = GetLastError();
+				if (error == ERROR_BROKEN_PIPE || error == ERROR_HANDLE_EOF || error == ERROR_INVALID_HANDLE)
+				{
+					return 0;
+				}
+				errorMessage = WString::Unmanaged(L"Failed to read redirected stdout: ") + itow(error);
+				return -1;
+			}
+			return (vint)read;
+		}
+
+		bool Write(const vuint8_t* buffer, vint size, WString& errorMessage) override
+		{
+			HANDLE writing = INVALID_HANDLE_VALUE;
+			CS_LOCK(lockHandles)
+			{
+				writing = input;
+			}
+			if (writing == INVALID_HANDLE_VALUE)
+			{
+				return false;
+			}
+			vint writtenBytes = 0;
+			while (writtenBytes < size)
+			{
+				DWORD written = 0;
+				if (!WriteFile(writing, buffer + writtenBytes, (DWORD)(size - writtenBytes), &written, nullptr) || written == 0)
+				{
+					errorMessage = WString::Unmanaged(L"Failed to write redirected stdin: ") + itow(GetLastError());
+					return false;
+				}
+				writtenBytes += written;
+			}
+			return true;
+		}
+
+		void CloseInput() override
+		{
+			CS_LOCK(lockHandles)
+			{
+				CloseHandleIfNeeded(input);
+			}
+		}
+
+		void CloseOutput() override
+		{
+			CS_LOCK(lockHandles)
+			{
+				CloseHandleIfNeeded(output);
+			}
+		}
+
+		void WaitForExit() override
+		{
+			HANDLE waiting = INVALID_HANDLE_VALUE;
+			CS_LOCK(lockHandles)
+			{
+				if (!waited)
+				{
+					waited = true;
+					waiting = process;
+				}
+			}
+			if (waiting != INVALID_HANDLE_VALUE)
+			{
+				WaitForSingleObject(waiting, INFINITE);
+				CS_LOCK(lockHandles)
+				{
+					CloseHandleIfNeeded(process);
+				}
+			}
+		}
+	};
+
+	static Ptr<IStdioRedirectionProcess> CreateStdioRedirectionProcessUnsafe(const WString& command)
+	{
+#define ERROR_MESSAGE_PREFIX L"vl::inter_process::stdio_redirection::CreateStdioRedirectionProcess(const WString&)#"
+		SECURITY_ATTRIBUTES securityAttributes = {};
+		securityAttributes.nLength = sizeof(securityAttributes);
+		securityAttributes.bInheritHandle = TRUE;
+
+		HANDLE childInput = INVALID_HANDLE_VALUE;
+		HANDLE parentInput = INVALID_HANDLE_VALUE;
+		HANDLE parentOutput = INVALID_HANDLE_VALUE;
+		HANDLE childOutput = INVALID_HANDLE_VALUE;
+		HANDLE childError = INVALID_HANDLE_VALUE;
+		PROCESS_INFORMATION processInformation = {};
+
+		auto closeHandle = [](HANDLE& handle)
+		{
+			if (handle != INVALID_HANDLE_VALUE && handle != NULL)
+			{
+				CloseHandle(handle);
+				handle = INVALID_HANDLE_VALUE;
+			}
+		};
+
+		try
+		{
+			CHECK_ERROR(CreatePipe(&childInput, &parentInput, &securityAttributes, 0), ERROR_MESSAGE_PREFIX L"Failed to create the stdin pipe.");
+			CHECK_ERROR(SetHandleInformation(parentInput, HANDLE_FLAG_INHERIT, 0), ERROR_MESSAGE_PREFIX L"Failed to protect the parent stdin handle.");
+			CHECK_ERROR(CreatePipe(&parentOutput, &childOutput, &securityAttributes, 0), ERROR_MESSAGE_PREFIX L"Failed to create the stdout pipe.");
+			CHECK_ERROR(SetHandleInformation(parentOutput, HANDLE_FLAG_INHERIT, 0), ERROR_MESSAGE_PREFIX L"Failed to protect the parent stdout handle.");
+
+			auto currentProcess = GetCurrentProcess();
+			auto parentError = GetStdHandle(STD_ERROR_HANDLE);
+			if (
+				parentError == INVALID_HANDLE_VALUE ||
+				parentError == NULL ||
+				!DuplicateHandle(currentProcess, parentError, currentProcess, &childError, 0, TRUE, DUPLICATE_SAME_ACCESS)
+				)
+			{
+				childError = CreateFileW(
+					L"NUL",
+					GENERIC_WRITE,
+					FILE_SHARE_READ | FILE_SHARE_WRITE,
+					&securityAttributes,
+					OPEN_EXISTING,
+					FILE_ATTRIBUTE_NORMAL,
+					nullptr
+					);
+				CHECK_ERROR(childError != INVALID_HANDLE_VALUE, ERROR_MESSAGE_PREFIX L"Failed to prepare redirected stderr.");
+			}
+
+			STARTUPINFOW startupInfo = {};
+			startupInfo.cb = sizeof(startupInfo);
+			startupInfo.dwFlags = STARTF_USESTDHANDLES;
+			startupInfo.hStdInput = childInput;
+			startupInfo.hStdOutput = childOutput;
+			startupInfo.hStdError = childError;
+
+			collections::Array<wchar_t> mutableCommand(command.Length() + 1);
+			for (vint i = 0; i < command.Length(); i++)
+			{
+				mutableCommand[i] = command[i];
+			}
+			mutableCommand[command.Length()] = 0;
+			CHECK_ERROR(
+				CreateProcessW(
+					nullptr,
+					&mutableCommand[0],
+					nullptr,
+					nullptr,
+					TRUE,
+					CREATE_NO_WINDOW,
+					nullptr,
+					nullptr,
+					&startupInfo,
+					&processInformation
+					),
+				ERROR_MESSAGE_PREFIX L"Failed to launch the redirected process."
+				);
+
+			closeHandle(processInformation.hThread);
+			closeHandle(childInput);
+			closeHandle(childOutput);
+			closeHandle(childError);
+			return Ptr<IStdioRedirectionProcess>(new WindowsStdioRedirectionProcess(parentInput, parentOutput, processInformation.hProcess));
+		}
+		catch (...)
+		{
+			closeHandle(childInput);
+			closeHandle(parentInput);
+			closeHandle(parentOutput);
+			closeHandle(childOutput);
+			closeHandle(childError);
+			closeHandle(processInformation.hThread);
+			closeHandle(processInformation.hProcess);
+			throw;
+		}
+#undef ERROR_MESSAGE_PREFIX
+	}
+
+	Ptr<IStdioRedirectionProcess> CreateStdioRedirectionProcess(const WString& command)
+	{
+		static CriticalSection processCreationLock;
+		Ptr<IStdioRedirectionProcess> process;
+		CS_LOCK(processCreationLock)
+		{
+			process = CreateStdioRedirectionProcessUnsafe(command);
+		}
+		return process;
+	}
+}
+
+#endif
 

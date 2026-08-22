@@ -1635,7 +1635,8 @@ INetworkProtocolServer
 		/// </summary>
 		/// <param name="error">The error message.</param>
 		/// <param name="fatal">Indicates whether the connection should be disconnected after this callback.</param>
-		virtual void							OnLocalError(const WString&, bool) {}
+		/// <returns>Returns true to promote a nonfatal error to fatal. A fatal error cannot be demoted.</returns>
+		virtual bool							OnLocalError(const WString&, bool) { return false; }
 
 		/// <summary>
 		/// Called when the connection becomes available.
@@ -2944,13 +2945,15 @@ NetworkProtocolChannelClient
 				client->NotifyDisconnected();
 			}
 
-			void OnLocalError(const WString& error, bool fatal) override
+			bool OnLocalError(const WString& error, bool fatal) override
 			{
+				fatal = fatal || client->GetClientId() > 0;
 				client->OnLocalError(error, fatal);
 				if (fatal)
 				{
 					client->NotifyDisconnected();
 				}
+				return fatal;
 			}
 
 			void OnConnected() override
@@ -3251,6 +3254,7 @@ Interfaces:
 #ifndef VCZH_INTERPROCESS_CHANNELIMPLS_CHANNELSERVERIMPL
 #define VCZH_INTERPROCESS_CHANNELIMPLS_CHANNELSERVERIMPL
 
+#include <exception>
 
 namespace vl::inter_process
 {
@@ -3284,6 +3288,7 @@ NetworkProtocolChannelServer
 			INetworkProtocolConnection*						connection = nullptr;
 			vint											clientId = -1;
 			bool											accepted = false;
+			bool											readyForBroadcast = false;
 
 			Connection(NetworkProtocolChannelServer* _server)
 				: server(_server)
@@ -3292,17 +3297,19 @@ NetworkProtocolChannelServer
 
 			void OnReadString(const WString& str) override
 			{
-				server->OnReadString(this, str);
+				server->OnNetworkReadString(this, str);
 			}
 
 			void OnReadError(const WString& error) override
 			{
-				server->BroadcastError(error);
+				server->OnNetworkReadError(error);
 			}
 
-			void OnLocalError(const WString& error, bool fatal) override
+			bool OnLocalError(const WString& error, bool fatal) override
 			{
-				// Server-side transport errors are finalized by OnDisconnected.
+				// Before admission, let the raw transport apply its retry policy.
+				// Afterwards, a failed delivery makes the channel unreliable.
+				return fatal || accepted;
 			}
 
 			void OnConnected() override
@@ -3311,7 +3318,7 @@ NetworkProtocolChannelServer
 
 			void OnDisconnected() override
 			{
-				server->OnConnectionDisconnected(this);
+				server->OnNetworkDisconnected(this);
 			}
 
 			void OnInstalled(INetworkProtocolConnection* _connection) override
@@ -3320,16 +3327,354 @@ NetworkProtocolChannelServer
 			}
 		};
 
+		class StopBarrierGuard
+		{
+		private:
+			inline static thread_local StopBarrierGuard*		currentStopBarrierGuard = nullptr;
+			NetworkProtocolChannelServer*					server = nullptr;
+			StopBarrierGuard*								previousStopBarrierGuard = nullptr;
+			bool											deferStopCompletion = false;
+
+		public:
+			StopBarrierGuard(NetworkProtocolChannelServer* _server, bool _deferStopCompletion = false)
+				: server(_server)
+				, previousStopBarrierGuard(currentStopBarrierGuard)
+				, deferStopCompletion(_deferStopCompletion)
+			{
+				currentStopBarrierGuard = this;
+			}
+
+			~StopBarrierGuard() noexcept
+			{
+				currentStopBarrierGuard = previousStopBarrierGuard;
+				server->EndStopBarrier(deferStopCompletion);
+			}
+
+			static bool IsActiveFor(NetworkProtocolChannelServer* server)
+			{
+				for (auto guard = currentStopBarrierGuard; guard; guard = guard->previousStopBarrierGuard)
+				{
+					if (guard->server == server)
+					{
+						return true;
+					}
+				}
+				return false;
+			}
+		};
+
+		class StopCompletionGuard
+		{
+		private:
+			inline static thread_local StopCompletionGuard*	currentStopCompletionGuard = nullptr;
+			NetworkProtocolChannelServer*					server = nullptr;
+			StopCompletionGuard*							previousStopCompletionGuard = nullptr;
+
+		public:
+			StopCompletionGuard(NetworkProtocolChannelServer* _server)
+				: server(_server)
+				, previousStopCompletionGuard(currentStopCompletionGuard)
+			{
+				currentStopCompletionGuard = this;
+			}
+
+			~StopCompletionGuard() noexcept
+			{
+				currentStopCompletionGuard = previousStopCompletionGuard;
+			}
+
+			static bool IsActiveFor(NetworkProtocolChannelServer* server)
+			{
+				for (auto guard = currentStopCompletionGuard; guard; guard = guard->previousStopCompletionGuard)
+				{
+					if (guard->server == server)
+					{
+						return true;
+					}
+				}
+				return false;
+			}
+		};
+
 		typename TSerialization::ContextType							context;
-		// covers connections, localClients, pendingConnections, clientChannels, nextClientId, started and stopped
+		// covers connections (including readyForBroadcast), localClients, localClientsAwaitingConnected, pendingConnections, clientChannels, nextClientId, activeStopBarriers, stopCompletionThread, started, broadcastingError, broadcastingErrorMessage, stopAfterBarriersDrained, stopCompleting, stopException and stopped
 		SpinLock														lockConnections;
 		collections::Dictionary<vint, Ptr<Connection>>					connections;
 		collections::Dictionary<vint, Ptr<LocalChannelClient>>			localClients;
+		collections::List<vint>											localClientsAwaitingConnected;
 		collections::List<Ptr<Connection>>								pendingConnections;
 		ClientChannelMap												clientChannels;
 		vint															nextClientId = 1;
+		vint															activeStopBarriers = 0;
+		EventObject														eventStopCompleted;
+		EventObject														eventStopCompletionThreadJoined;
+		Thread*															stopCompletionThread = nullptr;
 		bool															started = false;
+		bool															broadcastingError = false;
+		WString															broadcastingErrorMessage;
+		bool															stopAfterBarriersDrained = false;
+		bool															stopCompleting = false;
+		std::exception_ptr												stopException;
 		bool															stopped = false;
+
+		void InitializeBarriers()
+		{
+			CHECK_ERROR(eventStopCompleted.CreateManualUnsignal(true), L"NetworkProtocolChannelServer failed to create the stop completion event.");
+			CHECK_ERROR(eventStopCompletionThreadJoined.CreateManualUnsignal(true), L"NetworkProtocolChannelServer failed to create the stop completion-thread event.");
+		}
+
+		void BeginStopBarrierUnsafe()
+		{
+			activeStopBarriers++;
+		}
+
+		static void CompleteStopThreadProc(Thread*, void* argument)
+		{
+			auto server = static_cast<NetworkProtocolChannelServer*>(argument);
+			server->CompleteStop();
+		}
+
+		void EndStopBarrier(bool deferStopCompletion) noexcept
+		{
+			bool completeStop = false;
+			{
+				SPIN_LOCK(lockConnections)
+				{
+					if (activeStopBarriers > 0)
+					{
+						activeStopBarriers--;
+						if (activeStopBarriers == 0)
+						{
+							if (stopAfterBarriersDrained && !stopCompleting)
+							{
+								stopAfterBarriersDrained = false;
+								stopCompleting = true;
+								completeStop = true;
+							}
+						}
+					}
+				}
+			}
+			if (completeStop)
+			{
+				if (!deferStopCompletion)
+				{
+					CompleteStop();
+				}
+				else
+				{
+					SPIN_LOCK(lockConnections)
+						{
+							if (!eventStopCompletionThreadJoined.Unsignal())
+							{
+								std::terminate();
+							}
+							stopCompletionThread = Thread::CreateAndStart(&CompleteStopThreadProc, this, false);
+							if (!stopCompletionThread)
+							{
+								// Completing on this raw callback stack can deadlock a transport
+								// that drains callbacks in Stop, so scheduling failure is unrecoverable.
+								std::terminate();
+							}
+						}
+				}
+			}
+		}
+
+		void JoinStopCompletionThread()
+		{
+			Thread* joiningThread = nullptr;
+			{
+				SPIN_LOCK(lockConnections)
+					{
+						joiningThread = stopCompletionThread;
+						stopCompletionThread = nullptr;
+					}
+			}
+			if (joiningThread)
+			{
+				CHECK_ERROR(joiningThread->Wait(), L"NetworkProtocolChannelServer failed to join the stop completion thread.");
+				delete joiningThread;
+				CHECK_ERROR(eventStopCompletionThreadJoined.Signal(), L"NetworkProtocolChannelServer failed to signal the stop completion-thread event.");
+			}
+			else
+			{
+				CHECK_ERROR(eventStopCompletionThreadJoined.Wait(), L"NetworkProtocolChannelServer failed to wait for the stop completion thread.");
+			}
+		}
+
+		bool TryBeginNetworkProtocolCallback()
+		{
+			bool invokeCallback = false;
+			{
+				SPIN_LOCK(lockConnections)
+				{
+					if (!stopped)
+					{
+						BeginStopBarrierUnsafe();
+						invokeCallback = true;
+					}
+				}
+			}
+			if (!invokeCallback)
+			{
+				return false;
+			}
+			return true;
+		}
+
+		void OnNetworkReadString(Connection* connection, const WString& str)
+		{
+			if (!TryBeginNetworkProtocolCallback())
+			{
+				return;
+			}
+			StopBarrierGuard stopBarrierGuard(this, true);
+			OnReadString(connection, str);
+		}
+
+		void OnNetworkReadError(const WString& error)
+		{
+			if (!TryBeginNetworkProtocolCallback())
+			{
+				return;
+			}
+			StopBarrierGuard stopBarrierGuard(this, true);
+			BroadcastError(error);
+		}
+
+		void OnNetworkDisconnected(Connection* connection)
+		{
+			if (!TryBeginNetworkProtocolCallback())
+			{
+				return;
+			}
+			StopBarrierGuard stopBarrierGuard(this, true);
+			OnConnectionDisconnected(connection);
+		}
+
+		void CompleteStopCore()
+		{
+			collections::List<Ptr<Connection>> stoppingConnections;
+			collections::List<Ptr<Connection>> stoppingPendingConnections;
+			collections::List<vint> stoppingLocalClientIds;
+			collections::List<Ptr<LocalChannelClient>> stoppingLocalClients;
+			{
+				SPIN_LOCK(lockConnections)
+				{
+					for (auto&& connection : connections.Values())
+					{
+						stoppingConnections.Add(connection);
+					}
+					for (auto&& connection : pendingConnections)
+					{
+						stoppingPendingConnections.Add(connection);
+					}
+					for (auto&& clientId : localClients.Keys())
+					{
+						stoppingLocalClientIds.Add(clientId);
+						stoppingLocalClients.Add(localClients[clientId]);
+					}
+					connections.Clear();
+					localClients.Clear();
+					localClientsAwaitingConnected.Clear();
+					pendingConnections.Clear();
+					clientChannels.Clear();
+				}
+			}
+
+			std::exception_ptr completionException;
+			auto recordException = [&completionException]()
+			{
+				if (!completionException)
+				{
+					completionException = std::current_exception();
+				}
+			};
+			for (vint i = 0; i < stoppingLocalClients.Count(); i++)
+			{
+				try
+				{
+					NotifyLocalClientDisconnected(stoppingLocalClients[i]);
+				}
+				catch (...)
+				{
+					recordException();
+				}
+				try
+				{
+					OnClientDisconnected(stoppingLocalClientIds[i]);
+				}
+				catch (...)
+				{
+					recordException();
+				}
+			}
+			try
+			{
+				TServerBase::Stop();
+			}
+			catch (...)
+			{
+				recordException();
+			}
+			// Network connections are owned and stopped by TServerBase.
+			for (auto&& connection : stoppingConnections)
+			{
+				try
+				{
+					OnClientDisconnected(connection->clientId);
+				}
+				catch (...)
+				{
+					recordException();
+				}
+			}
+			if (completionException)
+			{
+				SPIN_LOCK(lockConnections)
+				{
+					stopException = completionException;
+				}
+			}
+			eventStopCompleted.Signal();
+		}
+
+		void CompleteStop() noexcept
+		{
+			StopCompletionGuard stopCompletionGuard(this);
+			try
+			{
+				CompleteStopCore();
+			}
+			catch (...)
+			{
+				auto completionException = std::current_exception();
+				{
+					SPIN_LOCK(lockConnections)
+					{
+						stopException = completionException;
+					}
+				}
+				eventStopCompleted.Signal();
+			}
+		}
+
+		void RethrowStopException()
+		{
+			std::exception_ptr completionException;
+			{
+				SPIN_LOCK(lockConnections)
+				{
+					completionException = stopException;
+					stopException = nullptr;
+				}
+			}
+			if (completionException)
+			{
+				std::rethrow_exception(completionException);
+			}
+		}
 
 		bool ClientHasChannel(vint clientId, const WString& channelName)
 		{
@@ -3379,17 +3724,29 @@ NetworkProtocolChannelServer
 					{
 						pendingConnection = RemovePendingConnection(connection);
 						CHECK_ERROR(pendingConnection, L"NetworkProtocolChannelServer failed to find a pending connection.");
-						assignedClientId = nextClientId++;
+						if (!broadcastingError && !stopped)
+						{
+							assignedClientId = nextClientId++;
+							BeginStopBarrierUnsafe();
+						}
 					}
 				}
+				if (assignedClientId == -1)
+				{
+					connection->connection->Stop();
+					return;
+				}
+				StopBarrierGuard stopBarrierGuard(this);
 
 				if (OnClientConnected(assignedClientId, availableChannels.Keys(), nullptr) == WaitForClientResult::Accept)
 				{
 					bool accepted = false;
+					bool deliverFatal = false;
+					WString fatalError;
 					{
 						SPIN_LOCK(lockConnections)
 						{
-							if (!stopped)
+							if (!broadcastingError && !stopped)
 							{
 								connection->clientId = assignedClientId;
 								connection->accepted = true;
@@ -3400,14 +3757,57 @@ NetworkProtocolChannelServer
 								}
 								accepted = true;
 							}
+							else if (broadcastingError)
+							{
+								deliverFatal = true;
+								fatalError = broadcastingErrorMessage;
+							}
 						}
 					}
 					if (accepted)
 					{
 						connection->connection->SendString(NetworkPackage::ToString(NetworkPackage::Create(assignedClientId, WString::Empty, WString::Empty)));
+						bool deliverFatalAfterConnected = false;
+						WString fatalErrorAfterConnected;
+						{
+							SPIN_LOCK(lockConnections)
+							{
+								connection->readyForBroadcast = true;
+								if (broadcastingError)
+								{
+									deliverFatalAfterConnected = true;
+									fatalErrorAfterConnected = broadcastingErrorMessage;
+								}
+							}
+						}
+						if (deliverFatalAfterConnected)
+						{
+							try
+							{
+								connection->connection->SendString(NetworkPackage::ToString(NetworkPackage::Create({}, WString::Unmanaged(ErrorChannel), fatalErrorAfterConnected)));
+							}
+							catch (...)
+							{
+							}
+							Thread::Sleep(200);
+							connection->connection->Stop();
+						}
 					}
 					else
 					{
+						if (deliverFatal)
+						{
+							try
+							{
+								connection->connection->SendString(NetworkPackage::ToString(NetworkPackage::Create({}, WString::Unmanaged(ErrorChannel), fatalError)));
+							}
+							catch (...)
+							{
+							}
+							// Match BroadcastError's delivery grace for a client that
+							// was application-accepted after its target snapshot.
+							Thread::Sleep(200);
+						}
 						connection->connection->Stop();
 					}
 				}
@@ -3585,18 +3985,28 @@ NetworkProtocolChannelServer
 		WaitForClientResult OnClientConnected(INetworkProtocolConnection* connection) override
 		{
 			CHECK_ERROR(connection, L"NetworkProtocolChannelServer::OnClientConnected needs a valid connection.");
+			if (!TryBeginNetworkProtocolCallback())
+			{
+				return WaitForClientResult::Reject;
+			}
+			StopBarrierGuard stopBarrierGuard(this, true);
 
 			auto context = Ptr(new Connection(this));
 			context->connection = connection;
+			bool acceptConnection = false;
 			{
 				SPIN_LOCK(lockConnections)
 				{
-					if (!started || stopped)
+					if (started && !broadcastingError && !stopped)
 					{
-						return WaitForClientResult::Reject;
+						pendingConnections.Add(context);
+						acceptConnection = true;
 					}
-					pendingConnections.Add(context);
 				}
+			}
+			if (!acceptConnection)
+			{
+				return WaitForClientResult::Reject;
 			}
 			connection->InstallCallback(context.Obj());
 			connection->BeginReadingLoopUnsafe();
@@ -3628,6 +4038,7 @@ NetworkProtocolChannelServer
 			: TServerBase()
 			, context()
 		{
+			InitializeBarriers();
 		}
 
 		template<typename TFirst, typename... TArgs>
@@ -3636,6 +4047,7 @@ NetworkProtocolChannelServer
 			: TServerBase(std::forward<TFirst>(first), std::forward<TArgs>(args)...)
 			, context()
 		{
+			InitializeBarriers();
 		}
 
 		template<typename... TArgs>
@@ -3643,11 +4055,18 @@ NetworkProtocolChannelServer
 			: TServerBase(std::forward<TArgs>(args)...)
 			, context(_context)
 		{
+			InitializeBarriers();
 		}
 
 		~NetworkProtocolChannelServer()
 		{
-			Stop();
+			try
+			{
+				Stop();
+			}
+			catch (...)
+			{
+			}
 		}
 
 		vint ConnectLocalClient(Ptr<IChannelClient<TPackage>> localClient) override
@@ -3656,6 +4075,10 @@ NetworkProtocolChannelServer
 			{
 				SPIN_LOCK(lockConnections)
 				{
+					if (broadcastingError)
+					{
+						return -1;
+					}
 					CHECK_ERROR(started, L"NetworkProtocolChannelServer has not started.");
 					CHECK_ERROR(!stopped, L"NetworkProtocolChannelServer has stopped.");
 				}
@@ -3681,9 +4104,18 @@ NetworkProtocolChannelServer
 			{
 				SPIN_LOCK(lockConnections)
 				{
-					assignedClientId = nextClientId++;
+					if (!broadcastingError && !stopped)
+					{
+						assignedClientId = nextClientId++;
+						BeginStopBarrierUnsafe();
+					}
 				}
 			}
+			if (assignedClientId == -1)
+			{
+				return -1;
+			}
+			StopBarrierGuard stopBarrierGuard(this);
 
 			if (OnClientConnected(assignedClientId, channels.Keys(), localClient.Obj()) == WaitForClientResult::Reject)
 			{
@@ -3696,27 +4128,86 @@ NetworkProtocolChannelServer
 			}
 
 			bool connected = false;
+			bool deliverFatal = false;
+			WString fatalError;
 			{
 				SPIN_LOCK(lockConnections)
 				{
-					if (!stopped)
+					if (!broadcastingError && !stopped)
 					{
 						localClients.Add(assignedClientId, networkProtocolClient);
+						localClientsAwaitingConnected.Add(assignedClientId);
 						for (auto&& channelName : channels.Keys())
 						{
 							clientChannels.Add(assignedClientId, channelName);
 						}
 						connected = true;
 					}
+					else if (broadcastingError)
+					{
+						deliverFatal = true;
+						fatalError = broadcastingErrorMessage;
+					}
 				}
 			}
 			if (!connected)
 			{
+				if (deliverFatal)
+				{
+					try
+					{
+						networkProtocolClient->OnReadError(fatalError);
+					}
+					catch (...)
+					{
+						networkProtocolClient->NotifyDisconnected();
+						throw;
+					}
+				}
 				networkProtocolClient->NotifyDisconnected();
 				return -1;
 			}
 
-			networkProtocolClient->NotifyLocalConnected();
+			std::exception_ptr connectedException;
+			try
+			{
+				networkProtocolClient->NotifyLocalConnected();
+			}
+			catch (...)
+			{
+				connectedException = std::current_exception();
+			}
+			bool deliverFatalAfterConnected = false;
+			WString fatalErrorAfterConnected;
+			{
+				SPIN_LOCK(lockConnections)
+				{
+					localClientsAwaitingConnected.Remove(assignedClientId);
+					if (broadcastingError)
+					{
+						deliverFatalAfterConnected = true;
+						fatalErrorAfterConnected = broadcastingErrorMessage;
+					}
+				}
+			}
+			if (deliverFatalAfterConnected)
+			{
+				try
+				{
+					networkProtocolClient->OnReadError(fatalErrorAfterConnected);
+				}
+				catch (...)
+				{
+					if (!connectedException)
+					{
+						connectedException = std::current_exception();
+					}
+				}
+			}
+			if (connectedException)
+			{
+				std::rethrow_exception(connectedException);
+			}
 			return assignedClientId;
 		}
 
@@ -3747,6 +4238,7 @@ NetworkProtocolChannelServer
 					{
 						localClient = localClients[clientId];
 						localClients.Remove(clientId);
+						localClientsAwaitingConnected.Remove(clientId);
 						clientChannels.Remove(clientId);
 					}
 				}
@@ -3778,42 +4270,112 @@ NetworkProtocolChannelServer
 
 		void BroadcastError(const WString& errorMessage) override
 		{
+			bool calledFromExistingStopBarrier = StopBarrierGuard::IsActiveFor(this);
 			collections::List<Ptr<Connection>> targetConnections;
 			collections::List<Ptr<LocalChannelClient>> targetLocalClients;
+			WString broadcastMessage;
 			{
 				SPIN_LOCK(lockConnections)
 				{
+					if (broadcastingError || stopped)
+					{
+						return;
+					}
+					broadcastingError = true;
+					broadcastingErrorMessage = errorMessage;
+					broadcastMessage = broadcastingErrorMessage;
 					for (auto&& connection : connections.Values())
 					{
-						targetConnections.Add(connection);
+						if (connection->readyForBroadcast)
+						{
+							targetConnections.Add(connection);
+						}
 					}
-					for (auto&& localClient : localClients.Values())
+					for (auto&& clientId : localClients.Keys())
 					{
-						targetLocalClients.Add(localClient);
+						if (!localClientsAwaitingConnected.Contains(clientId))
+						{
+							targetLocalClients.Add(localClients[clientId]);
+						}
 					}
+					BeginStopBarrierUnsafe();
 				}
 			}
 
-			for (auto&& connection : targetConnections)
+			std::exception_ptr deliveryException;
 			{
-				connection->connection->SendString(NetworkPackage::ToString(NetworkPackage::Create({}, WString::Unmanaged(ErrorChannel), errorMessage)));
+				StopBarrierGuard stopBarrierGuard(this);
+				for (auto&& connection : targetConnections)
+				{
+					try
+					{
+						connection->connection->SendString(NetworkPackage::ToString(NetworkPackage::Create({}, WString::Unmanaged(ErrorChannel), broadcastMessage)));
+					}
+					catch (...)
+					{
+						if (!deliveryException)
+						{
+							deliveryException = std::current_exception();
+						}
+					}
+				}
+				for (auto&& localClient : targetLocalClients)
+				{
+					try
+					{
+						localClient->OnReadError(broadcastMessage);
+					}
+					catch (...)
+					{
+						if (!deliveryException)
+						{
+							deliveryException = std::current_exception();
+						}
+					}
+				}
+				// Give transport clients a chance to consume the fatal package before closing.
+				Thread::Sleep(200);
+				try
+				{
+					Stop();
+				}
+				catch (...)
+				{
+					if (!deliveryException)
+					{
+						deliveryException = std::current_exception();
+					}
+				}
 			}
-			for (auto&& localClient : targetLocalClients)
+			if (!calledFromExistingStopBarrier)
 			{
-				localClient->OnReadError(errorMessage);
+				try
+				{
+					Stop();
+				}
+				catch (...)
+				{
+					if (!deliveryException)
+					{
+						deliveryException = std::current_exception();
+					}
+				}
 			}
-			// Give transport clients a chance to consume the fatal package before closing.
-			Thread::Sleep(200);
-			Stop();
+			if (deliveryException)
+			{
+				std::rethrow_exception(deliveryException);
+			}
 		}
 
 		void Stop() override
 		{
-			collections::List<Ptr<Connection>> stoppingConnections;
-			collections::List<Ptr<Connection>> stoppingPendingConnections;
-			collections::List<vint> stoppingLocalClientIds;
-			collections::List<Ptr<LocalChannelClient>> stoppingLocalClients;
-			bool shouldStop = false;
+			if (StopCompletionGuard::IsActiveFor(this))
+			{
+				return;
+			}
+			bool calledFromStopBarrier = StopBarrierGuard::IsActiveFor(this);
+			bool completeStop = false;
+			bool waitForStop = false;
 			{
 				SPIN_LOCK(lockConnections)
 				{
@@ -3821,46 +4383,36 @@ NetworkProtocolChannelServer
 					{
 						started = false;
 						stopped = true;
-						shouldStop = true;
-						for (auto&& connection : connections.Values())
-						{
-							stoppingConnections.Add(connection);
-						}
-						for (auto&& connection : pendingConnections)
-						{
-							stoppingPendingConnections.Add(connection);
-						}
-						for (auto&& clientId : localClients.Keys())
-						{
-							stoppingLocalClientIds.Add(clientId);
-							stoppingLocalClients.Add(localClients[clientId]);
-						}
-						connections.Clear();
-						localClients.Clear();
-						pendingConnections.Clear();
-						clientChannels.Clear();
+						CHECK_ERROR(eventStopCompleted.Unsignal(), L"NetworkProtocolChannelServer failed to unsignal the stop completion event.");
 					}
+					if (!stopCompleting)
+					{
+						if (activeStopBarriers == 0)
+						{
+							stopCompleting = true;
+							completeStop = true;
+						}
+						else
+						{
+							stopAfterBarriersDrained = true;
+						}
+					}
+					waitForStop = !completeStop && !calledFromStopBarrier;
 				}
 			}
 
-			if (shouldStop)
+			if (completeStop)
 			{
-				for (vint i = 0; i < stoppingLocalClients.Count(); i++)
-				{
-					NotifyLocalClientDisconnected(stoppingLocalClients[i]);
-					OnClientDisconnected(stoppingLocalClientIds[i]);
-				}
+				CompleteStop();
 			}
-
-			TServerBase::Stop();
-
-			if (shouldStop)
+			else if (waitForStop)
 			{
-				// Network connections are owned and stopped by TServerBase.
-				for (auto&& connection : stoppingConnections)
-				{
-					OnClientDisconnected(connection->clientId);
-				}
+				eventStopCompleted.Wait();
+			}
+			if (!calledFromStopBarrier)
+			{
+				JoinStopCompletionThread();
+				RethrowStopException();
 			}
 		}
 
@@ -6552,6 +7104,155 @@ namespace vl::inter_process::async_tcp_socket
 
 
 /***********************************************************************
+.\INTERPROCESS\NETWORKPROTOCOLHTTP.H
+***********************************************************************/
+/***********************************************************************
+Vczh Library++ 3.0
+Developer: Zihan Chen(vczh)
+
+Interfaces:
+	HttpRequest
+	HttpResponse
+	HttpError
+
+***********************************************************************/
+
+#ifndef VCZH_INTERPROCESS_NETWORKPROTOCOLHTTP
+#define VCZH_INTERPROCESS_NETWORKPROTOCOLHTTP
+
+
+namespace vl::inter_process
+{
+	/*
+	* GET: /Connect
+	* Creates a new logical connection and returns its request and response URLs.
+	* Repeated calls create separate logical connections.
+	*/
+	constexpr const wchar_t* HttpServerUrl_Connect = L"/VlppInterProcess/Connect";
+
+	/*
+	* POST: /Request/GUID
+	* Client should always maintain a living request on the server.
+	*
+	* Returns only when a request is issued.
+	* It will be pending or timeout if no request is issued.
+	* If a request is issued but no living request available, it waits.
+	*/
+	constexpr const wchar_t* HttpServerUrl_Request = L"/VlppInterProcess/Request";
+
+	/*
+	* POST: /Response/GUID
+	* To send responses or events to the server.
+	* May return one queued server message in the same HTTP response.
+	*/
+	constexpr const wchar_t* HttpServerUrl_Response = L"/VlppInterProcess/Response";
+
+	constexpr const wchar_t* HttpNetworkProtocolContentType = L"application/json; charset=utf8";
+	constexpr vint HttpNetworkProtocolPollAcknowledgementTimeout = 5 * 1000;
+
+	class IHttpRequestTimeoutController : public virtual Interface
+	{
+	public:
+		virtual void Arm(vint milliseconds, const Func<void()>& callback) = 0;
+		virtual void Refresh() = 0;
+		virtual void CancelAndWait() = 0;
+	};
+
+	extern Ptr<IHttpRequestTimeoutController> CreateHttpRequestTimeoutController();
+
+	extern WString HttpUrlEncodeQuery(const WString& query);
+	extern WString HttpUrlDecodeQuery(const WString& query);
+	extern WString CreateHttpNetworkProtocolConnectBody(const WString& requestPath, const WString& responsePath);
+	extern bool ParseHttpNetworkProtocolConnectBody(const WString& body, WString& requestPath, WString& responsePath);
+	extern bool ValidateHttpNetworkProtocolBaseUrl(const WString& baseUrl);
+	extern bool ValidateHttpNetworkProtocolEndpointPath(const WString& path);
+	extern bool IsValidHttpNetworkProtocolMessage(const WString& message);
+}
+
+namespace vl::inter_process::windows_http
+{
+	/// <summary>An http request.</summary>
+	class HttpRequest
+	{
+		typedef collections::Array<char>					BodyBuffer;
+		typedef collections::List<WString>					StringList;
+		typedef collections::Dictionary<WString, WString>	HeaderMap;
+	public:
+		/// <summary>Query of the request, like "/index.html".</summary>
+		WString												query;
+		/// <summary>Set to true if the request uses SSL, or https.</summary>
+		bool												secure = false;
+		/// <summary>User name to authorize. Set to empty if authorization is not needed.</summary>
+		WString												username;
+		/// <summary>Password to authorize. Set to empty if authorization is not needed.</summary>
+		WString												password;
+		/// <summary>HTTP method, like "GET", "POST", "PUT", "DELETE", etc.</summary>
+		WString												method;
+		/// <summary>Cookie. Set to empty if cookie is not needed.</summary>
+		WString												cookie;
+		/// <summary>Request body. This is a byte array.</summary>
+		BodyBuffer											body;
+		/// <summary>Content type, like "text/xml".</summary>
+		WString												contentType;
+		/// <summary>Accept type list, elements like "text/xml".</summary>
+		StringList											acceptTypes;
+		/// <summary>A dictionary to contain extra headers.</summary>
+		HeaderMap											extraHeaders;
+		/// <summary>Set to true to let this request finish when <see cref="HttpClientApi.Stop"/> is called.</summary>
+		bool												keepAliveOnStop = false;
+		/// <summary>Timeout for resolving the host name. 0 or -1 means infinite.</summary>
+		vint												resolveTimeout = 0;
+		/// <summary>Timeout for connecting to the server. 0 or -1 means infinite.</summary>
+		vint												connectTimeout = 60000;
+		/// <summary>Timeout for sending the request. 0 or -1 means infinite.</summary>
+		vint												sendTimeout = 30000;
+		/// <summary>Timeout for receiving the response. 0 or -1 means infinite.</summary>
+		vint												receiveTimeout = 30000;
+
+		HttpRequest() = default;
+		void												SetBodyUtf8(const WString& bodyString);
+	};
+
+	/// <summary>A type representing an http response.</summary>
+	class HttpResponse
+	{
+		typedef collections::Array<char>					BodyBuffer;
+	public:
+		/// <summary>Status code, like 200.</summary>
+		vint												statusCode = 0;
+		/// <summary>Response body. This is a byte array.</summary>
+		BodyBuffer											body;
+		/// <summary>Returned cookie from the server.</summary>
+		WString												cookie;
+		/// <summary>Returned content type from the server.</summary>
+		WString												contentType;
+
+		HttpResponse() = default;
+		bool												TryGetBodyUtf8(WString& bodyString) const;
+		WString												GetBodyUtf8() const;
+	};
+
+	/// <summary>A transport error reported by the underlying HTTP implementation.</summary>
+	class HttpError
+	{
+	public:
+		vuint32_t											errorCode = 0;
+		WString												operation;
+		WString												message;
+	};
+}
+
+namespace vl::inter_process
+{
+	extern windows_http::HttpRequest CreateHttpNetworkProtocolConnectRequest(const WString& target);
+	extern windows_http::HttpRequest CreateHttpNetworkProtocolReceiveRequest(const WString& target);
+	extern windows_http::HttpRequest CreateHttpNetworkProtocolSendRequest(const WString& target, const collections::Array<char>& body);
+}
+
+#endif
+
+
+/***********************************************************************
 .\INTERPROCESS\ASYNCSOCKET\ASYNCSOCKET_HTTPREQUEST.H
 ***********************************************************************/
 /***********************************************************************
@@ -6573,16 +7274,6 @@ namespace vl::inter_process::async_tcp_socket
 		Server,
 		Client,
 	};
-
-	class IHttpRequestTimeoutController : public virtual Interface
-	{
-	public:
-		virtual void						Arm(vint milliseconds, const Func<void()>& callback) = 0;
-		virtual void						Refresh() = 0;
-		virtual void						CancelAndWait() = 0;
-	};
-
-	extern Ptr<IHttpRequestTimeoutController>	CreateHttpRequestTimeoutController();
 
 	class HttpRequestCallbackDomain : public Object
 	{
@@ -6917,144 +7608,6 @@ namespace vl::inter_process::async_tcp_socket
 		void								Stop() override;
 		bool								IsStopped() override;
 	};
-}
-
-#endif
-
-
-/***********************************************************************
-.\INTERPROCESS\NETWORKPROTOCOLHTTP.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-
-Interfaces:
-	HttpRequest
-	HttpResponse
-	HttpError
-
-***********************************************************************/
-
-#ifndef VCZH_INTERPROCESS_NETWORKPROTOCOLHTTP
-#define VCZH_INTERPROCESS_NETWORKPROTOCOLHTTP
-
-
-namespace vl::inter_process
-{
-	/*
-	* GET: /Connect
-	* Creates a new logical connection and returns its request and response URLs.
-	* Repeated calls create separate logical connections.
-	*/
-	constexpr const wchar_t* HttpServerUrl_Connect = L"/VlppInterProcess/Connect";
-
-	/*
-	* POST: /Request/GUID
-	* Client should always maintain a living request on the server.
-	*
-	* Returns only when a request is issued.
-	* It will be pending or timeout if no request is issued.
-	* If a request is issued but no living request available, it waits.
-	*/
-	constexpr const wchar_t* HttpServerUrl_Request = L"/VlppInterProcess/Request";
-
-	/*
-	* POST: /Response/GUID
-	* To send responses or events to the server.
-	* May return one queued server message in the same HTTP response.
-	*/
-	constexpr const wchar_t* HttpServerUrl_Response = L"/VlppInterProcess/Response";
-
-	constexpr const wchar_t* HttpNetworkProtocolContentType = L"application/json; charset=utf8";
-
-	extern WString HttpUrlEncodeQuery(const WString& query);
-	extern WString HttpUrlDecodeQuery(const WString& query);
-	extern WString CreateHttpNetworkProtocolConnectBody(const WString& requestPath, const WString& responsePath);
-	extern bool ParseHttpNetworkProtocolConnectBody(const WString& body, WString& requestPath, WString& responsePath);
-	extern bool ValidateHttpNetworkProtocolBaseUrl(const WString& baseUrl);
-	extern bool ValidateHttpNetworkProtocolEndpointPath(const WString& path);
-	extern bool IsValidHttpNetworkProtocolMessage(const WString& message);
-}
-
-namespace vl::inter_process::windows_http
-{
-	/// <summary>An http request.</summary>
-	class HttpRequest
-	{
-		typedef collections::Array<char>					BodyBuffer;
-		typedef collections::List<WString>					StringList;
-		typedef collections::Dictionary<WString, WString>	HeaderMap;
-	public:
-		/// <summary>Query of the request, like "/index.html".</summary>
-		WString												query;
-		/// <summary>Set to true if the request uses SSL, or https.</summary>
-		bool												secure = false;
-		/// <summary>User name to authorize. Set to empty if authorization is not needed.</summary>
-		WString												username;
-		/// <summary>Password to authorize. Set to empty if authorization is not needed.</summary>
-		WString												password;
-		/// <summary>HTTP method, like "GET", "POST", "PUT", "DELETE", etc.</summary>
-		WString												method;
-		/// <summary>Cookie. Set to empty if cookie is not needed.</summary>
-		WString												cookie;
-		/// <summary>Request body. This is a byte array.</summary>
-		BodyBuffer											body;
-		/// <summary>Content type, like "text/xml".</summary>
-		WString												contentType;
-		/// <summary>Accept type list, elements like "text/xml".</summary>
-		StringList											acceptTypes;
-		/// <summary>A dictionary to contain extra headers.</summary>
-		HeaderMap											extraHeaders;
-		/// <summary>Set to true to let this request finish when <see cref="HttpClientApi.Stop"/> is called.</summary>
-		bool												keepAliveOnStop = false;
-		/// <summary>Timeout for resolving the host name. 0 or -1 means infinite.</summary>
-		vint												resolveTimeout = 0;
-		/// <summary>Timeout for connecting to the server. 0 or -1 means infinite.</summary>
-		vint												connectTimeout = 60000;
-		/// <summary>Timeout for sending the request. 0 or -1 means infinite.</summary>
-		vint												sendTimeout = 30000;
-		/// <summary>Timeout for receiving the response. 0 or -1 means infinite.</summary>
-		vint												receiveTimeout = 30000;
-
-		HttpRequest() = default;
-		void												SetBodyUtf8(const WString& bodyString);
-	};
-
-	/// <summary>A type representing an http response.</summary>
-	class HttpResponse
-	{
-		typedef collections::Array<char>					BodyBuffer;
-	public:
-		/// <summary>Status code, like 200.</summary>
-		vint												statusCode = 0;
-		/// <summary>Response body. This is a byte array.</summary>
-		BodyBuffer											body;
-		/// <summary>Returned cookie from the server.</summary>
-		WString												cookie;
-		/// <summary>Returned content type from the server.</summary>
-		WString												contentType;
-
-		HttpResponse() = default;
-		bool												TryGetBodyUtf8(WString& bodyString) const;
-		WString												GetBodyUtf8() const;
-	};
-
-	/// <summary>A transport error reported by the underlying HTTP implementation.</summary>
-	class HttpError
-	{
-	public:
-		vuint32_t											errorCode = 0;
-		WString												operation;
-		WString												message;
-	};
-}
-
-namespace vl::inter_process
-{
-	extern windows_http::HttpRequest CreateHttpNetworkProtocolConnectRequest(const WString& target);
-	extern windows_http::HttpRequest CreateHttpNetworkProtocolReceiveRequest(const WString& target);
-	extern windows_http::HttpRequest CreateHttpNetworkProtocolSendRequest(const WString& target, const collections::Array<char>& body);
 }
 
 #endif
@@ -7494,6 +8047,101 @@ namespace vl
 			extern Ptr<unittest::ITuiBackend> CreateTuiBackend();
 		}
 	}
+}
+
+#endif
+
+
+/***********************************************************************
+.\INTERPROCESS\STDIOREDIRECTION\STDIOREDIRECTION.H
+***********************************************************************/
+#ifndef VCZH_INTERPROCESS_STDIOREDIRECTION
+#define VCZH_INTERPROCESS_STDIOREDIRECTION
+
+
+namespace vl::inter_process::stdio_redirection
+{
+	class IStdioRedirectionProcess : public virtual Interface
+	{
+	public:
+		virtual vint								Read(vuint8_t* buffer, vint size, WString& errorMessage) = 0;
+		virtual bool								Write(const vuint8_t* buffer, vint size, WString& errorMessage) = 0;
+		virtual void								CloseInput() = 0;
+		virtual void								CloseOutput() = 0;
+		virtual void								WaitForExit() = 0;
+	};
+
+	extern Ptr<IStdioRedirectionProcess>				CreateStdioRedirectionProcess(const WString& command);
+
+	class StdioRedirectionConnection
+		: public Object
+		, public virtual INetworkProtocolConnection
+	{
+		class Lifecycle;
+		struct CallbackFrame;
+
+		static thread_local CallbackFrame*			currentCallbackFrame;
+		Ptr<Lifecycle>								lifecycle;
+
+		static vint								CurrentCallbackDepth(Ptr<Lifecycle> state);
+		static void								InvokeCallback(Ptr<Lifecycle> state, bool allowTerminal, const Func<void(INetworkProtocolCallback*)>& callback);
+		static void								NotifyDisconnected(Ptr<Lifecycle> state);
+		static void								ReportLocalError(Ptr<Lifecycle> state, const WString& errorMessage);
+		static void								Disconnect(Ptr<Lifecycle> state, bool sendExit);
+		static void								ReadLoop(Ptr<Lifecycle> state);
+		static bool								ProcessLine(Ptr<Lifecycle> state, const WString& line);
+		static void								FinishReader(Ptr<Lifecycle> state);
+
+	public:
+		StdioRedirectionConnection();
+		StdioRedirectionConnection(Ptr<IStdioRedirectionProcess> process);
+		~StdioRedirectionConnection();
+
+		void									InstallCallback(INetworkProtocolCallback* callback) override;
+		void									BeginReadingLoopUnsafe() override;
+		void									SendString(const WString& str) override;
+		void									Stop() override;
+
+		ClientStatus							GetStatus();
+		bool									IsInCurrentCallback();
+	};
+
+	class StdioRedirectionClient
+		: public Object
+		, public virtual INetworkProtocolClient
+	{
+	private:
+		Ptr<StdioRedirectionConnection>				connection;
+
+	public:
+		StdioRedirectionClient();
+
+		INetworkProtocolConnection*				GetConnection() override;
+		void									WaitForServer() override;
+		ClientStatus							GetStatus() override;
+	};
+
+	class StdioRedirectionServer
+		: public Object
+		, public virtual INetworkProtocolServer
+	{
+		class Lifecycle;
+		Ptr<Lifecycle>								lifecycle;
+
+		static void								FinalizeStop(Ptr<Lifecycle> state);
+		static void								FinishConnect(Ptr<Lifecycle> state, Ptr<StdioRedirectionConnection> connection, bool keepConnection);
+
+	public:
+		StdioRedirectionServer();
+		~StdioRedirectionServer();
+
+		WaitForClientResult					OnClientConnected(INetworkProtocolConnection* connection) override;
+		void									Start() override;
+		void									Stop() override;
+		bool									IsStopped() override;
+
+		void									ConnectNewClient(const WString& command);
+	};
 }
 
 #endif
