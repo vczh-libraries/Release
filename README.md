@@ -33,7 +33,7 @@ GPU Accelerated C++ User Interface, with:
 - Cross-platform supports (Windows, Linux, macos, HTML5)
   - Native Renderers
   - Hosted Mode to render all windows in one native window (optional)
-  - Core/Renderer cross-process separation (optional)
+  - Core/Renderer cross-process separation (optional, this is the Remote Protocol)
 - Built-in powerful text processing libraries
 - Built-in data binding and MVVM features
 - XML UI description embedding Workflow script language
@@ -41,7 +41,33 @@ GPU Accelerated C++ User Interface, with:
     - Allow loading foreign UI with complex behavior in runtime
   - Generate XML and Workflow to C++ source files for static linking (recommended)
     - Allow C++ dyanmic reflection opt-out to significantly improve performance and reduce binary size
-- FFI Integration with other programming languages (under development)
+
+### Implementing View Model in Other Programming Languages
+
+- When the view model is marked with `@rpc:interface` and `@rpc:ctor`, metadata will be printed along with `GacGen` or `GacBuild.ps1`.
+- For TypeScript, code is ready in [the GacJS repo](https://github.com/vczh-libraries/GacJS).
+- For other programming languages, a codegen could be created following [GacJS/doc/rpc/README.md](https://github.com/vczh-libraries/GacJS/blob/master/doc/rpc/README.md).
+- In the instructions, materials supporting the verification is located in both [Workflow](https://github.com/vczh-libraries/Workflow) and [GacUI](https://github.com/vczh-libraries/GacUI) repos:
+  - In [the Workflow repo](https://github.com/vczh-libraries/Workflow), there are test cases covering all aspects of the RPC protocol.
+  - In [GacUI/.github/Jobs/DebugRemoteProtocolWithGacJS.md](https://github.com/vczh-libraries/GacUI/blob/master/.github/Jobs/DebugRemoteProtocolWithGacJS.md), it contains instructions about how to test a real app with view model created in TypeScript.
+  - [GacJS](https://github.com/vczh-libraries/GacJS) could serve as an example of forgien view model implementation, the TypeScript RPC codegen is created following the same instruction here.
+- According to the license, [Workflow](https://github.com/vczh-libraries/Workflow) and [GacUI](https://github.com/vczh-libraries/GacUI) could serve the reading and debugging purpose.
+- Feed the instruction to codex and be worry free!
+
+### Sample Test Apps for Remote Protocol
+
+- [GacUI](https://github.com/vczh-libraries/GacUI):
+  - Refer to `RemotingTest_Core`, `RemotingTest_Rendering_Win32`, `RemotingTest_RvmHost`.
+  - [GacUI/.github/Jobs/DebugRemoteProtocolWithGacJS.md](https://github.com/vczh-libraries/GacUI/blob/master/.github/Jobs/DebugRemoteProtocolWithGacJS.md)
+  - [GacUI/.github/Jobs/DebugRemoteProtocolWithNativeRenderer.md](https://github.com/vczh-libraries/GacUI/blob/master/.github/Jobs/DebugRemoteProtocolWithNativeRenderer.md)
+- [wGac](https://github.com/vczh-libraries/wGac):
+  - This repos contain Wayland native renderer implementation and test apps `RemotingTest_Rendering_Wayland`.
+- [iGac](https://github.com/vczh-libraries/iGac):
+  - This repos contain Cocoa native renderer implementation and test apps `RemotingTest_Rendering_macOS`.
+- [GacJS](https://github.com/vczh-libraries/GacJS):
+  - This repos contain HTML5 renderer implementation and test apps running in a browser.
+- According to the license, [wGac](https://github.com/vczh-libraries/wGac), [iGac](https://github.com/vczh-libraries/iGac) and [GacJS](https://github.com/vczh-libraries/GacJS) are part of the release.
+- `Project.md` and `AGENTS.md` files are good entries.
 
 ## Coding Agent Supports
 
