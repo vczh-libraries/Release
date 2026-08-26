@@ -109,11 +109,11 @@ You can copy the whole `.github` folder to your own repo.
 - **Import** Gaclib source code
   - **Skins** Predefined control templates. You will need to call `vl::presentation::theme::RegisterTheme` to set a default skin before creating any controls. Read [WinMain.cpp](https://github.com/vczh-libraries/Release/blob/master/Tutorial/Lib/GacUILite/WinMain.cpp) for details.
 - **Tools**
-  - **GacGen.exe** GacUI resource compiler and C++ code generator for x86 and x64
-  - **CppMerge.exe** Merge GacUI generated code for x86 and x64 to architecture-independent code
-  - **GlrParserGen.exe** General LR parser to C++ code generator
-  - **CodePack.exe** Merge a group of C++ source files into multiple pairs of .h/.cpp big files
-  - **GacBuild.ps1** Do everything for you if you don't want to understand build steps. This one builds multiple resource xml files at the same time. Read the comment for more information.
+  - [**GacGen.exe**](.github/KnowledgeBase/KB_GacUI_Design_GacGenAndGacBuild.md) GacUI resource compiler and C++ code generator for x86 and x64
+  - [**CppMerge.exe**](.github/KnowledgeBase/KB_Workflow_Design_CppMerge.md) Merge GacUI generated code for x86 and x64 to architecture-independent code
+  - [**GlrParserGen.exe**](.github/KnowledgeBase/KB_VlppParser2_Design_GlrParserGen.md) General LR parser to C++ code generator
+  - [**CodePack.exe**](.github/KnowledgeBase/KB_VlppParser2_Design_CodePack.md) Merge a group of C++ source files into multiple pairs of .h/.cpp big files
+  - [**GacBuild.ps1**](.github/KnowledgeBase/KB_GacUI_Design_GacGenAndGacBuild.md) Do everything for you if you don't want to understand build steps. This one builds multiple resource xml files at the same time. Read the comment for more information.
   - **GacClear.ps1** Force `GacBuild.ps1` rebuilding all resource xml files for the next time.
   - **CopyExecutables.ps1** Copy executables to the current folder after building `Tools/Executables/Executables.sln`.
   - **BuildExecutables.sh** Build script for Linux.
