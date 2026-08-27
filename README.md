@@ -53,6 +53,7 @@ GPU Accelerated C++ User Interface, with:
   - [GacJS](https://github.com/vczh-libraries/GacJS) could serve as an example of forgien view model implementation, the TypeScript RPC codegen is created following the same instruction here.
 - According to the license, [Workflow](https://github.com/vczh-libraries/Workflow) and [GacUI](https://github.com/vczh-libraries/GacUI) could serve the reading and debugging purpose.
 - Feed the instruction to codex and be worry free!
+  - Before the next one is created, I strongly recommend planning using gpt 5.6 sol ultra, followed by execution using gpt 5.6 sol xhigh.
 
 ### Sample Test Apps for Remote Protocol
 
