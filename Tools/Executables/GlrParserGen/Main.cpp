@@ -230,6 +230,7 @@ int main(int argc, char* argv[])
 
 	READ_ATTRIBUTE(global.name, config->rootElement, L"name", L"/Parser@name");
 	READ_ELEMENT_ITEMS(global.astIncludes, regexIncludes, config->rootElement, L"Includes", L"/Parser/Includes");
+	CopyFrom(global.jsonIncludes, global.astIncludes);
 	READ_ELEMENT_ITEMS(global.cppNss, regexNamespace, config->rootElement, L"CppNamespace", L"/Parser/CppNamespace");
 	READ_ELEMENT(global.headerGuard, config->rootElement, L"HeaderGuard", L"/Parser/HeaderGuard");
 	{
