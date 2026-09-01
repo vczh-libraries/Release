@@ -2111,7 +2111,7 @@ GuiControlHost
 				}
 			}
 
-			void GuiControlHost::MouseMoving(const NativeWindowMouseInfo& info, bool osSuper)
+			void GuiControlHost::MouseMoving(const NativeWindowMouseInfo& info)
 			{
 				if (!info.left && !info.middle && !info.right)
 				{
@@ -4790,7 +4790,7 @@ GuiGraphicsHost
 				}
 			}
 
-			void GuiGraphicsHost::OnMouseInput(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper, bool capture, bool release, GuiMouseEvent GuiGraphicsEventReceiver::* eventReceiverEvent)
+			void GuiGraphicsHost::OnMouseInput(NativeMouseButton button, const NativeWindowMouseInfo& info, bool capture, bool release, GuiMouseEvent GuiGraphicsEventReceiver::* eventReceiverEvent)
 			{
 				vint buttonIndex = (vint)button;
 				if (capture)
@@ -4820,7 +4820,7 @@ GuiGraphicsHost
 					Point point = hostRecord.nativeWindow->Convert(NativePoint(info.x, info.y));
 					GuiMouseEventArgs arguments;
 					arguments.button = button;
-					arguments.osSuper = osSuper;
+					arguments.osSuper = info.osSuper;
 					arguments.ctrl = info.ctrl;
 					arguments.shift = info.shift;
 					arguments.left = info.left;
@@ -4892,34 +4892,34 @@ GuiGraphicsHost
 				}
 			}
 
-			void GuiGraphicsHost::MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+			void GuiGraphicsHost::MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info)
 			{
 				altActionManager->CloseAltHost();
-				OnMouseInput(button, info, osSuper, true, false, &GuiGraphicsEventReceiver::mouseDown);
+				OnMouseInput(button, info, true, false, &GuiGraphicsEventReceiver::mouseDown);
 			}
 
-			void GuiGraphicsHost::MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+			void GuiGraphicsHost::MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info)
 			{
-				OnMouseInput(button, info, osSuper, false, true, &GuiGraphicsEventReceiver::mouseUp);
+				OnMouseInput(button, info, false, true, &GuiGraphicsEventReceiver::mouseUp);
 			}
 
-			void GuiGraphicsHost::MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+			void GuiGraphicsHost::MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info)
 			{
 				altActionManager->CloseAltHost();
-				OnMouseInput(button, info, osSuper, false, false, &GuiGraphicsEventReceiver::mouseDoubleClick);
+				OnMouseInput(button, info, false, false, &GuiGraphicsEventReceiver::mouseDoubleClick);
 			}
 
-			void GuiGraphicsHost::HorizontalWheel(const NativeWindowMouseInfo& info, bool osSuper)
+			void GuiGraphicsHost::HorizontalWheel(const NativeWindowMouseInfo& info)
 			{
-				OnMouseInput(NativeMouseButton::Left, info, osSuper, false, false, &GuiGraphicsEventReceiver::horizontalWheel);
+				OnMouseInput(NativeMouseButton::Left, info, false, false, &GuiGraphicsEventReceiver::horizontalWheel);
 			}
 
-			void GuiGraphicsHost::VerticalWheel(const NativeWindowMouseInfo& info, bool osSuper)
+			void GuiGraphicsHost::VerticalWheel(const NativeWindowMouseInfo& info)
 			{
-				OnMouseInput(NativeMouseButton::Left, info, osSuper, false, false, &GuiGraphicsEventReceiver::verticalWheel);
+				OnMouseInput(NativeMouseButton::Left, info, false, false, &GuiGraphicsEventReceiver::verticalWheel);
 			}
 
-			void GuiGraphicsHost::MouseMoving(const NativeWindowMouseInfo& info, bool osSuper)
+			void GuiGraphicsHost::MouseMoving(const NativeWindowMouseInfo& info)
 			{
 				CompositionList newCompositions;
 				{
@@ -4983,7 +4983,7 @@ GuiGraphicsHost
 					hostRecord.nativeWindow->SetWindowCursor(GetCurrentController()->ResourceService()->GetDefaultSystemCursor());
 				}
 
-				OnMouseInput(NativeMouseButton::Left, info, osSuper, false, false, &GuiGraphicsEventReceiver::mouseMove);
+				OnMouseInput(NativeMouseButton::Left, info, false, false, &GuiGraphicsEventReceiver::mouseMove);
 			}
 
 			void GuiGraphicsHost::MouseEntered()
@@ -32170,27 +32170,27 @@ INativeWindowListener
 		{
 		}
 
-		void INativeWindowListener::MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+		void INativeWindowListener::MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info)
 		{
 		}
 
-		void INativeWindowListener::MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+		void INativeWindowListener::MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info)
 		{
 		}
 
-		void INativeWindowListener::MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+		void INativeWindowListener::MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info)
 		{
 		}
 
-		void INativeWindowListener::HorizontalWheel(const NativeWindowMouseInfo& info, bool osSuper)
+		void INativeWindowListener::HorizontalWheel(const NativeWindowMouseInfo& info)
 		{
 		}
 
-		void INativeWindowListener::VerticalWheel(const NativeWindowMouseInfo& info, bool osSuper)
+		void INativeWindowListener::VerticalWheel(const NativeWindowMouseInfo& info)
 		{
 		}
 
-		void INativeWindowListener::MouseMoving(const NativeWindowMouseInfo& info, bool osSuper)
+		void INativeWindowListener::MouseMoving(const NativeWindowMouseInfo& info)
 		{
 		}
 
@@ -33386,9 +33386,9 @@ GuiHostedController::INativeWindowListener (Template)
 			void (GuiHostedController::* PreAction)(const NativeWindowMouseInfo&),
 			GuiHostedWindow*(GuiHostedController::* GetSelectedWindow)(const NativeWindowMouseInfo&),
 			void (GuiHostedController::* PostAction)(GuiHostedWindow*, const NativeWindowMouseInfo&),
-			void (INativeWindowListener::* Callback)(NativeMouseButton, const NativeWindowMouseInfo&, bool)
+			void (INativeWindowListener::* Callback)(NativeMouseButton, const NativeWindowMouseInfo&)
 			>
-		void GuiHostedController::HandleMouseButtonCallback(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+		void GuiHostedController::HandleMouseButtonCallback(NativeMouseButton button, const NativeWindowMouseInfo& info)
 		{
 			(this->*PreAction)(info);
 			auto postActionWindow = hoveringWindow;
@@ -33403,7 +33403,7 @@ GuiHostedController::INativeWindowListener (Template)
 					adjustedInfo.y.value -= selectedWindow->wmWindow.bounds.y1.value;
 					for (auto listener : selectedWindow->listeners)
 					{
-						(listener->*Callback)(button, adjustedInfo, osSuper);
+						(listener->*Callback)(button, adjustedInfo);
 					}
 				}
 			}
@@ -33414,9 +33414,9 @@ GuiHostedController::INativeWindowListener (Template)
 			void (GuiHostedController::* PreAction)(const NativeWindowMouseInfo&),
 			GuiHostedWindow*(GuiHostedController::* GetSelectedWindow)(const NativeWindowMouseInfo&),
 			void (GuiHostedController::* PostAction)(GuiHostedWindow*, const NativeWindowMouseInfo&),
-			void (INativeWindowListener::* Callback)(const NativeWindowMouseInfo&, bool)
+			void (INativeWindowListener::* Callback)(const NativeWindowMouseInfo&)
 			>
-		void GuiHostedController::HandleMouseCallback(const NativeWindowMouseInfo& info, bool osSuper)
+		void GuiHostedController::HandleMouseCallback(const NativeWindowMouseInfo& info)
 		{
 			(this->*PreAction)(info);
 			auto postActionWindow = hoveringWindow;
@@ -33431,7 +33431,7 @@ GuiHostedController::INativeWindowListener (Template)
 					adjustedInfo.y.value -= selectedWindow->wmWindow.bounds.y1.value;
 					for (auto listener : selectedWindow->listeners)
 					{
-						(listener->*Callback)(adjustedInfo, osSuper);
+						(listener->*Callback)(adjustedInfo);
 					}
 				}
 			}
@@ -33463,48 +33463,48 @@ GuiHostedController::INativeWindowListener (Template)
 GuiHostedController::INativeWindowListener (IO Event Handling)
 ***********************************************************************/
 
-		void GuiHostedController::MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+		void GuiHostedController::MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info)
 		{
 			if (button == NativeMouseButton::Left)
 			{
-				HandleMouseButtonCallback<&GuiHostedController::PreAction_LeftButtonDown, &GuiHostedController::GetSelectedWindow_MouseDown, &GuiHostedController::PostAction_Other, &INativeWindowListener::MouseDown>(button, info, osSuper);
+				HandleMouseButtonCallback<&GuiHostedController::PreAction_LeftButtonDown, &GuiHostedController::GetSelectedWindow_MouseDown, &GuiHostedController::PostAction_Other, &INativeWindowListener::MouseDown>(button, info);
 			}
 			else
 			{
-				HandleMouseButtonCallback<&GuiHostedController::PreAction_MouseDown, &GuiHostedController::GetSelectedWindow_MouseDown, &GuiHostedController::PostAction_Other, &INativeWindowListener::MouseDown>(button, info, osSuper);
+				HandleMouseButtonCallback<&GuiHostedController::PreAction_MouseDown, &GuiHostedController::GetSelectedWindow_MouseDown, &GuiHostedController::PostAction_Other, &INativeWindowListener::MouseDown>(button, info);
 			}
 		}
 
-		void GuiHostedController::MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+		void GuiHostedController::MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info)
 		{
 			if (button == NativeMouseButton::Left)
 			{
-				HandleMouseButtonCallback<&GuiHostedController::PreAction_Other, &GuiHostedController::GetSelectedWindow_Other, &GuiHostedController::PostAction_LeftButtonUp, &INativeWindowListener::MouseUp>(button, info, osSuper);
+				HandleMouseButtonCallback<&GuiHostedController::PreAction_Other, &GuiHostedController::GetSelectedWindow_Other, &GuiHostedController::PostAction_LeftButtonUp, &INativeWindowListener::MouseUp>(button, info);
 			}
 			else
 			{
-				HandleMouseButtonCallback<&GuiHostedController::PreAction_Other, &GuiHostedController::GetSelectedWindow_Other, &GuiHostedController::PostAction_Other, &INativeWindowListener::MouseUp>(button, info, osSuper);
+				HandleMouseButtonCallback<&GuiHostedController::PreAction_Other, &GuiHostedController::GetSelectedWindow_Other, &GuiHostedController::PostAction_Other, &INativeWindowListener::MouseUp>(button, info);
 			}
 		}
 
-		void GuiHostedController::MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+		void GuiHostedController::MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info)
 		{
-			HandleMouseButtonCallback<&GuiHostedController::PreAction_Other, &GuiHostedController::GetSelectedWindow_Other, &GuiHostedController::PostAction_Other, &INativeWindowListener::MouseDoubleClick>(button, info, osSuper);
+			HandleMouseButtonCallback<&GuiHostedController::PreAction_Other, &GuiHostedController::GetSelectedWindow_Other, &GuiHostedController::PostAction_Other, &INativeWindowListener::MouseDoubleClick>(button, info);
 		}
 
-		void GuiHostedController::HorizontalWheel(const NativeWindowMouseInfo& info, bool osSuper)
+		void GuiHostedController::HorizontalWheel(const NativeWindowMouseInfo& info)
 		{
-			HandleMouseCallback<&GuiHostedController::PreAction_Other, &GuiHostedController::GetSelectedWindow_Other, &GuiHostedController::PostAction_Other, &INativeWindowListener::HorizontalWheel>(info, osSuper);
+			HandleMouseCallback<&GuiHostedController::PreAction_Other, &GuiHostedController::GetSelectedWindow_Other, &GuiHostedController::PostAction_Other, &INativeWindowListener::HorizontalWheel>(info);
 		}
 
-		void GuiHostedController::VerticalWheel(const NativeWindowMouseInfo& info, bool osSuper)
+		void GuiHostedController::VerticalWheel(const NativeWindowMouseInfo& info)
 		{
-			HandleMouseCallback<&GuiHostedController::PreAction_Other, &GuiHostedController::GetSelectedWindow_Other, &GuiHostedController::PostAction_Other, &INativeWindowListener::VerticalWheel>(info, osSuper);
+			HandleMouseCallback<&GuiHostedController::PreAction_Other, &GuiHostedController::GetSelectedWindow_Other, &GuiHostedController::PostAction_Other, &INativeWindowListener::VerticalWheel>(info);
 		}
 
-		void GuiHostedController::MouseMoving(const NativeWindowMouseInfo& info, bool osSuper)
+		void GuiHostedController::MouseMoving(const NativeWindowMouseInfo& info)
 		{
-			HandleMouseCallback<&GuiHostedController::PreAction_MouseMoving, &GuiHostedController::GetSelectedWindow_MouseMoving, &GuiHostedController::PostAction_Other, &INativeWindowListener::MouseMoving>(info, osSuper);
+			HandleMouseCallback<&GuiHostedController::PreAction_MouseMoving, &GuiHostedController::GetSelectedWindow_MouseMoving, &GuiHostedController::PostAction_Other, &INativeWindowListener::MouseMoving>(info);
 		}
 
 		void GuiHostedController::MouseEntered()
@@ -36009,32 +36009,32 @@ GuiRemoteEvents (events)
 
 	void GuiRemoteEvents::OnIOButtonDown(const remoteprotocol::IOMouseInfoWithButton& arguments)
 	{
-		for (auto l : remote->remoteWindow.listeners) l->MouseDown(arguments.button, arguments.info, arguments.osSuper);
+		for (auto l : remote->remoteWindow.listeners) l->MouseDown(arguments.button, arguments.info);
 	}
 
 	void GuiRemoteEvents::OnIOButtonDoubleClick(const remoteprotocol::IOMouseInfoWithButton& arguments)
 	{
-		for (auto l : remote->remoteWindow.listeners) l->MouseDoubleClick(arguments.button, arguments.info, arguments.osSuper);
+		for (auto l : remote->remoteWindow.listeners) l->MouseDoubleClick(arguments.button, arguments.info);
 	}
 
 	void GuiRemoteEvents::OnIOButtonUp(const remoteprotocol::IOMouseInfoWithButton& arguments)
 	{
-		for (auto l : remote->remoteWindow.listeners) l->MouseUp(arguments.button, arguments.info, arguments.osSuper);
+		for (auto l : remote->remoteWindow.listeners) l->MouseUp(arguments.button, arguments.info);
 	}
 
-	void GuiRemoteEvents::OnIOHWheel(const remoteprotocol::IOMouseInfoWithModifier& arguments)
+	void GuiRemoteEvents::OnIOHWheel(const NativeWindowMouseInfo& arguments)
 	{
-		for (auto l : remote->remoteWindow.listeners) l->HorizontalWheel(arguments.info, arguments.osSuper);
+		for (auto l : remote->remoteWindow.listeners) l->HorizontalWheel(arguments);
 	}
 
-	void GuiRemoteEvents::OnIOVWheel(const remoteprotocol::IOMouseInfoWithModifier& arguments)
+	void GuiRemoteEvents::OnIOVWheel(const NativeWindowMouseInfo& arguments)
 	{
-		for (auto l : remote->remoteWindow.listeners) l->VerticalWheel(arguments.info, arguments.osSuper);
+		for (auto l : remote->remoteWindow.listeners) l->VerticalWheel(arguments);
 	}
 
-	void GuiRemoteEvents::OnIOMouseMoving(const remoteprotocol::IOMouseInfoWithModifier& arguments)
+	void GuiRemoteEvents::OnIOMouseMoving(const NativeWindowMouseInfo& arguments)
 	{
-		for (auto l : remote->remoteWindow.listeners) l->MouseMoving(arguments.info, arguments.osSuper);
+		for (auto l : remote->remoteWindow.listeners) l->MouseMoving(arguments);
 	}
 
 	void GuiRemoteEvents::OnIOMouseEntered()
@@ -42543,6 +42543,7 @@ namespace vl::presentation::remoteprotocol
 		auto node = Ptr(new glr::json::JsonObject);
 		ConvertCustomTypeToJsonField(node, L"ctrl", value.ctrl);
 		ConvertCustomTypeToJsonField(node, L"shift", value.shift);
+		ConvertCustomTypeToJsonField(node, L"osSuper", value.osSuper);
 		ConvertCustomTypeToJsonField(node, L"left", value.left);
 		ConvertCustomTypeToJsonField(node, L"middle", value.middle);
 		ConvertCustomTypeToJsonField(node, L"right", value.right);
@@ -42558,15 +42559,6 @@ namespace vl::presentation::remoteprotocol
 		auto node = Ptr(new glr::json::JsonObject);
 		ConvertCustomTypeToJsonField(node, L"button", value.button);
 		ConvertCustomTypeToJsonField(node, L"info", value.info);
-		ConvertCustomTypeToJsonField(node, L"osSuper", value.osSuper);
-		return node;
-	}
-
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::IOMouseInfoWithModifier>(const ::vl::presentation::remoteprotocol::IOMouseInfoWithModifier & value)
-	{
-		auto node = Ptr(new glr::json::JsonObject);
-		ConvertCustomTypeToJsonField(node, L"info", value.info);
-		ConvertCustomTypeToJsonField(node, L"osSuper", value.osSuper);
 		return node;
 	}
 
@@ -43458,6 +43450,7 @@ namespace vl::presentation::remoteprotocol
 		{
 			if (field->name.value == L"ctrl") ConvertJsonToCustomType(field->value, value.ctrl); else
 			if (field->name.value == L"shift") ConvertJsonToCustomType(field->value, value.shift); else
+			if (field->name.value == L"osSuper") ConvertJsonToCustomType(field->value, value.osSuper); else
 			if (field->name.value == L"left") ConvertJsonToCustomType(field->value, value.left); else
 			if (field->name.value == L"middle") ConvertJsonToCustomType(field->value, value.middle); else
 			if (field->name.value == L"right") ConvertJsonToCustomType(field->value, value.right); else
@@ -43479,21 +43472,6 @@ namespace vl::presentation::remoteprotocol
 		{
 			if (field->name.value == L"button") ConvertJsonToCustomType(field->value, value.button); else
 			if (field->name.value == L"info") ConvertJsonToCustomType(field->value, value.info); else
-			if (field->name.value == L"osSuper") ConvertJsonToCustomType(field->value, value.osSuper); else
-			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
-		}
-#undef ERROR_MESSAGE_PREFIX
-	}
-
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::IOMouseInfoWithModifier>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::IOMouseInfoWithModifier& value)
-	{
-#define ERROR_MESSAGE_PREFIX L"vl::presentation::remoteprotocol::ConvertJsonToCustomType<::vl::presentation::remoteprotocol::IOMouseInfoWithModifier>(Ptr<JsonNode>, ::vl::presentation::remoteprotocol::IOMouseInfoWithModifier&)#"
-		auto jsonNode = node.Cast<glr::json::JsonObject>();
-		CHECK_ERROR(jsonNode, ERROR_MESSAGE_PREFIX L"Json node does not match the expected type.");
-		for (auto field : jsonNode->fields)
-		{
-			if (field->name.value == L"info") ConvertJsonToCustomType(field->value, value.info); else
-			if (field->name.value == L"osSuper") ConvertJsonToCustomType(field->value, value.osSuper); else
 			CHECK_FAIL(ERROR_MESSAGE_PREFIX L"Unsupported struct member.");
 		}
 #undef ERROR_MESSAGE_PREFIX
@@ -44605,61 +44583,58 @@ namespace vl::presentation::remote_renderer
 * Rendering (INativeWindow)
 ***********************************************************************/
 
-	void GuiRemoteRendererSingle::MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+	void GuiRemoteRendererSingle::MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info)
 	{
 		if (!CanSendEvents()) return;
 		SendAccumulatedMessages();
 		IOMouseInfoWithButton arguments;
 		arguments.button = button;
 		arguments.info = info;
-		arguments.osSuper = osSuper;
 		events->OnIOButtonDown(arguments);
 	}
 
-	void GuiRemoteRendererSingle::MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+	void GuiRemoteRendererSingle::MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info)
 	{
 		if (!CanSendEvents()) return;
 		SendAccumulatedMessages();
 		IOMouseInfoWithButton arguments;
 		arguments.button = button;
 		arguments.info = info;
-		arguments.osSuper = osSuper;
 		events->OnIOButtonUp(arguments);
 	}
 
-	void GuiRemoteRendererSingle::MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)
+	void GuiRemoteRendererSingle::MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info)
 	{
 		if (!CanSendEvents()) return;
 		SendAccumulatedMessages();
 		IOMouseInfoWithButton arguments;
 		arguments.button = button;
 		arguments.info = info;
-		arguments.osSuper = osSuper;
 		events->OnIOButtonDoubleClick(arguments);
 	}
 
-	void GuiRemoteRendererSingle::HorizontalWheel(const NativeWindowMouseInfo& info, bool osSuper)
+	void GuiRemoteRendererSingle::HorizontalWheel(const NativeWindowMouseInfo& info)
 	{
 		if (!CanSendEvents()) return;
-		if (pendingHWheel && pendingHWheel.Value().osSuper != osSuper) SendAccumulatedMessages();
-		IOMouseInfoWithModifier copy{ info,osSuper };
-		if (pendingHWheel) copy.info.wheel += pendingHWheel.Value().info.wheel;
+		if (pendingHWheel && pendingHWheel.Value().osSuper != info.osSuper) SendAccumulatedMessages();
+		auto copy = info;
+		if (pendingHWheel) copy.wheel += pendingHWheel.Value().wheel;
 		pendingHWheel = copy;
 	}
 
-	void GuiRemoteRendererSingle::VerticalWheel(const NativeWindowMouseInfo& info, bool osSuper)
+	void GuiRemoteRendererSingle::VerticalWheel(const NativeWindowMouseInfo& info)
 	{
 		if (!CanSendEvents()) return;
-		if (pendingVWheel && pendingVWheel.Value().osSuper != osSuper) SendAccumulatedMessages();
-		IOMouseInfoWithModifier copy{ info,osSuper };
-		if (pendingVWheel) copy.info.wheel += pendingVWheel.Value().info.wheel;
+		if (pendingVWheel && pendingVWheel.Value().osSuper != info.osSuper) SendAccumulatedMessages();
+		auto copy = info;
+		if (pendingVWheel) copy.wheel += pendingVWheel.Value().wheel;
 		pendingVWheel = copy;
 	}
 
-	void GuiRemoteRendererSingle::MouseMoving(const NativeWindowMouseInfo& info, bool osSuper)
+	void GuiRemoteRendererSingle::MouseMoving(const NativeWindowMouseInfo& info)
 	{
 		if (!CanSendEvents()) return;
-		pendingMouseMove = IOMouseInfoWithModifier{ info,osSuper };
+		pendingMouseMove = info;
 		if (renderingDom)
 		{
 			INativeWindowListener::HitTestResult hitTestResult = INativeWindowListener::NoDecision;
@@ -65260,6 +65235,7 @@ RunIOCommandOnNativeWindow
 				NativeWindowMouseInfo info;
 				info.ctrl = IsCtrlPressing(state);
 				info.shift = IsShiftPressing(state);
+				info.osSuper = IsOSSuperPressing(state);
 				info.left = state->leftPressing;
 				info.middle = state->middlePressing;
 				info.right = state->rightPressing;
@@ -65405,7 +65381,7 @@ RunIOCommandOnNativeWindow
 				auto info = MakeMouseInfo(state);
 				for (auto listener : listeners)
 				{
-					listener->MouseMoving(info, IsOSSuperPressing(state));
+					listener->MouseMoving(info);
 				}
 			}
 
@@ -65431,7 +65407,7 @@ RunIOCommandOnNativeWindow
 				auto info = MakeMouseInfo(state);
 				for (auto listener : listeners)
 				{
-					listener->MouseDown(button, info, IsOSSuperPressing(state));
+					listener->MouseDown(button, info);
 				}
 #undef ERROR_MESSAGE_PREFIX
 			}
@@ -65446,7 +65422,7 @@ RunIOCommandOnNativeWindow
 				auto info = MakeMouseInfo(state);
 				for (auto listener : listeners)
 				{
-					listener->MouseUp(button, info, IsOSSuperPressing(state));
+					listener->MouseUp(button, info);
 				}
 #undef ERROR_MESSAGE_PREFIX
 			}
@@ -65461,8 +65437,8 @@ RunIOCommandOnNativeWindow
 				auto info = MakeMouseInfo(state);
 				for (auto listener : listeners)
 				{
-					listener->MouseDown(button, info, IsOSSuperPressing(state));
-					listener->MouseDoubleClick(button, info, IsOSSuperPressing(state));
+					listener->MouseDown(button, info);
+					listener->MouseDoubleClick(button, info);
 				}
 #undef ERROR_MESSAGE_PREFIX
 			}
@@ -65499,11 +65475,11 @@ RunIOCommandOnNativeWindow
 				{
 					if (horizontal)
 					{
-						listener->HorizontalWheel(info, IsOSSuperPressing(state));
+						listener->HorizontalWheel(info);
 					}
 					else
 					{
-						listener->VerticalWheel(info, IsOSSuperPressing(state));
+						listener->VerticalWheel(info);
 					}
 				}
 			}

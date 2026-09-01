@@ -2645,6 +2645,8 @@ INativeWindow
 			bool						ctrl;
 			/// <summary>True if the shift button is pressed.</summary>
 			bool						shift;
+			/// <summary>True if the operating system Super button is pressed.</summary>
+			bool						osSuper = false;
 			/// <summary>True if the left mouse button is pressed.</summary>
 			bool						left;
 			/// <summary>True if the middle mouse button is pressed.</summary>
@@ -2833,37 +2835,34 @@ INativeWindow
 			/// </summary>
 			/// <param name="button">The mouse button.</param>
 			/// <param name="info">Detailed information to this message.</param>
-			/// <param name="osSuper">True if the operating system Super button is pressed.</param>
-			virtual void				MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper);
+			virtual void				MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info);
 			/// <summary>
 			/// Called when a mouse button is released.
 			/// </summary>
 			/// <param name="button">The mouse button.</param>
 			/// <param name="info">Detailed information to this message.</param>
-			/// <param name="osSuper">True if the operating system Super button is pressed.</param>
-			virtual void				MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper);
+			virtual void				MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info);
 			/// <summary>
 			/// Called when a mouse button performed a double click.
 			/// </summary>
 			/// <param name="button">The mouse button.</param>
 			/// <param name="info">Detailed information to this message.</param>
-			/// <param name="osSuper">True if the operating system Super button is pressed.</param>
-			virtual void				MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper);
+			virtual void				MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info);
 			/// <summary>
 			/// Called when the horizontal mouse wheel scrolls.
 			/// </summary>
 			/// <param name="info">Detailed information to this message.</param>
-			virtual void				HorizontalWheel(const NativeWindowMouseInfo& info, bool osSuper);
+			virtual void				HorizontalWheel(const NativeWindowMouseInfo& info);
 			/// <summary>
 			/// Called when the horizontal vertical wheel scrolls.
 			/// </summary>
 			/// <param name="info">Detailed information to this message.</param>
-			virtual void				VerticalWheel(const NativeWindowMouseInfo& info, bool osSuper);
+			virtual void				VerticalWheel(const NativeWindowMouseInfo& info);
 			/// <summary>
 			/// Called when the mouse is moving on the window.
 			/// </summary>
 			/// <param name="info">Detailed information to this message.</param>
-			virtual void				MouseMoving(const NativeWindowMouseInfo& info, bool osSuper);
+			virtual void				MouseMoving(const NativeWindowMouseInfo& info);
 			/// <summary>
 			/// Called when the mouse entered the window.
 			/// </summary>
@@ -4423,7 +4422,6 @@ Predefined Events
 			struct GuiMouseEventArgs : public GuiEventArgs, public WindowMouseInfo, public Description<GuiMouseEventArgs>
 			{
 				NativeMouseButton		button = NativeMouseButton::Left;
-				bool						osSuper = false;
 
 				/// <summary>Create an event arguments with <see cref="compositionSource"/> and <see cref="eventSource"/> set to null.</summary>
 				GuiMouseEventArgs()
@@ -5694,7 +5692,7 @@ Host
 				void									OnCharInput(const NativeWindowCharInfo& info, GuiGraphicsComposition* composition, GuiCharEvent GuiGraphicsEventReceiver::* eventReceiverEvent);
 				void									OnKeyInput(const NativeWindowKeyInfo& info, GuiGraphicsComposition* composition, GuiKeyEvent GuiGraphicsEventReceiver::* eventReceiverEvent);
 				void									RaiseMouseEvent(GuiMouseEventArgs& arguments, GuiGraphicsComposition* composition, GuiMouseEvent GuiGraphicsEventReceiver::* eventReceiverEvent);
-				void									OnMouseInput(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper, bool capture, bool release, GuiMouseEvent GuiGraphicsEventReceiver::* eventReceiverEvent);
+				void									OnMouseInput(NativeMouseButton button, const NativeWindowMouseInfo& info, bool capture, bool release, GuiMouseEvent GuiGraphicsEventReceiver::* eventReceiverEvent);
 
 				void									ResetRenderTarget();
 				void									CreateRenderTarget();
@@ -5706,12 +5704,12 @@ Host
 				void									DpiChanged(bool preparing)override;
 				void									Paint()override;
 
-				void									MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)override;
-				void									MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)override;
-				void									MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper)override;
-				void									HorizontalWheel(const NativeWindowMouseInfo& info, bool osSuper)override;
-				void									VerticalWheel(const NativeWindowMouseInfo& info, bool osSuper)override;
-				void									MouseMoving(const NativeWindowMouseInfo& info, bool osSuper)override;
+				void									MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info)override;
+				void									MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info)override;
+				void									MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info)override;
+				void									HorizontalWheel(const NativeWindowMouseInfo& info)override;
+				void									VerticalWheel(const NativeWindowMouseInfo& info)override;
+				void									MouseMoving(const NativeWindowMouseInfo& info)override;
 				void									MouseEntered()override;
 				void									MouseLeaved()override;
 
@@ -10325,7 +10323,7 @@ Control Host
 				controls::GuiControlHost*						GetControlHostForInstance()override;
 				GuiControl*										GetTooltipOwner(Point location);
 				void											MoveIntoTooltipControl(GuiControl* tooltipControl, Point location);
-				void											MouseMoving(const NativeWindowMouseInfo& info, bool osSuper)override;
+				void											MouseMoving(const NativeWindowMouseInfo& info)override;
 				void											MouseLeaved()override;
 				void											Moved()override;
 				void											Enabled()override;
@@ -21056,7 +21054,6 @@ namespace vl::presentation::remoteprotocol
 	struct WindowSizingConfig;
 	struct WindowShowing;
 	struct IOMouseInfoWithButton;
-	struct IOMouseInfoWithModifier;
 	struct GlobalShortcutKey;
 	struct ElementDesc_SolidBorder;
 	struct ElementDesc_SinkBorder;
@@ -21118,7 +21115,6 @@ namespace vl::presentation::remoteprotocol
 	template<> struct JsonNameHelper<::vl::presentation::remoteprotocol::WindowShowing> { static constexpr const wchar_t* Name = L"WindowShowing"; };
 	template<> struct JsonNameHelper<::vl::presentation::NativeWindowMouseInfo> { static constexpr const wchar_t* Name = L"IOMouseInfo"; };
 	template<> struct JsonNameHelper<::vl::presentation::remoteprotocol::IOMouseInfoWithButton> { static constexpr const wchar_t* Name = L"IOMouseInfoWithButton"; };
-	template<> struct JsonNameHelper<::vl::presentation::remoteprotocol::IOMouseInfoWithModifier> { static constexpr const wchar_t* Name = L"IOMouseInfoWithModifier"; };
 	template<> struct JsonNameHelper<::vl::presentation::NativeWindowKeyInfo> { static constexpr const wchar_t* Name = L"IOKeyInfo"; };
 	template<> struct JsonNameHelper<::vl::presentation::NativeWindowCharInfo> { static constexpr const wchar_t* Name = L"IOCharInfo"; };
 	template<> struct JsonNameHelper<::vl::presentation::remoteprotocol::GlobalShortcutKey> { static constexpr const wchar_t* Name = L"GlobalShortcutKey"; };
@@ -21285,13 +21281,6 @@ namespace vl::presentation::remoteprotocol
 	{
 		::vl::presentation::NativeMouseButton button;
 		::vl::presentation::NativeWindowMouseInfo info;
-		bool osSuper;
-	};
-
-	struct IOMouseInfoWithModifier
-	{
-		::vl::presentation::NativeWindowMouseInfo info;
-		bool osSuper;
 	};
 
 	struct GlobalShortcutKey
@@ -21642,7 +21631,6 @@ namespace vl::presentation::remoteprotocol
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::WindowShowing>(const ::vl::presentation::remoteprotocol::WindowShowing & value);
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeWindowMouseInfo>(const ::vl::presentation::NativeWindowMouseInfo & value);
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::IOMouseInfoWithButton>(const ::vl::presentation::remoteprotocol::IOMouseInfoWithButton & value);
-	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::IOMouseInfoWithModifier>(const ::vl::presentation::remoteprotocol::IOMouseInfoWithModifier & value);
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeWindowKeyInfo>(const ::vl::presentation::NativeWindowKeyInfo & value);
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::NativeWindowCharInfo>(const ::vl::presentation::NativeWindowCharInfo & value);
 	template<> vl::Ptr<vl::glr::json::JsonNode> ConvertCustomTypeToJson<::vl::presentation::remoteprotocol::GlobalShortcutKey>(const ::vl::presentation::remoteprotocol::GlobalShortcutKey & value);
@@ -21721,7 +21709,6 @@ namespace vl::presentation::remoteprotocol
 	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::WindowShowing>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::WindowShowing& value);
 	template<> void ConvertJsonToCustomType<::vl::presentation::NativeWindowMouseInfo>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeWindowMouseInfo& value);
 	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::IOMouseInfoWithButton>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::IOMouseInfoWithButton& value);
-	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::IOMouseInfoWithModifier>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::IOMouseInfoWithModifier& value);
 	template<> void ConvertJsonToCustomType<::vl::presentation::NativeWindowKeyInfo>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeWindowKeyInfo& value);
 	template<> void ConvertJsonToCustomType<::vl::presentation::NativeWindowCharInfo>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::NativeWindowCharInfo& value);
 	template<> void ConvertJsonToCustomType<::vl::presentation::remoteprotocol::GlobalShortcutKey>(vl::Ptr<vl::glr::json::JsonNode> node, ::vl::presentation::remoteprotocol::GlobalShortcutKey& value);
@@ -21829,9 +21816,9 @@ namespace vl::presentation::remoteprotocol
 	HANDLER(IOButtonDown, ::vl::presentation::remoteprotocol::IOMouseInfoWithButton, REQ, NODROP)\
 	HANDLER(IOButtonDoubleClick, ::vl::presentation::remoteprotocol::IOMouseInfoWithButton, REQ, NODROP)\
 	HANDLER(IOButtonUp, ::vl::presentation::remoteprotocol::IOMouseInfoWithButton, REQ, NODROP)\
-	HANDLER(IOHWheel, ::vl::presentation::remoteprotocol::IOMouseInfoWithModifier, REQ, NODROP)\
-	HANDLER(IOVWheel, ::vl::presentation::remoteprotocol::IOMouseInfoWithModifier, REQ, NODROP)\
-	HANDLER(IOMouseMoving, ::vl::presentation::remoteprotocol::IOMouseInfoWithModifier, REQ, DROPCON)\
+	HANDLER(IOHWheel, ::vl::presentation::NativeWindowMouseInfo, REQ, NODROP)\
+	HANDLER(IOVWheel, ::vl::presentation::NativeWindowMouseInfo, REQ, NODROP)\
+	HANDLER(IOMouseMoving, ::vl::presentation::NativeWindowMouseInfo, REQ, DROPCON)\
 	HANDLER(IOMouseEntered, void, NOREQ, NODROP)\
 	HANDLER(IOMouseLeaved, void, NOREQ, NODROP)\
 	HANDLER(IOKeyDown, ::vl::presentation::NativeWindowKeyInfo, REQ, NODROP)\
@@ -21880,9 +21867,9 @@ namespace vl::presentation::remoteprotocol
 #define GACUI_REMOTEPROTOCOL_EVENT_REQUEST_TYPES(HANDLER)\
 	HANDLER(::vl::presentation::NativeWindowCharInfo)\
 	HANDLER(::vl::presentation::NativeWindowKeyInfo)\
+	HANDLER(::vl::presentation::NativeWindowMouseInfo)\
 	HANDLER(::vl::presentation::remoteprotocol::ControllerGlobalConfig)\
 	HANDLER(::vl::presentation::remoteprotocol::IOMouseInfoWithButton)\
-	HANDLER(::vl::presentation::remoteprotocol::IOMouseInfoWithModifier)\
 	HANDLER(::vl::presentation::remoteprotocol::ScreenConfig)\
 	HANDLER(::vl::presentation::remoteprotocol::WindowSizingConfig)\
 	HANDLER(::vl::vint)\
@@ -23742,12 +23729,12 @@ namespace vl::presentation::remote_renderer
 
 	protected:
 
-		void									MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper) override;
-		void									MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper) override;
-		void									MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper) override;
-		void									HorizontalWheel(const NativeWindowMouseInfo& info, bool osSuper) override;
-		void									VerticalWheel(const NativeWindowMouseInfo& info, bool osSuper) override;
-		void									MouseMoving(const NativeWindowMouseInfo& info, bool osSuper) override;
+		void									MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info) override;
+		void									MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info) override;
+		void									MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info) override;
+		void									HorizontalWheel(const NativeWindowMouseInfo& info) override;
+		void									VerticalWheel(const NativeWindowMouseInfo& info) override;
+		void									MouseMoving(const NativeWindowMouseInfo& info) override;
 		void									MouseEntered() override;
 		void									MouseLeaved() override;
 		void									KeyDown(const NativeWindowKeyInfo& info) override;
@@ -23755,7 +23742,7 @@ namespace vl::presentation::remote_renderer
 		void									Char(const NativeWindowCharInfo& info) override;
 
 	protected:
-		Nullable<remoteprotocol::IOMouseInfoWithModifier>	pendingMouseMove, pendingHWheel, pendingVWheel;
+		Nullable<NativeWindowMouseInfo>					pendingMouseMove, pendingHWheel, pendingVWheel;
 		Nullable<NativeWindowKeyInfo>					pendingKeyAutoDown;
 		Nullable<remoteprotocol::WindowSizingConfig>	pendingWindowBoundsUpdate;
 
@@ -28784,17 +28771,17 @@ GuiHostedController
 				void (GuiHostedController::* PreAction)(const NativeWindowMouseInfo&),
 				GuiHostedWindow* (GuiHostedController::* GetSelectedWindow)(const NativeWindowMouseInfo&),
 				void (GuiHostedController::* PostAction)(GuiHostedWindow*, const NativeWindowMouseInfo&),
-				void (INativeWindowListener::* Callback)(NativeMouseButton, const NativeWindowMouseInfo&, bool)
+				void (INativeWindowListener::* Callback)(NativeMouseButton, const NativeWindowMouseInfo&)
 				>
-			void							HandleMouseButtonCallback(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper);
+			void							HandleMouseButtonCallback(NativeMouseButton button, const NativeWindowMouseInfo& info);
 
 			template<
 				void (GuiHostedController::* PreAction)(const NativeWindowMouseInfo&),
 				GuiHostedWindow* (GuiHostedController::* GetSelectedWindow)(const NativeWindowMouseInfo&),
 				void (GuiHostedController::* PostAction)(GuiHostedWindow*, const NativeWindowMouseInfo&),
-				void (INativeWindowListener::* Callback)(const NativeWindowMouseInfo&, bool)
+				void (INativeWindowListener::* Callback)(const NativeWindowMouseInfo&)
 				>
-			void							HandleMouseCallback(const NativeWindowMouseInfo& info, bool osSuper);
+			void							HandleMouseCallback(const NativeWindowMouseInfo& info);
 
 			template<
 				typename TInfo,
@@ -28802,12 +28789,12 @@ GuiHostedController
 			>
 			void							HandleKeyboardCallback(const TInfo& info);
 
-			void							MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper) override;
-			void							MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper) override;
-			void							MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info, bool osSuper) override;
-			void							HorizontalWheel(const NativeWindowMouseInfo& info, bool osSuper) override;
-			void							VerticalWheel(const NativeWindowMouseInfo& info, bool osSuper) override;
-			void							MouseMoving(const NativeWindowMouseInfo& info, bool osSuper) override;
+			void							MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info) override;
+			void							MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info) override;
+			void							MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info) override;
+			void							HorizontalWheel(const NativeWindowMouseInfo& info) override;
+			void							VerticalWheel(const NativeWindowMouseInfo& info) override;
+			void							MouseMoving(const NativeWindowMouseInfo& info) override;
 			void							MouseEntered() override;
 			void							MouseLeaved() override;
 

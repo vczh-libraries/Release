@@ -279,6 +279,7 @@ WindowsForm
 				NativeWindowMouseInfo ConvertMouse(WPARAM wParam, LPARAM lParam, bool wheelMessage, bool nonClient)
 				{
 					NativeWindowMouseInfo info;
+					info.osSuper = IsOSSuperPressed();
 
 					info.nonClient = false;
 					if (nonClient)
@@ -632,11 +633,10 @@ WindowsForm
 					case WM_LBUTTONDOWN:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->MouseDown(NativeMouseButton::Left, info, osSuper);
+								listeners[i]->MouseDown(NativeMouseButton::Left, info);
 							}
 						}
 						break;
@@ -646,11 +646,10 @@ WindowsForm
 					case WM_LBUTTONUP:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->MouseUp(NativeMouseButton::Left, info, osSuper);
+								listeners[i]->MouseUp(NativeMouseButton::Left, info);
 							}
 						}
 						break;
@@ -660,12 +659,11 @@ WindowsForm
 					case WM_LBUTTONDBLCLK:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->MouseDown(NativeMouseButton::Left, info, osSuper);
-								listeners[i]->MouseDoubleClick(NativeMouseButton::Left, info, osSuper);
+								listeners[i]->MouseDown(NativeMouseButton::Left, info);
+								listeners[i]->MouseDoubleClick(NativeMouseButton::Left, info);
 							}
 						}
 						break;
@@ -675,11 +673,10 @@ WindowsForm
 					case WM_RBUTTONDOWN:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->MouseDown(NativeMouseButton::Right, info, osSuper);
+								listeners[i]->MouseDown(NativeMouseButton::Right, info);
 							}
 						}
 						break;
@@ -689,11 +686,10 @@ WindowsForm
 					case WM_RBUTTONUP:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->MouseUp(NativeMouseButton::Right, info, osSuper);
+								listeners[i]->MouseUp(NativeMouseButton::Right, info);
 							}
 						}
 						break;
@@ -703,12 +699,11 @@ WindowsForm
 					case WM_RBUTTONDBLCLK:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->MouseDown(NativeMouseButton::Right, info, osSuper);
-								listeners[i]->MouseDoubleClick(NativeMouseButton::Right, info, osSuper);
+								listeners[i]->MouseDown(NativeMouseButton::Right, info);
+								listeners[i]->MouseDoubleClick(NativeMouseButton::Right, info);
 							}
 						}
 						break;
@@ -718,11 +713,10 @@ WindowsForm
 					case WM_MBUTTONDOWN:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->MouseDown(NativeMouseButton::Middle, info, osSuper);
+								listeners[i]->MouseDown(NativeMouseButton::Middle, info);
 							}
 						}
 						break;
@@ -732,11 +726,10 @@ WindowsForm
 					case WM_MBUTTONUP:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->MouseUp(NativeMouseButton::Middle, info, osSuper);
+								listeners[i]->MouseUp(NativeMouseButton::Middle, info);
 							}
 						}
 						break;
@@ -746,12 +739,11 @@ WindowsForm
 					case WM_MBUTTONDBLCLK:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->MouseDown(NativeMouseButton::Middle, info, osSuper);
-								listeners[i]->MouseDoubleClick(NativeMouseButton::Middle, info, osSuper);
+								listeners[i]->MouseDown(NativeMouseButton::Middle, info);
+								listeners[i]->MouseDoubleClick(NativeMouseButton::Middle, info);
 							}
 						}
 						break;
@@ -762,10 +754,9 @@ WindowsForm
 						{
 							auto button = GetXButton(wParam);
 							NativeWindowMouseInfo info = ConvertMouse(nonClient ? (WPARAM)LOWORD(wParam) : GET_KEYSTATE_WPARAM(wParam), lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							for (vint i = 0; i < listeners.Count(); i++)
 							{
-								listeners[i]->MouseDown(button, info, osSuper);
+								listeners[i]->MouseDown(button, info);
 							}
 							result = TRUE;
 							return true;
@@ -777,10 +768,9 @@ WindowsForm
 						{
 							auto button = GetXButton(wParam);
 							NativeWindowMouseInfo info = ConvertMouse(nonClient ? (WPARAM)LOWORD(wParam) : GET_KEYSTATE_WPARAM(wParam), lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							for (vint i = 0; i < listeners.Count(); i++)
 							{
-								listeners[i]->MouseUp(button, info, osSuper);
+								listeners[i]->MouseUp(button, info);
 							}
 							result = TRUE;
 							return true;
@@ -792,11 +782,10 @@ WindowsForm
 						{
 							auto button = GetXButton(wParam);
 							NativeWindowMouseInfo info = ConvertMouse(nonClient ? (WPARAM)LOWORD(wParam) : GET_KEYSTATE_WPARAM(wParam), lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							for (vint i = 0; i < listeners.Count(); i++)
 							{
-								listeners[i]->MouseDown(button, info, osSuper);
-								listeners[i]->MouseDoubleClick(button, info, osSuper);
+								listeners[i]->MouseDown(button, info);
+								listeners[i]->MouseDoubleClick(button, info);
 							}
 							result = TRUE;
 							return true;
@@ -807,7 +796,6 @@ WindowsForm
 					case WM_MOUSEMOVE:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, false, nonClient);
-							bool osSuper = IsOSSuperPressed();
 							if(info.x!=mouseLastX || info.y!=mouseLastY)
 							{
 								if(!mouseHoving)
@@ -823,7 +811,7 @@ WindowsForm
 								// TODO: (enumerable) foreach
 								for(vint i=0;i<listeners.Count();i++)
 								{
-									listeners[i]->MouseMoving(info, osSuper);
+									listeners[i]->MouseMoving(info);
 								}
 							}
 						}
@@ -832,22 +820,20 @@ WindowsForm
 					case WM_MOUSEHWHEEL:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, true, false);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->HorizontalWheel(info, osSuper);
+								listeners[i]->HorizontalWheel(info);
 							}
 						}
 						break;
 					case WM_MOUSEWHEEL:
 						{
 							NativeWindowMouseInfo info=ConvertMouse(wParam, lParam, true, false);
-							bool osSuper = IsOSSuperPressed();
 							// TODO: (enumerable) foreach
 							for(vint i=0;i<listeners.Count();i++)
 							{
-								listeners[i]->VerticalWheel(info, osSuper);
+								listeners[i]->VerticalWheel(info);
 							}
 						}
 						break;

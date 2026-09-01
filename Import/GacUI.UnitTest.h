@@ -250,6 +250,7 @@ UnitTestRemoteProtocol
 			NativeWindowMouseInfo info;
 			info.ctrl = IsPressing(VKEY::KEY_CONTROL) || IsPressing(VKEY::KEY_LCONTROL) || IsPressing(VKEY::KEY_RCONTROL);
 			info.shift = IsPressing(VKEY::KEY_SHIFT) || IsPressing(VKEY::KEY_LSHIFT) || IsPressing(VKEY::KEY_RSHIFT);
+			info.osSuper = IsOSSuperPressing();
 			info.left = leftPressing;
 			info.middle = middlePressing;
 			info.right = rightPressing;
@@ -405,7 +406,7 @@ Mouse Move Events
 		DO_MOUSE_MOVE:
 
 			mousePosition = position;
-			UseEvents().OnIOMouseMoving({ MakeMouseInfo(),IsOSSuperPressing() });
+			UseEvents().OnIOMouseMoving(MakeMouseInfo());
 		}
 
 		void MouseMove(NativePoint position, bool ctrl, bool shift, bool alt, bool osSuper = false)
@@ -438,7 +439,7 @@ Mouse Wheel Events
 			if (position) MouseMove(position.Value());
 			auto info = MakeMouseInfo();
 			info.wheel = up;
-			UseEvents().OnIOVWheel({ info,IsOSSuperPressing() });
+			UseEvents().OnIOVWheel(info);
 		}
 
 		void _Wheel(vint up, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt, bool osSuper)
@@ -459,7 +460,7 @@ Mouse Wheel Events
 			if (position) MouseMove(position.Value());
 			auto info = MakeMouseInfo();
 			info.wheel = right;
-			UseEvents().OnIOHWheel({ info,IsOSSuperPressing() });
+			UseEvents().OnIOHWheel(info);
 		}
 
 		void _HWheel(vint right, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt, bool osSuper)
@@ -525,22 +526,22 @@ Mouse Click Events
 			if (position) MouseMove(position.Value());\
 			CHECK_ERROR(!LOWER ## Pressing, CLASS_PREFIX L"_" L ## #PREFIX L"Down(...)#" L"The button should not be being pressed.");\
 			LOWER ## Pressing = true;\
-			UseEvents().OnIOButtonDown({ NativeMouseButton::UPPER,MakeMouseInfo(),IsOSSuperPressing() });\
+			UseEvents().OnIOButtonDown({ NativeMouseButton::UPPER,MakeMouseInfo() });\
 		}\
 		void _ ## PREFIX ## Up(Nullable<NativePoint> position = {})\
 		{\
 			if (position) MouseMove(position.Value());\
 			CHECK_ERROR(LOWER ## Pressing, CLASS_PREFIX L"_" L ## #PREFIX L"Up(...)#" L"The button should be being pressed.");\
 			LOWER ## Pressing = false;\
-			UseEvents().OnIOButtonUp({ NativeMouseButton::UPPER,MakeMouseInfo(),IsOSSuperPressing() });\
+			UseEvents().OnIOButtonUp({ NativeMouseButton::UPPER,MakeMouseInfo() });\
 		}\
 		void _ ## PREFIX ## DBClick(Nullable<NativePoint> position = {})\
 		{\
 			if (position) MouseMove(position.Value());\
 			CHECK_ERROR(!LOWER ## Pressing, CLASS_PREFIX L"_" L ## #PREFIX L"DBClick(...)#" L"The button should not be being pressed.");\
 			LOWER ## Pressing = true;\
-			UseEvents().OnIOButtonDown({ NativeMouseButton::UPPER,MakeMouseInfo(),IsOSSuperPressing() });\
-			UseEvents().OnIOButtonDoubleClick({ NativeMouseButton::UPPER,MakeMouseInfo(),IsOSSuperPressing() });\
+			UseEvents().OnIOButtonDown({ NativeMouseButton::UPPER,MakeMouseInfo() });\
+			UseEvents().OnIOButtonDoubleClick({ NativeMouseButton::UPPER,MakeMouseInfo() });\
 		}\
 		void PREFIX ## Click(Nullable<NativePoint> position = {})\
 		{\
