@@ -167,14 +167,17 @@
             </Cell>
 
             <Cell Site="row:2 column:1 rowSpan:4">
-              <ev.rightButtonUp-eval><![CDATA[
+              <ev.mouseUp-eval><![CDATA[
                 {
-                  var bounds = sender.GetGlobalBounds();
-                  var x = bounds.x1 + arguments.x;
-                  var y = bounds.y1 + arguments.y;
-                  editMenu.ShowPopup(self, {x:x y:y} of Point);
+                  if (arguments.button == NativeMouseButton::Right)
+                  {
+                    var bounds = sender.GetGlobalBounds();
+                    var x = bounds.x1 + arguments.x;
+                    var y = bounds.y1 + arguments.y;
+                    editMenu.ShowPopup(self, {x:x y:y} of Point);
+                  }
                 }
-              ]]></ev.rightButtonUp-eval>
+              ]]></ev.mouseUp-eval>
               <SolidBorder Color="#FFFF80"/>
               <Bounds AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElementAndChildren">
                 <SolidLabel Text="Right click to show a &lt;ToolstripMenu/&gt;." Color="#FFFF80" HorizontalAlignment="Center" VerticalAlignment="Center">

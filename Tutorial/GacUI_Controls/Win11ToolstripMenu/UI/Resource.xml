@@ -50,18 +50,21 @@
           <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
         </Label>
         <att.ContainerComposition-set PreferredMinSize="x:320 y:240">
-          <ev.rightButtonDown-eval>
+          <ev.mouseDown-eval>
             <![CDATA[
             {
-              var b = self.ContainerComposition.GlobalBounds;
-              var p: Point = {
-                x:(arguments.x+b.x1)
-                y:(arguments.y+b.y1)
-                };
-              menuEdit.ShowPopup(self, p);
+              if (arguments.button == NativeMouseButton::Right)
+              {
+                var b = self.ContainerComposition.GlobalBounds;
+                var p: Point = {
+                  x:(arguments.x+b.x1)
+                  y:(arguments.y+b.y1)
+                  };
+                menuEdit.ShowPopup(self, p);
+              }
             }
           ]]>
-          </ev.rightButtonDown-eval>
+          </ev.mouseDown-eval>
         </att.ContainerComposition-set>
       </Window>
     </Instance>

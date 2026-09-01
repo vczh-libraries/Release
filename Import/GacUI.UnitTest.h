@@ -226,6 +226,8 @@ UnitTestRemoteProtocol
 		bool								leftPressing = false;
 		bool								middlePressing = false;
 		bool								rightPressing = false;
+		bool								mouse4Pressing = false;
+		bool								mouse5Pressing = false;
 		bool								capslockToggled = false;
 
 		IGuiRemoteProtocolEvents& UseEvents()
@@ -236,6 +238,11 @@ UnitTestRemoteProtocol
 		bool IsPressing(VKEY key)
 		{
 			return pressingKeys.Contains(key);
+		}
+
+		bool IsOSSuperPressing()
+		{
+			return IsPressing(VKEY::KEY_LWIN) || IsPressing(VKEY::KEY_RWIN);
 		}
 
 		NativeWindowMouseInfo MakeMouseInfo()
@@ -260,6 +267,7 @@ UnitTestRemoteProtocol
 			info.ctrl = IsPressing(VKEY::KEY_CONTROL) || IsPressing(VKEY::KEY_LCONTROL) || IsPressing(VKEY::KEY_RCONTROL);
 			info.shift = IsPressing(VKEY::KEY_SHIFT) || IsPressing(VKEY::KEY_LSHIFT) || IsPressing(VKEY::KEY_RSHIFT);
 			info.alt = IsPressing(VKEY::KEY_MENU) || IsPressing(VKEY::KEY_LMENU) || IsPressing(VKEY::KEY_RMENU);
+			info.osSuper = IsOSSuperPressing();
 			info.capslock = capslockToggled;
 			info.autoRepeatKeyDown = autoRepeatKeyDown;
 			return info;
@@ -272,6 +280,7 @@ UnitTestRemoteProtocol
 			info.ctrl = IsPressing(VKEY::KEY_CONTROL) || IsPressing(VKEY::KEY_LCONTROL) || IsPressing(VKEY::KEY_RCONTROL);
 			info.shift = IsPressing(VKEY::KEY_SHIFT) || IsPressing(VKEY::KEY_LSHIFT) || IsPressing(VKEY::KEY_RSHIFT);
 			info.alt = IsPressing(VKEY::KEY_MENU) || IsPressing(VKEY::KEY_LMENU) || IsPressing(VKEY::KEY_RMENU);
+			info.osSuper = IsOSSuperPressing();
 			info.capslock = capslockToggled;
 			return info;
 		}
@@ -345,18 +354,19 @@ Keys
 			_KeyUp(key);
 		}
 
-		void KeyPress(VKEY key, bool ctrl, bool shift, bool alt)
+		void KeyPress(VKEY key, bool ctrl, bool shift, bool alt, bool osSuper = false)
 		{
 			if (ctrl) _KeyDown(VKEY::KEY_CONTROL);
 			if (shift) _KeyDown(VKEY::KEY_SHIFT);
 			if (alt) _KeyDown(VKEY::KEY_MENU);
+			if (osSuper) _KeyDown(VKEY::KEY_LWIN);
 			KeyPress(key);
+			if (osSuper) _KeyUp(VKEY::KEY_LWIN);
 			if (alt) _KeyUp(VKEY::KEY_MENU);
 			if (shift) _KeyUp(VKEY::KEY_SHIFT);
 			if (ctrl) _KeyUp(VKEY::KEY_CONTROL);
 		}
 
-		// Emits plain IOChar events without synthesizing key presses; expand in future iterations when modifiers are required.
 		void TypeString(const WString& text)
 		{
 			if (text.Length() == 0) return;
@@ -364,6 +374,19 @@ Keys
 			{
 				UseEvents().OnIOChar(MakeCharInfo(text[i]));
 			}
+		}
+
+		void TypeString(const WString& text, bool ctrl, bool shift, bool alt, bool osSuper = false)
+		{
+			if (ctrl) _KeyDown(VKEY::KEY_CONTROL);
+			if (shift) _KeyDown(VKEY::KEY_SHIFT);
+			if (alt) _KeyDown(VKEY::KEY_MENU);
+			if (osSuper) _KeyDown(VKEY::KEY_LWIN);
+			TypeString(text);
+			if (osSuper) _KeyUp(VKEY::KEY_LWIN);
+			if (alt) _KeyUp(VKEY::KEY_MENU);
+			if (shift) _KeyUp(VKEY::KEY_SHIFT);
+			if (ctrl) _KeyUp(VKEY::KEY_CONTROL);
 		}
 
 /***********************************************************************
@@ -382,7 +405,20 @@ Mouse Move Events
 		DO_MOUSE_MOVE:
 
 			mousePosition = position;
-			UseEvents().OnIOMouseMoving(MakeMouseInfo());
+			UseEvents().OnIOMouseMoving({ MakeMouseInfo(),IsOSSuperPressing() });
+		}
+
+		void MouseMove(NativePoint position, bool ctrl, bool shift, bool alt, bool osSuper = false)
+		{
+			if (ctrl) _KeyDown(VKEY::KEY_CONTROL);
+			if (shift) _KeyDown(VKEY::KEY_SHIFT);
+			if (alt) _KeyDown(VKEY::KEY_MENU);
+			if (osSuper) _KeyDown(VKEY::KEY_LWIN);
+			MouseMove(position);
+			if (osSuper) _KeyUp(VKEY::KEY_LWIN);
+			if (alt) _KeyUp(VKEY::KEY_MENU);
+			if (shift) _KeyUp(VKEY::KEY_SHIFT);
+			if (ctrl) _KeyUp(VKEY::KEY_CONTROL);
 		}
 
 		NativePoint GetMousePosition()
@@ -402,15 +438,17 @@ Mouse Wheel Events
 			if (position) MouseMove(position.Value());
 			auto info = MakeMouseInfo();
 			info.wheel = up;
-			UseEvents().OnIOVWheel(info);
+			UseEvents().OnIOVWheel({ info,IsOSSuperPressing() });
 		}
 
-		void _Wheel(vint up, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt)
+		void _Wheel(vint up, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt, bool osSuper)
 		{
 			if (ctrl) _KeyDown(VKEY::KEY_CONTROL);
 			if (shift) _KeyDown(VKEY::KEY_SHIFT);
 			if (alt) _KeyDown(VKEY::KEY_MENU);
+			if (osSuper) _KeyDown(VKEY::KEY_LWIN);
 			_Wheel(up, position);
+			if (osSuper) _KeyUp(VKEY::KEY_LWIN);
 			if (alt) _KeyUp(VKEY::KEY_MENU);
 			if (shift) _KeyUp(VKEY::KEY_SHIFT);
 			if (ctrl) _KeyUp(VKEY::KEY_CONTROL);
@@ -421,15 +459,17 @@ Mouse Wheel Events
 			if (position) MouseMove(position.Value());
 			auto info = MakeMouseInfo();
 			info.wheel = right;
-			UseEvents().OnIOHWheel(info);
+			UseEvents().OnIOHWheel({ info,IsOSSuperPressing() });
 		}
 
-		void _HWheel(vint right, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt)
+		void _HWheel(vint right, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt, bool osSuper)
 		{
 			if (ctrl) _KeyDown(VKEY::KEY_CONTROL);
 			if (shift) _KeyDown(VKEY::KEY_SHIFT);
 			if (alt) _KeyDown(VKEY::KEY_MENU);
+			if (osSuper) _KeyDown(VKEY::KEY_LWIN);
 			_HWheel(right, position);
+			if (osSuper) _KeyUp(VKEY::KEY_LWIN);
 			if (alt) _KeyUp(VKEY::KEY_MENU);
 			if (shift) _KeyUp(VKEY::KEY_SHIFT);
 			if (ctrl) _KeyUp(VKEY::KEY_CONTROL);
@@ -440,9 +480,9 @@ Mouse Wheel Events
 			_Wheel(-jumps * 120, position);
 		}
 
-		void WheelDown(vint jumps, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt)
+		void WheelDown(vint jumps, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt, bool osSuper = false)
 		{
-			_Wheel(-jumps * 120, position, ctrl, shift, alt);
+			_Wheel(-jumps * 120, position, ctrl, shift, alt, osSuper);
 		}
 
 		void WheelUp(vint jumps = 1, Nullable<NativePoint> position = {})
@@ -450,9 +490,9 @@ Mouse Wheel Events
 			_Wheel(jumps * 120, position);
 		}
 
-		void WheelUp(vint jumps, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt)
+		void WheelUp(vint jumps, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt, bool osSuper = false)
 		{
-			_Wheel(jumps * 120, position, ctrl, shift, alt);
+			_Wheel(jumps * 120, position, ctrl, shift, alt, osSuper);
 		}
 
 		void HWheelLeft(vint jumps = 1, Nullable<NativePoint> position = {})
@@ -460,9 +500,9 @@ Mouse Wheel Events
 			_HWheel(-jumps * 120, position);
 		}
 
-		void HWheelLeft(vint jumps, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt)
+		void HWheelLeft(vint jumps, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt, bool osSuper = false)
 		{
-			_HWheel(-jumps * 120, position, ctrl, shift, alt);
+			_HWheel(-jumps * 120, position, ctrl, shift, alt, osSuper);
 		}
 
 		void HWheelRight(vint jumps = 1, Nullable<NativePoint> position = {})
@@ -470,9 +510,9 @@ Mouse Wheel Events
 			_HWheel(jumps * 120, position);
 		}
 
-		void HWheelRight(vint jumps, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt)
+		void HWheelRight(vint jumps, Nullable<NativePoint> position, bool ctrl, bool shift, bool alt, bool osSuper = false)
 		{
-			_HWheel(jumps * 120, position, ctrl, shift, alt);
+			_HWheel(jumps * 120, position, ctrl, shift, alt, osSuper);
 		}
 
 /***********************************************************************
@@ -485,33 +525,36 @@ Mouse Click Events
 			if (position) MouseMove(position.Value());\
 			CHECK_ERROR(!LOWER ## Pressing, CLASS_PREFIX L"_" L ## #PREFIX L"Down(...)#" L"The button should not be being pressed.");\
 			LOWER ## Pressing = true;\
-			UseEvents().OnIOButtonDown({ remoteprotocol::IOMouseButton::UPPER,MakeMouseInfo() });\
+			UseEvents().OnIOButtonDown({ NativeMouseButton::UPPER,MakeMouseInfo(),IsOSSuperPressing() });\
 		}\
 		void _ ## PREFIX ## Up(Nullable<NativePoint> position = {})\
 		{\
 			if (position) MouseMove(position.Value());\
 			CHECK_ERROR(LOWER ## Pressing, CLASS_PREFIX L"_" L ## #PREFIX L"Up(...)#" L"The button should be being pressed.");\
 			LOWER ## Pressing = false;\
-			UseEvents().OnIOButtonUp({ remoteprotocol::IOMouseButton::UPPER,MakeMouseInfo() });\
+			UseEvents().OnIOButtonUp({ NativeMouseButton::UPPER,MakeMouseInfo(),IsOSSuperPressing() });\
 		}\
 		void _ ## PREFIX ## DBClick(Nullable<NativePoint> position = {})\
 		{\
 			if (position) MouseMove(position.Value());\
 			CHECK_ERROR(!LOWER ## Pressing, CLASS_PREFIX L"_" L ## #PREFIX L"DBClick(...)#" L"The button should not be being pressed.");\
 			LOWER ## Pressing = true;\
-			UseEvents().OnIOButtonDoubleClick({ remoteprotocol::IOMouseButton::UPPER,MakeMouseInfo() });\
+			UseEvents().OnIOButtonDown({ NativeMouseButton::UPPER,MakeMouseInfo(),IsOSSuperPressing() });\
+			UseEvents().OnIOButtonDoubleClick({ NativeMouseButton::UPPER,MakeMouseInfo(),IsOSSuperPressing() });\
 		}\
 		void PREFIX ## Click(Nullable<NativePoint> position = {})\
 		{\
 			_ ## PREFIX ## Down(position);\
 			_ ## PREFIX ## Up(position);\
 		}\
-		void PREFIX ## Click(Nullable<NativePoint> position, bool ctrl, bool shift, bool alt)\
+		void PREFIX ## Click(Nullable<NativePoint> position, bool ctrl, bool shift, bool alt, bool osSuper = false)\
 		{\
 			if (ctrl) _KeyDown(VKEY::KEY_CONTROL);\
 			if (shift) _KeyDown(VKEY::KEY_SHIFT);\
 			if (alt) _KeyDown(VKEY::KEY_MENU);\
+			if (osSuper) _KeyDown(VKEY::KEY_LWIN);\
 			PREFIX ## Click(position);\
+			if (osSuper) _KeyUp(VKEY::KEY_LWIN);\
 			if (alt) _KeyUp(VKEY::KEY_MENU);\
 			if (shift) _KeyUp(VKEY::KEY_SHIFT);\
 			if (ctrl) _KeyUp(VKEY::KEY_CONTROL);\
@@ -523,12 +566,14 @@ Mouse Click Events
 			_ ## PREFIX ## DBClick(position);\
 			_ ## PREFIX ## Up(position);\
 		}\
-		void PREFIX ## DBClick(Nullable<NativePoint> position, bool ctrl, bool shift, bool alt)\
+		void PREFIX ## DBClick(Nullable<NativePoint> position, bool ctrl, bool shift, bool alt, bool osSuper = false)\
 		{\
 			if (ctrl) _KeyDown(VKEY::KEY_CONTROL);\
 			if (shift) _KeyDown(VKEY::KEY_SHIFT);\
 			if (alt) _KeyDown(VKEY::KEY_MENU);\
+			if (osSuper) _KeyDown(VKEY::KEY_LWIN);\
 			PREFIX ## DBClick(position);\
+			if (osSuper) _KeyUp(VKEY::KEY_LWIN);\
 			if (alt) _KeyUp(VKEY::KEY_MENU);\
 			if (shift) _KeyUp(VKEY::KEY_SHIFT);\
 			if (ctrl) _KeyUp(VKEY::KEY_CONTROL);\
@@ -537,6 +582,8 @@ Mouse Click Events
 		DEFINE_MOUSE_ACTIONS(L, left, Left);
 		DEFINE_MOUSE_ACTIONS(M, middle, Middle);
 		DEFINE_MOUSE_ACTIONS(R, right, Right);
+		DEFINE_MOUSE_ACTIONS(Mouse4, mouse4, Mouse4);
+		DEFINE_MOUSE_ACTIONS(Mouse5, mouse5, Mouse5);
 
 #undef DEFINE_MOUSE_ACTIONS
 
@@ -545,6 +592,7 @@ Mouse Click Events
 }
 
 #endif
+
 
 /***********************************************************************
 .\GUIUNITTESTPROTOCOL_MAINWINDOW.H

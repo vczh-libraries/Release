@@ -61,16 +61,19 @@
         </Table>
 
         <att.ContainerComposition-set PreferredMinSize="x:320 y:240">
-          <ev.rightButtonDown-eval><![CDATA[
+          <ev.mouseDown-eval><![CDATA[
             {
-              var b = self.ContainerComposition.GlobalBounds;
-              var p: Point = {
-                x:(arguments.x+b.x1)
-                y:(arguments.y+b.y1)
-                };
-              menuRightClick.ShowPopup(self, p);
+              if (arguments.button == NativeMouseButton::Right)
+              {
+                var b = self.ContainerComposition.GlobalBounds;
+                var p: Point = {
+                  x:(arguments.x+b.x1)
+                  y:(arguments.y+b.y1)
+                  };
+                menuRightClick.ShowPopup(self, p);
+              }
             }
-          ]]></ev.rightButtonDown-eval>
+          ]]></ev.mouseDown-eval>
         </att.ContainerComposition-set>
       </Window>
     </Instance>

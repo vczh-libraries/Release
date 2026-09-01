@@ -63,9 +63,12 @@ Closures
 
 	void __vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiMouseEventArgs* arguments) const
 	{
-		auto b = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->GetContainerComposition())->GetGlobalBounds();
-		auto p = [&](){ ::vl::presentation::Point __vwsn_temp__; __vwsn_temp__.x = (::vl::__vwsn::This(arguments)->x + b.x1); __vwsn_temp__.y = (::vl::__vwsn::This(arguments)->y + b.y1); return __vwsn_temp__; }();
-		::vl::__vwsn::This(__vwsnthis_0->menuEdit)->ShowPopup(static_cast<::vl::presentation::controls::GuiControl*>(__vwsnthis_0->self), p);
+		if ((::vl::__vwsn::This(arguments)->button == ::vl::presentation::NativeMouseButton::Right))
+		{
+			auto b = ::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->GetContainerComposition())->GetGlobalBounds();
+			auto p = [&](){ ::vl::presentation::Point __vwsn_temp__; __vwsn_temp__.x = (::vl::__vwsn::This(arguments)->x + b.x1); __vwsn_temp__.y = (::vl::__vwsn::This(arguments)->y + b.y1); return __vwsn_temp__; }();
+			::vl::__vwsn::This(__vwsnthis_0->menuEdit)->ShowPopup(static_cast<::vl::presentation::controls::GuiControl*>(__vwsnthis_0->self), p);
+		}
 	}
 }
 
@@ -344,7 +347,7 @@ namespace demo
 		}
 		{
 			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_17)->GetEventReceiver()->rightButtonDown, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_17)->GetEventReceiver()->mouseDown, __vwsn_event_handler_);
 		}
 	}
 

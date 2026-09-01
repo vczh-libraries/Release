@@ -411,6 +411,13 @@
                 "$ast": "ReferenceType",
                 "name": "CharacterEncoding"
             }
+        }, {
+            "$ast": "StructMember",
+            "name": "osSuperKeyName",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "String"
+            }
         }],
         "type": "Struct"
     }, {
@@ -946,7 +953,11 @@
         }
     }, {
         "$ast": "EnumDecl",
-        "attributes": [],
+        "attributes": [{
+            "$ast": "Attribute",
+            "cppType": "::vl::presentation::NativeMouseButton",
+            "name": "@Cpp"
+        }],
         "name": "IOMouseButton",
         "members": [{
             "$ast": "EnumMember",
@@ -957,6 +968,12 @@
         }, {
             "$ast": "EnumMember",
             "name": "Right"
+        }, {
+            "$ast": "EnumMember",
+            "name": "Mouse4"
+        }, {
+            "$ast": "EnumMember",
+            "name": "Mouse5"
         }]
     }, {
         "$ast": "StructDecl",
@@ -1049,6 +1066,33 @@
                 "$ast": "ReferenceType",
                 "name": "IOMouseInfo"
             }
+        }, {
+            "$ast": "StructMember",
+            "name": "osSuper",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Boolean"
+            }
+        }],
+        "type": "Struct"
+    }, {
+        "$ast": "StructDecl",
+        "attributes": [],
+        "name": "IOMouseInfoWithModifier",
+        "members": [{
+            "$ast": "StructMember",
+            "name": "info",
+            "type": {
+                "$ast": "ReferenceType",
+                "name": "IOMouseInfo"
+            }
+        }, {
+            "$ast": "StructMember",
+            "name": "osSuper",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Boolean"
+            }
         }],
         "type": "Struct"
     }, {
@@ -1083,6 +1127,13 @@
         }, {
             "$ast": "StructMember",
             "name": "alt",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Boolean"
+            }
+        }, {
+            "$ast": "StructMember",
+            "name": "osSuper",
             "type": {
                 "$ast": "PrimitiveType",
                 "type": "Boolean"
@@ -1141,6 +1192,13 @@
             }
         }, {
             "$ast": "StructMember",
+            "name": "osSuper",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Boolean"
+            }
+        }, {
+            "$ast": "StructMember",
             "name": "capslock",
             "type": {
                 "$ast": "PrimitiveType",
@@ -1176,6 +1234,13 @@
         }, {
             "$ast": "StructMember",
             "name": "alt",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Boolean"
+            }
+        }, {
+            "$ast": "StructMember",
+            "name": "osSuper",
             "type": {
                 "$ast": "PrimitiveType",
                 "type": "Boolean"
@@ -1304,7 +1369,7 @@
             "$ast": "EventRequest",
             "type": {
                 "$ast": "ReferenceType",
-                "name": "IOMouseInfo"
+                "name": "IOMouseInfoWithModifier"
             }
         }
     }, {
@@ -1315,7 +1380,7 @@
             "$ast": "EventRequest",
             "type": {
                 "$ast": "ReferenceType",
-                "name": "IOMouseInfo"
+                "name": "IOMouseInfoWithModifier"
             }
         }
     }, {
@@ -1330,7 +1395,7 @@
             "$ast": "EventRequest",
             "type": {
                 "$ast": "ReferenceType",
-                "name": "IOMouseInfo"
+                "name": "IOMouseInfoWithModifier"
             }
         }
     }, {
