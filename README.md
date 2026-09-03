@@ -21,13 +21,6 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 - [Linux Wayland](https://github.com/vczh-libraries/wGac/releases/tag/1.4.1.1)
 - [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.4.1.1)
 
-### 1.4.1.0
-
-- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.4.1.0)
-- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.4.1.0)
-- [Linux Wayland](https://github.com/vczh-libraries/wGac/releases/tag/1.4.1.0)
-- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.4.1.0)
-
 ### 1.2.11.0
 
 - [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.2.11.0)
