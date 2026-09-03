@@ -999,6 +999,13 @@
             }
         }, {
             "$ast": "StructMember",
+            "name": "osSuper",
+            "type": {
+                "$ast": "PrimitiveType",
+                "type": "Boolean"
+            }
+        }, {
+            "$ast": "StructMember",
             "name": "left",
             "type": {
                 "$ast": "PrimitiveType",
@@ -1065,33 +1072,6 @@
             "type": {
                 "$ast": "ReferenceType",
                 "name": "IOMouseInfo"
-            }
-        }, {
-            "$ast": "StructMember",
-            "name": "osSuper",
-            "type": {
-                "$ast": "PrimitiveType",
-                "type": "Boolean"
-            }
-        }],
-        "type": "Struct"
-    }, {
-        "$ast": "StructDecl",
-        "attributes": [],
-        "name": "IOMouseInfoWithModifier",
-        "members": [{
-            "$ast": "StructMember",
-            "name": "info",
-            "type": {
-                "$ast": "ReferenceType",
-                "name": "IOMouseInfo"
-            }
-        }, {
-            "$ast": "StructMember",
-            "name": "osSuper",
-            "type": {
-                "$ast": "PrimitiveType",
-                "type": "Boolean"
             }
         }],
         "type": "Struct"
@@ -1369,7 +1349,7 @@
             "$ast": "EventRequest",
             "type": {
                 "$ast": "ReferenceType",
-                "name": "IOMouseInfoWithModifier"
+                "name": "IOMouseInfo"
             }
         }
     }, {
@@ -1380,7 +1360,7 @@
             "$ast": "EventRequest",
             "type": {
                 "$ast": "ReferenceType",
-                "name": "IOMouseInfoWithModifier"
+                "name": "IOMouseInfo"
             }
         }
     }, {
@@ -1395,7 +1375,7 @@
             "$ast": "EventRequest",
             "type": {
                 "$ast": "ReferenceType",
-                "name": "IOMouseInfoWithModifier"
+                "name": "IOMouseInfo"
             }
         }
     }, {

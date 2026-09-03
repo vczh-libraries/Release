@@ -13,6 +13,7 @@ struct IOMouseInfo
 {
     var ctrl: bool;
     var shift: bool;
+    var osSuper: bool;
     var left: bool;
     var middle: bool;
     var right: bool;
@@ -26,13 +27,6 @@ struct IOMouseInfoWithButton
 {
     var button: IOMouseButton;
     var info: IOMouseInfo;
-    var osSuper: bool;
-}
-
-struct IOMouseInfoWithModifier
-{
-    var info: IOMouseInfo;
-    var osSuper: bool;
 }
 
 [@Cpp(::vl::presentation::NativeWindowKeyInfo)]
@@ -79,11 +73,11 @@ message IOIsKeyToggled      { request: key; response: bool; }
 event IOButtonDown          { request: IOMouseInfoWithButton; }
 event IOButtonDoubleClick   { request: IOMouseInfoWithButton; }
 event IOButtonUp            { request: IOMouseInfoWithButton; }
-event IOHWheel              { request: IOMouseInfoWithModifier; }
-event IOVWheel              { request: IOMouseInfoWithModifier; }
+event IOHWheel              { request: IOMouseInfo; }
+event IOVWheel              { request: IOMouseInfo; }
 
 [@DropConsecutive]
-event IOMouseMoving         { request: IOMouseInfoWithModifier; }
+event IOMouseMoving         { request: IOMouseInfo; }
 event IOMouseEntered        {}
 event IOMouseLeaved         {}
 

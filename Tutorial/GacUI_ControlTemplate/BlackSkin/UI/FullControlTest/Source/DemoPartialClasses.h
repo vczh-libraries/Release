@@ -2787,7 +2787,7 @@ namespace demo
 		::vl::presentation::controls::GuiToolstripCommand* commandGlobalShortcut;
 		::demo::DocumentEditorRibbon* editorRibbon;
 		::demo::DocumentEditorToolstrip* editorToolstrip;
-		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> labelMouseButton;
+		::vl::presentation::controls::GuiLabel* labelMouseButton;
 		::vl::presentation::controls::GuiTab* __vwsn_precompile_0;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1;
 		::vl::presentation::controls::GuiTabPage* __vwsn_precompile_2;

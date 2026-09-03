@@ -3541,6 +3541,7 @@ INativeInputService
 			/// <param name="ctrl">Set to true if the CTRL key is required.</param>
 			/// <param name="shift">Set to true if the SHIFT key is required.</param>
 			/// <param name="alt">Set to true if the ALT key is required.</param>
+			/// <param name="osSuper">Set to true if the operating system Super key is required.</param>
 			/// <param name="key">The non-control key.</param>
 			/// <param name="id"></param>
 			/// <returns>Returns the created id. If it fails, the id equals to one of an item in <see cref="NativeGlobalShortcutKeyResult"/> except "ValidIdBegins".</returns>
@@ -5420,6 +5421,7 @@ Shortcut Key Manager
 				/// <param name="ctrl">Set to true if the CTRL key is required.</param>
 				/// <param name="shift">Set to true if the SHIFT key is required.</param>
 				/// <param name="alt">Set to true if the ALT key is required.</param>
+				/// <param name="osSuper">Set to true if the operating system Super key is required.</param>
 				/// <param name="key">The non-control key.</param>
 				virtual IGuiShortcutKeyItem*			TryGetShortcut(bool ctrl, bool shift, bool alt, bool osSuper, VKEY key)=0;
 				/// <summary>Create a shortcut key item using a key combination. If the item for the key combination exists, this function crashes.</summary>
@@ -5427,6 +5429,7 @@ Shortcut Key Manager
 				/// <param name="ctrl">Set to true if the CTRL key is required.</param>
 				/// <param name="shift">Set to true if the SHIFT key is required.</param>
 				/// <param name="alt">Set to true if the ALT key is required.</param>
+				/// <param name="osSuper">Set to true if the operating system Super key is required.</param>
 				/// <param name="key">The non-control key.</param>
 				virtual IGuiShortcutKeyItem*			CreateNewShortcut(bool ctrl, bool shift, bool alt, bool osSuper, VKEY key)=0;
 				/// <summary>Create a shortcut key item using a key combination. If the item for the key combination exists, this function returns the item that is created before.</summary>
@@ -5434,6 +5437,7 @@ Shortcut Key Manager
 				/// <param name="ctrl">Set to true if the CTRL key is required.</param>
 				/// <param name="shift">Set to true if the SHIFT key is required.</param>
 				/// <param name="alt">Set to true if the ALT key is required.</param>
+				/// <param name="osSuper">Set to true if the operating system Super key is required.</param>
 				/// <param name="key">The non-control key.</param>
 				virtual IGuiShortcutKeyItem*			CreateShortcutIfNotExist(bool ctrl, bool shift, bool alt, bool osSuper, VKEY key)=0;
 				/// <summary>Destroy a shortcut key item using a key combination</summary>
@@ -7328,8 +7332,8 @@ Table Compositions
 				Point								draggingPoint;
 				
 				void								OnParentChanged(GuiGraphicsComposition* oldParent, GuiGraphicsComposition* newParent)override;
-				void								OnLeftButtonDown(GuiGraphicsComposition* sender, GuiMouseEventArgs& arguments);
-				void								OnLeftButtonUp(GuiGraphicsComposition* sender, GuiMouseEventArgs& arguments);
+				void								OnMouseDown(GuiGraphicsComposition* sender, GuiMouseEventArgs& arguments);
+				void								OnMouseUp(GuiGraphicsComposition* sender, GuiMouseEventArgs& arguments);
 
 				void								OnMouseMoveHelper(
 														vint cellsBefore,
@@ -9291,6 +9295,8 @@ Component
 				GuiComponent();
 				~GuiComponent();
 
+				/// <summary>Called when the native environment is changed.</summary>
+				virtual void							EnvironmentChanged();
 				virtual void							Attach(GuiInstanceRootObject* rootObject);
 				virtual void							Detach(GuiInstanceRootObject* rootObject);
 			};
@@ -9390,6 +9396,7 @@ Root Object
 				Ptr<description::IValueSubscription>			AddSubscription(Ptr<description::IValueSubscription> subscription);
 				/// <summary>Clear all subscriptions.</summary>
 				void											UpdateSubscriptions();
+				void											InvokeEnvironmentChanged();
 
 				/// <summary>Add a component. When this control host is disposing, all attached components will be deleted.</summary>
 				/// <returns>Returns true if this operation succeeded.</returns>
@@ -9430,6 +9437,7 @@ Root Object
 }
 
 #endif
+
 
 /***********************************************************************
 .\APPLICATION\CONTROLS\GUITHEMEMANAGER.H
@@ -10536,6 +10544,7 @@ Window
 				void									SetNativeWindowFrameProperties();
 				bool									ApplyFrameConfigOnVariable(BoolOption frameConfig, BoolOption templateConfig, bool& variable);
 				void									ApplyFrameConfig();
+				void									EnvironmentChanged();
 
 				void									Moved()override;
 				void									DpiChanged(bool preparing)override;
@@ -11515,7 +11524,7 @@ namespace vl
 		namespace controls
 		{
 			/// <summary>A command for toolstrip controls.</summary>
-			class GuiToolstripCommand : public GuiComponent, private INativeControllerListener, public Description<GuiToolstripCommand>
+			class GuiToolstripCommand : public GuiComponent, public Description<GuiToolstripCommand>
 			{
 			public:
 				class ShortcutBuilder : public Object
@@ -11547,7 +11556,6 @@ namespace vl
 				void										OnShortcutKeyItemExecuted(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										OnRenderTargetChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void										InvokeDescriptionChanged();
-				void										EnvironmentChanged()override;
 
 				compositions::IGuiShortcutKeyManager*		GetShortcutManagerFromBuilder(Ptr<ShortcutBuilder> builder);
 				void										RemoveShortcut();
@@ -11559,6 +11567,7 @@ namespace vl
 				GuiToolstripCommand();
 				~GuiToolstripCommand();
 
+				void										EnvironmentChanged()override;
 				void										Attach(GuiInstanceRootObject* rootObject)override;
 				void										Detach(GuiInstanceRootObject* rootObject)override;
 
@@ -13702,8 +13711,8 @@ Buttons
 				bool									IsTabAvailable()override;
 				void									UpdateControlState();
 				void									CheckAndClick(bool skipChecking, compositions::GuiEventArgs& arguments);
-				void									OnLeftButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
-				void									OnLeftButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+				void									OnMouseDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+				void									OnMouseUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 				void									OnMouseEnter(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void									OnMouseLeave(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 				void									OnKeyDown(compositions::GuiGraphicsComposition* sender, compositions::GuiKeyEventArgs& arguments);
@@ -14567,7 +14576,7 @@ List Control
 				Size											QueryFullSize()override;
 				void											UpdateView(Rect viewBounds)override;
 				
-				void											OnBoundsMouseButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+				void											OnBoundsMouseDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 				void											SetStyleAndArranger(ItemStyleProperty styleProperty, Ptr<IItemArranger> arranger);
 
 				//-----------------------------------------------------------
@@ -15499,7 +15508,7 @@ DefaultTreeItemTemplate
 		void									OnExpandableChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 		void									OnLevelChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 		void									OnImageChanged(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
-		void									OnExpandingButtonDoubleClick(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+		void									OnExpandingButtonMouseDoubleClick(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 		void									OnExpandingButtonClicked(compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 	public:
 		DefaultTreeItemTemplate();
@@ -17355,8 +17364,8 @@ ListViewColumnItemArranger
 					void										OnViewLocationChanged(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments);
 					void										ColumnClicked(vint index, compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
 					void										ColumnCachedBoundsChanged(vint index, compositions::GuiGraphicsComposition* sender, compositions::GuiEventArgs& arguments);
-					void										ColumnHeaderSplitterLeftButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
-					void										ColumnHeaderSplitterLeftButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+					void										ColumnHeaderSplitterMouseDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+					void										ColumnHeaderSplitterMouseUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 					void										ColumnHeaderSplitterMouseMove(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 					void										ColumnHeadersCachedBoundsChanged(compositions::GuiGraphicsComposition* composition, compositions::GuiEventArgs& arguments);
 
@@ -17715,9 +17724,8 @@ DefaultDataGridItemTemplate
 					IDataEditorFactory*										GetDataEditorFactory(vint row, vint column);
 					vint													GetCellColumnIndex(compositions::GuiGraphicsComposition* composition);
 					bool													IsInEditor(GuiVirtualDataGrid* dataGrid, compositions::GuiMouseEventArgs& arguments);
-					void													OnCellButtonDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
-					void													OnCellLeftButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
-					void													OnCellRightButtonUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+					void													OnCellMouseDown(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
+					void													OnCellMouseUp(compositions::GuiGraphicsComposition* sender, compositions::GuiMouseEventArgs& arguments);
 
 					void													DeleteAllVisualizers();
 					void													DeleteVisualizer(vint column);

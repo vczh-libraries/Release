@@ -5601,7 +5601,7 @@ Closures
 
 	void __vwsnf52_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiMouseEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->labelMouseButton.Obj())->SetText((::vl::__vwsn::This(__vwsnthis_0->self)->MouseButtonName(::vl::__vwsn::This(arguments)->button) + ::vl::WString::Unmanaged(L" button down!")));
+		::vl::__vwsn::This(__vwsnthis_0->labelMouseButton)->SetText((::vl::__vwsn::This(__vwsnthis_0->self)->MouseButtonName(::vl::__vwsn::This(arguments)->button) + ::vl::WString::Unmanaged(L" button down!")));
 	}
 
 	//-------------------------------------------------------------------
@@ -5613,7 +5613,7 @@ Closures
 
 	void __vwsnf53_Demo_demo_MainWindowConstructor___vwsn_demo_MainWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiMouseEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->labelMouseButton.Obj())->SetText((::vl::__vwsn::This(__vwsnthis_0->self)->MouseButtonName(::vl::__vwsn::This(arguments)->button) + ::vl::WString::Unmanaged(L" button up!")));
+		::vl::__vwsn::This(__vwsnthis_0->labelMouseButton)->SetText((::vl::__vwsn::This(__vwsnthis_0->self)->MouseButtonName(::vl::__vwsn::This(arguments)->button) + ::vl::WString::Unmanaged(L" button up!")));
 	}
 
 	//-------------------------------------------------------------------
@@ -16819,10 +16819,10 @@ Class (::demo::CategoryDisplayerConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FF8000")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Left);
+			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
+			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Left);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_6));
@@ -19359,10 +19359,10 @@ Class (::demo::DocumentEditorRibbonConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_92.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_92.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Center);
+			::vl::__vwsn::This(this->__vwsn_precompile_92.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_92.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
+			::vl::__vwsn::This(this->__vwsn_precompile_92.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_92.Obj())->SetText(::vl::WString::Unmanaged(L"Search: "));
@@ -23424,10 +23424,10 @@ Class (::demo::GenderDisplayerConstructor)
 		}
 		(this->__vwsn_precompile_1 = ::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiImageFrameElement>()));
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Left);
+			::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
+			::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Left);
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_0)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_1));
@@ -26128,7 +26128,7 @@ Class (::demo::MainWindowConstructor)
 		(this->dialogLocalSuperShortcut = new ::vl::presentation::controls::GuiMessageDialog());
 		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"dialogLocalSuperShortcut"), ::vl::__vwsn::Box(this->dialogLocalSuperShortcut));
 		{
-			::vl::__vwsn::This(this->dialogLocalSuperShortcut)->SetText(::vl::WString::Unmanaged(L"You pressed Ctrl+Win+Q!"));
+			::vl::__vwsn::This(this->dialogLocalSuperShortcut)->SetText(::vl::WString::Unmanaged(L"You pressed Ctrl+Alt+Win+Q!"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->dialogLocalSuperShortcut));
@@ -26152,7 +26152,7 @@ Class (::demo::MainWindowConstructor)
 		(this->commandLocalSuperShortcut = new ::vl::presentation::controls::GuiToolstripCommand());
 		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"commandLocalSuperShortcut"), ::vl::__vwsn::Box(this->commandLocalSuperShortcut));
 		{
-			::vl::__vwsn::This(this->commandLocalSuperShortcut)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Win+Q"));
+			::vl::__vwsn::This(this->commandLocalSuperShortcut)->SetShortcutBuilder(::vl::WString::Unmanaged(L"Ctrl+Alt+Win+Q"));
 		}
 		{
 			::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->commandLocalSuperShortcut));
@@ -26534,26 +26534,22 @@ Class (::demo::MainWindowConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_42)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_47));
 		}
 		(this->__vwsn_precompile_49 = new ::vl::presentation::compositions::GuiStackItemComposition());
-		(this->__vwsn_precompile_50 = new ::vl::presentation::compositions::GuiBoundsComposition());
+		{
+			(this->labelMouseButton = new ::vl::presentation::controls::GuiLabel(::vl::presentation::theme::ThemeName::Label));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"labelMouseButton"), ::vl::__vwsn::Box(this->labelMouseButton));
+		}
+		(this->__vwsn_precompile_50 = ::vl::__vwsn::This(this->labelMouseButton)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_50)->SetPreferredMinSize([&](){ ::vl::presentation::Size __vwsn_temp__; __vwsn_temp__.y = static_cast<::vl::vint>(24); return __vwsn_temp__; }());
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_50)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
-		(this->labelMouseButton = ::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidLabelElement>()));
-		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"labelMouseButton"), ::vl::__vwsn::Box(this->labelMouseButton));
 		{
-			::vl::__vwsn::This(this->labelMouseButton.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
+			::vl::__vwsn::This(this->labelMouseButton)->SetText(::vl::WString::Unmanaged(L"Click here with any mouse button."));
 		}
 		{
-			::vl::__vwsn::This(this->labelMouseButton.Obj())->SetText(::vl::WString::Unmanaged(L"Click here with any mouse button."));
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_50)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->labelMouseButton));
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_49)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_50));
+			::vl::__vwsn::This(this->__vwsn_precompile_49)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->labelMouseButton)->GetBoundsComposition()));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_42)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_49));
@@ -26947,7 +26943,7 @@ Class (::demo::MainWindowConstructor)
 		, commandGlobalShortcut(static_cast<::vl::presentation::controls::GuiToolstripCommand*>(nullptr))
 		, editorRibbon(static_cast<::demo::DocumentEditorRibbon*>(nullptr))
 		, editorToolstrip(static_cast<::demo::DocumentEditorToolstrip*>(nullptr))
-		, labelMouseButton(::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement>())
+		, labelMouseButton(static_cast<::vl::presentation::controls::GuiLabel*>(nullptr))
 		, __vwsn_precompile_0(static_cast<::vl::presentation::controls::GuiTab*>(nullptr))
 		, __vwsn_precompile_1(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 		, __vwsn_precompile_2(static_cast<::vl::presentation::controls::GuiTabPage*>(nullptr))
@@ -31457,10 +31453,10 @@ Class (::demo::StyleItemTemplateConstructor)
 			::vl::__vwsn::This(this->styleLabel.Obj())->SetColor(::vl::__vwsn::Parse<::vl::presentation::Color>(::vl::WString::Unmanaged(L"#FFFFFF")));
 		}
 		{
-			::vl::__vwsn::This(this->styleLabel.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Center);
+			::vl::__vwsn::This(this->styleLabel.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
-			::vl::__vwsn::This(this->styleLabel.Obj())->SetVerticalAlignment(::vl::presentation::Alignment::Center);
+			::vl::__vwsn::This(this->styleLabel.Obj())->SetHorizontalAlignment(::vl::presentation::Alignment::Center);
 		}
 		{
 			::vl::__vwsn::This(this->styleLabel.Obj())->SetText(::vl::WString::Unmanaged(L"AaBbCc"));
