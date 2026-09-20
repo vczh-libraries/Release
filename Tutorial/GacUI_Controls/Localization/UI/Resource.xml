@@ -85,69 +85,70 @@
       </ref.Members>
       <ref.LocalizedStrings Name="Strings" Class="demo::StringResource" Default="true"/>
       <Window ref.Name="self" Text-str="Title()" ClientSize="x:640 y:480">
-        <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
-          <att.Rows>
-            <_>composeType:MinSize</_>
-            <_>composeType:Percentage percentage:1.0</_>
-          </att.Rows>
-          <att.Columns>
-            <_>composeType:MinSize</_>
-            <_>composeType:MinSize</_>
-            <_>composeType:Percentage percentage:1.0</_>
-          </att.Columns>
-
-          <Cell Site="row:0 column:0">
-            <SolidLabel Font-bind="self.DisplayFont" Color="#FFFFFF" Text-str="Label()" VerticalAlignment="Center"/>
-          </Cell>
-
-          <Cell Site="row:0 column:1">
-            <ComboBox ref.Name="comboLocales">
-              <att.BoundsComposition-set PreferredMinSize="x:120"/>
-              <att.SelectedIndex-bind>self.GetLocaleIndex(Application::GetApplication().Locale)</att.SelectedIndex-bind>
-              <ev.SelectedIndexChanged-eval>
-                <![CDATA[
-                  {
-                    var index = comboLocales.SelectedIndex;
-                    if (index == -1)
-                    {
-                      index = 0;
-                    }
-                    Application::GetApplication().Locale = cast Locale listLocales.Items[index].Text;
-                  }
-                ]]>
-              </ev.SelectedIndexChanged-eval>
-              <att.ListControl>
-                <TextList ref.Name="listLocales" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-                  <att.Items>
-                    <_ Text="en-US"/>
-                    <_ Text="zh-CN"/>
-                    <_ Text="ja-JP"/>
-                  </att.Items>
-                </TextList>
-              </att.ListControl>
-            </ComboBox>
-          </Cell>
-
-          <Cell Site="row:1 column:0 columnSpan:3">
-            <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-              <att.Items>
-                <_ Text-str="ShortDate(self.dateTime)"/>
-                <_ Text-str="LongDate(self.dateTime)"/>
-                <_ Text-str="YearMonthDate(self.dateTime)"/>
-                <_ Text-str="ShortTime(self.dateTime)"/>
-                <_ Text-str="LongTime(self.dateTime)"/>
-                <_ Text-str="DateFormat(self.dateTime)"/>
-                <_ Text-str="TimeFormat(self.dateTime)"/>
-                <_ Text-str="Number(self.number)"/>
-                <_ Text-str="Currency(self.currency)"/>
-                <_ Text-str="Sentence('John Smith')"/>
-                <_ Text-str="Strings.Sentence('John Smith')"/>
-                <_ Text-bind="self.Strings.Sentence('John Smith')"/>
-              </att.Items>
-            </TextList>
-          </Cell>
-        </Table>
+        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
+          <ez:Layout Padding="5" Border="true">
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <SolidLabel Font-bind="self.DisplayFont" Color="#FFFFFF" Text-str="Label()" VerticalAlignment="Center"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <ComboBox ref.Name="comboLocales">
+                    <att.BoundsComposition-set PreferredMinSize="x:120"/>
+                    <att.SelectedIndex-bind>self.GetLocaleIndex(Application::GetApplication().Locale)</att.SelectedIndex-bind>
+                    <ev.SelectedIndexChanged-eval>
+                      <![CDATA[
+                        {
+                          var index = comboLocales.SelectedIndex;
+                          if (index == -1)
+                          {
+                            index = 0;
+                          }
+                          Application::GetApplication().Locale = cast Locale listLocales.Items[index].Text;
+                        }
+                      ]]>
+                    </ev.SelectedIndexChanged-eval>
+                    <att.ListControl>
+                      <TextList ref.Name="listLocales" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                        <att.Items>
+                          <_ Text="en-US"/>
+                          <_ Text="zh-CN"/>
+                          <_ Text="ja-JP"/>
+                        </att.Items>
+                      </TextList>
+                    </att.ListControl>
+                  </ComboBox>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:Percentage percentage:1.0">
+              <ez:Column CellSpan="3">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                    <att.Items>
+                      <_ Text-str="ShortDate(self.dateTime)"/>
+                      <_ Text-str="LongDate(self.dateTime)"/>
+                      <_ Text-str="YearMonthDate(self.dateTime)"/>
+                      <_ Text-str="ShortTime(self.dateTime)"/>
+                      <_ Text-str="LongTime(self.dateTime)"/>
+                      <_ Text-str="DateFormat(self.dateTime)"/>
+                      <_ Text-str="TimeFormat(self.dateTime)"/>
+                      <_ Text-str="Number(self.number)"/>
+                      <_ Text-str="Currency(self.currency)"/>
+                      <_ Text-str="Sentence('John Smith')"/>
+                      <_ Text-str="Strings.Sentence('John Smith')"/>
+                      <_ Text-bind="self.Strings.Sentence('John Smith')"/>
+                    </att.Items>
+                  </TextList>
+                </Bounds>
+              </ez:Column>
+            </ez:Row>
+          </ez:Layout>
+        </Bounds>
       </Window>
     </Instance>
   </Instance>

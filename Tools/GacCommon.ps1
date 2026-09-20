@@ -29,8 +29,18 @@ function EnumerateResourceFiles([String] $FileName) {
     $resource_files = (Get-ChildItem $search_directory -Filter "*.xml" -Recurse | ForEach-Object {
         $normalized_path = $_.FullName -replace '\\','/'
         if (($excludes | Where-Object { $normalized_path.Contains($_) }).Length -eq 0) {
-            if ((Select-Xml -Path $_.FullName -XPath "//Resource/Folder[@name='GacGenConfig']") -ne $null) {
-                $_.FullName.Substring($search_directory.Length)
+            # GacUI resolves its own namespace mappings, including implicit prefixes.
+            $reader = [System.Xml.XmlTextReader]::new($_.FullName)
+            $reader.Namespaces = $false
+            try {
+                $resource = [System.Xml.XmlDocument]::new()
+                $resource.Load($reader)
+                if ($resource.SelectSingleNode("//Resource/Folder[@name='GacGenConfig']") -ne $null) {
+                    $_.FullName.Substring($search_directory.Length)
+                }
+            }
+            finally {
+                $reader.Dispose()
             }
         }
     })

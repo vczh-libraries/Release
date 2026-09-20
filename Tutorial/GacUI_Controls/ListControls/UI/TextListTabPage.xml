@@ -6,171 +6,182 @@
     ]]>
   </ref.Members>
   <TabPage ref.Name="self" Text="TextList">
-    <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
-      <att.Rows>
-        <_>composeType:MinSize</_>
-        <_>composeType:Percentage percentage:1.0</_>
-      </att.Rows>
-      <att.Columns>
-        <_>composeType:Percentage percentage:0.5</_>
-        <_>composeType:MinSize</_>
-        <_>composeType:Percentage percentage:0.5</_>
-      </att.Columns>
+    <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
+      <ez:Layout Padding="5" Border="true">
+        <ez:Row CellOption="composeType:MinSize">
+          <ez:Column CellSpan="3">
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <ComboBox ref.Name="comboView" Alt="V" SelectedIndex="0">
+                <att.BoundsComposition-set PreferredMinSize="x:120"/>
+                <att.ListControl>
+                  <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <att.Items>
+                      <TextItem Text="Text"/>
+                      <TextItem Text="Check"/>
+                      <TextItem Text="Radio"/>
+                    </att.Items>
+                  </TextList>
+                </att.ListControl>
+                <ev.SelectedIndexChanged-eval>
+                  <![CDATA[
+                    {
+                      switch (comboView.SelectedIndex)
+                      {
+                      case 0:
+                        {
+                          textList.View = Text;
+                          bindableTextList.View = Text;
+                        }
+                      case 1:
+                        {
+                          textList.View = Check;
+                          bindableTextList.View = Check;
+                        }
+                      case 2:
+                        {
+                          textList.View = Radio;
+                          bindableTextList.View = Radio;
+                        }
+                      }
+                    }
+                  ]]>
+                </ev.SelectedIndexChanged-eval>
+              </ComboBox>
+            </Bounds>
+          </ez:Column>
+        </ez:Row>
+        <ez:Row CellOption="composeType:Percentage percentage:1.0">
+          <ez:Column CellOption="composeType:Percentage percentage:0.5">
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <TextList ref.Name="textList" Alt="L" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              </TextList>
+            </Bounds>
+          </ez:Column>
+          <ez:Column CellOption="composeType:MinSize">
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                <ez:Layout Padding="5" Border="false">
+                  <ez:Top>
+                    <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                      <Button Alt="A" Text="Add 10 items">
+                        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        <ev.Clicked-eval>
+                          <![CDATA[
+                            {
+                              for (i in range [0, 9])
+                              {
+                                var textItem = new TextItem^(cast string (self.counter + i));
+                                textList.Items.Add(textItem);
+                              }
 
-      <Cell Site="row:0 column:0 columnSpan:3">
-        <ComboBox ref.Name="comboView" Alt="V" SelectedIndex="0">
-          <att.BoundsComposition-set PreferredMinSize="x:120"/>
-          <att.ListControl>
-            <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-              <att.Items>
-                <TextItem Text="Text"/>
-                <TextItem Text="Check"/>
-                <TextItem Text="Radio"/>
-              </att.Items>
-            </TextList>
-          </att.ListControl>
-          <ev.SelectedIndexChanged-eval>
-            <![CDATA[
-              {
-                switch (comboView.SelectedIndex)
-                {
-                case 0:
-                  {
-                    textList.View = Text;
-                    bindableTextList.View = Text;
-                  }
-                case 1:
-                  {
-                    textList.View = Check;
-                    bindableTextList.View = Check;
-                  }
-                case 2:
-                  {
-                    textList.View = Radio;
-                    bindableTextList.View = Radio;
-                  }
-                }
-              }
-            ]]>
-          </ev.SelectedIndexChanged-eval>
-        </ComboBox>
-      </Cell>
+                              {
+                                for (i in range [0, 9])
+                                {
+                                  var textItem = new demo::MyTextItem^();
+                                  textItem.Name = cast string (self.counter + i);
+                                  self.itemsToBind.Add(textItem);
+                                }
+                              }
 
-      <Cell Site="row:1 column:0">
-        <TextList ref.Name="textList" Alt="L" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-        </TextList>
-      </Cell>
+                              self.counter = self.counter + 10;
+                            }
+                          ]]>
+                        </ev.Clicked-eval>
+                      </Button>
+                    </Bounds>
+                  </ez:Top>
+                  <ez:Top>
+                    <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                      <Button Alt="O" Text="Remove odd items">
+                        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        <ev.Clicked-eval>
+                          <![CDATA[
+                            {
+                              {
+                                var i = 0;
+                                while (i < textList.Items.Count)
+                                {
+                                  textList.Items.RemoveAt(i);
+                                  i = i + 1;
+                                }
+                              }
 
-      <Cell Site="row:1 column:1">
-        <Stack Direction="Vertical" Padding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <StackItem>
-            <Button Alt="A" Text="Add 10 items">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-              <ev.Clicked-eval>
-                <![CDATA[
-                  {
-                    for (i in range [0, 9])
-                    {
-                      var textItem = new TextItem^(cast string (self.counter + i));
-                      textList.Items.Add(textItem);
-                    }
-                    
-                    {
-                      for (i in range [0, 9])
-                      {
-                        var textItem = new demo::MyTextItem^();
-                        textItem.Name = cast string (self.counter + i);
-                        self.itemsToBind.Add(textItem);
-                      }
-                    }
-                    
-                    self.counter = self.counter + 10;
-                  }
-                ]]>
-              </ev.Clicked-eval>
-            </Button>
-          </StackItem>
-          <StackItem>
-            <Button Alt="O" Text="Remove odd items">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-              <ev.Clicked-eval>
-                <![CDATA[
-                  {
-                    {
-                      var i = 0;
-                      while (i < textList.Items.Count)
-                      {
-                        textList.Items.RemoveAt(i);
-                        i = i + 1;
-                      }
-                    }
-                    
-                    {
-                      var i = 0;
-                      while (i < self.itemsToBind.Count)
-                      {
-                        self.itemsToBind.RemoveAt(i);
-                        i = i + 1;
-                      }
-                    }
-                  }
-                ]]>
-              </ev.Clicked-eval>
-            </Button>
-          </StackItem>
-          <StackItem>
-            <Button Alt="E" Text="Remove even items">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-              <ev.Clicked-eval>
-                <![CDATA[
-                  {
-                    {
-                      var i = 1;
-                      while (i < textList.Items.Count)
-                      {
-                        textList.Items.RemoveAt(i);
-                        i = i + 1;
-                      }
-                    }
-                    
-                    {
-                      var i = 1;
-                      while (i < self.itemsToBind.Count)
-                      {
-                        self.itemsToBind.RemoveAt(i);
-                        i = i + 1;
-                      }
-                    }
-                  }
-                ]]>
-              </ev.Clicked-eval>
-            </Button>
-          </StackItem>
-          <StackItem>
-            <Button Alt="C" Text="Clear">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-              <ev.Clicked-eval>
-                <![CDATA[
-                  {
-                    textList.Items.Clear();
-                    self.itemsToBind.Clear();
-                  }
-                ]]>
-              </ev.Clicked-eval>
-            </Button>
-          </StackItem>
-        </Stack>
-      </Cell>
+                              {
+                                var i = 0;
+                                while (i < self.itemsToBind.Count)
+                                {
+                                  self.itemsToBind.RemoveAt(i);
+                                  i = i + 1;
+                                }
+                              }
+                            }
+                          ]]>
+                        </ev.Clicked-eval>
+                      </Button>
+                    </Bounds>
+                  </ez:Top>
+                  <ez:Top>
+                    <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                      <Button Alt="E" Text="Remove even items">
+                        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        <ev.Clicked-eval>
+                          <![CDATA[
+                            {
+                              {
+                                var i = 1;
+                                while (i < textList.Items.Count)
+                                {
+                                  textList.Items.RemoveAt(i);
+                                  i = i + 1;
+                                }
+                              }
 
-      <Cell Site="row:1 column:2">
-        <BindableTextList ref.Name="bindableTextList" Alt="B" env.ItemType="demo::MyTextItem^" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-          <att.ItemSource-eval>self.itemsToBind</att.ItemSource-eval>
-          <att.TextProperty>Name</att.TextProperty>
-          <att.CheckedProperty>Checked</att.CheckedProperty>
-        </BindableTextList>
-      </Cell>
-    </Table>
+                              {
+                                var i = 1;
+                                while (i < self.itemsToBind.Count)
+                                {
+                                  self.itemsToBind.RemoveAt(i);
+                                  i = i + 1;
+                                }
+                              }
+                            }
+                          ]]>
+                        </ev.Clicked-eval>
+                      </Button>
+                    </Bounds>
+                  </ez:Top>
+                  <ez:Top>
+                    <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                      <Button Alt="C" Text="Clear">
+                        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        <ev.Clicked-eval>
+                          <![CDATA[
+                            {
+                              textList.Items.Clear();
+                              self.itemsToBind.Clear();
+                            }
+                          ]]>
+                        </ev.Clicked-eval>
+                      </Button>
+                    </Bounds>
+                  </ez:Top>
+                </ez:Layout>
+              </Bounds>
+            </Bounds>
+          </ez:Column>
+          <ez:Column CellOption="composeType:Percentage percentage:0.5">
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <BindableTextList ref.Name="bindableTextList" Alt="B" env.ItemType="demo::MyTextItem^" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.ItemSource-eval>self.itemsToBind</att.ItemSource-eval>
+                <att.TextProperty>Name</att.TextProperty>
+                <att.CheckedProperty>Checked</att.CheckedProperty>
+              </BindableTextList>
+            </Bounds>
+          </ez:Column>
+        </ez:Row>
+      </ez:Layout>
+    </Bounds>
   </TabPage>
 </Instance>

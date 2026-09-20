@@ -211,45 +211,52 @@
 
           <att.Pages>
             <TabPage Text="Gradient Animation">
-              <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" CellPadding="5">
-                <att.Rows>
-                  <_>composeType:MinSize</_>
-                  <_>composeType:MinSize</_>
-                  <_>composeType:MinSize</_>
-                  <_>composeType:Percentage percentage:1.0</_>
-                </att.Rows>
-                
-                <att.Columns>
-                  <_>composeType:MinSize</_>
-                  <_>composeType:Absolute absolute:100</_>
-                  <_>composeType:Percentage percentage:1.0</_>
-                </att.Columns>
-
-                <Cell Site="row:0 column:0 rowSpan:4">
-                  <Bounds PreferredMinSize="x:200 y:200">
-                    <GradientBackground Direction="Slash" Color1-bind="self.gradientColorDef.Current.Top" Color2-bind="self.gradientColorDef.Current.Bottom"/>
-                    <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-                      <InnerShadow Color-bind="self.gradientColorDef.Current.Shadow" Thickness-bind="self.gradientColorDef.Current.Thickness"/>
-                    </Bounds>
-                  </Bounds>
-                </Cell>
-
-                <Cell Site="row:0 column:1">
-                  <Button Text="Dark" ev.Clicked-eval="self.PerformGradientAnimation(ColorDef::Dark());">
-                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                  </Button>
-                </Cell>
-                <Cell Site="row:1 column:1">
-                  <Button Text="Light" ev.Clicked-eval="self.PerformGradientAnimation(ColorDef::Light());">
-                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                  </Button>
-                </Cell>
-                <Cell Site="row:2 column:1">
-                  <Button Text="Sink" ev.Clicked-eval="self.PerformGradientAnimation(ColorDef::Sink());">
-                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                  </Button>
-                </Cell>
-              </Table>
+              <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
+                <ez:Layout Padding="5" Border="true">
+                  <ez:Column CellOption="composeType:MinSize">
+                    <ez:Row CellSpan="4">
+                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                        <Bounds PreferredMinSize="x:200 y:200">
+                          <GradientBackground Direction="Slash" Color1-bind="self.gradientColorDef.Current.Top" Color2-bind="self.gradientColorDef.Current.Bottom"/>
+                          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
+                            <InnerShadow Color-bind="self.gradientColorDef.Current.Shadow" Thickness-bind="self.gradientColorDef.Current.Thickness"/>
+                          </Bounds>
+                        </Bounds>
+                      </Bounds>
+                    </ez:Row>
+                  </ez:Column>
+                  <ez:Column CellOption="composeType:Absolute absolute:100">
+                    <ez:Row CellOption="composeType:MinSize">
+                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                        <Button Text="Dark" ev.Clicked-eval="self.PerformGradientAnimation(ColorDef::Dark());">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </Button>
+                      </Bounds>
+                    </ez:Row>
+                    <ez:Row CellOption="composeType:MinSize">
+                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                        <Button Text="Light" ev.Clicked-eval="self.PerformGradientAnimation(ColorDef::Light());">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </Button>
+                      </Bounds>
+                    </ez:Row>
+                    <ez:Row CellOption="composeType:MinSize">
+                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                        <Button Text="Sink" ev.Clicked-eval="self.PerformGradientAnimation(ColorDef::Sink());">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </Button>
+                      </Bounds>
+                    </ez:Row>
+                    <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
+                  </ez:Column>
+                  <ez:Column CellOption="composeType:Percentage percentage:1.0">
+                    <ez:Row CellOption="composeType:MinSize"/>
+                    <ez:Row CellOption="composeType:MinSize"/>
+                    <ez:Row CellOption="composeType:MinSize"/>
+                    <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
+                  </ez:Column>
+                </ez:Layout>
+              </Bounds>
             </TabPage>
             
             <TabPage Text="Complex Animation">

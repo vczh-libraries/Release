@@ -13,6 +13,6 @@
   </Folder>
 
   <Folder name="ToolbarImages" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/ToolbarImages/Images.xml</Folder>
-  <Folder name="DocumentComponents" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/DocumentComponents.xml</Folder>
-  <Folder name="DocumentEditorBase" content="Link">../../../GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/DocumentEditorBase.xml</Folder>
+  <Folder name="DocumentComponents" content="Link">DocumentComponents.xml</Folder>
+  <Folder name="DocumentEditorBase" content="Link">DocumentEditorBase.xml</Folder>
 </Resource>

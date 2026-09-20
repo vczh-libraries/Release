@@ -106,88 +106,128 @@
       ]]></ref.Ctor>
       <TabPage ref.Name="self" Text="MessageDialog">
         <MessageDialog ref.Name="dialog"/>
-        <Table CellPadding="5" BorderVisible="true" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <att.Rows>
-            <_>composeType:MinSize</_>
-            <_>composeType:MinSize</_>
-            <_>composeType:MinSize</_>
-            <_>composeType:MinSize</_>
-            <_>composeType:MinSize</_>
-            <_>composeType:MinSize</_>
-            <_>composeType:MinSize</_>
-          </att.Rows>
-          <att.Columns>
-            <_>composeType:MinSize</_>
-            <_>composeType:Absolute absolute:200</_>
-            <_>composeType:Percentage percentage:1.0</_>
-          </att.Columns>
-
-          <Cell Site="row:0 column:0"><Label Text="Title:"/></Cell>
-          <Cell Site="row:1 column:0"><Label Text="Text:"/></Cell>
-          <Cell Site="row:2 column:0"><Label Text="Input:"/></Cell>
-          <Cell Site="row:3 column:0"><Label Text="DefaultButton:"/></Cell>
-          <Cell Site="row:4 column:0"><Label Text="Icon:"/></Cell>
-          <Cell Site="row:5 column:0"><Label Text="Output:"/></Cell>
-
-          <Cell Site="row:0 column:1">
-            <SinglelineTextBox ref.Name="txtTitle" Text="The Title">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-            </SinglelineTextBox>
-          </Cell>
-
-          <Cell Site="row:1 column:1">
-            <SinglelineTextBox ref.Name="txtText" Text="This is a message!">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-            </SinglelineTextBox>
-          </Cell>
-
-          <Cell Site="row:2 column:1">
-            <ComboBox ref.Name="comboInput">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-              <att.ListControl>
-                <BindableTextList ItemSource-eval="self.inputTexts" TextProperty-eval="[cast string $1]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false"/>
-              </att.ListControl>
-            </ComboBox>
-          </Cell>
-
-          <Cell Site="row:3 column:1">
-            <ComboBox ref.Name="comboDefaultButton">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-              <att.ListControl>
-                <BindableTextList ItemSource-eval="self.defaultButtonTexts" TextProperty-eval="[cast string $1]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false"/>
-              </att.ListControl>
-            </ComboBox>
-          </Cell>
-
-          <Cell Site="row:4 column:1">
-            <ComboBox ref.Name="comboIcon">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-              <att.ListControl>
-                <BindableTextList ItemSource-eval="self.iconTexts" TextProperty-eval="[cast string $1]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false"/>
-              </att.ListControl>
-            </ComboBox>
-          </Cell>
-
-          <Cell Site="row:5 column:1">
-            <Label ref.Name="lblOutput"/>
-          </Cell>
-
-          <Cell Site="row:6 column:1">
-            <Button Text="Show Dialog">
-              <ev.Clicked-eval><![CDATA[
-                {
-                  dialog.Title = txtTitle.Text;
-                  dialog.Text = txtText.Text;
-                  dialog.Input = self.inputValues[comboInput.SelectedIndex];
-                  dialog.DefaultButton = self.defaultButtonValues[comboDefaultButton.SelectedIndex];
-                  dialog.Icon = self.iconValues[comboIcon.SelectedIndex];
-                  var result = dialog.ShowDialog();
-                  lblOutput.Text = self.outputTexts[self.outputValues.IndexOf(result)];
-                }
-              ]]></ev.Clicked-eval>
-            </Button>
-          </Cell>
-        </Table>
+        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+          <ez:Layout Padding="5" Border="true">
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="Title:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Absolute absolute:200">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <SinglelineTextBox ref.Name="txtTitle" Text="The Title">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </SinglelineTextBox>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="Text:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Absolute absolute:200">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <SinglelineTextBox ref.Name="txtText" Text="This is a message!">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </SinglelineTextBox>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="Input:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Absolute absolute:200">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <ComboBox ref.Name="comboInput">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                    <att.ListControl>
+                      <BindableTextList ItemSource-eval="self.inputTexts" TextProperty-eval="[cast string $1]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false"/>
+                    </att.ListControl>
+                  </ComboBox>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="DefaultButton:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Absolute absolute:200">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <ComboBox ref.Name="comboDefaultButton">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                    <att.ListControl>
+                      <BindableTextList ItemSource-eval="self.defaultButtonTexts" TextProperty-eval="[cast string $1]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false"/>
+                    </att.ListControl>
+                  </ComboBox>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="Icon:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Absolute absolute:200">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <ComboBox ref.Name="comboIcon">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                    <att.ListControl>
+                      <BindableTextList ItemSource-eval="self.iconTexts" TextProperty-eval="[cast string $1]" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false"/>
+                    </att.ListControl>
+                  </ComboBox>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="Output:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Absolute absolute:200">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Label ref.Name="lblOutput"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize"/>
+              <ez:Column CellOption="composeType:Absolute absolute:200">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Button Text="Show Dialog">
+                    <ev.Clicked-eval><![CDATA[
+                      {
+                        dialog.Title = txtTitle.Text;
+                        dialog.Text = txtText.Text;
+                        dialog.Input = self.inputValues[comboInput.SelectedIndex];
+                        dialog.DefaultButton = self.defaultButtonValues[comboDefaultButton.SelectedIndex];
+                        dialog.Icon = self.iconValues[comboIcon.SelectedIndex];
+                        var result = dialog.ShowDialog();
+                        lblOutput.Text = self.outputTexts[self.outputValues.IndexOf(result)];
+                      }
+                    ]]></ev.Clicked-eval>
+                  </Button>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+          </ez:Layout>
+        </Bounds>
       </TabPage>
     </Instance>
   </Instance>
@@ -196,34 +236,36 @@
     <Instance ref.CodeBehind="false" ref.Class="demo::LocalizedColorDialogTabPage">
       <TabPage ref.Name="self" Text="ColorDialog">
         <ColorDialog ref.Name="dialog" EnabledCustomColor="true"/>
-        <Table CellPadding="5" BorderVisible="true" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <att.Rows>
-            <_>composeType:Absolute absolute:30</_>
-            <_>composeType:MinSize</_>
-          </att.Rows>
-          <att.Columns>
-            <_>composeType:Absolute absolute:100</_>
-            <_>composeType:Percentage percentage:1.0</_>
-          </att.Columns>
-
-          <Cell Site="row:0 column:0">
-            <SolidBackground ref.Name="background" Color="#FFFFFF"/>
-          </Cell>
-
-          <Cell Site="row:1 column:0">
-            <Button Text="Show Dialog">
-              <ev.Clicked-eval><![CDATA[
-                {
-                  dialog.SelectedColor = background.Color;
-                  if (dialog.ShowDialog())
-                  {
-                    background.Color = dialog.SelectedColor;
-                  }
-                }
-              ]]></ev.Clicked-eval>
-            </Button>
-          </Cell>
-        </Table>
+        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+          <ez:Layout Padding="5" Border="true">
+            <ez:Row CellOption="composeType:Absolute absolute:30">
+              <ez:Column CellOption="composeType:Absolute absolute:100">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <SolidBackground ref.Name="background" Color="#FFFFFF"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:Absolute absolute:100">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Button Text="Show Dialog">
+                    <ev.Clicked-eval><![CDATA[
+                      {
+                        dialog.SelectedColor = background.Color;
+                        if (dialog.ShowDialog())
+                        {
+                          background.Color = dialog.SelectedColor;
+                        }
+                      }
+                    ]]></ev.Clicked-eval>
+                  </Button>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+          </ez:Layout>
+        </Bounds>
       </TabPage>
     </Instance>
   </Instance>
@@ -232,42 +274,47 @@
     <Instance ref.CodeBehind="false" ref.Class="demo::LocalizedFontDialogTabPage">
       <TabPage ref.Name="self" Text="FontDialog">
         <FontDialog ref.Name="dialog" ForceFontExist="true"/>
-        <Table CellPadding="5" BorderVisible="true" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <att.Rows>
-            <_>composeType:MinSize</_>
-            <_>composeType:MinSize</_>
-            <_>composeType:MinSize</_>
-          </att.Rows>
-          <att.Columns>
-            <_>composeType:MinSize</_>
-            <_>composeType:Percentage percentage:1.0</_>
-          </att.Columns>
-
-          <Cell Site="row:0 column:0">
-            <SolidLabel ref.Name="label" Font-eval="self.DisplayFont" Color="#FFFFFF" Text="Sample Text"/>
-          </Cell>
-
-          <Cell Site="row:1 column:0">
-            <CheckBox ref.Name="checkEffect" Text="Effect" Selected="false"/>
-          </Cell>
-
-          <Cell Site="row:2 column:0">
-            <Button Text="Show Dialog">
-              <ev.Clicked-eval><![CDATA[
-                {
-                  dialog.ShowEffect = checkEffect.Selected;
-                  dialog.SelectedFont = label.Font;
-                  dialog.SelectedColor = label.Color;
-                  if (dialog.ShowDialog())
-                  {
-                    label.Font = dialog.SelectedFont;
-                    label.Color = dialog.SelectedColor;
-                  }
-                }
-              ]]></ev.Clicked-eval>
-            </Button>
-          </Cell>
-        </Table>
+        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+          <ez:Layout Padding="5" Border="true">
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <SolidLabel ref.Name="label" Font-eval="self.DisplayFont" Color="#FFFFFF" Text="Sample Text"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <CheckBox ref.Name="checkEffect" Text="Effect" Selected="false"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:MinSize">
+              <ez:Column CellOption="composeType:MinSize">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Button Text="Show Dialog">
+                    <ev.Clicked-eval><![CDATA[
+                      {
+                        dialog.ShowEffect = checkEffect.Selected;
+                        dialog.SelectedFont = label.Font;
+                        dialog.SelectedColor = label.Color;
+                        if (dialog.ShowDialog())
+                        {
+                          label.Font = dialog.SelectedFont;
+                          label.Color = dialog.SelectedColor;
+                        }
+                      }
+                    ]]></ev.Clicked-eval>
+                  </Button>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+          </ez:Layout>
+        </Bounds>
       </TabPage>
     </Instance>
   </Instance>
@@ -300,124 +347,211 @@
       <TabPage ref.Name="self" Text="Open/Save FileDialog">
         <OpenFileDialog ref.Name="dialogOpen"/>
         <SaveFileDialog ref.Name="dialogSave"/>
-        <Stack Direction="Vertical" Padding="5" AlignmentToParent="left:5 top:5 right:5 bottom:5" MinSizeLimitation="LimitToElementAndChildren">
-          <StackItem>
-            <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-              <att.Rows>
-                <_>composeType:MinSize</_>
-                <_>composeType:MinSize</_>
-                <_>composeType:MinSize</_>
-                <_>composeType:MinSize</_>
-                <_>composeType:MinSize</_>
-                <_>composeType:MinSize</_>
-                <_>composeType:Percentage percentage:1.0</_>
-              </att.Rows>
-              <att.Columns>
-                <_>composeType:MinSize</_>
-                <_>composeType:Absolute absolute:200</_>
-                <_>composeType:MinSize</_>
-                <_>composeType:Percentage percentage:1.0</_>
-              </att.Columns>
-
-              <Cell Site="row:0 column:0"><Label Text="Title:"/></Cell>
-              <Cell Site="row:1 column:0"><Label Text="Directory:"/></Cell>
-              <Cell Site="row:2 column:0"><Label Text="FileName:"/></Cell>
-              <Cell Site="row:3 column:0"><Label Text="Filter:"/></Cell>
-              <Cell Site="row:4 column:0"><Label Text="FilterIndex:"/></Cell>
-              <Cell Site="row:5 column:0"><Label Text="DefaultExtension:"/></Cell>
-
-              <Cell Site="row:0 column:1">
-                <SinglelineTextBox ref.Name="txtTitle" Text="The Title">
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                </SinglelineTextBox>
-              </Cell>
-
-              <Cell Site="row:1 column:1">
-                <SinglelineTextBox ref.Name="txtDirectory" Text="C:\">
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                </SinglelineTextBox>
-              </Cell>
-
-              <Cell Site="row:2 column:1">
-                <SinglelineTextBox ref.Name="txtFileName" Text="C:\File.txt">
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                </SinglelineTextBox>
-              </Cell>
-
-              <Cell Site="row:3 column:1">
-                <SinglelineTextBox ref.Name="txtFilter" Text="Text Files (*.txt)|*.txt|XML Files (*.xml)|*.xml|All Files (*.*)|*.*">
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                </SinglelineTextBox>
-              </Cell>
-
-              <Cell Site="row:4 column:1">
-                <SinglelineTextBox ref.Name="txtFilterIndex" Text="0">
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                </SinglelineTextBox>
-              </Cell>
-
-              <Cell Site="row:5 column:1">
-                <SinglelineTextBox ref.Name="txtDefaultExtension" Text="txt">
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                </SinglelineTextBox>
-              </Cell>
-
-              <Cell Site="row:0 column:2 rowSpan:7">
-                <Stack Direction="Vertical" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-                  <StackItem><CheckBox ref.Name="chkFileDialogAllowMultipleSelection" Text="FileDialogAllowMultipleSelection"/></StackItem>
-                  <StackItem><CheckBox ref.Name="chkFileDialogFileMustExist" Text="FileDialogFileMustExist"/></StackItem>
-                  <StackItem><CheckBox ref.Name="chkFileDialogShowReadOnlyCheckBox" Text="FileDialogShowReadOnlyCheckBox"/></StackItem>
-                  <StackItem><CheckBox ref.Name="chkFileDialogDereferenceLinks" Text="FileDialogDereferenceLinks"/></StackItem>
-                  <StackItem><CheckBox ref.Name="chkFileDialogShowNetworkButton" Text="FileDialogShowNetworkButton"/></StackItem>
-                  <StackItem><CheckBox ref.Name="chkFileDialogPromptCreateFile" Text="FileDialogPromptCreateFile"/></StackItem>
-                  <StackItem><CheckBox ref.Name="chkFileDialogPromptOverwriteFile" Text="FileDialogPromptOverwriteFile"/></StackItem>
-                  <StackItem><CheckBox ref.Name="chkFileDialogDirectoryMustExist" Text="FileDialogDirectoryMustExist"/></StackItem>
-                  <StackItem><CheckBox ref.Name="chkFileDialogAddToRecent" Text="FileDialogAddToRecent"/></StackItem>
-                </Stack>
-              </Cell>
-            </Table>
-          </StackItem>
-
-          <StackItem><Label Text="Selected Files:"/></StackItem>
-
-          <StackItem>
-            <BindableTextList ref.Name="lstFiles" VerticalAlwaysVisible="false" HorizontalAlwaysVisible="false">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:80"/>
-              <att.TextProperty-eval>[cast string $1]</att.TextProperty-eval>
-            </BindableTextList>
-          </StackItem>
-
-          <StackItem>
-            <Stack Direction="Horizontal" Padding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-              <StackItem>
-                <Button Text="Show Open File Dialog">
-                  <ev.Clicked-eval><![CDATA[
-                    {
-                      self.SetDialogProperties(dialogOpen);
-                      if (dialogOpen.ShowDialog())
-                      {
-                        lstFiles.ItemSource = dialogOpen.FileNames;
-                      }
-                    }
-                  ]]></ev.Clicked-eval>
-                </Button>
-              </StackItem>
-              <StackItem>
-                <Button Text="Show Save File Dialog">
-                  <ev.Clicked-eval><![CDATA[
-                    {
-                      self.SetDialogProperties(dialogSave);
-                      if (dialogSave.ShowDialog())
-                      {
-                        lstFiles.ItemSource = {dialogSave.FileName} of string[];
-                      }
-                    }
-                  ]]></ev.Clicked-eval>
-                </Button>
-              </StackItem>
-            </Stack>
-          </StackItem>
-        </Stack>
+        <Bounds AlignmentToParent="left:5 top:5 right:5 bottom:5" MinSizeLimitation="LimitToElementAndChildren">
+          <ez:Layout Padding="5" Border="false">
+            <ez:Top>
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                  <ez:Layout Padding="5" Border="false">
+                    <ez:Column CellOption="composeType:MinSize">
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <Label Text="Title:"/>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <Label Text="Directory:"/>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <Label Text="FileName:"/>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <Label Text="Filter:"/>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <Label Text="FilterIndex:"/>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <Label Text="DefaultExtension:"/>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
+                    </ez:Column>
+                    <ez:Column CellOption="composeType:Absolute absolute:200">
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <SinglelineTextBox ref.Name="txtTitle" Text="The Title">
+                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                          </SinglelineTextBox>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <SinglelineTextBox ref.Name="txtDirectory" Text="C:\">
+                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                          </SinglelineTextBox>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <SinglelineTextBox ref.Name="txtFileName" Text="C:\File.txt">
+                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                          </SinglelineTextBox>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <SinglelineTextBox ref.Name="txtFilter" Text="Text Files (*.txt)|*.txt|XML Files (*.xml)|*.xml|All Files (*.*)|*.*">
+                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                          </SinglelineTextBox>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <SinglelineTextBox ref.Name="txtFilterIndex" Text="0">
+                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                          </SinglelineTextBox>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:MinSize">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <SinglelineTextBox ref.Name="txtDefaultExtension" Text="txt">
+                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                          </SinglelineTextBox>
+                        </Bounds>
+                      </ez:Row>
+                      <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
+                    </ez:Column>
+                    <ez:Column CellOption="composeType:MinSize">
+                      <ez:Row CellSpan="7">
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                            <ez:Layout Padding="0" Border="false">
+                              <ez:Top>
+                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                                  <CheckBox ref.Name="chkFileDialogAllowMultipleSelection" Text="FileDialogAllowMultipleSelection"/>
+                                </Bounds>
+                              </ez:Top>
+                              <ez:Top>
+                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                                  <CheckBox ref.Name="chkFileDialogFileMustExist" Text="FileDialogFileMustExist"/>
+                                </Bounds>
+                              </ez:Top>
+                              <ez:Top>
+                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                                  <CheckBox ref.Name="chkFileDialogShowReadOnlyCheckBox" Text="FileDialogShowReadOnlyCheckBox"/>
+                                </Bounds>
+                              </ez:Top>
+                              <ez:Top>
+                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                                  <CheckBox ref.Name="chkFileDialogDereferenceLinks" Text="FileDialogDereferenceLinks"/>
+                                </Bounds>
+                              </ez:Top>
+                              <ez:Top>
+                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                                  <CheckBox ref.Name="chkFileDialogShowNetworkButton" Text="FileDialogShowNetworkButton"/>
+                                </Bounds>
+                              </ez:Top>
+                              <ez:Top>
+                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                                  <CheckBox ref.Name="chkFileDialogPromptCreateFile" Text="FileDialogPromptCreateFile"/>
+                                </Bounds>
+                              </ez:Top>
+                              <ez:Top>
+                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                                  <CheckBox ref.Name="chkFileDialogPromptOverwriteFile" Text="FileDialogPromptOverwriteFile"/>
+                                </Bounds>
+                              </ez:Top>
+                              <ez:Top>
+                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                                  <CheckBox ref.Name="chkFileDialogDirectoryMustExist" Text="FileDialogDirectoryMustExist"/>
+                                </Bounds>
+                              </ez:Top>
+                              <ez:Top>
+                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                                  <CheckBox ref.Name="chkFileDialogAddToRecent" Text="FileDialogAddToRecent"/>
+                                </Bounds>
+                              </ez:Top>
+                            </ez:Layout>
+                          </Bounds>
+                        </Bounds>
+                      </ez:Row>
+                    </ez:Column>
+                    <ez:Column CellOption="composeType:Percentage percentage:1.0">
+                      <ez:Row CellOption="composeType:MinSize"/>
+                      <ez:Row CellOption="composeType:MinSize"/>
+                      <ez:Row CellOption="composeType:MinSize"/>
+                      <ez:Row CellOption="composeType:MinSize"/>
+                      <ez:Row CellOption="composeType:MinSize"/>
+                      <ez:Row CellOption="composeType:MinSize"/>
+                      <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
+                    </ez:Column>
+                  </ez:Layout>
+                </Bounds>
+              </Bounds>
+            </ez:Top>
+            <ez:Top>
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <Label Text="Selected Files:"/>
+              </Bounds>
+            </ez:Top>
+            <ez:Top>
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <BindableTextList ref.Name="lstFiles" VerticalAlwaysVisible="false" HorizontalAlwaysVisible="false">
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:80"/>
+                  <att.TextProperty-eval>[cast string $1]</att.TextProperty-eval>
+                </BindableTextList>
+              </Bounds>
+            </ez:Top>
+            <ez:Top>
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                  <ez:Layout Padding="5" Border="false">
+                    <ez:Left>
+                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                        <Button Text="Show Open File Dialog">
+                          <ev.Clicked-eval><![CDATA[
+                            {
+                              self.SetDialogProperties(dialogOpen);
+                              if (dialogOpen.ShowDialog())
+                              {
+                                lstFiles.ItemSource = dialogOpen.FileNames;
+                              }
+                            }
+                          ]]></ev.Clicked-eval>
+                        </Button>
+                      </Bounds>
+                    </ez:Left>
+                    <ez:Left>
+                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                        <Button Text="Show Save File Dialog">
+                          <ev.Clicked-eval><![CDATA[
+                            {
+                              self.SetDialogProperties(dialogSave);
+                              if (dialogSave.ShowDialog())
+                              {
+                                lstFiles.ItemSource = {dialogSave.FileName} of string[];
+                              }
+                            }
+                          ]]></ev.Clicked-eval>
+                        </Button>
+                      </Bounds>
+                    </ez:Left>
+                  </ez:Layout>
+                </Bounds>
+              </Bounds>
+            </ez:Top>
+          </ez:Layout>
+        </Bounds>
       </TabPage>
     </Instance>
   </Instance>

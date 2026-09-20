@@ -76,41 +76,52 @@
     <Instance ref.CodeBehind="false" ref.Class="demo::TriplePhaseImageButtonTemplate" ref.Styles="res://Styles">
       <ButtonTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
         <SolidBackground ref.Style="buttonBackground"/>
-        <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" BorderVisible="true" MinSizeLimitation="LimitToElementAndChildren">
+        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
           <SolidBorder ref.Style="buttonBorder"/>
-
-          <att.Rows>
-            <_>composeType:Percentage percentage:0.5</_>
-            <_>composeType:Absolute absolute:32</_>
-            <_>composeType:Percentage percentage:0.5</_>
-          </att.Rows>
-          <att.Columns>
-            <_>composeType:Absolute absolute:4</_>
-            <_>composeType:Absolute absolute:32</_>
-            <_>composeType:Absolute absolute:4</_>
-            <_>composeType:Percentage percentage:1.0</_>
-            <_>composeType:Absolute absolute:4</_>
-          </att.Columns>
-
-          <Cell Site="row:1 column:1">
-            <ImageFrame Stretch="true" Enabled-bind="self.VisuallyEnabled">
-              <att.Image-bind>
-                <![CDATA[
-                  (
-                    let control = cast (TriplePhaseButton*) self.Context in (
-                      control.State == TripleState::Checked ? control.CheckedImage.Image:
-                      control.State == TripleState::Partial ? control.PartialImage.Image:
-                      null
-                    )
-                  ) ?? null
-                ]]>
-              </att.Image-bind>
-            </ImageFrame>
-          </Cell>
-          <Cell Site="row:1 column:3">
-            <SolidLabel ref.Style="buttonText" Text-bind="self.Text" Font-bind="self.Font" VerticalAlignment="Center"/>
-          </Cell>
-        </Table>
+          <ez:Layout Padding="0" Border="true">
+            <ez:Row CellOption="composeType:Percentage percentage:0.5">
+              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+              <ez:Column CellOption="composeType:Absolute absolute:32"/>
+              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:Absolute absolute:32">
+              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+              <ez:Column CellOption="composeType:Absolute absolute:32">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <ImageFrame Stretch="true" Enabled-bind="self.VisuallyEnabled">
+                    <att.Image-bind>
+                      <![CDATA[
+                        (
+                          let control = cast (TriplePhaseButton*) self.Context in (
+                            control.State == TripleState::Checked ? control.CheckedImage.Image:
+                            control.State == TripleState::Partial ? control.PartialImage.Image:
+                            null
+                          )
+                        ) ?? null
+                      ]]>
+                    </att.Image-bind>
+                  </ImageFrame>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <SolidLabel ref.Style="buttonText" Text-bind="self.Text" Font-bind="self.Font" VerticalAlignment="Center"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:Percentage percentage:0.5">
+              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+              <ez:Column CellOption="composeType:Absolute absolute:32"/>
+              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+            </ez:Row>
+          </ez:Layout>
+        </Bounds>
       </ButtonTemplate>
     </Instance>
   </Instance>
@@ -148,25 +159,31 @@
   <Instance name="MainWindowInstance">
     <Instance ref.CodeBehind="false" ref.Class="demo::MainWindow" xmlns:demo="demo::*">
       <Window Text="TriplePhaseImageButton" ClientSize="x:640 y:480">
-        <Stack AlignmentToParent="left:10 top:10 right:-1 bottom:-1" Padding="10" Direction="Vertical" MinSizeLimitation="LimitToElementAndChildren">
-          <StackItem>
-            <demo:TriplePhaseButton ref.Name="button" CheckedImage-uri="res://Images/Checked" PartialImage-uri="res://Images/Partial">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:120 y:40"/>
-              <att.Text-bind>
-                <![CDATA[
-                  button.State == TripleState::Checked ? "Checked":
-                  button.State == TripleState::Partial ? "Partial":
-                  "Normal"
-                ]]>
-              </att.Text-bind>
-            </demo:TriplePhaseButton>
-          </StackItem>
-          <StackItem>
-            <Button Text-bind="button.Enabled ? 'Disable' : 'Enable'" ev.Clicked-eval="button.Enabled = not button.Enabled;">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:120 y:40"/>
-            </Button>
-          </StackItem>
-        </Stack>
+        <Bounds AlignmentToParent="left:10 top:10 right:-1 bottom:-1" MinSizeLimitation="LimitToElementAndChildren">
+          <ez:Layout Padding="10" Border="false">
+            <ez:Top>
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <demo:TriplePhaseButton ref.Name="button" CheckedImage-uri="res://Images/Checked" PartialImage-uri="res://Images/Partial">
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:120 y:40"/>
+                  <att.Text-bind>
+                    <![CDATA[
+                      button.State == TripleState::Checked ? "Checked":
+                      button.State == TripleState::Partial ? "Partial":
+                      "Normal"
+                    ]]>
+                  </att.Text-bind>
+                </demo:TriplePhaseButton>
+              </Bounds>
+            </ez:Top>
+            <ez:Top>
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <Button Text-bind="button.Enabled ? 'Disable' : 'Enable'" ev.Clicked-eval="button.Enabled = not button.Enabled;">
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:120 y:40"/>
+                </Button>
+              </Bounds>
+            </ez:Top>
+          </ez:Layout>
+        </Bounds>
       </Window>
     </Instance>
   </Instance>

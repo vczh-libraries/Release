@@ -31,34 +31,31 @@
           </ToolstripGroupContainer>
         </ToolstripMenu>
 
-        <Table CellPadding="5" BorderVisible="false" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <att.Rows>
-            <_>composeType:MinSize</_>
-            <_>composeType:Percentage percentage:1.0</_>
-          </att.Rows>
-          <att.Columns>
-            <_>composeType:Percentage percentage:1.0</_>
-          </att.Columns>
-
-          <Cell Site="row:0 column:0">
-            <ToolstripMenuBar>
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-              <MenuBarButton Text="A Menu" Alt="A">
-                <att.SubMenu-set>
-                  <ToolstripGroup>
-                    <MenuItemButton Command-ref="commandGlobal"/>
-                  </ToolstripGroup>
-                </att.SubMenu-set>
-              </MenuBarButton>
-            </ToolstripMenuBar>
-          </Cell>
-
-          <Cell Site="row:1 column:0">
-            <Label Font="fontFamily:'Segoe UI' size:24" Text="Right click to show the menu">
-              <att.BoundsComposition-set AlignmentToParent="left:5 top:0 right:5 bottom:0"/>
-            </Label>
-          </Cell>
-        </Table>
+        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+          <ez:Layout Padding="5" Border="false">
+            <ez:Top>
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <ToolstripMenuBar>
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  <MenuBarButton Text="A Menu" Alt="A">
+                    <att.SubMenu-set>
+                      <ToolstripGroup>
+                        <MenuItemButton Command-ref="commandGlobal"/>
+                      </ToolstripGroup>
+                    </att.SubMenu-set>
+                  </MenuBarButton>
+                </ToolstripMenuBar>
+              </Bounds>
+            </ez:Top>
+            <ez:Fill Percentage="1.0" Direction="Vertical">
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <Label Font="fontFamily:'Segoe UI' size:24" Text="Right click to show the menu">
+                  <att.BoundsComposition-set AlignmentToParent="left:5 top:0 right:5 bottom:0"/>
+                </Label>
+              </Bounds>
+            </ez:Fill>
+          </ez:Layout>
+        </Bounds>
 
         <att.ContainerComposition-set PreferredMinSize="x:320 y:240">
           <ev.mouseDown-eval><![CDATA[

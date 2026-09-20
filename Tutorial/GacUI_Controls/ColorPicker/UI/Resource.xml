@@ -40,34 +40,40 @@
         <ref.Parameter Name="ViewModel" Class="demo::IViewModel"/>
         <Window Text="ColorPicker" ClientSize="x:360 y:120">
           <att.ContainerComposition-set PreferredMinSize="x:360 y:120"/>
-          <Table CellPadding="10" AlignmentToParent="left:0 top:0 right:0 bottom:0">
-            <att.Rows>
-              <CellOption>composeType:MinSize</CellOption>
-              <CellOption>composeType:MinSize</CellOption>
-              <CellOption>composeType:Percentage percentage:1.0</CellOption>
-            </att.Rows>
-            <att.Columns>
-              <CellOption>composeType:MinSize</CellOption>
-              <CellOption>composeType:Percentage percentage:1.0</CellOption>
-            </att.Columns>
-
-            <Cell Site="row:0 column:0">
-              <Label Text="ComboBox and BindableTextList using ItemTemplate:"/>
-            </Cell>
-            <Cell Site="row:1 column:0">
-              <ComboBox SelectedIndex-eval="0">
-                <att.ItemTemplate>demo::ColorComboItemTemplate</att.ItemTemplate>
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                <att.ListControl>
-                  <BindableTextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IColorItem^">
-                    <att.TextProperty>ItemName</att.TextProperty>
-                    <att.ItemSource-eval>ViewModel.ColorItems</att.ItemSource-eval>
-                    <att.ItemTemplate>demo::ColorListItemTemplate</att.ItemTemplate>
-                  </BindableTextList>
-                </att.ListControl>
-              </ComboBox>
-            </Cell>
-          </Table>
+          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
+            <ez:Layout Padding="10" Border="true">
+              <ez:Row CellOption="composeType:MinSize">
+                <ez:Column CellOption="composeType:MinSize">
+                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                    <Label Text="ComboBox and BindableTextList using ItemTemplate:"/>
+                  </Bounds>
+                </ez:Column>
+                <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+              </ez:Row>
+              <ez:Row CellOption="composeType:MinSize">
+                <ez:Column CellOption="composeType:MinSize">
+                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                    <ComboBox SelectedIndex-eval="0">
+                      <att.ItemTemplate>demo::ColorComboItemTemplate</att.ItemTemplate>
+                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                      <att.ListControl>
+                        <BindableTextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IColorItem^">
+                          <att.TextProperty>ItemName</att.TextProperty>
+                          <att.ItemSource-eval>ViewModel.ColorItems</att.ItemSource-eval>
+                          <att.ItemTemplate>demo::ColorListItemTemplate</att.ItemTemplate>
+                        </BindableTextList>
+                      </att.ListControl>
+                    </ComboBox>
+                  </Bounds>
+                </ez:Column>
+                <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+              </ez:Row>
+              <ez:Row CellOption="composeType:Percentage percentage:1.0">
+                <ez:Column CellOption="composeType:MinSize"/>
+                <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+              </ez:Row>
+            </ez:Layout>
+          </Bounds>
         </Window>
       </Instance>
     </Instance>
@@ -76,26 +82,31 @@
       <Instance ref.CodeBehind="false" ref.Class="demo::ColorComboItemTemplate">
         <ref.Parameter Name="ViewModel" Class="demo::IColorItem"/>
         <ControlTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren">
-          <Table AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-            <att.Rows>
-              <CellOption>composeType:Percentage percentage:1.0</CellOption>
-              <CellOption>composeType:Absolute absolute:16</CellOption>
-              <CellOption>composeType:Percentage percentage:1.0</CellOption>
-            </att.Rows>
-            <att.Columns>
-              <CellOption>composeType:Absolute absolute:16</CellOption>
-              <CellOption>composeType:Absolute absolute:3</CellOption>
-              <CellOption>composeType:Percentage percentage:1.0</CellOption>
-            </att.Columns>
-
-            <Cell Site="row:1 column:0">
-              <SolidBackground Color-eval="ViewModel.ItemColor"/>
-            </Cell>
-
-            <Cell Site="row:0 column:2 rowSpan:3">
-              <SolidLabel Text-eval="ViewModel.ItemName" Font-bind="self.Font" Color="#FFFFFF" Ellipse="true" VerticalAlignment="Center"/>
-            </Cell>
-          </Table>
+          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+            <ez:Layout Padding="0" Border="true">
+              <ez:Column CellOption="composeType:Absolute absolute:16">
+                <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
+                <ez:Row CellOption="composeType:Absolute absolute:16">
+                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                    <SolidBackground Color-eval="ViewModel.ItemColor"/>
+                  </Bounds>
+                </ez:Row>
+                <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Absolute absolute:3">
+                <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
+                <ez:Row CellOption="composeType:Absolute absolute:16"/>
+                <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0">
+                <ez:Row CellSpan="3">
+                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                    <SolidLabel Text-eval="ViewModel.ItemName" Font-bind="self.Font" Color="#FFFFFF" Ellipse="true" VerticalAlignment="Center"/>
+                  </Bounds>
+                </ez:Row>
+              </ez:Column>
+            </ez:Layout>
+          </Bounds>
         </ControlTemplate>
       </Instance>
     </Instance>
