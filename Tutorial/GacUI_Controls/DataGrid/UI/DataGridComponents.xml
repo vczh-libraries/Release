@@ -71,15 +71,15 @@
         </ref.Members>
         <CustomControl ref.Name="self">
           <Bounds AlignmentToParent="left:2 top:2 right:2 bottom:2" MinSizeLimitation="LimitToElementAndChildren">
-            <ez:Layout Padding="0" Border="true">
+            <ez:Layout Padding="0">
               <ez:Column CellOption="composeType:Absolute absolute:2">
                 <ez:Row CellOption="composeType:Percentage percentage:0.5"/>
                 <ez:Row CellOption="composeType:Absolute absolute:16"/>
                 <ez:Row CellOption="composeType:Percentage percentage:0.5"/>
               </ez:Column>
               <ez:Column CellOption="composeType:Absolute absolute:16">
-                <ez:Row CellOption="composeType:Percentage percentage:0.5"/>
-                <ez:Row CellOption="composeType:Absolute absolute:16">
+                <ez:Row/>
+                <ez:Row>
                   <Bounds MinSizeLimitation="LimitToElementAndChildren">
                     <SolidBorder Color="#FFFFFF"/>
                     <Bounds AlignmentToParent="left:1 top:1 right:1 bottom:1">
@@ -87,12 +87,12 @@
                     </Bounds>
                   </Bounds>
                 </ez:Row>
-                <ez:Row CellOption="composeType:Percentage percentage:0.5"/>
+                <ez:Row/>
               </ez:Column>
               <ez:Column CellOption="composeType:Absolute absolute:2">
-                <ez:Row CellOption="composeType:Percentage percentage:0.5"/>
-                <ez:Row CellOption="composeType:Absolute absolute:16"/>
-                <ez:Row CellOption="composeType:Percentage percentage:0.5"/>
+                <ez:Row/>
+                <ez:Row/>
+                <ez:Row/>
               </ez:Column>
               <ez:Column CellOption="composeType:Percentage percentage:1.0">
                 <ez:Row CellSpan="3">
@@ -228,14 +228,14 @@
       </ref.Ctor>
       <CustomControl ref.Name="self">
         <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <ez:Layout Padding="5" Border="true">
-            <ez:Row CellOption="composeType:MinSize">
-              <ez:Column CellOption="composeType:MinSize">
+          <ez:Layout>
+            <ez:Row>
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <CheckBox ref.Name="checkFrom" Text="From:" ev.SelectedChanged-eval="self.UpdateFilter();"/>
                 </Bounds>
               </ez:Column>
-              <ez:Column CellOption="composeType:MinSize">
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <DateComboBox ref.Name="dateFrom" Enabled-bind="checkFrom.Selected" SelectedDate="1988-01-01 00:00:00.000" ev.SelectedDateChanged-eval="self.UpdateFilter();">
                     <att.BoundsComposition-set PreferredMinSize="x:120"/>
@@ -243,13 +243,13 @@
                 </Bounds>
               </ez:Column>
             </ez:Row>
-            <ez:Row CellOption="composeType:MinSize">
-              <ez:Column CellOption="composeType:MinSize">
+            <ez:Row>
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <CheckBox ref.Name="checkTo" Text="To:" ev.SelectedChanged-eval="self.UpdateFilter();"/>
                 </Bounds>
               </ez:Column>
-              <ez:Column CellOption="composeType:MinSize">
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <DateComboBox ref.Name="dateTo" Enabled-bind="checkTo.Selected" SelectedDate="2000-01-01 00:00:00.000" ev.SelectedDateChanged-eval="self.UpdateFilter();">
                     <att.BoundsComposition-set PreferredMinSize="x:120"/>

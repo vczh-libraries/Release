@@ -18,8 +18,8 @@
   </ref.Ctor>
   <TabPage ref.Name="self" Text="ListView">
     <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-      <ez:Layout Padding="5" Border="true">
-        <ez:Row CellOption="composeType:MinSize">
+      <ez:Layout>
+        <ez:Row>
           <ez:Column CellSpan="2">
             <Bounds MinSizeLimitation="LimitToElementAndChildren">
               <ComboBox ref.Name="comboView" Alt="V" SelectedIndex="5">

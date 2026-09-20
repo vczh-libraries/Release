@@ -11,8 +11,8 @@
   </ref.Ctor>
   <TabPage ref.Name="self" Text="TreeView">
     <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-      <ez:Layout Padding="5" Border="true">
-        <ez:Fill Percentage="0.5" Direction="Horizontal">
+      <ez:Layout>
+        <ez:Fill>
           <Bounds MinSizeLimitation="LimitToElementAndChildren">
             <TreeView ref.Name="treeView" Alt="L" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
               <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
@@ -48,7 +48,7 @@
             </TreeView>
           </Bounds>
         </ez:Fill>
-        <ez:Fill Percentage="0.5" Direction="Horizontal">
+        <ez:Fill>
           <Bounds MinSizeLimitation="LimitToElementAndChildren">
             <BindableTreeView ref.Name="bindableTreeView" Alt="L" env.ItemType="MemoryNodeProvider^" env.ItemName="nodeToBind" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
               <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>

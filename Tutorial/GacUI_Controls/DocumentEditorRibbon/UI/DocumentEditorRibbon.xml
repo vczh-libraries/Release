@@ -90,8 +90,8 @@
         <CustomControl ref.Name="containerControl">
           <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
           <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-            <ez:Layout Padding="5" Border="true">
-              <ez:Fill Percentage="1.0" Direction="Vertical">
+            <ez:Layout>
+              <ez:Fill>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <SolidLabel ref.Name="styleLabel" Text="AaBbCc" Ellipse="true" Color="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Bounds>

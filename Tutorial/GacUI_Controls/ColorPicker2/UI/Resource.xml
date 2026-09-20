@@ -50,17 +50,17 @@
           </att.ViewModel-set>
           <att.ContainerComposition-set PreferredMinSize="x:360 y:120"/>
           <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-            <ez:Layout Padding="10" Border="true">
-              <ez:Row CellOption="composeType:MinSize">
-                <ez:Column CellOption="composeType:MinSize">
+            <ez:Layout Padding="10">
+              <ez:Row>
+                <ez:Column>
                   <Bounds MinSizeLimitation="LimitToElementAndChildren">
                     <Label Text="ComboButton using Custom Dropdown Control:"/>
                   </Bounds>
                 </ez:Column>
                 <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
               </ez:Row>
-              <ez:Row CellOption="composeType:MinSize">
-                <ez:Column CellOption="composeType:MinSize">
+              <ez:Row>
+                <ez:Column>
                   <Bounds MinSizeLimitation="LimitToElementAndChildren">
                     <ComboButton ref.Name="comboColor" Alt="K">
                       <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5" PreferredMinSize="x:80 y:24"/>
@@ -82,11 +82,11 @@
                     </ComboButton>
                   </Bounds>
                 </ez:Column>
-                <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+                <ez:Column/>
               </ez:Row>
               <ez:Row CellOption="composeType:Percentage percentage:1.0">
-                <ez:Column CellOption="composeType:MinSize"/>
-                <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+                <ez:Column/>
+                <ez:Column/>
               </ez:Row>
             </ez:Layout>
           </Bounds>
@@ -102,7 +102,7 @@
             <Button>
               <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
               <Bounds AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElementAndChildren">
-                <ez:Layout Padding="0" Border="true">
+                <ez:Layout Padding="0">
                   <ez:Column CellOption="composeType:Absolute absolute:16">
                     <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
                     <ez:Row CellOption="composeType:Absolute absolute:16">
@@ -113,9 +113,9 @@
                     <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
                   </ez:Column>
                   <ez:Column CellOption="composeType:Absolute absolute:3">
-                    <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
-                    <ez:Row CellOption="composeType:Absolute absolute:16"/>
-                    <ez:Row CellOption="composeType:Percentage percentage:1.0"/>
+                    <ez:Row/>
+                    <ez:Row/>
+                    <ez:Row/>
                   </ez:Column>
                   <ez:Column CellOption="composeType:Percentage percentage:1.0">
                     <ez:Row CellSpan="3">

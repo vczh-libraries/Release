@@ -21,14 +21,14 @@
             <att.Pages>
               <TabPage Text="GroupBox">
                 <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-                  <ez:Layout Padding="5" Border="true">
-                    <ez:Fill Percentage="1.0" Direction="Horizontal">
+                  <ez:Layout>
+                    <ez:Fill>
                       <Bounds MinSizeLimitation="LimitToElementAndChildren">
                         <GroupBox Text="Button">
                           <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
 
                           <Bounds AlignmentToParent="left:5 top:5 right:5 bottom:5">
-                            <ez:Layout Padding="5" Border="false">
+                            <ez:Layout Border="false">
                               <ez:Top>
                                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                                   <Button Text="Button 1">
@@ -55,13 +55,13 @@
                         </GroupBox>
                       </Bounds>
                     </ez:Fill>
-                    <ez:Fill Percentage="1.0" Direction="Horizontal">
+                    <ez:Fill>
                       <Bounds MinSizeLimitation="LimitToElementAndChildren">
                         <GroupBox Text="CheckBox">
                           <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
 
                           <Bounds AlignmentToParent="left:5 top:5 right:5 bottom:5">
-                            <ez:Layout Padding="5" Border="false">
+                            <ez:Layout Border="false">
                               <ez:Top>
                                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                                   <CheckBox Text="Button 1">
@@ -88,13 +88,13 @@
                         </GroupBox>
                       </Bounds>
                     </ez:Fill>
-                    <ez:Fill Percentage="1.0" Direction="Horizontal">
+                    <ez:Fill>
                       <Bounds MinSizeLimitation="LimitToElementAndChildren">
                         <GroupBox Text="RadioButton">
                           <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
 
                           <Bounds AlignmentToParent="left:5 top:5 right:5 bottom:5">
-                            <ez:Layout Padding="5" Border="false">
+                            <ez:Layout Border="false">
                               <ez:Top>
                                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                                   <RadioButton Text="Button 1" GroupController-ref="radioGroup" Selected="true">
@@ -130,23 +130,23 @@
                   <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>
 
                   <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <ez:Layout Padding="10" Border="true">
-                      <ez:Row CellOption="composeType:MinSize">
-                        <ez:Column CellOption="composeType:MinSize">
+                    <ez:Layout Padding="10">
+                      <ez:Row>
+                        <ez:Column>
                           <Bounds MinSizeLimitation="LimitToElementAndChildren">
                             <Button Text="(0, 0)">
                               <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
                             </Button>
                           </Bounds>
                         </ez:Column>
-                        <ez:Column CellOption="composeType:MinSize">
+                        <ez:Column>
                           <Bounds MinSizeLimitation="LimitToElementAndChildren">
                             <Button Text="(0, 1)">
                               <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
                             </Button>
                           </Bounds>
                         </ez:Column>
-                        <ez:Column CellOption="composeType:MinSize">
+                        <ez:Column>
                           <Bounds MinSizeLimitation="LimitToElementAndChildren">
                             <Button Text="(0, 0)">
                               <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
@@ -154,22 +154,22 @@
                           </Bounds>
                         </ez:Column>
                       </ez:Row>
-                      <ez:Row CellOption="composeType:MinSize">
-                        <ez:Column CellOption="composeType:MinSize">
+                      <ez:Row>
+                        <ez:Column>
                           <Bounds MinSizeLimitation="LimitToElementAndChildren">
                             <Button Text="(1, 0)">
                               <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
                             </Button>
                           </Bounds>
                         </ez:Column>
-                        <ez:Column CellOption="composeType:MinSize">
+                        <ez:Column>
                           <Bounds MinSizeLimitation="LimitToElementAndChildren">
                             <Button Text="(1, 1)">
                               <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
                             </Button>
                           </Bounds>
                         </ez:Column>
-                        <ez:Column CellOption="composeType:MinSize">
+                        <ez:Column>
                           <Bounds MinSizeLimitation="LimitToElementAndChildren">
                             <Button Text="(1, 0)">
                               <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
@@ -177,22 +177,22 @@
                           </Bounds>
                         </ez:Column>
                       </ez:Row>
-                      <ez:Row CellOption="composeType:MinSize">
-                        <ez:Column CellOption="composeType:MinSize">
+                      <ez:Row>
+                        <ez:Column>
                           <Bounds MinSizeLimitation="LimitToElementAndChildren">
                             <Button Text="(2, 0)">
                               <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
                             </Button>
                           </Bounds>
                         </ez:Column>
-                        <ez:Column CellOption="composeType:MinSize">
+                        <ez:Column>
                           <Bounds MinSizeLimitation="LimitToElementAndChildren">
                             <Button Text="(2, 1)">
                               <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>
                             </Button>
                           </Bounds>
                         </ez:Column>
-                        <ez:Column CellOption="composeType:MinSize">
+                        <ez:Column>
                           <Bounds MinSizeLimitation="LimitToElementAndChildren">
                             <Button Text="(2, 0)">
                               <att.BoundsComposition-set PreferredMinSize="x:160 y:160"/>

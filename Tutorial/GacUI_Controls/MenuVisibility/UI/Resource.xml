@@ -14,7 +14,7 @@
       <Window ref.Name="self" Text="MenuVisibility" ClientSize="x:640 y:480">
         <att.ContainerComposition-set PreferredMinSize="x:640 y:480"/>
         <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-          <ez:Layout Padding="0" Border="true">
+          <ez:Layout Padding="0">
             <ez:Top>
               <Bounds MinSizeLimitation="LimitToElementAndChildren">
                 <ToolstripMenuBar>
@@ -36,7 +36,7 @@
                 </ToolstripMenuBar>
               </Bounds>
             </ez:Top>
-            <ez:Fill Percentage="1.0" Direction="Vertical">
+            <ez:Fill>
               <Bounds MinSizeLimitation="LimitToElementAndChildren">
                 <TextList ref.Name="checkList" View="Check">
                   <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5"/>

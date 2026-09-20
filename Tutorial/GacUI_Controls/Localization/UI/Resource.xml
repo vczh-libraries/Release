@@ -86,14 +86,14 @@
       <ref.LocalizedStrings Name="Strings" Class="demo::StringResource" Default="true"/>
       <Window ref.Name="self" Text-str="Title()" ClientSize="x:640 y:480">
         <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-          <ez:Layout Padding="5" Border="true">
-            <ez:Row CellOption="composeType:MinSize">
-              <ez:Column CellOption="composeType:MinSize">
+          <ez:Layout>
+            <ez:Row>
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <SolidLabel Font-bind="self.DisplayFont" Color="#FFFFFF" Text-str="Label()" VerticalAlignment="Center"/>
                 </Bounds>
               </ez:Column>
-              <ez:Column CellOption="composeType:MinSize">
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <ComboBox ref.Name="comboLocales">
                     <att.BoundsComposition-set PreferredMinSize="x:120"/>

@@ -78,7 +78,7 @@
         <SolidBackground ref.Style="buttonBackground"/>
         <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
           <SolidBorder ref.Style="buttonBorder"/>
-          <ez:Layout Padding="0" Border="true">
+          <ez:Layout Padding="0">
             <ez:Row CellOption="composeType:Percentage percentage:0.5">
               <ez:Column CellOption="composeType:Absolute absolute:4"/>
               <ez:Column CellOption="composeType:Absolute absolute:32"/>
@@ -87,8 +87,8 @@
               <ez:Column CellOption="composeType:Absolute absolute:4"/>
             </ez:Row>
             <ez:Row CellOption="composeType:Absolute absolute:32">
-              <ez:Column CellOption="composeType:Absolute absolute:4"/>
-              <ez:Column CellOption="composeType:Absolute absolute:32">
+              <ez:Column/>
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <ImageFrame Stretch="true" Enabled-bind="self.VisuallyEnabled">
                     <att.Image-bind>
@@ -105,20 +105,20 @@
                   </ImageFrame>
                 </Bounds>
               </ez:Column>
-              <ez:Column CellOption="composeType:Absolute absolute:4"/>
-              <ez:Column CellOption="composeType:Percentage percentage:1.0">
+              <ez:Column/>
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <SolidLabel ref.Style="buttonText" Text-bind="self.Text" Font-bind="self.Font" VerticalAlignment="Center"/>
                 </Bounds>
               </ez:Column>
-              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+              <ez:Column/>
             </ez:Row>
             <ez:Row CellOption="composeType:Percentage percentage:0.5">
-              <ez:Column CellOption="composeType:Absolute absolute:4"/>
-              <ez:Column CellOption="composeType:Absolute absolute:32"/>
-              <ez:Column CellOption="composeType:Absolute absolute:4"/>
-              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-              <ez:Column CellOption="composeType:Absolute absolute:4"/>
+              <ez:Column/>
+              <ez:Column/>
+              <ez:Column/>
+              <ez:Column/>
+              <ez:Column/>
             </ez:Row>
           </ez:Layout>
         </Bounds>

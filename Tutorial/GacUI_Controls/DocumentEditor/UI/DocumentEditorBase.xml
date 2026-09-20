@@ -169,14 +169,14 @@
               />
 
         <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <ez:Layout Padding="0" Border="true">
+          <ez:Layout Padding="0">
             <ez:Top>
               <Bounds ref.Name="menuContainer" MinSizeLimitation="LimitToElementAndChildren"/>
             </ez:Top>
             <ez:Top>
               <Bounds ref.Name="toolstripContainer" MinSizeLimitation="LimitToElementAndChildren"/>
             </ez:Top>
-            <ez:Fill Percentage="1.0" Direction="Vertical">
+            <ez:Fill>
               <Bounds MinSizeLimitation="LimitToElementAndChildren">
                 <DocumentViewer ref.Name="document" EditMode="Editable" Alt="D">
                   <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>

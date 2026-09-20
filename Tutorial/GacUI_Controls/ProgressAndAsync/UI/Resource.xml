@@ -44,8 +44,8 @@
         <Window ref.Name="self" Text="ProgressAndAsync" ClientSize="x:480 y:320">
           <att.ContainerComposition-set PreferredMinSize="x:480 y:320"/>
           <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-            <ez:Layout Padding="5" Border="true">
-              <ez:Row CellOption="composeType:MinSize">
+            <ez:Layout>
+              <ez:Row>
                 <ez:Column CellOption="composeType:Percentage percentage:1.0">
                   <Bounds MinSizeLimitation="LimitToElementAndChildren">
                     <ProgressBar ref.Name="progressBar" TotalSize="10">
@@ -53,7 +53,7 @@
                     </ProgressBar>
                   </Bounds>
                 </ez:Column>
-                <ez:Column CellOption="composeType:MinSize">
+                <ez:Column>
                   <Bounds MinSizeLimitation="LimitToElementAndChildren">
                     <Button ref.Name="buttonDownload" Text="Begin Download!">
                       <ev.Clicked-eval>

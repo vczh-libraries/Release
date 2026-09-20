@@ -216,7 +216,7 @@
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
 
                 <Bounds AlignmentToParent="left:3 top:3 right:3 bottom:3">
-                  <ez:Layout Padding="5" Border="false">
+                  <ez:Layout Border="false">
                     <ez:Top>
                       <Bounds MinSizeLimitation="LimitToElementAndChildren">
                         <ToolstripToolBar>
@@ -226,7 +226,7 @@
                         </ToolstripToolBar>
                       </Bounds>
                     </ez:Top>
-                    <ez:Fill Percentage="1.0" Direction="Vertical">
+                    <ez:Fill>
                       <Bounds MinSizeLimitation="LimitToElementAndChildren">
                         <BindableTreeView ref.Name="treeViewFolders" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::ICategory^">
                           <att.ItemSource-eval>ViewModel.GetRootCategory()</att.ItemSource-eval>
@@ -247,7 +247,7 @@
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
 
                 <Bounds AlignmentToParent="left:3 top:3 right:3 bottom:3">
-                  <ez:Layout Padding="5" Border="false">
+                  <ez:Layout Border="false">
                     <ez:Top>
                       <Bounds MinSizeLimitation="LimitToElementAndChildren">
                         <ToolstripToolBar>
@@ -265,7 +265,7 @@
                         </ToolstripToolBar>
                       </Bounds>
                     </ez:Top>
-                    <ez:Fill Percentage="1.0" Direction="Vertical">
+                    <ez:Fill>
                       <Bounds MinSizeLimitation="LimitToElementAndChildren">
                         <BindableListView ref.Name="listViewContacts" View="Detail" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IContact^">
                           <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
@@ -310,9 +310,9 @@
           <att.FolderName-bind>textBoxName.Text</att.FolderName-bind>
           
           <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-            <ez:Layout Padding="5" Border="true">
-              <ez:Row CellOption="composeType:MinSize">
-                <ez:Column CellOption="composeType:MinSize">
+            <ez:Layout>
+              <ez:Row>
+                <ez:Column>
                   <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
                     <Label Text="Name:"/>
                   </Bounds>
@@ -326,15 +326,15 @@
                 </ez:Column>
               </ez:Row>
               <ez:Row CellOption="composeType:Percentage percentage:1.0">
-                <ez:Column CellOption="composeType:MinSize"/>
+                <ez:Column/>
                 <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-                <ez:Column CellOption="composeType:MinSize"/>
-                <ez:Column CellOption="composeType:MinSize"/>
+                <ez:Column/>
+                <ez:Column/>
               </ez:Row>
-              <ez:Row CellOption="composeType:MinSize">
-                <ez:Column CellOption="composeType:MinSize"/>
-                <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-                <ez:Column CellOption="composeType:MinSize">
+              <ez:Row>
+                <ez:Column/>
+                <ez:Column/>
+                <ez:Column>
                   <Bounds MinSizeLimitation="LimitToElementAndChildren">
                     <Button Text="OK">
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
@@ -342,7 +342,7 @@
                     </Button>
                   </Bounds>
                 </ez:Column>
-                <ez:Column CellOption="composeType:MinSize">
+                <ez:Column>
                   <Bounds MinSizeLimitation="LimitToElementAndChildren">
                     <Button Text="Cancel">
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
@@ -379,9 +379,9 @@
         <Window ref.Name="self" Text-bind="self.ForEdit ? 'Edit Contact' : 'New Contact'" ClientSize="x:480 y:400" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:400"/>
           <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-            <ez:Layout Padding="5" Border="true">
-              <ez:Row CellOption="composeType:MinSize">
-                <ez:Column CellOption="composeType:MinSize">
+            <ez:Layout>
+              <ez:Row>
+                <ez:Column>
                   <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
                     <Label Text="Name:"/>
                   </Bounds>
@@ -394,8 +394,8 @@
                   </Bounds>
                 </ez:Column>
               </ez:Row>
-              <ez:Row CellOption="composeType:MinSize">
-                <ez:Column CellOption="composeType:MinSize">
+              <ez:Row>
+                <ez:Column>
                   <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
                     <Label Text="Phone:"/>
                   </Bounds>
@@ -408,8 +408,8 @@
                   </Bounds>
                 </ez:Column>
               </ez:Row>
-              <ez:Row CellOption="composeType:MinSize">
-                <ez:Column CellOption="composeType:MinSize">
+              <ez:Row>
+                <ez:Column>
                   <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
                     <Label Text="Address:"/>
                   </Bounds>
@@ -422,8 +422,8 @@
                   </Bounds>
                 </ez:Column>
               </ez:Row>
-              <ez:Row CellOption="composeType:MinSize">
-                <ez:Column CellOption="composeType:MinSize">
+              <ez:Row>
+                <ez:Column>
                   <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
                     <Label Text="Birthday:"/>
                   </Bounds>
@@ -437,15 +437,15 @@
                 </ez:Column>
               </ez:Row>
               <ez:Row CellOption="composeType:Percentage percentage:1.0">
-                <ez:Column CellOption="composeType:MinSize"/>
+                <ez:Column/>
                 <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-                <ez:Column CellOption="composeType:MinSize"/>
-                <ez:Column CellOption="composeType:MinSize"/>
+                <ez:Column/>
+                <ez:Column/>
               </ez:Row>
-              <ez:Row CellOption="composeType:MinSize">
-                <ez:Column CellOption="composeType:MinSize"/>
-                <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-                <ez:Column CellOption="composeType:MinSize">
+              <ez:Row>
+                <ez:Column/>
+                <ez:Column/>
+                <ez:Column>
                   <Bounds MinSizeLimitation="LimitToElementAndChildren">
                     <Button Text="OK">
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
@@ -461,7 +461,7 @@
                     </Button>
                   </Bounds>
                 </ez:Column>
-                <ez:Column CellOption="composeType:MinSize">
+                <ez:Column>
                   <Bounds MinSizeLimitation="LimitToElementAndChildren">
                     <Button Text="Cancel">
                       <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>

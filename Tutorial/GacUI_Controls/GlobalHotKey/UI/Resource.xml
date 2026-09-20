@@ -32,7 +32,7 @@
         </ToolstripMenu>
 
         <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <ez:Layout Padding="5" Border="false">
+          <ez:Layout Border="false">
             <ez:Top>
               <Bounds MinSizeLimitation="LimitToElementAndChildren">
                 <ToolstripMenuBar>
@@ -47,7 +47,7 @@
                 </ToolstripMenuBar>
               </Bounds>
             </ez:Top>
-            <ez:Fill Percentage="1.0" Direction="Vertical">
+            <ez:Fill>
               <Bounds MinSizeLimitation="LimitToElementAndChildren">
                 <Label Font="fontFamily:'Segoe UI' size:24" Text="Right click to show the menu">
                   <att.BoundsComposition-set AlignmentToParent="left:5 top:0 right:5 bottom:0"/>

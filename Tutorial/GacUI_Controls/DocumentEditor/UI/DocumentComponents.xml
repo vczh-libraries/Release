@@ -9,24 +9,24 @@
       <Window ref.Name="self" Text="Hyperlink" ClientSize="x:320 y:80" SizeBox="false" MinimizedBox="false" MaximizedBox="false" ShowInTaskBar="false">
         <att.BoundsComposition-set PreferredMinSize="x:320 y:80"/>
         <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <ez:Layout Padding="5" Border="true">
-            <ez:Row CellOption="composeType:MinSize">
-              <ez:Column CellOption="composeType:MinSize">
+          <ez:Layout>
+            <ez:Row>
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-                    <ez:Layout Padding="0" Border="true">
+                    <ez:Layout Padding="0">
                       <ez:Row CellOption="composeType:Percentage percentage:0.5">
                         <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
                       </ez:Row>
-                      <ez:Row CellOption="composeType:MinSize">
-                        <ez:Column CellOption="composeType:Percentage percentage:1.0">
+                      <ez:Row>
+                        <ez:Column>
                           <Bounds MinSizeLimitation="LimitToElementAndChildren">
                             <Label Text="Url: "/>
                           </Bounds>
                         </ez:Column>
                       </ez:Row>
                       <ez:Row CellOption="composeType:Percentage percentage:0.5">
-                        <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+                        <ez:Column/>
                       </ez:Row>
                     </ez:Layout>
                   </Bounds>
@@ -41,15 +41,15 @@
               </ez:Column>
             </ez:Row>
             <ez:Row CellOption="composeType:Percentage percentage:1.0">
-              <ez:Column CellOption="composeType:MinSize"/>
+              <ez:Column/>
               <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-              <ez:Column CellOption="composeType:MinSize"/>
-              <ez:Column CellOption="composeType:MinSize"/>
+              <ez:Column/>
+              <ez:Column/>
             </ez:Row>
-            <ez:Row CellOption="composeType:MinSize">
-              <ez:Column CellOption="composeType:MinSize"/>
-              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-              <ez:Column CellOption="composeType:MinSize">
+            <ez:Row>
+              <ez:Column/>
+              <ez:Column/>
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <Button Text="OK">
                     <att.BoundsComposition-set PreferredMinSize="x:100"/>
@@ -64,7 +64,7 @@
                   </Button>
                 </Bounds>
               </ez:Column>
-              <ez:Column CellOption="composeType:MinSize">
+              <ez:Column>
                 <Bounds MinSizeLimitation="LimitToElementAndChildren">
                   <Button Text="Cancel">
                     <att.BoundsComposition-set PreferredMinSize="x:100"/>
