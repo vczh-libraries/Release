@@ -89,19 +89,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetAlignmentToParent([&](){ ::vl::presentation::Margin __vwsn_temp__; __vwsn_temp__.left = static_cast<::vl::vint>(0); __vwsn_temp__.top = static_cast<::vl::vint>(0); __vwsn_temp__.right = static_cast<::vl::vint>(0); __vwsn_temp__.bottom = static_cast<::vl::vint>(0); return __vwsn_temp__; }());
 		}
 		(this->__vwsn_precompile_5 = new ::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition());
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetBorder(true);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetPadding(static_cast<::vl::vint>(5));
-		}
 		(this->__vwsn_precompile_6 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetDirection(::vl::presentation::compositions::eazy_layout::GuiEasyLayoutDirection::Horizontal);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetPercentage(static_cast<double>(1.0));
-		}
 		(this->__vwsn_precompile_7 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -123,9 +111,6 @@ namespace demo
 		(this->__vwsn_precompile_10 = new ::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetBorder(false);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_10)->SetPadding(static_cast<::vl::vint>(5));
 		}
 		(this->__vwsn_precompile_11 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_12 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -215,12 +200,6 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_5)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_6));
 		}
 		(this->__vwsn_precompile_24 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_24.Obj())->SetDirection(::vl::presentation::compositions::eazy_layout::GuiEasyLayoutDirection::Horizontal);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_24.Obj())->SetPercentage(static_cast<double>(1.0));
-		}
 		(this->__vwsn_precompile_25 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_25)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -242,9 +221,6 @@ namespace demo
 		(this->__vwsn_precompile_28 = new ::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_28)->SetBorder(false);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_28)->SetPadding(static_cast<::vl::vint>(5));
 		}
 		(this->__vwsn_precompile_29 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_30 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -334,12 +310,6 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_5)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_24));
 		}
 		(this->__vwsn_precompile_42 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_42.Obj())->SetDirection(::vl::presentation::compositions::eazy_layout::GuiEasyLayoutDirection::Horizontal);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_42.Obj())->SetPercentage(static_cast<double>(1.0));
-		}
 		(this->__vwsn_precompile_43 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_43)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -361,9 +331,6 @@ namespace demo
 		(this->__vwsn_precompile_46 = new ::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_46)->SetBorder(false);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_46)->SetPadding(static_cast<::vl::vint>(5));
 		}
 		(this->__vwsn_precompile_47 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_48 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -490,19 +457,10 @@ namespace demo
 		}
 		(this->__vwsn_precompile_63 = new ::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition());
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_63)->SetBorder(true);
-		}
-		{
 			::vl::__vwsn::This(this->__vwsn_precompile_63)->SetPadding(static_cast<::vl::vint>(10));
 		}
 		(this->__vwsn_precompile_64 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_65 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_65.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_66 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_66)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -527,9 +485,6 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_65));
 		}
 		(this->__vwsn_precompile_69 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_69.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_70 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_70)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -554,9 +509,6 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_69));
 		}
 		(this->__vwsn_precompile_73 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_73.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_74 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_74)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -584,13 +536,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_63)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_64));
 		}
 		(this->__vwsn_precompile_77 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_77.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_78 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_78.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_79 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_79)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -615,9 +561,6 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_77.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_78));
 		}
 		(this->__vwsn_precompile_82 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_82.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_83 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_83)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -642,9 +585,6 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_77.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_82));
 		}
 		(this->__vwsn_precompile_86 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_86.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_87 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_87)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -672,13 +612,7 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_63)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_77));
 		}
 		(this->__vwsn_precompile_90 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_90.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_91 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_91.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_92 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_92)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -703,9 +637,6 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_90.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_91));
 		}
 		(this->__vwsn_precompile_95 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_95.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_96 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_96)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
@@ -730,9 +661,6 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_90.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_95));
 		}
 		(this->__vwsn_precompile_99 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_99.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::MinSize; return __vwsn_temp__; }());
-		}
 		(this->__vwsn_precompile_100 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_100)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);

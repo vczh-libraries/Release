@@ -173,9 +173,6 @@ namespace demo
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetBorder(false);
 		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetPadding(static_cast<::vl::vint>(5));
-		}
 		(this->__vwsn_precompile_5 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_6 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -223,12 +220,6 @@ namespace demo
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_4)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_5));
 		}
 		(this->__vwsn_precompile_13 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout()));
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetDirection(::vl::presentation::compositions::eazy_layout::GuiEasyLayoutDirection::Vertical);
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetPercentage(static_cast<double>(1.0));
-		}
 		(this->__vwsn_precompile_14 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_14)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
