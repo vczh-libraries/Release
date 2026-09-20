@@ -17,113 +17,111 @@
     ]]>
   </ref.Ctor>
   <TabPage ref.Name="self" Text="ListView">
-    <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-      <ez:Layout>
-        <ez:Row>
-          <ez:Column CellSpan="2">
-            <Bounds MinSizeLimitation="LimitToElementAndChildren">
-              <ComboBox ref.Name="comboView" Alt="V" SelectedIndex="5">
-                <att.BoundsComposition-set PreferredMinSize="x:120"/>
-                <att.ListControl>
-                  <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-                    <att.Items>
-                      <TextItem Text="BigIcon"/>
-                      <TextItem Text="SmallIcon"/>
-                      <TextItem Text="List"/>
-                      <TextItem Text="Tile"/>
-                      <TextItem Text="Information"/>
-                      <TextItem Text="Detail"/>
-                    </att.Items>
-                  </TextList>
-                </att.ListControl>
-                <ev.SelectedIndexChanged-eval>
-                  <![CDATA[
+    <ez:Layout>
+      <ez:Row>
+        <ez:Column CellSpan="2">
+          <Bounds MinSizeLimitation="LimitToElementAndChildren">
+            <ComboBox ref.Name="comboView" Alt="V" SelectedIndex="5">
+              <att.BoundsComposition-set PreferredMinSize="x:120"/>
+              <att.ListControl>
+                <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                  <att.Items>
+                    <TextItem Text="BigIcon"/>
+                    <TextItem Text="SmallIcon"/>
+                    <TextItem Text="List"/>
+                    <TextItem Text="Tile"/>
+                    <TextItem Text="Information"/>
+                    <TextItem Text="Detail"/>
+                  </att.Items>
+                </TextList>
+              </att.ListControl>
+              <ev.SelectedIndexChanged-eval>
+                <![CDATA[
+                  {
+                    switch (comboView.SelectedIndex)
                     {
-                      switch (comboView.SelectedIndex)
+                    case 0:
                       {
-                      case 0:
-                        {
-                          listView.View = BigIcon;
-                          bindableListView.View = BigIcon;
-                        }
-                      case 1:
-                        {
-                          listView.View = SmallIcon;
-                          bindableListView.View = SmallIcon;
-                        }
-                      case 2:
-                        {
-                          listView.View = ListViewView::List;
-                          bindableListView.View = ListViewView::List;
-                        }
-                      case 3:
-                        {
-                          listView.View = Tile;
-                          bindableListView.View = Tile;
-                        }
-                      case 4:
-                        {
-                          listView.View = Information;
-                          bindableListView.View = Information;
-                        }
-                      case 5:
-                        {
-                          listView.View = Detail;
-                          bindableListView.View = Detail;
-                        }
+                        listView.View = BigIcon;
+                        bindableListView.View = BigIcon;
+                      }
+                    case 1:
+                      {
+                        listView.View = SmallIcon;
+                        bindableListView.View = SmallIcon;
+                      }
+                    case 2:
+                      {
+                        listView.View = ListViewView::List;
+                        bindableListView.View = ListViewView::List;
+                      }
+                    case 3:
+                      {
+                        listView.View = Tile;
+                        bindableListView.View = Tile;
+                      }
+                    case 4:
+                      {
+                        listView.View = Information;
+                        bindableListView.View = Information;
+                      }
+                    case 5:
+                      {
+                        listView.View = Detail;
+                        bindableListView.View = Detail;
                       }
                     }
-                  ]]>
-                </ev.SelectedIndexChanged-eval>
-              </ComboBox>
-            </Bounds>
-          </ez:Column>
-        </ez:Row>
-        <ez:Row CellOption="composeType:Percentage percentage:1.0">
-          <ez:Column CellOption="composeType:Percentage percentage:0.5">
-            <Bounds MinSizeLimitation="LimitToElementAndChildren">
-              <ListView ref.Name="listView" Alt="L" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  }
+                ]]>
+              </ev.SelectedIndexChanged-eval>
+            </ComboBox>
+          </Bounds>
+        </ez:Column>
+      </ez:Row>
+      <ez:Row CellOption="composeType:Percentage percentage:1.0">
+        <ez:Column CellOption="composeType:Percentage percentage:0.5">
+          <Bounds MinSizeLimitation="LimitToElementAndChildren">
+            <ListView ref.Name="listView" Alt="L" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
 
-                <att.Columns>
-                  <_ Text="Id"/>
-                  <_ Text="Category"/>
-                  <_ Text="Size"/>
-                  <_ Text="File"/>
-                </att.Columns>
+              <att.Columns>
+                <_ Text="Id"/>
+                <_ Text="Category"/>
+                <_ Text="Size"/>
+                <_ Text="File"/>
+              </att.Columns>
 
-                <att.DataColumns>
-                  <_>0</_>
-                  <_>1</_>
-                  <_>2</_>
-                </att.DataColumns>
-              </ListView>
-            </Bounds>
-          </ez:Column>
-          <ez:Column CellOption="composeType:Percentage percentage:0.5">
-            <Bounds MinSizeLimitation="LimitToElementAndChildren">
-              <BindableListView ref.Name="bindableListView" Alt="L" env.ItemType="ListViewItem^" env.ItemName="itemToBind" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                <att.LargeImageProperty>LargeImage</att.LargeImageProperty>
-                <att.SmallImageProperty>SmallImage</att.SmallImageProperty>
+              <att.DataColumns>
+                <_>0</_>
+                <_>1</_>
+                <_>2</_>
+              </att.DataColumns>
+            </ListView>
+          </Bounds>
+        </ez:Column>
+        <ez:Column CellOption="composeType:Percentage percentage:0.5">
+          <Bounds MinSizeLimitation="LimitToElementAndChildren">
+            <BindableListView ref.Name="bindableListView" Alt="L" env.ItemType="ListViewItem^" env.ItemName="itemToBind" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+              <att.LargeImageProperty>LargeImage</att.LargeImageProperty>
+              <att.SmallImageProperty>SmallImage</att.SmallImageProperty>
 
-                <att.Columns>
-                  <_ Text="Id" TextProperty="Text"/>
-                  <_ Text="Category" TextProperty="itemToBind.SubItems[0]"/>
-                  <_ Text="Size" TextProperty="itemToBind.SubItems[1]"/>
-                  <_ Text="File" TextProperty="itemToBind.SubItems[2]"/>
-                </att.Columns>
+              <att.Columns>
+                <_ Text="Id" TextProperty="Text"/>
+                <_ Text="Category" TextProperty="itemToBind.SubItems[0]"/>
+                <_ Text="Size" TextProperty="itemToBind.SubItems[1]"/>
+                <_ Text="File" TextProperty="itemToBind.SubItems[2]"/>
+              </att.Columns>
 
-                <att.DataColumns>
-                  <_>0</_>
-                  <_>1</_>
-                  <_>2</_>
-                </att.DataColumns>
-              </BindableListView>
-            </Bounds>
-          </ez:Column>
-        </ez:Row>
-      </ez:Layout>
-    </Bounds>
+              <att.DataColumns>
+                <_>0</_>
+                <_>1</_>
+                <_>2</_>
+              </att.DataColumns>
+            </BindableListView>
+          </Bounds>
+        </ez:Column>
+      </ez:Row>
+    </ez:Layout>
   </TabPage>
 </Instance>

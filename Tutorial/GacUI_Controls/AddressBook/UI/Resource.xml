@@ -76,7 +76,7 @@
     <Image content="File" name="Tile">ListView_Tile.png</Image>
     <Image content="File" name="Information">ListView_Info.png</Image>
   </Folder>
-  
+
   <Folder name="MainWindow">
     <Instance name="MainWindowResource">
       <Instance ref.Class="demo::MainWindow">
@@ -200,98 +200,88 @@
             <ev.Executed-eval><![CDATA[{listViewContacts.SetView(Information);          self.ClearViewSelection();  commandInformation.Selected = true; }]]></ev.Executed-eval>
           </ToolstripCommand>
 
-          <Table CellPadding="5" AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-            <att.Rows>
-              <CellOption>composeType:Percentage percentage:1.0</CellOption>
-            </att.Rows>
-            <att.Columns>
-              <CellOption>composeType:Absolute absolute:180</CellOption>
-              <CellOption>composeType:Percentage percentage:1.0</CellOption>
-            </att.Columns>
+          <ez:Layout>
+            <ez:Column CellOption="composeType:Absolute absolute:180">
+              <ez:Row CellOption="composeType:Percentage percentage:1">
+                <GroupBox Text="Categories">
+                  <Bounds AlignmentToParent="left:3 top:3 right:3 bottom:3">
+                    <ez:Layout Border="false">
+                      <ez:Top>
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <ToolstripToolBar>
+                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                            <ToolstripButton Command-ref="commandNewFolder"/>
+                            <ToolstripButton Command-ref="commandDeleteFolder"/>
+                          </ToolstripToolBar>
+                        </Bounds>
+                      </ez:Top>
+                      <ez:Fill>
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <BindableTreeView ref.Name="treeViewFolders" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::ICategory^">
+                            <att.ItemSource-eval>ViewModel.GetRootCategory()</att.ItemSource-eval>
+                            <att.TextProperty>Name</att.TextProperty>
+                            <att.ImageProperty>Image</att.ImageProperty>
+                            <att.ChildrenProperty>Folders</att.ChildrenProperty>
+                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                          </BindableTreeView>
+                        </Bounds>
+                      </ez:Fill>
+                    </ez:Layout>
+                  </Bounds>
+                </GroupBox>
+              </ez:Row>
+            </ez:Column>
+            <ez:Splitter/>
+            <ez:Column CellOption="composeType:Percentage percentage:1">
+              <ez:Row>
+                <GroupBox Text="Contacts">
+                  <Bounds AlignmentToParent="left:3 top:3 right:3 bottom:3">
+                    <ez:Layout Border="false">
+                      <ez:Top>
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <ToolstripToolBar>
+                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                            <ToolstripButton Command-ref="commandNewContact"/>
+                            <ToolstripButton Command-ref="commandEditContact"/>
+                            <ToolstripButton Command-ref="commandDeleteContact"/>
+                            <ToolstripSplitter/>
+                            <ToolstripButton Command-ref="commandBigIcon"/>
+                            <ToolstripButton Command-ref="commandSmallIcon"/>
+                            <ToolstripButton Command-ref="commandList"/>
+                            <ToolstripButton Command-ref="commandDetail"/>
+                            <ToolstripButton Command-ref="commandTile"/>
+                            <ToolstripButton Command-ref="commandInformation"/>
+                          </ToolstripToolBar>
+                        </Bounds>
+                      </ez:Top>
+                      <ez:Fill>
+                        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                          <BindableListView ref.Name="listViewContacts" View="Detail" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IContact^">
+                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                            <att.ItemSource-bind>ViewModel.SelectedCategory.Contacts ?? null</att.ItemSource-bind>
+                            <att.LargeImageProperty>BigImage</att.LargeImageProperty>
+                            <att.SmallImageProperty>SmallImage</att.SmallImageProperty>
 
-            <ColumnSplitter ColumnsToTheLeft="1"/>
+                            <att.Columns>
+                              <ListViewColumn Text="Name" TextProperty="Name" Size="120"/>
+                              <ListViewColumn Text="Birthday" TextProperty="BirthdayText" Size="120"/>
+                              <ListViewColumn Text="Phone" TextProperty="Phone" Size="120"/>
+                              <ListViewColumn Text="Address" TextProperty="Address" Size="120"/>
+                            </att.Columns>
 
-            <Cell Site="row:0 column:0">
-              <GroupBox Text="Categories">
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-
-                <Bounds AlignmentToParent="left:3 top:3 right:3 bottom:3">
-                  <ez:Layout Border="false">
-                    <ez:Top>
-                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                        <ToolstripToolBar>
-                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                          <ToolstripButton Command-ref="commandNewFolder"/>
-                          <ToolstripButton Command-ref="commandDeleteFolder"/>
-                        </ToolstripToolBar>
-                      </Bounds>
-                    </ez:Top>
-                    <ez:Fill>
-                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                        <BindableTreeView ref.Name="treeViewFolders" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::ICategory^">
-                          <att.ItemSource-eval>ViewModel.GetRootCategory()</att.ItemSource-eval>
-                          <att.TextProperty>Name</att.TextProperty>
-                          <att.ImageProperty>Image</att.ImageProperty>
-                          <att.ChildrenProperty>Folders</att.ChildrenProperty>
-                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                        </BindableTreeView>
-                      </Bounds>
-                    </ez:Fill>
-                  </ez:Layout>
-                </Bounds>
-              </GroupBox>
-            </Cell>
-
-            <Cell Site="row:0 column:1">
-              <GroupBox Text="Contacts">
-                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-
-                <Bounds AlignmentToParent="left:3 top:3 right:3 bottom:3">
-                  <ez:Layout Border="false">
-                    <ez:Top>
-                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                        <ToolstripToolBar>
-                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                          <ToolstripButton Command-ref="commandNewContact"/>
-                          <ToolstripButton Command-ref="commandEditContact"/>
-                          <ToolstripButton Command-ref="commandDeleteContact"/>
-                          <ToolstripSplitter/>
-                          <ToolstripButton Command-ref="commandBigIcon"/>
-                          <ToolstripButton Command-ref="commandSmallIcon"/>
-                          <ToolstripButton Command-ref="commandList"/>
-                          <ToolstripButton Command-ref="commandDetail"/>
-                          <ToolstripButton Command-ref="commandTile"/>
-                          <ToolstripButton Command-ref="commandInformation"/>
-                        </ToolstripToolBar>
-                      </Bounds>
-                    </ez:Top>
-                    <ez:Fill>
-                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                        <BindableListView ref.Name="listViewContacts" View="Detail" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false" env.ItemType="demo::IContact^">
-                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                          <att.ItemSource-bind>ViewModel.SelectedCategory.Contacts ?? null</att.ItemSource-bind>
-                          <att.LargeImageProperty>BigImage</att.LargeImageProperty>
-                          <att.SmallImageProperty>SmallImage</att.SmallImageProperty>
-
-                          <att.Columns>
-                            <ListViewColumn Text="Name" TextProperty="Name" Size="120"/>
-                            <ListViewColumn Text="Birthday" TextProperty="BirthdayText" Size="120"/>
-                            <ListViewColumn Text="Phone" TextProperty="Phone" Size="120"/>
-                            <ListViewColumn Text="Address" TextProperty="Address" Size="120"/>
-                          </att.Columns>
-
-                          <att.DataColumns>
-                            <_>1</_>
-                            <_>2</_>
-                          </att.DataColumns>
-                        </BindableListView>
-                      </Bounds>
-                    </ez:Fill>
-                  </ez:Layout>
-                </Bounds>
-              </GroupBox>
-            </Cell>
-          </Table>
+                            <att.DataColumns>
+                              <_>1</_>
+                              <_>2</_>
+                            </att.DataColumns>
+                          </BindableListView>
+                        </Bounds>
+                      </ez:Fill>
+                    </ez:Layout>
+                  </Bounds>
+                </GroupBox>
+              </ez:Row>
+            </ez:Column>
+          </ez:Layout>
         </Window>
       </Instance>
     </Instance>
@@ -309,50 +299,48 @@
           <att.ContainerComposition-set PreferredMinSize="x:240 y:120"/>
           <att.FolderName-bind>textBoxName.Text</att.FolderName-bind>
           
-          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-            <ez:Layout>
-              <ez:Row>
-                <ez:Column>
-                  <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
-                    <Label Text="Name:"/>
-                  </Bounds>
-                </ez:Column>
-                <ez:Column CellSpan="3">
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <DocumentTextBox ref.Name="textBoxName" EditMode="Editable" Text="New Folder">
-                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                    </DocumentTextBox>
-                  </Bounds>
-                </ez:Column>
-              </ez:Row>
-              <ez:Row CellOption="composeType:Percentage percentage:1.0">
-                <ez:Column/>
-                <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-                <ez:Column/>
-                <ez:Column/>
-              </ez:Row>
-              <ez:Row>
-                <ez:Column/>
-                <ez:Column/>
-                <ez:Column>
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <Button Text="OK">
-                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
-                      <ev.Clicked-eval><![CDATA[{ self.Ready = true; self.Close(); }]]></ev.Clicked-eval>
-                    </Button>
-                  </Bounds>
-                </ez:Column>
-                <ez:Column>
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <Button Text="Cancel">
-                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
-                      <ev.Clicked-eval><![CDATA[{ self.Ready = false; self.Close(); }]]></ev.Clicked-eval>
-                    </Button>
-                  </Bounds>
-                </ez:Column>
-              </ez:Row>
-            </ez:Layout>
-          </Bounds>
+          <ez:Layout>
+            <ez:Row>
+              <ez:Column>
+                <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="Name:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellSpan="3">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <DocumentTextBox ref.Name="textBoxName" EditMode="Editable" Text="New Folder">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </DocumentTextBox>
+                </Bounds>
+              </ez:Column>
+            </ez:Row>
+            <ez:Row CellOption="composeType:Percentage percentage:1.0">
+              <ez:Column/>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+              <ez:Column/>
+              <ez:Column/>
+            </ez:Row>
+            <ez:Row>
+              <ez:Column/>
+              <ez:Column/>
+              <ez:Column>
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Button Text="OK">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
+                    <ev.Clicked-eval><![CDATA[{ self.Ready = true; self.Close(); }]]></ev.Clicked-eval>
+                  </Button>
+                </Bounds>
+              </ez:Column>
+              <ez:Column>
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Button Text="Cancel">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
+                    <ev.Clicked-eval><![CDATA[{ self.Ready = false; self.Close(); }]]></ev.Clicked-eval>
+                  </Button>
+                </Bounds>
+              </ez:Column>
+            </ez:Row>
+          </ez:Layout>
         </Window>
       </Instance>
     </Instance>
@@ -378,107 +366,105 @@
         </ref.Members>
         <Window ref.Name="self" Text-bind="self.ForEdit ? 'Edit Contact' : 'New Contact'" ClientSize="x:480 y:400" MaximizedBox="false" MinimizedBox="false" SizeBox="false">
           <att.BoundsComposition-set PreferredMinSize="x:480 y:400"/>
-          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-            <ez:Layout>
-              <ez:Row>
-                <ez:Column>
-                  <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
-                    <Label Text="Name:"/>
-                  </Bounds>
-                </ez:Column>
-                <ez:Column CellSpan="3">
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <DocumentTextBox ref.Name="textBoxName" EditMode="Editable">
-                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                    </DocumentTextBox>
-                  </Bounds>
-                </ez:Column>
-              </ez:Row>
-              <ez:Row>
-                <ez:Column>
-                  <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
-                    <Label Text="Phone:"/>
-                  </Bounds>
-                </ez:Column>
-                <ez:Column CellSpan="3">
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <DocumentTextBox ref.Name="textBoxPhone" EditMode="Editable">
-                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                    </DocumentTextBox>
-                  </Bounds>
-                </ez:Column>
-              </ez:Row>
-              <ez:Row>
-                <ez:Column>
-                  <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
-                    <Label Text="Address:"/>
-                  </Bounds>
-                </ez:Column>
-                <ez:Column CellSpan="3">
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <DocumentTextBox ref.Name="textBoxAddress" EditMode="Editable">
-                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                    </DocumentTextBox>
-                  </Bounds>
-                </ez:Column>
-              </ez:Row>
-              <ez:Row>
-                <ez:Column>
-                  <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
-                    <Label Text="Birthday:"/>
-                  </Bounds>
-                </ez:Column>
-                <ez:Column CellSpan="3">
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <DatePicker ref.Name="datePickerBirthday">
-                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 bottom:0"/>
-                    </DatePicker>
-                  </Bounds>
-                </ez:Column>
-              </ez:Row>
-              <ez:Row CellOption="composeType:Percentage percentage:1.0">
-                <ez:Column/>
-                <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-                <ez:Column/>
-                <ez:Column/>
-              </ez:Row>
-              <ez:Row>
-                <ez:Column/>
-                <ez:Column/>
-                <ez:Column>
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <Button Text="OK">
-                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
-                      <ev.Clicked-eval>
-                        <![CDATA[
-                          {
-                            self.contact.Update(textBoxName.Text, datePickerBirthday.Date, textBoxPhone.Text, textBoxAddress.Text);
-                            self.Ready = true;
-                            self.Close();
-                          }
-                        ]]>
-                      </ev.Clicked-eval>
-                    </Button>
-                  </Bounds>
-                </ez:Column>
-                <ez:Column>
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <Button Text="Cancel">
-                      <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
-                      <ev.Clicked-eval>
-                        <![CDATA[
-                          {
-                            self.Ready = false;
-                            self.Close();
-                          }
-                        ]]>
-                      </ev.Clicked-eval>
-                    </Button>
-                  </Bounds>
-                </ez:Column>
-              </ez:Row>
-            </ez:Layout>
-          </Bounds>
+          <ez:Layout>
+            <ez:Row>
+              <ez:Column>
+                <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="Name:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellSpan="3">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <DocumentTextBox ref.Name="textBoxName" EditMode="Editable">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </DocumentTextBox>
+                </Bounds>
+              </ez:Column>
+            </ez:Row>
+            <ez:Row>
+              <ez:Column>
+                <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="Phone:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellSpan="3">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <DocumentTextBox ref.Name="textBoxPhone" EditMode="Editable">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </DocumentTextBox>
+                </Bounds>
+              </ez:Column>
+            </ez:Row>
+            <ez:Row>
+              <ez:Column>
+                <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="Address:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellSpan="3">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <DocumentTextBox ref.Name="textBoxAddress" EditMode="Editable">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                  </DocumentTextBox>
+                </Bounds>
+              </ez:Column>
+            </ez:Row>
+            <ez:Row>
+              <ez:Column>
+                <Bounds InternalMargin="top:6" MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="Birthday:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellSpan="3">
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <DatePicker ref.Name="datePickerBirthday">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 bottom:0"/>
+                  </DatePicker>
+                </Bounds>
+              </ez:Column>
+            </ez:Row>
+            <ez:Row CellOption="composeType:Percentage percentage:1.0">
+              <ez:Column/>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+              <ez:Column/>
+              <ez:Column/>
+            </ez:Row>
+            <ez:Row>
+              <ez:Column/>
+              <ez:Column/>
+              <ez:Column>
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Button Text="OK">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
+                    <ev.Clicked-eval>
+                      <![CDATA[
+                        {
+                          self.contact.Update(textBoxName.Text, datePickerBirthday.Date, textBoxPhone.Text, textBoxAddress.Text);
+                          self.Ready = true;
+                          self.Close();
+                        }
+                      ]]>
+                    </ev.Clicked-eval>
+                  </Button>
+                </Bounds>
+              </ez:Column>
+              <ez:Column>
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Button Text="Cancel">
+                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="x:60"/>
+                    <ev.Clicked-eval>
+                      <![CDATA[
+                        {
+                          self.Ready = false;
+                          self.Close();
+                        }
+                      ]]>
+                    </ev.Clicked-eval>
+                  </Button>
+                </Bounds>
+              </ez:Column>
+            </ez:Row>
+          </ez:Layout>
         </Window>
       </Instance>
     </Instance>

@@ -49,47 +49,45 @@
             ]]></ev.SelectedColorChanged-eval>
           </att.ViewModel-set>
           <att.ContainerComposition-set PreferredMinSize="x:360 y:120"/>
-          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-            <ez:Layout Padding="10">
-              <ez:Row>
-                <ez:Column>
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <Label Text="ComboButton using Custom Dropdown Control:"/>
-                  </Bounds>
-                </ez:Column>
-                <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-              </ez:Row>
-              <ez:Row>
-                <ez:Column>
-                  <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                    <ComboButton ref.Name="comboColor" Alt="K">
-                      <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5" PreferredMinSize="x:80 y:24"/>
-                      <att.ContainerComposition-set>
-                        <Bounds AlignmentToParent="left:2 top:2 right:2 bottom:2">
-                          <SolidBackground Color-bind="ViewModel.SelectedColor"/>
-                        </Bounds>
-                      </att.ContainerComposition-set>
-                      <att.DropdownControl>
-                        <GroupBox Text="Choose a Color:">
-                          <SharedSizeRoot AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-                            <RepeatFlow RowPadding="2" ColumnPadding="2" AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElementAndChildren">
-                              <att.ItemTemplate>demo::ColorBomboItemTemplate</att.ItemTemplate>
-                              <att.ItemSource-eval>ViewModel.ColorItems</att.ItemSource-eval>
-                            </RepeatFlow>
-                          </SharedSizeRoot>
-                        </GroupBox>
-                      </att.DropdownControl>
-                    </ComboButton>
-                  </Bounds>
-                </ez:Column>
-                <ez:Column/>
-              </ez:Row>
-              <ez:Row CellOption="composeType:Percentage percentage:1.0">
-                <ez:Column/>
-                <ez:Column/>
-              </ez:Row>
-            </ez:Layout>
-          </Bounds>
+          <ez:Layout Padding="10">
+            <ez:Row>
+              <ez:Column>
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <Label Text="ComboButton using Custom Dropdown Control:"/>
+                </Bounds>
+              </ez:Column>
+              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            </ez:Row>
+            <ez:Row>
+              <ez:Column>
+                <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                  <ComboButton ref.Name="comboColor" Alt="K">
+                    <att.BoundsComposition-set AlignmentToParent="left:5 top:5 right:5 bottom:5" PreferredMinSize="x:80 y:24"/>
+                    <att.ContainerComposition-set>
+                      <Bounds AlignmentToParent="left:2 top:2 right:2 bottom:2">
+                        <SolidBackground Color-bind="ViewModel.SelectedColor"/>
+                      </Bounds>
+                    </att.ContainerComposition-set>
+                    <att.DropdownControl>
+                      <GroupBox Text="Choose a Color:">
+                        <SharedSizeRoot AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
+                          <RepeatFlow RowPadding="2" ColumnPadding="2" AlignmentToParent="left:1 top:1 right:1 bottom:1" MinSizeLimitation="LimitToElementAndChildren">
+                            <att.ItemTemplate>demo::ColorBomboItemTemplate</att.ItemTemplate>
+                            <att.ItemSource-eval>ViewModel.ColorItems</att.ItemSource-eval>
+                          </RepeatFlow>
+                        </SharedSizeRoot>
+                      </GroupBox>
+                    </att.DropdownControl>
+                  </ComboButton>
+                </Bounds>
+              </ez:Column>
+              <ez:Column/>
+            </ez:Row>
+            <ez:Row CellOption="composeType:Percentage percentage:1.0">
+              <ez:Column/>
+              <ez:Column/>
+            </ez:Row>
+          </ez:Layout>
         </Window>
       </Instance>
     </Instance>

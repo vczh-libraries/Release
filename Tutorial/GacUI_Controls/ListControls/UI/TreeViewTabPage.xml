@@ -10,56 +10,54 @@
     ]]>
   </ref.Ctor>
   <TabPage ref.Name="self" Text="TreeView">
-    <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-      <ez:Layout>
-        <ez:Fill>
-          <Bounds MinSizeLimitation="LimitToElementAndChildren">
-            <TreeView ref.Name="treeView" Alt="L" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+    <ez:Layout>
+      <ez:Fill>
+        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+          <TreeView ref.Name="treeView" Alt="L" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
 
-              <att.Nodes>
-                <TreeNode Image-uri="res://SmallImages/Plus_Blue" Text="Blue+">
-                  <TreeNode Image-uri="res://SmallImages/ArrowCurve_Blue_Left" Text="&lt;--"/>
-                  <TreeNode Image-uri="res://SmallImages/ArrowCurve_Blue_Right" Text="--&gt;"/>
-                  <TreeNode Image-uri="res://SmallImages/DownArrowLong_Blue" Text="V"/>
-                  <TreeNode Image-uri="res://SmallImages/UpArrowLong_Blue" Text="^"/>
-                  <TreeNode Image-uri="res://SmallImages/LeftArrowLong_Blue" Text="&lt;"/>
-                  <TreeNode Image-uri="res://SmallImages/RightArrowLong_Blue" Text="&gt;"/>
-                </TreeNode>
-                <TreeNode Image-uri="res://SmallImages/Plus_Green" Text="Green+">
-                  <TreeNode Image-uri="res://SmallImages/DownArrowLong_Green" Text="V"/>
-                  <TreeNode Image-uri="res://SmallImages/UpArrowLong_Green" Text="^"/>
-                  <TreeNode Image-uri="res://SmallImages/LeftArrowLong_Green" Text="&lt;"/>
-                  <TreeNode Image-uri="res://SmallImages/RightArrowLong_Green" Text="&gt;"/>
-                </TreeNode>
-                <TreeNode Image-uri="res://SmallImages/Plus_Grey" Text="Grey+">
-                  <TreeNode Image-uri="res://SmallImages/DownArrowLong_Grey" Text="V"/>
-                  <TreeNode Image-uri="res://SmallImages/UpArrowLong_Grey" Text="^"/>
-                  <TreeNode Image-uri="res://SmallImages/LeftArrowLong_Grey" Text="&lt;"/>
-                  <TreeNode Image-uri="res://SmallImages/RightArrowLong_Grey" Text="&gt;"/>
-                </TreeNode>
-                <TreeNode Image-uri="res://SmallImages/Plus_Orange" Text="Orange+">
-                  <TreeNode Image-uri="res://SmallImages/DownArrowLong_Orange" Text="V"/>
-                  <TreeNode Image-uri="res://SmallImages/UpArrowLong_Orange" Text="^"/>
-                  <TreeNode Image-uri="res://SmallImages/LeftArrowLong_Orange" Text="&lt;"/>
-                  <TreeNode Image-uri="res://SmallImages/RightArrowLong_Orange" Text="&gt;"/>
-                </TreeNode>
-              </att.Nodes>
-            </TreeView>
-          </Bounds>
-        </ez:Fill>
-        <ez:Fill>
-          <Bounds MinSizeLimitation="LimitToElementAndChildren">
-            <BindableTreeView ref.Name="bindableTreeView" Alt="L" env.ItemType="MemoryNodeProvider^" env.ItemName="nodeToBind" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-              <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-              <att.TextProperty>(nodeToBind.Data as TreeViewItem^).text</att.TextProperty>
-              <att.ImageProperty>(nodeToBind.Data as TreeViewItem^).image</att.ImageProperty>
-              <att.ChildrenProperty>Children</att.ChildrenProperty>
-            </BindableTreeView>
-          </Bounds>
-        </ez:Fill>
-      </ez:Layout>
-    </Bounds>
+            <att.Nodes>
+              <TreeNode Image-uri="res://SmallImages/Plus_Blue" Text="Blue+">
+                <TreeNode Image-uri="res://SmallImages/ArrowCurve_Blue_Left" Text="&lt;--"/>
+                <TreeNode Image-uri="res://SmallImages/ArrowCurve_Blue_Right" Text="--&gt;"/>
+                <TreeNode Image-uri="res://SmallImages/DownArrowLong_Blue" Text="V"/>
+                <TreeNode Image-uri="res://SmallImages/UpArrowLong_Blue" Text="^"/>
+                <TreeNode Image-uri="res://SmallImages/LeftArrowLong_Blue" Text="&lt;"/>
+                <TreeNode Image-uri="res://SmallImages/RightArrowLong_Blue" Text="&gt;"/>
+              </TreeNode>
+              <TreeNode Image-uri="res://SmallImages/Plus_Green" Text="Green+">
+                <TreeNode Image-uri="res://SmallImages/DownArrowLong_Green" Text="V"/>
+                <TreeNode Image-uri="res://SmallImages/UpArrowLong_Green" Text="^"/>
+                <TreeNode Image-uri="res://SmallImages/LeftArrowLong_Green" Text="&lt;"/>
+                <TreeNode Image-uri="res://SmallImages/RightArrowLong_Green" Text="&gt;"/>
+              </TreeNode>
+              <TreeNode Image-uri="res://SmallImages/Plus_Grey" Text="Grey+">
+                <TreeNode Image-uri="res://SmallImages/DownArrowLong_Grey" Text="V"/>
+                <TreeNode Image-uri="res://SmallImages/UpArrowLong_Grey" Text="^"/>
+                <TreeNode Image-uri="res://SmallImages/LeftArrowLong_Grey" Text="&lt;"/>
+                <TreeNode Image-uri="res://SmallImages/RightArrowLong_Grey" Text="&gt;"/>
+              </TreeNode>
+              <TreeNode Image-uri="res://SmallImages/Plus_Orange" Text="Orange+">
+                <TreeNode Image-uri="res://SmallImages/DownArrowLong_Orange" Text="V"/>
+                <TreeNode Image-uri="res://SmallImages/UpArrowLong_Orange" Text="^"/>
+                <TreeNode Image-uri="res://SmallImages/LeftArrowLong_Orange" Text="&lt;"/>
+                <TreeNode Image-uri="res://SmallImages/RightArrowLong_Orange" Text="&gt;"/>
+              </TreeNode>
+            </att.Nodes>
+          </TreeView>
+        </Bounds>
+      </ez:Fill>
+      <ez:Fill>
+        <Bounds MinSizeLimitation="LimitToElementAndChildren">
+          <BindableTreeView ref.Name="bindableTreeView" Alt="L" env.ItemType="MemoryNodeProvider^" env.ItemName="nodeToBind" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+            <att.TextProperty>(nodeToBind.Data as TreeViewItem^).text</att.TextProperty>
+            <att.ImageProperty>(nodeToBind.Data as TreeViewItem^).image</att.ImageProperty>
+            <att.ChildrenProperty>Children</att.ChildrenProperty>
+          </BindableTreeView>
+        </Bounds>
+      </ez:Fill>
+    </ez:Layout>
 
     <att.nodesToBind>
       <TreeNode>

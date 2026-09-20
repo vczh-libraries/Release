@@ -20,109 +20,101 @@
 
             <att.Pages>
               <TabPage Text="GroupBox">
-                <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-                  <ez:Layout>
-                    <ez:Fill>
-                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                        <GroupBox Text="Button">
-                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <ez:Layout>
+                  <ez:Fill>
+                    <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                      <GroupBox Text="Button">
+                        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
 
-                          <Bounds AlignmentToParent="left:5 top:5 right:5 bottom:5">
-                            <ez:Layout Border="false">
-                              <ez:Top>
-                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                                  <Button Text="Button 1">
-                                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                                  </Button>
-                                </Bounds>
-                              </ez:Top>
-                              <ez:Top>
-                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                                  <Button Text="Button 2">
-                                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                                  </Button>
-                                </Bounds>
-                              </ez:Top>
-                              <ez:Top>
-                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                                  <Button Text="Button 3">
-                                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                                  </Button>
-                                </Bounds>
-                              </ez:Top>
-                            </ez:Layout>
-                          </Bounds>
-                        </GroupBox>
-                      </Bounds>
-                    </ez:Fill>
-                    <ez:Fill>
-                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                        <GroupBox Text="CheckBox">
-                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        <ez:Layout>
+                          <ez:Top>
+                            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                              <Button Text="Button 1">
+                                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                              </Button>
+                            </Bounds>
+                          </ez:Top>
+                          <ez:Top>
+                            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                              <Button Text="Button 2">
+                                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                              </Button>
+                            </Bounds>
+                          </ez:Top>
+                          <ez:Top>
+                            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                              <Button Text="Button 3">
+                                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                              </Button>
+                            </Bounds>
+                          </ez:Top>
+                        </ez:Layout>
+                      </GroupBox>
+                    </Bounds>
+                  </ez:Fill>
+                  <ez:Fill>
+                    <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                      <GroupBox Text="CheckBox">
+                        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
 
-                          <Bounds AlignmentToParent="left:5 top:5 right:5 bottom:5">
-                            <ez:Layout Border="false">
-                              <ez:Top>
-                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                                  <CheckBox Text="Button 1">
-                                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                                  </CheckBox>
-                                </Bounds>
-                              </ez:Top>
-                              <ez:Top>
-                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                                  <CheckBox Text="Button 2">
-                                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                                  </CheckBox>
-                                </Bounds>
-                              </ez:Top>
-                              <ez:Top>
-                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                                  <CheckBox Text="Button 3">
-                                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                                  </CheckBox>
-                                </Bounds>
-                              </ez:Top>
-                            </ez:Layout>
-                          </Bounds>
-                        </GroupBox>
-                      </Bounds>
-                    </ez:Fill>
-                    <ez:Fill>
-                      <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                        <GroupBox Text="RadioButton">
-                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        <ez:Layout>
+                          <ez:Top>
+                            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                              <CheckBox Text="Button 1">
+                                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                              </CheckBox>
+                            </Bounds>
+                          </ez:Top>
+                          <ez:Top>
+                            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                              <CheckBox Text="Button 2">
+                                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                              </CheckBox>
+                            </Bounds>
+                          </ez:Top>
+                          <ez:Top>
+                            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                              <CheckBox Text="Button 3">
+                                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                              </CheckBox>
+                            </Bounds>
+                          </ez:Top>
+                        </ez:Layout>
+                      </GroupBox>
+                    </Bounds>
+                  </ez:Fill>
+                  <ez:Fill>
+                    <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                      <GroupBox Text="RadioButton">
+                        <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
 
-                          <Bounds AlignmentToParent="left:5 top:5 right:5 bottom:5">
-                            <ez:Layout Border="false">
-                              <ez:Top>
-                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                                  <RadioButton Text="Button 1" GroupController-ref="radioGroup" Selected="true">
-                                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                                  </RadioButton>
-                                </Bounds>
-                              </ez:Top>
-                              <ez:Top>
-                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                                  <RadioButton Text="Button 2" GroupController-ref="radioGroup">
-                                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                                  </RadioButton>
-                                </Bounds>
-                              </ez:Top>
-                              <ez:Top>
-                                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                                  <RadioButton Text="Button 3" GroupController-ref="radioGroup">
-                                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                                  </RadioButton>
-                                </Bounds>
-                              </ez:Top>
-                            </ez:Layout>
-                          </Bounds>
-                        </GroupBox>
-                      </Bounds>
-                    </ez:Fill>
-                  </ez:Layout>
-                </Bounds>
+                        <ez:Layout>
+                          <ez:Top>
+                            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                              <RadioButton Text="Button 1" GroupController-ref="radioGroup" Selected="true">
+                                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                              </RadioButton>
+                            </Bounds>
+                          </ez:Top>
+                          <ez:Top>
+                            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                              <RadioButton Text="Button 2" GroupController-ref="radioGroup">
+                                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                              </RadioButton>
+                            </Bounds>
+                          </ez:Top>
+                          <ez:Top>
+                            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                              <RadioButton Text="Button 3" GroupController-ref="radioGroup">
+                                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                              </RadioButton>
+                            </Bounds>
+                          </ez:Top>
+                        </ez:Layout>
+                      </GroupBox>
+                    </Bounds>
+                  </ez:Fill>
+                </ez:Layout>
               </TabPage>
 
               <TabPage Text="ScrollContainer">

@@ -168,31 +168,29 @@
                        Text="The document has been changed since the last time it was saved as a Private Format file. Do you want to save this file?"
               />
 
-        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <ez:Layout Padding="0">
-            <ez:Top>
-              <Bounds ref.Name="menuContainer" MinSizeLimitation="LimitToElementAndChildren"/>
-            </ez:Top>
-            <ez:Top>
-              <Bounds ref.Name="toolstripContainer" MinSizeLimitation="LimitToElementAndChildren"/>
-            </ez:Top>
-            <ez:Fill>
-              <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                <DocumentViewer ref.Name="document" EditMode="Editable" Alt="D">
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                  <ev.ActiveHyperlinkExecuted-eval>
-                    <![CDATA[
-                      {
-                        dialogMessage.Text = document.ActiveHyperlinkReference;
-                        dialogMessage.ShowDialog();
-                      }
-                    ]]>
-                  </ev.ActiveHyperlinkExecuted-eval>
-                </DocumentViewer>
-              </Bounds>
-            </ez:Fill>
-          </ez:Layout>
-        </Bounds>
+        <ez:Layout Padding="0">
+          <ez:Top>
+            <Bounds ref.Name="menuContainer" MinSizeLimitation="LimitToElementAndChildren"/>
+          </ez:Top>
+          <ez:Top>
+            <Bounds ref.Name="toolstripContainer" MinSizeLimitation="LimitToElementAndChildren"/>
+          </ez:Top>
+          <ez:Fill>
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <DocumentViewer ref.Name="document" EditMode="Editable" Alt="D">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <ev.ActiveHyperlinkExecuted-eval>
+                  <![CDATA[
+                    {
+                      dialogMessage.Text = document.ActiveHyperlinkReference;
+                      dialogMessage.ShowDialog();
+                    }
+                  ]]>
+                </ev.ActiveHyperlinkExecuted-eval>
+              </DocumentViewer>
+            </Bounds>
+          </ez:Fill>
+        </ez:Layout>
 
         <ToolstripCommand ref.Name="commandLoadPrivate" Text="Load as Private Format" Image-uri="res://ToolbarImages/FormatPrivate" LargeImage-uri="res://ToolbarImages/FormatPrivateLarge">
           <ev.Executed-eval>

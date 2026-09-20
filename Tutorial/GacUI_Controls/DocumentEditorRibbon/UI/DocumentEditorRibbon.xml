@@ -89,24 +89,22 @@
       <TextListItemTemplate ref.Name="self" MinSizeLimitation="LimitToElementAndChildren" PreferredMinSize="x:72">
         <CustomControl ref.Name="containerControl">
           <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-            <ez:Layout>
-              <ez:Fill>
-                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                  <SolidLabel ref.Name="styleLabel" Text="AaBbCc" Ellipse="true" Color="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Bounds>
-              </ez:Fill>
-              <ez:Bottom>
-                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                  <SolidLabel Text-bind="ViewModel.Name" Font-eval="containerControl.DisplayFont" Ellipse="true" HorizontalAlignment="Center">
-                    <att.Color-bind>
-                      <![CDATA[cast Color (self.Selected ? "#FFFFFF" : "#808080")]]>
-                    </att.Color-bind>
-                  </SolidLabel>
-                </Bounds>
-              </ez:Bottom>
-            </ez:Layout>
-          </Bounds>
+          <ez:Layout>
+            <ez:Fill>
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <SolidLabel ref.Name="styleLabel" Text="AaBbCc" Ellipse="true" Color="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+              </Bounds>
+            </ez:Fill>
+            <ez:Bottom>
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <SolidLabel Text-bind="ViewModel.Name" Font-eval="containerControl.DisplayFont" Ellipse="true" HorizontalAlignment="Center">
+                  <att.Color-bind>
+                    <![CDATA[cast Color (self.Selected ? "#FFFFFF" : "#808080")]]>
+                  </att.Color-bind>
+                </SolidLabel>
+              </Bounds>
+            </ez:Bottom>
+          </ez:Layout>
 
           <att.TooltipControl>
             <CustomControl>

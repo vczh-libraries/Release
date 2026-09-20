@@ -45,33 +45,31 @@
             }
           ]]>
         </ev.ControlSignalTrigerred-eval>
-        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <ez:Layout Padding="0">
-            <ez:Top>
-              <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                <SinglelineTextBox ref.Name="textBox">
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                  <ev.TextChanged-eval>
-                    <![CDATA[
+        <ez:Layout Padding="0">
+          <ez:Top>
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <SinglelineTextBox ref.Name="textBox">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <ev.TextChanged-eval>
+                  <![CDATA[
+                    {
+                      if (self.demoService is not null)
                       {
-                        if (self.demoService is not null)
-                        {
-                          self.demoService.Name = textBox.Text;
-                        }
+                        self.demoService.Name = textBox.Text;
                       }
-                    ]]>
-                  </ev.TextChanged-eval>
-                </SinglelineTextBox>
-              </Bounds>
-            </ez:Top>
-            <ez:Fill/>
-            <ez:Bottom>
-              <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                <SolidLabel HorizontalAlignment="Center" Font-bind="self.DisplayFont" Color="#FFFFFF" Text="Type and change the title of the window."/>
-              </Bounds>
-            </ez:Bottom>
-          </ez:Layout>
-        </Bounds>
+                    }
+                  ]]>
+                </ev.TextChanged-eval>
+              </SinglelineTextBox>
+            </Bounds>
+          </ez:Top>
+          <ez:Fill/>
+          <ez:Bottom>
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <SolidLabel HorizontalAlignment="Center" Font-bind="self.DisplayFont" Color="#FFFFFF" Text="Type and change the title of the window."/>
+            </Bounds>
+          </ez:Bottom>
+        </ez:Layout>
       </CustomControl>
     </Instance>
   </Instance>
@@ -95,31 +93,29 @@
         ]]>
       </ref.Ctor>
       <Window ref.Name="self" Text-bind="self.demoService.Name" ClientSize="x:640 y:480">
-        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <ez:Layout Padding="0">
-            <ez:Row CellOption="composeType:Percentage percentage:1.0">
-              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-              <ez:Column/>
-              <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
-            </ez:Row>
-            <ez:Row>
-              <ez:Column/>
-              <ez:Column>
-                <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                  <demo:DemoServiceControl>
-                    <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:100"/>
-                  </demo:DemoServiceControl>
-                </Bounds>
-              </ez:Column>
-              <ez:Column/>
-            </ez:Row>
-            <ez:Row CellOption="composeType:Percentage percentage:1.0">
-              <ez:Column/>
-              <ez:Column/>
-              <ez:Column/>
-            </ez:Row>
-          </ez:Layout>
-        </Bounds>
+        <ez:Layout Padding="0">
+          <ez:Row CellOption="composeType:Percentage percentage:1.0">
+            <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+            <ez:Column/>
+            <ez:Column CellOption="composeType:Percentage percentage:1.0"/>
+          </ez:Row>
+          <ez:Row>
+            <ez:Column/>
+            <ez:Column>
+              <Bounds MinSizeLimitation="LimitToElementAndChildren">
+                <demo:DemoServiceControl>
+                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0" PreferredMinSize="y:100"/>
+                </demo:DemoServiceControl>
+              </Bounds>
+            </ez:Column>
+            <ez:Column/>
+          </ez:Row>
+          <ez:Row CellOption="composeType:Percentage percentage:1.0">
+            <ez:Column/>
+            <ez:Column/>
+            <ez:Column/>
+          </ez:Row>
+        </ez:Layout>
       </Window>
     </Instance>
   </Instance>

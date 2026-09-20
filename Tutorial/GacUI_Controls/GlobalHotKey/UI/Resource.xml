@@ -31,31 +31,29 @@
           </ToolstripGroupContainer>
         </ToolstripMenu>
 
-        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0" MinSizeLimitation="LimitToElementAndChildren">
-          <ez:Layout Border="false">
-            <ez:Top>
-              <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                <ToolstripMenuBar>
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                  <MenuBarButton Text="A Menu" Alt="A">
-                    <att.SubMenu-set>
-                      <ToolstripGroup>
-                        <MenuItemButton Command-ref="commandGlobal"/>
-                      </ToolstripGroup>
-                    </att.SubMenu-set>
-                  </MenuBarButton>
-                </ToolstripMenuBar>
-              </Bounds>
-            </ez:Top>
-            <ez:Fill>
-              <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                <Label Font="fontFamily:'Segoe UI' size:24" Text="Right click to show the menu">
-                  <att.BoundsComposition-set AlignmentToParent="left:5 top:0 right:5 bottom:0"/>
-                </Label>
-              </Bounds>
-            </ez:Fill>
-          </ez:Layout>
-        </Bounds>
+        <ez:Layout Border="false">
+          <ez:Top>
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <ToolstripMenuBar>
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <MenuBarButton Text="A Menu" Alt="A">
+                  <att.SubMenu-set>
+                    <ToolstripGroup>
+                      <MenuItemButton Command-ref="commandGlobal"/>
+                    </ToolstripGroup>
+                  </att.SubMenu-set>
+                </MenuBarButton>
+              </ToolstripMenuBar>
+            </Bounds>
+          </ez:Top>
+          <ez:Fill>
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <Label Font="fontFamily:'Segoe UI' size:24" Text="Right click to show the menu">
+                <att.BoundsComposition-set AlignmentToParent="left:5 top:0 right:5 bottom:0"/>
+              </Label>
+            </Bounds>
+          </ez:Fill>
+        </ez:Layout>
 
         <att.ContainerComposition-set PreferredMinSize="x:320 y:240">
           <ev.mouseDown-eval><![CDATA[

@@ -36,128 +36,126 @@
       </ref.Ctor>
       <Window ref.Name="self" Text="DataGrid" ClientSize="x:640 y:480">
         <att.BoundsComposition-set PreferredMinSize="x:640 y:480"/>
-        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
-          <ez:Layout>
-            <ez:Top>
-              <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                <ComboBox ref.Name="comboView" Alt="V" SelectedIndex="6">
-                  <att.BoundsComposition-set PreferredMinSize="x:120"/>
-                  <att.ListControl>
-                    <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-                      <att.Items>
-                        <TextItem Text="BigIcon"/>
-                        <TextItem Text="SmallIcon"/>
-                        <TextItem Text="List"/>
-                        <TextItem Text="Tile"/>
-                        <TextItem Text="Information"/>
-                        <TextItem Text="Detail"/>
-                        <TextItem Text="DataGrid"/>
-                      </att.Items>
-                    </TextList>
-                  </att.ListControl>
-                  <ev.SelectedIndexChanged-eval>
-                    <![CDATA[
+        <ez:Layout>
+          <ez:Top>
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <ComboBox ref.Name="comboView" Alt="V" SelectedIndex="6">
+                <att.BoundsComposition-set PreferredMinSize="x:120"/>
+                <att.ListControl>
+                  <TextList HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                    <att.Items>
+                      <TextItem Text="BigIcon"/>
+                      <TextItem Text="SmallIcon"/>
+                      <TextItem Text="List"/>
+                      <TextItem Text="Tile"/>
+                      <TextItem Text="Information"/>
+                      <TextItem Text="Detail"/>
+                      <TextItem Text="DataGrid"/>
+                    </att.Items>
+                  </TextList>
+                </att.ListControl>
+                <ev.SelectedIndexChanged-eval>
+                  <![CDATA[
+                    {
+                      switch (comboView.SelectedIndex)
                       {
-                        switch (comboView.SelectedIndex)
+                      case 0:
                         {
-                        case 0:
-                          {
-                            dataGrid.View = BigIcon;
-                          }
-                        case 1:
-                          {
-                            dataGrid.View = SmallIcon;
-                          }
-                        case 2:
-                          {
-                            dataGrid.View = ListViewView::List;
-                          }
-                        case 3:
-                          {
-                            dataGrid.View = Tile;
-                          }
-                        case 4:
-                          {
-                            dataGrid.View = Information;
-                          }
-                        case 5:
-                          {
-                            dataGrid.View = Detail;
-                          }
-                        case 6:
-                          {
-                            dataGrid.SetViewToDefault();
-                          }
+                          dataGrid.View = BigIcon;
+                        }
+                      case 1:
+                        {
+                          dataGrid.View = SmallIcon;
+                        }
+                      case 2:
+                        {
+                          dataGrid.View = ListViewView::List;
+                        }
+                      case 3:
+                        {
+                          dataGrid.View = Tile;
+                        }
+                      case 4:
+                        {
+                          dataGrid.View = Information;
+                        }
+                      case 5:
+                        {
+                          dataGrid.View = Detail;
+                        }
+                      case 6:
+                        {
+                          dataGrid.SetViewToDefault();
                         }
                       }
-                    ]]>
-                  </ev.SelectedIndexChanged-eval>
-                </ComboBox>
-              </Bounds>
-            </ez:Top>
-            <ez:Fill>
-              <Bounds MinSizeLimitation="LimitToElementAndChildren">
-                <BindableDataGrid ref.Name="dataGrid" Alt="L" env.ItemType="demo::MyDataItem^" env.ItemName="itemToBind" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
-                  <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                  <att.LargeImageProperty>LargeImage</att.LargeImageProperty>
-                  <att.SmallImageProperty>SmallImage</att.SmallImageProperty>
+                    }
+                  ]]>
+                </ev.SelectedIndexChanged-eval>
+              </ComboBox>
+            </Bounds>
+          </ez:Top>
+          <ez:Fill>
+            <Bounds MinSizeLimitation="LimitToElementAndChildren">
+              <BindableDataGrid ref.Name="dataGrid" Alt="L" env.ItemType="demo::MyDataItem^" env.ItemName="itemToBind" HorizontalAlwaysVisible="false" VerticalAlwaysVisible="false">
+                <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                <att.LargeImageProperty>LargeImage</att.LargeImageProperty>
+                <att.SmallImageProperty>SmallImage</att.SmallImageProperty>
 
-                  <att.Columns>
-                    <DataColumn Text="Name" Size="120">
-                      <att.TextProperty>Name</att.TextProperty>
-                      <att.ValueProperty>Name</att.ValueProperty>
-                      <att.EditorFactory>demo:TextEditor</att.EditorFactory>
-                      <att.Sorter>[Sys::Compare($1.Name, $2.Name)]</att.Sorter>
-                    </DataColumn>
+                <att.Columns>
+                  <DataColumn Text="Name" Size="120">
+                    <att.TextProperty>Name</att.TextProperty>
+                    <att.ValueProperty>Name</att.ValueProperty>
+                    <att.EditorFactory>demo:TextEditor</att.EditorFactory>
+                    <att.Sorter>[Sys::Compare($1.Name, $2.Name)]</att.Sorter>
+                  </DataColumn>
 
-                    <DataColumn Text="Gender" Size="80">
-                      <att.TextProperty>demo::ToString(itemToBind.Gender)</att.TextProperty>
-                      <att.ValueProperty>Gender</att.ValueProperty>
-                      <att.VisualizerFactory>demo:GenderVisualizer;CellBorderVisualizerTemplate</att.VisualizerFactory>
-                      <att.EditorFactory>demo:GenderEditor</att.EditorFactory>
-                      <att.Sorter>[Sys::Compare(cast UInt64 ($1.Gender), cast UInt64 ($2.Gender))]</att.Sorter>
-                    </DataColumn>
+                  <DataColumn Text="Gender" Size="80">
+                    <att.TextProperty>demo::ToString(itemToBind.Gender)</att.TextProperty>
+                    <att.ValueProperty>Gender</att.ValueProperty>
+                    <att.VisualizerFactory>demo:GenderVisualizer;CellBorderVisualizerTemplate</att.VisualizerFactory>
+                    <att.EditorFactory>demo:GenderEditor</att.EditorFactory>
+                    <att.Sorter>[Sys::Compare(cast UInt64 ($1.Gender), cast UInt64 ($2.Gender))]</att.Sorter>
+                  </DataColumn>
 
-                    <DataColumn Text="Category" Size="80">
-                      <att.TextProperty>demo::ToString(itemToBind.Category)</att.TextProperty>
-                      <att.ValueProperty>Category</att.ValueProperty>
-                      <att.VisualizerFactory>demo:CategoryVisualizer;CellBorderVisualizerTemplate</att.VisualizerFactory>
-                      <att.EditorFactory>demo:CategoryEditor</att.EditorFactory>
-                      <att.Sorter>[Sys::Compare(cast UInt64 ($1.Category), cast UInt64 ($2.Category))]</att.Sorter>
-                    </DataColumn>
+                  <DataColumn Text="Category" Size="80">
+                    <att.TextProperty>demo::ToString(itemToBind.Category)</att.TextProperty>
+                    <att.ValueProperty>Category</att.ValueProperty>
+                    <att.VisualizerFactory>demo:CategoryVisualizer;CellBorderVisualizerTemplate</att.VisualizerFactory>
+                    <att.EditorFactory>demo:CategoryEditor</att.EditorFactory>
+                    <att.Sorter>[Sys::Compare(cast UInt64 ($1.Category), cast UInt64 ($2.Category))]</att.Sorter>
+                  </DataColumn>
 
-                    <DataColumn Text="Birthday" Size="80">
-                      <att.TextProperty>demo::ToString(itemToBind.Birthday)</att.TextProperty>
-                      <att.ValueProperty>Birthday</att.ValueProperty>
-                      <att.EditorFactory>demo:DateEditor</att.EditorFactory>
-                      <att.Sorter>[Sys::Compare($1.Birthday, $2.Birthday)]</att.Sorter>
-                      <att.Filter-eval>dateFilter.Filter</att.Filter-eval>
-                      <att.Popup>
-                        <ToolstripMenu>
-                          <demo:DateFilter ref.Name="dateFilter">
-                            <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
-                          </demo:DateFilter>
-                        </ToolstripMenu>
-                      </att.Popup>
-                    </DataColumn>
+                  <DataColumn Text="Birthday" Size="80">
+                    <att.TextProperty>demo::ToString(itemToBind.Birthday)</att.TextProperty>
+                    <att.ValueProperty>Birthday</att.ValueProperty>
+                    <att.EditorFactory>demo:DateEditor</att.EditorFactory>
+                    <att.Sorter>[Sys::Compare($1.Birthday, $2.Birthday)]</att.Sorter>
+                    <att.Filter-eval>dateFilter.Filter</att.Filter-eval>
+                    <att.Popup>
+                      <ToolstripMenu>
+                        <demo:DateFilter ref.Name="dateFilter">
+                          <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
+                        </demo:DateFilter>
+                      </ToolstripMenu>
+                    </att.Popup>
+                  </DataColumn>
 
-                    <DataColumn Text="Website" Size="160">
-                      <att.TextProperty>Website</att.TextProperty>
-                      <att.ValueProperty>Website</att.ValueProperty>
-                      <att.VisualizerFactory>HyperlinkVisualizerTemplate;CellBorderVisualizerTemplate</att.VisualizerFactory>
-                      <att.EditorFactory>demo:TextEditor</att.EditorFactory>
-                      <att.Sorter>[Sys::Compare($1.Website, $2.Website)]</att.Sorter>
-                    </DataColumn>
-                  </att.Columns>
+                  <DataColumn Text="Website" Size="160">
+                    <att.TextProperty>Website</att.TextProperty>
+                    <att.ValueProperty>Website</att.ValueProperty>
+                    <att.VisualizerFactory>HyperlinkVisualizerTemplate;CellBorderVisualizerTemplate</att.VisualizerFactory>
+                    <att.EditorFactory>demo:TextEditor</att.EditorFactory>
+                    <att.Sorter>[Sys::Compare($1.Website, $2.Website)]</att.Sorter>
+                  </DataColumn>
+                </att.Columns>
 
-                  <att.DataColumns>
-                    <_>0</_>
-                  </att.DataColumns>
-                </BindableDataGrid>
-              </Bounds>
-            </ez:Fill>
-          </ez:Layout>
-        </Bounds>
+                <att.DataColumns>
+                  <_>0</_>
+                </att.DataColumns>
+              </BindableDataGrid>
+            </Bounds>
+          </ez:Fill>
+        </ez:Layout>
       </Window>
     </Instance>
   </Instance>
