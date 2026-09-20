@@ -177,6 +177,7 @@
     <ClCompile Include="UI\Source\EditorRibbonPartialClasses.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="UI\DocumentEditorRibbon.xml" />
     <Xml Include="UI\ResourceRibbon.xml" />
   </ItemGroup>
   <ItemGroup>

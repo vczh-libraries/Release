@@ -87,12 +87,15 @@ namespace demo
 	protected:
 		::demo::TriplePhaseButton* button;
 		::demo::MainWindow* __vwsn_precompile_0;
-		::vl::presentation::compositions::GuiStackComposition* __vwsn_precompile_1;
-		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_2;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3;
-		::vl::presentation::compositions::GuiStackItemComposition* __vwsn_precompile_4;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_5;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1;
+		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_2;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_3;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_8;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_9;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
@@ -185,12 +188,31 @@ namespace demo
 	protected:
 		::demo::TriplePhaseImageButtonTemplate* self;
 		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_0;
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_1;
 		::vl::Ptr<::vl::presentation::elements::GuiSolidBorderElement> __vwsn_precompile_2;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_3;
-		::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement> __vwsn_precompile_4;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_5;
-		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_6;
+		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_3;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_4;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_5;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_6;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_7;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_8;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_9;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_10;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_11;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_12;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_13;
+		::vl::Ptr<::vl::presentation::elements::GuiImageFrameElement> __vwsn_precompile_14;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_15;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_16;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_17;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_18;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_19;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_20;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_21;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_22;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_23;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_24;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_25;
 		void __vwsn_demo_TriplePhaseImageButtonTemplate_Initialize(::demo::TriplePhaseImageButtonTemplate* __vwsn_this_);
 	public:
 		TriplePhaseImageButtonTemplateConstructor();

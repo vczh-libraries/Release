@@ -86,13 +86,19 @@ namespace demo
 		::vl::presentation::controls::GuiScroll* progressBar;
 		::vl::presentation::controls::GuiButton* buttonDownload;
 		::vl::presentation::controls::GuiMultilineTextBox* textResult;
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_3;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_4;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_0;
+		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_1;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_2;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_3;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_6;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_6;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_8;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_9;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_10;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_11;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_12;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();

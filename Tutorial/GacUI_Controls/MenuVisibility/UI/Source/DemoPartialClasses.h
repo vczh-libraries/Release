@@ -42,12 +42,12 @@ namespace demo
 		::demo::MainWindow* self;
 		::vl::presentation::controls::GuiToolstripButton* menuItems;
 		::vl::presentation::controls::GuiTextList* checkList;
-		::vl::presentation::compositions::GuiTableComposition* __vwsn_precompile_0;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_1;
-		::vl::presentation::controls::GuiToolstripMenuBar* __vwsn_precompile_2;
-		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_3;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_4;
-		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_5;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_0;
+		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_1;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_2;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3;
+		::vl::presentation::controls::GuiToolstripMenuBar* __vwsn_precompile_4;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_5;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_6;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_7;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_8;
@@ -56,12 +56,12 @@ namespace demo
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_11;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_12;
 		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_13;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_14;
-		::vl::presentation::compositions::GuiCellComposition* __vwsn_precompile_15;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_14;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_15;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_16;
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_17;
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_18;
-		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_19;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_17;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_18;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_19;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_20;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_21;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_22;
@@ -69,7 +69,10 @@ namespace demo
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_24;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_25;
 		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_26;
-		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_27;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_27;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_28;
+		::vl::Ptr<::vl::presentation::controls::list::TextItem> __vwsn_precompile_29;
+		::vl::presentation::compositions::GuiGraphicsComposition* __vwsn_precompile_30;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
