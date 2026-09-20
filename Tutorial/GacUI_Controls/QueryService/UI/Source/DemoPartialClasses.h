@@ -68,15 +68,14 @@ namespace demo
 	protected:
 		::demo::DemoServiceControl* self;
 		::vl::presentation::controls::GuiSinglelineTextBox* textBox;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_0;
-		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_1;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_2;
+		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_0;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_1;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_2;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_3;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_5;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyBottomLayout> __vwsn_precompile_6;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_7;
-		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_8;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_4;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyBottomLayout> __vwsn_precompile_5;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_6;
+		::vl::Ptr<::vl::presentation::elements::GuiSolidLabelElement> __vwsn_precompile_7;
 		void __vwsn_demo_DemoServiceControl_Initialize(::demo::DemoServiceControl* __vwsn_this_);
 	public:
 		DemoServiceControlConstructor();
@@ -108,23 +107,22 @@ namespace demo
 #endif
 	protected:
 		::demo::MainWindow* self;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_0;
-		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_1;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_2;
+		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_0;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_1;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_2;
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_3;
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_4;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_5;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_6;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_5;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_6;
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_7;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_8;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_9;
-		::demo::DemoServiceControl* __vwsn_precompile_10;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_11;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_12;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_13;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_8;
+		::demo::DemoServiceControl* __vwsn_precompile_9;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_10;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_11;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout> __vwsn_precompile_12;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_13;
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_14;
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_15;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout> __vwsn_precompile_16;
 		void __vwsn_demo_MainWindow_Initialize(::demo::MainWindow* __vwsn_this_);
 	public:
 		MainWindowConstructor();
