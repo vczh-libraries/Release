@@ -941,7 +941,7 @@ Closures
 	::vl::presentation::templates::GuiControlTemplate* __vwsnf128_TuiControlTest_tuidemo_TuiTextEditorConstructor___vwsn_tuidemo_TuiTextEditor_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_viewModel_) const
 	{
 		{
-			return static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::tuidemo::TuiGridTextBoxTemplate());
+			return static_cast<::vl::presentation::templates::GuiControlTemplate*>(new ::tuiskin::TuiDocumentLabelTemplate());
 		}
 	}
 
@@ -3029,13 +3029,13 @@ Closures
 
 	void __vwsnf236_TuiControlTest_tuidemo_TuiSharedSizeTextItemTemplateConstructor___vwsn_tuidemo_TuiSharedSizeTextItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_1.Obj())->GetColor();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::Color>(__vwsn_value_);
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_1.Obj())->GetFont();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::FontProperties>(__vwsn_value_);
 		if ((__vwsn_old_ == __vwsn_new_))
 		{
 			return;
 		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_1.Obj())->SetColor(__vwsn_new_);
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_1.Obj())->SetFont(__vwsn_new_);
 	}
 
 	//-------------------------------------------------------------------
@@ -3047,13 +3047,13 @@ Closures
 
 	void __vwsnf237_TuiControlTest_tuidemo_TuiSharedSizeTextItemTemplateConstructor___vwsn_tuidemo_TuiSharedSizeTextItemTemplate_Initialize_::operator()(const ::vl::reflection::description::Value& __vwsn_value_) const
 	{
-		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_1.Obj())->GetFont();
-		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::FontProperties>(__vwsn_value_);
+		auto __vwsn_old_ = ::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_1.Obj())->GetColor();
+		auto __vwsn_new_ = ::vl::__vwsn::Unbox<::vl::presentation::Color>(__vwsn_value_);
 		if ((__vwsn_old_ == __vwsn_new_))
 		{
 			return;
 		}
-		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_1.Obj())->SetFont(__vwsn_new_);
+		::vl::__vwsn::This(__vwsnthis_0->__vwsn_precompile_1.Obj())->SetColor(__vwsn_new_);
 	}
 
 	//-------------------------------------------------------------------
@@ -14986,7 +14986,7 @@ Closures
 
 	void __vwsnc76_TuiControlTest_tuidemo_TuiSharedSizeTextItemTemplateConstructor___vwsn_tuidemo_TuiSharedSizeTextItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetTextColor();
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -15001,7 +15001,7 @@ Closures
 		{
 			(__vwsn_bind_opened_ = true);
 			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::tuidemo::TuiSharedSizeTextItemTemplate*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->TextColorChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc76_TuiControlTest_tuidemo_TuiSharedSizeTextItemTemplateConstructor___vwsn_tuidemo_TuiSharedSizeTextItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->FontChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc76_TuiControlTest_tuidemo_TuiSharedSizeTextItemTemplateConstructor___vwsn_tuidemo_TuiSharedSizeTextItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
@@ -15024,7 +15024,7 @@ Closures
 			(__vwsn_bind_closed_ = true);
 			if (static_cast<bool>(__vwsn_bind_handler_0_0))
 			{
-				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->TextColorChanged, __vwsn_bind_handler_0_0);
+				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->FontChanged, __vwsn_bind_handler_0_0);
 				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
 			}
 			(__vwsn_bind_cache_0 = static_cast<::tuidemo::TuiSharedSizeTextItemTemplate*>(nullptr));
@@ -15047,7 +15047,7 @@ Closures
 
 	void __vwsnc77_TuiControlTest_tuidemo_TuiSharedSizeTextItemTemplateConstructor___vwsn_tuidemo_TuiSharedSizeTextItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_activator_()
 	{
-		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetFont();
+		auto __vwsn_bind_activator_result_ = ::vl::__vwsn::This(__vwsn_bind_cache_0)->GetTextColor();
 		::vl::__vwsn::EventInvoke(this->ValueChanged)(::vl::__vwsn::Box(__vwsn_bind_activator_result_));
 	}
 
@@ -15062,7 +15062,7 @@ Closures
 		{
 			(__vwsn_bind_opened_ = true);
 			(__vwsn_bind_cache_0 = [&](){ try{ return __vwsnthis_0->self; } catch(...){ return static_cast<::tuidemo::TuiSharedSizeTextItemTemplate*>(nullptr); } }());
-			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->FontChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc77_TuiControlTest_tuidemo_TuiSharedSizeTextItemTemplateConstructor___vwsn_tuidemo_TuiSharedSizeTextItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
+			(__vwsn_bind_handler_0_0 = [&](){ try{ return ::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_bind_cache_0)->TextColorChanged, ::vl::Func<void(::vl::presentation::compositions::GuiGraphicsComposition*, ::vl::presentation::compositions::GuiEventArgs*)>(this, &__vwsnc77_TuiControlTest_tuidemo_TuiSharedSizeTextItemTemplateConstructor___vwsn_tuidemo_TuiSharedSizeTextItemTemplate_Initialize__vl_reflection_description_IValueSubscription::__vwsn_bind_callback_0_0)); } catch(...){ return ::vl::Ptr<::vl::reflection::description::IEventHandler>(); } }());
 			return true;
 		}
 		return false;
@@ -15085,7 +15085,7 @@ Closures
 			(__vwsn_bind_closed_ = true);
 			if (static_cast<bool>(__vwsn_bind_handler_0_0))
 			{
-				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->FontChanged, __vwsn_bind_handler_0_0);
+				::vl::__vwsn::EventDetach(::vl::__vwsn::This(__vwsn_bind_cache_0)->TextColorChanged, __vwsn_bind_handler_0_0);
 				(__vwsn_bind_handler_0_0 = ::vl::Ptr<::vl::reflection::description::IEventHandler>());
 			}
 			(__vwsn_bind_cache_0 = static_cast<::tuidemo::TuiSharedSizeTextItemTemplate*>(nullptr));
@@ -17888,12 +17888,12 @@ Class (::tuidemo::TuiDatePickerTabPageConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
-		}
-		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc86_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf250_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_12.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc87_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -17901,12 +17901,12 @@ Class (::tuidemo::TuiDatePickerTabPageConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
-		}
-		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc88_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf252_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_14.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc89_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -17914,12 +17914,12 @@ Class (::tuidemo::TuiDatePickerTabPageConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_16.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
-		}
-		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc90_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf254_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_16.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc91_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize__vl_reflection_description_IValueSubscription(this));
@@ -17927,12 +17927,12 @@ Class (::tuidemo::TuiDatePickerTabPageConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
-		}
-		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc92_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf256_TuiControlTest_tuidemo_TuiDatePickerTabPageConstructor___vwsn_tuidemo_TuiDatePickerTabPage_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
 		}
 	}
 
@@ -21312,54 +21312,6 @@ Class (::tuidemo::TuiGenderVisualizer)
 	}
 
 /***********************************************************************
-Class (::tuidemo::TuiGridTextBoxTemplateConstructor)
-***********************************************************************/
-
-	void TuiGridTextBoxTemplateConstructor::__vwsn_tuidemo_TuiGridTextBoxTemplate_Initialize(::tuidemo::TuiGridTextBoxTemplate* __vwsn_this_)
-	{
-		(this->self = __vwsn_this_);
-		{
-			::vl::__vwsn::This(this->self)->SetMinSizeLimitation(::vl::presentation::compositions::GuiGraphicsComposition::MinSizeLimitation::LimitToElementAndChildren);
-		}
-		(this->__vwsn_precompile_0 = ::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>(::vl::reflection::description::Element_Constructor<::vl::presentation::elements::GuiSolidBackgroundElement>()));
-		{
-			::vl::__vwsn::This(this->self)->SetOwnedElement(::vl::Ptr<::vl::presentation::elements::IGuiGraphicsElement>(this->__vwsn_precompile_0));
-		}
-		{
-			::vl::__vwsn::This(this->__vwsn_precompile_0.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlBackground);
-		}
-		{
-			::vl::__vwsn::This(this->self)->SetCaretColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
-		}
-		{
-			::vl::__vwsn::This(this->self)->SetBaselineDocument(::tuiskin::TuiTheme::CreateBaselineDocument());
-		}
-	}
-
-	TuiGridTextBoxTemplateConstructor::TuiGridTextBoxTemplateConstructor()
-		: self(static_cast<::tuidemo::TuiGridTextBoxTemplate*>(nullptr))
-		, __vwsn_precompile_0(::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement>())
-	{
-	}
-
-/***********************************************************************
-Class (::tuidemo::TuiGridTextBoxTemplate)
-***********************************************************************/
-
-	TuiGridTextBoxTemplate::TuiGridTextBoxTemplate()
-	{
-		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"tuidemo::TuiGridTextBoxTemplate"));
-		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
-		::vl::__vwsn::This(this)->SetResourceResolver(__vwsn_resolver_);
-		::vl::__vwsn::This(this)->__vwsn_tuidemo_TuiGridTextBoxTemplate_Initialize(this);
-	}
-
-	TuiGridTextBoxTemplate::~TuiGridTextBoxTemplate()
-	{
-		this->FinalizeInstanceRecursively(static_cast<::vl::presentation::templates::GuiTemplate*>(this));
-	}
-
-/***********************************************************************
 Class (::tuidemo::TuiHyperlinkWindowConstructor)
 ***********************************************************************/
 
@@ -22349,12 +22301,12 @@ Class (::tuidemo::TuiLocalizedDialogsTabPageConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
-		}
-		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc134_TuiControlTest_tuidemo_TuiLocalizedDialogsTabPageConstructor___vwsn_tuidemo_TuiLocalizedDialogsTabPage_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf329_TuiControlTest_tuidemo_TuiLocalizedDialogsTabPageConstructor___vwsn_tuidemo_TuiLocalizedDialogsTabPage_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
 		}
 	}
 
@@ -23393,10 +23345,10 @@ Class (::tuidemo::TuiLocalizedFontDialogTabPageConstructor)
 			::vl::__vwsn::This(::vl::__vwsn::This(this->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
-			::vl::__vwsn::This(this->label.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
+			::vl::__vwsn::This(this->label.Obj())->SetFont(::vl::__vwsn::This(this->self)->GetDisplayFont());
 		}
 		{
-			::vl::__vwsn::This(this->label.Obj())->SetFont(::vl::__vwsn::This(this->self)->GetDisplayFont());
+			::vl::__vwsn::This(this->label.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
 		}
 		{
 			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf333_TuiControlTest_tuidemo_TuiLocalizedFontDialogTabPageConstructor___vwsn_tuidemo_TuiLocalizedFontDialogTabPage_Initialize_(this));
@@ -24199,12 +24151,12 @@ Class (::tuidemo::TuiLocalizedStringsTabPageConstructor)
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
-		}
-		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc136_TuiControlTest_tuidemo_TuiLocalizedStringsTabPageConstructor___vwsn_tuidemo_TuiLocalizedStringsTabPage_Initialize__vl_reflection_description_IValueSubscription(this));
 			::vl::__vwsn::EventAttach(::vl::__vwsn::This(__vwsn_created_subscription_.Obj())->ValueChanged, vl::Func(::vl_workflow_global::__vwsnf339_TuiControlTest_tuidemo_TuiLocalizedStringsTabPageConstructor___vwsn_tuidemo_TuiLocalizedStringsTabPage_Initialize_(this)));
 			::vl::__vwsn::This(__vwsn_this_)->AddSubscription(__vwsn_created_subscription_);
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetColor(::tuiskin::TuiTheme::GetColorPackage().ControlText);
 		}
 		{
 			auto __vwsn_created_subscription_ = ::vl::Ptr<::vl::reflection::description::IValueSubscription>(new ::vl_workflow_global::__vwsnc137_TuiControlTest_tuidemo_TuiLocalizedStringsTabPageConstructor___vwsn_tuidemo_TuiLocalizedStringsTabPage_Initialize__vl_reflection_description_IValueSubscription(__vwsn_this_, this));
