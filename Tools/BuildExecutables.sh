@@ -23,12 +23,13 @@ make VCPROOT="$(pwd)/.." clean
 make VCPROOT="$(pwd)/.."
 popd
 
+pushd ./Executables/GitTui
+make VCPROOT="$(pwd)/.." clean
+make VCPROOT="$(pwd)/.."
+popd
+
 cp ./Executables/CodePack/Bin/CodePack .
 cp ./Executables/CppMerge/Bin/CppMerge .
 cp ./Executables/GlrParserGen/Bin/GlrParserGen .
 cp ./Executables/GacGen/Bin/GacGen .
-
-pushd ./Executables/GitTui
-bash ../../../.github/Ubuntu/build.sh -f
-popd
 cp ./Executables/GitTui/Bin/GitTui .

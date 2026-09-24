@@ -23,7 +23,7 @@ Run `UiaListApp.exe` to choose a process and window to inspect. Run `GitTui.exe`
 ## Linux/macOS
 
 - Build the native TUI provider libraries in the sibling `wGac` (Linux) or `iGac` (macOS) checkout first. GitTui's `vmake` uses `wGac/build/WGacTuiControlTest/libWGacTui.a` and `wGac/build/WGacShared/libWGac.a`, or `iGac/build/MacTuiControlTest/libGacOSXTui.a` and `iGac/build/MacShared/libGacOSX.a`. Linux also needs the provider's `pkg-config` dependencies.
-- Run `BuildExecutables.sh`. It generates GitTui's makefile from `Executables/GitTui/vmake` using this repository's `.github/Ubuntu/build.sh` and builds the tool. `WGAC_ROOT`/`WGAC_BUILD` or `IGAC_ROOT`/`IGAC_BUILD` can override the provider locations when invoking make.
+- Run `BuildExecutables.sh`. It clean-builds all five tools using their prepared makefiles in `Executables` and copies the binaries to this folder. `WGAC_ROOT`/`WGAC_BUILD` or `IGAC_ROOT`/`IGAC_BUILD` can override the provider locations when invoking make.
 - New files will be available in this folder:
   - CodePack
   - CppMerge
