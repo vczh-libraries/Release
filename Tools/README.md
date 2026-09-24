@@ -10,7 +10,7 @@
   - GacGen.exe
   - GlrParserGen.exe
 
-## Linux
+## Linux/macOS
 
 - Run `BuildExecutables.sh`
 - New files will be available in this folder:
@@ -20,7 +20,3 @@
   - GlrParserGen
 
 **NOTE**: Optimization is not turned on at this moment, tool performance could be slow especially for GacGen. You could change the makefile if you need to.
-
-## macOS
-
-(editing...)
