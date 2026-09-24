@@ -177,8 +177,5 @@
     <ClInclude Include="..\..\..\Import\Skins\DarkSkin\DarkSkin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SharedArguments.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

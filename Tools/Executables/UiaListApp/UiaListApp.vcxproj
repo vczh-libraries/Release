@@ -280,7 +280,4 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets"></ImportGroup>
-  <ItemGroup>
-    <ClInclude Include="Source\SharedArguments.h" />
-  </ItemGroup>
 </Project>
