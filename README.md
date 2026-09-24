@@ -111,6 +111,8 @@ You can copy the whole `.github` folder to your own repo.
 - **Import** Gaclib source code
   - **Skins** Predefined control templates. You will need to call `vl::presentation::theme::RegisterTheme` to set a default skin before creating any controls. Read [WinMain.cpp](https://github.com/vczh-libraries/Release/blob/master/Tutorial/Lib/GacUILite/WinMain.cpp) for details.
 - **Tools**
+  - [**UiaListApp.exe**](.github/KnowledgeBase/KB_GacUI_Design_UiaList.md) Windows UI Automation inspector for application windows, properties and supported actions
+  - [**GitTui**](.github/KnowledgeBase/KB_GacUI_Design_GitTui.md) Terminal Git browser for working-tree diffs and branch history on Windows, Linux and macOS, with explicit pull commands
   - [**GacGen.exe**](.github/KnowledgeBase/KB_GacUI_Design_GacGenAndGacBuild.md) GacUI resource compiler and C++ code generator for x86 and x64
   - [**CppMerge.exe**](.github/KnowledgeBase/KB_Workflow_Design_CppMerge.md) Merge GacUI generated code for x86 and x64 to architecture-independent code
   - [**GlrParserGen.exe**](.github/KnowledgeBase/KB_VlppParser2_Design_GlrParserGen.md) General LR parser to C++ code generator
