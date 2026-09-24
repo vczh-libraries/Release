@@ -166,7 +166,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\Import\Vlpp.Windows.cpp" />
-    <ClCompile Include="..\..\..\Import\VlppGlrParser.cpp" />
+    <ClCompile Include="..\..\..\Import\VlppGlrParser.cpp">
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\..\Import\VlppOS.cpp" />
     <ClCompile Include="..\..\..\Import\VlppOS.Linux.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

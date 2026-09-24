@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{87B5D5BF-8569-4A16-A6DB-1591D7C8181B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8FB65346-B46F-4739-AF7E-FF0202D349C9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{8498829E-71AF-48AC-B2D4-66110B1747C9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <Manifest Include="Source\app.manifest">
+      <Filter>Resource Files</Filter>
+    </Manifest>
+    <ClCompile Include="UiaList\Source\MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\Source\MainWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\Source\MultilineWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\Source\MultilineWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\Source\PropertyWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\Source\PropertyWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UiaList\Source\UiaList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\Source\UiaListPartialClasses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\Source\UiaListPartialClasses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\Source\UiaListReflection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\Source\UiaListReflection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\Source\UiaListResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\ViewModel\UiaListViewModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\ViewModel\UiaListViewModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\ViewModel\PropertyViewModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\ViewModel\PropertyViewModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\ViewModel\ProcessDiscovery.Windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\ViewModel\ProcessDiscovery.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\ViewModel\UiaCatalog.Windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\ViewModel\UiaCatalog.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\ViewModel\UiaSession.Windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\ViewModel\UiaSession.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\ViewModel\WindowCapture.Windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\ViewModel\WindowCapture.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\ViewModel\UiaCatalog.Actions.Windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\ViewModel\UiaCatalog.Actions.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UiaList\ViewModel\UiaCatalog.Dispatch.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UiaList\ViewModel\UiaCatalog.TextRange.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\ViewModel\ActionViewModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\ViewModel\ActionViewModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="UiaList\ViewModel\TextRangeViewModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="UiaList\ViewModel\TextRangeViewModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\Vlpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\Vlpp.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppOS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppOS.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppRegex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppReflection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppGlrParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\VlppWorkflowLibrary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\GacUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\GacUI.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\Skins\DarkSkin\DarkSkin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\Import\Vlpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppOS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppOS.Windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppRegex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppReflection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppGlrParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\VlppWorkflowLibrary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\GacUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\GacUI.Windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Import\Skins\DarkSkin\DarkSkin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SharedArguments.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

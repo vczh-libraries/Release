@@ -174,9 +174,15 @@
     <ClInclude Include="GacGen.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Import\GacUI.cpp" />
-    <ClCompile Include="..\..\..\Import\GacUICompiler.cpp" />
-    <ClCompile Include="..\..\..\Import\GacUIReflection.cpp" />
+    <ClCompile Include="..\..\..\Import\GacUI.cpp">
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\GacUICompiler.cpp">
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Import\GacUIReflection.cpp">
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\..\Import\Vlpp.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/bigobj %(AdditionalOptions)</AdditionalOptions>

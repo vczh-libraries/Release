@@ -11,6 +11,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacGen", "GacGen\GacGen.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlrParserGen", "GlrParserGen\GlrParserGen.vcxproj", "{F5A36ED2-78E7-4776-B1AB-63DE18376F30}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UiaListApp", "UiaListApp\UiaListApp.vcxproj", "{801F436B-9C5A-429B-A2A1-18A2C85E6A10}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GitTui", "GitTui\GitTui.vcxproj", "{9AD1EF9C-C148-42BC-A376-D740F27AF1DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -19,6 +23,22 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{801F436B-9C5A-429B-A2A1-18A2C85E6A10}.Debug|x64.ActiveCfg = Debug|x64
+		{801F436B-9C5A-429B-A2A1-18A2C85E6A10}.Debug|x64.Build.0 = Debug|x64
+		{801F436B-9C5A-429B-A2A1-18A2C85E6A10}.Debug|x86.ActiveCfg = Debug|Win32
+		{801F436B-9C5A-429B-A2A1-18A2C85E6A10}.Debug|x86.Build.0 = Debug|Win32
+		{801F436B-9C5A-429B-A2A1-18A2C85E6A10}.Release|x64.ActiveCfg = Release|x64
+		{801F436B-9C5A-429B-A2A1-18A2C85E6A10}.Release|x64.Build.0 = Release|x64
+		{801F436B-9C5A-429B-A2A1-18A2C85E6A10}.Release|x86.ActiveCfg = Release|Win32
+		{801F436B-9C5A-429B-A2A1-18A2C85E6A10}.Release|x86.Build.0 = Release|Win32
+		{9AD1EF9C-C148-42BC-A376-D740F27AF1DE}.Debug|x64.ActiveCfg = Debug|x64
+		{9AD1EF9C-C148-42BC-A376-D740F27AF1DE}.Debug|x64.Build.0 = Debug|x64
+		{9AD1EF9C-C148-42BC-A376-D740F27AF1DE}.Debug|x86.ActiveCfg = Debug|Win32
+		{9AD1EF9C-C148-42BC-A376-D740F27AF1DE}.Debug|x86.Build.0 = Debug|Win32
+		{9AD1EF9C-C148-42BC-A376-D740F27AF1DE}.Release|x64.ActiveCfg = Release|x64
+		{9AD1EF9C-C148-42BC-A376-D740F27AF1DE}.Release|x64.Build.0 = Release|x64
+		{9AD1EF9C-C148-42BC-A376-D740F27AF1DE}.Release|x86.ActiveCfg = Release|Win32
+		{9AD1EF9C-C148-42BC-A376-D740F27AF1DE}.Release|x86.Build.0 = Release|Win32
 		{EFF0F387-7C0A-46C5-A544-62A24A6BC978}.Debug|x64.ActiveCfg = Debug|x64
 		{EFF0F387-7C0A-46C5-A544-62A24A6BC978}.Debug|x64.Build.0 = Debug|x64
 		{EFF0F387-7C0A-46C5-A544-62A24A6BC978}.Debug|x86.ActiveCfg = Debug|Win32
