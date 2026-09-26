@@ -852,7 +852,7 @@ Instance Loader
 				Ptr<workflow::WfExpression>			expression;
 				Ptr<description::ITypeInfo>			typeInfo;
 				GuiResourceTextPos					attPosition;
-				GuiResourceTextPos					valuePosition;				// only apply to text value
+				GuiResourceTextPos					valuePosition;				// text value, constructor tag or binding position
 			};
 
 			typedef collections::Group<GlobalStringKey, ArgumentInfo>	ArgumentMap;
@@ -869,6 +869,15 @@ Instance Loader
 			virtual Ptr<workflow::WfBaseConstructorCall>	CreateRootInstance(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, ArgumentMap& arguments, GuiResourceError::List& errors);
 			virtual Ptr<workflow::WfStatement>				InitializeRootInstance(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, GlobalStringKey variableName, ArgumentMap& arguments, GuiResourceError::List& errors);
 			virtual Ptr<workflow::WfStatement>				CreateInstance(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, GlobalStringKey variableName, ArgumentMap& arguments, GuiResourceTextPos tagPosition, GuiResourceError::List& errors);
+			/// <summary>
+			/// Generate final initialization after all creation, assignments, bindings, events and localized subscriptions, before ref.Ctor.
+			/// The compiler visits reference objects in depth-first postorder, including existing att.*-set targets, and calls every loader
+			/// from GetLoader(typeInfo.typeName) through GetParentLoader to the default loader, regardless of CanCreate.
+			/// Each hook contributes only its own statement; null is a successful no-op and does not stop the chain.
+			/// All hooks receive the same resolved object type (the source/base type for the root), variable and source position.
+			/// Unlike InitializeRootInstance, root final initialization also runs without constructor arguments.
+			/// </summary>
+			virtual Ptr<workflow::WfStatement>				InitializeInstance(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, GlobalStringKey variableName, GuiResourceTextPos tagPosition, GuiResourceError::List& errors);
 			virtual Ptr<workflow::WfStatement>				AssignParameters(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const TypeInfo& typeInfo, GlobalStringKey variableName, ArgumentMap& arguments, GuiResourceTextPos attPosition, GuiResourceError::List& errors);
 			virtual Ptr<workflow::WfExpression>				GetParameter(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, const PropertyInfo& propertyInfo, GlobalStringKey variableName, GuiResourceTextPos attPosition, GuiResourceError::List& errors);
 		};
@@ -938,6 +947,7 @@ Helper Functions
 }
 
 #endif
+
 
 /***********************************************************************
 .\INSTANCEQUERY\GENERATED\GUIINSTANCEQUERY_ASSEMBLER.H
@@ -1880,6 +1890,7 @@ namespace vl
 			typedef collections::Dictionary<GlobalStringKey, Ptr<description::ITypeInfo>>		TypeOverrideMap;
 			typedef collections::Dictionary<GuiValueRepr*, PropertyResolving>					PropertyResolvingMap;
 			typedef collections::Group<GlobalStringKey, Ptr<GuiAttSetterRepr::EnvVarValue>>		EnvironmentVariableGroup;
+			typedef collections::Dictionary<IGuiInstanceLoader*, Ptr<Object>>					LoaderStateMap;
 
 			struct ResolvingResult : public Object, public Description<ResolvingResult>
 			{
@@ -1894,6 +1905,7 @@ namespace vl
 
 				VariableTypeInfoMap								typeInfos;						// type of references
 				PropertyResolvingMap							propertyResolvings;				// information of property values which are calling constructors
+				LoaderStateMap									loaderStates;					// loader-owned state scoped to this instance context compilation
 			};
 		}
 		extern workflow::analyzer::WfLexicalScopeManager*		Workflow_GetSharedManager(GuiResourceCpuArchitecture targetCpuArchitecture);
@@ -1974,6 +1986,7 @@ WorkflowCompiler (Compile)
 		extern IGuiInstanceLoader::TypeInfo						Workflow_CollectReferences(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, GuiResourceError::List& errors);
 		extern void												Workflow_GenerateCreating(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, Ptr<workflow::WfBlockStatement> statements, GuiResourceError::List& errors);
 		extern void												Workflow_GenerateBindings(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, Ptr<workflow::WfBlockStatement> statements, GuiResourceError::List& errors);
+		extern void												Workflow_GenerateInitialization(GuiResourcePrecompileContext& precompileContext, types::ResolvingResult& resolvingResult, Ptr<workflow::WfBlockStatement> statements, GuiResourceError::List& errors);
 
 		extern InstanceLoadingSource							FindInstanceLoadingSource(Ptr<GuiInstanceContext> context, GlobalStringKey namespaceName, const WString& typeName);
 		extern Ptr<GuiResourceItem>								FindInstanceResourceItem(Ptr<GuiInstanceContext> context, GuiConstructorRepr* ctor, Ptr<GuiResourceClassNameRecord> record);
@@ -2032,6 +2045,7 @@ WorkflowCompiler (ScriptPosition)
 }
 
 #endif
+
 
 /***********************************************************************
 .\INSTANCELOADERS\GUIINSTANCELOADER_TEMPLATECONTROL.H
@@ -2170,33 +2184,5 @@ GuiVrtualTypeInstanceLoader
 		}
 	}
 }
-#endif
-
-
-/***********************************************************************
-.\INSTANCELOADERS\GUIINSTANCELOADER_EASYLAYOUT.H
-***********************************************************************/
-/***********************************************************************
-Vczh Library++ 3.0
-Developer: Zihan Chen(vczh)
-GacUI::Resource Compiler
-***********************************************************************/
-
-#ifndef VCZH_PRESENTATION_COMPILER_GUIINSTANCELOADER_EASYLAYOUT
-#define VCZH_PRESENTATION_COMPILER_GUIINSTANCELOADER_EASYLAYOUT
-
-
-namespace vl::presentation
-{
-	extern bool IsEasyLayoutConstantProperty(const IGuiInstanceLoader::PropertyInfo& propertyInfo);
-	extern void Workflow_ValidateEasyLayouts(types::ResolvingResult& resolvingResult, GuiResourceError::List& errors);
-	extern void Workflow_BuildEasyLayouts(types::ResolvingResult& resolvingResult, Ptr<workflow::WfBlockStatement> statements);
-
-	namespace instance_loaders
-	{
-		extern void LoadEasyLayouts(IGuiInstanceLoaderManager* manager);
-	}
-}
-
 #endif
 
