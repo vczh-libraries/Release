@@ -803,8 +803,6 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->comboView)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_3));
 		}
 		{
@@ -890,8 +888,6 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_14)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->listView)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_14));
 		}
 		{
@@ -988,8 +984,6 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_21)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->bindableListView)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_20.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_21));
 		}
 		{
@@ -1253,8 +1247,6 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_3)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->comboView)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_3));
 		}
 		{
@@ -1296,8 +1288,6 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_11)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->textList)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_10.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_10.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_11));
 		}
 		{
@@ -1330,8 +1320,6 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_16)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_17)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_16));
 		}
 		{
@@ -1359,8 +1347,6 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_20)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_21)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_20));
 		}
 		{
@@ -1388,8 +1374,6 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_24)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_25)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_24));
 		}
 		{
@@ -1417,16 +1401,12 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_28)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_29)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_27.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_27.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_28));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_14)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_27));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_14));
 		}
 		{
@@ -1467,8 +1447,6 @@ Class (::demo::TextListTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_32)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->bindableTextList)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_31.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_31.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_32));
 		}
 		{
@@ -1786,8 +1764,6 @@ Class (::demo::TreeViewTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->treeView)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_2));
 		}
 		{
@@ -1828,8 +1804,6 @@ Class (::demo::TreeViewTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_27)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->bindableTreeView)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_27));
 		}
 		{

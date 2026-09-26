@@ -209,8 +209,6 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_2)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_2));
 		}
 		{
@@ -346,8 +344,6 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_17)->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->checkList)->GetBoundsComposition()));
 		}
 		{
-			if ((::vl::__vwsn::This(this->__vwsn_precompile_16.Obj())->GetComposition() != nullptr))
-				throw ::vl::Exception(::vl::WString::Unmanaged(L"Easy layout: initial content cannot contain more than one composition/control payload."));
 			::vl::__vwsn::This(this->__vwsn_precompile_16.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_17));
 		}
 		{
