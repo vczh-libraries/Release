@@ -232,18 +232,13 @@ namespace demo
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_3));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_2));
-		}
 		(this->__vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = static_cast<double>(1.0); return __vwsn_temp__; }());
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_2));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_4));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
 		}
 		(this->__vwsn_precompile_5 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_6 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
@@ -263,14 +258,13 @@ namespace demo
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_7));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_6));
-		}
 		(this->__vwsn_precompile_9 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_6));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_9));
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_5));
 		}
 		{
@@ -362,9 +356,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_5));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_4));
-		}
 		(this->__vwsn_precompile_7 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_8 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -381,9 +372,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_7.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_8));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_7));
 		}
 		(this->__vwsn_precompile_10 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_11 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -402,9 +390,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_11));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_10));
-		}
 		(this->__vwsn_precompile_13 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_14 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -421,9 +406,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_14));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_13));
 		}
 		(this->__vwsn_precompile_16 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_17 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -442,9 +424,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_16.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_17));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_16));
-		}
 		(this->__vwsn_precompile_19 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_20 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -462,18 +441,18 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_19.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_20));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_19));
-		}
 		(this->__vwsn_precompile_22 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_22.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = static_cast<double>(1.0); return __vwsn_temp__; }());
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_4));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_7));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_10));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_13));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_16));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_19));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_22));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_3));
 		}
 		(this->__vwsn_precompile_23 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
@@ -501,9 +480,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_24.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_25));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_24));
-		}
 		(this->__vwsn_precompile_27 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_28 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -525,9 +501,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_27.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_28));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_27));
 		}
 		(this->__vwsn_precompile_30 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_31 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -551,9 +524,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_30.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_31));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_30));
-		}
 		(this->__vwsn_precompile_33 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_34 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -575,9 +545,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_33.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_34));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_33));
 		}
 		(this->__vwsn_precompile_36 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_37 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -601,9 +568,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_36.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_37));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_36));
-		}
 		(this->__vwsn_precompile_39 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_40 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -626,15 +590,15 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_39.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_40));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_39));
-		}
 		(this->__vwsn_precompile_42 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_24));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_27));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_30));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_33));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_36));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_39));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_23.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_42));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_23));
 		}
 		(this->__vwsn_precompile_43 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		(this->__vwsn_precompile_44 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
@@ -666,9 +630,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_46.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_47));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_46));
-		}
 		(this->__vwsn_precompile_48 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_49 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -686,9 +647,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_48.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_49));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_48));
 		}
 		(this->__vwsn_precompile_50 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_51 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -708,9 +666,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_50.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_51));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_50));
-		}
 		(this->__vwsn_precompile_52 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_53 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -728,9 +683,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_52.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_53));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_52));
 		}
 		(this->__vwsn_precompile_54 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_55 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -750,9 +702,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_54.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_55));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_54));
-		}
 		(this->__vwsn_precompile_56 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_57 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -770,9 +719,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_56.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_57));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_56));
 		}
 		(this->__vwsn_precompile_58 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_59 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -792,9 +738,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_58.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_59));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_58));
-		}
 		(this->__vwsn_precompile_60 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_61 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -812,9 +755,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_60.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_61));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_60));
 		}
 		(this->__vwsn_precompile_62 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_63 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -835,6 +775,14 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_62.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_63));
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_46));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_48));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_50));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_52));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_54));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_56));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_58));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_60));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_45)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_62));
 		}
 		{
@@ -843,49 +791,34 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_43.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_44));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_43));
-		}
 		(this->__vwsn_precompile_64 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = static_cast<double>(1.0); return __vwsn_temp__; }());
 		}
 		(this->__vwsn_precompile_65 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_65));
-		}
 		(this->__vwsn_precompile_66 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_66));
-		}
 		(this->__vwsn_precompile_67 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_67));
-		}
 		(this->__vwsn_precompile_68 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_68));
-		}
 		(this->__vwsn_precompile_69 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_69));
-		}
 		(this->__vwsn_precompile_70 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_70));
-		}
 		(this->__vwsn_precompile_71 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_65));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_66));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_67));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_68));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_69));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_70));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_64.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_71));
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_3));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_23));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_43));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_2)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_64));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_2));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
 		}
 		(this->__vwsn_precompile_72 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_73 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -903,9 +836,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_72.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_73));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_72));
 		}
 		(this->__vwsn_precompile_75 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_76 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -935,9 +865,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_75.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_76));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_75));
-		}
 		(this->__vwsn_precompile_78 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_79 = new ::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition());
 		{
@@ -960,9 +887,6 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_80.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_81));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_79)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_80));
-		}
 		(this->__vwsn_precompile_83 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout()));
 		(this->__vwsn_precompile_84 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -981,12 +905,16 @@ Class (::demo::LocalizedFileDialogTabPageConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_83.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_84));
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_79)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_80));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_79)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_83));
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_78.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_79));
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_72));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_75));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_78));
 		}
 		{
@@ -1223,18 +1151,13 @@ Class (::demo::LocalizedFontDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_3));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_2));
-		}
 		(this->__vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = static_cast<double>(1.0); return __vwsn_temp__; }());
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_2));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_4));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
 		}
 		(this->__vwsn_precompile_5 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_6 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
@@ -1258,15 +1181,10 @@ Class (::demo::LocalizedFontDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_7));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_6));
-		}
 		(this->__vwsn_precompile_8 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_6));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_8));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_5));
 		}
 		(this->__vwsn_precompile_9 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_10 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
@@ -1286,14 +1204,14 @@ Class (::demo::LocalizedFontDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_11));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_10));
-		}
 		(this->__vwsn_precompile_13 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_10));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_13));
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_5));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_9));
 		}
 		{
@@ -1383,9 +1301,6 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_3));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_2));
-		}
 		(this->__vwsn_precompile_5 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Absolute; __vwsn_temp__.absolute = static_cast<::vl::vint>(200); return __vwsn_temp__; }());
@@ -1411,18 +1326,14 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_6));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_5));
-		}
 		(this->__vwsn_precompile_8 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetCellOption([&](){ ::vl::presentation::compositions::GuiCellOption __vwsn_temp__; __vwsn_temp__.composeType = ::vl::presentation::compositions::GuiCellOption::ComposeType::Percentage; __vwsn_temp__.percentage = static_cast<double>(1.0); return __vwsn_temp__; }());
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_2));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_5));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_8));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
 		}
 		(this->__vwsn_precompile_9 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_10 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
@@ -1441,9 +1352,6 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_10.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_11));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_10));
 		}
 		(this->__vwsn_precompile_13 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		(this->__vwsn_precompile_14 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -1467,15 +1375,11 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_13.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_14));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_13));
-		}
 		(this->__vwsn_precompile_16 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_10));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_13));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_16));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_9));
 		}
 		(this->__vwsn_precompile_17 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_18 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
@@ -1494,9 +1398,6 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_19));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_18));
 		}
 		(this->__vwsn_precompile_21 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		(this->__vwsn_precompile_22 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -1526,15 +1427,11 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_21.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_22));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_21));
-		}
 		(this->__vwsn_precompile_25 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_18));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_21));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_17.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_25));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_17));
 		}
 		(this->__vwsn_precompile_26 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_27 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
@@ -1553,9 +1450,6 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_27.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_28));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_27));
 		}
 		(this->__vwsn_precompile_30 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		(this->__vwsn_precompile_31 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -1585,15 +1479,11 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_30.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_31));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_30));
-		}
 		(this->__vwsn_precompile_34 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_27));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_30));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_26.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_34));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_26));
 		}
 		(this->__vwsn_precompile_35 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_36 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
@@ -1612,9 +1502,6 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		}
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_36.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_37));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_35.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_36));
 		}
 		(this->__vwsn_precompile_39 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		(this->__vwsn_precompile_40 = new ::vl::presentation::compositions::GuiBoundsComposition());
@@ -1644,15 +1531,11 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_39.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_40));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_35.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_39));
-		}
 		(this->__vwsn_precompile_43 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_35.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_36));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_35.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_39));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_35.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_43));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_35));
 		}
 		(this->__vwsn_precompile_44 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_45 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
@@ -1672,9 +1555,6 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_45.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_46));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_44.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_45));
-		}
 		(this->__vwsn_precompile_48 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		(this->__vwsn_precompile_49 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -1690,21 +1570,14 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_48.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_49));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_44.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_48));
-		}
 		(this->__vwsn_precompile_50 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_44.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_45));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_44.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_48));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_44.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_50));
-		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_44));
 		}
 		(this->__vwsn_precompile_51 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyRowLayout()));
 		(this->__vwsn_precompile_52 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_51.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_52));
-		}
 		(this->__vwsn_precompile_53 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		(this->__vwsn_precompile_54 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -1722,14 +1595,19 @@ Class (::demo::LocalizedMessageDialogTabPageConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_53.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_54));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_51.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_53));
-		}
 		(this->__vwsn_precompile_56 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyColumnLayout()));
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_51.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_52));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_51.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_53));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_51.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_56));
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_9));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_17));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_26));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_35));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_44));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_51));
 		}
 		{

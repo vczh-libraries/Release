@@ -1948,9 +1948,6 @@ namespace demo
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_15.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_16));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_14)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_15));
-		}
 		(this->__vwsn_precompile_18 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout()));
 		(this->__vwsn_precompile_19 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -1976,6 +1973,7 @@ namespace demo
 			::vl::__vwsn::This(this->__vwsn_precompile_18.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_19));
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_14)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_15));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_14)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_18));
 		}
 		{
@@ -2675,9 +2673,6 @@ Class (::demo::StyleItemTemplateConstructor)
 		{
 			::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_2));
 		}
-		{
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
-		}
 		(this->__vwsn_precompile_3 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyBottomLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyBottomLayout()));
 		(this->__vwsn_precompile_4 = new ::vl::presentation::compositions::GuiBoundsComposition());
 		{
@@ -2697,6 +2692,7 @@ Class (::demo::StyleItemTemplateConstructor)
 			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_4));
 		}
 		{
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_3));
 		}
 		{
