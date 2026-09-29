@@ -1,6 +1,9 @@
 .PHONY: all clean pre-build
 .DEFAULT_GOAL := all
 
+CPP_TARGET=./Bin/GacGen
+CPP_OBJECTS=./Obj/GacUI.o ./Obj/GacUICompiler.o ./Obj/GacUIReflection.o ./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppGlrParser.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppReflection.o ./Obj/VlppRegex.o ./Obj/VlppWorkflowCompiler.o ./Obj/VlppWorkflowLibrary.o ./Obj/VlppWorkflowRuntime.o ./Obj/GacGen.o ./Obj/Main.o
+
 CPP_COMPILE_OPTIONS=-I ../../../Import -DVCZH_DEBUG_METAONLY_REFLECTION
 include $(VCPROOT)/vl/makefile-cpp
 
@@ -16,7 +19,9 @@ clean:
 
 all:pre-build ./Bin/GacGen
 
-./Bin/GacGen:./Obj/GacUI.o ./Obj/GacUICompiler.o ./Obj/GacUIReflection.o ./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppGlrParser.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppReflection.o ./Obj/VlppRegex.o ./Obj/VlppWorkflowCompiler.o ./Obj/VlppWorkflowLibrary.o ./Obj/VlppWorkflowRuntime.o ./Obj/GacGen.o ./Obj/Main.o
+$(CPP_TARGET) $(CPP_OBJECTS): | pre-build
+
+$(CPP_TARGET):$(CPP_OBJECTS)
 	$(CPP_LINK)
 
 ./Obj/GacUI.o: ../../../Import/GacUI.cpp

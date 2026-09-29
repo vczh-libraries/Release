@@ -1,6 +1,9 @@
 .PHONY: all clean pre-build
 .DEFAULT_GOAL := all
 
+CPP_TARGET=./Bin/CppMerge
+CPP_OBJECTS=./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppRegex.o ./Obj/Main.o ./Obj/WfMergeCpp.o
+
 CPP_COMPILE_OPTIONS=-I ../../../Import -DVCZH_DEBUG_NO_REFLECTION
 include $(VCPROOT)/vl/makefile-cpp
 
@@ -16,7 +19,9 @@ clean:
 
 all:pre-build ./Bin/CppMerge
 
-./Bin/CppMerge:./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppRegex.o ./Obj/Main.o ./Obj/WfMergeCpp.o
+$(CPP_TARGET) $(CPP_OBJECTS): | pre-build
+
+$(CPP_TARGET):$(CPP_OBJECTS)
 	$(CPP_LINK)
 
 ./Obj/Vlpp.o: ../../../Import/Vlpp.cpp

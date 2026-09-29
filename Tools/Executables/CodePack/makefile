@@ -1,6 +1,9 @@
 .PHONY: all clean pre-build
 .DEFAULT_GOAL := all
 
+CPP_TARGET=./Bin/CodePack
+CPP_OBJECTS=./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppGlrParser.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppReflection.o ./Obj/VlppRegex.o ./Obj/Codepack_CategorizeCodeFiles.o ./Obj/Codepack_Combine.o ./Obj/Codepack_GetFiles.o ./Obj/Codepack_GetIncludeFiles.o ./Obj/Main.o
+
 CPP_COMPILE_OPTIONS=-I ../../../Import -DVCZH_DEBUG_NO_REFLECTION
 include $(VCPROOT)/vl/makefile-cpp
 
@@ -16,7 +19,9 @@ clean:
 
 all:pre-build ./Bin/CodePack
 
-./Bin/CodePack:./Obj/Vlpp.o ./Obj/Vlpp.Linux.o ./Obj/VlppGlrParser.o ./Obj/VlppOS.o ./Obj/VlppOS.Linux.o ./Obj/VlppReflection.o ./Obj/VlppRegex.o ./Obj/Codepack_CategorizeCodeFiles.o ./Obj/Codepack_Combine.o ./Obj/Codepack_GetFiles.o ./Obj/Codepack_GetIncludeFiles.o ./Obj/Main.o
+$(CPP_TARGET) $(CPP_OBJECTS): | pre-build
+
+$(CPP_TARGET):$(CPP_OBJECTS)
 	$(CPP_LINK)
 
 ./Obj/Vlpp.o: ../../../Import/Vlpp.cpp
