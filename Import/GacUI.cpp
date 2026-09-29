@@ -66850,6 +66850,8 @@ SharedCallbackService
 .\UTILITIES\AUTOMATIONSERVICE\MINIHTTPAUTOMATIONSERVICE.CPP
 ***********************************************************************/
 
+#if defined VCZH_MSVC || defined VCZH_GCC
+
 namespace vl::presentation::remoting
 {
 	using namespace inter_process::async_tcp_socket;
@@ -67032,6 +67034,8 @@ namespace vl::presentation::remoting
 	}
 }
 
+#endif
+
 
 /***********************************************************************
 .\CONTROLS\LISTCONTROLPACKAGE\TUIITEMTEMPLATES.CPP
@@ -67188,6 +67192,8 @@ namespace vl::presentation
 /***********************************************************************
 .\PLATFORMPROVIDERS\TUI\TUICONTROLLER.CPP
 ***********************************************************************/
+
+#if defined VCZH_MSVC || defined VCZH_GCC
 
 extern void GuiApplicationMain();
 
@@ -67481,10 +67487,14 @@ namespace vl::presentation
 
 }
 
+#endif
+
 
 /***********************************************************************
 .\PLATFORMPROVIDERS\TUI\TUIGRAPHICS.CPP
 ***********************************************************************/
+
+#if defined VCZH_MSVC || defined VCZH_GCC
 
 namespace vl::presentation::elements
 {
@@ -67687,10 +67697,14 @@ TuiGraphicsResourceManager
 	}
 }
 
+#endif
+
 
 /***********************************************************************
 .\PLATFORMPROVIDERS\TUI\TUIGRAPHICSRENDERERS.CPP
 ***********************************************************************/
+
+#if defined VCZH_MSVC || defined VCZH_GCC
 #include <algorithm>
 
 namespace vl::presentation::elements
@@ -67835,10 +67849,14 @@ namespace vl::presentation::elements
 	}
 }
 
+#endif
+
 
 /***********************************************************************
 .\PLATFORMPROVIDERS\TUI\TUITEXTLAYOUT.CPP
 ***********************************************************************/
+
+#if defined VCZH_MSVC || defined VCZH_GCC
 
 namespace vl::presentation::elements
 {
@@ -68395,10 +68413,14 @@ TuiGraphicsLayoutProvider
 	}
 }
 
+#endif
+
 
 /***********************************************************************
 .\PLATFORMPROVIDERS\TUI\TUIWINDOW.CPP
 ***********************************************************************/
+
+#if defined VCZH_MSVC || defined VCZH_GCC
 
 namespace vl::presentation
 {
@@ -68787,6 +68809,8 @@ namespace vl::presentation
 	}
 
 }
+
+#endif
 
 
 /***********************************************************************
