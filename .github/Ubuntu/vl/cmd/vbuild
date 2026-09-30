@@ -152,12 +152,12 @@ case "${VBUILD_MODE}" in
 
     -bw|--build-wasm)
     CheckWasm
-    Build CPP_COMPILER=EMPP COVERAGE=NO CPP_OPTIMIZATION=-O0
+    Build CPP_COMPILER=EMPP COVERAGE=NO CPP_OPTIMIZATION=
     ;;
 
     -fbw|--full-build-wasm)
     CheckWasm
-    FullBuild CPP_COMPILER=EMPP COVERAGE=NO CPP_OPTIMIZATION=-O0
+    FullBuild CPP_COMPILER=EMPP COVERAGE=NO CPP_OPTIMIZATION=
     ;;
 
     -g|--generate)
