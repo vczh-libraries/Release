@@ -28,8 +28,9 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 # GacUI
 
 GPU Accelerated C++ User Interface, with:
-- Cross-platform supports (Windows, Linux, macos, HTML5)
+- Cross-platform supports (Windows, Linux, macOS, browsers with WebAssembly and HTML5)
   - Native Renderers
+  - [GacJS](https://github.com/vczh-libraries/GacJS) primarily runs the GacUI core as WebAssembly in a browser, with HTML5 rendering and optional TypeScript view models; demos are available.
   - TUI Renderers
   - Hosted Mode to render all windows in one native window (optional)
   - Core/Renderer cross-process separation (optional)
@@ -43,10 +44,18 @@ GPU Accelerated C++ User Interface, with:
   - Generate XML and Workflow to C++ source files for static linking (recommended)
     - Allow C++ dyanmic reflection opt-out to significantly improve performance and reduce binary size
 
+### WebAssembly and HTML5 with GacJS
+
+Running GacUI in a browser through WebAssembly is [GacJS](https://github.com/vczh-libraries/GacJS)'s primary purpose and most important feature. Its current demos load the GacUI core as a `.wasm` file in a browser worker. Both the HTML5 renderer and a TypeScript view-model host can connect to the core through exposed functions and callbacks, using GacUI Remote Protocol for rendering and Workflow RPC for view models.
+
+WebAssembly and HTTP are alternative transports for this integration. HTTP primarily supports testing HTML5 rendering against a native core without building WebAssembly. The WebAssembly demos use a website server to serve files and do not require a separate HTTP core process. See [the GacJS WebAssembly guide](https://github.com/vczh-libraries/GacJS/blob/master/doc/Projects.md#running-the-wasm-demos-on-linux) for the current demos and Linux build procedure.
+
+Native and remote renderers remain available for Windows, Linux through [wGac](https://github.com/vczh-libraries/wGac), and macOS through [iGac](https://github.com/vczh-libraries/iGac).
+
 ### Implementing View Model in Other Programming Languages
 
 - When the view model is marked with `@rpc:interface` and `@rpc:ctor`, metadata will be printed along with `GacGen` or `GacBuild.ps1`.
-- For TypeScript, code is ready in [the GacJS repo](https://github.com/vczh-libraries/GacJS).
+- For TypeScript, code is ready in [the GacJS repo](https://github.com/vczh-libraries/GacJS), with WebAssembly as its primary browser integration and HTTP as an alternative testing transport.
 - For other programming languages, a codegen could be created following [GacJS/doc/rpc/README.md](https://github.com/vczh-libraries/GacJS/blob/master/doc/rpc/README.md).
 - In the instructions, materials supporting the verification is located in both [Workflow](https://github.com/vczh-libraries/Workflow) and [GacUI](https://github.com/vczh-libraries/GacUI) repos:
   - In [the Workflow repo](https://github.com/vczh-libraries/Workflow), there are test cases covering all aspects of the RPC protocol.
@@ -67,7 +76,8 @@ GPU Accelerated C++ User Interface, with:
 - [iGac](https://github.com/vczh-libraries/iGac):
   - This repos contain Cocoa native renderer implementation and test apps `RemotingTest_Rendering_macOS`.
 - [GacJS](https://github.com/vczh-libraries/GacJS):
-  - This repos contain HTML5 renderer implementation and test apps running in a browser.
+  - Its primary feature is running the GacUI core through WebAssembly with HTML5 rendering. `WasmFCT`, `WasmRPT`, and `WasmRVMT` in GacUI pair with browser demos in GacJS; `WasmRVMT` also connects a TypeScript view model to the WebAssembly core.
+  - HTTP demos test the same HTML5 renderer and TypeScript view-model integration against a native core.
 - According to the license, [wGac](https://github.com/vczh-libraries/wGac), [iGac](https://github.com/vczh-libraries/iGac) and [GacJS](https://github.com/vczh-libraries/GacJS) are part of the release.
 - `Project.md` and `AGENTS.md` files are good entries.
 
