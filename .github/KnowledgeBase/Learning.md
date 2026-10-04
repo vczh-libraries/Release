@@ -2,12 +2,12 @@
 
 # Orders
 
-- Verify generated artifacts with downstream consumer checks [29]
-- Keep design documentation aligned with code after refactoring [25]
-- Proactively remove code made redundant by refactoring [24]
-- Process staged tasks one by one with verification [23]
-- Port fixes from imports to source repositories [21]
-- Verify and localize portability on every target OS [18]
+- Verify generated artifacts with downstream consumer checks [32]
+- Keep design documentation aligned with code after refactoring [26]
+- Proactively remove code made redundant by refactoring [26]
+- Process staged tasks one by one with verification [25]
+- Port fixes from imports to source repositories [23]
+- Verify and localize portability on every target OS [20]
 - Crash early instead of adding error-tolerance fallbacks [16]
 - Extract abstractions only for real shared behavior [16]
 - Fix behavior at the owning state instead of patching symptoms [13]
@@ -20,6 +20,8 @@
 - Treat environment correlation as evidence, not a cause [4]
 - Don't assume observable changes are batched [3]
 - Use RAII scope cleanup instead of manual catch cleanup [3]
+- Use explicit positive compiler and platform guards [3]
+- Keep encoding and exception adapters at the C++/JavaScript boundary [3]
 - Capture dependent lambdas explicitly [2]
 - Use `ERROR_MESSAGE_PREFIX` for meaningful `CHECK_ERROR` / `CHECK_FAIL` messages [2]
 - Prefer simple calls before interface casts [2]
@@ -54,9 +56,11 @@
 - Preserve ordered HTTP messages at upload and completion boundaries [1]
 - Preserve an existing `Ptr` counter across asynchronous ownership handoffs [1]
 - Reuse established MSBuild project configurations [1]
-- Use explicit positive compiler and platform guards [1]
-- Keep encoding and exception adapters at the C++/JavaScript boundary [1]
 - Revalidate mutable external state immediately before mutation [1]
+- Retain browser workers through asynchronous initialization [1]
+- Minimize browser fixture manifests and audit consumed inputs [1]
+- Preserve compiler-generated modules during packaging [1]
+- Validate complete deployment inputs before writing outputs [1]
 
 # Refinements
 
@@ -89,6 +93,8 @@ When a request is split into explicit tasks, complete and verify each task befor
 When a task boundary says to commit and push, do that before starting the next task so each task remains independently reviewable.
 
 When requested for an XML refactor, commit the authored XML changes together first, then commit source, generated artifacts and other remaining changes separately. Honor that review boundary even when the XML commit depends on the following implementation commit.
+
+When the user requests a checkpoint commit before remaining tests finish, commit and push the current work first, then continue verification. Keep unfinished verification explicitly pending and record the completed results afterward; the checkpoint does not establish that an interrupted or still-running suite passed.
 
 ## Use `ERROR_MESSAGE_PREFIX` for meaningful `CHECK_ERROR` / `CHECK_FAIL` messages
 
@@ -159,6 +165,8 @@ Shared Ubuntu build infrastructure must be changed in the canonical `Tools/Ubunt
 If a Workflow task exposes a `VlppReflection` collection-wrapper issue, fix the wrapper behavior in `VlppReflection`, regenerate and verify its release output, then update the Workflow import from that release instead of patching Workflow's imported copy.
 
 When a VlppOS public namespace refactor changes released APIs, regenerate the VlppOS release and update Workflow and GacUI from that release before repairing downstream build breaks; do not patch imported copies.
+
+When an upstream fix already exists but downstream suites reproduce the old failure, compare the imported amalgamation with the current owning release before changing source again. Regenerate and propagate the existing fix, then rebuild the affected consumers; stale imports can preserve an already-fixed optimization or encoding defect.
 
 ## Validate expectations against implementation and existing tests
 
@@ -284,6 +292,10 @@ When a new platform backend is packed into an existing release pair, compile and
 
 For compiler refactors intended to preserve valid resource behavior, rebuild the deployed release tools, invalidate resource caches that do not track compiler binaries, and inspect each downstream architecture's outputs. A driver that catches errors and continues cannot be validated by its exit alone. Explain the complete generated diff, including unchanged consumers, and avoid inserting runtime checks for constraints that the authoring compiler can validate directly.
 
+After refreshing shared release imports, rebuild every requested browser-compatible consumer and run its complete retained suite through the generated HTTP launcher. Require readable output, the expected case counts, exactly one successful completion marker, cross-origin isolation and no browser diagnostics; a passing foundational library does not establish that its downstream amalgamations are current.
+
+Include the optimized amalgamated downstream application when verifying conversion or boundary fixes. Inlining and optimization can expose aliasing defects that the upstream source-project suite does not reproduce; inspect values before and after the suspected boundary and confirm the repaired generated release in the actual consumer.
+
 ## `vl::regex` separator regex: `L"[\\/\\\\]+"`
 
 In `vl::regex::Regex`, both `/` and `\\` are escaping characters, and incorrect escaping inside `[]` can throw errors like `Illegal character set definition.`
@@ -334,6 +346,8 @@ When a documented build invariant guarantees that `CPP_TARGET` and its package o
 
 Before adding persistent validation state, check whether the existing input contract can provide the complete set of values in one batch. If it can, validate with local state and remove the state map, wrapper type and alternate authoring paths that existed only to support incremental arrival. Preserve ordinary runtime mutation when the restriction belongs specifically to authoring.
 
+When retiring a build option, remove its implementation and active configuration/documentation references together. Before deleting a configuration file that becomes nearly empty, check whether its presence or minimal contents still opt the project into the build mode; remove the obsolete option while preserving that independent purpose.
+
 ## Keep design documentation aligned with code after refactoring
 
 When a refactoring changes architecture or behavior, update the corresponding design documents in the same task rather than deferring it. After a structural change, re-read the related documents and reconcile anything that became misaligned (for example, descriptions of a transport path that no longer exists). Treat documentation drift left by a previous refactoring as part of the current cleanup.
@@ -379,6 +393,10 @@ When asked to prepare Unix `vmake` configuration on Windows without executing it
 Portability applies to test synchronization APIs too. When a timed thread wait exists only on one platform, use a cross-platform completion primitive such as `EventObject` for the bounded deadlock guard, signal it on every expected completion path, and still join the worker afterward. Do not weaken a bounded test into an unbounded join merely to make it compile elsewhere.
 
 Browser automation can change the environment being tested. Verify effective security preferences and worker-local settings instead of assuming automation defaults or page-context overrides match a normal browser. For example, restore Firefox's normal strict file-origin policy when reproducing local-module failures, and probe the worker's actual timezone before claiming timezone coverage. Serve Wasm module packages over HTTP for their supported run and distinguish that result from opening the HTML through `file://`.
+
+Keep platform-specific size or ABI workarounds, associated storage/lifetime changes, and their dedicated regressions behind the requested platform guard. A WebAssembly fix must not silently alter native object layout or descriptor selection; compare the unaffected preprocessed behavior and run native consumers. For browser module-size or call-depth limits, use project-local Wasm optimization settings while preserving debug information, exceptions, assertions and the complete supported suite.
+
+Do not expand an implementation's supported platform set solely to reuse a downstream test backend. Separate portable public declarations or resource-building helpers from deliberately unavailable implementations, and guard test registrations by the services they actually require. Keep shared helpers available when other supported tests still use them.
 
 ## Use reentrant POSIX date-time conversions
 
@@ -430,12 +448,34 @@ When adding a solution or project, start from a comparable existing `.vcxproj` c
 
 Compiler/platform selection must enumerate supported branches with `#if` and `#elif`; do not assume that everything outside MSVC is native GCC/Clang. Select Emscripten explicitly as `VCZH_WASM`, independently of `VCZH_MSVC` and `VCZH_GCC`, while `VCZH_APPLE` refines the native GCC branch. Correct encountered platform-selection `#ifdef` / `#else` shortcuts, including unrelated ones, without changing ordinary header guards or unrelated feature switches. Unsupported compilers should fail instead of silently entering a fallback.
 
+Remove ordinary guards whose alternatives enumerate every supported compiler, such as `VCZH_MSVC || VCZH_GCC || VCZH_WASM`; they do not restrict availability. Preserve deliberate exactly-one-compiler assertions and guards that select a genuine platform subset.
+
 ## Keep encoding and exception adapters at the C++/JavaScript boundary
 
 Preserve Emscripten's SDK-compatible 32-bit `wchar_t` and use `WString` throughout C++; do not force `-fshort-wchar`. Convert to temporary `U16String` only at the JavaScript boundary, and convert received strings back immediately. Use `U8String` only when UTF-16 cannot be bound easily and document that limitation. Honor explicit code-unit lengths and copy temporary buffers before the C++ call returns.
 
 Prefer `EMSCRIPTEN_BINDINGS` for C++ exports and small `EM_JS` calls to named JavaScript helpers for imports. Keep application logic in normal C++ or JavaScript/TypeScript functions; direct JavaScript built-ins are appropriate for general operations. Separate the normal C++ function from its exception-catching `wasm_` export, and translate failures to return values in both directions so exceptions do not cross the boundary.
 
+Preserve absence independently from empty text in nullable bindings: JavaScript `undefined` can mean no value, while an empty string remains a present empty `WString`. Exercise Unicode and embedded zero code units through the actual boundary, and reject unsupported return types or translate callback failures into the established C++ error path.
+
+Normalize imported numeric boolean flags before strict comparison with JavaScript booleans. Worker-local callbacks and Embind handles must be used in their owning runtime worker; dispatch there when necessary and return errors to the calling C++ thread instead of allowing a JavaScript exception to abandon an asynchronous continuation.
+
 ## Revalidate mutable external state immediately before mutation
 
 A UI selection or cached snapshot is not authoritative for external state that can change independently. Re-read the actual state at the operation boundary and reject a mismatch before any mutation. Report the selected and actual state, including special states such as detached HEAD, rather than silently ignoring the command or claiming a merge conflict. Keep a matching-state positive control and verify rejected operations leave all relevant external state unchanged.
+
+## Retain browser workers through asynchronous initialization
+
+Keep a strongly reachable `Worker` reference for the page lifetime while asynchronous fixture prefill and module initialization are pending. A page-lifetime event handler can retain the worker and terminate it on `pagehide`. A disappearing worker without an error is not proof of a C++ hang: reproduce the lifetime issue with forced garbage collection, and verify startup stress separately from full application completion.
+
+## Minimize browser fixture manifests and audit consumed inputs
+
+Map only the input files and explicitly needed empty directories used by the retained browser suite. Union and deduplicate include results, apply exclusions, filter broad glob results to regular files, and infer nonempty parent directories. Compare actual reads with the manifest so an overly broad pattern cannot silently preload unused fixtures. Verify binary fidelity, fresh origin-private state on reload, and that browser writes never alter host fixtures.
+
+## Preserve compiler-generated modules during packaging
+
+When a toolchain already supports loading adjacent runtime files, deploy those files instead of rewriting its generated module or replacing its export with an embedding wrapper. For Emscripten pthread builds, preserve `app.mjs` byte-for-byte and package the matching `app.worker.js` and `app.wasm` beside it, allowing the original factory and worker imports to resolve normally. Verify unchanged generated bytes after packaging and distinguish application-host workers from compiler-generated pthread workers.
+
+## Validate complete deployment inputs before writing outputs
+
+Validate every required source artifact and destination prerequisite across the complete deployment before copying any file. Share one artifact inventory between validation and copying, and reject missing, empty or non-regular source files before altering existing output. Exercise rejection at the last application or artifact as well as the first, require all deployed files to remain unchanged on rejection, and keep a successful control that copies every matching artifact.
