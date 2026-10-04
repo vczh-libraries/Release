@@ -1,4 +1,4 @@
-# Release
+﻿# Release
 
 Release folder of all projects.
 
@@ -121,6 +121,7 @@ You can copy the whole `.github` folder to your own repo.
 - **Import** Gaclib source code
   - **Skins** Predefined control templates. You will need to call `vl::presentation::theme::RegisterTheme` to set a default skin before creating any controls. Read [WinMain.cpp](https://github.com/vczh-libraries/Release/blob/master/Tutorial/Lib/GacUILite/WinMain.cpp) for details.
 - **Tools**
+  - [**UiaListCli.exe**](.github/KnowledgeBase/KB_GacUI_Design_UiaList.md#uialistcli-json-protocol) Windows UI Automation console inspector with typed JSON commands, ranges and previews
   - [**UiaListApp.exe**](.github/KnowledgeBase/KB_GacUI_Design_UiaList.md) Windows UI Automation inspector for application windows, properties and supported actions
   - [**GitTui**](.github/KnowledgeBase/KB_GacUI_Design_GitTui.md) Terminal Git browser for working-tree diffs and branch history on Windows, Linux and macOS, with explicit pull commands
   - [**GacGen.exe**](.github/KnowledgeBase/KB_GacUI_Design_GacGenAndGacBuild.md) GacUI resource compiler and C++ code generator for x86 and x64

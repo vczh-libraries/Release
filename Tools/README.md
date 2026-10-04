@@ -1,6 +1,6 @@
-# Using Tools
+﻿# Using Tools
 
-`UiaListApp` is a Windows UI Automation inspector. It lists processes and windows, captures a window's UI tree, and lets you inspect nodes, properties and supported actions. See the [UiaListApp usage guide](../.github/KnowledgeBase/KB_GacUI_Design_UiaList.md).
+`UiaListApp` is the graphical Windows UI Automation inspector; `UiaListCli` exposes the same shared services through a sequential UTF-8 JSON-line protocol. It lists processes and windows, captures a window's UI tree, and lets you inspect nodes, properties and supported actions. See the [UiaListApp usage guide](../.github/KnowledgeBase/KB_GacUI_Design_UiaList.md).
 
 `GitTui` shows a Git repository's working-tree changes and local branch history in a terminal. Git must be on `PATH`; launch the tool from the repository or one of its subdirectories. Use **CHANGES** for staged, unstaged and new files and **HISTORY** for commits. Its explicit pull commands modify the repository. See the [GitTui usage guide](../.github/KnowledgeBase/KB_GacUI_Design_GitTui.md) for navigation and command behavior.
 
@@ -14,9 +14,10 @@
   - GacGen.exe
   - GlrParserGen.exe
   - UiaListApp.exe
+  - UiaListCli.exe
   - GitTui.exe
 
-The solution also supports `Debug` and `x64`. `CopyExecutables.ps1` deploys the six `Release|x86` executables and reports an error if any is missing.
+The solution also supports `Debug` and `x64`. `CopyExecutables.ps1` deploys the seven `Release|x86` executables and reports an error if any is missing.
 
 Run `UiaListApp.exe` to choose a process and window to inspect. Run `GitTui.exe` in an interactive terminal with a valid console input and output; redirected streams cannot host its interface.
 
@@ -31,12 +32,14 @@ Run `UiaListApp.exe` to choose a process and window to inspect. Run `GitTui.exe`
   - GlrParserGen
   - GitTui
 
-`UiaListApp` is Windows-only. Launch `GitTui` inside the repository to inspect, in an interactive terminal.
+`UiaListApp` and `UiaListCli` are Windows-only. Launch `GitTui` inside the repository to inspect, in an interactive terminal.
 
 **NOTE**: Optimization is not turned on at this moment, tool performance could be slow especially for GacGen. You could change the makefile if you need to.
 
 ## Updating packaged sources
 
-The two applications are maintained in the sibling GacUI repository under `Tools/UiaList` and `Tools/GitView`. From the monorepo, run `Tools/Tools/Build.ps1 -Project UpdateRelease` to copy their sources, build the executables, and deploy them here. Do not edit the copied C++ files in this repository.
+These applications are maintained in the sibling GacUI repository under `Tools/UiaList` and `Tools/GitView`. From the monorepo, run `Tools/Tools/Build.ps1 -Project UpdateRelease` to copy their sources, build the executables, and deploy them here. Do not edit the copied C++ files in this repository.
 
-`Executables/UiaListApp/UiaList` and `Executables/GitTui/GitView` preserve the library source layout; each application's entry point is in its `Source` directory. The UiaListApp copy step also supplies `SharedArguments.h` and adjusts its one external test-tree include.
+`Executables/UiaList`, `Executables/UiaListApp` and `Executables/UiaListCli` are sibling projects. Both UiaList frontends reference the common static library, which owns generated views, view models and dependency objects. Frontend entry points/manifests are directly in their project directories. The copier copies authored/generated sources byte-for-byte from GacUI and removes the obsolete `UiaListApp/UiaList` and `UiaListApp/Source` directories. Project/filter files remain owned here. `Executables/GitTui/GitView` and its `Source` entry point retain their existing layout.
+
+Run `UiaListCli.exe` interactively or with redirected UTF-8 streams. Start with `Help-Command`, then `List-Process`. Each command completes before one JSON response is flushed. Read the [protocol and examples](../.github/KnowledgeBase/KB_GacUI_Design_UiaList.md#uialistcli-json-protocol) for typed arguments, generation-scoped IDs, returned elements, ranges and preview bytes.
