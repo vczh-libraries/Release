@@ -34,7 +34,7 @@ Run `UiaListApp.exe` to choose a process and window to inspect. Run `GitTui.exe`
 
 `UiaListApp` and `UiaListCli` are Windows-only. Launch `GitTui` inside the repository to inspect, in an interactive terminal.
 
-**NOTE**: Optimization is not turned on at this moment, tool performance could be slow especially for GacGen. You could change the makefile if you need to.
+`BuildExecutables.sh` always builds the tools with `-O2` optimization.
 
 ## Updating packaged sources
 
