@@ -1,5 +1,5 @@
 $ErrorActionPreference = "Stop"
-$executables = @("CodePack", "CppMerge", "GacGen", "GlrParserGen", "UiaListApp", "UiaListCli", "GitTui")
+$executables = @("CodePack", "CppMerge", "GacGen", "GacBuild", "GlrParserGen", "UiaListApp", "UiaListCli", "GitTui")
 
 foreach ($name in $executables) {
     $source = Join-Path $PSScriptRoot "Executables\Release\$name.exe"

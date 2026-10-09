@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UiaList", "UiaList\UiaList.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UiaListCli", "UiaListCli\UiaListCli.vcxproj", "{8A94A398-4492-47C5-B10C-E5F75506E793}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GacBuild", "GacBuild\GacBuild.vcxproj", "{1797F3AB-A45A-4DC3-8A51-1D197925884E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -83,6 +85,14 @@ Global
 		{07328A1E-E71E-4F90-9BD7-7F0FD7B73053}.Release|x64.Build.0 = Release|x64
 		{07328A1E-E71E-4F90-9BD7-7F0FD7B73053}.Release|x86.ActiveCfg = Release|Win32
 		{07328A1E-E71E-4F90-9BD7-7F0FD7B73053}.Release|x86.Build.0 = Release|Win32
+		{1797F3AB-A45A-4DC3-8A51-1D197925884E}.Debug|x64.ActiveCfg = Debug|x64
+		{1797F3AB-A45A-4DC3-8A51-1D197925884E}.Debug|x64.Build.0 = Debug|x64
+		{1797F3AB-A45A-4DC3-8A51-1D197925884E}.Debug|x86.ActiveCfg = Debug|Win32
+		{1797F3AB-A45A-4DC3-8A51-1D197925884E}.Debug|x86.Build.0 = Debug|Win32
+		{1797F3AB-A45A-4DC3-8A51-1D197925884E}.Release|x64.ActiveCfg = Release|x64
+		{1797F3AB-A45A-4DC3-8A51-1D197925884E}.Release|x64.Build.0 = Release|x64
+		{1797F3AB-A45A-4DC3-8A51-1D197925884E}.Release|x86.ActiveCfg = Release|Win32
+		{1797F3AB-A45A-4DC3-8A51-1D197925884E}.Release|x86.Build.0 = Release|Win32
 		{F5A36ED2-78E7-4776-B1AB-63DE18376F30}.Debug|x64.ActiveCfg = Debug|x64
 		{F5A36ED2-78E7-4776-B1AB-63DE18376F30}.Debug|x64.Build.0 = Debug|x64
 		{F5A36ED2-78E7-4776-B1AB-63DE18376F30}.Debug|x86.ActiveCfg = Debug|Win32

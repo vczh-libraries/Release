@@ -8,7 +8,11 @@ function Start-Process-And-Wait([String[][]] $Pairs, [Boolean]$Inline = $false, 
             $arguments.Add("ArgumentList", $Pairs[$i][1])
         }
         $arguments.Add("PassThru", $true)
-        $arguments.Add("NoNewWindow", $Inline)
+        if ($Inline) {
+            $arguments.Add("NoNewWindow", $true)
+        } else {
+            $arguments.Add("WindowStyle", "Hidden")
+        }
         if ($WorkingDirectory -ne "") {
             $arguments.Add("WorkingDirectory", $WorkingDirectory)
         }
