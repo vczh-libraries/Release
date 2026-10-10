@@ -127,7 +127,7 @@ You can copy the whole `.github` folder to your own repo.
   - [**GacBuild.ps1** and **GacBuild.sh**](.github/KnowledgeBase/KB_GacUI_Design_GacGenAndGacBuild.md) Do everything for you if you don't want to understand build steps. This one builds multiple resource xml files at the same time. It calls the following tools:
     - **GacGen.exe** GacUI resource compiler and C++ code generator for x86 and x64
     - **GacBuild.exe** Incremental build and cross resource resolver for **GacGen.exe**
-  - [**CppMerge.exe**](.github/KnowledgeBase/KB_Workflow_Design_CppMerge.md) Merge GacUI generated code for x86 and x64 to architecture-independent code
+    - [**CppMerge.exe**](.github/KnowledgeBase/KB_Workflow_Design_CppMerge.md) Merge GacUI generated code for x86 and x64 to architecture-independent code
   - [**GlrParserGen.exe**](.github/KnowledgeBase/KB_VlppParser2_Design_GlrParserGen.md) General LR parser to C++ code generator
   - [**CodePack.exe**](.github/KnowledgeBase/KB_VlppParser2_Design_CodePack.md) Merge a group of C++ source files into multiple pairs of .h/.cpp big filesinformation.
   - **GacClear.ps1** Force `GacBuild.ps1` rebuilding all resource xml files for the next time.
