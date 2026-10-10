@@ -6,8 +6,8 @@ param(
 $ErrorActionPreference = 'Stop'
 $arguments = @(
     '-mode:GacGen',
-    "-pathGacGen:$PSScriptRoot/GacGen.exe",
-    "-pathCppMerge:$PSScriptRoot/CppMerge.exe",
+    ('-pathGacGen:' + [System.IO.Path]::GetFullPath("$PSScriptRoot/GacGen.exe")),
+    ('-pathCppMerge:' + [System.IO.Path]::GetFullPath("$PSScriptRoot/CppMerge.exe")),
     '-FileName', $FileName
 )
 if ($MappingFileName) { $arguments += @('-MappingFileName', $MappingFileName) }
