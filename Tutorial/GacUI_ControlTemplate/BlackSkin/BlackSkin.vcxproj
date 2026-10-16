@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FullControlTestRawElement.Windows.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="UI\FullControlTest\Source\DemoPartialClasses.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
@@ -172,6 +173,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FullControlTestRawElement.h" />
     <ClInclude Include="UI\FullControlTest\Source\Demo.h" />
     <ClInclude Include="UI\FullControlTest\Source\DemoPartialClasses.h" />
     <ClInclude Include="UI\FullControlTest\Source\DemoPartialClasses1.h" />

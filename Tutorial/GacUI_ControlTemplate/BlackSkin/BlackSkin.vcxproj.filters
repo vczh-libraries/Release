@@ -18,6 +18,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FullControlTestRawElement.Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -32,6 +35,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FullControlTestRawElement.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="UI\FullControlTest\Source\Demo.h">
       <Filter>UI</Filter>
     </ClInclude>

@@ -1,4 +1,7 @@
 #include "UI/FullControlTest/Source/Demo.h"
+#if defined VCZH_MSVC
+#include "FullControlTestRawElement.h"
+#endif
 
 using namespace vl;
 using namespace vl::stream;
@@ -15,6 +18,9 @@ void GuiMain()
 	}
 	{
 		demo::MainWindow window;
+#if defined VCZH_MSVC
+		auto rawClockAttachment = demo::AttachFullControlTestRawElement(window.GetClockElement());
+#endif
 		window.ForceCalculateSizeImmediately();
 		window.MoveToScreenCenter();
 		GetApplication()->Run(&window);

@@ -1,0 +1,58 @@
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">..\..\UIRes\RawClock.bin</Text>
+      <Text name="NormalInclude">GacUI.h</Text>
+      <Text name="ReflectionInclude">GacUIReflection.h</Text>
+      <Text name="Name">Demo</Text>
+    </Folder>
+  </Folder>
+
+  <Instance name="MainWindowResource">
+    <Instance ref.CodeBehind="true" ref.Class="demo::MainWindow">
+      <ref.Members><![CDATA[
+        func GetClockElement(): GuiRawElementBase^ { return clock; }
+        prop ClockElement: GuiRawElementBase^ {GetClockElement}
+
+        @cpp:Private
+        static func Digits(value: int): string
+        {
+          if (value < 10) { return "0" & (cast string value); }
+          return cast string value;
+        }
+
+        @cpp:Private
+        static func CurrentTime(): string
+        {
+          var time = Sys::GetLocalTime();
+          return Digits(time.hour) & ":" & Digits(time.minute) & ":" & Digits(time.second);
+        }
+
+        @cpp:Private
+        static func Tick(element: GuiRawElementBase^): IGuiAnimation^
+        ${
+          while (true)
+          {
+            $Wait (cast UInt64 1000);
+            element.Data = CurrentTime();
+          }
+        }
+      ]]></ref.Members>
+      <ref.Ctor><![CDATA[
+        {
+          clock.Data = CurrentTime();
+          self.AddAnimation(Tick(clock));
+        }
+      ]]></ref.Ctor>
+      <Window ref.Name="self" Text="RawClock" ClientSize="x:800 y:600">
+        <Bounds PreferredMinSize="x:400 y:400" AlignmentToParent="left:5 top:5 right:5 bottom:5">
+          <SolidBackground Color="#202020"/>
+          <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:0">
+            <Raw ref.Name="clock" Id="RawClock.Clock"/>
+          </Bounds>
+        </Bounds>
+      </Window>
+    </Instance>
+  </Instance>
+</Resource>
