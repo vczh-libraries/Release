@@ -29,21 +29,36 @@ https://github.com/vczh-libraries
 #define GLOBAL_NAME ::vl_workflow_global::Demo::Instance().
 #define GLOBAL_OBJ &::vl_workflow_global::Demo::Instance()
 
-/* USER_CONTENT_BEGIN(custom global declarations) */
-/* USER_CONTENT_END() */
-
 /***********************************************************************
 Class (::demo::MainWindow)
 ***********************************************************************/
 
 namespace demo
 {
-	void MainWindow::InstallAnimationControl()
-	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
-		auto animationControl = new AnimationControl;
-		animationControl->GetBoundsComposition()->SetAlignmentToParent(vl::presentation::Margin(0, 0, 0, 0));
-		animationBounds->AddChild(animationControl->GetBoundsComposition());
-	}/* USER_CONTENT_END() */
+	::vl::Ptr<::vl::presentation::elements::GuiRawElementBase> MainWindow::GetClockElement()
+	{
+		return this->clock;
+	}
+
+	::vl::WString MainWindow::Digits(::vl::vint value)
+	{
+		if ((value < static_cast<::vl::vint>(10)))
+		{
+			return (::vl::WString::Unmanaged(L"0") + ::vl::__vwsn::ToString(value));
+		}
+		return ::vl::__vwsn::ToString(value);
+	}
+
+	::vl::WString MainWindow::CurrentTime()
+	{
+		auto time = ::vl::reflection::description::Sys::GetLocalTime();
+		return ((((::demo::MainWindow::Digits(time.hour) + ::vl::WString::Unmanaged(L":")) + ::demo::MainWindow::Digits(time.minute)) + ::vl::WString::Unmanaged(L":")) + ::demo::MainWindow::Digits(time.second));
+	}
+
+	::vl::Ptr<::vl::presentation::controls::IGuiAnimation> MainWindow::Tick(::vl::Ptr<::vl::presentation::elements::GuiRawElementBase> element)
+	{
+		return ::vl::presentation::controls::IGuiAnimationCoroutine::Create(vl::Func(::vl_workflow_global::__vwsnf1_Demo_demo_MainWindow_Tick_(element)));
+	}
 
 	MainWindow::MainWindow()
 		: ::vl::presentation::controls::GuiWindow(::vl::presentation::theme::ThemeName::Window)
@@ -57,7 +72,8 @@ namespace demo
 
 	void MainWindow::__vwsn_instance_ctor_()
 	{
-		::vl::__vwsn::This(this->self)->InstallAnimationControl();
+		::vl::__vwsn::This(this->clock.Obj())->SetData(::demo::MainWindow::CurrentTime());
+		::vl::__vwsn::This(this->self)->AddAnimation(::demo::MainWindow::Tick(this->clock));
 	}
 
 	MainWindow::~MainWindow()
@@ -77,3 +93,8 @@ namespace demo
 #elif defined(__GNUC__)
 #pragma GCC diagnostic pop
 #endif
+// UNUSED_USER_CONTENT:
+//	{/* USER_CONTENT_BEGIN(::demo::MainWindow) */
+//	}/* USER_CONTENT_END() */
+///* USER_CONTENT_BEGIN(custom global declarations) */
+///* USER_CONTENT_END() */

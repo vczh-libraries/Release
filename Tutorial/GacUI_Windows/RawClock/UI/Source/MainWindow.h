@@ -26,19 +26,22 @@ namespace demo
 {
 	class MainWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::MainWindowConstructor, public ::vl::reflection::Description<MainWindow>
 	{
+		friend class ::vl_workflow_global::__vwsnc1_Demo_demo_MainWindow_Tick___vl_reflection_description_ICoroutine;
+		friend struct ::vl_workflow_global::__vwsnf1_Demo_demo_MainWindow_Tick_;
 		friend class ::demo::MainWindowConstructor;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MainWindow>;
 #endif
+	public:
+		::vl::Ptr<::vl::presentation::elements::GuiRawElementBase> GetClockElement();
 	private:
-		void InstallAnimationControl();
+		static ::vl::WString Digits(::vl::vint value);
+		static ::vl::WString CurrentTime();
+		static ::vl::Ptr<::vl::presentation::controls::IGuiAnimation> Tick(::vl::Ptr<::vl::presentation::elements::GuiRawElementBase> element);
 	public:
 		MainWindow();
 		void __vwsn_instance_ctor_();
 		~MainWindow();
-
-	/* USER_CONTENT_BEGIN(custom members of ::demo::MainWindow) */
-	/* USER_CONTENT_END() */
 	};
 
 }
@@ -51,3 +54,6 @@ namespace demo
 #endif
 
 #endif
+// UNUSED_USER_CONTENT:
+//	/* USER_CONTENT_BEGIN(custom members of ::demo::MainWindow) */
+//	/* USER_CONTENT_END() */
