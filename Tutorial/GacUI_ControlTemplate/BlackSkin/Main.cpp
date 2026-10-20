@@ -20,6 +20,7 @@ void GuiMain()
 		demo::MainWindow window;
 #if defined VCZH_MSVC
 		auto rawClockAttachment = demo::AttachFullControlTestRawElement(window.GetClockElement());
+		auto touchingAttachment = demo::AttachFullControlTestTouchingElement(window.GetTouchingElement());
 #endif
 		window.ForceCalculateSizeImmediately();
 		window.MoveToScreenCenter();
