@@ -1,0 +1,82 @@
+<Instance ref.CodeBehind="false" ref.Class="demo::TouchingTabPage">
+  <ref.Members><![CDATA[
+    func GetTouchingElement(): GuiRawElementBase^ { return touching; }
+    prop TouchingElement: GuiRawElementBase^ {GetTouchingElement}
+
+    var centerX: double = 180.0;
+    var centerY: double = 140.0;
+    var axisX: double = 1.0;
+    var axisY: double = 0.0;
+    var markers: string = "";
+    var markerCount: int = 0;
+
+    func Publish(serializedMarkers: string, count: int): void
+    {
+      touching.Data = (cast string centerX) & "," & (cast string centerY)
+        & "," & (cast string axisX) & "," & (cast string axisY)
+        & "," & (cast string count) & serializedMarkers;
+    }
+
+    func UpdatePoints(arguments: GuiPointEventArgs*): void
+    {
+      markers = "";
+      markerCount = 0;
+      for (i in range[0, arguments.Points.Count))
+      {
+        if (var point: Point? = arguments.Points[i])
+        {
+          markers = markers & "," & (cast string i) & "," & (cast string point.x) & "," & (cast string point.y);
+          markerCount = markerCount + 1;
+        }
+      }
+
+      Publish(markers, markerCount);
+    }
+  ]]></ref.Members>
+  <ref.Ctor><![CDATA[
+    { self.Publish("", 0); }
+  ]]></ref.Ctor>
+  <TabPage ref.Name="self" Text="Touching">
+    <ez:Layout>
+      <ez:Top>
+        <Label Text="One finger: move. Two fingers: move, rotate and zoom. More: pause."/>
+      </ez:Top>
+      <ez:Fill>
+        <Bounds PreferredMinSize="x:320 y:240">
+          <SolidBackground Color="#202020"/>
+          <Bounds ref.Name="touchingBounds" AlignmentToParent="left:0 top:0 right:0 bottom:0">
+            <Raw ref.Name="touching" Id="FullControlTest.Touching"/>
+            <ev.pointSequenceStarted-eval><![CDATA[{ arguments.acceptedComposition = touchingBounds; }]]></ev.pointSequenceStarted-eval>
+            <ev.pointAction-eval><![CDATA[{ self.UpdatePoints(arguments); }]]></ev.pointAction-eval>
+            <ev.pointGesture-eval><![CDATA[{
+              if (not arguments.handled)
+              {
+                if (var transform : GuiPointGesture_DraggingAndRotation? = arguments.gesture as GuiPointGesture_DraggingAndRotation?)
+                {
+                  arguments.selected = true;
+                  arguments.handled = true;
+                  var real = transform.scale * Math::Cos(transform.rotation);
+                  var imaginary = transform.scale * Math::Sin(transform.rotation);
+                  var x = real * self.centerX - imaginary * self.centerY + cast double transform.distance.x;
+                  var y = imaginary * self.centerX + real * self.centerY + cast double transform.distance.y;
+                  var ax = real * self.axisX - imaginary * self.axisY;
+                  var ay = imaginary * self.axisX + real * self.axisY;
+                  self.centerX = x;
+                  self.centerY = y;
+                  self.axisX = ax;
+                  self.axisY = ay;
+                  self.Publish(self.markers, self.markerCount);
+                }
+              }
+            }]]></ev.pointGesture-eval>
+            <ev.pointSequenceEnded-eval><![CDATA[{
+              self.markers = "";
+              self.markerCount = 0;
+              self.Publish("", 0);
+            }]]></ev.pointSequenceEnded-eval>
+          </Bounds>
+        </Bounds>
+      </ez:Fill>
+    </ez:Layout>
+  </TabPage>
+</Instance>

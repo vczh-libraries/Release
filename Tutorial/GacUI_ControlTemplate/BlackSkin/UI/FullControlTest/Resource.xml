@@ -80,6 +80,9 @@
         func GetClockElement(): GuiRawElementBase^ { return rawClockPage.ClockElement; }
         prop ClockElement: GuiRawElementBase^ {GetClockElement}
 
+        func GetTouchingElement(): GuiRawElementBase^ { return touchingPage.TouchingElement; }
+        prop TouchingElement: GuiRawElementBase^ {GetTouchingElement}
+
         func ShowMouseModifiers(alt: bool, osSuper: bool): void
         {
           var altText = "0";
@@ -205,6 +208,8 @@
                 <att.Pages>
                   <demo:ElementTabPage Alt="E" />
                   <demo:RawElementTabPage ref.Name="rawClockPage" />
+                  <demo:TouchingTabPage ref.Name="touchingPage" />
+                  <demo:TouchingListTabPage />
                   <demo:AnimationTabPage Alt="A" />
                   <demo:LocalizedStringsTabPage Alt="L" />
                   <demo:LocalizedDialogsTabPage Alt="L" />
@@ -368,6 +373,8 @@
   <Folder name="EmbeddedControlsSubTabPage" content="Link">EmbeddedControlsSubTabPage.xml</Folder>
   <Instance name="ElementTabPageResource" content="File">ElementTabPage.xml</Instance>
   <Instance name="RawElementTabPageResource" content="File">RawElementTabPage.xml</Instance>
+  <Instance name="TouchingTabPageResource" content="File">TouchingTabPage.xml</Instance>
+  <Folder name="TouchingListTabPage" content="Link">TouchingListTabPage.xml</Folder>
   <Folder name="AnimationTabPage" content="Link">AnimationTabPage.xml</Folder>
   <Folder name="LocalizedStringsTabPage" content="Link">LocalizedStringsTabPage.xml</Folder>
   <Folder name="LocalizedDialogsTabPage" content="Link">LocalizedDialogsTabPage.xml</Folder>

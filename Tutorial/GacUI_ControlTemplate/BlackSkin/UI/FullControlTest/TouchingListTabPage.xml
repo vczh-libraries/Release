@@ -1,0 +1,181 @@
+<Folder>
+  <Script name="TouchingListItemResource">
+    <Workflow><![CDATA[
+      module touching_list;
+      using system::*;
+      namespace demo
+      {
+        class TouchingListItem
+        {
+          prop Text: string = "" {not observe}
+          new (text: string) { Text = text; }
+        }
+      }
+    ]]></Workflow>
+  </Script>
+  <Instance name="TouchingListItemTemplateResource">
+    <Instance ref.CodeBehind="false" ref.Class="demo::TouchingListItemTemplate">
+      <ref.Parameter Name="ViewModel" Class="demo::TouchingListItem"/>
+      <ref.Members><![CDATA[
+        prop DragDistance: int = 0 {}
+        func GetMaxDragDistance(): int
+        {
+          return deleteLabel.CachedBounds.x2 - deleteLabel.CachedBounds.x1 + 32;
+        }
+        prop MaxDragDistance: int {GetMaxDragDistance}
+        prop Colors: darkskin::ColorPackage = darkskin::Theme::GetColorPackage() {const, not observe}
+      ]]></ref.Members>
+      <TextListItemTemplate ref.Name="self" PreferredMinSize="y:112">
+        <SolidBackground Color-eval="self.Colors.ContentBorder"/>
+        <Bounds AlignmentToParent="left:0 top:0 right:0 bottom:1">
+          <Bounds ref.Name="deleteBackground" AlignmentToParent="left:-1 top:0 right:0 bottom:0" Visible-bind="self.DragDistance &gt; 0" PreferredMinSize-bind="{x:self.DragDistance; y:0;}">
+            <SolidBackground Color="#B82030"/>
+          </Bounds>
+          <Bounds ref.Name="deleteLabel" MinSizeLimitation="LimitToElement" AlignmentToParent="left:-1 top:0 right:16 bottom:0">
+            <SolidLabel Text="DELETE IT" Color="#FFFFFF" Font-bind="self.Font" VerticalAlignment="Center"/>
+          </Bounds>
+          <Bounds ref.Name="foreground" AlignmentToParent-bind="{left:self.DragDistance == 0 ? 0 : -1; top:0; right:self.DragDistance == 0 ? 0 : -1; bottom:0;}">
+            <att.ExpectedBounds-bind><![CDATA[{
+              x1: -self.DragDistance;
+              y1: 0;
+              x2: self.CachedBounds.x2 - self.CachedBounds.x1 - self.DragDistance;
+              y2: 0;
+            }]]></att.ExpectedBounds-bind>
+            <SolidBackground Color-bind="self.VisuallyEnabled and self.Selected ? self.Colors.ItemBackgroundSelected : self.Colors.ContentBackground"/>
+            <Bounds AlignmentToParent="left:16 top:12 right:16 bottom:12">
+              <SolidLabel Text-bind="ViewModel.Text" Color-bind="self.VisuallyEnabled ? self.TextColor : self.Colors.TextDisabled" Font-bind="self.Font" WrapLine="true" Multiline="true"/>
+            </Bounds>
+          </Bounds>
+        </Bounds>
+      </TextListItemTemplate>
+    </Instance>
+  </Instance>
+  <Instance name="TouchingListTabPageResource">
+    <Instance ref.CodeBehind="false" ref.Class="demo::TouchingListTabPage">
+      <ref.Members><![CDATA[
+        prop Items: observe TouchingListItem^[] = {} {const, not observe}
+        var serial: int = 0;
+        var swipeItem: TouchingListItem^ = null;
+        var multipleContacts: bool = false;
+
+        func GetSwipeTemplate(): TouchingListItemTemplate*
+        {
+          if (swipeItem is null) { return null; }
+          var index = Items.IndexOf(swipeItem);
+          if (index == -1) { return null; }
+          return cast TouchingListItemTemplate* list.Arranger.GetVisibleStyle(index);
+        }
+
+        func ResetSwipe(): void
+        {
+          var row = GetSwipeTemplate();
+          if (row is not null) { row.DragDistance = 0; }
+          swipeItem = null;
+        }
+
+        func AddItems(): void
+        {
+          for (i in range[0, 5))
+          {
+            serial = serial + 1;
+            Items.Add(new TouchingListItem^("Item " & cast string serial
+              & " — " & Sys::LoremIpsumSentence(180)));
+          }
+        }
+
+        func BeginSwipe(arguments: GuiPointSequenceStartedEventArgs*): void
+        {
+          ResetSwipe();
+          multipleContacts = false;
+          var composition = arguments.compositionSource;
+          while (composition is not null and composition != list.BoundsComposition)
+          {
+            if (var row: TouchingListItemTemplate* = composition as TouchingListItemTemplate*)
+            {
+              if (row.AssociatedListControl == list) { swipeItem = row.ViewModel; }
+              break;
+            }
+            composition = composition.Parent;
+          }
+        }
+
+        func EndSwipe(arguments: GuiPointSequenceEndedEventArgs*): void
+        {
+          var target = swipeItem;
+          var row = GetSwipeTemplate();
+          var remove = false;
+          if (row is not null and not multipleContacts and arguments.reason == PointSequenceEndReason::Succeeded)
+          {
+            remove = row.MaxDragDistance > 0 and row.DragDistance == row.MaxDragDistance;
+          }
+          ResetSwipe();
+          if (remove)
+          {
+            GuiApplication::GetApplication().InvokeInMainThread(list.RelatedControlHost, func(): void
+            {
+              if (Items.Contains(target)) { Items.Remove(target); }
+            });
+          }
+        }
+      ]]></ref.Members>
+      <ref.Ctor><![CDATA[{ self.AddItems(); }]]></ref.Ctor>
+      <TabPage ref.Name="self" Text="TouchingList">
+        <ez:Layout>
+          <ez:Top>
+            <ez:Left>
+              <Button Text="Clear">
+                <ev.Clicked-eval><![CDATA[{ self.ResetSwipe(); self.Items.Clear(); }]]></ev.Clicked-eval>
+              </Button>
+            </ez:Left>
+            <ez:Left>
+              <Button Text="Add 5 Items">
+                <ev.Clicked-eval><![CDATA[{ self.AddItems(); }]]></ev.Clicked-eval>
+              </Button>
+            </ez:Left>
+            <ez:Fill>
+              <Label Text="Swipe left fully and release to delete."/>
+            </ez:Fill>
+          </ez:Top>
+          <ez:Fill>
+            <BindableTextList ref.Name="list" env.ItemType="demo::TouchingListItem^" ItemTemplate="demo::TouchingListItemTemplate" HorizontalAlwaysVisible="false">
+              <att.ItemSource-eval>self.Items</att.ItemSource-eval>
+              <att.TextProperty>Text</att.TextProperty>
+              <att.BoundsComposition-set>
+                <ev.pointSequenceStarted-eval><![CDATA[{ self.BeginSwipe(arguments); }]]></ev.pointSequenceStarted-eval>
+                <ev.pointAction-eval><![CDATA[{
+                  if (arguments.eventType == GuiPointEventsType::Down and arguments.pointId != 0)
+                  {
+                    self.multipleContacts = true;
+                    self.ResetSwipe();
+                  }
+                }]]></ev.pointAction-eval>
+                <ev.pointGesture-eval><![CDATA[{
+                  if (not arguments.handled)
+                  {
+                    if (var scrolling : GuiPointGesture_Scrolling? = arguments.gesture as GuiPointGesture_Scrolling?)
+                    {
+                      if (not scrolling.isVertical)
+                      {
+                        arguments.selected = true;
+                        arguments.handled = true;
+                        if (self.swipeItem is not null and not self.multipleContacts)
+                        {
+                          var row = self.GetSwipeTemplate();
+                          if (row is not null)
+                          {
+                            row.DragDistance = Math::Max(0, Math::Min(row.MaxDragDistance, row.DragDistance - scrolling.distance));
+                          }
+                        }
+                      }
+                    }
+                  }
+                }]]></ev.pointGesture-eval>
+                <ev.pointSequenceEnded-eval><![CDATA[{ self.EndSwipe(arguments); }]]></ev.pointSequenceEnded-eval>
+              </att.BoundsComposition-set>
+            </BindableTextList>
+          </ez:Fill>
+        </ez:Layout>
+      </TabPage>
+    </Instance>
+  </Instance>
+</Folder>
