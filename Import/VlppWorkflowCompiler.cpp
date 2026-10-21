@@ -13500,14 +13500,15 @@ ValidateSemantic(Expression)
 				void Visit(WfSetTestingExpression* node)override
 				{
 					Ptr<ITypeInfo> elementType = GetExpressionType(manager, node->element, 0);
-					if (elementType && elementType->GetDecorator() == ITypeInfo::Variant)
-					{
-						manager->errors.Add(WfErrors::InvalidVariantExpression(node, L"Extract an option before testing set membership."));
-						return;
-					}
 
 					if (auto range = node->collection.Cast<WfRangeExpression>())
 					{
+						if (elementType && elementType->GetDecorator() == ITypeInfo::Variant)
+						{
+							manager->errors.Add(WfErrors::InvalidVariantExpression(node, L"Extract an option before testing range membership."));
+							return;
+						}
+
 						Ptr<ITypeInfo> beginType = GetExpressionType(manager, range->begin, 0);
 						Ptr<ITypeInfo> endType = GetExpressionType(manager, range->end, 0);
 
