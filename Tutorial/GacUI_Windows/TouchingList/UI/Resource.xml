@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource>
+  <Folder name="GacGenConfig">
+    <Folder name="Cpp">
+      <Text name="SourceFolder">Source</Text>
+      <Text name="Resource">../../UIRes/TouchingList.bin</Text>
+      <Text name="NormalInclude">GacUI.h;Skins/DarkSkin/DarkSkin.h</Text>
+      <Text name="Name">Demo</Text>
+    </Folder>
+  </Folder>
+
+  <Folder name="TouchingListWindowResource" content="Link">TouchingListWindow.xml</Folder>
+</Resource>
