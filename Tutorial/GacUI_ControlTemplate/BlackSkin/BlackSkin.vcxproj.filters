@@ -18,6 +18,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FullControlTestEventHandlers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="FullControlTestRawElement.Windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -35,6 +38,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FullControlTestEventHandlers.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="FullControlTestRawElement.h">
       <Filter>Source Files</Filter>
     </ClInclude>

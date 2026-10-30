@@ -6,8 +6,8 @@
 
 ## Windows
 
-- Open `Executables/Executables.sln` in Visual Studio and build `Release` with `x86`.
-- Run `CopyExecutables.ps1`.
+- Open `<Release repo>/Tools/Executables/Executables.sln` in Visual Studio and build `Release` with `x64`.
+- Run `<Release repo>/Tools/CopyExecutables.ps1`.
 - New files will be available in this folder:
   - CodePack.exe
   - CppMerge.exe
@@ -18,7 +18,7 @@
   - UiaListCli.exe
   - GitTui.exe
 
-The solution also supports `Debug` and `x64`. `<Release repo>/Tools/CopyExecutables.ps1` deploys the eight `Release|x86` executables and reports an error if any is missing.
+The solution also supports `Debug` and `x86`. `<Release repo>/Tools/CopyExecutables.ps1` deploys the eight `Release|x64` executables and reports an error if any is missing.
 
 Run `UiaListApp.exe` to choose a process and window to inspect. Run `GitTui.exe` in an interactive terminal with a valid console input and output; redirected streams cannot host its interface.
 

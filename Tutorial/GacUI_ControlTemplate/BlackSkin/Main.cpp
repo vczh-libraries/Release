@@ -1,4 +1,5 @@
 #include "UI/FullControlTest/Source/Demo.h"
+#include "FullControlTestEventHandlers.h"
 #if defined VCZH_MSVC
 #include "FullControlTestRawElement.h"
 #endif
@@ -18,6 +19,7 @@ void GuiMain()
 	}
 	{
 		demo::MainWindow window;
+		demo::AttachFctEvents<demo::DocumentEditorBase>(&window);
 #if defined VCZH_MSVC
 		auto rawClockAttachment = demo::AttachFullControlTestRawElement(window.GetClockElement());
 		auto touchingAttachment = demo::AttachFullControlTestTouchingElement(window.GetTouchingElement());
