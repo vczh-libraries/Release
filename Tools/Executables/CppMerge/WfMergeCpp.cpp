@@ -42,7 +42,7 @@ MergeCpp
 
 				vint state = NORMAL;
 				vint counter = 0;
-				WString previousContent;
+				WString previousLine;
 
 				StringReader reader(code);
 				while (!reader.IsEnd())
@@ -60,11 +60,12 @@ MergeCpp
 
 					if (state == UNUSED_USER_CONTENT)
 					{
-						callback(state, state, line, line);
+						callback(state, state, line, line, WString::Empty);
 					}
 					else
 					{
 						auto content = RemoveSpacePrefix(line);
+						WString declaration;
 						auto previousState = state;
 						switch (state)
 						{
@@ -74,7 +75,8 @@ MergeCpp
 								content = L"USERIMPL(/* " + match->Groups()[_name][0].Value() + L" */)";
 								if (match->Captures().Count() > 0)
 								{
-									content += previousContent;
+									declaration = previousLine;
+									content += RemoveSpacePrefix(declaration);
 								}
 								state = USER_CONTENT;
 							}
@@ -116,9 +118,9 @@ MergeCpp
 							}
 							break;
 						}
-						callback(previousState, state, line, content);
+						callback(previousState, state, line, content, declaration);
 					}
-					previousContent = RemoveSpacePrefix(line);
+					previousLine = line;
 				}
 			}
 
@@ -128,7 +130,7 @@ MergeCpp
 				WString name;
 				WString userImpl;
 				WString userImplFull;
-				ProcessCppContent(code, [&](vint previousState, vint state, const WString& line, const WString& content)
+				ProcessCppContent(code, [&](vint previousState, vint state, const WString& line, const WString& content, const WString& declaration)
 				{
 					if (state == UNUSED_USER_CONTENT)
 					{
@@ -145,7 +147,7 @@ MergeCpp
 							case USER_CONTENT:
 								name = content;
 								userImpl = L"";
-								userImplFull = L"";
+								userImplFull = declaration == L"" ? WString::Empty : L"//" + declaration + L"\r\n";
 								break;
 							}
 							break;
@@ -381,7 +383,7 @@ MergeCpp
 				{
 					WString name;
 					WString userImpl;
-					ProcessCppContent(src, [&](vint previousState, vint state, const WString& line, const WString& content)
+					ProcessCppContent(src, [&](vint previousState, vint state, const WString& line, const WString& content, const WString&)
 					{
 						switch (previousState)
 						{
