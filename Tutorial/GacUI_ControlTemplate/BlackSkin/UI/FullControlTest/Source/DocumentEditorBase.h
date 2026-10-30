@@ -29,7 +29,6 @@ namespace demo
 		friend class ::demo::DocumentEditorBaseConstructor;
 		friend class ::vl_workflow_global::__vwsnc100_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc101_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc102_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc73_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc74_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc75_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
@@ -38,8 +37,8 @@ namespace demo
 		friend class ::vl_workflow_global::__vwsnc78_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc79_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc80_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc81_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
-		friend class ::vl_workflow_global::__vwsnc82_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine;
+		friend class ::vl_workflow_global::__vwsnc81_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize____vl_reflection_description_ICoroutine;
+		friend class ::vl_workflow_global::__vwsnc82_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc83_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc84_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
 		friend class ::vl_workflow_global::__vwsnc85_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__vl_reflection_description_IValueSubscription;
@@ -79,8 +78,8 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf196_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf197_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf198_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf199_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf200_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__;
+		friend struct ::vl_workflow_global::__vwsnf199_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize__;
+		friend struct ::vl_workflow_global::__vwsnf200_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf201_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf202_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf203_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
@@ -115,7 +114,6 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf232_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf233_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf234_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
-		friend struct ::vl_workflow_global::__vwsnf235_Demo_demo_DocumentEditorBaseConstructor___vwsn_demo_DocumentEditorBase_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DocumentEditorBase>;
 #endif
@@ -144,10 +142,10 @@ namespace demo
 		::vl::presentation::compositions::GuiGraphicsComposition* GetMenuContainer();
 		::vl::presentation::compositions::GuiGraphicsComposition* GetToolstripContainer();
 	public:
-		void LoadAsPrivateFormat(const ::vl::WString& fileName);
-		void SaveAsPrivateFormat(const ::vl::WString& fileName);
-		void SaveAsRTF(const ::vl::WString& fileName);
-		void SaveAsHTML(const ::vl::WString& fileName);
+		::vl::Event<void(::vl::WString)> LoadAsPrivateFormat;
+		::vl::Event<void(::vl::WString)> SaveAsPrivateFormat;
+		::vl::Event<void(::vl::WString)> SaveAsRTF;
+		::vl::Event<void(::vl::WString)> SaveAsHTML;
 	private:
 		void SaveDocument();
 	public:
@@ -155,9 +153,6 @@ namespace demo
 		DocumentEditorBase();
 		void __vwsn_instance_ctor_();
 		~DocumentEditorBase();
-
-	/* USER_CONTENT_BEGIN(custom members of ::demo::DocumentEditorBase) */
-	/* USER_CONTENT_END() */
 	};
 
 }

@@ -55,6 +55,7 @@ namespace vl::inter_process::async_tcp_socket::windows_socket
 
 	public:
 		AsyncSocketClient(vint port);
+		AsyncSocketClient(const WString& host, vint port);
 		~AsyncSocketClient();
 
 		vint								GetPort() override;
@@ -317,6 +318,7 @@ HttpClient
 
 public:
 	HttpClient(const WString _baseUrl, vint port);
+	HttpClient(const WString& host, const WString _baseUrl, vint port);
 	~HttpClient();
 
 	void											InstallCallback(INetworkProtocolCallback* _callback) override;
@@ -371,6 +373,7 @@ protected:
 
 	WString											urlPrefix;
 	bool											respondToOptions = false;
+	bool											usedFallbackUrlPrefix = false;
 
 	HANDLE											httpRequestQueue = INVALID_HANDLE_VALUE;
 	HTTP_SERVER_SESSION_ID							httpSessionId = HTTP_NULL_ID;
@@ -398,6 +401,7 @@ protected:
 	virtual void									OnHttpServerStopping();
 
 	static void										SendOptionsResponse(HANDLE httpRequestQueue, HTTP_REQUEST_ID requestId);
+	HttpServerApi(const WString& _urlPrefix, bool _respondToOptions, const WString& fallbackUrlPrefix);
 
 public:
 	HttpServerApi(const WString& _urlPrefix, bool _respondToOptions);
@@ -523,6 +527,8 @@ HttpServer
 public:
 	HttpServer(const WString _baseUrl, vint port);
 	~HttpServer();
+	/// <summary>Whether URL registration selected localhost after the wildcard prefix failed.</summary>
+	bool											GetLocalhostOnly();
 	
 	WaitForClientResult								OnClientConnected(Ptr<INetworkProtocolConnection> connection) override;
 	void											Start() override;
@@ -681,11 +687,12 @@ public:
 class NamedPipeClient : public NamedPipeConnection, public virtual INetworkProtocolClient
 {
 protected:
-	static HANDLE									ClientCreatePipe(const WString& pipeName);
+	static HANDLE									ClientCreatePipe(const WString& host, const WString& pipeName);
 	ClientStatus									status = ClientStatus::Ready;
 
 public:
 	NamedPipeClient(const WString& _pipeName);
+	NamedPipeClient(const WString& host, const WString& _pipeName);
 	~NamedPipeClient();
 
 	INetworkProtocolConnection*						GetConnection() override;
