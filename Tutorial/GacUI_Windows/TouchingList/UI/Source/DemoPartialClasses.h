@@ -33,7 +33,8 @@ namespace vl_workflow_global
 	struct __vwsnf15_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
 	struct __vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
 	struct __vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
-	struct __vwsnf18_Demo_demo_TouchingListWindow_EndSwipe_;
+	struct __vwsnf18_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
+	struct __vwsnf19_Demo_demo_TouchingListWindow_EndSwipe_;
 	struct __vwsnf1_Demo_demo_TouchingListItemTemplateConstructor___vwsn_demo_TouchingListItemTemplate_Initialize_;
 	struct __vwsnf2_Demo_demo_TouchingListItemTemplateConstructor___vwsn_demo_TouchingListItemTemplate_Initialize_;
 	struct __vwsnf3_Demo_demo_TouchingListItemTemplateConstructor___vwsn_demo_TouchingListItemTemplate_Initialize_;
@@ -167,22 +168,25 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TouchingListWindowConstructor>;
 #endif
 	protected:
 		::demo::TouchingListWindow* self;
+		::vl::presentation::controls::GuiSelectableButton* momentumOption;
 		::vl::presentation::controls::GuiBindableTextList* list;
 		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_0;
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_1;
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout> __vwsn_precompile_2;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_3;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout> __vwsn_precompile_4;
-		::vl::presentation::controls::GuiButton* __vwsn_precompile_5;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_6;
-		::vl::presentation::controls::GuiLabel* __vwsn_precompile_7;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_8;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_9;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout> __vwsn_precompile_3;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_4;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout> __vwsn_precompile_5;
+		::vl::presentation::controls::GuiButton* __vwsn_precompile_6;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_7;
+		::vl::presentation::controls::GuiLabel* __vwsn_precompile_8;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_9;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_10;
 		void __vwsn_demo_TouchingListWindow_Initialize(::demo::TouchingListWindow* __vwsn_this_);
 	public:
 		TouchingListWindowConstructor();
@@ -190,7 +194,7 @@ namespace demo
 
 	class TouchingListWindow : public ::vl::presentation::controls::GuiWindow, public ::demo::TouchingListWindowConstructor, public ::vl::reflection::Description<TouchingListWindow>
 	{
-		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_TouchingListWindow_EndSwipe_;
+		friend struct ::vl_workflow_global::__vwsnf19_Demo_demo_TouchingListWindow_EndSwipe_;
 		friend class ::demo::TouchingListWindowConstructor;
 		friend struct ::vl_workflow_global::__vwsnf10_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf11_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
@@ -200,6 +204,7 @@ namespace demo
 		friend struct ::vl_workflow_global::__vwsnf15_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
 		friend struct ::vl_workflow_global::__vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
+		friend struct ::vl_workflow_global::__vwsnf18_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_;
 #ifdef VCZH_DESCRIPTABLEOBJECT_WITH_METADATA
 		friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<TouchingListWindow>;
 #endif
@@ -210,6 +215,7 @@ namespace demo
 		::vl::vint serial;
 		::vl::Ptr<::demo::TouchingListItem> swipeItem;
 		bool multipleContacts;
+		::vl::presentation::compositions::MomentumScrolling* momentum;
 		::demo::TouchingListItemTemplate* GetSwipeTemplate();
 		void ResetSwipe();
 		void AddItems();
@@ -280,7 +286,7 @@ Closures
 
 		__vwsnf14_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(::demo::TouchingListWindowConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointSequenceStartedEventArgs* arguments) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const;
 	};
 
 	struct __vwsnf15_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_
@@ -289,7 +295,7 @@ Closures
 
 		__vwsnf15_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(::demo::TouchingListWindowConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointEventArgs* arguments) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointSequenceStartedEventArgs* arguments) const;
 	};
 
 	struct __vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_
@@ -298,7 +304,7 @@ Closures
 
 		__vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(::demo::TouchingListWindowConstructor* __vwsnctorthis_0);
 
-		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointGestureEventArgs* arguments) const;
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointEventArgs* arguments) const;
 	};
 
 	struct __vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_
@@ -307,15 +313,24 @@ Closures
 
 		__vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(::demo::TouchingListWindowConstructor* __vwsnctorthis_0);
 
+		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointGestureEventArgs* arguments) const;
+	};
+
+	struct __vwsnf18_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_
+	{
+		::demo::TouchingListWindowConstructor* __vwsnthis_0;
+
+		__vwsnf18_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(::demo::TouchingListWindowConstructor* __vwsnctorthis_0);
+
 		void operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointSequenceEndedEventArgs* arguments) const;
 	};
 
-	struct __vwsnf18_Demo_demo_TouchingListWindow_EndSwipe_
+	struct __vwsnf19_Demo_demo_TouchingListWindow_EndSwipe_
 	{
 		::vl::Ptr<::demo::TouchingListItem> target;
 		::demo::TouchingListWindow* __vwsnthis_0;
 
-		__vwsnf18_Demo_demo_TouchingListWindow_EndSwipe_(::vl::Ptr<::demo::TouchingListItem> __vwsnctor_target, ::demo::TouchingListWindow* __vwsnctorthis_0);
+		__vwsnf19_Demo_demo_TouchingListWindow_EndSwipe_(::vl::Ptr<::demo::TouchingListItem> __vwsnctor_target, ::demo::TouchingListWindow* __vwsnctorthis_0);
 
 		void operator()() const;
 	};

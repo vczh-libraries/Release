@@ -94,8 +94,14 @@ Closures
 
 	void __vwsnf12_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->ResetSwipe();
-		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->GetItems().Obj())->Clear();
+		if (::vl::__vwsn::This(__vwsnthis_0->momentumOption)->GetSelected())
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->momentum)->AttachControl(static_cast<::vl::presentation::controls::GuiControl*>(__vwsnthis_0->list));
+		}
+		else
+		{
+			::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->momentum)->DetachControl(static_cast<::vl::presentation::controls::GuiControl*>(__vwsnthis_0->list));
+		}
 	}
 
 	//-------------------------------------------------------------------
@@ -107,7 +113,8 @@ Closures
 
 	void __vwsnf13_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->AddItems();
+		::vl::__vwsn::This(__vwsnthis_0->self)->ResetSwipe();
+		::vl::__vwsn::This(::vl::__vwsn::This(__vwsnthis_0->self)->GetItems().Obj())->Clear();
 	}
 
 	//-------------------------------------------------------------------
@@ -117,9 +124,9 @@ Closures
 	{
 	}
 
-	void __vwsnf14_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointSequenceStartedEventArgs* arguments) const
+	void __vwsnf14_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiEventArgs* arguments) const
 	{
-		::vl::__vwsn::This(__vwsnthis_0->self)->BeginSwipe(arguments);
+		::vl::__vwsn::This(__vwsnthis_0->self)->AddItems();
 	}
 
 	//-------------------------------------------------------------------
@@ -129,7 +136,19 @@ Closures
 	{
 	}
 
-	void __vwsnf15_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointEventArgs* arguments) const
+	void __vwsnf15_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointSequenceStartedEventArgs* arguments) const
+	{
+		::vl::__vwsn::This(__vwsnthis_0->self)->BeginSwipe(arguments);
+	}
+
+	//-------------------------------------------------------------------
+
+	__vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::__vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(::demo::TouchingListWindowConstructor* __vwsnctorthis_0)
+		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
+	{
+	}
+
+	void __vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointEventArgs* arguments) const
 	{
 		if (((::vl::__vwsn::This(arguments)->eventType == ::vl::presentation::compositions::GuiPointEventsType::Down) && (::vl::__vwsn::This(arguments)->pointId != static_cast<::vl::vint>(0))))
 		{
@@ -140,12 +159,12 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::__vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(::demo::TouchingListWindowConstructor* __vwsnctorthis_0)
+	__vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::__vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(::demo::TouchingListWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointGestureEventArgs* arguments) const
+	void __vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointGestureEventArgs* arguments) const
 	{
 		if ((! ::vl::__vwsn::This(arguments)->handled))
 		{
@@ -170,25 +189,25 @@ Closures
 
 	//-------------------------------------------------------------------
 
-	__vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::__vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(::demo::TouchingListWindowConstructor* __vwsnctorthis_0)
+	__vwsnf18_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::__vwsnf18_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(::demo::TouchingListWindowConstructor* __vwsnctorthis_0)
 		:__vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointSequenceEndedEventArgs* arguments) const
+	void __vwsnf18_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_::operator()(::vl::presentation::compositions::GuiGraphicsComposition* sender, ::vl::presentation::compositions::GuiPointSequenceEndedEventArgs* arguments) const
 	{
 		::vl::__vwsn::This(__vwsnthis_0->self)->EndSwipe(arguments);
 	}
 
 	//-------------------------------------------------------------------
 
-	__vwsnf18_Demo_demo_TouchingListWindow_EndSwipe_::__vwsnf18_Demo_demo_TouchingListWindow_EndSwipe_(::vl::Ptr<::demo::TouchingListItem> __vwsnctor_target, ::demo::TouchingListWindow* __vwsnctorthis_0)
+	__vwsnf19_Demo_demo_TouchingListWindow_EndSwipe_::__vwsnf19_Demo_demo_TouchingListWindow_EndSwipe_(::vl::Ptr<::demo::TouchingListItem> __vwsnctor_target, ::demo::TouchingListWindow* __vwsnctorthis_0)
 		:target(__vwsnctor_target)
 		, __vwsnthis_0(::vl::__vwsn::This(__vwsnctorthis_0))
 	{
 	}
 
-	void __vwsnf18_Demo_demo_TouchingListWindow_EndSwipe_::operator()() const
+	void __vwsnf19_Demo_demo_TouchingListWindow_EndSwipe_::operator()() const
 	{
 		if (::vl::__vwsn::This(__vwsnthis_0->GetItems().Obj())->Contains(::vl::__vwsn::Box(this->target)))
 		{
@@ -1234,45 +1253,60 @@ Class (::demo::TouchingListWindowConstructor)
 		(this->__vwsn_precompile_1 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout()));
 		(this->__vwsn_precompile_2 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout()));
 		{
-			(this->__vwsn_precompile_3 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
+			(this->momentumOption = new ::vl::presentation::controls::GuiSelectableButton(::vl::presentation::theme::ThemeName::CheckBox));
+			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"momentumOption"), ::vl::__vwsn::Box(this->momentumOption));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_3)->SetText(::vl::WString::Unmanaged(L"Clear"));
+			::vl::__vwsn::This(this->momentumOption)->SetSelected(false);
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_3)->GetBoundsComposition()));
-		}
-		(this->__vwsn_precompile_4 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout()));
-		{
-			(this->__vwsn_precompile_5 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
+			::vl::__vwsn::This(this->momentumOption)->SetText(::vl::WString::Unmanaged(L"Momentum Scrolling"));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_5)->SetText(::vl::WString::Unmanaged(L"Add 5 Items"));
+			::vl::__vwsn::This(this->__vwsn_precompile_2.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->momentumOption)->GetBoundsComposition()));
+		}
+		(this->__vwsn_precompile_3 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout()));
+		{
+			(this->__vwsn_precompile_4 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_4.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_5)->GetBoundsComposition()));
-		}
-		(this->__vwsn_precompile_6 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout()));
-		{
-			(this->__vwsn_precompile_7 = new ::vl::presentation::controls::GuiLabel(::vl::presentation::theme::ThemeName::Label));
+			::vl::__vwsn::This(this->__vwsn_precompile_4)->SetText(::vl::WString::Unmanaged(L"Clear"));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_7)->SetText(::vl::WString::Unmanaged(L"Swipe left fully and release to delete."));
+			::vl::__vwsn::This(this->__vwsn_precompile_3.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_4)->GetBoundsComposition()));
+		}
+		(this->__vwsn_precompile_5 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout()));
+		{
+			(this->__vwsn_precompile_6 = new ::vl::presentation::controls::GuiButton(::vl::presentation::theme::ThemeName::Button));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_6.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_7)->GetBoundsComposition()));
+			::vl::__vwsn::This(this->__vwsn_precompile_6)->SetText(::vl::WString::Unmanaged(L"Add 5 Items"));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_5.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_6)->GetBoundsComposition()));
+		}
+		(this->__vwsn_precompile_7 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout()));
+		{
+			(this->__vwsn_precompile_8 = new ::vl::presentation::controls::GuiLabel(::vl::presentation::theme::ThemeName::Label));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_8)->SetText(::vl::WString::Unmanaged(L"Swipe left fully and release to delete."));
+		}
+		{
+			::vl::__vwsn::This(this->__vwsn_precompile_7.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->__vwsn_precompile_8)->GetBoundsComposition()));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_2));
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_4));
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_6));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_3));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_5));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_1.Obj())->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_7));
 		}
-		(this->__vwsn_precompile_8 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout()));
+		(this->__vwsn_precompile_9 = ::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>(new ::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout()));
 		{
 			(this->list = new ::vl::presentation::controls::GuiBindableTextList(::vl::presentation::theme::ThemeName::TextList));
 			::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"list"), ::vl::__vwsn::Box(this->list));
 		}
-		(this->__vwsn_precompile_9 = ::vl::__vwsn::This(this->list)->GetBoundsComposition());
+		(this->__vwsn_precompile_10 = ::vl::__vwsn::This(this->list)->GetBoundsComposition());
 		{
 			::vl::__vwsn::This(this->list)->SetTextProperty(vl::Func(::vl_workflow_global::__vwsnf10_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(this)));
 		}
@@ -1283,58 +1317,64 @@ Class (::demo::TouchingListWindowConstructor)
 			::vl::__vwsn::This(this->list)->SetItemTemplate(vl::Func(::vl_workflow_global::__vwsnf11_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(this)));
 		}
 		{
-			::vl::__vwsn::This(this->__vwsn_precompile_8.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->list)->GetBoundsComposition()));
+			::vl::__vwsn::This(this->__vwsn_precompile_9.Obj())->SetComposition(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(::vl::__vwsn::This(this->list)->GetBoundsComposition()));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_1));
-			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_8));
+			::vl::__vwsn::This(::vl::__vwsn::UnboxCollection<::vl::reflection::description::IValueList>(::vl::__vwsn::This(this->__vwsn_precompile_0)->GetLayouts()).Obj())->Add(::vl::__vwsn::Box(this->__vwsn_precompile_9));
 		}
 		{
 			::vl::__vwsn::This(::vl::__vwsn::This(this->self)->GetContainerComposition())->AddChild(static_cast<::vl::presentation::compositions::GuiGraphicsComposition*>(this->__vwsn_precompile_0));
 		}
 		{
 			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf12_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_3)->Clicked, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->momentumOption)->SelectedChanged, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf13_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_5)->Clicked, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_4)->Clicked, __vwsn_event_handler_);
+		}
+		{
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf14_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_6)->Clicked, __vwsn_event_handler_);
 		}
 		{
 			::vl::__vwsn::This(this->list)->SetItemSource(::vl::Ptr<::vl::reflection::description::IValueEnumerable>(::vl::__vwsn::This(this->self)->GetItems()));
 		}
 		{
-			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf14_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_9)->GetEventReceiver()->pointSequenceStarted, __vwsn_event_handler_);
-		}
-		{
 			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf15_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_9)->GetEventReceiver()->pointAction, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_10)->GetEventReceiver()->pointSequenceStarted, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf16_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_9)->GetEventReceiver()->pointGesture, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_10)->GetEventReceiver()->pointAction, __vwsn_event_handler_);
 		}
 		{
 			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf17_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(this));
-			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_9)->GetEventReceiver()->pointSequenceEnded, __vwsn_event_handler_);
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_10)->GetEventReceiver()->pointGesture, __vwsn_event_handler_);
+		}
+		{
+			auto __vwsn_event_handler_ = vl::Func(::vl_workflow_global::__vwsnf18_Demo_demo_TouchingListWindowConstructor___vwsn_demo_TouchingListWindow_Initialize_(this));
+			::vl::__vwsn::EventAttach(::vl::__vwsn::This(this->__vwsn_precompile_10)->GetEventReceiver()->pointSequenceEnded, __vwsn_event_handler_);
 		}
 		::vl::__vwsn::This(this->__vwsn_precompile_0)->BuildLayout();
 	}
 
 	TouchingListWindowConstructor::TouchingListWindowConstructor()
 		: self(static_cast<::demo::TouchingListWindow*>(nullptr))
+		, momentumOption(static_cast<::vl::presentation::controls::GuiSelectableButton*>(nullptr))
 		, list(static_cast<::vl::presentation::controls::GuiBindableTextList*>(nullptr))
 		, __vwsn_precompile_0(static_cast<::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition*>(nullptr))
 		, __vwsn_precompile_1(::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout>())
 		, __vwsn_precompile_2(::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout>())
-		, __vwsn_precompile_3(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
-		, __vwsn_precompile_4(::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout>())
-		, __vwsn_precompile_5(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
-		, __vwsn_precompile_6(::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>())
-		, __vwsn_precompile_7(static_cast<::vl::presentation::controls::GuiLabel*>(nullptr))
-		, __vwsn_precompile_8(::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>())
-		, __vwsn_precompile_9(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
+		, __vwsn_precompile_3(::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout>())
+		, __vwsn_precompile_4(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
+		, __vwsn_precompile_5(::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyLeftLayout>())
+		, __vwsn_precompile_6(static_cast<::vl::presentation::controls::GuiButton*>(nullptr))
+		, __vwsn_precompile_7(::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>())
+		, __vwsn_precompile_8(static_cast<::vl::presentation::controls::GuiLabel*>(nullptr))
+		, __vwsn_precompile_9(::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout>())
+		, __vwsn_precompile_10(static_cast<::vl::presentation::compositions::GuiBoundsComposition*>(nullptr))
 	{
 	}
 
@@ -1423,7 +1463,7 @@ Class (::demo::TouchingListWindow)
 		this->ResetSwipe();
 		if (remove)
 		{
-			::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThread(::vl::__vwsn::This(this->list)->GetRelatedControlHost(), vl::Func(::vl_workflow_global::__vwsnf18_Demo_demo_TouchingListWindow_EndSwipe_(target, this)));
+			::vl::__vwsn::This(::vl::presentation::controls::GetApplication())->InvokeInMainThread(::vl::__vwsn::This(this->list)->GetRelatedControlHost(), vl::Func(::vl_workflow_global::__vwsnf19_Demo_demo_TouchingListWindow_EndSwipe_(target, this)));
 		}
 	}
 
@@ -1433,6 +1473,7 @@ Class (::demo::TouchingListWindow)
 		, serial(static_cast<::vl::vint>(0))
 		, swipeItem(::vl::Ptr<::demo::TouchingListItem>())
 		, multipleContacts(false)
+		, momentum(new ::vl::presentation::compositions::MomentumScrolling())
 	{
 		auto __vwsn_resource_ = ::vl::__vwsn::This(::vl::presentation::GetResourceManager())->GetResourceFromClassName(::vl::WString::Unmanaged(L"demo::TouchingListWindow"));
 		auto __vwsn_resolver_ = ::vl::Ptr<::vl::presentation::GuiResourcePathResolver>(new ::vl::presentation::GuiResourcePathResolver(__vwsn_resource_, ::vl::__vwsn::This(__vwsn_resource_.Obj())->GetWorkingDirectory()));
@@ -1443,6 +1484,7 @@ Class (::demo::TouchingListWindow)
 
 	void TouchingListWindow::__vwsn_instance_ctor_()
 	{
+		::vl::__vwsn::This(this->self)->AddComponent(static_cast<::vl::presentation::controls::GuiComponent*>(this->momentum));
 		::vl::__vwsn::This(this->self)->AddItems();
 	}
 
