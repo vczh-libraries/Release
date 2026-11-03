@@ -155,6 +155,41 @@
       </ref.Ctor>
       <CustomControl ref.Name="self" Text="Document Editor">
         <att.HasEditableSelection-bind>document.observe as _(_.CanCut() on _.SelectionChanged)</att.HasEditableSelection-bind>
+        <ToolstripMenu ref.Name="documentContextMenu">
+          <ToolstripGroupContainer>
+            <ToolstripGroup>
+              <MenuItemButton Command-eval="commandUndo"/>
+              <MenuItemButton Command-eval="commandRedo"/>
+            </ToolstripGroup>
+            <ToolstripGroup>
+              <MenuItemButton Command-eval="commandCopy"/>
+              <MenuItemButton Command-eval="commandCut"/>
+              <MenuItemButton Command-eval="commandPaste"/>
+            </ToolstripGroup>
+            <ToolstripGroup>
+              <MenuItemButton Command-eval="commandDelete"/>
+            </ToolstripGroup>
+            <ToolstripGroup>
+              <MenuItemButton Command-eval="commandSelect"/>
+              <MenuItemButton Text="Object">
+                <att.SubMenu-set>
+                  <MenuItemButton Command-eval="commandInsertImage"/>
+                  <MenuItemButton Command-eval="commandEditHyperlink"/>
+                  <MenuItemButton Command-eval="commandRemoveHyperlink"/>
+                </att.SubMenu-set>
+              </MenuItemButton>
+            </ToolstripGroup>
+            <ToolstripGroup>
+              <MenuItemButton Command-eval="commandFont"/>
+              <MenuItemButton Command-eval="commandColor"/>
+              <MenuItemButton Command-eval="commandBackColor"/>
+            </ToolstripGroup>
+            <ToolstripGroup>
+              <MenuItemButton Command-eval="commandEditHyperlink"/>
+              <MenuItemButton Command-eval="commandRemoveHyperlink"/>
+            </ToolstripGroup>
+          </ToolstripGroupContainer>
+        </ToolstripMenu>
         <MessageDialog ref.Name="dialogMessage" Title="You Clicked a Hyperlink!"/>
         <MessageDialog ref.Name="dialogNotImpl" Title-bind="self.Text"/>
         <OpenFileDialog ref.Name="dialogOpen" Title="Select an Image" Filter="Image Files (*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp" EnabledPreview="true" Options="FileDialogFileMustExist|FileDialogDereferenceLinks"/>
@@ -177,7 +212,7 @@
           </ez:Top>
           <ez:Fill>
             <Bounds MinSizeLimitation="LimitToElementAndChildren">
-              <DocumentViewer ref.Name="document" EditMode="Editable" Alt="D">
+              <DocumentViewer ref.Name="document" EditMode="Editable" Alt="D" ContextMenu-eval="documentContextMenu">
                 <att.BoundsComposition-set AlignmentToParent="left:0 top:0 right:0 bottom:0"/>
                 <ev.ActiveHyperlinkExecuted-eval>
                   <![CDATA[
