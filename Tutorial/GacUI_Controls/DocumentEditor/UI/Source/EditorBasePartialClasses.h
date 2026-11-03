@@ -220,6 +220,7 @@ namespace demo
 #endif
 	protected:
 		::demo::DocumentEditorBase* self;
+		::vl::presentation::controls::GuiToolstripMenu* documentContextMenu;
 		::vl::presentation::controls::GuiMessageDialog* dialogMessage;
 		::vl::presentation::controls::GuiMessageDialog* dialogNotImpl;
 		::vl::presentation::controls::GuiOpenFileDialog* dialogOpen;
@@ -260,12 +261,36 @@ namespace demo
 		::vl::presentation::controls::GuiToolstripCommand* commandAlignLeft;
 		::vl::presentation::controls::GuiToolstripCommand* commandAlignCenter;
 		::vl::presentation::controls::GuiToolstripCommand* commandAlignRight;
-		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_0;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_1;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_2;
-		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_3;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5;
+		::vl::presentation::controls::GuiToolstripGroupContainer* __vwsn_precompile_0;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_1;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_2;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_3;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_4;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_5;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_6;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_7;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_8;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_9;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_10;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_11;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_12;
+		::vl::presentation::controls::GuiToolstripMenu* __vwsn_precompile_13;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_14;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_15;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_16;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_17;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_18;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_19;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_20;
+		::vl::presentation::controls::GuiToolstripGroup* __vwsn_precompile_21;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_22;
+		::vl::presentation::controls::GuiToolstripButton* __vwsn_precompile_23;
+		::vl::presentation::compositions::eazy_layout::GuiEasyLayoutComposition* __vwsn_precompile_24;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_25;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_26;
+		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_27;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_28;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_29;
 		void __vwsn_demo_DocumentEditorBase_Initialize(::demo::DocumentEditorBase* __vwsn_this_);
 	public:
 		DocumentEditorBaseConstructor();
