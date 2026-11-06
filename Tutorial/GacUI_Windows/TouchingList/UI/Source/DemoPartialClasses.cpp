@@ -1402,7 +1402,7 @@ Class (::demo::TouchingListWindow)
 		{
 			return static_cast<::demo::TouchingListItemTemplate*>(nullptr);
 		}
-		return ::vl::__vwsn::Ensure(::vl::__vwsn::RawPtrCast<::demo::TouchingListItemTemplate>(::vl::__vwsn::This(::vl::__vwsn::This(this->list)->GetArranger())->GetVisibleStyle(index)));
+		return ::vl::__vwsn::RawPtrCast<::demo::TouchingListItemTemplate>(::vl::__vwsn::This(::vl::__vwsn::This(this->list)->GetArranger())->GetVisibleStyle(index));
 	}
 
 	void TouchingListWindow::ResetSwipe()
