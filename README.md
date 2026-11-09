@@ -12,12 +12,12 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ## Synchronized latest releases:
 
-### 1.5.1.1
+### 1.5.1.2
 
-- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.5.1.1)
-- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.5.1.1)
-- [Linux Wayland](https://github.com/vczh-libraries/wGac/releases/tag/1.5.1.1)
-- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.5.1.1)
+- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.5.1.2)
+- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.5.1.2)
+- [Linux Wayland](https://github.com/vczh-libraries/wGac/releases/tag/1.5.1.2)
+- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.5.1.2)
 
 ### 1.2.11.0
 
