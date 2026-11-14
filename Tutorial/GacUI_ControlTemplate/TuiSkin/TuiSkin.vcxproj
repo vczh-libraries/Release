@@ -174,4 +174,10 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ItemGroup>
+    <ClInclude Include="SharedDocumentEditor.h" />
+    <ClCompile Include="SharedDocumentEditor.cpp" />
+    <ClInclude Include="TuiControlTestEventHandlers.h" />
+    <ClCompile Include="TuiControlTestEventHandlers.cpp" />
+  </ItemGroup>
 </Project>

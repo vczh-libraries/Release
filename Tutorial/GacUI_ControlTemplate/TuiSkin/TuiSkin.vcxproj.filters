@@ -23,4 +23,10 @@
   <ItemGroup>
     <ClInclude Include="UI\TuiControlTest\Source\TuiControlTest.h"><Filter>Source Files</Filter></ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SharedDocumentEditor.h" />
+    <ClCompile Include="SharedDocumentEditor.cpp" />
+    <ClInclude Include="TuiControlTestEventHandlers.h" />
+    <ClCompile Include="TuiControlTestEventHandlers.cpp" />
+  </ItemGroup>
 </Project>

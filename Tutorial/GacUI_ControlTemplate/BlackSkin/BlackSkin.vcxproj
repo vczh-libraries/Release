@@ -185,4 +185,8 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ItemGroup>
+    <ClInclude Include="SharedDocumentEditor.h" />
+    <ClCompile Include="SharedDocumentEditor.cpp" />
+  </ItemGroup>
 </Project>

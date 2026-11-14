@@ -19,7 +19,7 @@ void GuiMain()
 	}
 	{
 		demo::MainWindow window;
-		demo::AttachFctEvents<demo::DocumentEditorBase>(&window);
+		demo::AttachFctEvents<demo::DocumentEditorBase, demo::FctSkinItem>(&window);
 #if defined VCZH_MSVC
 		auto rawClockAttachment = demo::AttachFullControlTestRawElement(window.GetClockElement());
 		auto touchingAttachment = demo::AttachFullControlTestTouchingElement(window.GetTouchingElement());

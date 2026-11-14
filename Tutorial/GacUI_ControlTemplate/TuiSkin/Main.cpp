@@ -1,4 +1,5 @@
 #include "UI/TuiControlTest/Source/TuiControlTest.h"
+#include "TuiControlTestEventHandlers.h"
 
 using namespace vl;
 using namespace vl::stream;
@@ -12,6 +13,7 @@ void GuiMain()
 		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
 	tuidemo::TuiMainWindow window;
+	tuidemo::AttachTuiEvents<tuidemo::TuiDocumentEditorBase, tuidemo::TuiSkinItem>(&window);
 	window.ForceCalculateSizeImmediately();
 	GetApplication()->Run(&window);
 }

@@ -60,4 +60,8 @@
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SharedDocumentEditor.h" />
+    <ClCompile Include="SharedDocumentEditor.cpp" />
+  </ItemGroup>
 </Project>
