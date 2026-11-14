@@ -600,7 +600,6 @@ export interface CallExpression {
     $ast: "CallExpression";
     function: Expression | null;
     arguments: (Expression | null)[];
-    typedResult: Type | null;
 }
 
 export interface FunctionExpression {
