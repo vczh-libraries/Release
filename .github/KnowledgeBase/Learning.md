@@ -6,8 +6,8 @@
 - Proactively remove code made redundant by refactoring [34]
 - Verify generated artifacts with downstream consumer checks [33]
 - Process staged tasks one by one with verification [28]
+- Extract abstractions only for real shared behavior [24]
 - Port fixes from imports to source repositories [23]
-- Extract abstractions only for real shared behavior [23]
 - Verify and localize portability on every target OS [21]
 - Fix behavior at the owning state instead of patching symptoms [18]
 - Crash early instead of adding error-tolerance fallbacks [16]
@@ -18,13 +18,13 @@
 - Use `WString::IndexOf` with `wchar_t` (not `const wchar_t*`) [4]
 - Use `collections::BinarySearchLambda` on contiguous buffers (guard empty) [4]
 - Use `vl::Exception` for expected semantic failures and `CHECK_ERROR` for invariants [4]
+- Respect explicitly limited verification scope [4]
 - Don't assume observable changes are batched [3]
 - Use RAII scope cleanup instead of manual catch cleanup [3]
 - Use explicit positive compiler and platform guards [3]
 - Keep encoding and exception adapters at the C++/JavaScript boundary [3]
 - Treat Debug memory leak dumps as required failures [3]
 - Derive behavior thresholds from named constants [3]
-- Respect explicitly limited verification scope [3]
 - Capture dependent lambdas explicitly [2]
 - Use `ERROR_MESSAGE_PREFIX` for meaningful `CHECK_ERROR` / `CHECK_FAIL` messages [2]
 - Prefer simple calls before interface casts [2]
@@ -70,6 +70,7 @@
 - Preserve ordinary conversion behavior when adding type-specific semantics [1]
 - Exercise each distinct semantic and runtime failure independently [1]
 - Synchronize instruction files after active wrappers finish [1]
+- Keep semantic compiler state out of syntax ASTs [1]
 
 # Refinements
 
@@ -143,7 +144,7 @@ Likewise, do not pass one-shot callbacks merely to hide mutually exclusive concr
 
 For environment or lifecycle invalidation, prefer forwarding one application-level notification through the existing ownership tree over registering every affected object as a global listener. This keeps notifications scoped to objects that are actually installed or active.
 
-Keep application-specific choices in the application that owns them. When several entry points share one showcase, expose its selection event and attach one shared handler at each entry point instead of adding a callback plugin, selector API or availability state to a reusable skin. A dependency arrangement should make required behavior available in each consumer without teaching the lower layer the showcase policy.
+Keep application-specific choices in the application that owns them. When several entry points share one showcase, populate its observable selection items through shared native composition. Let each item own its display name and callable; the UI invokes that behavior without translating a name or position into a fixed preset. Keep this policy out of reusable skins. Initialize checked state before attaching selection behavior, retain the selected item across queued work, and queue installation plus template refresh together. Verify that population, deselection and reconstruction do not execute actions, and that ordinary added/removed items drive the repeated UI. Interpreted consumers construct the same item through reflection instead of linking generated showcase classes.
 
 When macOS or WebAssembly can reuse most of a Linux implementation, keep the shared implementation in the existing `*.Linux.*` file with explicit positive platform guards and small conditional differences. Delete duplicate platform files and their project/filter registrations; retain separate files for genuinely different implementations such as a browser console bridge.
 
@@ -559,6 +560,8 @@ When a behavior-preserving refactor explicitly requests minimum limited testing,
 
 Apply later scope corrections to the remaining work, including exclusions of otherwise standard application matrices. Historical broader runs remain historical evidence; do not repeat excluded applications or claim they verified a later implementation.
 
+When a GUI/TUI task names only representative applications, keep runtime verification within that selection while completing required generation, metadata and unit checks for the changed library inputs. Do not expand a separate debugging SOP that the task explicitly excludes.
+
 ## Commit consumed event state before reentrant callbacks
 
 When application callbacks can pump the event loop, advance validated input indices and the shared pending-event cursor before invoking them. Keep the undispatched remainder in its owning queue so nested dispatch preserves FIFO ahead of newly arrived input. Move a completed sequence out of active routing state before its End callback, retaining its payload separately; afterward, do not clear a replacement sequence created by nested dispatch. Preserve strict validation while fixing ownership and commit order.
@@ -568,3 +571,7 @@ Consume pairing history or other one-shot state before callbacks that can pump n
 ## Synchronize instruction files after active wrappers finish
 
 `<Tools repo>/Copilot/copilotInitAll.ps1` replaces each destination's `<consuming repo>/.github/Scripts` folder, including wrapper logs. Wait for active build/test wrappers to finish and archive authoritative completed logs outside the replaced folders before synchronizing. An overwritten execution log can break the wrapper's final rename and invalidate its leak-report audit even when stdout contains passing case totals.
+
+## Keep semantic compiler state out of syntax ASTs
+
+Keep parsing-visible AST fields limited to syntax. Store resolved types and other compiler-owned analysis state in the existing semantic manager's side tables, following its ownership and clearing conventions. Moving a field requires auditing every producer, consumer and generated-node copy path; preserve normal resolution before applying a generated override, and keep generic syntax copying independent of semantic state. When rebuilding retained syntax, regenerate dependent expansions and analysis instead of retaining stale resolved values to conceal lifecycle gaps.
