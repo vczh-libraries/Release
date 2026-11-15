@@ -15,7 +15,6 @@ public:
 
 	void Load(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins)override
 	{
-		tuiskin::SetColorPackage(tuiskin::CreateDefaultColorPackage());
 		RegisterTheme(Ptr(new tuiskin::TuiTheme));
 	}
 

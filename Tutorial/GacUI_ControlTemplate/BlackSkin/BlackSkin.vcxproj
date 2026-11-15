@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FullControlTestEventHandlers.cpp" />
+    <ClCompile Include="FullControlTestRawClockInterpretor.cpp" />
     <ClCompile Include="FullControlTestRawElement.Windows.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="UI\FullControlTest\Source\DemoPartialClasses.cpp">
@@ -175,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FullControlTestEventHandlers.h" />
+    <ClInclude Include="FullControlTestRawClockInterpretor.h" />
     <ClInclude Include="FullControlTestRawElement.h" />
     <ClInclude Include="UI\FullControlTest\Source\Demo.h" />
     <ClInclude Include="UI\FullControlTest\Source\DemoPartialClasses.h" />

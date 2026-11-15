@@ -1,6 +1,5 @@
 #define GAC_HEADER_USE_NAMESPACE
 #include "UI/Source/Demo.h"
-#include "RawClock.h"
 
 using namespace demo;
 
@@ -16,7 +15,6 @@ void GuiMain()
 		GetResourceManager()->LoadResourceOrPending(fileStream);
 	}
 	MainWindow window;
-	auto clockAttachment = AttachRawClock(window.GetClockElement());
 	window.MoveToScreenCenter();
 	GetApplication()->Run(&window);
 }

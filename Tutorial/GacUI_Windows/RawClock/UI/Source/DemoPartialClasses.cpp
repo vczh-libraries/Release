@@ -224,6 +224,9 @@ namespace demo
 		(this->clock = ::vl::reflection::description::GuiRawElement_Constructor());
 		::vl::__vwsn::This(__vwsn_this_)->SetNamedObject(::vl::WString::Unmanaged(L"clock"), ::vl::__vwsn::Box(this->clock));
 		{
+			::vl::__vwsn::This(this->clock.Obj())->SetInterpretor(::vl::WString::Unmanaged(L"RawClock::Clock"));
+		}
+		{
 			::vl::__vwsn::This(this->clock.Obj())->SetId(::vl::WString::Unmanaged(L"RawClock.Clock"));
 		}
 		{

@@ -1,7 +1,10 @@
 #include "RawClock.h"
+#include <cmath>
+
 #if defined VCZH_MSVC
 #include <GacUI.Windows.h>
-#include <cmath>
+
+#endif
 
 namespace demo
 {
@@ -10,51 +13,61 @@ namespace demo
 	using namespace vl::presentation::elements;
 	using namespace vl::presentation::compositions;
 
-	class RawClockAttachment : public Object
+	bool RawClockInterpretorBase::ReadTime(vint& hour, vint& minute, vint& second)
+	{
+		auto data = element->GetData();
+		if (data.Length() != 8 || data[2] != L':' || data[5] != L':') return false;
+		for (vint i : { 0,1,3,4,6,7 })
+		{
+			if (data[i] < L'0' || data[i] > L'9') return false;
+		}
+		hour = (data[0] - L'0') * 10 + data[1] - L'0';
+		minute = (data[3] - L'0') * 10 + data[4] - L'0';
+		second = (data[6] - L'0') * 10 + data[7] - L'0';
+		return hour < 24 && minute < 60 && second < 60;
+	}
+
+	void RawClockInterpretorBase::DrawClock(Rect bounds)
+	{
+		vint hour, minute, second;
+		if (!ReadTime(hour, minute, second)) return;
+		double cx = bounds.x1 + bounds.Width() / 2.0;
+		double cy = bounds.y1 + bounds.Height() / 2.0;
+		double radius = (double)(bounds.Width() < bounds.Height() ? bounds.Width() : bounds.Height()) / 2.0 - 10.0;
+		if (radius <= 0) return;
+		constexpr double pi = 3.14159265358979323846;
+		DrawEllipse(cx, cy, radius);
+		for (vint i = 0; i < 12; i++)
+		{
+			auto angle = i * pi / 6;
+			DrawLine(0, cx + cos(angle) * radius * 0.94, cy + sin(angle) * radius * 0.94,
+				cx + cos(angle) * radius, cy + sin(angle) * radius);
+		}
+		double angles[] = { (hour + minute / 60.0 + second / 3600.0) * pi / 6 - pi / 2,
+			(minute + second / 60.0) * pi / 30 - pi / 2, second * pi / 30 - pi / 2 };
+		double lengths[] = { 90.0 / 160, 110.0 / 160, 130.0 / 160 };
+		for (vint i = 0; i < 3; i++)
+		{
+			DrawLine(i + 1, cx, cy, cx + cos(angles[i]) * radius * lengths[i], cy + sin(angles[i]) * radius * lengths[i]);
+		}
+	}
+
+#if defined VCZH_MSVC
+	class RawClockD2DInterpretor : public RawClockInterpretorBase
 	{
 	protected:
-		Ptr<GuiRawElementBase>			element;
-		Ptr<IGuiGraphicsEventHandler>	beforeHandler, afterHandler, renderingHandler;
-		ComPtr<ID2D1SolidColorBrush>		brushes[4];
+		Ptr<IGuiGraphicsEventHandler> beforeHandler, afterHandler, renderingHandler;
+		ComPtr<ID2D1SolidColorBrush> brushes[4];
+		ID2D1RenderTarget* renderTarget = nullptr;
 
-		bool ReadTime(vint& hour, vint& minute, vint& second)
+		void DrawLine(vint color, double x1, double y1, double x2, double y2) override
 		{
-			auto data = element->GetData();
-			if (data.Length() != 8 || data[2] != L':' || data[5] != L':') return false;
-			for (vint i : { 0,1,3,4,6,7 })
-			{
-				if (data[i] < L'0' || data[i] > L'9') return false;
-			}
-			hour = (data[0] - L'0') * 10 + data[1] - L'0';
-			minute = (data[3] - L'0') * 10 + data[4] - L'0';
-			second = (data[6] - L'0') * 10 + data[7] - L'0';
-			return hour < 24 && minute < 60 && second < 60;
+			renderTarget->DrawLine(D2D1::Point2F((FLOAT)x1, (FLOAT)y1), D2D1::Point2F((FLOAT)x2, (FLOAT)y2), brushes[color].Obj(), 2);
 		}
 
-		template<typename TLine, typename TEllipse>
-		void DrawClock(Rect bounds, TLine&& line, TEllipse&& ellipse)
+		void DrawEllipse(double cx, double cy, double radius) override
 		{
-			vint hour, minute, second;
-			if (!ReadTime(hour, minute, second)) return;
-			double cx = bounds.x1 + bounds.Width() / 2.0;
-			double cy = bounds.y1 + bounds.Height() / 2.0;
-			double radius = (double)(bounds.Width() < bounds.Height() ? bounds.Width() : bounds.Height()) / 2.0 - 10.0;
-			if (radius <= 0) return;
-			constexpr double pi = 3.14159265358979323846;
-			ellipse(cx, cy, radius);
-			for (vint i = 0; i < 12; i++)
-			{
-				auto angle = i * pi / 6;
-				line(0, cx + std::cos(angle) * radius * 0.94, cy + std::sin(angle) * radius * 0.94,
-					cx + std::cos(angle) * radius, cy + std::sin(angle) * radius);
-			}
-			double angles[] = { (hour + minute / 60.0 + second / 3600.0) * pi / 6 - pi / 2,
-				(minute + second / 60.0) * pi / 30 - pi / 2, second * pi / 30 - pi / 2 };
-			double lengths[] = { 90.0 / 160, 110.0 / 160, 130.0 / 160 };
-			for (vint i = 0; i < 3; i++)
-			{
-				line(i + 1, cx, cy, cx + std::cos(angles[i]) * radius * lengths[i], cy + std::sin(angles[i]) * radius * lengths[i]);
-			}
+			renderTarget->DrawEllipse(D2D1::Ellipse(D2D1::Point2F((FLOAT)cx, (FLOAT)cy), (FLOAT)radius, (FLOAT)radius), brushes[0].Obj(), 2);
 		}
 
 		void BeforeTarget(GuiGraphicsComposition*, GuiDirect2DElementEventArgs&)
@@ -64,86 +77,138 @@ namespace demo
 
 		void AfterTarget(GuiGraphicsComposition*, GuiDirect2DElementEventArgs& arguments)
 		{
-#define ERROR_MESSAGE_PREFIX L"demo::RawClockAttachment::AfterTarget()#"
 			D2D1_COLOR_F colors[] = { D2D1::ColorF(1,1,1), D2D1::ColorF(0,1,1), D2D1::ColorF(0,1,0), D2D1::ColorF(1,1,0) };
 			for (vint i = 0; i < 4; i++)
 			{
 				ID2D1SolidColorBrush* brush = nullptr;
-				CHECK_ERROR(SUCCEEDED(arguments.rt->CreateSolidColorBrush(colors[i], &brush)), ERROR_MESSAGE_PREFIX L"Cannot create clock brush.");
+				CHECK_ERROR(SUCCEEDED(arguments.rt->CreateSolidColorBrush(colors[i], &brush)), L"demo::RawClockD2DInterpretor::AfterTarget(...)#Cannot create clock brush.");
 				brushes[i] = brush;
 			}
-#undef ERROR_MESSAGE_PREFIX
 		}
 
-		void RenderD2D(GuiGraphicsComposition*, GuiDirect2DElementEventArgs& arguments)
+		void Render(GuiGraphicsComposition*, GuiDirect2DElementEventArgs& arguments)
 		{
 			// Late subscribers may have missed the initial target assignment.
 			if (!brushes[0]) AfterTarget(nullptr, arguments);
-			DrawClock(arguments.bounds,
-				[&](vint color, double x1, double y1, double x2, double y2)
-				{
-					arguments.rt->DrawLine(D2D1::Point2F((FLOAT)x1, (FLOAT)y1), D2D1::Point2F((FLOAT)x2, (FLOAT)y2), brushes[color].Obj(), 2);
-				},
-				[&](double cx, double cy, double radius)
-				{
-					arguments.rt->DrawEllipse(D2D1::Ellipse(D2D1::Point2F((FLOAT)cx, (FLOAT)cy), (FLOAT)radius, (FLOAT)radius), brushes[0].Obj(), 2);
-				});
+			renderTarget = arguments.rt;
+			DrawClock(arguments.bounds);
+			renderTarget = nullptr;
 		}
 
-		void RenderGDI(GuiGraphicsComposition*, GuiGDIElementEventArgs& arguments)
-		{
-			auto dc = arguments.dc->GetHandle();
-			auto saved = SaveDC(dc);
-			SelectObject(dc, GetStockObject(DC_PEN));
-			SelectObject(dc, GetStockObject(NULL_BRUSH));
-			COLORREF colors[] = { RGB(255,255,255), RGB(0,255,255), RGB(0,255,0), RGB(255,255,0) };
-			DrawClock(arguments.bounds,
-				[&](vint color, double x1, double y1, double x2, double y2)
-				{
-					SetDCPenColor(dc, colors[color]);
-					MoveToEx(dc, (int)std::round(x1), (int)std::round(y1), nullptr);
-					LineTo(dc, (int)std::round(x2), (int)std::round(y2));
-				},
-				[&](double cx, double cy, double radius)
-				{
-					SetDCPenColor(dc, colors[0]);
-					Ellipse(dc, (int)(cx - radius), (int)(cy - radius), (int)(cx + radius), (int)(cy + radius));
-				});
-			RestoreDC(dc, saved);
-		}
 	public:
-		RawClockAttachment(Ptr<GuiRawElementBase> _element) : element(_element)
+		void Initialize(IGuiGraphicsElement* _element) override
 		{
-			if (auto d2d = element.Cast<GuiDirect2DElement>())
-			{
-				beforeHandler = d2d->BeforeRenderTargetChanged.AttachMethod(this, &RawClockAttachment::BeforeTarget);
-				afterHandler = d2d->AfterRenderTargetChanged.AttachMethod(this, &RawClockAttachment::AfterTarget);
-				renderingHandler = d2d->Rendering.AttachMethod(this, &RawClockAttachment::RenderD2D);
-			}
-			else if (auto gdi = element.Cast<GuiGDIElement>())
-			{
-				renderingHandler = gdi->Rendering.AttachMethod(this, &RawClockAttachment::RenderGDI);
-			}
+			auto d2d = dynamic_cast<GuiDirect2DElement*>(_element);
+			element = d2d;
+			beforeHandler = d2d->BeforeRenderTargetChanged.AttachMethod(this, &RawClockD2DInterpretor::BeforeTarget);
+			afterHandler = d2d->AfterRenderTargetChanged.AttachMethod(this, &RawClockD2DInterpretor::AfterTarget);
+			renderingHandler = d2d->Rendering.AttachMethod(this, &RawClockD2DInterpretor::Render);
 		}
 
-		~RawClockAttachment()
+		void Finalize() override
 		{
-			if (auto d2d = element.Cast<GuiDirect2DElement>())
-			{
-				d2d->BeforeRenderTargetChanged.Detach(beforeHandler);
-				d2d->AfterRenderTargetChanged.Detach(afterHandler);
-				d2d->Rendering.Detach(renderingHandler);
-			}
-			else if (auto gdi = element.Cast<GuiGDIElement>())
-			{
-				gdi->Rendering.Detach(renderingHandler);
-			}
+			auto d2d = static_cast<GuiDirect2DElement*>(element);
+			d2d->BeforeRenderTargetChanged.Detach(beforeHandler);
+			d2d->AfterRenderTargetChanged.Detach(afterHandler);
+			d2d->Rendering.Detach(renderingHandler);
+			for (auto& brush : brushes) brush = nullptr;
+			beforeHandler = nullptr;
+			afterHandler = nullptr;
+			renderingHandler = nullptr;
 		}
 	};
 
-	Ptr<Object> AttachRawClock(Ptr<GuiRawElementBase> element)
+	class RawClockGDIInterpretor : public RawClockInterpretorBase
 	{
-		return Ptr(new RawClockAttachment(element));
-	}
-}
+	protected:
+		Ptr<IGuiGraphicsEventHandler> renderingHandler;
+		HDC dc = nullptr;
+
+		void DrawLine(vint color, double x1, double y1, double x2, double y2) override
+		{
+			COLORREF colors[] = { RGB(255,255,255), RGB(0,255,255), RGB(0,255,0), RGB(255,255,0) };
+			SetDCPenColor(dc, colors[color]);
+			MoveToEx(dc, (int)std::round(x1), (int)std::round(y1), nullptr);
+			LineTo(dc, (int)std::round(x2), (int)std::round(y2));
+		}
+
+		void DrawEllipse(double cx, double cy, double radius) override
+		{
+			SetDCPenColor(dc, RGB(255,255,255));
+			Ellipse(dc, (int)(cx - radius), (int)(cy - radius), (int)(cx + radius), (int)(cy + radius));
+		}
+
+		void Render(GuiGraphicsComposition*, GuiGDIElementEventArgs& arguments)
+		{
+			dc = arguments.dc->GetHandle();
+			auto saved = SaveDC(dc);
+			SelectObject(dc, GetStockObject(DC_PEN));
+			SelectObject(dc, GetStockObject(NULL_BRUSH));
+			DrawClock(arguments.bounds);
+			RestoreDC(dc, saved);
+			dc = nullptr;
+		}
+
+	public:
+		void Initialize(IGuiGraphicsElement* _element) override
+		{
+			auto gdi = dynamic_cast<GuiGDIElement*>(_element);
+			element = gdi;
+			renderingHandler = gdi->Rendering.AttachMethod(this, &RawClockGDIInterpretor::Render);
+		}
+
+		void Finalize() override
+		{
+			auto gdi = static_cast<GuiGDIElement*>(element);
+			gdi->Rendering.Detach(renderingHandler);
+			renderingHandler = nullptr;
+		}
+	};
+
+	class RawClockD2DInterpretorFactory : public Object, public IGuiGraphicsRawInterpretorFactory
+	{
+	public:
+		IGuiGraphicsRawInterpretor* Create() override
+		{
+			return new RawClockD2DInterpretor;
+		}
+	};
+
+	class RawClockGDIInterpretorFactory : public Object, public IGuiGraphicsRawInterpretorFactory
+	{
+	public:
+		IGuiGraphicsRawInterpretor* Create() override
+		{
+			return new RawClockGDIInterpretor;
+		}
+	};
+
+	class RawClockInterpretorPlugin : public Object, public IGuiPlugin
+	{
+	public:
+		GUI_PLUGIN_NAME(RawClock_ClockInterpretor)
+		{
+		}
+
+		void Load(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins) override
+		{
+			if (controllerRelatedPlugins)
+			{
+				if (elements_windows_d2d::GetWindowsDirect2DResourceManager())
+				{
+					GetGuiGraphicsResourceManager()->RegisterRawInterpretorFactory(L"RawClock::Clock", Ptr(new RawClockD2DInterpretorFactory));
+				}
+				else if (elements_windows_gdi::GetWindowsGDIResourceManager())
+				{
+					GetGuiGraphicsResourceManager()->RegisterRawInterpretorFactory(L"RawClock::Clock", Ptr(new RawClockGDIInterpretorFactory));
+				}
+			}
+		}
+
+		void Unload(bool controllerUnrelatedPlugins, bool controllerRelatedPlugins) override
+		{
+		}
+	};
+	GUI_REGISTER_PLUGIN(RawClockInterpretorPlugin)
 #endif
+}

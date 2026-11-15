@@ -21,6 +21,9 @@
     <ClCompile Include="FullControlTestEventHandlers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FullControlTestRawClockInterpretor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="FullControlTestRawElement.Windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FullControlTestEventHandlers.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FullControlTestRawClockInterpretor.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="FullControlTestRawElement.h">
