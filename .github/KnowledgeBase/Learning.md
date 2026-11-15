@@ -6,7 +6,7 @@
 - Proactively remove code made redundant by refactoring [34]
 - Verify generated artifacts with downstream consumer checks [33]
 - Process staged tasks one by one with verification [28]
-- Extract abstractions only for real shared behavior [24]
+- Extract abstractions only for real shared behavior [25]
 - Port fixes from imports to source repositories [23]
 - Verify and localize portability on every target OS [21]
 - Fix behavior at the owning state instead of patching symptoms [18]
@@ -19,9 +19,9 @@
 - Use `collections::BinarySearchLambda` on contiguous buffers (guard empty) [4]
 - Use `vl::Exception` for expected semantic failures and `CHECK_ERROR` for invariants [4]
 - Respect explicitly limited verification scope [4]
+- Use explicit positive compiler and platform guards [4]
 - Don't assume observable changes are batched [3]
 - Use RAII scope cleanup instead of manual catch cleanup [3]
-- Use explicit positive compiler and platform guards [3]
 - Keep encoding and exception adapters at the C++/JavaScript boundary [3]
 - Treat Debug memory leak dumps as required failures [3]
 - Derive behavior thresholds from named constants [3]
@@ -37,6 +37,7 @@
 - Commit consumed event state before reentrant callbacks [2]
 - Avoid references into containers when mutating them [2]
 - Preserve an existing `Ptr` counter across asynchronous ownership handoffs [2]
+- Group non-template C++ implementations by class in `.cpp` files [2]
 - Prefer `operator<=> = default` for lexicographic key structs [1]
 - Prefer two-pointer merge for sorted range maps [1]
 - Use named sentinel constants instead of raw values [1]
@@ -53,7 +54,6 @@
 - Parse and validate before queuing asynchronous work [1]
 - Use Win32 messages for native dialogs when UIA is unavailable [1]
 - Keep generated makefiles platform-invariant [1]
-- Group non-template C++ implementations by class in `.cpp` files [1]
 - Use reentrant POSIX date-time conversions [1]
 - `IRpcJsonMessageDispatcher::InjectException` is persistent and last-write-wins [1]
 - Measure browser images from their own load/error event [1]
@@ -71,6 +71,7 @@
 - Exercise each distinct semantic and runtime failure independently [1]
 - Synchronize instruction files after active wrappers finish [1]
 - Keep semantic compiler state out of syntax ASTs [1]
+- Keep knowledge bases focused on reusable library contracts [1]
 
 # Refinements
 
@@ -94,7 +95,7 @@ Build-generation scripts must also preserve failures from compiler or dependency
 
 For HTTP automation endpoints, return protocol errors such as 404 only for recognized request rejection. Unexpected parser, automation, callback, or invariant failures should reach a process-terminating boundary instead of being translated into a healthy-looking endpoint response.
 
-Test applications should also preserve their intended executable boundary. When a lower layer already injects a terminal RPC exception, let the real proxy call escape and crash a fail-fast test app instead of wrapping it in an application-layer close flag, catch adapter, or exit-code shim. Keep a separate error-delivery boundary only for applications that must notify another active process before terminating.
+Preserve each application's intended executable boundary. When a lower layer delivers a terminal RPC exception, a fail-fast application can let the proxy call propagate it to the process boundary. Keep a separate error-delivery boundary for applications that must notify another active process before terminating.
 
 ## Process staged tasks one by one with verification
 
@@ -153,6 +154,8 @@ Move reusable filesystem metadata and metadata-preserving copy operations into t
 When splitting a large state machine, put each genuine behavior in a focused implementation with explicit priority, while the owner keeps shared state and lifetime. Internal extensibility does not require a public registration API. Consumers should receive the result they need rather than inspect the owner's private state machine.
 
 For short sibling implementations with different semantics, a little duplication can be clearer than inheritance controlled by a sentinel or mode flag. Keep each implementation responsible for its own behavior instead of making one concrete sibling implement both.
+
+When native drawing backends share parsing and geometry, keep that behavior in a portable non-template base and expose only the drawing operations as virtual hooks. Keep each backend's renderer and factory concrete so another platform can reuse the base without inheriting a foreign backend's resources or registration.
 
 ## Make `Stop()` drain asynchronous work before returning
 
@@ -268,7 +271,7 @@ When a helper temporarily suppresses callbacks, changes ownership flags, or othe
 
 Use the same pattern for recursive readers that push non-owning current-input state before visitor dispatch. A scope object must pop that state on both successful return and nested conversion failure so later recursion never observes a stale input object.
 
-Do not add a scope wrapper solely to run normal-path finalization after an exception in a fail-fast test app. When the exception is intended to terminate the process and the OS releases the endpoint, keep ordinary shutdown calls straight-line at the end. Retain scoped ownership where destruction order prevents callbacks from reaching expired stack objects.
+Do not add a scope wrapper solely to run normal-path finalization after an exception in a fail-fast application. When the exception is intended to terminate the process and the OS releases the endpoint, keep ordinary shutdown calls straight-line at the end. Retain scoped ownership where destruction order prevents callbacks from reaching expired stack objects.
 
 ## `collections::Dictionary` copy assignment is deleted (use move/swap)
 
@@ -298,13 +301,13 @@ When generated build metadata must be platform-invariant, generate it with nativ
 
 For a generated reader that reverses a generated writer, reuse real serialized outputs at every existing logged or golden site, parse them through the public input parser, perform an exact writer-reader-writer round trip, and require byte-for-byte equality. Add focused valid and malformed inputs for every generated field category and validation branch so a successful generator run cannot hide an incomplete reader.
 
-When a generator produces runnable sample applications, verify the generated output through the actual app workflow too. For example, generated ChatBot RPC code should be checked by running the server and multiple clients through joins, chat messages, client exit, and server shutdown, not only by confirming generation succeeds.
+When a generator produces runnable applications, verify the generated output through the actual workflow. For generated RPC code, exercise server/client connections, requests, client exit and server shutdown rather than checking generation alone.
 
 When CodePack ownership is split, inspect the exact generated code pairs and their dependency boundaries. Confirm neutral output excludes platform-only dependencies, ordinary library pairs do not absorb the helper layer, and generated formatting is preserved rather than hand-edited.
 
 When a shared dispatcher schema such as `Rpc.d.ts` changes, type-check the shared schema itself as well as generated fixtures so envelope changes are caught even before concrete generated values instantiate every request shape.
 
-For a released VlppOS namespace change, validate Workflow through the ChatBot SOP and validate GacUI through `RemotingTest_Core /RPT /Http` with `RemotingTest_Rendering_Win32 /Http`, plus GacJS against the HTTP remoting core. An upstream build alone does not prove the imported public surface works.
+For a released dependency namespace change, validate representative downstream scripting, native remoting and browser consumers against the imported public surface. An upstream build alone does not establish downstream compatibility. Keep application-specific launch commands and results in the consuming repository's project instructions and task records.
 
 When relocating manually maintained configuration beside generated types, validate both development architectures and the normal and IncludeOnly release consumers. Generate prerequisite types before packing and verify that each canonical configuration implementation appears exactly once; a successful development build can otherwise conceal stale release dependencies.
 
@@ -458,6 +461,8 @@ Do not embed host-preprocessed `clang++ -MM` dependency output in tracked makefi
 
 Move non-template method bodies out of headers into the matching `.cpp` file while leaving template definitions in headers. In each implementation file, keep a complete class definition and all methods belonging to that class together, and separate class groups with the repository's block-comment pattern. Place namespace-level forward declarations, variables, helper structs and other non-class items before the class groups. Apply the same organization consistently to platform-specific implementation files.
 
+After replacing a functor-based template with a non-template base, keep only its declaration in the shared header and move parsing and other implementation bodies to the matching `.cpp`. Cross-platform reuse does not require those definitions to remain inline.
+
 ## `IRpcJsonMessageDispatcher::InjectException` is persistent and last-write-wins
 
 Treat an injected RPC dispatcher exception as durable terminal state, separate from ordinary response messages. Serialize injection with response commitment, let the newest injected message replace the previous one, wake response and startup waits, and throw `RpcInjectedException` on the original caller thread at every dispatcher-controlled checkpoint. Do not consume or clear the failure after one request.
@@ -495,6 +500,8 @@ When adding a solution or project, start from a comparable existing `.vcxproj` c
 Compiler/platform selection must enumerate supported branches with `#if` and `#elif`; do not assume that everything outside MSVC is native GCC/Clang. Select Emscripten explicitly as `VCZH_WASM`, independently of `VCZH_MSVC` and `VCZH_GCC`, while `VCZH_APPLE` refines the native GCC branch. Correct encountered platform-selection `#ifdef` / `#else` shortcuts, including unrelated ones, without changing ordinary header guards or unrelated feature switches. Unsupported compilers should fail instead of silently entering a fallback.
 
 Remove ordinary guards whose alternatives enumerate every supported compiler, such as `VCZH_MSVC || VCZH_GCC || VCZH_WASM`; they do not restrict availability. Preserve deliberate exactly-one-compiler assertions and guards that select a genuine platform subset.
+
+In a source file that also provides portable behavior, guard backend-only includes, concrete implementations, factories and static plugin registration together. Keep the portable base available outside those guards so another platform can compile the file without importing foreign backend dependencies or startup effects.
 
 ## Keep encoding and exception adapters at the C++/JavaScript boundary
 
@@ -575,3 +582,7 @@ Consume pairing history or other one-shot state before callbacks that can pump n
 ## Keep semantic compiler state out of syntax ASTs
 
 Keep parsing-visible AST fields limited to syntax. Store resolved types and other compiler-owned analysis state in the existing semantic manager's side tables, following its ownership and clearing conventions. Moving a field requires auditing every producer, consumer and generated-node copy path; preserve normal resolution before applying a generated override, and keep generic syntax copying independent of semantic state. When rebuilding retained syntax, regenerate dependent expansions and analysis instead of retaining stale resolved values to conceal lifecycle gaps.
+
+## Keep knowledge bases focused on reusable library contracts
+
+Keep knowledge-base pages focused on library APIs, ownership, contracts and design. Put concrete application composition, source examples, launch commands and run-specific verification results in the owning repository's project instructions, SOPs, task records or project-specific learning files. When cleaning up an existing page, preserve its reusable contract while removing application-specific material, then reconcile the owning repository's changes into `<Tools repo>/Copilot/KnowledgeBase` before instruction synchronization.
