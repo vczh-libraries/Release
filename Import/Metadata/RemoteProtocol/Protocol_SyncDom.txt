@@ -5,6 +5,7 @@ struct RenderingDomContent
     var element: int?;
     var bounds: Rect;
     var validArea: Rect;
+    var editableAttribute: ElementEditableAttribute?;
 }
 
 class RenderingDom
@@ -33,7 +34,6 @@ struct RenderingDom_DiffsInOrder
 {
     var diffsInOrder: RenderingDom_Diff[];
 }
-
 
 message RendererRenderDom                      { request: RenderingDom; }
 message RendererRenderDomDiff                  { request: RenderingDom_DiffsInOrder; }
