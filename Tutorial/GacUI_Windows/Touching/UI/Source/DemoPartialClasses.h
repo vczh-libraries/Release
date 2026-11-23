@@ -53,7 +53,6 @@ namespace demo
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_2;
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_3;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
-		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_5;
 		void __vwsn_demo_TouchingWindow_Initialize(::demo::TouchingWindow* __vwsn_this_);
 	public:
 		TouchingWindowConstructor();

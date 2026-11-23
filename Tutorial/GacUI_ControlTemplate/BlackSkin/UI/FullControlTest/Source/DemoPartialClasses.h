@@ -3675,8 +3675,7 @@ namespace demo
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyTopLayout> __vwsn_precompile_1;
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_2;
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_3;
-		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_4;
-		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_5;
+		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
 		void __vwsn_demo_RawElementTabPage_Initialize(::demo::RawElementTabPage* __vwsn_this_);
 	public:
 		RawElementTabPageConstructor();
@@ -5338,7 +5337,6 @@ namespace demo
 		::vl::presentation::controls::GuiLabel* __vwsn_precompile_2;
 		::vl::Ptr<::vl::presentation::compositions::eazy_layout::GuiEasyFillLayout> __vwsn_precompile_3;
 		::vl::presentation::compositions::GuiBoundsComposition* __vwsn_precompile_4;
-		::vl::Ptr<::vl::presentation::elements::GuiSolidBackgroundElement> __vwsn_precompile_5;
 		void __vwsn_demo_TouchingTabPage_Initialize(::demo::TouchingTabPage* __vwsn_this_);
 	public:
 		TouchingTabPageConstructor();
