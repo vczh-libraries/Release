@@ -12,12 +12,13 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 
 ## Synchronized latest releases:
 
-### 1.5.2.0
+### 1.5.2.1
 
-- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.5.2.0)
-- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.5.2.0)
-- [Linux Wayland](https://github.com/vczh-libraries/wGac/releases/tag/1.5.2.0)
-- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.5.2.0)
+- [Windows](https://github.com/vczh-libraries/Release/releases/tag/1.5.2.1)
+- [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.5.2.1)
+- [Linux Wayland](https://github.com/vczh-libraries/wGac/releases/tag/1.5.2.1)
+- [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.5.2.1)
+- [xgSkins](https://github.com/vczh-libraries/xgSkins/releases/tag/1.5.2.1) (additional GacUI skins)
 
 ### 1.2.11.0
 
