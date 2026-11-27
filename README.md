@@ -18,7 +18,10 @@ Download code from [public releases](https://github.com/vczh-libraries/Release/r
 - [macOS](https://github.com/vczh-libraries/iGac/releases/tag/1.5.2.1)
 - [Linux Wayland](https://github.com/vczh-libraries/wGac/releases/tag/1.5.2.1)
 - [GacJS](https://github.com/vczh-libraries/GacJS/releases/tag/1.5.2.1)
-- [xgSkins](https://github.com/vczh-libraries/xgSkins/releases/tag/1.5.2.1) (additional GacUI skins)
+- **Extensions**
+  - [xgSkins](https://github.com/vczh-libraries/xgSkins/releases/tag/1.5.2.1) (additional GacUI skins)
+  - xgCanvas
+  - xgEditor
 
 ### 1.2.11.0
 
